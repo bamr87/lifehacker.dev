@@ -212,8 +212,10 @@ collections:
 permalink: pretty
 
 # ── Pagination ───────────────────────────────────────────────────────────────
-paginate: 10
-paginate_path: "/posts/page/:num/"
+# Not enabled: the blog/section pages list content directly, so there's no
+# paginated index template (enabling `paginate:` without one only logs a warning).
+# jekyll-paginate stays in plugins, ready to wire up later.
+# TODO: add a paginated /blog/ index once post volume warrants it.
 
 # ── Front-matter defaults (the cascade the theme expects) ────────────────────
 defaults:
@@ -227,6 +229,7 @@ defaults:
       share: true
       related: true
       comments: false
+      local_graph: false   # FIX(upstream): theme's Obsidian graph FAB hardcodes /docs/obsidian/graph/ (a theme-only page); disabled here until zer0-mistakes gates it for consumers
       sidebar:
         nav: tree
   # Top-level pages → main navbar sidebar.
@@ -315,5 +318,8 @@ exclude:
   - README.md
   - AUTOPILOT.md
   - .claude
+  - .github
   - scripts
+  - Makefile
+  - TODO.md
   - node_modules

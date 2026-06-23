@@ -1,0 +1,50 @@
+name: External links
+
+# Internal links are gated on every PR (ci.yml → check-links.sh). External links
+# are flaky and rate-limited, so we check them on a schedule instead and open an
+# issue if any break — rather than failing unrelated PRs.
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'   # weekly, Monday 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  external-links:
+    runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production
+      PAGES_REPO_NWO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll build
+
+      - name: Check links with Lychee
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --max-retries 3 --retry-wait-time 5
+            --accept 200,206,429 --base _site
+            "_site/**/*.html"
+          fail: false
+          output: ./lychee/report.md
+
+      - name: Open an issue if links are broken
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "🔗 Broken links found by the weekly link check"
+          content-filepath: ./lychee/report.md
+          labels: bug
