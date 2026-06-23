@@ -7,4 +7,8 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-include-cache   # required: theme layouts use the {% include_cached %} tag
+  - jekyll-relative-links
+  - jekyll-redirect-from
+  - jekyll-paginate
 site_configured: false   # show the welcome wizard until you flip this to true
