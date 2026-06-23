@@ -556,6 +556,8 @@ plugins:
 site_configured: false   # show the welcome wizard until you flip this to true
 ```
 
+> **One repo-specific extra:** because this repository *also* hosts this tutorial under `docs/`, and the tutorial Markdown contains literal `{% include_cached %}` Liquid examples, the real `_config.yml` adds an `exclude:` block listing `docs` (so Jekyll doesn't try to execute those examples) alongside the usual build files. You only need that if you keep Liquid-bearing docs inside your own Pages repo — a plain site doesn't.
+
 The two other files that make this a complete repo:
 
 ```ruby

@@ -12,3 +12,14 @@ plugins:
   - jekyll-redirect-from
   - jekyll-paginate
 site_configured: false   # show the welcome wizard until you flip this to true
+
+# This repo also hosts its own setup guide under docs/ (docs/README.md). That
+# Markdown contains literal {% include_cached %} Liquid examples, so keep docs/
+# out of the Jekyll build to stop it trying to execute them. (Setting exclude
+# replaces Jekyll's default, so the usual build files are re-listed here.)
+exclude:
+  - docs
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
