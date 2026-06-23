@@ -34,5 +34,17 @@ printf '%s' "$REP" | grep -q 'a.md'  && ok "finds annotated TODO:"          || n
 printf '%s' "$REP" | grep -q 'c.yml' && ok "finds FIX(scope): form"         || no "missed FIX(upstream):"
 printf '%s' "$REP" | grep -q 'b.md'  && no "false positive on rg TODO / HACK-001" || ok "ignores 'rg TODO' and 'HACK-001'"
 
+echo "== check-mermaid (detection, no render) =="
+M="$TMP/mrepo"; mkdir -p "$M/scripts"
+cp "$SD/check-mermaid.sh" "$M/scripts/check-mermaid.sh"
+printf -- '---\nmermaid: true\n---\n\n```mermaid\nflowchart LR\n  A --> B\n```\n' >"$M/good.md"
+printf -- '---\ntitle: x\n---\n\n```mermaid\nflowchart LR\n  A --> B\n```\n'        >"$M/bad.md"
+printf 'Prose mentioning the fenced ```mermaid``` syntax inline only.\n'             >"$M/inline.md"
+MOUT="$(CLAUDE_PROJECT_DIR="$M" bash "$M/scripts/check-mermaid.sh" 2>&1)"; MRC=$?
+printf '%s' "$MOUT" | grep -q 'files with diagrams: 2' && ok "counts real fences only (not inline mention)" || no "wrong diagram count"
+printf '%s' "$MOUT" | grep -q 'bad.md'    && ok "flags page missing mermaid:true"   || no "did not flag bad.md"
+printf '%s' "$MOUT" | grep -q 'inline.md' && no "false positive on inline mention"  || ok "ignores inline mermaid mention"
+[ "$MRC" -ne 0 ] && ok "non-zero exit when a diagram page lacks the flag"            || no "should have failed"
+
 echo "== $P passed, $F failed =="
 [ "$F" -eq 0 ]

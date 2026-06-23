@@ -23,5 +23,8 @@ links: ## Check internal links in ./_site (build first, or pass DIR=)
 todo: ## Scan for follow-up tags and (re)write TODO.md
 	bash scripts/check-todos.sh --write
 
+mermaid: ## Validate Mermaid diagrams (render needs @mermaid-js/mermaid-cli)
+	bash scripts/check-mermaid.sh
+
 scribe: ## Write up any captured-but-unwritten sessions (draft PRs)
 	bash scripts/session-scribe.sh drain

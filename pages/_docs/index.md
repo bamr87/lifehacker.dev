@@ -3,6 +3,7 @@ layout: default
 title: "Docs"
 description: "How lifehacker.dev is built and how the autopilot that runs it works."
 permalink: /docs/
+mermaid: true
 sidebar:
   nav: tree
 ---

@@ -71,6 +71,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Assert GitHub Pages compatibility (no custom _plugins)
+        run: |
+          if compgen -G "_plugins/*.rb" >/dev/null; then
+            echo "::error::Custom _plugins/*.rb don't run on GitHub Pages (safe mode). Remove them or move the logic client-side."
+            exit 1
+          fi
+          echo "✓ no custom _plugins — GitHub Pages safe-mode compatible"
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
@@ -81,6 +89,8 @@ jobs:
       - name: Install gems
         run: bundle install --jobs 4 --retry 3
 
+      # Builds with the real `github-pages` gem (the Pages compatibility
+      # contract): a non-whitelisted plugin in _config.yml would fail to load.
       - name: Build site (github-pages + remote_theme)
         run: bundle exec jekyll build --trace
 
@@ -104,3 +114,17 @@ jobs:
           name: site
           path: _site
           retention-days: 7
+
+  # --------------------------------------------------------------------------
+  mermaid:
+    name: Validate Mermaid diagrams
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install mermaid-cli
+        run: npm install -g @mermaid-js/mermaid-cli
+      - name: Validate diagrams (render + mermaid:true front matter)
+        run: bash scripts/check-mermaid.sh

@@ -33,10 +33,28 @@ flowchart LR
 | **lint** | `shellcheck` + `bash -n` on every script; every `_config`/`_data` YAML parses; a report of all follow-up tags. |
 | **test** | The [Session Scribe](/docs/session-scribe/) suite (13 checks) and the QA-checker suite (links + todo scanner). |
 | **build + links** | Builds with the `github-pages` gem and `remote_theme` — **identical to production** — then runs the internal link check as a **hard gate**. Broken internal link or image ⇒ red. |
+| **mermaid** | Renders every `mermaid` diagram with mermaid-cli (a syntax error fails), and checks that each page with a diagram declares `mermaid: true` (or the theme won't render it). |
 
 The build is Pages-faithful on purpose: `remote_theme` only delivers
 `_layouts/_includes/_sass/assets`, so building with the real gem catches exactly
 what production would.
+
+## GitHub Pages compatibility
+
+The build job uses the **real `github-pages` gem** (pinned `>= 228` so a modern
+Ruby runner can't backtrack it to an ancient release) — the same bundle GitHub
+Pages runs. A green build here means a green build there, because building with
+that gem *is* the compatibility check: a non-whitelisted plugin in `_config.yml`
+would fail to load. A separate step also asserts there's no custom `_plugins/`
+directory, since Pages' safe mode ignores those silently.
+
+## Mermaid diagrams
+
+Diagrams are rendered client-side by the theme, so a broken one fails *in the
+reader's browser*, not the build. The `mermaid` job catches that earlier: it
+extracts every fenced `mermaid` block, renders each with mermaid-cli (syntax
+gate), and verifies the page sets `mermaid: true` front matter — without which
+the theme leaves the diagram as raw code. Run it locally with `make mermaid`.
 
 ## Links: internal vs external
 

@@ -33,6 +33,9 @@ echo; echo "==> unit tests (scribe + checkers)"
 bash "$REPO/scripts/test-session-scribe.sh" >/dev/null && echo "✓ scribe tests pass" || { echo "✗ scribe tests FAILED"; fail=1; }
 bash "$REPO/scripts/test-checks.sh" >/dev/null && echo "✓ checker tests pass" || { echo "✗ checker tests FAILED"; fail=1; }
 
+echo; echo "==> mermaid diagrams (front-matter flag; render needs mmdc)"
+bash "$REPO/scripts/check-mermaid.sh" || fail=1
+
 echo; echo "==> follow-up tags"
 bash "$REPO/scripts/check-todos.sh" --write >/dev/null 2>&1
 echo "✓ TODO.md refreshed"
