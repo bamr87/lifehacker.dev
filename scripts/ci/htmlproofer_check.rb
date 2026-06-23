@@ -45,6 +45,11 @@ IGNORE = [%r{\A//assets/}, %r{\A/news/}, %r{\.github/}]
 
 opts = {
   disable_external: true,
+  enforce_https: false, # CI builds with _config_dev's url: http://localhost:4000,
+                        # so the theme's canonical/SEO tags render http:// absolute
+                        # URLs. HTTPS is a production concern (the .dev TLD forces it
+                        # and prod url is https://lifehacker.dev) — not internal-link
+                        # integrity, which is what this check is for.
   ignore_urls: IGNORE,
   allow_missing_href: true,
   ignore_missing_alt: true
