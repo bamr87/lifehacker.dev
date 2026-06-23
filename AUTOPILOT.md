@@ -61,6 +61,23 @@ schedule a recurring Claude Code job that runs `grow-lifehacker` and opens a PR 
 never auto-merging. Turn it on only when you trust the review gate. When you do,
 say so in the Colophon.
 
+## The Session Scribe (automatic knowledge-sharing)
+
+A second piece of automation lives alongside the content autopilot: a
+`SessionEnd` hook (`.claude/settings.json` → `scripts/session-scribe.sh`) that
+turns each Claude Code session into a shareable **dispatch** article and opens a
+draft PR. The point is to share results so others don't redo the work (AIPD +
+COLAB). It is recursion-guarded, scrubs secrets, never auto-merges, and never
+blocks your session. Full design: [/docs/session-scribe/](https://lifehacker.dev/docs/session-scribe/).
+
+Operate it:
+
+```bash
+scripts/session-scribe.sh drain     # write up any captured-but-skipped sessions
+scripts/test-session-scribe.sh      # offline test suite (no model calls)
+SCRIBE_DISABLED=1 ...               # turn it off for a session
+```
+
 ## Adapting this for another site
 
 1. Rewrite `_data/brand/*` for your identity and voice.
