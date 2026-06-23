@@ -22,6 +22,9 @@ gem "jekyll-relative-links"
 gem "jekyll-redirect-from"
 gem "jekyll-paginate"
 
+# Markdown: _config.yml uses `kramdown: { input: GFM }`, which needs this parser.
+gem "kramdown-parser-gfm"
+
 # Platform / modern-ruby shims:
 gem "webrick", "~> 1.7"
 gem "rexml"   # no longer a default gem on Ruby 3.4+; jekyll/kramdown require it
