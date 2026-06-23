@@ -1,0 +1,10 @@
+title:        "Lifehacker.dev"
+description:  "Tips, tools, and experiments — rendered by the zer0-mistakes remote theme."
+url:          "https://lifehacker.dev"
+remote_theme: bamr87/zer0-mistakes
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+site_configured: false   # show the welcome wizard until you flip this to true
