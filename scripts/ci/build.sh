@@ -44,8 +44,12 @@ lh_overlay() {
   cp -R "$THEME_CACHE" "$dest"
   rm -rf "$dest/.git"
 
-  # Our home/search/sitemap win the root URLs.
-  rm -f "$dest/index.html" "$dest/index.md" "$dest/search.json"
+  # Strip the theme's OWN root-level pages (README/AGENTS/CLAUDE/CHANGELOG/
+  # CONTRIBUTING/SECURITY/features/contributing/index…). They are theme-repo docs,
+  # not lifehacker.dev pages, and would build as /AGENTS/, /CLAUDE/, … with broken
+  # relative links to theme-repo files. We re-add only our own root pages below.
+  find "$dest" -maxdepth 1 -type f \( -name '*.md' -o -name '*.html' \) -delete
+  rm -f "$dest/search.json"
   cp "$REPO_DIR/_config.yml"     "$dest/_config.yml"
   cp "$REPO_DIR/_config_dev.yml" "$dest/_config_dev.yml"
 
@@ -62,7 +66,7 @@ lh_overlay() {
 
   # Top-level spine pages.
   local f
-  for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md; do
+  for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md categories.md tags.md contact.md; do
     [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$dest/$f"
   done
 
