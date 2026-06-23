@@ -34,7 +34,7 @@ flowchart LR
   E --> F[scrub secrets + add front matter]
   F --> G[draft PR]
   G --> H{human review}
-  H -->|merge| I[/dispatches/ published]
+  H -->|merge| I["/dispatches/ published"]
 ```
 
 1. **`SessionEnd` hook** (`.claude/settings.json`) runs
