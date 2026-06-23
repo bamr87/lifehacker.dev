@@ -35,11 +35,13 @@ unless Dir.exist?(SITE)
                    evidence: 'no _site/ to proof; run build.sh first')])
 end
 
-# Genuinely theme-template output we cannot fix from content/config: the theme's
-# author-card renders the logo as a protocol-relative //assets/... URL. Tracked
-# upstream (bamr87/zer0-mistakes); don't block content PRs on it. Everything
-# else — including links our own nav/content produce — stays strict.
-IGNORE = [%r{\A//assets/}]
+# Genuinely theme-template output we cannot fix from this repo's content/config,
+# tracked upstream (bamr87/zer0-mistakes); don't block content PRs on them.
+# Everything else — including links our own nav/content produce — stays strict.
+#   //assets/...      author-card logo rendered as a protocol-relative URL
+#   /news/<cat>/      theme article layout's category permalink scheme (we use /categories/)
+#   .github/...       theme repo doc refs leaking from a theme include
+IGNORE = [%r{\A//assets/}, %r{\A/news/}, %r{\.github/}]
 
 opts = {
   disable_external: true,
@@ -53,8 +55,11 @@ begin
   runner = HTMLProofer.check_directory(SITE, opts)
   begin
     runner.run
-  rescue StandardError
-    # html-proofer raises when failures remain; we read them off the runner.
+  rescue SystemExit, StandardError
+    # html-proofer 5.x EXITS (SystemExit) — not just raises — when failures
+    # remain. rescue StandardError alone misses that and the process dies before
+    # we record anything, letting the gate pass on real failures. Catch both and
+    # read the failures off the runner below.
   end
   fails =
     if runner.respond_to?(:failures) then runner.failures
@@ -71,14 +76,15 @@ begin
       route_to: 'local'
     )
   end
-rescue StandardError => e
+rescue SystemExit, StandardError => e
   findings << LH.finding(check_id: 'htmlproofer', severity: 'error', rule: 'proofer-crashed',
                          evidence: "html-proofer raised #{e.class}: #{e.message.to_s[0, 160]}")
 end
 
-# Record the one knowingly-ignored theme bug so it stays visible and routable.
-findings << LH.finding(check_id: 'htmlproofer', severity: 'info', rule: 'theme-logo-protocol-relative',
-                       evidence: 'author-card logo renders as //assets/images/logo.svg (theme bug; ignored, file upstream)',
+# Record the knowingly-ignored theme-origin link patterns so they stay visible
+# and routable (PR2 will file these upstream automatically).
+findings << LH.finding(check_id: 'htmlproofer', severity: 'info', rule: 'theme-origin-links-ignored',
+                       evidence: 'ignored theme-layout links: //assets logo, /news/<cat>/ category scheme, .github refs (file upstream)',
                        route_to: 'upstream')
 
 if findings.size == 1 # only the tracked info note above

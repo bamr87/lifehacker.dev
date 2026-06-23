@@ -70,9 +70,11 @@ lh_overlay() {
     [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$dest/$f"
   done
 
-  # Our images.
+  # Our images — the WHOLE tree (svgs at top level, png screenshots under
+  # journey/). Copying only *.svg silently dropped the journey PNGs that
+  # published posts reference, which html-proofer then flagged as missing.
   mkdir -p "$dest/assets/images"
-  cp "$REPO_DIR"/assets/images/*.svg "$dest/assets/images/" 2>/dev/null || true
+  cp -R "$REPO_DIR"/assets/images/. "$dest/assets/images/"
 
   # Match GitHub Pages safe mode: no custom plugins.
   rm -rf "$dest/_plugins"
