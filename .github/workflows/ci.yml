@@ -74,7 +74,12 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-          bundler-cache: true
+
+      # Fresh resolve every run. We don't commit a Gemfile.lock (GitHub Pages
+      # ignores it), and a cached lock can pin a bad resolution — so resolve from
+      # the Gemfile each time. It's a small bundle; the cost is ~1 min.
+      - name: Install gems
+        run: bundle install --jobs 4 --retry 3
 
       - name: Build site (github-pages + remote_theme)
         run: bundle exec jekyll build --trace
