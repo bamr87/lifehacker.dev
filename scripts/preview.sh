@@ -49,35 +49,36 @@ if [[ ! -d "$THEME_CACHE/_layouts" ]]; then
   git clone --depth 1 "$THEME_REPO" "$THEME_CACHE"
 fi
 
-# 2. Fresh copy of the theme (keeps its tested docker-compose + _config_dev excludes).
-echo "==> building overlay"
+# 2. Fresh copy of the theme, then PRUNE it down to what `remote_theme` actually
+#    delivers to a consumer: _layouts / _includes / _sass / assets (+ the local
+#    docker/gem build infra). It does NOT deliver the theme's _config.yml, _data/,
+#    _plugins/, or its own root/demo pages — so neither does this overlay.
+#    Keeping them would make the link check chase 404s that can't exist on the
+#    real site (e.g. /CHANGELOG/, theme nav links to /contact/).
+echo "==> building faithful overlay"
 clean_preview
 cp -R "$THEME_CACHE" "$PREVIEW_DIR"
 rm -rf "$PREVIEW_DIR/.git"
 
-# 3. Overlay this repo's content.
-# Drop the theme's own root home/search so ours win the `/` and /search.json URLs.
-rm -f "$PREVIEW_DIR/index.html" "$PREVIEW_DIR/index.md" "$PREVIEW_DIR/search.json"
-cp "$REPO_DIR/_config.yml"      "$PREVIEW_DIR/_config.yml"
-# Replace the theme's demo collection content with ours.
-rm -rf "$PREVIEW_DIR/pages"
-cp -R "$REPO_DIR/pages"         "$PREVIEW_DIR/pages"
-# Overlay our data files (keep the theme's ui-text / skins / backgrounds).
-cp -R "$REPO_DIR/_data/navigation" "$PREVIEW_DIR/_data/"
-cp -R "$REPO_DIR/_data/brand"      "$PREVIEW_DIR/_data/"
-cp "$REPO_DIR/_data/authors.yml"   "$PREVIEW_DIR/_data/authors.yml"
-cp "$REPO_DIR/_data/landing.yml"   "$PREVIEW_DIR/_data/landing.yml"
-cp "$REPO_DIR/_data/backlog.yml"   "$PREVIEW_DIR/_data/backlog.yml"
-# Top-level pages.
-for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md dispatches.md; do
+# Prune theme content a remote_theme consumer never receives.
+rm -rf "$PREVIEW_DIR/_data" "$PREVIEW_DIR/_plugins" \
+       "$PREVIEW_DIR/pages" "$PREVIEW_DIR/features" "$PREVIEW_DIR/docs"
+rm -f  "$PREVIEW_DIR/index.html" "$PREVIEW_DIR/index.md" \
+       "$PREVIEW_DIR/search.json" "$PREVIEW_DIR/search.md" "$PREVIEW_DIR/sitemap.md" \
+       "$PREVIEW_DIR/404.html" "$PREVIEW_DIR/CHANGELOG.md" "$PREVIEW_DIR/CLAUDE.md" \
+       "$PREVIEW_DIR/CODE_OF_CONDUCT.md" "$PREVIEW_DIR/CONTRIBUTING.md" \
+       "$PREVIEW_DIR/SECURITY.md" "$PREVIEW_DIR/README.md" "$PREVIEW_DIR/LICENSE" \
+       "$PREVIEW_DIR/AGENTS.md" "$PREVIEW_DIR/frontmatter.json" 2>/dev/null || true
+
+# 3. Overlay this repo's content (the consumer side: config, all data, pages).
+cp    "$REPO_DIR/_config.yml" "$PREVIEW_DIR/_config.yml"
+cp -R "$REPO_DIR/_data"       "$PREVIEW_DIR/_data"
+cp -R "$REPO_DIR/pages"       "$PREVIEW_DIR/pages"
+mkdir -p "$PREVIEW_DIR/assets/images"
+cp -R "$REPO_DIR/assets/images/." "$PREVIEW_DIR/assets/images/" 2>/dev/null || true
+for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md dispatches.md categories.md tags.md; do
   [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$PREVIEW_DIR/$f"
 done
-# Our images.
-mkdir -p "$PREVIEW_DIR/assets/images"
-cp "$REPO_DIR"/assets/images/*.svg "$PREVIEW_DIR/assets/images/" 2>/dev/null || true
-
-# 4. Strip _plugins so the local build matches GitHub Pages (safe mode skips them).
-rm -rf "$PREVIEW_DIR/_plugins"
 
 # 5. Use our dev overlay but keep the theme's comprehensive exclude list by
 #    appending ours is unnecessary — the theme's _config_dev already excludes

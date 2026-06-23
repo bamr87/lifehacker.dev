@@ -3,6 +3,7 @@ layout: default
 title: "Docs"
 description: "How lifehacker.dev is built and how the autopilot that runs it works."
 permalink: /docs/
+mermaid: true
 sidebar:
   nav: tree
 ---
@@ -17,6 +18,10 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[Point the robot at your own site](/docs/point-the-robot-at-your-own-site/)** —
   the portable how-to: adapt the brand-as-data + backlog + skill pattern to any
   zer0-mistakes (or Jekyll) site you run with Claude Code.
+- **[The Session Scribe](/docs/session-scribe/)** — the `SessionEnd` hook that
+  auto-writes a shareable dispatch from each Claude Code session.
+- **[CI/CD — the quality gate](/docs/ci-cd/)** — the build + link check + tests
+  + follow-up tracking that keeps everything honest, runnable with `make audit`.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible

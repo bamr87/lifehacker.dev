@@ -1,0 +1,130 @@
+name: CI
+
+# Quality gate for lifehacker.dev. Builds the site exactly the way GitHub Pages
+# does (github-pages gem + remote_theme), then proves there are no broken links,
+# the scripts pass their tests, and reports any follow-up tags. CD is GitHub
+# Pages' own build-from-branch on merge to main (see docs/ci-cd.md).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # --------------------------------------------------------------------------
+  lint:
+    name: Lint (shell + yaml + follow-up tags)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ShellCheck scripts
+        run: shellcheck -S warning scripts/*.sh
+
+      - name: Bash syntax check
+        run: for f in scripts/*.sh; do bash -n "$f"; done
+
+      - name: YAML parses (config + data)
+        run: |
+          python3 - <<'PY'
+          import sys, glob, yaml
+          bad = 0
+          for f in ["_config.yml", "_config_dev.yml"] + glob.glob("_data/**/*.yml", recursive=True):
+              try:
+                  list(yaml.safe_load_all(open(f)))
+              except Exception as e:
+                  print(f"::error file={f}::YAML parse error: {e}"); bad += 1
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Follow-up tags report (TODO/FIX/HACK/…)
+        run: |
+          bash scripts/check-todos.sh | tee "$GITHUB_STEP_SUMMARY"
+          # Non-blocking: TODOs are tracked, not gated. Use --strict to fail on FIXME.
+
+  # --------------------------------------------------------------------------
+  test:
+    name: Unit tests (scribe + checkers)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Session Scribe test suite
+        run: bash scripts/test-session-scribe.sh
+      - name: QA checker tests (links + todos)
+        run: bash scripts/test-checks.sh
+
+  # --------------------------------------------------------------------------
+  build-and-links:
+    name: Build (Pages-faithful) + link check
+    runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production
+      PAGES_REPO_NWO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assert GitHub Pages compatibility (no custom _plugins)
+        run: |
+          if compgen -G "_plugins/*.rb" >/dev/null; then
+            echo "::error::Custom _plugins/*.rb don't run on GitHub Pages (safe mode). Remove them or move the logic client-side."
+            exit 1
+          fi
+          echo "✓ no custom _plugins — GitHub Pages safe-mode compatible"
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      # Fresh resolve every run. We don't commit a Gemfile.lock (GitHub Pages
+      # ignores it), and a cached lock can pin a bad resolution — so resolve from
+      # the Gemfile each time. It's a small bundle; the cost is ~1 min.
+      - name: Install gems
+        run: bundle install --jobs 4 --retry 3
+
+      # Builds with the real `github-pages` gem (the Pages compatibility
+      # contract): a non-whitelisted plugin in _config.yml would fail to load.
+      - name: Build site (github-pages + remote_theme)
+        run: bundle exec jekyll build --trace
+
+      - name: Internal link + image check (hard gate)
+        run: bash scripts/check-links.sh _site
+
+      - name: HTMLProofer (internal, advisory)
+        continue-on-error: true
+        run: |
+          gem install html-proofer --no-document
+          htmlproofer _site \
+            --disable-external \
+            --ignore-urls "/^#/,/^\/search\.json$/" \
+            --no-enforce-https \
+            --allow-missing-href
+
+      - name: Upload built site
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site
+          retention-days: 7
+
+  # --------------------------------------------------------------------------
+  mermaid:
+    name: Validate Mermaid diagrams
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install mermaid-cli
+        run: npm install -g @mermaid-js/mermaid-cli
+      - name: Validate diagrams (render + mermaid:true front matter)
+        run: bash scripts/check-mermaid.sh
