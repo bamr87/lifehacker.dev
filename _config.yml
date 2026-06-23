@@ -204,6 +204,10 @@ collections:
   docs:
     output: true
     permalink: /docs/:name/
+  # Session Dispatches — auto-written by the Session Scribe (SessionEnd hook).
+  dispatches:
+    output: true
+    permalink: /dispatches/:name/
 
 permalink: pretty
 
@@ -274,6 +278,16 @@ defaults:
       collection: docs
       sidebar:
         nav: tree
+  # Session Dispatches (auto-generated).
+  - scope:
+      path: pages/_dispatches
+    values:
+      layout: article
+      collection: dispatches
+      author: claude
+      author_profile: true
+      sidebar:
+        nav: main
 
 # ── Copyright ────────────────────────────────────────────────────────────────
 cr_year: 2026

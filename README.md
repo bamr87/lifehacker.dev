@@ -24,6 +24,7 @@ and served by **GitHub Pages** at the apex domain `lifehacker.dev`. It is also a
 | `pages/_posts/` `_hacks/` `_tools/` `_about/` `_docs/` | Content collections (under `pages/` because `collections_dir: pages`). |
 | `index.md`, `blog.md`, `hacks.md`, `tools.md`, `search.json`, `sitemap.md`, `404.html` | Spine pages. `search.json`/`sitemap.md` are hand-authored because the theme's generator is a plugin that GitHub Pages won't run. |
 | `.claude/skills/grow-lifehacker/` | The autopilot skill. |
+| `.claude/settings.json` + `scripts/session-scribe.sh` | The **Session Scribe**: a `SessionEnd` hook that auto-writes a shareable [dispatch](https://lifehacker.dev/dispatches/) per Claude Code session ([docs](https://lifehacker.dev/docs/session-scribe/)). Tested by `scripts/test-session-scribe.sh`. |
 | `scripts/preview.sh` | Local Docker preview (overlay against a theme clone). |
 | `docs/` | The setup tutorial and the build journey log (excluded from the site build). |
 

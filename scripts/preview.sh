@@ -69,7 +69,7 @@ cp "$REPO_DIR/_data/authors.yml"   "$PREVIEW_DIR/_data/authors.yml"
 cp "$REPO_DIR/_data/landing.yml"   "$PREVIEW_DIR/_data/landing.yml"
 cp "$REPO_DIR/_data/backlog.yml"   "$PREVIEW_DIR/_data/backlog.yml"
 # Top-level pages.
-for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md; do
+for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md dispatches.md; do
   [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$PREVIEW_DIR/$f"
 done
 # Our images.
