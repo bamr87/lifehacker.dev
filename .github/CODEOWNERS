@@ -1,0 +1,10 @@
+# Code owners for lifehacker.dev.
+# Combined with branch protection on `main` ("require review from Code Owners"),
+# this is what makes the no-self-merge guarantee real rather than a promise: a
+# pull request — including one opened by the autopilot bot account — cannot merge
+# without a review from @bamr87. The bot runs under a DISTINCT GitHub identity,
+# so its own approval can never satisfy this rule.
+#
+# See docs/runbook-fleet.md for the branch-protection + bot-account setup.
+
+* @bamr87

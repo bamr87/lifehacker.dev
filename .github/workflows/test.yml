@@ -1,0 +1,157 @@
+# =============================================================================
+# test.yml — the PR merge gate for lifehacker.dev (the repo's first CI)
+# -----------------------------------------------------------------------------
+# Reproduces what GitHub Pages actually builds (overlay the remote theme, strip
+# _plugins), then runs the verification harness in scripts/ci/. A green check
+# means: the site builds in safe mode, front matter is valid, no internal links
+# are dead, the sitemap/backlog haven't drifted, and the brand lint passed. The
+# job is red iff aggregate.rb reports any severity:error finding.
+#
+# It posts a sticky comment and uploads findings.jsonl (the contract PR2/PR3
+# consume). It NEVER merges — branch protection + CODEOWNERS hold the human gate.
+# Secrets are NOT exposed (pull_request, not pull_request_target), so a fork PR
+# can't exfiltrate ANTHROPIC_API_KEY; the paid tier-2 brand review only runs on
+# same-repo branches that need it.
+# =============================================================================
+name: test
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    outputs:
+      needs_review: ${{ steps.brand.outputs.needs_review }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true   # installs this repo's Gemfile (github-pages + html-proofer)
+
+      # --- Build is the hard gate, but capture its outcome so we still comment ---
+      - name: Build (safe-mode overlay)
+        id: build
+        continue-on-error: true
+        run: bash scripts/ci/build.sh build
+
+      - name: Record build result
+        if: always()
+        run: |
+          mkdir -p test-results
+          if [ "${{ steps.build.outcome }}" = "success" ]; then
+            echo '[]' > test-results/build.json
+          else
+            printf '[{"check_id":"build","severity":"error","file":"","line":null,"rule":"jekyll-build-failed","evidence":"jekyll build --strict failed in safe mode; see the Build step log","route_to":"local","prime_directive_candidate":false}]' > test-results/build.json
+          fi
+
+      # --- Deterministic checks (each writes test-results/<check>.json) ----------
+      - name: Front-matter schema
+        if: always()
+        continue-on-error: true
+        run: ruby scripts/ci/lint_frontmatter.rb
+
+      - name: Drift (backlog / sitemap / search.json)
+        if: always()
+        continue-on-error: true
+        run: ruby scripts/ci/check_drift.rb
+
+      - name: Brand lint (tier 1)
+        id: brand
+        if: always()
+        continue-on-error: true
+        run: |
+          ruby scripts/ci/lint_brand.rb
+          echo "needs_review=$(cat test-results/brand-needs-review 2>/dev/null || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: Prime Directive (sandboxed hack commands)
+        if: always()
+        continue-on-error: true
+        run: ruby scripts/ci/run_hack_commands.rb   # opt-in (lh:run) by default
+
+      - name: Links (html-proofer, internal)
+        if: always()
+        continue-on-error: true
+        run: bundle exec ruby scripts/ci/htmlproofer_check.rb
+
+      # --- Aggregate -> the contract + the verdict -------------------------------
+      - name: Aggregate findings
+        id: agg
+        if: always()
+        continue-on-error: true
+        run: ruby scripts/ci/aggregate.rb
+
+      - name: Upload findings.jsonl
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: findings
+          path: test-results/
+
+      - name: Sticky PR comment
+        if: ${{ always() && github.event_name == 'pull_request' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          body="test-results/comment.md"
+          [ -f "$body" ] || exit 0
+          # Upsert: edit the existing bot comment (matched by marker) or create one.
+          id=$(gh pr view "$PR" --json comments \
+                --jq '.comments[] | select(.body | startswith("<!-- lh-test-report -->")) | .url' \
+                | tail -1)
+          if [ -n "$id" ]; then
+            gh pr comment "$PR" --edit-last --body-file "$body" || gh pr comment "$PR" --body-file "$body"
+          else
+            gh pr comment "$PR" --body-file "$body"
+          fi
+
+      # --- The gate: fail the job iff aggregate found a severity:error finding ---
+      - name: Gate
+        if: always()
+        run: |
+          test "${{ steps.agg.outcome }}" = "success" \
+            || { echo "::error::test gate failed — see the sticky comment / findings artifact"; exit 1; }
+
+  # ---------------------------------------------------------------------------
+  # Tier-2 brand review (paid): only when tier-1 found an ambiguous sincere
+  # candidate AND the API key is configured. Comment-only; never blocks, never
+  # approves. Runs the brand-reviewer subagent headlessly.
+  # ---------------------------------------------------------------------------
+  brand-review:
+    needs: verify
+    if: ${{ needs.verify.outputs.needs_review == 'true' && github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run brand-reviewer (if key present)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "ANTHROPIC_API_KEY not set — skipping paid tier-2 brand review."
+            exit 0
+          fi
+          npm install -g @anthropic-ai/claude-code
+          # Rebuild tier-1 candidates so the agent has fresh input, then adjudicate.
+          ruby scripts/ci/lint_brand.rb || true
+          claude -p "Use the brand-reviewer agent to adjudicate the banned-when-sincere candidates in test-results/brand.json for PR #$PR. Post review COMMENTS only; never approve or merge." \
+            --allowedTools "Bash(gh pr comment:*),Bash(gh pr review --comment:*),Read,Grep" \
+            --permission-mode acceptEdits || echo "tier-2 review finished non-zero (non-blocking)"
