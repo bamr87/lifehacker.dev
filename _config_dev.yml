@@ -52,7 +52,10 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# Exclude — restates the production list (Jekyll replaces, not merges).
+# Exclude — restates the production list (Jekyll replaces, not merges). Includes
+# the theme's non-content scaffolding (templates/, frontend/, scripts/, test/),
+# which the overlay build also deletes outright; a --strict build chokes on the
+# placeholder front matter in templates/**/*.md.template otherwise.
 exclude:
   - docs
   - Gemfile
@@ -66,3 +69,7 @@ exclude:
   - AUTOPILOT.md
   - .claude
   - node_modules
+  - templates
+  - frontend
+  - scripts
+  - test

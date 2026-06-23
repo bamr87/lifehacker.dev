@@ -72,6 +72,13 @@ lh_overlay() {
 
   # Match GitHub Pages safe mode: no custom plugins.
   rm -rf "$dest/_plugins"
+
+  # Drop the theme's non-content scaffolding. The onboarding *.md.template files
+  # under templates/ carry placeholder (non-YAML) front matter that a --strict
+  # build rejects; frontend/ and node_modules/ are build tooling, not pages. The
+  # theme's own dev config excludes these, but we build with OUR _config_dev, so
+  # remove them here to keep the overlay to real content + delivered theme files.
+  rm -rf "$dest/templates" "$dest/frontend" "$dest/node_modules"
   echo "==> overlay ready"
 }
 
@@ -86,6 +93,9 @@ lh_build() {
   ( cd "$LH_BUILD_DIR" && BUNDLE_GEMFILE="$theme_gemfile" bundle install --quiet )
   echo "==> jekyll build (strict) -> $LH_SITE_OUT"
   rm -rf "$LH_SITE_OUT"
+  # The overlay has no .git, so jekyll-github-metadata would shell out to git and
+  # print "fatal: not a git repository". Hand it the repo name so it doesn't.
+  export PAGES_REPO_NWO="${GITHUB_REPOSITORY:-bamr87/lifehacker.dev}"
   ( cd "$LH_BUILD_DIR" && BUNDLE_GEMFILE="$theme_gemfile" bundle exec jekyll build \
       --config _config.yml,_config_dev.yml \
       --strict_front_matter \
