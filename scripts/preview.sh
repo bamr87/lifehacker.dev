@@ -23,6 +23,25 @@ MODE="${1:-serve}"
 echo "==> repo:    $REPO_DIR"
 echo "==> preview: $PREVIEW_DIR"
 
+# Robustly remove the preview dir. Jekyll-in-Docker writes root-owned files
+# (_site/, .jekyll-cache/) into the bind mount, which a plain host `rm` can't
+# delete — so free the compose volumes first, then fall back to a root container.
+clean_preview() {
+  [[ -d "$PREVIEW_DIR" ]] || return 0
+  ( cd "$PREVIEW_DIR" 2>/dev/null && docker compose down -v >/dev/null 2>&1 ) || true
+  rm -rf "$PREVIEW_DIR" 2>/dev/null && return 0
+  docker run --rm -v "$(dirname "$PREVIEW_DIR")":/parent alpine \
+    rm -rf "/parent/$(basename "$PREVIEW_DIR")" >/dev/null 2>&1 || true
+  rm -rf "$PREVIEW_DIR" 2>/dev/null || true
+}
+
+# `down` / `clean`: stop the server and remove the overlay, then exit.
+if [[ "$MODE" == "down" || "$MODE" == "clean" ]]; then
+  clean_preview
+  echo "==> stopped and cleaned $PREVIEW_DIR"
+  exit 0
+fi
+
 # 1. Ensure a theme clone exists (shallow).
 if [[ ! -d "$THEME_CACHE/_layouts" ]]; then
   echo "==> cloning theme into $THEME_CACHE"
@@ -32,7 +51,7 @@ fi
 
 # 2. Fresh copy of the theme (keeps its tested docker-compose + _config_dev excludes).
 echo "==> building overlay"
-rm -rf "$PREVIEW_DIR"
+clean_preview
 cp -R "$THEME_CACHE" "$PREVIEW_DIR"
 rm -rf "$PREVIEW_DIR/.git"
 

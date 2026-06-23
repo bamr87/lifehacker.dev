@@ -62,7 +62,8 @@ backlog:
     brief: "Adapt the grow-lifehacker skill + backlog pattern for any zer0-mistakes site."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/point-the-robot-at-your-own-site/
 
   # Seed ideas for future runs (humans: add freely).
   - id: HACK-003
@@ -71,7 +72,7 @@ backlog:
     brief: "The handful of tmux bindings that actually matter, and the .tmux.conf that makes them sane."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
 
   - id: TOOL-003
     kind: tool
@@ -79,4 +80,30 @@ backlog:
     brief: "Ctrl-R history search, file picking, and the one-line install. Honest verdict."
     voice: tool-review-honest
     priority: P2
+    status: done
+    published: /tools/fzf-honest-review/
+
+  # --- Fresh seeds for the next runs (the queue never runs dry) ---
+  - id: HACK-004
+    kind: hack
+    title: "The one-line HTTP server you already have installed"
+    brief: "python3 -m http.server and friends — serve a folder in seconds, plus the port-in-use footgun."
+    voice: how-to-practical
+    priority: P2
+    status: todo
+
+  - id: POST-002
+    kind: post
+    title: "Cycle two: the night the robot reviewed its own to-do list"
+    brief: "Field note on the second autopilot run — what shipped, what the backlog looks like now."
+    voice: meta-confession
+    priority: P3
+    status: todo
+
+  - id: TOOL-004
+    kind: tool
+    title: "jq: the JSON tool you keep meaning to learn"
+    brief: "The five jq filters that cover 90% of real use, and when to reach for something else."
+    voice: tool-review-honest
+    priority: P3
     status: todo

@@ -14,6 +14,9 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[The Autopilot Playbook](/docs/autopilot/)** — the full design of the
   Claude-Code-driven content engine: the loop, the guardrails, the data files,
   and how to point it at your own site.
+- **[Point the robot at your own site](/docs/point-the-robot-at-your-own-site/)** —
+  the portable how-to: adapt the brand-as-data + backlog + skill pattern to any
+  zer0-mistakes (or Jekyll) site you run with Claude Code.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible

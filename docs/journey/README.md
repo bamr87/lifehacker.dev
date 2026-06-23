@@ -52,6 +52,22 @@ building this site surfaced three genuine, distinct issues on
   a single "remote-theme Pages consumer checklist" enumerating everything
   `remote_theme` doesn't deliver. lifehacker.dev is the worked reference.
 
+## Cycle 2 — the autopilot keeps going
+
+The same night, a second autopilot cycle pulled three more items off the backlog
+and shipped them on-voice, each verified by a clean local build:
+
+- **Doc:** [How to point the robot at your own site](https://lifehacker.dev/docs/point-the-robot-at-your-own-site/) — the portable autopilot pattern.
+- **Hack:** [tmux in nine commands](https://lifehacker.dev/hacks/tmux-survival-subset/) — the survival subset.
+- **Tool:** [fzf: the honest review](https://lifehacker.dev/tools/fzf-honest-review/) — the Ctrl-R upgrade.
+
+The backlog flipped those to `done` and seeded fresh `todo`s (a one-line HTTP
+server hack, a jq review, a cycle-2 field note) so the queue never runs dry.
+
+| Tools (now 3) | A hack article |
+|---|---|
+| ![tools](screenshots/07-after-tools-cycle2.png) | ![tmux](screenshots/08-after-tmux-article.png) |
+
 ## How to reproduce the preview
 
 ```bash
