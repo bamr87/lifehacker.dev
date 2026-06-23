@@ -1,0 +1,68 @@
+# =============================================================================
+# Development overlay — local preview only
+# -----------------------------------------------------------------------------
+# Layered on top of _config.yml for local builds:
+#   jekyll serve --config _config.yml,_config_dev.yml
+# It disables the remote theme (so the build uses local theme files instead of
+# fetching from GitHub) and turns analytics off. GitHub Pages never sees this
+# file (it is in the production exclude list).
+#
+# NOTE: Jekyll *replaces* (does not merge) the `plugins:` and `exclude:` keys
+# when layering configs, so both are restated here in full.
+# =============================================================================
+
+# Use local theme files, not the remote fetch.
+remote_theme             : false
+theme                    : jekyll-theme-zer0
+
+# Local URLs.
+url                      : "http://localhost:4000"
+baseurl                  : ""
+
+# Dev server.
+host                     : "0.0.0.0"
+port                     : 4000
+livereload               : true
+livereload_port          : 35729
+environment              : "development"
+show_drafts              : true
+future                   : true
+unpublished              : true
+
+# No analytics / no AI chat locally.
+google_analytics         : null
+posthog:
+  enabled                : false
+ai_chat:
+  enabled                : false
+
+# Readable, sourcemapped CSS for debugging.
+sass:
+  sass_dir               : _sass
+  style                  : expanded
+  sourcemap              : always
+
+# Dev plugin list — drops jekyll-remote-theme (we use local theme files).
+plugins:
+  - jekyll-include-cache
+  - jekyll-relative-links
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude — restates the production list (Jekyll replaces, not merges).
+exclude:
+  - docs
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - .jekyll-cache
+  - docker-compose.yml
+  - docker
+  - README.md
+  - AUTOPILOT.md
+  - .claude
+  - node_modules

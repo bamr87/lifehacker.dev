@@ -1,0 +1,48 @@
+# Main navigation — top masthead
+# Used by: _includes/navigation/navbar.html
+# Schema: { title, icon (bi-*), url, children: [{title, url}] }
+
+- title: Hacks
+  icon: bi-lightbulb
+  url: /hacks/
+  children:
+    - title: All Hacks
+      url: /hacks/
+    - title: Categories
+      url: /categories/
+
+- title: Tools
+  icon: bi-wrench-adjustable
+  url: /tools/
+  children:
+    - title: All Tools
+      url: /tools/
+
+- title: Field Notes
+  icon: bi-journal-text
+  url: /blog/
+  children:
+    - title: All Posts
+      url: /blog/
+    - title: Categories
+      url: /categories/
+    - title: Tags
+      url: /tags/
+
+- title: About
+  icon: bi-info-circle
+  url: /about/
+  children:
+    - title: What is this?
+      url: /about/
+    - title: Colophon — how this runs itself
+      url: /about/colophon/
+
+- title: Docs
+  icon: bi-robot
+  url: /docs/
+  children:
+    - title: Docs Home
+      url: /docs/
+    - title: The Autopilot Playbook
+      url: /docs/autopilot/

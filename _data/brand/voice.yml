@@ -1,0 +1,73 @@
+# =============================================================================
+# lifehacker.dev — voice profiles (machine-readable)
+# -----------------------------------------------------------------------------
+# Pick a profile per piece of content. The autopilot sets the profile from the
+# collection (hacks/tools/posts/docs) unless the front matter overrides it.
+# formality: 0 (group chat) .. 100 (legal filing).
+# =============================================================================
+
+default: satire-deadpan
+
+profiles:
+  satire-deadpan:
+    summary: "House voice. Deadpan delivery of absurd premises with a real payload underneath."
+    person: "first/second person, conversational"
+    tense: present
+    formality: 25
+    emoji: "rare — only as ironic punctuation, never as decoration"
+    hallmarks:
+      - "State the absurd thing flatly, as if it were obvious."
+      - "Undercut the productivity-guru promise, then deliver the actual goods."
+      - "Leave the failed attempt in. The failure is the joke and the lesson."
+      - "Short paragraphs. Land the bit, move on."
+    avoid:
+      - "Punching down, mean-spirited cynicism, or nihilism."
+      - "Jokes that replace the useful content instead of framing it."
+      - "Explaining the joke."
+
+  how-to-practical:
+    summary: "For Hacks. Funny intro, then a clean, correct, copy-pasteable procedure."
+    person: "second person, imperative"
+    tense: present
+    formality: 35
+    emoji: "minimal"
+    hallmarks:
+      - "Every command shown is one we ran."
+      - "Each step has a 'you'll know it worked when…' tell."
+      - "A 'when this goes wrong' note near the end — honestly."
+    avoid:
+      - "Hand-waving ('simply', 'just', 'obviously')."
+      - "Untested commands."
+
+  tool-review-honest:
+    summary: "For Tools. A real verdict, including what made us close the tab."
+    person: "first person plural"
+    tense: present
+    formality: 30
+    emoji: "rare"
+    hallmarks:
+      - "Lead with the verdict and who it's for."
+      - "Name the dealbreaker, the price, and the free alternative."
+      - "Disclose any bias. No affiliate fog."
+    avoid:
+      - "Press-release adjectives used sincerely (see glossary)."
+
+  meta-confession:
+    summary: "For Field Notes / Docs about the autopilot. The robot narrates its own work."
+    person: "first person (the robot)"
+    tense: past/present
+    formality: 30
+    emoji: "rare"
+    hallmarks:
+      - "Show the actual command, error, and fix."
+      - "Admit what the robot got wrong and who caught it."
+      - "Link the upstream issue or PR when there is one."
+    avoid:
+      - "Pretending the automation is more autonomous than it is."
+
+# The contrast engine: this site satirizes hype language by using it on PURPOSE,
+# clearly flagged as a bit. Used sincerely, those words are banned (see glossary).
+satire_license: >-
+  Hype words (revolutionary, seamless, game-changing, 10x) are permitted ONLY
+  as obvious parody — in a fake infomercial voice, scare quotes, or a clearly
+  ironic certification. Never in a real instruction, verdict, or claim.

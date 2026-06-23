@@ -1,25 +1,305 @@
-title:        "Lifehacker.dev"
-description:  "Tips, tools, and experiments — rendered by the zer0-mistakes remote theme."
-url:          "https://lifehacker.dev"
-remote_theme: bamr87/zer0-mistakes
+# =============================================================================
+# lifehacker.dev — site configuration
+# -----------------------------------------------------------------------------
+# A Jekyll site rendered by the `bamr87/zer0-mistakes` remote theme and served
+# by GitHub Pages at the apex domain lifehacker.dev.
+#
+# IMPORTANT (remote-theme rule): `remote_theme` only delivers the theme's
+# _layouts/, _includes/, _sass/, and assets/. It does NOT deliver the theme's
+# _config.yml, _data/, or _plugins/. So every structural block below
+# (collections, defaults, appearance, nav wiring) is authored here on purpose,
+# and the _data/ this site needs is committed in this repo. See docs/journey/.
+# =============================================================================
+
+# ── Setup flag ───────────────────────────────────────────────────────────────
+# `false` shows the theme's onboarding wizard on the home page. We are
+# configured, so this is true — the wizard is gone and our real site renders.
+site_configured          : true
+
+# ── Site identity ────────────────────────────────────────────────────────────
+title                    : &title "Lifehacker.dev"
+title_url                : "/"
+title_icon               : "robot"
+subtitle                 : "Surviving life, one byte at a time."
+subtitle_icon            : "terminal"
+title_separator          : "|"
+description              : "Knowledge, tools, and comedy for getting through life one byte at a time."
+locale                   : "en-US"
+level                    : "n00b"
+
+# ── Owner / founder ──────────────────────────────────────────────────────────
+founder                  : "Amr Abdel-Motaleb"
+name                     : &name "Amr"
+email                    : "hello@lifehacker.dev"
+
+# ── GitHub coordinates ───────────────────────────────────────────────────────
+github_user              : &github_user "bamr87"
+repository_name          : &repository_name "lifehacker.dev"
+repository               : [*github_user, "/", *repository_name]
+branch                   : "main"
+remote_theme             : "bamr87/zer0-mistakes"
+
+# ── URLs & deployment (custom apex domain) ───────────────────────────────────
+url                      : "https://lifehacker.dev"
+baseurl                  : ""
+logo                     : /assets/images/logo.svg
+logo_link                : "/"
+og_image                 : /assets/images/og-banner.svg
+teaser                   : /assets/images/og-banner.svg
+
+# ── Read-time / chrome ───────────────────────────────────────────────────────
+words_per_minute         : 200
+breadcrumbs              : true
+repo_map                 : "/sitemap/"
+
+# ── Appearance: skin + palette + backgrounds ─────────────────────────────────
+# Skins: air, aqua, dirt, neon, mint, plum, sunrise. `neon` gives lifehacker
+# its late-night-terminal, infomercial-after-dark energy.
+theme_skin               : "neon"
+
+# Compile-time overrides of the --zer0-color-* tokens (tokens-inline.html).
+# Hex codes MUST be quoted (unquoted #abc is parsed as a YAML comment → null).
+theme_color:
+  main:         "#d946ef"   # neon fuchsia (primary)
+  secondary:    "#64748b"
+  red:          "#ef4444"
+  yellow:       "#facc15"
+  teal:         "#22d3ee"
+  blue:         "#22d3ee"   # links → neon cyan
+  green:        "#22c55e"
+  purple:       "#a855f7"
+  pink:         "#ec4899"
+  orange:       "#fb923c"
+  cyan:         "#22d3ee"
+  indigo:       "#6366f1"
+
+# SVG background layers (gradient / pattern / noise per skin).
+theme_background:
+  enabled                : true
+  gradient_opacity       : 0.6
+  texture_opacity        : 0.04
+  pattern_opacity        : 0.08
+  blend_mode             : overlay
+
+# Runtime light/dark/auto + primary-color picker in the Settings offcanvas.
+appearance_panel         : true
+
+# Page-load progress bar.
+nanobar:
+  enabled                : true
+  color                  : "var(--bs-primary)"
+  background             : "transparent"
+  height                 : "3px"
+  position               : "navbar"
+  steps                  : [20, 55, 85, 100]
+  step_delay_ms          : 120
+
+# ── Analytics & comments — OFF until lifehacker.dev supplies its own ──────────
+# (The theme's own _config ships these "on" with the author's keys; a remote
+# consumer must NOT inherit those. We define them here, disabled, ready to wire.)
+google_analytics         : null
+posthog:
+  enabled                : false
+ai_chat:
+  enabled                : false
+# Giscus comments. NOTE: the theme's shipped _config uses the misspelled key
+# `gisgus:`, so comments are off there by default — we use the correct `giscus:`
+# key (filed upstream as a bug). Flip `enabled` once a Giscus repo is connected.
+giscus:
+  enabled                : false
+
+# Search-engine verification (add when you have them).
+google_site_verification : null
+bing_site_verification   : null
+
+# ── Social / affiliations ────────────────────────────────────────────────────
+default_icon: "bi"
+links:
+  - label: "GitHub"
+    icon: "bi-github"
+    url: "https://github.com/bamr87/lifehacker.dev"
+  - label: "Theme"
+    icon: "bi-palette"
+    url: "https://github.com/bamr87/zer0-mistakes"
+  - label: "IT-Journey"
+    icon: "bi-signpost-split"
+    url: "https://it-journey.dev"
+
+# ── Author identity (for SEO + author cards) ─────────────────────────────────
+author:
+  name                   : *name
+  avatar                 : "/assets/images/logo.svg"
+  bio                    : "Builder of lifehacker.dev. Lets a robot do the typing."
+  location               : "The Internet"
+  github_username        : *github_user
+
+# ── Build framework badge (footer "Powered by") ──────────────────────────────
+powered_by:
+  - name: "Jekyll"
+    url: "https://jekyllrb.com/"
+    icon: "bi-joystick"
+  - name: "Bootstrap"
+    version: "5.3"
+    url: "https://getbootstrap.com/"
+    icon: "bi-bootstrap"
+  - name: "GitHub Pages"
+    url: "https://pages.github.com/"
+    icon: "bi-github"
+  - name: "Claude Code"
+    url: "https://claude.com/claude-code"
+    icon: "bi-robot"
+
+# ── Plugins (all on the GitHub Pages whitelist) ──────────────────────────────
+# jekyll-include-cache is REQUIRED: the theme's layouts use {% include_cached %}
+# and remote_theme does not enable plugins for you (this is the classic first
+# build failure — see docs/journey/). jekyll-mermaid is intentionally absent:
+# it is NOT whitelisted and the theme renders Mermaid client-side anyway.
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-include-cache   # required: theme layouts use the {% include_cached %} tag
+  - jekyll-include-cache
   - jekyll-relative-links
   - jekyll-redirect-from
   - jekyll-paginate
-site_configured: false   # show the welcome wizard until you flip this to true
 
-# This repo also hosts its own setup guide under docs/ (docs/README.md). That
-# Markdown contains literal {% include_cached %} Liquid examples, so keep docs/
-# out of the Jekyll build to stop it trying to execute them. (Setting exclude
-# replaces Jekyll's default, so the usual build files are re-listed here.)
+# In-content .md links inside collections must be rewritten or they 404.
+# `collections: true` is the gotcha it-journey documents — keep it.
+relative_links:
+  enabled                : true
+  collections            : true
+
+# ── Markdown ─────────────────────────────────────────────────────────────────
+markdown: kramdown
+kramdown:
+  input: GFM
+  toc_levels: 1..6
+
+# ── Sass ─────────────────────────────────────────────────────────────────────
+sass:
+  sass_dir: _sass
+  style: compressed
+  sourcemap: never
+
+# ── Collections ──────────────────────────────────────────────────────────────
+# Collections live under pages/ (so files are pages/_posts, pages/_hacks, ...).
+collections_dir: pages
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+  posts:
+    output: true
+    permalink: /posts/:year/:month/:day/:title/
+  hacks:
+    output: true
+    permalink: /hacks/:name/
+  tools:
+    output: true
+    permalink: /tools/:name/
+  about:
+    output: true
+    permalink: /about/:name/
+  docs:
+    output: true
+    permalink: /docs/:name/
+
+permalink: pretty
+
+# ── Pagination ───────────────────────────────────────────────────────────────
+paginate: 10
+paginate_path: "/posts/page/:num/"
+
+# ── Front-matter defaults (the cascade the theme expects) ────────────────────
+defaults:
+  # Site-wide baseline.
+  - scope:
+      path: ""
+    values:
+      layout: default
+      author: claude
+      read_time: true
+      share: true
+      related: true
+      comments: false
+      sidebar:
+        nav: tree
+  # Top-level pages → main navbar sidebar.
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+      sidebar:
+        nav: main
+  # Blog / journey posts.
+  - scope:
+      path: pages/_posts
+    values:
+      layout: article
+      post_type: standard
+      author_profile: true
+      sidebar:
+        nav: posts
+  # Hacks collection.
+  - scope:
+      path: pages/_hacks
+    values:
+      layout: article
+      collection: hacks
+      post_type: standard
+      author_profile: true
+  # Tools collection.
+  - scope:
+      path: pages/_tools
+    values:
+      layout: article
+      collection: tools
+      post_type: standard
+      author_profile: true
+  # About pages.
+  - scope:
+      path: pages/_about
+    values:
+      layout: default
+      collection: about
+      sidebar:
+        nav: main
+  # Docs.
+  - scope:
+      path: pages/_docs
+    values:
+      layout: default
+      collection: docs
+      sidebar:
+        nav: tree
+
+# ── Copyright ────────────────────────────────────────────────────────────────
+cr_year: 2026
+cr_entity: *title
+cr_lisense: "MIT"
+
+# ── Sitemap ──────────────────────────────────────────────────────────────────
+sitemap_include: ["html", "xml"]
+
+# ── Exclude from the build ───────────────────────────────────────────────────
+# docs/ holds this repo's own setup tutorial + journey log, whose Markdown
+# contains literal {% include_cached %} examples; keep it out of the build so
+# Jekyll doesn't try to execute them. (Setting exclude replaces Jekyll's
+# default list, so the usual build files are re-listed here.)
 exclude:
   - docs
   - Gemfile
   - Gemfile.lock
   - vendor
   - .bundle
+  - .jekyll-cache
+  - _config_dev.yml
+  - docker-compose.yml
+  - docker
+  - README.md
+  - AUTOPILOT.md
+  - .claude
+  - scripts
+  - node_modules

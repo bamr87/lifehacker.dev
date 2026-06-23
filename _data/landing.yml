@@ -1,0 +1,44 @@
+# =============================================================================
+# Landing page content — drives _layouts/landing.html
+# Rewrite copy here without touching layout HTML. Keys you omit fall back to
+# the theme's baked-in defaults.
+# =============================================================================
+
+hero:
+  cta_primary:
+    label: "Start hacking"
+    url: "/hacks/"
+    icon: "bi-lightbulb"
+    variant: "light"
+  cta_secondary:
+    label: "Read the field notes"
+    url: "/blog/"
+    icon: "bi-journal-text"
+    variant: "outline"
+  cta_tertiary:
+    label: "GitHub"
+    url: "https://github.com/bamr87/lifehacker.dev"
+    icon: "bi-github"
+    variant: "outline"
+    external: true
+
+features:
+  heading: "Knowledge, tools, and comedy"
+  lead: "Three things that get you through the day. We do all three, badly enough to be funny and well enough to be useful."
+  items:
+    - title: "Hacks that actually work"
+      description: "Real fixes for real problems — the dev kind and the life kind — with the failed attempts left in, because the failed attempts are the funny part."
+      icon: "bi-lightbulb"
+      icon_bg: "bg-primary"
+    - title: "Tools, honestly reviewed"
+      description: "What we actually use, what we uninstalled in a rage, and what is just a to-do list with a $12/month subscription. No affiliate fog."
+      icon: "bi-wrench-adjustable"
+      icon_bg: "bg-info"
+    - title: "Run by a robot, on purpose"
+      description: "This site is a headless CMS driven by Claude Code. It writes, screenshots, files its own bug reports, and opens its own pull requests. You are reading the experiment."
+      icon: "bi-robot"
+      icon_bg: "bg-success"
+
+get_started:
+  heading: "Survive today, optimize tomorrow"
+  lead: "Pick a hack, grab a tool, or watch a website slowly automate the human out of the loop."

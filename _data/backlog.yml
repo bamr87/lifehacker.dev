@@ -1,0 +1,82 @@
+# =============================================================================
+# Content backlog — the autopilot's to-do list
+# -----------------------------------------------------------------------------
+# .claude/skills/grow-lifehacker reads this, picks the highest-priority item
+# whose `status: todo`, produces it (with the right voice profile + screenshots),
+# flips it to `done`, and opens a PR. Humans can add ideas here any time.
+#
+# item: { id, kind: hack|tool|post|doc, title, brief, voice, priority, status }
+# priority: P1 (next) .. P3 (someday).  status: todo | drafting | done
+# =============================================================================
+
+backlog:
+  - id: HACK-001
+    kind: hack
+    title: "Stop typing the same 12 git commands: a .gitconfig alias starter pack"
+    brief: "10 aliases we actually use, what each saves, and the one that caused a force-push incident."
+    voice: how-to-practical
+    priority: P1
+    status: done
+    published: /hacks/git-alias-starter-pack/
+
+  - id: TOOL-001
+    kind: tool
+    title: "ripgrep vs grep: the honest review nobody needed but everyone deserves"
+    brief: "Why we switched, the one flag that matters, and when plain grep is still fine."
+    voice: tool-review-honest
+    priority: P1
+    status: done
+    published: /tools/ripgrep-honest-review/
+
+  - id: HACK-002
+    kind: hack
+    title: "The 3-line shell function that makes your shell remember where you were"
+    brief: "A tiny QoL hack, the failure mode when it shadows a builtin, and the fix."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/make-cd-remember-where-you-were/
+
+  - id: POST-001
+    kind: post
+    title: "I let a robot redesign my homepage and it added a fake infomercial"
+    brief: "Field note on the first autopilot content run, with before/after screenshots."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/06/22/i-hired-a-robot-to-write-this-website/
+
+  - id: TOOL-002
+    kind: tool
+    title: "Note-taking apps: a to-do list with a $12/month subscription, reviewed"
+    brief: "Three apps, one verdict, and the plain-text setup that beat all of them."
+    voice: tool-review-honest
+    priority: P3
+    status: done
+    published: /tools/note-apps-are-todo-lists-with-a-subscription/
+
+  # --- Next up: the autopilot will pick this one ---
+  - id: DOC-001
+    kind: doc
+    title: "How to point the robot at your own site"
+    brief: "Adapt the grow-lifehacker skill + backlog pattern for any zer0-mistakes site."
+    voice: meta-confession
+    priority: P3
+    status: todo
+
+  # Seed ideas for future runs (humans: add freely).
+  - id: HACK-003
+    kind: hack
+    title: "tmux in 9 commands: the survival subset"
+    brief: "The handful of tmux bindings that actually matter, and the .tmux.conf that makes them sane."
+    voice: how-to-practical
+    priority: P2
+    status: todo
+
+  - id: TOOL-003
+    kind: tool
+    title: "fzf: the fuzzy finder that quietly fixes your shell"
+    brief: "Ctrl-R history search, file picking, and the one-line install. Honest verdict."
+    voice: tool-review-honest
+    priority: P2
+    status: todo
