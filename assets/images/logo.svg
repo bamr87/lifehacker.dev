@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Lifehacker.dev logo">
+  <defs>
+    <linearGradient id="lh-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f17"/>
+      <stop offset="1" stop-color="#171127"/>
+    </linearGradient>
+    <linearGradient id="lh-neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d946ef"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="lh-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="url(#lh-bg)" stroke="url(#lh-neon)" stroke-width="10"/>
+  <g filter="url(#lh-glow)" fill="none" stroke="url(#lh-neon)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
+    <!-- terminal prompt chevron -->
+    <polyline points="150,180 230,256 150,332"/>
+    <!-- cursor underscore -->
+    <line x1="270" y1="332" x2="372" y2="332"/>
+  </g>
+</svg>

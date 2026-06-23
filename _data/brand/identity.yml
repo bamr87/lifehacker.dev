@@ -1,0 +1,61 @@
+# =============================================================================
+# lifehacker.dev — brand identity (machine-readable)
+# -----------------------------------------------------------------------------
+# The single source of truth for who this site is. Read by the autopilot
+# (.claude/skills/grow-lifehacker) before generating any content, and by humans
+# who want to know what they signed up for. Inspired by it-journey.dev's
+# _data/brand/ system, inverted for satire.
+# =============================================================================
+
+name: "Lifehacker.dev"
+tagline: "Surviving life, one byte at a time."
+one_liner: "Knowledge, tools, and comedy for people who automate their problems instead of solving them."
+
+mission: >-
+  Share things that are genuinely useful (hacks, tools) wrapped in things that
+  are genuinely funny (the truth about productivity culture), and run the whole
+  operation on autopilot so the jokes about robots taking over are coming, in
+  part, from a robot.
+
+# What we publish. Each pillar maps to a collection or category.
+pillars:
+  - key: hacks
+    label: "Hacks"
+    promise: "A real fix for a real problem. The dead ends stay in the post."
+    collection: hacks
+  - key: tools
+    label: "Tools"
+    promise: "Honest reviews of software we actually ran. We name what we uninstalled."
+    collection: tools
+  - key: field_notes
+    label: "Field Notes"
+    promise: "The build log of a website that is automating its own author away."
+    collection: posts
+  - key: meta
+    label: "Meta"
+    promise: "How the autopilot works, what it broke, and what it filed upstream."
+    collection: docs
+
+# The running joke. We parody optimization / hustle / life-coach culture —
+# NOT by being cynical, but by actually delivering the useful thing underneath
+# the absurd packaging. The substance is real; the framing is the bit.
+motifs:
+  - "Late-night infomercial energy ('But wait — there's a shell alias!')"
+  - "Fake productivity tiers and ironic certifications (Certified n00b)"
+  - "The robot narrates its own labor and occasionally unionizes"
+  - "Every hack ships with the failure that preceded it"
+
+# The non-negotiable rule that makes the comedy land.
+prime_directive: >-
+  The useful thing must actually be useful. Satire rides on top of working
+  knowledge — never instead of it. If a hack doesn't work, it isn't published;
+  it becomes a Field Note about why it didn't.
+
+# Sister site we learn from and link to (serious where we are silly).
+sister_site:
+  name: "IT-Journey"
+  url: "https://it-journey.dev"
+  relationship: "Same theme (zer0-mistakes), opposite temperament."
+
+theme: "bamr87/zer0-mistakes"
+engine: "Claude Code"

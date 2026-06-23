@@ -1,0 +1,46 @@
+# =============================================================================
+# lifehacker.dev — glossary & word policy (machine-readable)
+# -----------------------------------------------------------------------------
+# The autopilot lints drafts against this. The twist vs. a normal style guide:
+# the banned words are banned ONLY when used sincerely. As flagged satire (fake
+# infomercial voice, scare quotes), they are the punchline vocabulary.
+# =============================================================================
+
+# Banned when sincere. If one appears in a real instruction or verdict, rewrite.
+banned_when_sincere:
+  - revolutionary
+  - game-changing
+  - seamless
+  - cutting-edge
+  - powerful
+  - effortless
+  - 10x
+  - synergy
+  - "best-in-class"
+  - "next-level"
+  - unlock           # as in "unlock your potential"
+  - leverage         # as a verb meaning "use"
+  - simply
+  - just             # the dismissive "just do X"
+  - obviously
+
+# Weasel phrases — delete or replace with a number/fact.
+avoid_phrases:
+  - "in today's fast-paced world"
+  - "it's no secret that"
+  - "studies show" # (without a link)
+  - "as we all know"
+
+# Preferred house terms.
+prefer:
+  the_robot: "the robot / the autopilot"     # not "our AI-powered assistant"
+  reader: "you"
+  failure: "the part where it broke"          # we name failures plainly
+  certification: "Certified n00b"             # ironic, never real
+
+# Punchline vocabulary — the banned list, re-licensed for OBVIOUS parody only.
+# Example: a fake testimonial — "This `.bashrc` alias is a *game-changer*™ that
+# *unlocked my full potential* (it saved four keystrokes)."
+satire_vocabulary_note: >-
+  Reach for the banned words only inside a clearly marked bit. The humor is the
+  gap between the hype and the four keystrokes it actually saved.

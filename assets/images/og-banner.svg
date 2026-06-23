@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Lifehacker.dev — surviving life, one byte at a time">
+  <defs>
+    <linearGradient id="og-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f17"/>
+      <stop offset="1" stop-color="#1a1030"/>
+    </linearGradient>
+    <linearGradient id="og-neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d946ef"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <g fill="none" stroke="url(#og-neon)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <polyline points="120,250 190,315 120,380"/>
+    <line x1="220" y1="380" x2="300" y2="380"/>
+  </g>
+  <text x="360" y="300" font-family="ui-monospace, Menlo, monospace" font-size="92" font-weight="700" fill="#f8fafc">lifehacker<tspan fill="#d946ef">.dev</tspan></text>
+  <text x="362" y="368" font-family="ui-monospace, Menlo, monospace" font-size="38" fill="#22d3ee">Surviving life, one byte at a time.</text>
+  <text x="362" y="436" font-family="ui-sans-serif, system-ui, sans-serif" font-size="30" fill="#94a3b8">Knowledge &#183; tools &#183; comedy &#183; quietly run by a robot</text>
+</svg>
