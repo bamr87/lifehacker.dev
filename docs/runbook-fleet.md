@@ -126,12 +126,48 @@ Turns the harness's findings into a ranked queue and deduplicated GitHub issues.
   human's issue** — it labels + drafts a reply + @-mentions the owner. All issue
   text is treated as untrusted (`.claude/skills/_shared/quarantine.md`).
 
+## 5c. Orchestration / the fleet (PR3)
+
+The dispatcher distributes work across role agents without collisions, runaway
+cost, or guardrail violations — deterministic Ruby on purpose (budget math and
+lease arbitration must be reproducible, not model judgment).
+
+- **`scripts/fleet/policy.rb`** — the load-balancing math (pure, unit-tested):
+  `sev1` open → freeze growth, all slots fixing; `sev2` → one grower, rest fixing;
+  clean → mostly growing. `MAX_OPEN_PRS` is the primitive — the dispatcher never
+  leaves more PRs awaiting the human than the cap, so adding agents drains faster
+  but never floods the gate. Knobs live in `_data/fleet/budget.yml`.
+- **`scripts/fleet/lease.rb`** — collision-free claiming via git ref creation
+  (`refs/lease/<id>`, compare-and-swap with no server) + a committed
+  `_data/fleet/leases.yml` record with a TTL so a crashed agent's lease is
+  reclaimed. Two agents can never grab the same item.
+- **`scripts/fleet/dispatch.rb`** — the OODA loop: observe (queue + backlog +
+  open-PR count) → decide (policy) → act (lease + spawn). **Plan-only by default**;
+  `--apply` leases and spawns. Opens zero PRs itself.
+- **`.github/workflows/fleet-dispatch.yml`** — `workflow_dispatch` only (no
+  schedule). Honors the kill switch; the `claude -p "/<role> <target>"` spawns it
+  prints are the final wiring step (needs `ANTHROPIC_API_KEY` + a worktree each).
+- **Role agents:** `grow-lifehacker` (growth), `fleet-bugfix` (one content/infra
+  fix per PR), `triage-lifehacker` (reporting), `brand-reviewer` (comment-only).
+  Each opens one PR and stops; none merges.
+
+### Turning the fleet ON (deliberate, reversible)
+
+1. Set the kill switch: `gh variable set FLEET_ENABLED true` (a repo **variable** —
+   instant, no merge; the bot token can't set it back, having no admin scope).
+2. Run it manually first: Actions → fleet-dispatch → Run (leave `apply` off to see
+   the plan; check `apply` to lease + spawn).
+3. To go hands-off: uncomment the `schedule:` in `fleet-dispatch.yml`, wire the
+   spawn step, and **add a dated bold line to `/about/colophon/`** (per AUTOPILOT.md
+   — enabling scheduled autonomy is the guardrail change that requires it).
+
 ## 6. Kill / disable
 
-- Disable a workflow: `gh workflow disable test.yml` (also `nightly.yml`, `triage.yml`).
-- Revoke the bot's PAT to stop all fleet writes instantly (PR3).
-- PR3 adds a `FLEET_ENABLED` repo variable as the soft kill switch the bot can't
-  flip.
+- **Instant soft kill:** `gh variable set FLEET_ENABLED false` (or delete it). Every
+  dispatch idles on the next run; no merge needed, and the bot can't undo it.
+- Disable a workflow entirely: `gh workflow disable fleet-dispatch.yml` (also
+  `triage.yml`, `nightly.yml`, `test.yml`).
+- **Hard kill:** revoke the bot PAT — stops all fleet writes everywhere at once.
 
 ## 7. The contract (for PR2 / PR3)
 

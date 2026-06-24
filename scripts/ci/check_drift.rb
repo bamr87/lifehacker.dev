@@ -104,7 +104,8 @@ end
 sitemap = (LH.read(File.join(LH::ROOT, 'sitemap.md')) rescue '')
 about_block = sitemap[/^##\s*About.*\z/m].to_s
 about_block.scan(/href="([^"]+)"/).flatten.each do |href|
-  next unless href.start_with?('/') # skip external / anchors
+  next if href.include?('{')          # Liquid-templated (self-healing) — not hand-authored drift
+  next unless href.start_with?('/')   # skip external / anchors
   u = norm(href)
   next if resolves?(u, urls, SITE, site_built)
   findings << LH.finding(check_id: 'drift', severity: 'error',

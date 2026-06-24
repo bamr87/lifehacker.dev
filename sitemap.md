@@ -35,10 +35,11 @@ at [/sitemap.xml](/sitemap.xml).)
 
 ## About &amp; Docs
 <ul>
-  <li><a href="/about/">What is this?</a></li>
-  <li><a href="/about/colophon/">Colophon — how this runs itself</a></li>
-  <li><a href="/docs/">Docs</a></li>
-  <li><a href="/docs/autopilot/">The Autopilot Playbook</a></li>
-  <li><a href="/docs/health/">Site Health — the live triage queue</a></li>
+{% assign abouts = site.about | sort: 'title' %}
+{% for p in abouts %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+{% assign docpages = site.docs | sort: 'title' %}
+{% for p in docpages %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
   <li><a href="/search/">Search</a></li>
 </ul>
+{% comment %}Self-healing: About/Docs pages list themselves from their collections,
+so this block can no longer drift. The fleet needs no unattended writer for it.{% endcomment %}

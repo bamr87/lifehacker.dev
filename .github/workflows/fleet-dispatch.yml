@@ -1,0 +1,89 @@
+# =============================================================================
+# fleet-dispatch.yml — the orchestration controller (manual, gated, OFF by default)
+# -----------------------------------------------------------------------------
+# Runs scripts/fleet/dispatch.rb: observe the queue + backlog + open-PR count,
+# decide the grow/fix split, lease work, and (when enabled) spawn role agents.
+# The dispatcher opens ZERO PRs itself; the leased agents each open one a human
+# merges.
+#
+# THREE THINGS KEEP THIS SAFE:
+#   1. workflow_dispatch only — no schedule. The fleet never runs unattended
+#      until someone turns the cron on (and notes it in /about/colophon/).
+#   2. FLEET_ENABLED kill switch — a repo VARIABLE, not a file, so it takes
+#      effect instantly with no merge. dispatch.rb idles unless it is "true".
+#      The bot token has NO `administration` scope, so a compromised agent
+#      cannot set this variable to re-enable itself.
+#   3. concurrency:group=fleet-dispatch — only one dispatcher is ever live, so
+#      leases never race.
+#
+# To enable autonomy later: `gh variable set FLEET_ENABLED true`, uncomment the
+# schedule below, add the agent-spawn step, and add a dated line to the colophon.
+# =============================================================================
+name: fleet-dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Lease work + spawn agents (unchecked = plan-only, no mutations)"
+        type: boolean
+        default: false
+  # schedule:                      # DISABLED — autonomy is opt-in (see header).
+  #   - cron: '0 8 * * *'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  # Deliberately NO `administration` and NO `actions`/workflows scope: the fleet
+  # must not be able to edit branch protection, the gates, or this kill switch.
+
+concurrency:
+  group: fleet-dispatch
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    env:
+      FLEET_ENABLED: ${{ vars.FLEET_ENABLED }}   # the kill switch; unset/empty = idle
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Dispatch
+        run: |
+          if [ "${{ inputs.apply }}" = "true" ]; then
+            ruby scripts/fleet/dispatch.rb --apply | tee dispatch.out
+          else
+            ruby scripts/fleet/dispatch.rb | tee dispatch.out
+          fi
+
+      # The dispatcher prints the `claude -p "/<role> <target>"` commands it would
+      # run. Executing them for real is the final enablement step — it needs
+      # ANTHROPIC_API_KEY and a git worktree per agent, and each role skill
+      # (grow-lifehacker, fleet-bugfix, triage-lifehacker) opens its own PR and
+      # stops. Wire it here when you're ready to go hands-off:
+      #
+      # - name: Spawn leased agents
+      #   if: ${{ inputs.apply }}
+      #   env:
+      #     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      #   run: |
+      #     npm install -g @anthropic-ai/claude-code
+      #     # for each planned (role,target): run in a fresh worktree, then
+      #     # `claude -p "/<role> <target>" --permission-mode acceptEdits`
+      #     # NEVER add `gh pr merge` to the allowed tools.
+
+      - name: Upload dispatch plan + fleet state
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fleet-dispatch
+          path: |
+            dispatch.out
+            _data/fleet/
