@@ -1,0 +1,29 @@
+{%- comment -%}
+  home/card.html — one standard magazine card for any content item.
+  Used by the section grids and the featured secondary grid on the homepage.
+
+  Params:
+    item         : a post / hack / tool object
+    cover_height : CSS min-height for the cover art (default 150px)
+{%- endcomment -%}
+{%- assign it = include.item -%}
+{%- assign coll = it.collection -%}
+{%- case coll -%}
+  {%- when 'hacks' -%}{%- assign label = 'Hack' -%}{%- assign badge = 'text-bg-primary' -%}
+  {%- when 'tools' -%}{%- assign label = 'Tool' -%}{%- assign badge = 'text-bg-info' -%}
+  {%- when 'posts' -%}{%- assign label = 'Field Note' -%}{%- assign badge = 'text-bg-success' -%}
+  {%- else -%}{%- assign label = coll | capitalize -%}{%- assign badge = 'text-bg-secondary' -%}
+{%- endcase -%}
+<div class="card h-100 border-0 shadow-sm hover-lift overflow-hidden">
+  {% include home/cover.html collection=coll height=include.cover_height %}
+  <div class="card-body">
+    <span class="badge {{ badge }} mb-2">{{ label }}</span>
+    <h3 class="h6 card-title mb-2">
+      <a href="{{ it.url | relative_url }}" class="text-decoration-none text-body-emphasis stretched-link">{{ it.title | truncate: 60 }}</a>
+    </h3>
+    <p class="card-text small text-body-secondary mb-0">{{ it.excerpt | default: it.description | strip_html | truncate: 90 }}</p>
+  </div>
+  <div class="card-footer bg-transparent border-0 text-body-secondary small">
+    <i class="bi bi-calendar3 me-1"></i>{{ it.date | date: "%b %-d, %Y" }}
+  </div>
+</div>
