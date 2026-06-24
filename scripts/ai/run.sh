@@ -42,6 +42,10 @@ run_claude_code() {
   local args=(-p "$prompt" --model "$MODEL" --permission-mode acceptEdits)
   [ -n "$tools" ]  && args+=(--allowedTools "$tools")
   [ -n "$mcp" ]    && args+=(--mcp-config "$mcp")
+  # Same system prompt the API fallback gets — appended so Claude Code's own
+  # agent prompt (tools/permissions) stays intact. Without this, a guardrail
+  # like "never merge" would only bind the fallback path, not the primary one.
+  [ -n "$system" ] && args+=(--append-system-prompt "$system")
   claude "${args[@]}"
 }
 
