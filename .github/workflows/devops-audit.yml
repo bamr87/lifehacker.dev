@@ -53,6 +53,7 @@ jobs:
         uses: ./.github/actions/claude-run
         continue-on-error: true
         env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         with:
           prompt: "Use the devops-manager skill: audit the CI/CD, analyze throughput, apply safe improvements, verify with the harness + simulation, and open ONE PR. Never merge."
