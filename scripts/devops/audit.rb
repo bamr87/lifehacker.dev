@@ -69,13 +69,23 @@ add(findings, 'error', 'sev1-contract', 'run-all.sh does not call record_build.r
 add(findings, 'error', 'sev1-contract', 'run-all.sh early-exits before aggregate on build failure') if runall =~ /build\.sh build \|\| \{[^}]*exit 1/
 # A workflow that builds to feed the harness must fail safe: the build step
 # `continue-on-error` + LH_BUILD_RC so a broken build becomes a sev1 finding, not
-# a dead job. (run-all.sh turns LH_BUILD_RC into the record_build.rb call.)
+# a dead job. (run-all.sh turns LH_BUILD_RC into the record_build.rb call.) This
+# pattern is shared via the build-and-harness composite; a workflow that uses it
+# inherits the fail-safe (and so is exempt from the inline check below).
 wf_read.each do |name, c|
+  next if c.include?('build-and-harness')      # fail-safe lives in the composite
   builds = c.include?('build-overlay') || c.include?('build.sh build')
   feeds_harness = c.include?('run-all.sh') || c.include?('run_all')
   next unless builds && feeds_harness
   ok = c.include?('LH_BUILD_RC') && c.include?('continue-on-error')
   add(findings, 'warn', 'sev1-contract', "#{name} builds for the harness without the LH_BUILD_RC fail-safe (a build break would not become a sev1)") unless ok
+end
+# The shared composite must itself carry the fail-safe (it's the single source of
+# truth for build+harness now, so the contract is verified in one place).
+bh_path = File.join(LH::ROOT, '.github', 'actions', 'build-and-harness', 'action.yml')
+if File.exist?(bh_path)
+  bh = LH.read(bh_path)
+  add(findings, 'error', 'sev1-contract', 'build-and-harness composite lacks the LH_BUILD_RC + continue-on-error fail-safe') unless bh.include?('LH_BUILD_RC') && bh.include?('continue-on-error')
 end
 
 # --- 3. Required checks present (errors/warn) -------------------------------
@@ -89,8 +99,8 @@ wf_read.each do |name, c|
   bundles = c.include?('bundle ') || c.include?('run-all.sh') || c.include?('build-overlay')
   add(findings, 'warn', 'cache', "#{name} bundles gems without bundler-cache") if c.include?('setup-ruby') && bundles && !c.include?('bundler-cache')
 end
-build_runs = wf_read.count { |_, c| c.include?('build-overlay') || c.include?('build.sh build') }
-add(findings, 'info', 'throughput', "#{build_runs} workflow(s) run the safe-mode build; a shared build artifact would cut duplicate builds")
+build_runs = wf_read.count { |_, c| c.include?('build-overlay') || c.include?('build.sh build') || c.include?('build-and-harness') }
+add(findings, 'info', 'throughput', "#{build_runs} workflow(s) run the safe-mode build (distinct triggers — PR gate / triage / nightly); the build+harness LOGIC is shared via the build-and-harness composite")
 
 # --- 5. Script health (errors) ----------------------------------------------
 Dir[File.join(LH::ROOT, 'scripts/**/*.rb')].sort.each do |f|
