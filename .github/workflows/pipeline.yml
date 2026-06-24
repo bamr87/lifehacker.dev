@@ -31,8 +31,35 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # ----- TIER 1 — fast feedback (no build) -----------------------------------
+  # ----- Change routing — run only the tier each change needs ----------------
+  # content -> the content gate (verify + content-review); deps -> full build +
+  # tests; pipeline -> audit + sim too. Pure data PRs skip the heavy work. The
+  # `verify` gate always runs so the required check is meaningful for every kind.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      content: ${{ steps.c.outputs.content }}
+      deps: ${{ steps.c.outputs.deps }}
+      pipeline: ${{ steps.c.outputs.pipeline }}
+      data: ${{ steps.c.outputs.data }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: c
+        run: |
+          BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
+          if [ -n "$BASE" ] && git cat-file -e "$BASE" 2>/dev/null; then
+            git diff --name-only "$BASE"...HEAD | ruby scripts/ci/classify_changes.rb
+          else
+            echo "no usable base ref — running everything (fail-safe)"
+            printf 'content=true\ndeps=true\npipeline=true\ndata=true\n' >> "$GITHUB_OUTPUT"
+          fi
+
+  # ----- TIER 1 — fast feedback (no build): only when the machinery changed ---
   fast:
+    needs: changes
+    if: ${{ needs.changes.outputs.pipeline == 'true' || needs.changes.outputs.deps == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -49,9 +76,9 @@ jobs:
         run: |
           { echo "## Tier 1 — fast"; echo '```'; tail -3 audit.out; echo; tail -2 sim.out; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 
-  # ----- TIER 2 — the required gate (build + harness) ------------------------
+  # ----- TIER 2 — the required gate (build + harness): ALWAYS runs -----------
   verify:
-    needs: fast
+    needs: changes
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -156,3 +183,39 @@ jobs:
         run: |
           n=$(gh pr list --state open --json number --jq 'length' 2>/dev/null || echo 0)
           { echo "## Tier 3 — integration"; ruby scripts/sim/report.rb "$n"; } >> "$GITHUB_STEP_SUMMARY"
+
+  # ----- Content tier — only when content changed (the quality/editorial pass) -
+  # Runs after the harness gate. The content-reviewer agent analyzes the draft,
+  # applies small improvements to the PR, and backlogs larger ideas. Comment-only
+  # judgment; never merges. No-op without an API key.
+  content-review:
+    needs: [changes, verify]
+    if: ${{ needs.changes.outputs.content == 'true' && github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Download the harness findings
+        uses: actions/download-artifact@v4
+        with:
+          name: contract
+        continue-on-error: true
+      - name: Review + improve the content (if key present)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          [ -z "$ANTHROPIC_API_KEY" ] && { echo "no ANTHROPIC_API_KEY — skipping content review"; exit 0; }
+          npm install -g @anthropic-ai/claude-code
+          claude -p "Use the content-reviewer skill on this content PR (#$PR). Read test-results/findings.jsonl, analyze the changed content under pages/_*, apply small improvements to the content file(s) ONLY, append larger ideas to _data/backlog.yml, commit to this PR branch, and comment judgment calls. Never touch scripts/.github/_config/Gemfile. Never merge." \
+            --allowedTools "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob" \
+            --permission-mode acceptEdits || echo "content review finished non-zero (non-blocking)"

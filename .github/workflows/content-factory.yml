@@ -1,0 +1,72 @@
+# =============================================================================
+# content-factory.yml — the daily autonomous content generator
+# -----------------------------------------------------------------------------
+# Each day (when enabled), produces one on-voice, tested piece for EVERY
+# collection and opens one pull request each, labeled `auto:content` so the
+# auto-merge gate can recognize it. It wraps the existing grow-lifehacker skill —
+# the skill does the work (read brand + backlog, draft, build, screenshot, open
+# the PR); this workflow just schedules and parameterizes it per collection.
+#
+# OFF by default behind CONTENT_FACTORY_ENABLED (a repo variable) and the API
+# key. It never merges — the PRs flow into the normal content gate, and the
+# auto-merge workflow (also gated) decides. The matrix is the daily cap: at most
+# one PR per collection per run.
+# =============================================================================
+name: content-factory
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # 09:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: content-factory
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+    steps:
+      - id: check
+        env:
+          ENABLED: ${{ vars.CONTENT_FACTORY_ENABLED }}
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "$ENABLED" = "true" ] && [ -n "$KEY" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "content factory is off (CONTENT_FACTORY_ENABLED != true or no ANTHROPIC_API_KEY) — idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  generate:
+    needs: gate
+    if: ${{ needs.gate.outputs.go == 'true' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        collection: [hack, tool, post, doc]
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Generate one ${{ matrix.collection }} and open a PR
+        run: |
+          claude -p "Use the grow-lifehacker skill to produce exactly ONE ${{ matrix.collection }} for lifehacker.dev. Prefer the highest-priority todo item of that kind in _data/backlog.yml; if none fits, propose a fresh on-voice idea and add it to the backlog first. Before drafting, run \`gh pr list --label auto:content --json title\` and avoid duplicating an open PR's topic. Verify with /test-lifehacker. Open ONE pull request on a branch, label it 'auto:content' and 'collection/${{ matrix.collection }}', flip the backlog item to done, and STOP. Never merge." \
+            --allowedTools "Bash,Read,Write,Edit,Grep,Glob" \
+            --permission-mode acceptEdits \
+            || echo "::warning::content generation for ${{ matrix.collection }} finished non-zero"

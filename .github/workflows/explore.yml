@@ -1,0 +1,171 @@
+# =============================================================================
+# explore.yml — the live-site explorer / persona agent (gated, OFF by default)
+# -----------------------------------------------------------------------------
+# Plans a seeded route over the live site, drives the site-explorer skill to
+# browse it via the Playwright MCP from three personas, files deduplicated GitHub
+# issues for bugs, appends content GAPS to the backlog, and opens ONE data PR.
+# It NEVER merges and NEVER closes a human's issue.
+#
+# FOUR THINGS KEEP THIS SAFE (same posture as fleet-dispatch.yml):
+#   1. workflow_dispatch only — the schedule below is COMMENTED OUT. The explorer
+#      does not run unattended until someone turns the cron on AND adds a dated
+#      line to /about/colophon/ (loosening "no unattended outward actions").
+#   2. A `gate` job requires BOTH EXPLORER_ENABLED == "true" (a repo variable kill
+#      switch) AND the API key present. With the switch off, the job idles.
+#   3. `apply` input defaults false — even an enabled, manual run only DRY-RUNS
+#      the routing (no issues, no PR) unless a human checks the box. The browse is
+#      read-only regardless.
+#   4. Minimal scopes: contents/issues/pull-requests only. Deliberately NO
+#      `administration` and NO `actions`/workflows scope — the explorer cannot
+#      edit branch protection, the gates, or this kill switch.
+#
+# The deterministic spine (plan -> file_findings -> build_backlog) is the same
+# code the agent calls locally, so dedup/routing/caps are identical in CI and on
+# a laptop. The browse step writes _data/explorer/findings.jsonl; everything after
+# it is mechanical (scripts/explorer/*).
+# =============================================================================
+name: explore
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "File issues + backlog + open PR (unchecked = dry-run plan only)"
+        type: boolean
+        default: false
+      seed:
+        description: "Route seed (YYYYMMDD). Empty = today's date (deterministic per day)."
+        type: string
+        default: ""
+      per_persona:
+        description: "Pages per persona (cost cap)"
+        type: string
+        default: "6"
+      max_issues:
+        description: "Max NEW issues to file this run"
+        type: string
+        default: "8"
+  # schedule:                       # DISABLED — unattended browsing is opt-in (see header).
+  #   - cron: '23 6 * * *'          # 06:23 UTC daily, offset from the content factory
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  # Deliberately NO `administration` and NO `actions` scope.
+
+concurrency:
+  group: explore
+  cancel-in-progress: false
+
+jobs:
+  # The kill switch + key check. Outward actions never run unless this says go.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+    steps:
+      - id: check
+        env:
+          ENABLED: ${{ vars.EXPLORER_ENABLED }}
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "$ENABLED" = "true" ] && [ -n "$KEY" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "explorer is off (EXPLORER_ENABLED != true or no key) — idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  explore:
+    needs: gate
+    if: ${{ needs.gate.outputs.go == 'true' }}
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      # 1. Plan the seeded route (network-free, reproducible per day).
+      - name: Plan route
+        run: |
+          SEED="${{ inputs.seed }}"
+          ruby scripts/explorer/plan_routes.rb \
+            ${SEED:+--seed "$SEED"} \
+            --per-persona "${{ inputs.per_persona }}"
+
+      - name: Set up Claude Code + Playwright MCP (read-only browser)
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          npx -y playwright install --with-deps chromium
+          cat > /tmp/mcp.json <<'JSON'
+          { "mcpServers": { "playwright": { "command": "npx", "args": ["-y", "@playwright/mcp@latest", "--headless", "--isolated"] } } }
+          JSON
+
+      - name: Ensure labels exist
+        if: ${{ inputs.apply }}
+        run: |
+          scripts/triage/bootstrap-labels.sh || true
+          scripts/explorer/bootstrap-labels.sh || true
+
+      # 2. Browse the live site from three personas. The skill writes its
+      #    observations to _data/explorer/findings.jsonl — it does NOT file issues
+      #    itself; the deterministic scripts below do, so dedup/caps are identical
+      #    in CI and locally. The allow-list is SCOPED: browse + read only. No `gh`,
+      #    no `pr merge`, no `issue close` — those are out of the agent's hands here.
+      - name: Browse the live site (site-explorer skill)
+        run: |
+          claude -p "Use the site-explorer skill to browse the LIVE https://lifehacker.dev following _data/explorer/plan.json. For each persona (beginner/intermediate/expert), visit its planned pages plus its wander slots, review UI/UX AND content through that lens, and APPEND one JSON observation per finding to _data/explorer/findings.jsonl using the documented shape (kind, persona, url, signal, evidence, suggestion). Lead each 'signal' with the stable noun for the problem. Do NOT file issues or edit content yourself — only write findings.jsonl. Read-only on the site." \
+            --mcp-config /tmp/mcp.json \
+            --allowedTools "mcp__playwright__browser_navigate,mcp__playwright__browser_snapshot,mcp__playwright__browser_take_screenshot,mcp__playwright__browser_console_messages,mcp__playwright__browser_evaluate,Read,Grep,Write(_data/explorer/findings.jsonl)" \
+            --permission-mode acceptEdits \
+            || echo "::warning::explorer browse finished non-zero"
+
+      # 3. Route deterministically: bugs -> deduped issues, gaps -> backlog.
+      #    Dry-run unless the human checked `apply` (the gate already required the
+      #    kill switch + key just to reach this job).
+      - name: File issues + backlog
+        run: |
+          test -s _data/explorer/findings.jsonl || { echo "No findings written — nothing to route."; exit 0; }
+          if [ "${{ inputs.apply }}" = "true" ]; then
+            ruby scripts/explorer/file_findings.rb --apply --max-issues "${{ inputs.max_issues }}"
+            ruby scripts/explorer/build_backlog.rb  --apply --max-add 5
+          else
+            echo "Dry-run (apply=false):"
+            ruby scripts/explorer/file_findings.rb --max-issues "${{ inputs.max_issues }}"
+            ruby scripts/explorer/build_backlog.rb --max-add 5
+          fi
+
+      # 4. Open ONE data PR with the run trail + any backlog appends.
+      - name: Open PR with explorer data + backlog updates
+        if: ${{ inputs.apply }}
+        continue-on-error: true   # GITHUB_TOKEN-authored data-only PRs are fine
+        run: |
+          git config user.name  "lifehacker-explorer[bot]"
+          git config user.email "explorer@lifehacker.dev"
+          branch="explorer/$(date +%Y%m%d-%H%M)"
+          git checkout -b "$branch"
+          git add _data/explorer _data/backlog.yml 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No data changes to commit (issues were filed directly)."
+            exit 0
+          fi
+          git commit -m "explore: persona run trail + backlog ideas"
+          git push origin "$branch"
+          gh pr create --base "${{ github.ref_name }}" --head "$branch" \
+            --title "explore: live-site persona run + backlog ideas" \
+            --body "Automated live-site exploration. Filed deduped UX/content issues (see run log) and appended content gaps to \`_data/backlog.yml\`. A human triages and merges; the bot never merges, never closes a human's issue." \
+            --label "source/site-explorer"
+
+      - name: Upload explorer artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: explore
+          path: |
+            _data/explorer/

@@ -91,9 +91,55 @@ exposed to fork PRs. No workflow grants `administration` or `workflows` scope.
   workflows (currently 3: pipeline, triage, nightly) as *info* — they run at
   different times for different purposes.
 
+## Change-type routing (efficiency)
+
+The pipeline runs only the tier each change needs. A `changes` job classifies the
+PR diff with `scripts/ci/classify_changes.rb` into `content` / `deps` / `pipeline`
+/ `data`, and the tiers gate on it:
+
+| Change kind | Examples | Runs |
+|---|---|---|
+| **content** | `pages/**`, `_data/brand|navigation`, backlog, root content pages, assets | `verify` (build + content gate) + `content-review` |
+| **deps** | `Gemfile*`, `_config*.yml` | `verify` + `fast` (build + harness + audit + sim) |
+| **pipeline** | `scripts/**`, `.github/**`, `.claude/**` | `verify` + `fast` (audit + sim test the changed machinery) |
+| **data** | `_data/health|fleet|analytics`, `SITE_HEALTH.md` | `verify` only |
+
+`verify` (the required check) always runs so branch protection stays meaningful;
+`fast` is skipped for content-only PRs. An empty/unclassifiable diff fails safe to
+"run everything".
+
+## The autonomous content factory
+
+A daily, opt-in loop that generates content, reviews it, tests the live site, and
+(when enabled) merges and fixes itself:
+
+| Workflow | Trigger | Gate | What it does |
+|---|---|---|---|
+| `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
+| `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
+| `explore.yml` | manual (cron commented) | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. |
+| `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
+| `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
+
+**The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies
+every candidate PR's diff and declines (labels `needs-human`) anything touching
+`deps`/`pipeline`, even if it's labeled `auto:content`. So auto-merge can only ever
+ship pure content; dependency, pipeline, and workflow changes are **always**
+human-gated. `scripts/devops/audit.rb` enforces both the per-workflow `*_ENABLED`
+gates and the smuggle guard, so these invariants fail CI if they regress.
+
 ## Turning on continuous autonomy (deliberate)
 
-Scheduling is off by default. To go hands-off: `gh variable set FLEET_ENABLED
-true`, uncomment the `schedule:` in `fleet-dispatch.yml` (and add a gated
-scheduled `triage.yml` so the queue never goes stale), wire the agent-spawn step
-with `ANTHROPIC_API_KEY`, and add a dated line to `/about/colophon/`.
+Each capability is its own switch, off by default. Turn on only what you trust:
+
+```
+gh variable set FLEET_ENABLED true              # the fix/grow fleet
+gh variable set CONTENT_FACTORY_ENABLED true    # daily content generation
+gh variable set EXPLORER_ENABLED true           # live-site persona QA
+gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
+gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (retires human content review)
+```
+
+Enabling `AUTO_MERGE_ENABLED` (or uncommenting any `schedule:`) is a guardrail
+change — add a dated line to `/about/colophon/` in the same PR. The agent steps
+need `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.

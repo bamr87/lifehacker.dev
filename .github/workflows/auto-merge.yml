@@ -1,0 +1,88 @@
+# =============================================================================
+# auto-merge.yml — merge green CONTENT PRs automatically (gated, narrowly scoped)
+# -----------------------------------------------------------------------------
+# When AUTO_MERGE_ENABLED is on, this merges bot-authored content PRs that have
+# passed the entire gate — and ONLY those. The load-bearing safety is the
+# SMUGGLE GUARD: it re-classifies the PR's diff and refuses to merge anything
+# touching deps or pipeline/infra, even if the PR is labeled content. So a
+# content PR can never sneak a workflow, script, _config, or Gemfile change past
+# review. Dependency/infra/workflow PRs are NEVER auto-merged — they always wait
+# for a human.
+#
+# OFF by default behind the AUTO_MERGE_ENABLED repo variable. Enabling it retires
+# the human review of *content* (only) — record it in /about/colophon/.
+# =============================================================================
+name: auto-merge
+
+on:
+  workflow_run:
+    workflows: [pipeline]
+    types: [completed]
+  schedule:
+    - cron: '*/30 * * * *'   # backstop sweep
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: auto-merge
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Merge eligible content PRs
+        env:
+          ENABLED: ${{ vars.AUTO_MERGE_ENABLED }}
+        run: |
+          set -u
+          if [ "$ENABLED" != "true" ]; then
+            echo "AUTO_MERGE_ENABLED != true — auto-merge is OFF. Nothing merged."
+            exit 0
+          fi
+          merged=0; declined=0; skipped=0
+          # Candidates: open PRs labeled auto:content, NOT labeled needs-human.
+          prs=$(gh pr list --state open --label auto:content \
+                 --json number,labels \
+                 --jq '.[] | select([.labels[].name] | index("needs-human") | not) | .number')
+          for pr in $prs; do
+            echo "::group::PR #$pr"
+
+            # 1. SMUGGLE GUARD — the diff must be content/data ONLY.
+            kinds=$(gh pr diff "$pr" --name-only | ruby scripts/ci/classify_changes.rb)
+            if echo "$kinds" | grep -qiE 'deps|pipeline'; then
+              echo "DECLINE #$pr: diff touches build/pipeline files ($kinds) — always human-gated."
+              gh pr edit "$pr" --add-label needs-human || true
+              gh pr comment "$pr" --body "Auto-merge declined: this PR changes build or pipeline files (\`$kinds\`), which require human review. Labeled \`needs-human\`." || true
+              declined=$((declined+1)); echo "::endgroup::"; continue
+            fi
+
+            # 2. All required checks green? (gh pr checks exits 0 only when all pass)
+            if ! gh pr checks "$pr" >/dev/null 2>&1; then
+              echo "SKIP #$pr: checks not all green yet."
+              skipped=$((skipped+1)); echo "::endgroup::"; continue
+            fi
+
+            # 3. Mergeable (no conflicts)?
+            if [ "$(gh pr view "$pr" --json mergeable --jq .mergeable)" != "MERGEABLE" ]; then
+              echo "SKIP #$pr: not mergeable."
+              skipped=$((skipped+1)); echo "::endgroup::"; continue
+            fi
+
+            echo "MERGE #$pr: content-only, green, mergeable -> squash-merging."
+            if gh pr merge "$pr" --squash --delete-branch; then merged=$((merged+1)); else
+              echo "merge failed for #$pr"; skipped=$((skipped+1)); fi
+            echo "::endgroup::"
+          done
+          { echo "## Auto-merge sweep"; echo "merged: $merged · declined (needs-human): $declined · skipped: $skipped"; } >> "$GITHUB_STEP_SUMMARY"
