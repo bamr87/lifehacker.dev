@@ -81,3 +81,12 @@ backlog:
     voice: tool-review-honest
     priority: P2
     status: todo
+
+  # --- Surfaced by content-reviewer on PR #19 (tmux survival subset) ---
+  - id: HACK-004
+    kind: hack
+    title: "tmux copy-mode without the vim cosplay: scroll, search, and grab output"
+    brief: "The survival-subset hack deliberately skips copy-mode. But once your session survives a disconnect, the next pain is scrolling back through 2 hours of build log and copying one error line. Cover prefix-[, search, and a 2-line mouse/clipboard .tmux.conf. Direct follow-up to HACK-003."
+    voice: how-to-practical
+    priority: P2
+    status: todo

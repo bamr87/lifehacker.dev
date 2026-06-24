@@ -75,8 +75,7 @@ prefix c
 `c` for create. You get a clean prompt; your other window is still there. The status bar at the bottom shows them numbered, with a `*` on the one you're looking at:
 
 ```text
-0: bash- (1 panes) ...  @0
-1: logs* (1 panes) ...  @1 (active)
+[work] 0:bash- 1:logs*
 ```
 
 **6. Jump to window N:**
@@ -101,7 +100,7 @@ The current window splits down the middle into two panes — editor on the left,
 prefix "
 ```
 
-Same thing, stacked horizontally. Yes, the mnemonics are backwards from what the symbols look like. No, nobody remembers which is which on the first day. You will after about a week, and until then you can guess and undo.
+Same thing, stacked top to bottom. Yes, the mnemonics are backwards from what the symbols look like. No, nobody remembers which is which on the first day. You will after about a week, and until then you can guess and undo.
 
 **9. Move between panes:**
 
