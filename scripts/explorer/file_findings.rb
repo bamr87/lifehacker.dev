@@ -33,6 +33,24 @@ findings = Explorer.dedup(raw.map { |o| Explorer.normalize(o) })
 issues   = Explorer.issues(findings)
 ideas    = Explorer.backlog_ideas(findings)
 
+# Near-duplicate guard (within this run). Explorer.dedup collapses issues whose
+# stable signal fingerprint matches EXACTLY; it can't catch the same problem
+# phrased two ways. Warn (don't auto-collapse — that risks dropping a genuinely
+# distinct issue) when two titles normalize to the same leading text, so one
+# problem doesn't become several issues.
+_norm = ->(s) { s.to_s.downcase.gsub(/[^a-z0-9]+/, ' ').strip }
+_seen = {}
+issues.each do |f|
+  k = _norm.call(Explorer.issue_title(f))
+  next if k.empty?
+  near = _seen.keys.find { |t| t == k || t.start_with?(k) || k.start_with?(t) }
+  if near
+    warn "[file_findings] near-duplicate titles in this run (possible same issue): #{_seen[near].inspect} vs #{Explorer.issue_title(f).inspect}"
+  else
+    _seen[k] = Explorer.issue_title(f)
+  end
+end
+
 def sh(cmd)
   out = `#{cmd} 2>&1`
   [out.strip, $?.success?]
@@ -81,9 +99,15 @@ issues.each do |f|
     next
   end
   labels = [f['type'], f['area'], "severity/#{f['severity']}", 'source/site-explorer', "persona/#{f['persona']}"].join(',')
-  gh("issue create --repo #{f['repo']} --title #{Shellwords.escape(Explorer.issue_title(f))} --label #{Shellwords.escape(labels)} --body #{Shellwords.escape(Explorer.issue_body(f))}", APPLY)
-  new_count += 1
-  acted << "created #{Explorer.issue_title(f)}"
+  out, ok = gh("issue create --repo #{f['repo']} --title #{Shellwords.escape(Explorer.issue_title(f))} --label #{Shellwords.escape(labels)} --body #{Shellwords.escape(Explorer.issue_body(f))}", APPLY)
+  if ok
+    new_count += 1
+    acted << "created #{Explorer.issue_title(f)}"
+  else
+    # Don't report a create that didn't happen (mirrors triage/file_issues.rb).
+    deferred << "#{Explorer.issue_title(f)} (create FAILED on #{f['repo']})"
+    warn "[file_findings] create FAILED on #{f['repo']}: #{out.to_s[0, 200]}"
+  end
 end
 
 puts "\n[file_findings] mode=#{APPLY ? 'APPLY' : 'dry-run'}  issues_new=#{new_count} (cap #{MAX_ISSUES})  actions=#{acted.size}  backlog_ideas=#{ideas.size}  deferred=#{deferred.size}"

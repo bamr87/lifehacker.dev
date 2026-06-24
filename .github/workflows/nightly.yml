@@ -68,12 +68,21 @@ jobs:
           # on a missing label before bootstrap-labels.sh has been run on the repo.
           scripts/triage/bootstrap-labels.sh >/dev/null 2>&1 || true
           title="nightly: build or sweep failed ($(date +%Y-%m-%d))"
-          # Crude dedup until fingerprinted triage: skip if an open issue already
-          # carries the nightly marker.
-          existing=$(gh issue list --state open --search '"<!-- nightly-sweep -->" in:body' --json number --jq 'length')
-          if [ "${existing:-0}" -ne 0 ]; then
-            echo "nightly issue already open; not refiling."
+          # Dedup across ALL states by the marker. Open -> leave it. CLOSED and the
+          # sweep failed AGAIN -> reopen with a regression note (the root cause
+          # recurred; don't let monitoring look healthy when it isn't). None -> create.
+          match=$(gh issue list --state all --search '"<!-- nightly-sweep -->" in:body' --json number,state --jq '.[0] // empty | "\(.number) \(.state)"' 2>/dev/null)
+          num=${match%% *}; state=${match##* }
+          if [ "$state" = "OPEN" ]; then
+            echo "nightly issue #$num already open; not refiling."
             exit 0
+          fi
+          if [ "$state" = "CLOSED" ] && [ -n "$num" ]; then
+            if gh issue reopen "$num" && gh issue comment "$num" --body "Regression: the nightly sweep failed again on $(date +%Y-%m-%d) after this issue was closed."; then
+              echo "reopened #$num (recurring failure)."
+              exit 0
+            fi
+            echo "::warning::could not reopen #$num — filing a fresh issue instead."
           fi
           body=$'<!-- nightly-sweep -->\nThe nightly sweep failed. Most likely an upstream theme change broke the safe-mode build, or external links rotted. See the run logs. A human should triage.'
           # Try the labeled create; fall back to a label-free create if the labels

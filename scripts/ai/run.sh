@@ -71,6 +71,13 @@ if [ "${LH_AI_FORCE_API:-0}" != "1" ] && command -v claude >/dev/null 2>&1; then
 fi
 
 # --- Fallback: Claude API (single-shot) --------------------------------------
+# The raw API needs an ANTHROPIC_API_KEY. If there's none (OAuth-only auth, or no
+# auth at all), don't hard-abort — no-op cleanly (exit 0), matching the claude-run
+# action's "no auth -> no-op" behavior, so direct callers degrade gracefully.
+if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+  echo "[ai] no ANTHROPIC_API_KEY for the Claude API fallback — skipping (no-op)." >&2
+  exit 0
+fi
 api=("$REPO/scripts/ai/api_call.rb" --prompt "$prompt")
 [ -n "$system" ] && api+=(--system "$system")
 if [ -n "$out" ]; then

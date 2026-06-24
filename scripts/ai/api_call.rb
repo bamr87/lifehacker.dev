@@ -89,6 +89,12 @@ loop do
     warn "[api_call] Claude API fallback ok (model=#{data['model']}, stop=#{data['stop_reason']})"
     puts text
     exit 0
+  elsif code == 401 || code == 403
+    # Auth failure is not transient — don't retry, and say so plainly so a
+    # misconfigured/expired/insufficient ANTHROPIC_API_KEY is diagnosable instead
+    # of hiding behind the generic HTTP error below.
+    warn "[api_call] authentication failed (HTTP #{code}) — the ANTHROPIC_API_KEY is missing, invalid, expired, or lacks access. #{res && res.body.to_s[0, 200]}"
+    exit 1
   elsif (code.zero? || [429, 500, 502, 503, 529].include?(code)) && attempt < 4
     warn "[api_call] transient (HTTP #{code}), retry #{attempt}/3"
     sleep([2**attempt, 30].min)
