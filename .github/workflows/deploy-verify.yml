@@ -79,14 +79,22 @@ jobs:
           scripts/triage/bootstrap-labels.sh >/dev/null 2>&1 || true
           marker="<!-- deploy-verify -->"
           existing=$(gh issue list --state open --search "\"$marker\" in:body" --json number --jq 'length')
-          if [ "${existing:-0}" -eq 0 ]; then
-            gh issue create \
-              --label "type/build-break,severity/sev1,source/ci-test,area/site" \
-              --title "deploy-verify: production returned a non-200 after deploy" \
-              --body "$marker"$'\nThe post-deploy smoke check found a non-200 on the live site (after retries). See the run Step Summary for the URL table. A human should look immediately; this is the kind of thing the fleet shifts all capacity to fix.' \
-            || gh issue create \
-              --title "deploy-verify: production returned a non-200 after deploy" \
-              --body "$marker"$'\n(Labels unavailable — run scripts/triage/bootstrap-labels.sh.) Post-deploy smoke found a non-200; see the Step Summary.'
-          else
+          if [ "${existing:-0}" -ne 0 ]; then
             echo "deploy-verify issue already open; not refiling."
+            exit 0
+          fi
+          # Labeled create first; fall back to a label-free create if the labels
+          # still don't exist; if BOTH fail, make the dropped sev1 LOUD — a silent
+          # drop here means production is down and nobody got paged.
+          if gh issue create \
+               --label "type/build-break,severity/sev1,source/ci-test,area/site" \
+               --title "deploy-verify: production returned a non-200 after deploy" \
+               --body "$marker"$'\nThe post-deploy smoke check found a non-200 on the live site (after retries). See the run Step Summary for the URL table. A human should look immediately; this is the kind of thing the fleet shifts all capacity to fix.' \
+             || gh issue create \
+               --title "deploy-verify: production returned a non-200 after deploy" \
+               --body "$marker"$'\n(Labels unavailable — run scripts/triage/bootstrap-labels.sh.) Post-deploy smoke found a non-200; see the Step Summary.'; then
+            echo "filed deploy-verify sev1 issue."
+          else
+            echo "::error::production is non-200 but BOTH issue-create attempts failed — the sev1 alert was DROPPED. Check GH_TOKEN issues:write and the GitHub API. Manual escalation required NOW."
+            { echo ""; echo "> 🚨 **Alert delivery failed** — production returned non-200 *and* the sev1 issue could not be created (labeled or label-free). A human must escalate manually."; } >> "$GITHUB_STEP_SUMMARY"
           fi

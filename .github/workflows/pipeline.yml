@@ -28,7 +28,11 @@ permissions:
 
 concurrency:
   group: pipeline-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  # Cancel superseded PR runs (fast feedback), but NEVER cancel a push-to-main
+  # run: each main commit's pipeline is the authoritative build record and feeds
+  # deploy-verify. A cancelled run surfaces as a *failure*, so cancelling main
+  # would discard the build signal and leave main looking red.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   # ----- Change routing — run only the tier each change needs ----------------
@@ -57,9 +61,12 @@ jobs:
           fi
 
   # ----- TIER 1 — fast feedback (no build): only when the machinery changed ---
+  # Fail-safe: if the `changes` router didn't succeed (e.g. a transient runner
+  # kill), the change type is unknown, so run the audit + sim rather than skip —
+  # the same "unclassifiable diff runs everything" stance as classify_changes.rb.
   fast:
     needs: changes
-    if: ${{ needs.changes.outputs.pipeline == 'true' || needs.changes.outputs.deps == 'true' }}
+    if: ${{ always() && (needs.changes.result != 'success' || needs.changes.outputs.pipeline == 'true' || needs.changes.outputs.deps == 'true') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -77,8 +84,12 @@ jobs:
           { echo "## Tier 1 — fast"; echo '```'; tail -3 audit.out; echo; tail -2 sim.out; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 
   # ----- TIER 2 — the required gate (build + harness): ALWAYS runs -----------
+  # Deliberately has NO `needs: changes`: the required check must never be
+  # skipped just because the lightweight router job flaked (a transient runner
+  # kill of `changes` previously left main's HEAD with no green build). verify
+  # ignores the change-type outputs anyway — it always builds — so decoupling it
+  # makes the gate independent of `changes` and lets the two run in parallel.
   verify:
-    needs: changes
     runs-on: ubuntu-latest
     permissions:
       contents: read
