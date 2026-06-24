@@ -6,7 +6,11 @@
 # the fallback are configured in one place (scripts/ai/run.sh + _data/ai.yml).
 # Installs Claude Code (best-effort), then runs scripts/ai/run.sh; if Claude
 # Code is missing or fails, run.sh falls back to the Claude API.
-# The caller must provide ANTHROPIC_API_KEY in the job env.
+# The caller must provide auth in the job env: EITHER a Claude Code OAuth token
+# (CLAUDE_CODE_OAUTH_TOKEN, from `claude setup-token` — drives the primary Claude
+# Code path) OR an ANTHROPIC_API_KEY (works for both the primary path and the
+# Claude API fallback). With only the OAuth token the fallback is unavailable,
+# which is fine — the primary path is what runs.
 # =============================================================================
 name: claude-run
 description: Run an AI step via Claude Code, falling back to the Claude API.
@@ -37,8 +41,8 @@ runs:
         SYSTEM: ${{ inputs.system }}
         OUT: ${{ inputs.out }}
       run: |
-        if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
-          echo "::warning::ANTHROPIC_API_KEY not set — AI step is a no-op."
+        if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+          echo "::warning::no Claude auth (CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY) — AI step is a no-op."
           exit 0
         fi
         npm install -g @anthropic-ai/claude-code >/dev/null 2>&1 \

@@ -4,7 +4,7 @@
 # -----------------------------------------------------------------------------
 # EVERY AI call in the repo goes through here — every workflow agent step and
 # every skill — so model, auth, and the fallback are configured in ONE place
-# (_data/ai.yml + ANTHROPIC_API_KEY). Primary is Claude Code (the full agent
+# (_data/ai.yml + the auth env below). Primary is Claude Code (the full agent
 # with tools); if the `claude` CLI is missing or the run fails, it falls back to
 # the Claude API (scripts/ai/api_call.rb) for a single-shot text result.
 #
@@ -12,12 +12,23 @@
 #                     [--system "..."] [--out file]
 #   echo "..." | scripts/ai/run.sh            # stdin prompt
 #
-# Env: ANTHROPIC_API_KEY (required for both paths in practice),
-#      LH_AI_FORCE_API=1 (skip Claude Code, go straight to the API),
+# Auth (either works for the primary Claude Code path):
+#   CLAUDE_CODE_OAUTH_TOKEN — a Claude Code token from `claude setup-token`
+#                             (subscription auth; the preferred CI credential).
+#   ANTHROPIC_API_KEY       — a pay-per-use API key; ALSO the only credential the
+#                             Claude API fallback (api_call.rb) can use.
+# Env: LH_AI_FORCE_API=1 (skip Claude Code, go straight to the API),
 #      LH_AI_MODEL (override the model from _data/ai.yml).
 # =============================================================================
 set -uo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+
+# The Claude Code CLI reads CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY from the
+# env. Prefer the OAuth token when present, and drop an empty ANTHROPIC_API_KEY
+# (an unset GitHub secret renders as "") so the CLI never attempts empty-key auth.
+if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+  unset ANTHROPIC_API_KEY
+fi
 
 MODEL="$(ruby -ryaml -e '
   c = (YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(File.read(ARGV[0])) : YAML.load(File.read(ARGV[0]))) rescue {}
