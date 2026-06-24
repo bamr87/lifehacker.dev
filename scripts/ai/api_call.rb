@@ -7,6 +7,12 @@
 # runs on a bare runner just like the rest of scripts/. Reads ANTHROPIC_API_KEY
 # and _data/ai.yml. Prints the model's text to stdout.
 #
+# Auth note: this path is ANTHROPIC_API_KEY-only by design. A Claude Code OAuth
+# token (CLAUDE_CODE_OAUTH_TOKEN) authenticates the `claude` CLI, NOT the raw
+# Messages API, so it cannot be used here. run.sh selects the credential and only
+# reaches this fallback when an API key is present; with only an OAuth token the
+# primary Claude Code path runs and this fallback is intentionally unavailable.
+#
 # This is a degraded path: a single message in, the final text out — not the
 # full agent. It covers the text-generation/analysis steps (a review comment, a
 # draft, a classification); steps that need multi-file edits should run under

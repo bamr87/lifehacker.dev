@@ -107,7 +107,8 @@ why a model mistake can't merge itself.
 - **Scheduled autonomy stays off** behind `FLEET_ENABLED` until trusted; turning
   it on is a dated colophon line.
 - Real agent spawning in `fleet-dispatch.yml` (the dispatcher currently prints the
-  `claude -p` commands it would run); wiring live execution needs the API key.
+  `run.sh` spawn commands it would run); wiring live execution needs Claude auth
+  (`CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY`).
 
 ## Lessons for the next site that copies this
 

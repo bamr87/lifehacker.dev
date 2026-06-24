@@ -69,9 +69,9 @@ git add Gemfile.lock && git commit -m "ci: pin github-pages + html-proofer"
 
 | Secret | Used by | Needed for |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | `test.yml` → `brand-review` job | The paid tier-2 brand review. **Optional** — without it the deterministic gate still runs; tier-2 just skips. Set it in repo → Settings → Secrets → Actions. |
+| `CLAUDE_CODE_OAUTH_TOKEN` *or* `ANTHROPIC_API_KEY` | every AI step (`pipeline.yml` brand-review + content-review, content-factory, explore, auto-fix, devops-manager) | Claude auth. The OAuth token (`claude setup-token`, subscription auth) is preferred and drives the Claude Code path; an API key also works and is the only credential the API fallback can use. **Optional** — without either, the deterministic gate still runs; the agent tiers just skip. Set in repo → Settings → Secrets → Actions. |
 
-`test.yml` runs on `pull_request` (not `pull_request_target`), so secrets are
+`pipeline.yml` runs on `pull_request` (not `pull_request_target`), so secrets are
 **never** exposed to fork PRs.
 
 ## 5. Running the harness
@@ -145,8 +145,9 @@ lease arbitration must be reproducible, not model judgment).
   open-PR count) → decide (policy) → act (lease + spawn). **Plan-only by default**;
   `--apply` leases and spawns. Opens zero PRs itself.
 - **`.github/workflows/fleet-dispatch.yml`** — `workflow_dispatch` only (no
-  schedule). Honors the kill switch; the `claude -p "/<role> <target>"` spawns it
-  prints are the final wiring step (needs `ANTHROPIC_API_KEY` + a worktree each).
+  schedule). Honors the kill switch; the `run.sh --prompt "/<role> <target>"`
+  spawn commands it prints are the final wiring step (needs
+  `CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY` + a worktree each).
 - **Role agents:** `grow-lifehacker` (growth), `fleet-bugfix` (one content/infra
   fix per PR), `triage-lifehacker` (reporting), `brand-reviewer` (comment-only).
   Each opens one PR and stops; none merges.

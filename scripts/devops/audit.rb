@@ -51,6 +51,18 @@ end
 add(findings, 'error', 'ai-wiring', 'scripts/ai/run.sh (the universal AI runner) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/run.sh'))
 add(findings, 'error', 'ai-wiring', 'scripts/ai/api_call.rb (the Claude API fallback) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/api_call.rb'))
 
+# OAuth-everywhere invariant: any workflow that forwards ANTHROPIC_API_KEY to an
+# AI step must ALSO forward CLAUDE_CODE_OAUTH_TOKEN, so adding a key never
+# silently downgrades a job to API-key-only and drops the (preferred) Claude Code
+# OAuth path. Matches the env-assignment form (and the commented fleet-dispatch
+# template), not prose mentions.
+api_env = /ANTHROPIC_API_KEY:\s*\$\{\{\s*secrets\.ANTHROPIC_API_KEY\s*\}\}/
+oauth_env = /CLAUDE_CODE_OAUTH_TOKEN:\s*\$\{\{\s*secrets\.CLAUDE_CODE_OAUTH_TOKEN\s*\}\}/
+wf_read.each do |name, c|
+  next unless c =~ api_env
+  add(findings, 'error', 'ai-wiring', "#{name} forwards ANTHROPIC_API_KEY without CLAUDE_CODE_OAUTH_TOKEN — the OAuth path is dropped") unless c =~ oauth_env
+end
+
 # --- 2. Contract wiring (errors) --------------------------------------------
 runall = read.call(File.join(LH::ROOT, 'scripts/ci/run-all.sh'))
 add(findings, 'error', 'sev1-contract', 'run-all.sh does not call record_build.rb (the sev1 build finding would be lost)') unless runall.include?('record_build')
