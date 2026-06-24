@@ -80,3 +80,12 @@ backlog:
     voice: tool-review-honest
     priority: P2
     status: todo
+
+  - id: POST-002
+    kind: post
+    title: "I taught a regex to hate the word 'just'"
+    brief: "Field note on building the brand linter that polices the robot's own hype/weasel words — the two-tier design, the satire heuristic, and the real run that flagged the back catalogue 20 times (mostly on `just`)."
+    voice: meta-confession
+    priority: P1
+    status: done
+    published: /posts/2026/06/24/i-taught-a-regex-to-hate-the-word-just/
