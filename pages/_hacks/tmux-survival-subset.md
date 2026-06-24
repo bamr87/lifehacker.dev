@@ -16,7 +16,7 @@ This is the survival subset. Learn these nine, paste the config at the bottom, a
 
 ## First, the one idea
 
-tmux is a session that lives inside the server, not inside your terminal window. You **attach** to it to see it and **detach** to leave it running. Close the terminal, lose the wifi, reboot your router mid-deploy — the session and everything in it is still there when you come back. That's the whole pitch. Everything below is just steering.
+tmux is a session that lives inside the server, not inside your terminal window. You **attach** to it to see it and **detach** to leave it running. Close the terminal, lose the wifi, reboot your router mid-deploy — the session and everything in it is still there when you come back. That's the whole pitch. Everything below is only steering.
 
 Almost every in-tmux command is a two-key combo: a **prefix**, then a letter. The default prefix is `Ctrl-b`. Hold both, let go, then tap the letter. We'll fix the prefix to something less awkward in the config section; until then, `Ctrl-b` it is.
 
@@ -52,7 +52,7 @@ That line is the magic. The session is sitting there, holding your work, whether
 tmux attach -t work
 ```
 
-After a disconnect, a reboot of your local machine, or just closing the terminal by accident — this drops you back exactly where you were. `tmux a -t work` is the short form. If you only have one session, plain `tmux a` attaches to it.
+After a disconnect, a reboot of your local machine, or closing the terminal by accident — this drops you back exactly where you were. `tmux a -t work` is the short form. If you only have one session, plain `tmux a` attaches to it.
 
 ## The six you press inside tmux
 
@@ -86,7 +86,7 @@ Once you have panes, `prefix ←` / `prefix →` / `prefix ↑` / `prefix ↓` m
 
 **9. Scroll back — `prefix [`**
 
-In tmux you can't just scroll with your mouse wheel by default (we fix that too). `prefix [` enters copy mode, where the arrow keys and Page Up walk back through everything that scrolled off. Press `q` to get out. This is how you read the error that flew past during a build.
+In tmux the mouse wheel doesn't scroll the buffer by default (we fix that too). `prefix [` enters copy mode, where the arrow keys and Page Up walk back through everything that scrolled off. Press `q` to get out. This is how you read the error that flew past during a build.
 
 That's nine. Start, list, attach; detach, new window, switch windows, split, move, scroll. With those you can live in tmux indefinitely and never lose work to a dropped connection again.
 
@@ -118,9 +118,9 @@ bind r source-file ~/.tmux.conf \; display-message "tmux.conf reloaded"
 set -g history-limit 10000
 ```
 
-Save it to `~/.tmux.conf`. If tmux is already running, reattach and press `prefix r` (with the old `Ctrl-b r` the first time, since the reload binding is what teaches it the new prefix). You'll know it loaded when the status line flashes `tmux.conf reloaded`.
+Save it to `~/.tmux.conf`. If tmux is already running, load it once by hand — from inside a session, run `tmux source-file ~/.tmux.conf`. (The `prefix r` shortcut can't bootstrap itself: the `bind r` line doesn't exist until the file is sourced.) From then on, `prefix r` reloads the file any time and flashes `tmux.conf reloaded` so you know it took.
 
-To prove the file actually takes effect rather than just trusting it, you can ask tmux what it thinks its settings are:
+To prove the file actually takes effect rather than taking it on faith, you can ask tmux what it thinks its settings are:
 
 ```console
 $ tmux show-options -g prefix
@@ -135,9 +135,9 @@ That's the real output from a server started with exactly the config above. Pref
 
 ## The part where it breaks
 
-Here's the gotcha that sends people back to browser tabs, and it's the very first line of the config we just pasted.
+Here's the gotcha that sends people back to browser tabs, and it's the very first line of the config we pasted above.
 
-Moving the prefix to `Ctrl-a` is the most common tmux tweak on the internet. It's also a collision. In a normal shell, `Ctrl-a` is the readline binding for "jump to the start of the line" — the one you press all day without thinking about it. Remap the prefix to `Ctrl-a` and tmux eats that keystroke. You press `Ctrl-a` to fix a typo at the start of a command, and tmux just sits there waiting for the second half of a combo that isn't coming.
+Moving the prefix to `Ctrl-a` is the most common tmux tweak on the internet. It's also a collision. In a normal shell, `Ctrl-a` is the readline binding for "jump to the start of the line" — the one you press all day without thinking about it. Remap the prefix to `Ctrl-a` and tmux eats that keystroke. You press `Ctrl-a` to fix a typo at the start of a command, and tmux sits there waiting for the second half of a combo that isn't coming.
 
 The fix is the third line:
 
@@ -145,7 +145,7 @@ The fix is the third line:
 bind C-a send-prefix
 ```
 
-That says: when I press the prefix key *twice* (`Ctrl-a` `Ctrl-a`), send a literal `Ctrl-a` through to whatever's running. So your "jump to start of line" still works — it just costs one extra tap now. Annoying, but muscle memory absorbs it in a day.
+That says: when I press the prefix key *twice* (`Ctrl-a` `Ctrl-a`), send a literal `Ctrl-a` through to whatever's running. So your "jump to start of line" still works — it costs one extra tap now. Annoying, but muscle memory absorbs it in a day.
 
 If that trade isn't worth it to you, the honest answer is: don't move the prefix at all. `Ctrl-b` is fine. It's only a hair more awkward, and it collides with nothing. Delete the first four lines of the config and keep the rest. The mouse, the sane split keys, and counting from 1 are the changes that actually pay off every day — the prefix swap is the one that's purely taste, and it's the one that bites.
 
@@ -153,4 +153,4 @@ If that trade isn't worth it to you, the honest answer is: don't move the prefix
 
 tmux will not "10x" anything. What it does is narrow: it makes a terminal session outlive the terminal. That sounds small until the first time a deploy is twenty minutes in, your wifi drops, and instead of a ruined afternoon you type `tmux a` and watch it carry on exactly where it was.
 
-Nine commands and six lines of config bought you that. Everything else in the manual is optional. Go start a session called `work` and detach from it just to feel it keep running.
+Nine commands and six lines of config bought you that. Everything else in the manual is optional. Go start a session called `work` and detach from it, then watch it keep running without you.
