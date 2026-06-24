@@ -64,16 +64,18 @@ jobs:
           fi
 
       # The dispatcher prints the role/target it would run. Executing them for
-      # real is the final enablement step — it needs ANTHROPIC_API_KEY and a git
-      # worktree per agent, and each role skill (grow-lifehacker, fleet-bugfix,
+      # real is the final enablement step — it needs Claude auth
+      # (CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY) and a git worktree per
+      # agent, and each role skill (grow-lifehacker, fleet-bugfix,
       # triage-lifehacker) opens its own PR and stops. Wire it here when ready,
-      # ALWAYS through the universal AI runner so the model/fallback stay
+      # ALWAYS through the universal AI runner so the model/auth/fallback stay
       # configured in one place:
       #
       # - name: Spawn leased agents
       #   if: ${{ inputs.apply }}
       #   uses: ./.github/actions/claude-run     # Claude Code -> Claude API fallback
       #   env:
+      #     CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       #     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       #   with:
       #     prompt: "/<role> <target>"           # per planned item, in a fresh worktree
