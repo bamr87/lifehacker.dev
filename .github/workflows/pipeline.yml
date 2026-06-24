@@ -146,17 +146,21 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
-      - name: Run brand-reviewer (if key present)
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Refresh brand candidates
+        run: ruby scripts/ci/lint_brand.rb || true
+      - name: Run brand-reviewer (universal AI runner)
+        uses: ./.github/actions/claude-run
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GH_TOKEN: ${{ github.token }}
-          PR: ${{ github.event.pull_request.number }}
-        run: |
-          [ -z "$ANTHROPIC_API_KEY" ] && { echo "no ANTHROPIC_API_KEY — skipping tier-2 brand review"; exit 0; }
-          npm install -g @anthropic-ai/claude-code
-          ruby scripts/ci/lint_brand.rb || true
-          claude -p "Use the brand-reviewer agent to adjudicate test-results/brand.json for PR #$PR. Comments only; never approve or merge." \
-            --allowedTools "Bash(gh pr comment:*),Read,Grep" --permission-mode acceptEdits || echo "tier-2 finished non-zero (non-blocking)"
+        with:
+          prompt: "Use the brand-reviewer agent to adjudicate test-results/brand.json for PR #${{ github.event.pull_request.number }}. Comments only; never approve or merge."
+          tools: "Bash(gh pr comment:*),Read,Grep"
+          system: "You are the brand-reviewer for lifehacker.dev: rule each banned-when-sincere candidate as flagged-satire or sincere-violation. Output review comments only; never approve or merge."
 
   # ----- TIER 3 — integration (triage + fleet plan off the fresh artifact) ---
   integration:
@@ -208,14 +212,13 @@ jobs:
         with:
           name: contract
         continue-on-error: true
-      - name: Review + improve the content (if key present)
+      - name: Review + improve the content (universal AI runner)
+        uses: ./.github/actions/claude-run
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GH_TOKEN: ${{ github.token }}
-          PR: ${{ github.event.pull_request.number }}
-        run: |
-          [ -z "$ANTHROPIC_API_KEY" ] && { echo "no ANTHROPIC_API_KEY — skipping content review"; exit 0; }
-          npm install -g @anthropic-ai/claude-code
-          claude -p "Use the content-reviewer skill on this content PR (#$PR). Read test-results/findings.jsonl, analyze the changed content under pages/_*, apply small improvements to the content file(s) ONLY, append larger ideas to _data/backlog.yml, commit to this PR branch, and comment judgment calls. Never touch scripts/.github/_config/Gemfile. Never merge." \
-            --allowedTools "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob" \
-            --permission-mode acceptEdits || echo "content review finished non-zero (non-blocking)"
+        with:
+          prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, apply small improvements to the content file(s) ONLY, append larger ideas to _data/backlog.yml, commit to this PR branch, and comment judgment calls. Never touch scripts/.github/_config/Gemfile. Never merge."
+          tools: "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob"
+          system: "You are the content-reviewer for lifehacker.dev. Improve the changed content only; never touch infra; never merge."

@@ -64,10 +64,13 @@ jobs:
           gh repo clone "$GITHUB_REPOSITORY" repo -- -q
           cd repo && git checkout "$BRANCH"
           gem install bundler >/dev/null 2>&1 || true
-          npm install -g @anthropic-ai/claude-code
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1 || true
           gh pr comment "$pr" --body "<!-- auto-fix-attempt -->
           Auto-fix attempt $(( ${{ steps.gate.outputs.attempts }} + 1 ))/${{ env.MAX_ATTEMPTS }} on the failing content checks."
-          claude -p "The pipeline failed on this content PR. Use the fleet-bugfix skill to fix it: run /test-lifehacker, read test-results/findings.jsonl, and make the SMALLEST content-only change that turns the gate green. Touch ONLY the content file(s) under pages/_* (and _data/backlog.yml if needed) — NEVER scripts/.github/_config/Gemfile. Commit to this branch and push. If it's a theme bug, file upstream and stop. Never merge." \
-            --allowedTools "Bash(git:*),Bash(bundle:*),Bash(ruby:*),Bash(gh pr comment:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob" \
-            --permission-mode acceptEdits || echo "::warning::auto-fix attempt finished non-zero"
+          # Universal AI runner (Claude Code -> Claude API fallback), from the clone.
+          bash scripts/ai/run.sh \
+            --prompt "The pipeline failed on this content PR. Use the fleet-bugfix skill to fix it: run /test-lifehacker, read test-results/findings.jsonl, and make the SMALLEST content-only change that turns the gate green. Touch ONLY the content file(s) under pages/_* (and _data/backlog.yml if needed) — NEVER scripts/.github/_config/Gemfile. Commit to this branch and push. If it's a theme bug, file upstream and stop. Never merge." \
+            --tools "Bash(git:*),Bash(bundle:*),Bash(ruby:*),Bash(gh pr comment:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob" \
+            --system "You are fleet-bugfix for lifehacker.dev. Make the smallest content-only fix; never touch infra; never merge." \
+            || echo "::warning::auto-fix attempt finished non-zero"
           git push origin "$BRANCH" || echo "nothing to push"

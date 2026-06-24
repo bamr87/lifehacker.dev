@@ -143,3 +143,30 @@ gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (
 Enabling `AUTO_MERGE_ENABLED` (or uncommenting any `schedule:`) is a guardrail
 change — add a dated line to `/about/colophon/` in the same PR. The agent steps
 need `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
+
+## Universal AI wiring (Claude Code → Claude API fallback)
+
+Everything that calls a model — every workflow agent step *and* every skill —
+goes through **one** path, so the model, auth, and fallback are configured in a
+single place:
+
+- **`_data/ai.yml`** — the one config: `model` (default `claude-opus-4-8`),
+  `fallback_model`, `max_tokens`, the API version/base. Change the model here and
+  it changes everywhere.
+- **`scripts/ai/run.sh`** — the universal runner. Tries **Claude Code** (`claude -p`
+  with tools/MCP — the full agent) first; if the CLI is missing or the run fails,
+  falls back to **`scripts/ai/api_call.rb`**, a stdlib-only (`net/http`, no gem)
+  single-shot call to the Claude API (`POST /v1/messages`, `anthropic-version
+  2023-06-01`, with refusal/429/5xx handling). The fallback is a degraded path —
+  it returns the model's text but can't run tools, so fully agentic steps rely on
+  Claude Code; analysis/review/draft steps work on either.
+- **`.github/actions/claude-run`** — the composite action workflows use instead of
+  hand-rolling `npm install` + `claude -p`. It installs Claude Code and calls
+  `run.sh`. Inputs: `prompt`, `tools`, `mcp`, `system`, `out`.
+
+Every AI step (brand-review, content-review, content-factory, explore, auto-fix,
+devops-manager, and the fleet spawns) uses the action or `run.sh` — **no workflow
+calls `claude -p` directly**, and `scripts/devops/audit.rb` fails CI if one does.
+Provide `ANTHROPIC_API_KEY` and both paths work; without it, AI steps are no-ops.
+To switch the whole fleet to a cheaper model, set `model:` in `_data/ai.yml` (or
+`LH_AI_MODEL` for one run) — one edit, everywhere.

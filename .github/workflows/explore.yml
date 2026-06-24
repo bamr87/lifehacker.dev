@@ -99,9 +99,8 @@ jobs:
             ${SEED:+--seed "$SEED"} \
             --per-persona "${{ inputs.per_persona }}"
 
-      - name: Set up Claude Code + Playwright MCP (read-only browser)
+      - name: Set up the Playwright MCP (read-only browser; claude-run installs Claude Code)
         run: |
-          npm install -g @anthropic-ai/claude-code
           npx -y playwright install --with-deps chromium
           cat > /tmp/mcp.json <<'JSON'
           { "mcpServers": { "playwright": { "command": "npx", "args": ["-y", "@playwright/mcp@latest", "--headless", "--isolated"] } } }
@@ -118,13 +117,14 @@ jobs:
       #    itself; the deterministic scripts below do, so dedup/caps are identical
       #    in CI and locally. The allow-list is SCOPED: browse + read only. No `gh`,
       #    no `pr merge`, no `issue close` — those are out of the agent's hands here.
-      - name: Browse the live site (site-explorer skill)
-        run: |
-          claude -p "Use the site-explorer skill to browse the LIVE https://lifehacker.dev following _data/explorer/plan.json. For each persona (beginner/intermediate/expert), visit its planned pages plus its wander slots, review UI/UX AND content through that lens, and APPEND one JSON observation per finding to _data/explorer/findings.jsonl using the documented shape (kind, persona, url, signal, evidence, suggestion). Lead each 'signal' with the stable noun for the problem. Do NOT file issues or edit content yourself — only write findings.jsonl. Read-only on the site." \
-            --mcp-config /tmp/mcp.json \
-            --allowedTools "mcp__playwright__browser_navigate,mcp__playwright__browser_snapshot,mcp__playwright__browser_take_screenshot,mcp__playwright__browser_console_messages,mcp__playwright__browser_evaluate,Read,Grep,Write(_data/explorer/findings.jsonl)" \
-            --permission-mode acceptEdits \
-            || echo "::warning::explorer browse finished non-zero"
+      - name: Browse the live site (site-explorer skill, universal AI runner)
+        uses: ./.github/actions/claude-run
+        continue-on-error: true
+        with:
+          prompt: "Use the site-explorer skill to browse the LIVE https://lifehacker.dev following _data/explorer/plan.json. For each persona (beginner/intermediate/expert), visit its planned pages plus its wander slots, review UI/UX AND content through that lens, and APPEND one JSON observation per finding to _data/explorer/findings.jsonl using the documented shape (kind, persona, url, signal, evidence, suggestion). Lead each 'signal' with the stable noun for the problem. Do NOT file issues or edit content yourself — only write findings.jsonl. Read-only on the site."
+          mcp: /tmp/mcp.json
+          tools: "mcp__playwright__browser_navigate,mcp__playwright__browser_snapshot,mcp__playwright__browser_take_screenshot,mcp__playwright__browser_console_messages,mcp__playwright__browser_evaluate,Read,Grep,Write(_data/explorer/findings.jsonl)"
+          system: "You are the site-explorer for lifehacker.dev. Browse read-only and write observations to findings.jsonl only. Never file issues, edit content, or merge."
 
       # 3. Route deterministically: bugs -> deduped issues, gaps -> backlog.
       #    Dry-run unless the human checked `apply` (the gate already required the

@@ -1,0 +1,51 @@
+# =============================================================================
+# claude-run — the universal AI step (Claude Code first, Claude API fallback)
+# -----------------------------------------------------------------------------
+# Every workflow that needs a model uses THIS action instead of hand-rolling a
+# `npm install` + `claude -p` block, so the install, the model, the auth, and
+# the fallback are configured in one place (scripts/ai/run.sh + _data/ai.yml).
+# Installs Claude Code (best-effort), then runs scripts/ai/run.sh; if Claude
+# Code is missing or fails, run.sh falls back to the Claude API.
+# The caller must provide ANTHROPIC_API_KEY in the job env.
+# =============================================================================
+name: claude-run
+description: Run an AI step via Claude Code, falling back to the Claude API.
+inputs:
+  prompt:
+    description: The instruction for the agent.
+    required: true
+  tools:
+    description: Comma-separated --allowedTools for Claude Code (ignored by the API fallback).
+    default: ""
+  mcp:
+    description: Path to an MCP config JSON for Claude Code.
+    default: ""
+  system:
+    description: System prompt for the API fallback.
+    default: ""
+  out:
+    description: Write the result to this file instead of stdout.
+    default: ""
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        PROMPT: ${{ inputs.prompt }}
+        TOOLS: ${{ inputs.tools }}
+        MCP: ${{ inputs.mcp }}
+        SYSTEM: ${{ inputs.system }}
+        OUT: ${{ inputs.out }}
+      run: |
+        if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+          echo "::warning::ANTHROPIC_API_KEY not set — AI step is a no-op."
+          exit 0
+        fi
+        npm install -g @anthropic-ai/claude-code >/dev/null 2>&1 \
+          || echo "::warning::Claude Code install failed — using the Claude API fallback."
+        args=(--prompt "$PROMPT")
+        [ -n "$TOOLS" ]  && args+=(--tools "$TOOLS")
+        [ -n "$MCP" ]    && args+=(--mcp "$MCP")
+        [ -n "$SYSTEM" ] && args+=(--system "$SYSTEM")
+        [ -n "$OUT" ]    && args+=(--out "$OUT")
+        bash scripts/ai/run.sh "${args[@]}"

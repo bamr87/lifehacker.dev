@@ -62,11 +62,10 @@ jobs:
         with:
           ruby-version: '3.3'
           bundler-cache: true
-      - name: Install Claude Code
-        run: npm install -g @anthropic-ai/claude-code
-      - name: Generate one ${{ matrix.collection }} and open a PR
-        run: |
-          claude -p "Use the grow-lifehacker skill to produce exactly ONE ${{ matrix.collection }} for lifehacker.dev. Prefer the highest-priority todo item of that kind in _data/backlog.yml; if none fits, propose a fresh on-voice idea and add it to the backlog first. Before drafting, run \`gh pr list --label auto:content --json title\` and avoid duplicating an open PR's topic. Verify with /test-lifehacker. Open ONE pull request on a branch, label it 'auto:content' and 'collection/${{ matrix.collection }}', flip the backlog item to done, and STOP. Never merge." \
-            --allowedTools "Bash,Read,Write,Edit,Grep,Glob" \
-            --permission-mode acceptEdits \
-            || echo "::warning::content generation for ${{ matrix.collection }} finished non-zero"
+      - name: Generate one ${{ matrix.collection }} and open a PR (universal AI runner)
+        uses: ./.github/actions/claude-run
+        continue-on-error: true
+        with:
+          prompt: "Use the grow-lifehacker skill to produce exactly ONE ${{ matrix.collection }} for lifehacker.dev. Prefer the highest-priority todo item of that kind in _data/backlog.yml; if none fits, propose a fresh on-voice idea and add it to the backlog first. Before drafting, run `gh pr list --label auto:content --json title` and avoid duplicating an open PR's topic. Verify with /test-lifehacker. Open ONE pull request on a branch, label it 'auto:content' and 'collection/${{ matrix.collection }}', flip the backlog item to done, and STOP. Never merge."
+          tools: "Bash,Read,Write,Edit,Grep,Glob"
+          system: "You are the lifehacker.dev content factory. Produce one on-voice, tested piece and open one PR. Never merge."

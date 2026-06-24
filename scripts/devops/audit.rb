@@ -42,6 +42,15 @@ end
 am = wf_read['auto-merge.yml'].to_s
 add(findings, 'error', 'auto-merge-safety', 'auto-merge.yml lacks the classify_changes smuggle guard') if !am.empty? && !am.include?('classify_changes')
 
+# Universal AI wiring: every model call must go through scripts/ai/run.sh (or the
+# claude-run action that wraps it), so model/auth/fallback live in ONE place
+# (_data/ai.yml). A raw `claude -p` in a workflow bypasses the fallback.
+wf_read.each do |name, c|
+  add(findings, 'warn', 'ai-wiring', "#{name} calls `claude -p` directly — route it through the claude-run action / scripts/ai/run.sh") if c =~ /\bclaude\s+-p\b/
+end
+add(findings, 'error', 'ai-wiring', 'scripts/ai/run.sh (the universal AI runner) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/run.sh'))
+add(findings, 'error', 'ai-wiring', 'scripts/ai/api_call.rb (the Claude API fallback) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/api_call.rb'))
+
 # --- 2. Contract wiring (errors) --------------------------------------------
 runall = read.call(File.join(LH::ROOT, 'scripts/ci/run-all.sh'))
 add(findings, 'error', 'sev1-contract', 'run-all.sh does not call record_build.rb (the sev1 build finding would be lost)') unless runall.include?('record_build')
