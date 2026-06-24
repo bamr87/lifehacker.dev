@@ -55,8 +55,16 @@ jobs:
             echo "| url | status |"
             echo "|---|---|"
           } >> "$GITHUB_STEP_SUMMARY"
+          # Retry each URL: GitHub Pages can lag, and the root may serve the OLD
+          # deploy (200) while a newly added page is briefly 404. A transient
+          # non-200 must not page a human, so retry before declaring failure.
           for u in "${urls[@]}"; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$BASE$u")
+            code=000
+            for attempt in 1 2 3 4 5 6; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$BASE$u")
+              [ "$code" = "200" ] && break
+              sleep 15
+            done
             mark="✅"; [ "$code" != "200" ] && { mark="❌"; fail=1; }
             echo "| \`$u\` | $code $mark |" >> "$GITHUB_STEP_SUMMARY"
           done
@@ -64,14 +72,21 @@ jobs:
 
       - name: File a sev1 issue if production is broken
         if: steps.smoke.outputs.fail == '1'
+        continue-on-error: true   # a hiccup filing the alert must not fail the monitor itself
         run: |
+          # Ensure the label taxonomy exists (idempotent) so the create can't fail
+          # on a missing label before bootstrap-labels.sh has been run on the repo.
+          scripts/triage/bootstrap-labels.sh >/dev/null 2>&1 || true
           marker="<!-- deploy-verify -->"
           existing=$(gh issue list --state open --search "\"$marker\" in:body" --json number --jq 'length')
           if [ "${existing:-0}" -eq 0 ]; then
             gh issue create \
               --label "type/build-break,severity/sev1,source/ci-test,area/site" \
               --title "deploy-verify: production returned a non-200 after deploy" \
-              --body "$marker"$'\nThe post-deploy smoke check found a non-200 on the live site. See the run Step Summary for the URL table. A human should look immediately; this is the kind of thing PR3'\''s fleet shifts all capacity to fix.'
+              --body "$marker"$'\nThe post-deploy smoke check found a non-200 on the live site (after retries). See the run Step Summary for the URL table. A human should look immediately; this is the kind of thing the fleet shifts all capacity to fix.' \
+            || gh issue create \
+              --title "deploy-verify: production returned a non-200 after deploy" \
+              --body "$marker"$'\n(Labels unavailable — run scripts/triage/bootstrap-labels.sh.) Post-deploy smoke found a non-200; see the Step Summary.'
           else
             echo "deploy-verify issue already open; not refiling."
           fi
