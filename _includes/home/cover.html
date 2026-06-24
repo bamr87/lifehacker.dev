@@ -1,0 +1,25 @@
+{%- comment -%}
+  home/cover.html — branded gradient "cover art" for a magazine card.
+
+  This site has no per-item photos, so instead of repeating one og-banner on
+  every card we art-direct each card by collection: a neon gradient keyed to the
+  section, with the section's Bootstrap icon. Reads as an intentional magazine,
+  not a missing image.
+
+  Params:
+    collection : 'hacks' | 'tools' | 'posts' | 'docs' | 'about'  (item.collection)
+    height     : CSS min-height (default 160px)
+    class      : extra classes for the cover element (e.g. rounded-start)
+{%- endcomment -%}
+{%- assign _c = include.collection -%}
+{%- assign _h = include.height | default: '160px' -%}
+{%- case _c -%}
+  {%- when 'hacks' -%}{%- assign _g = 'linear-gradient(135deg, #d946ef 0%, #a855f7 100%)' -%}{%- assign _i = 'bi-lightbulb' -%}
+  {%- when 'tools' -%}{%- assign _g = 'linear-gradient(135deg, #22d3ee 0%, #6366f1 100%)' -%}{%- assign _i = 'bi-wrench-adjustable' -%}
+  {%- when 'posts' -%}{%- assign _g = 'linear-gradient(135deg, #22c55e 0%, #22d3ee 100%)' -%}{%- assign _i = 'bi-journal-text' -%}
+  {%- when 'docs'  -%}{%- assign _g = 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)' -%}{%- assign _i = 'bi-robot' -%}
+  {%- else         -%}{%- assign _g = 'linear-gradient(135deg, #64748b 0%, #334155 100%)' -%}{%- assign _i = 'bi-stars' -%}
+{%- endcase -%}
+<div class="news-cover d-flex align-items-center justify-content-center {{ include.class }}" style="background: {{ _g }}; min-height: {{ _h }};" aria-hidden="true">
+  <i class="bi {{ _i }}"></i>
+</div>

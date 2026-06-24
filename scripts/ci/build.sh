@@ -64,6 +64,15 @@ lh_overlay() {
   # in our repo (if any) survives the merge.
   cp -R "$REPO_DIR/_data/." "$dest/_data/"
 
+  # Overlay our own _includes (e.g. the homepage card partials in _includes/home/)
+  # on top of the theme's. GitHub Pages reads the repo's _includes/ over the
+  # remote theme's, so to stay production-faithful the overlay build must too.
+  # Same merge semantics as _data above: ours win on name collisions, theme-only
+  # includes survive. Skipped cleanly when the repo has no _includes/.
+  if [[ -d "$REPO_DIR/_includes" ]]; then
+    cp -R "$REPO_DIR/_includes/." "$dest/_includes/"
+  fi
+
   # Top-level spine pages.
   local f
   for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md categories.md tags.md contact.md; do
