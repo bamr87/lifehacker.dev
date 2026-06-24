@@ -81,3 +81,11 @@ backlog:
     voice: tool-review-honest
     priority: P2
     status: todo
+
+  - id: DOC-002
+    kind: doc
+    title: "Wiring the guardrails: the CI layer that actually enforces 'the robot proposes, the human disposes'"
+    brief: "Companion to DOC-001. The five files give the robot its manners; this is the part that holds it to them — branch protection, CODEOWNERS, required status checks, and the auto-merge gate. What to copy beyond the five files, and how to verify the lock is on before a robot ever opens a PR."
+    voice: meta-confession
+    priority: P2
+    status: todo

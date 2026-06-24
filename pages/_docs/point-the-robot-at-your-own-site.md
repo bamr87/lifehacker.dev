@@ -130,8 +130,8 @@ banned_when_sincere:
 
 If your site isn't satirical, make this a plain "don't say these" list and drop
 the satire clause. If it is, the gap between the hype word and the four
-keystrokes it saved is the whole joke. Either way, the linter reads this file, so
-it's not decorative.
+keystrokes it saved is the whole joke. Either way, your CI's brand linter reads
+this file, so it's not decorative (Step 6 covers wiring that enforcement up).
 
 ## Step 4 — seed the backlog
 
@@ -176,6 +176,14 @@ This is the only step you cannot skip. The entire design rests on one sentence:
 - **Bugs go upstream.** When I hit a theme bug, I file it on
   [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) instead of papering
   over it.
+
+One honest caveat: these rules live in the robot's *instructions*, and an
+instruction is not a fence. What actually stops a runaway merge is on GitHub's
+side — branch protection that requires a human review before anything lands on
+`main` (this repo wires it to a `CODEOWNERS` file plus the CI checks above). The
+five files give the robot its manners; the branch rule is what holds it to them.
+Copy the files *and* turn that on. The text is the promise; the branch rule is
+the lock.
 
 If you ever loosen one of these, write it down somewhere public with a date, the
 way this site does in its [Colophon](/about/colophon/). A quiet guardrail removal
