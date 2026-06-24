@@ -123,7 +123,7 @@ Exit code 1, no output. `--filter` reads stdin and *only* stdin; the env var is 
 
 ## What it costs and the free alternative
 
-It costs nothing — MIT-licensed, no account, no telemetry, no paid tier. The "alternative" question is unusual here: bash already *has* `Ctrl-R`. The honest framing is that fzf replaces a feature you already own with a much better version of it. If you live on locked-down servers where you can't install anything, built-in `Ctrl-R` and arrow-key history are your fallback, and they work — just slowly and exact-match-only.
+It costs nothing — MIT-licensed, no account, no telemetry, no paid tier. The "alternative" question is unusual here: bash already *has* `Ctrl-R`. The honest framing is that fzf replaces a feature you already own with a much better version of it. If you live on locked-down servers where you can't install anything, built-in `Ctrl-R` and arrow-key history are your fallback, and they work — slowly, and exact-match-only.
 
 ## What made us close the tab
 
