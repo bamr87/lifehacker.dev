@@ -79,9 +79,17 @@ queue.each do |item|
   labels = [item['type'], item['area'], "severity/#{item['severity']}", 'source/ci-test'].join(',')
   title  = item['title']
   body   = Triage.issue_body(item)
-  gh("issue create --repo #{repo} --title #{Shellwords.escape(title)} --label #{Shellwords.escape(labels)} --body #{Shellwords.escape(body)}", APPLY)
-  new_count += 1
-  filed << "created (#{repo}) #{title}"
+  out, ok = gh("issue create --repo #{repo} --title #{Shellwords.escape(title)} --label #{Shellwords.escape(labels)} --body #{Shellwords.escape(body)}", APPLY)
+  if ok
+    new_count += 1
+    filed << "created (#{repo}) #{title}"
+  else
+    # Don't report a create that didn't happen. The repo-scoped token can't write
+    # to an external repo (e.g. the upstream theme), so a routed bug would
+    # otherwise be silently lost. Defer it (loud) for a human / a PAT-bearing run.
+    deferred << "#{title} (create FAILED on #{repo})"
+    warn "[file_issues] create FAILED on #{repo}: #{out.to_s[0, 200]}"
+  end
 end
 
 puts "\n[file_issues] mode=#{APPLY ? 'APPLY' : 'dry-run'}  new=#{new_count} (cap #{MAX_NEW})  actions=#{filed.size}  deferred=#{deferred.size}"

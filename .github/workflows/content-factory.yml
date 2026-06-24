@@ -57,17 +57,26 @@ jobs:
     env:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      GH_TOKEN: ${{ github.token }}
+      # FLEET_TOKEN (bot PAT, contents+PRs, NO admin) so the agent can open PRs —
+      # GITHUB_TOKEN is blocked from creating PRs, and PAT-authored PRs also
+      # trigger the pipeline. Falls back to github.token (degrades to no-PR).
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
           bundler-cache: true
+      # NOT continue-on-error: a crashed skill run must show RED, not a silent
+      # green skip. The matrix is fail-fast:false, so one collection failing
+      # never kills the others.
       - name: Generate one ${{ matrix.collection }} and open a PR (universal AI runner)
         uses: ./.github/actions/claude-run
-        continue-on-error: true
         with:
-          prompt: "Use the grow-lifehacker skill to produce exactly ONE ${{ matrix.collection }} for lifehacker.dev. Prefer the highest-priority todo item of that kind in _data/backlog.yml; if none fits, propose a fresh on-voice idea and add it to the backlog first. Before drafting, run `gh pr list --label auto:content --json title` and avoid duplicating an open PR's topic. Verify with /test-lifehacker. Open ONE pull request on a branch, label it 'auto:content' and 'collection/${{ matrix.collection }}', flip the backlog item to done, and STOP. Never merge."
+          prompt: "Use the grow-lifehacker skill to produce exactly ONE ${{ matrix.collection }} for lifehacker.dev. Pick the highest-priority todo item of that kind in _data/backlog.yml; first run `gh pr list --label auto:content --json title` and if that item would duplicate an open PR's topic, take the NEXT-priority item, and so on — if every candidate would duplicate, propose a fresh on-voice idea, add it to the backlog, and draft THAT (never silently no-op). Verify with /test-lifehacker. Open ONE pull request on a branch, label it 'auto:content' and 'collection/${{ matrix.collection }}', write the resulting PR URL to the file pr-result.txt, flip the backlog item to done, and STOP. Never merge."
           tools: "Bash,Read,Write,Edit,Grep,Glob"
           system: "You are the lifehacker.dev content factory. Produce one on-voice, tested piece and open one PR. Never merge."
+      - name: Confirm a PR was opened (fail visibly if the agent didn't)
+        run: |
+          [ -s pr-result.txt ] || { echo "::error::content-factory ${{ matrix.collection }}: no PR was opened — see the agent step log (auth? duplicate? build failure?)."; exit 1; }
+          echo "opened: $(cat pr-result.txt)"

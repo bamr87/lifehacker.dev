@@ -38,7 +38,10 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ github.token }}
+      # FLEET_TOKEN (bot PAT) so routed theme bugs can be filed UPSTREAM
+      # (bamr87/zer0-mistakes) — the repo-scoped github.token can't write there.
+      # Falls back to github.token for same-repo issues.
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
