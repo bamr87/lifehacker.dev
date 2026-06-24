@@ -1,0 +1,105 @@
+# =============================================================================
+# triage.yml — reporting & triage (manual / on-demand)
+# -----------------------------------------------------------------------------
+# Runs the harness, ranks the findings into _data/health/queue.json, files
+# deduplicated GitHub issues, regenerates the health dashboard, and opens a PR
+# with the data changes. It NEVER merges and NEVER closes a human's issue.
+#
+# Manual on purpose: this is the first thing that takes an autonomous outward
+# action (filing issues), so it stays workflow_dispatch until the human trusts
+# it. PR3 adds the schedule (behind the FLEET_ENABLED kill switch) and the bot
+# identity that can file UPSTREAM issues — GITHUB_TOKEN here can only touch this
+# repo, so upstream-routed items are reported and deferred, not force-filed.
+# =============================================================================
+name: triage
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Actually file issues (unchecked = dry-run plan only)"
+        type: boolean
+        default: false
+      max_new:
+        description: "Max new issues to file this run"
+        type: string
+        default: "10"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: triage
+  cancel-in-progress: false
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      # Build once (the harness needs _site for drift/link checks), then run the
+      # checks against it to produce the findings contract.
+      # Build with the same fail-safe the pipeline uses: a broken build must
+      # become a sev1 finding (and a filed issue), not a dead triage job.
+      - name: Build (safe-mode overlay)
+        id: build
+        continue-on-error: true
+        uses: ./.github/actions/build-overlay
+      - name: Run harness (records build outcome -> findings)
+        env:
+          LH_SKIP_BUILD: '1'
+          LH_BUILD_RC: ${{ steps.build.outcome == 'success' && '0' || '1' }}
+        run: bash scripts/ci/run-all.sh || true   # findings, not a gate here
+
+      - name: Ensure labels
+        run: scripts/triage/bootstrap-labels.sh
+
+      - name: Build queue + dashboard
+        run: |
+          ruby scripts/triage/build_queue.rb
+          ruby scripts/triage/gen_dashboard.rb
+
+      - name: File issues
+        run: |
+          if [ "${{ inputs.apply }}" = "true" ]; then
+            ruby scripts/triage/file_issues.rb --apply --max-new "${{ inputs.max_new }}"
+          else
+            ruby scripts/triage/file_issues.rb --max-new "${{ inputs.max_new }}"
+          fi
+
+      - name: Open PR with queue + dashboard updates
+        continue-on-error: true   # GITHUB_TOKEN-authored PRs are fine for data-only changes
+        run: |
+          git config user.name  "lifehacker-triage[bot]"
+          git config user.email "triage@lifehacker.dev"
+          branch="triage/$(date +%Y%m%d-%H%M)"
+          git checkout -b "$branch"
+          git add _data/health SITE_HEALTH.md _data/analytics 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No health changes to commit."
+            exit 0
+          fi
+          git commit -m "triage: refresh queue + health dashboard"
+          git push origin "$branch"
+          gh pr create --base "${{ github.ref_name }}" --head "$branch" \
+            --title "triage: queue + health dashboard refresh" \
+            --body "Automated triage run. Updated \`_data/health/queue.json\` and \`SITE_HEALTH.md\`. Issues filed: see the run log. A human reviews and merges; the bot never merges." \
+            --label "source/triage-bot"
+
+      - name: Upload triage artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: triage
+          path: |
+            _data/health/
+            SITE_HEALTH.md

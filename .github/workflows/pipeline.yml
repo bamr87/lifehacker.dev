@@ -1,0 +1,158 @@
+# =============================================================================
+# pipeline.yml — the tiered, continuous CI/CD pipeline
+# -----------------------------------------------------------------------------
+# One pipeline, four tiers, each gating the next so feedback is fast and the
+# build runs ONCE and feeds everything downstream:
+#
+#   TIER 1  fast        seconds, no build — DevOps audit + E2E simulation.
+#   TIER 2  verify      the REQUIRED status check — safe-mode build + harness gate.
+#   TIER 2b brand-review conditional, paid, comment-only.
+#   TIER 3  integration  triage queue + fleet plan off TIER 2's fresh artifact.
+#
+# This replaces the old test.yml; `verify` is still the required check name, so
+# branch protection is unchanged. deploy-verify.yml continues the flow post-merge
+# against the live site. Every tier writes a GITHUB_STEP_SUMMARY so health is
+# visible without digging through logs.
+# =============================================================================
+name: pipeline
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: pipeline-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ----- TIER 1 — fast feedback (no build) -----------------------------------
+  fast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: DevOps audit (pipeline wiring + guardrails)
+        run: ruby scripts/devops/audit.rb | tee audit.out
+      - name: End-to-end simulation (contract conformance)
+        run: ruby scripts/sim/simulate.rb | tee sim.out
+      - name: Tier-1 summary
+        if: always()
+        run: |
+          { echo "## Tier 1 — fast"; echo '```'; tail -3 audit.out; echo; tail -2 sim.out; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+  # ----- TIER 2 — the required gate (build + harness) ------------------------
+  verify:
+    needs: fast
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    outputs:
+      needs_review: ${{ steps.brand.outputs.needs_review }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Build (safe-mode overlay) — ONCE for the pipeline
+        id: build
+        continue-on-error: true
+        uses: ./.github/actions/build-overlay
+
+      - name: Harness (records the build outcome, then lints + aggregates)
+        id: harness
+        continue-on-error: true
+        env:
+          LH_SKIP_BUILD: '1'
+          LH_BUILD_RC: ${{ steps.build.outcome == 'success' && '0' || '1' }}
+        run: bash scripts/ci/run-all.sh
+
+      - name: Brand tier-1 review signal
+        id: brand
+        if: always()
+        run: echo "needs_review=$(cat test-results/brand-needs-review 2>/dev/null || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload the fresh contract (findings + queue + _site) for Tier 3
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: contract
+          path: |
+            test-results/
+            _site/
+
+      - name: Sticky PR comment
+        if: ${{ always() && github.event_name == 'pull_request' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          [ -f test-results/comment.md ] || exit 0
+          gh pr comment "$PR" --edit-last --body-file test-results/comment.md \
+            || gh pr comment "$PR" --body-file test-results/comment.md
+
+      - name: Gate (build + harness must pass)
+        if: always()
+        run: |
+          [ "${{ steps.build.outcome }}" = "success" ] || { echo "::error::safe-mode build failed"; exit 1; }
+          [ "${{ steps.harness.outcome }}" = "success" ] || { echo "::error::test harness gate failed"; exit 1; }
+
+  # ----- TIER 2b — paid brand review (conditional, comment-only) -------------
+  brand-review:
+    needs: verify
+    if: ${{ needs.verify.outputs.needs_review == 'true' && github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run brand-reviewer (if key present)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          [ -z "$ANTHROPIC_API_KEY" ] && { echo "no ANTHROPIC_API_KEY — skipping tier-2 brand review"; exit 0; }
+          npm install -g @anthropic-ai/claude-code
+          ruby scripts/ci/lint_brand.rb || true
+          claude -p "Use the brand-reviewer agent to adjudicate test-results/brand.json for PR #$PR. Comments only; never approve or merge." \
+            --allowedTools "Bash(gh pr comment:*),Read,Grep" --permission-mode acceptEdits || echo "tier-2 finished non-zero (non-blocking)"
+
+  # ----- TIER 3 — integration (triage + fleet plan off the fresh artifact) ---
+  integration:
+    needs: verify
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Download the fresh contract from Tier 2
+        uses: actions/download-artifact@v4
+        with:
+          name: contract
+      - name: Rank the queue from the FRESH findings (not the committed copy)
+        run: |
+          ruby scripts/triage/build_queue.rb test-results/findings.jsonl || true
+          ruby scripts/triage/gen_dashboard.rb || true
+      - name: Integration report -> Step Summary
+        if: always()
+        run: |
+          n=$(gh pr list --state open --json number --jq 'length' 2>/dev/null || echo 0)
+          { echo "## Tier 3 — integration"; ruby scripts/sim/report.rb "$n"; } >> "$GITHUB_STEP_SUMMARY"

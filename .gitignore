@@ -1,9 +1,12 @@
 _site/
+test-results/
 .jekyll-cache/
 .jekyll-metadata
 .sass-cache/
 vendor/
 .bundle/
-Gemfile.lock
 .playwright-mcp/
 *.tmp
+
+# Gemfile.lock is intentionally NOT ignored — committing it pins github-pages and
+# html-proofer so CI is reproducible. Generate it once with `bundle install`.

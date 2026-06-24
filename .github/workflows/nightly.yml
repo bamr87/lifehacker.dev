@@ -1,0 +1,76 @@
+# =============================================================================
+# nightly.yml — the non-gating, time-based sweeps
+# -----------------------------------------------------------------------------
+# These checks shouldn't block a PR: external link rot isn't the author's fault,
+# and a fresh theme re-clone catches upstream zer0-mistakes drift that a cached
+# build would hide. Runs on a schedule, files ONE coarse issue on failure (PR2
+# will own real triage/dedup), and never touches main.
+# =============================================================================
+name: nightly
+
+on:
+  schedule:
+    - cron: '17 7 * * *'   # 07:17 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: nightly
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      # Fresh theme clone (no cache) so upstream theme drift surfaces.
+      - name: Build (fresh theme)
+        id: build
+        uses: ./.github/actions/build-overlay
+        with:
+          fresh-theme: 'true'
+
+      # External link checking — rate-limited, non-gating.
+      - name: External links
+        id: external
+        continue-on-error: true
+        run: |
+          bundle exec htmlproofer _site \
+            --disable-internal --hydra '{"max_concurrency":2}' \
+            --no-enforce-https --ignore-status-codes "429,503,0" \
+            || echo "external link failures (non-gating)"
+
+      # Run all hack commands in the sandbox (opt-out: everything except lh:norun).
+      - name: Prime Directive (full sweep)
+        id: prime
+        continue-on-error: true
+        env:
+          LH_PRIME_MODE: optout
+        run: |
+          LH_SKIP_BUILD=1 ruby scripts/ci/run_hack_commands.rb
+          ruby scripts/ci/aggregate.rb || true
+
+      - name: File a nightly issue on failure
+        if: ${{ failure() || steps.build.outcome == 'failure' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="nightly: build or sweep failed ($(date +%Y-%m-%d))"
+          # Crude dedup until PR2's fingerprinted triage exists: skip if an open
+          # issue already carries the nightly marker.
+          existing=$(gh issue list --state open --search '"<!-- nightly-sweep -->" in:body' --json number --jq 'length')
+          if [ "${existing:-0}" -eq 0 ]; then
+            gh issue create --title "$title" \
+              --label "source/ci-test" \
+              --body $'<!-- nightly-sweep -->\nThe nightly sweep failed. Most likely an upstream theme change broke the safe-mode build, or external links rotted. See the run logs. A human should triage; PR2 will automate this.'
+          else
+            echo "nightly issue already open; not refiling."
+          fi

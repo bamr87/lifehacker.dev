@@ -1,0 +1,4 @@
+# Active work leases (managed by scripts/fleet/lease.rb). Empty = nothing claimed.
+# Each entry: { id, role, ref, claimed_at }. The matching git ref refs/lease/<id>
+# is the atomic guard; this file is the human-readable record + TTL clock.
+--- []

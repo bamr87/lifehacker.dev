@@ -1,0 +1,28 @@
+# =============================================================================
+# build-overlay — build lifehacker.dev under GitHub Pages safe mode
+# -----------------------------------------------------------------------------
+# Reusable composite step shared by test.yml and nightly.yml. It caches the
+# zer0-mistakes theme clone (rebuilt daily so upstream theme drift surfaces
+# within 24h) and runs scripts/ci/build.sh, which overlays this repo's content,
+# strips _plugins, and runs `jekyll build --strict_front_matter` -> ./_site.
+# =============================================================================
+name: build-overlay
+description: Overlay content onto the remote theme, strip plugins, jekyll build (safe mode).
+inputs:
+  fresh-theme:
+    description: Ignore the theme cache and re-clone (use nightly to catch theme drift).
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - id: date
+      shell: bash
+      run: echo "ymd=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+    - if: ${{ inputs.fresh-theme != 'true' }}
+      uses: actions/cache@v4
+      with:
+        path: /tmp/zer0-theme
+        key: zer0-theme-${{ steps.date.outputs.ymd }}
+        restore-keys: zer0-theme-
+    - shell: bash
+      run: bash scripts/ci/build.sh build

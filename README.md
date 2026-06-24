@@ -40,10 +40,16 @@ would also inherit the theme author's analytics keys — don't.) The
 
 ```bash
 scripts/preview.sh          # overlay onto a theme clone + docker compose up → http://localhost:4000
+scripts/ci/run-all.sh       # run the full test harness locally (build + lint + drift + brand)
 ```
 
-GitHub Pages builds the real site from `main` on push — no Actions workflow to
-maintain.
+GitHub Pages builds the real site from `main` on push. Pull requests are gated by
+a GitHub Actions **test harness** ([`.github/workflows/test.yml`](.github/workflows/test.yml))
+that reproduces the Pages build in safe mode and lints content, links, drift, and
+brand voice. The checks live in [`scripts/ci/`](scripts/ci/) and run identically
+for humans (`scripts/ci/run-all.sh` or the `/test-lifehacker` skill) and in CI. A
+human still merges every PR — branch protection + [`CODEOWNERS`](.github/CODEOWNERS)
+enforce it. See [`docs/runbook-fleet.md`](docs/runbook-fleet.md) for setup.
 
 ## The autopilot
 

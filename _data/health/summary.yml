@@ -1,0 +1,65 @@
+---
+generated_at: '2026-06-24T20:01:54Z'
+queue_size: 14
+by_severity:
+  sev4: 14
+by_type:
+  type/brand-lint: 7
+  type/content-polish: 6
+  type/link-rot: 1
+by_route:
+  local: 13
+  upstream: 1
+top:
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/autopilot/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/git-alias-starter-pack/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/content-polish
+  title: "[sev4] content-polish: description-too-long (/hacks/make-cd-remember-where-you-were/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/make-cd-remember-where-you-were/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2026/06/20/born-in-five-files/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/content-polish
+  title: "[sev4] content-polish: description-too-long (/posts/2026/06/20/born-in-five-files/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2026/06/21/the-build-that-died-on-an-unknown-tag/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/content-polish
+  title: "[sev4] content-polish: description-too-long (/posts/2026/06/21/the-build-that-died-on-an-unknown-tag/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2026/06/22/eight-things-a-remote-theme-forgets-to-pack/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/content-polish
+  title: "[sev4] content-polish: description-too-long (/posts/2026/06/22/i-hired-a-robot-to-write-this-website/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+analytics_stale: true
+analytics_generated_at: '1970-01-01T00:00:00Z'

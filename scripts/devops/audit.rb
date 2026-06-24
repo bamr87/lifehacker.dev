@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+# =============================================================================
+# scripts/devops/audit.rb — the CI/CD auditor (deterministic core)
+# -----------------------------------------------------------------------------
+# The mechanical half of the DevOps Manager: lints the whole pipeline for
+# correctness, guardrail integrity, and throughput, and emits a report. The
+# devops-manager skill runs this, then adds judgment (proposing/applying
+# improvements). Errors mean the pipeline is mis-wired; warnings are throughput
+# or hygiene; info is context. Exit non-zero on any error.
+#   ruby scripts/devops/audit.rb
+# =============================================================================
+require_relative '../ci/_lib'
+
+WF_DIR = File.join(LH::ROOT, '.github', 'workflows')
+findings = []
+def add(findings, sev, area, msg)
+  findings << { sev: sev, area: area, msg: msg }
+end
+
+wf = Dir[File.join(WF_DIR, '*.yml')].sort
+read = ->(p) { File.exist?(p) ? LH.read(p) : '' }
+wf_read = wf.map { |f| [File.basename(f), LH.read(f)] }.to_h
+
+# --- 1. Guardrail integrity (errors) ----------------------------------------
+wf_read.each do |name, c|
+  add(findings, 'error', 'least-privilege', "#{name} grants `administration` scope") if c =~ /administration:\s*(write|read)/
+  add(findings, 'error', 'least-privilege', "#{name} grants `workflows` write scope") if c =~ /^\s*workflows:\s*write/
+end
+fleet = wf_read['fleet-dispatch.yml'].to_s
+add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml has an ACTIVE schedule (autonomy must stay opt-in)') if fleet =~ /^[^#\n]*\bschedule:/
+add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml does not read FLEET_ENABLED') unless fleet.include?('FLEET_ENABLED')
+
+# --- 2. Contract wiring (errors) --------------------------------------------
+runall = read.call(File.join(LH::ROOT, 'scripts/ci/run-all.sh'))
+add(findings, 'error', 'sev1-contract', 'run-all.sh does not call record_build.rb (the sev1 build finding would be lost)') unless runall.include?('record_build')
+add(findings, 'error', 'sev1-contract', 'run-all.sh early-exits before aggregate on build failure') if runall =~ /build\.sh build \|\| \{[^}]*exit 1/
+# A workflow that builds to feed the harness must fail safe: the build step
+# `continue-on-error` + LH_BUILD_RC so a broken build becomes a sev1 finding, not
+# a dead job. (run-all.sh turns LH_BUILD_RC into the record_build.rb call.)
+wf_read.each do |name, c|
+  builds = c.include?('build-overlay') || c.include?('build.sh build')
+  feeds_harness = c.include?('run-all.sh') || c.include?('run_all')
+  next unless builds && feeds_harness
+  ok = c.include?('LH_BUILD_RC') && c.include?('continue-on-error')
+  add(findings, 'warn', 'sev1-contract', "#{name} builds for the harness without the LH_BUILD_RC fail-safe (a build break would not become a sev1)") unless ok
+end
+
+# --- 3. Required checks present (errors/warn) -------------------------------
+add(findings, 'error', 'gate', 'no workflow defines a `verify` job (the required status check)') unless wf_read.values.any? { |c| c =~ /^\s*verify:/ }
+pipe = wf_read['pipeline.yml'].to_s
+add(findings, 'warn', 'contract-test', 'pipeline.yml does not run the E2E simulation (contract conformance)') unless pipe.include?('simulate.rb')
+
+# --- 4. Throughput / hygiene (warn/info) ------------------------------------
+wf_read.each do |name, c|
+  add(findings, 'warn', 'concurrency', "#{name} has no concurrency group (overlapping runs waste minutes)") unless c.include?('concurrency:')
+  add(findings, 'warn', 'cache', "#{name} sets up Ruby without bundler-cache") if c.include?('setup-ruby') && !c.include?('bundler-cache')
+end
+build_runs = wf_read.count { |_, c| c.include?('build-overlay') || c.include?('build.sh build') }
+add(findings, 'info', 'throughput', "#{build_runs} workflow(s) run the safe-mode build; a shared build artifact would cut duplicate builds")
+
+# --- 5. Script health (errors) ----------------------------------------------
+Dir[File.join(LH::ROOT, 'scripts/**/*.rb')].sort.each do |f|
+  `ruby -c #{f} 2>&1`
+  add(findings, 'error', 'syntax', "#{LH.rel(f)} has a Ruby syntax error") unless $?.success?
+end
+Dir[File.join(LH::ROOT, 'scripts/**/*.sh')].sort.each do |f|
+  `bash -n #{f} 2>&1`
+  add(findings, 'error', 'syntax', "#{LH.rel(f)} has a shell syntax error") unless $?.success?
+end
+
+# --- 6. Contract-schema conformance (errors) --------------------------------
+# Every finding the harness writes must carry the frozen fields; every queue item
+# must carry the fields PR3 leases on. Sample whatever is committed.
+FIND_FIELDS  = %w[check_id severity file line rule evidence route_to prime_directive_candidate].freeze
+QUEUE_FIELDS = %w[fingerprint type severity area route repo score occurrences].freeze
+qf = File.join(LH::ROOT, '_data/health/queue.json')
+if File.exist?(qf)
+  q = JSON.parse(LH.read(qf)) rescue []
+  bad = q.reject { |i| QUEUE_FIELDS.all? { |k| i.key?(k) } }
+  add(findings, 'error', 'schema', "#{bad.size} queue item(s) missing required fields #{QUEUE_FIELDS.inspect}") unless bad.empty?
+end
+
+# --- report -----------------------------------------------------------------
+errs = findings.count { |f| f[:sev] == 'error' }
+warns = findings.count { |f| f[:sev] == 'warn' }
+puts "## DevOps audit — #{errs} error, #{warns} warn, #{findings.count { |f| f[:sev] == 'info' }} info\n\n"
+%w[error warn info].each do |sev|
+  rows = findings.select { |f| f[:sev] == sev }
+  next if rows.empty?
+  puts "### #{sev}"
+  rows.each { |f| puts "- [#{f[:area]}] #{f[:msg]}" }
+  puts
+end
+Dir.mkdir(LH::RESULTS) unless Dir.exist?(LH::RESULTS)
+File.write(File.join(LH::RESULTS, 'devops-audit.json'), JSON.pretty_generate(findings))
+puts errs.zero? ? "PASS — pipeline is correctly wired." : "FAIL — #{errs} wiring error(s) to fix."
+exit(errs.zero? ? 0 : 1)

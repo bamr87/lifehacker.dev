@@ -1,0 +1,7 @@
+# Fleet loop state (committed; the dispatcher reads then rewrites this on its own
+# branch each cycle — git is the database, since there is no server). Seeded.
+last_run:      null
+cycles:        0
+tokens_today:  0
+tokens_date:   null
+last_decision: null

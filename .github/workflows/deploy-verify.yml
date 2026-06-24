@@ -1,0 +1,77 @@
+# =============================================================================
+# deploy-verify.yml — post-deploy live-site monitoring
+# -----------------------------------------------------------------------------
+# After a push to main, GitHub Pages rebuilds and deploys. This waits for the
+# deploy, smoke-checks the live URLs, and — if the production site is broken —
+# files ONE deduplicated sev1 issue. It is the "did the thing we shipped actually
+# work in production" check the per-PR gate can't do. Read-only against the site;
+# never deploys, never merges.
+# =============================================================================
+name: deploy-verify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: deploy-verify
+  cancel-in-progress: false
+
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BASE: https://lifehacker.dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for the Pages deploy to settle
+        run: |
+          for i in $(seq 1 10); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$BASE/" || echo 000)
+            echo "attempt $i: / -> $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 30
+          done
+          echo "site did not return 200 within the window (continuing to the smoke check)"
+
+      - name: Smoke-check live URLs
+        id: smoke
+        run: |
+          set +e
+          urls=("/" "/hacks/" "/tools/" "/blog/" "/about/" "/docs/" "/docs/health/" "/categories/" "/tags/" "/search/")
+          fail=0
+          {
+            echo "## Live deploy verification"
+            echo ""
+            echo "Base: \`$BASE\` · $(date -u +%Y-%m-%dT%H:%MZ)"
+            echo ""
+            echo "| url | status |"
+            echo "|---|---|"
+          } >> "$GITHUB_STEP_SUMMARY"
+          for u in "${urls[@]}"; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$BASE$u")
+            mark="✅"; [ "$code" != "200" ] && { mark="❌"; fail=1; }
+            echo "| \`$u\` | $code $mark |" >> "$GITHUB_STEP_SUMMARY"
+          done
+          echo "fail=$fail" >> "$GITHUB_OUTPUT"
+
+      - name: File a sev1 issue if production is broken
+        if: steps.smoke.outputs.fail == '1'
+        run: |
+          marker="<!-- deploy-verify -->"
+          existing=$(gh issue list --state open --search "\"$marker\" in:body" --json number --jq 'length')
+          if [ "${existing:-0}" -eq 0 ]; then
+            gh issue create \
+              --label "type/build-break,severity/sev1,source/ci-test,area/site" \
+              --title "deploy-verify: production returned a non-200 after deploy" \
+              --body "$marker"$'\nThe post-deploy smoke check found a non-200 on the live site. See the run Step Summary for the URL table. A human should look immediately; this is the kind of thing PR3'\''s fleet shifts all capacity to fix.'
+          else
+            echo "deploy-verify issue already open; not refiling."
+          fi

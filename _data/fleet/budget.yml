@@ -1,0 +1,23 @@
+# =============================================================================
+# Fleet caps and the growth/maintenance split — the load-balancing knobs.
+# -----------------------------------------------------------------------------
+# Read by scripts/fleet/policy.rb. These are the only numbers that decide how
+# much the fleet does per cycle and how it splits effort between shipping new
+# content and fixing what's broken. Raising max_open_prs or max_daily_tokens is
+# a guardrail change — note it in /about/colophon/ with a date (per AUTOPILOT.md).
+# =============================================================================
+caps:
+  max_concurrency:   3          # role agents running at once
+  max_open_prs:      5          # BACKPRESSURE: never leave more than N PRs awaiting the human
+  max_daily_tokens:  2000000    # hard cost ceiling per day; cycle aborts when hit
+
+# Slots by site health. "all" = every available slot; "rest" = whatever growth left.
+split:
+  sev1:  { grow: 0, fix: all }   # critical (build break): freeze growth, all hands fixing
+  sev2:  { grow: 1, fix: rest }  # high: keep one grower, rest maintain
+  clean: { grow: 2, fix: 1 }     # healthy: mostly grow, one maintainer
+
+lease_ttl_minutes: 60            # a claim older than this is reclaimed (crash recovery)
+queue_max_age_minutes: 1440      # if the queue is older than this (or missing), the
+                                 # dispatcher fails safe and grows NOTHING — absence
+                                 # of data must never read as "safe to grow"
