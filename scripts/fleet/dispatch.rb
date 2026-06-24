@@ -22,6 +22,7 @@ require 'json'
 require 'time'
 require_relative '../ci/_lib'
 require_relative 'policy'
+require_relative 'plan'
 require_relative 'lease'
 
 APPLY = ARGV.include?('--apply')
@@ -34,6 +35,32 @@ end
 
 caps = LH.yload(LH.read(File.join(LH::ROOT, '_data', 'fleet', 'budget.yml'))) || {}
 ttl  = (caps['lease_ttl_minutes'] || 60).to_i
+
+# --- Daily token ceiling (cost kill switch) ----------------------------------
+# The spawn step records spend into state.yml.tokens_today; if today's spend has
+# already hit the cap, idle this cycle. (The gate is live even before real spawn
+# wiring records spend — the knob is honest, not decorative.)
+state_path = File.join(LH::ROOT, '_data', 'fleet', 'state.yml')
+state      = (LH.yload(LH.read(state_path)) rescue {}) || {}
+max_tokens = caps.dig('caps', 'max_daily_tokens').to_i
+today      = Time.now.utc.strftime('%Y-%m-%d')
+spent_today = state['tokens_date'] == today ? state['tokens_today'].to_i : 0
+if max_tokens.positive? && spent_today >= max_tokens
+  puts "[dispatch] daily token budget reached (#{spent_today}/#{max_tokens}) — idle until tomorrow."
+  exit 0
+end
+
+# --- Queue freshness (fail-safe) ---------------------------------------------
+# A missing or stale queue must NOT read as "grow". The pipeline regenerates the
+# queue immediately before dispatch; a stale committed copy stops the fleet.
+summary_path = File.join(LH::ROOT, '_data', 'health', 'summary.yml')
+max_age      = (caps['queue_max_age_minutes'] || 1440).to_i
+fresh = false
+if File.exist?(summary_path)
+  s   = (LH.yload(LH.read(summary_path)) rescue {}) || {}
+  gen = (Time.parse(s['generated_at'].to_s) rescue nil)
+  fresh = !gen.nil? && (Time.now.utc - gen) <= max_age * 60
+end
 
 def jload(path)
   File.exist?(path) ? (JSON.parse(LH.read(path)) rescue []) : []
@@ -52,36 +79,20 @@ def spawn_cmd(skill, target, desc)
   "claude -p #{("/" + skill + " " + target).inspect}  # #{desc[0, 60]}"
 end
 
-# --- Observe -----------------------------------------------------------------
+# --- Observe + Decide (pure) -------------------------------------------------
 queue   = jload(File.join(LH::ROOT, '_data', 'health', 'queue.json'))
 backlog = ((LH.yload(LH.read(File.join(LH::ROOT, '_data', 'backlog.yml'))) || {})['backlog'] rescue []) || []
 
-sev1     = queue.count { |i| i['severity'] == 'sev1' }
-sev2     = queue.count { |i| i['severity'] == 'sev2' }
-fixable  = queue.select { |i| i['route'] == 'local' && %w[sev1 sev2 sev3].include?(i['severity']) }
-                .sort_by { |i| -i['score'].to_f }
-growable = backlog.select { |b| b['status'].to_s == 'todo' }
+result     = Fleet::Plan.compute(queue: queue, backlog: backlog, open_prs: gh_open_pr_count, caps: caps, fresh: fresh)
+obs        = result[:obs]
+plan       = result[:decision]
+planned    = result[:dispatched]
 
-obs = { sev1: sev1, sev2: sev2, open_prs: gh_open_pr_count,
-        growth_available: growable.size, fix_available: fixable.size }
-
-# --- Decide ------------------------------------------------------------------
-plan = Fleet::Policy.decide(obs, caps)
-
-# --- Act ---------------------------------------------------------------------
-# Fixers first (priority), then growers fill remaining slots. Lease only on --apply.
-dispatched = []
-fixable.first(plan[:slots][:fix]).each do |item|
-  if APPLY
-    next unless Fleet::Lease.claim(item['fingerprint'], 'bugfix', ttl)
-  end
-  dispatched << { role: 'fleet-bugfix', target: item['fingerprint'], desc: item['title'].to_s }
-end
-growable.first(plan[:slots][:grow]).each do |b|
-  if APPLY
-    next unless Fleet::Lease.claim(b['id'], 'grower', ttl)
-  end
-  dispatched << { role: 'grow-lifehacker', target: b['id'].to_s, desc: b['title'].to_s }
+# --- Act: lease (only on --apply), keeping the won claims --------------------
+dispatched = planned.select do |d|
+  next true unless APPLY
+  role_id = d[:role] == 'grow-lifehacker' ? 'grower' : 'bugfix'
+  Fleet::Lease.claim(d[:target], role_id, ttl)
 end
 
 # --- Persist state (only when acting) ----------------------------------------

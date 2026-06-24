@@ -30,8 +30,12 @@ module Fleet
       (LH.yload(LH.read(FILE)) || []).select { |h| h.is_a?(Hash) }
     end
 
+    HEADER = "# Active work leases (managed by scripts/fleet/lease.rb). Empty = nothing claimed.\n" \
+             "# Each entry: { id, role, ref, claimed_at }. The git ref refs/lease/<id> is the\n" \
+             "# atomic guard; this file is the human-readable record + TTL clock.\n".freeze
+
     def save(leases)
-      File.write(FILE, leases.to_yaml)
+      File.write(FILE, HEADER + leases.to_yaml)
     end
 
     def active(ttl_minutes = nil)

@@ -139,4 +139,35 @@ module Triage
       _Fingerprint `#{item['fingerprint']}` is stable across line shifts — re-running triage updates this issue instead of filing a duplicate._
     BODY
   end
+
+  # PURE: findings array -> ranked, deduplicated queue items. The whole triage
+  # ranking, with no IO — build_queue.rb writes the files, the E2E simulation
+  # asserts on the result, both calling THIS so they can't diverge.
+  def build(findings)
+    groups = Hash.new { |h, k| h[k] = [] }
+    findings.each { |f| groups[f['fingerprint']] << f if actionable?(f) }
+
+    items = groups.map do |fp, fs|
+      rep   = fs.min_by { |f| { 'error' => 0, 'warning' => 1, 'info' => 2 }[f['severity']] || 3 }
+      c     = classify(rep)
+      url   = url_for(rep['file'])
+      views = reach_views(url)
+      item = {
+        'fingerprint' => fp, 'check_id' => rep['check_id'], 'rule' => rep['rule'],
+        'file' => rep['file'], 'line' => rep['line'], 'evidence' => rep['evidence'],
+        'type' => c[:type], 'area' => c[:area], 'severity' => c[:severity],
+        'route' => c[:route], 'repo' => c[:repo], 'url_path' => url,
+        'reach_views' => views, 'occurrences' => fs.size,
+        # Carry the Field-Note signal across the queue boundary so file_issues.rb
+        # can label/route prime-directive candidates distinctly downstream.
+        'prime_directive_candidate' => !!rep['prime_directive_candidate'],
+        'score' => score(c[:severity], rep['severity'], views, c[:route]),
+        'issue_number' => nil, 'blocked_on' => nil
+      }
+      item['title'] = issue_title(item)
+      item
+    end
+
+    items.sort_by { |i| [-i['score'], i['severity'], i['file'].to_s] }
+  end
 end

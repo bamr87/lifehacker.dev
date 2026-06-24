@@ -48,9 +48,17 @@ jobs:
 
       # Build once (the harness needs _site for drift/link checks), then run the
       # checks against it to produce the findings contract.
-      - uses: ./.github/actions/build-overlay
-      - name: Run harness
-        run: LH_SKIP_BUILD=1 bash scripts/ci/run-all.sh || true   # findings, not a gate here
+      # Build with the same fail-safe the pipeline uses: a broken build must
+      # become a sev1 finding (and a filed issue), not a dead triage job.
+      - name: Build (safe-mode overlay)
+        id: build
+        continue-on-error: true
+        uses: ./.github/actions/build-overlay
+      - name: Run harness (records build outcome -> findings)
+        env:
+          LH_SKIP_BUILD: '1'
+          LH_BUILD_RC: ${{ steps.build.outcome == 'success' && '0' || '1' }}
+        run: bash scripts/ci/run-all.sh || true   # findings, not a gate here
 
       - name: Ensure labels
         run: scripts/triage/bootstrap-labels.sh

@@ -15,9 +15,18 @@ REPO="$(cd "$HERE/../.." && pwd)"
 cd "$REPO"
 rm -rf test-results
 
+# Build, but DON'T early-exit on failure: record the sev1 build finding and keep
+# going so aggregate still emits a findings.jsonl (the worst case must be the
+# loudest, not the emptiest — triage/fleet downstream depend on it existing).
+# CI builds once via the cached build-overlay action and passes the outcome in
+# LH_BUILD_RC (with LH_SKIP_BUILD=1), so the harness never double-builds.
+build_rc="${LH_BUILD_RC:-0}"
 if [[ "${LH_SKIP_BUILD:-0}" != "1" ]]; then
-  bash "$HERE/build.sh" build || { echo "BUILD FAILED — gate red"; exit 1; }
+  bash "$HERE/build.sh" build
+  build_rc=$?
 fi
+ruby "$HERE/record_build.rb" "$build_rc"
+[[ "$build_rc" != "0" ]] && echo "BUILD FAILED — recorded as sev1; continuing to lint + aggregate"
 
 # Each check writes its own test-results/<check>.json; keep going on failure.
 ruby "$HERE/lint_frontmatter.rb"   || true

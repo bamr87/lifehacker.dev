@@ -23,39 +23,9 @@ abort "no findings.jsonl found (run the test harness first)" unless src && File.
 
 findings = LH.read(src).each_line.map { |l| JSON.parse(l) rescue nil }.compact
 
-# Keep actionable findings, then dedup by fingerprint (count occurrences).
-groups = Hash.new { |h, k| h[k] = [] }
-findings.each { |f| groups[f['fingerprint']] << f if Triage.actionable?(f) }
-
-items = groups.map do |fp, fs|
-  rep = fs.min_by { |f| { 'error' => 0, 'warning' => 1, 'info' => 2 }[f['severity']] || 3 }
-  c = Triage.classify(rep)
-  url = Triage.url_for(rep['file'])
-  views = Triage.reach_views(url)
-  item = {
-    'fingerprint' => fp,
-    'check_id'    => rep['check_id'],
-    'rule'        => rep['rule'],
-    'file'        => rep['file'],
-    'line'        => rep['line'],
-    'evidence'    => rep['evidence'],
-    'type'        => c[:type],
-    'area'        => c[:area],
-    'severity'    => c[:severity],
-    'route'       => c[:route],
-    'repo'        => c[:repo],
-    'url_path'    => url,
-    'reach_views' => views,
-    'occurrences' => fs.size,
-    'score'       => Triage.score(c[:severity], rep['severity'], views, c[:route]),
-    'issue_number' => nil,   # filled by file_issues.rb after creation
-    'blocked_on'  => nil
-  }
-  item['title'] = Triage.issue_title(item)
-  item
-end
-
-items.sort_by! { |i| [-i['score'], i['severity'], i['file'].to_s] }
+# Classify, RICE-score, and dedup by fingerprint — the pure ranking the E2E
+# simulation also calls, so the CLI and the sim can never diverge.
+items = Triage.build(findings)
 
 # --- write the queue ---------------------------------------------------------
 Dir.mkdir(Triage::HEALTH) unless Dir.exist?(Triage::HEALTH)

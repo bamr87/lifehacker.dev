@@ -57,12 +57,12 @@ lh_overlay() {
   rm -rf "$dest/pages"
   cp -R "$REPO_DIR/pages" "$dest/pages"
 
-  # Overlay the data the theme needs but doesn't ship (keep its ui-text/skins).
-  cp -R "$REPO_DIR/_data/navigation" "$dest/_data/"
-  cp -R "$REPO_DIR/_data/brand"      "$dest/_data/"
-  cp "$REPO_DIR/_data/authors.yml"   "$dest/_data/authors.yml"
-  cp "$REPO_DIR/_data/landing.yml"   "$dest/_data/landing.yml"
-  cp "$REPO_DIR/_data/backlog.yml"   "$dest/_data/backlog.yml"
+  # Overlay ALL of our _data over the theme's. GitHub Pages reads the whole repo
+  # _data/, so to stay production-faithful the build must too — including
+  # _data/health (the /docs/health/ dashboard), _data/analytics, and _data/fleet,
+  # which a hand-picked subset would silently drop. Theme-only _data not present
+  # in our repo (if any) survives the merge.
+  cp -R "$REPO_DIR/_data/." "$dest/_data/"
 
   # Top-level spine pages.
   local f

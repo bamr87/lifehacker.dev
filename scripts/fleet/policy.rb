@@ -43,10 +43,10 @@ module Fleet
       grow_want = resolve(rule['grow'], available)
       fix_want  = resolve(rule['fix'],  available)
 
-      # First-come for fix in 'all'/'rest' modes, then growth fills the rest.
+      # Allocate growth FIRST (so a sev2 reserved grower is never starved by
+      # saturating fixers), then fix takes the remaining slots.
       grow = [grow_want, obs[:growth_available].to_i, available].min
       fix  = [fix_want,  obs[:fix_available].to_i, available - grow].min
-      grow = [grow, available - fix].min if (grow + fix) > available
 
       reason =
         case mode

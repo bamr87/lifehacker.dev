@@ -18,3 +18,6 @@ split:
   clean: { grow: 2, fix: 1 }     # healthy: mostly grow, one maintainer
 
 lease_ttl_minutes: 60            # a claim older than this is reclaimed (crash recovery)
+queue_max_age_minutes: 1440      # if the queue is older than this (or missing), the
+                                 # dispatcher fails safe and grows NOTHING — absence
+                                 # of data must never read as "safe to grow"

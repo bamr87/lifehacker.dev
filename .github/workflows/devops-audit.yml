@@ -1,0 +1,60 @@
+# =============================================================================
+# devops-audit.yml — the DevOps manager on call
+# -----------------------------------------------------------------------------
+# Runs the deterministic CI/CD audit always, and (when an API key is present and
+# you ask for it) the devops-manager AGENT to analyze throughput and open ONE PR
+# with pipeline improvements. Manual on purpose — it can rewrite workflows, so it
+# stays workflow_dispatch and never merges. The audit also runs on every PR
+# inside pipeline.yml's fast tier; this workflow is the deeper, agent-driven pass.
+# =============================================================================
+name: devops-audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      improve:
+        description: "Run the devops-manager agent to propose improvements (needs ANTHROPIC_API_KEY)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: devops-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Deterministic audit (wiring + guardrails + throughput)
+        run: ruby scripts/devops/audit.rb | tee audit.out
+
+      - name: Contract simulation
+        run: ruby scripts/sim/simulate.rb | tee sim.out
+
+      - name: Summary
+        if: always()
+        run: |
+          { echo "## DevOps audit"; echo '```'; cat audit.out; echo; tail -2 sim.out; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: devops-manager agent (improve + open PR)
+        if: ${{ inputs.improve }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          [ -z "$ANTHROPIC_API_KEY" ] && { echo "no ANTHROPIC_API_KEY — audit only, no agent run"; exit 0; }
+          npm install -g @anthropic-ai/claude-code
+          claude -p "Use the devops-manager skill: audit the CI/CD, analyze throughput, apply safe improvements, verify with the harness + simulation, and open ONE PR. Never merge." \
+            --allowedTools "Bash,Read,Edit,Write,Grep" --permission-mode acceptEdits \
+            || echo "devops-manager finished non-zero (non-blocking)"
