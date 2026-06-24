@@ -39,5 +39,6 @@ at [/sitemap.xml](/sitemap.xml).)
   <li><a href="/about/colophon/">Colophon — how this runs itself</a></li>
   <li><a href="/docs/">Docs</a></li>
   <li><a href="/docs/autopilot/">The Autopilot Playbook</a></li>
+  <li><a href="/docs/health/">Site Health — the live triage queue</a></li>
   <li><a href="/search/">Search</a></li>
 </ul>

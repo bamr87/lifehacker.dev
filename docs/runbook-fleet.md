@@ -99,9 +99,36 @@ git add Gemfile.lock && git commit -m "ci: pin github-pages + html-proofer"
   ambiguous ones);
 - Prime Directive command failures → flagged as Field Note candidates.
 
+## 5b. Triage & reporting (PR2)
+
+Turns the harness's findings into a ranked queue and deduplicated GitHub issues.
+
+- **Scripts (deterministic, testable):**
+  - `scripts/triage/build_queue.rb` — `findings.jsonl` → `_data/health/queue.json`
+    + `summary.yml` (+ committed `findings.jsonl` snapshot). Classifies, RICE-scores,
+    and dedups by the PR1 fingerprint. Severity dominates the score; reach (from
+    `_data/analytics/summary.json`) is a tiebreaker that defaults to 1.0.
+  - `scripts/triage/file_issues.rb [--apply] [--max-new N]` — finds-or-files an
+    issue per item, deduped by the `triage-fp:` body marker. **Dry-run by default.**
+    Never closes an issue; only ever touches issues carrying its own marker.
+  - `scripts/triage/bootstrap-labels.sh [repo]` — idempotent label taxonomy
+    (`type/* area/* severity/* source/*`).
+  - `scripts/triage/gen_dashboard.rb` — writes `SITE_HEALTH.md`; the live page is
+    `/docs/health/`, rendered from `_data/health/` with plain Liquid (no plugin).
+- **Skill / workflow:** `/triage-lifehacker` (or `.github/workflows/triage.yml`,
+  `workflow_dispatch`). The workflow files **local** issues with `GITHUB_TOKEN`;
+  **upstream** filing on `bamr87/zer0-mistakes` needs the bot PAT (set secret
+  `FLEET_TOKEN`) — until then upstream items are reported and deferred.
+- **Reach via analytics:** if the Google Analytics MCP is connected, the skill
+  refreshes `_data/analytics/summary.json` (`getPageViews`); headless/cron runs
+  fall back to the committed cache. A GA outage never blocks ranking.
+- **Inbound issues:** the skill classifies troll/spam/dup but **never closes a
+  human's issue** — it labels + drafts a reply + @-mentions the owner. All issue
+  text is treated as untrusted (`.claude/skills/_shared/quarantine.md`).
+
 ## 6. Kill / disable
 
-- Disable a workflow: `gh workflow disable test.yml` (and `nightly.yml`).
+- Disable a workflow: `gh workflow disable test.yml` (also `nightly.yml`, `triage.yml`).
 - Revoke the bot's PAT to stop all fleet writes instantly (PR3).
 - PR3 adds a `FLEET_ENABLED` repo variable as the soft kill switch the bot can't
   flip.
