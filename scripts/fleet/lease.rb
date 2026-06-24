@@ -56,14 +56,27 @@ module Fleet
       return false if load.any? { |l| l['id'] == id.to_s }   # already recorded
       _out, ok = git("update-ref #{ref(id)} HEAD ''")        # CAS: create-only
       return false unless ok                                  # lost the race
-      leases = load
-      leases << { 'id' => id.to_s, 'role' => role.to_s,
-                  'ref' => ref(id), 'claimed_at' => Time.now.utc.iso8601 }
-      save(leases)
+      begin
+        leases = load
+        leases << { 'id' => id.to_s, 'role' => role.to_s,
+                    'ref' => ref(id), 'claimed_at' => Time.now.utc.iso8601 }
+        save(leases)
+      rescue StandardError
+        # The CAS won but recording it failed. Roll the ref back so the item is
+        # NOT orphaned: reclaim_stale only ever sees YAML entries, so an
+        # unrecorded ref would block every future claim forever (the CAS keeps
+        # failing) and never be cleaned. Better to drop the claim and retry.
+        git("update-ref -d #{ref(id)}")
+        raise
+      end
       true
     end
 
     def release(id)
+      # Delete the ref FIRST (the authoritative guard), then update the record.
+      # If the save fails here the ref is already gone and the stale YAML entry
+      # self-heals at the TTL — it can never strand the item the way an orphaned
+      # ref would.
       git("update-ref -d #{ref(id)}")
       save(load.reject { |l| l['id'] == id.to_s })
     end
