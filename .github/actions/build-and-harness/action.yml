@@ -1,0 +1,46 @@
+# =============================================================================
+# build-and-harness — the safe-mode build + the harness, in ONE place
+# -----------------------------------------------------------------------------
+# The "build once, then run the harness with the sev1-on-build-break fail-safe"
+# pattern was copy-pasted into pipeline.yml (verify) and triage.yml. This
+# composite is the single source of truth for it: it builds via build-overlay
+# (continue-on-error), then runs run-all.sh with LH_SKIP_BUILD=1 and LH_BUILD_RC
+# carrying the build outcome — so a broken build becomes a sev1 finding, not a
+# dead job. Callers read the two outcomes to gate (or not).
+#
+# NOTE: this does NOT reduce the build COUNT across workflows — pipeline / triage
+# / nightly run at different triggers for different purposes and each builds once.
+# It removes the LOGIC duplication so the fail-safe can't drift between them.
+# (nightly builds with a fresh theme and runs a different sweep, so it stays
+# inline; this composite is for the build+run-all.sh pattern.)
+# =============================================================================
+name: build-and-harness
+description: Safe-mode build (once, fail-safe) + the harness; exposes the build/harness outcomes.
+inputs:
+  fresh-theme:
+    description: Re-clone the theme (no cache) to surface upstream drift.
+    default: 'false'
+outputs:
+  build_outcome:
+    description: success|failure of the safe-mode build.
+    value: ${{ steps.build.outcome }}
+  harness_outcome:
+    description: success|failure of the harness (lint + aggregate) run.
+    value: ${{ steps.harness.outcome }}
+runs:
+  using: composite
+  steps:
+    - name: Build (safe-mode overlay) — ONCE
+      id: build
+      continue-on-error: true
+      uses: ./.github/actions/build-overlay
+      with:
+        fresh-theme: ${{ inputs.fresh-theme }}
+    - name: Harness (records the build outcome, then lints + aggregates)
+      id: harness
+      continue-on-error: true
+      shell: bash
+      env:
+        LH_SKIP_BUILD: '1'
+        LH_BUILD_RC: ${{ steps.build.outcome == 'success' && '0' || '1' }}
+      run: bash scripts/ci/run-all.sh

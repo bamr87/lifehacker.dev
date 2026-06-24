@@ -103,18 +103,9 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      - name: Build (safe-mode overlay) — ONCE for the pipeline
-        id: build
-        continue-on-error: true
-        uses: ./.github/actions/build-overlay
-
-      - name: Harness (records the build outcome, then lints + aggregates)
-        id: harness
-        continue-on-error: true
-        env:
-          LH_SKIP_BUILD: '1'
-          LH_BUILD_RC: ${{ steps.build.outcome == 'success' && '0' || '1' }}
-        run: bash scripts/ci/run-all.sh
+      - name: Build + harness (ONCE; the sev1-on-build-break fail-safe lives in the composite)
+        id: bh
+        uses: ./.github/actions/build-and-harness
 
       - name: Brand tier-1 review signal
         id: brand
@@ -144,8 +135,8 @@ jobs:
       - name: Gate (build + harness must pass)
         if: always()
         run: |
-          [ "${{ steps.build.outcome }}" = "success" ] || { echo "::error::safe-mode build failed"; exit 1; }
-          [ "${{ steps.harness.outcome }}" = "success" ] || { echo "::error::test harness gate failed"; exit 1; }
+          [ "${{ steps.bh.outputs.build_outcome }}" = "success" ] || { echo "::error::safe-mode build failed"; exit 1; }
+          [ "${{ steps.bh.outputs.harness_outcome }}" = "success" ] || { echo "::error::test harness gate failed"; exit 1; }
 
   # ----- TIER 2b — paid brand review (conditional, comment-only) -------------
   brand-review:
