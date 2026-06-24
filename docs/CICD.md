@@ -91,9 +91,82 @@ exposed to fork PRs. No workflow grants `administration` or `workflows` scope.
   workflows (currently 3: pipeline, triage, nightly) as *info* — they run at
   different times for different purposes.
 
+## Change-type routing (efficiency)
+
+The pipeline runs only the tier each change needs. A `changes` job classifies the
+PR diff with `scripts/ci/classify_changes.rb` into `content` / `deps` / `pipeline`
+/ `data`, and the tiers gate on it:
+
+| Change kind | Examples | Runs |
+|---|---|---|
+| **content** | `pages/**`, `_data/brand|navigation`, backlog, root content pages, assets | `verify` (build + content gate) + `content-review` |
+| **deps** | `Gemfile*`, `_config*.yml` | `verify` + `fast` (build + harness + audit + sim) |
+| **pipeline** | `scripts/**`, `.github/**`, `.claude/**` | `verify` + `fast` (audit + sim test the changed machinery) |
+| **data** | `_data/health|fleet|analytics`, `SITE_HEALTH.md` | `verify` only |
+
+`verify` (the required check) always runs so branch protection stays meaningful;
+`fast` is skipped for content-only PRs. An empty/unclassifiable diff fails safe to
+"run everything".
+
+## The autonomous content factory
+
+A daily, opt-in loop that generates content, reviews it, tests the live site, and
+(when enabled) merges and fixes itself:
+
+| Workflow | Trigger | Gate | What it does |
+|---|---|---|---|
+| `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
+| `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
+| `explore.yml` | manual (cron commented) | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. |
+| `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
+| `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
+
+**The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies
+every candidate PR's diff and declines (labels `needs-human`) anything touching
+`deps`/`pipeline`, even if it's labeled `auto:content`. So auto-merge can only ever
+ship pure content; dependency, pipeline, and workflow changes are **always**
+human-gated. `scripts/devops/audit.rb` enforces both the per-workflow `*_ENABLED`
+gates and the smuggle guard, so these invariants fail CI if they regress.
+
 ## Turning on continuous autonomy (deliberate)
 
-Scheduling is off by default. To go hands-off: `gh variable set FLEET_ENABLED
-true`, uncomment the `schedule:` in `fleet-dispatch.yml` (and add a gated
-scheduled `triage.yml` so the queue never goes stale), wire the agent-spawn step
-with `ANTHROPIC_API_KEY`, and add a dated line to `/about/colophon/`.
+Each capability is its own switch, off by default. Turn on only what you trust:
+
+```
+gh variable set FLEET_ENABLED true              # the fix/grow fleet
+gh variable set CONTENT_FACTORY_ENABLED true    # daily content generation
+gh variable set EXPLORER_ENABLED true           # live-site persona QA
+gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
+gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (retires human content review)
+```
+
+Enabling `AUTO_MERGE_ENABLED` (or uncommenting any `schedule:`) is a guardrail
+change — add a dated line to `/about/colophon/` in the same PR. The agent steps
+need `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
+
+## Universal AI wiring (Claude Code → Claude API fallback)
+
+Everything that calls a model — every workflow agent step *and* every skill —
+goes through **one** path, so the model, auth, and fallback are configured in a
+single place:
+
+- **`_data/ai.yml`** — the one config: `model` (default `claude-opus-4-8`),
+  `fallback_model`, `max_tokens`, the API version/base. Change the model here and
+  it changes everywhere.
+- **`scripts/ai/run.sh`** — the universal runner. Tries **Claude Code** (`claude -p`
+  with tools/MCP — the full agent) first; if the CLI is missing or the run fails,
+  falls back to **`scripts/ai/api_call.rb`**, a stdlib-only (`net/http`, no gem)
+  single-shot call to the Claude API (`POST /v1/messages`, `anthropic-version
+  2023-06-01`, with refusal/429/5xx handling). The fallback is a degraded path —
+  it returns the model's text but can't run tools, so fully agentic steps rely on
+  Claude Code; analysis/review/draft steps work on either.
+- **`.github/actions/claude-run`** — the composite action workflows use instead of
+  hand-rolling `npm install` + `claude -p`. It installs Claude Code and calls
+  `run.sh`. Inputs: `prompt`, `tools`, `mcp`, `system`, `out`.
+
+Every AI step (brand-review, content-review, content-factory, explore, auto-fix,
+devops-manager, and the fleet spawns) uses the action or `run.sh` — **no workflow
+calls `claude -p` directly**, and `scripts/devops/audit.rb` fails CI if one does.
+Provide `ANTHROPIC_API_KEY` and both paths work; without it, AI steps are no-ops.
+To switch the whole fleet to a cheaper model, set `model:` in `_data/ai.yml` (or
+`LH_AI_MODEL` for one run) — one edit, everywhere.

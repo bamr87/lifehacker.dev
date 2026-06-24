@@ -63,21 +63,21 @@ jobs:
             ruby scripts/fleet/dispatch.rb | tee dispatch.out
           fi
 
-      # The dispatcher prints the `claude -p "/<role> <target>"` commands it would
-      # run. Executing them for real is the final enablement step — it needs
-      # ANTHROPIC_API_KEY and a git worktree per agent, and each role skill
-      # (grow-lifehacker, fleet-bugfix, triage-lifehacker) opens its own PR and
-      # stops. Wire it here when you're ready to go hands-off:
+      # The dispatcher prints the role/target it would run. Executing them for
+      # real is the final enablement step — it needs ANTHROPIC_API_KEY and a git
+      # worktree per agent, and each role skill (grow-lifehacker, fleet-bugfix,
+      # triage-lifehacker) opens its own PR and stops. Wire it here when ready,
+      # ALWAYS through the universal AI runner so the model/fallback stay
+      # configured in one place:
       #
       # - name: Spawn leased agents
       #   if: ${{ inputs.apply }}
+      #   uses: ./.github/actions/claude-run     # Claude Code -> Claude API fallback
       #   env:
       #     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      #   run: |
-      #     npm install -g @anthropic-ai/claude-code
-      #     # for each planned (role,target): run in a fresh worktree, then
-      #     # `claude -p "/<role> <target>" --permission-mode acceptEdits`
-      #     # NEVER add `gh pr merge` to the allowed tools.
+      #   with:
+      #     prompt: "/<role> <target>"           # per planned item, in a fresh worktree
+      #     tools: "Bash,Read,Edit,Write,Grep"   # NEVER add `gh pr merge`
 
       - name: Upload dispatch plan + fleet state
         if: always()

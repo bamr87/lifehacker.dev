@@ -48,13 +48,13 @@ jobs:
         run: |
           { echo "## DevOps audit"; echo '```'; cat audit.out; echo; tail -2 sim.out; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: devops-manager agent (improve + open PR)
+      - name: devops-manager agent (improve + open PR, universal AI runner)
         if: ${{ inputs.improve }}
+        uses: ./.github/actions/claude-run
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          [ -z "$ANTHROPIC_API_KEY" ] && { echo "no ANTHROPIC_API_KEY — audit only, no agent run"; exit 0; }
-          npm install -g @anthropic-ai/claude-code
-          claude -p "Use the devops-manager skill: audit the CI/CD, analyze throughput, apply safe improvements, verify with the harness + simulation, and open ONE PR. Never merge." \
-            --allowedTools "Bash,Read,Edit,Write,Grep" --permission-mode acceptEdits \
-            || echo "devops-manager finished non-zero (non-blocking)"
+        with:
+          prompt: "Use the devops-manager skill: audit the CI/CD, analyze throughput, apply safe improvements, verify with the harness + simulation, and open ONE PR. Never merge."
+          tools: "Bash,Read,Edit,Write,Grep"
+          system: "You are the devops-manager for lifehacker.dev. Improve the pipeline, verify, open one PR. Never merge or weaken a guardrail."

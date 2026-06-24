@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-06-24T20:36:04Z",
+  "seed": "20260624",
+  "site": "https://lifehacker.dev",
+  "per_persona": 6,
+  "total_url_budget": 18,
+  "plan": {
+    "beginner": {
+      "visit": [
+        "/",
+        "/docs/",
+        "/about/index/",
+        "/about/colophon/",
+        "/docs/index/",
+        "/about/"
+      ],
+      "wander_slots": 2,
+      "lens": "beginner"
+    },
+    "intermediate": {
+      "visit": [
+        "/",
+        "/docs/",
+        "/tools/ripgrep-honest-review/",
+        "/hacks/make-cd-remember-where-you-were/",
+        "/docs/autopilot/",
+        "/posts/2026/06/22/eight-things-a-remote-theme-forgets-to-pack/"
+      ],
+      "wander_slots": 2,
+      "lens": "intermediate"
+    },
+    "expert": {
+      "visit": [
+        "/",
+        "/docs/",
+        "/hacks/git-alias-starter-pack/",
+        "/posts/2026/06/21/the-build-that-died-on-an-unknown-tag/",
+        "/posts/2026/06/20/born-in-five-files/",
+        "/tools/"
+      ],
+      "wander_slots": 2,
+      "lens": "expert"
+    }
+  }
+}

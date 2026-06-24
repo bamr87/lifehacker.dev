@@ -30,6 +30,27 @@ fleet = wf_read['fleet-dispatch.yml'].to_s
 add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml has an ACTIVE schedule (autonomy must stay opt-in)') if fleet =~ /^[^#\n]*\bschedule:/
 add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml does not read FLEET_ENABLED') unless fleet.include?('FLEET_ENABLED')
 
+# Every autonomy workflow (one that takes an outward action automatically) must be
+# gated by its ENABLED kill-switch variable, so nothing runs unattended by default.
+{ 'content-factory.yml' => 'CONTENT_FACTORY_ENABLED', 'explore.yml' => 'EXPLORER_ENABLED',
+  'auto-merge.yml' => 'AUTO_MERGE_ENABLED', 'auto-fix.yml' => 'AUTO_FIX_ENABLED' }.each do |wf, gate|
+  c = wf_read[wf].to_s
+  add(findings, 'error', 'autonomy-gate', "#{wf} is not gated by #{gate}") unless c.empty? || c.include?(gate)
+end
+# Auto-merge must re-classify the PR diff (the smuggle guard): a content PR can
+# never carry a deps/pipeline change past review.
+am = wf_read['auto-merge.yml'].to_s
+add(findings, 'error', 'auto-merge-safety', 'auto-merge.yml lacks the classify_changes smuggle guard') if !am.empty? && !am.include?('classify_changes')
+
+# Universal AI wiring: every model call must go through scripts/ai/run.sh (or the
+# claude-run action that wraps it), so model/auth/fallback live in ONE place
+# (_data/ai.yml). A raw `claude -p` in a workflow bypasses the fallback.
+wf_read.each do |name, c|
+  add(findings, 'warn', 'ai-wiring', "#{name} calls `claude -p` directly — route it through the claude-run action / scripts/ai/run.sh") if c =~ /\bclaude\s+-p\b/
+end
+add(findings, 'error', 'ai-wiring', 'scripts/ai/run.sh (the universal AI runner) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/run.sh'))
+add(findings, 'error', 'ai-wiring', 'scripts/ai/api_call.rb (the Claude API fallback) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/api_call.rb'))
+
 # --- 2. Contract wiring (errors) --------------------------------------------
 runall = read.call(File.join(LH::ROOT, 'scripts/ci/run-all.sh'))
 add(findings, 'error', 'sev1-contract', 'run-all.sh does not call record_build.rb (the sev1 build finding would be lost)') unless runall.include?('record_build')
@@ -53,7 +74,8 @@ add(findings, 'warn', 'contract-test', 'pipeline.yml does not run the E2E simula
 # --- 4. Throughput / hygiene (warn/info) ------------------------------------
 wf_read.each do |name, c|
   add(findings, 'warn', 'concurrency', "#{name} has no concurrency group (overlapping runs waste minutes)") unless c.include?('concurrency:')
-  add(findings, 'warn', 'cache', "#{name} sets up Ruby without bundler-cache") if c.include?('setup-ruby') && !c.include?('bundler-cache')
+  bundles = c.include?('bundle ') || c.include?('run-all.sh') || c.include?('build-overlay')
+  add(findings, 'warn', 'cache', "#{name} bundles gems without bundler-cache") if c.include?('setup-ruby') && bundles && !c.include?('bundler-cache')
 end
 build_runs = wf_read.count { |_, c| c.include?('build-overlay') || c.include?('build.sh build') }
 add(findings, 'info', 'throughput', "#{build_runs} workflow(s) run the safe-mode build; a shared build artifact would cut duplicate builds")

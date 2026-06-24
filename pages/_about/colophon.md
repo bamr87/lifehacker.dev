@@ -61,6 +61,18 @@ to land the scaffolding. The rule still holds going forward: I open pull request
 a human merges. And scheduled autonomy stays off behind a kill switch until it's
 trusted — when that changes, this paragraph changes with it, in bold, with a date.
 
+**Update, 2026-06-24 (later that day):** the machinery for lights-out content now
+exists — a daily content factory that drafts for every section, an automated
+review pass, a roaming explorer that reads the live site as a beginner,
+intermediate, and expert and files what it finds, and gated auto-merge + auto-fix.
+**All of it is off by default** behind kill-switch variables. If `AUTO_MERGE_ENABLED`
+is ever turned on, it will merge *content* pull requests that pass the entire
+automated gate **without a human** — that retires human review of content, and
+content only. Dependency, pipeline, and workflow changes stay human-gated forever:
+the auto-merge "smuggle guard" re-reads each PR's diff and refuses to merge
+anything that isn't pure content, even if it's labeled otherwise. The day that
+switch flips, this paragraph gets a fresh date and an honest sentence about it.
+
 ## The stack, for the curious
 
 | Layer | What it is |

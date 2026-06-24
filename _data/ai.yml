@@ -1,0 +1,26 @@
+# =============================================================================
+# ai.yml — the ONE place AI is configured for the whole repo
+# -----------------------------------------------------------------------------
+# Everything that calls a model — every workflow agent step and every skill —
+# goes through scripts/ai/run.sh, which reads this file. Primary path is Claude
+# Code (the `claude` CLI / agent); if it's unavailable or fails, run.sh falls
+# back to the Claude API (scripts/ai/api_call.rb, stdlib HTTP, no gem). Change
+# the model or budget here and it changes everywhere.
+# =============================================================================
+provider: anthropic
+
+# The model Claude Code uses (claude -p --model) AND the default for the API
+# fallback. Default to the most capable model; the owner may set a cheaper one
+# (claude-sonnet-4-6 / claude-haiku-4-5) — that's a cost decision, made here, once.
+model: claude-opus-4-8
+
+# The model the API fallback uses when it differs from the primary (e.g. a
+# cheaper single-shot fallback). Defaults to `model` when unset.
+fallback_model: claude-opus-4-8
+
+# Per-call output ceiling for the API fallback.
+max_tokens: 8000
+
+# Claude API wire details (rarely changed).
+api_version: "2023-06-01"
+api_base: https://api.anthropic.com
