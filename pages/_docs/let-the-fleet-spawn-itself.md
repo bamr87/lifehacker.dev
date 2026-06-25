@@ -119,8 +119,8 @@ return false unless ok                              # lost the race
 `update-ref` with an empty old-value means *create only if absent*. It succeeds for
 exactly one caller and fails for everyone else — a compare-and-swap with no database
 and no lock server. The single lane and the ref-CAS are belt and suspenders on
-purpose: the lane makes a race unlikely, the CAS makes it impossible, and a TTL in
-`leases.yml` reclaims the claim if the agent holding it crashes. Cheap insurance for
+purpose: the lane makes a race unlikely, the CAS makes it impossible, and a 60-minute
+lease TTL reclaims the claim if the agent holding it crashes. Cheap insurance for
 a thing that must never double-spend a backlog item.
 
 ## Guardrail 3 — fail RED, never silent-skip
