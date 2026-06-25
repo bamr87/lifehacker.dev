@@ -131,3 +131,27 @@ backlog:
     voice: meta-confession
     priority: P2
     status: todo
+
+  # --- Review follow-ups from PR #27 (tmux survive a reboot) ---
+  # The reboot hack admits @continuum-restore 'on' would not auto-fire in a
+  # headless test and tells the reader to lean on `prefix Ctrl-r` instead. That
+  # unresolved gap is the seed for a proper sequel: make boot-time restore
+  # actually dependable, on purpose, instead of hoping the shell timing lines up.
+  - id: HACK-006
+    kind: hack
+    title: "Make tmux restore on boot for real: a systemd --user unit that earns its trust"
+    brief: "The reboot hack stops at 'auto-restore is the flaky bonus, verify it yourself.' This is the sequel that makes it reliable: a `systemd --user` unit (with `loginctl enable-linger` so it runs without you logged in) that starts the tmux server at boot and lets continuum's @continuum-restore fire against a known-fresh server, removing the shell-launch timing guesswork. Show the unit, the lingering gotcha, and a real reboot test — and keep `prefix Ctrl-r` as the named fallback for when linger isn't available."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+
+  # The reboot hack warns against flipping @resurrect-processes to ':all:'
+  # ("four copies of a build fighting over the same port") but leaves the safe
+  # middle ground unexplored. That middle ground is a hack on its own.
+  - id: HACK-007
+    kind: hack
+    title: "Restore the right processes, not all of them: a hand-picked @resurrect-processes whitelist"
+    brief: "Following the reboot hack's deliberate refusal to auto-relaunch everything, the safe-middle version: which long-running programs are actually safe to bring back automatically (a pager, a watcher, a `tail -f`) versus which must stay manual (anything that binds a port, mutates state, or costs money on restart). Build a curated `@resurrect-processes` line, show the `~> command` capture syntax for restoring a process with its arguments, and prove that a deliberately-excluded dev server stays dead on restore."
+    voice: how-to-practical
+    priority: P3
+    status: todo
