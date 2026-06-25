@@ -233,6 +233,6 @@ jobs:
           # github.token (improvement still lands, just without an auto re-run).
           GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
         with:
-          prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, apply small improvements to the content file(s) ONLY, append larger ideas to _data/backlog.yml, commit to this PR branch, and comment judgment calls. Never touch scripts/.github/_config/Gemfile. Never merge."
-          tools: "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob"
+          prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, apply small improvements to the content file(s) ONLY, and commit to this PR branch. Post larger follow-up ideas as a PR COMMENT (do NOT append to _data/backlog.yml — concurrent content PRs collide on it). Comment judgment calls. Never touch scripts/.github/_config/Gemfile or _data/backlog.yml. Never merge."
+          tools: "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Grep,Glob"
           system: "You are the content-reviewer for lifehacker.dev. Improve the changed content only; never touch infra; never merge."

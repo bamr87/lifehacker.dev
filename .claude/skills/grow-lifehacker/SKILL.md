@@ -80,11 +80,13 @@ not published — it becomes a Field Note about why it didn't.
 ### 6. Open a PR
 - Commit on a branch (`autopilot/<slug>`), push, open a PR summarizing what you
   made, what you tested, and any upstream issue you filed.
-- Backlog edits are **append-only**: flip ONLY your own item to `status: done`
-  (add a `published: /<path>/` link), and you may APPEND new follow-up ideas.
-  NEVER edit, reorder, or delete anyone else's backlog entry — dropping a queued
-  idea is a silent regression. (If you regenerate a section, diff it: only your
-  own item and net-new entries should change.)
+- Backlog edit — keep it MINIMAL: flip ONLY your own item to `status: done` and add
+  a `published: /<path>/` link. That targeted one-line change rarely conflicts.
+  Do NOT append new follow-up ideas to `_data/backlog.yml` — concurrent content PRs
+  collide on lines appended at the end (the recurring merge conflict). Instead, list
+  follow-up ideas in the PR DESCRIPTION under a `## Backlog ideas` heading; triage
+  promotes the good ones into the backlog later (serialized, conflict-free). NEVER
+  edit, reorder, or delete anyone else's backlog entry.
 - Stop. Wait for a human.
 
 ## Front-matter templates
