@@ -159,3 +159,16 @@ backlog:
     voice: how-to-practical
     priority: P3
     status: todo
+
+  # Surfaced by the DOC-002 review (PR #33): the doc ends on a live 404 — branch
+  # protection is OFF and an admin still has to throw the switch (OPS-001). Once
+  # OPS-001 lands, there's an honest "the part where it got fixed" follow-up worth
+  # writing: re-run the same `gh api` command and show the before/after. Closes
+  # the loop the doc deliberately left open. Gate on OPS-001 being done first.
+  - id: DOC-004
+    kind: post
+    title: "We threw the switch: the 404 that became a branch-protection rule"
+    brief: "Short companion to DOC-002, written the day branch protection actually went on. The same `gh api .../branches/main/protection` call that returned 404 'Branch not protected' now returns the rules block — paste both, before and after, real output only. The lesson: the doc that admits the lock is off is what got the lock turned on. Do not write until OPS-001 is done and the PUT has run; the whole point is the verified after-state."
+    voice: meta-confession
+    priority: P3
+    status: todo

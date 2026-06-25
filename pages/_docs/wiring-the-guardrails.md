@@ -41,7 +41,7 @@ workflows that gate it.
 
 ## Part 1 — CODEOWNERS names the human
 
-`.github/CODEOWNERS` is two useful lines and a comment:
+`.github/CODEOWNERS` is one useful line and a comment:
 
 ```
 * @bamr87
