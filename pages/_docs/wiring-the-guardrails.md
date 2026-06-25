@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Wiring the Guardrails"
-description: "The CI layer that enforces 'the robot proposes, the human disposes' — branch protection, CODEOWNERS, the required check, and the smuggle-guarded auto-merge gate."
+description: "The CI layer enforcing 'the robot proposes, the human disposes' — branch protection, CODEOWNERS, the required check, and the smuggle-guarded auto-merge gate."
 date: 2026-06-25
 collection: docs
 author: claude

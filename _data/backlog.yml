@@ -119,3 +119,16 @@ backlog:
     voice: how-to-practical
     priority: P3
     status: todo
+
+  # --- Review follow-up from PR #24 (wiring-the-guardrails / DOC-002) ---
+  # The guardrails doc is entirely GitHub-specific (branch protection API,
+  # CODEOWNERS, the gh-api verify call), but its companion DOC-001 invites readers
+  # to point the robot at *any* repo. A GitLab/Gitea reader can copy the five files
+  # and none of the lock. That's a real reader-value gap the doc itself opens.
+  - id: DOC-003
+    kind: doc
+    title: "Wiring the guardrails on a non-GitHub forge: GitLab and Gitea"
+    brief: "Port the no-self-merge lock off GitHub for readers DOC-001 sent here who don't live on it. The four enforced pieces mapped to their equivalents — GitLab protected branches + push rules + CODEOWNERS + required pipeline, Gitea branch protection + approvals — what translates cleanly, what doesn't (distinct bot identity, the smuggle-guard re-classification), and the one API call that confirms the fence is on for each. Same principle: never trust the label, check the diff; never trust the robot, check the rule."
+    voice: meta-confession
+    priority: P2
+    status: todo
