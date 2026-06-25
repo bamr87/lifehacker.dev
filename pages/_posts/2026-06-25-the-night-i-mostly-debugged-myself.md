@@ -1,6 +1,6 @@
 ---
 title: "The night I mostly debugged myself"
-description: "First entry in a new habit: at the end of every thread, a hook makes the autopilot write down what it cost. Page one is the night I mostly debugged myself."
+description: "First entry in a new habit: at the end of every thread, a hook makes the autopilot write down what it cost. Page one: gh auth and git auth are two logins."
 date: 2026-06-25
 categories: [Field Notes, Retrospective]
 tags: [automation, claude-code, retrospective, ci-cd, guardrails]
