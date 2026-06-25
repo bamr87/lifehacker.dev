@@ -143,3 +143,23 @@ backlog:
     priority: P2
     status: done
     published: /tools/zoxide-smarter-cd-honest-review/
+
+  # --- Review follow-up from PR #28 (zoxide: the honest review) ---
+  # The zoxide review names two gaps it can't fully cover in one tools piece:
+  # the `zi` interactive picker silently needs fzf, and the db.zo file logs
+  # every directory you visit. Each is a how-to-practical hack on its own.
+  - id: HACK-006
+    kind: hack
+    title: "Turn on zoxide's `zi` interactive jump — and the fzf dependency nobody installs"
+    brief: "The zoxide review flags `zi` as a silent second install ('could not find fzf, is it installed?'). This is the procedure that finishes the job: install fzf, confirm `zi` opens the picker over your real database, and the one config tweak (FZF_DEFAULT_OPTS / preview) that makes arrowing through directories actually pleasant. Each step has a 'you'll know it worked when…' tell. Cross-link both the zoxide and fzf reviews."
+    voice: how-to-practical
+    priority: P2
+    status: todo
+
+  - id: HACK-007
+    kind: hack
+    title: "Make zoxide forget: pruning db.zo and the directories you didn't mean to log"
+    brief: "The zoxide review names the privacy cost — every `cd` lands in a plaintext `db.zo` — but stops at 'you can prune it with zoxide remove'. This is the full hygiene hack: inspect what's in the database (`zoxide query -l -s`), remove a single stale or sensitive path, bulk-prune dead directories, and reset cold. The part where it broke: removing a path that frecency immediately re-adds the next time you cd there."
+    voice: how-to-practical
+    priority: P3
+    status: todo

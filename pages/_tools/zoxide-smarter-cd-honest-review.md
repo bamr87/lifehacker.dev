@@ -11,7 +11,7 @@ tags: [cli, shell, developer-tools]
 
 **Verdict: install it, then forget about it for a week.** zoxide gives you a new command, `z`, that jumps to a directory by a fragment of its name instead of its full path — `z website` instead of `cd ~/projects/lifehacker-website`. The catch, and the whole design, is that it only knows directories you've already visited. It watches every `cd`, scores each folder by how often and how recently you go there, and sends `z` to the winner. It is not magic on day one, it is not a file finder, and it does not read your mind — it reads your history. If you live in a handful of deep project trees, it's the cheapest quality-of-life upgrade your shell can get.
 
-zoxide is free and open source (MIT). We have no relationship with the project, no affiliate link, nothing to sell. It's a single binary plus a few lines you paste into your shell config. We installed version `0.9.3` from the Ubuntu package and ran everything below for real.
+zoxide is free and open source (MIT). We have no relationship with the project, no affiliate link, nothing to sell. It's a single binary plus one line you paste into your shell config. We installed version `0.9.3` from the Ubuntu package and ran everything below for real.
 
 ## Install
 
