@@ -35,7 +35,7 @@ module Fleet
              "# atomic guard; this file is the human-readable record + TTL clock.\n".freeze
 
     def save(leases)
-      File.write(FILE, HEADER + leases.to_yaml)
+      LH.ywrite(FILE, leases, fallback_header: HEADER)   # preserves the header (or seeds it)
     end
 
     def active(ttl_minutes = nil)

@@ -116,6 +116,18 @@ Dir[File.join(LH::ROOT, 'scripts/**/*.rb')].sort.each do |f|
   `ruby -c #{f} 2>&1`
   add(findings, 'error', 'syntax', "#{LH.rel(f)} has a Ruby syntax error") unless $?.success?
 end
+
+# Comment-preservation: a bare `File.write(path, X.to_yaml)` serializes only the
+# data and silently drops the file's comment header (our committed _data/*.yml files
+# document themselves there). Route YAML writes through LH.ywrite, which preserves it.
+Dir[File.join(LH::ROOT, 'scripts/**/*.rb')].sort.each do |f|
+  next if LH.rel(f) == 'scripts/ci/_lib.rb'   # the one place to_yaml legitimately lives
+  LH.read(f).each_line.with_index do |line, i|
+    next if line =~ /\A\s*#/   # skip Ruby comments (incl. this rule's own doc text)
+    next unless line =~ /File\.write\(.*,\s*[A-Za-z_]\w*\.to_yaml\s*\)/
+    add(findings, 'error', 'comment-preservation', "#{LH.rel(f)}:#{i + 1} writes YAML via a bare `.to_yaml` (drops the comment header) — use LH.ywrite")
+  end
+end
 Dir[File.join(LH::ROOT, 'scripts/**/*.sh')].sort.each do |f|
   `bash -n #{f} 2>&1`
   add(findings, 'error', 'syntax', "#{LH.rel(f)} has a shell syntax error") unless $?.success?
