@@ -136,6 +136,8 @@ $ tmux show-options -g status-left
 status-left "#[bg=#458588,fg=#1d2021,bold] #S #[default] "
 ```
 
+You'll know it took the moment you reload (`prefix r`): the bar drops from radioactive green to dark grey, your session name lands in a small blue badge on the left, and the clock moves to the right.
+
 Plain-English translation of the format gibberish: `status-style` paints the whole bar a dark grey with muted foreground text. `status-left` puts your session name (`#S`) in a small blue-on-dark badge, then `#[default]` resets the colors so the window list after it looks normal. `status-right` shows the time (`%H:%M`) in the same muted grey. `status-left-length` only stops tmux from truncating a longer session name. The colors are [gruvbox](https://github.com/morhetz/gruvbox) hex values because they're easy on the eyes; swap them for anything. The point isn't these specific colors — it's that four lines get you a readable bar without a plugin or a Nerd Font.
 
 ## The grown-up config, in one block
