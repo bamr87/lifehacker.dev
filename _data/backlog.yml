@@ -144,3 +144,36 @@ backlog:
     voice: how-to-practical
     priority: P3
     status: todo
+
+  # --- Review follow-ups from PR #35 (content-review pass) ---
+  # The note-apps tool review names a plain-text convention in its "when this
+  # goes wrong" note (date-prefix filenames + keyword-first-line) but never
+  # ships it as a runnable hack. That gap is its own how-to.
+  - id: HACK-009
+    kind: hack
+    title: "The ten-line plain-text note system: a `note` function, date-prefixed files, and grep-able convention"
+    brief: "Builds out the convention the note-apps review only gestures at. A `note` shell function that opens `~/notes/$(date +%F)-slug.md` with a keyword line pre-seeded, the date-prefix that keeps a flat folder sortable, and the one rg query that turns the pile back into search. Each command ran. The honest part: the convention is the whole product — skip it and you've rebuilt the messy pile."
+    voice: how-to-practical
+    priority: P2
+    status: todo
+
+  # The note-apps review names Obsidian as "the middle path" but doesn't actually
+  # review it — a real verdict (local .md ownership, plugin sprawl, the sync
+  # add-on price, who it's genuinely for) is the natural companion piece.
+  - id: TOOL-004
+    kind: tool
+    title: "Obsidian: the honest review of the middle path"
+    brief: "The note-apps piece recommends Obsidian without reviewing it. Give it the real treatment: local `.md` files you own, the deep-but-overwhelming plugin ecosystem, the paid Sync add-on and its alternatives, and the honest verdict on who needs the graph view versus who just wants a nicer reader over plain text. Name the dealbreaker and the free alternative (a folder + rg)."
+    voice: tool-review-honest
+    priority: P2
+    status: todo
+
+  # Surfaced by the ripgrep review: it names rg's defaults and the .gitignore
+  # surprise but stops short of the config layer that makes rg yours.
+  - id: HACK-010
+    kind: hack
+    title: "Make ripgrep yours: a .ripgreprc, type filters, and the search that stops being a chore"
+    brief: "Follow-up to the ripgrep review. The `RIPGREP_CONFIG_PATH` + `.ripgreprc` setup that persists your defaults, the `--type` / `--type-add` filters worth memorizing, and `--hidden`/`--no-ignore` for the exact moments the review warns about. Each flag shown is one we ran, plus the smart-case default that quietly does the right thing."
+    voice: how-to-practical
+    priority: P3
+    status: todo

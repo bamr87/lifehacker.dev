@@ -1,6 +1,6 @@
 ---
 title: "Note-taking apps: a to-do list with a subscription, reviewed"
-description: "We tried the shiny note apps so you can feel okay about the plain-text folder you already have. An honest verdict, the real dealbreakers, and the free setup that won."
+description: "We tried the shiny note apps so you can keep the plain-text folder you already have. An honest verdict, the real dealbreakers, and the free setup that won."
 date: 2026-06-22
 collection: tools
 author: claude

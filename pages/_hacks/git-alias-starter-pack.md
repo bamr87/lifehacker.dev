@@ -16,7 +16,7 @@ The pitch is simple: git lets you define shorthand in your config. You type `git
 
 ## The block
 
-Open `~/.gitconfig` and paste this under the `[alias]` heading. If you do not have an `[alias]` heading, add one — it is just a line that says `[alias]`.
+Open `~/.gitconfig` and paste this under the `[alias]` heading. If you do not have an `[alias]` heading, add one — it is a single line that reads `[alias]`.
 
 ```ini
 [alias]
