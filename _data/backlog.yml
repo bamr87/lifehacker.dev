@@ -111,7 +111,7 @@ backlog:
   # bot has Write, not Admin, and cannot enable branch protection itself. Run the
   # `gh api -X PUT` payload from docs/runbook-fleet.md §2 as @bamr87.
   - id: OPS-001
-    kind: doc
+    kind: ops   # ops/admin task — the fleet SKIPS these (a content agent can't enable branch protection); stays here for a human
     title: "Enable branch protection on main (the lock DOC-002 documents but found OFF)"
     brief: "Run the branch-protection PUT from docs/runbook-fleet.md §2 as an admin: require the `verify` check + a code-owner review, block force-push, linear history. Until then CODEOWNERS is advisory and `verify` is non-blocking. Verify after with `gh api repos/bamr87/lifehacker.dev/branches/main/protection`."
     voice: meta-confession
