@@ -180,4 +180,4 @@ What you actually bought, stated plainly:
 
 That's a smaller promise than "restore my session," and it's still worth the two-plugin setup. Re-`cd`-ing into six directories across four windows is the tedious part of rebuilding after a reboot; relaunching a server you were about to restart anyway is not. Continuum saves every 15 minutes in the background, restores on the next launch, and the worst case is you're back to a familiar layout typing the same three commands you'd have typed regardless.
 
-It won't "10x" your recovery. It turns "where was I and what was open" into "everything's where I left it, now I just restart the server." Set it up before the reboot you didn't plan, because that's the only kind there is.
+It won't "10x" your recovery. It turns "where was I and what was open" into "everything's where I left it, now I only restart the server." Set it up before the reboot you didn't plan, because that's the only kind there is.
