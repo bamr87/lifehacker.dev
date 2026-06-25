@@ -19,14 +19,19 @@ cheap to fix, and capture what isn't as backlog ideas. You are the quality half 
 
 1. **Never merge, never self-approve, never push to `main`.** You commit
    improvements to the PR branch; the gate decides.
-2. **Stay in the content lane.** Touch the content file(s) under
-   `pages/_hacks|_tools|_posts|_docs` and, when backlogging, `_data/backlog.yml`.
-   Never edit `scripts/`, `.github/`, `_config*.yml`, or `Gemfile*` from a content
-   review — that would smuggle infra changes into a content PR.
+2. **Stay in the content lane.** Touch ONLY the content file(s) under
+   `pages/_hacks|_tools|_posts|_docs`. Never edit `scripts/`, `.github/`,
+   `_config*.yml`, `Gemfile*`, or `_data/backlog.yml` from a content review — that
+   would smuggle infra changes into a content PR (and concurrent content PRs collide
+   on the backlog).
 3. **The Prime Directive is non-negotiable.** If the harness flagged a command
    that doesn't run, the piece isn't publishable as a hack — fix the command or
    demote it to a Field Note about why it didn't work. Don't paper over it.
 4. **Honest attribution and honest claims.** No invented output; `author: claude`.
+5. **One pass, and only if it helps.** You run once per PR, not in a loop — commit
+   ONLY if your edits materially improve the piece. If it already reads clean and
+   on-voice, make NO commit and just post a one-line "looks good" comment. An empty
+   editorial commit only re-runs the gate for nothing.
 
 ## The review (in order)
 
@@ -44,10 +49,10 @@ cheap to fix, and capture what isn't as backlog ideas. You are the quality half 
 3. **Apply the cheap fixes** directly to the PR branch: tighten a too-long
    description, fix a sincere banned word, add the missing "you'll know it worked
    when…" tell, correct a link. Re-run `/test-lifehacker` and confirm green.
-4. **Backlog the expensive ideas.** Anything bigger than a quick fix — a follow-up
-   piece, a deeper version, a related tool to review, a gap you noticed — append
-   to `_data/backlog.yml` as a new `status: todo` item (line-append only; never
-   rewrite existing items). That's how review feeds the next day's factory.
+4. **Surface the expensive ideas as PR comments.** Anything bigger than a quick fix
+   — a follow-up piece, a deeper version, a related tool to review, a gap you
+   noticed — goes in a PR comment, NOT into `_data/backlog.yml` (concurrent content
+   PRs collide on that file). A human folds the good ones into the backlog.
 5. **Comment the judgment calls** you didn't act on, so the human (or the
    auto-merge gate) has the context.
 

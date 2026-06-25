@@ -198,7 +198,13 @@ jobs:
   # judgment; never merges. No-op without an API key.
   content-review:
     needs: [changes, verify]
-    if: ${{ needs.changes.outputs.content == 'true' && github.event_name == 'pull_request' }}
+    # LOOP-BREAKER: the editorial commit content-review pushes (with FLEET_TOKEN, so
+    # it re-triggers `verify`) itself fires a `synchronize` event. Skip content-review
+    # on synchronize so it never re-reviews its own commit — one editorial pass per PR
+    # open/reopen, not an infinite micro-edit loop. (`verify` still runs on synchronize,
+    # so the editorial commit is re-validated.) The sibling auto-fix job solves the
+    # same self-retrigger hazard with a MAX_ATTEMPTS counter.
+    if: ${{ needs.changes.outputs.content == 'true' && github.event_name == 'pull_request' && github.event.action != 'synchronize' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -235,6 +241,6 @@ jobs:
           GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
         with:
           agent: content-reviewer
-          prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, apply small improvements to the content file(s) ONLY, and commit to this PR branch. Post larger follow-up ideas as a PR COMMENT (do NOT append to _data/backlog.yml — concurrent content PRs collide on it). Comment judgment calls. Never touch scripts/.github/_config/Gemfile or _data/backlog.yml. Never merge."
+          prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, and apply small improvements to the content file(s) ONLY. Commit ONLY if your edits materially improve the piece; if it already reads clean and on-voice, make NO commit — just post a one-line 'looks good' PR comment. This is a single editorial pass, not an iterative polish. Post larger follow-up ideas as a PR COMMENT (do NOT append to _data/backlog.yml — concurrent content PRs collide on it). Comment judgment calls. Never touch scripts/.github/_config/Gemfile or _data/backlog.yml. Never merge."
           tools: "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Grep,Glob"
           system: "You are the content-reviewer for lifehacker.dev. Improve the changed content only; never touch infra; never merge."
