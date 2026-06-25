@@ -34,7 +34,7 @@ add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml does not read FLEET_
 # gated by its ENABLED kill-switch variable, so nothing runs unattended by default.
 { 'content-factory.yml' => 'CONTENT_FACTORY_ENABLED', 'explore.yml' => 'EXPLORER_ENABLED',
   'auto-merge.yml' => 'AUTO_MERGE_ENABLED', 'auto-fix.yml' => 'AUTO_FIX_ENABLED',
-  'theme-scout.yml' => 'THEME_SCOUT_ENABLED' }.each do |wf, gate|
+  'theme-scout.yml' => 'THEME_SCOUT_ENABLED', 'agent-review.yml' => 'AGENT_REVIEW_ENABLED' }.each do |wf, gate|
   c = wf_read[wf].to_s
   add(findings, 'error', 'autonomy-gate', "#{wf} is not gated by #{gate}") unless c.empty? || c.include?(gate)
 end
