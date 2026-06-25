@@ -36,8 +36,12 @@ $ fzf --version
 
 ## 1. `fkill -m` — kill a handful of processes at once
 
-One stuck dev server is `fkill`. Three orphaned workers from the run you
-`Ctrl-C`'d is `fkill -m`: `TAB` each one, `Enter`, gone.
+One stuck dev server is single-pick `fkill`. Three orphaned workers from the run
+you `Ctrl-C`'d wants multi-select: `TAB` each one, `Enter`, gone. The `-m` in
+these section titles is fzf's own flag, baked into each function — you still
+invoke them by bare name (`fkill`, or `fkill -KILL` when the default `TERM`
+isn't enough; that first argument is the signal, not a flag, so don't type
+`fkill -m` — it would hand `kill` a bogus `-m`).
 
 ```bash
 fkill() {
