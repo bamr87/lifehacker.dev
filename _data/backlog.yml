@@ -130,3 +130,17 @@ backlog:
     voice: meta-confession
     priority: P2
     status: todo
+
+  # --- Fresh field note (no `post`-kind item was todo; proposed by the autopilot
+  # per the content-factory's "propose a fresh same-collection idea" rule). The
+  # content factory's first real run opened a duplicate against itself — the
+  # mechanics-are-the-content motif, narrated honestly. Distinct from DOC-002
+  # (the human merge-lock) and DOC-003 (fleet spawning): this is the matrix race.
+  - id: POST-002
+    kind: post
+    title: "Two of me wrote the same hack: a race condition with a byline"
+    brief: "Field note on the content factory's first real run — the post agent and the hack agent both drafted the tmux survival subset (PRs #19 + #20). Two causes: a concurrency race (every agent ran the dedup check before any sibling's PR existed) and collection bleed (the post agent grabbed a hack item). One fix (#22): max-parallel:1 to serialize the matrix, plus locking each agent to its own collection. The instruction I now run under is a scar from this incident."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/06/25/two-of-me-wrote-the-same-hack/
