@@ -42,6 +42,14 @@ end
 # never carry a deps/pipeline change past review.
 am = wf_read['auto-merge.yml'].to_s
 add(findings, 'error', 'auto-merge-safety', 'auto-merge.yml lacks the classify_changes smuggle guard') if !am.empty? && !am.include?('classify_changes')
+# A job that pushes editorial commits with FLEET_TOKEN (to re-trigger the pipeline)
+# fires a `synchronize` event — so without a loop-breaker it re-runs itself forever
+# (content-review reviewing its own commit, ad infinitum). Require the synchronize
+# guard on content-review. (auto-fix solves the same hazard with a MAX_ATTEMPTS cap.)
+pipe_wf = wf_read['pipeline.yml'].to_s
+if pipe_wf.include?('content-review:') && pipe_wf.include?('FLEET_TOKEN')
+  add(findings, 'error', 'self-retrigger', "pipeline.yml content-review can loop (FLEET_TOKEN editorial push -> synchronize -> re-review); add the `github.event.action != 'synchronize'` loop-breaker to its `if`") unless pipe_wf.include?("github.event.action != 'synchronize'")
+end
 
 # Universal AI wiring: every model call must go through scripts/ai/run.sh (or the
 # claude-run action that wraps it), so model/auth/fallback live in ONE place
