@@ -27,6 +27,22 @@ module LH
     YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(str) : YAML.load(str)
   end
 
+  # Write a data structure back to a YAML file WITHOUT clobbering its comment
+  # header. `to_yaml` serializes only the data, so a naive File.write(path,
+  # data.to_yaml) silently drops the file's leading comment block (our committed
+  # _data/*.yml files document themselves in that header). This preserves whatever
+  # comment header the file already has, falling back to fallback_header when it has
+  # none (e.g. a first write, or a file a previous bug already stripped).
+  def ywrite(path, data, fallback_header: nil)
+    header = ''
+    if File.exist?(path)
+      lead = read(path)[/\A(?:[ \t]*#[^\n]*\n|[ \t]*\n)*/].to_s   # leading comment/blank run
+      header = lead unless lead.strip.empty?
+    end
+    header = fallback_header.to_s if header.empty? && fallback_header
+    File.write(path, header + data.to_yaml.sub(/\A---\n/, ''))
+  end
+
   # Absolute path -> repo-relative (stable identity across machines/CI).
   def rel(path)
     path.sub(/\A#{Regexp.escape(ROOT)}\/?/, '')

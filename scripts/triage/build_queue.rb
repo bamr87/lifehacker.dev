@@ -47,7 +47,7 @@ summary = {
   'analytics_stale' => !!(Triage.analytics['stale']),
   'analytics_generated_at' => Triage.analytics['generated_at']
 }
-File.write(File.join(Triage::HEALTH, 'summary.yml'), summary.to_yaml)
+LH.ywrite(File.join(Triage::HEALTH, 'summary.yml'), summary)   # via the header-preserving writer
 
 errs  = items.count { |i| i['severity'] == 'sev1' || i['severity'] == 'sev2' }
 puts "[build_queue] #{items.size} queued from #{findings.size} findings "\

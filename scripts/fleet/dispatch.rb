@@ -104,7 +104,7 @@ if APPLY
   st['cycles']        = (st['cycles'] || 0) + 1
   st['last_run']      = Time.now.utc.iso8601
   st['last_decision'] = plan[:reason]
-  File.write(sf, st.to_yaml)
+  LH.ywrite(sf, st)   # preserve state.yml's comment header (don't round-trip it away)
 end
 
 # --- Report ------------------------------------------------------------------
