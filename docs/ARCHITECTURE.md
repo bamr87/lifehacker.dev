@@ -87,5 +87,15 @@ assertions) is the regression net for every one of these.
 - **Add a fleet role:** a `.claude/skills/<role>/SKILL.md` that opens one PR and
   never merges; teach `Fleet::Plan.compute` when to dispatch it (key off `type`).
 
+## Learning loop (memory across threads)
+
+The autopilot runs inside Claude Code threads, and each thread learns things that
+otherwise die with its context window. The **session-retrospective hook** captures
+that: a `SessionEnd` hook (`.claude/settings.json` → `.claude/hooks/retrospective-enqueue.rb`)
+queues every finished thread, and the `session-retrospective` agent later reads the
+transcript and publishes an honest Field Note about what the thread learned —
+indexed in `_data/retrospectives.yml`. So the *next* thread starts knowing what the
+last one cost. See `docs/RETROSPECTIVE-HOOK.md`.
+
 See `docs/CICD.md` for the pipeline and `docs/RETROSPECTIVE.md` for how it was
 built (and the bugs the harness caught building it).

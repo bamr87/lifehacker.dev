@@ -1,0 +1,15 @@
+{
+  "//": "Project hooks for lifehacker.dev. The SessionEnd hook queues every finished Claude Code thread as a retrospective candidate (see docs/RETROSPECTIVE-HOOK.md). It is cheap, non-blocking, and never fails a session.",
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ruby \"$CLAUDE_PROJECT_DIR/.claude/hooks/retrospective-enqueue.rb\""
+          }
+        ]
+      }
+    ]
+  }
+}

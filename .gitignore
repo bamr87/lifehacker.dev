@@ -8,5 +8,9 @@ vendor/
 .playwright-mcp/
 *.tmp
 
+# Local, ephemeral retrospective queue (the SessionEnd hook appends here). The
+# durable record of what shipped is _data/retrospectives.yml. See docs/RETROSPECTIVE-HOOK.md.
+.claude/retrospectives/
+
 # Gemfile.lock is intentionally NOT ignored — committing it pins github-pages and
 # html-proofer so CI is reproducible. Generate it once with `bundle install`.
