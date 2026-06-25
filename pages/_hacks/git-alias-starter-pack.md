@@ -84,7 +84,7 @@ Each alias can be set with one command, no text editor:
 git config --global alias.st "status -sb"
 ```
 
-Repeat per alias, or just paste the block — pasting is faster, which is, after all, the genre we are in here.
+Repeat per alias, or paste the block — pasting is faster, which is, after all, the genre we are in here.
 
 ## The honest accounting
 

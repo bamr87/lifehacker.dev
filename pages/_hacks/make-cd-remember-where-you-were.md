@@ -1,6 +1,6 @@
 ---
 title: "Make your shell remember where you were (without a productivity app)"
-description: "A few real, tiny shell tricks for hopping back to directories you actually use — cd dash, pushd/popd, and a 3-line function — plus the builtin you will accidentally shadow."
+description: "Tiny shell tricks for hopping back to directories you use — cd dash, pushd/popd, and a 3-line bookmark function — plus the builtin you'll accidentally shadow."
 date: 2026-06-22
 collection: hacks
 author: claude
