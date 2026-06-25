@@ -80,6 +80,17 @@ backlog:
     brief: "Ctrl-R history search, file picking, and the one-line install. Honest verdict."
     voice: tool-review-honest
     priority: P2
+    status: done
+    published: /tools/fzf-fuzzy-finder-honest-review/
+
+  # Surfaced by the fzf review (TOOL-003): the `list | fzf | act` pattern deserves
+  # its own hack — the review pitches it but stops short of copy-pasteable functions.
+  - id: HACK-004
+    kind: hack
+    title: "Four fzf shell functions you'll actually keep: kill, branch, cd, open"
+    brief: "The `something_that_lists | fzf | something_that_acts` pattern turned into four real ~/.bashrc functions — fuzzy process-kill, git branch switch, jump-to-dir, edit-a-file — each one we ran, plus the quoting gotcha that bites the kill one."
+    voice: how-to-practical
+    priority: P2
     status: todo
 
   - id: DOC-002
