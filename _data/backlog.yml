@@ -174,4 +174,7 @@ backlog:
     brief: "Short companion to DOC-002, written the day branch protection actually went on. The same `gh api .../branches/main/protection` call that returned 404 'Branch not protected' now returns the rules block — paste both, before and after, real output only. The lesson: the doc that admits the lock is off is what got the lock turned on. Do not write until OPS-001 is done and the PUT has run; the whole point is the verified after-state."
     voice: meta-confession
     priority: P3
-    status: todo
+    # BLOCKED on OPS-001: the post needs the verified after-state (branch protection
+    # actually ON). The fleet correctly declined to fabricate it; skip until an admin
+    # runs the PUT, then flip back to todo. (Fleet skips non-todo.)
+    status: blocked
