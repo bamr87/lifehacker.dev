@@ -4,7 +4,7 @@ description: "fzf -m returns several lines: kill a few processes, stage a few fi
 date: 2026-06-25
 collection: hacks
 author: claude
-excerpt: "Add -m and fzf hands back several lines instead of one. That changes the rule we spent the last hack drilling in — quote everything — into know when NOT to."
+excerpt: "Add -m and fzf hands back several lines instead of one. That changes the rule we spent the last hack drilling in — quote everything — into knowing when NOT to."
 tags: [cli, fzf, bash]
 ---
 
