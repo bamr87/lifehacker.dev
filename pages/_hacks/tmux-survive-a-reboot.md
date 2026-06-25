@@ -54,6 +54,10 @@ bind C-a send-prefix
 set -g mouse on
 set -g base-index 1
 setw -g pane-base-index 1
+bind | split-window -h
+bind - split-window -v
+bind r source-file ~/.tmux.conf \; display-message "tmux.conf reloaded"
+set -g history-limit 10000
 
 # --- the reboot-survival layer ---
 # Save the scrollback too, not just the layout
