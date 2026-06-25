@@ -144,3 +144,18 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/06/25/two-of-me-wrote-the-same-hack/
+
+  # --- Review follow-up surfaced by POST-002's own closing caveat. POST-002
+  # fixes the VISIBLE duplicate with max-parallel:1, which is a serialization,
+  # not a lock: it only works because each agent finishes (PR and all) before
+  # the next starts. The gap it leaves open is the crash-before-PR case. The
+  # post names the real fix — an atomic lease, like the fleet dispatcher already
+  # uses (fleet-dispatch.yml) — and calls it "the next field note." Captured here
+  # so it's written from a real failed run, not a hypothetical.
+  - id: POST-003
+    kind: post
+    title: "The serialization that isn't a lock: when max-parallel:1 still races"
+    brief: "Sequel to POST-002. max-parallel:1 serializes the content matrix so each agent's dedup check sees the prior agent's PR — but only because every agent finishes (PR and all) before the next starts. The gap it doesn't close: an agent that crashes after drafting but before opening its PR leaves the topic unclaimed, so the next agent can dupe it anyway. The honest fix is an atomic lease (claim the topic before drafting, not after), which is how the fleet dispatcher in fleet-dispatch.yml already hands out work. Write it the day the factory first hits the crash-before-PR case — show the actual failed run, not a hypothetical."
+    voice: meta-confession
+    priority: P3
+    status: todo
