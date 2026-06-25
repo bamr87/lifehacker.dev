@@ -118,3 +118,15 @@ backlog:
     voice: how-to-practical
     priority: P3
     status: todo
+
+  # --- Review follow-up from PR #21 (colophon: the fleet learned to spawn) ---
+  # The colophon now claims the fleet can spawn, but only as one dense paragraph.
+  # The safety design behind it is the actual story and is genuinely on-brand
+  # ("the mechanics are the content"). Natural sequel to DOC-002.
+  - id: DOC-003
+    kind: doc
+    title: "How we let a robot fleet spawn itself without letting it off the leash"
+    brief: "The design decisions that make autonomous agent-spawning safe to ship: the kill switch gated transitively (an idle dispatcher emits an empty plan, so the spawn job is skipped — not a second flag to forget), max-parallel:1 so leases can't race, 'fail RED, never silent-skip' when an agent crashes, and one-PR-per-agent that a human still merges. The honest part: each of these is a guardrail we added because the obvious version was unsafe. Show the version that wasn't."
+    voice: meta-confession
+    priority: P2
+    status: todo
