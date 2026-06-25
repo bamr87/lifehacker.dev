@@ -20,7 +20,7 @@ That's the gap. tmux survives a disconnect for free; surviving a *restart* takes
 
 ## What we're actually buying
 
-Two plugins, from the same author as tmux itself's plugin ecosystem:
+Two plugins from the `tmux-plugins` ecosystem (the same community org that maintains TPM, the plugin manager we'll install first):
 
 - **tmux-resurrect** writes your current sessions, windows, panes, layout, and each pane's working directory to a plain text file — and restores them on demand.
 - **tmux-continuum** runs resurrect's save on a timer and, optionally, restores the last save automatically when a fresh tmux server starts. So after a reboot, the first `tmux` you launch quietly rebuilds yesterday.
