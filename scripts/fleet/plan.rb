@@ -36,7 +36,10 @@ module Fleet
                                     %w[sev1 sev2 sev3].include?(i['severity']) &&
                                     i['type'] != 'type/field-note-candidate' }
                       .sort_by { |i| -i['score'].to_f }
-      growable = backlog.select { |b| b['status'].to_s == 'todo' }
+      # Growable = todo, EXCEPT ops/admin items. A backlog item can carry a task a
+      # content agent must NOT try to "generate" (kind: ops — e.g. "enable branch
+      # protection"); those stay visible as todo for a human but the fleet skips them.
+      growable = backlog.select { |b| b['status'].to_s == 'todo' && b['kind'].to_s != 'ops' }
 
       obs = { sev1: sev1, sev2: sev2, open_prs: open_prs,
               growth_available: growable.size, fix_available: fixable.size }
