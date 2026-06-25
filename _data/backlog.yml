@@ -109,7 +109,8 @@ backlog:
     brief: "The survival-subset hack stops at 'outlives the terminal'; this is the sequel that makes sessions outlive a full restart. tmux-resurrect to save/restore, tmux-continuum to autosave, and the part where it can't bring back the actual running processes — only the layout."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
+    published: /hacks/tmux-survive-a-reboot/
 
   - id: HACK-005
     kind: hack
