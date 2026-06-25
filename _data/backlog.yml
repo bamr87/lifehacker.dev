@@ -137,7 +137,7 @@ backlog:
   # it out. The multi-select variants (kill several procs, stage several files,
   # delete several branches) are their own small hack — and the TAB/Shift-TAB
   # binding plus the "act takes many args" pattern deserve a real walkthrough.
-  - id: HACK-006
+  - id: HACK-008
     kind: hack
     title: "fzf -m: the multi-select functions, and the one time you don't quote"
     brief: "Follow-up to the four single-pick functions. With `-m`, fzf returns several lines — kill a handful of processes, git add a handful of files, delete a handful of branches. Each ran, plus the deliberate un-quoting that makes word-splitting work FOR you, and the guard that stops an empty pick from acting on everything."

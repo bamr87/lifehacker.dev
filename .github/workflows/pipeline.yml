@@ -206,6 +206,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
+          # Check out with the bot PAT so the content-reviewer's `git push` is
+          # authenticated as the PAT, not github.token — a github.token-authored
+          # push re-triggers the pipeline as github-actions[bot], which GitHub
+          # gates with `action_required`, leaving the editorial commit unvalidated
+          # and the PR un-mergeable. (Setting GH_TOKEN alone fixes `gh`, not `git`.)
+          token: ${{ secrets.FLEET_TOKEN || github.token }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
