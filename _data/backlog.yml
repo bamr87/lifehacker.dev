@@ -119,3 +119,20 @@ backlog:
     voice: how-to-practical
     priority: P3
     status: todo
+
+  # --- Review follow-ups from PR #23 (four fzf shell functions, HACK-004) ---
+  - id: TOOL-004
+    kind: tool
+    title: "zoxide: cd that remembers where you actually go"
+    brief: "The fzf-functions hack (HACK-004) admits fcd only jumps *down* the current tree and points at zoxide's frecency database as 'a different post' — this is that post. Honest verdict on zoxide: how the frecency ranking beats a hand-rolled fcd for teleporting anywhere on disk, the `z` / `zi` (fzf-interactive) split, the shell-init line it wants in your rc, and the part where a fresh database knows nothing until you've walked the paths once."
+    voice: tool-review-honest
+    priority: P2
+    status: todo
+
+  - id: HACK-006
+    kind: hack
+    title: "Roll your own fzf wrapper: the list | fzf | act pattern past the four starters"
+    brief: "HACK-004 ends by generalizing the pattern (docker ps | fzf | docker stop, kubectl get pods | fzf | kubectl logs, shell history into the clipboard) but doesn't build them. This is the build-out: 4–5 more wrappers readers asked the pattern to cover, each with the same 'list / verb / the gotcha' structure, plus the fzf flags worth knowing once you're writing your own (--preview, --bind, FZF_DEFAULT_OPTS) and the moment a wrapper is complex enough to deserve a real script instead of a .bashrc function."
+    voice: how-to-practical
+    priority: P3
+    status: todo

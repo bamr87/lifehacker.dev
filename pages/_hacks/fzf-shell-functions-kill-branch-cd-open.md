@@ -106,7 +106,7 @@ $ git branch --format="%(refname:short)" | fzf --filter="login"
 feature/login
 ```
 
-The first is for humans; the second is for pipes. `&& git switch "$branch"` only fires if you actually picked something, so `Esc` is a safe no-op here too.
+The first is for humans; the second is for pipes. `&& git switch "$branch"` only fires if you actually picked something, so `Esc` is a safe no-op here too. You'll know `fbr` worked when your prompt's branch segment flips to the name you picked — and when `Esc` leaves you on the branch you were already on.
 
 ## 3. `fcd` — jump to a directory instead of `cd ../../../`
 
@@ -122,7 +122,7 @@ fcd() {
 }
 ```
 
-`find . -path ./.git -prune -o -type d -print` lists every directory under the current one while skipping the `.git` folder (you almost never want to land inside object storage). Pick one, `cd` into it. The `|| return` keeps a failed `cd` from leaving the function in a weird state.
+`find . -path ./.git -prune -o -type d -print` lists every directory under the current one while skipping the `.git` folder (you almost never want to land inside object storage). Pick one, `cd` into it. The `|| return` keeps a failed `cd` from leaving the function in a weird state. You'll know it worked when `pwd` prints the directory you picked instead of where you started.
 
 ```console
 $ find . -path ./.git -prune -o -type d -print | fzf --filter="comp"
@@ -159,7 +159,7 @@ $ find . -type f | fzf --filter="todolist" | head -1
 ./my notes/todo list.md
 ```
 
-Quote every variable that holds a path. fzf will happily return one with a space in it, because the filesystem will happily contain one.
+Quote every variable that holds a path. fzf will happily return one with a space in it, because the filesystem will happily contain one. You'll know `fe` worked when your editor opens on the file you picked rather than a fresh empty buffer.
 
 ## The pattern, now that you've seen it four times
 
