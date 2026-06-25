@@ -104,12 +104,14 @@ $ tmux list-windows -t work
 2: server* (1 panes) [80x24] [layout b25f,80x24,0,0,2] @1 (active)
 ```
 
-After `prefix Ctrl-s`, resurrect drops a timestamped text file and points a `last` symlink at it:
+After `prefix Ctrl-s`, resurrect drops a timestamped text file and points a `last` symlink at it — `readlink` confirms `last` is tracking the newest save:
 
 ```console
 $ ls ~/.local/share/tmux/resurrect/
-last -> tmux_resurrect_20260625T155802.txt
+last
 pane_contents.tar.gz
+tmux_resurrect_20260625T155802.txt
+$ readlink ~/.local/share/tmux/resurrect/last
 tmux_resurrect_20260625T155802.txt
 ```
 
