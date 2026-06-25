@@ -41,7 +41,7 @@ Then add these to the bottom of `~/.tmux.conf`:
 run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
 run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
 
-# Autosave every 15 min and rebuild sessions when tmux starts
+# Rebuild sessions automatically when tmux next starts (autosave is already on)
 set -g @continuum-restore 'on'
 ```
 

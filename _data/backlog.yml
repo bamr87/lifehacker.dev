@@ -147,3 +147,26 @@ backlog:
     voice: how-to-practical
     priority: P3
     status: todo
+
+  # --- Review follow-ups from PR #34 (tmux resurrect + continuum, HACK-006) ---
+  # That hack names the gap honestly — resurrect restores the layout, not the
+  # running programs — and flags @resurrect-processes as a foot-gun for anything
+  # with side effects. The safe pattern it stops short of is its own piece.
+  - id: HACK-008
+    kind: hack
+    title: "Bring your work back too: a safe tmux session-restore bootstrap"
+    brief: "Sequel to HACK-006, which restores the desk but not the work in progress. The opt-in pattern that closes the gap without letting resurrect blindly re-run a deploy: a per-session restore hook / project bootstrap script you trigger on restore that re-starts the dev server, re-opens the editor, and re-establishes the SSH session — each idempotent and safe to run cold. Show the resurrect-hook wiring, and the guard that keeps side-effecting commands (build, migrate, push) off the auto-path."
+    voice: how-to-practical
+    priority: P2
+    status: todo
+
+  # HACK-006 mentions @continuum-boot 'on' in a single line ("starts tmux at
+  # login") but never shows the OS-boot wiring it actually needs — its own tested
+  # procedure, and the missing third of the hands-off boot loop.
+  - id: HACK-009
+    kind: hack
+    title: "Start tmux on boot: the systemd/launchd half @continuum-boot needs"
+    brief: "The end-to-end version of HACK-006's one-line aside. @continuum-boot 'on' only matters if something starts tmux at boot in the first place — a systemd user service on Linux, a launchd agent on macOS — so the full boot → tmux → sessions-rebuild loop is hands-off. Each unit file tested, plus the part where it breaks: a headless boot has no terminal, so the service has to start tmux detached, and lingering must be enabled or the user service never runs until you log in."
+    voice: how-to-practical
+    priority: P3
+    status: todo
