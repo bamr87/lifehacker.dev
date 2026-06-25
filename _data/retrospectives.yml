@@ -1,0 +1,12 @@
+# =============================================================================
+# _data/retrospectives.yml — the published-retrospectives ledger
+# -----------------------------------------------------------------------------
+# The durable index of which Claude Code threads have been written up as Field
+# Notes on the site. The SessionEnd hook queues every finished thread
+# (.claude/retrospectives/queue.jsonl — local + gitignored); when the
+# session-retrospective agent publishes one, it appends here via:
+#   ruby scripts/retro/process_queue.rb --mark <session_id> <post-slug> "<title>"
+# A thread listed here is considered done and is not re-proposed.
+# See docs/RETROSPECTIVE-HOOK.md.
+# =============================================================================
+retrospectives: []
