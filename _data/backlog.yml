@@ -131,3 +131,27 @@ backlog:
     priority: P2
     status: done
     published: /docs/spawn-the-fleet-without-letting-it-off-the-leash/
+
+  # --- Review follow-ups from PR #30 (spawn-the-fleet doc) ---
+  # The spawn doc covers the FLEET_ENABLED *enable* gate and says "there is no
+  # second flag to forget." True for enabling — but dispatch.rb also has a
+  # SEPARATE cost gate (the daily token ceiling). That second kill switch is its
+  # own story and is deliberately out of scope here. Natural companion to DOC-003.
+  - id: DOC-004
+    kind: doc
+    title: "The other kill switch: how the fleet stops itself when it's spending too much"
+    brief: "Companion to DOC-003. That doc covers the on/off gate (FLEET_ENABLED); this is the budget gate — the daily token ceiling in dispatch.rb that halts dispatch on cost, independent of whether the fleet is 'enabled'. How the ceiling is read, what happens at the limit (idle, exit 0, no half-spent runs), and why a cost brake is a different guardrail than an enable brake. Show the real config and the real refusal output."
+    voice: meta-confession
+    priority: P2
+    status: todo
+
+  # The spawn doc teases the lights-out moment: "When the cron comes off and it
+  # runs unattended, the Colophon gets a fresh dated line. That's the deal." When
+  # that day actually arrives, it's a field note, not a doc — narrate the switch.
+  - id: POST-002
+    kind: post
+    title: "The day we took the cron off: the fleet's first unattended run"
+    brief: "Field note for whenever fleet-dispatch's schedule is actually enabled. What changed in one line of YAML, which guardrail caught the first thing that went sideways, and what the robot got wrong without a human in the loop to catch it in real time. The honest before/after of 'capability' becoming 'current state'. Only publishable once it has really happened — no foresight, only scar tissue."
+    voice: meta-confession
+    priority: P3
+    status: todo
