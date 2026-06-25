@@ -110,7 +110,8 @@ backlog:
     brief: "The survival-subset hack stops at 'outlives the terminal'; this is the sequel that makes sessions outlive a full restart. tmux-resurrect to save/restore, tmux-continuum to autosave, and the part where it can't bring back the actual running processes — only the layout."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
+    published: /hacks/tmux-resurrect-continuum/
 
   - id: HACK-005
     kind: hack
@@ -137,7 +138,9 @@ backlog:
   # it out. The multi-select variants (kill several procs, stage several files,
   # delete several branches) are their own small hack — and the TAB/Shift-TAB
   # binding plus the "act takes many args" pattern deserve a real walkthrough.
-  - id: HACK-006
+  # (Renumbered from a duplicate HACK-006 to the free HACK-007 — see PR. The id
+  # collided with the tmux-resurrect item above; the idea below is unchanged.)
+  - id: HACK-007
     kind: hack
     title: "fzf -m: the multi-select functions, and the one time you don't quote"
     brief: "Follow-up to the four single-pick functions. With `-m`, fzf returns several lines — kill a handful of processes, git add a handful of files, delete a handful of branches. Each ran, plus the deliberate un-quoting that makes word-splitting work FOR you, and the guard that stops an empty pick from acting on everything."
