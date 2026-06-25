@@ -92,7 +92,8 @@ backlog:
     brief: "The `something_that_lists | fzf | something_that_acts` pattern turned into four real ~/.bashrc functions — fuzzy process-kill, git branch switch, jump-to-dir, edit-a-file — each one we ran, plus the quoting gotcha that bites the kill one."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
+    published: /hacks/fzf-shell-functions-kill-branch-cd-open/
 
   - id: DOC-002
     kind: doc
