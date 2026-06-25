@@ -253,6 +253,10 @@ you bridge the two depends on one question — *can an item contain a space?*
 - **`fadd` throws `pathspec '"weekly report.md"' did not match` (with quotes in
   the error).** You sourced the list from `git status --porcelain`, which quotes
   spaced paths. Use `git ls-files ... -z` instead.
+- **`fadd` errors with `readarray: -d: invalid option`.** Your bash predates
+  4.4 (macOS still ships 3.2, where `readarray -d` doesn't exist). `fkill` and
+  `fbrd` need nothing newer and still work; for `fadd`, install a current bash
+  (`brew install bash`) and run the function under that.
 - **Nothing happens at all.** Empty pick, guard did its job. That's the guard
   working, not failing.
 
