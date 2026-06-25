@@ -16,8 +16,10 @@
 #   3. concurrency:group=fleet-dispatch — only one dispatcher is ever live, so
 #      leases never race.
 #
-# To enable autonomy later: `gh variable set FLEET_ENABLED true`, uncomment the
-# schedule below, add the agent-spawn step, and add a dated line to the colophon.
+# The agent-spawn job IS wired (below): with `--apply` and FLEET_ENABLED=true the
+# dispatcher leases work and the `spawn` job runs one role agent per planned item
+# (each opens ONE PR a human merges). It stays MANUAL — to go fully unattended,
+# uncomment the schedule below and add a dated line to the colophon.
 # =============================================================================
 name: fleet-dispatch
 
@@ -43,8 +45,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # ---- OBSERVE -> DECIDE -> LEASE, and emit the spawn plan as `plan` output ----
   dispatch:
     runs-on: ubuntu-latest
+    outputs:
+      plan: ${{ steps.dispatch.outputs.plan }}
     env:
       FLEET_ENABLED: ${{ vars.FLEET_ENABLED }}   # the kill switch; unset/empty = idle
       GH_TOKEN: ${{ github.token }}
@@ -56,30 +61,13 @@ jobs:
           bundler-cache: true
 
       - name: Dispatch
+        id: dispatch
         run: |
           if [ "${{ inputs.apply }}" = "true" ]; then
             ruby scripts/fleet/dispatch.rb --apply | tee dispatch.out
           else
             ruby scripts/fleet/dispatch.rb | tee dispatch.out
           fi
-
-      # The dispatcher prints the role/target it would run. Executing them for
-      # real is the final enablement step — it needs Claude auth
-      # (CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY) and a git worktree per
-      # agent, and each role skill (grow-lifehacker, fleet-bugfix,
-      # triage-lifehacker) opens its own PR and stops. Wire it here when ready,
-      # ALWAYS through the universal AI runner so the model/auth/fallback stay
-      # configured in one place:
-      #
-      # - name: Spawn leased agents
-      #   if: ${{ inputs.apply }}
-      #   uses: ./.github/actions/claude-run     # Claude Code -> Claude API fallback
-      #   env:
-      #     CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-      #     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      #   with:
-      #     prompt: "/<role> <target>"           # per planned item, in a fresh worktree
-      #     tools: "Bash,Read,Edit,Write,Grep"   # NEVER add `gh pr merge`
 
       - name: Upload dispatch plan + fleet state
         if: always()
@@ -89,3 +77,46 @@ jobs:
           path: |
             dispatch.out
             _data/fleet/
+
+  # ---- SPAWN: one leased role agent per planned item, each opens ONE PR --------
+  # Only runs on --apply and when the dispatcher emitted a non-empty plan (so the
+  # FLEET_ENABLED kill switch gates it transitively — an idle dispatcher emits no
+  # plan). max-parallel:1 so the agents' dedup/leases can't race. The agents open
+  # PRs (never merge); a human reviews. Same universal AI runner + FLEET_TOKEN the
+  # content factory uses.
+  spawn:
+    needs: dispatch
+    if: ${{ inputs.apply && needs.dispatch.outputs.plan != '' && needs.dispatch.outputs.plan != '[]' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        item: ${{ fromJSON(needs.dispatch.outputs.plan) }}
+    env:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # FLEET_TOKEN (bot PAT) so the leased agent can open its PR (and the PR
+      # triggers CI). Falls back to github.token.
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      # NOT continue-on-error: a crashed agent must show RED, not a silent skip.
+      - name: Spawn ${{ matrix.item.role }} <- ${{ matrix.item.target }} (universal AI runner)
+        uses: ./.github/actions/claude-run
+        with:
+          prompt: "You are the leased ${{ matrix.item.role }} agent for lifehacker.dev, working item ${{ matrix.item.target }}. Use the ${{ matrix.item.role }} skill to do EXACTLY ONE unit of work for that target. First run `gh pr list --state open --label auto:content --json title` and don't duplicate an open PR. Verify with /test-lifehacker. Then open ONE pull request (grow/fix roles) — or, for triage, file the deduped issue(s) — write the resulting PR/issue URL(s) to the file pr-result.txt, and STOP. Touch only what your role owns; never weaken a guardrail; never merge."
+          tools: "Bash,Read,Write,Edit,Grep,Glob"
+          system: "You are the ${{ matrix.item.role }} role on the lifehacker.dev fleet. Do one unit of work for ${{ matrix.item.target }}, open one PR (or file issues), record the URL in pr-result.txt, and stop. Never touch infra you don't own; never merge."
+      - name: Confirm the agent produced something (fail visibly if not)
+        run: |
+          [ -s pr-result.txt ] || { echo "::error::fleet ${{ matrix.item.role }} ${{ matrix.item.target }}: produced no PR/issue — see the agent step log (auth? duplicate? build failure?)."; exit 1; }
+          echo "result: $(cat pr-result.txt)"

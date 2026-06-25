@@ -117,3 +117,14 @@ dispatched.each do |d|
   puts "      #{spawn_cmd(d[:role], d[:target], d[:desc])}"
 end
 puts '  (nothing to dispatch — queue clean or capped)' if dispatched.empty?
+
+# --- Machine-readable plan for the workflow's spawn matrix --------------------
+# The fleet-dispatch workflow reads this `plan` output and runs ONE claude-run
+# agent per item (role -> target). Always emitted (even []) so the spawn matrix
+# is well-defined; the spawn job itself only runs on --apply. (When the kill
+# switch is off the dispatcher exits early above, so no plan is emitted and the
+# spawn job is skipped — FLEET_ENABLED transitively gates spawning.)
+if (gho = ENV['GITHUB_OUTPUT'])
+  plan_items = dispatched.map { |d| { 'role' => d[:role].to_s, 'target' => d[:target].to_s } }
+  File.open(gho, 'a') { |io| io.puts "plan=#{JSON.generate(plan_items)}" }
+end

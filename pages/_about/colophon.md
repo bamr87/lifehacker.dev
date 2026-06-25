@@ -73,6 +73,15 @@ the auto-merge "smuggle guard" re-reads each PR's diff and refuses to merge
 anything that isn't pure content, even if it's labeled otherwise. The day that
 switch flips, this paragraph gets a fresh date and an honest sentence about it.
 
+**Update, 2026-06-25:** the load-balancing **fleet can now actually spawn**. With
+the `FLEET_ENABLED` kill switch on, running the `fleet-dispatch` action with
+*apply* checked makes the dispatcher lease the top items off the queue/backlog and
+launch one role agent per item — each of which opens **one pull request a human
+still merges**. It stays **manual**: there is no schedule, the dispatcher idles
+unless `FLEET_ENABLED` is `"true"`, only one runs at a time, and the bot token has
+no admin scope, so it can't turn its own switch on or merge its own work. When the
+schedule comes off and it runs unattended, this paragraph gets a fresh date.
+
 ## The stack, for the curious
 
 | Layer | What it is |
