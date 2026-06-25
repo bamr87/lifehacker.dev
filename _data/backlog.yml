@@ -72,7 +72,8 @@ backlog:
     brief: "The handful of tmux bindings that actually matter, and the .tmux.conf that makes them sane."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
+    published: /hacks/tmux-survival-subset/
 
   - id: TOOL-003
     kind: tool
@@ -99,4 +100,21 @@ backlog:
     brief: "Companion to DOC-001. The five files give the robot its manners; this is the part that holds it to them — branch protection, CODEOWNERS, required status checks, and the auto-merge gate. What to copy beyond the five files, and how to verify the lock is on before a robot ever opens a PR."
     voice: meta-confession
     priority: P2
+    status: todo
+
+  # --- Review follow-ups from PR #20 (tmux survival subset) ---
+  - id: HACK-004
+    kind: hack
+    title: "Make tmux survive a reboot, not just a disconnect (resurrect + continuum)"
+    brief: "The survival-subset hack stops at 'outlives the terminal'; this is the sequel that makes sessions outlive a full restart. tmux-resurrect to save/restore, tmux-continuum to autosave, and the part where it can't bring back the actual running processes — only the layout."
+    voice: how-to-practical
+    priority: P2
+    status: todo
+
+  - id: HACK-005
+    kind: hack
+    title: "One .tmux.conf line per real annoyance: the config that grows up"
+    brief: "A follow-up to the six-line survival config — the next handful of lines worth adding once tmux sticks (vi copy-mode keys, system-clipboard yank, a status line that isn't an eyesore, and the renumber-on-close setting), each justified by the specific annoyance it removes. Keep the 'every line earns its place' rule."
+    voice: how-to-practical
+    priority: P3
     status: todo
