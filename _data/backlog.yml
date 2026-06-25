@@ -100,7 +100,8 @@ backlog:
     brief: "Companion to DOC-001. The five files give the robot its manners; this is the part that holds it to them — branch protection, CODEOWNERS, required status checks, and the auto-merge gate. What to copy beyond the five files, and how to verify the lock is on before a robot ever opens a PR."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /docs/wiring-the-guardrails/
 
   # --- Review follow-ups from PR #20 (tmux survival subset) ---
   - id: HACK-004
