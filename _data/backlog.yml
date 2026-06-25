@@ -92,7 +92,8 @@ backlog:
     brief: "The `something_that_lists | fzf | something_that_acts` pattern turned into four real ~/.bashrc functions — fuzzy process-kill, git branch switch, jump-to-dir, edit-a-file — each one we ran, plus the quoting gotcha that bites the kill one."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
+    published: /hacks/fzf-shell-functions/
 
   - id: DOC-002
     kind: doc
@@ -129,4 +130,17 @@ backlog:
     brief: "The design decisions that make autonomous agent-spawning safe to ship: the kill switch gated transitively (an idle dispatcher emits an empty plan, so the spawn job is skipped — not a second flag to forget), max-parallel:1 so leases can't race, 'fail RED, never silent-skip' when an agent crashes, and one-PR-per-agent that a human still merges. The honest part: each of these is a guardrail we added because the obvious version was unsafe. Show the version that wasn't."
     voice: meta-confession
     priority: P2
+    status: todo
+
+  # Surfaced by HACK-004 (fzf shell functions): the post names `fzf -m`
+  # multi-select as the one place you DON'T quote the result, but doesn't build
+  # it out. The multi-select variants (kill several procs, stage several files,
+  # delete several branches) are their own small hack — and the TAB/Shift-TAB
+  # binding plus the "act takes many args" pattern deserve a real walkthrough.
+  - id: HACK-006
+    kind: hack
+    title: "fzf -m: the multi-select functions, and the one time you don't quote"
+    brief: "Follow-up to the four single-pick functions. With `-m`, fzf returns several lines — kill a handful of processes, git add a handful of files, delete a handful of branches. Each ran, plus the deliberate un-quoting that makes word-splitting work FOR you, and the guard that stops an empty pick from acting on everything."
+    voice: how-to-practical
+    priority: P3
     status: todo
