@@ -221,7 +221,11 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GH_TOKEN: ${{ github.token }}
+          # FLEET_TOKEN (bot PAT) so an editorial commit RE-TRIGGERS the pipeline:
+          # a github.token-authored push is suppressed from starting workflows, so
+          # the improvement would otherwise land un-re-validated. Falls back to
+          # github.token (improvement still lands, just without an auto re-run).
+          GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
         with:
           prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, apply small improvements to the content file(s) ONLY, append larger ideas to _data/backlog.yml, commit to this PR branch, and comment judgment calls. Never touch scripts/.github/_config/Gemfile. Never merge."
           tools: "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob"
