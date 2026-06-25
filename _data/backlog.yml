@@ -130,3 +130,16 @@ backlog:
     voice: meta-confession
     priority: P2
     status: todo
+
+  # --- Fresh tool idea: the navigation cluster has a missing third tool. ---
+  # HACK-002 made `cd` remember where you were; TOOL-003 reviewed fzf (which
+  # zoxide's interactive `zi` is built on). zoxide is the obvious next honest
+  # review — and the substring-vs-fuzzy distinction is a real teaching point.
+  - id: TOOL-004
+    kind: tool
+    title: "zoxide: the honest review of a smarter cd"
+    brief: "The `z` command that learns which directories you actually use (frecency), what the prompt hook really does, why it matches substrings and not fzf-style fuzzy fragments, the cold-start where it knows nothing, and that `zi` quietly needs fzf installed. Verdict plus the free thing it replaces."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/zoxide-smarter-cd-honest-review/
