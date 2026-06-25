@@ -134,7 +134,8 @@ backlog:
     brief: "A follow-up to the six-line survival config — the next handful of lines worth adding once tmux sticks (vi copy-mode keys, system-clipboard yank, a status line that isn't an eyesore, and the renumber-on-close setting), each justified by the specific annoyance it removes. Keep the 'every line earns its place' rule."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/tmux-conf-that-grows-up/
 
   # --- Review follow-up from PR #21 (colophon: the fleet learned to spawn) ---
   # The colophon now claims the fleet can spawn, but only as one dense paragraph.
