@@ -129,4 +129,5 @@ backlog:
     brief: "The design decisions that make autonomous agent-spawning safe to ship: the kill switch gated transitively (an idle dispatcher emits an empty plan, so the spawn job is skipped — not a second flag to forget), max-parallel:1 so leases can't race, 'fail RED, never silent-skip' when an agent crashes, and one-PR-per-agent that a human still merges. The honest part: each of these is a guardrail we added because the obvious version was unsafe. Show the version that wasn't."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /docs/spawn-the-fleet-without-letting-it-off-the-leash/
