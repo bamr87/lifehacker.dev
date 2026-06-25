@@ -21,6 +21,40 @@ ROOT   = File.expand_path('../..', __dir__)
 QUEUE  = File.join(ROOT, '.claude', 'retrospectives', 'queue.jsonl')
 LEDGER = File.join(ROOT, '_data', 'retrospectives.yml')
 
+# `to_yaml` only serializes the data, so a naive rewrite drops the ledger's
+# self-documenting comment header. Preserve whatever leading comment block the
+# file already has; fall back to this canonical header if it's missing.
+LEDGER_HEADER = <<~HEADER
+  # =============================================================================
+  # _data/retrospectives.yml — the published-retrospectives ledger
+  # -----------------------------------------------------------------------------
+  # The durable index of which Claude Code threads have been written up as Field
+  # Notes on the site. The SessionEnd hook queues every finished thread
+  # (.claude/retrospectives/queue.jsonl — local + gitignored); when the
+  # session-retrospective agent publishes one, it appends here via:
+  #   ruby scripts/retro/process_queue.rb --mark <session_id> <post-slug> "<title>"
+  # A thread listed here is considered done and is not re-proposed.
+  # See docs/RETROSPECTIVE-HOOK.md.
+  # =============================================================================
+HEADER
+
+# The leading comment block of the current ledger, or the canonical header if the
+# file has none (e.g. it was previously rewritten without one).
+def ledger_header
+  if File.exist?(LEDGER)
+    # Force UTF-8: the header comment contains an em-dash, and under a US-ASCII
+    # default external encoding (Ruby 2.6 locally) the regex would raise on it.
+    lead = File.read(LEDGER, encoding: 'UTF-8')[/\A(?:[ \t]*#[^\n]*\n|[ \t]*\n)*/].to_s
+    return lead unless lead.strip.empty?
+  end
+  LEDGER_HEADER
+end
+
+# Write the ledger data back WITHOUT clobbering the comment header.
+def write_ledger(data)
+  File.write(LEDGER, ledger_header + data.to_yaml.sub(/\A---\n/, ''))
+end
+
 def queue_entries
   return [] unless File.exist?(QUEUE)
   File.foreach(QUEUE).map { |ln| JSON.parse(ln) rescue nil }.compact
@@ -76,7 +110,7 @@ when '--mark'
     'title'      => title.to_s,
     'published'  => Time.now.utc.strftime('%Y-%m-%d')
   }
-  File.write(LEDGER, data.to_yaml)
+  write_ledger(data)
   puts "recorded #{sid.to_s[0, 12]} → #{slug}"
 else
   abort "unknown command: #{cmd} (use --list | --next | --mark)"
