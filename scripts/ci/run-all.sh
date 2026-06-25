@@ -33,6 +33,7 @@ ruby "$HERE/lint_frontmatter.rb"   || true
 ruby "$HERE/check_drift.rb"        || true
 ruby "$HERE/lint_brand.rb"         || true
 ruby "$HERE/lint_artifacts.rb"     || true
+ruby "$HERE/lint_agents.rb"        || true
 ruby "$HERE/run_hack_commands.rb"  || true
 ruby "$HERE/htmlproofer_check.rb"  || true
 
