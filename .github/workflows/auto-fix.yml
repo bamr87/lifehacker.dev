@@ -75,6 +75,7 @@ jobs:
           # doesn't burn an attempt and prematurely escalate a fixable PR.
           # Universal AI runner (Claude Code -> Claude API fallback), from the clone.
           bash scripts/ai/run.sh \
+            --agent fleet-bugfix \
             --prompt "The pipeline failed on this content PR. Use the fleet-bugfix skill to fix it: run /test-lifehacker, read test-results/findings.jsonl, and make the SMALLEST content-only change that turns the gate green. Touch ONLY the content file(s) under pages/_* (and _data/backlog.yml if needed) — NEVER scripts/.github/_config/Gemfile. Commit to this branch. If it's a theme bug, file upstream and stop. Never merge." \
             --tools "Bash(git:*),Bash(bundle:*),Bash(ruby:*),Bash(gh pr comment:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob" \
             --system "You are fleet-bugfix for lifehacker.dev. Make the smallest content-only fix; never touch infra; never merge." \

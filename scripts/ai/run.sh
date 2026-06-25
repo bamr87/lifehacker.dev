@@ -35,7 +35,7 @@ MODEL="$(ruby -ryaml -e '
   puts(ENV["LH_AI_MODEL"] || (c && c["model"]) || "claude-opus-4-8")
 ' "$REPO/_data/ai.yml" 2>/dev/null || echo claude-opus-4-8)"
 
-prompt=""; tools=""; mcp=""; system=""; out=""
+prompt=""; tools=""; mcp=""; system=""; out=""; agent=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --prompt|-p) prompt="$2"; shift 2;;
@@ -43,6 +43,7 @@ while [ $# -gt 0 ]; do
     --mcp)       mcp="$2";    shift 2;;
     --system)    system="$2"; shift 2;;
     --out)       out="$2";    shift 2;;
+    --agent)     agent="$2";  shift 2;;
     *) shift;;
   esac
 done
@@ -51,6 +52,10 @@ done
 
 run_claude_code() {
   local args=(-p "$prompt" --model "$MODEL" --permission-mode acceptEdits)
+  # Run AS a named agent (.claude/agents/<name>.md) when given — its system prompt,
+  # tool scope, and role constraints are the single source of truth, so every CI
+  # invocation of that role behaves identically. --tools/--system still layer on.
+  [ -n "$agent" ]  && args+=(--agent "$agent")
   [ -n "$tools" ]  && args+=(--allowedTools "$tools")
   [ -n "$mcp" ]    && args+=(--mcp-config "$mcp")
   # Same system prompt the API fallback gets — appended so Claude Code's own

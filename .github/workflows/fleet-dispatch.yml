@@ -113,6 +113,7 @@ jobs:
       - name: Spawn ${{ matrix.item.role }} <- ${{ matrix.item.target }} (universal AI runner)
         uses: ./.github/actions/claude-run
         with:
+          agent: ${{ matrix.item.role }}
           prompt: "You are the leased ${{ matrix.item.role }} agent for lifehacker.dev, working item ${{ matrix.item.target }}. Use the ${{ matrix.item.role }} skill to do EXACTLY ONE unit of work for that target. First run `gh pr list --state open --label auto:content --json title` and don't duplicate an open PR. Verify with /test-lifehacker. Then open ONE pull request (grow/fix roles) — or, for triage, file the deduped issue(s) — write the resulting PR/issue URL(s) to the file pr-result.txt, and STOP. Touch only what your role owns; never weaken a guardrail; never merge."
           tools: "Bash,Read,Write,Edit,Grep,Glob"
           system: "You are the ${{ matrix.item.role }} role on the lifehacker.dev fleet. Do one unit of work for ${{ matrix.item.target }}, open one PR (or file issues), record the URL in pr-result.txt, and stop. Never touch infra you don't own; never merge."

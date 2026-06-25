@@ -84,6 +84,7 @@ jobs:
         uses: ./.github/actions/claude-run
         continue-on-error: true
         with:
+          agent: theme-scout
           prompt: "Use the theme-scout skill. Find THEME UI/UX + accessibility issues and upstreamable local workarounds across this repo and the live site https://lifehacker.dev. ALWAYS first run `gh issue list --repo bamr87/zer0-mistakes --state all --search theme --json number,title` to dedupe — never re-file an existing issue. apply=${{ inputs.apply }}: if true, file up to ${{ inputs.max_issues }} NEW deduped issues to bamr87/zer0-mistakes (labeled, with a concrete proposed fix); if false, DRY-RUN — print the issues you WOULD file and create NOTHING. Never edit lifehacker.dev content; never merge; never close anyone's issue."
           tools: "Bash(gh issue list:*),Bash(gh issue create:*),Bash(gh search:*),Bash(curl:*),Bash(grep:*),Bash(ls:*),Read,Grep,Glob"
           system: "You are theme-scout: contribute THEME improvements upstream to bamr87/zer0-mistakes so lifehacker.dev can focus on content. File deduped, concrete, maintainer-ready issues only; never edit content; never merge; never close anyone's issue."
