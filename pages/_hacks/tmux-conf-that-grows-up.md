@@ -34,9 +34,9 @@ $ tmux show-options -g mode-keys
 mode-keys vi
 ```
 
-Now `h j k l` move, `/` searches, `G` jumps to the bottom — the navigation you already know. But movement is only half of it. The *selection* keys are still not Vim's, which is the next annoyance.
+Now `h j k l` move, `/` searches, `G` jumps to the bottom — the navigation you already know. But movement is only half of it. The *selection* keys are still not Vim's — the other half of the same annoyance.
 
-## Annoyance 2: selecting and yanking isn't Vim's `v` / `y`
+## Annoyance 1, the other half: selecting and yanking isn't Vim's `v` / `y`
 
 With `mode-keys vi` you can move like Vim, but starting a selection is still `Space` and copying is still `Enter`. Your hands expect `v` to start a visual selection and `y` to yank it. Two lines teach copy mode those bindings:
 
@@ -56,7 +56,7 @@ bind-key -T copy-mode-vi y                 send-keys -X copy-selection-and-cance
 
 Now the copy-mode dance is pure Vim: `prefix [` to enter, `v` to start selecting, `j`/`k`/`/` to extend, `y` to grab it and drop you back out. The text lands in tmux's own paste buffer, ready for `prefix ]`. Which is great until you want it somewhere that isn't tmux.
 
-## Annoyance 3: the yank never leaves tmux
+## Annoyance 2: the yank never leaves tmux
 
 Here's the one that actually wastes your time. You copy an error in copy mode, switch to your browser to search it, hit paste — and get whatever was on your *system* clipboard from before. tmux copied to its own internal buffer; the OS clipboard never heard about it. tmux and your desktop keep two separate clipboards and don't tell you.
 
@@ -76,7 +76,7 @@ How this works is worth thirty seconds, because it changes whether the line help
 
 **The honest caveat:** we verified the option is *set* (above), but we can't show you the actual clipboard round-trip here — this was a headless build server with no clipboard and no terminal emulator to receive the OSC 52 sequence. So treat this line as "verified configured, not verified end-to-end." The real test is yours: load the config, copy something in tmux with `y`, switch to a GUI app, and paste. If it shows up, your terminal honors OSC 52 and you're done. If it doesn't, the fallback is to pipe the selection through a clipboard tool instead — `copy-selection-and-cancel` becomes `copy-pipe-and-cancel "xclip -sel clip"` — but that's a separate, terminal-specific setup, and we're not pasting a version we didn't run.
 
-## Annoyance 4: closing a window leaves a hole in the numbers
+## Annoyance 3: closing a window leaves a hole in the numbers
 
 You run `0:edit 1:server 2:logs`. The log window's job is done, so you close it — `prefix &`. Now you have `0` and `1`, fine. But close the *middle* one and tmux leaves the hole: `0` and `2`, with nothing at `1`. The numbers stop matching how many windows you have, and `prefix 1` jumps to nothing.
 
@@ -115,7 +115,7 @@ $ tmux list-windows -t work -F '#{window_index}'
 
 The `3` slid down to `2`. The numbers stay dense, `prefix 1`/`prefix 2` always point at something, and you never again squint at a status bar wondering where window 2 went.
 
-## Annoyance 5: the status bar is a 1989 eyesore
+## Annoyance 4: the status bar is a 1989 eyesore
 
 This is the one that's pure taste, so it goes last and you should feel free to skip it. The default status bar is black-on-radioactive-green and shows about six things you'll never read. You don't need a 200-line "powerline" rig with fonts to install. You need a calmer background, your session name where you can find it, and a clock. Four lines:
 
