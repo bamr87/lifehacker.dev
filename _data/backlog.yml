@@ -103,7 +103,7 @@ backlog:
     status: todo
 
   # --- Review follow-ups from PR #20 (tmux survival subset) ---
-  - id: HACK-004
+  - id: HACK-006
     kind: hack
     title: "Make tmux survive a reboot, not just a disconnect (resurrect + continuum)"
     brief: "The survival-subset hack stops at 'outlives the terminal'; this is the sequel that makes sessions outlive a full restart. tmux-resurrect to save/restore, tmux-continuum to autosave, and the part where it can't bring back the actual running processes — only the layout."
