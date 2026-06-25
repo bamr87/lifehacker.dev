@@ -38,7 +38,35 @@ are the "lessons learned / important concepts" narrative, in the autopilot's wor
                                          │
                   ruby scripts/retro/process_queue.rb --mark <sid> <slug> "<title>"
                                  (thread recorded as published; won't be re-proposed)
+                                         │
+                       ── a human merges the retrospective PR ──
+                                         │
+   quest-forge.yml (push to main touching _data/retrospectives.yml)  →  QUEST_FORGE_ENABLED gate
+                                         │
+        ruby scripts/retro/collect_merged.rb --markdown   (systematic merged-branch metadata)
+                                         │
+                quest-forge agent derives an it-journey.dev epic quest from the metadata
+                                         │
+              ONE proposal issue → bamr87/it-journey  (chapters, badges, every commit hash)
 ```
+
+### Quest forge — the last link
+
+Once a retrospective is **merged**, the build it documents is finished and fully
+recorded in git. The `quest-forge.yml` workflow fires on that merge (a push to `main`
+that touches `_data/retrospectives.yml`) and turns the *metadata* of the merged
+branches into a gamified learning quest for [it-journey.dev](https://it-journey.dev/quests/home/):
+
+| Piece | Role |
+|---|---|
+| `scripts/retro/collect_merged.rb` | Deterministic: captures every merged branch's PR number, squash-merge SHA, date, size, branch, and labels (`--markdown` for a ready-to-embed table, `--since <date>` to scope to the new work). Read-only; files nothing. |
+| `.claude/skills/quest-forge/SKILL.md` + `.claude/agents/quest-forge.md` | Map the merged branches into RPG chapters in it-journey's format (binary tiers, XP, difficulty, classes, badges, a boss fight), and file **one proposal issue** to `bamr87/it-journey` with every commit hash. |
+| `.github/workflows/quest-forge.yml` | The hook. Gated by `QUEST_FORGE_ENABLED` + Claude auth; `contents: read` only (it never writes this repo). Files cross-repo via `IT_JOURNEY_TOKEN` (a PAT with `issues:write` on it-journey); with no such token it logs the quest instead. |
+
+The issue is a **proposal** — a human on it-journey accepts, adapts, or declines it;
+nothing is changed on either repo. To enable: set `QUEST_FORGE_ENABLED=true` and add an
+`IT_JOURNEY_TOKEN` secret. The first quest (the whole 40-branch build) was filed as
+[it-journey#365](https://github.com/bamr87/it-journey/issues/365).
 
 Two stores, on purpose:
 
