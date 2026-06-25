@@ -78,6 +78,7 @@ jobs:
       - name: Generate one ${{ matrix.collection }} and open a PR (universal AI runner)
         uses: ./.github/actions/claude-run
         with:
+          agent: grow-lifehacker
           prompt: "Use the grow-lifehacker skill to produce exactly ONE ${{ matrix.collection }} for lifehacker.dev. Pick the highest-priority backlog item whose kind IS '${{ matrix.collection }}' — never borrow an item meant for another collection (a tmux walkthrough is a hack, not a post). First run `gh pr list --state open --label auto:content --json title,headRefLabel` and if your chosen item duplicates an open PR's topic, take the next-priority '${{ matrix.collection }}' item; if no '${{ matrix.collection }}' item fits or all would duplicate, propose a FRESH on-voice ${{ matrix.collection }} idea, add it to the backlog, and draft THAT (never silently no-op, never cross collections). Verify with /test-lifehacker. Open ONE pull request on a branch, label it 'auto:content' and 'collection/${{ matrix.collection }}', write the resulting PR URL to the file pr-result.txt, flip the backlog item to done, and STOP. Never merge."
           tools: "Bash,Read,Write,Edit,Grep,Glob"
           system: "You are the lifehacker.dev content factory. Produce one on-voice, tested piece and open one PR. Never merge."

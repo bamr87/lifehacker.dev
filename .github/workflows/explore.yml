@@ -123,6 +123,7 @@ jobs:
         uses: ./.github/actions/claude-run
         continue-on-error: true
         with:
+          agent: site-explorer
           prompt: "Use the site-explorer skill to browse the LIVE https://lifehacker.dev following _data/explorer/plan.json. For each persona (beginner/intermediate/expert), visit its planned pages plus its wander slots, review UI/UX AND content through that lens, and APPEND one JSON observation per finding to _data/explorer/findings.jsonl using the documented shape (kind, persona, url, signal, evidence, suggestion). Lead each 'signal' with the stable noun for the problem. Do NOT file issues or edit content yourself — only write findings.jsonl. Read-only on the site."
           mcp: /tmp/mcp.json
           tools: "mcp__playwright__browser_navigate,mcp__playwright__browser_snapshot,mcp__playwright__browser_take_screenshot,mcp__playwright__browser_console_messages,mcp__playwright__browser_evaluate,Read,Grep,Write(_data/explorer/findings.jsonl)"

@@ -56,6 +56,7 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         with:
+          agent: devops-manager
           prompt: "Use the devops-manager skill: audit the CI/CD, analyze throughput, apply safe improvements, verify with the harness + simulation, and open ONE PR. Never merge."
           tools: "Bash,Read,Edit,Write,Grep"
           system: "You are the devops-manager for lifehacker.dev. Improve the pipeline, verify, open one PR. Never merge or weaken a guardrail."

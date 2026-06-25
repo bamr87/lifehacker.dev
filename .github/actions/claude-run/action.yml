@@ -30,6 +30,9 @@ inputs:
   out:
     description: Write the result to this file instead of stdout.
     default: ""
+  agent:
+    description: Run AS a named agent (.claude/agents/<name>.md) — its system prompt, tools, and constraints. The single source of truth for a role.
+    default: ""
 runs:
   using: composite
   steps:
@@ -40,6 +43,7 @@ runs:
         MCP: ${{ inputs.mcp }}
         SYSTEM: ${{ inputs.system }}
         OUT: ${{ inputs.out }}
+        AGENT: ${{ inputs.agent }}
       run: |
         if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ -z "${ANTHROPIC_API_KEY:-}" ]; then
           echo "::warning::no Claude auth (CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY) — AI step is a no-op."
@@ -48,6 +52,7 @@ runs:
         npm install -g @anthropic-ai/claude-code >/dev/null 2>&1 \
           || echo "::warning::Claude Code install failed — using the Claude API fallback."
         args=(--prompt "$PROMPT")
+        [ -n "$AGENT" ]  && args+=(--agent "$AGENT")
         [ -n "$TOOLS" ]  && args+=(--tools "$TOOLS")
         [ -n "$MCP" ]    && args+=(--mcp "$MCP")
         [ -n "$SYSTEM" ] && args+=(--system "$SYSTEM")
