@@ -2,6 +2,7 @@
 title: "Docker from zero: the dozen commands that actually get a container running"
 description: "The short list of docker commands that get a container up, the flags that matter, and the three error messages every beginner hits — with the fix for each."
 date: 2025-12-20
+preview: /assets/images/previews/docker-for-beginners-complete-tutorial-to-get-star.png
 collection: hacks
 author: amr
 excerpt: "Skip the 30-minute tutorial. Here are the twelve commands you'll actually type, plus the daemon error that greets everyone on day one."

@@ -2,6 +2,7 @@
 title: "jq's // default silently eats your false values"
 description: "jq's // operator treats false like a missing key, so backup_files: false flips back to true. Here's the repro and two fixes that respect a real false."
 date: 2025-07-05
+preview: /assets/images/previews/advanced-version-management-system-complete-implem.png
 collection: hacks
 author: amr
 excerpt: "You set backup_files to false. jq read it back as true. The // operator is the culprit, and the fix is one line."

@@ -2,6 +2,7 @@
 title: "Stop fighting Excel: grep, awk, and a month-end close for million-row CSVs"
 description: "Excel quits at 1,048,576 rows. grep filters and awk totals a ledger of any size in one second — plus the header row that silently made my first total wrong."
 date: 2026-02-23
+preview: /assets/images/ai-erp-control.png
 collection: hacks
 author: amr
 excerpt: "Excel truncates at a million rows. grep and awk don't care how big the file is — here's the month-end close that fits on one screen."

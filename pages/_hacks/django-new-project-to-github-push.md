@@ -2,6 +2,7 @@
 title: "New Django project to first GitHub push, without committing your secrets"
 description: "Create a Django project in a virtualenv, write the four-line .gitignore that keeps your venv and .env out of git, and push to GitHub safely."
 date: 2025-03-08
+preview: /assets/images/git-django.png
 collection: hacks
 author: amr
 excerpt: "Five commands to a Django project on GitHub, and the .gitignore that stops you from publishing your SECRET_KEY to the whole internet."

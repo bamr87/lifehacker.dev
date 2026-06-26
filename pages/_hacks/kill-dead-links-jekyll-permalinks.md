@@ -2,6 +2,7 @@
 title: "Kill dead links in Jekyll: stable permalinks, redirect_from, and a CI link checker"
 description: "Pretty permalinks that survive a rename, redirect_from so old URLs resolve, and a CI link check — plus the baseurl gotcha that 404s your project site."
 date: 2025-08-31
+preview: /assets/images/previews/404-hunting-binary-wards-for-unbreakable-links.png
 collection: hacks
 author: amr
 excerpt: "Rename a post, keep the old link working, and let CI catch the 404 before a reader does."

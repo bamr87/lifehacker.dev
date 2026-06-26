@@ -2,6 +2,7 @@
 title: "Why your CI script hangs forever: wrap --version in timeout"
 description: "A version check that runs fine locally can hang a GitHub Actions job until it times out. Bound it with coreutils timeout, and stop set -e from killing it."
 date: 2025-07-05
+preview: /assets/images/previews/debugging-github-actions-workflows-ai-assisted-tro.png
 collection: hacks
 author: amr
 excerpt: "The script worked locally and hung in CI. The fix is one word — timeout — plus the set -e gotcha that turns a survivable stall into a dead job."

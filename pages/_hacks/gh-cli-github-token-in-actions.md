@@ -2,6 +2,7 @@
 title: "The gh CLI doesn't get GITHUB_TOKEN for free: set GH_TOKEN in env"
 description: "Your Actions job has a token, but gh can't see it. The one env line that fixes 'GitHub CLI is not authenticated' — and why a present secret isn't enough."
 date: 2025-07-10
+preview: /assets/images/previews/github-actions-authentication-fix-resolving-ci-cd-.png
 collection: hacks
 author: amr
 excerpt: "GitHub Actions hands every job a token. It does not hand that token to the gh CLI. Here's the one-line bridge — and the failure that made it obvious."

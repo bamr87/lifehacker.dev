@@ -2,6 +2,7 @@
 title: "It works on macOS, breaks in CI: bash 3.2 vs declare -A"
 description: "Why your shell script passes locally and dies with 'command not found' (exit 127) in CI, and the version-detect-and-fall-back pattern that fixes it for real."
 date: 2025-07-09
+preview: /assets/images/previews/fixing-github-actions-bash-3-2-compatibility-for-a.png
 collection: hacks
 author: amr
 excerpt: "macOS still ships bash 3.2. CI runs bash 5. The gap is associative arrays — here's the failure and the fallback, both run for real."

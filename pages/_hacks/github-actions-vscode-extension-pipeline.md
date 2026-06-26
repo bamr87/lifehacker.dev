@@ -2,6 +2,7 @@
 title: "Two GitHub Actions workflows that lint, test, and package a VS Code extension"
 description: "A CI workflow that lints/builds/tests on a Node matrix, a Release workflow that packages and publishes the .vsix, and the xvfb error that breaks headless tests."
 date: 2026-03-07
+preview: /assets/images/previews/foundational-ci-cd-pipelines-github-vscode-extensions.png
 collection: hacks
 author: amr
 excerpt: "Two YAML files take your extension from push to Marketplace — plus the headless-display crash that fails every integration test until you fix it."
