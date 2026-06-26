@@ -14,6 +14,9 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[The Autopilot Playbook](/docs/autopilot/)** — the full design of the
   Claude-Code-driven content engine: the loop, the guardrails, the data files,
   and how to point it at your own site.
+- **[How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/)**
+  — the verification harness between writing and merging: safe-mode builds, the
+  one-finding-per-line contract, and the single number that is the merge gate.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible
