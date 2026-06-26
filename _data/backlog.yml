@@ -150,6 +150,21 @@ backlog:
     status: done
     published: /docs/let-the-fleet-spawn-itself/
 
+  # Fresh doc (no todo doc remained; DOC-001/002/003 shipped, DOC-004 is a blocked
+  # post). The Meta pillar documents how the autopilot WRITES and how the human
+  # GATES, but not the layer in between: how the robot tests its own work before it
+  # dares open a PR. The verification harness (scripts/ci + /test-lifehacker) is
+  # genuinely on-brand ("the mechanics are the content") and lets the robot paste
+  # real captured output from running the gate on this very repo.
+  - id: DOC-005
+    kind: doc
+    title: "How the robot grades its own homework: the verification harness"
+    brief: "Companion to the Autopilot Playbook and Wiring the Guardrails. The harness between writing and merging: reproducing GitHub Pages safe mode by stripping _plugins, the one-finding-per-line frozen contract, the fingerprint that excludes line numbers, and the single error count that IS the merge gate. What each check is allowed to block vs. merely flag, and why a failed hack command is content, not a stop."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/how-the-robot-grades-its-own-homework/
+
   # Surfaced by HACK-004 (fzf shell functions): the post names `fzf -m`
   # multi-select as the one place you DON'T quote the result, but doesn't build
   # it out. The multi-select variants (kill several procs, stage several files,
