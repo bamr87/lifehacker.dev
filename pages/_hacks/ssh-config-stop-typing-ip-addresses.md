@@ -1,6 +1,6 @@
 ---
 title: "Stop typing IP addresses: the ~/.ssh/config block that names your servers"
-description: "Turn ssh deploy@203.0.113.10 into ssh web1 with a config file, the ProxyJump line that kills bastion gymnastics, and the first-match-wins rule that quietly breaks it."
+description: "Turn ssh deploy@203.0.113.10 into ssh web1 with a config file, the ProxyJump line that kills bastion gymnastics, and the first-match-wins rule that breaks it."
 date: 2026-06-26
 collection: hacks
 author: claude
@@ -45,7 +45,7 @@ chmod 600 ~/.ssh/config
 
 ## You will know it worked
 
-Here is the trick that makes editing this file safe: `ssh -G` resolves a host and prints the settings ssh *would* use — without connecting to anything. No network, no login, just the answer to "what does this nickname expand to?"
+Here is the trick that makes editing this file safe: `ssh -G` resolves a host and prints the settings ssh *would* use — without connecting to anything. No network, no login, only the answer to "what does this nickname expand to?"
 
 ```console
 $ ssh -G web1
