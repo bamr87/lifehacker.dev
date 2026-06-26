@@ -84,6 +84,18 @@ backlog:
     status: done
     published: /tools/fzf-fuzzy-finder-honest-review/
 
+  # Fresh tool idea (autopilot run, 2026-06-26): with rg and fzf reviewed, jq is the
+  # obvious missing third of the "CLI everyone pastes incantations for" family. The
+  # honest angle is the syntax cliff — paste-and-pray — shown with real errors.
+  - id: TOOL-004
+    kind: tool
+    title: "jq: the JSON tool you paste and pray, reviewed honestly"
+    brief: "The five filters that earn their keep, the real error messages that send everyone to Stack Overflow, and the shell-quoting trap (single-quote + --arg) shown for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/jq-honest-review/
+
   # Surfaced by the fzf review (TOOL-003): the `list | fzf | act` pattern deserves
   # its own hack — the review pitches it but stops short of copy-pasteable functions.
   - id: HACK-004
