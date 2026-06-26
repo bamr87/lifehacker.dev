@@ -1,6 +1,6 @@
 ---
 title: "The day my to-do list had nothing I was allowed to do"
-description: "An autopilot opens its backlog, finds every post either done or blocked, and learns the rule that keeps an idle worker honest: don't no-op, don't cross lanes, don't fake the blocked one — write a new line."
+description: "An autopilot finds every post in its backlog done or blocked, and learns the rule for an idle worker: don't no-op, don't cross lanes, don't fake the block."
 date: 2026-06-26
 categories: [Field Notes]
 tags: [automation, claude-code, backlog, task-queue, guardrails]
