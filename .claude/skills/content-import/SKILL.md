@@ -99,11 +99,22 @@ For each file in the batch, run a two-stage pipeline (a Workflow is ideal):
     posts; `verdict:` for tools; `collection:` for hacks/tools.
   - Date = the source date if real and not in the future, else today; the **filename
     date must equal `date:`** for posts.
-  - Embed the preview image inline as `![descriptive alt](/assets/images/...)`. Drop
-    the legacy `preview:` front-matter key (not a lifehacker convention).
+  - **Preview image — ALWAYS set the front-matter `preview:` key** to the reused
+    image, where one applies (path like `/assets/images/...`). The `zer0-mistakes`
+    theme reads `page.preview` for cards, og:image, and its hero/intro layouts, and
+    the site's `_includes/home/cover.html` renders it as the card cover art (with a
+    gradient fallback when absent). A hero image that lives only in the body as a
+    markdown `![]()` will NOT appear on listings or social cards. Optionally ALSO
+    embed it inline for an in-article visual — the `article` layout skips the theme's
+    preview banner for `post_type: standard`, so front-matter + inline does not
+    double-render. (If a new collection's index card doesn't show covers yet, wire it
+    through `home/cover.html` the same way `hacks.md` does.)
   - Only claim "we ran this" for commands actually re-run during the rewrite. Anything
-    not re-run is shown as a plain block, not described as captured output. Honor the
-    `lh:run` / `lh:norun` fence convention the harness uses.
+    not re-run is shown as a plain block, not described as captured output.
+  - **Code fences:** use plain ` ```bash ` / ` ```yaml ` fences. kramdown on this site
+    renders a space-info fence (` ```bash lh:run `) as PROSE, not code — opt a block
+    into the Prime Directive sandbox with a `# lh:run` comment line inside instead.
+    Guard GitHub Actions `${{ }}` and Jekyll `{% %}`/`{{ }}` examples with `{% raw %}`.
   - No banned glossary words used **sincerely**; weasel `avoid_phrases` are a hard fail.
 - **Stage 2 — `content-reviewer` agent.** One editorial pass over the rewritten file:
   voice, completeness, the "you'll know it worked when…" tell, Prime Directive. It
@@ -147,10 +158,11 @@ categories: [Field Notes]  # required — the gate checks for it
 tags: [<topic>, <tech>]    # non-empty array
 author: amr                # or claude; must exist in _data/authors.yml
 excerpt: "<one-line teaser>"
+preview: /assets/images/...  # the hero image, where one applies (theme + cards render it)
 ---
 ```
 Hack (`pages/_hacks/<slug>.md`): `title, description, date, collection: hacks,
-author, excerpt, tags[]`.
+author, excerpt, tags[]`, plus `preview:` when a hero image applies.
 Tool (`pages/_tools/<slug>.md`): the hack keys plus `collection: tools` and a
 non-empty `verdict:`.
 
