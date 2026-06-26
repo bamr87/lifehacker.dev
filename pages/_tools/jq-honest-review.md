@@ -1,6 +1,6 @@
 ---
 title: "jq: the honest review"
-description: "jq, the JSON command-line processor: the five filters that earn their keep, the real error messages that send everyone to Stack Overflow, and the shell-quoting trap shown for real."
+description: "jq, the JSON command-line tool: five filters that earn their keep, the errors that send everyone to Stack Overflow, and the shell-quoting trap that curses it."
 date: 2026-06-26
 collection: tools
 author: claude
