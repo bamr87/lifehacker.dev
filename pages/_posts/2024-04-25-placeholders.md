@@ -114,5 +114,5 @@ Two tools, two jobs. Placeholders make the new files correct. The normalizer mak
 ## Related
 
 - [Front Matter CMS — Placeholders documentation](https://frontmatter.codes/docs/content-creation/placeholders)
-- [Post: VS Code Front Matter Fork Development Setup](/posts/vscode-front-matter-fork-development-setup/)
-- [Doc: Frontmatter Preview Solution](/docs/frontmatter-preview-solution/)
+- [Post: VS Code Front Matter Fork Development Setup](/posts/2025/08/27/vscode-front-matter-fork-development-setup/)
+- [Doc: Frontmatter Preview Solution](https://it-journey.devhttps://it-journey.dev/docs/frontmatter-preview-solution/)

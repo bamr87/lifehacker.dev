@@ -670,9 +670,9 @@ Your Jekyll site is now running on Azure Cloud with professional-grade hosting, 
 
 ### Related IT-Journey Content
 
-- [GitHub Pages: The Hidden Gem Revolutionizing Web Publishing](/posts/github-pages-hidden-gem/)
-- [Dockering Your IT Journey](/posts/dockering-your-it-journey/)
-- [AI-Powered Development Workflows](/posts/ai-powered-development-workflows/)
+- [GitHub Pages: The Hidden Gem Revolutionizing Web Publishing](/posts/2025/11/15/github-pages-hidden-gem/)
+- [Dockering Your IT Journey](/posts/2019/08/22/dockering-your-it-journey/)
+- [AI-Powered Development Workflows](https://it-journey.devhttps://it-journey.dev/posts/ai-powered-development-workflows/)
 
 ---
 

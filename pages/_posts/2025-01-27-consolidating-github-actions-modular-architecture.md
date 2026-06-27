@@ -345,8 +345,8 @@ Our refactoring achieved several key improvements:
 
 ```bash
 # Manual execution example
-./scripts/link-checker/install-dependencies.sh
-./scripts/link-checker/run-link-checker.sh \
+.https://it-journey.devhttps://it-journey.dev/scripts/link-checker/install-dependencies.sh
+.https://it-journey.devhttps://it-journey.dev/scripts/link-checker/run-link-checker.sh \
   --scope website \
   --analysis-level comprehensive \
   --follow-redirects \
@@ -426,7 +426,7 @@ chmod +x scripts/link-checker/*.py
 
 ```bash
 # Force reinstall dependencies
-./scripts/link-checker/install-dependencies.sh --force
+.https://it-journey.devhttps://it-journey.dev/scripts/link-checker/install-dependencies.sh --force
 ```
 
 ### AI Analysis Issues
@@ -436,7 +436,7 @@ chmod +x scripts/link-checker/*.py
 echo $OPENAI_API_KEY
 
 # Run without AI if needed
-./scripts/link-checker/run-link-checker.sh --analysis-level standard
+.https://it-journey.devhttps://it-journey.dev/scripts/link-checker/run-link-checker.sh --analysis-level standard
 ```
 
 ## Contributing to the Link Checker
@@ -453,7 +453,7 @@ The modular architecture makes it easy to contribute:
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 - [Lychee Link Checker](https://github.com/lycheeverse/lychee)
 - [OpenAI API Documentation](https://platform.openai.com/docs)
-- [Link Checker Scripts](/scripts/link-checker/)
+- [Link Checker Scripts](https://it-journey.devhttps://it-journey.dev/scripts/link-checker/)
 
 ---
 

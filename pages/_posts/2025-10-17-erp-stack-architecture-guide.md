@@ -2849,4 +2849,4 @@ The journey to enterprise system excellence begins with solid architectural foun
 
 ---
 
-*This article is part of the IT-Journey series on enterprise architecture and software development. For more comprehensive guides, visit our [Architecture Category](/categories/architecture/) or explore related topics in [Development](/categories/development/).*
+*This article is part of the IT-Journey series on enterprise architecture and software development. For more comprehensive guides, visit our [Architecture Category](https://it-journey.devhttps://it-journey.dev/categories/architecture/) or explore related topics in [Development](https://it-journey.devhttps://it-journey.dev/categories/development/).*

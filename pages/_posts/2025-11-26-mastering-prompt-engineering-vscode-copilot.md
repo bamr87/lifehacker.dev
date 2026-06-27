@@ -682,7 +682,7 @@ Before completing, verify you can:
 
 ### 📚 Further Learning
 
-- **IT-Journey Quest**: [AI-Assisted Development Fundamentals](/quests/ai-assisted-development/)
+- **IT-Journey Quest**: [AI-Assisted Development Fundamentals](https://it-journey.devhttps://it-journey.dev/quests/ai-assisted-development/)
 - **Reference**: [prompts.instructions.md](/.github/instructions/prompts.instructions.md) - Full Kaizen prompt engineering guide
 - **External**: [Prompt Engineering Guide](https://www.promptingguide.ai/) - Community patterns
 - **Documentation**: [GitHub Copilot Docs](https://docs.github.com/copilot)

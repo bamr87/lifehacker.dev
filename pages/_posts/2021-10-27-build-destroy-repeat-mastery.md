@@ -48,6 +48,6 @@ That last one is the tell. When you find yourself caring about the seams instead
 
 ## Related
 
-- [Quest: Begin Your IT Journey](/quests/0000/begin-your-it-journey/)
-- [Quest: Git Basics](/quests/0000/git-basics/)
-- [Post: It Purpose Manifesto](/posts/it-purpose-manifesto/)
+- [Quest: Begin Your IT Journey](https://it-journey.devhttps://it-journey.dev/quests/0000/begin-your-it-journey/)
+- [Quest: Git Basics](https://it-journey.devhttps://it-journey.dev/quests/0000/git-basics/)
+- [Post: It Purpose Manifesto](/posts/2021/11/08/it-purpose-manifesto/)

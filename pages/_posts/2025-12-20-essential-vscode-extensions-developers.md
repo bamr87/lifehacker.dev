@@ -473,9 +473,9 @@ code --install-extension esbenp.prettier-vscode \
 
 ## 📚 Related Resources
 
-- [VS Code Keyboard Shortcuts](/docs/terminal-shortcuts-cheat-sheet/)
-- [VS Code Mastery Quest](/quests/level-0000-vscode-mastery-quest/)
-- [Git Basics Quest](/quests/0000/git-basics/)
+- [VS Code Keyboard Shortcuts](https://it-journey.devhttps://it-journey.dev/docs/terminal-shortcuts-cheat-sheet/)
+- [VS Code Mastery Quest](https://it-journey.devhttps://it-journey.dev/quests/level-0000-vscode-mastery-quest/)
+- [Git Basics Quest](https://it-journey.devhttps://it-journey.dev/quests/0000/git-basics/)
 - [Official VS Code Documentation](https://code.visualstudio.com/docs)
 
 ---

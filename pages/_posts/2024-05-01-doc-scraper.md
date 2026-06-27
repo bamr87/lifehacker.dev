@@ -121,6 +121,6 @@ conn.close()
 
 ## Related
 
-- [Post: Excel to Python](/posts/excel-to-python/)
-- [Post: Robots.txt in Jekyll](/posts/robots-txt-jekyll/)
-- [Docs: Data & Analytics Index](/posts/data-analytics/)
+- [Post: Excel to Python](/posts/2025/03/13/excel-to-python/)
+- [Post: Robots.txt in Jekyll](/posts/2023/12/04/robots-txt-jekyll/)
+- [Docs: Data & Analytics Index](https://it-journey.devhttps://it-journey.dev/posts/data-analytics/)

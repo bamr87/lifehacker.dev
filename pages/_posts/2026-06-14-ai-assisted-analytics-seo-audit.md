@@ -7,7 +7,7 @@ tags: [google-analytics, mcp, claude-code, seo, jekyll, devops, ai-development, 
 author: amr
 original_author: "IT-Journey Team"
 excerpt: "A connect-measure-fix story — wiring Google Analytics into an AI agent via MCP, discovering the numbers were mostly local-dev noise, and fixing both the data and the site's SEO."
-preview: /images/previews/ai-assisted-analytics-seo-audit.png
+preview: https://it-journey.dev/images/previews/ai-assisted-analytics-seo-audit.png
 ---
 > **TL;DR** — We connected Google Analytics to an AI coding agent over MCP, asked it to "analyze the traffic," and learned that ~85% of our sessions were *us* — `localhost`, Docker, and CI hitting the site during development. Fixing that exposed the real numbers, which pointed straight at an SEO problem: duplicated URLs and hundreds of broken internal links. Here's the whole journey, including the parts that went sideways.
 
@@ -122,4 +122,4 @@ The fixes were small and surgical: change the permalink to `/:collection/:path/`
 3. **Keep secrets out of repos** — and know your credential types.
 4. **Crawlability is plumbing.** Duplicated URLs and broken internal links quietly cap your organic reach.
 
-Want the hands-on version? This whole journey is broken into a quest series under **[Level 1010 · Monitoring & Observability](/quests/1010/)** — start with [Connect Analytics to Your AI Agent](/quests/1010/analytics-mcp-setup/).
+Want the hands-on version? This whole journey is broken into a quest series under **[Level 1010 · Monitoring & Observability](https://it-journey.devhttps://it-journey.dev/quests/1010/)** — start with [Connect Analytics to Your AI Agent](https://it-journey.devhttps://it-journey.devhttps://it-journey.devhttps://it-journey.dev/quests/1010/analytics-mcp-setup/).

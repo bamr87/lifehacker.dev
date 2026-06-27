@@ -433,6 +433,6 @@ cat PRD.md
 
 **Related Resources:**
 
-- [PRD Machine Documentation](/docs/scripts/PRD_MACHINE.md)
+- [PRD Machine Documentation](https://it-journey.devhttps://it-journey.dev/docs/scripts/PRD_MACHINE.md)
 - [GitHub Workflow Configuration](/.github/workflows/prd-sync.yml)
-- [Scripts Guide](/docs/scripts/SCRIPTS_GUIDE.md)
+- [Scripts Guide](https://it-journey.devhttps://it-journey.dev/docs/scripts/SCRIPTS_GUIDE.md)

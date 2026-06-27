@@ -67,5 +67,5 @@ If `curl` returns `build OK`, the container is up and serving.
 
 **Related:**
 
-- [Foundational CI/CD Pipelines](/posts/foundational-ci-cd-pipelines-github-vscode-extensions/)
-- [Docker Beginner's Tutorial](/posts/docker-beginners-tutorial/)
+- [Foundational CI/CD Pipelines](/posts/2026/03/07/foundational-ci-cd-pipelines-github-vscode-extensions/)
+- [Docker Beginner's Tutorial](/posts/2025/12/20/docker-beginners-tutorial/)

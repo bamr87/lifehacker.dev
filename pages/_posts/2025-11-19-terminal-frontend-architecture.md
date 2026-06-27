@@ -165,7 +165,7 @@ We call it a "Glass Interface" because it's transparent. It doesn't hide the und
 
 Ready to forge your own Glass Interface? We have prepared a dedicated quest to help you master these tools.
 
-* **Start the Quest**: [Terminal Artificer: Forging the Glass Interface](/quests/0010/side-quests/terminal-artificer/)
+* **Start the Quest**: [Terminal Artificer: Forging the Glass Interface](https://it-journey.devhttps://it-journey.dev/quests/0010/side-quests/terminal-artificer/)
 * **Explore the Tools**: Check out [Charm.sh](https://charm.sh/) for more TUI magic.
 
 By architecting your scripts with intention—separating the *asking* from the *doing*—you transform your terminal from a black box of mystery into a cockpit of control.
