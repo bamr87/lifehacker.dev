@@ -2,9 +2,10 @@
 title: "A Finance Professional's Guide to the Terminal"
 description: "How finance and accounting professionals can leverage bash scripting to automate tasks, process datasets, and level up their careers — no CS degree required."
 date: 2026-02-23
-categories: [Posts, Business, "Tools & Environment"]
+categories: [Field Notes, Posts, Business, "Tools & Environment"]
 tags: [bash, terminal, finance, accounting, automation, tutorial, beginner]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Learn why the terminal is the ultimate productivity hack for finance and accounting professionals — and how to start using it today."
 preview: /images/ai-erp-control.png
 ---

@@ -2,9 +2,10 @@
 title: "Build, Destroy, Repeat: How Iteration Becomes Mastery"
 description: "The case for deliberately rebuilding the same project until your hands remember the steps and your brain trusts the dependencies."
 date: 2021-10-27
-categories: [Learning, Technology]
+categories: [Field Notes, Learning, Technology]
 tags: [learning-methodology, skill-development, programming-practice, continuous-improvement, developer-mindset]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Mastery comes not from completing a project once, but from rebuilding it until the dependencies stop being mysteries."
 ---
 ## The Setup Trap

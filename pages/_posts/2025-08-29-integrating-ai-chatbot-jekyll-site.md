@@ -2,9 +2,10 @@
 title: "Integrating an AI Chatbot into Jekyll: Transforming Static Sites into Interactive Learning Platforms"
 description: "A comprehensive guide to embedding AI-powered chatbots in Jekyll sites for enhanced user engagement and real-time assistance"
 date: 2025-08-29
-categories: [Development, AI-Integration]
+categories: [Field Notes, Development, AI-Integration]
 tags: [ai-integration, jekyll, chatbot, web-development, user-experience, javascript, api-integration]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Learn how to seamlessly integrate AI chatbots into Jekyll sites to provide real-time user assistance and enhance the learning experience"
 preview: /images/favicon_gpt_computer_retro.png
 ---

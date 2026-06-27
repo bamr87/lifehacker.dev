@@ -2,9 +2,10 @@
 title: "Fixing GitHub Actions Workflow: Adding Missing 'prepare' Command to Version Integration Script"
 description: "Resolving workflow failure by implementing the missing prepare command in version-integration.sh"
 date: 2025-07-10
-categories: [Development, Debugging]
+categories: [Field Notes, Development, Debugging]
 tags: [ai-assisted-development, github-actions, version-management, debugging, learning-journey]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Diagnosed and fixed a GitHub Actions workflow failure caused by a missing 'prepare' command in the version integration script"
 preview: /images/previews/fixing-github-actions-workflow-adding-missing-prep.png
 ---

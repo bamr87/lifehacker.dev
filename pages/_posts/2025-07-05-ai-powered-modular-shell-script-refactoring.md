@@ -2,9 +2,10 @@
 title: "AI-Powered Modular Shell Script Refactoring: Evolution Engine Architecture"
 description: "A comprehensive AI-assisted refactoring of shell scripts into a modular architecture with integrated testing framework and documentation"
 date: 2025-07-05
-categories: [Development, Learning-Journey]
+categories: [Field Notes, Development, Learning-Journey]
 tags: [ai-assisted-development, shell-scripting, modular-architecture, refactoring, learning-journey, bash, testing-frameworks]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "How AI collaboration enabled the systematic refactoring of 20+ shell scripts into a maintainable, testable modular architecture"
 preview: /images/favicon_gpt_computer_retro.png
 ---

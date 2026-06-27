@@ -2,9 +2,10 @@
 title: "GitHub Pages: The Hidden Gem Revolutionizing Web Publishing"
 description: "Learn how GitHub Pages transforms repositories into hosted websites with Jekyll, offering free hosting and version control integration."
 date: 2025-11-15
-categories: [Posts, Web-Development, Articles]
+categories: [Field Notes, Posts, Web-Development, Articles]
 tags: [github-pages, jekyll, static-site-generation, web-hosting, version-control, tutorial, beginner, web-development, documentation, portfolio]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "GitHub Pages democratizes web publishing by combining free hosting, Jekyll static site generation, and Git version control into a powerful platform for developers, educators, and content creators."
 preview: /assets/images/github-pages-hero.png
 ---

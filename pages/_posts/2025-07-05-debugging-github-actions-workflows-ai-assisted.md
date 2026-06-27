@@ -2,9 +2,10 @@
 title: "Debugging GitHub Actions Workflows: AI-Assisted Troubleshooting Session"
 description: "Chronicle of debugging failing GitHub Actions workflows using AI assistance, identifying character encoding issues and script hanging problems"
 date: 2025-07-05
-categories: [Development, Debugging]
+categories: [Field Notes, Development, Debugging]
 tags: [ai-assisted-development, github-actions, debugging, workflow-automation, learning-journey]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "A hands-on debugging session that uncovered character encoding issues and script timeouts in GitHub Actions workflows"
 preview: /images/previews/debugging-github-actions-workflows-ai-assisted-tro.png
 ---

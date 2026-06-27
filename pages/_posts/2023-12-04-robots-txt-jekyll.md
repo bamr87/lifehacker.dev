@@ -2,9 +2,10 @@
 title: "robots dot txt"
 description: "Learn how to properly configure robots.txt files for Jekyll websites to control search engine crawlers and optimize SEO"
 date: 2023-12-04
-categories: [Posts, Web-Development, SEO]
+categories: [Field Notes, Posts, Web-Development, SEO]
 tags: [robots-txt, seo, jekyll, web-crawlers, search-engines, web-development]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Master robots.txt configuration for Jekyll sites to guide search engine crawlers and improve your site's SEO performance"
 ---
 A `robots.txt` file is used to instruct web robots (typically search engine robots) which pages on your website to crawl and which not to. Here's an example of a `robots.txt` file that you might use for a Jekyll site:

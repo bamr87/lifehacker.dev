@@ -2,9 +2,10 @@
 title: "Mother Grokking Programmers"
 description: "A satirical take on the evolution of programmers from being programmed to grokking off all day."
 date: 2025-08-19
-categories: [humor, tech]
+categories: [Field Notes, humor, tech]
 tags: [satire, programming, AI, future-tech]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "In the grand theater of technological evolution, programmers have danced a peculiar jig—from rigid automatons to frantic coders, and now, to blissful grokkers who might just be one prompt away from obsolescence."
 ---
 # Mother Grokking Programmers: The Evolution of Code Monkeys

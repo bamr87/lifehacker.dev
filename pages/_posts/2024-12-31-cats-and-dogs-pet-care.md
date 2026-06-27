@@ -2,9 +2,10 @@
 title: "Cats and Dogs: Pet Care Adventures"
 description: "Exploring the wonderful world of pet ownership, care tips, and the joy that cats and dogs bring to our lives"
 date: 2024-12-31
-categories: [Lifestyle, Pet-Care]
+categories: [Field Notes, Lifestyle, Pet-Care]
 tags: [pets, cats, dogs, pet-care, lifestyle]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Discover the joy, challenges, and rewards of sharing your life with cats and dogs"
 preview: /images/favicon_gpt_computer_retro.png
 ---

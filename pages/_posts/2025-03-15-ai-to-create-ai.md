@@ -2,9 +2,10 @@
 title: "AI to create AI"
 description: "Configuration examples and prompts for building specialized AI assistants — including a Diagram and Mind Map Assistant defined via JSON schema."
 date: 2025-03-15
-categories: ["AI & Machine Learning"]
+categories: [Field Notes, "AI & Machine Learning"]
 tags: [ai-machine-learning]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Configuration examples and prompts for building specialized AI assistants — including a Diagram and Mind Map Assistant defined via JSON schema"
 ---
 ```json

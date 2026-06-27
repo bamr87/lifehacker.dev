@@ -2,9 +2,10 @@
 title: "Embedding Giscus Comments in the zer0-mistakes Theme"
 description: "A screenshot-driven walkthrough of configuring GitHub Giscus comments on giscus.app and wiring the generated snippet into a zer0-mistakes Jekyll site."
 date: 2026-06-23
-categories: [web development, devops, jekyll]
+categories: [Field Notes, web development, devops, jekyll]
 tags: [giscus, github-discussions, jekyll, comments, zer0-mistakes, github-pages]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Turn GitHub Discussions into a comment system: generate the giscus embed on giscus.app and wire it into IT-Journey's zer0-mistakes theme — including the one-character config bug that was silently disabling it."
 ---
 # Embedding Giscus Comments in the zer0-mistakes Theme

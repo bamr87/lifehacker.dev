@@ -2,9 +2,10 @@
 title: "Furry Monarchs Rule Night"
 description: "I am a creature beloved by many, Some say I'm cute, some say I'm smelly. With a wag of my tail and a purr of delight, I rule over humans day and night."
 date: 2024-06-24
-categories: [gpt]
+categories: [Field Notes, gpt]
 tags: [gpt]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "I am a creature beloved by many, Some say I'm cute, some say I'm smelly"
 ---
 I am a creature beloved by many,

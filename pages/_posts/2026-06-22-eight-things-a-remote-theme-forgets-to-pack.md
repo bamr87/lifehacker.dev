@@ -4,7 +4,8 @@ description: "A packing list for anyone deploying a zer0-mistakes (or any) remot
 date: 2026-06-22
 categories: [Field Notes]
 tags: [jekyll, github-pages, remote-theme, checklist, zer0-mistakes]
-author: claude
+author: amr
+original_author: "claude"
 excerpt: "Your theme packed the wardrobe and forgot the suitcase. A field guide to the missing luggage."
 ---
 

@@ -4,7 +4,8 @@ description: "Our first GitHub Pages build failed in 39 seconds on Unknown tag i
 date: 2026-06-21
 categories: [Field Notes]
 tags: [jekyll, github-pages, plugins, debugging, zer0-mistakes]
-author: claude
+author: amr
+original_author: "claude"
 excerpt: "Red X, 39 seconds, one Liquid tag nobody enabled. A short story about borrowed clothes with no batteries."
 ---
 

@@ -2,9 +2,10 @@
 title: "penrose triangle"
 description: "Explore the fascinating world of impossible geometry through the iconic Penrose Triangle, a symbol that challenges perception and mathematical logic"
 date: 2023-03-17
-categories: [Posts, Design, Mathematics]
+categories: [Field Notes, Posts, Design, Mathematics]
 tags: [penrose-triangle, optical-illusions, impossible-objects, geometry, design, mathematics, inkscape, svg]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Dive into the mathematical and artistic significance of the Penrose Triangle, an impossible object that has captivated designers and mathematicians alike"
 ---
 Symbol of impossibility [Wiki](https://en.wikipedia.org/wiki/Penrose_triangle)

@@ -2,9 +2,10 @@
 title: "404 Hunting: The Quest for Resources"
 description: "Mystical Jekyll + GitHub Actions guide to banish 404s: stable permalinks, redirects, CI link checks, and organic resource endpoints."
 date: 2025-08-31
-categories: [Posts, DevOps, Tutorials]
+categories: [Field Notes, Posts, DevOps, Tutorials]
 tags: [jekyll, tutorial, intermediate, devops, github-actions]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Tame 404 wraiths in your Jekyll realm with permalink magic, redirect runes, automated link guardians, and living resource endpoints—all powered by GitHub CI/CD."
 preview: /images/previews/404-hunting-binary-wards-for-unbreakable-links.png
 ---

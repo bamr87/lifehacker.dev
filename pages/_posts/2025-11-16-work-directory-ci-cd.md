@@ -2,9 +2,10 @@
 title: "The work/ Directory: CI/CD Integration Best Practices"
 description: "Master the work/ directory pattern for fast, isolated, cacheable, and disposable CI/CD workspaces that maximize build speed and minimize flakiness across"
 date: 2025-11-16
-categories: [Posts, DevOps, Tutorials]
+categories: [Field Notes, Posts, DevOps, Tutorials]
 tags: [ci-cd, devops, build-systems, automation, best-practices, performance-optimization]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "The work/ directory pattern provides a structured, performance-optimized approach to CI/CD builds—separating persistent caches from disposable artifacts while maintaining reproducibility and speed."
 preview: /images/post-preview-work-cicd.png
 ---

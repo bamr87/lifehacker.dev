@@ -2,9 +2,10 @@
 title: "Fix a Local Jekyll Docker Build Broken by a Yanked FFI Gem"
 description: "A local Jekyll build in Docker died on a yanked generic FFI platform. Here is the one Bundler command that fixed it, plus how to verify the rebuild."
 date: 2026-06-22
-categories: [DevOps, Infrastructure]
+categories: [Field Notes, DevOps, Infrastructure]
 tags: [jekyll, docker, bundler, ci-cd, troubleshooting]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "The local preview wouldn't boot because Gemfile.lock pinned a yanked FFI platform. One bundle command fixed it."
 ---
 ## What broke

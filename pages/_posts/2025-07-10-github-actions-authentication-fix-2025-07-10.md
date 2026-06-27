@@ -2,9 +2,10 @@
 title: "GitHub Actions Authentication Fix: Resolving CI/CD Workflow Failures"
 description: "Comprehensive fix for GitHub Actions authentication issues in AI Evolution Engine workflow"
 date: 2025-07-10
-categories: [Development, DevOps]
+categories: [Field Notes, Development, DevOps]
 tags: [github-actions, authentication, ci-cd, debugging, workflow-fix]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Successfully resolved GitHub Actions workflow failures by implementing proper token environment variable configuration and enhanced authentication detection logic."
 preview: /images/previews/github-actions-authentication-fix-resolving-ci-cd-.png
 ---

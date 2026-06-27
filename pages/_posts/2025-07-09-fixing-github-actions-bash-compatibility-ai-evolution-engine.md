@@ -2,9 +2,10 @@
 title: "Fixing GitHub Actions: Bash 3.2 Compatibility for AI Evolution Engine"
 description: "Resolving command not found errors in GitHub Actions by implementing bash 3.2 compatibility in the AI Evolution Engine health analysis scripts"
 date: 2025-07-09
-categories: [Development, Debugging]
+categories: [Field Notes, Development, Debugging]
 tags: [ai-assisted-development, github-actions, bash-compatibility, debugging, learning-journey, devops]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Fixed critical GitHub Actions failure by implementing bash 3.2 compatibility fallback in AI Evolution Engine health analysis scripts"
 preview: /images/previews/fixing-github-actions-bash-3-2-compatibility-for-a.png
 ---

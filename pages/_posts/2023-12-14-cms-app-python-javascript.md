@@ -2,9 +2,10 @@
 title: "CMS App with Python and JavaScript"
 description: "A step-by-step guide to building a CMS application in Python as the backend and JavaScript for the frontend."
 date: 2023-12-14
-categories: [programming, web-development, python, javascript]
+categories: [Field Notes, programming, web-development, python, javascript]
 tags: [python, javascript, cms]
-author: ChatGPT
+author: amr
+original_author: "ChatGPT"
 excerpt: "A step-by-step guide to building a CMS application in Python as the backend and JavaScript for the frontend"
 ---
 1. **You**: I want to build a CMS application in Python as the backend and javascript to render the front end.

@@ -2,9 +2,10 @@
 title: "100 Questions & Answers About Arab-Americans: A Journalist's Guide"
 description: "Comprehensive guide to understanding Arab-American culture, demographics, religion, and addressing common stereotypes"
 date: 2023-04-20
-categories: [Research, Cultural-Education, Social-Issues]
+categories: [Field Notes, Research, Cultural-Education, Social-Issues]
 tags: [arab-americans, cultural-understanding, journalism-guide, demographics, religion, stereotypes, middle-east, islam, christianity]
-author: Detroit Free Press (via IT-Journey Archives)
+author: amr
+original_author: "Detroit Free Press (via IT-Journey Archives)"
 excerpt: "An essential resource from December 2001 providing journalists and the public with factual information about Arab-Americans, their diverse backgrounds, and addressing common misconceptions"
 ---
 # Introduction

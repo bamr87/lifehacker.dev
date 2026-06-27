@@ -2,9 +2,10 @@
 title: "VSCode Front Matter: Complete Fork & Development Guide"
 description: "Comprehensive guide to forking, setting up, and extending the VSCode Front Matter CMS extension for content management and development"
 date: 2025-08-27
-categories: [Development, Guides, IDE-Setup, Open Source, Tools]
+categories: [Field Notes, Development, Guides, IDE-Setup, Open Source, Tools]
 tags: [vscode-extension, front-matter-cms, development-setup, open-source-contribution, content-management, fork-workflow, typescript, webpack]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Step-by-step guide to fork, setup, and extend the powerful VSCode Front Matter CMS extension for enhanced content management workflows"
 preview: /images/favicon_gpt_computer_retro.png
 ---

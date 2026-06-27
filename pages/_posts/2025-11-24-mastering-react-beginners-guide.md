@@ -2,9 +2,10 @@
 title: "Mastering React: A Beginner's Guide"
 description: "Comprehensive beginner's guide to React fundamentals covering components, JSX, props, state, and building interactive UIs."
 date: 2025-11-24
-categories: [Posts, Web Development, Tutorials]
+categories: [Field Notes, Posts, Web Development, Tutorials]
 tags: [react, javascript, web-development, frontend, tutorial, beginner, vite, components, jsx, hooks]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Learn React fundamentals through hands-on examples - build your first components, manage state with hooks, and create interactive UIs with this comprehensive beginner's guide."
 ---
 ## The Challenge: Getting Comfortable With React

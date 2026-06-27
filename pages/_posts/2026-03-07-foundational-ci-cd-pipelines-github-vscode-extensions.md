@@ -2,9 +2,10 @@
 title: "Foundational CI/CD Pipelines with GitHub Actions for VS Code Extensions"
 description: "Learn how to build robust CI/CD pipelines using GitHub Actions for VS Code extension development."
 date: 2026-03-07
-categories: [DevOps, Tutorials]
+categories: [Field Notes, DevOps, Tutorials]
 tags: [github-actions, ci-cd, vscode-extension, devops, automation, tutorial, intermediate]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Build a production-ready CI/CD pipeline for a VS Code extension using GitHub Actions — from lint and test to automated marketplace publishing."
 preview: /images/previews/foundational-ci-cd-pipelines-github-vscode-extensions.png
 ---

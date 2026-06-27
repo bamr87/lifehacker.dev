@@ -2,9 +2,10 @@
 title: "Planting Seeds: The DNA of Software Evolution"
 description: "Exploring how AI-powered development mirrors natural growth patterns, where encoded wisdom in our 'software seeds' enables exponential evolution and adaptation."
 date: 2025-06-29
-categories: [Development, AI-Powered, Innovation]
+categories: [Field Notes, Development, AI-Powered, Innovation]
 tags: [AI, software-development, evolution, automation, future-tech]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Just as seeds contain the DNA for infinite growth potential, our software development practices are evolving to encode wisdom that enables exponential innovation."
 preview: /images/previews/planting-seeds-software-evolution.png
 ---

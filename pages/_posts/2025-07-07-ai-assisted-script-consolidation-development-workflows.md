@@ -2,9 +2,10 @@
 title: "AI-Assisted Script Consolidation: Transforming Chaotic Directories into Organized Development Workflows"
 description: "Complete refactoring of script directories across IT-Journey workspace using AI assistance to eliminate redundancies and implement unified development patterns"
 date: 2025-07-07
-categories: [Development, Process-Improvement]
+categories: [Field Notes, Development, Process-Improvement]
 tags: [ai-assisted-development, script-consolidation, development-workflows, automation, refactoring, learning-journey]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "A comprehensive AI-assisted refactoring session that transformed scattered, redundant scripts into a unified, principle-driven automation system following IT-Journey development practices."
 preview: /images/previews/ai-assisted-script-consolidation-transforming-chao.png
 ---

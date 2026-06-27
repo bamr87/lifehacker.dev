@@ -2,9 +2,10 @@
 title: "Consolidating GitHub Actions: From Embedded Scripts to Modular Architecture"
 description: "How we transformed two separate link checking workflows into a unified, maintainable system with standalone executable scripts"
 date: 2025-01-27
-categories: [Development, DevOps]
+categories: [Field Notes, Development, DevOps]
 tags: [github-actions, devops, workflow-automation, link-checking, ai-assisted-development, modular-architecture, script-refactoring]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "From debugging KeyErrors to building a comprehensive modular link checking system"
 preview: /images/favicon_gpt_computer_retro.png
 ---

@@ -2,9 +2,10 @@
 title: "Millennials AI Takeover"
 description: "Exploring how millennials are leading the charge in integrating AI into consulting, reshaping the industry, and outpacing traditional models."
 date: 2025-08-22
-categories: [Career Development, Emerging Technologies, Innovation, Millennials, Web Development]
+categories: [Field Notes, Career Development, Emerging Technologies, Innovation, Millennials, Web Development]
 tags: [countdown, future trends, generational shift, Millennials]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Exploring how millennials are leading the charge in integrating AI into consulting, reshaping the industry, and outpacing traditional models"
 ---
 # Consulting in the AI Era: Why Full-Stack Developers Armed with AI Are Replacing New Grads and Revolutionizing the Industry

@@ -2,9 +2,10 @@
 title: "Excel to Python"
 description: "Learn how to seamlessly transition from Excel to Python for data analysis and automation. Unlock powerful tools for your data-driven projects."
 date: 2025-03-13
-categories: [Data Analytics, Development, Guides, Programming, Python]
+categories: [Field Notes, Data Analytics, Development, Guides, Programming, Python]
 tags: [Excel, how-to, migration, Python, tutorial]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Learn how to seamlessly transition from Excel to Python for data analysis and automation"
 ---
 ## Abstract

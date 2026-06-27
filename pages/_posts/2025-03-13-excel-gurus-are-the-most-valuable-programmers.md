@@ -2,9 +2,10 @@
 title: "Excel Guru's are the most valuable programmers"
 description: "Discover how Excel mastery can unlock programming skills, empowering professionals to transition into tech careers seamlessly."
 date: 2025-03-13
-categories: [Data Analytics, Development, Finance, IT Consulting, Programming]
+categories: [Field Notes, Data Analytics, Development, Finance, IT Consulting, Programming]
 tags: [career development, data analysis, Excel, programming, VBA]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Discover how Excel mastery can unlock programming skills, empowering professionals to transition into tech careers seamlessly"
 preview: /images/excel-to-wizard.png
 ---

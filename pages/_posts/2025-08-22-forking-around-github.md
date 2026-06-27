@@ -2,9 +2,10 @@
 title: "Forking Around GitHub"
 description: "Discover the ins and outs of forking on GitHub and enhance your collaborative coding skills with our comprehensive guide."
 date: 2025-08-22
-categories: [Development, GitHub Actions, Open Source, Tools, Version Control]
+categories: [Field Notes, Development, GitHub Actions, Open Source, Tools, Version Control]
 tags: [collaboration, github, open-source, project-building, version-control]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Discover the ins and outs of forking on GitHub and enhance your collaborative coding skills with our comprehensive guide"
 ---
 # The Programmer's Ultimate Dream: Getting Forked on GitHub

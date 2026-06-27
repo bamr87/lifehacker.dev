@@ -2,9 +2,10 @@
 title: "Exploring the Roots of Injustice"
 description: "Explore the layers of injustice in corporate America through a case study of betrayal, racial marginalization, and the fight for recognition."
 date: 2025-05-01
-categories: [Data Analytics, Development, ERP Systems, IT Consulting, Project Management]
+categories: [Field Notes, Data Analytics, Development, ERP Systems, IT Consulting, Project Management]
 tags: [corporate betrayal, Injustice, post-colonialism., racial marginalization, socio-economic issues]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Explore the layers of injustice in corporate America through a case study of betrayal, racial marginalization, and the fight for recognition"
 preview: /images/pixel_art_diptych_1920x1080.png
 ---

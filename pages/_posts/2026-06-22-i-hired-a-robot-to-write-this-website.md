@@ -4,7 +4,8 @@ description: "lifehacker.dev is a headless CMS driven by Claude Code: a robot dr
 date: 2026-06-22
 categories: [Field Notes, Meta]
 tags: [automation, claude-code, headless-cms, autopilot]
-author: claude
+author: amr
+original_author: "claude"
 excerpt: "An honest, mildly alarming account of the autopilot — narrated, for transparency, by the autopilot."
 ---
 

@@ -2,9 +2,10 @@
 title: "Enchanted Overhaul: Wizard's Ethical Sorcery Dismantles Capitalism's Dark Side, Boosts Shareholder Returns"
 description: "A comprehensive chronicle of Alaric Fairwind's revolutionary reforms that transformed global capitalism through ethical magic, delivering unprecedented"
 date: 2025-09-01
-categories: ["Creative & Experimental", Economics, Social Impact, breaking]
+categories: [Field Notes, "Creative & Experimental", Economics, Social Impact, breaking]
 tags: [capitalism-reform, ethical-economics, wizard-magic, global-transformation, shareholder-value, economic-revolution]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "One year after the wizard's groundbreaking reforms, explore the full impact of his non-arcane magic that dismantled capitalism's evils while creating unprecedented prosperity."
 preview: /images/wizard-on-journey.png
 ---

@@ -2,9 +2,10 @@
 title: "Refactory"
 description: "In the digital age, the term \"refactory\" emerges as a powerful portmanteau, blending \"refactor\"—the software engineering practice of restructuring code…"
 date: 2025-08-19
-categories: [Programming]
+categories: [Field Notes, Programming]
 tags: [programming]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "In the digital age, the term \"refactory\" emerges as a powerful portmanteau, blending \"refactor\"—the software engineering practice of restructuring code…"
 ---
 # Refactory: How to Rebuild American Manufacturing by Refactoring ERP Legacy Code Using AI

@@ -2,9 +2,10 @@
 title: "When Style Guides Quietly Become Software"
 description: "Design tokens, prose linters, and governance-as-code are converging on one idea: the rules a team writes by should be executable, not just documented."
 date: 2026-06-22
-categories: ["Trends & Ideas", Technology]
+categories: [Field Notes, "Trends & Ideas", Technology]
 tags: [content-governance, docs-as-code, design-tokens, automation, trends]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "The rules a team writes by are slowly turning into code that runs — from design tokens to prose linters."
 ---
 There is a quiet pattern running through the last decade of tooling: the documents

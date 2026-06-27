@@ -2,9 +2,10 @@
 title: "Enhancing Bashcrawl: Creating Terminal Education Content"
 description: "AI-assisted enhancement of Bashcrawl's cellar scroll to create comprehensive, accessible terminal education content following IT-Journey documentation standards"
 date: 2025-08-01
-categories: [Development, Education]
+categories: [Field Notes, Development, Education]
 tags: [ai-assisted-development, terminal-education, documentation-enhancement, bashcrawl, learning-journey, markdown-standards]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "How AI assistance transformed a basic ls -F tutorial into a comprehensive terminal education experience"
 preview: /images/favicon_gpt_computer_retro.png
 ---

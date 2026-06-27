@@ -2,9 +2,10 @@
 title: "Jekyll and Travis"
 description: "Jekyll compiles your website into a site available for FTP to your web server. This can be automated if your source code is already on GitHub."
 date: 2025-11-16
-categories: [posts, guides]
+categories: [Field Notes, posts, guides]
 tags: [jekyll, travis, ci]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Deploying Jekyll using Travis CI and Github"
 ---
 # Overview

@@ -2,9 +2,10 @@
 title: "Document Scraping: Extract Structured Data From the Web"
 description: "Notes on document scraping: BeautifulSoup, Playwright, rate limiting, storage patterns, and common failure modes for extracting structured data."
 date: 2024-05-01
-categories: ["Data & Analytics"]
+categories: [Field Notes, "Data & Analytics"]
 tags: [data-analytics, python, web-scraping, beautifulsoup]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Practical notes on doc scraping with BeautifulSoup, Playwright, and Scrapy — covering rate limiting, JS-rendered pages, storage patterns, and the failure modes that will catch you first."
 ---
 ## Why Scrape Documents

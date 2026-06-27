@@ -2,9 +2,10 @@
 title: "From Programmed to Grokking Off: The Dark Evolution of Programmers"
 description: "A satirical look at the past, present, and future of programming - from fossilized coders to AI-assisted slackers"
 date: 2025-08-20
-categories: [Posts, Satire, Future-Tech]
+categories: [Field Notes, Posts, Satire, Future-Tech]
 tags: [programming-evolution, ai-takeover, developer-satire, grok-humor]
-author: IT-Journey AI
+author: amr
+original_author: "IT-Journey AI"
 excerpt: "Explore the hilarious yet horrifying journey of programmers through time, where code writes itself and humans just... grok off."
 ---
 # From Punching Cards to Punching Out: The Grim Evolution of Programmers

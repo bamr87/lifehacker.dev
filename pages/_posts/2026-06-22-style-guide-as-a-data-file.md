@@ -2,9 +2,10 @@
 title: "Your Style Guide Belongs in Git as Data, Not a PDF"
 description: "Hot take: a brand style guide nobody can lint is a brand style guide nobody follows. Put voice, tone, and banned words in version control as data."
 date: 2026-06-22
-categories: [DevOps]
+categories: [Field Notes, DevOps]
 tags: [content-governance, devops, automation, brand]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "A style guide nobody can lint is a style guide nobody follows. Ship it as data, not a PDF."
 ---
 ## 📄 The PDF nobody opens twice

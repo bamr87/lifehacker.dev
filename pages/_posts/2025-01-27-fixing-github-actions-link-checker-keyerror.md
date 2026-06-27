@@ -2,9 +2,10 @@
 title: "Fixing GitHub Actions Link Checker: KeyError 'details' Resolution"
 description: "Debugging and resolving a Python KeyError in GitHub Actions workflow that analyzes link check results from Lychee link checker"
 date: 2025-01-27
-categories: [Development, Debugging]
+categories: [Field Notes, Development, Debugging]
 tags: [github-actions, debugging, python, link-checking, error-handling, ai-assisted-development]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Resolved a critical KeyError in link checking automation through defensive programming and better error handling"
 preview: /images/favicon_gpt_computer_retro.png
 ---

@@ -2,9 +2,10 @@
 title: "Content Placeholders: Templates That Survive Contact With Authors"
 description: "How Front Matter CMS placeholders cut frontmatter drift on a 600-file Jekyll site, and the four template patterns I keep reaching for."
 date: 2024-04-25
-categories: ["Data & Analytics", "Tools & Environment"]
+categories: [Field Notes, "Data & Analytics", "Tools & Environment"]
 tags: [frontmatter, jekyll, templates, content-strategy, data-quality]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Templates do not enforce consistency. Placeholders do — they catch the fields you forgot before the validator ever sees them."
 ---
 ## The Drift Problem

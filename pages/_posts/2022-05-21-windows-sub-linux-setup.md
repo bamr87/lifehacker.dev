@@ -2,9 +2,10 @@
 title: "Windows Subsystem for Linux (WSL) Setup Guide"
 description: "Step-by-step instructions for installing and configuring WSL on Windows systems"
 date: 2022-05-21
-categories: [posts, system-administration]
+categories: [Field Notes, posts, system-administration]
 tags: [windows, linux, wsl, development-environment, system-administration]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Complete guide to setting up Windows Subsystem for Linux for development environments"
 ---
 # Windows Subsystem for Linux (WSL) Setup Guide

@@ -2,9 +2,10 @@
 title: "AI-Assisted UI/UX Refactoring: Nanobar Modularization and Footer Fix"
 description: "A chronicle of using AI-powered development to refactor a Jekyll theme's inline progress bar into a config-driven component and fix a full-width footer"
 date: 2026-04-19
-categories: [Posts, Web-Development, Tutorials]
+categories: [Field Notes, Posts, Web-Development, Tutorials]
 tags: [jekyll, tutorial, intermediate, web-development, ui-ux, refactoring, bootstrap, ai-development]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "How an AI-assisted refactoring session turned 60 lines of hardcoded nanobar into a single configurable include—and fixed a Bootstrap footer layout along the way."
 ---
 ## Introduction

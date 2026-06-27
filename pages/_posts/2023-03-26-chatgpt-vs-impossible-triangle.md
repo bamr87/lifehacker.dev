@@ -2,9 +2,10 @@
 title: "Chat GPT vs The Impossible Triangle: AI Limitations in 3D Space"
 description: "Practical and impractical uses of Chat GPT in programming and graphic design through demonstration of its limitation to comprehend impossible 3D spaces."
 date: 2023-03-26
-categories: [Posts, AI-Analysis, Design]
+categories: [Field Notes, Posts, AI-Analysis, Design]
 tags: [chatgpt, ai-limitations, ai-evolution, penrose-triangle, svg, 3d-geometry, optical-illusions, design-analysis, gpt-4, claude, gemini, ai-progress]
-author: Amr Abdel-Motaleb
+author: amr
+original_author: "Amr Abdel-Motaleb"
 excerpt: "Explore the fascinating intersection of AI capabilities and limitations through the lens of impossible geometry and the famous Penrose Triangle"
 preview: /svg/penrose-gpt-vs-human.png
 ---

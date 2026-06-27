@@ -2,9 +2,10 @@
 title: "ERP Systems as the Engine of Modern Economic Design"
 description: "Explore how ERP systems drive modern economic design, integrating AI and data for strategic enterprise management and competitive advantage."
 date: 2025-05-02
-categories: [Data Analytics, Enterprise Systems, ERP Systems, IT Consulting, Project Management]
+categories: [Field Notes, Data Analytics, Enterprise Systems, ERP Systems, IT Consulting, Project Management]
 tags: [AI integration, digital transformation, economic design, enterprise architecture, ERP]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Explore how ERP systems drive modern economic design, integrating AI and data for strategic enterprise management and competitive advantage"
 preview: /images/ai-erp-control.png
 ---

@@ -2,9 +2,10 @@
 title: "AquaAid's Devastating Desert Mission"
 description: "In a classic case of good intentions gone awry, the company \"AquaAid\" embarked on a mission to help impoverished desert countries irrigate their arid…"
 date: 2024-06-18
-categories: [gpt]
+categories: [Field Notes, gpt]
 tags: [gpt]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "In a classic case of good intentions gone awry, the company \"AquaAid\" embarked on a mission to help impoverished desert countries irrigate their arid…"
 ---
 In a classic case of good intentions gone awry, the company "AquaAid" embarked on a mission to help impoverished desert countries irrigate their arid lands and transform them into fertile wheat fields. With grand promises of ending hunger and poverty, AquaAid brought in state-of-the-art irrigation equipment and set to work in the vast desert landscapes.

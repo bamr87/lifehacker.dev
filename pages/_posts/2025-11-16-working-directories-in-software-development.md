@@ -2,9 +2,10 @@
 title: "Working Directories: Backbone of Software Builds"
 description: "How working directories shape tooling, builds, tests, deployments—and how directory assumptions can break or harden pipelines."
 date: 2025-11-16
-categories: [Posts, DevOps, Tutorials]
+categories: [Field Notes, Posts, DevOps, Tutorials]
 tags: [devops, build-systems, filesystem, debugging, best-practices]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Working directories look trivial—`cd` and forget—but they define how tools resolve paths, load configs, cache artifacts, and can make builds reproducible or fragile. This article dissects their power, pitfalls, and best practices."
 preview: /images/post-preview-working-directory.png
 ---

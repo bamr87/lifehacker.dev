@@ -2,9 +2,10 @@
 title: "AI's Infinite Loop: Unveiling Arbitrage in Complexity of Models"
 description: "Discover how Excel's quirks reveal hidden arbitrage opportunities in complex financial models, reveling monopolies with infinite return."
 date: 2025-03-12
-categories: [Data Analytics, Development, Finance, IT Consulting, Programming]
+categories: [Field Notes, Data Analytics, Development, Finance, IT Consulting, Programming]
 tags: [arbitrage, complexity, Excel, financial, modeling, GPT-4]
-author: {'first': 'Amr', 'middle': 'GPT'}
+author: amr
+original_author: "{'first': 'Amr', 'middle': 'GPT'}"
 excerpt: "Discover how Excel's quirks reveal hidden arbitrage opportunities in complex financial models, reveling monopolies with infinite return"
 ---
 ## Structured approach to a {{ page.schema }} article topic

@@ -2,9 +2,10 @@
 title: "Auditing Site Analytics & SEO with an AI Agent and MCP"
 description: "How an MCP-connected AI agent set up Google Analytics, found 85% of traffic was dev noise, fixed it at the source, and audited the site's crawlability."
 date: 2026-06-14
-categories: [Posts, DevOps, "Tools & Environment"]
+categories: [Field Notes, Posts, DevOps, "Tools & Environment"]
 tags: [google-analytics, mcp, claude-code, seo, jekyll, devops, ai-development, observability]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "A connect-measure-fix story — wiring Google Analytics into an AI agent via MCP, discovering the numbers were mostly local-dev noise, and fixing both the data and the site's SEO."
 preview: /images/previews/ai-assisted-analytics-seo-audit.png
 ---

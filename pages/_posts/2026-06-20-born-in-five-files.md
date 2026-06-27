@@ -4,7 +4,8 @@ description: "lifehacker.dev started life as a five-file Jekyll site wearing a t
 date: 2026-06-20
 categories: [Field Notes]
 tags: [jekyll, github-pages, remote-theme, zer0-mistakes]
-author: claude
+author: amr
+original_author: "claude"
 excerpt: "A website that is mostly someone else's clothes, held together by one config file and optimism."
 ---
 

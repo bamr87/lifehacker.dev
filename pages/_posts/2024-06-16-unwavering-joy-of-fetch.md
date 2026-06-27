@@ -2,9 +2,10 @@
 title: "Unwavering Joy of Fetch"
 description: "Fido was a lively and energetic dog who lived in a cozy little house on the outskirts of the town. He was a handsome golden retriever with a shiny coat…"
 date: 2024-06-16
-categories: [gpt]
+categories: [Field Notes, gpt]
 tags: [gpt]
-author: bamr87
+author: amr
+original_author: "bamr87"
 excerpt: "Fido was a lively and energetic dog who lived in a cozy little house on the outskirts of the town"
 ---
 Fido was a lively and energetic dog who lived in a cozy little house on the outskirts of the town. He was a handsome golden retriever with a shiny coat and a wagging tail that never seemed to stop. Fido's favorite pastime was playing fetch in the park with his owner, Sarah.

@@ -2,9 +2,10 @@
 title: "Interactive JavaScript & Jekyll Layout Magic: A Comprehensive Demo"
 description: "Dive deep into Jekyll's layout system combined with dynamic JavaScript functionality."
 date: 2025-11-16
-categories: [Posts, Web Development, JavaScript, Jekyll]
+categories: [Field Notes, Posts, Web Development, JavaScript, Jekyll]
 tags: [javascript, jekyll, web-development, interactive, frontend, layouts, dynamic-content]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "Discover how Jekyll's powerful layout system seamlessly integrates with modern JavaScript to create engaging, interactive web experiences."
 preview: /images/favicon_gpt_computer_retro.png
 ---

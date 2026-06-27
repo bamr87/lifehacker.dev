@@ -2,9 +2,10 @@
 title: "Setting Up Django and Git: A Magical Beginner's Guide"
 description: "Learn to set up a Django project with Git version control and push it to GitHub from VS Code — a fun, wizard-themed walkthrough."
 date: 2025-03-08
-categories: [Posts, Web Development]
+categories: [Field Notes, Posts, Web Development]
 tags: [django, git, python, tutorial, beginner]
-author: Cloud Quest Guide
+author: amr
+original_author: "Cloud Quest Guide"
 excerpt: "A step-by-step guide to initializing a Django project, setting up Git, and pushing your code to GitHub — all wrapped in a wizard theme."
 preview: /images/git-django.png
 ---

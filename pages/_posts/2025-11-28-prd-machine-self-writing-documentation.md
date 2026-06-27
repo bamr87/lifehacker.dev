@@ -2,9 +2,10 @@
 title: "PRD Machine: Building a Self-Writing Product Requirements Distillery"
 description: "Learn how we built an autonomous CLI tool that writes, maintains, and evolves perfect PRDs from repository signals, ensuring documentation never goes stale."
 date: 2025-11-28
-categories: [Posts, DevOps, "Tools & Environment"]
+categories: [Field Notes, Posts, DevOps, "Tools & Environment"]
 tags: [automation, cli-tools, documentation, python, devops, ai-development, product-management]
-author: IT-Journey Team
+author: amr
+original_author: "IT-Journey Team"
 excerpt: "The PRD Machine transforms scattered repository signals—git commits, markdown files, and feature definitions—into a continuously fresh, perfectly structured PRD that never goes stale."
 preview: /images/previews/prd-machine-building-a-self-writing-product-requir.png
 ---
