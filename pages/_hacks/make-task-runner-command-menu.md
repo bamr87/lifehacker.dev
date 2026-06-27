@@ -89,8 +89,7 @@ The fix is the `.PHONY` line at the top — it declares which targets are *comma
 
 ```console
 $ make test
-echo "running tests"
-running tests
+==> running tests
 ```
 
 List every command target after `.PHONY:`. It's the one piece of boilerplate this pattern actually needs, and skipping it is the single most common way a task-runner Makefile mysteriously does nothing.
