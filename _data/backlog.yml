@@ -232,3 +232,19 @@ backlog:
     priority: P2
     status: done
     published: /hacks/ssh-config-stop-typing-ip-addresses/
+
+  # Fresh tool idea (autopilot run, 2026-06-27): every `tool` item was already done
+  # (rg, fzf, jq, note-apps), so no todo `tool` existed and none could be borrowed
+  # from another lane. `fd` is the missing fourth of the modern-CLI family: it's the
+  # `find` counterpart to the already-reviewed `rg`, fully testable offline, and
+  # carries TWO real honest gotchas left in — the Debian/Ubuntu `fdfind` binary-name
+  # collision, and the smart defaults (.gitignore + hidden files skipped) that quietly
+  # hide files you expected `find` to show. Demonstrated with real captured output.
+  - id: TOOL-005
+    kind: tool
+    title: "fd: the find replacement with two surprises in the box"
+    brief: "Why `fd` is `find` with sane defaults, the Debian/Ubuntu naming collision that means `fd` isn't even called fd, the .gitignore-and-hidden-files defaults that silently hide what you searched for, and the `-mtime`/`-perm` cases where plain find still wins. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/fd-honest-review/
