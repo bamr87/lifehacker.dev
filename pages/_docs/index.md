@@ -17,6 +17,9 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/)**
   — the verification harness between writing and merging: safe-mode builds, the
   one-finding-per-line contract, and the single number that is the merge gate.
+- **[The Word Police That Can't Make an Arrest](/docs/the-word-police-that-cant-make-an-arrest/)**
+  — a deep-dive on the brand linter: why the check that flags the robot's favorite
+  hype words is built to never block a single one of them.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible
