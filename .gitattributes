@@ -1,0 +1,21 @@
+# =============================================================================
+# Merge strategy for append-prone, machine-edited files
+# -----------------------------------------------------------------------------
+# `_data/backlog.yml` is the autopilot's shared to-do list. Every parallel
+# content run appends a fresh item to the *end* of the same file, so two runs
+# branched off the same `main` reliably collide on those final lines — the
+# recurring "the one file the whole fleet fights over" merge conflict.
+#
+# The `union` merge driver resolves an append/append collision by keeping BOTH
+# sides' lines instead of failing. Each run appends a distinct, well-formed
+# YAML list item, so the union of two appends is still valid YAML — exactly the
+# behaviour we want. Status flips and `published:` edits land on unique
+# in-place lines and already merge cleanly; union only changes the outcome for
+# the overlapping tail-append hunk.
+#
+# `union` is a built-in git driver (no `.git/config` setup needed); it is
+# honoured by local `git merge`/`git rebase` and by GitHub's "Update branch".
+# Scope it narrowly — never union-merge prose or structured config, where it
+# would silently duplicate content.
+# =============================================================================
+_data/backlog.yml merge=union

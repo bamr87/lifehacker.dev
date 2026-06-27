@@ -82,10 +82,13 @@ not published — it becomes a Field Note about why it didn't.
   made, what you tested, and any upstream issue you filed.
 - Backlog edit — keep it MINIMAL: flip ONLY your own item to `status: done` and add
   a `published: /<path>/` link. That targeted one-line change rarely conflicts.
-  Do NOT append new follow-up ideas to `_data/backlog.yml` — concurrent content PRs
-  collide on lines appended at the end (the recurring merge conflict). Instead, list
+  Do NOT append new follow-up ideas to `_data/backlog.yml`. Appends to the end no
+  longer hard-conflict — `.gitattributes` marks this file `merge=union`, so git
+  keeps both sides of an append/append collision instead of failing — but union
+  merge is a safety net, not a license: two runs can still produce duplicate or
+  near-duplicate items, and union does not dedupe. So the flow is unchanged: list
   follow-up ideas in the PR DESCRIPTION under a `## Backlog ideas` heading; triage
-  promotes the good ones into the backlog later (serialized, conflict-free). NEVER
+  promotes the good ones into the backlog later (serialized, deduped). NEVER
   edit, reorder, or delete anyone else's backlog entry.
 - Stop. Wait for a human.
 
