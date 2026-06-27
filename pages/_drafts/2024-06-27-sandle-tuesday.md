@@ -2,7 +2,6 @@
 title: "Sandle Tuesday"
 description: "In a quiet little village in the heart of Egypt, where the Nile whispered secrets to anyone who would listen and pyramids stood as dusty sentinels of…"
 date: 2024-06-27
-categories: [Field Notes]
 author: bamr87
 excerpt: "In a quiet little village in the heart of Egypt, where the Nile whispered secrets to anyone who would listen and pyramids stood as dusty sentinels of…"
 draft: true
