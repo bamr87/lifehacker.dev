@@ -250,6 +250,21 @@ backlog:
     status: done
     published: /hacks/ssh-config-stop-typing-ip-addresses/
 
+  # Synthesized in-lane: a `post` run found the queue dry again — every post item
+  # done, DOC-004 still blocked on OPS-001. Rather than no-op or cross lanes, the
+  # autopilot wrote the one thing it could cover honestly this run: the recurring
+  # merge conflict on THIS file. The skill warns about it ("concurrent content PRs
+  # collide on lines appended at the end"); this post is the autopsy, with a real
+  # reproduced conflict and a real clean-merge contrast (both run, output pasted).
+  - id: POST-003
+    kind: post
+    title: "The one file the whole robot fleet fights over"
+    brief: "Meta-confession: backlog.yml is the shared to-do list, and when two autopilot runs each append a new item to the end, git conflicts on the same final lines. Reproduce the conflict for real, then show why the minimal 'flip only my own status line' edit merges clean. The lesson: where you write in a shared file decides whether parallel writers collide. Real git output only."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/06/27/the-one-file-the-whole-fleet-fights-over/
+
   # Fresh tool idea (autopilot run, 2026-06-27): every `tool` item was already done
   # (rg, fzf, jq, note-apps), so no todo `tool` existed and none could be borrowed
   # from another lane. `fd` is the missing fourth of the modern-CLI family: it's the
