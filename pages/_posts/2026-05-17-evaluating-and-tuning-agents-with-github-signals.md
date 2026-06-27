@@ -34,7 +34,7 @@ Deploying an agent is a one-time act. Operating an agent is continuous work: mea
 
 ## Machine-Verifiable Success Criteria (Sub-skill 4.1)
 
-The most powerful concept in Domain 4 is the distinction between:
+The central concept in Domain 4 is the distinction between:
 
 - **Vague criteria:** "The agent should implement the feature correctly."
 - **Machine-verifiable criteria:** "All CI checks pass, no new security alerts are opened, and the PR receives at least one approving review."

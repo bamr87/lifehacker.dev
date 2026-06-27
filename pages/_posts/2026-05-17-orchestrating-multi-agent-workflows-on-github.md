@@ -4,7 +4,7 @@ description: Design and operate multi-agent systems on GitHub Actions — fan-ou
 draft: false
 date: '2026-05-17T00:00:00.000Z'
 sub-title: Domain 5 deep-dive for GH-600 candidates
-excerpt: One agent is powerful. A coordinated team of agents is transformative. Domain 5 tests whether you can design that team and keep it running.
+excerpt: One agent is useful. A coordinated team of agents is transformative. Domain 5 tests whether you can design that team and keep it running.
 snippet: Fan out. Trace everything. Recover gracefully. Retire cleanly.
 author: amr
 original_author: "IT-Journey Team"
