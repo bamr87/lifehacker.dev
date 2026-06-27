@@ -2,9 +2,11 @@
 title: "Texan Cowboys Learn History: Pyramid Scheme Revealed"
 description: "Dallas, TX – In an age where historical grievances usually serve as fodder for dusty textbooks, one American-Egyptian family found themselves in an…"
 date: 2024-07-18
+categories: [Field Notes]
 author: bamr87
 excerpt: "Dallas, TX – In an age where historical grievances usually serve as fodder for dusty textbooks, one American-Egyptian family found themselves in an…"
 draft: true
+tags: [field-notes]
 ---
 ## Dallas Family Ousted by Drunken Cowboys Seeking Revenge for Ancient Pyramid Schemes
 
