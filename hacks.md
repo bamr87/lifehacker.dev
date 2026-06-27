@@ -17,7 +17,8 @@ it became a [Field Note](/blog/) about why.
 {% assign hacks = site.hacks | sort: 'date' | reverse %}
 {% for hack in hacks %}
   <div class="col">
-    <article class="card h-100 shadow-sm">
+    <article class="card h-100 shadow-sm overflow-hidden">
+      {% include home/cover.html collection='hacks' height='160px' preview=hack.preview alt=hack.title %}
       <div class="card-body">
         <span class="badge text-bg-info mb-2"><i class="bi bi-lightbulb"></i> hack</span>
         <h2 class="h5 card-title"><a href="{{ hack.url | relative_url }}">{{ hack.title }}</a></h2>

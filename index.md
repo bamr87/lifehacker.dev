@@ -112,7 +112,7 @@ permalink: /
     <!-- Main featured -->
     <div class="col-lg-6">
       <div class="card h-100 border-0 shadow hover-lift overflow-hidden">
-        {% include home/cover.html collection=main_featured.collection height='300px' %}
+        {% include home/cover.html collection=main_featured.collection height='300px' preview=main_featured.preview alt=main_featured.title %}
         <div class="card-body">
           <span class="badge text-bg-warning mb-2"><i class="bi bi-star-fill me-1"></i>Editor's pick</span>
           <h3 class="h4 card-title">

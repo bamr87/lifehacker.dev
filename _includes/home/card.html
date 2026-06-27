@@ -15,7 +15,7 @@
   {%- else -%}{%- assign label = coll | capitalize -%}{%- assign badge = 'text-bg-secondary' -%}
 {%- endcase -%}
 <div class="card h-100 border-0 shadow-sm hover-lift overflow-hidden">
-  {% include home/cover.html collection=coll height=include.cover_height %}
+  {% include home/cover.html collection=coll height=include.cover_height preview=it.preview alt=it.title %}
   <div class="card-body">
     <span class="badge {{ badge }} mb-2">{{ label }}</span>
     <h3 class="h6 card-title mb-2">

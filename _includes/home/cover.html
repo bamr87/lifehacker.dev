@@ -1,25 +1,36 @@
 {%- comment -%}
-  home/cover.html — branded gradient "cover art" for a magazine card.
+  home/cover.html — cover art for a magazine card.
 
-  This site has no per-item photos, so instead of repeating one og-banner on
-  every card we art-direct each card by collection: a neon gradient keyed to the
-  section, with the section's Bootstrap icon. Reads as an intentional magazine,
-  not a missing image.
+  If the item has a real preview image (front-matter `preview:`), use it. The
+  zer0-mistakes theme convention is that preview paths may omit the `/assets`
+  prefix, so we add it when missing. When there is no per-item photo we fall
+  back to art-directed neon gradient keyed to the collection — reads as an
+  intentional magazine, not a missing image.
 
   Params:
     collection : 'hacks' | 'tools' | 'posts' | 'docs' | 'about'  (item.collection)
+    preview    : the item's front-matter `preview:` value (optional)
+    alt        : alt text for the image cover (optional; defaults to title-less)
     height     : CSS min-height (default 160px)
     class      : extra classes for the cover element (e.g. rounded-start)
 {%- endcomment -%}
 {%- assign _c = include.collection -%}
 {%- assign _h = include.height | default: '160px' -%}
-{%- case _c -%}
-  {%- when 'hacks' -%}{%- assign _g = 'linear-gradient(135deg, #d946ef 0%, #a855f7 100%)' -%}{%- assign _i = 'bi-lightbulb' -%}
-  {%- when 'tools' -%}{%- assign _g = 'linear-gradient(135deg, #22d3ee 0%, #6366f1 100%)' -%}{%- assign _i = 'bi-wrench-adjustable' -%}
-  {%- when 'posts' -%}{%- assign _g = 'linear-gradient(135deg, #22c55e 0%, #22d3ee 100%)' -%}{%- assign _i = 'bi-journal-text' -%}
-  {%- when 'docs'  -%}{%- assign _g = 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)' -%}{%- assign _i = 'bi-robot' -%}
-  {%- else         -%}{%- assign _g = 'linear-gradient(135deg, #64748b 0%, #334155 100%)' -%}{%- assign _i = 'bi-stars' -%}
-{%- endcase -%}
-<div class="news-cover d-flex align-items-center justify-content-center {{ include.class }}" style="background: {{ _g }}; min-height: {{ _h }};" aria-hidden="true">
-  <i class="bi {{ _i }}"></i>
-</div>
+{%- assign _pv = include.preview -%}
+{%- if _pv and _pv != '' -%}
+  {%- comment -%} Real preview image. Add /assets prefix if the path omits it (theme convention). {%- endcomment -%}
+  {%- assign _src = _pv -%}
+  {%- unless _pv contains '://' or _pv contains '/assets' -%}{%- assign _src = '/assets' | append: _pv -%}{%- endunless -%}
+  <div class="news-cover {{ include.class }}" style="background-image: url('{{ _src | relative_url }}'); background-size: cover; background-position: center; min-height: {{ _h }};" role="img" aria-label="{{ include.alt | default: 'Preview image' | escape }}"></div>
+{%- else -%}
+  {%- case _c -%}
+    {%- when 'hacks' -%}{%- assign _g = 'linear-gradient(135deg, #d946ef 0%, #a855f7 100%)' -%}{%- assign _i = 'bi-lightbulb' -%}
+    {%- when 'tools' -%}{%- assign _g = 'linear-gradient(135deg, #22d3ee 0%, #6366f1 100%)' -%}{%- assign _i = 'bi-wrench-adjustable' -%}
+    {%- when 'posts' -%}{%- assign _g = 'linear-gradient(135deg, #22c55e 0%, #22d3ee 100%)' -%}{%- assign _i = 'bi-journal-text' -%}
+    {%- when 'docs'  -%}{%- assign _g = 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)' -%}{%- assign _i = 'bi-robot' -%}
+    {%- else         -%}{%- assign _g = 'linear-gradient(135deg, #64748b 0%, #334155 100%)' -%}{%- assign _i = 'bi-stars' -%}
+  {%- endcase -%}
+  <div class="news-cover d-flex align-items-center justify-content-center {{ include.class }}" style="background: {{ _g }}; min-height: {{ _h }};" aria-hidden="true">
+    <i class="bi {{ _i }}"></i>
+  </div>
+{%- endif -%}
