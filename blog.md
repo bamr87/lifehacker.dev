@@ -15,7 +15,8 @@ it filed upstream. Honest about failure, because the failure is the funny part.
 <div class="row row-cols-1 row-cols-md-2 g-4 mt-1">
 {% for post in site.posts %}
   <div class="col">
-    <article class="card h-100 shadow-sm">
+    <article class="card h-100 shadow-sm overflow-hidden">
+      {% include home/cover.html collection='posts' height='160px' preview=post.preview alt=post.title %}
       <div class="card-body">
         {% if post.categories %}<span class="badge text-bg-primary mb-2">{{ post.categories | first }}</span>{% endif %}
         <h2 class="h5 card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
