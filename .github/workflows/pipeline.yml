@@ -28,7 +28,11 @@ permissions:
 
 concurrency:
   group: pipeline-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  # Cancel superseded PR runs (fast feedback), but NEVER cancel a push-to-main
+  # run: each main commit's pipeline is the authoritative build record and feeds
+  # deploy-verify. A cancelled run surfaces as a *failure*, so cancelling main
+  # would discard the build signal and leave main looking red.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   # ----- Change routing — run only the tier each change needs ----------------
@@ -57,9 +61,12 @@ jobs:
           fi
 
   # ----- TIER 1 — fast feedback (no build): only when the machinery changed ---
+  # Fail-safe: if the `changes` router didn't succeed (e.g. a transient runner
+  # kill), the change type is unknown, so run the audit + sim rather than skip —
+  # the same "unclassifiable diff runs everything" stance as classify_changes.rb.
   fast:
     needs: changes
-    if: ${{ needs.changes.outputs.pipeline == 'true' || needs.changes.outputs.deps == 'true' }}
+    if: ${{ always() && (needs.changes.result != 'success' || needs.changes.outputs.pipeline == 'true' || needs.changes.outputs.deps == 'true') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -77,8 +84,12 @@ jobs:
           { echo "## Tier 1 — fast"; echo '```'; tail -3 audit.out; echo; tail -2 sim.out; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 
   # ----- TIER 2 — the required gate (build + harness): ALWAYS runs -----------
+  # Deliberately has NO `needs: changes`: the required check must never be
+  # skipped just because the lightweight router job flaked (a transient runner
+  # kill of `changes` previously left main's HEAD with no green build). verify
+  # ignores the change-type outputs anyway — it always builds — so decoupling it
+  # makes the gate independent of `changes` and lets the two run in parallel.
   verify:
-    needs: changes
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -92,18 +103,9 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      - name: Build (safe-mode overlay) — ONCE for the pipeline
-        id: build
-        continue-on-error: true
-        uses: ./.github/actions/build-overlay
-
-      - name: Harness (records the build outcome, then lints + aggregates)
-        id: harness
-        continue-on-error: true
-        env:
-          LH_SKIP_BUILD: '1'
-          LH_BUILD_RC: ${{ steps.build.outcome == 'success' && '0' || '1' }}
-        run: bash scripts/ci/run-all.sh
+      - name: Build + harness (ONCE; the sev1-on-build-break fail-safe lives in the composite)
+        id: bh
+        uses: ./.github/actions/build-and-harness
 
       - name: Brand tier-1 review signal
         id: brand
@@ -133,8 +135,8 @@ jobs:
       - name: Gate (build + harness must pass)
         if: always()
         run: |
-          [ "${{ steps.build.outcome }}" = "success" ] || { echo "::error::safe-mode build failed"; exit 1; }
-          [ "${{ steps.harness.outcome }}" = "success" ] || { echo "::error::test harness gate failed"; exit 1; }
+          [ "${{ steps.bh.outputs.build_outcome }}" = "success" ] || { echo "::error::safe-mode build failed"; exit 1; }
+          [ "${{ steps.bh.outputs.harness_outcome }}" = "success" ] || { echo "::error::test harness gate failed"; exit 1; }
 
   # ----- TIER 2b — paid brand review (conditional, comment-only) -------------
   brand-review:
@@ -155,9 +157,11 @@ jobs:
         uses: ./.github/actions/claude-run
         continue-on-error: true
         env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GH_TOKEN: ${{ github.token }}
         with:
+          agent: brand-reviewer
           prompt: "Use the brand-reviewer agent to adjudicate test-results/brand.json for PR #${{ github.event.pull_request.number }}. Comments only; never approve or merge."
           tools: "Bash(gh pr comment:*),Read,Grep"
           system: "You are the brand-reviewer for lifehacker.dev: rule each banned-when-sincere candidate as flagged-satire or sincere-violation. Output review comments only; never approve or merge."
@@ -194,7 +198,13 @@ jobs:
   # judgment; never merges. No-op without an API key.
   content-review:
     needs: [changes, verify]
-    if: ${{ needs.changes.outputs.content == 'true' && github.event_name == 'pull_request' }}
+    # LOOP-BREAKER: the editorial commit content-review pushes (with FLEET_TOKEN, so
+    # it re-triggers `verify`) itself fires a `synchronize` event. Skip content-review
+    # on synchronize so it never re-reviews its own commit — one editorial pass per PR
+    # open/reopen, not an infinite micro-edit loop. (`verify` still runs on synchronize,
+    # so the editorial commit is re-validated.) The sibling auto-fix job solves the
+    # same self-retrigger hazard with a MAX_ATTEMPTS counter.
+    if: ${{ needs.changes.outputs.content == 'true' && github.event_name == 'pull_request' && github.event.action != 'synchronize' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -203,6 +213,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
+          # Check out with the bot PAT so the content-reviewer's `git push` is
+          # authenticated as the PAT, not github.token — a github.token-authored
+          # push re-triggers the pipeline as github-actions[bot], which GitHub
+          # gates with `action_required`, leaving the editorial commit unvalidated
+          # and the PR un-mergeable. (Setting GH_TOKEN alone fixes `gh`, not `git`.)
+          token: ${{ secrets.FLEET_TOKEN || github.token }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
@@ -216,9 +232,15 @@ jobs:
         uses: ./.github/actions/claude-run
         continue-on-error: true
         env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GH_TOKEN: ${{ github.token }}
+          # FLEET_TOKEN (bot PAT) so an editorial commit RE-TRIGGERS the pipeline:
+          # a github.token-authored push is suppressed from starting workflows, so
+          # the improvement would otherwise land un-re-validated. Falls back to
+          # github.token (improvement still lands, just without an auto re-run).
+          GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
         with:
-          prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, apply small improvements to the content file(s) ONLY, append larger ideas to _data/backlog.yml, commit to this PR branch, and comment judgment calls. Never touch scripts/.github/_config/Gemfile. Never merge."
-          tools: "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob"
+          agent: content-reviewer
+          prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, and apply small improvements to the content file(s) ONLY. Commit ONLY if your edits materially improve the piece; if it already reads clean and on-voice, make NO commit — just post a one-line 'looks good' PR comment. This is a single editorial pass, not an iterative polish. Post larger follow-up ideas as a PR COMMENT (do NOT append to _data/backlog.yml — concurrent content PRs collide on it). Comment judgment calls. Never touch scripts/.github/_config/Gemfile or _data/backlog.yml. Never merge."
+          tools: "Bash(gh pr comment:*),Bash(git:*),Read,Edit,Write(pages/**),Grep,Glob"
           system: "You are the content-reviewer for lifehacker.dev. Improve the changed content only; never touch infra; never merge."

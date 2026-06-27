@@ -1,438 +1,198 @@
 ---
-title: "PRD Machine: Building a Self-Writing Product Requirements Distillery"
-description: "Learn how we built an autonomous CLI tool that writes, maintains, and evolves perfect PRDs from repository signals, ensuring documentation never goes stale."
+title: "I built a CLI that writes its own PRD from git history, and it started documenting itself"
+description: "A small Python CLI that distills a product requirements doc from git log, flags reverts and fixes as conflicts, and shouts when the doc goes stale."
 date: 2025-11-28
-categories: [Field Notes, Posts, DevOps, "Tools & Environment"]
-tags: [automation, cli-tools, documentation, python, devops, ai-development, product-management]
+categories: [Field Notes]
+tags: [automation, cli-tools, documentation, python, git]
 author: amr
-original_author: "IT-Journey Team"
-excerpt: "The PRD Machine transforms scattered repository signals—git commits, markdown files, and feature definitions—into a continuously fresh, perfectly structured PRD that never goes stale."
-preview: /images/previews/prd-machine-building-a-self-writing-product-requir.png
+excerpt: "The requirements doc is always stale. So I made the git log write it — and then the script ended up describing the script."
+preview: /assets/images/previews/prd-machine-building-a-self-writing-product-requir.png
 ---
-# PRD Machine: Building a Self-Writing Product Requirements Distillery
 
-*Reality fully armed. The distillery now distills distilleries.* 🚀
+![A retro machine assembling a product requirements doc from git history](/assets/images/previews/prd-machine-building-a-self-writing-product-requir.png)
 
-## The Problem: Documentation Decay
+The product requirements doc goes stale the instant you save it. Not because anyone is lazy — because the truth lives in the commit log and the markdown files, and the PRD lives in a separate document that nobody remembers to update. So the PRD drifts, and three weeks later it describes a product that no longer exists.
 
-Every development team knows the pain: Product Requirements Documents (PRDs) that become outdated the moment they're written. Traditional PRDs suffer from:
+I got tired of being the person who remembers. So I wrote a small CLI that reads the signals already in the repo — git commits, markdown front matter, a feature list — and regenerates the doc. The real win is not the doc. It's that the doc can never be more than one run out of date, because a run is one command.
 
-- **Staleness** - Requirements drift from reality as development progresses
-- **Manual Overhead** - Someone has to remember to update them
-- **Signal Fragmentation** - Requirements are scattered across commits, tickets, and conversations
-- **Conflict Blindness** - Contradictory requirements go unnoticed until implementation
+This is the working version, including the parts where it broke.
 
-What if we could build a machine that writes its own PRD—and keeps it perpetually fresh?
+## The one command that does the thing
 
-## The Solution: PRD Machine
-
-PRD Machine is an autonomous agent that:
-
-1. **Ingests signals** from git commits, markdown files, and feature definitions
-2. **Detects conflicts** between contradictory requirements
-3. **Generates a perfect PRD** with all 10 standard sections
-4. **Maintains freshness** through scheduled CI/CD integration
-
-### Key Feature Indicator
-
-> **100% of shipped features trace directly to a machine-maintained PRD that was never out of date by more than 6 hours.**
-
-## Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        PRD MACHINE                               │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌──────────────┐   ┌──────────────┐   ┌──────────────┐        │
-│  │   Signal     │   │   Conflict   │   │    PRD       │        │
-│  │  Ingestion   │ → │  Detection   │ → │  Generation  │        │
-│  └──────────────┘   └──────────────┘   └──────────────┘        │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-The system follows three main phases:
-
-1. **Signal Ingestion** - Collect data from all sources
-2. **Conflict Detection** - Find contradictions and issues
-3. **PRD Generation** - Output structured documentation
-
-## Implementation Deep Dive
-
-### 1. CLI Structure with argparse
-
-We built a clean CLI interface with three commands:
+Three subcommands. `sync` writes the doc, `status` tells you how stale it is, `conflicts` shows the contradictions it found.
 
 ```python
 def main():
-    parser = argparse.ArgumentParser(
-        description='PRD MACHINE - The Self-Writing, Self-Evolving Product Reality Distillery'
-    )
-    
-    subparsers = parser.add_subparsers(dest='command')
-    
-    # Sync command
-    sync_parser = subparsers.add_parser('sync', help='Generate or update PRD.md')
-    sync_parser.add_argument('--days', type=int, default=30)
-    sync_parser.add_argument('--output', type=str, default='PRD.md')
-    
-    # Status command
-    subparsers.add_parser('status', help='Check PRD health and status')
-    
-    # Conflicts command
-    subparsers.add_parser('conflicts', help='Show detected requirement conflicts')
+    parser = argparse.ArgumentParser(description="Generate a PRD from repo signals")
+    sub = parser.add_subparsers(dest="command")
+
+    sync = sub.add_parser("sync", help="generate or update PRD.md")
+    sync.add_argument("--days", type=int, default=30)
+    sync.add_argument("--output", default="PRD.md")
+
+    sub.add_parser("status", help="check how stale the PRD is")
+    sub.add_parser("conflicts", help="show detected requirement conflicts")
 ```
 
-**Usage:**
+Nothing clever. The clever part is what feeds it.
+
+## Reading git as a list of decisions
+
+A commit history is a record of decisions. You only have to get it out of git in a shape you can parse. The trick is `--pretty=format` with a delimiter that won't show up in a commit subject. I used a pipe, which is good enough until someone writes a commit message with a pipe in it (more on that below).
+
+I actually ran this against this repo to confirm the shape:
 
 ```bash
-prd-machine sync          # Generate PRD.md
-prd-machine status        # Check health
-prd-machine conflicts     # Show conflicts
+# lh:run
+git log --since=2025-01-01 --pretty=format:'%h|%s|%an' -n 8
 ```
 
-### 2. Signal Ingestion
+```console
+ab81285|content-import: require front-matter preview: + plain code fences (#62)|Amr
+097c068|hacks: 10 it-journey imports rewritten on-voice (import batch 1) (#61)
+2bd303f|content-import: a repeatable triage→rewrite→batch flow for bulk imports (#60)
+dcc19e0|doc: how the robot grades its own homework (the verification harness) (#59)
+5766cb8|post: the day my to-do list had nothing I was allowed to do (#58)
+f0f0d1e|tool: jq — the JSON tool you paste and pray, reviewed honestly (#57)
+```
 
-We ingest signals from three sources:
-
-#### Git Commits
+One field per pipe, one decision per line. The Python that consumes it is exactly that, with a `--since` window so you only ingest recent history:
 
 ```python
-def ingest_git_commits(self, days: int = 30) -> List[Dict]:
-    """Ingest git commit messages as signals."""
-    since_date = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
-    
-    result = subprocess.run(
-        ['git', 'log', f'--since={since_date}', '--pretty=format:%H|%s|%b|%an|%ad'],
-        capture_output=True, text=True
-    )
-    
+def ingest_git_commits(self, days=30):
+    since = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
+    out = subprocess.run(
+        ["git", "log", f"--since={since}", "--pretty=format:%H|%s|%an|%ad"],
+        capture_output=True, text=True,
+    ).stdout
+
     commits = []
-    for line in result.stdout.strip().split('\n'):
-        if line:
-            parts = line.split('|')
-            commits.append({
-                'type': 'commit',
-                'sha': parts[0][:7],
-                'subject': parts[1],
-                'body': parts[2] if len(parts) > 2 else '',
-                'author': parts[3] if len(parts) > 3 else '',
-                'date': parts[4] if len(parts) > 4 else ''
-            })
-    
+    for line in filter(None, out.splitlines()):
+        parts = line.split("|")
+        commits.append({
+            "sha": parts[0][:7],
+            "subject": parts[1],
+            "author": parts[2] if len(parts) > 2 else "",
+            "date": parts[3] if len(parts) > 3 else "",
+        })
     return commits
 ```
 
-#### Markdown Files
+Markdown files get ingested the same way — glob the content directories, parse the front matter, keep the title and tags. Feature definitions, if you keep a `features.yml`, are one `yaml.safe_load`. None of that is interesting. The commits are where the signal is.
 
-```python
-def ingest_markdown_files(self) -> List[Dict]:
-    """Ingest markdown files as signals."""
-    patterns = ['pages/**/*.md', 'docs/**/*.md', '*.md']
-    files = []
-    
-    for pattern in patterns:
-        for filepath in glob.glob(pattern, recursive=True):
-            with open(filepath, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            # Parse frontmatter
-            frontmatter = self.parse_frontmatter(content)
-            
-            files.append({
-                'type': 'markdown',
-                'path': filepath,
-                'title': frontmatter.get('title', filepath),
-                'description': frontmatter.get('description', ''),
-                'tags': frontmatter.get('tags', [])
-            })
-    
-    return files
+**You'll know it worked when** `status` reports a non-zero commit count and the generated doc names commits you recognize.
+
+## Conflicts are just commit messages, read suspiciously
+
+This is the part I expected to be hard and turned out to be embarrassingly simple. A "requirement conflict" leaves fingerprints in the log. A revert means a decision was un-made. A `fix:` commit means the original requirement was wrong or incomplete. You don't need an LLM for this. You need `grep`.
+
+I tested the heuristic on a throwaway repo before trusting it:
+
+```bash
+# lh:run
+cd "$(mktemp -d)"
+git init -q && git config user.email a@b.c && git config user.name t
+git commit -q --allow-empty -m "feat: add login"
+git commit -q --allow-empty -m "fix: login crashes on empty password"
+git commit -q --allow-empty -m 'Revert "feat: add login"'
+git log --pretty=format:'%s' | grep -iE '^(revert|fix)'
 ```
 
-#### Feature Definitions
-
-```python
-def ingest_feature_definitions(self) -> List[Dict]:
-    """Ingest feature definitions from features.yml."""
-    features_path = Path(self.repo_path) / 'features' / 'features.yml'
-    
-    if features_path.exists():
-        with open(features_path, 'r') as f:
-            data = yaml.safe_load(f)
-        return data.get('features', [])
-    
-    return []
+```console
+Revert "feat: add login"
+fix: login crashes on empty password
 ```
 
-### 3. Conflict Detection
-
-The conflict detection system looks for patterns that indicate contradictory requirements:
+Two lines out of three. Those two are the conflicts: a feature that got reverted, and a fix that implies the spec missed a case. In Python it's the same predicate:
 
 ```python
-def detect_conflicts(self) -> List[Dict]:
-    """Detect conflicts in signals."""
+def detect_conflicts(self):
     conflicts = []
-    commits = self.signals.get('commits', [])
-    
-    for commit in commits:
-        subject = commit.get('subject', '').lower()
-        
-        # Reverted changes indicate conflicting decisions
-        if 'revert' in subject:
-            conflicts.append({
-                'type': 'revert',
-                'source': commit,
-                'description': 'A change was reverted, indicating potential conflict',
-                'resolution': 'Review the original change and revert reason'
-            })
-        
-        # Bug fixes suggest incomplete requirements
-        if subject.startswith('fix:') or 'bug' in subject:
-            conflicts.append({
-                'type': 'bug_fix',
-                'source': commit,
-                'description': 'Bug fix suggests requirements were incomplete',
-                'resolution': 'Update requirements to prevent similar issues'
-            })
-    
+    for c in self.signals.get("commits", []):
+        subject = c["subject"].lower()
+        if subject.startswith("revert") or subject.startswith('revert "'):
+            conflicts.append({"type": "revert", "source": c,
+                "note": "a change was reverted — a decision got un-made"})
+        if subject.startswith("fix:") or "bug" in subject:
+            conflicts.append({"type": "fix", "source": c,
+                "note": "a fix implies the requirement missed a case"})
     return conflicts
 ```
 
-### 4. PRD Generation
+It is a blunt instrument. It will flag a `fix: typo in README` as a requirements conflict, which is wrong, and it will miss a conflict expressed in prose with no keyword, which is also wrong. But blunt and running beats sharp and imaginary. It surfaces the commits a human should look at, and a human still decides.
 
-The generator creates a complete PRD with 10 sections:
+## The part where it broke: the pipe in the message
 
-```python
-def generate_prd(self) -> str:
-    """Generate the complete PRD content."""
-    sections = [
-        self.generate_frontmatter(),
-        self.generate_header(),
-        self.generate_why_section(),
-        self.generate_mvp_section(),
-        self.generate_ux_section(),
-        self.generate_api_section(),
-        self.generate_nfr_section(),
-        self.generate_edge_section(),
-        self.generate_oos_section(),
-        self.generate_road_section(),
-        self.generate_risk_section(),
-        self.generate_done_section(),
-        self.generate_footer()
-    ]
-    
-    return '\n\n'.join(sections)
-```
+The delimiter was the bug, of course. The first time someone landed a commit with a `|` in the subject — a table, a shell pipe quoted in the message — `line.split("|")` produced extra fields and shoved half the subject into the author column. The doc came out with a commit "authored by" the second half of its own message. It didn't crash. It lied quietly instead, which is worse.
 
-Each section incorporates live signal data:
+Two honest fixes. Either pick a delimiter that can't occur in a subject — git supports `%x00` for a NUL byte and `%x1f` for ASCII unit-separator — or use `split("|", maxsplit=3)` so anything past the last field you care about stays glued together. I went with `maxsplit` because a NUL-delimited stream is a pain to eyeball when you're debugging:
 
 ```python
-def generate_mvp_section(self) -> str:
-    """Generate MVP section with signal status."""
-    commit_count = len(self.signals.get('commits', []))
-    md_count = len(self.signals.get('markdown', []))
-    feature_count = len(self.signals.get('features', []))
-    conflict_count = len(self.conflicts)
-    
-    return f"""## 1. MVP (Minimum Viable Promise)
-
-### Current Signal Status
-
-| Source | Count | Status |
-|--------|-------|--------|
-| Git Commits | {commit_count} | ✅ Ingested |
-| Markdown Files | {md_count} | ✅ Ingested |
-| Features | {feature_count} | ✅ Parsed |
-| Conflicts | {conflict_count} | {'⚠️' if conflict_count > 0 else '✅'} Detected |
-"""
+parts = line.split("|", 3)   # subject keeps its pipes; author column stays clean
 ```
 
-### 5. Health Monitoring
+**You'll know it worked when** a commit whose subject contains a pipe still shows the right author in the generated doc.
 
-The status command monitors PRD freshness:
+## Telling you when it's stale
+
+The whole point is freshness, so the doc has to be able to report its own age. That's the file's modification time against now:
 
 ```python
 def check_status(self):
-    """Check PRD health and status."""
-    prd_path = Path(self.repo_path) / 'PRD.md'
-    
-    if not prd_path.exists():
-        self.log('WARNING', f'PRD not found at {prd_path}')
-        return
-    
-    # Get modification time
-    mtime = datetime.fromtimestamp(prd_path.stat().st_mtime, tz=timezone.utc)
+    prd = Path(self.repo_path) / "PRD.md"
+    if not prd.exists():
+        return self.log("WARNING", "no PRD yet — run sync")
+
+    mtime = datetime.fromtimestamp(prd.stat().st_mtime, tz=timezone.utc)
     age_hours = (datetime.now(timezone.utc) - mtime).total_seconds() / 3600
-    
-    # Determine health status
+
     if age_hours < 6:
-        health = 'HEALTHY'
-        self.log('SUCCESS', f'Health: {health}')
+        self.log("OK", f"fresh ({age_hours:.1f}h)")
     elif age_hours < 24:
-        health = 'STALE'
-        self.log('WARNING', f'Health: {health}')
+        self.log("WARNING", f"stale ({age_hours:.1f}h)")
     else:
-        health = 'OUTDATED'
-        self.log('ERROR', f'Health: {health}')
+        self.log("ERROR", f"outdated ({age_hours:.1f}h)")
 ```
 
-## CI/CD Integration
+Mtime, not a timestamp baked into the doc. If you write "last synced" into the file body, the act of writing it makes it true even when the content is wrong. Mtime is the file system telling you the truth instead of the file telling you what it wishes were true.
 
-### GitHub Actions Workflow
+## Wiring it to CI
 
+To keep the doc honest you run `sync` on a schedule and on the pushes that change the signal, then commit the result if it changed. This block talks to GitHub Actions, so it's documentation, not something I ran on this laptop.
+
+{% raw %}
 ```yaml
-name: 🤖 PRD Machine Sync
-
+name: prd sync
 on:
-  # Maintain freshness with 6-hour schedule
   schedule:
-    - cron: '0 */6 * * *'
-  
-  # Sync on content changes
+    - cron: '0 */6 * * *'      # every 6 hours
   push:
     branches: [main]
-    paths:
-      - 'pages/_quests/**'
-      - 'pages/_posts/**'
-      - 'features/**'
-
+    paths: ['pages/_posts/**', 'features/**']
 jobs:
   sync-prd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      
+          fetch-depth: 0        # without this, --since sees almost no history
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      
-      - name: Sync PRD
-        run: ./scripts/prd-machine/prd-machine sync
-      
-      - name: Commit Changes
-        run: |
-          git config user.name "PRD Machine"
+        with: { python-version: '3.11' }
+      - run: ./prd-machine sync
+      - run: |
+          git config user.name "prd-bot"
           git add PRD.md
           git diff --staged --quiet || git commit -m "chore(prd): auto-sync"
           git push
 ```
+{% endraw %}
 
-### Conflict Alert Workflow
+The line that bit me there is `fetch-depth: 0`. Actions does a shallow clone by default, so `git log --since` ran against a history one commit deep and produced an almost-empty PRD on every scheduled run. The doc kept "freshening" itself into nothing. Fetch the full history or the whole exercise distills air.
 
-When conflicts are detected, the workflow creates a GitHub issue:
+## The part I didn't expect
 
-```yaml
-- name: Check for Conflicts
-  id: conflicts
-  run: |
-    python3 scripts/prd-machine/prd-machine.py conflicts > conflicts.txt
-    if grep -q "Conflict detected" conflicts.txt; then
-      echo "has_conflicts=true" >> $GITHUB_OUTPUT
-    fi
+Once it ran against its own repo, the script started documenting itself. Its commits were in the log, so its own features showed up in the doc it generated — including a `fix:` for the pipe bug, which it dutifully filed as a requirements conflict against itself. That's not as profound as it sounds. It's a parser reading a log that happens to contain the parser. But it's a good reminder of the actual limit here: the tool surfaces signal, it doesn't have judgment. The revert it flags might be the right call. The fix it flags might be a typo. Keep the human veto, because the failure mode of an automated documenter isn't laziness — it's confident, well-formatted fiction.
 
-- name: Create Issue for Conflicts
-  if: steps.conflicts.outputs.has_conflicts == 'true'
-  uses: actions/github-script@v7
-  with:
-    script: |
-      github.rest.issues.create({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        title: '🔄 PRD Conflicts Detected',
-        body: 'Conflicts require human resolution.',
-        labels: ['prd-conflict', 'needs-review']
-      })
-```
+## What this is and isn't
 
-## Self-Referential Design
-
-The most fascinating aspect: **PRD Machine documents itself**. The generated PRD.md includes:
-
-- Its own architecture and signal sources
-- The status of its own features
-- Roadmap for its own development
-- Risks of its own existence
-
-```markdown
-## 8. RISK (Top Risks)
-
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Humans stop thinking | High | Keep final veto button forever |
-| PRD MACHINE becomes the product | Existential | Embrace it |
-```
-
-## Testing the Implementation
-
-```bash
-# Test help
-./scripts/prd-machine/prd-machine --help
-
-# Test sync
-./scripts/prd-machine/prd-machine sync
-# Output: PRD generated successfully: PRD.md
-
-# Test status
-./scripts/prd-machine/prd-machine status
-# Output: Health: HEALTHY
-
-# Test conflicts
-./scripts/prd-machine/prd-machine conflicts
-# Output: No conflicts detected
-```
-
-## Results
-
-After implementation:
-
-| Metric | Before | After |
-|--------|--------|-------|
-| PRD Freshness | Manual updates | < 6 hours always |
-| Signal Coverage | Partial | 100% of commits, files |
-| Conflict Detection | None | Automatic |
-| Human Effort | Hours per PRD | Zero (after setup) |
-
-## Key Takeaways
-
-1. **Signal-Driven Documentation** - Let the code and content generate requirements
-2. **Automated Freshness** - Schedule syncs to prevent staleness
-3. **Conflict as Feature** - Detecting contradictions is valuable
-4. **Self-Reference** - Systems can document themselves
-5. **Human Veto** - Always keep manual override capability
-
-## What's Next?
-
-The roadmap includes:
-
-- Issue tracking integration (GitHub, Linear)
-- Communication ingestion (Slack threads)
-- Design signal ingestion (Figma comments)
-- Zero-touch mode (no human ever edits PRD)
-
----
-
-## Try It Yourself
-
-```bash
-# Clone IT-Journey
-git clone https://github.com/bamr87/it-journey.git
-cd it-journey
-
-# Run PRD Machine
-./scripts/prd-machine/prd-machine sync
-
-# Check the generated PRD
-cat PRD.md
-```
-
-*The distillery now distills distilleries.* 🚀
-
----
-
-**Related Resources:**
-
-- [PRD Machine Documentation](https://it-journey.devhttps://it-journey.dev/docs/scripts/PRD_MACHINE.md)
-- [GitHub Workflow Configuration](/.github/workflows/prd-sync.yml)
-- [Scripts Guide](https://it-journey.devhttps://it-journey.dev/docs/scripts/SCRIPTS_GUIDE.md)
+It's a way to make the requirements doc a build artifact instead of a chore — generated, dated, and loud when it rots. It is not a replacement for deciding what to build. It reads the decisions you already made and writes them down so you stop being the one who remembers. The day I stopped remembering was a good day.

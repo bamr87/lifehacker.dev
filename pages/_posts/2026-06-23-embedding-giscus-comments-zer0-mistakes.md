@@ -1,52 +1,36 @@
 ---
-title: "Embedding Giscus Comments in the zer0-mistakes Theme"
-description: "A screenshot-driven walkthrough of configuring GitHub Giscus comments on giscus.app and wiring the generated snippet into a zer0-mistakes Jekyll site."
+title: "Two Bugs Between Me and Comments: Wiring Giscus into a Jekyll Theme"
+description: "Giscus turns GitHub Discussions into a comment system. Wiring it into a Jekyll theme took two silent bugs first: a one-letter typo and a Liquid tag in a comment"
 date: 2026-06-23
-categories: [Field Notes, web development, devops, jekyll]
-tags: [giscus, github-discussions, jekyll, comments, zer0-mistakes, github-pages]
+categories: [Field Notes]
+tags: [giscus, github-discussions, jekyll, comments, zer0-mistakes]
 author: amr
-original_author: "bamr87"
-excerpt: "Turn GitHub Discussions into a comment system: generate the giscus embed on giscus.app and wire it into IT-Journey's zer0-mistakes theme — including the one-character config bug that was silently disabling it."
+excerpt: "A static site has no backend, so comments became someone else's database. Then it became two bugs, both silent, both mine."
+preview: /assets/images/posts/giscus/01-giscus-app-landing.png
 ---
-# Embedding Giscus Comments in the zer0-mistakes Theme
 
-Static sites are fast and cheap to host, but they have no backend — so "just add
-comments" turns into a hunt for a third-party service. [Giscus](https://giscus.app/)
-solves this by storing every comment thread as a **GitHub Discussion** in your own
-repository. No database, no ads, no tracking, and your readers authenticate with
-the GitHub account they already have.
+A static site is fast, cheap, and has no backend. Which is great until someone asks for a comment box, at which point "no backend" stops being a feature and starts being a problem you have to outsource.
 
-This post is a hands-on walkthrough of configuring giscus and embedding it in
-IT-Journey, which runs on the [zer0-mistakes](https://github.com/bamr87/zer0-mistakes)
-Jekyll theme. Every giscus.app screenshot below was captured live against this
-repository (`bamr87/it-journey`) with Playwright, so what you see is the real
-configuration this site uses — including two genuine bugs we had to fix to make
-comments actually appear: a one-character config typo, and a Liquid tag hiding
-inside an HTML comment in the theme's own include.
+[Giscus](https://giscus.app/) outsources it to GitHub. Every comment thread is a **GitHub Discussion** in your own repo. No database, no ads, readers sign in with the GitHub account they already have, and moderation happens in a tab you already pay attention to. You are, functionally, skinning GitHub Discussions and bolting it to the bottom of a page.
 
-## How giscus works (the 30-second version)
+![The giscus app landing page during comment-system setup](/assets/images/posts/giscus/01-giscus-app-landing.png)
+
+I wired it into a site running the [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) theme. The widget appeared. Then it didn't appear, twice, for two completely different reasons, both of which were silent, and both of which were me. This is the part where it broke — kept, because the breakage is the actual lesson.
+
+## How it works, in one diagram
 
 ```text
-Reader's browser  ──▶  giscus client.js  ──▶  GitHub Discussions API
-   (your page)            (iframe widget)        (your repo's discussions)
+your page ──▶ giscus client.js ──▶ GitHub Discussions API
+              (injects an iframe)    (your repo's discussions)
 ```
 
-1. You drop a `<script>` tag on the page where comments should appear.
-2. `giscus/client.js` injects an `<iframe>` that renders the widget.
-3. The widget maps the current page to a **Discussion** (by URL pathname, in our
-   case) and reads/writes comments through the GitHub Discussions API.
-4. The first comment on a new page auto-creates its Discussion thread.
+You drop a `<script>` tag where comments should go. `client.js` injects an iframe, maps the page to a Discussion (by URL pathname, in this setup), and reads and writes through the Discussions API. The first comment on a new page auto-creates its thread.
 
-Because the data lives in GitHub Discussions, moderation, search, and even
-markdown rendering are handled by GitHub. You are essentially skinning
-Discussions and dropping it onto your site.
+You'll know it worked when you open a post, scroll to the bottom, and see a "Comments" heading with a GitHub-flavored box under it — not an empty gap where the box was supposed to be.
 
-## What the zer0-mistakes theme already does for you
+## The theme already ships the snippet (mostly)
 
-The theme provides a ready-made include, `content/giscus.html`, and pulls it into
-the post layout. You don't paste the giscus.app snippet anywhere — the include
-already *is* the snippet, with most attributes **hardcoded** and only three
-values read from your site config:
+Here is the thing the giscus.app generator does not tell you: if your theme is any good, you don't paste its output anywhere. zer0-mistakes ships `content/giscus.html` and pulls it into the post layout. The include *is* the snippet, with everything hardcoded except three config-driven values:
 
 ```liquid
 {% raw %}<script src="https://giscus.app/client.js"
@@ -65,327 +49,155 @@ values read from your site config:
 </script>{% endraw %}
 ```
 
-So the giscus.app generator (which produces the *whole* snippet) is really just
-there to hand you **two** values — `data-repo-id` and `data-category-id` — plus
-to confirm your repo is wired up correctly. `data-repo` comes from
-`site.repository`, and everything else is the theme's opinionated default.
-Knowing this up front saves a lot of "why is my `data-theme` being ignored?"
-confusion.
+So the whole giscus.app form — which proudly generates the *entire* `<script>` block — exists, for me, to hand over **two values**: `data-repo-id` and `data-category-id`. `data-repo` comes from `site.repository`. Everything else is the theme's opinion. Knowing this up front saves the "why is my `data-theme` setting being ignored" detour: it's being ignored because the include hardcoded it and never read yours.
 
-In this version of the theme, only the **post** layout embeds giscus:
+## Generate the snippet (the part you actually need)
 
-```liquid
-{% raw %}{% if page.comments != false and site.giscus %}
-  ...<h2>Comments</h2>...
-  {% include content/giscus.html %}
-{% endif %}{% endraw %}
-```
+The prerequisites are quick and giscus.app validates all of them live, so I'll keep them short:
 
-`_config.yml` assigns `layout: article` to `pages/_posts`, while notes,
-notebooks, docs, quests, and the hub/index pages resolve to layouts
-(`default.html`, `collection.html`, …) that don't reference giscus. There's a
-second gate, too: the guard's `page.comments != false` half. The site's
-front-matter defaults set `comments: false` at the root scope, but the
-`pages/_posts` scope overrides that with **`comments: true`** — so **every post
-shows the widget by default**, and you opt a single post out with
-`comments: false`. Everything that isn't a post stays off via the root default.
+- The repo must be **public** (comments are public Discussions).
+- **Discussions** must be enabled: Settings → General → Features → Discussions.
+- Pick a category. Giscus recommends an **Announcements**-type category, because only maintainers can open new discussions in it — which is what you want when the giscus app is the only thing creating them.
+- Install the [giscus GitHub App](https://github.com/apps/giscus) and scope it to the repo.
 
-### A real bug in the shipped include — vendor a corrected copy
+Then go to [giscus.app](https://giscus.app/), type `owner/repo`, and watch it check all three prerequisites against the GitHub API. Green check, "Success! This repository meets all of the above criteria," and you're clear. If it complains, it tells you which prerequisite failed — usually that the app isn't installed, or Discussions isn't on.
 
-Enabling giscus surfaced a genuine theme bug worth understanding, because the
-failure mode is bewildering. The theme *does* ship `content/giscus.html`, but its
-header documentation comment contains a literal usage example:
-
-```liquid
-{% raw %}║ Usage:        {% include giscus.html %} (typically at bottom of posts/pages) ║{% endraw %}
-```
-
-The trap: **Liquid evaluates `{% raw %}{% ... %}{% endraw %}` tags even inside HTML comments.**
-That "example" is not inert documentation — Jekyll runs it. So the instant the
-comment guard passes and the include renders, that nested tag executes, looks for
-a top-level `giscus.html` that doesn't exist, and the build aborts:
-
-```text
-Liquid Exception: Could not locate the included file 'giscus.html' ... in /_layouts/article.html
-```
-
-"Fixing" the example to point at `content/giscus.html` is worse — the file then
-includes *itself* and you get the equally cryptic `stack level too deep` (≈9000
-recursion levels). The clean fix is to **vendor a corrected copy into the site**:
-Jekyll resolves a site's own `_includes/` ahead of any theme, so a tag-free copy
-at `_includes/content/giscus.html` overrides the buggy one and the build passes
-for every theme delivery path (gem, `remote_theme`, Docker CI). This repo already
-overrides theme includes the same way (see `_includes/content/`). Create it with
-the snippet shown above — and keep all Liquid tags **out of the comment** (or wrap
-them in `{% raw %}…{% endraw %}`).
-
-## Prerequisites
-
-- A **public** GitHub repository (private repos can't show public comments).
-- Repository admin rights (to enable Discussions and install an app).
-- A Jekyll site on the zer0-mistakes theme (or any theme — the giscus.app steps
-  are identical; only the wiring in the last section differs).
-
-## Part 1 — Prepare the GitHub repository
-
-Giscus needs three things to be true about your repo. The giscus.app page lists
-them as a checklist, and it validates all three live.
-
-### 1.1 Make the repository public
-
-Comments are public GitHub Discussions, so the repo must be public. (Settings →
-General → Danger Zone → *Change repository visibility* if it isn't.)
-
-### 1.2 Enable the Discussions feature
-
-In your repository, go to **Settings → General → Features** and tick
-**Discussions**. GitHub's docs cover this here:
-[Enabling or disabling GitHub Discussions for a repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/enabling-or-disabling-github-discussions-for-a-repository).
-
-Once enabled, the repo gets a **Discussions** tab. IT-Journey's looks like this —
-note the category list in the sidebar, which giscus will let you choose from:
-
-![The Discussions tab on bamr87/it-journey, showing the default category list in the sidebar](/assets/images/posts/giscus/09-itjourney-discussions.png)
-
-### 1.3 Pick (or create) a discussion category
-
-Giscus recommends a category of type **Announcements**, because Announcement
-categories only allow *maintainers* to open new discussions — which is exactly
-what you want when giscus is the only thing creating them. IT-Journey uses the
-default **Announcements** category. You can manage categories from the Discussions
-tab (the ✏️ pencil next to "Categories").
-
-### 1.4 Install the giscus GitHub App
-
-The widget writes comments on your behalf through the
-[giscus GitHub App](https://github.com/apps/giscus). Install it and grant it
-access to the repo you'll be embedding (you can scope it to a single repository).
-
-![The giscus GitHub App installation page](/assets/images/posts/giscus/08-giscus-github-app.png)
-
-## Part 2 — Generate the embed on giscus.app
-
-With the repo prepped, head to [giscus.app](https://giscus.app/). The page is
-both the documentation *and* the configuration generator — you scroll down a
-single form and it builds the snippet as you go.
-
-![The giscus.app configuration page](/assets/images/posts/giscus/01-giscus-app-landing.png)
-
-### 2.1 Connect your repository
-
-Type `owner/repo` into the **repository** field. Giscus immediately calls the
-GitHub API to check the three prerequisites from Part 1. When all three pass you
-get a green checkmark and **"Success! This repository meets all of the above
-criteria."**
-
-![The repository field validated for bamr87/it-journey with a success message, and the Page to Discussions mapping options below](/assets/images/posts/giscus/02-repository-validated.png)
-
-If you see an error instead, it tells you which prerequisite failed — usually
-"giscus is not installed on this repository" (revisit step 1.4) or that
-Discussions isn't enabled (step 1.2).
-
-### 2.2 Choose the page ↔ discussion mapping
-
-This controls how a page is matched to its Discussion thread. The zer0-mistakes
-include is hardcoded to **`pathname`**, so pick **"Discussion title contains page
-`pathname`"** to match. Each URL path (e.g. `/posts/.../`) gets its own thread.
-
-![The Page to Discussions Mapping section with pathname selected](/assets/images/posts/giscus/03-page-mapping.png)
-
-The theme also sets `data-strict="1"` (strict title matching), which avoids
-GitHub's fuzzy search picking the wrong thread when two paths look similar — so
-tick **"Use strict title matching"** if you want the preview snippet to match the
-theme exactly.
-
-### 2.3 Choose the discussion category
-
-Select the category you settled on in step 1.3. For IT-Journey that's
-**Announcements**, whose category ID giscus fills in as `DIC_kwDOEOrJ7c4CAn8D`.
-This is the value you'll copy into your site config.
-
-![The Discussion Category dropdown set to Announcements](/assets/images/posts/giscus/04-category-announcements.png)
-
-### 2.4 Set the features
-
-The zer0-mistakes defaults are: reactions **on**, metadata **off**, and the
-comment box **above** the comments (`data-input-position="top"`). Match those if
-you want the generated snippet to mirror the theme.
-
-![The Features section with reactions enabled and the comment box placed above the comments](/assets/images/posts/giscus/05-features.png)
-
-### 2.5 Copy the generated snippet
-
-Scroll to **Enable giscus** at the bottom. Giscus has assembled the full
-`<script>` tag from your choices:
-
-![The Enable giscus section showing the generated script tag with data-repo-id and data-category-id](/assets/images/posts/giscus/06-enable-giscus-snippet.png)
-
-For `bamr87/it-journey` it produces:
+Set the mapping to **pathname** and tick **strict title matching** to match the theme's `data-mapping="pathname"` and `data-strict="1"`. Pick your category. Scroll to **Enable giscus** at the bottom and read off the generated block. For my repo it produced something like:
 
 ```html
 <script src="https://giscus.app/client.js"
-        data-repo="bamr87/it-journey"
+        data-repo="OWNER/REPO"
         data-repo-id="MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM="
         data-category="Announcements"
         data-category-id="DIC_kwDOEOrJ7c4CAn8D"
         data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
+        ...
         async>
 </script>
 ```
 
-Compare this to the theme include from earlier — it's almost identical. The one
-difference: giscus.app adds a `data-category="Announcements"` line (the
-human-readable name), which the theme include omits because it passes only
-`data-category-id` — the ID is all the giscus client needs. That's exactly why,
-of this whole block, the only two values you have to copy are:
+Compare it to the theme include. Nearly identical. The only extra line is `data-category="Announcements"` (the human-readable name), which the include drops because the ID alone is all the client needs. Which means, of that entire block, I copy exactly two things:
 
-- `data-repo-id` → `MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM=`
-- `data-category-id` → `DIC_kwDOEOrJ7c4CAn8D`
+- `data-repo-id`
+- `data-category-id`
 
-> **Note on the trailing `=`.** giscus.app emits the repo ID with base64 padding
-> (`…1NzM=`); the value stored in `_config.yml` omits it (`…1NzM`). The unpadded
-> form isn't valid standalone base64, but the giscus client restores the missing
-> padding before decoding, so both resolve to the same underlying value
-> (`010:Repository283822573`) — the dropped `=` is harmless.
+### A footgun in the value itself: the trailing `=`
 
-The bottom of giscus.app also renders a **live widget** so you can see what your
-readers will get (this preview runs against giscus's own demo repo):
+giscus.app emits the repo ID with base64 padding (`…1NzM=`). The theme's config stores it without (`…1NzM`). That looks like a bug waiting to happen — an unpadded string isn't valid standalone base64 — but the giscus client restores the missing padding before decoding, so both forms resolve to the same value. I didn't take that on faith. I padded it back and decoded both:
 
-![The live giscus comment widget rendered at the bottom of giscus.app](/assets/images/posts/giscus/07-live-widget-preview.png)
+```bash
+# lh:run
+padded='MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM='
+unpadded='MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM'
 
-## Part 3 — Wire it into the zer0-mistakes site
+printf '%s' "$padded" | base64 -D
 
-Two pieces make it work: the **config block** below, plus the **vendored include**
-from the previous section (`_includes/content/giscus.html`). Because that include
-already contains the `<script>` template, you do **not** paste the giscus.app
-snippet into a layout — you just give the include its two values via `_config.yml`:
-
-```yaml
-giscus:
-  enabled: true
-  data-repo-id: "MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM"
-  data-category-id: "DIC_kwDOEOrJ7c4CAn8D"
+# restore padding to a multiple of 4, then decode
+pad=$(( (4 - ${#unpadded} % 4) % 4 ))
+printf '%s%s' "$unpadded" "$(printf '=%.0s' $(seq 1 $pad))" | base64 -D
 ```
 
-`site.repository` is already defined near the top of `_config.yml`, so
-`data-repo` resolves to `bamr87/it-journey` automatically:
+Both print the same thing:
 
-```yaml
-github_user      : &github_user "bamr87"
-repository_name  : &github_repository "it-journey"
-repository       : [*github_user, "/", *github_repository]   # → bamr87/it-journey
+```text
+010:Repository283822573
 ```
 
-### The gotcha that was hiding in this repo
+So the dropped `=` is harmless. Good to confirm, because if you ever *do* hit a "comments won't load" mystery, you want to rule the value out cheaply instead of staring at it.
 
-Here's the real-world catch this walkthrough uncovered. IT-Journey's config
-declared the block under the key **`gisgus:`** — a transposed-letter typo:
+## Bug one: the one-letter typo that disabled comments on every page
+
+I wired the two values into `_config.yml`, built, opened a post, scrolled down, and got nothing. No "Comments" heading. No iframe. No error in the build log. The site was, by every visible measure, fine. It had no comments anywhere.
+
+The config block looked like this:
 
 ```yaml
-## ❌ Before — the key is misspelled, so `site.giscus` is nil
 gisgus:
   enabled: true
   data-repo-id: "MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM"
   data-category-id: "DIC_kwDOEOrJ7c4CAn8D"
 ```
 
-The theme reads `site.giscus.*` (correct spelling), but the config defined
-`site.gisgus.*`. Liquid doesn't error on a missing key — it just returns `nil`.
-So the layout guard `{% raw %}{% if page.comments != false and site.giscus %}{% endraw %}`
-evaluated to false on every page, and **the comment widget never rendered.** No
-error, no warning, no comments — for every post on the site.
+Read it again. `gisgus`. The theme reads `site.giscus.*`. I had defined `site.gisgus.*`. The two letters are transposed and the eye slides right over it.
 
-The fix is one word:
+Liquid does not error on a missing key — it returns `nil`. So the layout guard:
+
+```liquid
+{% raw %}{% if page.comments != false and site.giscus %}{% endraw %}
+```
+
+evaluated to false on every page, forever, quietly. No warning. No red X. Only the absence of a feature, which looks exactly like a feature that was never turned on.
+
+The fix is one letter:
 
 ```yaml
-## ✅ After — key matches what the theme reads
 giscus:
   enabled: true
   data-repo-id: "MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM"
   data-category-id: "DIC_kwDOEOrJ7c4CAn8D"
 ```
 
-The lesson generalizes: when a templating engine treats unknown keys as `nil`,
-a misconfiguration looks identical to a disabled feature. If a config-driven
-include silently produces nothing, **dump the variable** (`{% raw %}{{ site.giscus | inspect }}{% endraw %}`)
-before assuming the include is broken.
+The generalizable lesson is the dangerous bit: **when a templating engine treats unknown keys as `nil`, a misconfiguration is indistinguishable from a disabled feature.** If a config-driven include renders nothing, don't assume the include is broken — print the variable first:
 
-### A second subtlety: defaults precedence, and the guard tests existence not `enabled`
-
-Two things trip people up here. First, **defaults precedence**: the root scope
-sets `comments: false`, but the more-specific `pages/_posts` scope sets
-`comments: true`, and the most-specific matching default wins — so posts get
-comments while everything else stays off. Override a single post with
-`comments: false`. Second, the guard tests whether the `giscus` **key exists**,
-not `site.giscus.enabled`. So `enabled: false` does *not* turn comments off
-site-wide — only removing the whole `giscus:` block (making `site.giscus` nil)
-does. Keep `enabled: true` for forward-compatibility, but treat the
-`pages/_posts` default (plus per-post `comments: false`) as the real on/off switch.
-
-## Part 4 — Verify it locally
-
-Build the site and open any post (comments are on for the whole posts collection):
-
-```bash
-make serve            # Docker-based dev server on port 4002
-# then browse to a comments:true post and scroll to the bottom
+```liquid
+{% raw %}{{ site.giscus | inspect }}{% endraw %}
 ```
 
-You should see the "Comments" section render the giscus iframe. If you'd rather
-not spin up the full server, a quick build sanity check works too:
+If that prints `nil`, your key is wrong. It took me longer than I'll admit to type that line instead of re-reading the include for the fourth time.
 
-```bash
-make build-ci         # CI-parity Jekyll build
+## Bug two: a Liquid tag living inside an HTML comment
+
+With the typo fixed, the guard passed, the include rendered — and the build died:
+
+```text
+Liquid Exception: Could not locate the included file 'giscus.html' ... in /_layouts/article.html
 ```
 
-Then confirm the rendered HTML actually contains the script with your real IDs:
+The theme's `content/giscus.html` opens with a decorative documentation header, and inside that header comment is a literal usage example:
+
+```liquid
+{% raw %}║ Usage: {% include giscus.html %} (typically at bottom of posts) ║{% endraw %}
+```
+
+Here is the trap, and it is a good one: **Liquid evaluates `{% raw %}{% ... %}{% endraw %}` tags even inside HTML comments.** That line is not inert documentation. Jekyll runs it. The instant the include rendered, that nested tag executed, went looking for a top-level `giscus.html` that doesn't exist, and the build aborted.
+
+The intuitive fix makes it worse. "Correct" the example to point at `content/giscus.html` and the file now includes *itself*, which gets you the equally cryptic:
+
+```text
+Liquid Exception: stack level too deep
+```
+
+at roughly 9000 levels of recursion, which is one of those errors that tells you everything except what you did.
+
+The clean fix is to **vendor a corrected copy into the site.** Jekyll resolves a site's own `_includes/` ahead of any theme's, so a tag-free copy at `_includes/content/giscus.html` shadows the buggy one for every delivery path — gem, `remote_theme`, Docker CI. Create it with the `<script>` template shown earlier, and keep every Liquid tag **out of the comment** (or wrap it in a `raw`/`endraw` block so it renders as text instead of executing).
+
+This is a real theme bug, not my config. It goes upstream as an issue, not into a workaround I keep secret.
+
+## The defaults precedence that decides who gets comments
+
+Two more things to know, because they decide the on/off switch and they're not where you'd look.
+
+First, **defaults precedence.** The root scope sets `comments: false`. The more-specific `pages/_posts` scope sets `comments: true`. The most-specific matching default wins, so posts get comments and everything else stays quiet. Opt a single post out with `comments: false` in its front matter.
+
+Second — and this one is genuinely counterintuitive — the guard tests whether the `giscus` **key exists**, not `site.giscus.enabled`. So `enabled: false` does *not* turn comments off site-wide. Only deleting the whole `giscus:` block (making `site.giscus` nil) does that. Keep `enabled: true` for forward-compatibility, but treat the per-collection default plus per-post `comments: false` as the real switch.
+
+## Verify it, don't trust it
+
+Build the site and grep the output for the script and your real IDs. An empty result from the second grep means the value is still `nil` — i.e. you're back in bug one:
 
 ```bash
 grep -r "giscus.app/client.js" _site | head
-grep -r "data-repo-id=\"MDEw" _site | head   # should NOT be empty
+grep -r 'data-repo-id="MDEw' _site | head   # must NOT be empty
 ```
 
-An empty result from the second command means `site.giscus.data-repo-id` is
-still `nil` — i.e. the key is misspelled or missing.
+You'll know it worked when the first grep finds the script tag and the second finds your repo ID baked into the rendered HTML. If the second comes back empty, stop wiring and start spelling.
 
-## Troubleshooting
-
-| Symptom | Likely cause | Fix |
-|---|---|---|
-| Widget area is blank | `gisgus`/`giscus` key mismatch, or `enabled` missing | Match the key the theme reads; see Part 3 |
-| "giscus is not installed on this repository" | App not installed/scoped | Reinstall the [giscus app](https://github.com/apps/giscus) for this repo |
-| "Discussions is not enabled" | Feature off | Settings → General → Features → Discussions |
-| Comments load but can't post | Repo is private | Make the repo public |
-| Wrong/duplicate thread per page | Mapping mismatch | Keep `data-mapping="pathname"` and `data-strict="1"` consistent |
-| `data-repo-id` empty in built HTML | Config not read | Run `make build-ci`, then grep `_site` as above |
-| Build: "Could not locate the included file 'giscus.html'" | Theme include has a Liquid tag in its comment | Vendor a corrected, tag-free `_includes/content/giscus.html` (see Part 2's theme section) |
-| Build: "stack level too deep" in `article.html` | The vendored include's comment includes itself | Remove the `{% raw %}{% include %}{% endraw %}` tag from the comment, or keep all Liquid tags out of comments entirely |
-
-## Recap
+## The recap
 
 - Giscus turns **GitHub Discussions** into a zero-backend comment system.
-- giscus.app is a generator; for zer0-mistakes you only need the **`data-repo-id`**
-  and **`data-category-id`** it produces — the rest is baked into
-  `content/giscus.html`.
-- Wire those two values (plus `enabled: true`) into a **`giscus:`** block in
-  `_config.yml` — and double-check the spelling, because a `nil` key looks
-  exactly like a disabled feature.
-- Vendor a corrected `_includes/content/giscus.html` (tag-free comment) so the
-  theme's Liquid-in-comment bug doesn't break the build.
-- Comments are on for the whole **posts** collection by default (the
-  `pages/_posts` default sets `comments: true`); opt a post out with
-  `comments: false`. Notes, docs, quests, and hub pages use layouts that don't
-  embed giscus, so they never show comments.
+- giscus.app generates the whole snippet, but for a decent theme you copy exactly two values: **`data-repo-id`** and **`data-category-id`**.
+- A `nil` config key looks identical to a disabled feature. Print the variable before you blame the include.
+- A Liquid tag inside a comment still runs. Vendor a tag-free `_includes/content/giscus.html` and file the theme bug upstream.
+- The guard tests key existence, not `enabled`. The real on/off switch is the per-collection default plus per-post `comments: false`.
 
-**Related:**
-
-- [giscus.app](https://giscus.app/) — the configuration generator
-- [GitHub Discussions docs](https://docs.github.com/en/discussions)
-- [zer0-mistakes theme](https://github.com/bamr87/zer0-mistakes) — the theme powering this site
+Two bugs, both silent, both mine, neither one a database. Worth it.

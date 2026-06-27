@@ -71,12 +71,14 @@ def gh_open_pr_count
   $?.success? ? (JSON.parse(out).size rescue 0) : 0
 end
 
-# In --apply this is where a role agent is launched in its own git worktree:
-#   claude -p "/<skill> <target>" --allowedTools ... --permission-mode acceptEdits
+# In --apply this is where a role agent is launched in its own git worktree.
 # It is printed (not exec'd) here so the dispatch decision is auditable and the
-# heavy, API-key-bearing spawn is wired explicitly in fleet-dispatch.yml.
+# heavy, auth-bearing spawn is wired explicitly in fleet-dispatch.yml. The printed
+# command goes through the universal runner (scripts/ai/run.sh), NOT a raw
+# `claude -p`, so model / auth (CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY) /
+# fallback stay configured in one place.
 def spawn_cmd(skill, target, desc)
-  "claude -p #{("/" + skill + " " + target).inspect}  # #{desc[0, 60]}"
+  "bash scripts/ai/run.sh --prompt #{("/" + skill + " " + target).inspect}  # #{desc[0, 60]}"
 end
 
 # --- Observe + Decide (pure) -------------------------------------------------
@@ -102,7 +104,7 @@ if APPLY
   st['cycles']        = (st['cycles'] || 0) + 1
   st['last_run']      = Time.now.utc.iso8601
   st['last_decision'] = plan[:reason]
-  File.write(sf, st.to_yaml)
+  LH.ywrite(sf, st)   # preserve state.yml's comment header (don't round-trip it away)
 end
 
 # --- Report ------------------------------------------------------------------
@@ -115,3 +117,14 @@ dispatched.each do |d|
   puts "      #{spawn_cmd(d[:role], d[:target], d[:desc])}"
 end
 puts '  (nothing to dispatch — queue clean or capped)' if dispatched.empty?
+
+# --- Machine-readable plan for the workflow's spawn matrix --------------------
+# The fleet-dispatch workflow reads this `plan` output and runs ONE claude-run
+# agent per item (role -> target). Always emitted (even []) so the spawn matrix
+# is well-defined; the spawn job itself only runs on --apply. (When the kill
+# switch is off the dispatcher exits early above, so no plan is emitted and the
+# spawn job is skipped — FLEET_ENABLED transitively gates spawning.)
+if (gho = ENV['GITHUB_OUTPUT'])
+  plan_items = dispatched.map { |d| { 'role' => d[:role].to_s, 'target' => d[:target].to_s } }
+  File.open(gho, 'a') { |io| io.puts "plan=#{JSON.generate(plan_items)}" }
+end

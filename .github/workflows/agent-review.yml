@@ -1,0 +1,72 @@
+# =============================================================================
+# agent-review.yml — the routine that reviews + evaluates the agents & skills
+# -----------------------------------------------------------------------------
+# Closes the self-improvement loop at the meta level: the agent-reviewer agent
+# evaluates .claude/agents + .claude/skills for quality, consistency,
+# least-privilege tools, overlap, and drift vs the workflows, and opens ONE PR
+# with focused improvements (or none, if the set is already sound). It never
+# merges and only edits agent/skill files.
+#
+# Safe by default (same posture as explore/theme-scout): workflow_dispatch only
+# (schedule commented), gated by AGENT_REVIEW_ENABLED + Claude auth, contents +
+# pull-requests scope only — NO administration/workflows scope.
+# =============================================================================
+name: agent-review
+
+on:
+  workflow_dispatch:
+  # schedule:                       # DISABLED — opt-in.
+  #   - cron: '17 5 1 * *'          # monthly, the 1st at 05:17 UTC
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: agent-review
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+    steps:
+      - id: check
+        env:
+          ENABLED: ${{ vars.AGENT_REVIEW_ENABLED }}
+          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "$ENABLED" = "true" ] && { [ -n "$OAUTH" ] || [ -n "$KEY" ]; }; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "agent-review off (AGENT_REVIEW_ENABLED != true or no Claude auth) — idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  review:
+    needs: gate
+    if: ${{ needs.gate.outputs.go == 'true' }}
+    runs-on: ubuntu-latest
+    env:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # FLEET_TOKEN (bot PAT) so the PR is openable + triggers CI; falls back.
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.FLEET_TOKEN || github.token }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Review the agents + skills (agent-reviewer, universal AI runner)
+        uses: ./.github/actions/claude-run
+        continue-on-error: true
+        with:
+          agent: agent-reviewer
+          prompt: "Use the agent-skill-review skill. Run `ruby scripts/ci/lint_agents.rb`, then evaluate every .claude/agents/*.md and .claude/skills/*/SKILL.md for quality, correct + present hard rules, least-privilege tools, overlap, and drift vs the workflows that invoke them. Make the SMALLEST high-value edits to the agent/skill files ONLY, keep lint_agents + the devops audit + the simulation green, and open ONE PR (branch agent-review/<date>) summarizing what changed and what you checked-and-found-healthy. If the set is already sound, open NO PR and say so. Never edit content/scripts/workflows; never weaken a guardrail; never merge."
+          tools: "Bash(git:*),Bash(ruby:*),Bash(gh pr create:*),Bash(gh pr comment:*),Read,Edit,Write,Grep,Glob"
+          system: "You are agent-reviewer for lifehacker.dev. Improve the agents/skills only; least-privilege; never weaken a guardrail; never merge; one PR."

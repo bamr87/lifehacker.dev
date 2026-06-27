@@ -1,339 +1,142 @@
 ---
-title: "Enhancing Bashcrawl: Creating Terminal Education Content"
-description: "AI-assisted enhancement of Bashcrawl's cellar scroll to create comprehensive, accessible terminal education content following IT-Journey documentation standards"
+title: "Field Notes: rewriting a Bashcrawl scroll, and the ls -F lesson that survived the prose"
+description: "Rewriting a Bashcrawl tutorial taught me ls -F classifiers, and why alias ls='ls -F' quietly does nothing in a script — the part the original scroll skipped."
 date: 2025-08-01
-categories: [Field Notes, Development, Education]
-tags: [ai-assisted-development, terminal-education, documentation-enhancement, bashcrawl, learning-journey, markdown-standards]
+categories: [Field Notes]
+tags: [bash, ls, aliases, bashcrawl, terminal]
 author: amr
-original_author: "IT-Journey Team"
-excerpt: "How AI assistance transformed a basic ls -F tutorial into a comprehensive terminal education experience"
-preview: /images/favicon_gpt_computer_retro.png
+excerpt: "I set out to make a teaching scroll prettier and ended up debugging why my own alias didn't fire. The classifiers are the lesson; the alias is the trap."
 ---
-## The Challenge: Transforming Basic Terminal Instructions into Comprehensive Learning
 
-> **2026 update:** Bashcrawl now has a no-install web version at [bamr87.github.io/bashcrawl](https://bamr87.github.io/bashcrawl/) and a comprehensive IT-Journey fork at [github.com/bamr87/bashcrawl](https://github.com/bamr87/bashcrawl/). This post remains the content-design story behind the cellar scroll, while the current learner path begins online and continues into the full local repository.
+[Bashcrawl](https://gitlab.com/slackermedia/bashcrawl) is a dungeon crawler where the dungeon is a directory tree and the only weapon is `cd`. One of its early scrolls teaches `ls -F` and a shell alias. I picked it up to make it less terse — more tables, more "here's why this matters" — and within ten minutes I was no longer editing prose. I was staring at a terminal asking why my alias did nothing.
 
-When encountering the original Bashcrawl cellar scroll, I found a functional but minimal tutorial that introduced `ls -F` and shell aliases. While the content was accurate, it missed opportunities to create a truly engaging and comprehensive learning experience that could serve beginners while building toward advanced concepts.
+That detour is the actual content. The tutorial taught `alias ls='ls -F'` as if it always sticks. It doesn't. So here's the rewrite I'd ship, with the part where it broke left in.
 
-### Original Content Assessment
+## What `ls -F` actually buys you
 
-The original scroll contained:
-
-- Basic `ls -F` introduction
-- Simple alias explanation  
-- Fantasy theme consistency
-- Minimal interactive guidance
-
-**Missing Elements:**
-
-- Comprehensive file type explanation
-- Progressive skill building
-- Real-world application context
-- Accessibility and formatting standards
-- Clear learning objectives and outcomes
-
-## AI-Assisted Enhancement Process
-
-### Design Philosophy Integration
-
-Following IT-Journey's path-based development principles, I approached this enhancement by:
-
-1. **Identifying Natural Learning Paths**: Mapping how terminal knowledge builds progressively
-2. **Design for Failure (DFF)**: Including troubleshooting and verification steps
-3. **Keep It Simple (KIS)**: Maintaining clear, accessible language despite comprehensive content
-4. **Collaboration (COLAB)**: Creating content that supports both self-study and mentoring
-
-### Content Structure Evolution
-
-#### Phase 1: Information Architecture
-
-```markdown
-# Original Structure (Linear)
-Introduction → Command → Alias → Brief Explanation
-
-# Enhanced Structure (Progressive)
-Context → Theory → Practice → Application → Mastery → Real-World Connection
-```
-
-#### Phase 2: Fantasy Theme Integration
-
-Maintained the mystical catacomb setting while adding:
-
-- **Enhanced metaphors**: Commands become "spells," file types become "entities"
-- **Progressive revelation**: Skills unlock like game achievements
-- **Adventure continuity**: Clear connections to other chambers
-
-#### Phase 3: Educational Enhancement
-
-Added comprehensive learning support:
-
-- **Multiple learning styles**: Visual (tables), kinesthetic (practice), reading (explanations)
-- **Verification steps**: Methods to confirm understanding
-- **Context setting**: Why this knowledge matters
-- **Future pathways**: How this connects to advanced concepts
-
-## Step-by-Step Implementation
-
-### 1. Enhanced File Type Education
-
-**Original:**
-
-```markdown
-# Directories (the rooms of these catacombs) end with a / symbol.
-# Encounters (programs) end with a * symbol.
-```
-
-**Enhanced with Comprehensive Table:**
-
-```markdown
-| Symbol | Type | Description | Example |
-|--------|------|-------------|---------|
-| **`/`** | Directory (Room) | Chambers you can enter | `armoury/` |
-| **`*`** | Executable (Program) | Encounters you can run | `treasure*` |
-| **`@`** | Symbolic Link | Magical portals to other locations | `portal@` |
-| **`\|`** | Named Pipe | Communication channels | `message_pipe\|` |
-| **`=`** | Socket | Network connection points | `network_socket=` |
-| **(none)** | Regular File | Scrolls, documents, data | `scroll` |
-```
-
-### 2. Interactive Learning Path
-
-**Original:**
-
-```markdown
-# Try it out!
-```
-
-**Enhanced with Structured Practice:**
-
-```markdown
-### 🔄 Try It Out! - Interactive Learning Path
-
-**Practice Path**: Master → Understand → Apply
-
-1. **First, cast the enhanced spell manually:**
-
-   ```bash
-   ls -F
-   ```
-
-1. **Now create the permanent enchantment:**
-
-   ```bash
-   alias ls='ls -F'
-   ```
-
-2. **Test your enhanced spell:**
-
-   ```bash
-   ls
-   ```
-
-3. **Verify the magic worked:**
-
-   ```bash
-   alias ls
-   ```
-
-```
-
-### 3. Real-World Context Integration
-
-Added sections connecting fantasy learning to professional development:
-
-```markdown
-### 🚀 Real-World Applications
-
-These skills transfer directly to professional development:
-
-- **System Administration**: Quickly assess directory contents
-- **Development**: Identify scripts, configs, and executables
-- **Debugging**: Understand file permissions and types
-- **Automation**: Write scripts that handle different file types
-```
-
-## Advanced Educational Features
-
-### Progressive Skill Building
-
-**Color Enhancement Section:**
-
-```markdown
-### 🌈 Color-Enhanced Vision: `ls -F --color=auto`
-
-For terminals that support color magic, enhance your sight even further:
+`ls` lists names. `ls -F` lists names with a one-character classifier glued to the end, so you can tell what each thing *is* without running anything. Same listing, two readings:
 
 ```bash
+# lh:run
+cd "$(mktemp -d)"
+mkdir armoury
+printf '#!/bin/sh\necho hi\n' > treasure && chmod +x treasure
+ln -s armoury portal
+mkfifo message_pipe
+printf 'you found the treasure\n' > scroll
+
+echo '$ ls'
+ls
+echo
+echo '$ ls -F'
+ls -F
+```
+
+Real output from that block:
+
+```console
+$ ls
+armoury
+message_pipe
+portal
+scroll
+treasure
+
+$ ls -F
+armoury/
+message_pipe|
+portal@
+scroll
+treasure*
+```
+
+The suffix is the whole point. Here's the legend, which is the one table worth keeping from the "make it comprehensive" pass:
+
+| Suffix | What it means | In the dungeon |
+|--------|---------------|----------------|
+| `/` | directory | a room you can `cd` into |
+| `*` | executable | a thing you can run |
+| `@` | symbolic link | a portal to somewhere else |
+| `\|` | named pipe (FIFO) | a one-way message channel |
+| `=` | socket | a live connection point |
+| (none) | regular file | a scroll, a note, plain data |
+
+You'll know it worked when a plain `ls` and an `ls -F` of the same folder no longer look identical: the `-F` version sprouts those trailing symbols.
+
+## The part where it broke: the alias that fired blanks
+
+The scroll's payoff is to make it permanent:
+
+```bash
+alias ls='ls -F'
+```
+
+Type that in your terminal and it works. Put the same line in a script — which is exactly what you do when you're "making it permanent" by writing it into a setup file you test with `bash setup.sh` — and it evaporates. No error. The marks never show up. I burned real minutes assuming I'd fat-fingered the alias.
+
+Here is the failure, reproduced honestly:
+
+```bash
+# lh:run
+printf "alias ls='ls -F'\nls -d .\n" | bash
+echo "exit: $?"
+```
+
+Output — note there is no `/` on the dot, and no complaint:
+
+```console
+.
+exit: 0
+```
+
+The alias was defined and then completely ignored. The reason is a default I had forgotten: **bash does not expand aliases in non-interactive shells.** Your interactive terminal turns alias expansion on for you. A script does not. So the line that "works when I type it" is silently inert the moment it runs anywhere else.
+
+There's a second, sharper edge once you switch it on. Aliases only take effect on lines bash reads *after* the alias definition — so a single `bash -c "alias ...; use-it"` still fails, because the whole string is parsed in one go. You need the enabling line and the usage on separate lines:
+
+```bash
+# lh:run
+printf "shopt -s expand_aliases\nalias greet='echo hello from alias'\ngreet\n" | bash
+```
+
+```console
+hello from alias
+```
+
+That works. Drop the `shopt` line and it goes back to `greet: command not found`. I checked both ways.
+
+So the honest version of the scroll's advice is: `alias ls='ls -F'` belongs in your **interactive** shell config (`~/.bashrc`, `~/.zshrc`), where alias expansion is already on and the file is sourced fresh each session. It does **not** belong in a script you expect to behave the same way — there, call `ls -F` directly or turn expansion on by hand.
+
+## The other thing the tutorial got away with: color
+
+The original wanted to teach `alias ls='ls -F --color=auto'`. That line is a GNU-ism. On a Mac, the stock `ls` is the BSD one, and it has no idea what `--color=auto` is:
+
+```console
+$ ls --color=auto
+ls: unrecognized option `--color=auto'
+```
+
+(I can quote that exactly because that's the error this machine's BSD `ls` gives — it's the same one that tells you the flavor: `ls --version` answers `unrecognized option '--version'` on BSD, and prints a version banner on GNU. That's the cheapest way to know which `ls` you're talking to.)
+
+The portable move is to keep `-F` for classifiers and add color the way your `ls` actually spells it:
+
+```bash
+# GNU coreutils (most Linux):
 alias ls='ls -F --color=auto'
+
+# BSD ls (macOS default):
+alias ls='ls -FG'
 ```
 
-This enchantment adds **color coding**:
+Same outcome, two dialects. The tutorial assumed everyone was on GNU. Most "paste this into your shell config and move on" snippets do.
 
-- **Blue**: Directories (rooms)
-- **Green**: Executables (programs)
-- **Cyan**: Symbolic links (portals)
-- **White**: Regular files (scrolls)
+## What I actually kept from the rewrite
 
-```
+I went in to add structure and came out having deleted most of it. The legend table stayed because it earns its space. The "real-world applications" bullet list and the game-achievement framing did not — they were words about learning, not the thing being learned.
 
-### Mastery Assessment
+The keepers, in order of how much time they would have saved me:
 
-**Challenge Structure:**
-```markdown
-### ✅ Required Tasks
+- `ls -F` classifies entries by a trailing symbol; the `/ * @ | =` legend is the whole skill.
+- `alias ls='ls -F'` is an *interactive*-shell trick. In a script, alias expansion is off unless you `shopt -s expand_aliases`, and even then it only applies to lines read after the definition.
+- Color is `--color=auto` on GNU and `-G` on BSD/macOS. Pick the one your `ls` understands or the alias errors out.
+- `ls --version` failing is itself the tell that you're on BSD `ls`.
 
-1. **Cast Enhanced Sight**: Use `ls -F` to see the true nature of this cellar
-2. **Create Permanent Enhancement**: Set up the `alias ls='ls -F'` enchantment  
-3. **Test Your Magic**: Verify that plain `ls` now shows file type indicators
-4. **Explore Thoroughly**: Use your enhanced sight to identify all chambers and encounters
-5. **Find the Treasure**: Locate and examine the treasure file in this room
-```
-
-## Documentation Standards Compliance
-
-### Markdown Quality Assurance
-
-Applied IT-Journey Markdown standards:
-
-- **Semantic headings**: Proper H1-H6 hierarchy for navigation
-- **Accessibility**: Meaningful alt text concepts, clear structure
-- **Code formatting**: Proper syntax highlighting and indentation
-- **Table formatting**: Consistent alignment and escaped special characters
-- **List formatting**: Proper spacing and parallel structure
-
-### Error Resolution Process
-
-Encountered and resolved several Markdown linting errors:
-
-- **MD031**: Added blank lines around fenced code blocks
-- **MD032**: Added blank lines around lists
-- **MD009**: Removed trailing spaces
-- **MD056**: Fixed table column count by escaping pipe characters
-
-## Integration with Bashcrawl Ecosystem
-
-### Pathway Connections
-
-Enhanced connections to other areas:
-
-```markdown
-After claiming your treasure and mastering the sight spells, new paths will open:
-
-- **🗡️ The Armoury**: Learn combat skills and file manipulation
-- **⛪ Hidden Chapel**: Discover secret commands and advanced techniques  
-- **💰 The Vault**: Master inventory management and environment variables
-- **🔧 The Scrap**: Explore system information and debugging
-```
-
-### Inventory System Integration
-
-Maintained compatibility with Bashcrawl's treasure collection mechanics while explaining the educational value of the inventory system as a practical shell variable exercise.
-
-## Key Learnings and Insights
-
-### AI-Assisted Content Creation
-
-**What Worked Well:**
-
-- **Structure-first approach**: Planning the information architecture before writing
-- **Progressive enhancement**: Building on existing content rather than replacing
-- **Fantasy theme consistency**: Maintaining the game's immersive atmosphere
-- **Standards integration**: Applying IT-Journey documentation principles
-
-**Human Oversight Required:**
-
-- **Markdown linting resolution**: AI needed guidance on specific formatting standards
-- **Educational flow validation**: Ensuring logical progression of concepts
-- **Fantasy metaphor balance**: Maintaining educational clarity within the theme
-- **Content accessibility**: Verifying multiple learning styles were supported
-
-### Documentation Evolution Principles
-
-**Path-Based Enhancement:**
-
-1. **Assess existing paths**: What learning routes already exist?
-2. **Identify gaps**: Where do learners get stuck or confused?
-3. **Design bridge paths**: How can we connect concepts more clearly?
-4. **Validate pathways**: Do the enhanced routes actually improve learning?
-5. **Document the journey**: Create articles like this to share the process
-
-## Future Development Paths
-
-### Content Expansion Opportunities
-
-**Advanced Tutorials:**
-
-- Deep dive into `ls` options (`-l`, `-a`, `-h`, `-t`, `-r`)
-- File permission understanding through the fantasy lens
-- Advanced aliasing and shell customization
-
-**Interactive Elements:**
-
-- Validation scripts to check understanding
-- Progressive unlocking based on demonstrated skills
-- Integration with modern terminal tools (`exa`, `bat`, `fd`)
-
-### Template Development
-
-This enhancement process could serve as a template for improving other Bashcrawl areas:
-
-- **Systematic educational review**: Audit all scrolls for learning effectiveness
-- **Fantasy theme consistency**: Ensure cohesive narrative across chambers
-- **Progressive skill mapping**: Create clear dependency chains between areas
-- **Real-world connection**: Link all fantasy elements to professional applications
-
-## Troubleshooting and Error Resolution
-
-### Common Enhancement Challenges
-
-**Markdown Formatting Issues:**
-
-- **Symptom**: Linting errors for table formatting, list spacing, code blocks
-- **Solution**: Systematic application of IT-Journey Markdown standards
-- **Prevention**: Use markdown linters during development, not just at the end
-
-**Content Balance:**
-
-- **Challenge**: Maintaining fantasy theme while providing comprehensive education
-- **Approach**: Use metaphors consistently, but always provide clear technical explanations
-- **Validation**: Test with both beginners and experienced users
-
-**File Integration:**
-
-- **Issue**: Enhanced content might not integrate well with existing game mechanics
-- **Solution**: Maintain compatibility with treasure system and navigation expectations
-- **Testing**: Verify all existing functionality still works
-
-## Impact Assessment
-
-### Educational Value Improvements
-
-**Quantitative Enhancements:**
-
-- **Content length**: Increased from ~20 lines to ~180 lines of comprehensive education
-- **Learning objectives**: From 2 basic concepts to 15+ detailed skills
-- **Practice exercises**: From vague "try it out" to 4 structured steps
-- **Real-world connections**: Added professional development context
-
-**Qualitative Improvements:**
-
-- **Accessibility**: Multiple learning styles supported
-- **Progression**: Clear skill building from basic to advanced
-- **Context**: Understanding why these skills matter
-- **Confidence**: Verification steps to confirm learning
-
-### Community Learning Support
-
-The enhanced scroll now serves multiple audiences:
-
-- **Complete beginners**: Can start with zero terminal knowledge
-- **Intermediate users**: Learn optimization techniques and advanced features
-- **Mentors**: Have structured content to guide teaching sessions
-- **Self-directed learners**: Can progress independently with clear checkpoints
-
----
-
-*"In the depths of the cellar, sight becomes insight, and knowledge becomes power."*
-*~ Enhanced through AI-powered development and human creativity*
-
-This enhancement demonstrates how AI-assisted development can transform basic educational content into comprehensive learning experiences while maintaining the creative and engaging elements that make learning enjoyable. The key is balancing automated content generation with human oversight for educational effectiveness and creative consistency.
+The scroll taught one flag and one alias. The honest version teaches one flag, one alias, and the three places that alias quietly doesn't do what the line says. The marks on the screen were never the hard part. Knowing when they won't show up was.

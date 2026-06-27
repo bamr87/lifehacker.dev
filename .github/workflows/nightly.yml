@@ -60,17 +60,38 @@ jobs:
 
       - name: File a nightly issue on failure
         if: ${{ failure() || steps.build.outcome == 'failure' }}
+        continue-on-error: true   # a hiccup filing the alert must not be the last word; a DROP is made loud below
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # Ensure the label taxonomy exists (idempotent) so the create can't fail
+          # on a missing label before bootstrap-labels.sh has been run on the repo.
+          scripts/triage/bootstrap-labels.sh >/dev/null 2>&1 || true
           title="nightly: build or sweep failed ($(date +%Y-%m-%d))"
-          # Crude dedup until PR2's fingerprinted triage exists: skip if an open
-          # issue already carries the nightly marker.
-          existing=$(gh issue list --state open --search '"<!-- nightly-sweep -->" in:body' --json number --jq 'length')
-          if [ "${existing:-0}" -eq 0 ]; then
-            gh issue create --title "$title" \
-              --label "source/ci-test" \
-              --body $'<!-- nightly-sweep -->\nThe nightly sweep failed. Most likely an upstream theme change broke the safe-mode build, or external links rotted. See the run logs. A human should triage; PR2 will automate this.'
+          # Dedup across ALL states by the marker. Open -> leave it. CLOSED and the
+          # sweep failed AGAIN -> reopen with a regression note (the root cause
+          # recurred; don't let monitoring look healthy when it isn't). None -> create.
+          match=$(gh issue list --state all --search '"<!-- nightly-sweep -->" in:body' --json number,state --jq '.[0] // empty | "\(.number) \(.state)"' 2>/dev/null)
+          num=${match%% *}; state=${match##* }
+          if [ "$state" = "OPEN" ]; then
+            echo "nightly issue #$num already open; not refiling."
+            exit 0
+          fi
+          if [ "$state" = "CLOSED" ] && [ -n "$num" ]; then
+            if gh issue reopen "$num" && gh issue comment "$num" --body "Regression: the nightly sweep failed again on $(date +%Y-%m-%d) after this issue was closed."; then
+              echo "reopened #$num (recurring failure)."
+              exit 0
+            fi
+            echo "::warning::could not reopen #$num — filing a fresh issue instead."
+          fi
+          body=$'<!-- nightly-sweep -->\nThe nightly sweep failed. Most likely an upstream theme change broke the safe-mode build, or external links rotted. See the run logs. A human should triage.'
+          # Try the labeled create; fall back to a label-free create if the labels
+          # still don't exist; if BOTH fail, make the dropped alert loud (don't
+          # let continue-on-error silently swallow a missed failure notification).
+          if gh issue create --title "$title" --label "source/ci-test" --body "$body" \
+             || gh issue create --title "$title" --body "$body"; then
+            echo "filed nightly issue."
           else
-            echo "nightly issue already open; not refiling."
+            echo "::error::nightly sweep failed but BOTH issue-create attempts failed — the alert was DROPPED. Check GH_TOKEN issues:write."
+            { echo ""; echo "> ⚠️ **Nightly alert delivery failed** — the sweep failed and the issue could not be created. Escalate manually."; } >> "$GITHUB_STEP_SUMMARY"
           fi

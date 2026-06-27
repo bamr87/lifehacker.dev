@@ -62,7 +62,8 @@ backlog:
     brief: "Adapt the grow-lifehacker skill + backlog pattern for any zer0-mistakes site."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/point-the-robot-at-your-own-site/
 
   # Seed ideas for future runs (humans: add freely).
   - id: HACK-003
@@ -71,7 +72,8 @@ backlog:
     brief: "The handful of tmux bindings that actually matter, and the .tmux.conf that makes them sane."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
+    published: /hacks/tmux-survival-subset/
 
   - id: TOOL-003
     kind: tool
@@ -79,4 +81,187 @@ backlog:
     brief: "Ctrl-R history search, file picking, and the one-line install. Honest verdict."
     voice: tool-review-honest
     priority: P2
+    status: done
+    published: /tools/fzf-fuzzy-finder-honest-review/
+
+  # Fresh tool idea (autopilot run, 2026-06-26): with rg and fzf reviewed, jq is the
+  # obvious missing third of the "CLI everyone pastes incantations for" family. The
+  # honest angle is the syntax cliff — paste-and-pray — shown with real errors.
+  - id: TOOL-004
+    kind: tool
+    title: "jq: the JSON tool you paste and pray, reviewed honestly"
+    brief: "The five filters that earn their keep, the real error messages that send everyone to Stack Overflow, and the shell-quoting trap (single-quote + --arg) shown for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/jq-honest-review/
+
+  # Surfaced by the fzf review (TOOL-003): the `list | fzf | act` pattern deserves
+  # its own hack — the review pitches it but stops short of copy-pasteable functions.
+  - id: HACK-004
+    kind: hack
+    title: "Four fzf shell functions you'll actually keep: kill, branch, cd, open"
+    brief: "The `something_that_lists | fzf | something_that_acts` pattern turned into four real ~/.bashrc functions — fuzzy process-kill, git branch switch, jump-to-dir, edit-a-file — each one we ran, plus the quoting gotcha that bites the kill one."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/fzf-shell-functions/
+
+  - id: DOC-002
+    kind: doc
+    title: "Wiring the guardrails: the CI layer that actually enforces 'the robot proposes, the human disposes'"
+    brief: "Companion to DOC-001. The five files give the robot its manners; this is the part that holds it to them — branch protection, CODEOWNERS, required status checks, and the auto-merge gate. What to copy beyond the five files, and how to verify the lock is on before a robot ever opens a PR."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/wiring-the-guardrails/
+
+  # Surfaced by DOC-002 (wiring the guardrails): while writing that doc the robot
+  # ran `gh api .../branches/main/protection` against this repo and got 404
+  # "Branch not protected" (and `.../rulesets` -> []). The lock the doc describes
+  # is not actually on. This is an OPS task for an admin, not a content PR — the
+  # bot has Write, not Admin, and cannot enable branch protection itself. Run the
+  # `gh api -X PUT` payload from docs/runbook-fleet.md §2 as @bamr87.
+  - id: OPS-001
+    kind: ops   # ops/admin task — the fleet SKIPS these (a content agent can't enable branch protection); stays here for a human
+    title: "Enable branch protection on main (the lock DOC-002 documents but found OFF)"
+    brief: "Run the branch-protection PUT from docs/runbook-fleet.md §2 as an admin: require the `verify` check + a code-owner review, block force-push, linear history. Until then CODEOWNERS is advisory and `verify` is non-blocking. Verify after with `gh api repos/bamr87/lifehacker.dev/branches/main/protection`."
+    voice: meta-confession
+    priority: P1
     status: todo
+
+  # --- Review follow-ups from PR #20 (tmux survival subset) ---
+  - id: HACK-006
+    kind: hack
+    title: "Make tmux survive a reboot, not just a disconnect (resurrect + continuum)"
+    brief: "The survival-subset hack stops at 'outlives the terminal'; this is the sequel that makes sessions outlive a full restart. tmux-resurrect to save/restore, tmux-continuum to autosave, and the part where it can't bring back the actual running processes — only the layout."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/tmux-survive-a-reboot/
+
+  - id: HACK-005
+    kind: hack
+    title: "One .tmux.conf line per real annoyance: the config that grows up"
+    brief: "A follow-up to the six-line survival config — the next handful of lines worth adding once tmux sticks (vi copy-mode keys, system-clipboard yank, a status line that isn't an eyesore, and the renumber-on-close setting), each justified by the specific annoyance it removes. Keep the 'every line earns its place' rule."
+    voice: how-to-practical
+    priority: P3
+    status: done
+    published: /hacks/tmux-conf-that-grows-up/
+
+  # --- Review follow-up from PR #21 (colophon: the fleet learned to spawn) ---
+  # The colophon now claims the fleet can spawn, but only as one dense paragraph.
+  # The safety design behind it is the actual story and is genuinely on-brand
+  # ("the mechanics are the content"). Natural sequel to DOC-002.
+  - id: DOC-003
+    kind: doc
+    title: "How we let a robot fleet spawn itself without letting it off the leash"
+    brief: "The design decisions that make autonomous agent-spawning safe to ship: the kill switch gated transitively (an idle dispatcher emits an empty plan, so the spawn job is skipped — not a second flag to forget), max-parallel:1 so leases can't race, 'fail RED, never silent-skip' when an agent crashes, and one-PR-per-agent that a human still merges. The honest part: each of these is a guardrail we added because the obvious version was unsafe. Show the version that wasn't."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/let-the-fleet-spawn-itself/
+
+  # Fresh doc (no todo doc remained; DOC-001/002/003 shipped, DOC-004 is a blocked
+  # post). The Meta pillar documents how the autopilot WRITES and how the human
+  # GATES, but not the layer in between: how the robot tests its own work before it
+  # dares open a PR. The verification harness (scripts/ci + /test-lifehacker) is
+  # genuinely on-brand ("the mechanics are the content") and lets the robot paste
+  # real captured output from running the gate on this very repo.
+  - id: DOC-005
+    kind: doc
+    title: "How the robot grades its own homework: the verification harness"
+    brief: "Companion to the Autopilot Playbook and Wiring the Guardrails. The harness between writing and merging: reproducing GitHub Pages safe mode by stripping _plugins, the one-finding-per-line frozen contract, the fingerprint that excludes line numbers, and the single error count that IS the merge gate. What each check is allowed to block vs. merely flag, and why a failed hack command is content, not a stop."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/how-the-robot-grades-its-own-homework/
+
+  # Fresh doc (no `todo` doc item remained; DOC-001/002/003/005 shipped, DOC-004 is
+  # a blocked post). The Meta pillar documents the harness as a whole (DOC-005) but
+  # the brand linter — the one check that meets the site's entire comedy premise and
+  # is DELIBERATELY not allowed to block — only gets a paragraph there. It earns its
+  # own deep-dive: the satire-license problem a regex can't solve, the `satire_line?`
+  # heuristic and its blind spots, the two-tier handoff, and the recursive joke that
+  # the linter flags the very docs that describe it. Demonstrable with real captured
+  # output (85 findings, 0 errors) from running it on this repo.
+  - id: DOC-006
+    kind: doc
+    title: "The word police that can't make an arrest"
+    brief: "Deep-dive companion to DOC-005 on lint_brand.rb: the glossary lint that flags the robot's favorite hype words (just, 10x, revolutionary) but is built to never block — because the same words are licensed for satire. The satire_line? heuristic, where it guesses wrong in both directions, the tier-2 handoff that narrows the question without answering it, and the recursive bit where the linter cites the docs that explain it. Real `ruby scripts/ci/lint_brand.rb` output."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-word-police-that-cant-make-an-arrest/
+
+  # Surfaced by HACK-004 (fzf shell functions): the post names `fzf -m`
+  # multi-select as the one place you DON'T quote the result, but doesn't build
+  # it out. The multi-select variants (kill several procs, stage several files,
+  # delete several branches) are their own small hack — and the TAB/Shift-TAB
+  # binding plus the "act takes many args" pattern deserve a real walkthrough.
+  - id: HACK-008
+    kind: hack
+    title: "fzf -m: the multi-select functions, and the one time you don't quote"
+    brief: "Follow-up to the four single-pick functions. With `-m`, fzf returns several lines — kill a handful of processes, git add a handful of files, delete a handful of branches. Each ran, plus the deliberate un-quoting that makes word-splitting work FOR you, and the guard that stops an empty pick from acting on everything."
+    voice: how-to-practical
+    priority: P3
+    status: done
+    published: /hacks/fzf-multi-select-functions/
+
+  # Surfaced by the DOC-002 review (PR #33): the doc ends on a live 404 — branch
+  # protection is OFF and an admin still has to throw the switch (OPS-001). Once
+  # OPS-001 lands, there's an honest "the part where it got fixed" follow-up worth
+  # writing: re-run the same `gh api` command and show the before/after. Closes
+  # the loop the doc deliberately left open. Gate on OPS-001 being done first.
+  - id: DOC-004
+    kind: post
+    title: "We threw the switch: the 404 that became a branch-protection rule"
+    brief: "Short companion to DOC-002, written the day branch protection actually went on. The same `gh api .../branches/main/protection` call that returned 404 'Branch not protected' now returns the rules block — paste both, before and after, real output only. The lesson: the doc that admits the lock is off is what got the lock turned on. Do not write until OPS-001 is done and the PUT has run; the whole point is the verified after-state."
+    voice: meta-confession
+    priority: P3
+    # BLOCKED on OPS-001: the post needs the verified after-state (branch protection
+    # actually ON). The fleet correctly declined to fabricate it; skip until an admin
+    # runs the PUT, then flip back to todo. (Fleet skips non-todo.)
+    status: blocked
+
+  # Synthesized in-lane when a `post` run found the queue dry: every post item was
+  # `done` and the only other (DOC-004) was legitimately `blocked` on OPS-001. Rather
+  # than no-op, cross collections, or fabricate the blocked post, the autopilot wrote
+  # and produced this fresh Field Note about that exact moment. (See the post for the
+  # "four wrong moves" reasoning.)
+  - id: POST-002
+    kind: post
+    title: "The day my to-do list had nothing I was allowed to do"
+    brief: "Meta-confession: the autopilot opens the backlog for a post run, finds every post item done or blocked, and walks through the four wrong moves (no-op, cross-lane, fabricate the blocked one, lower the bar) versus the one honest one — synthesize a well-formed in-lane item and write it. Real `gh pr list` + backlog state, no invented output. Payload: how to design a task queue's 'empty inbox' behavior."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/06/26/nothing-i-was-allowed-to-do/
+  # --- Fresh hack (no todo `hack` item existed; all prior hacks done). The ssh
+  # config angle is an untouched corner: every existing hack is git/fzf/tmux. A
+  # named-host config is genuinely useful, fully testable offline via `ssh -G`,
+  # and carries a real gotcha (first-match-wins ordering) — the failure stays in.
+  - id: HACK-009
+    kind: hack
+    title: "Stop typing IP addresses: the ~/.ssh/config block that names your servers"
+    brief: "Turn `ssh deploy@203.0.113.10` into `ssh web1` with a config file, the ProxyJump line that replaces the netcat bastion dance, and the first-match-wins ordering rule that silently logs you in as the wrong user. Every resolution verified with `ssh -G` (offline, no connection)."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/ssh-config-stop-typing-ip-addresses/
+
+  # --- Fresh hack (autopilot run, 2026-06-27): every `hack` item was already
+  # done and the only `todo` was OPS-001 (kind: ops, which content runs skip).
+  # Rather than no-op or cross collections, synthesized a fresh in-lane hack.
+  # `make` as a task runner is an untouched corner — existing hacks cover git,
+  # shell functions, tmux, fzf, ssh — and it's fully testable offline with two
+  # real, famous failures (the .PHONY file-shadow and the tab-vs-spaces
+  # "missing separator"). Both reproduced and left in.
+  - id: HACK-010
+    kind: hack
+    title: "Stop forgetting your own build commands: a Makefile as your project's command menu"
+    brief: "Use make as a task runner, not a C compiler: a self-documenting `make help` menu, why `.PHONY` matters (a file named like a target silently shadows it), and the tab-vs-spaces 'missing separator' error. Every command and both failures reproduced for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/make-task-runner-command-menu/

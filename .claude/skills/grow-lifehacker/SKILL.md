@@ -62,14 +62,32 @@ not published — it becomes a Field Note about why it didn't.
 
 ### 5. Screenshot + verify
 - Build locally and confirm it renders (see "Local preview" below).
-- Screenshot the new page. Save journey/raw shots under
-  `docs/journey/screenshots/`; put any image a *published* page references under
-  `assets/images/` (the `docs/` folder is excluded from the build).
+- A screenshot is **optional** and only worth shipping when it shows the **subject**
+  — the tool/hack actually doing something (a terminal session, a rendered result).
+  Do NOT screenshot the site's own nav/settings chrome, and NEVER commit a capture
+  that is unstyled (CSS didn't load) or shows the dev-only "Theme & Build Info" /
+  `localhost:4000` / "Environment Dev" debug panels — that is a broken shot. Drop it.
+- If you keep one: it must be production-styled, it must be **embedded in the
+  published page** (`![alt](/assets/images/<slug>.png)`), and the file goes under
+  `assets/images/`. Do NOT commit unreferenced "journey" shots to
+  `docs/journey/screenshots/` — an image nothing renders is just junk in the diff.
+- For terminal/CLI posts the captured console output IS the visual; skip the page
+  screenshot rather than ship a bad one.
+- **Honesty rule:** only write "we ran this" / "real captured output" for commands
+  you ACTUALLY ran. A demonstration the harness did not execute (a ```console block,
+  or a ```bash block tagged `lh:norun`) must not be described as captured.
 
 ### 6. Open a PR
 - Commit on a branch (`autopilot/<slug>`), push, open a PR summarizing what you
   made, what you tested, and any upstream issue you filed.
-- Flip the backlog item to `status: done`. Stop. Wait for a human.
+- Backlog edit — keep it MINIMAL: flip ONLY your own item to `status: done` and add
+  a `published: /<path>/` link. That targeted one-line change rarely conflicts.
+  Do NOT append new follow-up ideas to `_data/backlog.yml` — concurrent content PRs
+  collide on lines appended at the end (the recurring merge conflict). Instead, list
+  follow-up ideas in the PR DESCRIPTION under a `## Backlog ideas` heading; triage
+  promotes the good ones into the backlog later (serialized, conflict-free). NEVER
+  edit, reorder, or delete anyone else's backlog entry.
+- Stop. Wait for a human.
 
 ## Front-matter templates
 

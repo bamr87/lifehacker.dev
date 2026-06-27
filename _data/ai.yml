@@ -6,6 +6,11 @@
 # Code (the `claude` CLI / agent); if it's unavailable or fails, run.sh falls
 # back to the Claude API (scripts/ai/api_call.rb, stdlib HTTP, no gem). Change
 # the model or budget here and it changes everywhere.
+#
+# Auth is NOT set here (a token is a secret, never committed): provide EITHER
+# CLAUDE_CODE_OAUTH_TOKEN (from `claude setup-token`; subscription auth, preferred
+# in CI) OR ANTHROPIC_API_KEY in the environment. run.sh prefers the OAuth token
+# for the Claude Code path; the API fallback can only use ANTHROPIC_API_KEY.
 # =============================================================================
 provider: anthropic
 

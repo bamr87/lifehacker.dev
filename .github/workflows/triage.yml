@@ -38,7 +38,10 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ github.token }}
+      # FLEET_TOKEN (bot PAT) so routed theme bugs can be filed UPSTREAM
+      # (bamr87/zer0-mistakes) — the repo-scoped github.token can't write there.
+      # Falls back to github.token for same-repo issues.
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
@@ -47,18 +50,13 @@ jobs:
           bundler-cache: true
 
       # Build once (the harness needs _site for drift/link checks), then run the
-      # checks against it to produce the findings contract.
-      # Build with the same fail-safe the pipeline uses: a broken build must
-      # become a sev1 finding (and a filed issue), not a dead triage job.
-      - name: Build (safe-mode overlay)
-        id: build
-        continue-on-error: true
-        uses: ./.github/actions/build-overlay
-      - name: Run harness (records build outcome -> findings)
-        env:
-          LH_SKIP_BUILD: '1'
-          LH_BUILD_RC: ${{ steps.build.outcome == 'success' && '0' || '1' }}
-        run: bash scripts/ci/run-all.sh || true   # findings, not a gate here
+      # checks against it to produce the findings contract — via the shared
+      # composite, so the build+harness fail-safe is the SAME one the pipeline
+      # uses (a broken build becomes a sev1 finding, not a dead triage job).
+      # Non-gating here: the composite's harness step is continue-on-error, so a
+      # harness failure still yields findings without killing the triage job.
+      - name: Build + harness (findings contract)
+        uses: ./.github/actions/build-and-harness
 
       - name: Ensure labels
         run: scripts/triage/bootstrap-labels.sh

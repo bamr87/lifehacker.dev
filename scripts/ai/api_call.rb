@@ -7,6 +7,12 @@
 # runs on a bare runner just like the rest of scripts/. Reads ANTHROPIC_API_KEY
 # and _data/ai.yml. Prints the model's text to stdout.
 #
+# Auth note: this path is ANTHROPIC_API_KEY-only by design. A Claude Code OAuth
+# token (CLAUDE_CODE_OAUTH_TOKEN) authenticates the `claude` CLI, NOT the raw
+# Messages API, so it cannot be used here. run.sh selects the credential and only
+# reaches this fallback when an API key is present; with only an OAuth token the
+# primary Claude Code path runs and this fallback is intentionally unavailable.
+#
 # This is a degraded path: a single message in, the final text out — not the
 # full agent. It covers the text-generation/analysis steps (a review comment, a
 # draft, a classification); steps that need multi-file edits should run under
@@ -83,6 +89,12 @@ loop do
     warn "[api_call] Claude API fallback ok (model=#{data['model']}, stop=#{data['stop_reason']})"
     puts text
     exit 0
+  elsif code == 401 || code == 403
+    # Auth failure is not transient — don't retry, and say so plainly so a
+    # misconfigured/expired/insufficient ANTHROPIC_API_KEY is diagnosable instead
+    # of hiding behind the generic HTTP error below.
+    warn "[api_call] authentication failed (HTTP #{code}) — the ANTHROPIC_API_KEY is missing, invalid, expired, or lacks access. #{res && res.body.to_s[0, 200]}"
+    exit 1
   elsif (code.zero? || [429, 500, 502, 503, 529].include?(code)) && attempt < 4
     warn "[api_call] transient (HTTP #{code}), retry #{attempt}/3"
     sleep([2**attempt, 30].min)

@@ -74,7 +74,7 @@ fails loudly instead of silently dropping data.
 
 | Secret / var | Used by | Why |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | `pipeline.yml` brand-review, `devops-audit.yml`, agent runs | Paid agent tiers. **Optional** — the deterministic gate runs without it. |
+| `CLAUDE_CODE_OAUTH_TOKEN` *or* `ANTHROPIC_API_KEY` | every AI step (brand-review, content-factory, explore, auto-fix, devops-manager) | Claude auth. The OAuth token (`claude setup-token`, subscription auth) is the preferred CI credential and drives the Claude Code path; an API key works too and is the **only** credential the Claude API fallback can use. **Optional** — the deterministic gate runs without either. |
 | `FLEET_TOKEN` (bot PAT) | upstream issue filing | The bot identity; scoped to contents/issues/PRs, **no** `administration`/`workflows`. |
 | `FLEET_ENABLED` (repo **variable**) | `fleet-dispatch.yml` | The kill switch — instant, no merge; the bot can't set it. |
 
@@ -142,7 +142,9 @@ gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (
 
 Enabling `AUTO_MERGE_ENABLED` (or uncommenting any `schedule:`) is a guardrail
 change — add a dated line to `/about/colophon/` in the same PR. The agent steps
-need `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
+need Claude auth — set **either** `CLAUDE_CODE_OAUTH_TOKEN` (run `claude
+setup-token`, then `gh secret set CLAUDE_CODE_OAUTH_TOKEN`) **or**
+`ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
 
 ## Universal AI wiring (Claude Code → Claude API fallback)
 
@@ -167,6 +169,11 @@ single place:
 Every AI step (brand-review, content-review, content-factory, explore, auto-fix,
 devops-manager, and the fleet spawns) uses the action or `run.sh` — **no workflow
 calls `claude -p` directly**, and `scripts/devops/audit.rb` fails CI if one does.
-Provide `ANTHROPIC_API_KEY` and both paths work; without it, AI steps are no-ops.
-To switch the whole fleet to a cheaper model, set `model:` in `_data/ai.yml` (or
-`LH_AI_MODEL` for one run) — one edit, everywhere.
+
+**Auth** is one secret, set once: either `CLAUDE_CODE_OAUTH_TOKEN` (from `claude
+setup-token` — subscription auth, the preferred CI credential, drives the Claude
+Code path) **or** `ANTHROPIC_API_KEY` (pay-per-use; also the only credential the
+API fallback can use). `run.sh` prefers the OAuth token when both are present.
+With neither, AI steps are clean no-ops. To switch the whole fleet to a cheaper
+model, set `model:` in `_data/ai.yml` (or `LH_AI_MODEL` for one run) — one edit,
+everywhere.

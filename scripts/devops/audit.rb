@@ -33,7 +33,9 @@ add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml does not read FLEET_
 # Every autonomy workflow (one that takes an outward action automatically) must be
 # gated by its ENABLED kill-switch variable, so nothing runs unattended by default.
 { 'content-factory.yml' => 'CONTENT_FACTORY_ENABLED', 'explore.yml' => 'EXPLORER_ENABLED',
-  'auto-merge.yml' => 'AUTO_MERGE_ENABLED', 'auto-fix.yml' => 'AUTO_FIX_ENABLED' }.each do |wf, gate|
+  'auto-merge.yml' => 'AUTO_MERGE_ENABLED', 'auto-fix.yml' => 'AUTO_FIX_ENABLED',
+  'theme-scout.yml' => 'THEME_SCOUT_ENABLED', 'agent-review.yml' => 'AGENT_REVIEW_ENABLED',
+  'quest-forge.yml' => 'QUEST_FORGE_ENABLED' }.each do |wf, gate|
   c = wf_read[wf].to_s
   add(findings, 'error', 'autonomy-gate', "#{wf} is not gated by #{gate}") unless c.empty? || c.include?(gate)
 end
@@ -41,6 +43,14 @@ end
 # never carry a deps/pipeline change past review.
 am = wf_read['auto-merge.yml'].to_s
 add(findings, 'error', 'auto-merge-safety', 'auto-merge.yml lacks the classify_changes smuggle guard') if !am.empty? && !am.include?('classify_changes')
+# A job that pushes editorial commits with FLEET_TOKEN (to re-trigger the pipeline)
+# fires a `synchronize` event — so without a loop-breaker it re-runs itself forever
+# (content-review reviewing its own commit, ad infinitum). Require the synchronize
+# guard on content-review. (auto-fix solves the same hazard with a MAX_ATTEMPTS cap.)
+pipe_wf = wf_read['pipeline.yml'].to_s
+if pipe_wf.include?('content-review:') && pipe_wf.include?('FLEET_TOKEN')
+  add(findings, 'error', 'self-retrigger', "pipeline.yml content-review can loop (FLEET_TOKEN editorial push -> synchronize -> re-review); add the `github.event.action != 'synchronize'` loop-breaker to its `if`") unless pipe_wf.include?("github.event.action != 'synchronize'")
+end
 
 # Universal AI wiring: every model call must go through scripts/ai/run.sh (or the
 # claude-run action that wraps it), so model/auth/fallback live in ONE place
@@ -51,19 +61,41 @@ end
 add(findings, 'error', 'ai-wiring', 'scripts/ai/run.sh (the universal AI runner) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/run.sh'))
 add(findings, 'error', 'ai-wiring', 'scripts/ai/api_call.rb (the Claude API fallback) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/api_call.rb'))
 
+# OAuth-everywhere invariant: any workflow that forwards ANTHROPIC_API_KEY to an
+# AI step must ALSO forward CLAUDE_CODE_OAUTH_TOKEN, so adding a key never
+# silently downgrades a job to API-key-only and drops the (preferred) Claude Code
+# OAuth path. Matches the env-assignment form (and the commented fleet-dispatch
+# template), not prose mentions.
+api_env = /ANTHROPIC_API_KEY:\s*\$\{\{\s*secrets\.ANTHROPIC_API_KEY\s*\}\}/
+oauth_env = /CLAUDE_CODE_OAUTH_TOKEN:\s*\$\{\{\s*secrets\.CLAUDE_CODE_OAUTH_TOKEN\s*\}\}/
+wf_read.each do |name, c|
+  next unless c =~ api_env
+  add(findings, 'error', 'ai-wiring', "#{name} forwards ANTHROPIC_API_KEY without CLAUDE_CODE_OAUTH_TOKEN — the OAuth path is dropped") unless c =~ oauth_env
+end
+
 # --- 2. Contract wiring (errors) --------------------------------------------
 runall = read.call(File.join(LH::ROOT, 'scripts/ci/run-all.sh'))
 add(findings, 'error', 'sev1-contract', 'run-all.sh does not call record_build.rb (the sev1 build finding would be lost)') unless runall.include?('record_build')
 add(findings, 'error', 'sev1-contract', 'run-all.sh early-exits before aggregate on build failure') if runall =~ /build\.sh build \|\| \{[^}]*exit 1/
 # A workflow that builds to feed the harness must fail safe: the build step
 # `continue-on-error` + LH_BUILD_RC so a broken build becomes a sev1 finding, not
-# a dead job. (run-all.sh turns LH_BUILD_RC into the record_build.rb call.)
+# a dead job. (run-all.sh turns LH_BUILD_RC into the record_build.rb call.) This
+# pattern is shared via the build-and-harness composite; a workflow that uses it
+# inherits the fail-safe (and so is exempt from the inline check below).
 wf_read.each do |name, c|
+  next if c.include?('build-and-harness')      # fail-safe lives in the composite
   builds = c.include?('build-overlay') || c.include?('build.sh build')
   feeds_harness = c.include?('run-all.sh') || c.include?('run_all')
   next unless builds && feeds_harness
   ok = c.include?('LH_BUILD_RC') && c.include?('continue-on-error')
   add(findings, 'warn', 'sev1-contract', "#{name} builds for the harness without the LH_BUILD_RC fail-safe (a build break would not become a sev1)") unless ok
+end
+# The shared composite must itself carry the fail-safe (it's the single source of
+# truth for build+harness now, so the contract is verified in one place).
+bh_path = File.join(LH::ROOT, '.github', 'actions', 'build-and-harness', 'action.yml')
+if File.exist?(bh_path)
+  bh = LH.read(bh_path)
+  add(findings, 'error', 'sev1-contract', 'build-and-harness composite lacks the LH_BUILD_RC + continue-on-error fail-safe') unless bh.include?('LH_BUILD_RC') && bh.include?('continue-on-error')
 end
 
 # --- 3. Required checks present (errors/warn) -------------------------------
@@ -77,13 +109,25 @@ wf_read.each do |name, c|
   bundles = c.include?('bundle ') || c.include?('run-all.sh') || c.include?('build-overlay')
   add(findings, 'warn', 'cache', "#{name} bundles gems without bundler-cache") if c.include?('setup-ruby') && bundles && !c.include?('bundler-cache')
 end
-build_runs = wf_read.count { |_, c| c.include?('build-overlay') || c.include?('build.sh build') }
-add(findings, 'info', 'throughput', "#{build_runs} workflow(s) run the safe-mode build; a shared build artifact would cut duplicate builds")
+build_runs = wf_read.count { |_, c| c.include?('build-overlay') || c.include?('build.sh build') || c.include?('build-and-harness') }
+add(findings, 'info', 'throughput', "#{build_runs} workflow(s) run the safe-mode build (distinct triggers — PR gate / triage / nightly); the build+harness LOGIC is shared via the build-and-harness composite")
 
 # --- 5. Script health (errors) ----------------------------------------------
 Dir[File.join(LH::ROOT, 'scripts/**/*.rb')].sort.each do |f|
   `ruby -c #{f} 2>&1`
   add(findings, 'error', 'syntax', "#{LH.rel(f)} has a Ruby syntax error") unless $?.success?
+end
+
+# Comment-preservation: a bare `File.write(path, X.to_yaml)` serializes only the
+# data and silently drops the file's comment header (our committed _data/*.yml files
+# document themselves there). Route YAML writes through LH.ywrite, which preserves it.
+Dir[File.join(LH::ROOT, 'scripts/**/*.rb')].sort.each do |f|
+  next if LH.rel(f) == 'scripts/ci/_lib.rb'   # the one place to_yaml legitimately lives
+  LH.read(f).each_line.with_index do |line, i|
+    next if line =~ /\A\s*#/   # skip Ruby comments (incl. this rule's own doc text)
+    next unless line =~ /File\.write\(.*,\s*[A-Za-z_]\w*\.to_yaml\s*\)/
+    add(findings, 'error', 'comment-preservation', "#{LH.rel(f)}:#{i + 1} writes YAML via a bare `.to_yaml` (drops the comment header) — use LH.ywrite")
+  end
 end
 Dir[File.join(LH::ROOT, 'scripts/**/*.sh')].sort.each do |f|
   `bash -n #{f} 2>&1`

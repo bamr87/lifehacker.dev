@@ -17,7 +17,8 @@ dealbreaker. No affiliate fog.
 {% assign tools = site.tools | sort: 'date' | reverse %}
 {% for tool in tools %}
   <div class="col">
-    <article class="card h-100 shadow-sm">
+    <article class="card h-100 shadow-sm overflow-hidden">
+      {% include home/cover.html collection='tools' height='160px' preview=tool.preview alt=tool.title %}
       <div class="card-body">
         <span class="badge text-bg-warning mb-2"><i class="bi bi-wrench-adjustable"></i> tool</span>
         <h2 class="h5 card-title"><a href="{{ tool.url | relative_url }}">{{ tool.title }}</a></h2>
