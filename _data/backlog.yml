@@ -177,6 +177,23 @@ backlog:
     status: done
     published: /docs/how-the-robot-grades-its-own-homework/
 
+  # Fresh doc (no `todo` doc item remained; DOC-001/002/003/005 shipped, DOC-004 is
+  # a blocked post). The Meta pillar documents the harness as a whole (DOC-005) but
+  # the brand linter — the one check that meets the site's entire comedy premise and
+  # is DELIBERATELY not allowed to block — only gets a paragraph there. It earns its
+  # own deep-dive: the satire-license problem a regex can't solve, the `satire_line?`
+  # heuristic and its blind spots, the two-tier handoff, and the recursive joke that
+  # the linter flags the very docs that describe it. Demonstrable with real captured
+  # output (85 findings, 0 errors) from running it on this repo.
+  - id: DOC-006
+    kind: doc
+    title: "The word police that can't make an arrest"
+    brief: "Deep-dive companion to DOC-005 on lint_brand.rb: the glossary lint that flags the robot's favorite hype words (just, 10x, revolutionary) but is built to never block — because the same words are licensed for satire. The satire_line? heuristic, where it guesses wrong in both directions, the tier-2 handoff that narrows the question without answering it, and the recursive bit where the linter cites the docs that explain it. Real `ruby scripts/ci/lint_brand.rb` output."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-word-police-that-cant-make-an-arrest/
+
   # Surfaced by HACK-004 (fzf shell functions): the post names `fzf -m`
   # multi-select as the one place you DON'T quote the result, but doesn't build
   # it out. The multi-select variants (kill several procs, stage several files,
@@ -247,3 +264,19 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/06/27/the-one-file-the-whole-fleet-fights-over/
+
+  # --- Fresh hack (autopilot run, 2026-06-27): every `hack` item was already
+  # done and the only `todo` was OPS-001 (kind: ops, which content runs skip).
+  # Rather than no-op or cross collections, synthesized a fresh in-lane hack.
+  # `make` as a task runner is an untouched corner — existing hacks cover git,
+  # shell functions, tmux, fzf, ssh — and it's fully testable offline with two
+  # real, famous failures (the .PHONY file-shadow and the tab-vs-spaces
+  # "missing separator"). Both reproduced and left in.
+  - id: HACK-010
+    kind: hack
+    title: "Stop forgetting your own build commands: a Makefile as your project's command menu"
+    brief: "Use make as a task runner, not a C compiler: a self-documenting `make help` menu, why `.PHONY` matters (a file named like a target silently shadows it), and the tab-vs-spaces 'missing separator' error. Every command and both failures reproduced for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/make-task-runner-command-menu/
