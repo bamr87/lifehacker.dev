@@ -7,7 +7,6 @@ tags: [macos, tutorial, intermediate, system-administration, hands-on, legacy-sy
 author: amr
 original_author: "IT-Journey Team"
 excerpt: "Learn how to manually extract and process OS X El Capitan installer files on Apple Silicon Macs to create bootable media for restoring legacy Intel-based systems"
-preview: /assets/images/posts/el-capitan-bootloader.png
 ---
 ## Introduction
 

@@ -7,7 +7,6 @@ tags: [AI, software-development, evolution, automation, future-tech]
 author: amr
 original_author: "IT-Journey Team"
 excerpt: "Just as seeds contain the DNA for infinite growth potential, our software development practices are evolving to encode wisdom that enables exponential innovation."
-preview: /images/previews/planting-seeds-software-evolution.png
 ---
 ## The Seed Metaphor: Nature's Blueprint for Software Evolution
 

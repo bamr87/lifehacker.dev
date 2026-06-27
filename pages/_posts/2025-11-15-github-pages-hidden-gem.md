@@ -7,7 +7,6 @@ tags: [github-pages, jekyll, static-site-generation, web-hosting, version-contro
 author: amr
 original_author: "IT-Journey Team"
 excerpt: "GitHub Pages democratizes web publishing by combining free hosting, Jekyll static site generation, and Git version control into a powerful platform for developers, educators, and content creators."
-preview: /assets/images/github-pages-hero.png
 ---
 ## Introduction
 
