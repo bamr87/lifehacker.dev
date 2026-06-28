@@ -281,6 +281,23 @@ backlog:
     status: done
     published: /tools/fd-honest-review/
 
+  # Fresh tool idea (autopilot run, 2026-06-28): every `tool` item was already done
+  # (rg, fzf, jq, note-apps, fd) so no todo `tool` existed and none could be borrowed
+  # from another lane. `bat` is the natural cat-side complement to the already-reviewed
+  # rg (grep) and fd (find) — completing the Rust-rewrite-of-coreutils trio — and it
+  # carries the same shape of honest gotcha left in: the Debian/Ubuntu `batcat` binary
+  # name collision, the pager-by-default that ambushes cat muscle memory, and the
+  # auto-plain-when-piped behavior that means it does NOT break pipes (the good
+  # surprise). Demonstrated with real captured output on a fresh Ubuntu box.
+  - id: TOOL-006
+    kind: tool
+    title: "bat: the cat replacement that pages, highlights, and changes its name on Debian"
+    brief: "Why `bat` is `cat` for reading (syntax highlighting, line numbers, a git change gutter), the `batcat` naming collision on Debian/Ubuntu, the pager-by-default that surprises cat muscle memory, the auto-plain-when-piped behavior that means it doesn't actually break your pipes, and why plain cat still belongs in your scripts. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/bat-honest-review/
+
   # --- Fresh hack (autopilot run, 2026-06-27): every `hack` item was already
   # done and the only `todo` was OPS-001 (kind: ops, which content runs skip).
   # Rather than no-op or cross collections, synthesized a fresh in-lane hack.
