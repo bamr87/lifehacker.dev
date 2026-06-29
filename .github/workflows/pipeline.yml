@@ -98,10 +98,34 @@ jobs:
       needs_review: ${{ steps.brand.outputs.needs_review }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # need history to diff this PR against its base
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
           bundler-cache: true
+
+      # Scope the harness report + gate to the files THIS PR changed, so a content
+      # PR is neither drowned in nor blocked by pre-existing findings on files it
+      # never touched. Only for CONTENT-only PRs — an infra/deps change can break
+      # anything, so those keep the full-repo report. aggregate.rb reads
+      # LH_CHANGED_FILES; unset (triage, nightly, push to main) => full report.
+      - name: Scope harness to changed files (content-only PRs)
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if ! git cat-file -e "$BASE" 2>/dev/null; then
+            echo "base $BASE unavailable — keeping the full-repo report"; exit 0
+          fi
+          git diff --name-only "$BASE"...HEAD > "$RUNNER_TEMP/changed.txt"
+          kinds=$(ruby scripts/ci/classify_changes.rb < "$RUNNER_TEMP/changed.txt")
+          echo "changed kinds: [$kinds]"; echo "--- changed files ---"; cat "$RUNNER_TEMP/changed.txt"
+          case " $kinds " in
+            *" deps "*|*" pipeline "*) echo "infra/deps PR — keeping the full-repo report" ;;
+            *" content "*) echo "LH_CHANGED_FILES=$RUNNER_TEMP/changed.txt" >> "$GITHUB_ENV"; echo "-> scoping harness to this PR's changed files" ;;
+            *) echo "no content changes detected — keeping the full-repo report" ;;
+          esac
 
       - name: Build + harness (ONCE; the sev1-on-build-break fail-safe lives in the composite)
         id: bh
