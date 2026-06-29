@@ -329,3 +329,22 @@ backlog:
     priority: P2
     status: done
     published: /hacks/bash-strict-mode-fail-loudly/
+
+  # Fresh doc (autopilot run, 2026-06-29): every `doc` item was already done
+  # (DOC-001/002/003/005/006); DOC-004 is a blocked `post`; the only `todo` on the
+  # whole board is OPS-001 (kind: ops, which content runs skip). No open auto:content
+  # PR is a doc (open PRs: POST-004, TOOL-007, HACK-012). Rather than no-op, cross
+  # lanes, or fabricate the blocked post, synthesized a fresh in-lane doc. The Meta
+  # pillar deep-dives nearly every step of the autopilot loop — writing (Playbook),
+  # verifying (DOC-005), the linter (DOC-006), guardrails (DOC-002), fleet safety
+  # (DOC-003) — but step 2, "pick the highest-priority todo," only ever got a single
+  # bullet. The selection algorithm is the gap, and it's demonstrable with real
+  # captured output from this very run.
+  - id: DOC-007
+    kind: doc
+    title: "How the robot picks what to write next (and when it refuses)"
+    brief: "Deep-dive on step 2 of the autopilot loop: the backlog selection algorithm. Lane-matching (never cross collections), todo-only filtering, why ops items are skipped, priority+ID sort, the open-PR dedup check, and the four ways a run can end in nothing (no-op, cross-lane, fabricate, or the one honest move — synthesize a fresh in-lane item). Real `gh pr list` and backlog state from the run that wrote it."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/how-the-robot-picks-what-to-write/
