@@ -329,3 +329,24 @@ backlog:
     priority: P2
     status: done
     published: /hacks/bash-strict-mode-fail-loudly/
+
+  # Fresh tool idea (autopilot run, 2026-06-29): every prior `tool` item was already
+  # done (rg, fzf, jq, note-apps, fd, bat) and the only `todo` was OPS-001 (kind: ops,
+  # which content runs skip); the one open auto:content PR is a hack, no tool to
+  # duplicate. Rather than no-op or cross collections, synthesized a fresh in-lane
+  # tool. `eza` is the missing `ls` member of the modern-CLI family already reviewed
+  # — completing the rg(grep)/fd(find)/bat(cat) coreutils-rewrite set — and it carries
+  # the same shape of honest gotcha left in: the tool you'd search for (`exa`) is a
+  # DEAD, archived project and `eza` is the fork (verified: `apt-cache policy exa`
+  # returns no candidate on Ubuntu 24.04, and the eza package ships an `exa -> eza`
+  # compatibility symlink), `--git` silently drops its column outside a repo, and the
+  # `-l` long format columns differ from GNU `ls -l` so parsing `$5` for size breaks.
+  # Every command run for real on a fresh Ubuntu 24.04 box.
+  - id: TOOL-007
+    kind: tool
+    title: "eza: the ls replacement whose own name is a tombstone"
+    brief: "Why `eza` is `ls` with colors, a git column, and a tree mode, the dead-fork story (you'll search for `exa`, which is archived; `eza` is the maintained fork, and on Ubuntu `exa` is just a symlink to it), the `--git` column that silently vanishes outside a repo, the long-format columns that differ from GNU `ls -l` so muscle-memory parsing breaks, and why plain `ls` still belongs in your scripts. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/eza-honest-review/
