@@ -79,11 +79,13 @@ lh_overlay() {
     [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$dest/$f"
   done
 
-  # Our images — the WHOLE tree (svgs at top level, png screenshots under
-  # journey/). Copying only *.svg silently dropped the journey PNGs that
-  # published posts reference, which html-proofer then flagged as missing.
-  mkdir -p "$dest/assets/images"
-  cp -R "$REPO_DIR"/assets/images/. "$dest/assets/images/"
+  # Our assets — the WHOLE tree (images/, svg/, img/, …). GitHub Pages serves
+  # every path under assets/, so the overlay must too. Copying only assets/images
+  # silently dropped assets/svg/* (e.g. the penrose drawings) and assets/img/*,
+  # which html-proofer then flagged as missing images on pages that reference them.
+  # Ours win on name collisions; theme-only assets survive the merge.
+  mkdir -p "$dest/assets"
+  cp -R "$REPO_DIR"/assets/. "$dest/assets/"
 
   # Match GitHub Pages safe mode: no custom plugins.
   rm -rf "$dest/_plugins"

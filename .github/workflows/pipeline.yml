@@ -98,10 +98,34 @@ jobs:
       needs_review: ${{ steps.brand.outputs.needs_review }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # need history to diff this PR against its base
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
           bundler-cache: true
+
+      # Scope the harness report + gate to the files THIS PR changed, so a content
+      # PR is neither drowned in nor blocked by pre-existing findings on files it
+      # never touched. Only for CONTENT-only PRs — an infra/deps change can break
+      # anything, so those keep the full-repo report. aggregate.rb reads
+      # LH_CHANGED_FILES; unset (triage, nightly, push to main) => full report.
+      - name: Scope harness to changed files (content-only PRs)
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if ! git cat-file -e "$BASE" 2>/dev/null; then
+            echo "base $BASE unavailable — keeping the full-repo report"; exit 0
+          fi
+          git diff --name-only "$BASE"...HEAD > "$RUNNER_TEMP/changed.txt"
+          kinds=$(ruby scripts/ci/classify_changes.rb < "$RUNNER_TEMP/changed.txt")
+          echo "changed kinds: [$kinds]"; echo "--- changed files ---"; cat "$RUNNER_TEMP/changed.txt"
+          case " $kinds " in
+            *" deps "*|*" pipeline "*) echo "infra/deps PR — keeping the full-repo report" ;;
+            *" content "*) echo "LH_CHANGED_FILES=$RUNNER_TEMP/changed.txt" >> "$GITHUB_ENV"; echo "-> scoping harness to this PR's changed files" ;;
+            *) echo "no content changes detected — keeping the full-repo report" ;;
+          esac
 
       - name: Build + harness (ONCE; the sev1-on-build-break fail-safe lives in the composite)
         id: bh
@@ -143,17 +167,38 @@ jobs:
     needs: verify
     if: ${{ needs.verify.outputs.needs_review == 'true' && github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 8        # backstop: it adjudicates a handful of PR-scoped candidates, never the whole repo
     permissions:
       contents: read
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0      # need history to diff this PR against its base
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-      - name: Refresh brand candidates
+      # Scope the brand candidates to THIS PR's changed files so the paid reviewer
+      # only adjudicates words the PR actually introduced — not every `just`/`10x`
+      # already in the repo (scanning the whole repo is what made this run 10-14 min).
+      - name: Scope brand candidates to changed files
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if git cat-file -e "$BASE" 2>/dev/null; then
+            git diff --name-only "$BASE"...HEAD > "$RUNNER_TEMP/changed.txt"
+            echo "LH_CHANGED_FILES=$RUNNER_TEMP/changed.txt" >> "$GITHUB_ENV"
+          fi
+      - name: Refresh brand candidates (PR-scoped)
         run: ruby scripts/ci/lint_brand.rb || true
+      - name: Any PR-introduced candidates to adjudicate?
+        id: gate
+        run: |
+          n=$(ruby -rjson -e 'd=(JSON.parse(File.read("test-results/brand.json")) rescue []); puts d.count { |f| f["rule"].to_s.start_with?("banned-when-sincere:") && f["severity"]=="warning" }')
+          echo "candidates=$n" >> "$GITHUB_OUTPUT"
+          echo "PR-scoped sincere candidates: $n"
       - name: Run brand-reviewer (universal AI runner)
+        if: ${{ steps.gate.outputs.candidates != '0' }}
         uses: ./.github/actions/claude-run
         continue-on-error: true
         env:
@@ -162,9 +207,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         with:
           agent: brand-reviewer
-          prompt: "Use the brand-reviewer agent to adjudicate test-results/brand.json for PR #${{ github.event.pull_request.number }}. Comments only; never approve or merge."
+          prompt: "Use the brand-reviewer agent to adjudicate the banned-when-sincere candidates in test-results/brand.json — already scoped to PR #${{ github.event.pull_request.number }}'s changed files. Adjudicate ONLY those candidates (do not scan other files), then stop. Comments only; never approve or merge."
           tools: "Bash(gh pr comment:*),Read,Grep"
-          system: "You are the brand-reviewer for lifehacker.dev: rule each banned-when-sincere candidate as flagged-satire or sincere-violation. Output review comments only; never approve or merge."
+          system: "You are the brand-reviewer for lifehacker.dev: rule each banned-when-sincere candidate as flagged-satire or sincere-violation. The candidates in test-results/brand.json are ALREADY scoped to this PR — adjudicate exactly those, efficiently, then stop. Output review comments only; never approve or merge."
 
   # ----- TIER 3 — integration (triage + fleet plan off the fresh artifact) ---
   integration:
