@@ -25,6 +25,19 @@ AVOID  = (glossary['avoid_phrases'] || []).map(&:to_s)
 DIRS = %w[pages/_hacks pages/_tools pages/_posts pages/_docs]
 findings = []
 
+# Optional PR scoping: when LH_CHANGED_FILES is set (a path to a newline-separated
+# changed-file list, or an inline list), only scan the changed content files — so
+# the candidates AND the tier-2 `brand-needs-review` trigger reflect THIS PR, not
+# the whole repo. That keeps the paid brand-reviewer fast and on-topic (it only
+# adjudicates words the PR actually introduced). Unset (nightly, push) => scan all.
+def lh_scope
+  raw = ENV['LH_CHANGED_FILES'].to_s.strip
+  return nil if raw.empty?
+  (File.file?(raw) ? File.read(raw, encoding: 'UTF-8').split(/\r?\n/) : raw.split(/[\s,]+/))
+    .map { |p| p.strip.sub(%r{\A\./}, '') }.reject(&:empty?)
+end
+SCOPE = lh_scope
+
 # Heuristic: is this line obviously a flagged satire bit (so a banned word here
 # is the joke, not a violation)? Blockquote, trademark gag, emphasis, or an
 # explicit testimonial/scare-quote marker.
@@ -51,6 +64,7 @@ end
 
 DIRS.each do |dir|
   Dir.glob(File.join(LH::ROOT, dir, '*.md')).sort.each do |path|
+    next if SCOPE && !SCOPE.include?(LH.rel(path))
     _fm, body = LH.parse(path)
     rel = LH.rel(path)
 
