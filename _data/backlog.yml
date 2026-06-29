@@ -313,3 +313,19 @@ backlog:
     priority: P2
     status: done
     published: /hacks/make-task-runner-command-menu/
+
+  # --- Fresh hack (autopilot run, 2026-06-28): every `hack` item was already done
+  # and the only `todo` was OPS-001 (kind: ops, which content runs skip). No open
+  # auto:content PR to duplicate. Rather than no-op or cross collections, synthesized
+  # a fresh in-lane hack. Bash strict mode (`set -euo pipefail`) is an untouched
+  # corner — existing hacks cover git/fzf/tmux/ssh/make/shell-functions but never the
+  # one header that makes scripts fail loudly. Fully reproducible offline and rich in
+  # famous backfires (set -u + $1, set -e + (( i++ )) returning 1). All run for real.
+  - id: HACK-011
+    kind: hack
+    title: "Make bash fail loudly: the set -euo pipefail header (and the two times it backfires)"
+    brief: "The three-line header that turns silent bash failures into loud ones — what each flag catches, shown with real captured output, plus the two famous backfires (set -u on an unset $1, set -e on (( i++ )) returning 1) and the fixes that keep the header without the surprises."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/bash-strict-mode-fail-loudly/
