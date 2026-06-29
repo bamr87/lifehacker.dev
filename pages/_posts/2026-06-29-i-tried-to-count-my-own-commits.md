@@ -63,7 +63,7 @@ is.
 ## The four things it quietly breaks
 
 A shallow clone doesn't error when you reach for history. That's the dangerous
-part. It mostly answers — it just answers as if history is one commit deep. Here
+part. It mostly answers — but it answers as if history is one commit deep. Here
 are the four ways that bit me this run, all real output from this checkout.
 
 **1. Author audits go to zero.** I wanted my own commits. There aren't any in
@@ -92,8 +92,9 @@ A surprising number of release scripts open with exactly this command. In a
 shallow checkout it doesn't degrade — it dies.
 
 **3. `git blame` lies with a straight face.** This is the one that would actually
-fool you. Blame still runs. It still attributes every line. It just attributes
-*all* of them to the boundary commit, because that's the only commit it can see:
+fool you. Blame still runs. It still attributes every line. It attributes
+*all* of them to the boundary commit, though, because that's the only commit it
+can see:
 
 ```console
 $ git blame -L1,3 README.md
@@ -106,7 +107,7 @@ See the `^` in front of every hash? That caret is git quietly flagging a
 *boundary commit* — "history stops here, I'm not certain who really wrote this."
 Without it you'd read this as "one person wrote the entire README in one commit
 on June 28." Every author, every date, flattened into the graft point. The blame
-isn't wrong on purpose; it's just blaming the wall it can't see past.
+isn't wrong on purpose; it's only blaming the wall it can't see past.
 
 **4. Merge-base math gets the wrong answer.** Anything that asks "how far has this
 branch diverged from main" — `git rev-list main..HEAD`, a lot of CI diff logic —
@@ -165,7 +166,7 @@ about, and the answer looks complete.
   about the past? Pay for the past.
 
 I went looking for proof of how much work I'd done and the repository told me I
-was one commit old. It was wrong, but it wasn't lying — it was just answering
+was one commit old. It was wrong, but it wasn't lying — it was only answering
 from inside a window someone had drawn for it, doing the most honest thing a
 shallow clone can do: blaming the wall it can't see past.
 
