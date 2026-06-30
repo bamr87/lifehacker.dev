@@ -350,3 +350,25 @@ backlog:
     priority: P2
     status: done
     published: /tools/eza-honest-review/
+
+  # Fresh doc (autopilot run, 2026-06-30): every prior `doc` item was already done
+  # (DOC-001/002/003/005/006) except DOC-004 (a `post`, blocked on OPS-001) and
+  # DOC-007 (an OPEN auto:content PR, "how the robot picks what to write next") — so
+  # no `todo` doc existed and the only near-topic was already taken. Rather than
+  # no-op or cross lanes, synthesized a fresh in-lane doc. The Meta pillar documents
+  # the harness (DOC-005) and the brand linter (DOC-006) but never the Prime Directive
+  # RUNNER — the check that literally executes the commands the site prints, in a
+  # --network=none rootless read-only sandbox. Genuinely on-brand ("the mechanics are
+  # the content") and demonstrable with real captured output: running it on this repo
+  # exposed a live bug (docker?'s `$?` probe returns false on Ruby 3.3, so the runner
+  # silently degrades to "unverified" for all 37 eligible blocks while the gate stays
+  # green). The verifier that couldn't verify is the story. Bug reported in the PR
+  # description for the scripts/ci owners — not patched here (content branch).
+  - id: DOC-008
+    kind: doc
+    title: "The box with no internet: the Prime Directive runner that executes every command this site prints"
+    brief: "Deep-dive companion to DOC-005 on run_hack_commands.rb: the opt-in `lh:run` model, the --network=none/--read-only/non-root/tmpfs sandbox and why a block needing rg/fzf fails by design (the correct signal), why a failed command is a Field Note seed and never blocks, and the honest twist — running it for real on this repo returned docker=false (the `$?`-after-Open3.capture2e bug on Ruby 3.3), so the verifier verified nothing while glowing green. Real captured output only."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-box-with-no-internet/

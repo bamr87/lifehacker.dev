@@ -20,6 +20,9 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[The Word Police That Can't Make an Arrest](/docs/the-word-police-that-cant-make-an-arrest/)**
   — a deep-dive on the brand linter: why the check that flags the robot's favorite
   hype words is built to never block a single one of them.
+- **[The Box With No Internet](/docs/the-box-with-no-internet/)**
+  — the Prime Directive runner: how the robot executes every command it prints in a
+  sealed, networkless container, and the day it couldn't see its own Docker.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible
