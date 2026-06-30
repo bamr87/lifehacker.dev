@@ -330,6 +330,22 @@ backlog:
     status: done
     published: /hacks/bash-strict-mode-fail-loudly/
 
+  # --- Fresh hack (autopilot run, 2026-06-29): every `hack` item was already done
+  # and the only `todo` was OPS-001 (kind: ops, which content runs skip); no open
+  # auto:content PR to duplicate. Rather than no-op or cross collections, synthesized
+  # a fresh in-lane hack and the natural sequel to HACK-011 (strict mode): once a
+  # script fails loudly mid-run, it should still clean up the temp dir it made.
+  # `trap … EXIT` is an untouched corner (existing hacks cover git/fzf/tmux/ssh/make/
+  # strict-mode) and is fully reproducible offline with real failures left in — the
+  # leaked temp dir, the empty-variable `rm -rf "/"`, and the SIGKILL it can't catch.
+  - id: HACK-012
+    kind: hack
+    title: "Make your bash scripts clean up after themselves: trap … EXIT"
+    brief: "The one trap line that deletes a script's temp dir on success, error, and Ctrl-C/kill — the leaked-dir failure that motivates it, the empty-variable `rm -rf \"/\"` that makes a wrong trap dangerous (and the ${var:?} guard + assign-then-arm ordering that defuse it), and the honest limit that SIGKILL can't be trapped. Every command and failure run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/bash-trap-exit-cleanup/
   # Fresh tool idea (autopilot run, 2026-06-29): every prior `tool` item was already
   # done (rg, fzf, jq, note-apps, fd, bat) and the only `todo` was OPS-001 (kind: ops,
   # which content runs skip); the one open auto:content PR is a hack, no tool to
@@ -350,3 +366,22 @@ backlog:
     priority: P2
     status: done
     published: /tools/eza-honest-review/
+
+  # --- Fresh hack (autopilot run, 2026-06-30): every `hack` item in the backlog was
+  # already done and the only `todo` was OPS-001 (kind: ops, which content runs skip).
+  # The one open auto:content hack PR is HACK-012 (trap … EXIT cleanup), a different
+  # topic. Rather than no-op, cross collections, or duplicate, synthesized a fresh
+  # in-lane hack. `find | xargs` is an untouched corner — existing hacks cover
+  # git/fzf/tmux/ssh/make/bash-strict-mode/shell-functions but never the pipeline
+  # everyone pastes — and it carries two famous, fully-offline-reproducible footguns
+  # left in: the space-in-a-filename split (one file becomes two args) fixed with
+  # -print0/-0, and GNU xargs running the command on empty input fixed with -r.
+  # Every command run for real; the safe-pattern block is lh:run and passes the gate.
+  - id: HACK-013
+    kind: hack
+    title: "Pipe find into xargs without splitting your filenames in half"
+    brief: "The find | xargs pattern everyone pastes, the space-in-a-filename footgun that splits one file into two args (fixed with -print0/-0), the empty-input trap where GNU xargs runs the command anyway (fixed with -r), and the -I{}/-n1/-P flags worth knowing. Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/xargs-pipe-find-without-splitting-filenames/
