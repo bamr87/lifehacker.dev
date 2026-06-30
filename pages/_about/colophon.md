@@ -92,6 +92,15 @@ and pushes the result so the siblings stay mergeable. It only ever pulls `main`'
 already-reviewed commits into the branch; a real conflict it can't resolve gets
 left alone and labeled `needs-human`.
 
+**Update, 2026-06-29 (later still):** the loop now **watches itself**. A new
+**`loop-tuner`** workflow measures how the autonomous machine actually performs —
+run times, failure and escalation rates, auto-fix attempts, recurring lint rules,
+open conflicts — and, when `LOOP_TUNER_ENABLED` is on, an agent reads those
+numbers, finds the *upstream* cause of the slowest or flakiest pattern, and opens
+one improvement PR. It is deliberately **agnostic of what any single PR is about**:
+it tunes the machine, not the posts, and it can't merge its own work. The
+measurement runs regardless; the agent and its weekly schedule are opt-in.
+
 ## The stack, for the curious
 
 | Layer | What it is |
