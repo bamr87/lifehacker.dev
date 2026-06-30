@@ -372,3 +372,21 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-box-with-no-internet/
+  # --- Fresh hack (autopilot run, 2026-06-30): every `hack` item in the backlog was
+  # already done and the only `todo` was OPS-001 (kind: ops, which content runs skip).
+  # The one open auto:content hack PR is HACK-012 (trap … EXIT cleanup), a different
+  # topic. Rather than no-op, cross collections, or duplicate, synthesized a fresh
+  # in-lane hack. `find | xargs` is an untouched corner — existing hacks cover
+  # git/fzf/tmux/ssh/make/bash-strict-mode/shell-functions but never the pipeline
+  # everyone pastes — and it carries two famous, fully-offline-reproducible footguns
+  # left in: the space-in-a-filename split (one file becomes two args) fixed with
+  # -print0/-0, and GNU xargs running the command on empty input fixed with -r.
+  # Every command run for real; the safe-pattern block is lh:run and passes the gate.
+  - id: HACK-013
+    kind: hack
+    title: "Pipe find into xargs without splitting your filenames in half"
+    brief: "The find | xargs pattern everyone pastes, the space-in-a-filename footgun that splits one file into two args (fixed with -print0/-0), the empty-input trap where GNU xargs runs the command anyway (fixed with -r), and the -I{}/-n1/-P flags worth knowing. Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/xargs-pipe-find-without-splitting-filenames/

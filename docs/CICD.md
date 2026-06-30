@@ -119,6 +119,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
 | `explore.yml` | manual (cron commented) | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. |
 | `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
+| `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=union` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts → `needs-human`. |
 | `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
 
 **The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies
@@ -137,6 +138,7 @@ gh variable set FLEET_ENABLED true              # the fix/grow fleet
 gh variable set CONTENT_FACTORY_ENABLED true    # daily content generation
 gh variable set EXPLORER_ENABLED true           # live-site persona QA
 gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
+gh variable set AUTO_UPDATE_ENABLED true        # keep colliding content PRs mergeable (union-merges main in; needs FLEET_TOKEN)
 gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (retires human content review)
 ```
 

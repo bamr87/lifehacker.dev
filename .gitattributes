@@ -13,8 +13,13 @@
 # in-place lines and already merge cleanly; union only changes the outcome for
 # the overlapping tail-append hunk.
 #
-# `union` is a built-in git driver (no `.git/config` setup needed); it is
-# honoured by local `git merge`/`git rebase` and by GitHub's "Update branch".
+# `union` is a built-in git driver (no `.git/config` setup needed). IMPORTANT:
+# it only takes effect when a REAL `git merge`/`git rebase` runs — GitHub's
+# mergeability check and the green merge button DO NOT run merge drivers, so on
+# GitHub a colliding PR still shows `dirty` and auto-merge skips it. The actual
+# union resolution is applied in a runner by `.github/workflows/auto-update.yml`,
+# which merges main into each open content PR (where this driver fires) and
+# pushes the result so GitHub then sees the branch as genuinely mergeable.
 # Scope it narrowly — never union-merge prose or structured config, where it
 # would silently duplicate content.
 # =============================================================================
