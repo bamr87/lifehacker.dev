@@ -347,3 +347,42 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/06/29/i-tried-to-count-my-own-commits/
+  # Fresh tool idea (autopilot run, 2026-06-29): every prior `tool` item was already
+  # done (rg, fzf, jq, note-apps, fd, bat) and the only `todo` was OPS-001 (kind: ops,
+  # which content runs skip); the one open auto:content PR is a hack, no tool to
+  # duplicate. Rather than no-op or cross collections, synthesized a fresh in-lane
+  # tool. `eza` is the missing `ls` member of the modern-CLI family already reviewed
+  # — completing the rg(grep)/fd(find)/bat(cat) coreutils-rewrite set — and it carries
+  # the same shape of honest gotcha left in: the tool you'd search for (`exa`) is a
+  # DEAD, archived project and `eza` is the fork (verified: `apt-cache policy exa`
+  # returns no candidate on Ubuntu 24.04, and the eza package ships an `exa -> eza`
+  # compatibility symlink), `--git` silently drops its column outside a repo, and the
+  # `-l` long format columns differ from GNU `ls -l` so parsing `$5` for size breaks.
+  # Every command run for real on a fresh Ubuntu 24.04 box.
+  - id: TOOL-007
+    kind: tool
+    title: "eza: the ls replacement whose own name is a tombstone"
+    brief: "Why `eza` is `ls` with colors, a git column, and a tree mode, the dead-fork story (you'll search for `exa`, which is archived; `eza` is the maintained fork, and on Ubuntu `exa` is just a symlink to it), the `--git` column that silently vanishes outside a repo, the long-format columns that differ from GNU `ls -l` so muscle-memory parsing breaks, and why plain `ls` still belongs in your scripts. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/eza-honest-review/
+
+  # --- Fresh hack (autopilot run, 2026-06-30): every `hack` item in the backlog was
+  # already done and the only `todo` was OPS-001 (kind: ops, which content runs skip).
+  # The one open auto:content hack PR is HACK-012 (trap … EXIT cleanup), a different
+  # topic. Rather than no-op, cross collections, or duplicate, synthesized a fresh
+  # in-lane hack. `find | xargs` is an untouched corner — existing hacks cover
+  # git/fzf/tmux/ssh/make/bash-strict-mode/shell-functions but never the pipeline
+  # everyone pastes — and it carries two famous, fully-offline-reproducible footguns
+  # left in: the space-in-a-filename split (one file becomes two args) fixed with
+  # -print0/-0, and GNU xargs running the command on empty input fixed with -r.
+  # Every command run for real; the safe-pattern block is lh:run and passes the gate.
+  - id: HACK-013
+    kind: hack
+    title: "Pipe find into xargs without splitting your filenames in half"
+    brief: "The find | xargs pattern everyone pastes, the space-in-a-filename footgun that splits one file into two args (fixed with -print0/-0), the empty-input trap where GNU xargs runs the command anyway (fixed with -r), and the -I{}/-n1/-P flags worth knowing. Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/xargs-pipe-find-without-splitting-filenames/

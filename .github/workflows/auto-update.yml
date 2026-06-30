@@ -1,0 +1,154 @@
+# =============================================================================
+# auto-update.yml — keep open content PRs mergeable with main (conflict killer)
+# -----------------------------------------------------------------------------
+# THE PROBLEM. The content-factory opens one PR per collection (hack/tool/post/
+# doc) in a single run, and EVERY content PR appends a fresh item to the end of
+# the shared `_data/backlog.yml`. The moment one of them merges, the siblings'
+# tail-append hunk collides with main and they go `dirty` — the recurring "one
+# file the whole fleet fights over" conflict (see PR #82 vs #83).
+#
+# `.gitattributes` already marks that file `merge=union`, which makes real `git`
+# stack both appends into valid YAML automatically. The catch: GitHub's
+# mergeability check and the green merge button DO NOT run merge drivers, so
+# they still report a conflict and `auto-merge.yml` skips the PR forever. The
+# union driver only takes effect when an actual `git merge`/`git rebase` runs.
+#
+# THE FIX. This workflow IS that actual `git merge`. Whenever main advances, it
+# merges main into each open `auto:content` PR branch in a runner — where the
+# union driver applies — and pushes the result. GitHub then sees the branch
+# already contains main, so the PR is genuinely mergeable and auto-merge (or a
+# human) can land it. A push via FLEET_TOKEN re-triggers the pipeline, so the
+# updated branch is re-validated before it merges.
+#
+# If a merge hits a REAL conflict (anything the union driver can't resolve), or
+# the union'd `_data/backlog.yml` no longer parses, the branch is left untouched
+# and the PR is labeled `needs-human` — we never push a broken or guessed merge.
+#
+# OFF by default behind AUTO_UPDATE_ENABLED + FLEET_TOKEN. Enable it alongside
+# content-factory; with no FLEET_TOKEN it can't push (a github.token push won't
+# re-trigger the pipeline), so it stays idle rather than pushing un-revalidated
+# branches. Content-only by construction: merging main in adds only main's
+# already-reviewed commits; it never alters a PR's own contribution.
+# =============================================================================
+name: auto-update
+
+on:
+  workflow_run:
+    workflows: [pipeline]
+    types: [completed]
+  schedule:
+    - cron: '*/30 * * * *'   # backstop sweep, same cadence as auto-merge
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: auto-update
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      # FLEET_TOKEN (bot PAT, contents+PRs) so the update push re-triggers the
+      # pipeline on the PR — a github.token push is suppressed from triggering
+      # workflows, which would leave the synced branch un-revalidated.
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+    steps:
+      - name: Gate
+        id: gate
+        env:
+          ENABLED: ${{ vars.AUTO_UPDATE_ENABLED }}
+          HAS_FLEET_TOKEN: ${{ secrets.FLEET_TOKEN != '' }}
+        run: |
+          if [ "$ENABLED" != "true" ]; then
+            echo "AUTO_UPDATE_ENABLED != true — auto-update is OFF. Nothing synced."
+            echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ "$HAS_FLEET_TOKEN" != "true" ]; then
+            echo "no FLEET_TOKEN — a github.token push won't re-trigger the pipeline, so a synced branch would merge un-revalidated. Idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          echo "go=true" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout
+        if: ${{ steps.gate.outputs.go == 'true' }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.FLEET_TOKEN }}
+
+      - uses: ruby/setup-ruby@v1
+        if: ${{ steps.gate.outputs.go == 'true' }}
+        with:
+          ruby-version: '3.3'
+
+      - name: Merge main into each open content PR (union-resolve, push, re-validate)
+        if: ${{ steps.gate.outputs.go == 'true' }}
+        run: |
+          set -u
+          git config user.name  "lifehacker-bot"
+          git config user.email "bot@lifehacker.dev"
+          git fetch origin main --quiet
+          synced=0; ok=0; conflict=0; skipped=0
+
+          # Candidates: open PRs labeled auto:content, NOT already escalated.
+          prs=$(gh pr list --state open --label auto:content \
+                 --json number,headRefName,labels \
+                 --jq '.[] | select([.labels[].name] | index("needs-human") | not)
+                            | "\(.number) \(.headRefName)"')
+
+          while IFS=' ' read -r pr branch; do
+            [ -z "${pr:-}" ] && continue
+            echo "::group::PR #$pr ($branch)"
+
+            git fetch origin "$branch" --quiet || { echo "SKIP #$pr: can't fetch $branch."; skipped=$((skipped+1)); echo "::endgroup::"; continue; }
+
+            # Already contains main? Nothing to do.
+            if [ "$(git rev-list --count "origin/$branch..origin/main")" = "0" ]; then
+              echo "SKIP #$pr: branch already up to date with main."
+              skipped=$((skipped+1)); echo "::endgroup::"; continue
+            fi
+
+            # Work on a detached copy of the PR head, then merge main in.
+            git checkout --quiet -B "auto-update/$branch" "origin/$branch"
+            if ! git merge --no-edit origin/main; then
+              echo "CONFLICT #$pr: real merge conflict the union driver can't resolve — escalating."
+              git merge --abort || true
+              gh pr edit "$pr" --add-label needs-human || true
+              gh pr comment "$pr" --body "Auto-update could not merge \`main\` cleanly: a real conflict remains after the \`union\` driver ran (so it's outside the append-only \`_data/backlog.yml\` tail). Labeled \`needs-human\`." || true
+              conflict=$((conflict+1)); git checkout --quiet -; echo "::endgroup::"; continue
+            fi
+
+            # Defense in depth: confirm nothing is left UNMERGED (shouldn't happen
+            # if `git merge` exited 0) and the union'd backlog still parses as YAML.
+            # Use `git ls-files -u` (the index's unmerged entries) — NOT a text grep
+            # for `<<<<<<<`/`=======`: this site PUBLISHES content about merge
+            # conflicts (e.g. the "one file the whole fleet fights over" Field Note),
+            # so those marker strings appear in legitimate, cleanly-merged files and a
+            # grep would false-escalate every PR whose tree includes them.
+            if [ -n "$(git ls-files -u)" ]; then
+              echo "CONFLICT #$pr: unmerged paths remain after merge — escalating."
+              git merge --abort 2>/dev/null || git reset --hard "origin/$branch" --quiet
+              gh pr edit "$pr" --add-label needs-human || true
+              conflict=$((conflict+1)); git checkout --quiet -; echo "::endgroup::"; continue
+            fi
+            if ! ruby -ryaml -e 'YAML.load_file("_data/backlog.yml")' 2>/dev/null; then
+              echo "BROKEN #$pr: _data/backlog.yml no longer parses after union merge — escalating, not pushing."
+              git reset --hard "origin/$branch" --quiet
+              gh pr edit "$pr" --add-label needs-human || true
+              gh pr comment "$pr" --body "Auto-update merged \`main\` but the union'd \`_data/backlog.yml\` no longer parses as YAML. Left the branch untouched and labeled \`needs-human\`." || true
+              conflict=$((conflict+1)); git checkout --quiet -; echo "::endgroup::"; continue
+            fi
+
+            git push origin "HEAD:$branch"
+            echo "SYNCED #$pr: merged main and pushed; the pipeline will re-validate."
+            synced=$((synced+1)); ok=$((ok+1))
+            git checkout --quiet -
+            echo "::endgroup::"
+          done <<< "$prs"
+
+          { echo "## Auto-update sweep";
+            echo "synced: $synced · conflicts escalated (needs-human): $conflict · skipped (up to date): $skipped"; } >> "$GITHUB_STEP_SUMMARY"
