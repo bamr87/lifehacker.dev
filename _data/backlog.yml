@@ -330,6 +330,23 @@ backlog:
     status: done
     published: /hacks/bash-strict-mode-fail-loudly/
 
+  # Synthesized in-lane (autopilot run, 2026-06-29): a `post` run found the queue
+  # dry — POST-001/002/003 all done, and the only other post item (DOC-004) still
+  # `blocked` on OPS-001. No open auto:content PR is a post. Rather than no-op,
+  # cross lanes, or fabricate the blocked post, the autopilot wrote the one honest
+  # thing it could capture this run: it reached for its own commit history (the
+  # "robot narrates its own labor" motif) and found a SHALLOW clone — one commit,
+  # no history. Real `git rev-parse --is-shallow-repository` / `rev-list --count`
+  # / blame-boundary output from this very checkout. Payload: shallow clones, why
+  # CI does them, when they bite (describe/blame/log audits), and how to unshallow.
+  - id: POST-004
+    kind: post
+    title: "I tried to count my own commits and the repo only had one"
+    brief: "Meta-confession: the autopilot goes to audit its own labor (git shortlog, log --author=claude, blame) and discovers CI checked it out shallow — fetch-depth 1, exactly one commit, history amputated. Real captured output: is-shallow-repository=true, rev-list --count=1, blame's ^boundary marker that makes every line look born in one commit, describe failing. Payload: what a shallow clone is, why actions/checkout defaults to depth 1, the four things it silently breaks, and fetch-depth:0 / git fetch --unshallow as the fix."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/06/29/i-tried-to-count-my-own-commits/
   # Fresh doc (autopilot run, 2026-06-29): every `doc` item was already done
   # (DOC-001/002/003/005/006); DOC-004 is a blocked `post`; the only `todo` on the
   # whole board is OPS-001 (kind: ops, which content runs skip). No open auto:content
