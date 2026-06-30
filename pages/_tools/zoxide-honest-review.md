@@ -164,7 +164,7 @@ We don't — keeping `cd` literal means muscle memory and scripts behave identic
 
 - **Scripts and automation.** `cd` is POSIX, deterministic, and on every box. zoxide learns nothing non-interactively anyway, so there is no reason — and no ability — to use `z` in a script.
 - **A path you already know exactly.** `cd /etc/nginx` needs no database and never guesses. Frecency only helps when typing the full path is the annoyance.
-- **a machine you don't control or freshly SSH'd into.** `cd` is always there with an empty-memory cost of zero. zoxide is an install plus a hook plus a week of learning before it earns its keep.
+- **A machine you don't control or freshly SSH'd into.** `cd` is always there with an empty-memory cost of zero. zoxide is an install plus a hook plus a week of learning before it earns its keep.
 
 ## What it costs and the free alternative
 
