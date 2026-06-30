@@ -15,6 +15,7 @@ human merge gate no agent can bypass.
 | `nightly.yml` | cron, manual | No | External-link sweep + fresh-theme drift detection + full Prime-Directive run. Files one issue on failure. |
 | `fleet-dispatch.yml` | manual | No | The dispatcher (plan-only unless `--apply`). Gated by `FLEET_ENABLED`; **no schedule**, **no `administration` scope**. |
 | `devops-audit.yml` | manual | No | Deterministic CI/CD audit + (opt-in) the `devops-manager` agent to propose pipeline improvements. |
+| `loop-tuner.yml` | manual (weekly cron, opt-in) | No | Always measures the loop's *observed* behaviour (`scripts/devops/loop_metrics.rb` — run times, failure/escalation rates, auto-fix attempts, recurring lint rules, conflicts); when `LOOP_TUNER_ENABLED` + key, the `loop-tuner` agent fixes the upstream cause and opens ONE PR. Content-agnostic. |
 
 ## The tiered pipeline (`pipeline.yml`)
 
@@ -140,6 +141,7 @@ gh variable set EXPLORER_ENABLED true           # live-site persona QA
 gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
 gh variable set AUTO_UPDATE_ENABLED true        # keep colliding content PRs mergeable (union-merges main in; needs FLEET_TOKEN)
 gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (retires human content review)
+gh variable set LOOP_TUNER_ENABLED true         # let the loop-tuner agent open improvement PRs from the metrics (measure runs regardless)
 ```
 
 Enabling `AUTO_MERGE_ENABLED` (or uncommenting any `schedule:`) is a guardrail
