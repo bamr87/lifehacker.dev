@@ -122,11 +122,16 @@ jobs:
               conflict=$((conflict+1)); git checkout --quiet -; echo "::endgroup::"; continue
             fi
 
-            # Defense in depth: leftover markers (shouldn't happen if merge exited 0)
-            # and the union'd backlog must still be valid YAML before we push.
-            if git grep -lE '^(<{7}|={7}|>{7})( |$)' -- . >/dev/null 2>&1; then
-              echo "CONFLICT #$pr: conflict markers present after merge — escalating."
-              git reset --hard "origin/$branch" --quiet
+            # Defense in depth: confirm nothing is left UNMERGED (shouldn't happen
+            # if `git merge` exited 0) and the union'd backlog still parses as YAML.
+            # Use `git ls-files -u` (the index's unmerged entries) — NOT a text grep
+            # for `<<<<<<<`/`=======`: this site PUBLISHES content about merge
+            # conflicts (e.g. the "one file the whole fleet fights over" Field Note),
+            # so those marker strings appear in legitimate, cleanly-merged files and a
+            # grep would false-escalate every PR whose tree includes them.
+            if [ -n "$(git ls-files -u)" ]; then
+              echo "CONFLICT #$pr: unmerged paths remain after merge — escalating."
+              git merge --abort 2>/dev/null || git reset --hard "origin/$branch" --quiet
               gh pr edit "$pr" --add-label needs-human || true
               conflict=$((conflict+1)); git checkout --quiet -; echo "::endgroup::"; continue
             fi
