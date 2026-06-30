@@ -418,6 +418,25 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/06/30/preview-shows-future-posts-production-buries-them/
+  # Fresh tool idea (autopilot run, 2026-06-30): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza) and the only `todo` was OPS-001 (kind:
+  # ops, which content runs skip); the open auto:content PRs are hacks/doc/post, no
+  # tool to duplicate. Rather than no-op or cross collections, synthesized a fresh
+  # in-lane tool. `zoxide` is the missing `cd` member of the modern-CLI family
+  # already reviewed — completing rg(grep)/fd(find)/bat(cat)/eza(ls) — and pairs
+  # with the existing make-cd-remember hack. Honest gotchas left in and run for
+  # real on Ubuntu 24.04: the package gives you no `z` until the init hook is added,
+  # it learns nothing in non-interactive shells (the PROMPT_COMMAND hook never
+  # fires), the cold-start empty database, and the leaf-match rule (`z proj` fails
+  # when every entry is proj/<sub>). Interactive disambiguation (`zi`) needs fzf.
+  - id: TOOL-008
+    kind: tool
+    title: "zoxide: the smarter cd that does nothing until you turn the key"
+    brief: "Why zoxide is cd ranked by frecency, the package-installs-but-no-z-command trap (you must add the init hook), the non-interactive shells where it silently learns nothing, the cold-start empty database, and the leaf-match rule everyone gets wrong on day one. Interactive pick (zi) needs fzf. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/zoxide-honest-review/
   # --- Fresh hack (autopilot run, 2026-06-30): every `hack` item in the backlog was
   # already done and the only `todo` was OPS-001 (kind: ops, which content runs skip).
   # The one open auto:content hack PR is HACK-012 (trap … EXIT cleanup), a different
