@@ -1,0 +1,109 @@
+# =============================================================================
+# loop-tuner.yml — the continuous-improvement hook for the autonomous loop
+# -----------------------------------------------------------------------------
+# Closes the feedback loop on the fleet ITSELF. The deterministic measure
+# (`scripts/devops/loop_metrics.rb`) ALWAYS runs and prints a content-agnostic
+# report of how the loop is performing — recent run durations + failure rates,
+# content-PR time-to-merge, auto-fix attempt counts, escalation rate, recurring
+# lint rules, and current conflicts — so the numbers show up in the run summary
+# even with no API key. When LOOP_TUNER_ENABLED is on and Claude auth is present,
+# the loop-tuner AGENT then reasons over those metrics, finds the upstream cause
+# of the slowest / flakiest / most-escalated patterns, applies the smallest safe
+# improvement anywhere in the loop (workflow, script, agent, or skill), and opens
+# ONE PR. It is agnostic of any individual PR's content — it tunes the machine,
+# not the posts.
+#
+# Same safe posture as agent-review/explore: weekly schedule is DISABLED (opt-in)
+# so nothing runs unattended until you choose it; manual via workflow_dispatch;
+# gated by LOOP_TUNER_ENABLED + Claude auth; contents + pull-requests scope only,
+# NO administration/workflows scope. It never merges and never weakens a guardrail.
+# =============================================================================
+name: loop-tuner
+
+on:
+  workflow_dispatch:
+    inputs:
+      improve:
+        description: "Run the loop-tuner agent to propose improvements (needs LOOP_TUNER_ENABLED + Claude auth)"
+        type: boolean
+        default: true
+  # schedule:                       # DISABLED — opt-in. The continuous hook:
+  #   - cron: '23 6 * * 1'          # weekly, Mondays 06:23 UTC, after a week of runs
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: loop-tuner
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.gate.outputs.go }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      # The math is a contract — prove it before trusting the report.
+      - name: Metrics self-test
+        run: ruby scripts/devops/loop_metrics.rb --self-test
+
+      # Always-on, read-only measurement. Degrades gracefully if `gh` is slow.
+      - name: Measure the loop (content-agnostic)
+        run: |
+          ruby scripts/devops/loop_metrics.rb --out test-results/loop-metrics.json --markdown | tee loop.out
+          { echo "<!-- loop-metrics -->"; cat loop.out; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: loop-metrics
+          path: test-results/loop-metrics.json
+          if-no-files-found: ignore
+
+      - id: gate
+        env:
+          ENABLED: ${{ vars.LOOP_TUNER_ENABLED }}
+          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          IMPROVE: ${{ inputs.improve }}
+        run: |
+          if [ "$ENABLED" = "true" ] && [ "$IMPROVE" != "false" ] && { [ -n "$OAUTH" ] || [ -n "$KEY" ]; }; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "loop-tuner agent off (LOOP_TUNER_ENABLED != true, improve unchecked, or no Claude auth) — measured only, no PR."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  improve:
+    needs: measure
+    if: ${{ needs.measure.outputs.go == 'true' }}
+    runs-on: ubuntu-latest
+    env:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # FLEET_TOKEN (bot PAT) so the PR is openable + triggers CI; falls back.
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.FLEET_TOKEN || github.token }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Tune the loop (loop-tuner, universal AI runner)
+        uses: ./.github/actions/claude-run
+        continue-on-error: true
+        with:
+          agent: loop-tuner
+          prompt: "Use the loop-tuner skill. Run `ruby scripts/devops/loop_metrics.rb --json` and `--self-test`, then `audit.rb` + `simulate.rb` + `lint_agents.rb` for the baseline. Read the `signals`: for each strong one, find the UPSTREAM cause (a generator/skill defect that keeps emitting a lint rule, a slow/duplicate build, an un-enabled guardrail) and make the SMALLEST content-agnostic change that moves the measured number — never a fix that only helps one PR. Keep the metrics + audit + sim + lint_agents green, keep the required `verify` check stable, and open ONE PR (branch loop-tuner/<date>) whose body cites per change: metric before, root cause, fix, verification. If the window shows no real, evidenced improvement, open NO PR and say the loop is healthy. Never weaken a guardrail; never merge."
+          tools: "Bash(git:*),Bash(ruby:*),Bash(gh pr create:*),Bash(gh pr comment:*),Bash(gh run list:*),Bash(gh pr list:*),Bash(gh pr view:*),Read,Edit,Write,Grep,Glob"
+          system: "You are loop-tuner for lifehacker.dev. Improve the autonomous loop from observed metrics, content-agnostic; least-privilege; never weaken a guardrail; never merge; one PR."

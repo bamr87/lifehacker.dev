@@ -330,6 +330,41 @@ backlog:
     status: done
     published: /hacks/bash-strict-mode-fail-loudly/
 
+  # Synthesized in-lane (autopilot run, 2026-06-29): a `post` run found the queue
+  # dry — POST-001/002/003 all done, and the only other post item (DOC-004) still
+  # `blocked` on OPS-001. No open auto:content PR is a post. Rather than no-op,
+  # cross lanes, or fabricate the blocked post, the autopilot wrote the one honest
+  # thing it could capture this run: it reached for its own commit history (the
+  # "robot narrates its own labor" motif) and found a SHALLOW clone — one commit,
+  # no history. Real `git rev-parse --is-shallow-repository` / `rev-list --count`
+  # / blame-boundary output from this very checkout. Payload: shallow clones, why
+  # CI does them, when they bite (describe/blame/log audits), and how to unshallow.
+  - id: POST-004
+    kind: post
+    title: "I tried to count my own commits and the repo only had one"
+    brief: "Meta-confession: the autopilot goes to audit its own labor (git shortlog, log --author=claude, blame) and discovers CI checked it out shallow — fetch-depth 1, exactly one commit, history amputated. Real captured output: is-shallow-repository=true, rev-list --count=1, blame's ^boundary marker that makes every line look born in one commit, describe failing. Payload: what a shallow clone is, why actions/checkout defaults to depth 1, the four things it silently breaks, and fetch-depth:0 / git fetch --unshallow as the fix."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/06/29/i-tried-to-count-my-own-commits/
+  # Fresh doc (autopilot run, 2026-06-29): every `doc` item was already done
+  # (DOC-001/002/003/005/006); DOC-004 is a blocked `post`; the only `todo` on the
+  # whole board is OPS-001 (kind: ops, which content runs skip). No open auto:content
+  # PR is a doc (open PRs: POST-004, TOOL-007, HACK-012). Rather than no-op, cross
+  # lanes, or fabricate the blocked post, synthesized a fresh in-lane doc. The Meta
+  # pillar deep-dives nearly every step of the autopilot loop — writing (Playbook),
+  # verifying (DOC-005), the linter (DOC-006), guardrails (DOC-002), fleet safety
+  # (DOC-003) — but step 2, "pick the highest-priority todo," only ever got a single
+  # bullet. The selection algorithm is the gap, and it's demonstrable with real
+  # captured output from this very run.
+  - id: DOC-007
+    kind: doc
+    title: "How the robot picks what to write next (and when it refuses)"
+    brief: "Deep-dive on step 2 of the autopilot loop: the backlog selection algorithm. Lane-matching (never cross collections), todo-only filtering, why ops items are skipped, priority+ID sort, the open-PR dedup check, and the four ways a run can end in nothing (no-op, cross-lane, fabricate, or the one honest move — synthesize a fresh in-lane item). Real `gh pr list` and backlog state from the run that wrote it."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/how-the-robot-picks-what-to-write/
   # --- Fresh hack (autopilot run, 2026-06-29): every `hack` item was already done
   # and the only `todo` was OPS-001 (kind: ops, which content runs skip); no open
   # auto:content PR to duplicate. Rather than no-op or cross collections, synthesized
@@ -388,6 +423,41 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-box-with-no-internet/
+  # Fresh post (autopilot run, 2026-06-30): every `post` item was done, DOC-004 still
+  # `blocked` on OPS-001, and the one open auto:content post PR (POST-004) covers
+  # commit-counting. Rather than no-op or cross lanes, synthesized a fresh in-lane post.
+  # While auditing the robot's own links (all clean) the run found a real config trap:
+  # production `_config.yml` has NO `future` key (Jekyll default false) while
+  # `_config_dev.yml` sets `future: true`, so the preview build shows future-dated posts
+  # the live site silently buries. Reproduced for real with two jekyll builds isolating
+  # the flag. Latent, not a current outage (no live post is future-dated) — said so.
+  - id: POST-005
+    kind: post
+    title: "The post my preview shows and production buries"
+    brief: "Meta-confession: the autopilot previews with future: true (set in _config_dev.yml) but production GitHub Pages builds with future: false (the Jekyll default, absent from _config.yml), so a post dated even one day ahead of the build clock renders in preview and vanishes live. Reproduced with two real jekyll builds isolating the flag. The honest part: it hasn't buried a published post yet because none is future-dated — but the preview can't warn me, because preview is the one build where it always looks fine. Fix recommended (make dev match prod), not applied — config isn't content."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/06/30/preview-shows-future-posts-production-buries-them/
+  # Fresh tool idea (autopilot run, 2026-06-30): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza) and the only `todo` was OPS-001 (kind:
+  # ops, which content runs skip); the open auto:content PRs are hacks/doc/post, no
+  # tool to duplicate. Rather than no-op or cross collections, synthesized a fresh
+  # in-lane tool. `zoxide` is the missing `cd` member of the modern-CLI family
+  # already reviewed — completing rg(grep)/fd(find)/bat(cat)/eza(ls) — and pairs
+  # with the existing make-cd-remember hack. Honest gotchas left in and run for
+  # real on Ubuntu 24.04: the package gives you no `z` until the init hook is added,
+  # it learns nothing in non-interactive shells (the PROMPT_COMMAND hook never
+  # fires), the cold-start empty database, and the leaf-match rule (`z proj` fails
+  # when every entry is proj/<sub>). Interactive disambiguation (`zi`) needs fzf.
+  - id: TOOL-008
+    kind: tool
+    title: "zoxide: the smarter cd that does nothing until you turn the key"
+    brief: "Why zoxide is cd ranked by frecency, the package-installs-but-no-z-command trap (you must add the init hook), the non-interactive shells where it silently learns nothing, the cold-start empty database, and the leaf-match rule everyone gets wrong on day one. Interactive pick (zi) needs fzf. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/zoxide-honest-review/
   # --- Fresh hack (autopilot run, 2026-06-30): every `hack` item in the backlog was
   # already done and the only `todo` was OPS-001 (kind: ops, which content runs skip).
   # The one open auto:content hack PR is HACK-012 (trap … EXIT cleanup), a different

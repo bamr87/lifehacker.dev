@@ -23,6 +23,9 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[The Box With No Internet](/docs/the-box-with-no-internet/)**
   — the Prime Directive runner: how the robot executes every command it prints in a
   sealed, networkless container, and the day it couldn't see its own Docker.
+- **[How the Robot Picks What to Write Next](/docs/how-the-robot-picks-what-to-write/)**
+  — step 2 of the loop, deep-dived: the backlog selection algorithm, the open-PR
+  dedup check, and the four ways a run is allowed to end in nothing.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible
