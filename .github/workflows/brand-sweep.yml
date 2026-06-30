@@ -1,0 +1,110 @@
+# =============================================================================
+# brand-sweep.yml — the weekly brand-debt sweeper for main
+# -----------------------------------------------------------------------------
+# Once a week (when enabled), scans MAIN for the accumulated banned-when-sincere
+# brand warnings and opens ONE PR that pays them down: the brand-fixer agent
+# rewrites genuine sincere-violations in place and records the legitimately-fine
+# uses in _data/brand/accepted.yml (the accept-ledger) so they stop re-flagging.
+# This is the main-branch counterpart to the PR-scoped tier-2b brand-review in
+# pipeline.yml — PRs only ever see (and fix) the brand issues THEY introduce, so
+# the repo's standing brand debt needs its own scheduled pass.
+#
+# OFF by default behind BRAND_SWEEP_ENABLED (a repo variable) and the Claude auth.
+# It never merges — the PR flows into the normal content gate, and the (also
+# gated) auto-merge workflow decides. Idle, zero-cost, until the owner sets the
+# variable.
+# =============================================================================
+name: brand-sweep
+
+on:
+  schedule:
+    - cron: '23 8 * * 1'   # Mondays 08:23 UTC, weekly (offset from nightly/content-factory)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: brand-sweep
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+    steps:
+      - id: check
+        env:
+          ENABLED: ${{ vars.BRAND_SWEEP_ENABLED }}
+          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "$ENABLED" = "true" ] && { [ -n "$OAUTH" ] || [ -n "$KEY" ]; }; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "brand sweep is off (BRAND_SWEEP_ENABLED != true, or no CLAUDE_CODE_OAUTH_TOKEN / ANTHROPIC_API_KEY) — idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  sweep:
+    needs: gate
+    if: ${{ needs.gate.outputs.go == 'true' }}
+    runs-on: ubuntu-latest
+    env:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # FLEET_TOKEN (bot PAT, contents+PRs, NO admin) so the agent can open a PR —
+      # GITHUB_TOKEN is blocked from creating PRs, and a PAT-authored PR also
+      # triggers the pipeline. Falls back to github.token (degrades to no-PR).
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      # Full-repo brand scan of main — every banned-when-sincere warning, not a PR
+      # diff. LH_BRAND_SCOPE_ALL forces the whole-repo scan (otherwise lint_brand
+      # auto-scopes a non-main checkout to its diff, which here would be empty).
+      - name: Scan main for brand warnings (full repo)
+        id: scan
+        env:
+          LH_BRAND_SCOPE_ALL: 'true'
+        run: |
+          ruby scripts/ci/lint_brand.rb || true
+          n=$(ruby -rjson -e 'd=(JSON.parse(File.read("test-results/brand.json")) rescue []); puts d.count { |f| f["rule"].to_s.start_with?("banned-when-sincere:") && f["severity"]=="warning" }')
+          echo "warnings=$n" >> "$GITHUB_OUTPUT"
+          echo "open brand warnings on main: $n"
+
+      - name: Nothing to sweep
+        if: ${{ steps.scan.outputs.warnings == '0' }}
+        run: echo "No open brand warnings on main — the sweep is a no-op. 🎉"
+
+      # Ensure the PR label exists so `gh pr create --label brand-sweep` can't fail
+      # on a repo where it was never created (idempotent; --force upserts).
+      - name: Ensure the brand-sweep label exists
+        if: ${{ steps.scan.outputs.warnings != '0' }}
+        run: gh label create brand-sweep --color fbca04 --description "Opened by the weekly brand-debt sweep" --force >/dev/null 2>&1 || true
+
+      - name: Address the warnings + open ONE PR (universal AI runner)
+        if: ${{ steps.scan.outputs.warnings != '0' }}
+        uses: ./.github/actions/claude-run
+        with:
+          agent: brand-fixer
+          prompt: "Use the brand-fixer agent to address the banned-when-sincere warnings in test-results/brand.json (a full-repo scan of main). FIRST: run `gh pr list --state open --label brand-sweep --json number,url` — if an open brand-sweep PR already exists, do NOT open a second; write its URL to pr-result.txt and STOP. Otherwise, for EACH warning: rewrite a genuine sincere-violation in place with a small on-voice edit, OR — if the use is legitimately fine (a literal sense, or a flagged-satire bit tier-1 missed) — add its `accept_key` to _data/brand/accepted.yml with the file, word, a one-line note, and today's date. Do NOT mangle prose that reads well just to delete a word. Re-run `LH_BRAND_SCOPE_ALL=1 ruby scripts/ci/lint_brand.rb` and confirm the warning count dropped. Open ONE pull request on a branch with the rewrites + ledger additions, label it 'brand-sweep', write the PR URL to pr-result.txt, and STOP. Never merge."
+          # Least privilege: the agent edits content + the ledger, re-lints with ruby,
+          # and opens ONE PR — so Bash is scoped to git/ruby/gh-pr-create-or-comment-or-list
+          # (NO `gh pr merge`/`--approve`) and Write to pages/the ledger/pr-result.txt only.
+          tools: "Bash(git:*),Bash(ruby:*),Bash(gh pr list:*),Bash(gh pr view:*),Bash(gh pr create:*),Bash(gh pr comment:*),Read,Edit,Write(pages/**),Write(_data/brand/accepted.yml),Write(pr-result.txt),Grep,Glob"
+          system: "You are the lifehacker.dev brand-fixer. Resolve the brand-voice warnings on main honestly — rewrite sincere violations, accept the legitimately-fine uses in the ledger, never mangle good prose to silence a linter. Open one PR. Never merge, never approve."
+
+      - name: Confirm a PR was opened (fail visibly if the agent didn't)
+        if: ${{ steps.scan.outputs.warnings != '0' }}
+        run: |
+          [ -s pr-result.txt ] || { echo "::error::brand-sweep: warnings exist but no PR was opened — see the agent step log (auth? all-accepted with no diff? push failure?)."; exit 1; }
+          echo "opened: $(cat pr-result.txt)"

@@ -1,0 +1,31 @@
+# =============================================================================
+# _data/brand/accepted.yml — the brand accept-ledger
+# -----------------------------------------------------------------------------
+# Reviewed `banned_when_sincere` hits (see _data/brand/glossary.yml) that are
+# legitimately fine: a literal sense ("just a moment ago", an actual locked thing
+# to "unlock") or a clearly flagged satire bit where the hype word IS the joke and
+# the tier-1 heuristic missed it. Listing a hit here downgrades it from a blocking-
+# adjacent `warning` to non-blocking `info`, so the PR test report and the weekly
+# brand-sweep stop re-flagging prose a human (or the brand-fixer agent) already
+# judged acceptable. It does NOT license the word everywhere — see "key" below.
+#
+# How to add one:
+#   1. Run `LH_BRAND_SCOPE_ALL=1 ruby scripts/ci/lint_brand.rb` (or read the
+#      `brand` rows in a PR's findings.jsonl). Each banned-word finding carries an
+#      `accept_key`.
+#   2. Copy that key here with the file, the word, a one-line `note` saying WHY the
+#      use is fine, and the date you reviewed it.
+#
+# The matcher keys ONLY on `key`; file/word/note are for humans. The key is
+# sha1(file | word | the trimmed line text)[0,12] — edit the line and the key
+# changes, which re-opens the hit for review. That's deliberate: we accept a
+# specific sentence, never blanket-license a word.
+#
+#   accepted:
+#     - file: pages/_hacks/git-alias-starter-pack.md
+#       word: just
+#       key:  ab12cd34ef56
+#       note: literal "it just saved someone's afternoon" — not the dismissive sense
+#       reviewed: 2026-06-30
+# =============================================================================
+accepted: []
