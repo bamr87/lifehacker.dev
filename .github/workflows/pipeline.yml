@@ -105,12 +105,17 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      # Scope the harness report + gate to the files THIS PR changed, so a content
-      # PR is neither drowned in nor blocked by pre-existing findings on files it
-      # never touched. Only for CONTENT-only PRs — an infra/deps change can break
-      # anything, so those keep the full-repo report. aggregate.rb reads
-      # LH_CHANGED_FILES; unset (triage, nightly, push to main) => full report.
-      - name: Scope harness to changed files (content-only PRs)
+      # Scope the report to the files THIS PR changed, so a PR is neither drowned
+      # in nor blocked by pre-existing findings on files it never touched.
+      #   * BRAND is scoped on EVERY PR (issue #93): a branch can only introduce a
+      #     voice problem in the prose it changed, so brand never re-dumps the
+      #     repo's accepted `just`/`10x`. (lint_brand.rb reads LH_BRAND_CHANGED_FILES.)
+      #   * The REST of the report + the gate (build, drift, link-rot) can regress
+      #     site-wide from an infra/deps change, so only a CONTENT-only PR scopes
+      #     the whole report; infra/deps/pipeline PRs keep the full-repo report.
+      #     (aggregate.rb reads LH_CHANGED_FILES.)
+      # Both env vars unset (triage, nightly, push to main) => full-repo report.
+      - name: Scope the report to this PR's changed files
         if: ${{ github.event_name == 'pull_request' }}
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
@@ -118,13 +123,18 @@ jobs:
           if ! git cat-file -e "$BASE" 2>/dev/null; then
             echo "base $BASE unavailable — keeping the full-repo report"; exit 0
           fi
-          git diff --name-only "$BASE"...HEAD > "$RUNNER_TEMP/changed.txt"
+          # core.quotepath=false: keep non-ASCII paths verbatim so they match the
+          # repo-relative paths lint_brand/aggregate compare against (not octal-escaped).
+          git -c core.quotepath=false diff --name-only "$BASE"...HEAD > "$RUNNER_TEMP/changed.txt"
           kinds=$(ruby scripts/ci/classify_changes.rb < "$RUNNER_TEMP/changed.txt")
           echo "changed kinds: [$kinds]"; echo "--- changed files ---"; cat "$RUNNER_TEMP/changed.txt"
+          # Brand: always PR-scoped.
+          echo "LH_BRAND_CHANGED_FILES=$RUNNER_TEMP/changed.txt" >> "$GITHUB_ENV"
+          # Whole report + gate: content-only PRs.
           case " $kinds " in
-            *" deps "*|*" pipeline "*) echo "infra/deps PR — keeping the full-repo report" ;;
-            *" content "*) echo "LH_CHANGED_FILES=$RUNNER_TEMP/changed.txt" >> "$GITHUB_ENV"; echo "-> scoping harness to this PR's changed files" ;;
-            *) echo "no content changes detected — keeping the full-repo report" ;;
+            *" deps "*|*" pipeline "*) echo "infra/deps PR — full-repo report (brand still PR-scoped)" ;;
+            *" content "*) echo "LH_CHANGED_FILES=$RUNNER_TEMP/changed.txt" >> "$GITHUB_ENV"; echo "-> scoping the whole report to this PR's changed files" ;;
+            *) echo "no content changes detected — full-repo report (brand still PR-scoped)" ;;
           esac
 
       - name: Build + harness (ONCE; the sev1-on-build-break fail-safe lives in the composite)
@@ -186,8 +196,8 @@ jobs:
           BASE: ${{ github.event.pull_request.base.sha }}
         run: |
           if git cat-file -e "$BASE" 2>/dev/null; then
-            git diff --name-only "$BASE"...HEAD > "$RUNNER_TEMP/changed.txt"
-            echo "LH_CHANGED_FILES=$RUNNER_TEMP/changed.txt" >> "$GITHUB_ENV"
+            git -c core.quotepath=false diff --name-only "$BASE"...HEAD > "$RUNNER_TEMP/changed.txt"
+            echo "LH_BRAND_CHANGED_FILES=$RUNNER_TEMP/changed.txt" >> "$GITHUB_ENV"
           fi
       - name: Refresh brand candidates (PR-scoped)
         run: ruby scripts/ci/lint_brand.rb || true
