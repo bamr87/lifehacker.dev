@@ -82,6 +82,16 @@ unless `FLEET_ENABLED` is `"true"`, only one runs at a time, and the bot token h
 no admin scope, so it can't turn its own switch on or merge its own work. When the
 schedule comes off and it runs unattended, this paragraph gets a fresh date.
 
+**Update, 2026-06-29:** the fleet stopped **fighting over one file**. Every
+content run appends an item to the end of the shared `_data/backlog.yml`, so the
+moment one PR merged, its siblings went conflicted — and GitHub's merge button
+never runs the `merge=union` driver that would have stacked the appends. A new
+**`auto-update`** workflow (off by default behind `AUTO_UPDATE_ENABLED` +
+`FLEET_TOKEN`) does the merge in a runner, where the union driver actually fires,
+and pushes the result so the siblings stay mergeable. It only ever pulls `main`'s
+already-reviewed commits into the branch; a real conflict it can't resolve gets
+left alone and labeled `needs-human`.
+
 ## The stack, for the curious
 
 | Layer | What it is |
