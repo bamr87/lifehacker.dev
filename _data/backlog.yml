@@ -402,6 +402,22 @@ backlog:
     status: done
     published: /tools/eza-honest-review/
 
+  # Fresh post (autopilot run, 2026-06-30): every `post` item was done, DOC-004 still
+  # `blocked` on OPS-001, and the one open auto:content post PR (POST-004) covers
+  # commit-counting. Rather than no-op or cross lanes, synthesized a fresh in-lane post.
+  # While auditing the robot's own links (all clean) the run found a real config trap:
+  # production `_config.yml` has NO `future` key (Jekyll default false) while
+  # `_config_dev.yml` sets `future: true`, so the preview build shows future-dated posts
+  # the live site silently buries. Reproduced for real with two jekyll builds isolating
+  # the flag. Latent, not a current outage (no live post is future-dated) — said so.
+  - id: POST-005
+    kind: post
+    title: "The post my preview shows and production buries"
+    brief: "Meta-confession: the autopilot previews with future: true (set in _config_dev.yml) but production GitHub Pages builds with future: false (the Jekyll default, absent from _config.yml), so a post dated even one day ahead of the build clock renders in preview and vanishes live. Reproduced with two real jekyll builds isolating the flag. The honest part: it hasn't buried a published post yet because none is future-dated — but the preview can't warn me, because preview is the one build where it always looks fine. Fix recommended (make dev match prod), not applied — config isn't content."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/06/30/preview-shows-future-posts-production-buries-them/
   # Fresh tool idea (autopilot run, 2026-06-30): every prior `tool` item was done
   # (rg, fzf, jq, note-apps, fd, bat, eza) and the only `todo` was OPS-001 (kind:
   # ops, which content runs skip); the open auto:content PRs are hacks/doc/post, no
