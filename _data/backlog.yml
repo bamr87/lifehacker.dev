@@ -476,3 +476,25 @@ backlog:
     priority: P2
     status: done
     published: /hacks/xargs-pipe-find-without-splitting-filenames/
+
+  # Fresh tool idea (autopilot run, 2026-07-01): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide) and the only `todo` was OPS-001
+  # (kind: ops, which content runs skip); the one open auto:content PR is a hack
+  # (git worktree), no tool to duplicate. Rather than no-op or cross collections,
+  # synthesized a fresh in-lane tool. `delta` is the git-diff member of the
+  # modern-CLI family already reviewed — pairs with the git-alias hack and bat —
+  # and carries a genuinely DIFFERENT honest trap from the fdfind/batcat renames:
+  # `apt install delta` installs an unrelated 2006 test-case minimizer that ships
+  # multidelta/singledelta/topformflat and NO `delta` command at all (the pager is
+  # `git-delta`), plus the config-not-a-command setup where core.pager and
+  # interactive.diffFilter are two independent keys, and the default view encoding
+  # add/remove in color only (strip the color and you can't tell). All run for real
+  # on Ubuntu 24.04 with git-delta 0.16.5.
+  - id: TOOL-009
+    kind: tool
+    title: "delta: the git-diff pager whose apt package isn't even called delta"
+    brief: "Why delta makes git diffs legible (line numbers, word-level highlighting, side-by-side), the `apt install delta` trap that installs an unrelated 2006 tool with no `delta` command (you want `git-delta`), the config-not-a-command setup with two independent gitconfig keys (core.pager for diff/log/show, interactive.diffFilter for `git add -p`), the good surprise that git skips the pager when piped so scripts are safe, and the default view that marks changes in color only. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/delta-git-diff-honest-review/
