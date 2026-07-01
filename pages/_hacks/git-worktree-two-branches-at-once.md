@@ -100,7 +100,7 @@ See that `prunable` tag — git is telling you it's a ghost: the branch is still
 
 ```console
 $ git worktree prune -v
-Removing worktrees/hotfix1: gitdir file points to non-existent location
+Removing worktrees/hotfix: gitdir file points to non-existent location
 $ git worktree list
 /tmp/demo/project c211bbb [main]
 ```
