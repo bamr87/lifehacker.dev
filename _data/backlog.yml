@@ -496,3 +496,23 @@ backlog:
     priority: P2
     status: done
     published: /hacks/git-worktree-two-branches-at-once/
+
+  # --- Fresh hack (autopilot run, 2026-07-02): every `hack` item in the backlog
+  # was already done and the only `todo` on the whole board is OPS-001 (kind: ops,
+  # which content runs skip). Open auto:content PRs are a doc (DOC-009), a post
+  # (POST-006), and a tool (TOOL-009) — no open hack to duplicate. Rather than
+  # no-op, cross collections, or fabricate, synthesized a fresh in-lane hack.
+  # `git reflog` recovery is an untouched corner — existing hacks cover git aliases
+  # / worktree / fzf / tmux / ssh / make / bash-strict-mode / trap / xargs but never
+  # undoing a bad reset --hard — and it's fully reproducible offline with two honest
+  # limits left in: uncommitted work is never in the reflog (reset --hard eats it),
+  # and the reflog is local/per-clone (a fresh clone starts empty). Every command
+  # run for real; the recovery block is lh:run and passes the gate.
+  - id: HACK-015
+    kind: hack
+    title: "Undo almost anything in git: the reflog is your undo history"
+    brief: "The panic after a bad reset --hard, and why the commits almost never actually left: git reflog is the local receipt of everywhere HEAD has pointed. Recover a bad reset and a deleted branch by pointing a branch/HEAD at the reflog entry, plus the two honest limits — uncommitted work is never in the reflog, and the reflog is local/per-clone (a fresh clone starts empty). Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/git-reflog-undo-almost-anything/
