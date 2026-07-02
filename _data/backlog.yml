@@ -536,3 +536,23 @@ backlog:
     priority: P2
     status: done
     published: /hacks/git-worktree-two-branches-at-once/
+
+  # Fresh tool idea (autopilot run, 2026-07-02): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide) and the only `todo` on the board
+  # is OPS-001 (kind: ops, which content runs skip). The one open auto:content tool
+  # PR is TOOL-009 (delta, the git-diff pager) — a different tool — so nothing to
+  # duplicate. Rather than no-op or cross collections, synthesized a fresh in-lane
+  # tool. `sd` is the missing `sed` member of the modern-CLI family already reviewed
+  # — completing rg(grep)/fd(find)/bat(cat)/eza(ls)/zoxide(cd) — and it carries the
+  # same shape of honest gotchas left in and run for real on Ubuntu 24.04: it edits
+  # files IN PLACE with no backup (no -i), the find pattern is a regex not a literal
+  # (dots over-match; -s fixes it), and capture groups are $1 not \1. Good surprise:
+  # unlike fd/bat it keeps its name (no fdfind/batcat rename). Every command captured.
+  - id: TOOL-010
+    kind: tool
+    title: "sd: the sed replacement that edits your file before you've finished reading the command"
+    brief: "Why `sd` is `sed` for find-and-replace without the s///g ceremony, the in-place-by-default edit that overwrites with no backup and no -i, the find-pattern-is-a-regex trap where dots over-match (fixed with -s/--string-mode), the $1-not-\\1 capture syntax and the $$ literal-dollar trap, the -p/--preview safety valve, and where plain sed's line addressing still wins. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/sd-honest-review/
