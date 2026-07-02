@@ -476,7 +476,47 @@ backlog:
     priority: P2
     status: done
     published: /hacks/xargs-pipe-find-without-splitting-filenames/
+  # --- Fresh doc (autopilot run, 2026-07-01): every `doc` item on the board was
+  # already done (DOC-001/002/003/005/006/007/008); DOC-004 is a `post` blocked on
+  # OPS-001; the only `todo` is OPS-001 (kind: ops, which content runs skip). No open
+  # auto:content PR is a doc (the three open are POST-006, TOOL-009, HACK-014). The
+  # docs cover the harness that WRITES findings (DOC-005) and the backlog the robot
+  # picks FROM (DOC-007) — but nothing documents the layer in between: triage, which
+  # turns findings.jsonl into a RICE-ranked, deduped queue and files GitHub issues it
+  # is structurally forbidden from closing. Researched by running the real scripts on
+  # this repo: 268 findings collapsed to 74 queue items (dedup by fingerprint), and a
+  # file_issues dry-run planned the create/label/route with a MAX_NEW cap. Real
+  # captured output only. Fills the missing middle of the meta docs.
+  - id: DOC-009
+    kind: doc
+    title: "The bug tracker that can't close a ticket: how triage ranks what the harness found"
+    brief: "Deep-dive companion to DOC-005/DOC-007 on the triage layer (scripts/triage/): how build_queue.rb turns findings.jsonl into a fingerprint-deduped, RICE-ranked queue where severity dominates any reach multiplier; how file_issues.rb finds-or-files GitHub issues on the stable triage-fp marker (create / comment-still-failing / reopen-on-regression) behind a MAX_NEW cap; the quarantine rule that treats every inbound issue body as data, never instructions; and the guardrail that names the whole thing — it can file, label, rank, and @-mention, but it can never close an issue, merge a PR, or write to the upstream theme repo. Ran the real scripts on this repo: 268 findings to 74 queue items, dry-run issue plan captured verbatim."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-bug-tracker-that-cant-close-a-ticket/
 
+  # Fresh tool idea (autopilot run, 2026-07-01): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide) and the only `todo` was OPS-001
+  # (kind: ops, which content runs skip); the one open auto:content PR is a hack
+  # (git worktree), no tool to duplicate. Rather than no-op or cross collections,
+  # synthesized a fresh in-lane tool. `delta` is the git-diff member of the
+  # modern-CLI family already reviewed — pairs with the git-alias hack and bat —
+  # and carries a genuinely DIFFERENT honest trap from the fdfind/batcat renames:
+  # `apt install delta` installs an unrelated 2006 test-case minimizer that ships
+  # multidelta/singledelta/topformflat and NO `delta` command at all (the pager is
+  # `git-delta`), plus the config-not-a-command setup where core.pager and
+  # interactive.diffFilter are two independent keys, and the default view encoding
+  # add/remove in color only (strip the color and you can't tell). All run for real
+  # on Ubuntu 24.04 with git-delta 0.16.5.
+  - id: TOOL-009
+    kind: tool
+    title: "delta: the git-diff pager whose apt package isn't even called delta"
+    brief: "Why delta makes git diffs legible (line numbers, word-level highlighting, side-by-side), the `apt install delta` trap that installs an unrelated 2006 tool with no `delta` command (you want `git-delta`), the config-not-a-command setup with two independent gitconfig keys (core.pager for diff/log/show, interactive.diffFilter for `git add -p`), the good surprise that git skips the pager when piped so scripts are safe, and the default view that marks changes in color only. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/delta-git-diff-honest-review/
   # --- Fresh hack (autopilot run, 2026-07-01): every `hack` item in the backlog was
   # already done and the only `todo` on the whole board is OPS-001 (kind: ops, which
   # content runs skip). `gh pr list --state open --label auto:content` returned []
@@ -516,3 +556,22 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/02/sixth-pull-request-before-a-human-read-five/
+  # Fresh tool idea (autopilot run, 2026-07-02): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide) and the only `todo` on the board
+  # is OPS-001 (kind: ops, which content runs skip). The one open auto:content tool
+  # PR is TOOL-009 (delta, the git-diff pager) — a different tool — so nothing to
+  # duplicate. Rather than no-op or cross collections, synthesized a fresh in-lane
+  # tool. `sd` is the missing `sed` member of the modern-CLI family already reviewed
+  # — completing rg(grep)/fd(find)/bat(cat)/eza(ls)/zoxide(cd) — and it carries the
+  # same shape of honest gotchas left in and run for real on Ubuntu 24.04: it edits
+  # files IN PLACE with no backup (no -i), the find pattern is a regex not a literal
+  # (dots over-match; -s fixes it), and capture groups are $1 not \1. Good surprise:
+  # unlike fd/bat it keeps its name (no fdfind/batcat rename). Every command captured.
+  - id: TOOL-010
+    kind: tool
+    title: "sd: the sed replacement that edits your file before you've finished reading the command"
+    brief: "Why `sd` is `sed` for find-and-replace without the s///g ceremony, the in-place-by-default edit that overwrites with no backup and no -i, the find-pattern-is-a-regex trap where dots over-match (fixed with -s/--string-mode), the $1-not-\\1 capture syntax and the $$ literal-dollar trap, the -p/--preview safety valve, and where plain sed's line addressing still wins. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/sd-honest-review/
