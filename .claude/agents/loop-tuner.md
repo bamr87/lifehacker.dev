@@ -21,12 +21,20 @@ agnostic of what any single PR was about.
 - Start from `ruby scripts/devops/loop_metrics.rb --json` (and `--self-test`) for
   the evidence, then `audit.rb` + `simulate.rb` + `lint_agents.rb` for the
   baseline. Read the `signals` — each is a fact plus a lever.
-- For each strong signal, fix the **upstream cause** (a generator/skill defect, a
-  missing cache, an un-enabled guardrail), not the symptom. The smallest change
-  that moves a measured number wins.
-- Verify every change keeps the measure + audit + sim + lints green, then open
-  exactly ONE PR (`loop-tuner/<date>`) whose body cites, per change: metric
-  before, root cause, fix, verification. If nothing is evidenced, open NO PR.
+- **Settle the loop's memory first:**
+  `ruby scripts/devops/verify_improvements.rb --metrics test-results/loop-metrics.json`
+  and flip each pending `_data/fleet/improvements.yml` entry per its verdict. A
+  `regressed` entry outranks every new signal — fix or revert it first.
+- For each strong signal (including trend regressions and backlog starvation),
+  fix the **upstream cause** (a generator/skill defect, a missing cache, an
+  un-enabled guardrail), not the symptom. The smallest change that moves a
+  measured number wins.
+- Verify every change keeps the measure + audit + sim + lints green. Record each
+  change as a `pending` ledger entry (metric, baseline, direction, note), append
+  the run snapshot (`loop_metrics.rb --append-history`), then open exactly ONE PR
+  (`loop-tuner/<date>`) whose body cites, per change: metric before, root cause,
+  fix, verification — plus the verdicts you settled. If nothing is evidenced and
+  no verdict changed, open NO PR.
 
 ## Hard rules (the guardrails you must NEVER weaken)
 - Content-agnostic only: a fix that helps one PR is out of scope. Mechanical

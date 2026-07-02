@@ -13,10 +13,20 @@
 # ONE PR. It is agnostic of any individual PR's content — it tunes the machine,
 # not the posts.
 #
-# Same safe posture as agent-review/explore: weekly schedule is DISABLED (opt-in)
-# so nothing runs unattended until you choose it; manual via workflow_dispatch;
-# gated by LOOP_TUNER_ENABLED + Claude auth; contents + pull-requests scope only,
-# NO administration/workflows scope. It never merges and never weakens a guardrail.
+# THE LOOP'S MEMORY (what makes runs compound instead of repeat): the measure
+# step compares this window against the last committed snapshot in
+# _data/metrics/history.jsonl (trend signals), and verify_improvements.rb checks
+# every `pending` entry in _data/fleet/improvements.yml against its recorded
+# baseline. The agent's FIRST job is settling those verdicts — then it appends
+# this run's snapshot + any new ledger entries inside its ONE PR, so the next
+# run starts from what this one learned. Memory reaches main only through the
+# same human merge gate as everything else.
+#
+# The weekly cron is ON (colophon, 2026-07-01) but the same kill switch holds:
+# a scheduled run without LOOP_TUNER_ENABLED=true + Claude auth only MEASURES
+# (read-only report in the run summary) and opens nothing. Manual via
+# workflow_dispatch; contents + pull-requests scope only, NO administration/
+# workflows scope. It never merges and never weakens a guardrail.
 # =============================================================================
 name: loop-tuner
 
@@ -27,8 +37,8 @@ on:
         description: "Run the loop-tuner agent to propose improvements (needs LOOP_TUNER_ENABLED + Claude auth)"
         type: boolean
         default: true
-  # schedule:                       # DISABLED — opt-in. The continuous hook:
-  #   - cron: '23 6 * * 1'          # weekly, Mondays 06:23 UTC, after a week of runs
+  schedule:
+    - cron: '23 6 * * 1'            # weekly, Mondays 06:23 UTC, after a week of runs
 
 permissions:
   contents: write
@@ -52,14 +62,26 @@ jobs:
           ruby-version: '3.3'
 
       # The math is a contract — prove it before trusting the report.
-      - name: Metrics self-test
-        run: ruby scripts/devops/loop_metrics.rb --self-test
+      - name: Metrics + memory self-tests
+        run: |
+          ruby scripts/devops/loop_metrics.rb --self-test
+          ruby scripts/devops/verify_improvements.rb --self-test
+          ruby scripts/triage/harvest_ideas.rb --self-test
 
       # Always-on, read-only measurement. Degrades gracefully if `gh` is slow.
-      - name: Measure the loop (content-agnostic)
+      # --history compares against the last committed snapshot (trend signals);
+      # --backlog surfaces starvation before the content factory improvises.
+      - name: Measure the loop (content-agnostic, with memory)
         run: |
           ruby scripts/devops/loop_metrics.rb --out test-results/loop-metrics.json --markdown | tee loop.out
           { echo "<!-- loop-metrics -->"; cat loop.out; } >> "$GITHUB_STEP_SUMMARY"
+
+      # Did the previous run's changes actually work? Read-only verdicts here;
+      # the agent flips ledger statuses in its PR.
+      - name: Verify the improvements ledger
+        run: |
+          ruby scripts/devops/verify_improvements.rb --metrics test-results/loop-metrics.json | tee ledger.out
+          { echo "<!-- improvements-ledger -->"; cat ledger.out; } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload metrics
         uses: actions/upload-artifact@v4
@@ -104,6 +126,6 @@ jobs:
         continue-on-error: true
         with:
           agent: loop-tuner
-          prompt: "Use the loop-tuner skill. Run `ruby scripts/devops/loop_metrics.rb --json` and `--self-test`, then `audit.rb` + `simulate.rb` + `lint_agents.rb` for the baseline. Read the `signals`: for each strong one, find the UPSTREAM cause (a generator/skill defect that keeps emitting a lint rule, a slow/duplicate build, an un-enabled guardrail) and make the SMALLEST content-agnostic change that moves the measured number — never a fix that only helps one PR. Keep the metrics + audit + sim + lint_agents green, keep the required `verify` check stable, and open ONE PR (branch loop-tuner/<date>) whose body cites per change: metric before, root cause, fix, verification. If the window shows no real, evidenced improvement, open NO PR and say the loop is healthy. Never weaken a guardrail; never merge."
+          prompt: "Use the loop-tuner skill. FIRST settle the loop's memory: run `ruby scripts/devops/loop_metrics.rb --json --out test-results/loop-metrics.json` then `ruby scripts/devops/verify_improvements.rb --metrics test-results/loop-metrics.json`, and flip each pending entry in _data/fleet/improvements.yml per the verdicts (a `regressed` entry is your TOP candidate to fix or revert). Then run the self-tests plus `audit.rb` + `simulate.rb` + `lint_agents.rb` for the baseline. Read the `signals` (including trend + backlog-starvation signals): for each strong one, find the UPSTREAM cause (a generator/skill defect that keeps emitting a lint rule, a slow/duplicate build, an un-enabled guardrail, a starved backlog kind) and make the SMALLEST content-agnostic change that moves the measured number — never a fix that only helps one PR. RECORD every change you make as a new `pending` entry in _data/fleet/improvements.yml (metric, baseline, direction, note) so the next run can verify it, and append this run's snapshot with `ruby scripts/devops/loop_metrics.rb --append-history >/dev/null`. Keep the metrics + audit + sim + lint_agents green, keep the required `verify` check stable, and open ONE PR (branch loop-tuner/<date>) that includes the ledger + history updates and whose body cites per change: metric before, root cause, fix, verification. If the window shows no real, evidenced improvement AND the ledger verdicts changed nothing, open NO PR and say the loop is healthy. Never weaken a guardrail; never merge."
           tools: "Bash(git:*),Bash(ruby:*),Bash(gh pr create:*),Bash(gh pr comment:*),Bash(gh run list:*),Bash(gh pr list:*),Bash(gh pr view:*),Read,Edit,Write,Grep,Glob"
           system: "You are loop-tuner for lifehacker.dev. Improve the autonomous loop from observed metrics, content-agnostic; least-privilege; never weaken a guardrail; never merge; one PR."

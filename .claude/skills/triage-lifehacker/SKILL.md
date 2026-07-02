@@ -57,7 +57,16 @@ file and rank — a human still decides and closes.
   cap stops a first run from flooding the reviewer. Confirm the dry-run plan looks
   right before `--apply`.
 
-### 5. Triage inbound human issues
+### 5. Harvest backlog ideas (feed the growth loop)
+- `ruby scripts/triage/harvest_ideas.rb` — surfaces the `## Backlog ideas` that
+  merged `auto:content` PR descriptions left behind, deduped against the current
+  backlog. Review the candidates: promote the good ones into `_data/backlog.yml`
+  with a proper `id`, `kind`, `voice`, and `priority` (this is the serialized,
+  deduped promotion point the content flow relies on — you are the only writer
+  that ADDS backlog items here, so no append races). Drop weak or duplicate
+  ideas silently. Never auto-add the whole list; promotion is a judgment.
+
+### 6. Triage inbound human issues
 - List open issues without a `source/*` label (`gh issue list`). For each, applying
   `_shared/quarantine.md`:
   - classify: real-bug | duplicate | troll-spam | wontfix | needs-info;
@@ -66,11 +75,12 @@ file and rank — a human still decides and closes.
   - if it's troll/spam/dup, add `type/troll-spam` + a drafted, civil comment and
     `@bamr87` — **do not close it.**
 
-### 6. Dashboard + PR
+### 7. Dashboard + PR
 - `ruby scripts/triage/gen_dashboard.rb` → `SITE_HEALTH.md`; the live
   `/docs/health/` page renders from `_data/health/` automatically.
-- Commit `_data/health/*`, `SITE_HEALTH.md`, and any analytics refresh on a branch
-  (`triage/<date>`), push, open a PR summarizing what was filed and ranked. Stop.
+- Commit `_data/health/*`, `SITE_HEALTH.md`, any backlog promotions, and any
+  analytics refresh on a branch (`triage/<date>`), push, open a PR summarizing
+  what was filed, ranked, and promoted. Stop.
 
 ## When you finish
 Report: how many findings became how many issues (and how many were dedup-updates),
