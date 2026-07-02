@@ -38,7 +38,9 @@ module HarvestIdeas
     return [] unless start
     out = []
     lines[(start + 1)..].each do |l|
-      break if l.match?(/^#+\s/)                    # next heading ends the section
+      # Any line starting with '#' ends the section — including the no-space
+      # `##Testing` typo form. Stopping early only under-harvests, never over.
+      break if l.start_with?('#')
       m = l.match(/^\s*[-*]\s+(.+)$/)
       out << m[1].strip if m && !m[1].strip.empty?
     end
@@ -94,8 +96,8 @@ module HarvestIdeas
       - A hack about `trap` cleanup patterns
       * Tool review: hyperfine, the benchmark timer
       -
-      ## Testing
-      - not an idea (different section)
+      ##Testing
+      - not an idea (different section, heading typo without a space)
     MD
     ideas = parse_ideas(body)
     pool = ideas.map { |i| { 'pr' => 7, 'idea' => i } } +

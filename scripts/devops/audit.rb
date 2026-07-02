@@ -162,12 +162,12 @@ end
 # a malformed entry silently breaks the verify-last-run's-work step.
 ledger_path = File.join(LH::ROOT, '_data/fleet/improvements.yml')
 if File.exist?(ledger_path)
-  entries = (YAML.safe_load(LH.read(ledger_path), permitted_classes: [Time, Date]) || {})['improvements'] rescue nil
-  if entries.nil? || !entries.is_a?(Array)
+  require_relative 'verify_improvements'
+  entries = VerifyImprovements.load_entries(ledger_path)
+  if entries.nil?
     add(findings, 'error', 'loop-memory', '_data/fleet/improvements.yml is unreadable or `improvements` is not a list')
   else
-    require_relative 'verify_improvements'
-    VerifyImprovements.validate(entries.map { |e| e.transform_values { |v| v.is_a?(Date) ? v.to_s : v } })
+    VerifyImprovements.validate(entries)
                       .each { |e| add(findings, 'error', 'loop-memory', "improvements ledger: #{e}") }
   end
 else

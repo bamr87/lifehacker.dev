@@ -149,7 +149,7 @@ module LoopMetrics
   GROW_KINDS = %w[hack tool post doc].freeze
 
   def analyze_backlog(items)
-    grow = items.select { |i| GROW_KINDS.include?(i['kind'].to_s) }
+    grow = items.select { |i| i.is_a?(Hash) && GROW_KINDS.include?(i['kind'].to_s) }
     todo = grow.select { |i| i['status'].to_s == 'todo' }
     by_kind = GROW_KINDS.to_h { |k| [k, todo.count { |i| i['kind'] == k }] }
     { 'growable_todo' => todo.size,
@@ -312,8 +312,10 @@ module LoopMetrics
 
   def gather_backlog(path)
     return nil unless path && File.exist?(path)
-    (YAML.safe_load(File.read(path)) || {})['backlog']
-  rescue Psych::SyntaxError
+    doc = YAML.safe_load(File.read(path))
+    items = doc.is_a?(Hash) ? doc['backlog'] : nil
+    items.is_a?(Array) ? items : nil   # malformed file -> no backlog section, not a crash
+  rescue Psych::Exception
     nil
   end
 
@@ -383,7 +385,8 @@ module LoopMetrics
       { 'id' => 'HACK-2', 'kind' => 'hack', 'status' => 'done' },
       { 'id' => 'TOOL-1', 'kind' => 'tool', 'status' => 'todo' },
       { 'id' => 'POST-1', 'kind' => 'post', 'status' => 'done' },
-      { 'id' => 'OPS-1',  'kind' => 'ops',  'status' => 'todo' }   # ops never growable
+      { 'id' => 'OPS-1',  'kind' => 'ops',  'status' => 'todo' },  # ops never growable
+      'junk-non-map-entry', 42                                      # malformed items must be ignored
     ]
     prev = {
       'ts' => '2026-06-01T00:00:00Z',

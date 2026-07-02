@@ -24,6 +24,7 @@
 # =============================================================================
 require 'json'
 require 'yaml'
+require 'date'
 
 module VerifyImprovements
   module_function
@@ -36,11 +37,26 @@ module VerifyImprovements
     path.split('.').reduce(h) { |acc, k| acc.is_a?(Hash) ? acc[k] : nil }
   end
 
-  # -> [errors] ; empty means the ledger is well-formed.
+  # Ledger entries carry unquoted YAML dates (the documented schema), so Date
+  # must be permitted. -> Array of entries, or nil if unreadable / wrong shape.
+  def load_entries(path)
+    doc = YAML.safe_load(File.read(path), permitted_classes: [Date, Time]) || {}
+    entries = doc['improvements']
+    entries.is_a?(Array) ? entries : nil
+  rescue Errno::ENOENT, Psych::Exception
+    nil
+  end
+
+  # -> [errors] ; empty means the ledger is well-formed. Malformed entries are
+  # reported as schema errors, never raised — the audit runs this.
   def validate(entries)
     errs = []
     seen = {}
     entries.each_with_index do |e, i|
+      unless e.is_a?(Hash)
+        errs << "entry #{i}: not a map (got #{e.class})"
+        next
+      end
       REQUIRED.each { |k| errs << "entry #{i} (#{e['id'] || '?'}): missing `#{k}`" unless e.key?(k) }
       errs << "entry #{i} (#{e['id']}): duplicate id" if e['id'] && seen[e['id']]
       seen[e['id']] = true
@@ -121,7 +137,9 @@ module VerifyImprovements
       'valid ledger'  => [validate(entries), []],
       'bad status'    => [validate([entries[0].merge('status' => 'nope')]).any? { |e| e.include?('status') }, true],
       'dup id'        => [validate([entries[0], entries[0]]).any? { |e| e.include?('duplicate') }, true],
-      'bad baseline'  => [validate([entries[0].merge('baseline' => 'x')]).any? { |e| e.include?('baseline') }, true]
+      'bad baseline'  => [validate([entries[0].merge('baseline' => 'x')]).any? { |e| e.include?('baseline') }, true],
+      'non-map entry' => [validate(['oops', entries[0]]).any? { |e| e.include?('not a map') }, true],
+      'yaml Date ok'  => [validate([entries[0].merge('date' => Date.new(2026, 7, 1))]), []]
     }
     failed = checks.reject { |_, (g, w)| g == w }
     if failed.empty?
@@ -147,8 +165,8 @@ if $PROGRAM_NAME == __FILE__
     i += 1
   end
 
-  entries = ((YAML.safe_load(File.read(opts[:ledger])) || {})['improvements'] rescue nil)
-  abort "verify_improvements: cannot read ledger #{opts[:ledger]}" if entries.nil?
+  entries = VerifyImprovements.load_entries(opts[:ledger])
+  abort "verify_improvements: cannot read ledger #{opts[:ledger]} (missing, unparseable, or `improvements` is not a list)" if entries.nil?
   errs = VerifyImprovements.validate(entries)
   unless errs.empty?
     errs.each { |e| warn "ledger error: #{e}" }
