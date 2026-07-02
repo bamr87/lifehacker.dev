@@ -47,14 +47,40 @@ You are NOT a duplicate of the other meta-roles, and you defer to them:
    If a recommendation only helps one post, it is out of scope.
 5. **One PR, scoped, evidenced.** Each change cites the metric it moves.
 
+## The loop's memory (what makes your runs compound)
+
+Two committed files carry what past runs learned, and every run both READS and
+FEEDS them — through the PR gate, like everything else:
+
+- **`_data/fleet/improvements.yml`** — the improvements ledger. Every change a
+  past run made, with the metric it claimed to move and its baseline. Your first
+  job is settling those claims (`verified` / `regressed` / still `pending`).
+  Dead ends stay recorded as `abandoned` so no future run re-tries them.
+- **`_data/metrics/history.jsonl`** — one compact snapshot per run. The measure
+  step compares this window against the last snapshot and emits trend signals;
+  you append this run's snapshot inside your PR.
+
+A run that finds nothing new but settles a ledger verdict is still a productive
+run — the verdict IS an improvement to the next run's starting position.
+
 ## The run (in order)
 
 ### 1. Measure (the deterministic core)
 - `ruby scripts/devops/loop_metrics.rb --json --out test-results/loop-metrics.json`
   — recent run durations + failure rates per workflow, content-PR time-to-merge,
-  auto-fix attempt counts, escalation rate, recurring lint rules, and current
-  conflict count. Read the `signals` array: each is a fact paired with a lever.
+  auto-fix attempt counts, escalation rate, recurring lint rules, current
+  conflict count, backlog health (starved kinds), and trends vs the last
+  committed snapshot. Read the `signals` array: each is a fact paired with a lever.
 - `ruby scripts/devops/loop_metrics.rb --self-test` must pass (the math is sound).
+
+### 1b. Settle the ledger (verify the LAST run's work first)
+- `ruby scripts/devops/verify_improvements.rb --metrics test-results/loop-metrics.json`
+  (and `--self-test` once). For each `pending` entry, flip its `status` in
+  `_data/fleet/improvements.yml` per the verdict:
+  - **verified** — the number moved the right way; note it in the PR body.
+  - **regressed** — the number moved the WRONG way; fixing or reverting that
+    change is now your TOP candidate, ahead of any new signal.
+  - inconclusive — leave `pending`; it gets another window.
 
 ### 2. Confirm the baseline is healthy
 - `ruby scripts/devops/audit.rb` (0 errors), `ruby scripts/sim/simulate.rb`
@@ -75,6 +101,15 @@ For each strong signal, find the *upstream* cause, not the symptom:
   `_data/backlog.yml` append collisions; if not, that is the fix.
 - **Long time-to-merge** → long-lived PRs collide more and re-run CI more; shorten
   the path (faster required check, earlier dedup).
+- **Backlog starvation** (a kind with 0 `todo` items) → the content factory will
+  improvise unmeasured ideas inline. Run
+  `ruby scripts/triage/harvest_ideas.rb` to surface the `## Backlog ideas` that
+  merged PRs left behind; promote the good ones (proper `id`/`kind`/`voice`/
+  `priority`) into `_data/backlog.yml` in your PR. Starvation is a loop defect,
+  not a content judgment.
+- **Trend regression** → something in the loop changed for the worse since the
+  last snapshot; correlate with the ledger and recent merges, then fix or revert
+  the upstream change.
 
 ### 4. Improve (apply the smallest change, then prove it)
 - Make the minimal change that moves a measured number. Prefer fixing the source
@@ -82,17 +117,29 @@ For each strong signal, find the *upstream* cause, not the symptom:
 - Re-run step 2 until green. For content/skill edits, run the relevant harness
   checks too. Keep the required-check name `verify` stable.
 
-### 5. Open one PR
-- Branch `loop-tuner/<date>`, commit, push (FLEET_TOKEN), open ONE PR. The body
-  states, per change: the **metric before**, the **root cause**, the **fix**, and
-  **what you verified**. If the window shows no real, evidenced improvement, open
-  **NO PR** and say the loop looks healthy. Never invent a problem to justify a PR.
+### 5. Record the memory, then open one PR
+- **Ledger:** add one `pending` entry per change you made to
+  `_data/fleet/improvements.yml` — `{id, date, pr, metric, baseline, direction,
+  status: pending, note}` — quoting the baseline from THIS run's metrics. A change
+  with no measurable metric doesn't belong in your PR. If you tried a hypothesis
+  and rejected it, record it as `abandoned` with the reason.
+- **History:** `ruby scripts/devops/loop_metrics.rb --append-history >/dev/null`
+  appends this run's snapshot to `_data/metrics/history.jsonl`; commit it.
+- Branch `loop-tuner/<date>`, commit (changes + ledger + history), push
+  (FLEET_TOKEN), open ONE PR. The body states, per change: the **metric before**,
+  the **root cause**, the **fix**, and **what you verified** — plus the ledger
+  verdicts you settled. If the window shows no real, evidenced improvement AND no
+  ledger verdict changed, open **NO PR** and say the loop looks healthy. Never
+  invent a problem to justify a PR.
 
 ## What "good" looks like
 - The deterministic measure + audit + sim + lint_agents are green. The slowest
   workflow's median trends down; auto-fix attempts and escalations trend toward
   zero because the *generator* improved, not because a check was loosened. Every
   guardrail is intact. The PR is small and every claim is backed by a number.
+- The ledger compounds: past entries end up `verified` (or honestly `regressed`
+  and fixed), the history shows the tracked metrics falling run over run, no
+  backlog kind starves, and no `abandoned` hypothesis is ever re-tried.
 
 ## When you finish
 Report the metrics before, the root cause(s) you found, the change(s) you made,
