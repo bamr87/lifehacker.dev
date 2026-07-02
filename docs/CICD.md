@@ -11,11 +11,11 @@ human merge gate no agent can bypass.
 |---|---|---|---|
 | `pipeline.yml` | PR, push to main, manual | **Yes — job `verify`** | The tiered pipeline (below). Writes `findings.jsonl`, `queue.json`, step summaries, sticky PR comment. |
 | `deploy-verify.yml` | push to main, manual | No (monitors) | After Pages deploys, smoke-checks the **live** site; files one sev1 issue if production is non-200. |
-| `triage.yml` | manual | No | Runs the harness, files deduped issues, opens a queue/dashboard PR. Build is fail-safe (a break → sev1 issue). |
+| `triage.yml` | daily cron (gated by `TRIAGE_ENABLED`), manual | No | Runs the harness, files deduped issues, harvests `## Backlog ideas` from merged PRs, opens a queue/dashboard PR. Build is fail-safe (a break → sev1 issue). Scheduled runs apply; manual runs default to dry-run. |
 | `nightly.yml` | cron, manual | No | External-link sweep + fresh-theme drift detection + full Prime-Directive run. Files one issue on failure. |
 | `fleet-dispatch.yml` | manual | No | The dispatcher (plan-only unless `--apply`). Gated by `FLEET_ENABLED`; **no schedule**, **no `administration` scope**. |
 | `devops-audit.yml` | manual | No | Deterministic CI/CD audit + (opt-in) the `devops-manager` agent to propose pipeline improvements. |
-| `loop-tuner.yml` | manual (weekly cron, opt-in) | No | Always measures the loop's *observed* behaviour (`scripts/devops/loop_metrics.rb` — run times, failure/escalation rates, auto-fix attempts, recurring lint rules, conflicts); when `LOOP_TUNER_ENABLED` + key, the `loop-tuner` agent fixes the upstream cause and opens ONE PR. Content-agnostic. |
+| `loop-tuner.yml` | weekly cron (agent gated by `LOOP_TUNER_ENABLED`), manual | No | Always measures the loop's *observed* behaviour (`scripts/devops/loop_metrics.rb` — run times, failure/escalation rates, auto-fix attempts, recurring lint rules, conflicts, backlog starvation, trends vs `_data/metrics/history.jsonl`) and verifies the improvements ledger (`_data/fleet/improvements.yml`); when `LOOP_TUNER_ENABLED` + key, the `loop-tuner` agent settles ledger verdicts, fixes the upstream cause, records new ledger entries + a history snapshot, and opens ONE PR. Content-agnostic. |
 
 ## The tiered pipeline (`pipeline.yml`)
 
@@ -118,7 +118,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 |---|---|---|---|
 | `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
-| `explore.yml` | manual (cron commented) | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. |
+| `explore.yml` | daily cron, manual | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. Scheduled runs apply; manual runs default to dry-run. |
 | `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
 | `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=union` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts → `needs-human`. |
 | `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
@@ -142,11 +142,20 @@ gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
 gh variable set AUTO_UPDATE_ENABLED true        # keep colliding content PRs mergeable (union-merges main in; needs FLEET_TOKEN)
 gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (retires human content review)
 gh variable set LOOP_TUNER_ENABLED true         # let the loop-tuner agent open improvement PRs from the metrics (measure runs regardless)
+gh variable set TRIAGE_ENABLED true             # daily scheduled triage (queue + dashboard + deduped issues + idea harvest)
+gh variable set THEME_SCOUT_ENABLED true        # weekly upstream theme scouting (also needs FLEET_TOKEN)
+gh variable set AGENT_REVIEW_ENABLED true       # monthly agent/skill review PR
+gh variable set QUEST_FORGE_ENABLED true        # derive it-journey quests from retrospectives
 ```
 
-Enabling `AUTO_MERGE_ENABLED` (or uncommenting any `schedule:`) is a guardrail
-change — add a dated line to `/about/colophon/` in the same PR. The agent steps
-need Claude auth — set **either** `CLAUDE_CODE_OAUTH_TOKEN` (run `claude
+**The variable IS the switch** (colophon, 2026-07-01): every autonomy loop's
+cron is wired and idles behind its `*_ENABLED` variable, so turning a variable
+on is the single deliberate act that starts that loop — no workflow edit needed.
+The one exception is `fleet-dispatch.yml`, which stays schedule-free by
+guardrail (the audit and the simulation both fail if a schedule appears there).
+Enabling `AUTO_MERGE_ENABLED` (or any `*_ENABLED` variable) is a guardrail
+change — add a dated line to `/about/colophon/` when you flip one. The agent
+steps need Claude auth — set **either** `CLAUDE_CODE_OAUTH_TOKEN` (run `claude
 setup-token`, then `gh secret set CLAUDE_CODE_OAUTH_TOKEN`) **or**
 `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
 

@@ -5,10 +5,13 @@
 # deduplicated GitHub issues, regenerates the health dashboard, and opens a PR
 # with the data changes. It NEVER merges and NEVER closes a human's issue.
 #
-# Manual on purpose: this is the first thing that takes an autonomous outward
-# action (filing issues), so it stays workflow_dispatch until the human trusts
-# it. PR3 adds the schedule (behind the FLEET_ENABLED kill switch) and the bot
-# identity that can file UPSTREAM issues — GITHUB_TOKEN here can only touch this
+# The daily schedule is the loop's reporting heartbeat (colophon, 2026-07-01):
+# without it the ranked queue goes stale, the dispatcher's freshness fail-safe
+# correctly dispatches NOTHING, and issues from nightly/deploy-verify dead-end.
+# Scheduled runs are gated by the TRIAGE_ENABLED repo variable (unset = idle,
+# same posture as every other autonomy loop) and run as apply=true — the var IS
+# the consent. Manual workflow_dispatch runs keep the dry-run default. The bot
+# PAT (FLEET_TOKEN) files UPSTREAM issues; GITHUB_TOKEN can only touch this
 # repo, so upstream-routed items are reported and deferred, not force-filed.
 # =============================================================================
 name: triage
@@ -24,6 +27,8 @@ on:
         description: "Max new issues to file this run"
         type: string
         default: "10"
+  schedule:
+    - cron: '47 7 * * *'   # daily 07:47 UTC — after the nightly sweep settles
 
 permissions:
   contents: write
@@ -35,7 +40,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Kill switch for the SCHEDULED path: a cron run without TRIAGE_ENABLED=true
+  # idles. Manual runs always go (a human clicked; `apply` still defaults off).
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+      apply: ${{ steps.check.outputs.apply }}
+      max_new: ${{ steps.check.outputs.max_new }}
+    steps:
+      - id: check
+        env:
+          ENABLED: ${{ vars.TRIAGE_ENABLED }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            { echo "go=true"; echo "apply=${{ inputs.apply }}"; echo "max_new=${{ inputs.max_new }}"; } >> "$GITHUB_OUTPUT"
+          elif [ "$ENABLED" = "true" ]; then
+            { echo "go=true"; echo "apply=true"; echo "max_new=10"; } >> "$GITHUB_OUTPUT"
+          else
+            echo "scheduled triage is off (TRIAGE_ENABLED != true) — idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
   triage:
+    needs: gate
+    if: ${{ needs.gate.outputs.go == 'true' }}
     runs-on: ubuntu-latest
     env:
       # FLEET_TOKEN (bot PAT) so routed theme bugs can be filed UPSTREAM
@@ -68,11 +97,20 @@ jobs:
 
       - name: File issues
         run: |
-          if [ "${{ inputs.apply }}" = "true" ]; then
-            ruby scripts/triage/file_issues.rb --apply --max-new "${{ inputs.max_new }}"
+          if [ "${{ needs.gate.outputs.apply }}" = "true" ]; then
+            ruby scripts/triage/file_issues.rb --apply --max-new "${{ needs.gate.outputs.max_new }}"
           else
-            ruby scripts/triage/file_issues.rb --max-new "${{ inputs.max_new }}"
+            ruby scripts/triage/file_issues.rb --max-new "${{ needs.gate.outputs.max_new }}"
           fi
+
+      # Feed the growth loop's exhaust back into its fuel tank: surface the
+      # `## Backlog ideas` that merged content PRs left behind (read-only —
+      # promotion into the backlog is a reviewed judgment, not a script).
+      - name: Harvest backlog ideas from merged PRs
+        continue-on-error: true
+        run: |
+          ruby scripts/triage/harvest_ideas.rb | tee harvest.out
+          { echo "<!-- harvest-ideas -->"; cat harvest.out; } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Open PR with queue + dashboard updates
         continue-on-error: true   # GITHUB_TOKEN-authored PRs are fine for data-only changes

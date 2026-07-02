@@ -20,11 +20,26 @@
 #   ruby scripts/devops/loop_metrics.rb --pr-limit 60 --run-limit 150
 #   ruby scripts/devops/loop_metrics.rb --self-test      # no gh; verify the math
 #
-# Read-only: it shells out to `gh` and prints. It files nothing and merges
-# nothing. Stdlib only, so it runs on a bare runner before `bundle install`.
+# THE LOOP'S MEMORY (what makes runs compound instead of repeat):
+#   --history PATH        # compare against the last committed snapshot in the
+#                         # JSONL history (default _data/metrics/history.jsonl
+#                         # when present) and emit trend signals — "this metric
+#                         # regressed / improved since <ts>" — so a run can see
+#                         # whether the previous run's change actually worked.
+#   --append-history      # append this run's compact snapshot to the history
+#                         # file (the loop-tuner commits it in its PR — history
+#                         # reaches main through the same human gate as code).
+#   --backlog PATH        # measure backlog health (growable `todo` items per
+#                         # kind; default _data/backlog.yml) so starvation shows
+#                         # up as a signal BEFORE the content factory improvises.
+#
+# Read-only against GitHub: it shells out to `gh` and prints. It files nothing
+# and merges nothing (--append-history writes only the local history file).
+# Stdlib only, so it runs on a bare runner before `bundle install`.
 # =============================================================================
 require 'json'
 require 'time'
+require 'yaml'
 
 module LoopMetrics
   module_function
@@ -34,13 +49,16 @@ module LoopMetrics
   # prs:  [{ 'number','state','created','merged','closed','labels'=>[],
   #          'attempts'=>Int, 'review_comments'=>Int, 'mergeable'=>String|nil,
   #          'rules'=>[String] }]
-  def analyze(runs:, prs:)
-    { 'runs' => analyze_runs(runs),
-      'content_prs' => analyze_prs(prs),
-      'auto_fix' => analyze_auto_fix(prs),
-      'recurring_findings' => recurring_findings(prs),
-      'conflicts' => conflicts(prs),
-      'signals' => [] }.tap { |r| r['signals'] = signals(r) }
+  def analyze(runs:, prs:, backlog: nil, prev: nil)
+    r = { 'runs' => analyze_runs(runs),
+          'content_prs' => analyze_prs(prs),
+          'auto_fix' => analyze_auto_fix(prs),
+          'recurring_findings' => recurring_findings(prs),
+          'conflicts' => conflicts(prs) }
+    r['backlog'] = analyze_backlog(backlog) if backlog
+    r['trends'] = trends(prev, r) if prev
+    r['signals'] = signals(r)
+    r
   end
 
   def pct(part, whole) = whole.zero? ? 0.0 : (100.0 * part / whole).round(1)
@@ -124,6 +142,73 @@ module LoopMetrics
     { 'open_content_prs' => open.size, 'open_not_mergeable' => not_mergeable }
   end
 
+  # --- backlog health (reads a file, not gh) ---------------------------------
+  # The content factory draws one item per kind per day; a kind with zero `todo`
+  # items forces it to improvise inline, which is unmeasured and duplicate-prone.
+  # Starvation is therefore a loop signal, not a content judgment.
+  GROW_KINDS = %w[hack tool post doc].freeze
+
+  def analyze_backlog(items)
+    grow = items.select { |i| GROW_KINDS.include?(i['kind'].to_s) }
+    todo = grow.select { |i| i['status'].to_s == 'todo' }
+    by_kind = GROW_KINDS.to_h { |k| [k, todo.count { |i| i['kind'] == k }] }
+    { 'growable_todo' => todo.size,
+      'todo_by_kind' => by_kind,
+      'starved_kinds' => by_kind.select { |_, n| n.zero? }.keys }
+  end
+
+  # --- trends (this run vs the last committed snapshot) ----------------------
+  # All tracked metrics are lower-is-better, so delta > 0 is a regression. This
+  # is how the loop VERIFIES itself: an improvement a past run claimed either
+  # shows up here as a falling number, or it didn't happen.
+  TREND_METRICS = %w[
+    runs.fail_rate runs.slowest_median_sec
+    content_prs.escalation_rate content_prs.p90_hours_to_merge
+    auto_fix.prs_with_attempts_rate auto_fix.total_attempts
+    conflicts.open_not_mergeable
+  ].freeze
+
+  def dig_path(h, path)
+    path.split('.').reduce(h) { |acc, k| acc.is_a?(Hash) ? acc[k] : nil }
+  end
+
+  def trends(prev, r)
+    metrics = {}
+    TREND_METRICS.each do |m|
+      was = dig_path(prev, m)
+      now = dig_path(r, m)
+      next unless was.is_a?(Numeric) && now.is_a?(Numeric)
+      metrics[m] = { 'prev' => was, 'now' => now, 'delta' => (now - was).round(2) }
+    end
+    { 'since' => prev['ts'], 'metrics' => metrics }
+  end
+
+  # A move counts only when it's big enough to act on: at least 10% of the larger
+  # magnitude — except a clean zero-to-nonzero, which is always significant.
+  def significant?(was, now)
+    return false if was == now
+    return true if was.zero? || now.zero?
+    (now - was).abs >= 0.1 * [was.abs, now.abs].max
+  end
+
+  # --- history snapshots (the JSONL the loop-tuner commits in its PR) --------
+  def snapshot(r, ts: Time.now.utc.iso8601)
+    { 'ts' => ts,
+      'runs' => (r['runs'] || {}).slice('total', 'fail_rate', 'slowest_workflow', 'slowest_median_sec'),
+      'content_prs' => (r['content_prs'] || {}).slice('count', 'merged', 'escalation_rate',
+                                                      'median_hours_to_merge', 'p90_hours_to_merge'),
+      'auto_fix' => (r['auto_fix'] || {}).slice('prs_with_attempts_rate', 'total_attempts', 'max_attempts'),
+      'conflicts' => r['conflicts'] || {},
+      'backlog' => (r['backlog'] || {}).slice('growable_todo', 'starved_kinds'),
+      'top_rules' => (r['recurring_findings'] || []).first(3) }
+  end
+
+  def load_prev_snapshot(path)
+    return nil unless File.exist?(path)
+    last = File.readlines(path).map(&:strip).reject(&:empty?).last
+    last && (JSON.parse(last) rescue nil)
+  end
+
   # Objective triggers the agent turns into proposals. Each is a fact + a lever.
   def signals(r)
     out = []
@@ -144,6 +229,19 @@ module LoopMetrics
     out << "#{cf['open_not_mergeable']} open content PR(s) are currently un-mergeable (conflicts). Confirm auto-update is enabled and resolving them." if cf['open_not_mergeable'].to_i > 0
     ttm = r.dig('content_prs', 'p90_hours_to_merge')
     out << "p90 time-to-merge is #{ttm}h — long-lived PRs collide more; shorten the review/merge path." if ttm && ttm >= 48
+    bl = r['backlog']
+    if bl && !bl['starved_kinds'].empty?
+      out << "Backlog starvation: kind(s) #{bl['starved_kinds'].join(', ')} have 0 `todo` items (#{bl['growable_todo']} growable total) — the content factory will improvise unmeasured ideas. Harvest `## Backlog ideas` from merged PRs (scripts/triage/harvest_ideas.rb) and promote the good ones."
+    end
+    tr = r['trends']
+    (tr ? tr['metrics'] : {}).each do |m, v|
+      next unless significant?(v['prev'], v['now'])
+      if v['delta'] > 0
+        out << "Trend regression: `#{m}` worsened #{v['prev']} -> #{v['now']} since #{tr['since']} — find what changed in the loop (check _data/fleet/improvements.yml for a recent entry to mark `regressed`) and fix or revert it."
+      else
+        out << "Trend improvement: `#{m}` improved #{v['prev']} -> #{v['now']} since #{tr['since']} — if an improvements-ledger entry predicted this, mark it `verified`."
+      end
+    end
     out << 'No strong signals in this window — the loop looks healthy. Open NO PR unless you find a real, evidenced improvement.' if out.empty?
     out
   end
@@ -207,8 +305,16 @@ module LoopMetrics
     end.uniq                                 # one PR counts a rule once
   end
 
-  def gather(pr_limit:, run_limit:, comment_cap:)
-    analyze(runs: gather_runs(run_limit), prs: gather_prs(pr_limit, comment_cap))
+  def gather(pr_limit:, run_limit:, comment_cap:, backlog: nil, prev: nil)
+    analyze(runs: gather_runs(run_limit), prs: gather_prs(pr_limit, comment_cap),
+            backlog: backlog, prev: prev)
+  end
+
+  def gather_backlog(path)
+    return nil unless path && File.exist?(path)
+    (YAML.safe_load(File.read(path)) || {})['backlog']
+  rescue Psych::SyntaxError
+    nil
   end
 
   # --- rendering -------------------------------------------------------------
@@ -229,7 +335,20 @@ module LoopMetrics
          "#{cp['escalation_rate']}% escalated · median TTM #{cp['median_hours_to_merge']}h · p90 #{cp['p90_hours_to_merge']}h\n"
     o << "**Auto-fix:** #{af['prs_with_attempts']} PR(s) needed it (#{af['prs_with_attempts_rate']}%), " \
          "#{af['total_attempts']} attempts total, max #{af['max_attempts']}\n"
-    o << "**Conflicts:** #{cf['open_not_mergeable']}/#{cf['open_content_prs']} open content PRs un-mergeable\n\n"
+    o << "**Conflicts:** #{cf['open_not_mergeable']}/#{cf['open_content_prs']} open content PRs un-mergeable\n"
+    if (bl = r['backlog'])
+      starved = bl['starved_kinds'].empty? ? 'none starved' : "STARVED: #{bl['starved_kinds'].join(', ')}"
+      o << "**Backlog:** #{bl['growable_todo']} growable `todo` item(s) (#{starved})\n"
+    end
+    o << "\n"
+    if (tr = r['trends']) && !tr['metrics'].empty?
+      o << "**Trends since #{tr['since']}:**\n"
+      tr['metrics'].each do |m, v|
+        mark = v['delta'].positive? ? '▲' : (v['delta'].negative? ? '▼' : '·')
+        o << "- #{mark} `#{m}`: #{v['prev']} -> #{v['now']}\n"
+      end
+      o << "\n"
+    end
     unless r['recurring_findings'].empty?
       o << "**Recurring lint rules:**\n"
       r['recurring_findings'].each { |f| o << "- `#{f['rule']}` — #{f['prs']} PR(s)\n" }
@@ -259,8 +378,37 @@ module LoopMetrics
         'labels' => [], 'attempts' => 1, 'review_comments' => 0, 'mergeable' => 'CONFLICTING',
         'rules' => ['description-too-long'] }
     ]
-    r = analyze(runs: runs, prs: prs)
+    backlog = [
+      { 'id' => 'HACK-1', 'kind' => 'hack', 'status' => 'todo' },
+      { 'id' => 'HACK-2', 'kind' => 'hack', 'status' => 'done' },
+      { 'id' => 'TOOL-1', 'kind' => 'tool', 'status' => 'todo' },
+      { 'id' => 'POST-1', 'kind' => 'post', 'status' => 'done' },
+      { 'id' => 'OPS-1',  'kind' => 'ops',  'status' => 'todo' }   # ops never growable
+    ]
+    prev = {
+      'ts' => '2026-06-01T00:00:00Z',
+      'runs' => { 'fail_rate' => 10.0, 'slowest_median_sec' => 400 },
+      'content_prs' => { 'escalation_rate' => 33.3 },
+      'conflicts' => { 'open_not_mergeable' => 0 }
+    }
+    r = analyze(runs: runs, prs: prs, backlog: backlog, prev: prev)
+    trend = r['trends']['metrics']
     checks = {
+      'backlog.growable_todo' => [r['backlog']['growable_todo'], 2],
+      'backlog.starved' => [r['backlog']['starved_kinds'], %w[post doc]],
+      'trend fail_rate delta' => [trend['runs.fail_rate']['delta'], 15.0],
+      'trend regression significant' => [significant?(10.0, 25.0), true],
+      'trend improvement delta' => [trend['runs.slowest_median_sec']['delta'], -100],
+      'trend unchanged insignificant' => [significant?(33.3, 33.3), false],
+      'trend small move insignificant' => [significant?(100, 105), false],
+      'trend zero-to-nonzero significant' => [significant?(0, 1), true],
+      'trends carry since' => [r['trends']['since'], '2026-06-01T00:00:00Z'],
+      'signal starvation' => [r['signals'].any? { |s| s.include?('Backlog starvation') && s.include?('post, doc') }, true],
+      'signal regression' => [r['signals'].any? { |s| s.include?('Trend regression: `runs.fail_rate`') }, true],
+      'signal improvement' => [r['signals'].any? { |s| s.include?('Trend improvement: `runs.slowest_median_sec`') }, true],
+      'snapshot keeps ts' => [snapshot(r, ts: '2026-06-02T00:00:00Z')['ts'], '2026-06-02T00:00:00Z'],
+      'snapshot backlog' => [snapshot(r, ts: 'x')['backlog']['growable_todo'], 2],
+      'snapshot top rule' => [snapshot(r, ts: 'x')['top_rules'].first['rule'], 'description-too-long'],
       'runs.total' => [r['runs']['total'], 4],
       'runs.fail_rate' => [r['runs']['fail_rate'], 25.0],
       'runs.slowest' => [r['runs']['slowest_workflow'], 'pipeline'],
@@ -287,7 +435,8 @@ end
 
 # --- CLI ---------------------------------------------------------------------
 if $PROGRAM_NAME == __FILE__
-  opts = { pr_limit: 60, run_limit: 150, comment_cap: 40, fmt: :markdown, out: nil }
+  opts = { pr_limit: 60, run_limit: 150, comment_cap: 40, fmt: :markdown, out: nil,
+           backlog: '_data/backlog.yml', history: '_data/metrics/history.jsonl', append: false }
   i = 0
   while i < ARGV.size
     case ARGV[i]
@@ -298,11 +447,23 @@ if $PROGRAM_NAME == __FILE__
     when '--run-limit' then opts[:run_limit] = ARGV[i += 1].to_i
     when '--comment-cap' then opts[:comment_cap] = ARGV[i += 1].to_i
     when '--out'       then opts[:out] = ARGV[i += 1]
+    when '--backlog'   then opts[:backlog] = ARGV[i += 1]
+    when '--history'   then opts[:history] = ARGV[i += 1]
+    when '--append-history' then opts[:append] = true
     end
     i += 1
   end
 
-  report = LoopMetrics.gather(pr_limit: opts[:pr_limit], run_limit: opts[:run_limit], comment_cap: opts[:comment_cap])
+  prev = opts[:history] ? LoopMetrics.load_prev_snapshot(opts[:history]) : nil
+  report = LoopMetrics.gather(pr_limit: opts[:pr_limit], run_limit: opts[:run_limit],
+                              comment_cap: opts[:comment_cap],
+                              backlog: LoopMetrics.gather_backlog(opts[:backlog]), prev: prev)
+  if opts[:append] && opts[:history]
+    require 'fileutils'
+    FileUtils.mkdir_p(File.dirname(opts[:history]))
+    File.open(opts[:history], 'a') { |f| f.puts(JSON.generate(LoopMetrics.snapshot(report))) }
+    warn "loop_metrics: appended snapshot to #{opts[:history]}"
+  end
   if opts[:out]
     require 'fileutils'
     FileUtils.mkdir_p(File.dirname(opts[:out]))
