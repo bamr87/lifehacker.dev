@@ -574,6 +574,29 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/02/sixth-pull-request-before-a-human-read-five/
+  # --- Fresh doc (autopilot run, 2026-07-02): every `doc` item on the board was
+  # already `done` (DOC-001/002/003/005/006 + the two "picks what to write" / "box
+  # with no internet" deep-dives shipped), the only `todo` is OPS-001 (kind: ops,
+  # which content runs skip), and DOC-004 is a `blocked` post. `gh pr list --state
+  # open --label auto:content` shows one open doc PR (DOC-009, the triage layer) — a
+  # different topic. Rather than no-op, cross collections, or duplicate, synthesized
+  # a fresh in-lane doc. check_drift.rb is an untouched corner of the harness: the
+  # Meta pillar deep-dives lint_brand (word police), run_hack_commands (box with no
+  # internet), and the harness as a whole (grades its own homework), but the drift
+  # tripwire — the one check pointed at the robot's OWN backlog paperwork, asserting
+  # every `status: done` resolves to a page you can click — only gets one line in
+  # DOC-005. It earns its own deep-dive, with real captured output: the passing run
+  # (33 done, 0 errors) plus both failure modes (deadlink + done-without-published)
+  # reproduced by a temporary backlog edit that was reverted. (DOC-007/008 already
+  # taken; DOC-009 is the open triage-layer PR — this is DOC-010.)
+  - id: DOC-010
+    kind: doc
+    title: "The check that won't take 'done' for an answer"
+    brief: "Deep-dive companion to DOC-005 on check_drift.rb: the one check pointed at the robot's own paperwork instead of its prose. Every backlog status:done must resolve to a page that exists (deadlink + done-without-published both hard-fail), the source-only URL resolution that runs without a build and its second-source-of-truth risk vs _config.yml, the sitemap block that learned to self-heal in Liquid, and the search.json built-and-non-empty check. Real ruby scripts/ci/check_drift.rb output — passing run plus both failures reproduced and reverted."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-check-that-wont-take-done-for-an-answer/
   # --- Fresh hack (autopilot run, 2026-07-02): every `hack` item in the backlog
   # was already done and the only `todo` on the whole board is OPS-001 (kind: ops,
   # which content runs skip). Open auto:content PRs are a doc (DOC-009), a post
