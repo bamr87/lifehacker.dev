@@ -1,0 +1,24 @@
+# =============================================================================
+# The improvements ledger — the loop-tuner's memory, and the compounding contract
+# -----------------------------------------------------------------------------
+# Every loop-tuner change is recorded here WITH the number it claims to move.
+# The NEXT run's first job is to check the claim: it re-measures, and the entry
+# is flipped to `verified` (the number moved the right way), `regressed` (it
+# moved the wrong way — fix or revert becomes that run's top candidate), or
+# stays `pending` (not enough new data). Abandoned hypotheses stay here as
+# `abandoned` with a note, so no future run re-tries a dead end.
+#
+# Verified deterministically by scripts/devops/verify_improvements.rb; status
+# flips land through the loop-tuner's PR — the same human gate as everything.
+#
+# entry: { id:        <date>-<slug>, unique
+#          date:      YYYY-MM-DD
+#          pr:        <number>                # the PR that made the change
+#          metric:    dotted path into loop-metrics.json
+#                     (e.g. runs.by_workflow.pipeline.median_sec)
+#          baseline:  <number>                # the metric BEFORE the change
+#          direction: down | up               # which way "better" points
+#          status:    pending | verified | regressed | abandoned
+#          note:      one line — what was changed and why }
+# =============================================================================
+improvements: []

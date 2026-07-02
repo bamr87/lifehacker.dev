@@ -6,15 +6,15 @@
 # issues for bugs, appends content GAPS to the backlog, and opens ONE data PR.
 # It NEVER merges and NEVER closes a human's issue.
 #
-# FOUR THINGS KEEP THIS SAFE (same posture as fleet-dispatch.yml):
-#   1. workflow_dispatch only — the schedule below is COMMENTED OUT. The explorer
-#      does not run unattended until someone turns the cron on AND adds a dated
-#      line to /about/colophon/ (loosening "no unattended outward actions").
+# FOUR THINGS KEEP THIS SAFE (same posture as the other autonomy loops):
+#   1. The daily cron is ON (colophon, 2026-07-01) but scheduled runs idle
+#      unless EXPLORER_ENABLED == "true" — the repo variable is the consent,
+#      and the bot token cannot set it (no administration scope).
 #   2. A `gate` job requires BOTH EXPLORER_ENABLED == "true" (a repo variable kill
 #      switch) AND the API key present. With the switch off, the job idles.
-#   3. `apply` input defaults false — even an enabled, manual run only DRY-RUNS
-#      the routing (no issues, no PR) unless a human checks the box. The browse is
-#      read-only regardless.
+#   3. Manual runs keep `apply` defaulting to false (dry-run unless a human
+#      checks the box); scheduled runs apply — turning the var on IS the checked
+#      box. The browse is read-only regardless.
 #   4. Minimal scopes: contents/issues/pull-requests only. Deliberately NO
 #      `administration` and NO `actions`/workflows scope — the explorer cannot
 #      edit branch protection, the gates, or this kill switch.
@@ -45,8 +45,8 @@ on:
         description: "Max NEW issues to file this run"
         type: string
         default: "8"
-  # schedule:                       # DISABLED — unattended browsing is opt-in (see header).
-  #   - cron: '23 6 * * *'          # 06:23 UTC daily, offset from the content factory
+  schedule:
+    - cron: '23 6 * * *'            # 06:23 UTC daily, offset from the content factory
 
 permissions:
   contents: write
@@ -60,10 +60,15 @@ concurrency:
 
 jobs:
   # The kill switch + key check. Outward actions never run unless this says go.
+  # Scheduled runs apply with the documented defaults; manual runs use inputs.
   gate:
     runs-on: ubuntu-latest
     outputs:
       go: ${{ steps.check.outputs.go }}
+      apply: ${{ steps.check.outputs.apply }}
+      seed: ${{ steps.check.outputs.seed }}
+      per_persona: ${{ steps.check.outputs.per_persona }}
+      max_issues: ${{ steps.check.outputs.max_issues }}
     steps:
       - id: check
         env:
@@ -76,6 +81,12 @@ jobs:
           else
             echo "explorer is off (EXPLORER_ENABLED != true or no Claude auth) — idle."
             echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            { echo "apply=${{ inputs.apply }}"; echo "seed=${{ inputs.seed }}";
+              echo "per_persona=${{ inputs.per_persona }}"; echo "max_issues=${{ inputs.max_issues }}"; } >> "$GITHUB_OUTPUT"
+          else
+            { echo "apply=true"; echo "seed="; echo "per_persona=6"; echo "max_issues=8"; } >> "$GITHUB_OUTPUT"
           fi
 
   explore:
@@ -96,10 +107,10 @@ jobs:
       # 1. Plan the seeded route (network-free, reproducible per day).
       - name: Plan route
         run: |
-          SEED="${{ inputs.seed }}"
+          SEED="${{ needs.gate.outputs.seed }}"
           ruby scripts/explorer/plan_routes.rb \
             ${SEED:+--seed "$SEED"} \
-            --per-persona "${{ inputs.per_persona }}"
+            --per-persona "${{ needs.gate.outputs.per_persona }}"
 
       - name: Set up the Playwright MCP (read-only browser; claude-run installs Claude Code)
         run: |
@@ -109,7 +120,7 @@ jobs:
           JSON
 
       - name: Ensure labels exist
-        if: ${{ inputs.apply }}
+        if: ${{ needs.gate.outputs.apply == 'true' }}
         run: |
           scripts/triage/bootstrap-labels.sh || true
           scripts/explorer/bootstrap-labels.sh || true
@@ -135,18 +146,18 @@ jobs:
       - name: File issues + backlog
         run: |
           test -s _data/explorer/findings.jsonl || { echo "No findings written — nothing to route."; exit 0; }
-          if [ "${{ inputs.apply }}" = "true" ]; then
-            ruby scripts/explorer/file_findings.rb --apply --max-issues "${{ inputs.max_issues }}"
+          if [ "${{ needs.gate.outputs.apply }}" = "true" ]; then
+            ruby scripts/explorer/file_findings.rb --apply --max-issues "${{ needs.gate.outputs.max_issues }}"
             ruby scripts/explorer/build_backlog.rb  --apply --max-add 5
           else
             echo "Dry-run (apply=false):"
-            ruby scripts/explorer/file_findings.rb --max-issues "${{ inputs.max_issues }}"
+            ruby scripts/explorer/file_findings.rb --max-issues "${{ needs.gate.outputs.max_issues }}"
             ruby scripts/explorer/build_backlog.rb --max-add 5
           fi
 
       # 4. Open ONE data PR with the run trail + any backlog appends.
       - name: Open PR with explorer data + backlog updates
-        if: ${{ inputs.apply }}
+        if: ${{ needs.gate.outputs.apply == 'true' }}
         continue-on-error: true   # GITHUB_TOKEN-authored data-only PRs are fine
         run: |
           git config user.name  "lifehacker-explorer[bot]"

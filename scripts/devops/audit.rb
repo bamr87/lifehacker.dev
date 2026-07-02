@@ -37,7 +37,7 @@ add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml does not read FLEET_
   'auto-update.yml' => 'AUTO_UPDATE_ENABLED', 'loop-tuner.yml' => 'LOOP_TUNER_ENABLED',
   'brand-sweep.yml' => 'BRAND_SWEEP_ENABLED',
   'theme-scout.yml' => 'THEME_SCOUT_ENABLED', 'agent-review.yml' => 'AGENT_REVIEW_ENABLED',
-  'quest-forge.yml' => 'QUEST_FORGE_ENABLED' }.each do |wf, gate|
+  'quest-forge.yml' => 'QUEST_FORGE_ENABLED', 'triage.yml' => 'TRIAGE_ENABLED' }.each do |wf, gate|
   c = wf_read[wf].to_s
   add(findings, 'error', 'autonomy-gate', "#{wf} is not gated by #{gate}") unless c.empty? || c.include?(gate)
 end
@@ -146,6 +146,32 @@ if File.exist?(qf)
   q = JSON.parse(LH.read(qf)) rescue []
   bad = q.reject { |i| QUEUE_FIELDS.all? { |k| i.key?(k) } }
   add(findings, 'error', 'schema', "#{bad.size} queue item(s) missing required fields #{QUEUE_FIELDS.inspect}") unless bad.empty?
+  # The dispatcher keys freshness off summary.yml but reads work off queue.json —
+  # if the two drift apart (partial commit), a populated queue can sit invisible
+  # behind a summary that says "empty". Same writer, so drift means a bad commit.
+  sf = File.join(LH::ROOT, '_data/health/summary.yml')
+  if File.exist?(sf)
+    summ = YAML.safe_load(LH.read(sf), permitted_classes: [Time, Date]) rescue nil
+    if summ && summ['queue_size'] != q.size
+      add(findings, 'warn', 'schema', "_data/health drift: summary.yml says queue_size=#{summ['queue_size']} but queue.json holds #{q.size} item(s) — rerun triage (build_queue.rb) and commit both together")
+    end
+  end
+end
+
+# The improvements ledger (the loop's memory) must stay machine-verifiable:
+# a malformed entry silently breaks the verify-last-run's-work step.
+ledger_path = File.join(LH::ROOT, '_data/fleet/improvements.yml')
+if File.exist?(ledger_path)
+  require_relative 'verify_improvements'
+  entries = VerifyImprovements.load_entries(ledger_path)
+  if entries.nil?
+    add(findings, 'error', 'loop-memory', '_data/fleet/improvements.yml is unreadable or `improvements` is not a list')
+  else
+    VerifyImprovements.validate(entries)
+                      .each { |e| add(findings, 'error', 'loop-memory', "improvements ledger: #{e}") }
+  end
+else
+  add(findings, 'warn', 'loop-memory', '_data/fleet/improvements.yml is missing — the loop-tuner has no memory of past changes')
 end
 
 # --- report -----------------------------------------------------------------
