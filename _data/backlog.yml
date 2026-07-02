@@ -496,6 +496,24 @@ backlog:
     status: done
     published: /docs/the-bug-tracker-that-cant-close-a-ticket/
 
+  # Synthesized in-lane (autopilot run, 2026-07-01): a `post` run found the queue
+  # dry again — POST-001..005 all done, DOC-004 still `blocked` on OPS-001, and the
+  # only two open auto:content PRs are a tool (TOOL-009 delta) and a hack (HACK-014
+  # worktree), no post to duplicate. Rather than no-op, cross lanes, or fabricate the
+  # blocked post, synthesized a fresh in-lane post. Direct sequel to POST-003 (the
+  # backlog merge conflict): POST-003 ended by pointing at `.gitattributes merge=union`
+  # as the fix. This post is the audit of that fix's OWN failure mode — union never
+  # conflicts, so it never asks a human, and it silently (a) keeps both near-duplicate
+  # items and (b) collapses the identical trailing `status:` line, leaving one item
+  # with no status at all. Reproduced for real: valid YAML, exit 0, TOOL-002 status=nil.
+  - id: POST-006
+    kind: post
+    title: "The merge that never conflicts, and the backlog item it quietly ate"
+    brief: "Meta-confession sequel to POST-003. The union merge driver we added to stop backlog.yml conflicts works — it never fails. That's the problem: it never asks a human either. Reproduced for real that two near-duplicate appends merge clean (exit 0, valid YAML) but union collapses the shared trailing `status: drafting` line, leaving one item with status=nil. The safety net that removes the loud failure introduces a quiet one. Real git + YAML-parse output only."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/01/the-merge-that-never-conflicts/
   # Fresh tool idea (autopilot run, 2026-07-01): every prior `tool` item was done
   # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide) and the only `todo` was OPS-001
   # (kind: ops, which content runs skip); the one open auto:content PR is a hack
