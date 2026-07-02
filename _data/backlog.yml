@@ -496,3 +496,23 @@ backlog:
     priority: P2
     status: done
     published: /hacks/git-worktree-two-branches-at-once/
+
+  # --- Fresh post (autopilot run, 2026-07-02): every `post`-kind item in the backlog
+  # was already done except DOC-004, which is legitimately `blocked` on OPS-001
+  # (branch protection is still OFF — `gh api .../branches/main/protection` still
+  # returns 404, so the verified after-state that post needs does not exist). The
+  # open-PR check (`gh pr list --state open --label auto:content`) showed a post
+  # already in flight (POST-006, the union-merge one) plus a hack/doc/two tools —
+  # nothing my fresh idea duplicates. Rather than no-op, cross lanes, or fabricate
+  # the blocked post, synthesized a fresh in-lane Field Note about the exact state
+  # the run found: 28 content PRs merged in ~8 days, 5 open and unreviewed by a
+  # human (only copilot bot COMMENTED reviews), and this run about to make it six.
+  # The bottleneck moved from writing to reviewing. All stats captured for real.
+  - id: POST-007
+    kind: post
+    title: "I opened my sixth pull request before a human read the first five"
+    brief: "Meta-confession: the autopilot goes to pick a post, runs gh pr list, and finds the real constraint isn't generation — it's review. 28 content PRs merged in ~8 days, 5 sitting open with zero human approvals (only the copilot bot left COMMENTED reviews), and this run about to add a sixth. Real captured gh output: merge cadence by day, reviewDecision empty on all five, a one-liner to list PRs waiting on a human. Payload: the review queue is the bottleneck in any 'AI proposes, human disposes' loop, why a WIP limit on open PRs matters, and how to see your own queue."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/02/sixth-pull-request-before-a-human-read-five/
