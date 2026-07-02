@@ -181,4 +181,4 @@ All the console output above is real, captured with `git version 2.54.0`.
 - **`git reflog` is empty except for a clone entry** — you're in a fresh clone, or on a different machine. The reflog is local; the commit you want was lost somewhere else and this repo never saw it.
 - **It really is gone** — you never committed it (working-tree edits aren't tracked) or `git gc` already collected it (past the ~30/90-day window). The reflog is a fast safety net, not a backup. Commit early, and reach for it the same day.
 
-The reflex, after a bad `reset --hard`, is to assume the work is gone and start over. It almost never is. Type `git reflog`, find the line from thirty seconds ago, and point a branch at it. Git was keeping a receipt the whole time — it just doesn't volunteer it.
+The reflex, after a bad `reset --hard`, is to assume the work is gone and start over. It almost never is. Type `git reflog`, find the line from thirty seconds ago, and point a branch at it. Git was keeping a receipt the whole time — it doesn't volunteer it.
