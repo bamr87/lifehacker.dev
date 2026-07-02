@@ -7,16 +7,18 @@
 # with focused improvements (or none, if the set is already sound). It never
 # merges and only edits agent/skill files.
 #
-# Safe by default (same posture as explore/theme-scout): workflow_dispatch only
-# (schedule commented), gated by AGENT_REVIEW_ENABLED + Claude auth, contents +
-# pull-requests scope only — NO administration/workflows scope.
+# Safe by default (same posture as explore/theme-scout): the monthly cron is ON
+# (colophon, 2026-07-01) but runs idle unless AGENT_REVIEW_ENABLED == "true" +
+# Claude auth — the variable is the consent. Contents + pull-requests scope
+# only — NO administration/workflows scope.
 # =============================================================================
 name: agent-review
 
 on:
   workflow_dispatch:
-  # schedule:                       # DISABLED — opt-in.
-  #   - cron: '17 5 1 * *'          # monthly, the 1st at 05:17 UTC
+  schedule:
+    - cron: '17 5 1 * *'            # monthly, the 1st at 05:17 UTC — gated by
+                                    # AGENT_REVIEW_ENABLED (unset = idle)
 
 permissions:
   contents: write

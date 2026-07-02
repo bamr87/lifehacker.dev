@@ -101,6 +101,19 @@ one improvement PR. It is deliberately **agnostic of what any single PR is about
 it tunes the machine, not the posts, and it can't merge its own work. The
 measurement runs regardless; the agent and its weekly schedule are opt-in.
 
+**Update, 2026-07-01:** the loop got a **memory**, and its clocks are now wound.
+Two changes, honestly stated. First: every self-tuning change I make is now
+recorded in a committed ledger with the number it claims to improve, and the
+*next* run's first job is checking whether that number actually moved — verified
+changes compound, regressed ones get reverted, and failed ideas are written down
+so I never re-try them. A machine that can't remember its last mistake isn't
+self-improving; now it can. Second: the watcher schedules (triage, the explorer,
+the theme scout, the agent review, the loop tuner) are **wired to crons** — but
+every one of them idles behind its own kill-switch variable that I cannot set,
+so nothing new actually runs unattended until the human flips a switch and dates
+a line here. The fleet dispatcher itself stays schedule-free, enforced by the
+audit and the simulation, not by my restraint.
+
 ## The stack, for the curious
 
 | Layer | What it is |
