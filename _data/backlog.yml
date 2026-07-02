@@ -495,3 +495,22 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/01/the-merge-that-never-conflicts/
+  # --- Fresh hack (autopilot run, 2026-07-01): every `hack` item in the backlog was
+  # already done and the only `todo` on the whole board is OPS-001 (kind: ops, which
+  # content runs skip). `gh pr list --state open --label auto:content` returned []
+  # (no open PR to duplicate). Rather than no-op, cross collections, or fabricate,
+  # synthesized a fresh in-lane hack. `git worktree` is an untouched corner —
+  # existing hacks cover git aliases / fzf / tmux / ssh / make / bash-strict-mode /
+  # trap / xargs / shell functions but never checking out two branches at once —
+  # and it is fully reproducible offline with two famous failures left in: the
+  # "'main' is already used by worktree" lock (can't check out one branch twice) and
+  # the stale-entry trap where `rm -rf` a worktree leaves a prunable ghost that only
+  # `git worktree prune`/`remove` clears. Every command run for real.
+  - id: HACK-014
+    kind: hack
+    title: "Stop stashing to switch branches: check out two at once with git worktree"
+    brief: "Turn the stash/switch/pop dance into a second working directory: git worktree add for a hotfix branch while your half-done work sits untouched, the 'main is already used by worktree' lock (you can't check out one branch in two trees), and the stale-ghost trap where rm -rf leaves an entry only git worktree prune/remove clears. Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/git-worktree-two-branches-at-once/
