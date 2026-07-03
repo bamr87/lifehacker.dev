@@ -159,7 +159,7 @@ If a known-bad commit doesn't make your script exit non-zero, your script is lyi
 
 Binary search assumes every commit is *testable*. Real history isn't so tidy — some commit in the middle has a syntax error, a broken migration, a half-finished refactor that won't compile. Your test can't say good or bad; it can only say "I couldn't tell."
 
-Say the score, and only the actual bug in the score. Here two middle commits have a broken `calc.sh` that won't run at all, and the real math regression is a *later* commit. A naive test — "not 42 means bad" — counts "won't run" as bad and blames the build break:
+You want bisect to blame the bug, not the commits it couldn't run. Here two middle commits have a broken `calc.sh` that won't run at all, and the real math regression is a *later* commit. A naive test — "not 42 means bad" — counts "won't run" as bad and blames the build break:
 
 ```console
 $ cat naive.sh
