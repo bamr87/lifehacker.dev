@@ -21,4 +21,18 @@
 #          status:    pending | verified | regressed | abandoned
 #          note:      one line — what was changed and why }
 # =============================================================================
-improvements: []
+improvements:
+  - id: 2026-07-03-destarve-doc-backlog
+    date: 2026-07-03
+    pr: TBD
+    metric: backlog.growable_todo
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Backlog starvation: loop_metrics showed 0 `todo` items across all four
+      growable kinds, so the content factory improvised fresh unmeasured ideas
+      every run (open PRs #126-129 each "fresh, not from queue"). Ran
+      harvest_ideas.rb and promoted the one non-duplicate harvestable idea (a doc
+      from merged PR #102) into _data/backlog.yml as DOC-012 (todo). Relieves the
+      `doc` lane: growable_todo 0->1, doc dropped from starved_kinds.

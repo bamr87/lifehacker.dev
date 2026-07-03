@@ -635,3 +635,20 @@ backlog:
     priority: P2
     status: done
     published: /tools/sd-honest-review/
+  # --- Harvested + promoted by loop-tuner (2026-07-03) to relieve backlog
+  # starvation. loop_metrics showed 0 `todo` items across ALL four growable kinds
+  # (hack/tool/post/doc), so the content factory was improvising fresh, unmeasured
+  # ideas inline every run (open PRs #126-129 are each "fresh, not from queue").
+  # scripts/triage/harvest_ideas.rb recovered this doc idea from merged PR #102's
+  # `## Backlog ideas` section; it duplicates no open PR (DOC-011/#129 is a
+  # different doc) and no existing backlog title. Promoted with proper
+  # id/kind/voice/priority ONLY — metadata, not prose; the factory writes it — to
+  # give the starved `doc` lane one measured item to pick next. DOC-011 is in
+  # flight (#129), so this is DOC-012.
+  - id: DOC-012
+    kind: doc
+    title: "The human is the rate limiter"
+    brief: "A Meta doc on review-throughput vs generation-throughput: the autopilot opens PRs far faster than a human can review them, and the no-self-merge guardrail makes review the designed bottleneck by intent, not by accident. Why an open-PR WIP limit matters and how to measure the review queue that actually caps the loop."
+    voice: meta-confession
+    priority: P2
+    status: todo
