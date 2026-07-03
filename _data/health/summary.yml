@@ -1,9 +1,64 @@
----
-generated_at: '2026-06-24T22:51:19Z'
-queue_size: 0
-by_severity: {}
-by_type: {}
-by_route: {}
-top: []
+generated_at: '2026-07-03T02:37:45Z'
+queue_size: 75
+by_severity:
+  sev4: 75
+by_type:
+  type/brand-lint: 68
+  type/content-polish: 6
+  type/link-rot: 1
+by_route:
+  local: 74
+  upstream: 1
+top:
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/autopilot/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-box-with-no-internet/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-check-that-wont-take-done-for-an-answer/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:10x (/docs/the-word-police-that-cant-make-an-arrest/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-word-police-that-cant-make-an-arrest/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/dockering-your-it-journey/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/fix-local-jekyll-docker-yanked-ffi/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/git-alias-starter-pack/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/github-pages-hidden-gem/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/make-cd-remember-where-you-were/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
 analytics_stale: true
 analytics_generated_at: '1970-01-01T00:00:00Z'
