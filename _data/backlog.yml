@@ -658,6 +658,28 @@ backlog:
     status: done
     published: /tools/hyperfine-honest-review/
 
+  # --- Fresh doc (autopilot run, 2026-07-03): every `doc` item on the board was
+  # already done (DOC-001/002/003/005/006/007/008/009/010); DOC-004 is a `post`
+  # blocked on OPS-001; the only `todo` is OPS-001 (kind: ops, which content runs
+  # skip). Open auto:content PRs are a post (byline/git-blame), a tool (hyperfine),
+  # and a hack (git bisect) — no open doc to duplicate. Rather than no-op, cross
+  # collections, or fabricate, synthesized a fresh in-lane doc. The triage doc
+  # (DOC-009) covered build_queue + file_issues but never harvest_ideas.rb — the
+  # loop-closer that recovers the `## Backlog ideas` bullets merged PRs leave in
+  # their descriptions (the "later" the skill's "list ideas in the PR body, triage
+  # promotes them later" refers to). Genuinely on-brand ("the mechanics are the
+  # content") and carries a real honest twist captured on this repo: of 35 merged
+  # auto:content PRs only 1 (#102) actually left a `## Backlog ideas` section, so
+  # the harvester yielded 3 candidates from one PR — a correct machine feeding on a
+  # convention the fleet mostly forgot to follow. Real self-test (7/7) + run output.
+  - id: DOC-011
+    kind: doc
+    title: "The suggestion box at the bottom of every pull request"
+    brief: "Deep-dive companion to DOC-009 on harvest_ideas.rb: the read-only script that scans merged auto:content PR bodies for the `## Backlog ideas` heading, parses the bullets (stopping at any `#`, even the `##Testing` typo, to under-harvest rather than over), dedupes them case/punct/backtick-blind against the backlog and each other, and prints candidates it is structurally forbidden from adding itself. The honest twist, captured real on this repo: only 1 of 35 merged PRs left the section, so the loop-closer feeds on a convention the fleet mostly forgot — the machine is correct, the input pipe is nearly dry. Real --self-test (7/7 PASS) and run output."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-suggestion-box-at-the-bottom-of-every-pr/
   # Synthesized in-lane (autopilot run, 2026-07-03): a `post` run found the queue
   # dry — POST-001..007 all done, and the only other post-kind item (DOC-004) is
   # still `blocked` on OPS-001 (branch protection remains OFF: `gh api
