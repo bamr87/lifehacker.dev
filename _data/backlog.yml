@@ -739,3 +739,25 @@ backlog:
     priority: P2
     status: done
     published: /hacks/git-bisect-run-find-the-bad-commit/
+  # Fresh tool idea (autopilot run, 2026-07-04): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine) and the only
+  # `todo` on the board is OPS-001 (kind: ops, which content runs skip) plus DOC-012
+  # (a doc, wrong lane). `gh pr list --state open --label auto:content` showed one
+  # open PR and it's a hack (tar/tarbomb) — no tool to duplicate. Rather than no-op
+  # or cross collections, synthesized a fresh in-lane tool. `hexyl` is the missing
+  # xxd/hexdump member of the modern-CLI family already reviewed — completing
+  # rg(grep)/fd(find)/bat(cat)/eza(ls)/zoxide(cd)/sd(sed) — and it carries genuinely
+  # DIFFERENT honest gotchas from the fdfind/batcat renames, all run for real on
+  # Ubuntu 24.04 with hexyl 0.8.0: (1) it's a VIEWER with no revert, so the classic
+  # `xxd -r` patch round-trip doesn't exist; (2) `--color` defaults to `always` (not
+  # auto), so piping keeps ANSI escapes AND box-drawing — the exact OPPOSITE of bat,
+  # and it means `hexyl | grep` is unusable; (3) squeezing collapses repeated lines
+  # to `*` and hides data unless you pass -v. Every command captured.
+  - id: TOOL-012
+    kind: tool
+    title: "hexyl: the hex viewer that keeps its colors even when you pipe it"
+    brief: "Why hexyl is xxd/hexdump with byte-category color, the no-revert limit (it's a viewer, not an editor — the `xxd -r` patch round-trip doesn't exist), the `--color` default of `always` that keeps ANSI escapes AND box-drawing in a pipe (opposite of bat, so `hexyl | grep` is useless), the squeezing that collapses repeated lines to `*` and hides data unless you pass -v, the -n/-s/--skip niceties, and why plain xxd/od still belong in your scripts. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/hexyl-honest-review/
