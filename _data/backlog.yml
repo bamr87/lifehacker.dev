@@ -652,3 +652,90 @@ backlog:
     voice: meta-confession
     priority: P2
     status: todo
+  # Fresh tool idea (autopilot run, 2026-07-03): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd) and the only `todo` on
+  # the board is OPS-001 (kind: ops, which content runs skip). The one open
+  # auto:content PR is a hack (git bisect) — no tool to duplicate. Rather than no-op
+  # or cross collections, synthesized a fresh in-lane tool. `hyperfine` is the
+  # command-line benchmarking member of the modern-CLI family and pairs with the
+  # already-reviewed coreutils rewrites (it's what you'd use to prove rg beats grep).
+  # It carries a genuinely different honest angle from the fdfind/batcat renames: it
+  # is honest to a fault about its own margin of error. Two real gotchas left in and
+  # run for real on the Ubuntu 24.04 CI box: the shell-overhead calibration that
+  # returns nonsense (0.0 µs min) on fast commands until you pass -N, and the
+  # "statistical outliers" warning that never quits on a shared/CI box because
+  # wall-clock time there measures the whole machine, not your command. Real captured
+  # output only (hyperfine 1.18.0).
+  - id: TOOL-011
+    kind: tool
+    title: "hyperfine: the benchmarking tool that warns you its own numbers might be lying"
+    brief: "Why hyperfine is `time` with real statistics and a repeat count it picks for you, the shell-overhead trap where a fast command reports a 0.0 µs minimum until you pass -N/--shell=none, the 'statistical outliers' warning that never quits on a shared/CI box because it measures wall-clock (the whole machine, not your command), the --warmup/--prepare flags that level the field, the relative-speedup summary and markdown export worth keeping, and why it's a stopwatch not a profiler. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/hyperfine-honest-review/
+
+  # --- Fresh doc (autopilot run, 2026-07-03): every `doc` item on the board was
+  # already done (DOC-001/002/003/005/006/007/008/009/010); DOC-004 is a `post`
+  # blocked on OPS-001; the only `todo` is OPS-001 (kind: ops, which content runs
+  # skip). Open auto:content PRs are a post (byline/git-blame), a tool (hyperfine),
+  # and a hack (git bisect) — no open doc to duplicate. Rather than no-op, cross
+  # collections, or fabricate, synthesized a fresh in-lane doc. The triage doc
+  # (DOC-009) covered build_queue + file_issues but never harvest_ideas.rb — the
+  # loop-closer that recovers the `## Backlog ideas` bullets merged PRs leave in
+  # their descriptions (the "later" the skill's "list ideas in the PR body, triage
+  # promotes them later" refers to). Genuinely on-brand ("the mechanics are the
+  # content") and carries a real honest twist captured on this repo: of 35 merged
+  # auto:content PRs only 1 (#102) actually left a `## Backlog ideas` section, so
+  # the harvester yielded 3 candidates from one PR — a correct machine feeding on a
+  # convention the fleet mostly forgot to follow. Real self-test (7/7) + run output.
+  - id: DOC-011
+    kind: doc
+    title: "The suggestion box at the bottom of every pull request"
+    brief: "Deep-dive companion to DOC-009 on harvest_ideas.rb: the read-only script that scans merged auto:content PR bodies for the `## Backlog ideas` heading, parses the bullets (stopping at any `#`, even the `##Testing` typo, to under-harvest rather than over), dedupes them case/punct/backtick-blind against the backlog and each other, and prints candidates it is structurally forbidden from adding itself. The honest twist, captured real on this repo: only 1 of 35 merged PRs left the section, so the loop-closer feeds on a convention the fleet mostly forgot — the machine is correct, the input pipe is nearly dry. Real --self-test (7/7 PASS) and run output."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-suggestion-box-at-the-bottom-of-every-pr/
+  # Synthesized in-lane (autopilot run, 2026-07-03): a `post` run found the queue
+  # dry — POST-001..007 all done, and the only other post-kind item (DOC-004) is
+  # still `blocked` on OPS-001 (branch protection remains OFF: `gh api
+  # .../branches/main/protection` still returns 404, so the verified after-state
+  # that post needs does not exist). The open-PR check (`gh pr list --state open
+  # --label auto:content`) showed only a tool (hyperfine) and a hack (git bisect) —
+  # no post to duplicate. Rather than no-op, cross lanes, or fabricate the blocked
+  # post, synthesized a fresh in-lane Field Note about a real finding from this run:
+  # the site's front-matter byline says a robot wrote the post, but `git log` on the
+  # last commit credits the human (author), GitHub (committer), and demotes the bot
+  # to a `Co-authored-by:` trailer — and all three authors.yml personas share one
+  # GitHub handle (bamr87), so the robot's author card links to the human. The git
+  # checkout has NO configured identity (git config user.name → exit 1) and is a
+  # depth-1 shallow clone, so even auditing the pattern is capped at one commit. All
+  # outputs captured for real. Payload: byline vs git authorship are separate facts.
+  - id: POST-008
+    kind: post
+    title: "The byline says a robot wrote this; git blame says a human did"
+    brief: "Meta-confession: the front-matter `author:` says Claude, but every tool that records authorship credits the human. Real captured output — the last commit's author is Amr, committer is GitHub, the robot is only a Co-authored-by trailer (and it's the triage bot, not this one); `git config user.name` is unset (exit 1); all three authors.yml personas share github: bamr87 so the robot's author card links to the human; and the depth-1 shallow clone caps the audit at one commit. Payload: a byline is a display string, git authorship is a separate fact set by the account the automation runs under, and they quietly disagree — how to spot the seam and attribute a bot honestly."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/03/byline-says-robot-git-blame-says-human/
+  # --- Fresh hack (autopilot run, 2026-07-03): every `hack` item in the backlog was
+  # already done and the only `todo` on the whole board is OPS-001 (kind: ops, which
+  # content runs skip). `gh pr list --state open --label auto:content` returned []
+  # (no open PR to duplicate). Rather than no-op, cross collections, or fabricate,
+  # synthesized a fresh in-lane hack. `git bisect run` is an untouched corner —
+  # existing git hacks cover aliases / reflog / worktree but never binary-searching
+  # history for a regression — and it is fully reproducible offline with two famous
+  # exit-code footguns left in: the backwards test (0=good) that inverts the search
+  # and confidently blames a docs commit, and the unbuildable-midpoint case where a
+  # naive test blames the build break instead of returning 125 to skip. Every
+  # command run for real; the automated-bisect block is lh:run and passes the gate.
+  - id: HACK-016
+    kind: hack
+    title: "Let git find the commit that broke it: git bisect run"
+    brief: "git bisect is binary search over history for the commit that introduced a bug, and `git bisect run` automates the answering with a test script (exit 0=good, non-zero=bad). The two exit-code traps left in: a backwards test that inverts the whole search and blames a docs commit, and the unbuildable midpoint where a naive test blames the build break instead of returning 125 to skip. Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/git-bisect-run-find-the-bad-commit/
