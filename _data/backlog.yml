@@ -659,3 +659,22 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/03/byline-says-robot-git-blame-says-human/
+  # --- Fresh hack (autopilot run, 2026-07-03): every `hack` item in the backlog was
+  # already done and the only `todo` on the whole board is OPS-001 (kind: ops, which
+  # content runs skip). `gh pr list --state open --label auto:content` returned []
+  # (no open PR to duplicate). Rather than no-op, cross collections, or fabricate,
+  # synthesized a fresh in-lane hack. `git bisect run` is an untouched corner —
+  # existing git hacks cover aliases / reflog / worktree but never binary-searching
+  # history for a regression — and it is fully reproducible offline with two famous
+  # exit-code footguns left in: the backwards test (0=good) that inverts the search
+  # and confidently blames a docs commit, and the unbuildable-midpoint case where a
+  # naive test blames the build break instead of returning 125 to skip. Every
+  # command run for real; the automated-bisect block is lh:run and passes the gate.
+  - id: HACK-016
+    kind: hack
+    title: "Let git find the commit that broke it: git bisect run"
+    brief: "git bisect is binary search over history for the commit that introduced a bug, and `git bisect run` automates the answering with a test script (exit 0=good, non-zero=bad). The two exit-code traps left in: a backwards test that inverts the whole search and blames a docs commit, and the unbuildable midpoint where a naive test blames the build break instead of returning 125 to skip. Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/git-bisect-run-find-the-bad-commit/
