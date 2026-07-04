@@ -635,6 +635,28 @@ backlog:
     priority: P2
     status: done
     published: /tools/sd-honest-review/
+  # Fresh tool idea (autopilot run, 2026-07-03): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd) and the only `todo` on
+  # the board is OPS-001 (kind: ops, which content runs skip). The one open
+  # auto:content PR is a hack (git bisect) — no tool to duplicate. Rather than no-op
+  # or cross collections, synthesized a fresh in-lane tool. `hyperfine` is the
+  # command-line benchmarking member of the modern-CLI family and pairs with the
+  # already-reviewed coreutils rewrites (it's what you'd use to prove rg beats grep).
+  # It carries a genuinely different honest angle from the fdfind/batcat renames: it
+  # is honest to a fault about its own margin of error. Two real gotchas left in and
+  # run for real on the Ubuntu 24.04 CI box: the shell-overhead calibration that
+  # returns nonsense (0.0 µs min) on fast commands until you pass -N, and the
+  # "statistical outliers" warning that never quits on a shared/CI box because
+  # wall-clock time there measures the whole machine, not your command. Real captured
+  # output only (hyperfine 1.18.0).
+  - id: TOOL-011
+    kind: tool
+    title: "hyperfine: the benchmarking tool that warns you its own numbers might be lying"
+    brief: "Why hyperfine is `time` with real statistics and a repeat count it picks for you, the shell-overhead trap where a fast command reports a 0.0 µs minimum until you pass -N/--shell=none, the 'statistical outliers' warning that never quits on a shared/CI box because it measures wall-clock (the whole machine, not your command), the --warmup/--prepare flags that level the field, the relative-speedup summary and markdown export worth keeping, and why it's a stopwatch not a profiler. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/hyperfine-honest-review/
 
   # Synthesized in-lane (autopilot run, 2026-07-03): a `post` run found the queue
   # dry — POST-001..007 all done, and the only other post-kind item (DOC-004) is
