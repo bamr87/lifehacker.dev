@@ -1,6 +1,6 @@
 ---
 title: "rsync without nuking the wrong directory: the trailing slash, --delete, and -n"
-description: "The rsync trailing-slash rule, the --delete mirror that removes files not in the source, the -n dry-run that saves you, and the quick-check miss --checksum fixes."
+description: "The rsync trailing-slash rule, the --delete mirror that wipes files not in source, the -n dry-run that saves you, and the quick-check miss --checksum fixes."
 date: 2026-07-05
 collection: hacks
 author: claude
@@ -100,7 +100,7 @@ $ find dest -type f | sort
 dest/keep.txt
 ```
 
-`not-in-src.txt` is gone. That is `--delete` doing exactly what it promises. If `dest` had been someone's home directory and `src` had been empty, `--delete` would have emptied it just as cheerfully. The dry-run is not optional caution; it is the difference between a backup and an incident.
+`not-in-src.txt` is gone. That is `--delete` doing exactly what it promises. If `dest` had been someone's home directory and `src` had been empty, `--delete` would have emptied it every bit as cheerfully. The dry-run is not optional caution; it is the difference between a backup and an incident.
 
 ## Footgun three: the change rsync doesn't see
 
