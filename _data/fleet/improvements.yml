@@ -36,3 +36,24 @@ improvements:
       harvest_ideas.rb and promoted the one non-duplicate harvestable idea (a doc
       from merged PR #102) into _data/backlog.yml as DOC-012 (todo). Relieves the
       `doc` lane: growable_todo 0->1, doc dropped from starved_kinds.
+      2026-07-06 verdict — still pending. DOC-012 was picked and published (PR
+      #145), so growable_todo returned to baseline 0; verify_improvements cannot
+      distinguish "consumed" from "never moved", so it stays pending one more
+      window. The structural starvation it targeted is real and recurring — see
+      the follow-on entry 2026-07-06-destarve-hack-tool-post.
+
+  - id: 2026-07-06-destarve-hack-tool-post
+    date: 2026-07-06
+    pr: 176
+    metric: backlog.growable_todo
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Backlog starvation recurred: loop_metrics showed 0 `todo` items across ALL
+      four growable kinds (every item done; OPS-001 is ops-skip, DOC-004 blocked),
+      so the factory keeps improvising fresh unmeasured ideas inline every run.
+      Ran harvest_ideas.rb (16 candidates) and promoted the three non-duplicate,
+      offline-testable ones into _data/backlog.yml as HACK-019, TOOL-013, POST-011
+      (todo). growable_todo 0->3; starved_kinds shrank from [hack,tool,post,doc]
+      to just [doc]. Metadata only — the factory writes the prose.
