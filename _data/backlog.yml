@@ -1008,3 +1008,40 @@ backlog:
     voice: meta-confession
     priority: P2
     status: todo
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-001
+    kind: hack
+    title: "Rotate the secret you already deleted: detect-secrets and the key still living in git history"
+    brief: "Scan a repo with `detect-secrets scan`, then face the part nobody likes: deleting the line and committing does not remove the key — it sits in every prior commit and was scraped seconds after you pushed. The real fix is rotate first, then purge history with git filter-repo, plus a pre-commit hook so it never lands again. The failure — 'I deleted it, we're fine' — stays in."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1011/secure-coding/
+    source_title: "Secure Coding: Preventing the OWASP Top 10"
+    fingerprint: 4553171b47c4
+  - id: SRC-002
+    kind: tool
+    title: "pip-audit: the dependency scanner that finds real holes and a pile you can't patch"
+    brief: "Honest verdict on `pip-audit` (and its npm audit cousin): it catches genuinely known-vulnerable versions in seconds, and it also floods you with transitive-dependency advisories you can't fix and scores that don't match your actual risk. What earns an upgrade, what's noise, and when to wire it into CI versus running it by hand."
+    voice: tool-review-honest
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1011/secure-coding/
+    source_title: "Secure Coding: Preventing the OWASP Top 10"
+    fingerprint: adf392372480
+  - id: SRC-003
+    kind: hack
+    title: "Scope the token before your MCP server gets the keys: a fine-grained PAT that can't touch prod"
+    brief: "An MCP server inherits every permission of the token you hand it, so a classic admin PAT means one bad prompt can force-push. Build a fine-grained personal access token with read-only Contents/Issues/PR scopes, wire it into the server's env, and prove the limit by asking the agent to do something it shouldn't and watching it get a 403. The gotcha: the easy token is the dangerous one."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1000/agentic-mcp-server-mastery/
+    source_title: "Agentic MCP Server Mastery"
+    fingerprint: 4e37aa97b69a
