@@ -1,0 +1,199 @@
+# =============================================================================
+# content-scout.yml — crawl a sister site for backlog ideas (gated, OFF by default)
+# -----------------------------------------------------------------------------
+# Runs BEFORE the content factory. Fetches a seeded slice of a source site's
+# sitemap (it-journey.dev by default; configurable via SCOUT_SOURCES), drives the
+# content-scout skill to READ those pages via WebFetch and decide — with no
+# hand-picked topic — what fits the lifehacker.dev brand, appends those topics
+# (each pinned to its source it-journey.dev page) to _data/backlog.yml, and opens
+# ONE PR labeled `auto:content` so the gated auto-merge can ship it into main.
+# It NEVER merges.
+#
+# FOUR THINGS KEEP THIS SAFE (same posture as explore.yml / the other loops):
+#   1. The daily cron is ON, but scheduled runs idle unless CONTENT_SCOUT_ENABLED
+#      == "true" — the repo variable is the consent, and the bot token cannot set
+#      it (no administration scope).
+#   2. A `gate` job requires BOTH the kill-switch variable AND Claude auth.
+#   3. Manual runs keep `apply` defaulting to false (dry-run unless a human checks
+#      the box); scheduled runs apply. The browse is read-only regardless.
+#   4. Minimal scopes: contents + pull-requests only. Deliberately NO `issues`, NO
+#      `administration`, and NO `actions`/workflows scope.
+#
+# The deterministic spine (plan -> build_backlog) is the SAME code a human runs
+# locally, so dedup/caps/source-URL enforcement are identical in CI and on a
+# laptop. The browse step writes _data/scout/ideas.jsonl; everything after it is
+# mechanical (scripts/scout/*). No `synchronize` trigger, so it can't loop on
+# its own PR.
+# =============================================================================
+name: content-scout
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Append backlog + open PR (unchecked = dry-run plan only)"
+        type: boolean
+        default: false
+      seed:
+        description: "Crawl seed (YYYYMMDD). Empty = today's date (deterministic per day)."
+        type: string
+        default: ""
+      per_source:
+        description: "Pages read per source (cost cap)"
+        type: string
+        default: "6"
+      max_add:
+        description: "Max NEW backlog ideas to append this run"
+        type: string
+        default: "3"
+  schedule:
+    - cron: '7 8 * * *'            # 08:07 UTC daily — after triage (07:47), before the content factory (09:00)
+
+permissions:
+  contents: write
+  pull-requests: write
+  # Deliberately NO `issues`, NO `administration`, and NO `actions` scope.
+
+concurrency:
+  group: content-scout
+  cancel-in-progress: false
+
+jobs:
+  # The kill switch + key check. Outward actions never run unless this says go.
+  # Scheduled runs apply with the documented defaults; manual runs use inputs.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+      apply: ${{ steps.check.outputs.apply }}
+      seed: ${{ steps.check.outputs.seed }}
+      per_source: ${{ steps.check.outputs.per_source }}
+      max_add: ${{ steps.check.outputs.max_add }}
+    steps:
+      - id: check
+        env:
+          ENABLED: ${{ vars.CONTENT_SCOUT_ENABLED }}
+          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "$ENABLED" = "true" ] && { [ -n "$OAUTH" ] || [ -n "$KEY" ]; }; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "content-scout is off (CONTENT_SCOUT_ENABLED != true or no Claude auth) — idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            { echo "apply=${{ inputs.apply }}"; echo "seed=${{ inputs.seed }}";
+              echo "per_source=${{ inputs.per_source }}"; echo "max_add=${{ inputs.max_add }}"; } >> "$GITHUB_OUTPUT"
+          else
+            { echo "apply=true"; echo "seed="; echo "per_source=6"; echo "max_add=3"; } >> "$GITHUB_OUTPUT"
+          fi
+
+  scout:
+    needs: gate
+    if: ${{ needs.gate.outputs.go == 'true' }}
+    runs-on: ubuntu-latest
+    env:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # FLEET_TOKEN (bot PAT, contents+PRs, NO admin) so the PR TRIGGERS the
+      # pipeline — a github.token-authored PR is suppressed from starting
+      # workflows, so its checks never run and auto-merge could never see it green.
+      # Falls back to github.token (PR still opens for a human; won't auto-merge).
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+      # Configurable crawl targets (comma-separated). Default: the sister site.
+      SCOUT_SOURCES: ${{ vars.SCOUT_SOURCES || 'https://it-journey.dev' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      # 1. Plan the seeded crawl (fetches each source's sitemap; reproducible per day).
+      - name: Plan crawl
+        run: |
+          SEED="${{ needs.gate.outputs.seed }}"
+          ruby scripts/scout/plan_sources.rb \
+            ${SEED:+--seed "$SEED"} \
+            --per-source "${{ needs.gate.outputs.per_source }}"
+
+      - name: Ensure labels exist
+        if: ${{ needs.gate.outputs.apply == 'true' }}
+        run: scripts/scout/bootstrap-labels.sh || true
+
+      # 2. Read the planned source pages and propose on-brand topics. The skill
+      #    writes _data/scout/ideas.jsonl — it does NOT edit the backlog or open a
+      #    PR; the deterministic steps below do, so dedup/caps/source-URL rules are
+      #    identical in CI and locally. Tools are SCOPED: WebFetch + read + write
+      #    ideas.jsonl only. No `gh`, no backlog edit, no merge.
+      - name: Read the sister site (content-scout skill, universal AI runner)
+        uses: ./.github/actions/claude-run
+        continue-on-error: true
+        with:
+          agent: content-scout
+          prompt: "Use the content-scout skill to read the source pages in _data/scout/plan.json via WebFetch. First load _data/brand/identity.yml + voice.yml + glossary.yml and _data/backlog.yml, and skim pages/_hacks pages/_tools pages/_docs pages/_posts titles so you never propose a duplicate. For each source, WebFetch its `visit` URLs plus up to `wander_slots` links you choose. With NO topic handed to you, decide what would fit the lifehacker.dev brand (satire on top of working knowledge — in conversation with it-journey's earnest version, never a copy), and APPEND one JSON proposal per idea to _data/scout/ideas.jsonl in the documented shape (collection, title, brief, voice, source_url, source_title, rationale). Every proposal MUST carry a real it-journey.dev source_url. Aim for a small handful of strong, on-voice ideas, not a dump. Do NOT edit the backlog, open a PR, or merge — only write ideas.jsonl."
+          tools: "WebFetch,Read,Grep,Write(_data/scout/ideas.jsonl)"
+          system: "You are the content-scout for lifehacker.dev. Read the sister site read-only and write topic proposals to _data/scout/ideas.jsonl only. Every proposal references its source page. Never edit the backlog, open a PR, or merge."
+
+      # 3. Route deterministically: proposals -> deduped, source-required backlog
+      #    entries. Dry-run unless the human checked `apply` (the gate already
+      #    required the kill switch + key just to reach this job).
+      - name: Append backlog ideas
+        run: |
+          if [ ! -s _data/scout/ideas.jsonl ]; then
+            echo "No proposals written — nothing to route."
+            exit 0
+          fi
+          if [ "${{ needs.gate.outputs.apply }}" = "true" ]; then
+            ruby scripts/scout/build_backlog.rb --apply --max-add "${{ needs.gate.outputs.max_add }}"
+          else
+            echo "Dry-run (apply=false):"
+            ruby scripts/scout/build_backlog.rb --max-add "${{ needs.gate.outputs.max_add }}"
+          fi
+
+      # 4. Open ONE PR with the run trail + backlog appends, labeled so the gated
+      #    auto-merge can ship it. FLEET_TOKEN authorship makes the pipeline run.
+      - name: Open PR with scouted backlog ideas
+        if: ${{ needs.gate.outputs.apply == 'true' }}
+        run: |
+          git config user.name  "lifehacker-content-scout[bot]"
+          git config user.email "content-scout@lifehacker.dev"
+          git add _data/scout _data/backlog.yml 2>/dev/null || true
+          # Only open a PR when NEW backlog ideas actually landed. A run that found
+          # only duplicates (or no valid proposals) changes just the run trail — no
+          # point opening an empty PR; the trail still uploads as an artifact.
+          if git diff --cached --quiet -- _data/backlog.yml; then
+            echo "No NEW backlog ideas this run — skipping PR (run trail kept as an artifact)."
+            exit 0
+          fi
+          branch="scout/$(date +%Y%m%d-%H%M)"
+          git checkout -b "$branch"
+          git commit -m "scout: backlog ideas from the sister site (it-journey.dev)"
+          git push origin "$branch"
+          # Heredoc kept at the run-block base indent so the BODY terminator lands
+          # at column 0 after YAML de-indents this block.
+          cat > /tmp/scout-pr-body.md <<'BODY'
+          Automated crawl of the sister site (it-journey.dev; configurable via `SCOUT_SOURCES`).
+          The content-scout read a seeded slice of the sitemap and proposed on-brand topics;
+          the deterministic `scripts/scout/build_backlog.rb` deduped them and appended
+          `status: todo` items to `_data/backlog.yml`, **each carrying the source it-journey.dev
+          page** it was inspired by. `_data/scout/` holds the run trail.
+
+          Labeled `auto:content`: this is content/data only (backlog + run trail), so the gated
+          auto-merge may ship it once the pipeline is green — same path as a content-factory PR.
+          The bot never merges. A human can review or reprioritize any item; these default to P3.
+          BODY
+          gh pr create --base "${{ github.ref_name }}" --head "$branch" \
+            --title "scout: sister-site backlog ideas ($(date +%Y-%m-%d))" \
+            --body-file /tmp/scout-pr-body.md \
+            --label "auto:content" \
+            --label "source/content-scout"
+
+      - name: Upload scout artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-scout
+          path: |
+            _data/scout/

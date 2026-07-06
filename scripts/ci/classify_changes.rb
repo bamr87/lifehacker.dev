@@ -23,8 +23,8 @@ def kind_of(path)
     'pipeline'                                   # the machinery changed — test it all
   when %r{\AGemfile}, %r{\A_config(_dev)?\.yml\z}
     'deps'                                       # build inputs changed — full build + tests
-  when %r{\A_data/(health|fleet|analytics)/}, %r{\ASITE_HEALTH\.md\z}
-    'data'                                       # generated state — lightest path
+  when %r{\A_data/(health|fleet|analytics|explorer|scout)/}, %r{\ASITE_HEALTH\.md\z}
+    'data'                                       # generated state / bot run-trails — lightest path
   when %r{\Apages/},
        %r{\A_data/(brand|navigation)/},
        %r{\A_data/(authors|landing|backlog)\.yml\z},

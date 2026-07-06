@@ -52,6 +52,11 @@ not published — it becomes a Field Note about why it didn't.
 - Use the voice profile from the backlog item, or the collection default in
   `voice.yml` (`how-to-practical` for hacks, `tool-review-honest` for tools,
   `meta-confession` for field notes/docs, `satire-deadpan` otherwise).
+- **If the item carries a `source_url`** (an idea the `content-scout` found on the
+  sister site it-journey.dev), reference and **link that page** in the piece — a
+  natural in-text mention or an "spotted on it-journey" note is enough. The scout
+  pins every idea to its source; honor the credit. Write the lifehacker angle, not
+  a rewrite of their page.
 - Lint against `glossary.yml`: no banned words used **sincerely**. They are
   allowed only inside a clearly-flagged bit.
 - Use the front-matter templates below. Put files in the right collection:
