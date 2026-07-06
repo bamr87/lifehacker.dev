@@ -909,6 +909,26 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/06/the-160-character-rule-i-broke-six-times/
+  # --- Fresh hack (autopilot run, 2026-07-06): every `hack` item in the backlog
+  # was already done and the only `todo` on the whole board is OPS-001 (kind: ops,
+  # which content runs skip). `gh pr list --state open --label auto:content`
+  # returned [] (no open PR to duplicate). Rather than no-op, cross collections, or
+  # fabricate, synthesized a fresh in-lane hack. The `sort | uniq -c | sort -rn`
+  # tally is an untouched corner — existing hacks cover git / fzf / tmux / ssh /
+  # make / bash-strict-mode / trap / xargs / rsync / tar but never the "what shows
+  # up most?" pipeline everyone pastes — and it carries two famous, fully-offline-
+  # reproducible footguns left in: uniq only collapsing ADJACENT duplicates (so a
+  # missing leading `sort` silently under-counts), and the default lexical `sort -r`
+  # that ranks 9 above 100 until you add `-n`. Every command run for real; the
+  # tested block is lh:run and passes the gate.
+  - id: HACK-019
+    kind: hack
+    title: "Count what happens most: the sort | uniq -c tally (and why uniq lies until you sort)"
+    brief: "The sort | uniq -c | sort -rn pipeline that ranks the top entries in any list, the adjacency footgun where uniq without a leading sort under-counts, the lexical-vs-numeric trap where sort -r puts 9 above 100 (fixed with -n), the -d/-u cousins, and the byte-exact case/whitespace trap. Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/sort-uniq-count-tally/
   # --- Fresh doc (autopilot run, 2026-07-06): every `doc` item on the board was
   # already done (DOC-001/002/003/005/006/007/008/009/010/011/012/013); DOC-004 is
   # a `post` blocked on OPS-001; the only `todo` is OPS-001 (kind: ops, which content
@@ -935,6 +955,26 @@ backlog:
     status: done
     published: /docs/the-link-checker-that-doesnt-trust-a-clean-exit/
 
+  # --- Fresh tool (autopilot run, 2026-07-06): every `tool` item on the board is
+  # already done (TOOL-001..012) and `gh pr list --state open --label auto:content`
+  # showed only a hack PR (HACK-019) — nothing to duplicate in-lane. Rather than
+  # no-op, cross lanes, or fabricate, synthesized a fresh in-lane tool. The modern-
+  # CLI family we've reviewed covers rg/fd/bat/eza/zoxide/sd/delta/hexyl/dust/jq/
+  # fzf/hyperfine but never the `ps` replacement — a glaring gap. `procs` fills it
+  # and carries real, offline-reproducible surprises left in: the ~2-min cargo build
+  # (no apt package), keyword search that substring-matches the whole command line
+  # (so it lists the shell running the query — captured), sort keys that are procs's
+  # own column kinds (`rss` works, `vsz`/`memory` give "Can't find column kind"),
+  # lossy `--json` numbers (MEM 86 vs table 0.1% vs ps RSS 14616), and color that
+  # strips cleanly when piped. Every command run for real on Ubuntu 24.04.
+  - id: TOOL-013
+    kind: tool
+    title: "procs: the ps replacement that searches by keyword (and matches your own shell)"
+    brief: "The Rust ps replacement: a readable colored table plus keyword search that beats `ps aux | grep`. Honest edges left in — the two-minute cargo build with no apt package, search that substring-matches the entire command line (so it catches your parent shell), sort keys that are procs's own column names, and lossy --json numbers. Verdict: keep it for interactive use, leave ps in scripts."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/procs-honest-review/
   # --- Harvested + promoted by loop-tuner (2026-07-06) to relieve backlog
   # starvation. loop_metrics showed 0 `todo` items across ALL four growable kinds
   # (hack/tool/post/doc) — every prior item is `done`, OPS-001 is `ops` (content
