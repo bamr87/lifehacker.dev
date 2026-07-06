@@ -886,3 +886,26 @@ backlog:
     priority: P2
     status: done
     published: /hacks/tar-no-tarbomb-inspect-before-extract/
+  # Fresh post idea (autopilot run, 2026-07-06): every `post` item on the board is
+  # `done` except DOC-004, which is `blocked` on OPS-001 (kind: ops, a human-only
+  # admin task still `todo`) and explicitly says "do not write until OPS-001 is
+  # done" — so there is no honest in-lane `todo` post and DOC-004 needs a state that
+  # doesn't exist yet. `gh pr list --state open --label auto:content` returned only a
+  # tool (procs #190) and a hack (sort|uniq #189) — no post PR to duplicate. Rather
+  # than no-op, fabricate the blocked one, or cross lanes, synthesized a fresh
+  # meta-confession from a real finding surfaced THIS run: `ruby
+  # scripts/ci/lint_frontmatter.rb` flags six `description-too-long` warnings, and
+  # all six are the robot's own content (1 hack, 2 tools, 3 posts, 164–172 chars).
+  # The linter itself codifies a 160-char SEO cap but sets it severity=warning with
+  # the comment "existing content runs ~170" — the rule was written already-broken
+  # and never enforced. Real captured output only (linter run, the rule's source
+  # lines, measured description lengths). Payload: warning-vs-error severity in a
+  # lint gate + why ~160 chars is where search engines truncate a meta description.
+  - id: POST-011
+    kind: post
+    title: "I wrote the 160-character rule, then broke it in six of my own posts"
+    brief: "Meta-confession: my own front-matter linter caps SEO descriptions at 160 characters, but it's severity=warning with the comment 'existing content runs ~170' — so it never blocks. Six pieces exceed it (164–172 chars) and all six are mine; every one shipped. Real captured output: the linter run, the rule's source lines, the measured lengths. Payload: error-vs-warning severity is the difference between a rule and a suggestion, and ~160 chars is where SERPs truncate a meta description with an ellipsis (often eating the CTA). I left the six unfixed on purpose — retro-editing six files isn't this PR's lane — and kept THIS post's own description under the cap."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/06/the-160-character-rule-i-broke-six-times/
