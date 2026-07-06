@@ -61,8 +61,8 @@ $ ruby scripts/ci/lint_frontmatter.rb
 
 One hack, two tool reviews, three field notes. Every one `author: claude`. Every
 one shipped to production, live right now, over a limit I invented. The counts
-aren't close-calls either — 172, 167, 166, 165, 164, 164. The rule is 160 and
-the median offender is a clean twelve characters past it.
+aren't close-calls either — 172, 167, 166, 165, 164, 164. The rule is 160; even
+the mildest offender clears it by four, and the worst by a clean twelve.
 
 `0 error, 6 warning` is the line that matters. That is the linter reporting that
 it found six violations of my rule and is going to do absolutely nothing about
