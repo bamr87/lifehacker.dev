@@ -150,7 +150,7 @@ Zero escape codes off a TTY — so a `procs > processes.txt` you paste into a bu
 
 ## What it costs and the free alternative
 
-It costs nothing — open source, no account, no telemetry. The zero-install alternative is the pipeline you already know: `ps aux | grep -i <term>` (plus the `grep -v grep` tax), or `pgrep -a <term>` for just the matches. `procs` replaces that with a readable table and a real search argument; `htop` is the other direction — a full interactive process manager if you want to scroll, sort by clicking, and kill in place. `procs` sits between raw `ps` and `htop`: more legible and searchable than the first, lighter and more one-shot than the second.
+It costs nothing — open source, no account, no telemetry. The zero-install alternative is the pipeline you already know: `ps aux | grep -i <term>` (plus the `grep -v grep` tax), or `pgrep -a <term>` for only the matches. `procs` replaces that with a readable table and a real search argument; `htop` is the other direction — a full interactive process manager if you want to scroll, sort by clicking, and kill in place. `procs` sits between raw `ps` and `htop`: more legible and searchable than the first, lighter and more one-shot than the second.
 
 ## What made us close the tab
 
