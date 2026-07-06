@@ -44,6 +44,7 @@ jobs:
       - name: 🚥 rate.limiter (brl)
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
           LIMIT: "2"
         run: |-
           COUNT=$(gh run list --workflow "$GITHUB_WORKFLOW" --created "$(date -u +%Y-%m-%d)" --json databaseId --jq 'length')
