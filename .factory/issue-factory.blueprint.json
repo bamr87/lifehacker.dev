@@ -1,0 +1,259 @@
+{
+  "version": 1,
+  "meta": {
+    "name": "Issue Factory",
+    "description": "Review open issues → group related ones into work orders → one reviewable PR per work order.",
+    "repo": "bamr87/lifehacker.dev"
+  },
+  "nodes": [
+    {
+      "id": "bc",
+      "type": "trigger.cron",
+      "position": {
+        "x": 40,
+        "y": 80
+      },
+      "config": {
+        "cron": "0 6 * * 1-5"
+      }
+    },
+    {
+      "id": "bm",
+      "type": "trigger.manual",
+      "position": {
+        "x": 40,
+        "y": 200
+      },
+      "config": {
+        "mode": "plan-first"
+      }
+    },
+    {
+      "id": "bg",
+      "type": "gate.enablement",
+      "position": {
+        "x": 240,
+        "y": 140
+      },
+      "config": {
+        "variable": "ISSUE_FACTORY_ENABLED"
+      }
+    },
+    {
+      "id": "brl",
+      "type": "rate.limiter",
+      "position": {
+        "x": 430,
+        "y": 140
+      },
+      "config": {
+        "maxPerDay": 2
+      }
+    },
+    {
+      "id": "ba",
+      "type": "processor.issue_batcher",
+      "position": {
+        "x": 620,
+        "y": 140
+      },
+      "config": {
+        "promptRef": ".factory/prompts/issue-batcher.md",
+        "model": "claude-sonnet-4-6",
+        "maxGroupSize": 4,
+        "maxTurns": 30
+      }
+    },
+    {
+      "id": "fc",
+      "type": "trigger.cron",
+      "position": {
+        "x": 40,
+        "y": 380
+      },
+      "config": {
+        "cron": "0 7 * * 1-5"
+      }
+    },
+    {
+      "id": "fm",
+      "type": "trigger.manual",
+      "position": {
+        "x": 40,
+        "y": 500
+      },
+      "config": {
+        "mode": "plan-first"
+      }
+    },
+    {
+      "id": "fg",
+      "type": "gate.enablement",
+      "position": {
+        "x": 240,
+        "y": 440
+      },
+      "config": {
+        "variable": "ISSUE_FACTORY_ENABLED"
+      }
+    },
+    {
+      "id": "frl",
+      "type": "rate.limiter",
+      "position": {
+        "x": 430,
+        "y": 440
+      },
+      "config": {
+        "maxPerDay": 3
+      }
+    },
+    {
+      "id": "fa",
+      "type": "agent.claude",
+      "position": {
+        "x": 620,
+        "y": 440
+      },
+      "config": {
+        "promptRef": ".factory/prompts/issue-fixer.md",
+        "model": "claude-opus-4-8",
+        "maxTurns": 40
+      }
+    },
+    {
+      "id": "fpr",
+      "type": "sink.open_pr",
+      "position": {
+        "x": 870,
+        "y": 380
+      },
+      "config": {
+        "branchHint": "factory/issue-*"
+      }
+    },
+    {
+      "id": "fcm",
+      "type": "sink.comment",
+      "position": {
+        "x": 870,
+        "y": 500
+      },
+      "config": {
+        "instruction": "links the fix PR on every member issue of the work order it addressed"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": {
+        "node": "bc",
+        "port": "out"
+      },
+      "to": {
+        "node": "bg",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e2",
+      "from": {
+        "node": "bm",
+        "port": "out"
+      },
+      "to": {
+        "node": "bg",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e3",
+      "from": {
+        "node": "bg",
+        "port": "out"
+      },
+      "to": {
+        "node": "brl",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e4",
+      "from": {
+        "node": "brl",
+        "port": "out"
+      },
+      "to": {
+        "node": "ba",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e5",
+      "from": {
+        "node": "fc",
+        "port": "out"
+      },
+      "to": {
+        "node": "fg",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e6",
+      "from": {
+        "node": "fm",
+        "port": "out"
+      },
+      "to": {
+        "node": "fg",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e7",
+      "from": {
+        "node": "fg",
+        "port": "out"
+      },
+      "to": {
+        "node": "frl",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e8",
+      "from": {
+        "node": "frl",
+        "port": "out"
+      },
+      "to": {
+        "node": "fa",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e9",
+      "from": {
+        "node": "fa",
+        "port": "out"
+      },
+      "to": {
+        "node": "fpr",
+        "port": "in"
+      }
+    },
+    {
+      "id": "e10",
+      "from": {
+        "node": "fa",
+        "port": "out"
+      },
+      "to": {
+        "node": "fcm",
+        "port": "in"
+      }
+    }
+  ]
+}
