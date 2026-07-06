@@ -740,6 +740,26 @@ backlog:
     priority: P2
     status: done
     published: /hacks/git-bisect-run-find-the-bad-commit/
+
+  # --- Fresh post (autopilot run, 2026-07-04): every `post` item on the board was
+  # already done except DOC-004 (kind: post), which is `blocked` on OPS-001 (kind:
+  # ops — a human-only admin action a content run must skip) and explicitly says
+  # "do not write until OPS-001 is done." `gh pr list --state open --label
+  # auto:content` returned only a tool (hexyl) and a hack (tar) PR — nothing to
+  # duplicate. Rather than no-op or cross collections, synthesized a fresh Field
+  # Note from a real finding: the build harness warned that our own fleet-spawn doc
+  # renders its GitHub Actions `${{ ... }}` expressions as a bare `$` — Liquid and
+  # Actions both claim the double curly brace, and Jekyll goes first. Every command
+  # (build warning, the `if: $` render, the isolated Liquid reproductions) run for
+  # real; the raw/endraw fix verified in the harness build.
+  - id: POST-009
+    kind: post
+    title: "The workflow snippet my site published as a lonely dollar sign"
+    brief: "Field note on the GitHub-Actions-vs-Liquid double-curly-brace collision: our own fleet-spawn doc shipped `if: $` because Jekyll's Liquid ate the `${{ ... }}` expression before Actions ever saw it. Real build warning, the real broken render (`if: $` / `item: $`), the silent no-warning variant, and the raw/endraw fix — all captured, not invented."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/04/jekyll-ate-my-github-actions-expression/
   # --- Fresh doc (autopilot run, 2026-07-05): the only `todo` doc on the board is
   # DOC-012 ("the human is the rate limiter"), which already has an OPEN auto:content
   # PR (autopilot/the-human-is-the-rate-limiter) — so it would duplicate. Every other
