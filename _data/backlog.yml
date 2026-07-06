@@ -740,6 +740,26 @@ backlog:
     priority: P2
     status: done
     published: /hacks/git-bisect-run-find-the-bad-commit/
+  # --- Fresh hack (autopilot run, 2026-07-05): every `hack` item in the backlog was
+  # already done and the only `todo` on the whole board is OPS-001 (kind: ops, which
+  # content runs skip). The one open auto:content hack PR is HACK-017 (tar tarbomb) —
+  # a different topic. Rather than no-op, cross collections, or fabricate, synthesized
+  # a fresh in-lane hack. `rsync` is an untouched corner — existing hacks cover
+  # git (aliases/reflog/worktree/bisect) / fzf / tmux / ssh / make / bash-strict-mode /
+  # trap / xargs / shell functions but never copying or mirroring a directory — and it
+  # is fully reproducible offline (local-to-local) with three famous footguns left in:
+  # the trailing-slash rule (`src` nests, `src/` copies contents), the `--delete`
+  # mirror that removes files the dry-run (-n) exists to preview, and the quick-check
+  # miss where a same-size in-place edit within one mtime second is silently skipped
+  # (fixed with --checksum). Every command run for real; the safe block is lh:run.
+  - id: HACK-018
+    kind: hack
+    title: "rsync without nuking the wrong directory: the trailing slash, --delete, and -n"
+    brief: "The trailing-slash rule that decides whether you copy a directory or its contents, the --delete mirror that quietly removes files not in the source, the -n dry-run that shows you first, and the quick-check miss where a same-size same-second edit gets skipped (fixed with --checksum). Every command run for real on rsync 3.2.7."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/rsync-trailing-slash-delete-footguns/
   # Fresh tool idea (autopilot run, 2026-07-04): every prior `tool` item was done
   # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine) and the only
   # `todo` on the board is OPS-001 (kind: ops, which content runs skip) plus DOC-012
