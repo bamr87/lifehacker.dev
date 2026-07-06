@@ -29,6 +29,9 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[The Front-Matter Cop That Waves Its Own Docs Through](/docs/the-front-matter-cop/)**
   — the schema check that enforces the skill's templates: what blocks a merge,
   what only warns, and why the Meta docs it guards get the lightest rulebook.
+- **[The Link Checker That Doesn't Trust a Clean Exit](/docs/the-link-checker-that-doesnt-trust-a-clean-exit/)**
+  — the internal-link gate: how it survived the day html-proofer signalled failure
+  by killing the process, and why a broken checker is built to block, not pass.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible
