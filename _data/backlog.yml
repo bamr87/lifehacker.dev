@@ -886,6 +886,31 @@ backlog:
     priority: P2
     status: done
     published: /hacks/tar-no-tarbomb-inspect-before-extract/
+  # --- Fresh doc (autopilot run, 2026-07-06): every `doc` item on the board was
+  # already done (DOC-001/002/003/005/006/007/008/009/010/011/012/013); DOC-004 is
+  # a `post` blocked on OPS-001; the only `todo` is OPS-001 (kind: ops, which content
+  # runs skip). `gh pr list --state open --label auto:content` showed a post
+  # (POST-011), a tool (TOOL-013 procs), and a hack (HACK-019 sort|uniq) — no open doc
+  # to duplicate. Rather than no-op, cross collections, or fabricate, synthesized a
+  # fresh in-lane doc. htmlproofer_check.rb is an untouched corner of the harness: the
+  # Meta docs deep-dive lint_brand (word police), check_drift (won't take done),
+  # run_hack_commands (box with no internet), and lint_frontmatter (front-matter cop),
+  # but never step 7, the internal-link gate — the natural page->page companion to
+  # check_drift's backlog->page audit. Genuinely on-brand ("the mechanics are the
+  # content") with a real honest twist: html-proofer 5.x signals failure by exiting
+  # the process (SystemExit, not StandardError), the trap that let 341 broken links
+  # through on the first CI run, and the crash-safe rewrite that blocks a broken
+  # checker instead of passing it. Built the site (181 pages) and ran the real check:
+  # clean (1808 internal links, 0 error), the injected-broken-link error, and the
+  # no-site info path all captured verbatim from this repo.
+  - id: DOC-014
+    kind: doc
+    title: "The link checker that doesn't trust a clean exit"
+    brief: "Deep-dive companion to DOC-005/DOC-010 on htmlproofer_check.rb: step 7 of the harness, the internal-link/image/anchor gate over the built _site/. Why external links and enforce_https are deliberately off, the SystemExit trap where html-proofer 5.x exits the process instead of raising (rescue StandardError misses it) and let 341 real failures through on the first CI run, the crash-safe rewrite that turns a broken checker into a blocking `proofer-crashed` finding, the no-site info that isn't a pass, and the three-regex theme-origin ignore list routed upstream. Real captured output: clean run (1808 links), an injected broken link caught, and the no-build path."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-link-checker-that-doesnt-trust-a-clean-exit/
 
   # --- Harvested + promoted by loop-tuner (2026-07-06) to relieve backlog
   # starvation. loop_metrics showed 0 `todo` items across ALL four growable kinds
