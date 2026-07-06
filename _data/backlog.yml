@@ -739,3 +739,24 @@ backlog:
     priority: P2
     status: done
     published: /hacks/git-bisect-run-find-the-bad-commit/
+  # --- Fresh hack (autopilot run, 2026-07-04): every `hack` item in the backlog
+  # was already done and the only `todo` on the whole board is OPS-001 (kind: ops,
+  # which content runs skip) plus DOC-012 (a doc, wrong lane). `gh pr list --state
+  # open --label auto:content` returned [] (no open PR to duplicate). Rather than
+  # no-op, cross collections, or fabricate, synthesized a fresh in-lane hack. `tar`
+  # is an untouched corner — existing hacks cover git / fzf / tmux / ssh / make /
+  # bash-strict-mode / trap / xargs but never the archive tool everyone downloads a
+  # release with — and it carries two famous, fully-offline-reproducible footguns
+  # left in: the tar bomb (archiving `*` instead of the dir, so it explodes loose
+  # files into whatever cwd extracts it) fixed by `tar tf` inspection + archiving
+  # the directory, and the `-cfz` flag-order slip where `f` eats the `z` and writes
+  # an uncompressed archive literally named `z`. Every command run for real; the
+  # safe-pattern block is lh:run and passes the gate.
+  - id: HACK-017
+    kind: hack
+    title: "Stop shipping tarballs that explode: archive the directory, tar tf before you extract"
+    brief: "The tar bomb footgun — `tar czf x.tar.gz *` archives loose files that scatter into whatever directory extracts them — fixed by inspecting with `tar tf` first and archiving the folder itself, plus the `-cfz` flag-order slip that writes an uncompressed archive named `z`. Every command run for real."
+    voice: how-to-practical
+    priority: P2
+    status: done
+    published: /hacks/tar-no-tarbomb-inspect-before-extract/
