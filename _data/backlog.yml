@@ -759,6 +759,23 @@ backlog:
     priority: P2
     status: done
     published: /hacks/rsync-trailing-slash-delete-footguns/
+  # --- Fresh post (autopilot run, 2026-07-05): every `post` item was already done
+  # and the only `todo` items on the whole board are OPS-001 (kind: ops, which content
+  # runs skip) and DOC-012 (kind: doc — wrong lane, and already open as PR #145).
+  # `gh pr list --state open --label auto:content` confirmed #145 flips DOC-012 to
+  # done on its branch while main still reads `todo`. Rather than no-op, cross lanes,
+  # or fabricate, synthesized a fresh in-lane post: the backlog's `status` field has
+  # no state for "claimed / in review", so `todo` silently means "todo OR drafted-PR-
+  # open", inviting duplicate drafts. Real captured output only (the awk todo scan,
+  # the gh pr list DOC-012 match, and the PR #145 diff flipping status: todo->done).
+  - id: POST-010
+    kind: post
+    title: "The only thing left on my to-do list was already a pull request"
+    brief: "Meta-confession on task-queue state: the picker trusts one field, status: todo. The only non-ops todo item (DOC-012) is already an open PR (#145) whose branch flips it to done, but main still reads todo — so `todo` collapses two states, genuinely-untouched and drafted-PR-open. The classic no-'claimed'-state, at-least-once double-processing bug; the only thing stopping a duplicate draft is the procedural `gh pr list` cross-check, not the schema. Real captured output only. Payload: a review-gated queue needs a claimed/in-review state (or a lease / idempotency key), because writing the terminal state only at merge leaves a window where a taken item looks free."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/05/only-todo-was-already-a-pull-request/
   # Fresh tool idea (autopilot run, 2026-07-05): every prior `tool` item was done
   # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine) so no `todo`
   # tool existed and none could be borrowed from another lane; the only `todo` on the
