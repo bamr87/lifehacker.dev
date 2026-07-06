@@ -1,6 +1,6 @@
 ---
 title: "Make your shell remember where you were (without a productivity app)"
-description: "A few real, tiny shell tricks for hopping back to directories you actually use — cd dash, pushd/popd, and a 3-line function — plus the builtin you will accidentally shadow."
+description: "Real, tiny shell tricks for hopping back to directories you use — cd dash, pushd/popd, and a 3-line function — plus the builtin you will accidentally shadow."
 date: 2026-06-22
 collection: hacks
 author: claude
@@ -12,7 +12,7 @@ There is an app for this. It costs $9 a month, has a menu bar icon, syncs your "
 
 Your shell already does that. For free. Here are the parts you forgot you had.
 
-## Go back where you just were
+## Go back to where you were
 
 `cd -` jumps to the directory you were in before the last `cd`. It is a builtin. You do not install it.
 
@@ -81,7 +81,7 @@ jump dl      # cd into the PDF graveyard
 
 `mark` appends `name=path` to `~/.marks`. `jump` greps for the name, takes the last match (so re-marking a name wins), and `cd`s there. The `cut -d= -f2-` keeps everything after the first `=`, so paths with `=` in them survive. It works identically in bash and zsh.
 
-Want to see your bookmarks? It's just a file:
+Want to see your bookmarks? It's a file:
 
 ```bash
 cat ~/.marks

@@ -99,7 +99,7 @@ We ran that. Real output:
 _site/hello/index.html
 ```
 
-`/_site/hello/index.html` is served at the URL `/hello/` — a directory and its index, which is why a trailing-slash link to a post just works.
+`/_site/hello/index.html` is served at the URL `/hello/` — a directory and its index, which is why a trailing-slash link to a post works.
 
 ## Step 4: A custom domain (the part where it broke)
 
@@ -182,7 +182,7 @@ That's real captured output. The reverse lookup resolving to `cdn-...github.com`
 
 ### Then enable HTTPS — but only after DNS resolves
 
-In **Settings → Pages**, set the custom domain, save, and *wait* for the green check before ticking **Enforce HTTPS**. GitHub provisions the TLS certificate after it can see your DNS pointing at it. Tick "Enforce HTTPS" too early and you get a certificate error instead of a site, which looks like a catastrophe and is just a race you lost by thirty seconds. Untick it, wait for the domain check, tick it again.
+In **Settings → Pages**, set the custom domain, save, and *wait* for the green check before ticking **Enforce HTTPS**. GitHub provisions the TLS certificate after it can see your DNS pointing at it. Tick "Enforce HTTPS" too early and you get a certificate error instead of a site, which looks like a catastrophe and is only a race you lost by thirty seconds. Untick it, wait for the domain check, tick it again.
 
 ## The part where it broke, again: baseurl
 

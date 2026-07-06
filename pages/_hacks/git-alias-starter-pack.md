@@ -16,7 +16,7 @@ The pitch is simple: git lets you define shorthand in your config. You type `git
 
 ## The block
 
-Open `~/.gitconfig` and paste this under the `[alias]` heading. If you do not have an `[alias]` heading, add one — it is just a line that says `[alias]`.
+Open `~/.gitconfig` and paste this under the `[alias]` heading. If you do not have an `[alias]` heading, add one — it is a single line that says `[alias]`.
 
 ```ini
 [alias]
@@ -39,10 +39,10 @@ Open `~/.gitconfig` and paste this under the `[alias]` heading. If you do not ha
 - **`br`** → `branch`. List, create, delete branches. The classics.
 - **`ci`** → `commit`. From the Subversion days, when "ci" meant check-in. Muscle memory dies hard; lean into it.
 - **`lg`** → `log --oneline --graph --decorate --all`. This is the real prize. Nobody types that flag soup from memory. `git lg` draws the whole branch tree as ASCII art, which is the closest git gets to a hug.
-- **`last`** → `log -1 HEAD --stat`. "What did I just do?" Shows your most recent commit and which files it touched. Excellent for the moment right before you push and panic.
+- **`last`** → `log -1 HEAD --stat`. "What did I do?" Shows your most recent commit and which files it touched. Excellent for the moment right before you push and panic.
 - **`unstage`** → `reset HEAD --`. You `git add`-ed something by accident. `git unstage path/to/file` puts it back. The name tells you what it does, which is the whole point of a name.
 - **`amend`** → `commit --amend --no-edit`. Forgot a file in your last commit? Stage it, run `git amend`, and it folds into the previous commit without reopening your editor. (Only do this before you push. Amending shared history is how the cautionary tale below starts.)
-- **`undo`** → `reset --soft HEAD~1`. Un-commits the last commit but keeps your changes staged. The "wait, no, not yet" button. `--soft` means your work is safe — nothing is deleted, just un-committed.
+- **`undo`** → `reset --soft HEAD~1`. Un-commits the last commit but keeps your changes staged. The "wait, no, not yet" button. `--soft` means your work is safe — nothing is deleted, only un-committed.
 - **`pushf`** → `push --force-with-lease`. Read the next section before you ever type this one.
 
 ## The one that can ruin your afternoon
@@ -51,7 +51,7 @@ Here is the part where we leave the failure in, because the failure is the lesso
 
 The obvious alias to write is `pushf = push --force`. It works. You rebased your branch, history changed, a normal push gets rejected, and `--force` shoves your version up regardless. Tidy.
 
-Then a teammate pushed three commits to that same branch while you were rebasing. You did not know. `git pushf` did exactly what you told it: it forced. Their three commits are now gone from the remote — not in the history, not in the log, just gone. They find out in the afternoon, the hard way.
+Then a teammate pushed three commits to that same branch while you were rebasing. You did not know. `git pushf` did exactly what you told it: it forced. Their three commits are now gone from the remote — not in the history, not in the log — gone. They find out in the afternoon, the hard way.
 
 `--force-with-lease` is the fix, and it is the only reason `pushf` is in this list at all. It forces **only if the remote is still where you last saw it**. If someone pushed in the meantime, git refuses and tells you so. You go investigate instead of bulldozing.
 
@@ -62,7 +62,7 @@ git pushf
 # error: failed to push some refs
 ```
 
-That rejection is not the alias failing. That is the alias working. It just saved someone's afternoon, possibly yours.
+That rejection is not the alias failing. That is the alias working. It saved someone's afternoon, possibly yours.
 
 Same four keystrokes as `--force`. Wildly different outcome. Always the lease.
 
@@ -84,7 +84,7 @@ Each alias can be set with one command, no text editor:
 git config --global alias.st "status -sb"
 ```
 
-Repeat per alias, or just paste the block — pasting is faster, which is, after all, the genre we are in here.
+Repeat per alias, or paste the block — pasting is faster, which is, after all, the genre we are in here.
 
 ## The honest accounting
 
