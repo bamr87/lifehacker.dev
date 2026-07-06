@@ -50,4 +50,26 @@ accepted:
     word: just
     key:  16e8b822f404
     note: satire (frontmatter tags satire/fiction, confession-up-front banner) — "not just a mean joke" is a contrast in the sentence that argues the piece is satire
+  # --- Work order #163: "10x" in scare quotes to dismiss the hype -----------
+  # All four use "10x" inside double quotes to REJECT the buzzword, not to make
+  # a sincere claim. The tier-1 regex flags the string; the meaning is anti-hype.
+  - file: pages/_docs/the-word-police-that-cant-make-an-arrest.md
+    word: 10x
+    key:  1f8e607f4e78
+    note: 'scare-quoted "10x" — the doc''s own line ("A site that satirizes 10x has to say 10x a lot"), meta-commentary, not a sincere claim'
+    reviewed: 2026-07-06
+  - file: pages/_hacks/tmux-conf-that-grows-up.md
+    word: 10x
+    key:  c9d5741c3648
+    note: 'scare-quoted "10x" rejecting the hype ("It won''t 10x your terminal") — the opposite of a sincere claim'
+    reviewed: 2026-07-06
+  - file: pages/_hacks/tmux-survival-subset.md
+    word: 10x
+    key:  fb823000efd4
+    note: 'scare-quoted "10x" rejecting the hype ("tmux will not 10x anything") — anti-hype, not sincere'
+    reviewed: 2026-07-06
+  - file: pages/_hacks/tmux-survive-a-reboot.md
+    word: 10x
+    key:  488dce20e8ba
+    note: 'scare-quoted "10x" rejecting the hype ("It won''t 10x your recovery") — anti-hype, not sincere'
     reviewed: 2026-07-06
