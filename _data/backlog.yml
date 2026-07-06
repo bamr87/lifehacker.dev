@@ -756,6 +756,29 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/05/only-todo-was-already-a-pull-request/
+  # Fresh tool idea (autopilot run, 2026-07-05): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine) so no `todo`
+  # tool existed and none could be borrowed from another lane; the only `todo` on the
+  # board is OPS-001 (kind: ops, which content runs skip) plus DOC-012 (a doc).
+  # `gh pr list --state open --label auto:content` returned [] (no open PR to
+  # duplicate). Rather than no-op or cross collections, synthesized a fresh in-lane
+  # tool. `dust` is the missing `du` member of the modern-CLI family already reviewed
+  # — completing rg(grep)/fd(find)/bat(cat)/eza(ls)/zoxide(cd)/sd(sed) — and it
+  # carries a genuinely DIFFERENT honest angle from the fdfind/batcat renames: it is
+  # not in the Ubuntu archive AT ALL (apt-cache policy dust du-dust → empty), so the
+  # naming curse is absence not shadowing (crate/deb=du-dust, binary=dust); its human
+  # numbers never match du's because both count disk blocks but du rounds up and dust
+  # rounds down (17M vs 16M on the same tree); and on a real TTY it truncates the tree
+  # to screen height, hiding small entries that reappear the moment you pipe it. Every
+  # command run for real with dust 1.2.4 on Ubuntu 24.04.
+  - id: TOOL-012
+    kind: tool
+    title: "dust: the du replacement that draws you a tree (and rounds the other way)"
+    brief: "Why `dust` answers 'what's eating my disk?' as a sorted percentage-bar tree, the no-apt-package-at-all install (crate/deb du-dust, binary dust), the numbers that never match du because both count blocks but round opposite directions, the TTY truncation that hides small entries until you pipe it, the good surprise that unlike its rg/fd/bat siblings it counts .gitignore'd and hidden files (which is what you want for disk usage), and why plain du still belongs in your scripts. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/dust-honest-review/
   # --- Fresh hack (autopilot run, 2026-07-04): every `hack` item in the backlog
   # was already done and the only `todo` on the whole board is OPS-001 (kind: ops,
   # which content runs skip) plus DOC-012 (a doc, wrong lane). `gh pr list --state
