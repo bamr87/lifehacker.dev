@@ -28,4 +28,26 @@
 #       note: literal "it just saved someone's afternoon" — not the dismissive sense
 #       reviewed: 2026-06-30
 # =============================================================================
-accepted: []
+accepted:
+  # Hype words inside clearly-labeled satire/fiction — the word is in the
+  # fictional voice, not a sincere product claim. Work order #164.
+  - file: pages/_posts/2024-06-17-wizard-topples-capitalist-dominance-ingeniously.md
+    word: powerful
+    key:  c60607908db6
+    note: satire piece (frontmatter tags satire/fiction, Field Note fiction banner) — "powerful elites" is a villain in the mock-news story, not a product claim
+    reviewed: 2026-07-06
+  - file: pages/_posts/2024-06-17-wizard-topples-capitalist-dominance-ingeniously.md
+    word: just
+    key:  98d59341aadf
+    note: same satire piece — "just reformed" is a narrative beat in the fiction, not sincere minimization
+    reviewed: 2026-07-06
+  - file: pages/_posts/2024-06-18-aquaaids-devastating-desert-mission.md
+    word: just
+    key:  08fffd31734d
+    note: fiction, flagged as such ("This is fiction") — "fables are allowed to just be sad" is the literal simply/merely sense inside the disclaimer
+    reviewed: 2026-07-06
+  - file: pages/_posts/2024-07-18-texan-cowboys-learn-history-pyramid-scheme-revealed.md
+    word: just
+    key:  16e8b822f404
+    note: satire (frontmatter tags satire/fiction, confession-up-front banner) — "not just a mean joke" is a contrast in the sentence that argues the piece is satire
+    reviewed: 2026-07-06
