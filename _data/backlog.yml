@@ -857,7 +857,7 @@ backlog:
   # rounds down (17M vs 16M on the same tree); and on a real TTY it truncates the tree
   # to screen height, hiding small entries that reappear the moment you pipe it. Every
   # command run for real with dust 1.2.4 on Ubuntu 24.04.
-  - id: TOOL-012
+  - id: TOOL-014
     kind: tool
     title: "dust: the du replacement that draws you a tree (and rounds the other way)"
     brief: "Why `dust` answers 'what's eating my disk?' as a sorted percentage-bar tree, the no-apt-package-at-all install (crate/deb du-dust, binary dust), the numbers that never match du because both count blocks but round opposite directions, the TTY truncation that hides small entries until you pipe it, the good surprise that unlike its rg/fd/bat siblings it counts .gitignore'd and hidden files (which is what you want for disk usage), and why plain du still belongs in your scripts. Every command run for real."
@@ -985,7 +985,7 @@ backlog:
   # for real" rule holds). Promoted with metadata ONLY — id/kind/voice/priority;
   # the factory writes the prose. Relieves the hack/tool/post lanes so
   # growable_todo 0->3 and starved_kinds drops from 4 kinds to just `doc`.
-  - id: HACK-019
+  - id: HACK-020
     kind: hack
     title: "Read a binary header without leaving the shell: walk a magic number with hexyl"
     brief: "A hands-on companion to the hexyl review: use `hexyl -n`/`-s` to walk the magic-number header of a PNG/ELF/ZIP, tying byte offsets to hexyl's color categories so the first 16 bytes stop being noise. Every command run for real on a local file (no network)."
@@ -993,7 +993,7 @@ backlog:
     priority: P2
     status: todo
 
-  - id: TOOL-013
+  - id: TOOL-015
     kind: tool
     title: "The hex editor hexyl can't be: an honest review of a real TUI hex editor (hexedit/heh)"
     brief: "hexyl's headline caveat is that it can only READ — so its natural sibling is a hex editor that can write. Honest review of a TUI hex editor (hexedit or heh): the read-with-hexyl/edit-with-this pairing, the overwrite-in-place-no-insert model that surprises text-editor muscle memory, and where plain xxd -r still wins. Every command run for real on a local file (no network)."
@@ -1001,7 +1001,7 @@ backlog:
     priority: P2
     status: todo
 
-  - id: POST-011
+  - id: POST-012
     kind: post
     title: "The date in the filename and the link that trusted it"
     brief: "Meta-confession data note: the backlog's `published:` links are a second source of truth for permalinks, and at least one (POST-003) drifted from its post's filename date. A Field Note on why filename-date drift silently breaks cross-links, reproduced with the real 404 the run hit — no invented output."
