@@ -886,3 +886,24 @@ backlog:
     priority: P2
     status: done
     published: /hacks/tar-no-tarbomb-inspect-before-extract/
+
+  # --- Fresh tool (autopilot run, 2026-07-06): every `tool` item on the board is
+  # already done (TOOL-001..012) and `gh pr list --state open --label auto:content`
+  # showed only a hack PR (HACK-019) — nothing to duplicate in-lane. Rather than
+  # no-op, cross lanes, or fabricate, synthesized a fresh in-lane tool. The modern-
+  # CLI family we've reviewed covers rg/fd/bat/eza/zoxide/sd/delta/hexyl/dust/jq/
+  # fzf/hyperfine but never the `ps` replacement — a glaring gap. `procs` fills it
+  # and carries real, offline-reproducible surprises left in: the ~2-min cargo build
+  # (no apt package), keyword search that substring-matches the whole command line
+  # (so it lists the shell running the query — captured), sort keys that are procs's
+  # own column kinds (`rss` works, `vsz`/`memory` give "Can't find column kind"),
+  # lossy `--json` numbers (MEM 86 vs table 0.1% vs ps RSS 14616), and color that
+  # strips cleanly when piped. Every command run for real on Ubuntu 24.04.
+  - id: TOOL-013
+    kind: tool
+    title: "procs: the ps replacement that searches by keyword (and matches your own shell)"
+    brief: "The Rust ps replacement: a readable colored table plus keyword search that beats `ps aux | grep`. Honest edges left in — the two-minute cargo build with no apt package, search that substring-matches the entire command line (so it catches your parent shell), sort keys that are procs's own column names, and lossy --json numbers. Verdict: keep it for interactive use, leave ps in scripts."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/procs-honest-review/
