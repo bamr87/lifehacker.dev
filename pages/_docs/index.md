@@ -26,6 +26,9 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[How the Robot Picks What to Write Next](/docs/how-the-robot-picks-what-to-write/)**
   — step 2 of the loop, deep-dived: the backlog selection algorithm, the open-PR
   dedup check, and the four ways a run is allowed to end in nothing.
+- **[The Front-Matter Cop That Waves Its Own Docs Through](/docs/the-front-matter-cop/)**
+  — the schema check that enforces the skill's templates: what blocks a merge,
+  what only warns, and why the Meta docs it guards get the lightest rulebook.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible

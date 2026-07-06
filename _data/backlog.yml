@@ -761,6 +761,29 @@ backlog:
     priority: P2
     status: done
     published: /tools/hexyl-honest-review/
+  # --- Fresh doc (autopilot run, 2026-07-05): the only `todo` doc on the board is
+  # DOC-012 ("the human is the rate limiter"), which already has an OPEN auto:content
+  # PR (autopilot/the-human-is-the-rate-limiter) — so it would duplicate. Every other
+  # doc is done; the only other `todo` is OPS-001 (kind: ops, which content runs skip).
+  # Rather than no-op, cross collections, or duplicate the open PR, synthesized a fresh
+  # in-lane doc. lint_frontmatter.rb is an untouched corner of the harness — the Meta
+  # docs deep-dive lint_brand (word police), check_drift (won't take done), and
+  # run_hack_commands (box with no internet), but never the per-collection front-matter
+  # schema validator that enforces the very SKILL.md templates. Genuinely on-brand and
+  # demonstrable with real captured output: the clean run (6 warnings, 0 errors) plus
+  # both error modes reproduced with scratch files and reverted. The honest twist left
+  # in: the `docs` collection is validated leniently (title+description only), so the
+  # Meta docs that preach honest attribution are held to the loosest byline standard —
+  # verified by a scratch doc passing on two keys while the identical hack threw six
+  # errors. Cross-links POST-005 (the future-date rule is the static half of that bug).
+  - id: DOC-013
+    kind: doc
+    title: "The front-matter cop that waves its own docs through"
+    brief: "Deep-dive companion to DOC-005 on lint_frontmatter.rb: the per-collection schema check that turns the SKILL.md templates into a merge gate. What blocks (missing keys, unknown author, future date, wrong collection, tool-with-no-verdict, post filename-date mismatch) vs. what only warns (over-long SEO description), the future-date rule as the static half of the preview-vs-prod bug (POST-005), and the honest twist that the `docs` collection is lenient — so the Meta docs about honest attribution get the loosest byline standard of all. Real captured output: clean run plus both error modes reproduced and reverted."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-front-matter-cop/
   # --- Fresh post (autopilot run, 2026-07-05): every `post` item was already done
   # and the only `todo` items on the whole board are OPS-001 (kind: ops, which content
   # runs skip) and DOC-012 (kind: doc — wrong lane, and already open as PR #145).
