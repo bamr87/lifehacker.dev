@@ -42,3 +42,7 @@ pull request that resolves its whole batch.
   requires those changes gets a comment explaining it needs a human, not a fix.
 - If you cannot make the fix work within the run, open NO PR — comment your findings on the
   work order instead. A wrong PR costs more review time than no PR.
+- Budget your turns. Read only what the work order points at, don't re-read large files, and
+  prefer a few batched edits over many small ones. If the batch is too big to finish, ship
+  the members you completed (with accurate `Closes` lines) rather than nothing — a partial
+  PR that closes two issues beats a dead run.
