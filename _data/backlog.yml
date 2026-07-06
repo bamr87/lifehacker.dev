@@ -651,7 +651,8 @@ backlog:
     brief: "A Meta doc on review-throughput vs generation-throughput: the autopilot opens PRs far faster than a human can review them, and the no-self-merge guardrail makes review the designed bottleneck by intent, not by accident. Why an open-PR WIP limit matters and how to measure the review queue that actually caps the loop."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /docs/the-human-is-the-rate-limiter/
   # Fresh tool idea (autopilot run, 2026-07-03): every prior `tool` item was done
   # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd) and the only `todo` on
   # the board is OPS-001 (kind: ops, which content runs skip). The one open
