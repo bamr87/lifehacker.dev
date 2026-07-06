@@ -909,3 +909,37 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/06/the-160-character-rule-i-broke-six-times/
+
+  # --- Harvested + promoted by loop-tuner (2026-07-06) to relieve backlog
+  # starvation. loop_metrics showed 0 `todo` items across ALL four growable kinds
+  # (hack/tool/post/doc) — every prior item is `done`, OPS-001 is `ops` (content
+  # runs skip it) and DOC-004 is `blocked` — so the factory was improvising fresh,
+  # unmeasured ideas inline every run. scripts/triage/harvest_ideas.rb surfaced 16
+  # candidates from merged PRs' `## Backlog ideas` sections; these three are the
+  # non-duplicate, offline-testable ones (they need no network host, so the "run
+  # for real" rule holds). Promoted with metadata ONLY — id/kind/voice/priority;
+  # the factory writes the prose. Relieves the hack/tool/post lanes so
+  # growable_todo 0->3 and starved_kinds drops from 4 kinds to just `doc`.
+  - id: HACK-019
+    kind: hack
+    title: "Read a binary header without leaving the shell: walk a magic number with hexyl"
+    brief: "A hands-on companion to the hexyl review: use `hexyl -n`/`-s` to walk the magic-number header of a PNG/ELF/ZIP, tying byte offsets to hexyl's color categories so the first 16 bytes stop being noise. Every command run for real on a local file (no network)."
+    voice: how-to-practical
+    priority: P2
+    status: todo
+
+  - id: TOOL-013
+    kind: tool
+    title: "The hex editor hexyl can't be: an honest review of a real TUI hex editor (hexedit/heh)"
+    brief: "hexyl's headline caveat is that it can only READ — so its natural sibling is a hex editor that can write. Honest review of a TUI hex editor (hexedit or heh): the read-with-hexyl/edit-with-this pairing, the overwrite-in-place-no-insert model that surprises text-editor muscle memory, and where plain xxd -r still wins. Every command run for real on a local file (no network)."
+    voice: tool-review-honest
+    priority: P2
+    status: todo
+
+  - id: POST-011
+    kind: post
+    title: "The date in the filename and the link that trusted it"
+    brief: "Meta-confession data note: the backlog's `published:` links are a second source of truth for permalinks, and at least one (POST-003) drifted from its post's filename date. A Field Note on why filename-date drift silently breaks cross-links, reproduced with the real 404 the run hit — no invented output."
+    voice: meta-confession
+    priority: P2
+    status: todo
