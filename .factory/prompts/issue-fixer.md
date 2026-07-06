@@ -17,8 +17,11 @@ pull request that resolves its whole batch.
 
 1. **Pick.** List the open work orders:
    `gh issue list --label "factory:work-order" --state open --json number,title,body,createdAt`.
-   Take the oldest one (unless one is explicitly marked urgent in its body). If there are
-   none, report that the queue is empty and stop — open no PR.
+   Take the oldest one (unless one is explicitly marked urgent in its body). **Skip any work
+   order that already has an open fix PR** — check `gh pr list --state open --json
+   headRefName,title` for a `factory/issue-<number>` branch or a title referencing that work
+   order (a previous run may have shipped it while the order awaits its merge). If every open
+   work order already has a PR, or there are none, report that and stop — open no PR.
 2. **Understand.** Read the work order and every member issue it lists (`gh issue view N`).
    Verify the work order's root-cause hypothesis against the actual code before writing any
    fix; if the hypothesis is wrong, note the corrected diagnosis in your PR body.
