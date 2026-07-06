@@ -116,6 +116,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 
 | Workflow | Trigger | Gate | What it does |
 |---|---|---|---|
+| `content-scout.yml` | daily cron (08:07, before the factory), manual | `CONTENT_SCOUT_ENABLED` + key | Crawls a sister site (it-journey.dev by default; `SCOUT_SOURCES`) via WebFetch, proposes on-brand topics, and opens one `auto:content` PR appending `status: todo` backlog items — **each pinned to its source it-journey.dev page**. Scheduled runs apply; manual runs default to dry-run. |
 | `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
 | `explore.yml` | daily cron, manual | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. Scheduled runs apply; manual runs default to dry-run. |
@@ -137,6 +138,7 @@ Each capability is its own switch, off by default. Turn on only what you trust:
 ```
 gh variable set FLEET_ENABLED true              # the fix/grow fleet
 gh variable set CONTENT_FACTORY_ENABLED true    # daily content generation
+gh variable set CONTENT_SCOUT_ENABLED true      # daily sister-site crawl → backlog ideas, before the factory (SCOUT_SOURCES to retarget; needs FLEET_TOKEN to auto-merge)
 gh variable set EXPLORER_ENABLED true           # live-site persona QA
 gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
 gh variable set AUTO_UPDATE_ENABLED true        # keep colliding content PRs mergeable (union-merges main in; needs FLEET_TOKEN)

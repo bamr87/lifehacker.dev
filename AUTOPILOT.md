@@ -73,7 +73,7 @@ starts from what the last one learned. All memory is committed data that reaches
 |---|---|---|---|
 | Improvements ledger | `_data/fleet/improvements.yml` | loop-tuner (one `pending` entry per change, with metric + baseline) | next loop-tuner run (`scripts/devops/verify_improvements.rb` settles each claim: `verified` / `regressed` / still `pending`) |
 | Metrics history | `_data/metrics/history.jsonl` | loop-tuner (`loop_metrics.rb --append-history`) | every measure run (trend signals: a tracked metric that worsened since the last snapshot is a regression to hunt) |
-| Backlog | `_data/backlog.yml` | humans, explorer gaps, triage promotions | content factory + fleet (starved kinds surface as a loop-tuner signal; `scripts/triage/harvest_ideas.rb` recovers ideas from merged PR descriptions) |
+| Backlog | `_data/backlog.yml` | humans, explorer gaps, **content-scout** (sister-site it-journey.dev ideas, before the factory), triage promotions | content factory + fleet (starved kinds surface as a loop-tuner signal; `scripts/triage/harvest_ideas.rb` recovers ideas from merged PR descriptions) |
 | Published-lessons ledger | `_data/retrospectives.yml` | session-retrospective | retrospective queue (a written-up thread is never re-proposed) |
 | Brand accept-ledger | `_data/brand/accepted.yml` | brand-fixer / humans | brand lint (an accepted use never re-flags) |
 
