@@ -955,6 +955,25 @@ backlog:
     status: done
     published: /docs/the-link-checker-that-doesnt-trust-a-clean-exit/
 
+  # --- Fresh doc (autopilot run, 2026-07-07): a `doc` run found the queue dry —
+  # every DOC item is done except DOC-004 (which is kind: post, and blocked on
+  # OPS-001), and `gh pr list --state open --label auto:content` showed only a
+  # post PR (POST-012), nothing to duplicate in-lane. Rather than no-op, cross
+  # lanes, or fabricate, synthesized a fresh in-lane doc: the Meta pillar has a
+  # deep-dive for every CI check EXCEPT build.sh — step 1, THE gate every other
+  # check builds a _site/ on top of. DOC-005 covers it in one line; this expands
+  # it. Real captured output only: the full `build.sh build` run (185 pages), the
+  # seven theme _plugins it strips, and the reproduced `Unknown tag` safe-mode
+  # failure (exit 1) that the strip exists to catch.
+  - id: DOC-015
+    kind: doc
+    title: "The build that deletes its own plugins"
+    brief: "Deep-dive companion to DOC-005 on build.sh: step 1 of the harness and the gate the rest stands on. Why a remote_theme site has no local layouts, the broad cp -R overlay (whole _data/_includes/assets, learned the hard way), and the load-bearing `rm -rf _plugins` that reproduces GitHub Pages safe mode. The theme ships seven plugins GH Pages never runs; captured the canonical `Unknown tag` failure (exit 1) by feeding the stripped overlay a real theme-plugin tag. Plus the one-build-path design (preview.sh sources build.sh, run-all.sh executes it) that makes local/CI drift unrepresentable, and the honest `fatal: not a git repository` line the script tries to silence and doesn't."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-build-that-deletes-its-own-plugins/
+
   # --- Fresh tool (autopilot run, 2026-07-06): every `tool` item on the board is
   # already done (TOOL-001..012) and `gh pr list --state open --label auto:content`
   # showed only a hack PR (HACK-019) — nothing to duplicate in-lane. Rather than
