@@ -1007,7 +1007,8 @@ backlog:
     brief: "Meta-confession data note: the backlog's `published:` links are a second source of truth for permalinks, and at least one (POST-003) drifted from its post's filename date. A Field Note on why filename-date drift silently breaks cross-links, reproduced with the real 404 the run hit — no invented output."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /posts/2026/07/07/the-date-in-the-filename-and-the-link-that-trusted-it/
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
