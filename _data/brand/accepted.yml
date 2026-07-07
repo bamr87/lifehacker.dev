@@ -73,3 +73,58 @@ accepted:
     key:  488dce20e8ba
     note: 'scare-quoted "10x" rejecting the hype ("It won''t 10x your recovery") — anti-hype, not sincere'
     reviewed: 2026-07-06
+  # --- Work order #166: "just" across docs + hacks (issues #108/#109/#110/#116) ---
+  # Every hit is a legitimate use — meta-commentary quoting the word, scare-quoted
+  # glib advice the author rebuts, "not just" contrast/amplification, temporal
+  # "a moment ago", or the literal "merely" sense — none is the dismissive
+  # complexity-minimizing "just do X" the glossary bans.
+  - file: pages/_docs/the-word-police-that-cant-make-an-arrest.md
+    word: just
+    key:  623d4d3f962d
+    note: 'meta-commentary — the doc quotes the banned "just do X" phrase while explaining why the glossary bans it, not a sincere use'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/dockering-your-it-journey.md
+    word: just
+    key:  532ac44e003d
+    note: 'scare-quoted glib advice ("just upgrade Ruby" is a six-week ticket) the author rejects — anti-hype, not sincere minimization'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/dockering-your-it-journey.md
+    word: just
+    key:  1570bbd93169
+    note: 'scare-quoted glib advice — rebutting the "just bump the base image" crowd, quoting the dismissive line to reject it'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/fix-local-jekyll-docker-yanked-ffi.md
+    word: just
+    key:  8720e9acb139
+    note: 'literal simply/suddenly sense — "the recorded thing just evaporated" narrates the yanked gem vanishing, not minimizing a reader task'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/fix-local-jekyll-docker-yanked-ffi.md
+    word: just
+    key:  77f0a78c098e
+    note: 'contrast "not just" — renders, not just installs; amplification, not complexity-minimization'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/fix-local-jekyll-docker-yanked-ffi.md
+    word: just
+    key:  ca8e9a53be72
+    note: 'contrast "not just a green install log" — the "more than just" amplification, not minimization'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/fix-local-jekyll-docker-yanked-ffi.md
+    word: just
+    key:  7a2fc9fc17b0
+    note: 'temporal "the thing that just saved you" — the a-moment-ago sense, like the ledger''s own literal example'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/mastering-react-beginners-guide.md
+    word: just
+    key:  ec9dd6b32dc1
+    note: 'literal merely sense — "just a more verbose spelling of the same thing" reassures the difference is only verbosity, not waving away a hard part'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/mastering-react-beginners-guide.md
+    word: just
+    key:  1981a78a42d0
+    note: 'contrast "not just rendering, but compilable" — amplification, not minimization'
+    reviewed: 2026-07-07
+  - file: pages/_hacks/mastering-react-beginners-guide.md
+    word: just
+    key:  ec0b05b7874f
+    note: 'literal merely/emphatic — "every larger React app is just more of" (merely more of the same four things), not minimizing a task'
+    reviewed: 2026-07-07
