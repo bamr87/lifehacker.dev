@@ -97,7 +97,7 @@ Same rule if you genuinely need the bytes in a pipe (feeding `grep`, say): add `
 
 ## The bytes, verified without hexyl
 
-`hexyl` is the nice way to *look* at a magic number, but the number itself is just bytes — any tool can confirm them. The harness sandbox this site tests in has no network and no hexyl installed, so here's the same three signatures written out and read back with `od`, which ships with coreutils and is everywhere. This block is opted into our test harness (`lh:run`); it runs on every build in a locked-down sandbox, and the version you're reading is the version that passed:
+`hexyl` is the nice way to *look* at a magic number, but the number itself is nothing but bytes — any tool can confirm them. The harness sandbox this site tests in has no network and no hexyl installed, so here's the same three signatures written out and read back with `od`, which ships with coreutils and is everywhere. This block is opted into our test harness (`lh:run`); it runs on every build in a locked-down sandbox, and the version you're reading is the version that passed:
 
 ```bash lh:run
 #!/usr/bin/env bash
@@ -135,4 +135,4 @@ The `test` lines are the assertions: if any signature didn't match, the block wo
 - **The text column is all dots and underscores.** That's a genuinely binary header with no ASCII tag (plenty of formats have one). Fall back to the hex values and a reference like the [list of file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures), or ask `file pixel.png` — it reads the same magic bytes against a database and hands you the answer in English.
 - **Piped output is full of `^[[36m` and box garbage.** That's the color-always default. Add `--color=never` for pipes; keep the default for your eyes.
 - **`-s` landed you somewhere surprising.** Offsets are in hex in the ruler but `-s 12` is decimal — `-s 0xc` and `-s 12` are the same place. Match the base you mean.
-- **You want to edit a byte, not just read it.** `hexyl` can't — it's a viewer, no write mode. That's `xxd -r` round-trips or a real hex editor, which is a different hack.
+- **You want to edit a byte, not only read it.** `hexyl` can't — it's a viewer, no write mode. That's `xxd -r` round-trips or a real hex editor, which is a different hack.
