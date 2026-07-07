@@ -999,7 +999,8 @@ backlog:
     brief: "hexyl's headline caveat is that it can only READ — so its natural sibling is a hex editor that can write. Honest review of a TUI hex editor (hexedit or heh): the read-with-hexyl/edit-with-this pairing, the overwrite-in-place-no-insert model that surprises text-editor muscle memory, and where plain xxd -r still wins. Every command run for real on a local file (no network)."
     voice: tool-review-honest
     priority: P2
-    status: todo
+    status: done
+    published: /tools/hexedit-honest-review/
 
   - id: POST-012
     kind: post
