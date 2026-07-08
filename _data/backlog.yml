@@ -1040,7 +1040,8 @@ backlog:
     brief: "Scan a repo with `detect-secrets scan`, then face the part nobody likes: deleting the line and committing does not remove the key — it sits in every prior commit and was scraped seconds after you pushed. The real fix is rotate first, then purge history with git filter-repo, plus a pre-commit hook so it never lands again. The failure — 'I deleted it, we're fine' — stays in."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/rotate-the-secret-still-in-git-history/
     source: content-scout
     source_url: https://it-journey.dev/quests/1011/secure-coding/
     source_title: "Secure Coding: Preventing the OWASP Top 10"
@@ -1051,11 +1052,12 @@ backlog:
     brief: "Honest verdict on `pip-audit` (and its npm audit cousin): it catches genuinely known-vulnerable versions in seconds, and it also floods you with transitive-dependency advisories you can't fix and scores that don't match your actual risk. What earns an upgrade, what's noise, and when to wire it into CI versus running it by hand."
     voice: tool-review-honest
     priority: P3
-    status: todo
+    status: done
     source: content-scout
     source_url: https://it-journey.dev/quests/1011/secure-coding/
     source_title: "Secure Coding: Preventing the OWASP Top 10"
     fingerprint: adf392372480
+    published: /tools/pip-audit-honest-review/
   - id: SRC-003
     kind: hack
     title: "Scope the token before your MCP server gets the keys: a fine-grained PAT that can't touch prod"
