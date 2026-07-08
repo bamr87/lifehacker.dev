@@ -107,7 +107,7 @@ echo "done"
 
 Everything above and below is about the string in your repo. But the string is not the danger; the *access* it grants is. Assume the key is already compromised — because on any repo that was ever pushed anywhere shared, it is. Bots scrape public commits within seconds, and "private" is one misconfigured setting away from public.
 
-So before you clean history, **rotate**: go to the provider (AWS IAM, Stripe, your database) and revoke the leaked credential and issue a new one. A rotated key turns the copy in your history from a live liability into a dead string. Purging history *without* rotating just means the thief has the key and you don't have the evidence.
+So before you clean history, **rotate**: go to the provider (AWS IAM, Stripe, your database) and revoke the leaked credential and issue a new one. A rotated key turns the copy in your history from a live liability into a dead string. Purging history *without* rotating means the thief has the key and you don't have the evidence.
 
 This step has no command here because it happens in a web console you control — and it is the one step that actually protects you. The other two are cleanup.
 
