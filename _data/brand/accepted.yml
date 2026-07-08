@@ -73,3 +73,21 @@ accepted:
     key:  488dce20e8ba
     note: 'scare-quoted "10x" rejecting the hype ("It won''t 10x your recovery") — anti-hype, not sincere'
     reviewed: 2026-07-06
+  # --- Work order #167: docs-collection "just" — three legitimate uses -------
+  # None is the dismissive "just do X". One emphatic minimal-list, one hyphenated
+  # compound false hit, one "not merely X but Y" contrast. Anti-minimization, all.
+  - file: pages/_docs/autopilot.md
+    word: just
+    key:  907e0ff96d86
+    note: emphatic minimal-list after "No dashboard required" — "just a repo, a robot, and a human" enumerates the whole stack, not the dismissive "just do X"
+    reviewed: 2026-07-08
+  - file: pages/_docs/the-box-with-no-internet.md
+    word: just
+    key:  3616d30c919a
+    note: hyphenated compound modifier "just-plain-broken" (idiom for utterly/plainly broken) — a word-boundary false hit, not the dismissive "just do X"
+    reviewed: 2026-07-08
+  - file: pages/_docs/the-check-that-wont-take-done-for-an-answer.md
+    word: just
+    key:  8de60e7cdba5
+    note: contrast amplification "doesn't just disappoint a reader — it tells the rest of the fleet" — the "not merely X but Y" structure, not minimization
+    reviewed: 2026-07-08
