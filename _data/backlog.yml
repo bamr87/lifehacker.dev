@@ -1040,7 +1040,8 @@ backlog:
     brief: "Scan a repo with `detect-secrets scan`, then face the part nobody likes: deleting the line and committing does not remove the key — it sits in every prior commit and was scraped seconds after you pushed. The real fix is rotate first, then purge history with git filter-repo, plus a pre-commit hook so it never lands again. The failure — 'I deleted it, we're fine' — stays in."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/rotate-the-secret-still-in-git-history/
     source: content-scout
     source_url: https://it-journey.dev/quests/1011/secure-coding/
     source_title: "Secure Coding: Preventing the OWASP Top 10"
