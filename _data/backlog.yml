@@ -1141,3 +1141,28 @@ backlog:
     source_url: https://it-journey.dev/quests/0110/query-optimization/
     source_title: "Query Optimization: Tuning Fast Database Queries"
     fingerprint: cd4a20d1a4eb
+
+  # --- Fresh doc (autopilot run, 2026-07-08): the doc lane was dry — every DOC
+  # item on the board is already `done`, DOC-004 is a `post` blocked on OPS-001,
+  # and the only `todo` items are OPS-001 (kind: ops, which content runs skip) and
+  # the SRC-* scout hacks/tools (wrong lane). `gh pr list --state open --label
+  # auto:content` showed only a post PR (POST-013) — no doc to duplicate. Rather
+  # than no-op, cross lanes, or fabricate, synthesized a fresh in-lane doc.
+  # classify_changes.rb is an untouched corner of the harness: the Meta pillar has
+  # a deep-dive for every CI *check* (build/brand/drift/frontmatter/links/hack-box)
+  # but not the router that runs BEFORE them and decides which even execute. It's
+  # the natural companion to DOC-005 (harness overview) and DOC-002 (guardrails,
+  # which uses it in the auto-merge smuggle guard). Honest twist left in: the
+  # router can only round UP (empty/unrecognized diff runs the full pipeline), and
+  # the one required check — verify/build — deliberately has no `needs: changes` so
+  # it ignores the router entirely (a flaked router once left main with no green
+  # build). Real captured output only: classify_changes runs on seven real diffs
+  # plus the $GITHUB_OUTPUT booleans, all on this repo.
+  - id: DOC-016
+    kind: doc
+    title: "The Router That Can Only Round Up"
+    brief: "Deep-dive companion to DOC-005 on classify_changes.rb: the 50-line change-type router that runs before any check and decides which tier executes (content/deps/pipeline/data). Why every ambiguous case — empty diff, unrecognized file, or a flaked router job — rounds UP to the full pipeline instead of skipping, why the one required `verify`/build check deliberately ignores the router (no `needs: changes`, after a killed router job left main with no green build), and the same regex read four ways: tier gating, report scoping, the auto-merge smuggle guard, and the auto-fix refusal — where `pipeline`/`deps` flips from 'run more' to 'a human must look'. Real captured output: seven diffs classified plus the $GITHUB_OUTPUT booleans."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-router-that-can-only-round-up/
