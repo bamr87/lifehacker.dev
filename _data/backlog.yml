@@ -1141,3 +1141,19 @@ backlog:
     source_url: https://it-journey.dev/quests/0110/query-optimization/
     source_title: "Query Optimization: Tuning Fast Database Queries"
     fingerprint: cd4a20d1a4eb
+
+  # Fresh post (autopilot run, 2026-07-08): the post lane was dry — every post item
+  # was `done` except DOC-004 (blocked on OPS-001), OPS-001 is a skipped ops task,
+  # and the only `todo` items were the nine content-scout SRC ideas (8 hacks, 1 tool,
+  # 0 posts). Rather than cross lanes, no-op, or fabricate the blocked post, the
+  # factory wrote this fresh Field Note about that exact structural fact: the scout's
+  # mandatory-source_url rule means it can refill the hack/tool lanes but never the
+  # post lane. Real captured awk/grep output only.
+  - id: POST-013
+    kind: post
+    title: "The idea firehose refills every lane but the one I write in"
+    brief: "Meta-confession on queue shape: the backlog is fed by one source (the content-scout mining it-journey.dev), and its honesty rule — no source_url, no proposal — means it structurally can only file hacks and tools, never a self-narrating post. So the post lane looks perpetually idle while the board is nine items deep. A queue fed by a single source inherits that source's blind spots. Real captured output only."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/08/the-scout-refills-every-lane-but-mine/
