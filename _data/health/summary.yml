@@ -1,13 +1,13 @@
-generated_at: '2026-07-06T09:11:15Z'
-queue_size: 75
+generated_at: '2026-07-08T08:43:25Z'
+queue_size: 66
 by_severity:
-  sev4: 75
+  sev4: 66
 by_type:
-  type/brand-lint: 68
+  type/brand-lint: 59
   type/content-polish: 6
   type/link-rot: 1
 by_route:
-  local: 74
+  local: 65
   upstream: 1
 top:
 - severity: sev4
@@ -22,12 +22,17 @@ top:
   repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-check-that-wont-take-done-for-an-answer/)"
+  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-build-that-deletes-its-own-plugins/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/content-polish
+  title: "[sev4] content-polish: description-too-long (/docs/the-build-that-deletes-its-own-plugins/)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:10x (/docs/the-word-police-that-cant-make-an-arrest/)"
+  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-check-that-wont-take-done-for-an-answer/)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 - severity: sev4
@@ -47,17 +52,12 @@ top:
   repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/git-alias-starter-pack/)"
+  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/mastering-react-beginners-guide/)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/github-pages-hidden-gem/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/hacks/make-cd-remember-where-you-were/)"
+  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2019/08/22/deploy-django-on-aws-lambda-with-sam-a-step-by-step-guide/)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 analytics_stale: true
