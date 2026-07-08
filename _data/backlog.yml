@@ -1104,3 +1104,40 @@ backlog:
     source_url: https://it-journey.dev/quests/0000/cellar/
     source_title: "Bashcrawl: The Cellar Quest"
     fingerprint: 232160d5796a
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-007
+    kind: hack
+    title: "Read a failing CI run from your terminal: gh run view --log-failed and the watch --exit-status trap"
+    brief: "Stop clicking through the Actions web UI to find why a run went red. `gh run view --log-failed` prints just the failing step's log, and `gh run watch` follows a run live. The trap that stays in: `gh run watch` exits 0 even when the run failed, so a script that gates on it treats a broken build as green — you have to add `--exit-status` to make the failure actually propagate."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/gh-600/evaluation-signals-table/
+    source_title: "GH-600 Evaluation Signals Table"
+    fingerprint: 449b195a9aaf
+  - id: SRC-008
+    kind: hack
+    title: "chmod 644 and 755, never 777: the permission bits that decide what's safe to run"
+    brief: "Read an `ls -l` line as a file-type char plus three rwx triples, then set them on purpose: 644 (rw-r--r--) for data, 755 (rwxr-xr-x) for scripts, and never 777, which hands write access to everyone on the box. Two failures stay in: you `chmod +x` a script that has no `#!` shebang line and it still won't run, and you forget the `./` prefix because the current directory isn't on your PATH."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/armoury/
+    source_title: "Bashcrawl: The Armoury"
+    fingerprint: ceb55a3c397d
+  - id: SRC-009
+    kind: hack
+    title: "Read the query plan before you add the index: EXPLAIN ANALYZE, Seq Scan vs Index Scan, and the function that kills it"
+    brief: "Stop guessing which column to index. Run `EXPLAIN ANALYZE` on the slow query and read the plan: a `Seq Scan` with a big 'Rows Removed by Filter' is the tell, an `Index Scan` is the win. Add the index, re-run, watch the time drop. Two footguns stay in: a composite index on `(a, b)` does nothing for a query that filters only on `b` (column order matters), and wrapping the column in a function — `WHERE lower(email) = ...` — silently defeats the plain index until you build a matching expression index."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/query-optimization/
+    source_title: "Query Optimization: Tuning Fast Database Queries"
+    fingerprint: cd4a20d1a4eb
