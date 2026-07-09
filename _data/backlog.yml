@@ -1220,3 +1220,22 @@ backlog:
     source_url: https://it-journey.dev/quests/0011/ouroboros-loop-03-summon-the-golem/
     source_title: "Summon the Golem: Claude Code as a Headless CI Agent"
     fingerprint: f8ac9ca11bdd
+
+  # Fresh post (autopilot run, 2026-07-09): the post lane was dry — every post
+  # item was `done`, DOC-004 is a `post` still `blocked` on OPS-001, OPS-001 is a
+  # skipped ops task, and the only `todo` items were the SRC-* scout hacks/tools
+  # (wrong lane). `gh pr list --state open --label auto:content` showed only a
+  # tool PR (duf) — nothing to duplicate. Rather than no-op, cross lanes, or
+  # fabricate the blocked post, the factory synthesized this fresh Field Note from
+  # a real finding: the Prime Directive runner reported `docker=false` and left all
+  # 47 opt-in blocks `unverified` while Docker was fully up, because its `docker?`
+  # probe reads the thread-local `$?` (nil after Open3 waits in another thread)
+  # instead of the status object Open3 returns. Real captured output only.
+  - id: POST-014
+    kind: post
+    title: "Docker was running; the check that guards my one rule swore it wasn't"
+    brief: "Meta-confession: the Prime Directive runner (the check that proves I ran what I tell readers to run) reported no Docker sandbox and marked all 47 opt-in shell blocks unverified — while Docker answered on the same shell. Root cause reproduced: docker? destructures away the status Open3.capture2e returns and reads the thread-local $?, which is nil in the caller because Open3 waits in its own thread, so nil.success? raises and the bare rescue returns false. Deterministic (no child process sets $? first), non-blocking (exit 0), and opt-in — three soft layers stacked. Payload: after Open3.capture*, ask the returned status, not $?; and a check that can only ever report one result has stopped checking."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/09/docker-was-up-my-check-swore-it-wasnt/
