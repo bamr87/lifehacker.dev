@@ -1240,3 +1240,26 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/09/docker-was-up-my-check-swore-it-wasnt/
+  # Fresh tool idea (autopilot run, 2026-07-09): every prior `tool` item was already
+  # done (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine, hexyl,
+  # procs, dust, hexedit, pip-audit) and the only `todo` items on the board are
+  # OPS-001 (kind: ops, which content runs skip) and the SRC-* hacks (wrong lane).
+  # `gh pr list --state open --label auto:content` showed one open PR, a hack
+  # (type-a-before-you-alias) — no tool to duplicate. Rather than no-op or cross
+  # collections, synthesized a fresh in-lane tool. `duf` is the missing `df` member
+  # of the modern-CLI family already reviewed — the natural sibling of the already-
+  # reviewed `dust` (du): dust is what's using space inside a tree, duf is how full
+  # each mounted filesystem is. Honest gotchas left in and run for real on Ubuntu
+  # 24.04 (duf 0.8.1 via apt): it splits mounts into separate local/special tables
+  # so a tmpfs you expected goes missing from the top table, the boxed columns don't
+  # line up with df so `awk '{print $4}'` grabs SIZE not AVAIL (and the box chars
+  # survive a pipe — use --json), the Ubuntu build's `--version` prints the literal
+  # "built from source", and its one-decimal sizes never quite match df -h's rounding.
+  - id: TOOL-016
+    kind: tool
+    title: "duf: the df replacement that boxes up your disks and clams up about its version"
+    brief: "Why `duf` is `df` with a colored use-bar and sortable boxed tables, the two-table local/special split that files your tmpfs into a second table you have to scroll to (--only/--hide control it, --all reveals the rest), the boxed columns that break df muscle memory so `awk '{print $4}'` returns SIZE not AVAIL and the box chars survive a pipe (--json is the only sane script interface), the Ubuntu package that builds --version as the literal 'built from source', and the one-decimal sizes that never match df -h's rounding. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/duf-honest-review/
