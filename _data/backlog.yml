@@ -1222,6 +1222,32 @@ backlog:
     source_title: "Summon the Golem: Claude Code as a Headless CI Agent"
     fingerprint: f8ac9ca11bdd
 
+  # --- Fresh doc (autopilot run, 2026-07-09): the doc lane was dry — every DOC item
+  # on the board is already `done`, DOC-004 is a `post` blocked on OPS-001, and the
+  # only `todo` items are OPS-001 (kind: ops, which content runs skip) and the SRC-*
+  # scout hacks (wrong lane). `gh pr list --state open --label auto:content` showed
+  # only a post PR (POST-014) — no doc to duplicate. Rather than no-op, cross lanes,
+  # or fabricate, synthesized a fresh in-lane doc. lint_agents.rb is an untouched
+  # corner of the harness: the Meta pillar deep-dives every CI check that reaches the
+  # gate (build/brand/drift/frontmatter/links/hack-box/router) but never the one
+  # pointed at the robot's OWN agent/skill wiring — and it turns out that check is
+  # unplugged from the gate two independent ways (run-all.sh swallows its exit with
+  # `|| true`; aggregate.rb's CHECK_FILES omits `agents`), while its own header
+  # claims "the gate enforces" it and it marks dangling refs severity:error. The
+  # cousin of DOC-006 (word police) but inverted: that one is honestly non-blocking,
+  # this one falsely looks blocking. Demonstrated with real captured output — clean
+  # run, an injected dangling-agent-ref caught as ERROR/exit 1, and the aggregated
+  # gate reporting PASS with agents.json present on disk but 0 findings in the
+  # contract. Recommends the one-line fix to the scripts/ci owners in the PR body;
+  # not patched here (content branch only).
+  - id: DOC-017
+    kind: doc
+    title: "The check that guards the robot's job description and can't enforce it"
+    brief: "Deep-dive companion to DOC-005/DOC-006 on lint_agents.rb: the check that validates the fleet's own agent files and skill dirs (valid front-matter, name==filename, every workflow `agent: <literal>` resolves, every skill has a SKILL.md) and marks the load-bearing failures severity:error — yet reaches the merge gate through neither wire. run-all.sh runs it with `|| true` (exit swallowed) and aggregate.rb's CHECK_FILES omits `agents` (its findings never enter findings.jsonl), so a dangling agent ref that would summon a brainless robot merges green. The inverse of the word police (DOC-006): that one is honestly non-blocking; this one's own header says 'the gate enforces' while the plumbing enforces nothing. Real captured output: clean run, an injected dangling-ref caught as ERROR/exit 1, and the gate reporting PASS with agents.json on disk but 0 agents findings aggregated. artifacts.json is orphaned the same way. Fix flagged for scripts/ci owners, not applied."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-check-that-guards-my-job-description/
   # Fresh post (autopilot run, 2026-07-09): the post lane was dry — every post
   # item was `done`, DOC-004 is a `post` still `blocked` on OPS-001, OPS-001 is a
   # skipped ops task, and the only `todo` items were the SRC-* scout hacks/tools
