@@ -1101,7 +1101,8 @@ backlog:
     brief: "Before you drop `alias ls='ls --color'` into your .bashrc, run `type -a ls` to see everything that name already resolves to — alias, shell builtin, function, and the real /bin/ls, in the order the shell picks them. The failure that stays in: you alias over a name a script depends on, it breaks in a way that works fine when you paste the same command by hand, and `command ls` (which skips the alias) is the one-word escape hatch."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/type-a-before-you-alias/
     source: content-scout
     source_url: https://it-journey.dev/quests/0000/cellar/
     source_title: "Bashcrawl: The Cellar Quest"
