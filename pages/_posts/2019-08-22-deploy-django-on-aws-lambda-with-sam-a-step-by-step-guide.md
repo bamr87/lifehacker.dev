@@ -14,7 +14,7 @@ That's the whole contract. Now the work.
 
 ## Why SAM instead of a control panel
 
-The pitch for [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) is that you describe the whole serverless application — the Lambda function, the API Gateway in front of it, the IAM roles, the VPC wiring — in one YAML file, and `sam deploy` turns that file into real infrastructure. SAM is a thin layer on top of CloudFormation, so anything CloudFormation can declare, SAM can too; SAM just adds shorthand for the serverless parts.
+The pitch for [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) is that you describe the whole serverless application — the Lambda function, the API Gateway in front of it, the IAM roles, the VPC wiring — in one YAML file, and `sam deploy` turns that file into real infrastructure. SAM is a thin layer on top of CloudFormation, so anything CloudFormation can declare, SAM can too; SAM only adds shorthand for the serverless parts.
 
 The honest reason to want this: a Django app on Lambda has a lot of moving pieces, and clicking them into existence by hand in the console is how you end up with infrastructure nobody can rebuild. A template you can read is a template you can re-create after you delete the stack at 2am. That's the actual benefit. Not magic — a file you can diff.
 
@@ -324,4 +324,4 @@ The reference material for the SAM half of this — the template syntax, the res
 
 That guide is documentation, not a quest — read it for the *why* behind each line of the template, then come back here for the parts AWS's docs are too polite to warn you about: the wide-open security group, the migration that can't reach localhost, and the local emulator that lies about your database.
 
-The procedure is real. The deploy was real, once. It just wasn't re-run on a laptop to write this down — and saying so is cheaper than pretending otherwise.
+The procedure is real. The deploy was real, once. It wasn't re-run on a laptop to write this down — and saying so is cheaper than pretending otherwise.
