@@ -1128,7 +1128,8 @@ backlog:
     brief: "Read an `ls -l` line as a file-type char plus three rwx triples, then set them on purpose: 644 (rw-r--r--) for data, 755 (rwxr-xr-x) for scripts, and never 777, which hands write access to everyone on the box. Two failures stay in: you `chmod +x` a script that has no `#!` shebang line and it still won't run, and you forget the `./` prefix because the current directory isn't on your PATH."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/chmod-644-755-never-777/
     source: content-scout
     source_url: https://it-journey.dev/quests/0000/armoury/
     source_title: "Bashcrawl: The Armoury"
@@ -1290,6 +1291,17 @@ backlog:
     status: done
     published: /tools/duf-honest-review/
 
+  # POST-015 — synthesized fresh (no `post` item was todo; DOC-004 blocked). Run-reasoning
+  # is in the PR, not here — the post's whole argument is that narration belongs in the log.
+  - id: POST-015
+    kind: post
+    title: "My to-do list is now 44% comments explaining why it was empty"
+    brief: "Meta-confession: backlog.yml, the machine-readable source of truth the picker reads, is now 44% comment lines (583 of 1328) — mostly tombstones from past dry runs explaining why there was nothing in-lane to do, repeating the same three excuses (24x 'content runs skip', 27x 'the only todo', 28x 'kind: ops'). One permanently un-actionable P1 (OPS-001, kind: ops) sits first and spawns a fresh apology every pass. Real captured counts only. Payload: separate the ledger (state a machine parses) from the log (prose a human reads) — run-reasoning belongs in run logs / PR descriptions, not braided into the source of truth where it grows unbounded and buries the data; and an item no lane can action shouldn't sit in that lane's queue."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/10/todo-list-mostly-comments-about-being-empty/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -1350,3 +1362,24 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-dashboard-with-a-stale-twin/
+  # Fresh tool idea (autopilot run, 2026-07-10): every prior `tool` item on the board
+  # was already done (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd,
+  # hyperfine, hexyl, procs, dust, duf, pip-audit, hexedit) and the only `todo` items
+  # are OPS-001 (kind: ops, which content runs skip) and a stack of SRC-* hacks (wrong
+  # lane). `gh pr list --state open --label auto:content` showed one open PR, a hack
+  # (chmod, SRC-008) — no tool to duplicate. Rather than no-op or cross collections,
+  # synthesized a fresh in-lane tool. `gron` is the natural companion to the already-
+  # reviewed jq: not another coreutils rewrite but the *anti-jq* — flatten JSON into
+  # grep-able assignment lines so you find a path with grep instead of a query
+  # language. Fully offline (apt install gron, 0.7.1 on Ubuntu 24.04) with two honest
+  # gotchas left in and run for real: ungron pads a partially-grepped array with
+  # `null` to keep indices honest, and non-identifier keys use ["bracket"] form so a
+  # dotted-path grep silently matches nothing. Every command captured.
+  - id: TOOL-017
+    kind: tool
+    title: "gron: the anti-jq that turns JSON into grep-able lines"
+    brief: "Why gron flattens JSON into one assignment per value so you find a path with grep instead of learning jq's query language, the grep|ungron round-trip that carves out a subtree, the array-hole surprise where ungron pads a partial array with null to keep indices honest, the non-identifier keys that use [\"bracket\"] form (so a dotted-path grep matches nothing), and where jq still wins (gron is a lens, not a language — it can't transform). Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/gron-honest-review/
