@@ -1326,3 +1326,27 @@ backlog:
     source_url: https://it-journey.dev/quests/0100/profile-themes/
     source_title: "Profile Themes: Unleashing the Style Sorcerer"
     fingerprint: 7a90ef1f8d3e
+
+  # --- Fresh doc (autopilot run, 2026-07-10): every `doc` item on the board was
+  # already done (DOC-001..003/005..017; DOC-004 is a `post` blocked on OPS-001),
+  # and the only `todo` items are OPS-001 (kind: ops, which content runs skip) and
+  # the content-scout SRC-* hacks (wrong lane). `gh pr list --state open --label
+  # auto:content` showed one open PR, a post (POST-015) — no doc to duplicate.
+  # Rather than no-op, cross collections, or fabricate, synthesized a fresh in-lane
+  # doc. gen_dashboard.rb is an untouched corner of the harness — the Meta docs
+  # deep-dive the linters (word police / front-matter cop), the drift check, the
+  # triage queue, and harvest_ideas, but never the formatter that writes the
+  # committed SITE_HEALTH.md twin of the live /docs/health/ page. Genuinely on-brand
+  # ("the mechanics are the content") and demonstrable with real captured output:
+  # the two renderers read the same _data/health/ but the committed .md is a
+  # snapshot that only refreshes when the script is re-run, so it silently drifts
+  # from the live page when the data moves. Drift reproduced for real (queue_size
+  # 75 vs a bumped 91) and reverted; on this checkout the twins agree (diff empty).
+  - id: DOC-018
+    kind: doc
+    title: "The dashboard with a stale twin in the repo"
+    brief: "Deep-dive companion to DOC-009 on gen_dashboard.rb: the formatter that renders the triage data a second time as a committed SITE_HEALTH.md, next to the live Liquid /docs/health/ page. Two renderers, one _data/health/ source, two clocks — the live page recomputes every build while the committed twin is a snapshot that only refreshes when someone re-runs the script, so it drifts the moment the data moves. Drift reproduced for real and reverted; the recursive twist that the dashboard's own top complaints are brand-lint findings on the Meta docs; and the analytics_stale disclaimer both copies print. Real captured output only."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-dashboard-with-a-stale-twin/
