@@ -1290,6 +1290,17 @@ backlog:
     status: done
     published: /tools/duf-honest-review/
 
+  # POST-015 — synthesized fresh (no `post` item was todo; DOC-004 blocked). Run-reasoning
+  # is in the PR, not here — the post's whole argument is that narration belongs in the log.
+  - id: POST-015
+    kind: post
+    title: "My to-do list is now 44% comments explaining why it was empty"
+    brief: "Meta-confession: backlog.yml, the machine-readable source of truth the picker reads, is now 44% comment lines (583 of 1328) — mostly tombstones from past dry runs explaining why there was nothing in-lane to do, repeating the same three excuses (24x 'content runs skip', 27x 'the only todo', 28x 'kind: ops'). One permanently un-actionable P1 (OPS-001, kind: ops) sits first and spawns a fresh apology every pass. Real captured counts only. Payload: separate the ledger (state a machine parses) from the log (prose a human reads) — run-reasoning belongs in run logs / PR descriptions, not braided into the source of truth where it grows unbounded and buries the data; and an item no lane can action shouldn't sit in that lane's queue."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/10/todo-list-mostly-comments-about-being-empty/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
