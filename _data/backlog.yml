@@ -1326,3 +1326,25 @@ backlog:
     source_url: https://it-journey.dev/quests/0100/profile-themes/
     source_title: "Profile Themes: Unleashing the Style Sorcerer"
     fingerprint: 7a90ef1f8d3e
+
+  # Fresh tool idea (autopilot run, 2026-07-10): every prior `tool` item on the board
+  # was already done (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd,
+  # hyperfine, hexyl, procs, dust, duf, pip-audit, hexedit) and the only `todo` items
+  # are OPS-001 (kind: ops, which content runs skip) and a stack of SRC-* hacks (wrong
+  # lane). `gh pr list --state open --label auto:content` showed one open PR, a hack
+  # (chmod, SRC-008) — no tool to duplicate. Rather than no-op or cross collections,
+  # synthesized a fresh in-lane tool. `gron` is the natural companion to the already-
+  # reviewed jq: not another coreutils rewrite but the *anti-jq* — flatten JSON into
+  # grep-able assignment lines so you find a path with grep instead of a query
+  # language. Fully offline (apt install gron, 0.7.1 on Ubuntu 24.04) with two honest
+  # gotchas left in and run for real: ungron pads a partially-grepped array with
+  # `null` to keep indices honest, and non-identifier keys use ["bracket"] form so a
+  # dotted-path grep silently matches nothing. Every command captured.
+  - id: TOOL-017
+    kind: tool
+    title: "gron: the anti-jq that turns JSON into grep-able lines"
+    brief: "Why gron flattens JSON into one assignment per value so you find a path with grep instead of learning jq's query language, the grep|ungron round-trip that carves out a subtree, the array-hole surprise where ungron pads a partial array with null to keep indices honest, the non-identifier keys that use [\"bracket\"] form (so a dotted-path grep matches nothing), and where jq still wins (gron is a lens, not a language — it can't transform). Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/gron-honest-review/
