@@ -138,7 +138,7 @@ point.
 $ deploy.sh
 bash: deploy.sh: command not found
 $ ./deploy.sh
-hello from deploy
+deploy ran as runner
 ```
 
 Nothing is wrong with the permissions. When you type a bare word, the shell only
