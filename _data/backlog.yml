@@ -1289,3 +1289,40 @@ backlog:
     priority: P2
     status: done
     published: /tools/duf-honest-review/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-013
+    kind: hack
+    title: "Your database connection pool is too big: size it by cores, not hope (and the idle-in-transaction leak)"
+    brief: "The counterintuitive fix for a slow, connection-starved app: make the pool smaller. Size it with the HikariCP formula (`cores * 2 + 1` — 17 for an 8-core box, not 200), because Postgres spawns an OS process per connection and can only do parallel work up to its cores. Put PgBouncer in `pool_mode = transaction` so 1000 clients share 20 real connections. The failure that stays in: a connection you never returned shows up as a row stuck `idle in transaction` in `pg_stat_activity`, quietly eating a slot until the pool exhausts and everything hangs — the fix is returning it in a `finally`/context manager, not a bigger pool."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/connection-pooling/
+    source_title: "Database Connection Pooling"
+    fingerprint: 9976143029b7
+  - id: SRC-014
+    kind: hack
+    title: "The database migration that rolls out fine and rolls back never: test your downgrade before prod"
+    brief: "Write migrations as paired up/down functions (`alembic revision`, `upgrade()`/`downgrade()`) and actually run the downgrade once — because the rollback nobody tested is the one you reach for at 2am. Two footguns stay in: a plain `ALTER TABLE ... DROP COLUMN`/`RENAME` takes a lock that breaks the running code the instant it lands (the fix is the expand-contract dance — add the new column, backfill, deploy code using both, drop the old one a release later), and you can never edit a migration you already shipped because the tool checksums it and refuses to run on a mismatch. Reproducible against a throwaway Docker Postgres."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/database-migrations/
+    source_title: "Database Migrations"
+    fingerprint: 6b77208720a9
+  - id: SRC-015
+    kind: hack
+    title: "Dark mode in a dozen lines: prefers-color-scheme, CSS custom properties, and the contrast that fails WCAG"
+    brief: "Define your colors once as CSS custom properties (`--bg`, `--accent`) on `:root`, then flip only the values inside `@media (prefers-color-scheme: dark)` — the whole page re-themes with no JS and no duplicated rules. The failure that stays in: the accent color that passed the 4.5:1 WCAG contrast ratio on a white background quietly fails it on your new dark one, so 'dark mode done' and 'dark mode readable' are two different checkmarks — verify each theme in a contrast checker, don't assume inverting the background inverted the legibility."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0100/profile-themes/
+    source_title: "Profile Themes: Unleashing the Style Sorcerer"
+    fingerprint: 7a90ef1f8d3e
