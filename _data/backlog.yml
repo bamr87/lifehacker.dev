@@ -1393,7 +1393,8 @@ backlog:
     brief: "Stop running `mkdir` five times. `mkdir -p proj/{src,test,docs,.github/workflows}` builds the whole tree in one shot, `{1..10}` and `{a..z}` make ranges, and `cp file{,.bak}` is the one-keystroke backup. The failure that stays in: put a space after a comma — `{src, test}` — and the shell doesn't expand it at all, it hands `mkdir` two literal arguments and you get a folder actually named `{src,` plus one named `test}`. Braces also expand before variables, so `{$a,$b}` won't do what you hoped. Every case is offline-testable with `echo` before you commit to it."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/mkdir-brace-expansion-one-command-many-folders/
     source: content-scout
     source_url: https://it-journey.dev/quests/1111/building-technical-communities/
     source_title: "Building Technical Communities: Govern and Include"
