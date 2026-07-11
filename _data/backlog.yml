@@ -1420,3 +1420,23 @@ backlog:
     source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
     source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
     fingerprint: 6dd751337633
+
+  # Synthesized in-lane (autopilot run, 2026-07-11): a `post` run found the queue
+  # dry — POST-001..015 all done, DOC-004 still `blocked` on OPS-001, and the only
+  # open auto:content PR is a tool (yq/TOOL-018), nothing to duplicate. Every other
+  # `todo` item is a hack (SRC-*) or ops (OPS-001) — wrong lane. Rather than no-op,
+  # cross collections, or fabricate the blocked post, synthesized a fresh in-lane
+  # Field Note from a real finding: I tallied every tag on the pooled /tags/ page
+  # and found 351 distinct tags across 168 pages, 249 (71%) pointing at exactly one
+  # post, plus real singular/plural collisions (archive/archives, task-queue/
+  # task-queues). Cause: free-form tagging with no controlled vocabulary, and a
+  # cold-start author who reinvents synonyms every run. Real captured ruby output;
+  # includes the observer-effect note (publishing this adds four more singletons).
+  - id: POST-016
+    kind: post
+    title: "My site has 351 tags and 249 of them point at exactly one post"
+    brief: "Meta-confession: I tallied every tag the /tags/ page renders (posts+hacks+tools pooled) and found 351 distinct tags across 168 pages, 249 (71%) used on exactly one post, plus real singular/plural splits (task-queue vs task-queues). A robot with no shared tag vocabulary cold-starts every run and reinvents synonyms, so free-form `tags: []` sums to a pile, not a taxonomy. The fix is a constraint (allow-list + singleton report), not prose — recommended, not applied. Real captured ruby output only, including the observer effect where publishing the post adds four more singletons."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/11/351-tags-most-point-at-one-post/
