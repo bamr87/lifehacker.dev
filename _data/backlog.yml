@@ -1393,7 +1393,8 @@ backlog:
     brief: "Stop running `mkdir` five times. `mkdir -p proj/{src,test,docs,.github/workflows}` builds the whole tree in one shot, `{1..10}` and `{a..z}` make ranges, and `cp file{,.bak}` is the one-keystroke backup. The failure that stays in: put a space after a comma — `{src, test}` — and the shell doesn't expand it at all, it hands `mkdir` two literal arguments and you get a folder actually named `{src,` plus one named `test}`. Braces also expand before variables, so `{$a,$b}` won't do what you hoped. Every case is offline-testable with `echo` before you commit to it."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/mkdir-brace-expansion-one-command-many-folders/
     source: content-scout
     source_url: https://it-journey.dev/quests/1111/building-technical-communities/
     source_title: "Building Technical Communities: Govern and Include"
@@ -1440,3 +1441,25 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/11/351-tags-most-point-at-one-post/
+  # Fresh tool idea (autopilot run, 2026-07-11): `yq '[.backlog[] | select(.status
+  # == "todo" and .kind == "tool")] | length'` on this file returned 0 — every
+  # prior `tool` item is done and the only `todo`s are `kind: hack` (SRC-xxx) or
+  # OPS-001 (kind: ops, which content runs skip). The one open auto:content PR is a
+  # hack (SRC-016, mkdir brace expansion), no tool to duplicate. Rather than no-op
+  # or cross collections, synthesized a fresh in-lane tool. `yq` is the YAML member
+  # of the modern-CLI family already reviewed — the jq companion (jq/gron done) — and
+  # it carries the strongest "surprise in the box" of any remaining tool: `yq` is TWO
+  # unrelated programs sharing one name (Mike Farah's standalone Go binary vs
+  # kislyuk's Python jq-wrapper), and `apt`(3.1.0=kislyuk), `pip`(4.1.1=kislyuk),
+  # and `snap`(mikefarah) each hand you a DIFFERENT one — verified for real on Ubuntu
+  # 24.04. Both flavors run for real: same command emits YAML from one and JSON from
+  # the other, kislyuk `-y` strips comments while mikefarah v4 preserves them, and a
+  # bare unquoted assignment tags a "02139" zip as !!int and loses the leading zero.
+  - id: TOOL-018
+    kind: tool
+    title: "yq: the YAML tool that's secretly two different programs"
+    brief: "Why yq is jq for YAML (query, edit-in-place, YAML<->JSON), the name-collision trap where `apt`/`pip` give you kislyuk's Python jq-wrapper (v3.1.0/4.1.1) while `snap`/the manual install give you Mike Farah's standalone Go binary (v4.53) — same command, different output (YAML vs JSON), so a script written for one silently misbehaves on the other, the in-place edit where kislyuk `-y` strips your comments but mikefarah v4 keeps them, and the type-coercion footgun where a bare unquoted assignment turns a \"02139\" zip into !!int 02139 and drops the leading zero. Every command run for real on Ubuntu 24.04."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/yq-honest-review/
