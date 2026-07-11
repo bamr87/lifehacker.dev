@@ -1383,3 +1383,40 @@ backlog:
     priority: P2
     status: done
     published: /tools/gron-honest-review/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-016
+    kind: hack
+    title: "One mkdir, many folders: brace expansion (and the space that silently breaks it)"
+    brief: "Stop running `mkdir` five times. `mkdir -p proj/{src,test,docs,.github/workflows}` builds the whole tree in one shot, `{1..10}` and `{a..z}` make ranges, and `cp file{,.bak}` is the one-keystroke backup. The failure that stays in: put a space after a comma — `{src, test}` — and the shell doesn't expand it at all, it hands `mkdir` two literal arguments and you get a folder actually named `{src,` plus one named `test}`. Braces also expand before variables, so `{$a,$b}` won't do what you hoped. Every case is offline-testable with `echo` before you commit to it."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/building-technical-communities/
+    source_title: "Building Technical Communities: Govern and Include"
+    fingerprint: d654a01da54a
+  - id: SRC-017
+    kind: hack
+    title: "Stop reinstalling every dependency on each build: order your Dockerfile so the layer cache does its job"
+    brief: "Copy your lockfile (`package.json` / `requirements.txt`) and run the install BEFORE you `COPY` the rest of the source, so editing `app.js` doesn't re-run `npm install` — Docker invalidates every layer downstream of the first instruction that changed, and instruction order is the whole game. Two footguns stay in: `EXPOSE` documents a port but does not publish it (only `-p` at runtime maps it to the host), and a missing `.dockerignore` silently copies `node_modules`/`.git` into the build context, busting the cache you just arranged and bloating the image. Reproducible with `docker build` twice and reading the `CACHED` lines."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0100/container-fundamentals/
+    source_title: "Docker Container Fundamentals"
+    fingerprint: 9f229f5e094d
+  - id: SRC-018
+    kind: hack
+    title: "Clean up your messy commits before you push: git rebase -i, --fixup/--autosquash, and the history you must never rewrite"
+    brief: "Turn 'wip', 'more wip', 'typo' into one honest commit with `git rebase -i` (squash/reword/drop), or mark corrections as you go with `git commit --fixup <sha>` and let `git rebase -i --autosquash` file each fix under the commit it belongs to. The failure that stays in: rebasing rewrites the commit SHAs, so doing it to anything you've already pushed forces everyone who pulled it into a diverged history and a mess of duplicate commits — the rule is rewrite what's local, never what's shared. Fully reproducible in a throwaway repo."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
+    source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
+    fingerprint: 6dd751337633
