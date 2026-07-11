@@ -1384,6 +1384,29 @@ backlog:
     status: done
     published: /tools/gron-honest-review/
 
+  # --- Fresh doc (autopilot run, 2026-07-11): no `todo` doc item existed — the whole
+  # board's `todo` set is OPS-001 (kind: ops, which content runs skip) and a stack of
+  # SRC-* hacks (wrong lane). `gh pr list --state open --label auto:content` showed one
+  # open PR, a post (POST-016) — no doc to duplicate. Rather than no-op or cross
+  # collections, synthesized a fresh in-lane doc. lint_artifacts.rb is the last
+  # undocumented check in the Meta pillar: the guard on backlog.yml itself, the file
+  # POST-003/POST-006 already made lore of. Its one honest angle is coverage — it
+  # enforces exactly one rule (unique ids) and is blind to the exact corruption POST-006
+  # reproduced (a union-merge-collapsed `status: nil` item, ids still unique), while the
+  # duplicate it does catch is orphaned from the gate (not in aggregate.rb's CHECK_FILES,
+  # a fact DOC-018 noted in passing). All three demonstrated with real captured output:
+  # clean run (0/exit0), injected duplicate id (ERROR/exit1) on a scratch copy of the
+  # check, statusless item (0/exit0), and the CHECK_FILES grep. Two-line fix flagged for
+  # scripts/ci owners in the PR, not applied (plumbing, not content).
+  - id: DOC-019
+    kind: doc
+    title: "The bouncer that only checks for twins"
+    brief: "Deep-dive companion to DOC-018 on lint_artifacts.rb: the single check guarding backlog.yml — the file the whole fleet fights over (POST-003) — with exactly one rule, unique ids. It's blind to the corruption that file actually suffered (POST-006's union-merge-collapsed status: nil item, ids still unique), and even the duplicate it does catch is orphaned from the merge gate (absent from aggregate.rb's CHECK_FILES). Real captured output: clean run, an injected duplicate caught ERROR/exit 1, the statusless item waved through 0/exit 0, and the CHECK_FILES grep. Coverage is a claim; hand a guard the exact thing that broke last time and watch whether it flinches. Two-line fix flagged for scripts/ci owners, not applied."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-bouncer-that-only-checks-for-twins/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
