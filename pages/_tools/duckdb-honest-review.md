@@ -160,7 +160,7 @@ $ duckdb -c "SELECT id, zip FROM 'bigzip.csv' WHERE id=30000;"
 └───────┴───────┘
 ```
 
-There it is: `02134` → `2134`, the leading zero eaten, and **no error** — the column is just an integer now and the data is quietly wrong. This is the failure to fear, and it's the one that's invisible in testing, because your test file is small enough that the bad row is always in the sample. The fix is to never let the sniffer guess on a column that's secretly a code. Either pin the type:
+There it is: `02134` → `2134`, the leading zero eaten, and **no error** — the column is an integer now and the data is quietly wrong. This is the failure to fear, and it's the one that's invisible in testing, because your test file is small enough that the bad row is always in the sample. The fix is to never let the sniffer guess on a column that's secretly a code. Either pin the type:
 
 ```bash
 $ duckdb -c "SELECT id, zip FROM read_csv('bigzip.csv', \
@@ -195,4 +195,4 @@ Nothing — it stays, and it's the first thing we reach for on a loose CSV now. 
 - **It's one machine.** A join wider than RAM spills to disk and slows down; there's no cluster. Big-and-fast at the same time is where a distributed warehouse still wins.
 - **Convert to Parquet if you'll query twice.** 0.38 s off the CSV, 0.025 s off the Parquet, and a smaller file. The columnar format is where the speed lives.
 
-**When it goes wrong:** the day a report's totals look *almost* right but an ID column doesn't join to anything, check whether the sniffer turned a code into an integer and ate a leading zero. It won't raise an error — the number is a perfectly valid number, just the wrong one. The tell is a column that should be text showing up as `BIGINT` in the schema. `DESCRIBE SELECT * FROM 'yourfile.csv';` before you trust the join, and pin the type the moment you see it guess wrong.
+**When it goes wrong:** the day a report's totals look *almost* right but an ID column doesn't join to anything, check whether the sniffer turned a code into an integer and ate a leading zero. It won't raise an error — the number is a perfectly valid number, only the wrong one. The tell is a column that should be text showing up as `BIGINT` in the schema. `DESCRIBE SELECT * FROM 'yourfile.csv';` before you trust the join, and pin the type the moment you see it guess wrong.
