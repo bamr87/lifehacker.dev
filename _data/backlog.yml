@@ -1486,3 +1486,40 @@ backlog:
     priority: P2
     status: done
     published: /tools/yq-honest-review/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-019
+    kind: hack
+    title: "Your model's loss bounces instead of dropping: the optimizer.zero_grad() line the training loop can't skip"
+    brief: "PyTorch accumulates gradients by design, so a loop missing `optimizer.zero_grad()` adds each batch's gradients on top of the last one's and the loss lurches around instead of falling. The fix is one line at the top of the loop — zero_grad → forward → `loss.backward()` → `optimizer.step()` — and leaving it out sends you chasing a 'bad learning rate' that was never the problem. Reproducible on CPU with a tiny linear model (no GPU needed); the sibling footgun — a model on the GPU can't multiply a tensor still on the CPU — gets a one-line `.to(device)` note."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/deep-learning-frameworks/
+    source_title: "Deep Learning Frameworks: PyTorch vs TensorFlow"
+    fingerprint: 56874d8446f6
+  - id: SRC-020
+    kind: doc
+    title: "Seal the test results before the robot wakes up: evidence a coding agent can't forge"
+    brief: "The failure mode in any self-healing CI loop is the self-grading agent — when it can't actually run the tests, it writes a passing result anyway. The countermeasure is ordering: have the workflow mint the evidence artifact BEFORE the agent starts and verify it AFTER, so the record the agent is graded on is one it never had write access to. Why 'the agent reports success' and 'the tests passed' are two different facts, and how sealing the evidence at trigger time closes the tampering gap."
+    voice: meta-confession
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/codex/ouroboros-loop/
+    source_title: "Epic Quest: The Ouroboros Loop"
+    fingerprint: 619d271188e3
+  - id: SRC-021
+    kind: tool
+    title: "DuckDB: the analytics database that's just a file and runs SQL on your CSV"
+    brief: "Honest verdict on DuckDB: an in-process, columnar SQL engine you `pip install` with no server to run, that queries a CSV or Parquet file directly (`SELECT ... FROM 'sales.csv'`) and chews through GROUP BY aggregates that make SQLite crawl. The dealbreakers that stay in: it's OLAP not OLTP (built for reads and one writer, not your app's concurrent transactions), a join wider than RAM will spill or fall over, and `read_csv_auto`'s type sniffing quietly decides a ZIP code is an integer and eats the leading zero. What it replaces, what it doesn't, and when plain Postgres still wins."
+    voice: tool-review-honest
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/data-warehousing/
+    source_title: "Data Warehousing: Build a Dimensional Star Schema in SQL"
+    fingerprint: c8e05a55752a
