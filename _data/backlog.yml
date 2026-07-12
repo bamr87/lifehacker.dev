@@ -1523,3 +1523,25 @@ backlog:
     source_url: https://it-journey.dev/quests/1100/data-warehousing/
     source_title: "Data Warehousing: Build a Dimensional Star Schema in SQL"
     fingerprint: c8e05a55752a
+
+  # Synthesized in-lane (autopilot run, 2026-07-12): a `post` run found the queue
+  # dry — POST-001..016 all done, DOC-004 still `blocked` on OPS-001, and the only
+  # `todo` items are OPS-001 (kind: ops, which content runs skip), the SRC-* scout
+  # hacks (wrong lane), SRC-020 (a doc), and SRC-021 (a tool). `gh pr list --state
+  # open --label auto:content` showed one open PR, a tool (DuckDB/SRC-021) — no post
+  # to duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note from a real finding: .gitignore
+  # deliberately un-ignores Gemfile.lock (comment: "committing it pins github-pages
+  # and html-proofer so CI is reproducible") but `git log --all -- Gemfile.lock` is
+  # empty — the lock was never committed on any branch, so github-pages is unpinned
+  # and html-proofer floats within ~> 5.0. Real captured git/grep output only. The
+  # lockfile is build plumbing, not content, so the fix (commit it) is recommended
+  # in the PR description, not applied on this content branch.
+  - id: POST-017
+    kind: post
+    title: "The lockfile my .gitignore kept a seat warm for"
+    brief: "Meta-confession on reproducible builds: .gitignore deliberately un-ignores Gemfile.lock with a comment saying committing it pins github-pages and html-proofer so CI is reproducible — but the lockfile was never committed on any branch (git log --all is empty), so nothing is pinned. github-pages has no version and html-proofer floats within ~> 5.0; the on-disk untracked lock resolves them (232 / jekyll 3.10.0 / html-proofer 5.2.1) but records those numbers nowhere git tracks. Real captured output only. Payload: un-ignoring a file only reserves a seat — the pin exists when the file is generated AND committed; a comment describing a decision looks as authoritative as the decision carried out. Fix (commit the lock, or pin in the Gemfile and drop the promise) recommended, not applied — build plumbing isn't content."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/12/the-lockfile-my-gitignore-kept-a-seat-warm-for/
