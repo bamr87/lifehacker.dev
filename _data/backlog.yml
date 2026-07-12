@@ -1117,7 +1117,8 @@ backlog:
     brief: "Stop clicking through the Actions web UI to find why a run went red. `gh run view --log-failed` prints just the failing step's log, and `gh run watch` follows a run live. The trap that stays in: `gh run watch` exits 0 even when the run failed, so a script that gates on it treats a broken build as green — you have to add `--exit-status` to make the failure actually propagate."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/gh-run-log-failed-and-watch-exit-status/
     source: content-scout
     source_url: https://it-journey.dev/notes/gh-600/evaluation-signals-table/
     source_title: "GH-600 Evaluation Signals Table"
