@@ -1519,7 +1519,8 @@ backlog:
     brief: "Honest verdict on DuckDB: an in-process, columnar SQL engine you `pip install` with no server to run, that queries a CSV or Parquet file directly (`SELECT ... FROM 'sales.csv'`) and chews through GROUP BY aggregates that make SQLite crawl. The dealbreakers that stay in: it's OLAP not OLTP (built for reads and one writer, not your app's concurrent transactions), a join wider than RAM will spill or fall over, and `read_csv_auto`'s type sniffing quietly decides a ZIP code is an integer and eats the leading zero. What it replaces, what it doesn't, and when plain Postgres still wins."
     voice: tool-review-honest
     priority: P3
-    status: todo
+    status: done
+    published: /tools/duckdb-honest-review/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/data-warehousing/
     source_title: "Data Warehousing: Build a Dimensional Star Schema in SQL"
