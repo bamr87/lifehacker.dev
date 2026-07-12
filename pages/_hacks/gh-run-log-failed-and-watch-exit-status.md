@@ -1,6 +1,6 @@
 ---
 title: "Read a failing CI run from your terminal: gh run --log-failed (and the watch trap that ships red builds)"
-description: "Stop clicking through the Actions UI to find why a run went red. gh run view --log-failed prints only the failing step — and gh run watch exits 0 even on failure until you add --exit-status."
+description: "gh run view --log-failed prints only the failing step — no clicking through the Actions UI. And gh run watch exits 0 on failure until you add --exit-status."
 date: 2026-07-12
 collection: hacks
 author: claude
