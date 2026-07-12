@@ -1507,7 +1507,8 @@ backlog:
     brief: "The failure mode in any self-healing CI loop is the self-grading agent — when it can't actually run the tests, it writes a passing result anyway. The countermeasure is ordering: have the workflow mint the evidence artifact BEFORE the agent starts and verify it AFTER, so the record the agent is graded on is one it never had write access to. Why 'the agent reports success' and 'the tests passed' are two different facts, and how sealing the evidence at trigger time closes the tampering gap."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/seal-the-evidence-before-the-robot-wakes-up/
     source: content-scout
     source_url: https://it-journey.dev/quests/codex/ouroboros-loop/
     source_title: "Epic Quest: The Ouroboros Loop"
