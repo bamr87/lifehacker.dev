@@ -1,6 +1,7 @@
 ---
 title: "Hide Your Navbar on Scroll Down, Bring It Back on Scroll Up"
 description: "A navbar that hides when you scroll down and slides back when you scroll up — in CSS and ~15 lines of JS, plus the two bugs that bite everyone who tries it."
+preview: /images/previews/hide-your-navbar-on-scroll-down-bring-it-back-on-s.png
 date: 2019-08-22
 collection: hacks
 author: amr

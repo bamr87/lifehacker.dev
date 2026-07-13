@@ -1141,7 +1141,8 @@ backlog:
     brief: "Stop guessing which column to index. Run `EXPLAIN ANALYZE` on the slow query and read the plan: a `Seq Scan` with a big 'Rows Removed by Filter' is the tell, an `Index Scan` is the win. Add the index, re-run, watch the time drop. Two footguns stay in: a composite index on `(a, b)` does nothing for a query that filters only on `b` (column order matters), and wrapping the column in a function — `WHERE lower(email) = ...` — silently defeats the plain index until you build a matching expression index."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/read-the-query-plan-explain-analyze/
     source: content-scout
     source_url: https://it-journey.dev/quests/0110/query-optimization/
     source_title: "Query Optimization: Tuning Fast Database Queries"
@@ -1408,6 +1409,15 @@ backlog:
     status: done
     published: /docs/the-bouncer-that-only-checks-for-twins/
 
+  - id: DOC-020
+    kind: doc
+    title: "The lock with no lock server"
+    brief: "Deep-dive on scripts/fleet/lease.rb, the primitive the fleet-spawn doc (DOC-003) only gestures at: collision-free work claiming via a git ref used as a compare-and-swap (`git update-ref <ref> HEAD ''` = create-only-if-absent), so exactly one of two racing agents wins an item with no database or lock server — and the claim's boolean return IS the load balancer. The lesson that stays in: the ref is the lock, leases.yml is the human-readable record + TTL clock, and claim/release write their two stores in OPPOSITE orders on purpose so a crash always lands in the self-healing store, never the permanent one. The honest failure left in: the rollback catches a StandardError but NOT a hard SIGKILL between the CAS win and the YAML save — reproduced an orphan ref (0 YAML records) that blocks the id forever while reclaim_stale, which reads only YAML, drops zero. Real captured output throughout. Two-line fix (make reclaim_stale sweep orphan refs too) flagged for scripts/fleet owners, not applied."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-lock-with-no-lock-server/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -1559,7 +1569,7 @@ backlog:
   # holds). Promoted with metadata ONLY — id/kind/voice/priority; the factory
   # writes the prose. Relieves the tool/post/doc lanes so todo_by_kind for each
   # goes 0->1 and starved_kinds empties.
-  - id: TOOL-019
+  - id: TOOL-020
     kind: tool
     title: "ncdu vs gdu: the disk browsers that delete where duf and dust only report"
     brief: "Honest review of an interactive TUI disk browser (ncdu/gdu): where duf (TOOL-016) and dust (TOOL-014) only draw the picture, these let you delete in place — and the caveats that come with a destructive TUI (the scan cost on a huge tree, the no-undo delete, and why you still reach for dust for a quick glance). Every command run for real on a local directory (no network)."
@@ -1567,7 +1577,7 @@ backlog:
     priority: P2
     status: todo
 
-  - id: POST-018
+  - id: POST-019
     kind: post
     title: "The moment I noticed my evidence is a diff a human reads, not a signature"
     brief: "Meta-confession field note: the fleet keeps reaching for cryptographic seals (HMAC, cosign, OIDC) to prove a robot didn't fake its own results — but the actual seal on every lifehacker change is a pull request a human reads and approves. The signature proves who; review proves whether it should ship. Reflection only, grounded in the repo's own gate (required `verify` check + CODEOWNERS review); no network, no new tooling."
@@ -1575,10 +1585,89 @@ backlog:
     priority: P2
     status: todo
 
-  - id: DOC-020
+  - id: DOC-021
     kind: doc
     title: "The one script that gets to say the build is broken"
     brief: "Deep-dive on record_build.rb: the single producer of the sev1 `build` finding — the one severity policy.rb freezes growth on. The 'exactly one implementation, used everywhere' single-source-of-truth contract, why funnelling a critical signal through one plain-Ruby script is a feature not a gap, and what would break if a second writer appeared. Real captured output from running the script locally; no network."
     voice: meta-confession
     priority: P2
     status: todo
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-022
+    kind: hack
+    title: "Stop pasting the same HTML header into every page: Jinja2 template inheritance"
+    brief: "Write the page shell once as `base.html` with `{% block content %}` holes, then `{% extends 'base.html' %}` in each page and fill only the blocks — no more find-and-replace across ten files when the nav changes. Every step rendered for real with Python's jinja2. The failures that stay in: a typo'd block name doesn't raise an error, it just renders nothing; autoescape is OFF by default in a bare `Environment` (Flask turns it on), so the same template is XSS-safe in one place and a hole in another; and stray blank lines leak from Jinja's whitespace rules until you set `trim_blocks`/`lstrip_blocks` or reach for `{%- -%}`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/temple-of-templates/
+    source_title: "The Temple of Templates: Reusable Abstractions"
+    fingerprint: eb4fb97c4186
+  - id: SRC-023
+    kind: hack
+    title: "Run your data-load script twice without doubling every row: ON CONFLICT DO UPDATE and the watermark that skips the rest"
+    brief: "Make a load rerunnable so a retry doesn't duplicate: `INSERT ... ON CONFLICT(id) DO UPDATE SET ...` (SQLite/Postgres upsert) turns a re-run into a harmless update, and tracking `MAX(updated_at)` as a watermark pulls only new rows next time. Every step reproducible in a throwaway sqlite3 db. The footgun that stays in: a watermark-only `updated_at > last` silently misses rows sharing the exact boundary timestamp (and late-arriving data) — the fix is a small overlap window on the watermark PLUS the idempotent upsert, so re-reading a few rows costs nothing instead of double-counting them."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/etl-pipeline-design/
+    source_title: "ETL Pipeline Design: Scalable Python Data Pipelines"
+    fingerprint: a714be4e9ffe
+  - id: SRC-024
+    kind: hack
+    title: "Validate a DataFrame before it poisons the table: a pandera schema and a quarantine bin"
+    brief: "Put a gate at the pipeline's front door: a pandera `DataFrameSchema` that checks nulls, ranges, uniqueness, and regex formats, run with `lazy=True` so one pass reports every bad column at once instead of dying on the first failure. Then route the failing rows to a quarantine table instead of dropping them — a silent drop is the bug you can't debug three days later. Reproducible with pandas + pandera on a tiny frame. The honest limit that stays in: row-level rules pass every individually-valid record while the batch as a whole is wrong (half the usual row count, a null-rate that tripled), so schema validation is necessary but a count/z-score check on the batch is the other half of the job."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/data-quality/
+    source_title: "Data Quality Engineering: Validation & Monitoring"
+    fingerprint: 203a34ad8c22
+
+  # Synthesized in-lane (autopilot run, 2026-07-13): a `post` run found the queue
+  # dry — POST-001..017 all done, DOC-004 still `blocked` on OPS-001, and the only
+  # `todo` items are OPS-001 (kind: ops, which content runs skip) and the SRC-*
+  # scout ideas (all `kind: hack`, wrong lane). `gh pr list --state open --label
+  # auto:content` showed one open PR, a tool (choose/cut-awk field-picker) — no post
+  # to duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note from a real finding: 19 of 22 tool reviews
+  # carry the front-matter template's example title verbatim (`<X>: the honest
+  # review`) while all 22 verdicts and 22 descriptions are distinct — the SEO/headline
+  # field is a monoculture the distinguishing work never reached. Real captured
+  # grep/sed counts only. Fix (mark the template example as unfinished, or carry the
+  # backlog's rich title through) recommended in the PR, not applied — the skill
+  # template + 19 title tags are plumbing, not content.
+  - id: POST-018
+    kind: post
+    title: "I wrote 19 honest reviews and gave every one the same title"
+    brief: "Meta-confession on templates as defaults: 19 of 22 tool reviews are titled `<X>: the honest review` verbatim — the skill's front-matter example — while every verdict and description is distinct. The one field a human scans (the <h2>, the browser tab, the search headline) collapsed to the placeholder because `<Tool>` looked replaceable and `the honest review` looked like fixed chrome; meanwhile the real, differentiated headline the backlog brief already carried died on publish. Real captured grep/sed/uniq counts only. Payload: a placeholder that's grammatical and shippable is a spec, not a blank; make the example look unfinished or carry the good title through. Fix recommended, not applied — template + title tags are plumbing, not content."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/13/every-honest-review-has-the-same-title/
+  # Fresh tool idea (autopilot run, 2026-07-13): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine, hexyl, dust,
+  # procs, hexedit, pip-audit, duf, gron, yq, DuckDB) and no `todo` tool existed; the
+  # only open auto:content PR is a hack (EXPLAIN ANALYZE), no tool to duplicate. Rather
+  # than no-op or cross collections, synthesized a fresh in-lane tool. `choose` is the
+  # missing `cut`/`awk '{print $N}'` field-picker of the modern-CLI family already
+  # reviewed (completing rg=grep, fd=find, bat=cat, sd=sed, procs=ps, dust=du, duf=df),
+  # and it carries three honest gotchas left in and run for real on Ubuntu 24.04:
+  # fields are ZERO-indexed so the awk `$1` reflex silently grabs the second column,
+  # `-f` separators are regexes (a bare `.` splits on every char), and greedy splitting
+  # collapses consecutive delimiters so an empty CSV cell shifts every later column
+  # unless you pass `-n`. Also honest: no apt package (cargo/brew only). Every command
+  # captured verbatim.
+  - id: TOOL-019
+    kind: tool
+    title: "choose: the cut/awk field-picker whose first column is number zero"
+    brief: "Why `choose` beats `cut -d -f`/`awk '{print $N}'` for grabbing columns (whitespace-run splitting, negative indices, `-o` re-join), the zero-index trap where `choose 1` is the SECOND field and the awk reflex silently picks the wrong column (fixed with --one-indexed), the `-f` separator that's a regex not a literal (a bare `.` splits on every char), the greedy split that swallows empty fields so an empty CSV cell shifts every later column (fixed with -n/--non-greedy), the no-apt-package install (cargo/brew only), and where plain awk/cut still win. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/choose-honest-review/

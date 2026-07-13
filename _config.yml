@@ -52,6 +52,39 @@ words_per_minute         : 200
 breadcrumbs              : true
 repo_map                 : "/sitemap/"
 
+# ── Preview images (build-time tool, NOT a runtime plugin) ──────────────────
+# Read by scripts/generate-preview-images.sh → scripts/lib/preview_generator.py,
+# vendored from the theme's ZER0-004 feature (bamr87/zer0-mistakes#296). The
+# generator runs on a laptop or in a workflow, writes PNGs/SVGs into
+# assets/images/previews/, and stamps each article's `preview:` front matter.
+# GitHub Pages never sees any of this — it only serves the committed images,
+# which the remote theme's layouts already render (post cards, og:image,
+# article banner). That's why there is no _plugins/ copy of this feature: safe
+# mode would strip it. See /docs/the-plugin-that-isnt-a-plugin/.
+#
+# `local` renders a deterministic SVG banner offline — zero API keys, so any
+# fleet agent can run it. Humans with keys can pass --provider openai (or xai/
+# stability/gemini) for AI renders; Claude then analyzes the article into an
+# art brief (prompt_engine) and vision-reviews the result (review_engine).
+preview_images:
+  enabled                : true
+  provider               : 'local'            # renderer: local (offline), openai, xai, stability, gemini
+  model                  : ''                 # empty → the active renderer's default
+  size                   : '1536x1024'        # landscape banner
+  quality                : 'auto'
+  style                  : 'neon-noir terminal art, late-night CRT glow, synthwave palette, clean vector shapes'
+  style_modifiers        : 'fuchsia and cyan on near-black, scanlines, infomercial-after-dark energy'
+  output_dir             : 'assets/images/previews'
+  assets_prefix          : '/assets'          # prepended to relative preview: paths
+  auto_prefix            : true
+  prompt_engine          : 'claude'           # claude writes the art brief (template = built-in prompt)
+  review_engine          : 'claude'           # claude vision-reviews the render (none = skip)
+  collections:                                # pages/_<name> directories to scan
+    - hacks
+    - posts
+    - tools
+    - docs
+
 # ── Appearance: skin + palette + backgrounds ─────────────────────────────────
 # Skins: air, aqua, dirt, neon, mint, plum, sunrise. `neon` gives lifehacker
 # its late-night-terminal, infomercial-after-dark energy.

@@ -14,3 +14,6 @@ vendor/
 
 # Gemfile.lock is intentionally NOT ignored — committing it pins github-pages and
 # html-proofer so CI is reproducible. Generate it once with `bundle install`.
+
+# Local API credentials for scripts/generate-preview-images.sh (see .env.example).
+.env

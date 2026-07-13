@@ -1,29 +1,34 @@
 {
-  "generated_at": "2026-07-12T08:53:03Z",
-  "seed": "20260712",
+  "generated_at": "2026-07-13T09:17:11Z",
+  "seed": "20260713",
   "per_source": 6,
   "total_url_budget": 12,
   "sources": [
     {
       "base": "https://it-journey.dev",
       "host": "it-journey.dev",
-      "candidates": 286,
+      "candidates": 324,
       "visit": [
-        "https://it-journey.dev/quests/1100/data-quality/",
-        "https://it-journey.dev/quests/1100/self-operating-website-06-the-editors-eye/",
-        "https://it-journey.dev/notes/gh-600/copilot-coding-agent-cheatsheet/",
-        "https://it-journey.dev/quests/0010/nerd-font-enchantment/",
-        "https://it-journey.dev/quests/0000/character-selection/",
-        "https://it-journey.dev/notes/zero/start/"
+        "https://it-journey.dev/quests/1000/agentic-tool-selection-and-permissions/",
+        "https://it-journey.dev/quests/codex/ouroboros-loop/",
+        "https://it-journey.dev/quests/0001/stack-attack/",
+        "https://it-journey.dev/quests/1010/analytics-mcp-setup/",
+        "https://it-journey.dev/notes/gh-600/autonomy-levels-matrix/",
+        "https://it-journey.dev/quests/0110/data-modeling/"
       ],
       "wander_slots": 2
     },
     {
       "base": "https://bash-365.com",
       "host": "bash-365.com",
-      "candidates": 1,
+      "candidates": 84,
       "visit": [
-        "https://bash-365.com/"
+        "https://bash-365.com/services/erp/",
+        "https://bash-365.com/tools/business/outgrowing-quickbooks/",
+        "https://bash-365.com/services/fintech/",
+        "https://bash-365.com/tools/partners/engagement-method/",
+        "https://bash-365.com/privacy/",
+        "https://bash-365.com/services/ai/"
       ],
       "wander_slots": 2
     }

@@ -69,7 +69,9 @@ improvements:
   # The 13 growable todos are ALL kind:hack (the SRC-* content-scout stream), so
   # tool/post/doc drain to 0 and never refill. Harvested 36 candidates from merged
   # PRs and promoted one non-duplicate, offline-testable idea per starved lane
-  # (TOOL-019 ncdu/gdu, POST-018 review-is-the-seal, DOC-020 record_build.rb).
+  # (TOOL-020 ncdu/gdu, POST-019 review-is-the-seal, DOC-021 record_build.rb).
+  # NB: renumbered from TOOL-019/POST-018/DOC-020 when main merged — those ids had
+  # been consumed by shipped content (choose / 19-reviews / lock-with-no-lock-server).
   # Per-kind metrics (not the aggregate) so each lane's refill is verified alone.
   - id: 2026-07-13-destarve-tool
     date: 2026-07-13
@@ -80,7 +82,7 @@ improvements:
     status: pending
     note: >-
       Tool lane starved (todo_by_kind.tool = 0; starved_kinds included `tool`).
-      Promoted harvested TOOL-019 (ncdu/gdu honest review, offline) as todo.
+      Promoted harvested TOOL-020 (ncdu/gdu honest review, offline) as todo.
       todo_by_kind.tool 0->1; starved_kinds emptied. Metadata only.
 
   - id: 2026-07-13-destarve-post
@@ -91,7 +93,7 @@ improvements:
     direction: up
     status: pending
     note: >-
-      Post lane starved (todo_by_kind.post = 0). Promoted harvested POST-018
+      Post lane starved (todo_by_kind.post = 0). Promoted harvested POST-019
       (field-note meta-confession, reflection-only/offline) as todo.
       todo_by_kind.post 0->1. Metadata only — the factory writes the prose.
 
@@ -103,6 +105,6 @@ improvements:
     direction: up
     status: pending
     note: >-
-      Doc lane starved (todo_by_kind.doc = 0). Promoted harvested DOC-020
+      Doc lane starved (todo_by_kind.doc = 0). Promoted harvested DOC-021
       (record_build.rb single-source-of-truth deep-dive, offline) as todo.
       todo_by_kind.doc 0->1. Metadata only — the factory writes the prose.
