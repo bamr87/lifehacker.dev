@@ -9,9 +9,12 @@
   },
   "scripts": {
     "build": "tsc",
+    "typecheck": "tsc -p tsconfig.test.json",
     "start": "node dist/index.js",
     "dev": "tsx src/index.ts",
-    "smoke": "tsx src/smoke.ts"
+    "smoke": "tsx src/smoke.ts",
+    "test": "node --import tsx --test src/server.test.ts src/unit.test.ts",
+    "evidence": "bash scripts/collect-evidence.sh"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.18.0",
