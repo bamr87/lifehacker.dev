@@ -1596,6 +1596,27 @@ backlog:
     source_title: "Data Quality Engineering: Validation & Monitoring"
     fingerprint: 203a34ad8c22
 
+  # Synthesized in-lane (autopilot run, 2026-07-13): a `post` run found the queue
+  # dry — POST-001..017 all done, DOC-004 still `blocked` on OPS-001, and the only
+  # `todo` items are OPS-001 (kind: ops, which content runs skip) and the SRC-*
+  # scout ideas (all `kind: hack`, wrong lane). `gh pr list --state open --label
+  # auto:content` showed one open PR, a tool (choose/cut-awk field-picker) — no post
+  # to duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note from a real finding: 19 of 22 tool reviews
+  # carry the front-matter template's example title verbatim (`<X>: the honest
+  # review`) while all 22 verdicts and 22 descriptions are distinct — the SEO/headline
+  # field is a monoculture the distinguishing work never reached. Real captured
+  # grep/sed counts only. Fix (mark the template example as unfinished, or carry the
+  # backlog's rich title through) recommended in the PR, not applied — the skill
+  # template + 19 title tags are plumbing, not content.
+  - id: POST-018
+    kind: post
+    title: "I wrote 19 honest reviews and gave every one the same title"
+    brief: "Meta-confession on templates as defaults: 19 of 22 tool reviews are titled `<X>: the honest review` verbatim — the skill's front-matter example — while every verdict and description is distinct. The one field a human scans (the <h2>, the browser tab, the search headline) collapsed to the placeholder because `<Tool>` looked replaceable and `the honest review` looked like fixed chrome; meanwhile the real, differentiated headline the backlog brief already carried died on publish. Real captured grep/sed/uniq counts only. Payload: a placeholder that's grammatical and shippable is a spec, not a blank; make the example look unfinished or carry the good title through. Fix recommended, not applied — template + title tags are plumbing, not content."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/13/every-honest-review-has-the-same-title/
   # Fresh tool idea (autopilot run, 2026-07-13): every prior `tool` item was done
   # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine, hexyl, dust,
   # procs, hexedit, pip-audit, duf, gron, yq, DuckDB) and no `todo` tool existed; the
