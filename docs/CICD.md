@@ -15,6 +15,7 @@ human merge gate no agent can bypass.
 | `nightly.yml` | cron, manual | No | External-link sweep + fresh-theme drift detection + full Prime-Directive run. Files one issue on failure. |
 | `fleet-dispatch.yml` | manual | No | The dispatcher (plan-only unless `--apply`). Gated by `FLEET_ENABLED`; **no schedule**, **no `administration` scope**. |
 | `devops-audit.yml` | manual | No | Deterministic CI/CD audit + (opt-in) the `devops-manager` agent to propose pipeline improvements. |
+| `mcp-tests.yml` | PR + push to main touching `mcp/lifehacker-read/**`, manual | No (own check) | Typechecks, builds, and runs the Node MCP server's 50-test suite + stdio smoke. The Ruby `verify` gate lints the site, not the MCP server; this covers that gap. Read-only. |
 | `loop-tuner.yml` | weekly cron (agent gated by `LOOP_TUNER_ENABLED`), manual | No | Always measures the loop's *observed* behaviour (`scripts/devops/loop_metrics.rb` — run times, failure/escalation rates, auto-fix attempts, recurring lint rules, conflicts, backlog starvation, trends vs `_data/metrics/history.jsonl`) and verifies the improvements ledger (`_data/fleet/improvements.yml`); when `LOOP_TUNER_ENABLED` + key, the `loop-tuner` agent settles ledger verdicts, fixes the upstream cause, records new ledger entries + a history snapshot, and opens ONE PR. Content-agnostic. |
 
 ## The tiered pipeline (`pipeline.yml`)
