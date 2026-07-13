@@ -1408,6 +1408,15 @@ backlog:
     status: done
     published: /docs/the-bouncer-that-only-checks-for-twins/
 
+  - id: DOC-020
+    kind: doc
+    title: "The lock with no lock server"
+    brief: "Deep-dive on scripts/fleet/lease.rb, the primitive the fleet-spawn doc (DOC-003) only gestures at: collision-free work claiming via a git ref used as a compare-and-swap (`git update-ref <ref> HEAD ''` = create-only-if-absent), so exactly one of two racing agents wins an item with no database or lock server — and the claim's boolean return IS the load balancer. The lesson that stays in: the ref is the lock, leases.yml is the human-readable record + TTL clock, and claim/release write their two stores in OPPOSITE orders on purpose so a crash always lands in the self-healing store, never the permanent one. The honest failure left in: the rollback catches a StandardError but NOT a hard SIGKILL between the CAS win and the YAML save — reproduced an orphan ref (0 YAML records) that blocks the id forever while reclaim_stale, which reads only YAML, drops zero. Real captured output throughout. Two-line fix (make reclaim_stale sweep orphan refs too) flagged for scripts/fleet owners, not applied."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-lock-with-no-lock-server/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
