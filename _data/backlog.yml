@@ -1141,7 +1141,8 @@ backlog:
     brief: "Stop guessing which column to index. Run `EXPLAIN ANALYZE` on the slow query and read the plan: a `Seq Scan` with a big 'Rows Removed by Filter' is the tell, an `Index Scan` is the win. Add the index, re-run, watch the time drop. Two footguns stay in: a composite index on `(a, b)` does nothing for a query that filters only on `b` (column order matters), and wrapping the column in a function — `WHERE lower(email) = ...` — silently defeats the plain index until you build a matching expression index."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/read-the-query-plan-explain-analyze/
     source: content-scout
     source_url: https://it-journey.dev/quests/0110/query-optimization/
     source_title: "Query Optimization: Tuning Fast Database Queries"
