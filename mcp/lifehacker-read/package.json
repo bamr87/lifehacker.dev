@@ -1,0 +1,32 @@
+{
+  "name": "lifehacker-read",
+  "version": "0.1.0",
+  "private": true,
+  "description": "P0 read-only MCP server for lifehacker.dev — the site as a navigable, queryable resource tree (git is the database). No secrets, no network, no gh/docker.",
+  "type": "module",
+  "bin": {
+    "lifehacker-read": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "smoke": "tsx src/smoke.ts",
+    "test": "node --import tsx --test src/server.test.ts src/unit.test.ts",
+    "evidence": "bash scripts/collect-evidence.sh"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "yaml": "^2.6.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

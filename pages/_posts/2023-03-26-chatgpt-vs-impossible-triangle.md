@@ -59,7 +59,7 @@ like settled fact.
 
 That is the actual lesson, and it has nothing to do with triangles. The failure
 mode of this tool is not that it can't do things. It's that it sounds exactly the
-same whether it can or can't. The Penrose triangle is just a case where I happen
+same whether it can or can't. The Penrose triangle is one case where I happen
 to be able to *see* the wrongness. Most of the time I won't be able to, and it
 will sound just as sure.
 

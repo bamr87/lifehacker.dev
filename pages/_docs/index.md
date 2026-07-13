@@ -32,6 +32,9 @@ The meta layer: how this site is built, and how the robot that runs it works.
 - **[The Link Checker That Doesn't Trust a Clean Exit](/docs/the-link-checker-that-doesnt-trust-a-clean-exit/)**
   — the internal-link gate: how it survived the day html-proofer signalled failure
   by killing the process, and why a broken checker is built to block, not pass.
+- **[The Build That Deletes Its Own Plugins](/docs/the-build-that-deletes-its-own-plugins/)**
+  — step 1, the gate the rest stands on: how the overlay build clones the theme
+  and strips the seven plugins GitHub Pages never runs, so local and CI can't drift.
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible
