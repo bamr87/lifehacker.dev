@@ -28,7 +28,7 @@ improvements:
     metric: backlog.growable_todo
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Backlog starvation: loop_metrics showed 0 `todo` items across all four
       growable kinds, so the content factory improvised fresh unmeasured ideas
@@ -41,6 +41,8 @@ improvements:
       distinguish "consumed" from "never moved", so it stays pending one more
       window. The structural starvation it targeted is real and recurring — see
       the follow-on entry 2026-07-06-destarve-hack-tool-post.
+      2026-07-13 verdict — VERIFIED: backlog.growable_todo now 13 (0 -> 13, up is
+      better). Settled after two windows; recurrence is now tracked per-kind.
 
   - id: 2026-07-06-destarve-hack-tool-post
     date: 2026-07-06
@@ -48,7 +50,7 @@ improvements:
     metric: backlog.growable_todo
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Backlog starvation recurred: loop_metrics showed 0 `todo` items across ALL
       four growable kinds (every item done; OPS-001 is ops-skip, DOC-004 blocked),
@@ -57,3 +59,50 @@ improvements:
       offline-testable ones into _data/backlog.yml as HACK-019, TOOL-013, POST-011
       (todo). growable_todo 0->3; starved_kinds shrank from [hack,tool,post,doc]
       to just [doc]. Metadata only — the factory writes the prose.
+      2026-07-13 verdict — VERIFIED: verify_improvements measured
+      backlog.growable_todo 0 -> 13 (up is better). The promoted items were picked
+      and shipped and the scout (SRC-*) kept the hack lane full; the tool/post/doc
+      lanes drained again, which is the recurring structural bias addressed by the
+      2026-07-13 follow-on entries below.
+
+  # --- loop-tuner 2026-07-13: tool/post/doc lanes re-starved ------------------
+  # The 13 growable todos are ALL kind:hack (the SRC-* content-scout stream), so
+  # tool/post/doc drain to 0 and never refill. Harvested 36 candidates from merged
+  # PRs and promoted one non-duplicate, offline-testable idea per starved lane
+  # (TOOL-019 ncdu/gdu, POST-018 review-is-the-seal, DOC-020 record_build.rb).
+  # Per-kind metrics (not the aggregate) so each lane's refill is verified alone.
+  - id: 2026-07-13-destarve-tool
+    date: 2026-07-13
+    pr: TBD
+    metric: backlog.todo_by_kind.tool
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Tool lane starved (todo_by_kind.tool = 0; starved_kinds included `tool`).
+      Promoted harvested TOOL-019 (ncdu/gdu honest review, offline) as todo.
+      todo_by_kind.tool 0->1; starved_kinds emptied. Metadata only.
+
+  - id: 2026-07-13-destarve-post
+    date: 2026-07-13
+    pr: TBD
+    metric: backlog.todo_by_kind.post
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Post lane starved (todo_by_kind.post = 0). Promoted harvested POST-018
+      (field-note meta-confession, reflection-only/offline) as todo.
+      todo_by_kind.post 0->1. Metadata only — the factory writes the prose.
+
+  - id: 2026-07-13-destarve-doc
+    date: 2026-07-13
+    pr: TBD
+    metric: backlog.todo_by_kind.doc
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Doc lane starved (todo_by_kind.doc = 0). Promoted harvested DOC-020
+      (record_build.rb single-source-of-truth deep-dive, offline) as todo.
+      todo_by_kind.doc 0->1. Metadata only — the factory writes the prose.
