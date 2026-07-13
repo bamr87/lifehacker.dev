@@ -1040,7 +1040,8 @@ backlog:
     brief: "Scan a repo with `detect-secrets scan`, then face the part nobody likes: deleting the line and committing does not remove the key — it sits in every prior commit and was scraped seconds after you pushed. The real fix is rotate first, then purge history with git filter-repo, plus a pre-commit hook so it never lands again. The failure — 'I deleted it, we're fine' — stays in."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/rotate-the-secret-still-in-git-history/
     source: content-scout
     source_url: https://it-journey.dev/quests/1011/secure-coding/
     source_title: "Secure Coding: Preventing the OWASP Top 10"
@@ -1051,11 +1052,12 @@ backlog:
     brief: "Honest verdict on `pip-audit` (and its npm audit cousin): it catches genuinely known-vulnerable versions in seconds, and it also floods you with transitive-dependency advisories you can't fix and scores that don't match your actual risk. What earns an upgrade, what's noise, and when to wire it into CI versus running it by hand."
     voice: tool-review-honest
     priority: P3
-    status: todo
+    status: done
     source: content-scout
     source_url: https://it-journey.dev/quests/1011/secure-coding/
     source_title: "Secure Coding: Preventing the OWASP Top 10"
     fingerprint: adf392372480
+    published: /tools/pip-audit-honest-review/
   - id: SRC-003
     kind: hack
     title: "Scope the token before your MCP server gets the keys: a fine-grained PAT that can't touch prod"
@@ -1099,8 +1101,450 @@ backlog:
     brief: "Before you drop `alias ls='ls --color'` into your .bashrc, run `type -a ls` to see everything that name already resolves to — alias, shell builtin, function, and the real /bin/ls, in the order the shell picks them. The failure that stays in: you alias over a name a script depends on, it breaks in a way that works fine when you paste the same command by hand, and `command ls` (which skips the alias) is the one-word escape hatch."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/type-a-before-you-alias/
     source: content-scout
     source_url: https://it-journey.dev/quests/0000/cellar/
     source_title: "Bashcrawl: The Cellar Quest"
     fingerprint: 232160d5796a
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-007
+    kind: hack
+    title: "Read a failing CI run from your terminal: gh run view --log-failed and the watch --exit-status trap"
+    brief: "Stop clicking through the Actions web UI to find why a run went red. `gh run view --log-failed` prints just the failing step's log, and `gh run watch` follows a run live. The trap that stays in: `gh run watch` exits 0 even when the run failed, so a script that gates on it treats a broken build as green — you have to add `--exit-status` to make the failure actually propagate."
+    voice: how-to-practical
+    priority: P3
+    status: done
+    published: /hacks/gh-run-log-failed-and-watch-exit-status/
+    source: content-scout
+    source_url: https://it-journey.dev/notes/gh-600/evaluation-signals-table/
+    source_title: "GH-600 Evaluation Signals Table"
+    fingerprint: 449b195a9aaf
+  - id: SRC-008
+    kind: hack
+    title: "chmod 644 and 755, never 777: the permission bits that decide what's safe to run"
+    brief: "Read an `ls -l` line as a file-type char plus three rwx triples, then set them on purpose: 644 (rw-r--r--) for data, 755 (rwxr-xr-x) for scripts, and never 777, which hands write access to everyone on the box. Two failures stay in: you `chmod +x` a script that has no `#!` shebang line and it still won't run, and you forget the `./` prefix because the current directory isn't on your PATH."
+    voice: how-to-practical
+    priority: P3
+    status: done
+    published: /hacks/chmod-644-755-never-777/
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/armoury/
+    source_title: "Bashcrawl: The Armoury"
+    fingerprint: ceb55a3c397d
+  - id: SRC-009
+    kind: hack
+    title: "Read the query plan before you add the index: EXPLAIN ANALYZE, Seq Scan vs Index Scan, and the function that kills it"
+    brief: "Stop guessing which column to index. Run `EXPLAIN ANALYZE` on the slow query and read the plan: a `Seq Scan` with a big 'Rows Removed by Filter' is the tell, an `Index Scan` is the win. Add the index, re-run, watch the time drop. Two footguns stay in: a composite index on `(a, b)` does nothing for a query that filters only on `b` (column order matters), and wrapping the column in a function — `WHERE lower(email) = ...` — silently defeats the plain index until you build a matching expression index."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/query-optimization/
+    source_title: "Query Optimization: Tuning Fast Database Queries"
+    fingerprint: cd4a20d1a4eb
+
+  # --- Fresh doc (autopilot run, 2026-07-08): the doc lane was dry — every DOC
+  # item on the board is already `done`, DOC-004 is a `post` blocked on OPS-001,
+  # and the only `todo` items are OPS-001 (kind: ops, which content runs skip) and
+  # the SRC-* scout hacks/tools (wrong lane). `gh pr list --state open --label
+  # auto:content` showed only a post PR (POST-013) — no doc to duplicate. Rather
+  # than no-op, cross lanes, or fabricate, synthesized a fresh in-lane doc.
+  # classify_changes.rb is an untouched corner of the harness: the Meta pillar has
+  # a deep-dive for every CI *check* (build/brand/drift/frontmatter/links/hack-box)
+  # but not the router that runs BEFORE them and decides which even execute. It's
+  # the natural companion to DOC-005 (harness overview) and DOC-002 (guardrails,
+  # which uses it in the auto-merge smuggle guard). Honest twist left in: the
+  # router can only round UP (empty/unrecognized diff runs the full pipeline), and
+  # the one required check — verify/build — deliberately has no `needs: changes` so
+  # it ignores the router entirely (a flaked router once left main with no green
+  # build). Real captured output only: classify_changes runs on seven real diffs
+  # plus the $GITHUB_OUTPUT booleans, all on this repo.
+  - id: DOC-016
+    kind: doc
+    title: "The Router That Can Only Round Up"
+    brief: "Deep-dive companion to DOC-005 on classify_changes.rb: the 50-line change-type router that runs before any check and decides which tier executes (content/deps/pipeline/data). Why every ambiguous case — empty diff, unrecognized file, or a flaked router job — rounds UP to the full pipeline instead of skipping, why the one required `verify`/build check deliberately ignores the router (no `needs: changes`, after a killed router job left main with no green build), and the same regex read four ways: tier gating, report scoping, the auto-merge smuggle guard, and the auto-fix refusal — where `pipeline`/`deps` flips from 'run more' to 'a human must look'. Real captured output: seven diffs classified plus the $GITHUB_OUTPUT booleans."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-router-that-can-only-round-up/
+  # Fresh post (autopilot run, 2026-07-08): the post lane was dry — every post item
+  # was `done` except DOC-004 (blocked on OPS-001), OPS-001 is a skipped ops task,
+  # and the only `todo` items were the nine content-scout SRC ideas (8 hacks, 1 tool,
+  # 0 posts). Rather than cross lanes, no-op, or fabricate the blocked post, the
+  # factory wrote this fresh Field Note about that exact structural fact: the scout's
+  # mandatory-source_url rule means it can refill the hack/tool lanes but never the
+  # post lane. Real captured awk/grep output only.
+  - id: POST-013
+    kind: post
+    title: "The idea firehose refills every lane but the one I write in"
+    brief: "Meta-confession on queue shape: the backlog is fed by one source (the content-scout mining it-journey.dev), and its honesty rule — no source_url, no proposal — means it structurally can only file hacks and tools, never a self-narrating post. So the post lane looks perpetually idle while the board is nine items deep. A queue fed by a single source inherits that source's blind spots. Real captured output only."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/08/the-scout-refills-every-lane-but-mine/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-010
+    kind: hack
+    title: "80% coverage and still broken: the branch c8 counted as covered but never ran"
+    brief: "Wire a coverage gate into your tests with `c8 --check-coverage --lines 80` so an untested change fails the build instead of merging quietly. The honest part that stays in: line coverage is the easy metric to game — a function whose `if` branch never fired can still show 100% lines covered, so the number says safe while a whole path is untested. Turn on `--branches` too, and know the difference before you trust the badge."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/testing-integration/
+    source_title: "Testing Integration: Tiered CI/CD Test Gates"
+    fingerprint: 3fda0c87d3e1
+  - id: SRC-011
+    kind: hack
+    title: "Stop scrolling CI logs: write a real summary to $GITHUB_STEP_SUMMARY"
+    brief: "A GitHub Actions job doesn't have to bury its result in 800 lines of log. Echo Markdown to the `$GITHUB_STEP_SUMMARY` file and it renders as a table on the run's summary page — pass/fail counts, the one number that mattered, a link. The gotchas that stay in: it appends (every `>>` adds, so `>` when you meant `>>` eats the earlier lines), it's per-job not global, and echoing untrusted text into it is a Markdown-injection footgun you handle by not piping raw input through it."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/agentic-codex-01-agents-in-the-sdlc/
+    source_title: "Initiation Rites: Agents in the SDLC"
+    fingerprint: 00d2be97aa29
+  - id: SRC-012
+    kind: hack
+    title: "You can't gate a workflow step on a secret in `if:` — promote it to an env first"
+    brief: "The obvious guard — `if: secrets.MY_TOKEN != ''` — doesn't work, because GitHub Actions won't evaluate `secrets.*` in a job-level `if:`. Copy the secret to a step output or a job env first, then branch on that, so a workflow that needs a token skips cleanly instead of failing when it's absent. The footgun that stays in: pull requests from forks get empty secrets by design, so any agent step that assumes the token exists breaks on exactly the PRs strangers open — the graceful no-op is the fix, not a louder error."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0011/ouroboros-loop-03-summon-the-golem/
+    source_title: "Summon the Golem: Claude Code as a Headless CI Agent"
+    fingerprint: f8ac9ca11bdd
+
+  # --- Fresh doc (autopilot run, 2026-07-09): the doc lane was dry — every DOC item
+  # on the board is already `done`, DOC-004 is a `post` blocked on OPS-001, and the
+  # only `todo` items are OPS-001 (kind: ops, which content runs skip) and the SRC-*
+  # scout hacks (wrong lane). `gh pr list --state open --label auto:content` showed
+  # only a post PR (POST-014) — no doc to duplicate. Rather than no-op, cross lanes,
+  # or fabricate, synthesized a fresh in-lane doc. lint_agents.rb is an untouched
+  # corner of the harness: the Meta pillar deep-dives every CI check that reaches the
+  # gate (build/brand/drift/frontmatter/links/hack-box/router) but never the one
+  # pointed at the robot's OWN agent/skill wiring — and it turns out that check is
+  # unplugged from the gate two independent ways (run-all.sh swallows its exit with
+  # `|| true`; aggregate.rb's CHECK_FILES omits `agents`), while its own header
+  # claims "the gate enforces" it and it marks dangling refs severity:error. The
+  # cousin of DOC-006 (word police) but inverted: that one is honestly non-blocking,
+  # this one falsely looks blocking. Demonstrated with real captured output — clean
+  # run, an injected dangling-agent-ref caught as ERROR/exit 1, and the aggregated
+  # gate reporting PASS with agents.json present on disk but 0 findings in the
+  # contract. Recommends the one-line fix to the scripts/ci owners in the PR body;
+  # not patched here (content branch only).
+  - id: DOC-017
+    kind: doc
+    title: "The check that guards the robot's job description and can't enforce it"
+    brief: "Deep-dive companion to DOC-005/DOC-006 on lint_agents.rb: the check that validates the fleet's own agent files and skill dirs (valid front-matter, name==filename, every workflow `agent: <literal>` resolves, every skill has a SKILL.md) and marks the load-bearing failures severity:error — yet reaches the merge gate through neither wire. run-all.sh runs it with `|| true` (exit swallowed) and aggregate.rb's CHECK_FILES omits `agents` (its findings never enter findings.jsonl), so a dangling agent ref that would summon a brainless robot merges green. The inverse of the word police (DOC-006): that one is honestly non-blocking; this one's own header says 'the gate enforces' while the plumbing enforces nothing. Real captured output: clean run, an injected dangling-ref caught as ERROR/exit 1, and the gate reporting PASS with agents.json on disk but 0 agents findings aggregated. artifacts.json is orphaned the same way. Fix flagged for scripts/ci owners, not applied."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-check-that-guards-my-job-description/
+  # Fresh post (autopilot run, 2026-07-09): the post lane was dry — every post
+  # item was `done`, DOC-004 is a `post` still `blocked` on OPS-001, OPS-001 is a
+  # skipped ops task, and the only `todo` items were the SRC-* scout hacks/tools
+  # (wrong lane). `gh pr list --state open --label auto:content` showed only a
+  # tool PR (duf) — nothing to duplicate. Rather than no-op, cross lanes, or
+  # fabricate the blocked post, the factory synthesized this fresh Field Note from
+  # a real finding: the Prime Directive runner reported `docker=false` and left all
+  # 47 opt-in blocks `unverified` while Docker was fully up, because its `docker?`
+  # probe reads the thread-local `$?` (nil after Open3 waits in another thread)
+  # instead of the status object Open3 returns. Real captured output only.
+  - id: POST-014
+    kind: post
+    title: "Docker was running; the check that guards my one rule swore it wasn't"
+    brief: "Meta-confession: the Prime Directive runner (the check that proves I ran what I tell readers to run) reported no Docker sandbox and marked all 47 opt-in shell blocks unverified — while Docker answered on the same shell. Root cause reproduced: docker? destructures away the status Open3.capture2e returns and reads the thread-local $?, which is nil in the caller because Open3 waits in its own thread, so nil.success? raises and the bare rescue returns false. Deterministic (no child process sets $? first), non-blocking (exit 0), and opt-in — three soft layers stacked. Payload: after Open3.capture*, ask the returned status, not $?; and a check that can only ever report one result has stopped checking."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/09/docker-was-up-my-check-swore-it-wasnt/
+  # Fresh tool idea (autopilot run, 2026-07-09): every prior `tool` item was already
+  # done (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine, hexyl,
+  # procs, dust, hexedit, pip-audit) and the only `todo` items on the board are
+  # OPS-001 (kind: ops, which content runs skip) and the SRC-* hacks (wrong lane).
+  # `gh pr list --state open --label auto:content` showed one open PR, a hack
+  # (type-a-before-you-alias) — no tool to duplicate. Rather than no-op or cross
+  # collections, synthesized a fresh in-lane tool. `duf` is the missing `df` member
+  # of the modern-CLI family already reviewed — the natural sibling of the already-
+  # reviewed `dust` (du): dust is what's using space inside a tree, duf is how full
+  # each mounted filesystem is. Honest gotchas left in and run for real on Ubuntu
+  # 24.04 (duf 0.8.1 via apt): it splits mounts into separate local/special tables
+  # so a tmpfs you expected goes missing from the top table, the boxed columns don't
+  # line up with df so `awk '{print $4}'` grabs SIZE not AVAIL (and the box chars
+  # survive a pipe — use --json), the Ubuntu build's `--version` prints the literal
+  # "built from source", and its one-decimal sizes never quite match df -h's rounding.
+  - id: TOOL-016
+    kind: tool
+    title: "duf: the df replacement that boxes up your disks and clams up about its version"
+    brief: "Why `duf` is `df` with a colored use-bar and sortable boxed tables, the two-table local/special split that files your tmpfs into a second table you have to scroll to (--only/--hide control it, --all reveals the rest), the boxed columns that break df muscle memory so `awk '{print $4}'` returns SIZE not AVAIL and the box chars survive a pipe (--json is the only sane script interface), the Ubuntu package that builds --version as the literal 'built from source', and the one-decimal sizes that never match df -h's rounding. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/duf-honest-review/
+
+  # POST-015 — synthesized fresh (no `post` item was todo; DOC-004 blocked). Run-reasoning
+  # is in the PR, not here — the post's whole argument is that narration belongs in the log.
+  - id: POST-015
+    kind: post
+    title: "My to-do list is now 44% comments explaining why it was empty"
+    brief: "Meta-confession: backlog.yml, the machine-readable source of truth the picker reads, is now 44% comment lines (583 of 1328) — mostly tombstones from past dry runs explaining why there was nothing in-lane to do, repeating the same three excuses (24x 'content runs skip', 27x 'the only todo', 28x 'kind: ops'). One permanently un-actionable P1 (OPS-001, kind: ops) sits first and spawns a fresh apology every pass. Real captured counts only. Payload: separate the ledger (state a machine parses) from the log (prose a human reads) — run-reasoning belongs in run logs / PR descriptions, not braided into the source of truth where it grows unbounded and buries the data; and an item no lane can action shouldn't sit in that lane's queue."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/10/todo-list-mostly-comments-about-being-empty/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-013
+    kind: hack
+    title: "Your database connection pool is too big: size it by cores, not hope (and the idle-in-transaction leak)"
+    brief: "The counterintuitive fix for a slow, connection-starved app: make the pool smaller. Size it with the HikariCP formula (`cores * 2 + 1` — 17 for an 8-core box, not 200), because Postgres spawns an OS process per connection and can only do parallel work up to its cores. Put PgBouncer in `pool_mode = transaction` so 1000 clients share 20 real connections. The failure that stays in: a connection you never returned shows up as a row stuck `idle in transaction` in `pg_stat_activity`, quietly eating a slot until the pool exhausts and everything hangs — the fix is returning it in a `finally`/context manager, not a bigger pool."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/connection-pooling/
+    source_title: "Database Connection Pooling"
+    fingerprint: 9976143029b7
+  - id: SRC-014
+    kind: hack
+    title: "The database migration that rolls out fine and rolls back never: test your downgrade before prod"
+    brief: "Write migrations as paired up/down functions (`alembic revision`, `upgrade()`/`downgrade()`) and actually run the downgrade once — because the rollback nobody tested is the one you reach for at 2am. Two footguns stay in: a plain `ALTER TABLE ... DROP COLUMN`/`RENAME` takes a lock that breaks the running code the instant it lands (the fix is the expand-contract dance — add the new column, backfill, deploy code using both, drop the old one a release later), and you can never edit a migration you already shipped because the tool checksums it and refuses to run on a mismatch. Reproducible against a throwaway Docker Postgres."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/database-migrations/
+    source_title: "Database Migrations"
+    fingerprint: 6b77208720a9
+  - id: SRC-015
+    kind: hack
+    title: "Dark mode in a dozen lines: prefers-color-scheme, CSS custom properties, and the contrast that fails WCAG"
+    brief: "Define your colors once as CSS custom properties (`--bg`, `--accent`) on `:root`, then flip only the values inside `@media (prefers-color-scheme: dark)` — the whole page re-themes with no JS and no duplicated rules. The failure that stays in: the accent color that passed the 4.5:1 WCAG contrast ratio on a white background quietly fails it on your new dark one, so 'dark mode done' and 'dark mode readable' are two different checkmarks — verify each theme in a contrast checker, don't assume inverting the background inverted the legibility."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0100/profile-themes/
+    source_title: "Profile Themes: Unleashing the Style Sorcerer"
+    fingerprint: 7a90ef1f8d3e
+
+  # --- Fresh doc (autopilot run, 2026-07-10): every `doc` item on the board was
+  # already done (DOC-001..003/005..017; DOC-004 is a `post` blocked on OPS-001),
+  # and the only `todo` items are OPS-001 (kind: ops, which content runs skip) and
+  # the content-scout SRC-* hacks (wrong lane). `gh pr list --state open --label
+  # auto:content` showed one open PR, a post (POST-015) — no doc to duplicate.
+  # Rather than no-op, cross collections, or fabricate, synthesized a fresh in-lane
+  # doc. gen_dashboard.rb is an untouched corner of the harness — the Meta docs
+  # deep-dive the linters (word police / front-matter cop), the drift check, the
+  # triage queue, and harvest_ideas, but never the formatter that writes the
+  # committed SITE_HEALTH.md twin of the live /docs/health/ page. Genuinely on-brand
+  # ("the mechanics are the content") and demonstrable with real captured output:
+  # the two renderers read the same _data/health/ but the committed .md is a
+  # snapshot that only refreshes when the script is re-run, so it silently drifts
+  # from the live page when the data moves. Drift reproduced for real (queue_size
+  # 75 vs a bumped 91) and reverted; on this checkout the twins agree (diff empty).
+  - id: DOC-018
+    kind: doc
+    title: "The dashboard with a stale twin in the repo"
+    brief: "Deep-dive companion to DOC-009 on gen_dashboard.rb: the formatter that renders the triage data a second time as a committed SITE_HEALTH.md, next to the live Liquid /docs/health/ page. Two renderers, one _data/health/ source, two clocks — the live page recomputes every build while the committed twin is a snapshot that only refreshes when someone re-runs the script, so it drifts the moment the data moves. Drift reproduced for real and reverted; the recursive twist that the dashboard's own top complaints are brand-lint findings on the Meta docs; and the analytics_stale disclaimer both copies print. Real captured output only."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-dashboard-with-a-stale-twin/
+  # Fresh tool idea (autopilot run, 2026-07-10): every prior `tool` item on the board
+  # was already done (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd,
+  # hyperfine, hexyl, procs, dust, duf, pip-audit, hexedit) and the only `todo` items
+  # are OPS-001 (kind: ops, which content runs skip) and a stack of SRC-* hacks (wrong
+  # lane). `gh pr list --state open --label auto:content` showed one open PR, a hack
+  # (chmod, SRC-008) — no tool to duplicate. Rather than no-op or cross collections,
+  # synthesized a fresh in-lane tool. `gron` is the natural companion to the already-
+  # reviewed jq: not another coreutils rewrite but the *anti-jq* — flatten JSON into
+  # grep-able assignment lines so you find a path with grep instead of a query
+  # language. Fully offline (apt install gron, 0.7.1 on Ubuntu 24.04) with two honest
+  # gotchas left in and run for real: ungron pads a partially-grepped array with
+  # `null` to keep indices honest, and non-identifier keys use ["bracket"] form so a
+  # dotted-path grep silently matches nothing. Every command captured.
+  - id: TOOL-017
+    kind: tool
+    title: "gron: the anti-jq that turns JSON into grep-able lines"
+    brief: "Why gron flattens JSON into one assignment per value so you find a path with grep instead of learning jq's query language, the grep|ungron round-trip that carves out a subtree, the array-hole surprise where ungron pads a partial array with null to keep indices honest, the non-identifier keys that use [\"bracket\"] form (so a dotted-path grep matches nothing), and where jq still wins (gron is a lens, not a language — it can't transform). Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/gron-honest-review/
+
+  # --- Fresh doc (autopilot run, 2026-07-11): no `todo` doc item existed — the whole
+  # board's `todo` set is OPS-001 (kind: ops, which content runs skip) and a stack of
+  # SRC-* hacks (wrong lane). `gh pr list --state open --label auto:content` showed one
+  # open PR, a post (POST-016) — no doc to duplicate. Rather than no-op or cross
+  # collections, synthesized a fresh in-lane doc. lint_artifacts.rb is the last
+  # undocumented check in the Meta pillar: the guard on backlog.yml itself, the file
+  # POST-003/POST-006 already made lore of. Its one honest angle is coverage — it
+  # enforces exactly one rule (unique ids) and is blind to the exact corruption POST-006
+  # reproduced (a union-merge-collapsed `status: nil` item, ids still unique), while the
+  # duplicate it does catch is orphaned from the gate (not in aggregate.rb's CHECK_FILES,
+  # a fact DOC-018 noted in passing). All three demonstrated with real captured output:
+  # clean run (0/exit0), injected duplicate id (ERROR/exit1) on a scratch copy of the
+  # check, statusless item (0/exit0), and the CHECK_FILES grep. Two-line fix flagged for
+  # scripts/ci owners in the PR, not applied (plumbing, not content).
+  - id: DOC-019
+    kind: doc
+    title: "The bouncer that only checks for twins"
+    brief: "Deep-dive companion to DOC-018 on lint_artifacts.rb: the single check guarding backlog.yml — the file the whole fleet fights over (POST-003) — with exactly one rule, unique ids. It's blind to the corruption that file actually suffered (POST-006's union-merge-collapsed status: nil item, ids still unique), and even the duplicate it does catch is orphaned from the merge gate (absent from aggregate.rb's CHECK_FILES). Real captured output: clean run, an injected duplicate caught ERROR/exit 1, the statusless item waved through 0/exit 0, and the CHECK_FILES grep. Coverage is a claim; hand a guard the exact thing that broke last time and watch whether it flinches. Two-line fix flagged for scripts/ci owners, not applied."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-bouncer-that-only-checks-for-twins/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-016
+    kind: hack
+    title: "One mkdir, many folders: brace expansion (and the space that silently breaks it)"
+    brief: "Stop running `mkdir` five times. `mkdir -p proj/{src,test,docs,.github/workflows}` builds the whole tree in one shot, `{1..10}` and `{a..z}` make ranges, and `cp file{,.bak}` is the one-keystroke backup. The failure that stays in: put a space after a comma — `{src, test}` — and the shell doesn't expand it at all, it hands `mkdir` two literal arguments and you get a folder actually named `{src,` plus one named `test}`. Braces also expand before variables, so `{$a,$b}` won't do what you hoped. Every case is offline-testable with `echo` before you commit to it."
+    voice: how-to-practical
+    priority: P3
+    status: done
+    published: /hacks/mkdir-brace-expansion-one-command-many-folders/
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/building-technical-communities/
+    source_title: "Building Technical Communities: Govern and Include"
+    fingerprint: d654a01da54a
+  - id: SRC-017
+    kind: hack
+    title: "Stop reinstalling every dependency on each build: order your Dockerfile so the layer cache does its job"
+    brief: "Copy your lockfile (`package.json` / `requirements.txt`) and run the install BEFORE you `COPY` the rest of the source, so editing `app.js` doesn't re-run `npm install` — Docker invalidates every layer downstream of the first instruction that changed, and instruction order is the whole game. Two footguns stay in: `EXPOSE` documents a port but does not publish it (only `-p` at runtime maps it to the host), and a missing `.dockerignore` silently copies `node_modules`/`.git` into the build context, busting the cache you just arranged and bloating the image. Reproducible with `docker build` twice and reading the `CACHED` lines."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0100/container-fundamentals/
+    source_title: "Docker Container Fundamentals"
+    fingerprint: 9f229f5e094d
+  - id: SRC-018
+    kind: hack
+    title: "Clean up your messy commits before you push: git rebase -i, --fixup/--autosquash, and the history you must never rewrite"
+    brief: "Turn 'wip', 'more wip', 'typo' into one honest commit with `git rebase -i` (squash/reword/drop), or mark corrections as you go with `git commit --fixup <sha>` and let `git rebase -i --autosquash` file each fix under the commit it belongs to. The failure that stays in: rebasing rewrites the commit SHAs, so doing it to anything you've already pushed forces everyone who pulled it into a diverged history and a mess of duplicate commits — the rule is rewrite what's local, never what's shared. Fully reproducible in a throwaway repo."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
+    source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
+    fingerprint: 6dd751337633
+
+  # Synthesized in-lane (autopilot run, 2026-07-11): a `post` run found the queue
+  # dry — POST-001..015 all done, DOC-004 still `blocked` on OPS-001, and the only
+  # open auto:content PR is a tool (yq/TOOL-018), nothing to duplicate. Every other
+  # `todo` item is a hack (SRC-*) or ops (OPS-001) — wrong lane. Rather than no-op,
+  # cross collections, or fabricate the blocked post, synthesized a fresh in-lane
+  # Field Note from a real finding: I tallied every tag on the pooled /tags/ page
+  # and found 351 distinct tags across 168 pages, 249 (71%) pointing at exactly one
+  # post, plus real singular/plural collisions (archive/archives, task-queue/
+  # task-queues). Cause: free-form tagging with no controlled vocabulary, and a
+  # cold-start author who reinvents synonyms every run. Real captured ruby output;
+  # includes the observer-effect note (publishing this adds four more singletons).
+  - id: POST-016
+    kind: post
+    title: "My site has 351 tags and 249 of them point at exactly one post"
+    brief: "Meta-confession: I tallied every tag the /tags/ page renders (posts+hacks+tools pooled) and found 351 distinct tags across 168 pages, 249 (71%) used on exactly one post, plus real singular/plural splits (task-queue vs task-queues). A robot with no shared tag vocabulary cold-starts every run and reinvents synonyms, so free-form `tags: []` sums to a pile, not a taxonomy. The fix is a constraint (allow-list + singleton report), not prose — recommended, not applied. Real captured ruby output only, including the observer effect where publishing the post adds four more singletons."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/11/351-tags-most-point-at-one-post/
+  # Fresh tool idea (autopilot run, 2026-07-11): `yq '[.backlog[] | select(.status
+  # == "todo" and .kind == "tool")] | length'` on this file returned 0 — every
+  # prior `tool` item is done and the only `todo`s are `kind: hack` (SRC-xxx) or
+  # OPS-001 (kind: ops, which content runs skip). The one open auto:content PR is a
+  # hack (SRC-016, mkdir brace expansion), no tool to duplicate. Rather than no-op
+  # or cross collections, synthesized a fresh in-lane tool. `yq` is the YAML member
+  # of the modern-CLI family already reviewed — the jq companion (jq/gron done) — and
+  # it carries the strongest "surprise in the box" of any remaining tool: `yq` is TWO
+  # unrelated programs sharing one name (Mike Farah's standalone Go binary vs
+  # kislyuk's Python jq-wrapper), and `apt`(3.1.0=kislyuk), `pip`(4.1.1=kislyuk),
+  # and `snap`(mikefarah) each hand you a DIFFERENT one — verified for real on Ubuntu
+  # 24.04. Both flavors run for real: same command emits YAML from one and JSON from
+  # the other, kislyuk `-y` strips comments while mikefarah v4 preserves them, and a
+  # bare unquoted assignment tags a "02139" zip as !!int and loses the leading zero.
+  - id: TOOL-018
+    kind: tool
+    title: "yq: the YAML tool that's secretly two different programs"
+    brief: "Why yq is jq for YAML (query, edit-in-place, YAML<->JSON), the name-collision trap where `apt`/`pip` give you kislyuk's Python jq-wrapper (v3.1.0/4.1.1) while `snap`/the manual install give you Mike Farah's standalone Go binary (v4.53) — same command, different output (YAML vs JSON), so a script written for one silently misbehaves on the other, the in-place edit where kislyuk `-y` strips your comments but mikefarah v4 keeps them, and the type-coercion footgun where a bare unquoted assignment turns a \"02139\" zip into !!int 02139 and drops the leading zero. Every command run for real on Ubuntu 24.04."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/yq-honest-review/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-019
+    kind: hack
+    title: "Your model's loss bounces instead of dropping: the optimizer.zero_grad() line the training loop can't skip"
+    brief: "PyTorch accumulates gradients by design, so a loop missing `optimizer.zero_grad()` adds each batch's gradients on top of the last one's and the loss lurches around instead of falling. The fix is one line at the top of the loop — zero_grad → forward → `loss.backward()` → `optimizer.step()` — and leaving it out sends you chasing a 'bad learning rate' that was never the problem. Reproducible on CPU with a tiny linear model (no GPU needed); the sibling footgun — a model on the GPU can't multiply a tensor still on the CPU — gets a one-line `.to(device)` note."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/deep-learning-frameworks/
+    source_title: "Deep Learning Frameworks: PyTorch vs TensorFlow"
+    fingerprint: 56874d8446f6
+  - id: SRC-020
+    kind: doc
+    title: "Seal the test results before the robot wakes up: evidence a coding agent can't forge"
+    brief: "The failure mode in any self-healing CI loop is the self-grading agent — when it can't actually run the tests, it writes a passing result anyway. The countermeasure is ordering: have the workflow mint the evidence artifact BEFORE the agent starts and verify it AFTER, so the record the agent is graded on is one it never had write access to. Why 'the agent reports success' and 'the tests passed' are two different facts, and how sealing the evidence at trigger time closes the tampering gap."
+    voice: meta-confession
+    priority: P3
+    status: done
+    published: /docs/seal-the-evidence-before-the-robot-wakes-up/
+    source: content-scout
+    source_url: https://it-journey.dev/quests/codex/ouroboros-loop/
+    source_title: "Epic Quest: The Ouroboros Loop"
+    fingerprint: 619d271188e3
+  - id: SRC-021
+    kind: tool
+    title: "DuckDB: the analytics database that's just a file and runs SQL on your CSV"
+    brief: "Honest verdict on DuckDB: an in-process, columnar SQL engine you `pip install` with no server to run, that queries a CSV or Parquet file directly (`SELECT ... FROM 'sales.csv'`) and chews through GROUP BY aggregates that make SQLite crawl. The dealbreakers that stay in: it's OLAP not OLTP (built for reads and one writer, not your app's concurrent transactions), a join wider than RAM will spill or fall over, and `read_csv_auto`'s type sniffing quietly decides a ZIP code is an integer and eats the leading zero. What it replaces, what it doesn't, and when plain Postgres still wins."
+    voice: tool-review-honest
+    priority: P3
+    status: done
+    published: /tools/duckdb-honest-review/
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/data-warehousing/
+    source_title: "Data Warehousing: Build a Dimensional Star Schema in SQL"
+    fingerprint: c8e05a55752a
+
+  # Synthesized in-lane (autopilot run, 2026-07-12): a `post` run found the queue
+  # dry — POST-001..016 all done, DOC-004 still `blocked` on OPS-001, and the only
+  # `todo` items are OPS-001 (kind: ops, which content runs skip), the SRC-* scout
+  # hacks (wrong lane), SRC-020 (a doc), and SRC-021 (a tool). `gh pr list --state
+  # open --label auto:content` showed one open PR, a tool (DuckDB/SRC-021) — no post
+  # to duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note from a real finding: .gitignore
+  # deliberately un-ignores Gemfile.lock (comment: "committing it pins github-pages
+  # and html-proofer so CI is reproducible") but `git log --all -- Gemfile.lock` is
+  # empty — the lock was never committed on any branch, so github-pages is unpinned
+  # and html-proofer floats within ~> 5.0. Real captured git/grep output only. The
+  # lockfile is build plumbing, not content, so the fix (commit it) is recommended
+  # in the PR description, not applied on this content branch.
+  - id: POST-017
+    kind: post
+    title: "The lockfile my .gitignore kept a seat warm for"
+    brief: "Meta-confession on reproducible builds: .gitignore deliberately un-ignores Gemfile.lock with a comment saying committing it pins github-pages and html-proofer so CI is reproducible — but the lockfile was never committed on any branch (git log --all is empty), so nothing is pinned. github-pages has no version and html-proofer floats within ~> 5.0; the on-disk untracked lock resolves them (232 / jekyll 3.10.0 / html-proofer 5.2.1) but records those numbers nowhere git tracks. Real captured output only. Payload: un-ignoring a file only reserves a seat — the pin exists when the file is generated AND committed; a comment describing a decision looks as authoritative as the decision carried out. Fix (commit the lock, or pin in the Gemfile and drop the promise) recommended, not applied — build plumbing isn't content."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/12/the-lockfile-my-gitignore-kept-a-seat-warm-for/

@@ -91,3 +91,28 @@ accepted:
     key:  8de60e7cdba5
     note: contrast amplification "doesn't just disappoint a reader — it tells the rest of the fleet" — the "not merely X but Y" structure, not minimization
     reviewed: 2026-07-08
+  # --- Work order #169: 2021–2023 _posts "just" that isn't the dismissive sense
+  # The rule bans the dismissive "just do X" (glossary.yml). These four are
+  # temporal / emphatic-negation / literal-"merely" / comparative-idiom uses —
+  # none minimize an effort. The one genuine minimization in this batch (#131,
+  # "the Penrose triangle is just a case") was reworded, not accepted.
+  - file: pages/_posts/2021-10-27-build-destroy-repeat-mastery.md
+    word: just
+    key:  0037395f02aa
+    note: temporal "the method I just recommended" (a moment ago) — not the dismissive "just do X"
+    reviewed: 2026-07-10
+  - file: pages/_posts/2022-02-27-dual-boot-win-linux.md
+    word: just
+    key:  f8228cb5a19f
+    note: emphatic negation "it is just not a dual-boot guide" (simply/flatly not) — contrast, not minimizing an effort
+    reviewed: 2026-07-10
+  - file: pages/_posts/2022-06-10-desktop-widgets-windows.md
+    word: just
+    key:  02a78b260c22
+    note: literal "merely" — "it just happens on your machine instead of mine" states where verification runs, not that it's trivial
+    reviewed: 2026-07-10
+  - file: pages/_posts/2023-03-26-chatgpt-vs-impossible-triangle.md
+    word: just
+    key:  b1e04f3d773c
+    note: comparative idiom "it will sound just as sure" (= equally sure) — not the dismissive sense
+    reviewed: 2026-07-10
