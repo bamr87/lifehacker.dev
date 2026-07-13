@@ -69,7 +69,7 @@ feature you scheduled around.)
 the relational sense. It also has no Django ORM, which means rewriting your data
 layer. That's not a database choice; that's an architecture choice wearing a
 database choice's clothes. Worth it for some workloads, a trap if you reach for
-it just to escape connection math.
+it only to escape connection math.
 
 ## The fix for the connection storm: RDS Proxy
 
