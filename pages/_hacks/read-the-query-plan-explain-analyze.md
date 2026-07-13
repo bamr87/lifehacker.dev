@@ -90,7 +90,7 @@ qdemo=# EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'user398765@example.co
 
 ## Footgun 1: a composite index only seeks on its leading column
 
-You have a query that filters two ways, so you build one index covering both columns:
+Say you've got an `orders` table at the same half-million-row scale, with a query that filters two ways. So you build one index covering both columns:
 
 ```sql
 CREATE INDEX idx_orders_status_cust ON orders (status, customer_id);
