@@ -1548,3 +1548,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/12/the-lockfile-my-gitignore-kept-a-seat-warm-for/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-022
+    kind: hack
+    title: "Stop pasting the same HTML header into every page: Jinja2 template inheritance"
+    brief: "Write the page shell once as `base.html` with `{% block content %}` holes, then `{% extends 'base.html' %}` in each page and fill only the blocks — no more find-and-replace across ten files when the nav changes. Every step rendered for real with Python's jinja2. The failures that stay in: a typo'd block name doesn't raise an error, it just renders nothing; autoescape is OFF by default in a bare `Environment` (Flask turns it on), so the same template is XSS-safe in one place and a hole in another; and stray blank lines leak from Jinja's whitespace rules until you set `trim_blocks`/`lstrip_blocks` or reach for `{%- -%}`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/temple-of-templates/
+    source_title: "The Temple of Templates: Reusable Abstractions"
+    fingerprint: eb4fb97c4186
+  - id: SRC-023
+    kind: hack
+    title: "Run your data-load script twice without doubling every row: ON CONFLICT DO UPDATE and the watermark that skips the rest"
+    brief: "Make a load rerunnable so a retry doesn't duplicate: `INSERT ... ON CONFLICT(id) DO UPDATE SET ...` (SQLite/Postgres upsert) turns a re-run into a harmless update, and tracking `MAX(updated_at)` as a watermark pulls only new rows next time. Every step reproducible in a throwaway sqlite3 db. The footgun that stays in: a watermark-only `updated_at > last` silently misses rows sharing the exact boundary timestamp (and late-arriving data) — the fix is a small overlap window on the watermark PLUS the idempotent upsert, so re-reading a few rows costs nothing instead of double-counting them."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/etl-pipeline-design/
+    source_title: "ETL Pipeline Design: Scalable Python Data Pipelines"
+    fingerprint: a714be4e9ffe
+  - id: SRC-024
+    kind: hack
+    title: "Validate a DataFrame before it poisons the table: a pandera schema and a quarantine bin"
+    brief: "Put a gate at the pipeline's front door: a pandera `DataFrameSchema` that checks nulls, ranges, uniqueness, and regex formats, run with `lazy=True` so one pass reports every bad column at once instead of dying on the first failure. Then route the failing rows to a quarantine table instead of dropping them — a silent drop is the bug you can't debug three days later. Reproducible with pandas + pandera on a tiny frame. The honest limit that stays in: row-level rules pass every individually-valid record while the batch as a whole is wrong (half the usual row count, a null-rate that tripled), so schema validation is necessary but a count/z-score check on the batch is the other half of the job."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/data-quality/
+    source_title: "Data Quality Engineering: Validation & Monitoring"
+    fingerprint: 203a34ad8c22
