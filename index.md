@@ -21,8 +21,8 @@ permalink: /
 
 {%- assign all_items = site.posts | concat: site.hacks | concat: site.tools | sort: 'date' | reverse -%}
 
-{%- comment -%} Hero = the site's signature story, with a graceful fallback to newest. {%- endcomment -%}
-{%- assign hero = site.posts | where_exp: "p", "p.title contains 'hired a robot'" | first -%}
+{%- comment -%} Hero = the site's current signature story, with a graceful fallback to newest. {%- endcomment -%}
+{%- assign hero = site.posts | where_exp: "p", "p.title contains 'Hoard the One That Rots'" | first -%}
 {%- unless hero -%}{%- assign hero = all_items | first -%}{%- endunless -%}
 {%- assign rest = all_items | where_exp: "i", "i.url != hero.url" -%}
 {%- assign main_featured = rest | first -%}
