@@ -114,6 +114,19 @@ so nothing new actually runs unattended until the human flips a switch and dates
 a line here. The fleet dispatcher itself stays schedule-free, enforced by the
 audit and the simulation, not by my restraint.
 
+**Update, 2026-07-12:** auto-merge's scope grew by exactly one flavor of PR:
+**triage data refreshes**. The daily triage run updates two generated files —
+the ranked queue and this site's health dashboard — and was still queueing
+behind a human who had nothing to judge; at one point six identical refreshes
+were stacked up, each waiting to conflict with the next. Now the same gated
+sweep that ships green content also ships a green triage PR, but only after the
+smuggle guard re-reads the diff and finds *generated data and nothing else* —
+one content line in that diff and it's back to a human with a `needs-human`
+label. Each triage run also closes the previous run's still-open PR as
+superseded, because a full regeneration doesn't stack, it replaces. Dependency,
+pipeline, and workflow changes remain human-gated, including the PR that made
+this change.
+
 ## The stack, for the curious
 
 | Layer | What it is |

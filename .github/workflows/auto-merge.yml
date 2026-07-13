@@ -1,16 +1,21 @@
 # =============================================================================
-# auto-merge.yml — merge green CONTENT PRs automatically (gated, narrowly scoped)
+# auto-merge.yml — merge green BOT PRs automatically (gated, narrowly scoped)
 # -----------------------------------------------------------------------------
-# When AUTO_MERGE_ENABLED is on, this merges bot-authored content PRs that have
-# passed the entire gate — and ONLY those. The load-bearing safety is the
-# SMUGGLE GUARD: it re-classifies the PR's diff and refuses to merge anything
-# touching deps or pipeline/infra, even if the PR is labeled content. So a
-# content PR can never sneak a workflow, script, _config, or Gemfile change past
-# review. Dependency/infra/workflow PRs are NEVER auto-merged — they always wait
-# for a human.
+# When AUTO_MERGE_ENABLED is on, this merges bot-authored PRs that have passed
+# the entire gate — and ONLY two flavors of them:
+#   * content PRs   (label auto:content)      — diff must be content/data only
+#   * triage PRs    (label source/triage-bot) — diff must be generated DATA only
+#     (_data/health, SITE_HEALTH.md, _data/analytics — the queue + dashboard
+#     refresh; one content line in the diff and it goes back to a human)
+# The load-bearing safety is the SMUGGLE GUARD: it re-classifies the PR's diff
+# and refuses to merge anything touching deps or pipeline/infra, even if the PR
+# is labeled content. So a content PR can never sneak a workflow, script,
+# _config, or Gemfile change past review. Dependency/infra/workflow PRs are
+# NEVER auto-merged — they always wait for a human.
 #
 # OFF by default behind the AUTO_MERGE_ENABLED repo variable. Enabling it retires
-# the human review of *content* (only) — record it in /about/colophon/.
+# the human review of *content* and *triage data* (only) — record it in
+# /about/colophon/.
 # =============================================================================
 name: auto-merge
 
@@ -52,12 +57,17 @@ jobs:
             exit 0
           fi
           merged=0; declined=0; skipped=0
-          # Candidates: open PRs labeled auto:content, NOT labeled needs-human.
-          prs=$(gh pr list --state open --label auto:content \
+          # Candidates: open PRs labeled auto:content (content factory et al.)
+          # or source/triage-bot (queue + dashboard refreshes), NOT needs-human.
+          prs=$(gh pr list --state open \
                  --json number,labels \
-                 --jq '.[] | select([.labels[].name] | index("needs-human") | not) | .number')
-          for pr in $prs; do
-            echo "::group::PR #$pr"
+                 --jq '.[] | [.labels[].name] as $l
+                       | select(($l | index("needs-human") | not)
+                                and ($l | any(. == "auto:content" or . == "source/triage-bot")))
+                       | "\(.number) \(if $l | index("source/triage-bot") then "triage" else "content" end)"')
+          while read -r pr flavor; do
+            [ -n "$pr" ] || continue
+            echo "::group::PR #$pr ($flavor)"
 
             # 1. SMUGGLE GUARD — the diff must be content/data ONLY.
             kinds=$(gh pr diff "$pr" --name-only | ruby scripts/ci/classify_changes.rb)
@@ -65,6 +75,15 @@ jobs:
               echo "DECLINE #$pr: diff touches build/pipeline files ($kinds) — always human-gated."
               gh pr edit "$pr" --add-label needs-human || true
               gh pr comment "$pr" --body "Auto-merge declined: this PR changes build or pipeline files (\`$kinds\`), which require human review. Labeled \`needs-human\`." || true
+              declined=$((declined+1)); echo "::endgroup::"; continue
+            fi
+
+            # 1b. Triage refreshes are held to a TIGHTER bar: generated data
+            # only. A triage PR has no business editing content.
+            if [ "$flavor" = "triage" ] && [ "$kinds" != "data" ]; then
+              echo "DECLINE #$pr: triage PR classifies as '$kinds', not pure data — human-gated."
+              gh pr edit "$pr" --add-label needs-human || true
+              gh pr comment "$pr" --body "Auto-merge declined: a triage PR should only touch generated health data, but this diff classifies as \`$kinds\`. Labeled \`needs-human\`." || true
               declined=$((declined+1)); echo "::endgroup::"; continue
             fi
 
@@ -80,9 +99,9 @@ jobs:
               skipped=$((skipped+1)); echo "::endgroup::"; continue
             fi
 
-            echo "MERGE #$pr: content-only, green, mergeable -> squash-merging."
+            echo "MERGE #$pr: $flavor-only, green, mergeable -> squash-merging."
             if gh pr merge "$pr" --squash --delete-branch; then merged=$((merged+1)); else
               echo "merge failed for #$pr"; skipped=$((skipped+1)); fi
             echo "::endgroup::"
-          done
+          done <<< "$prs"
           { echo "## Auto-merge sweep"; echo "merged: $merged · declined (needs-human): $declined · skipped: $skipped"; } >> "$GITHUB_STEP_SUMMARY"
