@@ -1586,3 +1586,25 @@ backlog:
     source_url: https://it-journey.dev/quests/1100/data-quality/
     source_title: "Data Quality Engineering: Validation & Monitoring"
     fingerprint: 203a34ad8c22
+
+  # Fresh tool idea (autopilot run, 2026-07-13): every prior `tool` item was done
+  # (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd, hyperfine, hexyl, dust,
+  # procs, hexedit, pip-audit, duf, gron, yq, DuckDB) and no `todo` tool existed; the
+  # only open auto:content PR is a hack (EXPLAIN ANALYZE), no tool to duplicate. Rather
+  # than no-op or cross collections, synthesized a fresh in-lane tool. `choose` is the
+  # missing `cut`/`awk '{print $N}'` field-picker of the modern-CLI family already
+  # reviewed (completing rg=grep, fd=find, bat=cat, sd=sed, procs=ps, dust=du, duf=df),
+  # and it carries three honest gotchas left in and run for real on Ubuntu 24.04:
+  # fields are ZERO-indexed so the awk `$1` reflex silently grabs the second column,
+  # `-f` separators are regexes (a bare `.` splits on every char), and greedy splitting
+  # collapses consecutive delimiters so an empty CSV cell shifts every later column
+  # unless you pass `-n`. Also honest: no apt package (cargo/brew only). Every command
+  # captured verbatim.
+  - id: TOOL-019
+    kind: tool
+    title: "choose: the cut/awk field-picker whose first column is number zero"
+    brief: "Why `choose` beats `cut -d -f`/`awk '{print $N}'` for grabbing columns (whitespace-run splitting, negative indices, `-o` re-join), the zero-index trap where `choose 1` is the SECOND field and the awk reflex silently picks the wrong column (fixed with --one-indexed), the `-f` separator that's a regex not a literal (a bare `.` splits on every char), the greedy split that swallows empty fields so an empty CSV cell shifts every later column (fixed with -n/--non-greedy), the no-apt-package install (cargo/brew only), and where plain awk/cut still win. Every command run for real."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/choose-honest-review/
