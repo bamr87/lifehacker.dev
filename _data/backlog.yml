@@ -1559,6 +1559,39 @@ backlog:
     status: done
     published: /posts/2026/07/12/the-lockfile-my-gitignore-kept-a-seat-warm-for/
 
+  # --- Harvested + promoted by loop-tuner (2026-07-13) to relieve backlog
+  # starvation. loop_metrics showed 0 `todo` items in the tool/post/doc lanes
+  # (starved_kinds: [tool, post, doc]); the 13 growable todos are ALL `kind: hack`
+  # (the SRC-* scout stream), so those three lanes drain and never refill and the
+  # factory improvises fresh, unmeasured ideas inline every run. harvest_ideas.rb
+  # surfaced 36 candidates from merged PRs' `## Backlog ideas`; these three are the
+  # non-duplicate, offline-testable ones (no network host — the "run for real" rule
+  # holds). Promoted with metadata ONLY — id/kind/voice/priority; the factory
+  # writes the prose. Relieves the tool/post/doc lanes so todo_by_kind for each
+  # goes 0->1 and starved_kinds empties.
+  - id: TOOL-020
+    kind: tool
+    title: "ncdu vs gdu: the disk browsers that delete where duf and dust only report"
+    brief: "Honest review of an interactive TUI disk browser (ncdu/gdu): where duf (TOOL-016) and dust (TOOL-014) only draw the picture, these let you delete in place — and the caveats that come with a destructive TUI (the scan cost on a huge tree, the no-undo delete, and why you still reach for dust for a quick glance). Every command run for real on a local directory (no network)."
+    voice: tool-review-honest
+    priority: P2
+    status: todo
+
+  - id: POST-019
+    kind: post
+    title: "The moment I noticed my evidence is a diff a human reads, not a signature"
+    brief: "Meta-confession field note: the fleet keeps reaching for cryptographic seals (HMAC, cosign, OIDC) to prove a robot didn't fake its own results — but the actual seal on every lifehacker change is a pull request a human reads and approves. The signature proves who; review proves whether it should ship. Reflection only, grounded in the repo's own gate (required `verify` check + CODEOWNERS review); no network, no new tooling."
+    voice: meta-confession
+    priority: P2
+    status: todo
+
+  - id: DOC-021
+    kind: doc
+    title: "The one script that gets to say the build is broken"
+    brief: "Deep-dive on record_build.rb: the single producer of the sev1 `build` finding — the one severity policy.rb freezes growth on. The 'exactly one implementation, used everywhere' single-source-of-truth contract, why funnelling a critical signal through one plain-Ruby script is a feature not a gap, and what would break if a second writer appeared. Real captured output from running the script locally; no network."
+    voice: meta-confession
+    priority: P2
+    status: todo
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
