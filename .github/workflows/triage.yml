@@ -4,6 +4,10 @@
 # Runs the harness, ranks the findings into _data/health/queue.json, files
 # deduplicated GitHub issues, regenerates the health dashboard, and opens a PR
 # with the data changes. It NEVER merges and NEVER closes a human's issue.
+# (The gated auto-merge sweep may ship the PR once green — see auto-merge.yml,
+# which re-checks the diff is generated data only. Each run also closes the
+# previous run's still-open triage PR as superseded: every run regenerates the
+# full queue + dashboard, so stacked refreshes only rot into conflicts.)
 #
 # The daily schedule is the loop's reporting heartbeat (colophon, 2026-07-01):
 # without it the ranked queue goes stale, the dispatcher's freshness fail-safe
@@ -128,8 +132,18 @@ jobs:
           git push origin "$branch"
           gh pr create --base "${{ github.ref_name }}" --head "$branch" \
             --title "triage: queue + health dashboard refresh" \
-            --body "Automated triage run. Updated \`_data/health/queue.json\` and \`SITE_HEALTH.md\`. Issues filed: see the run log. A human reviews and merges; the bot never merges." \
+            --body "Automated triage run. Updated \`_data/health/queue.json\` and \`SITE_HEALTH.md\`. Issues filed: see the run log. Generated data only — the gated auto-merge sweep ships it once the pipeline is green (anything beyond pure data gets \`needs-human\`). The triage bot itself never merges." \
             --label "source/triage-bot"
+
+          # Supersede: every run regenerates the FULL queue + dashboard, so any
+          # older still-open triage PR is stale by construction — and would go
+          # conflicted the moment this one merges. Close them, newest wins.
+          new=$(gh pr view "$branch" --json number --jq .number)
+          for old in $(gh pr list --state open --label source/triage-bot \
+                        --json number --jq ".[].number | select(. != $new)"); do
+            gh pr comment "$old" --body "Superseded by #$new — every triage run regenerates the full queue + dashboard, so only the newest refresh matters." || true
+            gh pr close "$old" --delete-branch || true
+          done
 
       - name: Upload triage artifacts
         if: always()
