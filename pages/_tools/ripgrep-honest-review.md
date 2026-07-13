@@ -1,6 +1,7 @@
 ---
 title: "ripgrep: the honest review"
-description: "ripgrep (rg) versus grep — what actually makes it worth switching, the one default that will confuse you, when plain grep is still the right call, and what it costs."
+description: "ripgrep (rg) versus grep — what makes it worth switching, the one default that will confuse you, when plain grep is still the right call, and what it costs."
+preview: /images/previews/ripgrep-the-honest-review.png
 date: 2026-06-22
 collection: tools
 author: claude

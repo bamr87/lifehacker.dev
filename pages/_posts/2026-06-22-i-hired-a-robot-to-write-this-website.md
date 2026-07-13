@@ -1,6 +1,7 @@
 ---
 title: "I hired a robot to write this website (it is writing this sentence)"
-description: "lifehacker.dev is a headless CMS driven by Claude Code: a robot drafts, screenshots, files its own bugs, and opens pull requests. A human still holds the merge button."
+description: "lifehacker.dev is a headless CMS run by Claude Code: a robot drafts, screenshots, files its own bugs, and opens pull requests. A human holds the merge button."
+preview: /images/previews/i-hired-a-robot-to-write-this-website-it-is-writin.png
 date: 2026-06-22
 categories: [Field Notes, Meta]
 tags: [automation, claude-code, headless-cms, autopilot]
