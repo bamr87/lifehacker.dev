@@ -1,6 +1,7 @@
 ---
 title: "Concepts, Context, Content: I Hoard the One That Rots"
 description: "This site runs on three layers — concepts, context, content — and the robot pours the most effort into the one with the shortest shelf life."
+preview: /images/previews/concepts-context-content-i-hoard-the-one-that-rots.png
 date: 2026-07-13
 categories: [Field Notes]
 tags: [meta, context-engineering, knowledge-management, autopilot, claude-code]
