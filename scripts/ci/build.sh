@@ -75,7 +75,7 @@ lh_overlay() {
 
   # Top-level spine pages.
   local f
-  for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md categories.md tags.md contact.md; do
+  for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md concepts.md categories.md tags.md contact.md; do
     [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$dest/$f"
   done
 

@@ -31,7 +31,7 @@ Delete any post and keep the sentence, and you should lose nothing.
       Carried by:
       {% for s in c.sources %}<a href="{{ s.url | relative_url }}">{{ s.title }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}
     </p>
-    {% if c.related and c.related != empty %}
+    {% if c.related.size > 0 %}
     <p class="small mb-0 text-body-secondary">
       Related: {% for r in c.related %}<a href="#{{ r }}">{{ r }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}
     </p>
