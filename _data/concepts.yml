@@ -1,0 +1,118 @@
+# =============================================================================
+# concepts.yml — the durable concept layer
+# -----------------------------------------------------------------------------
+# The site runs on three layers, ranked by shelf life:
+#   CONTEXT  (expensive to assemble, evaporates)  -> made of
+#   CONTENT  (cheap to make, rots)                 -> distilled into
+#   CONCEPT  (rare, portable, durable)             -> the part worth keeping.
+#
+# Content lives in pages/_*; context lives in _data/brand/ + the skills. This
+# file is the home the third layer never had: the site's durable, portable ideas
+# — the "sentences worth keeping" — captured on purpose so a fresh session (or a
+# reader, or another site) can load "what this site has learned" in seconds
+# instead of re-deriving it from 200+ posts. Written by humans and the
+# retrospective step; read by the /concepts/ page and the lifehacker-read MCP
+# (lifehacker://concepts, list_concepts, find_concepts).
+#
+# The idea behind this file:
+#   /posts/2026/07/13/concepts-context-content-i-hoard-the-one-that-rots/
+#
+# item: { id: CONCEPT-###, concept, gloss, tags[], captured: YYYY-MM-DD,
+#         sources: [{title, url}], external?: [{note, url}] }
+# `concept` is the one durable sentence; `sources` are the content that carries
+# it. Every source must be a real page — a concept with no carrier is a claim.
+# =============================================================================
+
+concepts:
+  - id: CONCEPT-001
+    concept: "Make the durable layer durable on purpose."
+    gloss: >-
+      Content rots and context evaporates; the concept is the only layer with a
+      shelf life longer than the session that produced it. Nothing forces you to
+      capture it, so give it a home — otherwise it washes out with the container.
+    tags: [knowledge-management, meta, context-engineering]
+    captured: 2026-07-13
+    sources:
+      - title: "Concepts, Context, Content: I Hoard the One That Rots"
+        url: /posts/2026/07/13/concepts-context-content-i-hoard-the-one-that-rots/
+    external:
+      - note: "The same idea, treated as versioned knowledge without the jokes."
+        url: https://it-journey.dev
+
+  - id: CONCEPT-002
+    concept: "Put your style guide in git as data, not a PDF."
+    gloss: >-
+      A voice lives longer as machine-readable files any fresh session can read
+      in seconds than as a document a person has to find, open, and interpret.
+      Store the rules where the thing that follows them already looks.
+    tags: [brand, knowledge-management, context-engineering]
+    captured: 2026-06-22
+    sources:
+      - title: "Your Style Guide Belongs in Git as Data, Not a PDF"
+        url: /posts/2026/06/22/style-guide-as-a-data-file/
+      - title: "When Your Style Guide Quietly Turns Into Code"
+        url: /posts/2026/06/22/when-style-guides-become-software/
+
+  - id: CONCEPT-003
+    concept: "The human is the rate limiter."
+    gloss: >-
+      When a robot opens the work and a human approves it, throughput is bounded
+      by review speed, not generation speed. Cap the work in flight to what the
+      reviewer can absorb; adding workers past that point only grows the queue.
+    tags: [autonomy, ci, workflow]
+    captured: 2026-07-05
+    sources:
+      - title: "The Human Is the Rate Limiter"
+        url: /docs/the-human-is-the-rate-limiter/
+      - title: "The Rate Limiter Grows a Bypass Lane"
+        url: /docs/the-rate-limiter-grows-a-bypass-lane/
+
+  - id: CONCEPT-004
+    concept: "A placeholder only works if it is visibly incomplete."
+    gloss: >-
+      A stand-in that looks finished gets shipped as if it were. Make the
+      temporary thing announce itself, so nobody mistakes the scaffold for the
+      building and the real version actually gets built.
+    tags: [design, quality]
+    captured: 2026-07-08
+    sources:
+      - title: "The Plugin That Isn't a Plugin"
+        url: /docs/the-plugin-that-isnt-a-plugin/
+
+  - id: CONCEPT-005
+    concept: "Context you can rebuild on demand beats context you tried to freeze."
+    gloss: >-
+      You will lose your working context — the session ends, the tab closes, the
+      person leaves. So do not hoard every token; make the context cheap to
+      reassemble from durable sources. Re-derivable beats preserved.
+    tags: [context-engineering, knowledge-management]
+    captured: 2026-07-13
+    sources:
+      - title: "Concepts, Context, Content: I Hoard the One That Rots"
+        url: /posts/2026/07/13/concepts-context-content-i-hoard-the-one-that-rots/
+
+  - id: CONCEPT-006
+    concept: "Content that hurts to delete is secretly load-bearing — that is a bug, not a milestone."
+    gloss: >-
+      If removing one page would lose an idea, that page is the only place the
+      idea was ever written down. The fix is to capture the concept somewhere
+      durable, so any single piece of content stays disposable without regret.
+    tags: [knowledge-management, meta]
+    captured: 2026-07-13
+    sources:
+      - title: "Concepts, Context, Content: I Hoard the One That Rots"
+        url: /posts/2026/07/13/concepts-context-content-i-hoard-the-one-that-rots/
+
+  - id: CONCEPT-007
+    concept: "A merge that never conflicts still needs its own guard against twins."
+    gloss: >-
+      A union merge keeps both sides and never stops to ask, so two branches can
+      each add the same id and the collision only surfaces after the merge. When
+      a safety check can't fire, add the one that can — and wire it to the gate.
+    tags: [ci, git, autonomy]
+    captured: 2026-07-01
+    sources:
+      - title: "The merge that never conflicts, and the backlog item it quietly ate"
+        url: /posts/2026/07/01/the-merge-that-never-conflicts/
+      - title: "The Bouncer That Only Checks for Twins"
+        url: /docs/the-bouncer-that-only-checks-for-twins/

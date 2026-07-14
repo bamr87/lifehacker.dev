@@ -20,9 +20,12 @@ import {
 
 const EXPECTED_TOOLS = [
   "check_word",
+  "find_concepts",
   "get_brand_identity",
+  "get_concept",
   "get_content_item",
   "list_collection",
+  "list_concepts",
   "list_taxonomy",
   "query_backlog",
   "query_health_queue",
@@ -67,9 +70,9 @@ describe("protocol & capabilities", () => {
     for (const t of tools) assert.ok((t.description ?? "").length > 10, `${t.name} needs a description`);
   });
 
-  test("registers the 8 resource templates", async () => {
+  test("registers the 9 resource templates", async () => {
     const { resourceTemplates } = await h.client.listResourceTemplates();
-    assert.equal(resourceTemplates.length, 8);
+    assert.equal(resourceTemplates.length, 9);
   });
 
   test("lists the static + enumerated resources (content is discoverable)", async () => {
@@ -250,6 +253,51 @@ describe("brand (cross-checked vs _data/brand/*.yml)", () => {
       assert.equal(v.requested, expected);
       assert.ok(v.profile !== null, `${collection} profile object should be present`);
     }
+  });
+});
+
+describe("concepts (the durable layer, cross-checked vs _data/concepts.yml)", () => {
+  const ground = groundYaml<{ concepts: Array<Record<string, unknown>> }>("_data/concepts.yml").concepts;
+
+  test("list_concepts count == ledger length on disk", async () => {
+    const res = await callJson<{ count: number }>(h.client, "list_concepts", {});
+    assert.equal(res.count, ground.length);
+  });
+
+  test("every concept carries at least one source (a concept with no carrier is a claim)", async () => {
+    const res = await callJson<{ concepts: Array<{ id: string; sources: unknown[] }> }>(h.client, "list_concepts", {});
+    for (const c of res.concepts) assert.ok(c.sources.length >= 1, `${c.id} has no source`);
+  });
+
+  test("get_concept returns the sentence + sources for a known id", async () => {
+    const c = await callJson<{ id: string; concept: string; sources: unknown[] }>(h.client, "get_concept", { id: "CONCEPT-001" });
+    assert.equal(c.id, "CONCEPT-001");
+    assert.match(c.concept, /durable layer durable on purpose/);
+    assert.ok(c.sources.length >= 1);
+  });
+
+  test("get_concept on an unknown id returns a structured error", async () => {
+    const c = await callJson<{ error?: string }>(h.client, "get_concept", { id: "CONCEPT-999" });
+    assert.ok(c.error);
+  });
+
+  test("find_concepts ranks the relevant concept first", async () => {
+    const hits = await callJson<Array<{ id: string; score: number }>>(h.client, "find_concepts", { query: "rate limiter" });
+    assert.ok(hits.length > 0);
+    assert.equal(hits[0]!.id, "CONCEPT-003");
+  });
+
+  test("list_concepts tag filter is honored", async () => {
+    const res = await callJson<{ concepts: Array<{ tags: string[] }> }>(h.client, "list_concepts", { tag: "knowledge-management" });
+    assert.ok(res.concepts.length > 0);
+    for (const c of res.concepts) assert.ok(c.tags.includes("knowledge-management"));
+  });
+
+  test("the concepts resource + a concept template resolve", async () => {
+    const all = JSON.parse(await readResourceText(h.client, "lifehacker://concepts")) as { count: number };
+    assert.equal(all.count, ground.length);
+    const one = JSON.parse(await readResourceText(h.client, "lifehacker://concepts/CONCEPT-001")) as { id: string };
+    assert.equal(one.id, "CONCEPT-001");
   });
 });
 

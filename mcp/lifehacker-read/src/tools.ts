@@ -15,6 +15,7 @@ import {
   searchContent,
   type CollectionName,
 } from "./collections.js";
+import { findConcepts, getConcept, listConcepts } from "./concepts.js";
 import type { RepoReader } from "./repo.js";
 
 const CollectionEnum = z.enum(["hacks", "tools", "posts", "docs", "about"]);
@@ -178,5 +179,42 @@ export function registerTools(server: McpServer, reader: RepoReader): void {
       const mappedFrom = collection ? { collection, maps_to: voiceForCollection(collection as CollectionName) } : undefined;
       return text({ ...resolved, mappedFrom });
     },
+  );
+
+  // --- the durable concept layer -------------------------------------------
+  server.registerTool(
+    "list_concepts",
+    {
+      title: "List concepts",
+      description: "List the site's durable concepts (the portable ideas worth keeping), optionally filtered by tag. Each carries the content that states it.",
+      inputSchema: { tag: z.string().optional() },
+    },
+    async ({ tag }) => {
+      const concepts = listConcepts(reader, tag);
+      return text({ count: concepts.length, concepts });
+    },
+  );
+
+  server.registerTool(
+    "get_concept",
+    {
+      title: "Get concept",
+      description: "Fetch one durable concept by id (e.g. CONCEPT-001): the sentence, a gloss, its tags, and the sources that carry it.",
+      inputSchema: { id: z.string() },
+    },
+    async ({ id }) => {
+      const concept = getConcept(reader, id);
+      return concept ? text(concept) : text({ error: `not found: ${id}` });
+    },
+  );
+
+  server.registerTool(
+    "find_concepts",
+    {
+      title: "Find concepts",
+      description: "Search the durable concept layer — 'what has this site learned about X' — ranked over the concept sentence, its gloss, and tags. The fast way to load prior lessons into a fresh session.",
+      inputSchema: { query: z.string(), limit: z.number().int().positive().max(50).optional() },
+    },
+    async ({ query, limit }) => text(findConcepts(reader, query, limit)),
   );
 }

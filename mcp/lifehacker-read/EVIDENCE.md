@@ -1,13 +1,13 @@
 # lifehacker-read — test evidence
 
-Verification record for the P0 read-only MCP server (PR #281). Everything below
-was **run**, not described — reproduce it with:
+Verification record for the read-only MCP server. Everything below was **run**,
+not described — reproduce it with:
 
 ```bash
 cd mcp/lifehacker-read && npm install && npm run evidence
 ```
 
-Captured on Node v25.6.0 · Darwin 25.5.0 · commit `7264071` (`claude/mcp-p0-read-server`).
+Captured on Node v25.6.0 · Darwin 25.5.0 · branch `claude/concept-layer`.
 
 ## Summary
 
@@ -15,7 +15,7 @@ Captured on Node v25.6.0 · Darwin 25.5.0 · commit `7264071` (`claude/mcp-p0-re
 |---|---|
 | `tsc` typecheck (server **and** tests) | ✅ pass |
 | `tsc` production build | ✅ pass |
-| Unit + integration suite | ✅ **50/50 pass** across 12 suites |
+| Unit + integration suite | ✅ **57/57 pass** across 13 suites |
 | Stdio end-to-end smoke (real subprocess) | ✅ ALL CHECKS PASSED |
 | No-write proof (git status before == after) | ✅ the server/tests modified nothing in the repo |
 | Guardrails-by-absence (no mutating verb) | ✅ asserted by test **and** smoke |
@@ -27,7 +27,7 @@ cross-check every answer against an **independent** read of the repo (filesystem
 counts + a separate YAML/JSON parse), so green means the tools agree with the
 files on disk — not merely with themselves.
 
-- **Protocol & capabilities** — exactly 9 tools, 8 resource templates, content discoverable via `resources/list`.
+- **Protocol & capabilities** — 12 tools, 9 resource templates, content discoverable via `resources/list`.
 - **Guardrails by absence** — no `create/update/propose/merge/approve/close/set_*` verb exists in the surface (the security invariant).
 - **Content model** — `list_collection` counts equal `*.md` on disk for all 5 collections; item roundtrip; date-structured post permalinks; unknown slug → structured error; invalid collection → schema error.
 - **search_content** — scored + sorted; collection filter; tag filter; limit.
@@ -35,26 +35,9 @@ files on disk — not merely with themselves.
 - **query_backlog** — counts cross-checked against a YAML parse of `_data/backlog.yml` (total + per-status).
 - **query_health_queue** — count == `queue.json` length; paging; schema-max rejection; severity filter.
 - **brand** — **every** banned-when-sincere word classifies as banned; neutral word ok; per-collection voice mapping; Prime Directive present.
-- **resources** — every one of the ~248 listed resources reads non-empty; findings/scout evidence quarantined; analytics stale-flag surfaced; unknown URI rejected.
-- **units** — front-matter parser edge cases (no fence / unclosed fence / malformed YAML / tag coercion); repo-root resolution (valid + bad `LH_REPO_ROOT`).
-
-## On-disk cross-check (the numbers the suite asserts against)
-
-| Source | Count |
-|---|---|
-| `pages/_hacks` | 56 |
-| `pages/_tools` | 22 |
-| `pages/_posts` | 96 |
-| `pages/_docs` | 22 |
-| `pages/_about` | 2 |
-| backlog total / todo / done | 95 / 14 / 80 |
-| health queue findings | 75 |
-| banned-when-sincere words | 15 |
-
-> Note: the backlog counts use a real YAML parse. A naïve `grep 'status: todo'`
-> reports 18 because it also matches the schema comment line
-> `status: todo | drafting | done` — the tools (and these tests) parse YAML, so
-> the true todo count is 14. The evidence script was corrected to match.
+- **concepts (the durable layer)** — `list_concepts` count == `_data/concepts.yml`; **every concept carries ≥1 source** (a concept with no carrier is a claim); `get_concept` by id + unknown-id error; `find_concepts` ranks the relevant concept first; tag filter; the `lifehacker://concepts` resource + a concept template resolve.
+- **resources** — every listed resource reads non-empty; findings/scout evidence quarantined; analytics stale-flag surfaced; unknown URI rejected.
+- **units** — front-matter parser edge cases; repo-root resolution (valid + bad `LH_REPO_ROOT`).
 
 ## Full run log
 
@@ -69,16 +52,19 @@ node:   v25.6.0
 npm:    11.8.0
 os:     Darwin 25.5.0
 repo:   /Users/bamr87/github/lifehacker.dev/.claude/worktrees/lifehacker-mcp-integration-e6442e
-commit: 7264071 on claude/mcp-p0-read-server
+commit: 99d865a on claude/concept-layer
 
 ===== no-write proof: repo status BEFORE =====
- M mcp/lifehacker-read/package.json
- M mcp/lifehacker-read/tsconfig.json
-?? mcp/lifehacker-read/scripts/
-?? mcp/lifehacker-read/src/harness.ts
-?? mcp/lifehacker-read/src/server.test.ts
-?? mcp/lifehacker-read/src/unit.test.ts
-?? mcp/lifehacker-read/tsconfig.test.json
+ M _data/navigation/main.yml
+ M mcp/lifehacker-read/README.md
+ M mcp/lifehacker-read/src/resources.ts
+ M mcp/lifehacker-read/src/server.test.ts
+ M mcp/lifehacker-read/src/smoke.ts
+ M mcp/lifehacker-read/src/tools.ts
+?? _data/concepts.yml
+?? concepts.md
+?? mcp/lifehacker-read/scripts/analyze-post.ts
+?? mcp/lifehacker-read/src/concepts.ts
 
 ----- typecheck (tsc, tests included) -----
 [typecheck (tsc, tests included)] OK
@@ -92,87 +78,96 @@ commit: 7264071 on claude/mcp-p0-read-server
 > node --import tsx --test src/server.test.ts src/unit.test.ts
 
 ▶ protocol & capabilities
-  ✔ exposes exactly the 9 expected read tools (4.664875ms)
-  ✔ every tool declares a description (0.619458ms)
-  ✔ registers the 8 resource templates (0.573792ms)
-  ✔ lists the static + enumerated resources (content is discoverable) (70.239292ms)
-✔ protocol & capabilities (76.7135ms)
+  ✔ exposes exactly the 9 expected read tools (4.869166ms)
+  ✔ every tool declares a description (0.867167ms)
+  ✔ registers the 9 resource templates (0.901ms)
+  ✔ lists the static + enumerated resources (content is discoverable) (75.905042ms)
+✔ protocol & capabilities (83.228541ms)
 ▶ guardrails by absence (the security invariant)
-  ✔ NO tool is a mutating verb (0.659041ms)
-  ✔ no merge/approve/close/set-switch tool exists (0.345542ms)
-✔ guardrails by absence (the security invariant) (1.123167ms)
+  ✔ NO tool is a mutating verb (0.74325ms)
+  ✔ no merge/approve/close/set-switch tool exists (0.391417ms)
+✔ guardrails by absence (the security invariant) (1.276875ms)
 ▶ content model (cross-checked vs files on disk)
-  ✔ list_collection(hacks) count == *.md on disk (11.045458ms)
-  ✔ list_collection(tools) count == *.md on disk (3.926792ms)
-  ✔ list_collection(posts) count == *.md on disk (17.198041ms)
-  ✔ list_collection(docs) count == *.md on disk (4.078083ms)
-  ✔ list_collection(about) count == *.md on disk (0.621958ms)
-  ✔ get_content_item roundtrips a real item and carries a body (10.54575ms)
-  ✔ posts permalink is date-structured (16.033458ms)
-  ✔ unknown slug returns a structured error, not a throw (0.537667ms)
-  ✔ invalid collection is rejected (schema error result, not success) (0.479ms)
-✔ content model (cross-checked vs files on disk) (64.773459ms)
+  ✔ list_collection(hacks) count == *.md on disk (19.04725ms)
+  ✔ list_collection(tools) count == *.md on disk (4.593291ms)
+  ✔ list_collection(posts) count == *.md on disk (17.349166ms)
+  ✔ list_collection(docs) count == *.md on disk (4.261166ms)
+  ✔ list_collection(about) count == *.md on disk (0.582917ms)
+  ✔ get_content_item roundtrips a real item and carries a body (10.415792ms)
+  ✔ posts permalink is date-structured (17.558792ms)
+  ✔ unknown slug returns a structured error, not a throw (0.608958ms)
+  ✔ invalid collection is rejected (schema error result, not success) (0.491166ms)
+✔ content model (cross-checked vs files on disk) (75.326708ms)
 ▶ search_content
-  ✔ returns scored hits, sorted descending (36.078916ms)
-  ✔ collection filter is honored (4.522208ms)
-  ✔ tag filter returns only items carrying the tag (58.308584ms)
-  ✔ limit is respected (30.546ms)
-✔ search_content (129.607334ms)
+  ✔ returns scored hits, sorted descending (38.490709ms)
+  ✔ collection filter is honored (4.031292ms)
+  ✔ tag filter returns only items carrying the tag (63.093375ms)
+  ✔ limit is respected (33.481042ms)
+✔ search_content (139.260708ms)
 ▶ taxonomy
-  ✔ tags pool is internally consistent (count == members) (28.505041ms)
-  ✔ categories include 'Field Notes' (27.799ms)
-✔ taxonomy (56.409459ms)
+  ✔ tags pool is internally consistent (count == members) (31.157458ms)
+  ✔ categories include 'Field Notes' (31.509666ms)
+✔ taxonomy (62.821209ms)
 ▶ query_backlog (cross-checked vs _data/backlog.yml)
-  ✔ unfiltered count == backlog length on disk (11.055084ms)
-  ✔ status:todo count matches independent count (10.543916ms)
-  ✔ status:done count matches independent count (10.509791ms)
-✔ query_backlog (cross-checked vs _data/backlog.yml) (32.223125ms)
+  ✔ unfiltered count == backlog length on disk (12.500041ms)
+  ✔ status:todo count matches independent count (11.9565ms)
+  ✔ status:done count matches independent count (12.806959ms)
+✔ query_backlog (cross-checked vs _data/backlog.yml) (37.447542ms)
 ▶ query_health_queue (cross-checked vs _data/health/queue.json)
-  ✔ unfiltered count == queue length on disk (count is the full total, not the page) (0.698833ms)
-  ✔ limit truncates the item page (0.4125ms)
-  ✔ limit above the schema max is rejected (0.243542ms)
-  ✔ severity filter is honored (0.707917ms)
-✔ query_health_queue (cross-checked vs _data/health/queue.json) (2.144625ms)
+  ✔ unfiltered count == queue length on disk (count is the full total, not the page) (0.918834ms)
+  ✔ limit truncates the item page (0.406291ms)
+  ✔ limit above the schema max is rejected (0.26325ms)
+  ✔ severity filter is honored (0.628292ms)
+✔ query_health_queue (cross-checked vs _data/health/queue.json) (2.321875ms)
 ▶ brand (cross-checked vs _data/brand/*.yml)
-  ✔ get_brand_identity carries the Prime Directive + voice profiles (3.332834ms)
-  ✔ EVERY banned-when-sincere word classifies as banned (7.809375ms)
-  ✔ a neutral word classifies as ok (0.467209ms)
-  ✔ voice profile resolves per collection (2.621958ms)
-✔ brand (cross-checked vs _data/brand/*.yml) (14.311167ms)
+  ✔ get_brand_identity carries the Prime Directive + voice profiles (2.793375ms)
+  ✔ EVERY banned-when-sincere word classifies as banned (6.897167ms)
+  ✔ a neutral word classifies as ok (0.54ms)
+  ✔ voice profile resolves per collection (3.305208ms)
+✔ brand (cross-checked vs _data/brand/*.yml) (13.662834ms)
+▶ concepts (the durable layer, cross-checked vs _data/concepts.yml)
+  ✔ list_concepts count == ledger length on disk (1.208458ms)
+  ✔ every concept carries at least one source (a concept with no carrier is a claim) (1.053958ms)
+  ✔ get_concept returns the sentence + sources for a known id (1.070958ms)
+  ✔ get_concept on an unknown id returns a structured error (1.034167ms)
+  ✔ find_concepts ranks the relevant concept first (1.279167ms)
+  ✔ list_concepts tag filter is honored (1.022291ms)
+  ✔ the concepts resource + a concept template resolve (4.302584ms)
+✔ concepts (the durable layer, cross-checked vs _data/concepts.yml) (11.121416ms)
 ▶ resources
-  ✔ brand/identity resource contains the Prime Directive (0.982083ms)
-  ✔ findings resource is quarantined (2.277292ms)
-  ✔ analytics resource surfaces the stale flag (0.327666ms)
-  ✔ config/effective exposes the site config (0.407ms)
-  ✔ a content template resource returns the body (9.010875ms)
-  ✔ EVERY listed resource reads without error and is non-empty (141.771834ms)
-  ✔ an unknown resource URI is rejected (0.6815ms)
-✔ resources (155.632083ms)
+  ✔ brand/identity resource contains the Prime Directive (0.614709ms)
+  ✔ findings resource is quarantined (2.988667ms)
+  ✔ analytics resource surfaces the stale flag (0.402917ms)
+  ✔ config/effective exposes the site config (0.538833ms)
+  ✔ a content template resource returns the body (9.195875ms)
+  ✔ EVERY listed resource reads without error and is non-empty (170.83675ms)
+  ✔ an unknown resource URI is rejected (0.875875ms)
+✔ resources (185.666083ms)
 ▶ frontmatter.parsePage
-  ✔ splits a fenced front-matter block from the body (5.888125ms)
-  ✔ no front matter → empty map, whole text is body (0.118792ms)
-  ✔ an unclosed fence is treated as body (never throws) (0.076833ms)
-  ✔ malformed YAML front matter degrades to an empty map (0.706917ms)
-  ✔ asTags normalizes arrays and comma strings (0.104708ms)
-✔ frontmatter.parsePage (7.759875ms)
+  ✔ splits a fenced front-matter block from the body (6.337916ms)
+  ✔ no front matter → empty map, whole text is body (0.12725ms)
+  ✔ an unclosed fence is treated as body (never throws) (0.0775ms)
+  ✔ malformed YAML front matter degrades to an empty map (0.805375ms)
+  ✔ asTags normalizes arrays and comma strings (0.105792ms)
+✔ frontmatter.parsePage (8.326666ms)
 ▶ brand helpers
-  ✔ check_word flags a sincerely-banned word (3.274875ms)
-  ✔ check_word handles a banned word that carries an inline glossary comment (0.937209ms)
-  ✔ check_word passes a neutral word (0.76725ms)
-  ✔ voiceForCollection maps collections to the autopilot's default profile (0.091666ms)
-✔ brand helpers (5.2505ms)
+  ✔ check_word flags a sincerely-banned word (3.811084ms)
+  ✔ check_word handles a banned word that carries an inline glossary comment (1.014041ms)
+  ✔ check_word passes a neutral word (0.748ms)
+  ✔ voiceForCollection maps collections to the autopilot's default profile (0.091958ms)
+✔ brand helpers (5.840709ms)
 ▶ repo root resolution
-  ✔ resolves a checkout that contains _config.yml (0.201208ms)
-  ✔ throws on an LH_REPO_ROOT that is not the repo (0.310666ms)
-✔ repo root resolution (0.58825ms)
-ℹ tests 50
-ℹ suites 12
-ℹ pass 50
+  ✔ resolves a checkout that contains _config.yml (0.205334ms)
+  ✔ throws on an LH_REPO_ROOT that is not the repo (0.312666ms)
+✔ repo root resolution (0.59075ms)
+ℹ tests 57
+ℹ suites 13
+ℹ pass 57
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 931.4195
+ℹ duration_ms 1064.591
 [unit + integration suite] OK
 
 ----- stdio end-to-end smoke -----
@@ -180,11 +175,11 @@ commit: 7264071 on claude/mcp-p0-read-server
 
 lifehacker-read smoke test (repo: /Users/bamr87/github/lifehacker.dev/.claude/worktrees/lifehacker-mcp-integration-e6442e)
 
-Tools (9): check_word, get_brand_identity, get_content_item, list_collection, list_taxonomy, query_backlog, query_health_queue, resolve_voice_profile, search_content
+Tools (12): check_word, find_concepts, get_brand_identity, get_concept, get_content_item, list_collection, list_concepts, list_taxonomy, query_backlog, query_health_queue, resolve_voice_profile, search_content
   [PASS] expected read tools present
   [PASS] NO mutating verb exists — guardrails-by-absence
 
-Static resources: 248; templates: 8
+Static resources: 263; templates: 9
   [PASS] brand/identity resource listed or templated
   [PASS] brand/identity has a Prime Directive
   [PASS] health/queue reads as JSON array
@@ -192,38 +187,44 @@ Static resources: 248; templates: 8
 search_content("git"): 20 hits; top: posts/prd-machine-self-writing-documentation
   [PASS] search returns hits
   [PASS] get_content_item roundtrips the top hit
-query_backlog(todo): 14 items
+query_backlog(todo): 19 items
   [PASS] query_backlog(todo) returns a count
   [PASS] query_health_queue returns items
 check_word("just"): banned-when-sincere
   [PASS] check_word('just') is banned-when-sincere
   [PASS] resolve_voice_profile(tools) = tool-review-honest
-list_taxonomy(tags): 359 distinct tags
+list_taxonomy(tags): 364 distinct tags
   [PASS] taxonomy has tags
+list_concepts: 7 durable concepts
+  [PASS] concept layer is present and every concept has a source
+  [PASS] find_concepts('review bottleneck throughput') → the rate-limiter concept
 
 ALL CHECKS PASSED
 [stdio end-to-end smoke] OK
 
 ===== no-write proof: repo status AFTER =====
- M mcp/lifehacker-read/package.json
- M mcp/lifehacker-read/tsconfig.json
-?? mcp/lifehacker-read/scripts/
-?? mcp/lifehacker-read/src/harness.ts
-?? mcp/lifehacker-read/src/server.test.ts
-?? mcp/lifehacker-read/src/unit.test.ts
-?? mcp/lifehacker-read/tsconfig.test.json
+ M _data/navigation/main.yml
+ M mcp/lifehacker-read/README.md
+ M mcp/lifehacker-read/src/resources.ts
+ M mcp/lifehacker-read/src/server.test.ts
+ M mcp/lifehacker-read/src/smoke.ts
+ M mcp/lifehacker-read/src/tools.ts
+?? _data/concepts.yml
+?? concepts.md
+?? mcp/lifehacker-read/scripts/analyze-post.ts
+?? mcp/lifehacker-read/src/concepts.ts
 [no-write] OK — exercising the server + tests modified nothing tracked in the repo
 
 ===== cross-check: on-disk numbers the suite asserts against =====
-  pages/_hacks: 56 markdown files
-  pages/_tools: 22 markdown files
-  pages/_posts: 96 markdown files
-  pages/_docs:  22 markdown files
+  pages/_hacks: 57 markdown files
+  pages/_tools: 23 markdown files
+  pages/_posts: 98 markdown files
+  pages/_docs:  25 markdown files
   pages/_about: 2 markdown files
-  backlog total: 95 (yaml parse)
-  backlog todo:  14 (yaml parse)
-  backlog done:  80 (yaml parse)
-  health queue:  75 findings
+  backlog total: 104 (yaml parse)
+  backlog todo:  19 (yaml parse)
+  backlog done:  84 (yaml parse)
+  health queue:  57 findings
   glossary:      15 banned-when-sincere words
 
 ============================================================

@@ -14,6 +14,7 @@ import {
   loadItem,
   type CollectionName,
 } from "./collections.js";
+import { getConcept, loadConcepts } from "./concepts.js";
 import { quarantine } from "./quarantine.js";
 import type { RepoReader } from "./repo.js";
 
@@ -197,6 +198,36 @@ export function registerResources(server: McpServer, reader: RepoReader): void {
       const name = one(vars["name"]);
       const rel = `.claude/skills/${name}/SKILL.md`;
       return textContents(u, reader.exists(rel) ? reader.readText(rel) : `not found: ${rel}`);
+    },
+  );
+
+  // --- the durable concept layer (_data/concepts.yml) ------------------------
+  server.registerResource(
+    "concepts",
+    "lifehacker://concepts",
+    { title: "Concepts", description: "The durable concept layer: the site's portable ideas, each pinned to the content that carries it.", mimeType: "application/json" },
+    async (u) => {
+      const concepts = loadConcepts(reader);
+      return jsonContents(u, { count: concepts.length, concepts });
+    },
+  );
+
+  server.registerResource(
+    "concept",
+    new ResourceTemplate("lifehacker://concepts/{id}", {
+      list: async () => ({
+        resources: loadConcepts(reader).map((c) => ({
+          uri: `lifehacker://concepts/${c.id}`,
+          name: c.concept,
+          description: c.gloss,
+          mimeType: "application/json",
+        })),
+      }),
+    }),
+    { title: "Concept", description: "A single durable concept: the sentence, a gloss, and the content that carries it." },
+    async (u, vars) => {
+      const concept = getConcept(reader, one(vars["id"]));
+      return jsonContents(u, concept ?? { error: `not found: ${one(vars["id"])}` });
     },
   );
 }
