@@ -1,5 +1,5 @@
 # =============================================================================
-# concepts.yml — the durable concept layer
+# concepts.yml — the durable concept layer + concept engine
 # -----------------------------------------------------------------------------
 # The site runs on three layers, ranked by shelf life:
 #   CONTEXT  (expensive to assemble, evaporates)  -> made of
@@ -12,15 +12,21 @@
 # reader, or another site) can load "what this site has learned" in seconds
 # instead of re-deriving it from 200+ posts. Written by humans and the
 # retrospective step; read by the /concepts/ page and the lifehacker-read MCP
-# (lifehacker://concepts, list_concepts, find_concepts).
+# concept engine (lifehacker://concepts, list_concepts, find_concepts,
+# relate_concept, concepts_for, concept_coverage, suggest_concept_growth).
 #
 # The idea behind this file:
 #   /posts/2026/07/13/concepts-context-content-i-hoard-the-one-that-rots/
 #
-# item: { id: CONCEPT-###, concept, gloss, tags[], captured: YYYY-MM-DD,
-#         sources: [{title, url}], external?: [{note, url}] }
-# `concept` is the one durable sentence; `sources` are the content that carries
-# it. Every source must be a real page — a concept with no carrier is a claim.
+# item: { id: CONCEPT-###, concept, gloss, tags[], keywords[]?, related[]?,
+#         captured: YYYY-MM-DD, sources: [{title, url}], external?: [{note, url}] }
+#   concept  — the one durable sentence.
+#   tags     — align with the site's tag taxonomy (pages/_* front matter).
+#   keywords — extra matching terms the engine uses to relate a concept to
+#              content/tags (derived from the sentence + gloss when omitted).
+#   related  — wiki-style links to other concept ids (the concept graph).
+#   sources  — the content that carries it. Every source must be a real page —
+#              a concept with no carrier is a claim.
 # =============================================================================
 
 concepts:
@@ -31,6 +37,8 @@ concepts:
       shelf life longer than the session that produced it. Nothing forces you to
       capture it, so give it a home — otherwise it washes out with the container.
     tags: [knowledge-management, meta, context-engineering]
+    keywords: [durable, shelf-life, retrospective, capture, knowledge, portable]
+    related: [CONCEPT-005, CONCEPT-006]
     captured: 2026-07-13
     sources:
       - title: "Concepts, Context, Content: I Hoard the One That Rots"
@@ -46,6 +54,8 @@ concepts:
       in seconds than as a document a person has to find, open, and interpret.
       Store the rules where the thing that follows them already looks.
     tags: [brand, knowledge-management, context-engineering]
+    keywords: [style-guide, brand, voice, data, machine-readable, glossary, yaml]
+    related: [CONCEPT-005]
     captured: 2026-06-22
     sources:
       - title: "Your Style Guide Belongs in Git as Data, Not a PDF"
@@ -60,6 +70,8 @@ concepts:
       by review speed, not generation speed. Cap the work in flight to what the
       reviewer can absorb; adding workers past that point only grows the queue.
     tags: [autonomy, ci, workflow]
+    keywords: [rate-limiter, throughput, review, bottleneck, backpressure, queue, human]
+    related: [CONCEPT-007]
     captured: 2026-07-05
     sources:
       - title: "The Human Is the Rate Limiter"
@@ -74,6 +86,8 @@ concepts:
       temporary thing announce itself, so nobody mistakes the scaffold for the
       building and the real version actually gets built.
     tags: [design, quality]
+    keywords: [placeholder, incomplete, scaffold, stub, preview, temporary]
+    related: [CONCEPT-006]
     captured: 2026-07-08
     sources:
       - title: "The Plugin That Isn't a Plugin"
@@ -86,6 +100,8 @@ concepts:
       person leaves. So do not hoard every token; make the context cheap to
       reassemble from durable sources. Re-derivable beats preserved.
     tags: [context-engineering, knowledge-management]
+    keywords: [context, rebuild, re-derivable, tokens, session, reassemble]
+    related: [CONCEPT-001, CONCEPT-002]
     captured: 2026-07-13
     sources:
       - title: "Concepts, Context, Content: I Hoard the One That Rots"
@@ -98,6 +114,8 @@ concepts:
       idea was ever written down. The fix is to capture the concept somewhere
       durable, so any single piece of content stays disposable without regret.
     tags: [knowledge-management, meta]
+    keywords: [content, delete, load-bearing, disposable, single-point]
+    related: [CONCEPT-001]
     captured: 2026-07-13
     sources:
       - title: "Concepts, Context, Content: I Hoard the One That Rots"
@@ -110,6 +128,8 @@ concepts:
       each add the same id and the collision only surfaces after the merge. When
       a safety check can't fire, add the one that can — and wire it to the gate.
     tags: [ci, git, autonomy]
+    keywords: [merge, union, conflict, duplicate, guard, gate, backlog]
+    related: [CONCEPT-003]
     captured: 2026-07-01
     sources:
       - title: "The merge that never conflicts, and the backlog item it quietly ate"

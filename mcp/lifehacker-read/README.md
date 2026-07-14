@@ -17,7 +17,7 @@ does not exist yet.
 **Resources** (`lifehacker://…`) — the git-as-database tree:
 
 - Content: `collections/{c}`, `hacks|tools|posts|docs|about/{slug}` (each list-enumerable)
-- Concepts: `concepts`, `concepts/{id}` — the durable concept layer (the site's portable ideas, each pinned to the content that carries it)
+- Concepts: `concepts`, `concepts/{id}`, `concepts/coverage`, `concepts/graph` — the durable concept layer + the concept engine's gap map and wiki graph
 - Brand: `brand/identity|voice|glossary|accepted`
 - Data & memory: `backlog`, `authors`, `config/effective`, `retrospectives`, `scout/ideas` *(quarantined)*
 - Health: `health/queue|summary|findings` *(evidence quarantined)*, `metrics/history`, `analytics/summary` *(surfaces the known-stale flag)*
@@ -34,6 +34,10 @@ does not exist yet.
 | `list_concepts` | The durable concepts (portable ideas), optionally by tag |
 | `get_concept` | One concept by id — sentence, gloss, and its carrier content |
 | `find_concepts` | Search the concept layer: "what has this site learned about X" |
+| `relate_concept` | A concept → the content, tags, and sibling concepts around it |
+| `concepts_for` | Reverse lookup: which concepts a slug / tag / text carries |
+| `concept_coverage` | The gap map: thin concepts + high-frequency tags with no concept |
+| `suggest_concept_growth` | Ranked next moves — concept-first prioritization for growth |
 | `list_taxonomy` | Pooled tags (all collections) or categories (posts) |
 | `query_backlog` | Filter the content backlog by status/kind/priority |
 | `query_health_queue` | The RICE-ranked "what should we fix next" queue |

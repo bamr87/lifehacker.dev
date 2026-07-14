@@ -20,6 +20,8 @@ export interface Concept {
   concept: string; // the one durable sentence
   gloss: string;
   tags: string[];
+  keywords: string[]; // explicit search/matching terms (derived when absent)
+  related: string[]; // wiki-style links to other concept ids
   captured: string | null;
   sources: ConceptSource[];
   external: Array<{ note: string; url: string }>;
@@ -27,6 +29,10 @@ export interface Concept {
 
 function str(v: unknown): string {
   return v == null ? "" : String(v);
+}
+
+function strList(v: unknown): string[] {
+  return Array.isArray(v) ? v.map(String) : [];
 }
 
 function asSources(v: unknown): ConceptSource[] {
@@ -42,7 +48,9 @@ function normalize(raw: Record<string, unknown>): Concept {
     id: str(raw["id"]),
     concept: str(raw["concept"]),
     gloss: str(raw["gloss"]),
-    tags: Array.isArray(raw["tags"]) ? raw["tags"].map(String) : [],
+    tags: strList(raw["tags"]),
+    keywords: strList(raw["keywords"]),
+    related: strList(raw["related"]),
     captured: raw["captured"] != null ? str(raw["captured"]) : null,
     sources: asSources(raw["sources"]),
     external: Array.isArray(raw["external"])

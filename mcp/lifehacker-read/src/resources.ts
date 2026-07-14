@@ -15,6 +15,7 @@ import {
   type CollectionName,
 } from "./collections.js";
 import { getConcept, loadConcepts } from "./concepts.js";
+import { conceptCoverage, conceptGraph } from "./engine.js";
 import { quarantine } from "./quarantine.js";
 import type { RepoReader } from "./repo.js";
 
@@ -229,5 +230,19 @@ export function registerResources(server: McpServer, reader: RepoReader): void {
       const concept = getConcept(reader, one(vars["id"]));
       return jsonContents(u, concept ?? { error: `not found: ${one(vars["id"])}` });
     },
+  );
+
+  server.registerResource(
+    "concepts-coverage",
+    "lifehacker://concepts/coverage",
+    { title: "Concept coverage", description: "The gap map: carriers per concept, thin concepts, and high-frequency tags with no concept — where the durable layer needs growth.", mimeType: "application/json" },
+    async (u) => jsonContents(u, conceptCoverage(reader)),
+  );
+
+  server.registerResource(
+    "concepts-graph",
+    "lifehacker://concepts/graph",
+    { title: "Concept graph", description: "The concept ↔ tag ↔ concept graph (nodes + edges) — the wiki view of the durable layer.", mimeType: "application/json" },
+    async (u) => jsonContents(u, conceptGraph(reader)),
   );
 }
