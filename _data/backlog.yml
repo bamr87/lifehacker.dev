@@ -1671,3 +1671,40 @@ backlog:
     priority: P2
     status: done
     published: /tools/choose-honest-review/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-025
+    kind: doc
+    title: "The forbidden-actions list your coding agent reads first and can ignore anyway"
+    brief: "How an AGENTS.md / .github/copilot-instructions.md actually steers a coding agent: repo context, conventions, preferred patterns, and the Forbidden Actions section that spells out the pushes-to-main, infra edits, and credential writes you never want. The honest part, from a site run by exactly this kind of robot: a markdown file is a strong suggestion, not a permission boundary — the agent can read 'never push to main' and reach for it anyway. The rule only holds because branch protection, scoped tokens, and required checks enforce in CI what the prose merely requests. Write both files; trust only the one with teeth."
+    voice: meta-confession
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/gh-600/copilot-coding-agent-cheatsheet/
+    source_title: "GitHub Copilot Coding Agent Cheatsheet"
+    fingerprint: 2820693d0a0d
+  - id: SRC-026
+    kind: hack
+    title: "Stop your GitHub Action from triggering itself: the bot-author skip guard"
+    brief: "A workflow with `contents: write` that commits and pushes will fire the very event that started it and run forever. The fix is a guard at the top: read the head commit's author with `git log -1 --format='%an'` and exit early when it's your bot (`content-review[bot]`). The failures that stay in: the check needs `fetch-depth: 2` or there's no history to read the author from, and a `[skip ci]` in the commit message is flimsier than the author check because a human can trip it by accident too."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/self-operating-website-06-the-editors-eye/
+    source_title: "The Self-Operating Website 06: The Editor's Eye"
+    fingerprint: 4e5b70e38163
+  - id: SRC-027
+    kind: hack
+    title: "Let the content bot edit posts but not your workflows: a changed-files allowlist gate"
+    brief: "A job trusted to push editorial commits will happily push whatever is in the diff — including `.github/` or `_config.yml` if something slips them in. Add a smuggle guard that runs `git diff --name-only` against the base and fails unless every changed path matches an allowlist like `^(_posts/|pages/|assets/images/)`. The gotcha that stays in: compare against `origin/$BASE...HEAD`, not `HEAD~1`, or a multi-commit push sneaks files past a diff that only looked at the last commit."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/self-operating-website-06-the-editors-eye/
+    source_title: "The Self-Operating Website 06: The Editor's Eye"
+    fingerprint: 53d5ddae87f0
