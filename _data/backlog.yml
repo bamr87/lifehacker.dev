@@ -1591,7 +1591,8 @@ backlog:
     brief: "Deep-dive on record_build.rb: the single producer of the sev1 `build` finding — the one severity policy.rb freezes growth on. The 'exactly one implementation, used everywhere' single-source-of-truth contract, why funnelling a critical signal through one plain-Ruby script is a feature not a gap, and what would break if a second writer appeared. Real captured output from running the script locally; no network."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /docs/the-one-script-that-gets-to-say-the-build-is-broken/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
