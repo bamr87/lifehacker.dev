@@ -1575,7 +1575,8 @@ backlog:
     brief: "Honest review of an interactive TUI disk browser (ncdu/gdu): where duf (TOOL-016) and dust (TOOL-014) only draw the picture, these let you delete in place — and the caveats that come with a destructive TUI (the scan cost on a huge tree, the no-undo delete, and why you still reach for dust for a quick glance). Every command run for real on a local directory (no network)."
     voice: tool-review-honest
     priority: P2
-    status: todo
+    status: done
+    published: /tools/ncdu-vs-gdu-honest-review/
 
   - id: POST-019
     kind: post
