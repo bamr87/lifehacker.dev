@@ -15,6 +15,8 @@ import {
   searchContent,
   type CollectionName,
 } from "./collections.js";
+import { findConcepts, getConcept, listConcepts } from "./concepts.js";
+import { conceptCoverage, conceptsFor, relateConcept, suggestConceptGrowth } from "./engine.js";
 import type { RepoReader } from "./repo.js";
 
 const CollectionEnum = z.enum(["hacks", "tools", "posts", "docs", "about"]);
@@ -178,5 +180,93 @@ export function registerTools(server: McpServer, reader: RepoReader): void {
       const mappedFrom = collection ? { collection, maps_to: voiceForCollection(collection as CollectionName) } : undefined;
       return text({ ...resolved, mappedFrom });
     },
+  );
+
+  // --- the durable concept layer -------------------------------------------
+  server.registerTool(
+    "list_concepts",
+    {
+      title: "List concepts",
+      description: "List the site's durable concepts (the portable ideas worth keeping), optionally filtered by tag. Each carries the content that states it.",
+      inputSchema: { tag: z.string().optional() },
+    },
+    async ({ tag }) => {
+      const concepts = listConcepts(reader, tag);
+      return text({ count: concepts.length, concepts });
+    },
+  );
+
+  server.registerTool(
+    "get_concept",
+    {
+      title: "Get concept",
+      description: "Fetch one durable concept by id (e.g. CONCEPT-001): the sentence, a gloss, its tags, and the sources that carry it.",
+      inputSchema: { id: z.string() },
+    },
+    async ({ id }) => {
+      const concept = getConcept(reader, id);
+      return concept ? text(concept) : text({ error: `not found: ${id}` });
+    },
+  );
+
+  server.registerTool(
+    "find_concepts",
+    {
+      title: "Find concepts",
+      description: "Search the durable concept layer — 'what has this site learned about X' — ranked over the concept sentence, its gloss, and tags. The fast way to load prior lessons into a fresh session.",
+      inputSchema: { query: z.string(), limit: z.number().int().positive().max(50).optional() },
+    },
+    async ({ query, limit }) => text(findConcepts(reader, query, limit)),
+  );
+
+  // --- the concept engine: relate concepts to the site's structures ----------
+  server.registerTool(
+    "relate_concept",
+    {
+      title: "Relate concept",
+      description: "Expand a concept into its neighborhood: the curated sources, the OTHER content across collections that carries it (by shared tags + keywords), the tags it clusters with, and sibling concepts. The concept ↔ content ↔ tag view.",
+      inputSchema: { id: z.string() },
+    },
+    async ({ id }) => {
+      const rel = relateConcept(reader, id);
+      return rel ? text(rel) : text({ error: `not found: ${id}` });
+    },
+  );
+
+  server.registerTool(
+    "concepts_for",
+    {
+      title: "Concepts for",
+      description: "Reverse lookup: which durable concepts does a piece of content, a tag, or some free text carry? Pass a content slug, a tag, and/or text. Answers 'what has this site already learned that is relevant here?'",
+      inputSchema: {
+        slug: z.string().optional().describe("a content slug, e.g. git-alias-starter-pack"),
+        tag: z.string().optional(),
+        text: z.string().optional(),
+      },
+    },
+    async ({ slug, tag, text: freeText }) => {
+      if (!slug && !tag && !freeText) return text({ error: "provide at least one of: slug, tag, text" });
+      return text(conceptsFor(reader, { slug, tag, text: freeText }));
+    },
+  );
+
+  server.registerTool(
+    "concept_coverage",
+    {
+      title: "Concept coverage",
+      description: "The gap map for growth: how many carriers each concept has, which concepts are thin, and which high-frequency tags/clusters have NO concept yet — where the durable layer needs work.",
+      inputSchema: {},
+    },
+    async () => text(conceptCoverage(reader)),
+  );
+
+  server.registerTool(
+    "suggest_concept_growth",
+    {
+      title: "Suggest concept growth",
+      description: "Ranked next moves that strengthen the concept layer: capture a concept for an uncovered tag cluster, reinforce a thin concept, or pin strongly-matching content as a source. Concept-first prioritization for what to grow next.",
+      inputSchema: { limit: z.number().int().positive().max(30).optional() },
+    },
+    async ({ limit }) => text(suggestConceptGrowth(reader, limit)),
   );
 }

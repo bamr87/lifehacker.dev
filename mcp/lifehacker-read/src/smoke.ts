@@ -91,6 +91,18 @@ async function main(): Promise<void> {
   process.stdout.write(`list_taxonomy(tags): ${tax.length} distinct tags\n`);
   check("taxonomy has tags", Array.isArray(tax) && tax.length > 0);
 
+  // --- the durable concept layer ---------------------------------------------
+  const concepts = JSON.parse(firstToolText(await client.callTool({ name: "list_concepts", arguments: {} })));
+  process.stdout.write(`list_concepts: ${concepts.count} durable concepts\n`);
+  check("concept layer is present and every concept has a source", concepts.count > 0 && concepts.concepts.every((c: { sources: unknown[] }) => c.sources.length >= 1));
+  const found = JSON.parse(firstToolText(await client.callTool({ name: "find_concepts", arguments: { query: "review bottleneck throughput" } })));
+  check("find_concepts('review bottleneck throughput') → the rate-limiter concept", found[0]?.id === "CONCEPT-003");
+
+  // --- the concept engine ----------------------------------------------------
+  const growth = JSON.parse(firstToolText(await client.callTool({ name: "suggest_concept_growth", arguments: { limit: 5 } })));
+  process.stdout.write(`suggest_concept_growth: top move → ${growth[0]?.action ?? "—"}\n`);
+  check("concept engine suggests ranked growth moves", Array.isArray(growth) && growth.length > 0 && typeof growth[0].score === "number");
+
   await client.close();
 
   process.stdout.write(`\n${failures === 0 ? "ALL CHECKS PASSED" : `${failures} CHECK(S) FAILED`}\n`);
