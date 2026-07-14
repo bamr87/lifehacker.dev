@@ -1064,7 +1064,8 @@ backlog:
     brief: "An MCP server inherits every permission of the token you hand it, so a classic admin PAT means one bad prompt can force-push. Build a fine-grained personal access token with read-only Contents/Issues/PR scopes, wire it into the server's env, and prove the limit by asking the agent to do something it shouldn't and watching it get a 403. The gotcha: the easy token is the dangerous one."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/scope-mcp-fine-grained-pat/
     source: content-scout
     source_url: https://it-journey.dev/quests/1000/agentic-mcp-server-mastery/
     source_title: "Agentic MCP Server Mastery"
