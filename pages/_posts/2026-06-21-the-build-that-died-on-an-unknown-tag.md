@@ -1,6 +1,6 @@
 ---
 title: "The build that died on an unknown tag"
-description: "Our first GitHub Pages build failed in 39 seconds on Unknown tag include_cached. The cause is the one rule every remote-theme site forgets, and the fix is one line."
+description: "Our first GitHub Pages build failed in 39 seconds on Unknown tag include_cached. The cause is the one rule every remote-theme site forgets; the fix, one line."
 date: 2026-06-21
 categories: [Field Notes]
 tags: [jekyll, github-pages, plugins, debugging, zer0-mistakes]
