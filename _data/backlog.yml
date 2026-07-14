@@ -1064,7 +1064,8 @@ backlog:
     brief: "An MCP server inherits every permission of the token you hand it, so a classic admin PAT means one bad prompt can force-push. Build a fine-grained personal access token with read-only Contents/Issues/PR scopes, wire it into the server's env, and prove the limit by asking the agent to do something it shouldn't and watching it get a 403. The gotcha: the easy token is the dangerous one."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/scope-mcp-fine-grained-pat/
     source: content-scout
     source_url: https://it-journey.dev/quests/1000/agentic-mcp-server-mastery/
     source_title: "Agentic MCP Server Mastery"
@@ -1575,7 +1576,8 @@ backlog:
     brief: "Honest review of an interactive TUI disk browser (ncdu/gdu): where duf (TOOL-016) and dust (TOOL-014) only draw the picture, these let you delete in place — and the caveats that come with a destructive TUI (the scan cost on a huge tree, the no-undo delete, and why you still reach for dust for a quick glance). Every command run for real on a local directory (no network)."
     voice: tool-review-honest
     priority: P2
-    status: todo
+    status: done
+    published: /tools/ncdu-vs-gdu-honest-review/
 
   - id: POST-019
     kind: post
@@ -1583,7 +1585,8 @@ backlog:
     brief: "Meta-confession field note: the fleet keeps reaching for cryptographic seals (HMAC, cosign, OIDC) to prove a robot didn't fake its own results — but the actual seal on every lifehacker change is a pull request a human reads and approves. The signature proves who; review proves whether it should ship. Reflection only, grounded in the repo's own gate (required `verify` check + CODEOWNERS review); no network, no new tooling."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /posts/2026/07/14/evidence-is-a-diff-a-human-reads-not-a-signature/
 
   - id: DOC-021
     kind: doc
