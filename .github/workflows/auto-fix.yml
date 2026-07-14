@@ -96,3 +96,22 @@ jobs:
           gh pr comment "$pr" --body "<!-- auto-fix-attempt -->
           Auto-fix attempt $(( ${{ steps.gate.outputs.attempts }} + 1 ))/${{ env.MAX_ATTEMPTS }}: pushed a content-only fix (${kinds}); the pipeline will re-validate."
           git push origin "$BRANCH"
+
+      # ---- AI usage metering (best-effort; this job calls run.sh directly, so
+      # it reports its own records — claude-run consumers get this for free).
+      # Runs from the clone because this workflow never checks the repo out.
+      - name: Report AI usage
+        id: usage
+        if: ${{ always() && steps.gate.outputs.go == 'true' }}
+        run: |
+          [ -d repo ] || { echo "no clone — no AI ran."; exit 0; }
+          cd repo && ruby scripts/ai/usage_report.rb --pr "${{ steps.gate.outputs.pr }}" \
+            || echo "::notice::AI usage report failed (non-fatal)."
+      - name: Upload AI usage artifact
+        if: ${{ always() && steps.usage.outputs.file != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.usage.outputs.name }}
+          path: ${{ steps.usage.outputs.file }}
+          if-no-files-found: ignore
+          retention-days: 30

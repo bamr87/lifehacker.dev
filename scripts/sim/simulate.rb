@@ -166,6 +166,55 @@ check('Triage.build is deterministic (byte-identical twice)', Triage.build(src).
 check('analytics cache is stale -> reach defaults to 1.0, severity dominates', !!Triage.analytics['stale'])
 
 # ---------------------------------------------------------------------------
+scenario 'AI metering — capture -> ledger -> summary (the cost contract)'
+require_relative '../ai/usage'
+require_relative '../ai/usage_ledger'
+require 'tmpdir'
+Dir.mktmpdir do |tmp|
+  ENV['LH_AI_LEDGER_DIR'] = tmp
+
+  # A Claude Code result payload (the probed schema run.sh captures).
+  fixture = {
+    'type' => 'result', 'is_error' => false, 'duration_ms' => 3161, 'num_turns' => 7,
+    'result' => 'ok', 'session_id' => 'sess-1', 'total_cost_usd' => 1.25,
+    'usage' => { 'input_tokens' => 10, 'output_tokens' => 3800,
+                 'cache_read_input_tokens' => 17_506, 'cache_creation_input_tokens' => 8550 },
+    'modelUsage' => { 'claude-opus-4-8' => { 'inputTokens' => 10, 'outputTokens' => 3800,
+                                             'cacheReadInputTokens' => 17_506, 'cacheCreationInputTokens' => 8550,
+                                             'costUSD' => 1.25 } },
+    'uuid' => 'fixture-uuid-1'
+  }
+  rec = AIUsage.from_claude_result(fixture, agent: 'grow-lifehacker')
+  check('claude result -> record keeps the REPORTED cost', rec['cost_usd'] == 1.25 && rec['cost_source'] == 'reported')
+  check('record identifies the primary model', rec['model'] == 'claude-opus-4-8')
+  rec.merge!('ts' => '2026-07-10T00:00:00Z', 'workflow' => 'content-factory', 'pr' => 42, 'pr_source' => 'created')
+
+  # The API fallback reports tokens but no dollars -> estimated from the table
+  # (opus 4.8: 1000 in x $5/MTok + 1000 out x $25/MTok = $0.03).
+  api = AIUsage.from_api_response({ 'id' => 'msg_1', 'model' => 'claude-opus-4-8', 'stop_reason' => 'end_turn',
+                                    'usage' => { 'input_tokens' => 1000, 'output_tokens' => 1000 } },
+                                  agent: 'brand-reviewer')
+  check('api fallback -> ESTIMATED cost from _data/ai_pricing.yml', api['cost_source'] == 'estimated' && (api['cost_usd'] - 0.03).abs < 1e-9, "cost=#{api['cost_usd']}")
+  api.merge!('ts' => '2026-07-11T00:00:00Z', 'workflow' => 'pipeline', 'pr' => 42, 'pr_source' => 'event')
+
+  # Batch them like an uploaded run artifact and ingest TWICE — the ledger's
+  # dedup-by-id is what makes re-sweeping artifacts always safe.
+  drop = File.join(tmp, 'artifacts')
+  FileUtils.mkdir_p(drop)
+  File.write(File.join(drop, 'reported-1.jsonl'), [rec, api].map { |r| JSON.generate(r) }.join("\n") + "\n")
+  first  = AIUsageLedger.ingest(drop)
+  second = AIUsageLedger.ingest(drop)
+  check('ledger ingest is idempotent (2 new, then 0)', first == 2 && second.zero?, "#{first}/#{second}")
+
+  s = AIUsageLedger.summarize(now: Time.utc(2026, 7, 14))
+  check('summary totals combine both paths', s['all_time']['calls'] == 2 && (s['all_time']['cost_usd'] - 1.28).abs < 0.001, s['all_time'].inspect)
+  p42 = (s['top_prs'] || []).find { |x| x['pr'] == 42 }
+  check('a PR splits creation vs downstream cost', p42 && p42['creation_usd'] == 1.25 && (p42['downstream_usd'] - 0.03).abs < 0.001, p42.inspect)
+  check('summary.yml written for the Liquid dashboard', File.exist?(File.join(tmp, 'summary.yml')))
+end
+ENV.delete('LH_AI_LEDGER_DIR')
+
+# ---------------------------------------------------------------------------
 scenario 'kill-switch matrix — only the exact string "true" runs the fleet'
 disp = File.join(LH::ROOT, 'scripts/fleet/dispatch.rb')
 [%w[empty ''], %w[false false], %w[upper TRUE], %w[zero 0], %w[yes yes]].each do |label, val|

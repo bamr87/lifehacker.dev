@@ -51,7 +51,11 @@ done
 [ -z "$prompt" ] && [ ! -t 0 ] && prompt="$(cat)"
 
 run_claude_code() {
-  local args=(-p "$prompt" --model "$MODEL" --permission-mode acceptEdits)
+  # --output-format json: same run, but the final payload carries usage + cost
+  # (total_cost_usd, per-model tokens) alongside the result text. usage.rb
+  # records the usage and re-emits the text, so callers see exactly what they
+  # always did on stdout/--out.
+  local args=(-p "$prompt" --model "$MODEL" --permission-mode acceptEdits --output-format json)
   # Run AS a named agent (.claude/agents/<name>.md) when given — its system prompt,
   # tool scope, and role constraints are the single source of truth, so every CI
   # invocation of that role behaves identically. --tools/--system still layer on.
@@ -62,16 +66,40 @@ run_claude_code() {
   # agent prompt (tools/permissions) stays intact. Without this, a guardrail
   # like "never merge" would only bind the fallback path, not the primary one.
   [ -n "$system" ] && args+=(--append-system-prompt "$system")
-  claude "${args[@]}"
+  # OAuth-first invariant: when the subscription token exists, the CLI must
+  # never see the metered API key (with both set it would silently bill the
+  # key). The key stays exported in THIS shell for the API fallback below.
+  if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+    env -u ANTHROPIC_API_KEY claude "${args[@]}"
+  else
+    claude "${args[@]}"
+  fi
 }
 
 # --- Primary: Claude Code ----------------------------------------------------
 if [ "${LH_AI_FORCE_API:-0}" != "1" ] && command -v claude >/dev/null 2>&1; then
-  if [ -n "$out" ]; then
-    if run_claude_code > "$out"; then exit 0; fi
+  tmp_json="$(mktemp "${TMPDIR:-/tmp}/lh-ai-result.XXXXXX")"
+  run_claude_code > "$tmp_json"
+  rc=$?
+  if [ "$rc" -eq 0 ]; then
+    # Record usage, then emit the result text (the caller's contract). A parse
+    # failure here means claude didn't produce a result payload — treat it
+    # exactly like a failed run and let the fallback engage.
+    if [ -n "$out" ]; then
+      if ruby "$REPO/scripts/ai/usage.rb" ingest-claude "$tmp_json" --agent "$agent" --rc "$rc" --emit-result > "$out"; then
+        rm -f "$tmp_json"; exit 0
+      fi
+    else
+      if ruby "$REPO/scripts/ai/usage.rb" ingest-claude "$tmp_json" --agent "$agent" --rc "$rc" --emit-result; then
+        rm -f "$tmp_json"; exit 0
+      fi
+    fi
   else
-    if run_claude_code; then exit 0; fi
+    # The run failed, but tokens may still have been spent — record them
+    # (status:error) before falling back. Best-effort, never masks the failure.
+    ruby "$REPO/scripts/ai/usage.rb" ingest-claude "$tmp_json" --agent "$agent" --rc "$rc" >/dev/null 2>&1 || true
   fi
+  rm -f "$tmp_json"
   echo "[ai] Claude Code unavailable/failed — falling back to the Claude API." >&2
 fi
 
@@ -83,6 +111,7 @@ if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
   echo "[ai] no ANTHROPIC_API_KEY for the Claude API fallback — skipping (no-op)." >&2
   exit 0
 fi
+export LH_AI_ROLE="$agent"   # so the fallback's usage record carries the role
 api=("$REPO/scripts/ai/api_call.rb" --prompt "$prompt")
 [ -n "$system" ] && api+=(--system "$system")
 if [ -n "$out" ]; then

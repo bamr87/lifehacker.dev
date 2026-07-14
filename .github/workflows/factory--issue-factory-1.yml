@@ -51,6 +51,7 @@ jobs:
           if [ "$COUNT" -gt "$LIMIT" ]; then echo "rate limit ($LIMIT/day) reached — stopping"; exit 1; fi
       - uses: actions/checkout@v4
       - name: 🗂 issue_batcher (ba)
+        id: agent
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -74,3 +75,26 @@ jobs:
             --model claude-sonnet-4-6
             --max-turns 30
             --allowedTools "Read,Glob,Grep,Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh search issues:*),Bash(gh label list:*),Bash(gh label create:*),Bash(gh issue edit:*),Bash(gh issue comment:*),Bash(gh issue create:*)"
+      # lh-ai-usage metering — MANUAL ADDITION to this generated file. If the
+      # factory regenerates it from the blueprint, RE-ADD these two steps: the
+      # devops audit (scripts/devops/audit.rb) fails loudly when a workflow uses
+      # claude-code-action without usage_report, so the drift cannot go unseen.
+      - name: 📊 meter AI usage
+        id: usage
+        if: always()
+        run: |-
+          f="${{ steps.agent.outputs.execution_file }}"
+          if [ -n "$f" ] && [ -f "$f" ]; then
+            ruby scripts/ai/usage.rb ingest-execution-log "$f" --agent issue-batcher || true
+          else
+            echo "no execution log to meter"
+          fi
+          ruby scripts/ai/usage_report.rb || echo "::notice::AI usage report failed (non-fatal)."
+      - name: 📊 upload AI usage artifact
+        if: ${{ always() && steps.usage.outputs.file != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.usage.outputs.name }}
+          path: ${{ steps.usage.outputs.file }}
+          if-no-files-found: ignore
+          retention-days: 30
