@@ -70,7 +70,10 @@ permalink: /
       </a>
     </div>
     <div class="col-lg-5 d-none d-lg-block position-relative">
-      <img src="{{ site.og_image | relative_url }}" alt="{{ hero.title }}" class="w-100 h-100" style="object-fit: cover; min-height: 360px;">
+      {%- comment -%} Use the hero post's own preview image; fall back to the site og_image. Preview paths may omit /assets (theme convention), so add it when missing. {%- endcomment -%}
+      {%- assign hero_img = hero.preview | default: site.og_image -%}
+      {%- unless hero_img contains '://' or hero_img contains '/assets' -%}{%- assign hero_img = '/assets' | append: hero_img -%}{%- endunless -%}
+      <img src="{{ hero_img | relative_url }}" alt="{{ hero.title }}" class="w-100 h-100" style="object-fit: cover; min-height: 360px;">
     </div>
   </div>
 </section>
