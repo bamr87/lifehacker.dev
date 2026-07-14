@@ -1585,7 +1585,8 @@ backlog:
     brief: "Meta-confession field note: the fleet keeps reaching for cryptographic seals (HMAC, cosign, OIDC) to prove a robot didn't fake its own results — but the actual seal on every lifehacker change is a pull request a human reads and approves. The signature proves who; review proves whether it should ship. Reflection only, grounded in the repo's own gate (required `verify` check + CODEOWNERS review); no network, no new tooling."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /posts/2026/07/14/evidence-is-a-diff-a-human-reads-not-a-signature/
 
   - id: DOC-021
     kind: doc
