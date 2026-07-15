@@ -1,13 +1,12 @@
-generated_at: '2026-07-14T08:34:07Z'
-queue_size: 51
+generated_at: '2026-07-15T08:38:30Z'
+queue_size: 45
 by_severity:
-  sev4: 51
+  sev4: 45
 by_type:
-  type/brand-lint: 46
-  type/content-polish: 4
+  type/brand-lint: 44
   type/link-rot: 1
 by_route:
-  local: 50
+  local: 44
   upstream: 1
 top:
 - severity: sev4
@@ -26,18 +25,8 @@ top:
   score: 0.7
   repo: bamr87/lifehacker.dev
 - severity: sev4
-  type: type/content-polish
-  title: "[sev4] content-polish: description-too-long (/docs/the-build-that-deletes-its-own-plugins/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
   type: type/brand-lint
   title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-check-that-guards-my-job-description/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2024/05/28/auto-increment-frontmatter-version/)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 - severity: sev4
@@ -52,12 +41,22 @@ top:
   repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2024/12/31/cats-and-dogs-pet-care/)"
+  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/03/12/ais-infinite-loop-unveiling-arbitrage-in-complexity-of-models/)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/03/12/ais-infinite-loop-unveiling-arbitrage-in-complexity-of-models/)"
+  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/03/13/excel-to-python/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/03/15/ai-to-create-ai/)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/brand-lint
+  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/05/01/exploring-the-roots-of-injustice/)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 analytics_stale: true
