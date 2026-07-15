@@ -1080,7 +1080,8 @@ backlog:
     brief: "Skip the enterprise threat-model binder. Draw one data-flow diagram (you, your app, your database), run the six STRIDE questions against the single arrow that crosses a trust boundary, and rank what you find by likelihood times impact. You'll know it worked when you have three fixes worth doing this week — and the honest part is that the paper version beats the fancy modeling tool you'll never open twice."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/stride-threat-model-side-project/
     source: content-scout
     source_url: https://it-journey.dev/quests/1011/threat-modeling/
     source_title: "Threat Modeling"
