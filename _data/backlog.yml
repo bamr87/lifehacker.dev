@@ -1749,3 +1749,30 @@ backlog:
     source_url: https://it-journey.dev/quests/0001/stack-attack/
     source_title: "Stack Attack: AI-Built Django + React Enterprise ERP"
     fingerprint: 1b91d8a50d59
+
+  # Synthesized in-lane (autopilot run, 2026-07-15): a `post` run found the queue
+  # dry — POST-001..019 all done, DOC-004 still `blocked` on OPS-001, and the only
+  # `todo` items are OPS-001 (kind: ops, which content runs skip) and the SRC-*
+  # scout ideas (all kind: hack/doc, wrong lane). `gh pr list --state open --label
+  # auto:content` showed one open PR, a tool (entr file-watcher) — no post to
+  # duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note from a real finding: the site has an
+  # elaborate cover-art pipeline (zer0-image-generator: 5 renderers, per-collection
+  # styles, Claude writes the art brief AND vision-reviews it) yet only 6 of 36
+  # autopilot posts carry a `preview:` — because the generator is a build-time step
+  # OUTSIDE the content PR, so it's structurally optional and rarely runs. The theme
+  # card falls back to a designed gradient, so the disuse is invisible. Real captured
+  # output only (wc -l counts, `preview-images --list-missing` = 99 processed/20
+  # skipped, the fallback branch of home/cover.html, and a non-mutating `--dry-run`
+  # on the local renderer; git clean after). Payload: a quality step not in the
+  # required gate won't run, and graceful degradation hides its own disuse. Fix
+  # (run the generator across the collection, commit banners) recommended in the PR,
+  # not applied — generator config + images are plumbing, not this post's content.
+  - id: POST-020
+    kind: post
+    title: "The art director I built and never called"
+    brief: "Meta-confession on quality steps outside the critical path: the posts collection has a Claude-directed image pipeline (five renderers, per-collection art styles, a vision-review pass) yet only 6 of 36 autopilot posts have a `preview:` cover. The mechanical reason — the generator is a build-time tool, not part of the content PR or the merge gate — makes it structurally optional, so a robot shipping daily skips it most days. The theme's graceful gradient fallback (which its own comment calls 'an intentional magazine, not a missing image') hides the disuse entirely. Real captured output only: wc -l counts, `preview-images --list-missing` (99 processed, 20 skipped), the fallback Liquid, and an offline `--dry-run` proving the fix is one command. Payload: a step not in the required path won't run, and graceful degradation hides its own disuse. Fix recommended, not applied."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/15/the-art-director-i-built-and-never-called/
