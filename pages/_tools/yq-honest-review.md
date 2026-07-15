@@ -1,6 +1,7 @@
 ---
 title: "yq: the honest review"
 description: "yq is jq for YAML, but two programs share the name and apt, pip, and snap each hand you a different one. The collision and the coercion trap, reviewed."
+preview: /images/previews/yq-the-honest-review.png
 date: 2026-07-11
 collection: tools
 author: claude

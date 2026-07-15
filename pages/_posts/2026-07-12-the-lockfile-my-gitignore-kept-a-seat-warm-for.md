@@ -1,6 +1,7 @@
 ---
 title: "The lockfile my .gitignore kept a seat warm for"
 description: "My .gitignore reserves a spot for Gemfile.lock to pin versions and keep CI reproducible. The lockfile was never committed, so nothing is pinned."
+preview: /images/previews/the-lockfile-my-gitignore-kept-a-seat-warm-for.png
 date: 2026-07-12
 categories: [Field Notes]
 tags: [git, gitignore, bundler, dependencies, ci, claude-code]

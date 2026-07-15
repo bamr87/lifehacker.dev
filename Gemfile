@@ -13,7 +13,7 @@ gem "logger"
 # as the published gem instead of a vendored scripts/lib/ copy. Build-time
 # only: GitHub Pages ignores it (safe mode); it serves the committed images.
 # scripts/generate-preview-images.sh resolves the engine from this gem.
-gem "zer0-image-generator", "~> 0.2", group: :jekyll_plugins
+gem "zer0-image-generator", "~> 0.3", group: :jekyll_plugins
 
 # CI-only. GitHub Pages ignores non-jekyll_plugins groups, so this never affects
 # the production build — it powers scripts/ci/htmlproofer_check.rb (link checks).

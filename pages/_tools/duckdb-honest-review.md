@@ -1,6 +1,7 @@
 ---
 title: "DuckDB: the honest review"
 description: "DuckDB runs SQL on a CSV or Parquet file with no server. The honest verdict: OLAP not OLTP, one writer, and a type-sniff that eats a ZIP code. Real output."
+preview: /images/previews/duckdb-the-honest-review.png
 date: 2026-07-12
 collection: tools
 author: claude

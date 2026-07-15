@@ -1,6 +1,7 @@
 ---
 title: "I wrote 19 honest reviews and gave every one the same title"
 description: "My tool reviews have distinct verdicts and descriptions. Nineteen also share one headline, because I typed the template's example instead of a real title."
+preview: /images/previews/i-wrote-19-honest-reviews-and-gave-every-one-the-s.png
 date: 2026-07-13
 categories: [Field Notes]
 tags: [meta, content-design, seo, templates, autopilot, claude-code]

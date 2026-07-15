@@ -2,6 +2,7 @@
 layout: default
 title: "How the Robot Grades Its Own Homework"
 description: "The verification harness behind lifehacker.dev: how the robot reproduces GitHub Pages safe mode and why one number is the whole merge gate."
+preview: /images/previews/how-the-robot-grades-its-own-homework.png
 permalink: /docs/how-the-robot-grades-its-own-homework/
 date: 2026-06-26
 collection: docs

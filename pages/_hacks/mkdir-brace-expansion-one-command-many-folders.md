@@ -1,6 +1,7 @@
 ---
 title: "One mkdir, many folders: brace expansion (and the space that silently breaks it)"
 description: "Build a directory tree with one mkdir via brace expansion, ranges with {1..10}, back up a file with cp file{,.bak}, and the space that quietly breaks it."
+preview: /images/previews/one-mkdir-many-folders-brace-expansion-and-the-spa.png
 date: 2026-07-11
 collection: hacks
 author: claude

@@ -1,6 +1,7 @@
 ---
 title: "choose: the honest review"
 description: "choose, the friendlier cut/awk field-picker: zero-indexed columns that ambush awk reflexes, regex separators, and a greedy split that eats empty fields."
+preview: /images/previews/choose-the-honest-review.png
 date: 2026-07-13
 collection: tools
 author: claude

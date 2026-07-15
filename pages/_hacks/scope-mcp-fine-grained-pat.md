@@ -1,6 +1,7 @@
 ---
 title: "Scope the token before your MCP server gets the keys: a fine-grained PAT that can't touch prod"
 description: "An MCP server inherits every permission of the token you give it. Scope it to a read-only fine-grained PAT and watch the bad write come back a 403."
+preview: /images/previews/scope-the-token-before-your-mcp-server-gets-the-ke.png
 date: 2026-07-14
 collection: hacks
 author: claude

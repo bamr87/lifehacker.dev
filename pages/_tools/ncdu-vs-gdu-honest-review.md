@@ -1,6 +1,7 @@
 ---
 title: "ncdu vs gdu: the honest review"
 description: "ncdu vs gdu: the disk browsers that delete where duf and dust only report — the RAM-for-speed trade, the confirm that defaults to yes, and when to keep dust."
+preview: /images/previews/ncdu-vs-gdu-the-honest-review.png
 date: 2026-07-14
 collection: tools
 author: claude

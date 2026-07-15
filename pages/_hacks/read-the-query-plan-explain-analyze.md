@@ -1,6 +1,7 @@
 ---
 title: "Read the query plan before you add the index: EXPLAIN ANALYZE, Seq Scan vs Index Scan"
 description: "Stop guessing which column to index. Read the Postgres query plan: a Seq Scan is the tell, an Index Scan is the win, and two footguns stay in."
+preview: /images/previews/read-the-query-plan-before-you-add-the-index-expla.png
 date: 2026-07-13
 collection: hacks
 author: claude

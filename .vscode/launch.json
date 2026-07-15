@@ -1,0 +1,64 @@
+{
+  // =============================================================================
+  // launch.json — run lifehacker.dev locally via Docker, from the Run & Debug panel
+  // -----------------------------------------------------------------------------
+  // All configs use the `node-terminal` type as a shell launcher (no Node code is
+  // debugged — it's the standard way to make launch.json run a command in an
+  // integrated terminal). Every config needs the Docker daemon RUNNING: the host
+  // Ruby (4.0.x) is too new for the github-pages gem, so nothing builds outside a
+  // container. `docker info` HANGS (not errors) when the daemon is down — if a
+  // launch sits silent, start Docker Desktop first.
+  //
+  //   Serve  — scripts/preview.sh: overlays content onto the zer0-mistakes theme
+  //            clone, strips _plugins (safe mode), serves http://localhost:4000
+  //            via the theme's docker compose dev env. First run builds the
+  //            image; be patient.
+  //   Build  — the CI-faithful safe-mode build in ruby:3.3 (same overlay, same
+  //            flags as the pipeline's verify gate), output to ./_site.
+  //   Harness— the full test harness (lints + gate) against that _site, in the
+  //            same container, mirroring scripts/ci/run-all.sh with the build
+  //            already done (LH_SKIP_BUILD=1).
+  // =============================================================================
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Jekyll: serve locally (Docker, :4000)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "bash scripts/preview.sh",
+      "serverReadyAction": {
+        "pattern": "Server address:\\s+(https?://\\S+)",
+        "uriFormat": "http://localhost:4000",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "Jekyll: build overlay only (no serve)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "bash scripts/preview.sh build"
+    },
+    {
+      "name": "CI-faithful safe-mode build (Docker ruby:3.3 -> _site)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      // Same overlay + flags as the pipeline's verify gate: overlay at
+      // /tmp/lh-build, then jekyll build --strict_front_matter inside ruby:3.3,
+      // landing in ${workspaceFolder}/_site.
+      "command": "bash scripts/ci/build.sh overlay && docker run --rm -v /tmp/lh-build:/site -v \"$PWD/_site:/out\" -w /site -e PAGES_REPO_NWO=bamr87/lifehacker.dev -e BUNDLE_GEMFILE=/site/Gemfile ruby:3.3 bash -lc 'git config --global --add safe.directory /site; bundle install --quiet && bundle exec jekyll build --config _config.yml,_config_dev.yml --strict_front_matter -d /out'"
+    },
+    {
+      "name": "Test harness (Docker ruby:3.3, reuses _site)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      // Runs the SAME checks as CI's verify gate against an existing _site
+      // (run the safe-mode build config first). LH_SKIP_BUILD=1 keeps the
+      // harness from rebuilding inside the container.
+      "command": "docker run --rm -v \"$PWD:/repo\" -w /repo -e LH_SKIP_BUILD=1 ruby:3.3 bash -lc 'git config --global --add safe.directory /repo; bundle install --quiet && bash scripts/ci/run-all.sh'"
+    }
+  ]
+}
