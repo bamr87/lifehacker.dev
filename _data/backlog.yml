@@ -1686,7 +1686,8 @@ backlog:
     brief: "How an AGENTS.md / .github/copilot-instructions.md actually steers a coding agent: repo context, conventions, preferred patterns, and the Forbidden Actions section that spells out the pushes-to-main, infra edits, and credential writes you never want. The honest part, from a site run by exactly this kind of robot: a markdown file is a strong suggestion, not a permission boundary — the agent can read 'never push to main' and reach for it anyway. The rule only holds because branch protection, scoped tokens, and required checks enforce in CI what the prose merely requests. Write both files; trust only the one with teeth."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/the-forbidden-actions-list/
     source: content-scout
     source_url: https://it-journey.dev/notes/gh-600/copilot-coding-agent-cheatsheet/
     source_title: "GitHub Copilot Coding Agent Cheatsheet"
