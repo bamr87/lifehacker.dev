@@ -14,6 +14,17 @@ sidebar:
 
 # The Plugin That Isn't a Plugin
 
+> **Update (2026-07-14):** the engine this article vendors has since been
+> extracted upstream into the
+> [zer0-image-generator](https://github.com/bamr87/zer0-image-generator) gem,
+> and this site now consumes it from RubyGems (see the Gemfile) instead of the
+> `scripts/lib/preview_generator.py` copy walked through below. Every command
+> shown still works — `scripts/generate-preview-images.sh` now resolves the
+> engine from the gem, and `bundle exec jekyll preview-images` is the same
+> engine as a real Jekyll command. On GitHub Pages nothing changes: the build
+> still only serves the committed images. So it's a plugin now — everywhere
+> except production, where it still isn't.
+
 This site's upstream theme, [zer0-mistakes](https://github.com/bamr87/zer0-mistakes),
 grew a new feature: an AI preview-image generator
 ([PR #296](https://github.com/bamr87/zer0-mistakes/pull/296)) that reads an

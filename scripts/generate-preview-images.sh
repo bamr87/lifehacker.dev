@@ -3,13 +3,17 @@
 #
 # Script Name: generate-preview-images
 # Description: AI-powered preview image generator for Jekyll posts/articles.
-#              Thin wrapper — ALL logic lives in the consolidated Python engine
-#              at scripts/lib/preview_generator.py. Claude ORCHESTRATES
-#              (analyzes the article into an art brief, reviews the render);
-#              a raster model RENDERS (openai [default], xai, stability,
-#              gemini, or the offline local template).
+#              Thin wrapper — ALL logic lives in the single-file Python engine
+#              shipped by the zer0-image-generator gem (Gemfile). Claude
+#              ORCHESTRATES (analyzes the article into an art brief, reviews
+#              the render); a raster model RENDERS (openai [default], xai,
+#              stability, gemini, or the offline local template).
 #
-# Usage: ./scripts/features/generate-preview-images [options]
+#              `bundle exec jekyll preview-images` is the same engine with the
+#              long-form flag surface; this wrapper keeps the full short-flag
+#              CLI and works without invoking Jekyll.
+#
+# Usage: ./scripts/generate-preview-images.sh [options]
 #        Run with --help for the full option list (rendered by the engine).
 #
 # Common examples:
@@ -20,6 +24,7 @@
 #   ./scripts/generate-preview-images.sh --provider openai --enhance -f <file>
 #
 # Dependencies:
+#   - bundler with the project bundle installed (provides the engine gem)
 #   - python3 (3.9+) with PyYAML
 #   - Optional SVG rasterizers for the local template provider:
 #     rsvg-convert | inkscape | magick | Playwright (scripts/dev/rasterize-svg.js)
@@ -38,18 +43,26 @@ IFS=$'\n\t'
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
-# Engine location — theme layout (scripts/features/ → ../lib/) first, then the
-# consumer-install layout (wrapper at scripts/ → ./lib/).
+# Engine location — the zer0-image-generator gem first; legacy vendored
+# layouts (scripts/lib/) as a fallback for checkouts without the bundle.
 ENGINE=""
-for candidate in "$SCRIPT_DIR/../lib/preview_generator.py" "$SCRIPT_DIR/lib/preview_generator.py"; do
-    if [[ -f "$candidate" ]]; then
-        ENGINE="$candidate"
-        break
+if command -v bundle &>/dev/null; then
+    GEM_DIR="$(cd "$SCRIPT_DIR/.." && bundle info zer0-image-generator --path 2>/dev/null || true)"
+    if [[ -n "$GEM_DIR" && -f "$GEM_DIR/lib/zer0_image_generator/preview_generator.py" ]]; then
+        ENGINE="$GEM_DIR/lib/zer0_image_generator/preview_generator.py"
     fi
-done
+fi
 if [[ -z "$ENGINE" ]]; then
-    echo "[ERROR] preview_generator.py not found next to $SCRIPT_DIR" >&2
-    echo "        Expected at scripts/lib/preview_generator.py" >&2
+    for candidate in "$SCRIPT_DIR/../lib/preview_generator.py" "$SCRIPT_DIR/lib/preview_generator.py"; do
+        if [[ -f "$candidate" ]]; then
+            ENGINE="$candidate"
+            break
+        fi
+    done
+fi
+if [[ -z "$ENGINE" ]]; then
+    echo "[ERROR] preview engine not found. Install the bundle first:" >&2
+    echo "        bundle install   (provides the zer0-image-generator gem)" >&2
     exit 1
 fi
 

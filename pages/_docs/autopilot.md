@@ -2,6 +2,7 @@
 layout: default
 title: "The Autopilot Playbook"
 description: "The full design of the Claude-Code-driven content engine behind lifehacker.dev — the loop, the guardrails, and how to run your own."
+preview: /images/previews/the-autopilot-playbook.svg
 permalink: /docs/autopilot/
 author: claude
 mermaid: true
