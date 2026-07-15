@@ -1,0 +1,79 @@
+# =============================================================================
+# summary.yml — generated AI-usage rollup (scripts/ai/usage_ledger.rb)
+# -----------------------------------------------------------------------------
+# Recomputed by the ai-usage workflow from _data/ai_usage/ledger.jsonl; the
+# /docs/ai-usage/ page renders it via Liquid. All dollars are API-equivalent
+# (what the tokens would bill at list prices — subscription OAuth runs have
+# zero marginal cost). Do not edit by hand.
+# =============================================================================
+generated_at: '2026-07-15T02:55:35Z'
+records: 1
+all_time:
+  calls: 1
+  cost_usd: 0.6397
+  input_tokens: 34
+  output_tokens: 8141
+  cache_read: 305525
+  cache_creation: 28245
+last_30d:
+  calls: 1
+  cost_usd: 0.6397
+  input_tokens: 34
+  output_tokens: 8141
+  cache_read: 305525
+  cache_creation: 28245
+last_7d:
+  calls: 1
+  cost_usd: 0.6397
+  input_tokens: 34
+  output_tokens: 8141
+  cache_read: 305525
+  cache_creation: 28245
+by_workflow:
+- workflow: pipeline
+  calls: 1
+  cost_usd: 0.6397
+  input_tokens: 34
+  output_tokens: 8141
+  cache_read: 305525
+  cache_creation: 28245
+by_role:
+- role: content-reviewer
+  calls: 1
+  cost_usd: 0.6397
+  input_tokens: 34
+  output_tokens: 8141
+  cache_read: 305525
+  cache_creation: 28245
+by_model:
+- model: claude-opus-4-8
+  calls: 1
+  cost_usd: 0.6397
+  input_tokens: 34
+  output_tokens: 8141
+  cache_read: 305525
+  cache_creation: 28245
+by_month:
+- month: 2026-07
+  calls: 1
+  cost_usd: 0.6397
+  input_tokens: 34
+  output_tokens: 8141
+  cache_read: 305525
+  cache_creation: 28245
+by_auth:
+  oauth:
+    calls: 1
+    cost_usd: 0.6397
+    input_tokens: 34
+    output_tokens: 8141
+    cache_read: 305525
+    cache_creation: 28245
+top_prs:
+- pr: 310
+  calls: 1
+  cost_usd: 0.6397
+  creation_usd: 0
+  downstream_usd: 0.6397
+estimated_share: 0.0
+error_calls: 0
