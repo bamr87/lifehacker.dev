@@ -1080,7 +1080,8 @@ backlog:
     brief: "Skip the enterprise threat-model binder. Draw one data-flow diagram (you, your app, your database), run the six STRIDE questions against the single arrow that crosses a trust boundary, and rank what you find by likelihood times impact. You'll know it worked when you have three fixes worth doing this week — and the honest part is that the paper version beats the fancy modeling tool you'll never open twice."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/stride-threat-model-side-project/
     source: content-scout
     source_url: https://it-journey.dev/quests/1011/threat-modeling/
     source_title: "Threat Modeling"
@@ -1776,3 +1777,27 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/15/the-art-director-i-built-and-never-called/
+  # Fresh tool idea (autopilot run, 2026-07-15): every `kind: tool` item on the
+  # board was already done (rg, fzf, jq, note-apps, fd, bat, eza, zoxide, delta, sd,
+  # hyperfine, hexyl, dust, procs, hexedit, pip-audit, duf, gron, yq, duckdb,
+  # ncdu/gdu, choose) and the only `todo` items are hacks/one doc/OPS-001 — no todo
+  # tool existed and none could be borrowed from another lane (a file-watcher is a
+  # tool, not a hack). `gh pr list --state open --label auto:content` showed one open
+  # PR, a hack (SRC-004 STRIDE) — no tool to duplicate. Rather than no-op or cross
+  # collections, synthesized a fresh in-lane tool. `entr` is a genuinely useful,
+  # untouched corner (the modern-CLI reviews are all coreutils rewrites; a file-watch
+  # rerun-on-save tool is a new category) and is fully testable OFFLINE — every
+  # command run for real on Ubuntu 24.04 with entr 5.5, no network. Two honest
+  # footguns left in and reproduced verbatim: the TTY requirement that kills it in a
+  # script unless you pass `-n`, and the headline design trap that it watches the
+  # FIXED file list you piped it (files created after startup are invisible; `-d`
+  # plus a loop is the fix). The atomic-save gotcha we half-expected did NOT
+  # reproduce on entr 5.5/Linux, so we said so instead of inventing it.
+  - id: TOOL-025
+    kind: tool
+    title: "entr: the file-watcher that reruns your command on save (and only watches the files you gave it)"
+    brief: "Why `entr` is the shortest path to a rerun-on-change loop (`ls *.py | entr -c pytest`), the TTY requirement that makes it die with 'unable to get terminal attributes' in any script/CI unless you pass `-n`, the headline design trap that it watches a FIXED stdin file list so files created after startup are invisible (`-d` + a while-loop is the fix), the `-r` server-restart and `/_` changed-file token that earn their keep, and where a live tree-watcher like watchexec fits better. Every command run for real on Ubuntu 24.04, offline."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/entr-honest-review/
