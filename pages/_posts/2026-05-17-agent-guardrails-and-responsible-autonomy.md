@@ -1,6 +1,7 @@
 ---
 title: "Agent guardrails: autonomy is a dial, not a switch"
 description: "Scoping an agent on GitHub: autonomy levels, task classification, CODEOWNERS, environment gates, a forbidden-actions file, and an audit trail it can't edit."
+preview: /images/previews/agent-guardrails-autonomy-is-a-dial-not-a-switch.png
 date: 2026-05-17
 categories: [Field Notes]
 tags: [agentic-ai, guardrails, autonomy, github, audit-trail]

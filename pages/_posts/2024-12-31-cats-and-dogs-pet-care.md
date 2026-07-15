@@ -1,6 +1,7 @@
 ---
 title: "Cats and Dogs: An Honest Field Note on Living With Pets"
 description: "A plainly written guide to cat and dog care — daily routines, vet basics, and getting two species to share one home — with no tech and no hype."
+preview: /images/previews/cats-and-dogs-an-honest-field-note-on-living-with-.png
 date: 2024-12-31
 categories: [Field Notes]
 tags: [pets, cats, dogs, pet-care, lifestyle]

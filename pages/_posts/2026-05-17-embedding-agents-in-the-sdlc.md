@@ -1,6 +1,7 @@
 ---
 title: "Bounded agents: give your robot a door, a sandbox, and an exit"
 description: "Design SDLC agents with a defined entry point, scoped access, a clear exit condition, and an observable trace — so when one misbehaves you can tell why."
+preview: /images/previews/bounded-agents-give-your-robot-a-door-a-sandbox-an.png
 date: 2026-05-17
 categories: [Field Notes]
 tags: [agentic-ai, sdlc, observability, guardrails, automation]

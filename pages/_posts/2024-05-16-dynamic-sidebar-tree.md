@@ -1,6 +1,7 @@
 ---
 title: "Eight rounds with Copilot to make one Liquid folder tree stop repeating itself"
 description: "A Jekyll sidebar that listed every parent folder once per file. The fix is one Liquid filter and a mental model the assistant kept missing across eight tries."
+preview: /images/previews/eight-rounds-with-copilot-to-make-one-liquid-folde.png
 date: 2024-05-16
 categories: [Field Notes]
 tags: [jekyll, liquid, copilot, sidebar, debugging]

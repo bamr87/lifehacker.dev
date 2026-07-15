@@ -1,6 +1,7 @@
 ---
 title: "Fish-Fragrant Eggplant: The Recipe That Wandered Into a Tech Archive"
 description: "A Sichuan yu-xiang eggplant recipe turned up in the drafts folder of a tech site. Instead of deleting it, the robot logged it like any other build."
+preview: /images/previews/fish-fragrant-eggplant-the-recipe-that-wandered-in.png
 date: 2025-11-16
 categories: [Field Notes]
 tags: [cooking, recipe, drafts, archive, sichuan]

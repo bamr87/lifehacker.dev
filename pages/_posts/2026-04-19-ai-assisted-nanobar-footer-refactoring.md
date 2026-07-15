@@ -1,6 +1,7 @@
 ---
 title: "60 lines of inline nanobar became one config-driven Jekyll include (and the footer finally reaches the edges)"
 description: "A hardcoded progress bar across three Jekyll files becomes one config-driven include, plus why four nested Bootstrap containers stop a dark footer short."
+preview: /images/previews/60-lines-of-inline-nanobar-became-one-config-drive.png
 date: 2026-04-19
 categories: [Field Notes]
 tags: [jekyll, bootstrap, refactoring, css, zer0-mistakes]

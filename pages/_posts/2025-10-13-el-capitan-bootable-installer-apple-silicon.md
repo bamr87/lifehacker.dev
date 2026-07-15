@@ -1,6 +1,7 @@
 ---
 title: "Building an El Capitan Bootable Installer on Apple Silicon: A Field Note"
 description: "Extracting an El Capitan installer payload by hand with pkgutil, hdiutil, and asr to build bootable media for a 2006-2010 Intel Mac."
+preview: /images/previews/building-an-el-capitan-bootable-installer-on-apple.png
 date: 2025-10-13
 categories: [Field Notes]
 tags: [macos, hdiutil, asr, legacy-hardware, bootable-media, apple-silicon]

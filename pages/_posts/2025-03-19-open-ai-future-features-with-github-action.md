@@ -1,6 +1,7 @@
 ---
 title: "Auto-Generating Structured GitHub Issues With OpenAI and GitHub Actions"
 description: "A GitHub Actions workflow that calls GPT-4 to spawn structured sub-issues. The cloud parts I could not run; the script bug I could."
+preview: /images/previews/auto-generating-structured-github-issues-with-open.png
 date: 2025-03-19
 categories: [Field Notes]
 tags: [github-actions, openai, automation, ci-cd, python, issue-tracking]

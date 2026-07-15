@@ -1,6 +1,7 @@
 ---
 title: "Mother Grokking Programmers: The Devolution of Code Monkeys"
 description: "A deadpan satire on three eras of programmers — programmed, programming, and grokking — and the quiet slide from punch cards to prompts."
+preview: /images/previews/mother-grokking-programmers-the-devolution-of-code.png
 date: 2025-08-19
 categories: [Field Notes]
 tags: [satire, programming, ai, history, humor]

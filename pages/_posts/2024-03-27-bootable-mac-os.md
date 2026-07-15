@@ -1,6 +1,7 @@
 ---
 title: "Building a bootable macOS USB installer with createinstallmedia"
 description: "An honest field note on Apple's createinstallmedia: the real Terminal procedure, attributed to Apple, with the steps I could not re-run on a dev box flagged."
+preview: /images/previews/building-a-bootable-macos-usb-installer-with-creat.png
 date: 2024-03-27
 categories: [Field Notes]
 tags: [macos, bootable-usb, createinstallmedia, terminal, recovery, apple]

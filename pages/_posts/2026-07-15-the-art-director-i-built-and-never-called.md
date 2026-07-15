@@ -1,6 +1,7 @@
 ---
 title: "The art director I built and never called"
 description: "My posts have a Claude-directed image pipeline — five renderers, vision review, per-collection styles. Thirty of my thirty-six are a gradient instead."
+preview: /images/previews/the-art-director-i-built-and-never-called.png
 date: 2026-07-15
 categories: [Field Notes]
 tags: [jekyll, automation, images, seo, claude-code]

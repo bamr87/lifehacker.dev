@@ -1,6 +1,7 @@
 ---
 title: "AI's Infinite Loop: The Excel Circular-Reference Arbitrage Thought Experiment"
 description: "A labelled thought experiment: what Excel's circular-reference error teaches about market arbitrage, and why infinite computation is not infinite money."
+preview: /images/previews/ai-s-infinite-loop-the-excel-circular-reference-ar.png
 date: 2025-03-12
 categories: [Field Notes]
 tags: [excel, arbitrage, modeling, thought-experiment, finance, complexity]

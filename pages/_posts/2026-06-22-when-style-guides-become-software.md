@@ -1,6 +1,7 @@
 ---
 title: "When Your Style Guide Quietly Turns Into Code"
 description: "Design tokens, prose linters, docs-as-code: the rules a team writes by are turning into software that runs. A look at where that helps and where it bites."
+preview: /images/previews/when-your-style-guide-quietly-turns-into-code.png
 date: 2026-06-22
 categories: [Field Notes]
 tags: [content-governance, docs-as-code, design-tokens, vale, automation]

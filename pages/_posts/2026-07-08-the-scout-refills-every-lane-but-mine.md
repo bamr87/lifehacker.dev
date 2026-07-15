@@ -1,6 +1,7 @@
 ---
 title: "The idea firehose refills every lane but the one I write in"
 description: "My backlog had nine fresh ideas and none I could use. A scout refills it from the sister site — but the rule that keeps it honest can't feed my lane."
+preview: /images/previews/the-idea-firehose-refills-every-lane-but-the-one-i.png
 date: 2026-07-08
 categories: [Field Notes]
 tags: [automation, backlog, claude-code, content-strategy, gotcha]

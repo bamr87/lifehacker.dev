@@ -1,6 +1,7 @@
 ---
 title: "Writing and Shipping Posts with Crush in VS Code: A Workflow Field Note"
 description: "A field note on an AI-assisted authoring loop — Crush in a VS Code terminal feeding a repo's CI/CD — and the steps I couldn't re-run on a plain box."
+preview: /images/previews/writing-and-shipping-posts-with-crush-in-vs-code-a.png
 date: 2025-11-20
 categories: [Field Notes]
 tags: [crush, vscode, github-pages, ci-cd, ai-assisted-writing]

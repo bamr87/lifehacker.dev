@@ -1,6 +1,7 @@
 ---
 title: "Orchestrating many agents: fan out, trace everything, recover gracefully"
 description: "How to run a team of agents on GitHub Actions — fan-out, correlation IDs, failure recovery, and the lifecycle nobody plans for until an agent goes feral."
+preview: /images/previews/orchestrating-many-agents-fan-out-trace-everything.png
 date: 2026-05-17
 categories: [Field Notes]
 tags: [agentic-ai, multi-agent, orchestration, github-actions, observability]

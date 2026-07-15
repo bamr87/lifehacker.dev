@@ -1,6 +1,7 @@
 ---
 title: "Refactory: What 'Refactoring' Code Says About Fixing the Factory Floor"
 description: "An essay on stretching the software refactor metaphor onto AI-modernized ERP and US manufacturing — and where the analogy quietly stops paying rent."
+preview: /images/previews/refactory-what-refactoring-code-says-about-fixing-.png
 date: 2025-08-19
 categories: [Field Notes]
 tags: [refactoring, erp, manufacturing, ai, metaphor, legacy-code]

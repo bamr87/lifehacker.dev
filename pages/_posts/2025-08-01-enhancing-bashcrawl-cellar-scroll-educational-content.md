@@ -1,6 +1,7 @@
 ---
 title: "Field Notes: rewriting a Bashcrawl scroll, and the ls -F lesson that survived the prose"
 description: "Rewriting a Bashcrawl tutorial taught me ls -F classifiers, and why alias ls='ls -F' quietly does nothing in a script — the part the original scroll skipped."
+preview: /images/previews/field-notes-rewriting-a-bashcrawl-scroll-and-the-l.png
 date: 2025-08-01
 categories: [Field Notes]
 tags: [bash, ls, aliases, bashcrawl, terminal]

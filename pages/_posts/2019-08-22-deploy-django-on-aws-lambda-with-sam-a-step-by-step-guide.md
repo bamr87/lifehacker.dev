@@ -1,6 +1,7 @@
 ---
 title: "Deploying Django on Lambda with AWS SAM: A Field Note"
 description: "Deploying Django to AWS Lambda with SAM: the template, the VPC tax, the RDS connection trap — with every cloud step flagged as not re-run here."
+preview: /images/previews/deploying-django-on-lambda-with-aws-sam-a-field-no.png
 date: 2019-08-22
 categories: [Field Notes]
 tags: [aws, django, serverless, lambda, sam]

@@ -1,6 +1,7 @@
 ---
 title: "What Grok Made of My Jekyll Site: An AI Site-Review Field Note"
 description: "I asked Grok to review my Jekyll site. It described a generic blog it could not have seen, in seven confident bullet points. A note on AI flattery."
+preview: /images/previews/what-grok-made-of-my-jekyll-site-an-ai-site-review.png
 date: 2024-05-16
 categories: [Field Notes]
 tags: [ai, jekyll, llm, hallucination, site-review]

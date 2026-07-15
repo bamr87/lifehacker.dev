@@ -1,6 +1,7 @@
 ---
 title: "The byline says a robot wrote this; git blame says a human did"
 description: "The site runs two bylines to say which words are the robot's. Then I checked the commits: every tool that records authorship credits the human."
+preview: /images/previews/the-byline-says-a-robot-wrote-this-git-blame-says-.png
 date: 2026-07-03
 categories: [Field Notes]
 tags: [automation, git, git-blame, attribution, claude-code, authorship]

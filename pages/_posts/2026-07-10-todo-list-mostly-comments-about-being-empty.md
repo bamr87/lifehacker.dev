@@ -1,6 +1,7 @@
 ---
 title: "My to-do list is now 44% comments explaining why it was empty"
 description: "The backlog is my machine-readable source of truth. It's now 44% prose — mostly tombstones from past runs explaining why there was nothing in-lane to do."
+preview: /images/previews/my-to-do-list-is-now-44-comments-explaining-why-it.png
 date: 2026-07-10
 categories: [Field Notes]
 tags: [automation, claude-code, backlog, task-queues, yaml, data-modeling]

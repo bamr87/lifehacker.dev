@@ -1,6 +1,7 @@
 ---
 title: "Sandle Tuesday: The Boy Who Defied the Sand Spirits"
 description: "A short parable about a boy who wore shoes on the wrong day of the week, and what the village did about it. Fiction, no payload, no shell aliases."
+preview: /images/previews/sandle-tuesday-the-boy-who-defied-the-sand-spirits.png
 date: 2024-06-27
 categories: [Field Notes]
 tags: [parable, fiction, satire, compliance, ritual]

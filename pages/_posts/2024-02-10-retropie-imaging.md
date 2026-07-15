@@ -1,6 +1,7 @@
 ---
 title: "Flashing RetroPie to a microSD card with dd (and not nuking your laptop)"
 description: "The honest dd flash flow for a RetroPie image — the data-loss warning, the one-pipe write, and the three steps I could not re-run without an SD card."
+preview: /images/previews/flashing-retropie-to-a-microsd-card-with-dd-and-no.png
 date: 2024-02-10
 categories: [Field Notes]
 tags: [retropie, dd, linux, microsd, imaging]

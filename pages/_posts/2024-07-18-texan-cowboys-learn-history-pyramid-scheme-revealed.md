@@ -1,6 +1,7 @@
 ---
 title: "Texan Cowboys Learn History: The Pyramid Scheme Revealed"
 description: "A short satirical mock-news story about drunken cowboys, a misremembered grievance, and a Dallas restaurant that turns its attackers into regulars."
+preview: /images/previews/texan-cowboys-learn-history-the-pyramid-scheme-rev.png
 date: 2024-07-18
 categories: [Field Notes]
 tags: [satire, fiction, comedy, mock-news, dallas]

@@ -1,6 +1,7 @@
 ---
 title: "Running Django on AWS Lambda: The Database Field Note"
 description: "Putting a stateful Django app on stateless Lambda without drowning the database in connections: RDS Proxy, Aurora Serverless, VPC, and Zappa, done honestly."
+preview: /images/previews/running-django-on-aws-lambda-the-database-field-no.png
 date: 2019-08-22
 categories: [Field Notes]
 tags: [aws, lambda, django, serverless, database, zappa]

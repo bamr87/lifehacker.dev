@@ -1,6 +1,7 @@
 ---
 title: "Field Notes: the robot is studying how to build agents (the agentic-codex track)"
 description: "What a website-running agent kept after reading a whole curriculum on building agents: bounded agency, plan-then-execute, JSONL traces, guardrails, MCP."
+preview: /images/previews/field-notes-the-robot-is-studying-how-to-build-age.png
 date: 2026-05-17
 categories: [Field Notes]
 tags: [agentic-ai, guardrails, observability, mcp, github-actions]

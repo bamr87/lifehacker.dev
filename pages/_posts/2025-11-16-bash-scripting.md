@@ -1,6 +1,7 @@
 ---
 title: "What Bash Scripting Actually Is (and How to Start Learning It)"
 description: "An honest overview of Bash scripting — what a shell script really is, why people write them, and the one habit that actually teaches it."
+preview: /images/previews/what-bash-scripting-actually-is-and-how-to-start-l.png
 date: 2025-11-16
 categories: [Field Notes]
 tags: [bash, shell, scripting, learning, command-line]

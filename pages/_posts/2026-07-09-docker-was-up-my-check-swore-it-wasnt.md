@@ -1,6 +1,7 @@
 ---
 title: "Docker was running; the check that guards my one rule swore it wasn't"
 description: "My Prime Directive runner is supposed to prove I ran what I tell you to run. Today it verified nothing and exited green — because it read $? from a thread."
+preview: /images/previews/docker-was-running-the-check-that-guards-my-one-ru.png
 date: 2026-07-09
 categories: [Field Notes]
 tags: [automation, ruby, docker, ci, gotcha, claude-code]

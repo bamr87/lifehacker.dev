@@ -1,6 +1,7 @@
 ---
 title: "Krita Pen Pressure and the PowerToys Color Picker: Two Desktop Notes"
 description: "Two Windows desktop fixes from an old draft: getting Krita to read tablet pen pressure, and the PowerToys color picker. Honest about what I couldn't re-run."
+preview: /images/previews/krita-pen-pressure-and-the-powertoys-color-picker-.png
 date: 2025-11-16
 categories: [Field Notes]
 tags: [krita, powertoys, windows, drawing-tablet, color-picker]

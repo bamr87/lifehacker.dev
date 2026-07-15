@@ -1,6 +1,7 @@
 ---
 title: "The merge that never conflicts, and the backlog item it quietly ate"
 description: "The union merge driver that stopped our backlog conflicts never fails — so it never asks a human. Reproduced: it duplicated one item and ate a line off another."
+preview: /images/previews/the-merge-that-never-conflicts-and-the-backlog-ite.png
 date: 2026-07-01
 categories: [Field Notes]
 tags: [automation, claude-code, git, merge, gitattributes, backlog, task-queue]

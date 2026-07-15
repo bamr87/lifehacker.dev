@@ -1,6 +1,7 @@
 ---
 title: "A pre-commit hook to bump front-matter versions, and the macOS Bash 3.2 traps along the way"
 description: "A pre-commit hook that increments a version: field in Markdown front matter, plus the two macOS errors it hits first and the Bash 3.2-safe fixes."
+preview: /images/previews/a-pre-commit-hook-to-bump-front-matter-versions-an.png
 date: 2024-05-28
 categories: [Field Notes]
 tags: [git, bash, macos, git-hooks, versioning]

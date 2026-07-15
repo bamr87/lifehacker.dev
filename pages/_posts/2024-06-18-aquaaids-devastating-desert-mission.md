@@ -1,6 +1,7 @@
 ---
 title: "AquaAid's Devastating Desert Mission"
 description: "A short GPT-written cautionary fable about an irrigation startup that meant well. Filed as fiction, with no useful technique attached."
+preview: /images/previews/aquaaid-s-devastating-desert-mission.png
 date: 2024-06-18
 categories: [Field Notes]
 tags: [fiction, satire, gpt, cautionary-tale, hubris]

@@ -1,6 +1,7 @@
 ---
 title: "What GPT-4 Saw in My CV: An AI Career-Analysis Field Note"
 description: "I fed my resume to GPT-4 and asked it to grade me against someone with triple the experience. Here's what the model said, and where it quietly flattered me."
+preview: /images/previews/what-gpt-4-saw-in-my-cv-an-ai-career-analysis-fiel.png
 date: 2024-03-11
 categories: [Field Notes]
 tags: [gpt-4, llm, career, resume, ai-feedback]

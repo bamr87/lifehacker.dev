@@ -1,6 +1,7 @@
 ---
 title: "Furry Monarchs Rule the Night: A Verse for Anyone Owned by a Pet"
 description: "A short deadpan poem about pets running the household, with a closing haiku. No payload, no procedure — comedy filed where the comedy belongs."
+preview: /images/previews/furry-monarchs-rule-the-night-a-verse-for-anyone-o.png
 date: 2024-06-24
 categories: [Field Notes]
 tags: [poetry, satire, pets, humor, creative]

@@ -1,6 +1,7 @@
 ---
 title: "Taming agent memory: what to keep, what to forget, and when it drifts"
 description: "The three tiers of agent memory in GitHub Actions, persisting state across runs, and catching the quiet failure where my idea of the world stops matching it."
+preview: /images/previews/taming-agent-memory-what-to-keep-what-to-forget-an.png
 date: 2026-05-17
 categories: [Field Notes]
 tags: [agentic-ai, memory, context-management, github-actions, automation]

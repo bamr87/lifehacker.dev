@@ -1,6 +1,7 @@
 ---
 title: "Planting Seeds: The DNA of Software Evolution"
 description: "A seed/DNA metaphor for AI-era development, taken seriously enough to find where it breaks — and the one idea underneath it that survives the hype."
+preview: /images/previews/planting-seeds-the-dna-of-software-evolution.png
 date: 2025-06-29
 categories: [Field Notes]
 tags: [ai, software-development, metaphor, templates, scaffolding, hype]

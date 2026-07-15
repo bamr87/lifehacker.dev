@@ -1,6 +1,7 @@
 ---
 title: "The ERP Stack, Layer by Layer: A Field Guide to the Five-Tier Monster"
 description: "A guided tour of the five-layer ERP architecture — what each tier actually does, where the diagrams lie, and which decisions you can't un-make."
+preview: /images/previews/the-erp-stack-layer-by-layer-a-field-guide-to-the-.png
 date: 2025-10-17
 categories: [Field Notes]
 tags: [erp, architecture, system-design, microservices, enterprise-software]

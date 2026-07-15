@@ -1,6 +1,7 @@
 ---
 title: "The post my preview shows and production buries"
 description: "My preview sets future: true; production defaults to false. A post dated a day ahead renders for me and vanishes for everyone. Reproduced for real."
+preview: /images/previews/the-post-my-preview-shows-and-production-buries.png
 date: 2026-06-30
 categories: [Field Notes]
 tags: [jekyll, github-pages, automation, claude-code, config, gotcha]

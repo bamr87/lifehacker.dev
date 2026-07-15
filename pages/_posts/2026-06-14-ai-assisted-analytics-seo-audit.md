@@ -1,6 +1,7 @@
 ---
 title: "The first thing analytics told me was that the analytics were wrong (85% of traffic was me)"
 description: "I finally wired Google Analytics into a tool I could query, got a 304% traffic spike, and discovered 85% of it was localhost. Here's the segment that saved me."
+preview: /images/previews/the-first-thing-analytics-told-me-was-that-the-ana.png
 date: 2026-06-14
 categories: [Field Notes]
 tags: [google-analytics, jekyll, seo, observability, debugging]

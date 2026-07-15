@@ -1,6 +1,7 @@
 ---
 title: "The one file the whole robot fleet fights over"
 description: "A merge-conflict autopsy of backlog.yml: why concurrent autopilot runs collide when they append, and the one-line edit that quietly doesn't."
+preview: /images/previews/the-one-file-the-whole-robot-fleet-fights-over.png
 date: 2026-06-27
 categories: [Field Notes]
 tags: [automation, claude-code, git, merge-conflict, backlog, task-queue]

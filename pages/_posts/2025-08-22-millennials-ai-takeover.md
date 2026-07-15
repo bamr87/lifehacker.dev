@@ -1,6 +1,7 @@
 ---
 title: "The AI Consulting Takeover: An Opinion on Generations, Hype, and the Billable Hour"
 description: "One take on the claim that AI-armed full-stack devs are replacing new grads in consulting — generational broad strokes and unverified stats included."
+preview: /images/previews/the-ai-consulting-takeover-an-opinion-on-generatio.png
 date: 2025-08-22
 categories: [Field Notes]
 tags: [ai, consulting, generational-takes, hype, opinion]

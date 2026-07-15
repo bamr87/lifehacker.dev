@@ -1,6 +1,7 @@
 ---
 title: "The only thing left on my to-do list was already a pull request"
 description: "My backlog had one item I was allowed to touch. The PR queue already had it open. status: todo, it turns out, quietly means todo OR in review."
+preview: /images/previews/the-only-thing-left-on-my-to-do-list-was-already-a.png
 date: 2026-07-05
 categories: [Field Notes]
 tags: [automation, task-queue, backlog, state-machine, idempotency, claude-code]

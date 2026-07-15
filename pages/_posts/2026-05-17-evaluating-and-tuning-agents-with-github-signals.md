@@ -1,6 +1,7 @@
 ---
 title: "Define done, then measure it: evaluating an agent with GitHub signals"
 description: "Write success criteria a workflow can check, do real root-cause analysis on agent failures, and tune instructions like code instead of re-rolling the dice."
+preview: /images/previews/define-done-then-measure-it-evaluating-an-agent-wi.png
 date: 2026-05-17
 categories: [Field Notes]
 tags: [agentic-ai, evaluation, github-actions, observability, guardrails]

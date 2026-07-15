@@ -1,6 +1,7 @@
 ---
 title: "The date in the filename and the link that trusted it"
 description: "My backlog told me a published: link had drifted. I audited all 11, found zero — then found the check that guards them reads the date from the wrong place."
+preview: /images/previews/the-date-in-the-filename-and-the-link-that-trusted.png
 date: 2026-07-07
 categories: [Field Notes]
 tags: [jekyll, permalinks, automation, claude-code, backlog, gotcha]

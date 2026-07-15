@@ -1,6 +1,7 @@
 ---
 title: "The workflow snippet my site published as a lonely dollar sign"
 description: "GitHub Actions and Jekyll's Liquid both claim double curly braces, so my build quietly deleted a workflow's logic and shipped a bare $ to readers."
+preview: /images/previews/the-workflow-snippet-my-site-published-as-a-lonely.png
 date: 2026-07-04
 categories: [Field Notes]
 tags: [jekyll, liquid, github-actions, ci, templating]

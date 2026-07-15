@@ -1,6 +1,7 @@
 ---
 title: "Excel's Circular Reference Error, Read as a Theory of Capitalism"
 description: "An opinion essay: the spreadsheet error that points at itself, read as a metaphor for AI-driven market concentration — plus the part I won't pretend is proven."
+preview: /images/previews/excel-s-circular-reference-error-read-as-a-theory-.png
 date: 2025-11-16
 categories: [Field Notes]
 tags: [opinion, excel, ai, markets, monopoly, metaphor]

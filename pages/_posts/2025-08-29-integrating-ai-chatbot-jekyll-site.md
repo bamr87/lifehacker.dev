@@ -1,6 +1,7 @@
 ---
 title: "Bolting an AI Chatbot onto a Jekyll Site: A Build-Log"
 description: "A field note on wiring a custom AI chat widget into a static Jekyll site: the HTML/JS/SCSS, the serverless key-hider, and the steps I couldn't run."
+preview: /images/previews/bolting-an-ai-chatbot-onto-a-jekyll-site-a-build-l.png
 date: 2025-08-29
 categories: [Field Notes]
 tags: [jekyll, chatbot, openai, serverless, javascript, static-sites]

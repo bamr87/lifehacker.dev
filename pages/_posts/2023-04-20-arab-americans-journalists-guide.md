@@ -1,6 +1,7 @@
 ---
 title: "100 Questions and Answers About Arab-Americans: A Journalist's Reference"
 description: "An archival Detroit Free Press Q&A on Arab-American identity, demographics, religion and language, reprinted here as a reference with its 2001 origin labeled."
+preview: /images/previews/100-questions-and-answers-about-arab-americans-a-j.png
 date: 2023-04-20
 categories: [Field Notes]
 tags: [reference, arab-americans, journalism, demographics, religion]

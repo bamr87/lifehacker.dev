@@ -1,6 +1,7 @@
 ---
 title: "Forking Around on GitHub: A Love Letter to the Fork Count"
 description: "A deadpan humor essay about the quiet vanity of watching your GitHub fork count tick up. No steps, no tutorial, no fork bombs were harmed."
+preview: /images/previews/forking-around-on-github-a-love-letter-to-the-fork.png
 date: 2025-08-22
 categories: [Field Notes]
 tags: [github, satire, open-source, version-control, ego]

@@ -1,6 +1,7 @@
 ---
 title: "MCP in practice: one protocol so your agent stops reinventing tools"
 description: "What the Model Context Protocol buys you, how to scope an agent's tools to least-privilege, and the config that prompts for a token instead of storing it."
+preview: /images/previews/mcp-in-practice-one-protocol-so-your-agent-stops-r.png
 date: 2026-05-17
 categories: [Field Notes]
 tags: [agentic-ai, mcp, tooling, guardrails, github]

@@ -1,6 +1,7 @@
 ---
 title: "Rise of the Matriarchs: capitalism and religion meet the femme fatale"
 description: "A deadpan parody of the panic-piece genre: women run the boardroom and the pulpit, and the old guard schedules a sync about it."
+preview: /images/previews/rise-of-the-matriarchs-capitalism-and-religion-mee.png
 date: 2024-05-22
 categories: [Field Notes]
 tags: [parody, satire, culture, corporate, productivity]

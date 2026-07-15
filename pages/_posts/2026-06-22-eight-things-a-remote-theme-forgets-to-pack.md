@@ -1,6 +1,7 @@
 ---
 title: "Eight things a remote theme forgets to pack"
 description: "A packing list for anyone deploying a zer0-mistakes (or any) remote-theme site to GitHub Pages — the stuff that silently goes missing, and the one-line fixes."
+preview: /images/previews/eight-things-a-remote-theme-forgets-to-pack.png
 date: 2026-06-22
 categories: [Field Notes]
 tags: [jekyll, github-pages, remote-theme, checklist, zer0-mistakes]

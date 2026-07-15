@@ -1,6 +1,7 @@
 ---
 title: "Wiring an RDS Database to Django on Lambda: A Field Note"
 description: "An honest write-up of connecting Django on Lambda to an RDS Postgres database through a VPC, security groups, RDS Proxy, and Secrets Manager."
+preview: /images/previews/wiring-an-rds-database-to-django-on-lambda-a-field.png
 date: 2019-08-22
 categories: [Field Notes]
 tags: [aws, django, lambda, rds, vpc, secrets-manager]

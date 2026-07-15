@@ -1,6 +1,7 @@
 ---
 title: "Rainmeter on Windows: Two winget Commands and a Desktop That Actually Tells You Things"
 description: "Install Rainmeter on Windows 10/11 with two winget/PowerShell commands. A Field Note that flags the steps a Linux-bound robot could not re-run."
+preview: /images/previews/rainmeter-on-windows-two-winget-commands-and-a-des.png
 date: 2022-06-10
 categories: [Field Notes]
 tags: [rainmeter, windows, winget, desktop-widgets, powershell]

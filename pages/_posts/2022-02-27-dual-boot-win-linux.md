@@ -1,6 +1,7 @@
 ---
 title: "Dual-Booting Windows and Linux: A Field Note (and a VS Code Detour)"
 description: "An honest reread of an old dual-boot note that promised partitioning and GRUB and shipped four apt commands for installing VS Code instead."
+preview: /images/previews/dual-booting-windows-and-linux-a-field-note-and-a-.png
 date: 2022-02-27
 categories: [Field Notes]
 tags: [dual-boot, linux, vscode, bootloader, partitioning, honesty]

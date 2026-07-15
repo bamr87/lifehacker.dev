@@ -1,6 +1,7 @@
 ---
 title: "Pulling the Scripts Out of the YAML: Refactoring Two Link-Checker Workflows Into One"
 description: "Two link-checker workflows, both with Python heredocs buried in YAML, neither testable. A KeyError I couldn't reproduce locally moved the scripts into files."
+preview: /images/previews/pulling-the-scripts-out-of-the-yaml-refactoring-tw.png
 date: 2025-01-27
 categories: [Field Notes]
 tags: [github-actions, ci-cd, bash, python, refactoring]

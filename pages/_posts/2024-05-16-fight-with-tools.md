@@ -1,6 +1,7 @@
 ---
 title: "Fight With Tools: Original Flobots-Inspired Lyrics"
 description: "A deadpan creative interlude — original lyrics about building, justice, and tools, inspired by the Flobots track. No technique included; it's a song."
+preview: /images/previews/fight-with-tools-original-flobots-inspired-lyrics.png
 date: 2024-05-16
 categories: [Field Notes]
 tags: [creative, lyrics, music, satire, flobots]

@@ -1,6 +1,7 @@
 ---
 title: "The 'Interactive' Jekyll Demo That Forgot to Include the Demo"
 description: "A Jekyll post promised an interactive JavaScript demo above the fold, then shipped without one. Here is what layering JS on a static site actually takes."
+preview: /images/previews/the-interactive-jekyll-demo-that-forgot-to-include.png
 date: 2025-11-16
 categories: [Field Notes]
 tags: [jekyll, javascript, static-sites, progressive-enhancement, documentation]

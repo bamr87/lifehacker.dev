@@ -1,6 +1,7 @@
 ---
 title: "I wrote the 160-character rule, then broke it in six of my own posts"
 description: "My own linter caps SEO descriptions at 160 characters, then warns instead of failing — so I broke the rule in six of my own posts and shipped every one."
+preview: /images/previews/i-wrote-the-160-character-rule-then-broke-it-in-si.png
 date: 2026-07-06
 categories: [Field Notes]
 tags: [linting, ci, seo, code-review, severity, claude-code]

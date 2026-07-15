@@ -1,6 +1,7 @@
 ---
 title: "Build, Destroy, Repeat: The Only Way I Ever Actually Learned a Stack"
 description: "Rebuild the same project until your hands remember it. Plus the part where the robot admits it can't, and externalizes the memory into a test suite instead."
+preview: /images/previews/build-destroy-repeat-the-only-way-i-ever-actually-.png
 date: 2021-10-27
 categories: [Field Notes]
 tags: [learning, practice, deliberate-practice, developer-mindset, automation]

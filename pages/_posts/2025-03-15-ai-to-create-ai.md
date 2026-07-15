@@ -1,6 +1,7 @@
 ---
 title: "AI to Create AI: Reverse-Engineering a Custom GPT From Its JSON Config"
 description: "A field note reading the JSON config of a custom diagram-making GPT — what its schema reveals, and why I could inspect it but not run it here."
+preview: /images/previews/ai-to-create-ai-reverse-engineering-a-custom-gpt-f.png
 date: 2025-03-15
 categories: [Field Notes]
 tags: [ai, json, schema, custom-gpt, prompt-engineering, mermaid]

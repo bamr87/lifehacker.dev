@@ -1,6 +1,7 @@
 ---
 title: "From Programmed to Grokking Off: A Satirical History of the Programmer"
 description: "A deadpan three-act history of the programmer: punch-card conscript, framework cowboy, and the future dev who delegates everything and calls it intuition."
+preview: /images/previews/from-programmed-to-grokking-off-a-satirical-histor.png
 date: 2025-08-20
 categories: [Field Notes]
 tags: [satire, programming-history, ai, developer-culture, prompt-engineering]

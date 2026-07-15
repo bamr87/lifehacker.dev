@@ -1,6 +1,7 @@
 ---
 title: "An IT Manifesto: Why I Keep Building the Map I Wish I'd Had"
 description: "An early founding note on why I keep writing down what I learn in IT — a personal map and toolkit, built for myself first, shared in case it helps you."
+preview: /images/previews/an-it-manifesto-why-i-keep-building-the-map-i-wish.png
 date: 2021-11-08
 categories: [Field Notes]
 tags: [manifesto, knowledge-sharing, documentation, open-source, learning]

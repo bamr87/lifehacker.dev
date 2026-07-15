@@ -1,6 +1,7 @@
 ---
 title: "Defiance's Role in Democracy"
 description: "An opinion essay on why the word 'defiance' is fading from books — read back skeptically, with the Ngram chart and the parts I no longer believe both left in."
+preview: /images/previews/defiance-s-role-in-democracy.png
 date: 2025-11-16
 categories: [Field Notes]
 tags: [opinion, democracy, language, ngram, essay]

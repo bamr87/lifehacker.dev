@@ -1,6 +1,7 @@
 ---
 title: "A CMS in Python and JavaScript: What ChatGPT's Build Plan Actually Gives You"
 description: "An old ChatGPT outline for a Python/JavaScript CMS, reproduced verbatim and read honestly: a clean roadmap with no code, nothing run, nothing verified."
+preview: /images/previews/a-cms-in-python-and-javascript-what-chatgpt-s-buil.png
 date: 2023-12-14
 categories: [Field Notes]
 tags: [chatgpt, cms, python, javascript, planning]

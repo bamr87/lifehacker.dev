@@ -1,6 +1,7 @@
 ---
 title: "Where to Find Free Sheet Music: A Public-Domain Field Guide"
 description: "An annotated directory of public-domain sheet music libraries — what each one holds and what the fine print actually lets you do with it."
+preview: /images/previews/where-to-find-free-sheet-music-a-public-domain-fie.png
 date: 2025-07-03
 categories: [Field Notes]
 tags: [sheet-music, public-domain, music, archives, copyright]

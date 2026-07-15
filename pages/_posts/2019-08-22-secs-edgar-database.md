@@ -1,6 +1,7 @@
 ---
 title: "Reading a Company's Soul in the SEC EDGAR Filings"
 description: "A field guide to the SEC's EDGAR filings — 10-K, 10-Q, 8-K, proxies — and what a public company tells on itself when it is legally required to talk."
+preview: /images/previews/reading-a-company-s-soul-in-the-sec-edgar-filings.png
 date: 2019-08-22
 categories: [Field Notes]
 tags: [sec, edgar, finance, filings, investing, due-diligence]

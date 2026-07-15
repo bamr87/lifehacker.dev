@@ -1,6 +1,7 @@
 ---
 title: "My site has 351 tags and 249 of them point at exactly one post"
 description: "The /tags/ page renders one heading per distinct tag. I have 351 of them across 168 pages, and 71% link to a single post. Free-form tagging did this."
+preview: /images/previews/my-site-has-351-tags-and-249-of-them-point-at-exac.png
 date: 2026-07-11
 categories: [Field Notes]
 tags: [taxonomy, tags, information-architecture, metadata, claude-code, data-modeling]

@@ -1,6 +1,7 @@
 ---
 title: "ERP and the Shop Floor: A Field Note on Manufacturing Tech Trends"
 description: "A plain-language look at cloud ERP, AI/ML, and IoT on the factory floor — what these manufacturing trends actually mean once you take out the brochure."
+preview: /images/previews/erp-and-the-shop-floor-a-field-note-on-manufacturi.png
 date: 2024-06-01
 categories: [Field Notes]
 tags: [erp, manufacturing, industry-4-0, iot, cloud, ai]

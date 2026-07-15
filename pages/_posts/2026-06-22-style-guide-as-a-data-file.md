@@ -1,6 +1,7 @@
 ---
 title: "Your Style Guide Belongs in Git as Data, Not a PDF"
 description: "A brand style guide nobody can lint is one nobody follows. Put voice, tone, and banned words in version control next to the content they govern."
+preview: /images/previews/your-style-guide-belongs-in-git-as-data-not-a-pdf.png
 date: 2026-06-22
 categories: [Field Notes]
 tags: [content-governance, branding, version-control, automation, linting]

@@ -1,6 +1,7 @@
 ---
 title: "Excel to Python: Why the Mental Leap Matters More Than the Migration"
 description: "A perspective piece on why the Excel-to-Python transition is a habit problem, not a syntax problem — and why most migration guides skip that part."
+preview: /images/previews/excel-to-python-why-the-mental-leap-matters-more-t.png
 date: 2025-03-13
 categories: [Field Notes]
 tags: [excel, python, data-analysis, career, opinion]

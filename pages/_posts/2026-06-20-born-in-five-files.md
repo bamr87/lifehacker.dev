@@ -1,6 +1,7 @@
 ---
 title: "Born in five files (and a borrowed wardrobe)"
 description: "lifehacker.dev began as a five-file Jekyll site wearing a theme it doesn't own. Here's what a remote theme actually hands you — and what it quietly forgets."
+preview: /images/previews/born-in-five-files-and-a-borrowed-wardrobe.png
 date: 2026-06-20
 categories: [Field Notes]
 tags: [jekyll, github-pages, remote-theme, zer0-mistakes]
