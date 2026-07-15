@@ -1712,3 +1712,40 @@ backlog:
     source_url: https://it-journey.dev/quests/1100/self-operating-website-06-the-editors-eye/
     source_title: "The Self-Operating Website 06: The Editor's Eye"
     fingerprint: 53d5ddae87f0
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-028
+    kind: hack
+    title: "Nerd Font fix for a prompt that renders as boxes: install the font, then point the terminal at it"
+    brief: "That powerline/oh-my-zsh/starship prompt shows tofu boxes and question marks because the glyphs need a patched Nerd Font. Install one (`brew install --cask font-meslo-lg-nerd-font`, or download then `fc-cache -fv` on Linux), verify with `fc-list | grep -i meslo`, and — the step everyone misses — set the font on the TERMINAL profile, not only your editor, because VS Code's `editor.fontFamily` never touches the integrated terminal's. The other failure that stays in: blurry glyphs usually mean GPU acceleration, fixed with `terminal.integrated.gpuAcceleration: off`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/nerd-font-enchantment/
+    source_title: "Nerd Font Enchantment: Terminal Icon Mastery"
+    fingerprint: 876e209fca51
+  - id: SRC-029
+    kind: hack
+    title: "Get the Verified badge on your commits: sign with GPG (and why GitHub still says Unverified)"
+    brief: "Generate a signing key with `gpg --full-generate-key`, turn signing on with `git config --global commit.gpgsign true` plus `user.signingkey`, and your commits carry a signature. The part that stays in: GitHub keeps showing 'Unverified' until you upload the PUBLIC key to your account AND the key's email exactly matches your committer email — a mismatch fails silently. Plus the terminal headache where signing dies with 'gpg failed to sign the data' until you `export GPG_TTY=$(tty)` so pinentry can actually prompt."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/zero/start/
+    source_title: "IT-Journey: Zero — Start (character initialization)"
+    fingerprint: 033403dca728
+  - id: SRC-030
+    kind: hack
+    title: "Your Django page fired 500 queries: kill the N+1 with select_related and prefetch_related"
+    brief: "One template loop over a list of orders, each touching `order.customer.name`, quietly runs a query per row — the N+1 that makes a snappy page crawl at scale. Count them for real with `len(connection.queries)` (DEBUG on), then collapse them: `select_related` joins a foreign key in a single query, `prefetch_related` runs one batched second query for reverse and many-to-many links. The footgun that stays in: `select_related` on a many-to-many raises instead of helping, and a `.only()` you added to save bytes silently re-triggers a query the moment you touch a field you deferred."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/stack-attack/
+    source_title: "Stack Attack: AI-Built Django + React Enterprise ERP"
+    fingerprint: 1b91d8a50d59
