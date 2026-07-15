@@ -17,6 +17,7 @@ human merge gate no agent can bypass.
 | `devops-audit.yml` | manual | No | Deterministic CI/CD audit + (opt-in) the `devops-manager` agent to propose pipeline improvements. |
 | `mcp-tests.yml` | PR + push to main touching `mcp/lifehacker-read/**`, manual | No (own check) | Typechecks, builds, and runs the Node MCP server's 50-test suite + stdio smoke. The Ruby `verify` gate lints the site, not the MCP server; this covers that gap. Read-only. |
 | `loop-tuner.yml` | weekly cron (agent gated by `LOOP_TUNER_ENABLED`), manual | No | Always measures the loop's *observed* behaviour (`scripts/devops/loop_metrics.rb` — run times, failure/escalation rates, auto-fix attempts, recurring lint rules, conflicts, backlog starvation, trends vs `_data/metrics/history.jsonl`) and verifies the improvements ledger (`_data/fleet/improvements.yml`); when `LOOP_TUNER_ENABLED` + key, the `loop-tuner` agent settles ledger verdicts, fixes the upstream cause, records new ledger entries + a history snapshot, and opens ONE PR. Content-agnostic. |
+| `ai-usage.yml` | daily cron (gated by `AI_USAGE_ENABLED`), manual | No | The AI cost ledger. Sweeps the `ai-usage-*` artifacts every AI job uploads, folds them into `_data/ai_usage/ledger.jsonl` (dedup by record id), regenerates `summary.yml` + `AI_USAGE.md` + the `/docs/ai-usage/` page data, and opens ONE data-only PR (label `source/ai-usage-bot`; auto-merge holds it to the same pure-data bar as triage). Makes zero model calls. See `docs/AI-USAGE.md`. |
 
 ## The tiered pipeline (`pipeline.yml`)
 
@@ -189,7 +190,29 @@ calls `claude -p` directly**, and `scripts/devops/audit.rb` fails CI if one does
 **Auth** is one secret, set once: either `CLAUDE_CODE_OAUTH_TOKEN` (from `claude
 setup-token` — subscription auth, the preferred CI credential, drives the Claude
 Code path) **or** `ANTHROPIC_API_KEY` (pay-per-use; also the only credential the
-API fallback can use). `run.sh` prefers the OAuth token when both are present.
-With neither, AI steps are clean no-ops. To switch the whole fleet to a cheaper
-model, set `model:` in `_data/ai.yml` (or `LH_AI_MODEL` for one run) — one edit,
-everywhere.
+API fallback can use). `run.sh` prefers the OAuth token when both are present —
+and when the OAuth token exists it *removes* the API key from the CLI's
+environment, so a metered key can never be silently billed for work the
+subscription covers. With neither, AI steps are clean no-ops. To switch the
+whole fleet to a cheaper model, set `model:` in `_data/ai.yml` (or `LH_AI_MODEL`
+for one run) — one edit, everywhere.
+
+## AI metering (tokens + cost, per call, per PR)
+
+Because every model call already flows through `run.sh`, metering rides the same
+choke point: `run.sh` asks Claude Code for a JSON result and `scripts/ai/usage.rb`
+records one JSONL record per call (tokens in/out/cache, per-model split,
+`total_cost_usd` as reported by the CLI, auth mode, workflow/job/run context).
+At the end of each AI job, `scripts/ai/usage_report.rb` (wired into the
+`claude-run` composite — consumers get it for free) publishes the records three
+ways: the run's step summary, an `ai-usage-*` artifact, and a sticky
+**AI usage & cost** comment on the PR the job worked on — resolved from the
+event, or from the `pr-result.txt` the factory/fleet agents write, so a PR's
+comment shows its *creation* cost and every downstream review/fix separately.
+`ai-usage.yml` makes it durable and public (see the workflows table; dashboard
+at `/docs/ai-usage/`). Dollars are **API-equivalent** (list prices) — OAuth
+subscription runs have zero marginal cost and are labeled as such; API-fallback
+records are estimated from `_data/ai_pricing.yml`. `scripts/devops/audit.rb`
+fails CI if the metering is ever unwired (run.sh without usage.rb, a
+claude-code-action workflow without a usage_report step, etc.). Full design:
+`docs/AI-USAGE.md`.

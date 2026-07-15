@@ -155,6 +155,10 @@ jobs:
             test-results/
             _site/
 
+      # Marker-based upsert, NOT `--edit-last`: edit-last grabs whatever comment
+      # the bot posted most recently — with the AI cost comment now also bot-
+      # authored, edit-last would overwrite it. Find the harness's own comment
+      # by its <!-- lh-test-report --> marker (aggregate.rb writes it) instead.
       - name: Sticky PR comment
         if: ${{ always() && github.event_name == 'pull_request' }}
         continue-on-error: true
@@ -163,8 +167,14 @@ jobs:
           PR: ${{ github.event.pull_request.number }}
         run: |
           [ -f test-results/comment.md ] || exit 0
-          gh pr comment "$PR" --edit-last --body-file test-results/comment.md \
-            || gh pr comment "$PR" --body-file test-results/comment.md
+          cid=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments?per_page=100" \
+                  --jq '[.[] | select(.body | startswith("<!-- lh-test-report -->"))][0].id' 2>/dev/null || true)
+          body=$(ruby -rjson -e 'puts JSON.generate({"body" => File.read("test-results/comment.md")})')
+          if [ -n "$cid" ] && [ "$cid" != "null" ]; then
+            printf '%s' "$body" | gh api -X PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${cid}" --input - > /dev/null
+          else
+            printf '%s' "$body" | gh api "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" --input - > /dev/null
+          fi
 
       - name: Gate (build + harness must pass)
         if: always()

@@ -37,7 +37,8 @@ add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml does not read FLEET_
   'auto-update.yml' => 'AUTO_UPDATE_ENABLED', 'loop-tuner.yml' => 'LOOP_TUNER_ENABLED',
   'brand-sweep.yml' => 'BRAND_SWEEP_ENABLED',
   'theme-scout.yml' => 'THEME_SCOUT_ENABLED', 'agent-review.yml' => 'AGENT_REVIEW_ENABLED',
-  'quest-forge.yml' => 'QUEST_FORGE_ENABLED', 'triage.yml' => 'TRIAGE_ENABLED' }.each do |wf, gate|
+  'quest-forge.yml' => 'QUEST_FORGE_ENABLED', 'triage.yml' => 'TRIAGE_ENABLED',
+  'ai-usage.yml' => 'AI_USAGE_ENABLED' }.each do |wf, gate|
   c = wf_read[wf].to_s
   add(findings, 'error', 'autonomy-gate', "#{wf} is not gated by #{gate}") unless c.empty? || c.include?(gate)
 end
@@ -74,6 +75,30 @@ wf_read.each do |name, c|
   next unless c =~ api_env
   add(findings, 'error', 'ai-wiring', "#{name} forwards ANTHROPIC_API_KEY without CLAUDE_CODE_OAUTH_TOKEN — the OAuth path is dropped") unless c =~ oauth_env
 end
+
+# --- 1b. AI metering integrity (errors) --------------------------------------
+# Spend must never go dark: the universal runner records every call (usage.rb),
+# the claude-run composite publishes the records (usage_report.rb), and any
+# workflow that reaches a model OUTSIDE the composite — a direct run.sh call, or
+# the gitfactory-generated claude-code-action lines — must carry its own
+# usage_report step. That last check is the regeneration alarm: gitfactory
+# overwrites its workflows from the blueprint, and this is what turns "the
+# metering step silently vanished" into a red pipeline.
+runsh = read.call(File.join(LH::ROOT, 'scripts/ai/run.sh'))
+add(findings, 'error', 'ai-metering', 'scripts/ai/run.sh does not record usage (usage.rb) — AI spend would go dark') if !runsh.empty? && !runsh.include?('usage.rb')
+apirb = read.call(File.join(LH::ROOT, 'scripts/ai/api_call.rb'))
+add(findings, 'error', 'ai-metering', 'scripts/ai/api_call.rb does not record usage — fallback spend would go dark') if !apirb.empty? && !apirb.include?('AIUsage')
+cr_path = File.join(LH::ROOT, '.github', 'actions', 'claude-run', 'action.yml')
+if File.exist?(cr_path)
+  cr = LH.read(cr_path)
+  add(findings, 'error', 'ai-metering', 'claude-run composite lacks the usage_report post-step — records would never be published') unless cr.include?('usage_report')
+end
+wf_read.each do |name, c|
+  needs_report = c.include?('claude-code-action') || c =~ %r{scripts/ai/run\.sh}
+  next unless needs_report
+  add(findings, 'error', 'ai-metering', "#{name} runs a model outside claude-run but has no usage_report step — its spend is unmetered (re-add the metering steps; see docs/AI-USAGE.md)") unless c.include?('usage_report')
+end
+add(findings, 'warn', 'ai-metering', '_data/ai_pricing.yml is missing — API-fallback records cannot be estimated') unless File.exist?(File.join(LH::ROOT, '_data/ai_pricing.yml'))
 
 # --- 2. Contract wiring (errors) --------------------------------------------
 runall = read.call(File.join(LH::ROOT, 'scripts/ci/run-all.sh'))

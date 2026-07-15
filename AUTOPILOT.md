@@ -20,6 +20,7 @@ CMS.
 | `_data/brand/glossary.yml` | Words banned when used sincerely; the satire word policy. |
 | `_data/backlog.yml` | The content queue: `{id, kind, title, brief, voice, priority, status}`. |
 | `.claude/skills/grow-lifehacker/SKILL.md` | The instructions the robot follows each run. |
+| `_data/ai_usage/` + `AI_USAGE.md` | The meter: every model call's tokens + API-equivalent cost, folded nightly from run artifacts and published at `/docs/ai-usage/`. Each PR carries a sticky cost comment (creation vs downstream). See `docs/AI-USAGE.md`. |
 
 ## Running a cycle (assisted mode — current)
 

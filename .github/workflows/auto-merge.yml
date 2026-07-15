@@ -57,14 +57,16 @@ jobs:
             exit 0
           fi
           merged=0; declined=0; skipped=0
-          # Candidates: open PRs labeled auto:content (content factory et al.)
-          # or source/triage-bot (queue + dashboard refreshes), NOT needs-human.
+          # Candidates: open PRs labeled auto:content (content factory et al.),
+          # source/triage-bot (queue + dashboard refreshes), or
+          # source/ai-usage-bot (AI cost ledger sweeps), NOT needs-human. Both
+          # bot-data flavors are held to the same pure-data bar below.
           prs=$(gh pr list --state open \
                  --json number,labels \
                  --jq '.[] | [.labels[].name] as $l
                        | select(($l | index("needs-human") | not)
-                                and ($l | any(. == "auto:content" or . == "source/triage-bot")))
-                       | "\(.number) \(if $l | index("source/triage-bot") then "triage" else "content" end)"')
+                                and ($l | any(. == "auto:content" or . == "source/triage-bot" or . == "source/ai-usage-bot")))
+                       | "\(.number) \(if $l | index("source/triage-bot") then "triage" elif $l | index("source/ai-usage-bot") then "ai-usage" else "content" end)"')
           while read -r pr flavor; do
             [ -n "$pr" ] || continue
             echo "::group::PR #$pr ($flavor)"
@@ -78,12 +80,13 @@ jobs:
               declined=$((declined+1)); echo "::endgroup::"; continue
             fi
 
-            # 1b. Triage refreshes are held to a TIGHTER bar: generated data
-            # only. A triage PR has no business editing content.
-            if [ "$flavor" = "triage" ] && [ "$kinds" != "data" ]; then
-              echo "DECLINE #$pr: triage PR classifies as '$kinds', not pure data — human-gated."
+            # 1b. Bot data refreshes (triage queue, ai-usage ledger) are held to
+            # a TIGHTER bar: generated data only. A data bot has no business
+            # editing content.
+            if { [ "$flavor" = "triage" ] || [ "$flavor" = "ai-usage" ]; } && [ "$kinds" != "data" ]; then
+              echo "DECLINE #$pr: $flavor PR classifies as '$kinds', not pure data — human-gated."
               gh pr edit "$pr" --add-label needs-human || true
-              gh pr comment "$pr" --body "Auto-merge declined: a triage PR should only touch generated health data, but this diff classifies as \`$kinds\`. Labeled \`needs-human\`." || true
+              gh pr comment "$pr" --body "Auto-merge declined: a $flavor PR should only touch generated data, but this diff classifies as \`$kinds\`. Labeled \`needs-human\`." || true
               declined=$((declined+1)); echo "::endgroup::"; continue
             fi
 

@@ -81,6 +81,16 @@ loop do
 
   if code == 200
     data = JSON.parse(res.body)
+    # Meter the call (tokens were billed either way — refusals included). The
+    # record is an ESTIMATE from _data/ai_pricing.yml: the raw API reports
+    # usage but not dollars. Best-effort — a metering bug must never break
+    # the actual AI step.
+    begin
+      require_relative 'usage'
+      AIUsage.append(AIUsage.from_api_response(data, agent: ENV['LH_AI_ROLE'].to_s))
+    rescue StandardError => e
+      warn "[api_call] usage record failed (non-fatal): #{e.class}: #{e.message}"
+    end
     if data['stop_reason'] == 'refusal'
       warn '[api_call] request refused by safety classifiers'
       exit 2

@@ -11,6 +11,12 @@
 # Code path) OR an ANTHROPIC_API_KEY (works for both the primary path and the
 # Claude API fallback). With only the OAuth token the fallback is unavailable,
 # which is fine — the primary path is what runs.
+#
+# METERING: run.sh records every call's tokens + API-equivalent cost (usage.rb).
+# The post-steps here publish the records — job step-summary, an `ai-usage-*`
+# artifact the nightly ledger ingests, and the PR's sticky cost comment
+# (usage_report.rb resolves the PR from the event or the agent's pr-result.txt).
+# Best-effort (`always()` + never fails the job); needs no extra inputs.
 # =============================================================================
 name: claude-run
 description: Run an AI step via Claude Code, falling back to the Claude API.
@@ -58,3 +64,21 @@ runs:
         [ -n "$SYSTEM" ] && args+=(--system "$SYSTEM")
         [ -n "$OUT" ]    && args+=(--out "$OUT")
         bash scripts/ai/run.sh "${args[@]}"
+
+    # ---- metering post-steps (always run, never fail the job) ----------------
+    # Publish whatever run.sh recorded: step summary + PR sticky cost comment,
+    # and hand the consumed records file to the artifact upload below. The
+    # nightly ai-usage ledger sweeps these `ai-usage-*` artifacts into
+    # _data/ai_usage/ and the public dashboard.
+    - id: usage
+      if: always()
+      shell: bash
+      run: ruby scripts/ai/usage_report.rb || echo "::notice::AI usage report failed (non-fatal)."
+
+    - if: ${{ always() && steps.usage.outputs.file != '' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.usage.outputs.name }}
+        path: ${{ steps.usage.outputs.file }}
+        if-no-files-found: ignore
+        retention-days: 30
