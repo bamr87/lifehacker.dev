@@ -10,7 +10,15 @@
 # adjudicates the ambiguous ones. The only hard failure here is an `avoid_phrase`
 # (a weasel phrase), which is wrong in any register.
 #
-# Code is stripped before scanning, so `leverage` in a shell snippet is ignored.
+# Recalibrated 2026-07-15 (colophon): the glossary's banned list shrank to pure
+# marketing hype (an audit showed 70 of 72 sincere-looking warnings were the
+# word "just" — everyday hedge words now live in glossary `watch_words`, which
+# this lint deliberately does NOT scan), and the satire heuristic below widened
+# (scare quotes, ALL-CAPS delivery, infomercial boilerplate). Both changes exist
+# to keep the paid tier-2 reviewer asleep unless a hype word looks genuinely
+# sincere — which on this site should be rare and worth a human's attention.
+#
+# Code is stripped before scanning, so `synergy` in a shell snippet is ignored.
 # Output also drives the tier-2 gate: if any candidate is satire_suspected=false
 # (a likely sincere violation), CI runs the reviewer. Stdlib only.
 #   ruby scripts/ci/lint_brand.rb
@@ -122,14 +130,26 @@ def accept_key(rel, word, line)
 end
 
 # Heuristic: is this line obviously a flagged satire bit (so a banned word here
-# is the joke, not a violation)? Blockquote, trademark gag, emphasis, or an
-# explicit testimonial/scare-quote marker.
-def satire_line?(line)
+# is the joke, not a violation)? Widened 2026-07-15 to match the more generous
+# satire license in voice.yml: blockquotes, trademark gags, emphasis, scare
+# quotes around the word itself, ALL-CAPS delivery, repeated exclamation, and
+# the standard infomercial boilerplate all read as "clearly a bit" — they go
+# straight to info instead of waking the paid tier-2 reviewer.
+SATIRE_MARKERS = /testimonial|infomercial|but wait|certified n00b|as seen on|act now|limited time|money-back|operators are standing by|results may vary|patent pending|side effects may include|satisfaction guaranteed|free trial|fine print/i
+
+def satire_line?(line, word = nil)
   l = line.strip
-  return true if l.start_with?('>')            # blockquote — the fake-infomercial voice
-  return true if l.include?('™')               # trademark gag
-  return true if l =~ /\*[^*]*\*/              # *emphasis* around the bit
-  return true if l =~ /testimonial|infomercial|but wait|certified n00b/i
+  return true if l.start_with?('>')                  # blockquote — the fake-infomercial voice
+  return true if l.include?('™') || l.include?('®')  # trademark gag
+  return true if l =~ /\*[^*]*\*/                    # *emphasis* around the bit
+  return true if l =~ SATIRE_MARKERS
+  return true if l.count('!') >= 2                   # nobody is sincerely that excited
+  if word
+    q = Regexp.escape(word)
+    return true if l =~ /["“”'‘’]#{q}["“”'‘’]/i      # scare quotes around the word itself
+    up = word.upcase
+    return true if up != word && l.include?(up)      # ALL-CAPS delivery (SEAMLESS. 10X.)
+  end
   false
 end
 
@@ -153,10 +173,10 @@ DIRS.each do |dir|
 
     each_prose_line(body) do |line, no|
       stripped_inline = line.gsub(/`[^`]*`/, ' ') # ignore inline code spans
-      satire = satire_line?(line)
 
       BANNED.each do |word|
         next unless stripped_inline =~ /\b#{Regexp.escape(word)}\b/i
+        satire   = satire_line?(line, word)
         key      = accept_key(rel, word, line)
         accepted = ACCEPTED.include?(key)
         # accepted (human-reviewed, fine) and satire-suspected hits are INFO, never

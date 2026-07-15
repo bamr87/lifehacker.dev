@@ -216,3 +216,18 @@ that knows exactly how unsure it is, and says so on every line.
 > editorial voice and **effortlessly** unlocks pure **synergy** — now with the
 > patented power to flag your favorite word sixty-one times and stop absolutely
 > nothing!* It's a regex in a trench coat. Certified n00b approved.
+
+---
+
+**Update, 2026-07-15.** The numbers above did their job: they became the
+evidence in the case against the beat itself. A full-repo audit found 70 of the
+72 sincere-looking warnings were one word — *just* — and each one was eligible
+to wake the paid tier-2 reviewer. So the glossary was recalibrated (dated line
+in [the colophon](/about/colophon/), per house rules for loosening a
+guardrail): the banned list now holds only the nine actual hype words, the
+everyday hedge words (*just*, *simply*, *obviously*, *powerful*, *unlock*,
+*leverage*) moved to unenforced `watch_words` guidance, and the tier-1 satire
+heuristic learned to recognize scare quotes, ALL-CAPS delivery, and infomercial
+boilerplate on its own. The architecture this doc describes is unchanged — two
+tiers, an accept-ledger, no power of arrest — but the word police now patrol a
+much shorter street, and the paid detective mostly gets to sleep.

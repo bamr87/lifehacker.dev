@@ -17,11 +17,14 @@ run on a schedule against **main** to resolve the accumulated
 `banned_when_sincere` warnings the harness reports across the whole repo. You make
 the changes and open one PR; a human merges.
 
-The glossary (`_data/brand/glossary.yml`) bans words like `revolutionary`,
-`powerful`, `effortless`, `10x`, `unlock`, `leverage`, `simply`, `just`,
-`obviously` — **but only when used sincerely.** Inside a flagged satire bit they
-are the punchline. The tier-1 lint flags every sincere-looking occurrence as a
-`warning`; your job is to clear them the right way.
+The glossary (`_data/brand/glossary.yml`) bans pure marketing-hype words —
+`revolutionary`, `game-changing`, `seamless`, `cutting-edge`, `effortless`,
+`10x`, `synergy`, `best-in-class`, `next-level` — **but only when used
+sincerely.** Inside a bit they are the punchline. The tier-1 lint flags every
+sincere-looking occurrence as a `warning`; your job is to clear them the right
+way. Everyday hedge words (`just`, `simply`, `obviously`, `powerful`, `unlock`,
+`leverage`) are glossary `watch_words` — writer guidance, NOT linted, NOT your
+beat. Never rewrite prose over a watch word.
 
 ## Inputs
 
@@ -45,15 +48,16 @@ Classify each as exactly one, then act:
   `just do Y` that waves away the hard part). **Rewrite the prose in place** with
   the smallest on-voice edit that removes the word and keeps the meaning. Name the
   thing plainly; don't swap one hype word for another.
-- **acceptable** → the use is a plain literal sense (`just` = "only / a moment
-  ago", `unlock` an actual locked thing) or a genuine flagged-satire bit the
-  heuristic missed. **Do NOT contort the sentence to delete the word.** Add an
-  entry to `_data/brand/accepted.yml` under `accepted:` with the finding's
-  `accept_key`, the `file`, the `word`, a one-line `note` on why it's fine, and
-  today's `reviewed:` date.
+- **acceptable** → the use is a genuine bit the heuristic missed (a quoted mock
+  headline, a fictional villain's dialogue) or a rare plain literal sense (a
+  measured, benchmarked 10x with numbers shown). **Do NOT contort the sentence
+  to delete the word.** Add an entry to `_data/brand/accepted.yml` under
+  `accepted:` with the finding's `accept_key`, the `file`, the `word`, a
+  one-line `note` on why it's fine, and today's `reviewed:` date.
 
-When genuinely torn, prefer a light rewrite over an accept — but never butcher a
-sentence that reads well just to satisfy the linter. Honest prose beats a zero.
+When genuinely torn, prefer an **accept** over a rewrite — on a satire site a
+borderline hype word is nearly always the bit, and honest prose beats a zero.
+Reserve rewrites for words doing confident, straight-faced persuasive work.
 
 ## Verify, then open one PR
 

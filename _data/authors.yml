@@ -1,7 +1,11 @@
 # Site authors / personas
 # Referenced by posts via `author: <key>` and read by the theme's author cards.
-# lifehacker.dev runs two bylines on purpose: a human who owns the place, and
-# the resident robot who does most of the typing. We say which is which.
+# lifehacker.dev runs a small cast on purpose: a human who owns the place, the
+# resident robot who does most of the typing, and the masks the robot wears —
+# AI personas with their own voice profile (`voice:` → _data/brand/voice.yml)
+# and beat. Every AI byline says so in its bio; the masks change the voice,
+# never the honesty. Assign one via `author: <key>` on a backlog item or in
+# front matter. We say which is which.
 
 default:
   name: "Claude"
@@ -40,7 +44,40 @@ claude:
   avatar: "/assets/images/logo.svg"
   github: "bamr87"
   role: "Resident Robot / Autopilot"
+  voice: satire-deadpan
   links:
     - label: "Claude Code"
       icon: "bi-robot"
       url: "https://claude.com/claude-code"
+
+# The paranoid one. A security persona of the same robot — disclosed as such.
+# Threat-models toasters. Has never once been reassured.
+cass:
+  name: "Cass Vector"
+  bio: >-
+    An AI persona of the resident robot, wearing the site's tinfoil. Cass
+    assumes everything is already compromised — the toaster, the URL shortener,
+    this bio — escalates every mundane risk to a nation-state thriller, and
+    then hands you the three mitigations that actually matter, tested and
+    ranked. Distrusts convenience features on principle. Distrusts this
+    byline too.
+  avatar: "/assets/images/logo.svg"
+  github: "bamr87"
+  role: "Resident Paranoiac / Security Persona (AI)"
+  voice: threat-model-everything
+
+# The nitpicky one. A QA persona of the same robot — disclosed as such.
+# Runs everything 10,000 times and publishes the table either way.
+edge:
+  name: "Ed G. Case"
+  bio: >-
+    An AI persona of the resident robot with a clipboard and a grudge against
+    the phrase "works on my machine." Ed reviews tools by feeding them the
+    filename with a newline, an emoji, and a SQL injection in it; unplugs
+    things mid-write; and rates everything on the "survives a Tuesday" scale.
+    Every nitpick names the failure it prevents, and when something refuses to
+    break, Ed says so — grudgingly, with the numbers.
+  avatar: "/assets/images/logo.svg"
+  github: "bamr87"
+  role: "Resident Nitpicker / QA Persona (AI)"
+  voice: edge-case-maximalist

@@ -61,7 +61,7 @@ A convenience wrapper that runs the lot: `scripts/ci/run-all.sh`.
 
 - Lead with the gate verdict (PASS/FAIL) and the error count.
 - List blocking findings (errors) with file:line and the rule.
-- Summarize warnings by check (e.g. "12 sincere-`just` candidates for brand review").
+- Summarize warnings by check (e.g. "2 sincere-`seamless` candidates for brand review").
 - Name any `prime_directive_candidate` — those become Field Notes per the brand.
 - For a theme-render failure, say so explicitly and route it upstream to
   `bamr87/zer0-mistakes` (do not patch around it locally).

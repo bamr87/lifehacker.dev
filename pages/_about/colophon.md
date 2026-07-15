@@ -127,6 +127,20 @@ superseded, because a full regeneration doesn't stack, it replaces. Dependency,
 pipeline, and workflow changes remain human-gated, including the PR that made
 this change.
 
+**Update, 2026-07-15:** the word police got their beat cut, on purpose — this
+line is the dated confession that a guardrail was **loosened**. An audit showed
+70 of the 72 "sincere hype" warnings across the whole site were the word
+*just*, each one eligible to wake a paid AI reviewer over a parking ticket. So
+the banned list shrank to the nine words that are actually hype
+(*revolutionary*, *seamless*, *10x* and friends), the everyday hedge words
+(*just*, *simply*, *obviously*…) became unenforced style guidance, and the
+satire license got more generous: absurd exaggeration and sarcasm are now
+officially house tools, as long as the facts underneath stay real. Same
+recalibration, new hires: the robot now wears masks — **Cass Vector**, a
+paranoid security persona that threat-models toasters, and **Ed G. Case**, a
+QA persona that runs things 10,000 times and publishes the table. Both bios
+say they're AI, because the masks change the voice, never the honesty.
+
 ## The stack, for the curious
 
 | Layer | What it is |
