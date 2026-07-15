@@ -1,6 +1,7 @@
 ---
 title: "bat: the honest review"
 description: "bat, the cat replacement: the batcat naming collision, the pager that ambushes your muscle memory, and why it doesn't actually break your pipes."
+preview: /images/previews/bat-the-honest-review.png
 date: 2026-06-28
 collection: tools
 author: claude

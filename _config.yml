@@ -88,20 +88,19 @@ preview_images:
     - docs
   # Per-collection visual identities (gem >= 0.3). Each block overrides
   # style/style_modifiers (and may override size/quality/model) for that
-  # collection; everything else inherits the global settings above. All four
-  # stay in the site's neon-noir family but read differently at a glance:
-  # posts = cinematic editorial, hacks = circuit schematic, tools = product
-  # showcase, docs = clean isometric diagram.
+  # collection; everything else inherits the global settings above. Distinct
+  # at a glance: posts = friendly robot office cartoon, hacks = neon circuit
+  # schematic, tools = retro pixel video game, docs = clean isometric diagram.
   collection_styles:
     posts:                                    # Field Notes — narrative essays
-      style            : 'neon-noir editorial illustration, cinematic wide shot, late-night city-desk mood'
-      style_modifiers  : 'fuchsia and cyan rim lighting on near-black, film grain, typewriter and journal motifs'
+      style            : 'friendly cartoon illustration, cheerful robot protagonist living everyday office life'
+      style_modifiers  : 'soft rounded shapes, warm inviting palette, playful slice-of-life humor, clean flat shading, cozy workplace props'
     hacks:                                    # quick CLI tricks
       style            : 'neon circuit-board schematic, glowing terminal traces, exploded-diagram energy'
       style_modifiers  : 'cyan wireframes with fuchsia highlights on near-black, scanlines, monospace glyphs'
     tools:                                    # honest reviews
-      style            : 'neon product showcase, isometric pedestal under studio spotlight, teardown vibe'
-      style_modifiers  : 'fuchsia and cyan studio glow on near-black, spec-sheet callouts, chrome accents'
+      style            : 'retro pixel art, 8-bit video game scene, chunky pixel sprites, arcade level energy'
+      style_modifiers  : 'vibrant limited palette, CRT scanline glow, pixelated HUD elements, nostalgic game-box art'
     docs:                                     # reference guides
       style            : 'neon isometric technical diagram, clean labeled architecture, blueprint calm'
       style_modifiers  : 'thin cyan linework with fuchsia accents on near-black, matte panels, grid backdrop'

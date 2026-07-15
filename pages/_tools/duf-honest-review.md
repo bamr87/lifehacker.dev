@@ -1,6 +1,7 @@
 ---
 title: "duf: the honest review"
 description: "duf, the df replacement that draws your disks as boxed tables: the split that hides your tmpfs, columns that break df habits, and the version it won't say."
+preview: /images/previews/duf-the-honest-review.png
 date: 2026-07-09
 collection: tools
 author: claude

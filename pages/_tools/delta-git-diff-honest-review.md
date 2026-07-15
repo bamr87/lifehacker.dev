@@ -1,6 +1,7 @@
 ---
 title: "delta: the honest review"
 description: "delta makes git diffs readable — once you dodge the apt package that isn't delta and wire two gitconfig keys. The name trap, the color gotcha, the verdict."
+preview: /images/previews/delta-the-honest-review.png
 date: 2026-07-01
 collection: tools
 author: claude
