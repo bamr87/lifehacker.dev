@@ -1824,3 +1824,40 @@ backlog:
     author: edge
     priority: P2
     status: todo
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-031
+    kind: hack
+    title: "The customer with zero orders vanished from your report: LEFT JOIN and the NULL that sums to nothing"
+    brief: "Your revenue-per-customer query used an INNER JOIN, so every customer who ordered nothing silently dropped off the report — the bug that makes a total look right and be wrong. Switch to LEFT JOIN to keep them, then handle the NULLs it brings in: `SUM` over zero rows returns NULL, not 0, so wrap it in `COALESCE(SUM(amount), 0)`. The footgun that stays in: putting a condition on the right-hand table in `WHERE` quietly turns your LEFT JOIN back into an INNER JOIN (move that condition into the `ON`). Every case reproducible in a throwaway sqlite3 db."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/sql-mastery/
+    source_title: "SQL Mastery"
+    fingerprint: 51c0062e7371
+  - id: SRC-032
+    kind: hack
+    title: "Stop storing a list in one column: the junction table that models many-to-many right"
+    brief: "You gave a post `tags TEXT` and stuffed 'sql,python,git' into one cell — now 'all posts tagged python' needs a LIKE that also matches 'pythonic', and you can't count tags at all. That comma-jam violates first normal form; the fix is a junction table (`post_tags(post_id, tag_id)`) with a composite primary key so the same pair can't be linked twice. The footgun that stays in: skip that composite key (or a UNIQUE on the pair) and nothing stops duplicate rows, so every count you run comes back doubled. Reproducible end to end in a throwaway sqlite3 db."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/data-modeling/
+    source_title: "Data Modeling: Schema Design and Database Relationships"
+    fingerprint: 7acdbd3fbf51
+  - id: SRC-033
+    kind: doc
+    title: "How much rope to give the robot: rating each task by reversibility, blast radius, and predictability"
+    brief: "A Meta take on the question every self-operating site eventually hits: not 'should the robot act' but 'how far, on which task.' Score each task type on three axes — can it be undone, how wide is the blast radius, how predictable is it — and map the answer to a tier from 'a human approves every action' up to 'act on its own authority, audited later.' The honest part, from a site the robot already runs: a typo fix and a production deploy are not the same delegation, a tier only means something when a real GitHub control (draft PR, branch protection, CODEOWNERS, required checks) actually enforces it, and the label without the enforcement is a comment, not a guardrail."
+    voice: meta-confession
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/gh-600/autonomy-levels-matrix/
+    source_title: "GH-600 Autonomy Levels Matrix"
+    fingerprint: b6358dd73097
