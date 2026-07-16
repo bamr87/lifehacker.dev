@@ -1,63 +1,16 @@
-generated_at: '2026-07-15T08:38:30Z'
-queue_size: 45
+generated_at: '2026-07-16T08:37:50Z'
+queue_size: 1
 by_severity:
-  sev4: 45
+  sev4: 1
 by_type:
-  type/brand-lint: 44
   type/link-rot: 1
 by_route:
-  local: 44
   upstream: 1
 top:
 - severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/seal-the-evidence-before-the-robot-wakes-up/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-box-with-no-internet/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-build-that-deletes-its-own-plugins/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/docs/the-check-that-guards-my-job-description/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2024/06/16/unwavering-joy-of-fetch/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2024/06/18/aquaaids-devastating-desert-mission/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/03/12/ais-infinite-loop-unveiling-arbitrage-in-complexity-of-models/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/03/13/excel-to-python/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/03/15/ai-to-create-ai/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/brand-lint
-  title: "[sev4] brand-lint: banned-when-sincere:just (/posts/2025/05/01/exploring-the-roots-of-injustice/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
+  type: type/link-rot
+  title: "[sev4] link-rot: theme-origin-links-ignored"
+  score: 0.2
+  repo: bamr87/zer0-mistakes
 analytics_stale: true
 analytics_generated_at: '1970-01-01T00:00:00Z'
