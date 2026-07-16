@@ -1857,7 +1857,8 @@ backlog:
     brief: "A Meta take on the question every self-operating site eventually hits: not 'should the robot act' but 'how far, on which task.' Score each task type on three axes — can it be undone, how wide is the blast radius, how predictable is it — and map the answer to a tier from 'a human approves every action' up to 'act on its own authority, audited later.' The honest part, from a site the robot already runs: a typo fix and a production deploy are not the same delegation, a tier only means something when a real GitHub control (draft PR, branch protection, CODEOWNERS, required checks) actually enforces it, and the label without the enforcement is a comment, not a guardrail."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/how-much-rope-to-give-the-robot/
     source: content-scout
     source_url: https://it-journey.dev/notes/gh-600/autonomy-levels-matrix/
     source_title: "GH-600 Autonomy Levels Matrix"
