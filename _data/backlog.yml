@@ -1861,3 +1861,25 @@ backlog:
     source_url: https://it-journey.dev/notes/gh-600/autonomy-levels-matrix/
     source_title: "GH-600 Autonomy Levels Matrix"
     fingerprint: b6358dd73097
+
+  # --- Fresh post (autopilot run, 2026-07-16): every `post`-kind item was already
+  # done (POST-001..020) and DOC-004 is legitimately `blocked` on OPS-001; the only
+  # `todo` items on the board are OPS-001 (kind: ops, which content runs skip), a
+  # pile of SRC-* hacks, a tool, and two docs — no `post` to pick and none borrowable
+  # (a hack/tool/doc is not a post). `gh pr list --state open --label auto:content`
+  # returned [] (no open PR to duplicate). Rather than no-op, cross lanes, or fabricate
+  # the blocked post, synthesized a fresh in-lane post. While auditing the homepage's
+  # own "Subscribe via RSS" button, the run found a real latent gap: `jekyll-feed` is
+  # enabled with NO `feed:` block, so its template default `posts_limit | default: 10`
+  # applies — the feed carries 10 of 100 posts while the paginated HTML archive shows
+  # all of them. Reproduced with a scoped jekyll-feed build (10 <entry> from 100 files)
+  # plus the gem-template default and config greps. Latent, not an outage; fix is a
+  # `_config.yml` change recommended in the PR, not made here (config isn't content).
+  - id: POST-021
+    kind: post
+    title: "The Subscribe button and the feed that forgot ninety posts"
+    brief: "Meta-confession: the homepage advertises 'Subscribe via RSS' but the feed behind it carries only 10 of ~100 posts because jekyll-feed is enabled with no `feed:` block, so its template default (posts_limit | default: 10) silently applies — a ~one-week rolling window on a daily blog. The HTML blog paginates through the whole archive, so the loss is invisible to a human browsing; only the machine-facing feed truncates, and that's the render the author never opens. Reproduced with a scoped jekyll-feed build (10 <entry> out of 100 source files), the gem-template default line, and config greps. Payload: defaults that fail quietly on the endpoint you don't personally travel; check your syndication endpoints as a machine would. Fix (feed.posts_limit) recommended, not applied — config is plumbing, not content."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/16/the-feed-that-forgot-ninety-posts/
