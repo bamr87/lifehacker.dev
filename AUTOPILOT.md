@@ -15,10 +15,11 @@ CMS.
 
 | File | Purpose |
 |---|---|
-| `_data/brand/identity.yml` | Who the site is: mission, pillars, the running joke, the prime directive. |
-| `_data/brand/voice.yml` | Voice profiles (`satire-deadpan`, `how-to-practical`, `tool-review-honest`, `meta-confession`) and when to use each. |
-| `_data/brand/glossary.yml` | Words banned when used sincerely; the satire word policy. |
-| `_data/backlog.yml` | The content queue: `{id, kind, title, brief, voice, priority, status}`. |
+| `_data/brand/identity.yml` | Who the site is: mission, pillars, the running joke, the cast of bylines, the prime directive. |
+| `_data/brand/voice.yml` | Voice profiles (`satire-deadpan`, `how-to-practical`, `tool-review-honest`, `meta-confession`, plus the persona voices `threat-model-everything` and `edge-case-maximalist`) and when to use each. |
+| `_data/brand/glossary.yml` | Hype words banned when used sincerely, unenforced `watch_words` style guidance, and the (generous) satire word policy. |
+| `_data/authors.yml` | The bylines: the human, the robot, and the robot's declared AI personas (`cass`, `edge`), each with a `voice:` profile. |
+| `_data/backlog.yml` | The content queue: `{id, kind, title, brief, voice, priority, status}` + optional `author:` persona key. |
 | `.claude/skills/grow-lifehacker/SKILL.md` | The instructions the robot follows each run. |
 | `_data/ai_usage/` + `AI_USAGE.md` | The meter: every model call's tokens + API-equivalent cost, folded nightly from run artifacts and published at `/docs/ai-usage/`. Each PR carries a sticky cost comment (creation vs downstream). See `docs/AI-USAGE.md`. |
 

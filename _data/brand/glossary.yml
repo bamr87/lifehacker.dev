@@ -3,28 +3,44 @@
 # -----------------------------------------------------------------------------
 # The autopilot lints drafts against this. The twist vs. a normal style guide:
 # the banned words are banned ONLY when used sincerely. As flagged satire (fake
-# infomercial voice, scare quotes), they are the punchline vocabulary.
+# infomercial voice, scare quotes, caps-lock hysteria), they are the punchline
+# vocabulary — reach for them often and with enthusiasm.
+#
+# Recalibrated 2026-07-15 (see /about/colophon/): the list used to include
+# everyday hedge words (just, simply, powerful…). A full-repo audit showed 70 of
+# 72 sincere-looking warnings were the word "just" — the word police were
+# writing parking tickets, and every ticket woke a paid AI reviewer. Those words
+# moved to `watch_words` below: writer guidance, linted by nobody.
 # =============================================================================
 
-# Banned when sincere. If one appears in a real instruction or verdict, rewrite.
+# Banned when SINCERE — pure marketing hype only. These are rare in honest prose
+# and load-bearing in satire, which is exactly the gap the lint can check.
+# If one shows up in a real instruction, verdict, or claim, rewrite it.
 banned_when_sincere:
   - revolutionary
   - game-changing
   - seamless
   - cutting-edge
-  - powerful
   - effortless
   - 10x
   - synergy
   - "best-in-class"
   - "next-level"
+
+# Watch words — style guidance for writers, NOT linted, NOT reviewed, NOT
+# ledger-tracked. The dismissive senses ("just do X", "simply run Y", "this
+# powerful tool") still read as hand-waving; the fix is editorial taste, not
+# enforcement. Cut them when they wave away the hard part; otherwise write on.
+watch_words:
+  - just             # dismissive "just do X" hides the hard part; literal senses are fine
+  - simply           # same trap as "just"
+  - obviously        # if it were obvious, the reader wouldn't be here
+  - powerful         # says nothing; name what it does
   - unlock           # as in "unlock your potential"
   - leverage         # as a verb meaning "use"
-  - simply
-  - just             # the dismissive "just do X"
-  - obviously
 
-# Weasel phrases — delete or replace with a number/fact.
+# Weasel phrases — delete or replace with a number/fact. (Still a hard error:
+# these are wrong in every register, satire included.)
 avoid_phrases:
   - "in today's fast-paced world"
   - "it's no secret that"
@@ -38,9 +54,14 @@ prefer:
   failure: "the part where it broke"          # we name failures plainly
   certification: "Certified n00b"             # ironic, never real
 
-# Punchline vocabulary — the banned list, re-licensed for OBVIOUS parody only.
-# Example: a fake testimonial — "This `.bashrc` alias is a *game-changer*™ that
-# *unlocked my full potential* (it saved four keystrokes)."
+# Punchline vocabulary — the banned list, re-licensed for parody. The license is
+# GENEROUS: any register a reasonable reader would clock as a bit counts —
+# scare quotes, ™/® gags, ALL-CAPS delivery, fake testimonials, mock press
+# releases, infomercial voice, absurd precision ("boosts productivity 4,000%*"),
+# footnotes that walk the claim back. Sincerity is the only sin.
 satire_vocabulary_note: >-
-  Reach for the banned words only inside a clearly marked bit. The humor is the
-  gap between the hype and the four keystrokes it actually saved.
+  When in doubt, make the bit BIGGER, not smaller. A hype word half-committed
+  reads as sincere; a hype word in a trench coat with a trademark symbol and a
+  fake money-back guarantee reads as the joke it is. The humor is the gap
+  between the hype and the four keystrokes it actually saved — so state the
+  hype at full volume and the four keystrokes with a straight face.

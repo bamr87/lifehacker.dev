@@ -2,12 +2,12 @@
 # _data/brand/accepted.yml — the brand accept-ledger
 # -----------------------------------------------------------------------------
 # Reviewed `banned_when_sincere` hits (see _data/brand/glossary.yml) that are
-# legitimately fine: a literal sense ("just a moment ago", an actual locked thing
-# to "unlock") or a clearly flagged satire bit where the hype word IS the joke and
-# the tier-1 heuristic missed it. Listing a hit here downgrades it from a blocking-
-# adjacent `warning` to non-blocking `info`, so the PR test report and the weekly
-# brand-sweep stop re-flagging prose a human (or the brand-fixer agent) already
-# judged acceptable. It does NOT license the word everywhere — see "key" below.
+# legitimately fine: a clearly flagged satire bit the tier-1 heuristic missed,
+# or a plain literal sense of a hype word. Listing a hit here downgrades it from
+# a blocking-adjacent `warning` to non-blocking `info`, so the PR test report
+# and the weekly brand-sweep stop re-flagging prose a human (or the brand-fixer
+# agent) already judged acceptable. It does NOT license the word everywhere —
+# see "key" below.
 #
 # How to add one:
 #   1. Run `LH_BRAND_SCOPE_ALL=1 ruby scripts/ci/lint_brand.rb` (or read the
@@ -22,34 +22,21 @@
 # specific sentence, never blanket-license a word.
 #
 #   accepted:
-#     - file: pages/_hacks/git-alias-starter-pack.md
-#       word: just
+#     - file: pages/_hacks/example.md
+#       word: seamless
 #       key:  ab12cd34ef56
-#       note: literal "it just saved someone's afternoon" — not the dismissive sense
+#       note: scare-quoted "seamless" mocking the vendor's brochure — the bit, not a claim
 #       reviewed: 2026-06-30
+#
+# 2026-07-15 recalibration (see /about/colophon/): the everyday hedge words
+# (just, simply, obviously, powerful, unlock, leverage) left the banned list for
+# glossary `watch_words` — writer guidance, not linted. Their 37 ledger entries
+# were pruned here; keeping them would only have tripped the stale-orphan check
+# on every full-repo scan. The four scare-quoted "10x" accepts below remain as
+# reviewed human judgments, though the widened satire heuristic now catches
+# scare quotes on its own.
 # =============================================================================
 accepted:
-  # Hype words inside clearly-labeled satire/fiction — the word is in the
-  # fictional voice, not a sincere product claim. Work order #164.
-  - file: pages/_posts/2024-06-17-wizard-topples-capitalist-dominance-ingeniously.md
-    word: powerful
-    key:  c60607908db6
-    note: satire piece (frontmatter tags satire/fiction, Field Note fiction banner) — "powerful elites" is a villain in the mock-news story, not a product claim
-    reviewed: 2026-07-06
-  - file: pages/_posts/2024-06-17-wizard-topples-capitalist-dominance-ingeniously.md
-    word: just
-    key:  98d59341aadf
-    note: same satire piece — "just reformed" is a narrative beat in the fiction, not sincere minimization
-    reviewed: 2026-07-06
-  - file: pages/_posts/2024-06-18-aquaaids-devastating-desert-mission.md
-    word: just
-    key:  08fffd31734d
-    note: fiction, flagged as such ("This is fiction") — "fables are allowed to just be sad" is the literal simply/merely sense inside the disclaimer
-    reviewed: 2026-07-06
-  - file: pages/_posts/2024-07-18-texan-cowboys-learn-history-pyramid-scheme-revealed.md
-    word: just
-    key:  16e8b822f404
-    note: satire (frontmatter tags satire/fiction, confession-up-front banner) — "not just a mean joke" is a contrast in the sentence that argues the piece is satire
   # --- Work order #163: "10x" in scare quotes to dismiss the hype -----------
   # All four use "10x" inside double quotes to REJECT the buzzword, not to make
   # a sincere claim. The tier-1 regex flags the string; the meaning is anti-hype.
@@ -73,190 +60,8 @@ accepted:
     key:  488dce20e8ba
     note: 'scare-quoted "10x" rejecting the hype ("It won''t 10x your recovery") — anti-hype, not sincere'
     reviewed: 2026-07-06
-  # --- Work order #167: docs-collection "just" — three legitimate uses -------
-  # None is the dismissive "just do X". One emphatic minimal-list, one hyphenated
-  # compound false hit, one "not merely X but Y" contrast. Anti-minimization, all.
-  - file: pages/_docs/autopilot.md
-    word: just
-    key:  907e0ff96d86
-    note: emphatic minimal-list after "No dashboard required" — "just a repo, a robot, and a human" enumerates the whole stack, not the dismissive "just do X"
-    reviewed: 2026-07-08
-  - file: pages/_docs/the-box-with-no-internet.md
-    word: just
-    key:  3616d30c919a
-    note: hyphenated compound modifier "just-plain-broken" (idiom for utterly/plainly broken) — a word-boundary false hit, not the dismissive "just do X"
-    reviewed: 2026-07-08
-  - file: pages/_docs/the-check-that-wont-take-done-for-an-answer.md
-    word: just
-    key:  8de60e7cdba5
-    note: contrast amplification "doesn't just disappoint a reader — it tells the rest of the fleet" — the "not merely X but Y" structure, not minimization
-    reviewed: 2026-07-08
-  # --- Work order #166: "just" across docs + hacks (issues #108/#109/#110/#116) ---
-  # Every hit is a legitimate use — meta-commentary quoting the word, scare-quoted
-  # glib advice the author rebuts, "not just" contrast/amplification, temporal
-  # "a moment ago", or the literal "merely" sense — none is the dismissive
-  # complexity-minimizing "just do X" the glossary bans.
-  - file: pages/_docs/the-word-police-that-cant-make-an-arrest.md
-    word: just
-    key:  623d4d3f962d
-    note: 'meta-commentary — the doc quotes the banned "just do X" phrase while explaining why the glossary bans it, not a sincere use'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/dockering-your-it-journey.md
-    word: just
-    key:  532ac44e003d
-    note: 'scare-quoted glib advice ("just upgrade Ruby" is a six-week ticket) the author rejects — anti-hype, not sincere minimization'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/dockering-your-it-journey.md
-    word: just
-    key:  1570bbd93169
-    note: 'scare-quoted glib advice — rebutting the "just bump the base image" crowd, quoting the dismissive line to reject it'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/fix-local-jekyll-docker-yanked-ffi.md
-    word: just
-    key:  8720e9acb139
-    note: 'literal simply/suddenly sense — "the recorded thing just evaporated" narrates the yanked gem vanishing, not minimizing a reader task'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/fix-local-jekyll-docker-yanked-ffi.md
-    word: just
-    key:  77f0a78c098e
-    note: 'contrast "not just" — renders, not just installs; amplification, not complexity-minimization'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/fix-local-jekyll-docker-yanked-ffi.md
-    word: just
-    key:  ca8e9a53be72
-    note: 'contrast "not just a green install log" — the "more than just" amplification, not minimization'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/fix-local-jekyll-docker-yanked-ffi.md
-    word: just
-    key:  7a2fc9fc17b0
-    note: 'temporal "the thing that just saved you" — the a-moment-ago sense, like the ledger''s own literal example'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/mastering-react-beginners-guide.md
-    word: just
-    key:  ec9dd6b32dc1
-    note: 'literal merely sense — "just a more verbose spelling of the same thing" reassures the difference is only verbosity, not waving away a hard part'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/mastering-react-beginners-guide.md
-    word: just
-    key:  1981a78a42d0
-    note: 'contrast "not just rendering, but compilable" — amplification, not minimization'
-    reviewed: 2026-07-07
-  - file: pages/_hacks/mastering-react-beginners-guide.md
-    word: just
-    key:  ec0b05b7874f
-    note: 'literal merely/emphatic — "every larger React app is just more of" (merely more of the same four things), not minimizing a task'
-    reviewed: 2026-07-07
-  # --- Work order #169: 2021–2023 _posts "just" that isn't the dismissive sense
-  # The rule bans the dismissive "just do X" (glossary.yml). These four are
-  # temporal / emphatic-negation / literal-"merely" / comparative-idiom uses —
-  # none minimize an effort. The one genuine minimization in this batch (#131,
-  # "the Penrose triangle is just a case") was reworded, not accepted.
-  - file: pages/_posts/2021-10-27-build-destroy-repeat-mastery.md
-    word: just
-    key:  0037395f02aa
-    note: temporal "the method I just recommended" (a moment ago) — not the dismissive "just do X"
-    reviewed: 2026-07-10
-  - file: pages/_posts/2022-02-27-dual-boot-win-linux.md
-    word: just
-    key:  f8228cb5a19f
-    note: emphatic negation "it is just not a dual-boot guide" (simply/flatly not) — contrast, not minimizing an effort
-    reviewed: 2026-07-10
-  - file: pages/_posts/2022-06-10-desktop-widgets-windows.md
-    word: just
-    key:  02a78b260c22
-    note: literal "merely" — "it just happens on your machine instead of mine" states where verification runs, not that it's trivial
-    reviewed: 2026-07-10
-  - file: pages/_posts/2023-03-26-chatgpt-vs-impossible-triangle.md
-    word: just
-    key:  b1e04f3d773c
-    note: comparative idiom "it will sound just as sure" (= equally sure) — not the dismissive sense
-    reviewed: 2026-07-10
-  # --- Work order #170: 2024 early _posts "just" — none is the dismissive sense
-  # Two flagged satire/lyrics Field Notes plus two literal/concessive uses. None
-  # minimizes a reader's effort ("just do X"); each is a definition, a contrast,
-  # or the concessive only/merely sense. Issues #132/#133/#134/#135.
-  - file: pages/_posts/2024-02-10-retropie-imaging.md
-    word: just
-    key:  6beaef3fbdb8
-    note: 'merely/equative "just a different word for" — obedience without a confirmation prompt IS a synonym for hazard; a definition, not the dismissive "just do X"'
-    reviewed: 2026-07-13
-  - file: pages/_posts/2024-05-16-fight-with-tools.md
-    word: just
-    key:  527d829a3300
-    note: 'chorus lyric in a flagged song/parody Field Note (tags satire, lyrics) — "don''t just raise your fists, fill them" is the "not merely X, but Y" contrast; repeats 4x, one key'
-    reviewed: 2026-07-13
-  - file: pages/_posts/2024-05-16-groking-journey.md
-    word: just
-    key:  42f536918ff7
-    note: 'concessive "worth doing, just not for the reason I started it" — the only/merely sense qualifying a concession, amplifying that it WAS worth doing, not minimizing a task'
-    reviewed: 2026-07-13
-  - file: pages/_posts/2024-05-16-groking-journey.md
-    word: just
-    key:  71a7214c84b5
-    note: 'same concessive sense a few lines on — "That''s a real use. Just not the one on the label." — only/merely, not the dismissive "just do X"'
-    reviewed: 2026-07-13
-  - file: pages/_posts/2024-05-22-rise-of-the-matriarchs-capitalism-and-religion-face-the-femme-fatale.md
-    word: just
-    key:  49e6f018ee3f
-    note: 'scare-quoted testimonial "just here" inside a flagged parody of the panic-piece genre (tags parody, satire) — the quoted subject''s self-pity, the literal merely/only sense, not a sincere claim'
-    reviewed: 2026-07-13
-  # --- Work order #171: 2024-later posts, "just" in the merely/only sense ----
-  - file: pages/_posts/2024-05-28-auto-increment-frontmatter-version.md
-    word: just
-    key:  a65253e0d786
-    note: 'restrictive "not only" contrast — a blind sed rewrites "version" everywhere in the body, "not just the front matter"; describes scope, not the dismissive "just do X"'
-    reviewed: 2026-07-14
-  - file: pages/_posts/2024-06-16-unwavering-joy-of-fetch.md
-    word: just
-    key:  dbffb9e278ea
-    note: 'literary merely/only sense — the story "just needs to be about a dog," set against "doesn''t need to be useful"; states the piece''s minimal essence, not authorial minimization of effort'
-    reviewed: 2026-07-14
-  - file: pages/_posts/2024-12-31-cats-and-dogs-pet-care.md
-    word: just
-    key:  b721da83c0e1
-    note: 'editorial "merely buried" — the substance was real "just buried under the packaging"; the simply/merely sense describing what the import''s throat-clearing hid, not the dismissive "just do X"'
-    reviewed: 2026-07-14
-  # --- Work order #172: 2025 early _posts "just" — none is the dismissive sense
-  # Eight hits across four March–May 2025 posts (issues #148/#149/#150/#151).
-  # Every one is temporal, restrictive/anti-hype, emphatic-negation, or the
-  # literal merely/only sense — not the complexity-minimizing "just do X".
-  - file: pages/_posts/2025-03-12-ais-infinite-loop-unveiling-arbitrage-in-complexity-of-models.md
-    word: just
-    key:  f6474564f195
-    note: 'literal merely/only — "it''s just better at hiding the cases where it has nothing" argues the always-answering model is *merely* better at concealment, not more capable; an anti-capability point, not minimizing a task'
-    reviewed: 2026-07-15
-  - file: pages/_posts/2025-03-12-ais-infinite-loop-unveiling-arbitrage-in-complexity-of-models.md
-    word: just
-    key:  6282c5a66756
-    note: 'literal merely/only — "the version that answered was just being polite" characterizes the confident reply as *merely* polite vs. informative, a contrast, not the dismissive "just do X"'
-    reviewed: 2026-07-15
-  - file: pages/_posts/2025-03-13-excel-to-python.md
-    word: just
-    key:  b5203af435e4
-    note: 'temporal "a moment ago" — "Everything I just said" refers back to the preceding argument, not minimizing an effort'
-    reviewed: 2026-07-15
-  - file: pages/_posts/2025-03-13-excel-to-python.md
-    word: just
-    key:  3067c857ea1e
-    note: 'restrictive/anti-hype — "Not 10x your output, just the part where the report runs itself" deflates the hype to the modest real scope, not minimizing a reader task'
-    reviewed: 2026-07-15
-  - file: pages/_posts/2025-03-15-ai-to-create-ai.md
-    word: just
-    key:  de0bcd76b1dd
-    note: 'emphatic minimal-list after negations — "No article. No setup. Just the raw configuration" enumerates what the piece is, the emphatic-after-negation pattern, not the dismissive "just do X"'
-    reviewed: 2026-07-15
-  - file: pages/_posts/2025-03-15-ai-to-create-ai.md
-    word: just
-    key:  a5f4defb8dd4
-    note: 'emphatic negation "that failure is real and reproducible; it just isn''t the AI''s fault" — simply/flatly isn''t; attributes cause to the renderer, not minimizing effort'
-    reviewed: 2026-07-15
-  - file: pages/_posts/2025-05-01-exploring-the-roots-of-injustice.md
-    word: just
-    key:  e12763c45307
-    note: 'literal merely/only — "on record instead of just in my chest" contrasts recorded vs. *merely* private, not minimizing a task'
-    reviewed: 2026-07-15
-  - file: pages/_posts/2025-05-01-exploring-the-roots-of-injustice.md
-    word: just
-    key:  90961381a5f3
-    note: 'emphatic negation "The circle closed. Just not the way the brochure implied." — simply/flatly not, a contrast like the accepted "it is just not a dual-boot guide", not minimization'
+  - file: pages/_posts/2025-08-19-mother-grokking-programmers.md
+    word: 10x
+    key:  99ef8c0f3003
+    note: 'quoted mock headline ("five habits of the 10x grokker") named as the hustle-content reflex the piece refuses — anti-hype, not a claim'
     reviewed: 2026-07-15

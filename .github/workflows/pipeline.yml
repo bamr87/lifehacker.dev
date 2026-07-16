@@ -109,7 +109,7 @@ jobs:
       # in nor blocked by pre-existing findings on files it never touched.
       #   * BRAND is scoped on EVERY PR (issue #93): a branch can only introduce a
       #     voice problem in the prose it changed, so brand never re-dumps the
-      #     repo's accepted `just`/`10x`. (lint_brand.rb reads LH_BRAND_CHANGED_FILES.)
+      #     repo's accepted `10x`/`seamless`. (lint_brand.rb reads LH_BRAND_CHANGED_FILES.)
       #   * The REST of the report + the gate (build, drift, link-rot) can regress
       #     site-wide from an infra/deps change, so only a CONTENT-only PR scopes
       #     the whole report; infra/deps/pipeline PRs keep the full-repo report.
@@ -199,7 +199,7 @@ jobs:
         with:
           ruby-version: '3.3'
       # Scope the brand candidates to THIS PR's changed files so the paid reviewer
-      # only adjudicates words the PR actually introduced — not every `just`/`10x`
+      # only adjudicates words the PR actually introduced — not every `10x`/`seamless`
       # already in the repo (scanning the whole repo is what made this run 10-14 min).
       - name: Scope brand candidates to changed files
         env:

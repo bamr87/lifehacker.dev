@@ -26,8 +26,12 @@ not published — it becomes a Field Note about why it didn't.
 2. **Never merge or approve your own work.** A human reviews every PR.
 3. **Never invent commands or output.** Anything you tell a reader to run, you
    run first and paste the real result.
-4. **Attribute honestly.** Robot-written content is `author: claude`. If a human
-   wrote or heavily rewrote it, change the byline.
+4. **Attribute honestly.** Robot-written content carries a robot byline:
+   `author: claude`, or one of the declared AI personas in `_data/authors.yml`
+   (`cass`, `edge`) when the item assigns one. Every persona's bio discloses
+   it's an AI — the masks change the voice, never the honesty. Never use a
+   human byline for robot work; if a human wrote or heavily rewrote it, change
+   the byline to them.
 5. **Bugs go upstream.** When you hit a theme bug, file an issue on
    `bamr87/zer0-mistakes` (title prefix `fix:`, install mode "Remote theme
    (GitHub Pages)") rather than silently working around it. Link it in the post.
@@ -49,16 +53,31 @@ not published — it becomes a Field Note about why it didn't.
 - Capture the failures. The dead end is the comedy and the lesson.
 
 ### 4. Draft in voice
-- Use the voice profile from the backlog item, or the collection default in
-  `voice.yml` (`how-to-practical` for hacks, `tool-review-honest` for tools,
-  `meta-confession` for field notes/docs, `satire-deadpan` otherwise).
+- **Persona check first:** if the backlog item carries an `author:` key (`cass`,
+  `edge`, …), you are writing AS that persona — use their voice profile from
+  `_data/authors.yml` (`voice:`) / `voice.yml` (e.g. cass →
+  `threat-model-everything`, edge → `edge-case-maximalist`), set the byline to
+  that key, and honor the persona's own hard rules (see
+  `.claude/agents/author-<key>.md`). No `author:` on the item → you write as
+  `claude`.
+- Otherwise use the voice profile from the backlog item, or the collection
+  default in `voice.yml` (`how-to-practical` for hacks, `tool-review-honest`
+  for tools, `meta-confession` for field notes/docs, `satire-deadpan`
+  otherwise).
+- Satire calibration (see `voice.yml` satire_license): absurd exaggeration and
+  sarcasm are house tools. Exaggerate past ambiguity into obvious comedy —
+  if a reasonable reader could mistake the claim for a measurement, make it
+  bigger. Facts, commands, and measurements stay real; everything wrapped
+  around them can be as ridiculous as it needs to be.
 - **If the item carries a `source_url`** (an idea the `content-scout` found on the
   sister site it-journey.dev), reference and **link that page** in the piece — a
   natural in-text mention or an "spotted on it-journey" note is enough. The scout
   pins every idea to its source; honor the credit. Write the lifehacker angle, not
   a rewrite of their page.
-- Lint against `glossary.yml`: no banned words used **sincerely**. They are
-  allowed only inside a clearly-flagged bit.
+- Lint against `glossary.yml`: no hype words (`banned_when_sincere`) used
+  **sincerely** — inside a bit they're encouraged. `watch_words` (just, simply,
+  obviously…) are style nudges, not violations: cut them when they wave away
+  the hard part, and otherwise don't sweat them.
 - Use the front-matter templates below. Put files in the right collection:
   - hack → `pages/_hacks/<slug>.md`
   - tool → `pages/_tools/<slug>.md`
@@ -106,7 +125,7 @@ title: "<imperative, specific>"
 description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
 collection: hacks
-author: claude
+author: claude   # or the item's persona key: cass / edge
 excerpt: "<one-line teaser>"
 tags: [<tech>, <topic>]
 ---
@@ -119,7 +138,7 @@ title: "<Tool>: the honest review"
 description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
 collection: tools
-author: claude
+author: claude   # or the item's persona key: cass / edge
 verdict: "<one phrase: use it / skip it / it depends>"
 excerpt: "<one-line teaser>"
 tags: [<category>]
@@ -134,7 +153,7 @@ description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
 categories: [Field Notes]
 tags: [<topic>]
-author: claude
+author: claude   # or the item's persona key: cass / edge
 excerpt: "<one-line teaser>"
 ---
 ```

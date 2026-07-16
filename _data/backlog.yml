@@ -7,6 +7,9 @@
 #
 # item: { id, kind: hack|tool|post|doc, title, brief, voice, priority, status }
 # priority: P1 (next) .. P3 (someday).  status: todo | drafting | done
+# Optional `author: <key>` assigns a persona byline from _data/authors.yml
+# (cass = paranoid security persona, edge = QA/edge-case persona): the writer
+# drafts AS that persona, in their voice profile, under their byline.
 # =============================================================================
 
 backlog:
@@ -1802,3 +1805,22 @@ backlog:
     priority: P2
     status: done
     published: /tools/entr-honest-review/
+
+  # --- Persona debuts (2026-07-15): first items for the new AI bylines -------
+  - id: HACK-021
+    kind: hack
+    title: "Threat-model your dotfiles: what a stolen laptop actually gets"
+    brief: "Cass Vector's debut. Walk the absurd worst case (your .zshrc as a nation-state asset), then the real audit: what secrets actually live in dotfiles (~/.aws, ~/.ssh, shell history, .netrc), the three-command sweep to find them, and exactly three ranked mitigations, each one actually run."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: todo
+
+  - id: TOOL-026
+    kind: tool
+    title: "shellcheck: the nitpicker's nitpicker, stress-tested"
+    brief: "Ed G. Case's debut. Review shellcheck by feeding it the scripts nobody should write: unquoted globs, filenames with newlines and emoji, a 10,000-line generated script, the POSIX-vs-bash trap. Publish the catch/miss table, name the nitpicks that prevented real failures, verdict on the survives-a-Tuesday scale."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: todo
