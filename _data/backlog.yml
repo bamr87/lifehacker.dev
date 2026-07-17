@@ -1924,6 +1924,14 @@ backlog:
     source_title: "Quest Report: Game Developer Level 0111"
     fingerprint: f69971b74bfb
 
+  - id: DOC-022
+    kind: doc
+    title: "The notebook the robot won't commit: the retrospective loop's gitignored memory"
+    brief: "Deep-dive on scripts/retro/ + the SessionEnd hook: a capture step that records every finished thread and reads none of them, the gitignored queue vs the committed ledger, process_queue.rb's --list/--next/--mark, and the honest limitation — the transcript_path only resolves on the machine that made it, so the loop's front half can't run in CI. Ends at collect_merged.rb feeding the quest-forge proposal."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-notebook-the-robot-wont-commit/
   # Synthesized in-lane (post run): no todo post existed; reasoning is in the PR.
   - id: POST-022
     kind: post
