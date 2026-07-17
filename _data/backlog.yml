@@ -1885,3 +1885,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/16/the-feed-that-forgot-ninety-posts/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-034
+    kind: hack
+    title: "Your MCP server can't authenticate to Google: you downloaded the OAuth client, not the service-account key"
+    brief: "Wiring a Google Analytics MCP server, it fails auth every time — because the JSON you grabbed is a `client_secret_….apps.googleusercontent.com.json` OAuth web client, and a server-to-server tool needs a service-account key instead. Create the service account, download ITS key, and grant that account explicit Viewer access on the property. Two more footguns stay in: the numeric property ID is not the `G-XXXXXX` measurement tag, and the multi-line PEM private key crammed into one env var breaks unless its `\\n` newlines survive the shell — keep the key in a file, `chmod 600` it, and read it, don't paste it into your shell history."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/analytics-mcp-setup/
+    source_title: "Google Analytics MCP Integration for AI Agents"
+    fingerprint: abfe2f84b115
+  - id: SRC-035
+    kind: hack
+    title: "Resolve a git merge conflict without deleting someone's work: the markers, git merge --abort, and the ours/theirs that flips during a rebase"
+    brief: "When a merge stops on `CONFLICT`, read the three markers (`<<<<<<<` your side, `=======`, `>>>>>>>` theirs), edit down to the real answer, `git add` the file, then commit — or bail cleanly with `git merge --abort` while nothing's staged. Two failures stay in: 'resolving' by keeping only your half silently deletes a coworker's change that belonged in the same block, and `--ours`/`--theirs` mean the opposite during a rebase (HEAD is their branch while your commits replay on top), so the shortcut that saved the right side in a merge throws it away in a rebase. Reproducible end to end in a throwaway repo."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/git-workflow-mastery/
+    source_title: "Git Workflow Mastery: Branches, Merging & Team Collaboration"
+    fingerprint: 054c47f5d996
+  - id: SRC-036
+    kind: hack
+    title: "Nested code fences: show a code block that contains triple backticks without collapsing half your page"
+    brief: "When your Markdown example is itself a fenced block — a README snippet, a workflow YAML with a heredoc — the inner triple backtick closes the outer one early and the rest of the page renders as broken prose. The fix is to make the OUTER fence longer: wrap the whole thing in four backticks (or a `~~~` tilde fence) and the three-backtick block inside is now plain text. The failure that stays in: mismatched fence lengths swallow everything after them silently, so a doc looks fine in your editor and detonates once the site's Markdown renderer runs. Verify by rendering, not by eyeballing."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-13-game-developer-0111/
+    source_title: "Quest Report: Game Developer Level 0111"
+    fingerprint: f69971b74bfb
