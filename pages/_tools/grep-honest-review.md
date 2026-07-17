@@ -91,8 +91,8 @@ Our [ripgrep review](/tools/ripgrep-honest-review/) warns you that `rg`-only fla
 The big one is `-P`, Perl-Compatible Regular Expressions — lookahead, `\d`, non-greedy, the works:
 
 ```bash
-$ grep -P 'foo(?=bar)' <<< 'foobar foobaz'
-foobar        # matched "foo" only where "bar" follows
+$ grep -oP 'foo(?=bar)' <<< 'foobar foobaz'
+foo           # matched the "foo" that "bar" follows; the one in "foobaz" is skipped
 ```
 
 `-P` is a GNU extension. **BSD grep on macOS doesn't have it.** A script that leans on `grep -P` (or `\d`, or GNU's `--exclude-dir` spelling, or GNU-flavored `\|` alternation in BRE) will work beautifully on your Linux CI and then explode the first time a colleague runs it on their laptop. If a shell script has to run on machines you don't control, stay inside POSIX: basic patterns, `-E` for extended, and no `-P`. Test it on both if you can.
