@@ -7,9 +7,11 @@
 # It NEVER merges and NEVER closes a human's issue.
 #
 # FOUR THINGS KEEP THIS SAFE (same posture as the other autonomy loops):
-#   1. The daily cron is ON (colophon, 2026-07-01) but scheduled runs idle
-#      unless EXPLORER_ENABLED == "true" — the repo variable is the consent,
-#      and the bot token cannot set it (no administration scope).
+#   1. The daily cron is COMMENTED OUT until EXPLORER_ENABLED is set — every
+#      scheduled run was a gate-only no-op while the variable was unset. Set
+#      the repo variable AND restore the cron below to arm the loop; the repo
+#      variable is the consent, and the bot token cannot set it (no
+#      administration scope).
 #   2. A `gate` job requires BOTH EXPLORER_ENABLED == "true" (a repo variable kill
 #      switch) AND the API key present. With the switch off, the job idles.
 #   3. Manual runs keep `apply` defaulting to false (dry-run unless a human
@@ -45,8 +47,11 @@ on:
         description: "Max NEW issues to file this run"
         type: string
         default: "8"
-  schedule:
-    - cron: '23 6 * * *'            # 06:23 UTC daily, offset from the content factory
+  # Cron disabled 2026-07-16: EXPLORER_ENABLED was unset, so all 12 recent
+  # scheduled runs were 0.1-min gate-only no-ops (100% no-op rate). Restore this
+  # block when you set the EXPLORER_ENABLED repo variable to true.
+  # schedule:
+  #   - cron: '23 6 * * *'            # 06:23 UTC daily, offset from the content factory
 
 permissions:
   contents: write

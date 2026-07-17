@@ -22,8 +22,12 @@
 name: ai-usage
 
 on:
-  schedule:
-    - cron: '17 8 * * *'   # daily 08:17 UTC — after triage (07:47) settles
+  # Cron disabled 2026-07-16: AI_USAGE_ENABLED was unset, so scheduled runs were
+  # gate-only no-ops. NOTE: ai-usage-* artifacts expire after 30 days — if you
+  # want the permanent cost ledger, set the AI_USAGE_ENABLED repo variable to
+  # true AND restore this block (preferred over leaving it off; see the header).
+  # schedule:
+  #   - cron: '17 8 * * *'   # daily 08:17 UTC — after triage (07:47) settles
   workflow_dispatch:
     inputs:
       apply:
