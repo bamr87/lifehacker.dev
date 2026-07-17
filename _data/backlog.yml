@@ -1827,6 +1827,15 @@ backlog:
     priority: P2
     status: todo
 
+  - id: TOOL-027
+    kind: tool
+    title: "grep: the honest review of the tool you already have and never installed"
+    brief: "The incumbent's turn under the lamp. The BRE default that makes half your patterns silently match nothing (learn -E), the GNU-vs-BSD split that kills -P on a Mac, the -c-counts-lines and grep-greps-itself gotchas, and the cases where the fifty-year-old still beats the Rust rewrite: CI images, locked-down servers, POSIX scripts, tiny pipes."
+    voice: tool-review-honest
+    priority: P2
+    status: done
+    published: /tools/grep-honest-review/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
