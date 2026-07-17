@@ -1095,7 +1095,8 @@ backlog:
     brief: "The default GITHUB_TOKEN hands a workflow broad write access to your whole repo, so one compromised action can push to main. Add a top-level `permissions:` block set to `contents: read`, then grant each job only the scope it truly needs. The footgun that stays in: the moment you declare that block, every scope you didn't list drops to no-access, so the job that pushes a tag or cuts a release starts failing with a 403 until you add `contents: write` back exactly where it belongs."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/scope-github-actions-token-permissions/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/agentic-codex-06-guardrails-and-accountability/
     source_title: "The Warden Pact: Guardrails & Accountability"
