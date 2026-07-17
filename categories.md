@@ -10,9 +10,7 @@ sidebar:
 
 # Categories
 
-Hand-authored, like the [sitemap](/sitemap/) and search index — GitHub Pages
-won't run the archive-generating plugin, so this page lists posts by category
-with Liquid the safe-mode build can render.
+Hand-authored, like the [sitemap](/sitemap/) and search index — GitHub Pages won't run the archive-generating plugin, so this page lists posts by category with Liquid the safe-mode build can render.
 
 {% assign cats = site.categories | sort %}
 {% for cat in cats %}

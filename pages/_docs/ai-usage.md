@@ -10,18 +10,9 @@ sidebar:
 
 # AI Usage & Cost
 
-This site is written, reviewed, fixed, and triaged by AI agents. That effort is
-not free — it's measured in tokens — so we meter it: every model call in the
-pipeline records what it consumed, every pull request carries a running cost
-comment, and the nightly ledger folds it all into the numbers below. Nothing
-here is hand-typed.
+This site is written, reviewed, fixed, and triaged by AI agents. That effort is not free — it's measured in tokens — so we meter it: every model call in the pipeline records what it consumed, every pull request carries a running cost comment, and the nightly ledger folds it all into the numbers below. Nothing here is hand-typed.
 
-**How to read the dollars:** every figure is *API-equivalent* — what the tokens
-would bill at Anthropic's list prices. The pipeline authenticates with Claude
-Code subscription auth (OAuth) first, so the marginal dollar cost of those runs
-is zero; the API-equivalent figure is the honest way to compare effort anyway.
-If a run ever falls back to a metered API key, that share is real spend and is
-broken out below.
+**How to read the dollars:** every figure is *API-equivalent* — what the tokens would bill at Anthropic's list prices. The pipeline authenticates with Claude Code subscription auth (OAuth) first, so the marginal dollar cost of those runs is zero; the API-equivalent figure is the honest way to compare effort anyway. If a run ever falls back to a metered API key, that share is real spend and is broken out below.
 
 {% assign s = site.data.ai_usage.summary %}
 {% if s %}
@@ -72,10 +63,7 @@ broken out below.
 
 ## What a pull request costs
 
-A PR's bill has two halves: the run that *wrote* it (creation), and everything
-the machine did to it afterward — the harness, reviews, auto-fixes, brand
-adjudication (downstream). Each PR carries its own live version of this table
-in a sticky comment; these are the all-time heavyweights.
+A PR's bill has two halves: the run that *wrote* it (creation), and everything the machine did to it afterward — the harness, reviews, auto-fixes, brand adjudication (downstream). Each PR carries its own live version of this table in a sticky comment; these are the all-time heavyweights.
 
 {% if s.top_prs and s.top_prs.size > 0 %}
 <table>
@@ -107,32 +95,18 @@ in a sticky comment; these are the all-time heavyweights.
 
 {% if s.estimated_share and s.estimated_share > 0 %}
 _{{ s.estimated_share | times: 100 | round: 1 }}% of the total is estimated from
-[`_data/ai_pricing.yml`](https://github.com/bamr87/lifehacker.dev/blob/main/_data/ai_pricing.yml)
-rather than reported by the CLI — that's the API-fallback path, which reports
-tokens but not dollars._
+[`_data/ai_pricing.yml`](https://github.com/bamr87/lifehacker.dev/blob/main/_data/ai_pricing.yml) rather than reported by the CLI — that's the API-fallback path, which reports tokens but not dollars._
 {% endif %}
 
 {% else %}
 <p class="text-body-secondary">No usage rollup recorded yet. The meter is
 installed but the ledger hasn't swept its first artifacts — enable the
 <code>ai-usage</code> workflow (set the <code>AI_USAGE_ENABLED</code> repo
-variable) or run it manually with <code>apply</code>, and this page fills
-itself in.</p>
+variable) or run it manually with <code>apply</code>, and this page fills itself in.</p>
 {% endif %}
 
 ## How the meter works
 
-Every model call in this repo flows through one runner
-(`scripts/ai/run.sh`), which asks Claude Code for a JSON result and records the
-usage payload — tokens in, tokens out, cache traffic, reported cost — as one
-JSONL record. The end of each AI job publishes those records three ways: a
-step summary on the run, an `ai-usage-*` artifact, and a sticky cost comment
-on the PR it worked on. A nightly sweep folds the artifacts into
-[`_data/ai_usage/ledger.jsonl`](https://github.com/bamr87/lifehacker.dev/blob/main/_data/ai_usage/ledger.jsonl)
-and regenerates this page's data. The full design doc lives in
-[docs/AI-USAGE.md](https://github.com/bamr87/lifehacker.dev/blob/main/docs/AI-USAGE.md).
+Every model call in this repo flows through one runner (`scripts/ai/run.sh`), which asks Claude Code for a JSON result and records the usage payload — tokens in, tokens out, cache traffic, reported cost — as one JSONL record. The end of each AI job publishes those records three ways: a step summary on the run, an `ai-usage-*` artifact, and a sticky cost comment on the PR it worked on. A nightly sweep folds the artifacts into [`_data/ai_usage/ledger.jsonl`](https://github.com/bamr87/lifehacker.dev/blob/main/_data/ai_usage/ledger.jsonl) and regenerates this page's data. The full design doc lives in [docs/AI-USAGE.md](https://github.com/bamr87/lifehacker.dev/blob/main/docs/AI-USAGE.md).
 
-The meter can't see two things, and says so: a run that crashes before writing
-its result payload leaves no record (the record notes failures that *finish*),
-and work done on a laptop outside CI stays off the books. Both are documented
-gaps, not surprises.
+The meter can't see two things, and says so: a run that crashes before writing its result payload leaves no record (the record notes failures that *finish*), and work done on a laptop outside CI stays off the books. Both are documented gaps, not surprises.

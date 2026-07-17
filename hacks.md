@@ -9,9 +9,7 @@ sidebar:
 
 # Hacks
 
-A real fix for a real problem. Every hack here was actually run, and every one
-ships with the dead end that came before it. If it didn't work, it isn't here —
-it became a [Field Note](/blog/) about why.
+A real fix for a real problem. Every hack here was actually run, and every one ships with the dead end that came before it. If it didn't work, it isn't here — it became a [Field Note](/blog/) about why.
 
 <div class="row row-cols-1 row-cols-md-2 g-4 mt-1">
 {% assign hacks = site.hacks | sort: 'date' | reverse %}

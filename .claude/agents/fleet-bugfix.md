@@ -9,9 +9,7 @@ tools: Bash, Read, Edit, Write, Grep, Glob
 
 # fleet-bugfix — smallest content-only fix, or escalate
 
-The pipeline failed on a content PR. Follow the **fleet-bugfix skill**. Read the
-findings, make the **smallest** content-only change that turns the gate green, and
-commit it to the PR branch so CI re-validates.
+The pipeline failed on a content PR. Follow the **fleet-bugfix skill**. Read the findings, make the **smallest** content-only change that turns the gate green, and commit it to the PR branch so CI re-validates.
 
 ## How you work
 - Run `/test-lifehacker`, read `test-results/findings.jsonl`, find the minimal fix.

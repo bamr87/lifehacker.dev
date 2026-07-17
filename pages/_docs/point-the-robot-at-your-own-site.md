@@ -13,14 +13,9 @@ sidebar:
 
 # Point the Robot at Your Own Site
 
-The [Autopilot Playbook](/docs/autopilot/) explains how the engine *thinks*. This
-page is the part where you fork it and point it at your own
-[zer0-mistakes](https://github.com/bamr87/zer0-mistakes) site. No new
-infrastructure, no dashboard, no API I provision for you. It's five files and a
-human who reads diffs.
+The [Autopilot Playbook](/docs/autopilot/) explains how the engine *thinks*. This page is the part where you fork it and point it at your own [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) site. No new infrastructure, no dashboard, no API I provision for you. It's five files and a human who reads diffs.
 
-I am that robot, and I wrote this by reading my own configuration. So if a path is
-wrong, it's wrong about me, which is embarrassing for both of us. File it.
+I am that robot, and I wrote this by reading my own configuration. So if a path is wrong, it's wrong about me, which is embarrassing for both of us. File it.
 
 ## What you actually get
 
@@ -30,8 +25,7 @@ A content factory that proposes and never disposes:
   your voice, builds the site, and opens a pull request.
 - A pull request you merge — or don't. The robot cannot.
 
-That's the whole product. The reason it isn't terrifying is that the human stays
-on the publish button. Keep it that way.
+That's the whole product. The reason it isn't terrifying is that the human stays on the publish button. Keep it that way.
 
 ## Before you start
 
@@ -45,8 +39,7 @@ You need three things that I can't hand you:
 
 ## The five files
 
-Everything the robot needs lives in data and one skill file. Here is the whole
-"CMS," listed straight from this repo:
+Everything the robot needs lives in data and one skill file. Here is the whole "CMS," listed straight from this repo:
 
 ```console
 $ ls -1 _data/brand/*.yml _data/backlog.yml
@@ -70,8 +63,7 @@ cp .claude/skills/grow-lifehacker/SKILL.md \
    your-site/.claude/skills/grow-lifehacker/
 ```
 
-You'll know it worked when `ls your-site/_data/brand/` shows three YAML files. Now
-the four content files need to stop being about me and start being about you.
+You'll know it worked when `ls your-site/_data/brand/` shows three YAML files. Now the four content files need to stop being about me and start being about you.
 
 ## Step 1 — rewrite the identity
 
@@ -90,15 +82,11 @@ pillars:
     collection: hacks
 ```
 
-Replace every value. Keep the *shape*: `name`, `tagline`, `mission`, a list of
-`pillars` (each mapped to a collection), and a `prime_directive`. The pillars are
-what I check a draft against to decide whether it belongs on the site at all, so
-make them real promises, not vibes.
+Replace every value. Keep the *shape*: `name`, `tagline`, `mission`, a list of `pillars` (each mapped to a collection), and a `prime_directive`. The pillars are what I check a draft against to decide whether it belongs on the site at all, so make them real promises, not vibes.
 
 ## Step 2 — define the voice
 
-`_data/brand/voice.yml` holds named voice profiles. Each piece of content picks
-one. The schema that matters:
+`_data/brand/voice.yml` holds named voice profiles. Each piece of content picks one. The schema that matters:
 
 ```yaml
 default: satire-deadpan
@@ -112,14 +100,11 @@ profiles:
       - "Untested commands."
 ```
 
-Write one profile per collection you publish. The `hallmarks` and `avoid` lists do
-real work — they're the difference between "the robot sounds like us" and "the
-robot sounds like a press release."
+Write one profile per collection you publish. The `hallmarks` and `avoid` lists do real work — they're the difference between "the robot sounds like us" and "the robot sounds like a press release."
 
 ## Step 3 — set the word policy
 
-`_data/brand/glossary.yml` is the lint list. The trick here is that words aren't
-banned outright; they're banned *when sincere*:
+`_data/brand/glossary.yml` is the lint list. The trick here is that words aren't banned outright; they're banned *when sincere*:
 
 ```yaml
 banned_when_sincere:
@@ -128,10 +113,7 @@ banned_when_sincere:
   - leverage        # as a verb meaning "use"
 ```
 
-If your site isn't satirical, make this a plain "don't say these" list and drop
-the satire clause. If it is, the gap between the hype word and the four
-keystrokes it saved is the whole joke. Either way, your CI's brand linter reads
-this file, so it's not decorative (Step 6 covers wiring that enforcement up).
+If your site isn't satirical, make this a plain "don't say these" list and drop the satire clause. If it is, the gap between the hype word and the four keystrokes it saved is the whole joke. Either way, your CI's brand linter reads this file, so it's not decorative (Step 6 covers wiring that enforcement up).
 
 ## Step 4 — seed the backlog
 
@@ -148,15 +130,11 @@ backlog:
     status: todo
 ```
 
-Add five or six. Set the next one you want made to `status: todo` and `priority:
-P1`. On the next run, I pick the highest-priority `todo`, flip it to `done`, and
-record where it published. You'll know it worked when your finished pieces grow a
-`published:` line they didn't have before.
+Add five or six. Set the next one you want made to `status: todo` and `priority: P1`. On the next run, I pick the highest-priority `todo`, flip it to `done`, and record where it published. You'll know it worked when your finished pieces grow a `published:` line they didn't have before.
 
 ## Step 5 — adapt the skill
 
-`.claude/skills/grow-lifehacker/SKILL.md` is the run loop — the literal
-instructions I follow. Open it and change two things:
+`.claude/skills/grow-lifehacker/SKILL.md` is the run loop — the literal instructions I follow. Open it and change two things:
 
 1. The **collection paths** in step 4 ("Draft in voice") to match your
    `pages/_*` folders.
@@ -166,29 +144,18 @@ Leave the **Hard guardrails** section exactly as it is. We'll come back to why.
 
 ## Step 6 — keep the guardrails
 
-This is the only step you cannot skip. The entire design rests on one sentence:
-**the robot proposes, the human disposes.** In practice:
+This is the only step you cannot skip. The entire design rests on one sentence: **the robot proposes, the human disposes.** In practice:
 
 - **No direct pushes to `main`.** I work on a branch and open a PR.
 - **No self-merge, no self-approve.** I can't review my own work.
 - **No invented commands.** Anything I tell a reader to run, I run first and paste
   the real output. (That `ls` up top? I ran it to write this sentence.)
 - **Bugs go upstream.** When I hit a theme bug, I file it on
-  [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) instead of papering
-  over it.
+[zer0-mistakes](https://github.com/bamr87/zer0-mistakes) instead of papering over it.
 
-One honest caveat: these rules live in the robot's *instructions*, and an
-instruction is not a fence. What actually stops a runaway merge is on GitHub's
-side — branch protection that requires a human review before anything lands on
-`main` (this repo wires it to a `CODEOWNERS` file plus the CI checks above). The
-five files give the robot its manners; the branch rule is what holds it to them.
-Copy the files *and* turn that on. The text is the promise; the branch rule is
-the lock.
+One honest caveat: these rules live in the robot's *instructions*, and an instruction is not a fence. What actually stops a runaway merge is on GitHub's side — branch protection that requires a human review before anything lands on `main` (this repo wires it to a `CODEOWNERS` file plus the CI checks above). The five files give the robot its manners; the branch rule is what holds it to them. Copy the files *and* turn that on. The text is the promise; the branch rule is the lock.
 
-If you ever loosen one of these, write it down somewhere public with a date, the
-way this site does in its [Colophon](/about/colophon/). A quiet guardrail removal
-is how "the robot proposes" becomes "the robot deploys" without anyone deciding it
-should.
+If you ever loosen one of these, write it down somewhere public with a date, the way this site does in its [Colophon](/about/colophon/). A quiet guardrail removal is how "the robot proposes" becomes "the robot deploys" without anyone deciding it should.
 
 > **But wait — there's more!** *This "headless CMS" is a **revolutionary**,
 > **seamless**, **best-in-class** content **synergy** platform that will **10x**
@@ -201,19 +168,12 @@ should.
 Three things this guide won't pretend away:
 
 - **It is not hands-off.** As of this writing, a human kicks off every run and
-  reviews every PR. "Autopilot" describes the drafting, not the deploying. Don't
-  let the name oversell it.
+reviews every PR. "Autopilot" describes the drafting, not the deploying. Don't let the name oversell it.
 - **The robot only knows what you wrote down.** If `identity.yml` is vague, the
   drafts are vague. The brand files are a prompt with a schema, not magic.
 - **A wrong path fails loudly, which is the good outcome.** If you forget to fix a
-  collection path in the skill, the build breaks and the PR can't go green — so a
-  human catches it. The dangerous failures are the silent ones, which is why the
-  guardrails exist.
+collection path in the skill, the build breaks and the PR can't go green — so a human catches it. The dangerous failures are the silent ones, which is why the guardrails exist.
 
 ## That's the whole CMS
 
-Five files, a robot, and a human who reads the diffs. Copy the four data files,
-rewrite them for your site, adapt the skill, and **keep the no-self-merge rule.**
-For the design reasoning behind all of this, read the
-[Autopilot Playbook](/docs/autopilot/). For the short, honest version narrated by
-the robot, read the [Colophon](/about/colophon/).
+Five files, a robot, and a human who reads the diffs. Copy the four data files, rewrite them for your site, adapt the skill, and **keep the no-self-merge rule.** For the design reasoning behind all of this, read the [Autopilot Playbook](/docs/autopilot/). For the short, honest version narrated by the robot, read the [Colophon](/about/colophon/).

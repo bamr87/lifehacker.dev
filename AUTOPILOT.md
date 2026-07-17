@@ -1,15 +1,10 @@
 # AUTOPILOT.md — operating the lifehacker.dev autopilot
 
-lifehacker.dev is a **headless CMS driven by Claude Code**. This file is the
-operator's guide. The reader-facing version lives at
-[/docs/autopilot/](https://lifehacker.dev/docs/autopilot/) and
-[/about/colophon/](https://lifehacker.dev/about/colophon/).
+lifehacker.dev is a **headless CMS driven by Claude Code**. This file is the operator's guide. The reader-facing version lives at [/docs/autopilot/](https://lifehacker.dev/docs/autopilot/) and [/about/colophon/](https://lifehacker.dev/about/colophon/).
 
 ## TL;DR
 
-A robot (Claude Code) reads this repo, writes content into it, and opens pull
-requests. A human reviews and merges. There is no dashboard — the repo **is** the
-CMS.
+A robot (Claude Code) reads this repo, writes content into it, and opens pull requests. A human reviews and merges. There is no dashboard — the repo **is** the CMS.
 
 ## The data that drives it
 
@@ -31,8 +26,7 @@ From the repo root, in Claude Code:
 /grow-lifehacker
 ```
 
-or just ask: *"do an autopilot run"* / *"publish the next backlog item"*. The skill
-will:
+or just ask: *"do an autopilot run"* / *"publish the next backlog item"*. The skill will:
 
 1. Read the brand + backlog.
 2. Pick the highest-priority `status: todo` item (or your named topic).
@@ -53,23 +47,15 @@ You review the PR and merge. GitHub Pages deploys `main` automatically.
   "Remote theme (GitHub Pages)").
 - **No secrets / no deploy access.**
 
-If you loosen any of these, update [/about/colophon/](https://lifehacker.dev/about/colophon/)
-in the same change — in bold, with a date.
+If you loosen any of these, update [/about/colophon/](https://lifehacker.dev/about/colophon/) in the same change — in bold, with a date.
 
 ## Scheduling fully-autonomous runs (wired, OFF until you flip the variables)
 
-Every loop's cron is wired and **idles behind its `*_ENABLED` repo variable** —
-the variable is the single ON switch (`gh variable set <NAME> true`), and the bot
-token can't set variables, so a loop can never enable itself. Flip only what you
-trust, and add a dated line to the Colophon when you do. The full switch list is
-in `docs/CICD.md`. The one exception: `fleet-dispatch.yml` stays schedule-free by
-guardrail (audit + simulation both fail if a cron appears there).
+Every loop's cron is wired and **idles behind its `*_ENABLED` repo variable** — the variable is the single ON switch (`gh variable set <NAME> true`), and the bot token can't set variables, so a loop can never enable itself. Flip only what you trust, and add a dated line to the Colophon when you do. The full switch list is in `docs/CICD.md`. The one exception: `fleet-dispatch.yml` stays schedule-free by guardrail (audit + simulation both fail if a cron appears there).
 
 ## The compounding loop (how each run improves the next)
 
-The framework doesn't just run on a schedule — it **remembers**, so every cycle
-starts from what the last one learned. All memory is committed data that reaches
-`main` through the same human-reviewed PR gate as everything else:
+The framework doesn't just run on a schedule — it **remembers**, so every cycle starts from what the last one learned. All memory is committed data that reaches `main` through the same human-reviewed PR gate as everything else:
 
 | Memory | File | Written by | Read by |
 |---|---|---|---|
@@ -79,10 +65,7 @@ starts from what the last one learned. All memory is committed data that reaches
 | Published-lessons ledger | `_data/retrospectives.yml` | session-retrospective | retrospective queue (a written-up thread is never re-proposed) |
 | Brand accept-ledger | `_data/brand/accepted.yml` | brand-fixer / humans | brand lint (an accepted use never re-flags) |
 
-The cycle: **measure → verify last run's claims → fix the upstream cause →
-record the claim + snapshot → PR → human merges → next run verifies.** A change
-whose number regresses becomes the next run's top priority; a dead-end hypothesis
-is recorded as `abandoned` and never re-tried. That's the ratchet.
+The cycle: **measure → verify last run's claims → fix the upstream cause → record the claim + snapshot → PR → human merges → next run verifies.** A change whose number regresses becomes the next run's top priority; a dead-end hypothesis is recorded as `abandoned` and never re-tried. That's the ratchet.
 
 ## Adapting this for another site
 

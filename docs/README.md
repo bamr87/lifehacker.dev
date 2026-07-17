@@ -276,8 +276,7 @@ gh api -X POST repos/bamr87/lifehacker.dev/pages \
 
 Scroll to **Settings → Pages → Custom domain**. Because `CNAME` is committed to the repo, GitHub auto-populates this field with `lifehacker.dev`. If for some reason it's blank, type `lifehacker.dev` and click **Save** — GitHub will write/refresh the `CNAME` file to match.
 
-![GitHub repo Settings → Pages showing Source "Deploy from a branch" (main / root), Custom domain "lifehacker.dev" with "DNS check successful", an active TLS certificate, and the "Enforce HTTPS" checkbox](images/github-pages-settings.png)
-*The Pages settings after everything is wired up: source on `main` at root, custom domain `lifehacker.dev`, a green "DNS check successful," and an active TLS certificate.*
+![GitHub repo Settings → Pages showing Source "Deploy from a branch" (main / root), Custom domain "lifehacker.dev" with "DNS check successful", an active TLS certificate, and the "Enforce HTTPS" checkbox](images/github-pages-settings.png) *The Pages settings after everything is wired up: source on `main` at root, custom domain `lifehacker.dev`, a green "DNS check successful," and an active TLS certificate.*
 
 ### What success looks like
 
@@ -325,8 +324,7 @@ To add each one, click **Add record** under Custom records and fill in the field
 
 Then **Save**, and repeat for the remaining records. (For the `A` records the value field is labeled "IPv4 address"; for `CNAME` it's "domain name.")
 
-![Squarespace DNS Settings showing the Custom records table for lifehacker.dev: four A records on @ pointing at 185.199.108–111.153, the TXT _github-pages-challenge-bamr87 verification record, a www CNAME to bamr87.github.io, and four AAAA records on @ pointing at 2606:50c0:8000–8003::153.](images/squarespace-dns-records.png)
-*The complete custom-records set for lifehacker.dev in Squarespace: the four apex `A` records, the GitHub verification `TXT` record, the `www` CNAME, and the four `AAAA` (IPv6) records.*
+![Squarespace DNS Settings showing the Custom records table for lifehacker.dev: four A records on @ pointing at 185.199.108–111.153, the TXT _github-pages-challenge-bamr87 verification record, a www CNAME to bamr87.github.io, and four AAAA records on @ pointing at 2606:50c0:8000–8003::153.](images/squarespace-dns-records.png) *The complete custom-records set for lifehacker.dev in Squarespace: the four apex `A` records, the GitHub verification `TXT` record, the `www` CNAME, and the four `AAAA` (IPv6) records.*
 
 > The four `AAAA`/IPv6 records are **optional** — the site resolves and gets HTTPS with just the `A` records and the `www` `CNAME` — but they're recommended so visitors on IPv6-only networks reach you directly.
 
@@ -376,8 +374,7 @@ The very first **pages build and deployment** run (run #1, ~39s, on commit `f588
 Liquid Exception: Liquid syntax error (line 56): Unknown tag 'include_cached' in /_layouts/root.html
 ```
 
-![Failed run #1 detail: build job Status Failure, 39s, commit f588ec7, "Annotations 1 error and 1 warning".](images/build-failure-detail.png)
-*The run #1 detail page — the failed "pages build and deployment" run, 39s, with one error annotation pointing at the Liquid exception.*
+![Failed run #1 detail: build job Status Failure, 39s, commit f588ec7, "Annotations 1 error and 1 warning".](images/build-failure-detail.png) *The run #1 detail page — the failed "pages build and deployment" run, 39s, with one error annotation pointing at the Liquid exception.*
 
 > **How to read the Actions build log.** Don't stop at the red X on the summary page. Click the failed run → open the build step that errored → scroll to the bottom. The actual cause is almost always the **last** `Liquid Exception` / `Error:` line before the job aborts. The "Annotations" box at the top of the run page surfaces the same error with the file and line (`/_layouts/root.html`, around line 56), which is the fastest way to see *what* broke and *where*. The exact line number and file may differ as the theme evolves — the diagnostic signal to trust is the phrase **`Unknown tag 'include_cached'`**, which `include_cached` appears in several theme layouts, so the same fix applies wherever it shows up.
 
@@ -419,8 +416,7 @@ git push
 
 The push kicks off run #2 automatically. This time it goes green (~41s):
 
-![Actions tab for bamr87/lifehacker.dev: run #2 succeeded (green check, 41s) above run #1 failed (red x, 39s), both on main.](images/actions-build-history.png)
-*The Actions history tells the whole story: run #1 failed (red X, 39s), then run #2 — with the one-line config fix — succeeded (green check, 41s), both on `main`.*
+![Actions tab for bamr87/lifehacker.dev: run #2 succeeded (green check, 41s) above run #1 failed (red x, 39s), both on main.](images/actions-build-history.png) *The Actions history tells the whole story: run #1 failed (red X, 39s), then run #2 — with the one-line config fix — succeeded (green check, 41s), both on `main`.*
 
 **What success looks like:** the most recent **pages build and deployment** run on `main` shows a green check. With a passing build, GitHub Pages publishes the output and you can move on to verifying DNS and the live site.
 
@@ -526,8 +522,7 @@ With the box checked, GitHub redirects any `http://` request to `https://` for y
 
 Open `https://lifehacker.dev` in a browser. You should see the zer0-mistakes welcome layout rendering over HTTPS:
 
-![Live lifehacker.dev home page served over HTTPS, rendered by the zer0-mistakes remote theme welcome layout, with the heading "Welcome — your site is live!", a setup wizard, and a "© 2026 Lifehacker.dev" footer](images/site-live.png)
-*lifehacker.dev live on GitHub Pages: custom apex domain, free auto-issued TLS, remote theme — no servers, no build pipeline of your own.*
+![Live lifehacker.dev home page served over HTTPS, rendered by the zer0-mistakes remote theme welcome layout, with the heading "Welcome — your site is live!", a setup wizard, and a "© 2026 Lifehacker.dev" footer](images/site-live.png) *lifehacker.dev live on GitHub Pages: custom apex domain, free auto-issued TLS, remote theme — no servers, no build pipeline of your own.*
 
 That welcome/onboarding screen is the theme's default until you set `site_configured: true` in `_config.yml` (see *Going further*). The barebones navigation is also expected until you add your own `_data/navigation.yml`. Your custom-domain, HTTPS-secured Jekyll site is now fully deployed.
 

@@ -10,8 +10,7 @@ sidebar:
 
 # Sitemap
 
-Every page on the site. (The machine-readable version for search engines lives
-at [/sitemap.xml](/sitemap.xml).)
+Every page on the site. (The machine-readable version for search engines lives at [/sitemap.xml](/sitemap.xml).)
 
 ## Hacks
 <ul>

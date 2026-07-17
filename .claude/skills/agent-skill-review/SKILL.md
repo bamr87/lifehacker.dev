@@ -5,16 +5,12 @@ description: The routine for reviewing + evaluating the repo's agents and skills
 
 # agent-skill-review
 
-The automation runs on a set of **agents** (`.claude/agents/<name>.md` — the
-persona, tools, hard rules) that delegate to **skills**
-(`.claude/skills/<name>/SKILL.md` — the procedure). This routine keeps that set
-sharp. Run it periodically (the `agent-review` workflow) or on demand.
+The automation runs on a set of **agents** (`.claude/agents/<name>.md` — the persona, tools, hard rules) that delegate to **skills** (`.claude/skills/<name>/SKILL.md` — the procedure). This routine keeps that set sharp. Run it periodically (the `agent-review` workflow) or on demand.
 
 ## 1. Inventory + structural check
 - List `.claude/agents/*.md` and `.claude/skills/*/SKILL.md`.
 - Run `ruby scripts/ci/lint_agents.rb` — fix any structural finding (missing
-  frontmatter, name≠filename, a workflow `agent:` ref with no agent, a skill dir
-  with no SKILL.md).
+frontmatter, name≠filename, a workflow `agent:` ref with no agent, a skill dir with no SKILL.md).
 - Map each agent to (a) the skill it delegates to and (b) the workflow(s) that
   invoke it (`grep -rn 'agent:' .github/workflows`).
 
@@ -24,8 +20,7 @@ For every agent + its skill, ask:
 - **Hard rules correct + present?** never merge; content-only / upstream-only as
   appropriate; the honesty rule (no fabricated results); never close a human's issue.
 - **Least-privilege tools?** The agent's `tools` (and the workflow's `--tools`
-  allow-list) grant no more than the role needs. Flag anything that could merge,
-  approve, or touch infra it shouldn't.
+allow-list) grant no more than the role needs. Flag anything that could merge, approve, or touch infra it shouldn't.
 - **Current?** The skill's steps match the workflows/scripts as they exist now — no
   stale path, flag, or instruction.
 - **Drift?** The invoking workflow's prompt doesn't contradict the agent/skill.

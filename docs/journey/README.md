@@ -7,11 +7,7 @@
 
 ## Where we started
 
-A bare [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) remote-theme
-starter: `_config.yml`, `Gemfile`, `index.md`, `CNAME`, `.gitignore`, plus the
-setup tutorial in [`docs/README.md`](../README.md). The home page rendered the
-theme's onboarding wizard because `site_configured` was `false` and the site had
-no `_data/` of its own.
+A bare [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) remote-theme starter: `_config.yml`, `Gemfile`, `index.md`, `CNAME`, `.gitignore`, plus the setup tutorial in [`docs/README.md`](../README.md). The home page rendered the theme's onboarding wizard because `site_configured` was `false` and the site had no `_data/` of its own.
 
 ![Before — the welcome wizard](screenshots/00-before-welcome-wizard.png)
 
@@ -38,19 +34,14 @@ no `_data/` of its own.
 
 ## Mistakes filed upstream
 
-Per the prime directive — when the theme breaks, file it, don't paper over it —
-building this site surfaced three genuine, distinct issues on
-[zer0-mistakes](https://github.com/bamr87/zer0-mistakes):
+Per the prime directive — when the theme breaks, file it, don't paper over it — building this site surfaced three genuine, distinct issues on [zer0-mistakes](https://github.com/bamr87/zer0-mistakes):
 
 - [#201](https://github.com/bamr87/zer0-mistakes/issues/201) — `fix:` giscus
-  comments silently disabled because `_config.yml` uses the misspelled key
-  `gisgus:` while every template reads `site.giscus`.
+comments silently disabled because `_config.yml` uses the misspelled key `gisgus:` while every template reads `site.giscus`.
 - [#202](https://github.com/bamr87/zer0-mistakes/issues/202) — `fix:`
-  remote-theme Pages consumers 404 on `/search.json` and `/sitemap/` (the
-  generator is a plugin Pages won't run, and the stubs aren't delivered).
+remote-theme Pages consumers 404 on `/search.json` and `/sitemap/` (the generator is a plugin Pages won't run, and the stubs aren't delivered).
 - [#203](https://github.com/bamr87/zer0-mistakes/issues/203) — `feat(docs):` add
-  a single "remote-theme Pages consumer checklist" enumerating everything
-  `remote_theme` doesn't deliver. lifehacker.dev is the worked reference.
+a single "remote-theme Pages consumer checklist" enumerating everything `remote_theme` doesn't deliver. lifehacker.dev is the worked reference.
 
 ## How to reproduce the preview
 
@@ -58,5 +49,4 @@ building this site surfaced three genuine, distinct issues on
 scripts/preview.sh        # overlay onto a theme clone + docker compose up → http://localhost:4000
 ```
 
-The build is clean (feed + sitemap generate; the only console note is a harmless
-"pagination skipped" because there's no paginated index — by design).
+The build is clean (feed + sitemap generate; the only console note is a harmless "pagination skipped" because there's no paginated index — by design).

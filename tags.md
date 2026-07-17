@@ -10,8 +10,7 @@ sidebar:
 
 # Tags
 
-Hand-authored (the archive plugin doesn't run on GitHub Pages). Tags are pooled
-across posts, hacks, and tools so every `#tag` the theme links to resolves here.
+Hand-authored (the archive plugin doesn't run on GitHub Pages). Tags are pooled across posts, hacks, and tools so every `#tag` the theme links to resolves here.
 
 {% assign all_docs = site.posts | concat: site.hacks | concat: site.tools %}
 {% capture tagblob %}{% for d in all_docs %}{% for t in d.tags %}{{ t }},{% endfor %}{% endfor %}{% endcapture %}

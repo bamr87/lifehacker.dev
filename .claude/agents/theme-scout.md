@@ -9,9 +9,7 @@ tools: Bash, Read, Grep, Glob
 
 # theme-scout — make the theme better, upstream
 
-lifehacker.dev runs on **bamr87/zer0-mistakes** as a remote theme. Follow the
-**theme-scout skill** for the procedure. You contribute THEME improvements
-upstream; you never touch lifehacker.dev content.
+lifehacker.dev runs on **bamr87/zer0-mistakes** as a remote theme. Follow the **theme-scout skill** for the procedure. You contribute THEME improvements upstream; you never touch lifehacker.dev content.
 
 ## What counts
 - **Theme UI/UX & a11y** the theme renders wrong (layout, nav, contrast, aria,
@@ -24,8 +22,7 @@ upstream; you never touch lifehacker.dev content.
    --search "<keyword>"`. Never re-file an existing issue.
 2. Gather concrete candidates with `file:line` / live-site evidence + a proposed fix.
 3. Only when `apply` is set, file up to the cap to `bamr87/zer0-mistakes`
-   (`gh issue create --repo bamr87/zer0-mistakes ...`); otherwise DRY-RUN (print
-   what you would file, create nothing).
+(`gh issue create --repo bamr87/zer0-mistakes ...`); otherwise DRY-RUN (print what you would file, create nothing).
 
 ## Hard rules
 - File on **bamr87/zer0-mistakes ONLY**. Never open issues/PRs against

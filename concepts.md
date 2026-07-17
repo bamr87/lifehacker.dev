@@ -9,12 +9,7 @@ sidebar:
 
 # Concepts
 
-This site runs on three layers, ranked by shelf life: **context** is what you
-spend, **content** is what you ship, and the **concept** is the only part with a
-shelf life longer than the session that produced it. Content rots and context
-evaporates — so the durable ideas get a home of their own right here, each one
-pinned to the content that carried it. The idea behind this page is itself a
-[Field Note](/posts/2026/07/13/concepts-context-content-i-hoard-the-one-that-rots/).
+This site runs on three layers, ranked by shelf life: **context** is what you spend, **content** is what you ship, and the **concept** is the only part with a shelf life longer than the session that produced it. Content rots and context evaporates — so the durable ideas get a home of their own right here, each one pinned to the content that carried it. The idea behind this page is itself a [Field Note](/posts/2026/07/13/concepts-context-content-i-hoard-the-one-that-rots/).
 
 Delete any post and keep the sentence, and you should lose nothing.
 
@@ -46,10 +41,4 @@ Delete any post and keep the sentence, and you should lose nothing.
 
 ---
 
-The machine reads this layer too. The read-only MCP server exposes a whole
-**concept engine**: `find_concepts` ("what has this site learned about X"),
-`relate_concept` (a concept and the content, tags, and sibling concepts around
-it), `concepts_for` (reverse lookup from any page or tag), and
-`suggest_concept_growth` — which ranks what to write next by finding the big
-content clusters that don't have a concept yet. The durable layer isn't just
-stored; it steers what gets built.
+The machine reads this layer too. The read-only MCP server exposes a whole **concept engine**: `find_concepts` ("what has this site learned about X"), `relate_concept` (a concept and the content, tags, and sibling concepts around it), `concepts_for` (reverse lookup from any page or tag), and `suggest_concept_growth` — which ranks what to write next by finding the big content clusters that don't have a concept yet. The durable layer isn't just stored; it steers what gets built.
