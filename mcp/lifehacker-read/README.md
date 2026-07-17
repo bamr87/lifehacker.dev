@@ -1,16 +1,8 @@
 # lifehacker-read
 
-The **P0 read-only MCP server** for lifehacker.dev — the site exposed as a
-navigable, queryable resource tree over the [Model Context Protocol](https://modelcontextprotocol.io).
-Point any MCP client (Claude Desktop, an IDE, another agent) at it and
-**review / explore / query / analyze** the site with near-zero blast radius.
+The **P0 read-only MCP server** for lifehacker.dev — the site exposed as a navigable, queryable resource tree over the [Model Context Protocol](https://modelcontextprotocol.io). Point any MCP client (Claude Desktop, an IDE, another agent) at it and **review / explore / query / analyze** the site with near-zero blast radius.
 
-This is Phase 0 of the design in
-[`docs/proposals/mcp-integration.md`](../../docs/proposals/mcp-integration.md).
-It is deliberately the *safe* half: **no secrets, no network, no `gh`, no Docker,
-and no writes.** It reads a local checkout (git is the database). The mutation
-and fleet-control tools live on a separate, opt-in `lifehacker-act` server that
-does not exist yet.
+This is Phase 0 of the design in [`docs/proposals/mcp-integration.md`](../../docs/proposals/mcp-integration.md). It is deliberately the *safe* half: **no secrets, no network, no `gh`, no Docker, and no writes.** It reads a local checkout (git is the database). The mutation and fleet-control tools live on a separate, opt-in `lifehacker-act` server that does not exist yet.
 
 ## What it exposes
 
@@ -45,8 +37,7 @@ does not exist yet.
 | `check_word` | Classify a word against the glossary (banned-when-sincere / avoid / ok) |
 | `resolve_voice_profile` | The voice profile the autopilot would use for a collection |
 
-**Guardrails by absence:** there is no `create`/`update`/`propose`/`merge`/…
-verb in this server at all — a property the smoke test asserts.
+**Guardrails by absence:** there is no `create`/`update`/`propose`/`merge`/… verb in this server at all — a property the smoke test asserts.
 
 ## Run it
 
@@ -61,8 +52,7 @@ npm run smoke     # end-to-end: launches the server, exercises the real repo, as
 
 ## Wire it into an MCP client
 
-`LH_REPO_ROOT` defaults to the repo this package lives in; set it explicitly to
-point at any checkout.
+`LH_REPO_ROOT` defaults to the repo this package lives in; set it explicitly to point at any checkout.
 
 ```jsonc
 // Claude Desktop: claude_desktop_config.json
@@ -94,7 +84,4 @@ src/
 
 ## What's intentionally NOT here
 
-Verification (needs Docker), any mutation, and fleet control — those belong on
-the opt-in `lifehacker-act` server (Phases P2–P5 of the plan), where the token
-scopes, the `gh` allowlist wrapper, and the guardrail-integrity CI gate live.
-Keeping them out is the point: this server is safe to host and hand out.
+Verification (needs Docker), any mutation, and fleet control — those belong on the opt-in `lifehacker-act` server (Phases P2–P5 of the plan), where the token scopes, the `gh` allowlist wrapper, and the guardrail-integrity CI gate live. Keeping them out is the point: this server is safe to host and hand out.

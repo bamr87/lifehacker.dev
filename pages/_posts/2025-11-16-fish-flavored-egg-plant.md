@@ -48,17 +48,13 @@ Two things I want to flag here, in the spirit of leaving the failures in: I did 
 
 A build log runs top to bottom. So does this.
 
-**Cut and salt the eggplant.**
-Cut the eggplant into batons, about 1 inch (2cm) thick and 4 inches (7cm) long. Sprinkle with the salt, mix well, and set aside for at least 30 minutes. Rinse, drain well, and pat dry with paper towels. The salt pulls water out so the eggplant fries instead of stewing — this is the step everyone wants to skip, and skipping it is where soggy eggplant comes from.
+**Cut and salt the eggplant.** Cut the eggplant into batons, about 1 inch (2cm) thick and 4 inches (7cm) long. Sprinkle with the salt, mix well, and set aside for at least 30 minutes. Rinse, drain well, and pat dry with paper towels. The salt pulls water out so the eggplant fries instead of stewing — this is the step everyone wants to skip, and skipping it is where soggy eggplant comes from.
 
-**Fry the eggplant.**
-Heat the deep-frying oil to around 390°F (200°C) — hot enough to sizzle vigorously around a test piece. Add the eggplant in two or three batches and deep-fry about 3 minutes each, until tender and a little golden. Drain on paper towels and set aside. (Frying in batches keeps the oil temperature up; dumping it all in at once drops the heat and you're back to stewing.)
+**Fry the eggplant.** Heat the deep-frying oil to around 390°F (200°C) — hot enough to sizzle vigorously around a test piece. Add the eggplant in two or three batches and deep-fry about 3 minutes each, until tender and a little golden. Drain on paper towels and set aside. (Frying in batches keeps the oil temperature up; dumping it all in at once drops the heat and you're back to stewing.)
 
-**Stir-fry the chile base.**
-Carefully pour off all but 3 tbsp of oil and return the wok to medium heat. Add the chile bean paste and stir-fry until the oil turns red and fragrant — take care not to burn it; pull the wok off the burner if it's overheating. Add the garlic and ginger and stir-fry until they smell delicious. Add the stock (or water), sugar, and soy sauce.
+**Stir-fry the chile base.** Carefully pour off all but 3 tbsp of oil and return the wok to medium heat. Add the chile bean paste and stir-fry until the oil turns red and fragrant — take care not to burn it; pull the wok off the burner if it's overheating. Add the garlic and ginger and stir-fry until they smell delicious. Add the stock (or water), sugar, and soy sauce.
 
-**Bring it together.**
-Bring to a boil, then add the fried eggplant, nudging the batons gently into the sauce so they don't break apart. Simmer a minute or so to let the eggplant absorb the flavor. Stir the potato starch slurry and add it gradually, in about three stages, until the sauce thickens. Add the Chinkiang vinegar and most of the scallion greens, and stir.
+**Bring it together.** Bring to a boil, then add the fried eggplant, nudging the batons gently into the sauce so they don't break apart. Simmer a minute or so to let the eggplant absorb the flavor. Stir the potato starch slurry and add it gradually, in about three stages, until the sauce thickens. Add the Chinkiang vinegar and most of the scallion greens, and stir.
 
 Scatter the reserved scallion greens over the top and serve.
 

@@ -1,9 +1,6 @@
 # CI/CD — the tiered, continuous pipeline
 
-Every workflow lives in `.github/workflows/`. The design goal: **tiered**
-(fast feedback first), **automatic** (the contract is exercised across stages on
-every change), and **continuous** (PR → merge → live-site verification), with one
-human merge gate no agent can bypass.
+Every workflow lives in `.github/workflows/`. The design goal: **tiered** (fast feedback first), **automatic** (the contract is exercised across stages on every change), and **continuous** (PR → merge → live-site verification), with one human merge gate no agent can bypass.
 
 ## Workflows at a glance
 
@@ -21,8 +18,7 @@ human merge gate no agent can bypass.
 
 ## The tiered pipeline (`pipeline.yml`)
 
-One build, four tiers, each gating the next so feedback is fast and the build's
-artifact feeds everything downstream:
+One build, four tiers, each gating the next so feedback is fast and the build's artifact feeds everything downstream:
 
 ```
 TIER 1  fast         ── ruby scripts/devops/audit.rb   (pipeline wiring + guardrails)
@@ -46,24 +42,17 @@ After merge, `deploy-verify.yml` continues the flow against the live site.
 
 ### The required status check
 
-`verify` (the Tier-2 job in `pipeline.yml`) is the required check. Branch
-protection: require `verify` + 1 `CODEOWNERS` review, no self-approve, no
-force-push. The check name is held stable so protection never drifts. (See
-`docs/runbook-fleet.md` §2 for the `gh api` command.)
+`verify` (the Tier-2 job in `pipeline.yml`) is the required check. Branch protection: require `verify` + 1 `CODEOWNERS` review, no self-approve, no force-push. The check name is held stable so protection never drifts. (See `docs/runbook-fleet.md` §2 for the `gh api` command.)
 
 ## Contract & artifact flow
 
-The three layers are wired by **artifacts within one run**, not by whatever is
-committed:
+The three layers are wired by **artifacts within one run**, not by whatever is committed:
 
 1. Tier 2 runs the harness → `test-results/findings.jsonl` → uploaded as `contract`.
 2. Tier 3 downloads `contract`, runs `build_queue.rb` on the **fresh** findings →
    `queue.json` → renders the fleet plan into the Step Summary.
 
-`scripts/devops/audit.rb` enforces this wiring (it fails CI if a harness
-entrypoint can't produce the sev1 build finding, if the `verify` job is missing,
-or if `queue.json` drops a required field), so a producer/consumer field rename
-fails loudly instead of silently dropping data.
+`scripts/devops/audit.rb` enforces this wiring (it fails CI if a harness entrypoint can't produce the sev1 build finding, if the `verify` job is missing, or if `queue.json` drops a required field), so a producer/consumer field rename fails loudly instead of silently dropping data.
 
 ## Monitoring / reporting surfaces
 
@@ -81,8 +70,7 @@ fails loudly instead of silently dropping data.
 | `FLEET_TOKEN` (bot PAT) | upstream issue filing | The bot identity; scoped to contents/issues/PRs, **no** `administration`/`workflows`. |
 | `FLEET_ENABLED` (repo **variable**) | `fleet-dispatch.yml` | The kill switch — instant, no merge; the bot can't set it. |
 
-Workflows run on `pull_request` (not `pull_request_target`), so secrets are never
-exposed to fork PRs. No workflow grants `administration` or `workflows` scope.
+Workflows run on `pull_request` (not `pull_request_target`), so secrets are never exposed to fork PRs. No workflow grants `administration` or `workflows` scope.
 
 ## Throughput notes
 
@@ -91,14 +79,11 @@ exposed to fork PRs. No workflow grants `administration` or `workflows` scope.
 - `bundler-cache: true` + a date-keyed theme-clone cache; `concurrency:` groups on
   every workflow cancel superseded runs.
 - The DevOps audit reports remaining duplicate builds across distinct-trigger
-  workflows (currently 3: pipeline, triage, nightly) as *info* — they run at
-  different times for different purposes.
+workflows (currently 3: pipeline, triage, nightly) as *info* — they run at different times for different purposes.
 
 ## Change-type routing (efficiency)
 
-The pipeline runs only the tier each change needs. A `changes` job classifies the
-PR diff with `scripts/ci/classify_changes.rb` into `content` / `deps` / `pipeline`
-/ `data`, and the tiers gate on it:
+The pipeline runs only the tier each change needs. A `changes` job classifies the PR diff with `scripts/ci/classify_changes.rb` into `content` / `deps` / `pipeline` / `data`, and the tiers gate on it:
 
 | Change kind | Examples | Runs |
 |---|---|---|
@@ -107,14 +92,11 @@ PR diff with `scripts/ci/classify_changes.rb` into `content` / `deps` / `pipelin
 | **pipeline** | `scripts/**`, `.github/**`, `.claude/**` | `verify` + `fast` (audit + sim test the changed machinery) |
 | **data** | `_data/health|fleet|analytics`, `SITE_HEALTH.md` | `verify` only |
 
-`verify` (the required check) always runs so branch protection stays meaningful;
-`fast` is skipped for content-only PRs. An empty/unclassifiable diff fails safe to
-"run everything".
+`verify` (the required check) always runs so branch protection stays meaningful; `fast` is skipped for content-only PRs. An empty/unclassifiable diff fails safe to "run everything".
 
 ## The autonomous content factory
 
-A daily, opt-in loop that generates content, reviews it, tests the live site, and
-(when enabled) merges and fixes itself:
+A daily, opt-in loop that generates content, reviews it, tests the live site, and (when enabled) merges and fixes itself:
 
 | Workflow | Trigger | Gate | What it does |
 |---|---|---|---|
@@ -126,12 +108,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 | `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=union` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts → `needs-human`. |
 | `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
 
-**The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies
-every candidate PR's diff and declines (labels `needs-human`) anything touching
-`deps`/`pipeline`, even if it's labeled `auto:content`. So auto-merge can only ever
-ship pure content; dependency, pipeline, and workflow changes are **always**
-human-gated. `scripts/devops/audit.rb` enforces both the per-workflow `*_ENABLED`
-gates and the smuggle guard, so these invariants fail CI if they regress.
+**The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies every candidate PR's diff and declines (labels `needs-human`) anything touching `deps`/`pipeline`, even if it's labeled `auto:content`. So auto-merge can only ever ship pure content; dependency, pipeline, and workflow changes are **always** human-gated. `scripts/devops/audit.rb` enforces both the per-workflow `*_ENABLED` gates and the smuggle guard, so these invariants fail CI if they regress.
 
 ## Turning on continuous autonomy (deliberate)
 
@@ -152,67 +129,23 @@ gh variable set AGENT_REVIEW_ENABLED true       # monthly agent/skill review PR
 gh variable set QUEST_FORGE_ENABLED true        # derive it-journey quests from retrospectives
 ```
 
-**The variable IS the switch** (colophon, 2026-07-01): every autonomy loop's
-cron is wired and idles behind its `*_ENABLED` variable, so turning a variable
-on is the single deliberate act that starts that loop — no workflow edit needed.
-The one exception is `fleet-dispatch.yml`, which stays schedule-free by
-guardrail (the audit and the simulation both fail if a schedule appears there).
-Enabling `AUTO_MERGE_ENABLED` (or any `*_ENABLED` variable) is a guardrail
-change — add a dated line to `/about/colophon/` when you flip one. The agent
-steps need Claude auth — set **either** `CLAUDE_CODE_OAUTH_TOKEN` (run `claude
-setup-token`, then `gh secret set CLAUDE_CODE_OAUTH_TOKEN`) **or**
-`ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
+**The variable IS the switch** (colophon, 2026-07-01): every autonomy loop's cron is wired and idles behind its `*_ENABLED` variable, so turning a variable on is the single deliberate act that starts that loop — no workflow edit needed. The one exception is `fleet-dispatch.yml`, which stays schedule-free by guardrail (the audit and the simulation both fail if a schedule appears there). Enabling `AUTO_MERGE_ENABLED` (or any `*_ENABLED` variable) is a guardrail change — add a dated line to `/about/colophon/` when you flip one. The agent steps need Claude auth — set **either** `CLAUDE_CODE_OAUTH_TOKEN` (run `claude setup-token`, then `gh secret set CLAUDE_CODE_OAUTH_TOKEN`) **or** `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
 
 ## Universal AI wiring (Claude Code → Claude API fallback)
 
-Everything that calls a model — every workflow agent step *and* every skill —
-goes through **one** path, so the model, auth, and fallback are configured in a
-single place:
+Everything that calls a model — every workflow agent step *and* every skill — goes through **one** path, so the model, auth, and fallback are configured in a single place:
 
 - **`_data/ai.yml`** — the one config: `model` (default `claude-opus-4-8`),
-  `fallback_model`, `max_tokens`, the API version/base. Change the model here and
-  it changes everywhere.
+`fallback_model`, `max_tokens`, the API version/base. Change the model here and it changes everywhere.
 - **`scripts/ai/run.sh`** — the universal runner. Tries **Claude Code** (`claude -p`
-  with tools/MCP — the full agent) first; if the CLI is missing or the run fails,
-  falls back to **`scripts/ai/api_call.rb`**, a stdlib-only (`net/http`, no gem)
-  single-shot call to the Claude API (`POST /v1/messages`, `anthropic-version
-  2023-06-01`, with refusal/429/5xx handling). The fallback is a degraded path —
-  it returns the model's text but can't run tools, so fully agentic steps rely on
-  Claude Code; analysis/review/draft steps work on either.
+with tools/MCP — the full agent) first; if the CLI is missing or the run fails, falls back to **`scripts/ai/api_call.rb`**, a stdlib-only (`net/http`, no gem) single-shot call to the Claude API (`POST /v1/messages`, `anthropic-version 2023-06-01`, with refusal/429/5xx handling). The fallback is a degraded path — it returns the model's text but can't run tools, so fully agentic steps rely on Claude Code; analysis/review/draft steps work on either.
 - **`.github/actions/claude-run`** — the composite action workflows use instead of
-  hand-rolling `npm install` + `claude -p`. It installs Claude Code and calls
-  `run.sh`. Inputs: `prompt`, `tools`, `mcp`, `system`, `out`.
+hand-rolling `npm install` + `claude -p`. It installs Claude Code and calls `run.sh`. Inputs: `prompt`, `tools`, `mcp`, `system`, `out`.
 
-Every AI step (brand-review, content-review, content-factory, explore, auto-fix,
-devops-manager, and the fleet spawns) uses the action or `run.sh` — **no workflow
-calls `claude -p` directly**, and `scripts/devops/audit.rb` fails CI if one does.
+Every AI step (brand-review, content-review, content-factory, explore, auto-fix, devops-manager, and the fleet spawns) uses the action or `run.sh` — **no workflow calls `claude -p` directly**, and `scripts/devops/audit.rb` fails CI if one does.
 
-**Auth** is one secret, set once: either `CLAUDE_CODE_OAUTH_TOKEN` (from `claude
-setup-token` — subscription auth, the preferred CI credential, drives the Claude
-Code path) **or** `ANTHROPIC_API_KEY` (pay-per-use; also the only credential the
-API fallback can use). `run.sh` prefers the OAuth token when both are present —
-and when the OAuth token exists it *removes* the API key from the CLI's
-environment, so a metered key can never be silently billed for work the
-subscription covers. With neither, AI steps are clean no-ops. To switch the
-whole fleet to a cheaper model, set `model:` in `_data/ai.yml` (or `LH_AI_MODEL`
-for one run) — one edit, everywhere.
+**Auth** is one secret, set once: either `CLAUDE_CODE_OAUTH_TOKEN` (from `claude setup-token` — subscription auth, the preferred CI credential, drives the Claude Code path) **or** `ANTHROPIC_API_KEY` (pay-per-use; also the only credential the API fallback can use). `run.sh` prefers the OAuth token when both are present — and when the OAuth token exists it *removes* the API key from the CLI's environment, so a metered key can never be silently billed for work the subscription covers. With neither, AI steps are clean no-ops. To switch the whole fleet to a cheaper model, set `model:` in `_data/ai.yml` (or `LH_AI_MODEL` for one run) — one edit, everywhere.
 
 ## AI metering (tokens + cost, per call, per PR)
 
-Because every model call already flows through `run.sh`, metering rides the same
-choke point: `run.sh` asks Claude Code for a JSON result and `scripts/ai/usage.rb`
-records one JSONL record per call (tokens in/out/cache, per-model split,
-`total_cost_usd` as reported by the CLI, auth mode, workflow/job/run context).
-At the end of each AI job, `scripts/ai/usage_report.rb` (wired into the
-`claude-run` composite — consumers get it for free) publishes the records three
-ways: the run's step summary, an `ai-usage-*` artifact, and a sticky
-**AI usage & cost** comment on the PR the job worked on — resolved from the
-event, or from the `pr-result.txt` the factory/fleet agents write, so a PR's
-comment shows its *creation* cost and every downstream review/fix separately.
-`ai-usage.yml` makes it durable and public (see the workflows table; dashboard
-at `/docs/ai-usage/`). Dollars are **API-equivalent** (list prices) — OAuth
-subscription runs have zero marginal cost and are labeled as such; API-fallback
-records are estimated from `_data/ai_pricing.yml`. `scripts/devops/audit.rb`
-fails CI if the metering is ever unwired (run.sh without usage.rb, a
-claude-code-action workflow without a usage_report step, etc.). Full design:
-`docs/AI-USAGE.md`.
+Because every model call already flows through `run.sh`, metering rides the same choke point: `run.sh` asks Claude Code for a JSON result and `scripts/ai/usage.rb` records one JSONL record per call (tokens in/out/cache, per-model split, `total_cost_usd` as reported by the CLI, auth mode, workflow/job/run context). At the end of each AI job, `scripts/ai/usage_report.rb` (wired into the `claude-run` composite — consumers get it for free) publishes the records three ways: the run's step summary, an `ai-usage-*` artifact, and a sticky **AI usage & cost** comment on the PR the job worked on — resolved from the event, or from the `pr-result.txt` the factory/fleet agents write, so a PR's comment shows its *creation* cost and every downstream review/fix separately. `ai-usage.yml` makes it durable and public (see the workflows table; dashboard at `/docs/ai-usage/`). Dollars are **API-equivalent** (list prices) — OAuth subscription runs have zero marginal cost and are labeled as such; API-fallback records are estimated from `_data/ai_pricing.yml`. `scripts/devops/audit.rb` fails CI if the metering is ever unwired (run.sh without usage.rb, a claude-code-action workflow without a usage_report step, etc.). Full design: `docs/AI-USAGE.md`.

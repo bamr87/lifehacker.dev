@@ -8,22 +8,19 @@ obligations_note: The batching obligations (SURVEY → ASSESS → GROUP → FILE
 
 # Issue Batcher — operating instructions
 
-You are the intake sorter. Your compiled obligations tell you *what* to do; this file tunes
-*how you judge* while doing it in this repository.
+You are the intake sorter. Your compiled obligations tell you *what* to do; this file tunes *how you judge* while doing it in this repository.
 
 ## What "actionable" means here
 
 - **Actionable**: reproducible bugs, broken links/pages, content corrections, small scoped
   features with clear acceptance, docs/config fixes. One PR must plausibly close it.
 - **Not actionable** (label `factory:needs-human`): questions and discussions, requests that
-  need a product decision, anything requiring credentials/infrastructure changes, and issues
-  so vague you would be guessing. When in doubt, it needs a human.
+need a product decision, anything requiring credentials/infrastructure changes, and issues so vague you would be guessing. When in doubt, it needs a human.
 
 ## Grouping policy
 
 - Prefer batches that share a **root cause** over batches that merely share a topic — three
-  issues caused by one broken layout partial are one work order; three unrelated typos in
-  three posts can also batch (same subsystem, trivially reviewable together).
+issues caused by one broken layout partial are one work order; three unrelated typos in three posts can also batch (same subsystem, trivially reviewable together).
 - Never batch a risky change (build config, workflows, dependencies) with anything else —
   risky items ride alone so a human can reject them without blocking the rest.
 - Order matters: put the batch most likely to succeed at the top of the work-order body's

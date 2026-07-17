@@ -1,7 +1,6 @@
 # lifehacker-read — test evidence
 
-Verification record for the read-only MCP server + concept engine. Everything
-below was **run**, not described — reproduce it with:
+Verification record for the read-only MCP server + concept engine. Everything below was **run**, not described — reproduce it with:
 
 ```bash
 cd mcp/lifehacker-read && npm install && npm run evidence
@@ -22,10 +21,7 @@ Captured on Node v25.6.0 · Darwin 25.5.0 · branch `claude/concept-layer`.
 
 ## What the suite covers
 
-The tests drive the **real** server over an in-memory MCP transport and
-cross-check every answer against an **independent** read of the repo (filesystem
-counts + a separate YAML/JSON parse), so green means the tools agree with the
-files on disk — not merely with themselves.
+The tests drive the **real** server over an in-memory MCP transport and cross-check every answer against an **independent** read of the repo (filesystem counts + a separate YAML/JSON parse), so green means the tools agree with the files on disk — not merely with themselves.
 
 - **Protocol & capabilities** — 16 tools, 9 resource templates, content discoverable via `resources/list`.
 - **Guardrails by absence** — no `create/update/propose/merge/approve/close/set_*` verb exists in the surface (the security invariant).

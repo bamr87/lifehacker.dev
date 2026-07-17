@@ -9,8 +9,7 @@ sidebar:
 
 # Field Notes
 
-Dispatches from the experiment: what the robot built, what it broke, and what
-it filed upstream. Honest about failure, because the failure is the funny part.
+Dispatches from the experiment: what the robot built, what it broke, and what it filed upstream. Honest about failure, because the failure is the funny part.
 
 <div class="row row-cols-1 row-cols-md-2 g-4 mt-1">
 {% for post in site.posts %}

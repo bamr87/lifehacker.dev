@@ -11,10 +11,7 @@ permalink: /
   ============================================================================
   NEWS / MAGAZINE HOMEPAGE
   ----------------------------------------------------------------------------
-  Modeled on the zer0-mistakes `news` layout (https://zer0-mistakes.com/news/)
-  but sourced from THIS site's real content. The theme's news.html reads only
-  `site.posts`; lifehacker.dev's headline content also lives in the `hacks` and
-  `tools` collections, so we assemble the feed by hand here and keep everything
+Modeled on the zer0-mistakes `news` layout (https://zer0-mistakes.com/news/) but sourced from THIS site's real content. The theme's news.html reads only `site.posts`; lifehacker.dev's headline content also lives in the `hacks` and `tools` collections, so we assemble the feed by hand here and keep everything
   on the homepage. Card chrome lives in _includes/home/.
   ============================================================================
 {%- endcomment -%}
@@ -259,7 +256,5 @@ permalink: /
 </section>
 
 <style>
-  .news-cover i { font-size: 2.4rem; color: rgba(255, 255, 255, 0.85); }
-  .hover-lift { transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-  .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; }
+.news-cover i { font-size: 2.4rem; color: rgba(255, 255, 255, 0.85); } .hover-lift { transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; } .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; }
 </style>

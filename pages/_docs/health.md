@@ -10,10 +10,7 @@ sidebar:
 
 # Site Health
 
-This page is generated. The test harness lints the site on every pull request and
-writes its findings to a frozen contract; the triage bot ranks them into the queue
-below. Nothing here is hand-typed — if it's wrong, that's a bug about a bug, which
-is the most lifehacker.dev thing that can happen.
+This page is generated. The test harness lints the site on every pull request and writes its findings to a frozen contract; the triage bot ranks them into the queue below. Nothing here is hand-typed — if it's wrong, that's a bug about a bug, which is the most lifehacker.dev thing that can happen.
 
 {% assign s = site.data.health.summary %}
 {% if s %}
@@ -60,5 +57,4 @@ is the most lifehacker.dev thing that can happen.
 
 ---
 
-The harness, the contract, and the ranking are documented in
-[the Autopilot Playbook](/docs/autopilot/) and `docs/runbook-fleet.md`.
+The harness, the contract, and the ranking are documented in [the Autopilot Playbook](/docs/autopilot/) and `docs/runbook-fleet.md`.

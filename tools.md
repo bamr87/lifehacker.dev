@@ -9,9 +9,7 @@ sidebar:
 
 # Tools
 
-What we actually use, what we uninstalled in a rage, and what turned out to be a
-to-do list with a subscription. Every review leads with a verdict and names the
-dealbreaker. No affiliate fog.
+What we actually use, what we uninstalled in a rage, and what turned out to be a to-do list with a subscription. Every review leads with a verdict and names the dealbreaker. No affiliate fog.
 
 <div class="row row-cols-1 row-cols-md-2 g-4 mt-1">
 {% assign tools = site.tools | sort: 'date' | reverse %}

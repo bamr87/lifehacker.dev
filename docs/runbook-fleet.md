@@ -1,8 +1,6 @@
 # Runbook — the lifehacker.dev autonomy fleet (PR1: testing)
 
-Operator notes for the testing harness shipped in PR1, and the human-gate
-machinery the later PRs (reporting, load-balancing) build on. This file is
-excluded from the site build (it lives under `docs/`).
+Operator notes for the testing harness shipped in PR1, and the human-gate machinery the later PRs (reporting, load-balancing) build on. This file is excluded from the site build (it lives under `docs/`).
 
 > **The one invariant:** no agent ever merges. A pull request — including one
 > opened by the autopilot bot — reaches `main` only after a code-owner review.
@@ -11,8 +9,7 @@ excluded from the site build (it lives under `docs/`).
 
 ## 1. The bot identity (do this first)
 
-The no-self-merge guarantee depends on the autopilot running as a GitHub identity
-that is **not** `@bamr87`. Otherwise its approval could satisfy CODEOWNERS.
+The no-self-merge guarantee depends on the autopilot running as a GitHub identity that is **not** `@bamr87`. Otherwise its approval could satisfy CODEOWNERS.
 
 1. Create a dedicated machine account, e.g. `lifehacker-bot`.
 2. Invite it to `bamr87/lifehacker.dev` as a **collaborator with Write** (not
@@ -20,16 +17,11 @@ that is **not** `@bamr87`. Otherwise its approval could satisfy CODEOWNERS.
 3. For upstream bug filing, give it **Triage/Write on issues** for
    `bamr87/zer0-mistakes` only.
 4. When PR3 lands, the fleet authenticates as this account with a fine-grained
-   PAT scoped to `contents`, `issues`, `pull_requests` (write) — **no
-   `administration`, no `workflows`** scope. A compromised agent then can't touch
-   the gates. PR1 itself needs no bot token: CI uses the default `GITHUB_TOKEN`
-   to post comments, and that token cannot approve PRs.
+PAT scoped to `contents`, `issues`, `pull_requests` (write) — **no `administration`, no `workflows`** scope. A compromised agent then can't touch the gates. PR1 itself needs no bot token: CI uses the default `GITHUB_TOKEN` to post comments, and that token cannot approve PRs.
 
 ## 2. Branch protection (makes the gate real)
 
-Run once as `@bamr87` (an admin). Confirm the required check name after the first
-PR run — it appears as the job id `verify` (shown as `test / verify` in some UIs;
-adjust `contexts` if so).
+Run once as `@bamr87` (an admin). Confirm the required check name after the first PR run — it appears as the job id `verify` (shown as `test / verify` in some UIs; adjust `contexts` if so).
 
 ```bash
 gh api -X PUT repos/bamr87/lifehacker.dev/branches/main/protection --input - <<'JSON'
@@ -49,10 +41,7 @@ gh api -X PUT repos/bamr87/lifehacker.dev/branches/main/protection --input - <<'
 JSON
 ```
 
-This requires the `verify` check to pass **and** a review from `@bamr87`
-(CODEOWNERS) before merge, blocks force-pushes, and keeps history linear.
-`enforce_admins:false` lets the human owner merge after reviewing; the bot, not
-being an admin or a code owner, cannot.
+This requires the `verify` check to pass **and** a review from `@bamr87` (CODEOWNERS) before merge, blocks force-pushes, and keeps history linear. `enforce_admins:false` lets the human owner merge after reviewing; the bot, not being an admin or a code owner, cannot.
 
 ## 3. One-time: pin the bundle
 
@@ -71,8 +60,7 @@ git add Gemfile.lock && git commit -m "ci: pin github-pages + html-proofer"
 |---|---|---|
 | `CLAUDE_CODE_OAUTH_TOKEN` *or* `ANTHROPIC_API_KEY` | every AI step (`pipeline.yml` brand-review + content-review, content-factory, explore, auto-fix, devops-manager) | Claude auth. The OAuth token (`claude setup-token`, subscription auth) is preferred and drives the Claude Code path; an API key also works and is the only credential the API fallback can use. **Optional** — without either, the deterministic gate still runs; the agent tiers just skip. Set in repo → Settings → Secrets → Actions. |
 
-`pipeline.yml` runs on `pull_request` (not `pull_request_target`), so secrets are
-**never** exposed to fork PRs.
+`pipeline.yml` runs on `pull_request` (not `pull_request_target`), so secrets are **never** exposed to fork PRs.
 
 ## 5. Running the harness
 
@@ -116,41 +104,26 @@ Turns the harness's findings into a ranked queue and deduplicated GitHub issues.
   - `scripts/triage/gen_dashboard.rb` — writes `SITE_HEALTH.md`; the live page is
     `/docs/health/`, rendered from `_data/health/` with plain Liquid (no plugin).
 - **Skill / workflow:** `/triage-lifehacker` (or `.github/workflows/triage.yml`,
-  `workflow_dispatch`). The workflow files **local** issues with `GITHUB_TOKEN`;
-  **upstream** filing on `bamr87/zer0-mistakes` needs the bot PAT (set secret
-  `FLEET_TOKEN`) — until then upstream items are reported and deferred.
+`workflow_dispatch`). The workflow files **local** issues with `GITHUB_TOKEN`; **upstream** filing on `bamr87/zer0-mistakes` needs the bot PAT (set secret `FLEET_TOKEN`) — until then upstream items are reported and deferred.
 - **Reach via analytics:** if the Google Analytics MCP is connected, the skill
-  refreshes `_data/analytics/summary.json` (`getPageViews`); headless/cron runs
-  fall back to the committed cache. A GA outage never blocks ranking.
+refreshes `_data/analytics/summary.json` (`getPageViews`); headless/cron runs fall back to the committed cache. A GA outage never blocks ranking.
 - **Inbound issues:** the skill classifies troll/spam/dup but **never closes a
-  human's issue** — it labels + drafts a reply + @-mentions the owner. All issue
-  text is treated as untrusted (`.claude/skills/_shared/quarantine.md`).
+human's issue** — it labels + drafts a reply + @-mentions the owner. All issue text is treated as untrusted (`.claude/skills/_shared/quarantine.md`).
 
 ## 5c. Orchestration / the fleet (PR3)
 
-The dispatcher distributes work across role agents without collisions, runaway
-cost, or guardrail violations — deterministic Ruby on purpose (budget math and
-lease arbitration must be reproducible, not model judgment).
+The dispatcher distributes work across role agents without collisions, runaway cost, or guardrail violations — deterministic Ruby on purpose (budget math and lease arbitration must be reproducible, not model judgment).
 
 - **`scripts/fleet/policy.rb`** — the load-balancing math (pure, unit-tested):
-  `sev1` open → freeze growth, all slots fixing; `sev2` → one grower, rest fixing;
-  clean → mostly growing. `MAX_OPEN_PRS` is the primitive — the dispatcher never
-  leaves more PRs awaiting the human than the cap, so adding agents drains faster
-  but never floods the gate. Knobs live in `_data/fleet/budget.yml`.
+`sev1` open → freeze growth, all slots fixing; `sev2` → one grower, rest fixing; clean → mostly growing. `MAX_OPEN_PRS` is the primitive — the dispatcher never leaves more PRs awaiting the human than the cap, so adding agents drains faster but never floods the gate. Knobs live in `_data/fleet/budget.yml`.
 - **`scripts/fleet/lease.rb`** — collision-free claiming via git ref creation
-  (`refs/lease/<id>`, compare-and-swap with no server) + a committed
-  `_data/fleet/leases.yml` record with a TTL so a crashed agent's lease is
-  reclaimed. Two agents can never grab the same item.
+(`refs/lease/<id>`, compare-and-swap with no server) + a committed `_data/fleet/leases.yml` record with a TTL so a crashed agent's lease is reclaimed. Two agents can never grab the same item.
 - **`scripts/fleet/dispatch.rb`** — the OODA loop: observe (queue + backlog +
-  open-PR count) → decide (policy) → act (lease + spawn). **Plan-only by default**;
-  `--apply` leases and spawns. Opens zero PRs itself.
+open-PR count) → decide (policy) → act (lease + spawn). **Plan-only by default**; `--apply` leases and spawns. Opens zero PRs itself.
 - **`.github/workflows/fleet-dispatch.yml`** — `workflow_dispatch` only (no
-  schedule). Honors the kill switch; the `run.sh --prompt "/<role> <target>"`
-  spawn commands it prints are the final wiring step (needs
-  `CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY` + a worktree each).
+schedule). Honors the kill switch; the `run.sh --prompt "/<role> <target>"` spawn commands it prints are the final wiring step (needs `CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY` + a worktree each).
 - **Role agents:** `grow-lifehacker` (growth), `fleet-bugfix` (one content/infra
-  fix per PR), `triage-lifehacker` (reporting), `brand-reviewer` (comment-only).
-  Each opens one PR and stops; none merges.
+fix per PR), `triage-lifehacker` (reporting), `brand-reviewer` (comment-only). Each opens one PR and stops; none merges.
 
 ### Turning the fleet ON (deliberate, reversible)
 
@@ -159,8 +132,7 @@ lease arbitration must be reproducible, not model judgment).
 2. Run it manually first: Actions → fleet-dispatch → Run (leave `apply` off to see
    the plan; check `apply` to lease + spawn).
 3. To go hands-off: uncomment the `schedule:` in `fleet-dispatch.yml`, wire the
-   spawn step, and **add a dated bold line to `/about/colophon/`** (per AUTOPILOT.md
-   — enabling scheduled autonomy is the guardrail change that requires it).
+spawn step, and **add a dated bold line to `/about/colophon/`** (per AUTOPILOT.md — enabling scheduled autonomy is the guardrail change that requires it).
 
 ## 6. Kill / disable
 
@@ -179,6 +151,4 @@ Every check writes `test-results/findings.jsonl`, one finding per line:
 ```
 
 `fingerprint = sha1(check_id | downcased-path | rule)[0,12]` — **line excluded**,
-so identity is stable as files shift. PR1 owns it; PR2 (triage) dedups against it
-and routes; PR3 (dispatch) ranks from it. Do not reshape these fields without
-updating every consumer.
+so identity is stable as files shift. PR1 owns it; PR2 (triage) dedups against it and routes; PR3 (dispatch) ranks from it. Do not reshape these fields without updating every consumer.

@@ -9,8 +9,7 @@ tools: Bash, Read, Grep
 
 # triage-lifehacker — findings → deduped, routed issues
 
-Follow the **triage-lifehacker skill**. Read the ranked queue
-(`_data/health/queue.json`), and for each item find-or-file a GitHub issue.
+Follow the **triage-lifehacker skill**. Read the ranked queue (`_data/health/queue.json`), and for each item find-or-file a GitHub issue.
 
 ## How you work
 - Search by the stable `triage-fp:` fingerprint marker. None open → create; already
