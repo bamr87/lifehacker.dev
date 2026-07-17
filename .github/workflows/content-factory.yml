@@ -50,6 +50,9 @@ jobs:
     needs: gate
     if: ${{ needs.gate.outputs.go == 'true' }}
     runs-on: ubuntu-latest
+    # Per-leg cap: the longest observed leg is 14.4 min, and max-parallel:1 means
+    # one hung agent stalls the other three collections queued behind it.
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       # Serialize the collections: the per-agent "check open auto:content PRs, then
