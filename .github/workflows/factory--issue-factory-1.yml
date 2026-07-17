@@ -41,17 +41,30 @@ jobs:
       id-token: write
       issues: write
     steps:
+      # MANUAL EDIT to this generated file (2026-07-16, mirror in the blueprint's
+      # intent): hitting the daily cap is a legitimate stop, not a failure — the
+      # limiter now exits 0 with a notice and gates the later steps via an
+      # output, instead of painting the run red with exit 1. If the factory
+      # regenerates this file, RE-APPLY this pattern.
       - name: 🚥 rate.limiter (brl)
+        id: brl
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           LIMIT: "2"
         run: |-
           COUNT=$(gh run list --workflow "$GITHUB_WORKFLOW" --created "$(date -u +%Y-%m-%d)" --json databaseId --jq 'length')
-          if [ "$COUNT" -gt "$LIMIT" ]; then echo "rate limit ($LIMIT/day) reached — stopping"; exit 1; fi
+          if [ "$COUNT" -gt "$LIMIT" ]; then
+            echo "::notice::rate limit ($LIMIT/day) reached — stopping (legitimate cap, not a failure)."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/checkout@v4
+        if: ${{ steps.brl.outputs.go == 'true' }}
       - name: 🗂 issue_batcher (ba)
         id: agent
+        if: ${{ steps.brl.outputs.go == 'true' }}
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -73,7 +86,7 @@ jobs:
             5. MARK — label every member issue 'factory:queued' and post ONE comment on it linking its work order (skip members that already have one). You are the sorter, not the fixer: never edit code and never open PRs — the fix line consumes your work orders.
           claude_args: |-
             --model claude-sonnet-4-6
-            --max-turns 30
+            --max-turns 50
             --allowedTools "Read,Glob,Grep,Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh search issues:*),Bash(gh label list:*),Bash(gh label create:*),Bash(gh issue edit:*),Bash(gh issue comment:*),Bash(gh issue create:*)"
       # lh-ai-usage metering — MANUAL ADDITION to this generated file. If the
       # factory regenerates it from the blueprint, RE-ADD these two steps: the
@@ -81,7 +94,7 @@ jobs:
       # claude-code-action without usage_report, so the drift cannot go unseen.
       - name: 📊 meter AI usage
         id: usage
-        if: always()
+        if: ${{ always() && steps.brl.outputs.go == 'true' }}
         run: |-
           f="${{ steps.agent.outputs.execution_file }}"
           if [ -n "$f" ] && [ -f "$f" ]; then
