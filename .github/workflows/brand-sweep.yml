@@ -17,8 +17,13 @@
 name: brand-sweep
 
 on:
-  schedule:
-    - cron: '23 8 * * 1'   # Mondays 08:23 UTC, weekly (offset from nightly/content-factory)
+  # Cron disabled 2026-07-16: BRAND_SWEEP_ENABLED was unset, so both scheduled
+  # runs on record were gate-only no-ops. Set the BRAND_SWEEP_ENABLED repo
+  # variable to true AND restore this block to arm the weekly main-branch
+  # brand-debt paydown (the PR-scoped tier-2b review only fixes debt a PR
+  # introduces).
+  # schedule:
+  #   - cron: '23 8 * * 1'   # Mondays 08:23 UTC, weekly (offset from nightly/content-factory)
   workflow_dispatch:
 
 permissions:
