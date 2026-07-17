@@ -24,7 +24,10 @@ on:
     workflows: [pipeline]
     types: [completed]
   schedule:
-    - cron: '*/30 * * * *'   # backstop sweep
+    # Backstop sweep only. The workflow_run trigger above already fires at every
+    # moment a PR can newly turn green (pipeline completion), so a */30 cron was
+    # ≥85% no-op (~250 runs/5 days for ~6 bot PRs/day). 6/day catches stragglers.
+    - cron: '13 */4 * * *'
   workflow_dispatch:
 
 permissions:
@@ -38,24 +41,34 @@ concurrency:
 jobs:
   sweep:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-      - name: Merge eligible content PRs
+      # Gate FIRST — before checkout (fetch-depth:0) + Ruby. When the kill switch
+      # is off, a sweep should cost seconds, not a full checkout + toolchain.
+      - name: Gate
+        id: gate
         env:
           ENABLED: ${{ vars.AUTO_MERGE_ENABLED }}
         run: |
-          set -u
           if [ "$ENABLED" != "true" ]; then
             echo "AUTO_MERGE_ENABLED != true — auto-merge is OFF. Nothing merged."
-            exit 0
+            echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
+          echo "go=true" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: ${{ steps.gate.outputs.go == 'true' }}
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        if: ${{ steps.gate.outputs.go == 'true' }}
+        with:
+          ruby-version: '3.3'
+      - name: Merge eligible content PRs
+        if: ${{ steps.gate.outputs.go == 'true' }}
+        run: |
+          set -u
           merged=0; declined=0; skipped=0
           # Candidates: open PRs labeled auto:content (content factory et al.),
           # source/triage-bot (queue + dashboard refreshes), or

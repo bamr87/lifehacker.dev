@@ -37,7 +37,11 @@ on:
     workflows: [pipeline]
     types: [completed]
   schedule:
-    - cron: '*/30 * * * *'   # backstop sweep, same cadence as auto-merge
+    # Backstop sweep only, offset from auto-merge's '13 */4' backstop. Branch
+    # sync is only needed when main advances, and every main advance runs the
+    # pipeline — whose completion already triggers this via workflow_run. The
+    # old */30 cron mostly found "branch already up to date" (~251 runs/5 days).
+    - cron: '43 */4 * * *'
   workflow_dispatch:
 
 permissions:
@@ -51,6 +55,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       # FLEET_TOKEN (bot PAT, contents+PRs) so the update push re-triggers the
       # pipeline on the PR — a github.token push is suppressed from triggering
