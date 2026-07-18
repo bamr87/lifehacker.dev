@@ -17,17 +17,17 @@ function h1(s: string) { process.stdout.write(`\n\x1b[1m${s}\x1b[0m\n`); }
 
 const H = await startHarness();
 try {
-  h1("1. get_content_item(posts, slug) — the content layer");
+  h1("1. get_content_item(field-notes, slug) — the content layer");
   const item = await callJson<{ title: string; url: string; tags: string[]; body: string; author: string }>(
-    H.client, "get_content_item", { collection: "posts", slug: SLUG },
+    H.client, "get_content_item", { collection: "field-notes", slug: SLUG },
   );
   console.log(`   title:  ${item.title}`);
   console.log(`   url:    ${item.url}`);
   console.log(`   author: ${item.author}    tags: ${item.tags.join(", ")}`);
   console.log(`   body:   ${item.body.length} chars`);
 
-  h1("2. resolve_voice_profile(posts) — the context layer (how it's made)");
-  const voice = await callJson<{ requested: string }>(H.client, "resolve_voice_profile", { collection: "posts" });
+  h1("2. resolve_voice_profile(field-notes) — the context layer (how it's made)");
+  const voice = await callJson<{ requested: string }>(H.client, "resolve_voice_profile", { collection: "field-notes" });
   console.log(`   voice profile the autopilot would use: ${voice.requested}`);
 
   h1("3. brand check on the post's key phrases (tier-1 glossary)");

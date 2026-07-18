@@ -16,7 +16,7 @@ export function voiceForCollection(collection: CollectionName): string {
       return "how-to-practical";
     case "tools":
       return "tool-review-honest";
-    case "posts":
+    case "field-notes":
     case "docs":
       return "meta-confession";
     default:

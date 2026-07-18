@@ -1,22 +1,45 @@
 // =============================================================================
 // collections.ts — the content model, read-side.
 // -----------------------------------------------------------------------------
-// The five Jekyll collections under pages/ (collections_dir: pages). This module
-// loads, lists, and searches them the way index.md / tags.md do in Liquid, and
-// computes each item's public permalink. The canonical front-matter SCHEMA is
-// enforced by scripts/ci/lint_frontmatter.rb — this module only reads.
+// The site's content, organized as five logical SECTIONS. Three of them are
+// section subdirectories of Jekyll's `posts` collection (hacks, tools,
+// field-notes live under pages/_posts/<section>/), and two are standalone page
+// collections (docs, about). This module loads, lists, and searches them the way
+// index.md / tags.md do in Liquid, and computes each item's public permalink.
+// The public URLs are PRESERVED across the reorg — a hack is still /hacks/<slug>/,
+// a field note is still /posts/<YYYY>/<MM>/<DD>/<slug>/. The canonical
+// front-matter SCHEMA is enforced by scripts/ci/lint_frontmatter.rb — this module
+// only reads.
 // =============================================================================
 import { asTags, parsePage } from "./frontmatter.js";
 import type { RepoReader } from "./repo.js";
 
-export type CollectionName = "hacks" | "tools" | "posts" | "docs" | "about";
+export type CollectionName = "hacks" | "tools" | "field-notes" | "docs" | "about";
 
-export const COLLECTIONS: Record<CollectionName, { dir: string }> = {
-  hacks: { dir: "pages/_hacks" },
-  tools: { dir: "pages/_tools" },
-  posts: { dir: "pages/_posts" },
-  docs: { dir: "pages/_docs" },
-  about: { dir: "pages/_about" },
+const POST_FILE = /^(\d{4})-(\d{2})-(\d{2})-(.+)\.md$/;
+
+interface CollectionDef {
+  /** The repo-relative directory the section's *.md files live in. */
+  dir: string;
+  /** Filenames carry a `<YYYY-MM-DD>-` date prefix that the slug strips. */
+  dated: boolean;
+  /** The computed public permalink (front-matter `permalink` still wins). */
+  urlFor: (slug: string, filename: string) => string;
+}
+
+export const COLLECTIONS: Record<CollectionName, CollectionDef> = {
+  hacks: { dir: "pages/_posts/hacks", dated: true, urlFor: (slug) => `/hacks/${slug}/` },
+  tools: { dir: "pages/_posts/tools", dated: true, urlFor: (slug) => `/tools/${slug}/` },
+  "field-notes": {
+    dir: "pages/_posts/field-notes",
+    dated: true,
+    urlFor: (slug, filename) => {
+      const m = POST_FILE.exec(filename);
+      return m ? `/posts/${m[1]}/${m[2]}/${m[3]}/${slug}/` : `/posts/${slug}/`;
+    },
+  },
+  docs: { dir: "pages/_docs", dated: false, urlFor: (slug) => `/docs/${slug}/` },
+  about: { dir: "pages/_about", dated: false, urlFor: (slug) => `/about/${slug}/` },
 };
 
 export const COLLECTION_NAMES = Object.keys(COLLECTIONS) as CollectionName[];
@@ -37,11 +60,9 @@ export interface ContentItem {
   body: string;
 }
 
-const POST_FILE = /^(\d{4})-(\d{2})-(\d{2})-(.+)\.md$/;
-
-/** The slug for a filename in a collection (posts strip the leading date). */
+/** The slug for a filename in a section (dated sections strip the leading date). */
 function slugFor(collection: CollectionName, filename: string): string {
-  if (collection === "posts") {
+  if (COLLECTIONS[collection].dated) {
     const m = POST_FILE.exec(filename);
     if (m) return m[4]!;
   }
@@ -57,11 +78,7 @@ function urlFor(
 ): string {
   const explicit = fm["permalink"];
   if (typeof explicit === "string" && explicit.length > 0) return explicit;
-  if (collection === "posts") {
-    const m = POST_FILE.exec(filename);
-    if (m) return `/posts/${m[1]}/${m[2]}/${m[3]}/${m[4]}/`;
-  }
-  return `/${collection}/${slug}/`;
+  return COLLECTIONS[collection].urlFor(slug, filename);
 }
 
 function str(v: unknown): string {
@@ -183,7 +200,7 @@ export interface TaxonomyEntry {
   items: { collection: CollectionName; slug: string; url: string }[];
 }
 
-/** Pooled tags (posts+hacks+tools+docs+about) or categories (posts only). */
+/** Pooled tags (all sections) or categories (the section label carried in front matter). */
 export function listTaxonomy(reader: RepoReader, kind: "tags" | "categories"): TaxonomyEntry[] {
   const pool = new Map<string, TaxonomyEntry>();
   for (const collection of COLLECTION_NAMES) {

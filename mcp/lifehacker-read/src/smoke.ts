@@ -80,9 +80,9 @@ async function main(): Promise<void> {
   const hq = JSON.parse(firstToolText(await client.callTool({ name: "query_health_queue", arguments: { limit: 3 } })));
   check("query_health_queue returns items", Array.isArray(hq.items));
 
-  const word = JSON.parse(firstToolText(await client.callTool({ name: "check_word", arguments: { word: "just" } })));
-  process.stdout.write(`check_word("just"): ${word.classification}\n`);
-  check("check_word('just') is banned-when-sincere", word.classification === "banned-when-sincere");
+  const word = JSON.parse(firstToolText(await client.callTool({ name: "check_word", arguments: { word: "seamless" } })));
+  process.stdout.write(`check_word("seamless"): ${word.classification}\n`);
+  check("check_word('seamless') is banned-when-sincere", word.classification === "banned-when-sincere");
 
   const voice = JSON.parse(firstToolText(await client.callTool({ name: "resolve_voice_profile", arguments: { collection: "tools" } })));
   check("resolve_voice_profile(tools) = tool-review-honest", voice.requested === "tool-review-honest");

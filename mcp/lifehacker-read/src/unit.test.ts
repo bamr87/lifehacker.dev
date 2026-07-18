@@ -49,12 +49,15 @@ describe("brand helpers", () => {
   const reader = new RepoReader();
 
   test("check_word flags a sincerely-banned word", () => {
-    assert.equal(checkWord(reader, "just").classification, "banned-when-sincere");
+    assert.equal(checkWord(reader, "seamless").classification, "banned-when-sincere");
   });
 
-  test("check_word handles a banned word that carries an inline glossary comment", () => {
-    // 'leverage' is stored as "leverage  # as a verb…" in glossary.yml.
-    assert.equal(checkWord(reader, "leverage").classification, "banned-when-sincere");
+  test("check_word treats a watch-word as ok (advisory, not banned)", () => {
+    // 'just' and 'leverage' are watch_words in glossary.yml — style guidance only,
+    // deliberately NOT linted/banned. check_word enforces banned_when_sincere +
+    // avoid_phrases, so a watch-word classifies as ok.
+    assert.equal(checkWord(reader, "just").classification, "ok");
+    assert.equal(checkWord(reader, "leverage").classification, "ok");
   });
 
   test("check_word passes a neutral word", () => {
@@ -64,7 +67,7 @@ describe("brand helpers", () => {
   test("voiceForCollection maps collections to the autopilot's default profile", () => {
     assert.equal(voiceForCollection("hacks"), "how-to-practical");
     assert.equal(voiceForCollection("tools"), "tool-review-honest");
-    assert.equal(voiceForCollection("posts"), "meta-confession");
+    assert.equal(voiceForCollection("field-notes"), "meta-confession");
     assert.equal(voiceForCollection("docs"), "meta-confession");
     assert.equal(voiceForCollection("about"), "satire-deadpan");
   });

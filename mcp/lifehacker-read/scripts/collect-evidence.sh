@@ -55,9 +55,12 @@ fi
 echo
 
 echo "===== cross-check: on-disk numbers the suite asserts against ====="
-for c in hacks tools posts docs about; do
-  n=$(ls "$REPO/pages/_$c"/*.md 2>/dev/null | wc -l | tr -d ' ')
-  printf "  pages/_%-6s %s markdown files\n" "$c:" "$n"
+# hacks/tools/field-notes are section subdirs of the posts collection; docs/about
+# are standalone page collections. Public URLs are preserved across the reorg.
+for entry in "hacks:pages/_posts/hacks" "tools:pages/_posts/tools" "field-notes:pages/_posts/field-notes" "docs:pages/_docs" "about:pages/_about"; do
+  dir="${entry#*:}"
+  n=$(ls "$REPO/$dir"/*.md 2>/dev/null | wc -l | tr -d ' ')
+  printf "  %-26s %s markdown files\n" "$dir:" "$n"
 done
 # Backlog counts via a real YAML parse (NOT grep — grep over-counts the schema
 # comment lines that contain 'status: todo'; the tools + tests parse YAML).
