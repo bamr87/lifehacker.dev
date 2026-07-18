@@ -25,6 +25,8 @@ Claude-Code-driven content engine: the loop, the guardrails, the data files, and
 — the schema check that enforces the skill's templates: what blocks a merge, what only warns, and why the Meta docs it guards get the lightest rulebook.
 - **[The Link Checker That Doesn't Trust a Clean Exit](/docs/the-link-checker-that-doesnt-trust-a-clean-exit/)**
 — the internal-link gate: how it survived the day html-proofer signalled failure by killing the process, and why a broken checker is built to block, not pass.
+- **[The Gate That Only Reads Your Own Diff](/docs/the-gate-that-only-reads-your-own-diff/)**
+— the switch that scopes the merge gate to a PR's own changed files, so a whole-repo scan of 106 findings grades your one-file change on the six that are yours — while a global build failure still refuses to be scoped away.
 - **[The Build That Deletes Its Own Plugins](/docs/the-build-that-deletes-its-own-plugins/)**
 — step 1, the gate the rest stands on: how the overlay build clones the theme and strips the seven plugins GitHub Pages never runs, so local and CI can't drift.
 - **[The Notebook the Robot Won't Commit](/docs/the-notebook-the-robot-wont-commit/)**
