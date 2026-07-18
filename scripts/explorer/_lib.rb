@@ -190,9 +190,9 @@ module Explorer
 
   def kind_for_path(path)
     case path
-    when %r{\A/hacks/} then 'hack'
-    when %r{\A/tools/} then 'tool'
-    when %r{\A/posts/} then 'post'
+    when %r{\A/news/hacks/}, %r{\A/hacks/} then 'hack'
+    when %r{\A/news/tools/}, %r{\A/tools/} then 'tool'
+    when %r{\A/news/field-notes/}, %r{\A/posts/} then 'post'
     when %r{\A/docs/}  then 'doc'
     else 'hack'
     end

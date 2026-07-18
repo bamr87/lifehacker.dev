@@ -39,7 +39,7 @@ lifehacker.dev is a Jekyll site on GitHub Pages (`bamr87/zer0-mistakes` remote t
 
 | Layer | Where it lives | What it is |
 |---|---|---|
-| **Content** | `pages/_hacks` (56), `pages/_tools` (22), `pages/_posts` (96 Field Notes), `pages/_docs` (22), `pages/_about` (2) | Collections under `collections_dir: pages`. Typed front matter enforced by `lint_frontmatter.rb` (title/description/date/author/excerpt/tags; tools add `verdict`; posts need a `Field Notes` category + filename-date match). Hacks/tools can carry ` ```bash lh:run ` fences that get executed in a sandbox. |
+| **Content** | `pages/_posts/hacks` (61), `pages/_posts/tools` (25), `pages/_posts/field-notes` (102 Field Notes), `pages/_docs` (22), `pages/_about` (2) | The `posts`, `docs`, and `about` collections under `collections_dir: pages` — hacks/tools/field-notes are news **sections** of `posts`, under `pages/_posts/<section>/`. Typed front matter enforced by `lint_frontmatter.rb` (title/description/date/author/excerpt/tags; tools add `verdict`; every news item needs its section `categories` (Hacks / Tools / Field Notes) + filename-date match). Hacks/tools can carry ` ```bash lh:run ` fences that get executed in a sandbox. |
 | **Brand as data** | `_data/brand/{identity,voice,glossary,accepted}.yml` | Machine-readable mission + 4 pillars, 4 voice profiles, the "banned-when-sincere" glossary, the Prime Directive, and the accept-ledger. Read by every content agent before drafting. |
 | **AI orchestration** | `scripts/fleet/{dispatch,policy,plan,lease}.rb`, `_data/fleet/*` | A deterministic OODA controller. `policy.rb`/`plan.rb` are **pure functions**; `dispatch.rb` observes (queue + backlog + open-PR count), decides grow-vs-fix slots via `budget.yml`, and leases work to role agents. Backpressure = `MAX_OPEN_PRS`: throughput is clamped to human review speed by design. |
 | **The fleet** | `.claude/agents/*.md` (14), `.claude/skills/*/SKILL.md` (15), `.github/workflows/*.yml` (18) | Roles: grow, review, bugfix, scout, explore, triage, retro, quest, devops, loop-tuner, brand (×2). Each gated by a `*_ENABLED` repo variable the bot token **cannot** set. |
@@ -170,7 +170,7 @@ These are not nitpicks — each one is the difference between a tool that works 
 
 1. **Draft linting needs a worktree, not a string.** `lint_frontmatter.rb` takes
 **no** argument/stdin and always globs the four `pages/_*` dirs; `lint_brand.rb` supports changed-file scoping (`LH_BRAND_CHANGED_FILES`, which the pipeline already sets) but only as an **intersection filter over files that
-   exist under `pages/_*`**; `run_hack_commands.rb` globs `pages/_hacks|_tools`.
+   exist under `pages/_*`**; `run_hack_commands.rb` globs `pages/_posts/hacks|tools`.
 → **Materialize the draft into `pages/_<collection>/<slug>.md` inside an ephemeral worktree, run the exact lints with `LH_BRAND_CHANGED_FILES` set to that path, filter `lint_frontmatter` output to it, then discard the worktree.** There is one materialization path; no second linter. Raw-string linting is deferred until that temp-write mechanism is proven cleanup-safe.
 
 2. **`test-results/` is a shared, hardcoded path** (`LH::RESULTS = ROOT/test-results`)
@@ -219,7 +219,7 @@ These are the only in-repo changes the MCP *requires*. Everything else is additi
 Each phase ships independently and has a **Definition of Done** that includes the guardrail test where relevant. Rough effort in engineer-weeks.
 
 ### P0 — Read-only resource spine · `lifehacker-read` · ~1 wk
-The git-as-database resource tree: `collections/{collection}`, `hacks|tools|posts|docs|about/{slug}`,
+The git-as-database resource tree: `collections/{collection}`, `posts|docs|about/{slug}`,
 `schema/{collection}`, `tags/{tag}`, `categories/{category}`, `backlog[/{id}]`, `authors`, `brand/{identity,voice[/{profile}],glossary,accepted}`, `health/{queue,summary,findings}`, `metrics/history`, `fleet/{budget,state,leases,improvements}`, `agents/{name}`, `skills/{name}`, `roles`, `retrospectives`, `scout/ideas`, `switches` (names only, from workflow files), `guardrails`, `config/effective`. Plus read/query tools: `search_content`, `get_content_item`, `list_taxonomy`, `query_backlog`, `query_health_queue`, `get_brand_identity`, `resolve_voice_profile`, `check_word`, `get_gate_summary`, `list_switch_names`. **DoD:** all resources resolve from a fresh checkout with no secrets/network; the frozen `findings.jsonl` fields pass through verbatim; untrusted resources carry the quarantine envelope.
 
 ### P1 — Analyze + validate (still read-plane) · ~1 wk
@@ -248,7 +248,7 @@ Only *after* a **path-allowlist + pre-deploy secret-scan gate** exists, expose `
 ## 9. The tool / resource / prompt surface (consolidated)
 
 ### 9.1 Resources — the git-as-database tree (read plane)
-Content (`collections/{c}`, `hacks|tools|posts|docs|about/{slug}`,
+Content (`collections/{c}`, `posts|docs|about/{slug}`,
 `schema/{c}`, `tags/{tag}`, `categories/{cat}`) · Brand
 (`brand/identity|voice[/{profile}]|glossary|accepted`) · Data & memory
 (`backlog[/{id}]`, `authors`, `config/effective`, `retrospectives`, `scout/ideas`) ·

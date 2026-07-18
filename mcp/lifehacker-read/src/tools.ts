@@ -19,7 +19,7 @@ import { findConcepts, getConcept, listConcepts } from "./concepts.js";
 import { conceptCoverage, conceptsFor, relateConcept, suggestConceptGrowth } from "./engine.js";
 import type { RepoReader } from "./repo.js";
 
-const CollectionEnum = z.enum(["hacks", "tools", "posts", "docs", "about"]);
+const CollectionEnum = z.enum(["hacks", "tools", "field-notes", "docs", "about"]);
 
 function text(payload: unknown) {
   return {
@@ -38,7 +38,7 @@ export function registerTools(server: McpServer, reader: RepoReader): void {
     {
       title: "Search content",
       description:
-        "Full-text/metadata search across hacks+tools+posts+docs+about (title/tags/description/excerpt/body). Filter by collection and/or tag.",
+        "Full-text/metadata search across hacks+tools+field-notes+docs+about (title/tags/description/excerpt/body). Filter by collection and/or tag.",
       inputSchema: {
         query: z.string().describe("Search terms. Empty string + a tag filter lists everything with that tag."),
         collection: CollectionEnum.optional(),
@@ -83,7 +83,7 @@ export function registerTools(server: McpServer, reader: RepoReader): void {
     "list_taxonomy",
     {
       title: "List taxonomy",
-      description: "Pooled tags (posts+hacks+tools+docs+about) or categories (posts only), each with member items.",
+      description: "Pooled tags (all sections) or categories (the section label: Hacks / Tools / Field Notes), each with member items.",
       inputSchema: { kind: z.enum(["tags", "categories"]) },
     },
     async ({ kind }) => text(listTaxonomy(reader, kind)),

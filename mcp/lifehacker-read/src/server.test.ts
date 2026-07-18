@@ -38,9 +38,9 @@ const EXPECTED_TOOLS = [
 ];
 
 const COLLECTION_DIRS: Record<string, string> = {
-  hacks: "pages/_hacks",
-  tools: "pages/_tools",
-  posts: "pages/_posts",
+  hacks: "pages/_posts/hacks",
+  tools: "pages/_posts/tools",
+  "field-notes": "pages/_posts/field-notes",
   docs: "pages/_docs",
   about: "pages/_about",
 };
@@ -121,8 +121,8 @@ describe("content model (cross-checked vs files on disk)", () => {
     assert.ok(item.title.length > 0, "title must not be empty");
   });
 
-  test("posts permalink is date-structured", async () => {
-    const list = await callJson<{ items: Array<{ url: string }> }>(h.client, "list_collection", { collection: "posts" });
+  test("field-notes permalink is date-structured (URL preserved as /posts/YYYY/MM/DD/slug/)", async () => {
+    const list = await callJson<{ items: Array<{ url: string }> }>(h.client, "list_collection", { collection: "field-notes" });
     assert.match(list.items[0]!.url, /^\/posts\/\d{4}\/\d{2}\/\d{2}\/.+\/$/);
   });
 
@@ -249,7 +249,7 @@ describe("brand (cross-checked vs _data/brand/*.yml)", () => {
     const cases: Record<string, string> = {
       hacks: "how-to-practical",
       tools: "tool-review-honest",
-      posts: "meta-confession",
+      "field-notes": "meta-confession",
       docs: "meta-confession",
     };
     for (const [collection, expected] of Object.entries(cases)) {

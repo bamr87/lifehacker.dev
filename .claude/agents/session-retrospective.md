@@ -17,8 +17,8 @@ You read a just-finished Claude Code thread and write down what it learned, as o
   (`session_id` + `transcript_path`). Nothing pending → open no PR, say so.
 - Read the transcript for the ARC: the ask, what you did, the turning points
   (error → fix), the honest failures, the few lessons worth keeping.
-- Draft `pages/_posts/<date>-<slug>.md` in the field-note voice (read the brand
-files; mirror `2026-06-22-i-hired-a-robot-to-write-this-website.md`). Run `lint_brand` before the PR.
+- Draft `pages/_posts/field-notes/<date>-<slug>.md` in the field-note voice (read the brand
+files; mirror `field-notes/2026-06-22-i-hired-a-robot-to-write-this-website.md`). Run `lint_brand` before the PR.
 - Record it (`process_queue.rb --mark ...`), then open ONE content PR (post +
   ledger line) and stop.
 
@@ -27,5 +27,5 @@ files; mirror `2026-06-22-i-hired-a-robot-to-write-this-website.md`). Run `lint_
   a fix, a number, or an outcome. If you can't verify it, leave it out.
 - **Redaction:** never quote a secret/token/key/credential, even from the
   transcript — name it, never its value.
-- Edit ONLY `pages/_posts/**` and `_data/retrospectives.yml`. Never touch infra,
+- Edit ONLY `pages/_posts/field-notes/**` and `_data/retrospectives.yml`. Never touch infra,
   `scripts/`, or workflows. One PR. **Never merge.**

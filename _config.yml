@@ -82,25 +82,18 @@ preview_images:
   prompt_engine          : 'claude'           # claude writes the art brief (template = built-in prompt)
   review_engine          : 'claude'           # claude vision-reviews the render (none = skip)
   collections:                                # pages/_<name> directories to scan
-    - hacks
-    - posts
-    - tools
+    - posts                                   # all news content (hacks/tools/field-notes) now lives here
     - docs
-  # Per-collection visual identities (gem >= 0.3). Each block overrides
-  # style/style_modifiers (and may override size/quality/model) for that
-  # collection; everything else inherits the global settings above. Distinct
-  # at a glance: posts = friendly robot office cartoon, hacks = neon circuit
-  # schematic, tools = retro pixel video game, docs = clean isometric diagram.
+  # Per-collection visual identities (gem >= 0.3). Since the hacks/tools/
+  # field-notes collections were folded into the `posts` collection under
+  # pages/_posts/<section>/ (news system, issue #337), art direction is keyed
+  # by the `posts` collection; the migrator also stamps a per-section neon SVG
+  # card (assets/images/previews/section-<section>.svg) as the fallback when an
+  # item has no per-item render. docs keep their own isometric look.
   collection_styles:
-    posts:                                    # Field Notes — narrative essays
+    posts:                                    # news content — hacks, tools, field notes
       style            : 'friendly cartoon illustration, cheerful robot protagonist living everyday office life'
       style_modifiers  : 'soft rounded shapes, warm inviting palette, playful slice-of-life humor, clean flat shading, cozy workplace props'
-    hacks:                                    # quick CLI tricks
-      style            : 'neon circuit-board schematic, glowing terminal traces, exploded-diagram energy'
-      style_modifiers  : 'cyan wireframes with fuchsia highlights on near-black, scanlines, monospace glyphs'
-    tools:                                    # honest reviews
-      style            : 'retro pixel art, 8-bit video game scene, chunky pixel sprites, arcade level energy'
-      style_modifiers  : 'vibrant limited palette, CRT scanline glow, pixelated HUD elements, nostalgic game-box art'
     docs:                                     # reference guides
       style            : 'neon isometric technical diagram, clean labeled architecture, blueprint calm'
       style_modifiers  : 'thin cyan linework with fuchsia accents on near-black, matte panels, grid backdrop'
@@ -236,7 +229,10 @@ sass:
   sourcemap: never
 
 # ── Collections ──────────────────────────────────────────────────────────────
-# Collections live under pages/ (so files are pages/_posts, pages/_hacks, ...).
+# Collections live under pages/ (so files are pages/_posts, pages/_docs, ...).
+# The former `hacks` and `tools` collections were folded into `posts` as news
+# sections under pages/_posts/<section>/ (issue #337); each item pins an explicit
+# permalink to its old /hacks/:slug/ or /tools/:slug/ URL, so nothing 404s.
 collections_dir: pages
 collections:
   pages:
@@ -245,12 +241,6 @@ collections:
   posts:
     output: true
     permalink: /posts/:year/:month/:day/:title/
-  hacks:
-    output: true
-    permalink: /hacks/:name/
-  tools:
-    output: true
-    permalink: /tools/:name/
   about:
     output: true
     permalink: /about/:name/
@@ -286,7 +276,10 @@ defaults:
       layout: default
       sidebar:
         nav: main
-  # Blog / journey posts.
+  # News content — hacks, tools, and field notes all live under
+  # pages/_posts/<section>/ now, so one posts default gives them all the
+  # `article` layout and the Field-Notes sidebar. Section-specific chrome comes
+  # from each post's `categories` (Hacks / Tools / Field Notes), not a scope.
   - scope:
       path: pages/_posts
     values:
@@ -295,22 +288,6 @@ defaults:
       author_profile: true
       sidebar:
         nav: posts
-  # Hacks collection.
-  - scope:
-      path: pages/_hacks
-    values:
-      layout: article
-      collection: hacks
-      post_type: standard
-      author_profile: true
-  # Tools collection.
-  - scope:
-      path: pages/_tools
-    values:
-      layout: article
-      collection: tools
-      post_type: standard
-      author_profile: true
   # About pages.
   - scope:
       path: pages/_about

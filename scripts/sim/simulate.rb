@@ -48,8 +48,8 @@ end
 # ---------------------------------------------------------------------------
 scenario 'healthy site — grow, do not fix'
 q = Triage.build([
-  finding(check_id: 'brand',       severity: 'warning', file: 'pages/_hacks/x.md', rule: 'banned-when-sincere:just'),
-  finding(check_id: 'frontmatter', severity: 'warning', file: 'pages/_tools/y.md', rule: 'description-too-long')
+  finding(check_id: 'brand',       severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-x.md', rule: 'banned-when-sincere:just'),
+  finding(check_id: 'frontmatter', severity: 'warning', file: 'pages/_posts/tools/2026-01-01-y.md', rule: 'description-too-long')
 ])
 check('queue built from findings', q.size == 2, "size=#{q.size}")
 check('no sev1/sev2 when only warnings', q.none? { |i| %w[sev1 sev2].include?(i['severity']) })
@@ -90,7 +90,7 @@ check('routed to the theme repo', q.first && q.first['route'] == 'upstream' && q
 
 # ---------------------------------------------------------------------------
 scenario 'fingerprint integrity — findings -> queue -> issue dedup marker'
-f = finding(check_id: 'frontmatter', severity: 'error', file: 'pages/_hacks/z.md', rule: 'missing-key:tags')
+f = finding(check_id: 'frontmatter', severity: 'error', file: 'pages/_posts/hacks/2026-01-01-z.md', rule: 'missing-key:tags')
 item = Triage.build([f]).first
 check('queue preserves the finding fingerprint', item && item['fingerprint'] == f['fingerprint'])
 check('issue body carries the triage-fp marker', Triage.issue_body(item).include?("triage-fp: #{f['fingerprint']}"))
@@ -99,7 +99,7 @@ check('issue body carries the triage-fp marker', Triage.issue_body(item).include
 scenario 'severity dominates reach — a sev1 outranks a popular sev4'
 q = Triage.build([
   finding(check_id: 'build', severity: 'error', rule: 'jekyll-build-failed'),
-  finding(check_id: 'brand', severity: 'warning', file: 'pages/_hacks/x.md', rule: 'banned-when-sincere:just')
+  finding(check_id: 'brand', severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-x.md', rule: 'banned-when-sincere:just')
 ])
 check('sev1 sorts above sev4 regardless of reach', q.first['severity'] == 'sev1')
 
@@ -108,11 +108,11 @@ scenario 'severity-tier translation — ONLY build is sev1'
 samples = {
   'build'        => finding(check_id: 'build',         severity: 'error',   rule: 'jekyll-build-failed'),
   'htmlproofer'  => finding(check_id: 'htmlproofer',   severity: 'error',   file: '_site/a/index.html', rule: 'link:Links'),
-  'frontmatter'  => finding(check_id: 'frontmatter',   severity: 'error',   file: 'pages/_hacks/a.md',  rule: 'missing-key:tags'),
-  'fm-warn'      => finding(check_id: 'frontmatter',   severity: 'warning', file: 'pages/_hacks/b.md',  rule: 'description-too-long'),
+  'frontmatter'  => finding(check_id: 'frontmatter',   severity: 'error',   file: 'pages/_posts/hacks/2026-01-01-a.md',  rule: 'missing-key:tags'),
+  'fm-warn'      => finding(check_id: 'frontmatter',   severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-b.md',  rule: 'description-too-long'),
   'drift'        => finding(check_id: 'drift',         severity: 'error',   file: '_data/backlog.yml',  rule: 'backlog-published-deadlink'),
-  'brand-avoid'  => finding(check_id: 'brand',         severity: 'error',   file: 'pages/_hacks/c.md',  rule: 'avoid-phrase'),
-  'brand-cand'   => finding(check_id: 'brand',         severity: 'warning', file: 'pages/_hacks/d.md',  rule: 'banned-when-sincere:just')
+  'brand-avoid'  => finding(check_id: 'brand',         severity: 'error',   file: 'pages/_posts/hacks/2026-01-01-c.md',  rule: 'avoid-phrase'),
+  'brand-cand'   => finding(check_id: 'brand',         severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-d.md',  rule: 'banned-when-sincere:just')
 }
 tiers = samples.map { |k, f| [k, Triage.build([f]).first && Triage.build([f]).first['severity']] }.to_h
 check('only the build check yields sev1', tiers.select { |_, v| v == 'sev1' }.keys == ['build'], tiers.inspect)
@@ -130,7 +130,7 @@ q = Triage.build([
   finding(check_id: 'htmlproofer', severity: 'info', rule: 'clean'),
   finding(check_id: 'htmlproofer', severity: 'info', rule: 'gem-missing'),
   finding(check_id: 'htmlproofer', severity: 'info', rule: 'theme-origin-links-ignored', route_to: 'upstream'),
-  finding(check_id: 'frontmatter', severity: 'warning', file: 'pages/_hacks/x.md', rule: 'description-too-long')
+  finding(check_id: 'frontmatter', severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-x.md', rule: 'description-too-long')
 ])
 check('clean/gem-missing info dropped; upstream info + warning kept', q.size == 2, "size=#{q.size}")
 check('the surviving info is the upstream tracker', q.any? { |i| i['route'] == 'upstream' })
@@ -145,7 +145,7 @@ check('a FRESH empty queue (genuinely healthy) does grow', healthy[:decision][:m
 
 # ---------------------------------------------------------------------------
 scenario 'prime-directive candidate survives the boundary + is not a bugfix'
-pd = finding(check_id: 'prime-directive', severity: 'warning', file: 'pages/_hacks/z.md', rule: 'command-failed', pdc: true)
+pd = finding(check_id: 'prime-directive', severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-z.md', rule: 'command-failed', pdc: true)
 item = Triage.build([pd]).first
 check('queue item keeps prime_directive_candidate=true', item['prime_directive_candidate'] == true)
 check('classified type/field-note-candidate', item['type'] == 'type/field-note-candidate')
@@ -160,7 +160,7 @@ check('sev2 mode keeps grow >= 1 even with many fixers', plan[:decision][:mode] 
 
 # ---------------------------------------------------------------------------
 scenario 'idempotency + analytics outage'
-src = [finding(check_id: 'brand', severity: 'warning', file: 'pages/_hacks/x.md', rule: 'banned-when-sincere:just'),
+src = [finding(check_id: 'brand', severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-x.md', rule: 'banned-when-sincere:just'),
        finding(check_id: 'htmlproofer', severity: 'error', file: '_site/a/index.html', rule: 'link:Links')]
 check('Triage.build is deterministic (byte-identical twice)', Triage.build(src).to_json == Triage.build(src).to_json)
 check('analytics cache is stale -> reach defaults to 1.0, severity dominates', !!Triage.analytics['stale'])

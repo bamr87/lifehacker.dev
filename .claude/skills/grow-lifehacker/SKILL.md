@@ -54,11 +54,18 @@ sarcasm are house tools. Exaggerate past ambiguity into obvious comedy — if a 
 sister site it-journey.dev), reference and **link that page** in the piece — a natural in-text mention or an "spotted on it-journey" note is enough. The scout pins every idea to its source; honor the credit. Write the lifehacker angle, not a rewrite of their page.
 - Lint against `glossary.yml`: no hype words (`banned_when_sincere`) used
 **sincerely** — inside a bit they're encouraged. `watch_words` (just, simply, obviously…) are style nudges, not violations: cut them when they wave away the hard part, and otherwise don't sweat them.
-- Use the front-matter templates below. Put files in the right collection:
-  - hack → `pages/_hacks/<slug>.md`
-  - tool → `pages/_tools/<slug>.md`
-  - field note / blog post → `pages/_posts/YYYY-MM-DD-<slug>.md`
+- Use the front-matter templates below. Every item is a **post** now (the news
+system, issue #337): put it in the right section subdirectory of `pages/_posts/`, dated-filename like any post, and it renders at `/news/<section>/`:
+  - hack → `pages/_posts/hacks/YYYY-MM-DD-<slug>.md`   (also lands at `/hacks/<slug>/`)
+  - tool → `pages/_posts/tools/YYYY-MM-DD-<slug>.md`   (also lands at `/tools/<slug>/`)
+  - field note → `pages/_posts/field-notes/YYYY-MM-DD-<slug>.md`   (lands at `/posts/YYYY/MM/DD/<slug>/`)
   - doc → `pages/_docs/<slug>.md`
+- **Tags are the section's filter pills**, so reuse the small per-section
+  vocabulary — do NOT invent one-off tags (a singleton tag is an empty pill):
+  - hacks: `shell git ci-cd jekyll docker security web-dev data`
+  - tools: `search files data system editor productivity`
+  - field-notes: `automation ai jekyll ci-cd satire business engineering career`
+  Pick 1–3 that fit; if none fit, the piece probably belongs in another section.
 
 ### 5. Screenshot + verify
 - Build locally and confirm it renders (see "Local preview" below).
@@ -80,45 +87,48 @@ a `published: /<path>/` link. That targeted one-line change rarely conflicts. Do
 
 ## Front-matter templates
 
-Hack (`pages/_hacks/<slug>.md`):
+Hack (`pages/_posts/hacks/YYYY-MM-DD-<slug>.md`):
 ```yaml
 ---
 title: "<imperative, specific>"
 description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
-collection: hacks
+categories: [Hacks]
+tags: [<pill>, <pill>]   # from the hacks vocabulary above
 author: claude   # or the item's persona key: cass / edge
 excerpt: "<one-line teaser>"
-tags: [<tech>, <topic>]
+permalink: /hacks/<slug>/   # keep the section's classic URL
 ---
 ```
 
-Tool review (`pages/_tools/<slug>.md`):
+Tool review (`pages/_posts/tools/YYYY-MM-DD-<slug>.md`):
 ```yaml
 ---
 title: "<Tool>: the honest review"
 description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
-collection: tools
+categories: [Tools]
+tags: [<pill>]   # from the tools vocabulary above
 author: claude   # or the item's persona key: cass / edge
 verdict: "<one phrase: use it / skip it / it depends>"
 excerpt: "<one-line teaser>"
-tags: [<category>]
+permalink: /tools/<slug>/
 ---
 ```
 
-Field note (`pages/_posts/YYYY-MM-DD-<slug>.md`):
+Field note (`pages/_posts/field-notes/YYYY-MM-DD-<slug>.md`):
 ```yaml
 ---
 title: "<what happened>"
 description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
 categories: [Field Notes]
-tags: [<topic>]
+tags: [<pill>]   # from the field-notes vocabulary above
 author: claude   # or the item's persona key: cass / edge
 excerpt: "<one-line teaser>"
 ---
 ```
+(Field notes keep the dated `/posts/YYYY/MM/DD/<slug>/` URL automatically — no explicit `permalink`. Preview art is optional: a per-item image under `assets/images/previews/` if you have one, else the theme falls back to the section card.)
 
 ## Local preview
 

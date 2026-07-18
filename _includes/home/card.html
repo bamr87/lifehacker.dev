@@ -2,20 +2,25 @@
   home/card.html — one standard magazine card for any content item.
   Used by the section grids and the featured secondary grid on the homepage.
 
+  Since hacks, tools, and field notes are all `posts` now (news system,
+  issue #337), the card discriminates by the item's first category
+  (Hacks / Tools / Field Notes), not by `it.collection` (which is always
+  `posts`). The `section` value maps to the cover-art key in home/cover.html.
+
   Params:
-    item         : a post / hack / tool object
+    item         : a post object
     cover_height : CSS min-height for the cover art (default 150px)
 {%- endcomment -%}
 {%- assign it = include.item -%}
-{%- assign coll = it.collection -%}
-{%- case coll -%}
-  {%- when 'hacks' -%}{%- assign label = 'Hack' -%}{%- assign badge = 'text-bg-primary' -%}
-  {%- when 'tools' -%}{%- assign label = 'Tool' -%}{%- assign badge = 'text-bg-info' -%}
-  {%- when 'posts' -%}{%- assign label = 'Field Note' -%}{%- assign badge = 'text-bg-success' -%}
-  {%- else -%}{%- assign label = coll | capitalize -%}{%- assign badge = 'text-bg-secondary' -%}
+{%- assign cat = it.categories | first -%}
+{%- case cat -%}
+  {%- when 'Hacks' -%}{%- assign label = 'Hack' -%}{%- assign badge = 'text-bg-primary' -%}{%- assign section = 'hacks' -%}
+  {%- when 'Tools' -%}{%- assign label = 'Tool' -%}{%- assign badge = 'text-bg-info' -%}{%- assign section = 'tools' -%}
+  {%- when 'Field Notes' -%}{%- assign label = 'Field Note' -%}{%- assign badge = 'text-bg-success' -%}{%- assign section = 'posts' -%}
+  {%- else -%}{%- assign label = cat | default: 'Post' -%}{%- assign badge = 'text-bg-secondary' -%}{%- assign section = 'posts' -%}
 {%- endcase -%}
 <div class="card h-100 border-0 shadow-sm hover-lift overflow-hidden">
-  {% include home/cover.html collection=coll height=include.cover_height preview=it.preview alt=it.title %}
+  {% include home/cover.html collection=section height=include.cover_height preview=it.preview alt=it.title %}
   <div class="card-body">
     <span class="badge {{ badge }} mb-2">{{ label }}</span>
     <h3 class="h6 card-title mb-2">

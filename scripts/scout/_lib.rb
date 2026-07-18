@@ -56,10 +56,12 @@ module Scout
   VOICES = (VOICE_FOR.values + %w[satire-deadpan]).uniq.freeze
 
   # Where each collection's published pages live (for the "already written?" check).
+  # News sections are all the `posts` collection now (issue #337); each kind maps
+  # to its pages/_posts/<section>/ subdir (docs unchanged).
   COLLECTION_GLOB = {
-    'hack' => 'pages/_hacks/*.md',
-    'tool' => 'pages/_tools/*.md',
-    'post' => 'pages/_posts/*.md',
+    'hack' => 'pages/_posts/hacks/*.md',
+    'tool' => 'pages/_posts/tools/*.md',
+    'post' => 'pages/_posts/field-notes/*.md',
     'doc'  => 'pages/_docs/*.md'
   }.freeze
 

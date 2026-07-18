@@ -41,7 +41,20 @@ end
 #   //assets/...      author-card logo rendered as a protocol-relative URL
 #   /news/<cat>/      theme article layout's category permalink scheme (we use /categories/)
 #   .github/...       theme repo doc refs leaking from a theme include
-IGNORE = [%r{\A//assets/}, %r{\A/news/}, %r{\.github/}]
+#   /archives/#...    the `news` layout's archive widget links to an /archives/ page
+#                     the theme never ships (issue #337; magazine landing only)
+#   #<subtopic>       the `section` layout's sub-topic sidebar renders JS filter
+#                     anchors <a href="#<tag>" data-section=...> that have no
+#                     scroll target in `grid` style. Scoped to the reused
+#                     per-section pill vocabulary (scripts/news-enrichment.yml) so a
+#                     genuinely broken same-page anchor in prose still fails.
+SECTION_PILLS = %w[
+  shell git ci-cd jekyll docker security web-dev data
+  search files system editor productivity
+  automation ai satire business engineering career
+].freeze
+IGNORE = [%r{\A//assets/}, %r{\A/news/}, %r{\.github/}, %r{\A/archives/},
+          /\A#(?:#{SECTION_PILLS.map { |p| Regexp.escape(p) }.join('|')})\z/]
 
 opts = {
   disable_external: true,
@@ -89,7 +102,7 @@ end
 # Record the knowingly-ignored theme-origin link patterns so they stay visible
 # and routable (PR2 will file these upstream automatically).
 findings << LH.finding(check_id: 'htmlproofer', severity: 'info', rule: 'theme-origin-links-ignored',
-                       evidence: 'ignored theme-layout links: //assets logo, /news/<cat>/ category scheme, .github refs (file upstream)',
+                       evidence: 'ignored theme-layout links: //assets logo, /news/<cat>/ category scheme, .github refs, /archives/ archive widget, #<subtopic> section-sidebar filter anchors (file upstream)',
                        route_to: 'upstream')
 
 if findings.size == 1 # only the tracked info note above

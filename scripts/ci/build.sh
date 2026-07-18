@@ -73,11 +73,19 @@ lh_overlay() {
     cp -R "$REPO_DIR/_includes/." "$dest/_includes/"
   fi
 
-  # Top-level spine pages.
+  # Top-level spine pages. blog.md/hacks.md/tools.md are now thin redirects to
+  # their /news/<section>/ homes (issue #337) but still ship so old links resolve.
   local f
   for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md concepts.md categories.md tags.md contact.md; do
     [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$dest/$f"
   done
+
+  # The news/ section pages + magazine landing (layout: section / news). Not
+  # under pages/, so copy the directory explicitly to stay production-faithful.
+  if [[ -d "$REPO_DIR/news" ]]; then
+    rm -rf "$dest/news"
+    cp -R "$REPO_DIR/news" "$dest/news"
+  fi
 
   # Our assets — the WHOLE tree (images/, svg/, img/, …). GitHub Pages serves
   # every path under assets/, so the overlay must too. Copying only assets/images

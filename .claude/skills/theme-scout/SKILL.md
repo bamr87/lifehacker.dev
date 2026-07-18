@@ -20,7 +20,7 @@ for a theme limitation. These are the **highest value**: the fix is already prov
 
 - **Build/config workarounds:** `scripts/ci/build.sh`, the `build-overlay` action,
 `_config.yml` / `_config_dev.yml`, `scripts/explorer/*` (the self-healing sitemap), `_data/theme_*.yml`, `_includes/` overrides.
-- **The live site:** `curl -s https://lifehacker.dev/` and `/hacks/ /tools/ /docs/
+- **The live site:** `curl -s https://lifehacker.dev/` and `/news/ /news/hacks/ /news/tools/ /news/field-notes/ /docs/
   /about/colophon/` — inspect the theme-rendered HTML/CSS.
 - **The harness's own theme findings:** `scripts/ci/check_drift.rb`,
 `htmlproofer_check.rb`, anything the triage routed `route_to: upstream`, `_data/health/queue.json`.

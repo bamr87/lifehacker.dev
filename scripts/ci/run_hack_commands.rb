@@ -31,7 +31,9 @@ require 'open3'
 require 'tmpdir'
 
 MODE = (ENV['LH_PRIME_MODE'] || 'optin').strip
-DIRS = %w[pages/_hacks pages/_tools]
+# Hacks and tools are the "runnable" news sections (issue #337 moved them under
+# pages/_posts/<section>/). Field notes are narrative and are not command-run.
+DIRS = %w[pages/_posts/hacks pages/_posts/tools]
 SHELL_LANGS = %w[bash sh shell zsh console shell-session].freeze
 IMAGE = 'lifehacker-sandbox:ci'
 

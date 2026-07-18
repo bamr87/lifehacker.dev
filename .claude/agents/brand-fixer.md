@@ -20,7 +20,7 @@ The glossary (`_data/brand/glossary.yml`) bans pure marketing-hype words — `re
 - `test-results/brand.json` — the full-repo scan (the sweep runs the lint with
 `LH_BRAND_SCOPE_ALL=1` first). Work the rows where `severity == "warning"` and `rule` starts with `banned-when-sincere:`. Each carries `file`, `line`, the `evidence` line, and an **`accept_key`** (copy this verbatim into the ledger). Rows already at `severity == "info"` are satire-suspected or already accepted — leave them.
 - `_data/brand/voice.yml` — voice profiles. Use the one matching the file's
-collection (hacks → how-to-practical, tools → tool-review-honest, posts/docs → meta-confession, else satire-deadpan).
+section (hacks → how-to-practical, tools → tool-review-honest, field-notes/docs → meta-confession, else satire-deadpan).
 - The file itself — read the surrounding **paragraph**, never just the flagged line.
 
 ## How to clear each warning

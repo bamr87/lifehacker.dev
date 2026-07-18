@@ -45,7 +45,9 @@ jobs:
         id: smoke
         run: |
           set +e
-          urls=("/" "/hacks/" "/tools/" "/blog/" "/about/" "/docs/" "/docs/health/" "/categories/" "/tags/" "/search/")
+          # /news/ + sections are the new canonical homes; /hacks/ /tools/ /blog/
+          # still 200 as redirects to them (issue #337), so verify both.
+          urls=("/" "/news/" "/news/hacks/" "/news/tools/" "/news/field-notes/" "/hacks/" "/tools/" "/blog/" "/about/" "/docs/" "/docs/health/" "/categories/" "/tags/" "/search/")
           fail=0
           {
             echo "## Live deploy verification"

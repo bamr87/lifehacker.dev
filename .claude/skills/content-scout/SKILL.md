@@ -64,7 +64,7 @@ Which pillar (`_data/brand/identity.yml`): **hack** = a real fix for a real prob
 ## The run (do these in order)
 
 1. **Load context.** Read `_data/brand/identity.yml`, `_data/brand/voice.yml`,
-`_data/brand/glossary.yml`, `_data/backlog.yml`, and skim `pages/_hacks/`, `pages/_tools/`, `pages/_docs/`, `pages/_posts/` titles — so you know the brand, the voice, and what's already covered.
+`_data/brand/glossary.yml`, `_data/backlog.yml`, and skim `pages/_posts/{hacks,tools,field-notes}/` and `pages/_docs/` titles — so you know the brand, the voice, and what's already covered.
 2. **Read the plan.** `_data/scout/plan.json` lists, per source, the `visit` URLs
 and `wander_slots`. (If it's missing, the workflow ran the planner first; run locally with `ruby scripts/scout/plan_sources.rb`.)
 3. **Browse the source.** `WebFetch` each `visit` URL. Follow up to `wander_slots`

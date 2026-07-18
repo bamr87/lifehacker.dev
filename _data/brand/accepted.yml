@@ -32,36 +32,20 @@
 # (just, simply, obviously, powerful, unlock, leverage) left the banned list for
 # glossary `watch_words` — writer guidance, not linted. Their 37 ledger entries
 # were pruned here; keeping them would only have tripped the stale-orphan check
-# on every full-repo scan. The four scare-quoted "10x" accepts below remain as
-# reviewed human judgments, though the widened satire heuristic now catches
-# scare quotes on its own.
+# on every full-repo scan.
+#
+# 2026-07-18 news reorg (issue #337): hacks/tools/field-notes moved into
+# pages/_posts/<section>/, so accept keys (which hash the file path) changed.
+# Post-move, the widened satire heuristic now catches the scare-quoted "10x" in
+# the three tmux hacks and the word-police doc on its own (they report as info),
+# so those four accepts were pruned rather than re-keyed. Only the field note
+# below still lints as a sincere-looking warning, so its accept was re-keyed to
+# its new path.
 # =============================================================================
 accepted:
-  # --- Work order #163: "10x" in scare quotes to dismiss the hype -----------
-  # All four use "10x" inside double quotes to REJECT the buzzword, not to make
-  # a sincere claim. The tier-1 regex flags the string; the meaning is anti-hype.
-  - file: pages/_docs/the-word-police-that-cant-make-an-arrest.md
+  # "10x" inside a quoted mock headline that the piece REJECTS, not a claim.
+  - file: pages/_posts/field-notes/2025-08-19-mother-grokking-programmers.md
     word: 10x
-    key:  1f8e607f4e78
-    note: 'scare-quoted "10x" — the doc''s own line ("A site that satirizes 10x has to say 10x a lot"), meta-commentary, not a sincere claim'
-    reviewed: 2026-07-06
-  - file: pages/_hacks/tmux-conf-that-grows-up.md
-    word: 10x
-    key:  c9d5741c3648
-    note: 'scare-quoted "10x" rejecting the hype ("It won''t 10x your terminal") — the opposite of a sincere claim'
-    reviewed: 2026-07-06
-  - file: pages/_hacks/tmux-survival-subset.md
-    word: 10x
-    key:  fb823000efd4
-    note: 'scare-quoted "10x" rejecting the hype ("tmux will not 10x anything") — anti-hype, not sincere'
-    reviewed: 2026-07-06
-  - file: pages/_hacks/tmux-survive-a-reboot.md
-    word: 10x
-    key:  488dce20e8ba
-    note: 'scare-quoted "10x" rejecting the hype ("It won''t 10x your recovery") — anti-hype, not sincere'
-    reviewed: 2026-07-06
-  - file: pages/_posts/2025-08-19-mother-grokking-programmers.md
-    word: 10x
-    key:  99ef8c0f3003
+    key:  b8648abad4db
     note: 'quoted mock headline ("five habits of the 10x grokker") named as the hustle-content reflex the piece refuses — anti-hype, not a claim'
-    reviewed: 2026-07-15
+    reviewed: 2026-07-18
