@@ -8,7 +8,9 @@
   intentional magazine, not a missing image.
 
   Params:
-    collection : 'hacks' | 'tools' | 'posts' | 'docs' | 'about'  (item.collection)
+    collection : cover-art key — 'hacks' | 'tools' | 'posts' | 'docs' | 'about'.
+                 Callers derive it from the item's category now that hacks/tools/
+                 field notes are all one `posts` collection (issue #337).
     preview    : the item's front-matter `preview:` value (optional)
     alt        : alt text for the image cover (optional; defaults to title-less)
     height     : CSS min-height (default 160px)

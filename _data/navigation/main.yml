@@ -2,28 +2,41 @@
 # Used by: _includes/navigation/navbar.html
 # Schema: { title, icon (bi-*), url, children: [{title, url}] }
 
+- title: News
+  icon: bi-newspaper
+  url: /news/
+  children:
+    - title: The Newsroom
+      url: /news/
+    - title: Hacks
+      url: /news/hacks/
+    - title: Tools
+      url: /news/tools/
+    - title: Field Notes
+      url: /news/field-notes/
+
 - title: Hacks
   icon: bi-lightbulb
-  url: /hacks/
+  url: /news/hacks/
   children:
     - title: All Hacks
-      url: /hacks/
+      url: /news/hacks/
     - title: Categories
       url: /categories/
 
 - title: Tools
   icon: bi-wrench-adjustable
-  url: /tools/
+  url: /news/tools/
   children:
     - title: All Tools
-      url: /tools/
+      url: /news/tools/
 
 - title: Field Notes
   icon: bi-journal-text
-  url: /blog/
+  url: /news/field-notes/
   children:
-    - title: All Posts
-      url: /blog/
+    - title: All Field Notes
+      url: /news/field-notes/
     - title: Categories
       url: /categories/
     - title: Tags

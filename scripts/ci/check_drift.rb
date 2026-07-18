@@ -28,15 +28,15 @@ def norm(u)
 end
 
 # Compute a page's URL: explicit front-matter permalink wins, else the
-# collection's permalink pattern from _config.yml.
+# collection's permalink pattern from _config.yml. Since #337, hacks/tools items
+# are `posts` that pin an explicit permalink (so the permalink branch handles
+# their /hacks/:slug/ and /tools/:slug/ URLs); field notes keep the dated pattern.
 def url_for(fm, path, coll)
   return norm(fm['permalink']) if fm && fm['permalink']
   name = File.basename(path, '.md')
   case coll
   when 'posts'
     name =~ /\A(\d{4})-(\d{2})-(\d{2})-(.+)\z/ ? "/posts/#{$1}/#{$2}/#{$3}/#{$4}/" : nil
-  when 'hacks' then "/hacks/#{name}/"
-  when 'tools' then "/tools/#{name}/"
   when 'about' then "/about/#{name}/"
   when 'docs'  then "/docs/#{name}/"
   else "/#{name}/"
@@ -46,17 +46,17 @@ end
 # --- Build the set of URLs the site actually publishes (from source) ---------
 urls = {} # normalized url => repo-relative source file
 {
-  'pages/_hacks' => 'hacks', 'pages/_tools' => 'tools', 'pages/_posts' => 'posts',
-  'pages/_docs' => 'docs', 'pages/_about' => 'about'
+  'pages/_posts' => 'posts', 'pages/_docs' => 'docs', 'pages/_about' => 'about'
 }.each do |dir, coll|
-  Dir.glob(File.join(LH::ROOT, dir, '*.md')).each do |f|
+  Dir.glob(File.join(LH::ROOT, dir, '**', '*.md')).each do |f|
     fm, = LH.parse(f)
     u = url_for(fm, f, coll)
     urls[norm(u)] = LH.rel(f) if u
   end
 end
-# Top-level pages that declare an explicit permalink (search.md, index.md, ...).
-Dir.glob(File.join(LH::ROOT, '*.{md,html}')).each do |f|
+# Top-level pages and the news/ section pages that declare an explicit permalink
+# (search.md, index.md, news/hacks.md, ...).
+Dir.glob(File.join(LH::ROOT, '{*,news/*}.{md,html}')).each do |f|
   fm, = LH.parse(f)
   urls[norm(fm['permalink'])] = LH.rel(f) if fm && fm['permalink']
 end

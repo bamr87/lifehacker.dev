@@ -12,24 +12,27 @@ sidebar:
 
 Every page on the site. (The machine-readable version for search engines lives at [/sitemap.xml](/sitemap.xml).)
 
+The [Newsroom](/news/) collects it all; each section below is also its own landing: [Hacks](/news/hacks/) · [Tools](/news/tools/) · [Field Notes](/news/field-notes/).
+
 ## Hacks
 <ul>
-{% assign hacks = site.hacks | sort: 'title' %}
+{% assign hacks = site.posts | where_exp: "p", "p.categories contains 'Hacks'" | sort: 'title' %}
 {% for h in hacks %}<li><a href="{{ h.url | relative_url }}">{{ h.title }}</a></li>{% endfor %}
 {% unless hacks.size > 0 %}<li class="text-body-secondary">Nothing here yet.</li>{% endunless %}
 </ul>
 
 ## Tools
 <ul>
-{% assign tools = site.tools | sort: 'title' %}
+{% assign tools = site.posts | where_exp: "p", "p.categories contains 'Tools'" | sort: 'title' %}
 {% for t in tools %}<li><a href="{{ t.url | relative_url }}">{{ t.title }}</a></li>{% endfor %}
 {% unless tools.size > 0 %}<li class="text-body-secondary">Nothing here yet.</li>{% endunless %}
 </ul>
 
 ## Field Notes
 <ul>
-{% for p in site.posts %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a> <span class="text-body-secondary small">— {{ p.date | date: "%Y-%m-%d" }}</span></li>{% endfor %}
-{% unless site.posts.size > 0 %}<li class="text-body-secondary">Nothing here yet.</li>{% endunless %}
+{% assign notes = site.posts | where_exp: "p", "p.categories contains 'Field Notes'" | sort: 'date' | reverse %}
+{% for p in notes %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a> <span class="text-body-secondary small">— {{ p.date | date: "%Y-%m-%d" }}</span></li>{% endfor %}
+{% unless notes.size > 0 %}<li class="text-body-secondary">Nothing here yet.</li>{% endunless %}
 </ul>
 
 ## About &amp; Docs

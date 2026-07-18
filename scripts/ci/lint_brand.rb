@@ -31,7 +31,9 @@ glossary = {} unless glossary.is_a?(Hash)
 BANNED = (glossary['banned_when_sincere'] || []).map(&:to_s)
 AVOID  = (glossary['avoid_phrases'] || []).map(&:to_s)
 
-DIRS = %w[pages/_hacks pages/_tools pages/_posts pages/_docs]
+# Since #337 all news content (hacks/tools/field-notes) is one collection under
+# pages/_posts/<section>/, so a recursive glob covers what the four flat dirs did.
+DIRS = %w[pages/_posts pages/_docs]
 findings = []
 
 # --- PR scoping --------------------------------------------------------------
@@ -166,7 +168,7 @@ def each_prose_line(body)
 end
 
 DIRS.each do |dir|
-  Dir.glob(File.join(LH::ROOT, dir, '*.md')).sort.each do |path|
+  Dir.glob(File.join(LH::ROOT, dir, '**', '*.md')).sort.each do |path|
     next if SCOPE && !SCOPE.include?(LH.rel(path))
     _fm, body = LH.parse(path)
     rel = LH.rel(path)

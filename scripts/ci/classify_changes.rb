@@ -26,10 +26,11 @@ def kind_of(path)
   when %r{\A_data/(health|fleet|analytics|explorer|scout|ai_usage)/}, %r{\A(SITE_HEALTH|AI_USAGE)\.md\z}
     'data'                                       # generated state / bot run-trails — lightest path
   when %r{\Apages/},
+       %r{\Anews/},
        %r{\A_data/(brand|navigation)/},
        %r{\A_data/(authors|landing|backlog)\.yml\z},
        %r{\Aassets/},
-       %r{\A(index|blog|hacks|tools|categories|tags|contact|search|sitemap)\.(md|html|json)\z},
+       %r{\A(index|blog|hacks|tools|news|categories|tags|contact|search|sitemap)\.(md|html|json)\z},
        %r{\A404\.html\z}
     'content'                                    # publications — content quality gate
   else

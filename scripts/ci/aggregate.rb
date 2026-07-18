@@ -69,7 +69,7 @@ scoped        = !changed.empty?
 changed_paths = changed.map { |p| p.sub(%r{\A\./}, '') }.to_set
 # Distinctive slugs of changed collection items; skip generic top-level page names
 # (index, blog, …) whose slug would over-match every page's _site output.
-GENERIC_SLUGS = %w[index blog hacks tools categories tags contact search sitemap 404 about].freeze
+GENERIC_SLUGS = %w[index blog hacks tools news field-notes categories tags contact search sitemap 404 about].freeze
 changed_slugs = changed_paths.map { |p|
   next nil unless p =~ %r{\Apages/_[a-z]+/(.+)\.md\z}
   slug = File.basename(Regexp.last_match(1)).sub(/\A\d{4}-\d{2}-\d{2}-/, '')

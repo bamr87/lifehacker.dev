@@ -12,12 +12,15 @@ require_relative '_lib'
 authors = (LH.yload(LH.read(File.join(LH::ROOT, '_data', 'authors.yml'))) rescue {})
 AUTHOR_KEYS = authors.is_a?(Hash) ? authors.keys.map(&:to_s) : []
 
-# dir, collection name, and the validation flavor.
+# dir, section kind, and the category each item must carry. Since issue #337 the
+# hacks/tools/field-notes are all `posts` under pages/_posts/<section>/, so the
+# section is identified by the required `categories:[<category>]`, not a
+# `collection:` key, and every item obeys the dated-post filename rule.
 SPECS = [
-  { dir: 'pages/_hacks', kind: 'hacks', collection: 'hacks' },
-  { dir: 'pages/_tools', kind: 'tools', collection: 'tools' },
-  { dir: 'pages/_posts', kind: 'posts' },
-  { dir: 'pages/_docs',  kind: 'docs', lenient: true }
+  { dir: 'pages/_posts/hacks',       kind: 'hacks',       category: 'Hacks' },
+  { dir: 'pages/_posts/tools',       kind: 'tools',       category: 'Tools' },
+  { dir: 'pages/_posts/field-notes', kind: 'field-notes', category: 'Field Notes' },
+  { dir: 'pages/_docs',              kind: 'docs', lenient: true }
 ]
 
 COMMON = %w[title description date author excerpt tags] # hacks/tools/posts
@@ -86,25 +89,23 @@ SPECS.each do |spec|
       end
     end
 
-    case spec[:kind]
-    when 'hacks', 'tools'
-      if fm['collection'].to_s != spec[:collection]
+    unless spec[:lenient]
+      # Every news item declares its section via `categories:[<category>]`.
+      cats = fm['categories']
+      unless cats.is_a?(Array) && cats.map(&:to_s).include?(spec[:category])
         findings << LH.finding(check_id: 'frontmatter', severity: 'error',
-                               rule: 'wrong-collection', file: rel,
-                               evidence: "collection must be `#{spec[:collection]}`, got `#{fm['collection']}`")
+                               rule: 'wrong-section-category', file: rel,
+                               evidence: "must list `#{spec[:category]}` in categories, got #{cats.inspect}")
       end
+
+      # Tools still lead with a verdict.
       if spec[:kind] == 'tools' && !present?(fm['verdict'])
         findings << LH.finding(check_id: 'frontmatter', severity: 'error',
                                rule: 'missing-key:verdict', file: rel,
                                evidence: 'a tool review must carry a non-empty verdict')
       end
-    when 'posts'
-      cats = fm['categories']
-      unless cats.is_a?(Array) && cats.map(&:to_s).include?('Field Notes')
-        findings << LH.finding(check_id: 'frontmatter', severity: 'error',
-                               rule: 'missing-field-notes-category', file: rel,
-                               evidence: 'a post must list `Field Notes` in categories')
-      end
+
+      # All sections are posts now: dated filename that matches the front matter.
       base = File.basename(path)
       if base =~ /\A(\d{4})-(\d{2})-(\d{2})-/
         fdate = (Date.new($1.to_i, $2.to_i, $3.to_i) rescue nil)

@@ -11,12 +11,19 @@ permalink: /
   ============================================================================
   NEWS / MAGAZINE HOMEPAGE
   ----------------------------------------------------------------------------
-Modeled on the zer0-mistakes `news` layout (https://zer0-mistakes.com/news/) but sourced from THIS site's real content. The theme's news.html reads only `site.posts`; lifehacker.dev's headline content also lives in the `hacks` and `tools` collections, so we assemble the feed by hand here and keep everything
-  on the homepage. Card chrome lives in _includes/home/.
+  Modeled on the zer0-mistakes `news` layout but sourced from THIS site's real
+  content. Since issue #337, hacks / tools / field notes are all one `posts`
+  collection under pages/_posts/<section>/, distinguished by `categories`
+  (Hacks / Tools / Field Notes). The theme's own /news/ landing (layout: news)
+  lives at /news/; this bespoke home just leans on the same data. Card chrome
+  lives in _includes/home/.
   ============================================================================
 {%- endcomment -%}
 
-{%- assign all_items = site.posts | concat: site.hacks | concat: site.tools | sort: 'date' | reverse -%}
+{%- assign all_items = site.posts | sort: 'date' | reverse -%}
+{%- assign hacks = site.posts | where_exp: "p", "p.categories contains 'Hacks'" | sort: 'date' | reverse -%}
+{%- assign tools = site.posts | where_exp: "p", "p.categories contains 'Tools'" | sort: 'date' | reverse -%}
+{%- assign notes = site.posts | where_exp: "p", "p.categories contains 'Field Notes'" | sort: 'date' | reverse -%}
 
 {%- comment -%} Hero = the site's current signature story, with a graceful fallback to newest. {%- endcomment -%}
 {%- assign hero = site.posts | where_exp: "p", "p.title contains 'Hoard the One That Rots'" | first -%}
@@ -38,9 +45,10 @@ Modeled on the zer0-mistakes `news` layout (https://zer0-mistakes.com/news/) but
       <div class="col-md-7">
         <nav class="nav nav-pills justify-content-md-end flex-wrap">
           <a class="nav-link text-white active" href="{{ '/' | relative_url }}"><i class="bi bi-house me-1"></i>Home</a>
-          <a class="nav-link text-white-50" href="{{ '/hacks/' | relative_url }}"><i class="bi bi-lightbulb me-1"></i>Hacks</a>
-          <a class="nav-link text-white-50" href="{{ '/tools/' | relative_url }}"><i class="bi bi-wrench-adjustable me-1"></i>Tools</a>
-          <a class="nav-link text-white-50" href="{{ '/blog/' | relative_url }}"><i class="bi bi-journal-text me-1"></i>Field Notes</a>
+          <a class="nav-link text-white-50" href="{{ '/news/' | relative_url }}"><i class="bi bi-newspaper me-1"></i>News</a>
+          <a class="nav-link text-white-50" href="{{ '/news/hacks/' | relative_url }}"><i class="bi bi-lightbulb me-1"></i>Hacks</a>
+          <a class="nav-link text-white-50" href="{{ '/news/tools/' | relative_url }}"><i class="bi bi-wrench-adjustable me-1"></i>Tools</a>
+          <a class="nav-link text-white-50" href="{{ '/news/field-notes/' | relative_url }}"><i class="bi bi-journal-text me-1"></i>Field Notes</a>
           <a class="nav-link text-white-50" href="{{ '/tags/' | relative_url }}"><i class="bi bi-tags me-1"></i>Tags</a>
         </nav>
       </div>
@@ -76,16 +84,15 @@ Modeled on the zer0-mistakes `news` layout (https://zer0-mistakes.com/news/) but
 <!-- ============================= SECTION NAVIGATION ============================= -->
 <section class="mb-5">
   <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
-    {%- assign nav_sections = "hacks,tools,posts,docs,about" | split: "," -%}
+    {%- assign nav_sections = "hacks,tools,notes,docs,about" | split: "," -%}
     {% for coll in nav_sections %}
       {%- case coll -%}
-        {%- when 'hacks' -%}{%- assign n_label='Hacks' -%}{%- assign n_icon='bi-lightbulb' -%}{%- assign n_url='/hacks/' -%}
-        {%- when 'tools' -%}{%- assign n_label='Tools' -%}{%- assign n_icon='bi-wrench-adjustable' -%}{%- assign n_url='/tools/' -%}
-        {%- when 'posts' -%}{%- assign n_label='Field Notes' -%}{%- assign n_icon='bi-journal-text' -%}{%- assign n_url='/blog/' -%}
-        {%- when 'docs'  -%}{%- assign n_label='Docs' -%}{%- assign n_icon='bi-robot' -%}{%- assign n_url='/docs/' -%}
-        {%- when 'about' -%}{%- assign n_label='About' -%}{%- assign n_icon='bi-info-circle' -%}{%- assign n_url='/about/' -%}
+        {%- when 'hacks' -%}{%- assign n_label='Hacks' -%}{%- assign n_icon='bi-lightbulb' -%}{%- assign n_url='/news/hacks/' -%}{%- assign n_count=hacks.size -%}
+        {%- when 'tools' -%}{%- assign n_label='Tools' -%}{%- assign n_icon='bi-wrench-adjustable' -%}{%- assign n_url='/news/tools/' -%}{%- assign n_count=tools.size -%}
+        {%- when 'notes' -%}{%- assign n_label='Field Notes' -%}{%- assign n_icon='bi-journal-text' -%}{%- assign n_url='/news/field-notes/' -%}{%- assign n_count=notes.size -%}
+        {%- when 'docs'  -%}{%- assign n_label='Docs' -%}{%- assign n_icon='bi-robot' -%}{%- assign n_url='/docs/' -%}{%- assign n_count=site.docs.size -%}
+        {%- when 'about' -%}{%- assign n_label='About' -%}{%- assign n_icon='bi-info-circle' -%}{%- assign n_url='/about/' -%}{%- assign n_count=site.about.size -%}
       {%- endcase -%}
-      {%- assign n_count = site[coll] | size -%}
       <div class="col">
         <a href="{{ n_url | relative_url }}" class="card text-center h-100 text-decoration-none border-0 shadow-sm hover-lift">
           <div class="card-body py-4">
@@ -135,14 +142,13 @@ Modeled on the zer0-mistakes `news` layout (https://zer0-mistakes.com/news/) but
 {% endif %}
 
 <!-- ============================= POSTS BY SECTION ============================= -->
-{%- assign feed_sections = "hacks,tools,posts" | split: "," -%}
+{%- assign feed_sections = "hacks,tools,notes" | split: "," -%}
 {% for coll in feed_sections %}
   {%- case coll -%}
-    {%- when 'hacks' -%}{%- assign s_label='Hacks' -%}{%- assign s_icon='bi-lightbulb' -%}{%- assign s_url='/hacks/' -%}{%- assign s_color='text-primary' -%}
-    {%- when 'tools' -%}{%- assign s_label='Tools' -%}{%- assign s_icon='bi-wrench-adjustable' -%}{%- assign s_url='/tools/' -%}{%- assign s_color='text-info' -%}
-    {%- when 'posts' -%}{%- assign s_label='Field Notes' -%}{%- assign s_icon='bi-journal-text' -%}{%- assign s_url='/blog/' -%}{%- assign s_color='text-success' -%}
+    {%- when 'hacks' -%}{%- assign s_label='Hacks' -%}{%- assign s_icon='bi-lightbulb' -%}{%- assign s_url='/news/hacks/' -%}{%- assign s_color='text-primary' -%}{%- assign s_items=hacks -%}
+    {%- when 'tools' -%}{%- assign s_label='Tools' -%}{%- assign s_icon='bi-wrench-adjustable' -%}{%- assign s_url='/news/tools/' -%}{%- assign s_color='text-info' -%}{%- assign s_items=tools -%}
+    {%- when 'notes' -%}{%- assign s_label='Field Notes' -%}{%- assign s_icon='bi-journal-text' -%}{%- assign s_url='/news/field-notes/' -%}{%- assign s_color='text-success' -%}{%- assign s_items=notes -%}
   {%- endcase -%}
-  {%- assign s_items = site[coll] | sort: 'date' | reverse -%}
   {% if s_items.size > 0 %}
   <section class="mb-5 pb-4 border-bottom">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -165,16 +171,17 @@ Modeled on the zer0-mistakes `news` layout (https://zer0-mistakes.com/news/) but
   </div>
   <div class="row g-4">
     {% for it in all_items limit: 6 %}
-      {%- case it.collection -%}
-        {%- when 'hacks' -%}{%- assign l_label='Hack' -%}{%- assign l_badge='text-bg-primary' -%}
-        {%- when 'tools' -%}{%- assign l_label='Tool' -%}{%- assign l_badge='text-bg-info' -%}
-        {%- when 'posts' -%}{%- assign l_label='Field Note' -%}{%- assign l_badge='text-bg-success' -%}
-        {%- else -%}{%- assign l_label=it.collection | capitalize -%}{%- assign l_badge='text-bg-secondary' -%}
+      {%- assign l_cat = it.categories | first -%}
+      {%- case l_cat -%}
+        {%- when 'Hacks' -%}{%- assign l_label='Hack' -%}{%- assign l_badge='text-bg-primary' -%}{%- assign l_section='hacks' -%}
+        {%- when 'Tools' -%}{%- assign l_label='Tool' -%}{%- assign l_badge='text-bg-info' -%}{%- assign l_section='tools' -%}
+        {%- when 'Field Notes' -%}{%- assign l_label='Field Note' -%}{%- assign l_badge='text-bg-success' -%}{%- assign l_section='posts' -%}
+        {%- else -%}{%- assign l_label=l_cat | default: 'Post' -%}{%- assign l_badge='text-bg-secondary' -%}{%- assign l_section='posts' -%}
       {%- endcase -%}
       <div class="col-md-6 col-lg-4">
         <div class="card border-0 shadow-sm h-100 hover-lift overflow-hidden">
           <div class="row g-0 h-100">
-            <div class="col-4">{% include home/cover.html collection=it.collection height='110px' class='h-100' %}</div>
+            <div class="col-4">{% include home/cover.html collection=l_section height='110px' class='h-100' preview=it.preview alt=it.title %}</div>
             <div class="col-8">
               <div class="card-body py-2 px-3">
                 <span class="badge {{ l_badge }} mb-1">{{ l_label }}</span>
