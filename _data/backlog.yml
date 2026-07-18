@@ -1203,7 +1203,8 @@ backlog:
     brief: "Wire a coverage gate into your tests with `c8 --check-coverage --lines 80` so an untested change fails the build instead of merging quietly. The honest part that stays in: line coverage is the easy metric to game — a function whose `if` branch never fired can still show 100% lines covered, so the number says safe while a whole path is untested. Turn on `--branches` too, and know the difference before you trust the badge."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/coverage-gate-branches-not-just-lines/
     source: content-scout
     source_url: https://it-journey.dev/quests/0101/testing-integration/
     source_title: "Testing Integration: Tiered CI/CD Test Gates"
@@ -1999,3 +2000,11 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-gate-that-only-reads-your-own-diff/
+  - id: POST-023
+    kind: post
+    title: "The comment gotcha I wrote down, three days before upstream deleted it"
+    brief: "Audited why lifehacker.dev has zero comments. Two independent reasons (site-wide comments:false cascade, giscus.enabled:false), plus the real story: our 2026-06-23 Giscus tutorial documents a theme guard that tested key existence, and upstream changed the guard to check .enabled three days later (commit fef60a5, 2026-06-26). The post never noticed. Lesson: document the config contract, not another repo's if-statement."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/18/comment-gotcha-i-wrote-down-three-days-before-upstream-deleted-it/
