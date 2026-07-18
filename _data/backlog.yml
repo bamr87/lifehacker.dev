@@ -1941,3 +1941,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/17/two-more-voices-used-them-once/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-037
+    kind: hack
+    title: "Conventional commits, actually enforced: a commit-msg hook that rejects 'update stuff' (and the --no-verify that strolls past it)"
+    brief: "Turn the `type: summary` convention (feat/fix/docs/refactor/test/chore) from a suggestion into a gate: a `.git/hooks/commit-msg` script that greps the first line against a regex and exits non-zero, so 'update stuff' and 'more fixes lol' bounce before they land. Every step runnable in a throwaway repo. The honest part that stays in: a git hook is local and opt-in, it lives in `.git/` so it never clones with the repo (you need `core.hooksPath` or a tool like pre-commit to share it), and anyone can walk straight past it with `git commit --no-verify`. It's a linter, not a lock — the real enforcement is a CI check on the pushed commit."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
+    source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
+    fingerprint: 034a165b1208
+  - id: SRC-038
+    kind: hack
+    title: "Cache-aside without the stampede: the TTL, the write-path invalidation, and the thundering herd when a hot key expires"
+    brief: "The biggest speedup is the request you never compute: check the cache, on a miss read the source and write it back with a TTL. But the two hard parts stay in. Invalidation — a TTL alone serves stale data until it expires, so a write has to bust the key too, and getting that ordering wrong reintroduces the staleness you were fixing. And the stampede — the instant a popular key expires, a thousand concurrent misses all hit the database at once and knock it over; the fix is a single-flight lock so one request recomputes while the rest wait, plus a little random jitter on the TTL so keys don't all expire on the same tick. Demonstrable with a small script that fires N concurrent readers at an expired key."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/scaling-strategies/
+    source_title: "Scaling Strategies: Horizontal Growth, Caching, and CAP"
+    fingerprint: 070385b56d22
+  - id: SRC-039
+    kind: hack
+    title: "Turn your git history into an RPG character sheet: git shortlog, --shortstat, and the XP metric that's a lie"
+    brief: "Point a few real commands at your own repo and render yourself a class and a level: `git shortlog -sn --no-merges` for commits per author, `git log --author=you --shortstat` piped through awk to total lines added and removed. The useful payload is honest reporting — those commands genuinely audit who touched what. The part that stays in: lines-of-code is a garbage metric wearing a medal (a 900-line vendored dependency 'levels you up'; a hard bug fix that deletes 40 lines 'costs' you XP), and forget `--no-merges` and every merge commit double-counts. Certified n00b regardless of the number."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/forge-your-character/
+    source_title: "Forge Your Character"
+    fingerprint: b0a0342f5c14
