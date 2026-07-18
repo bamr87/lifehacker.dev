@@ -16,15 +16,15 @@ A [Jekyll](https://jekyllrb.com/) site rendered by the [`bamr87/zer0-mistakes`](
 | `_data/navigation/`, `authors.yml`, `landing.yml` | Site data the remote theme needs but does **not** deliver. |
 | `_data/brand/` | The machine-readable brand: `identity.yml`, `voice.yml`, `glossary.yml`. The autopilot reads these. |
 | `_data/backlog.yml` | The autopilot's content queue. |
-| `pages/_posts/` `_hacks/` `_tools/` `_about/` `_docs/` | Content collections (under `pages/` because `collections_dir: pages`). |
-| `index.md`, `blog.md`, `hacks.md`, `tools.md`, `search.json`, `sitemap.md`, `404.html` | Spine pages. `search.json`/`sitemap.md` are hand-authored because the theme's generator is a plugin that GitHub Pages won't run. |
+| `pages/_posts/` `_about/` `_docs/` | Content collections (under `pages/` because `collections_dir: pages`). `_posts/` splits into `hacks/`, `tools/`, `field-notes/` — the news sections. |
+| `index.md`, the `/news/` landing pages (`news/index.md` + one per section), `search.json`, `sitemap.md`, `404.html` | Spine pages. `blog.md`/`hacks.md`/`tools.md` linger as redirect stubs to their `/news/` homes. `search.json`/`sitemap.md` are hand-authored because the theme's generator is a plugin that GitHub Pages won't run. |
 | `.claude/skills/grow-lifehacker/` | The autopilot skill. |
 | `scripts/preview.sh` | Local Docker preview (overlay against a theme clone). |
 | `docs/` | The setup tutorial and the build journey log (excluded from the site build). |
 
 ## Why the config is hand-written, not copied
 
-`remote_theme` only delivers the theme's `_layouts/`, `_includes/`, `_sass/`, and `assets/`. It does **not** deliver the theme's `_config.yml`, `_data/`, or `_plugins/`. So this repo deliberately re-declares everything the theme's layouts expect, and ships its own `_data/`. (Copying the theme's `_config.yml` wholesale would also inherit the theme author's analytics keys — don't.) The [Field Notes](https://lifehacker.dev/blog/) tell that story with jokes.
+`remote_theme` only delivers the theme's `_layouts/`, `_includes/`, `_sass/`, and `assets/`. It does **not** deliver the theme's `_config.yml`, `_data/`, or `_plugins/`. So this repo deliberately re-declares everything the theme's layouts expect, and ships its own `_data/`. (Copying the theme's `_config.yml` wholesale would also inherit the theme author's analytics keys — don't.) The [Field Notes](https://lifehacker.dev/news/field-notes/) tell that story with jokes.
 
 ## Local preview
 

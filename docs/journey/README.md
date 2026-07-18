@@ -2,7 +2,7 @@
 
 > The honest, behind-the-scenes log of turning a five-file remote-theme starter
 > into a real site run by a robot. The *published*, funnier versions of these
-> stories live in the [Field Notes](https://lifehacker.dev/blog/); this file is
+> stories live in the [Field Notes](https://lifehacker.dev/news/field-notes/); this file is
 > the engineering ledger, with screenshots and receipts.
 
 ## Where we started

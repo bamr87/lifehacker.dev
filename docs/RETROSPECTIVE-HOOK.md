@@ -27,7 +27,7 @@ The goal is institutional memory: **the next thread should start knowing what th
                  reads the transcript → drafts an honest, on-voice Field Note
                                          │
                                          ▼
-   pages/_posts/<date>-<slug>.md  +  _data/retrospectives.yml ledger line  →  ONE content PR
+   pages/_posts/field-notes/<date>-<slug>.md  +  _data/retrospectives.yml ledger line  →  ONE content PR
                                          │
                   ruby scripts/retro/process_queue.rb --mark <sid> <slug> "<title>"
                                  (thread recorded as published; won't be re-proposed)
@@ -103,7 +103,7 @@ ruby scripts/retro/process_queue.rb --list
 claude -p --agent session-retrospective "Process the retrospective queue: write up the newest pending thread."
 ```
 
-The agent reads the transcript, drafts `pages/_posts/<date>-<slug>.md`, appends the ledger line, and opens one content PR. A human reviews and merges, exactly like any other content PR.
+The agent reads the transcript, drafts `pages/_posts/field-notes/<date>-<slug>.md`, appends the ledger line, and opens one content PR. A human reviews and merges, exactly like any other content PR.
 
 > **Why local, not a GitHub workflow?** The transcript is a file on the machine that
 > ran the thread (`~/.claude/projects/.../<session_id>.jsonl`). A CI runner can't see
