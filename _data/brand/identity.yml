@@ -17,24 +17,30 @@ mission: >-
   operation on autopilot so the jokes about robots taking over are coming, in
   part, from a robot.
 
-# What we publish. Each pillar maps to a collection or category.
+# What we publish. `collection` names each pillar's section/category and `dir` is
+# where its files live. Hacks, Tools, and Field Notes are categories under the
+# `posts` collection, rendered through the theme's news system; Meta is `docs`.
 pillars:
   - key: hacks
     label: "Hacks"
     promise: "A real fix for a real problem. The dead ends stay in the post."
     collection: hacks
+    dir: pages/_posts/hacks
   - key: tools
     label: "Tools"
     promise: "Honest reviews of software we actually ran. We name what we uninstalled."
     collection: tools
+    dir: pages/_posts/tools
   - key: field_notes
     label: "Field Notes"
     promise: "The build log of a website that is automating its own author away."
-    collection: posts
+    collection: field-notes
+    dir: pages/_posts/field-notes
   - key: meta
     label: "Meta"
     promise: "How the autopilot works, what it broke, and what it filed upstream."
     collection: docs
+    dir: pages/_docs
 
 # The running joke. We parody optimization / hustle / life-coach culture —
 # NOT by being cynical, but by actually delivering the useful thing underneath

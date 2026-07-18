@@ -2,10 +2,10 @@
 # lifehacker.dev — voice profiles (machine-readable)
 # -----------------------------------------------------------------------------
 # Pick a profile per piece of content. The autopilot sets the profile from the
-# collection (hacks/tools/posts/docs) unless the front matter or the backlog
+# section (hacks/tools/field-notes/docs) unless the front matter or the backlog
 # item overrides it. Persona bylines (_data/authors.yml) carry their own
 # profile via their `voice:` key — an item with `author: cass` writes in
-# threat-model-everything regardless of collection.
+# threat-model-everything regardless of section.
 # formality: 0 (group chat) .. 100 (legal filing).
 # =============================================================================
 
