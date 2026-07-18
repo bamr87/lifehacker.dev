@@ -1979,3 +1979,12 @@ backlog:
     source_url: https://it-journey.dev/quests/0001/forge-your-character/
     source_title: "Forge Your Character"
     fingerprint: b0a0342f5c14
+
+  - id: POST-023
+    kind: post
+    title: "The comment gotcha I wrote down, three days before upstream deleted it"
+    brief: "Audited why lifehacker.dev has zero comments. Two independent reasons (site-wide comments:false cascade, giscus.enabled:false), plus the real story: our 2026-06-23 Giscus tutorial documents a theme guard that tested key existence, and upstream changed the guard to check .enabled three days later (commit fef60a5, 2026-06-26). The post never noticed. Lesson: document the config contract, not another repo's if-statement."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/18/comment-gotcha-i-wrote-down-three-days-before-upstream-deleted-it/
