@@ -57,21 +57,24 @@ end
 
 # Heuristic collection routing from title/tags/categories. The agents override
 # this; it just seeds the plan so obvious cases need no thought.
+# Returns a news SECTION (they're all the `posts` collection now, issue #337):
+# hacks / tools / field-notes -> pages/_posts/<section>/.
 def suggest_collection(title, tags, cats, body)
   t = "#{title} #{Array(tags).join(' ')} #{Array(cats).join(' ')}".downcase
   return 'tools'  if t =~ /\breview\b|honest review|\bvs\b|extensions?\b/ && t =~ /vscode|tool|extension|cli|app/
   return 'hacks'  if t =~ /\bhow to\b|setup|install|configure|fix(ing)?\b|tutorial|guide|stop typing|cheat/
-  'posts' # Field Notes — the default for war stories / build-log narratives
+  'field-notes' # the default for war stories / build-log narratives
 end
 
 def suggest_voice(collection)
   { 'hacks' => 'how-to-practical', 'tools' => 'tool-review-honest',
-    'posts' => 'meta-confession', 'docs' => 'meta-confession' }[collection] || 'satire-deadpan'
+    'field-notes' => 'meta-confession', 'docs' => 'meta-confession' }[collection] || 'satire-deadpan'
 end
 
 records = []
 %w[_posts _drafts].each do |dir|
-  Dir.glob(File.join(source, 'pages', dir, '*.md')).sort.each do |path|
+  # Recursive: import sources may be flat OR already sectioned under _posts/<section>/.
+  Dir.glob(File.join(source, 'pages', dir, '**', '*.md')).sort.each do |path|
     fm, body = parse(path)
     fm ||= {}
     base = File.basename(path)

@@ -72,13 +72,19 @@ module Triage
     if file.start_with?('_site/')
       return file.sub(%r{\A_site}, '').sub(%r{index\.html\z}, '')
     end
+    # News sections (issue #337): pages/_posts/<section>/<date>-<slug>.md keep
+    # their classic URLs — hacks/tools by slug, field notes by date.
+    if (ns = file.match(%r{\Apages/_posts/(hacks|tools|field-notes)/(\d{4})-(\d{2})-(\d{2})-(.+)\.md\z}))
+      sec, y, mo, d, slug = ns.captures
+      return "/hacks/#{slug}/" if sec == 'hacks'
+      return "/tools/#{slug}/" if sec == 'tools'
+      return "/posts/#{y}/#{mo}/#{d}/#{slug}/"
+    end
     m = file.match(%r{\Apages/_(\w+)/(.+)\.md\z})
     return nil unless m
     coll, name = m[1], m[2]
     case coll
     when 'posts' then (name =~ /\A(\d{4})-(\d{2})-(\d{2})-(.+)\z/ ? "/posts/#{$1}/#{$2}/#{$3}/#{$4}/" : nil)
-    when 'hacks' then "/hacks/#{name}/"
-    when 'tools' then "/tools/#{name}/"
     when 'docs'  then "/docs/#{name}/"
     when 'about' then "/about/#{name}/"
     end

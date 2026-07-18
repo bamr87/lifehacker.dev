@@ -28,23 +28,22 @@ seed = (seed_arg || Time.now.utc.strftime('%Y%m%d')).to_s
 
 # Collect candidate paths from the committed content (network-free, always works).
 def content_paths
-  paths = ['/', '/hacks/', '/tools/', '/posts/', '/docs/', '/about/']
-  Dir.glob(File.join(Explorer::ROOT, 'pages', '_*', '*.md')).each do |f|
-    rel = LH.rel(f)
-    m = rel.match(%r{\Apages/_(\w+)/(.+)\.md\z}) or next
-    coll, name = m[1], m[2]
-    case coll
-    when 'posts'
-      if name =~ /\A(\d{4})-(\d{2})-(\d{2})-(.+)\z/
-        paths << "/posts/#{$1}/#{$2}/#{$3}/#{$4}/"
-      end
-    when 'hacks' then paths << "/hacks/#{name}/"
-    when 'tools' then paths << "/tools/#{name}/"
-    when 'docs'  then paths << "/docs/#{name}/"
-    when 'about' then paths << "/about/#{name}/"
-    end
+  paths = ['/', '/news/', '/news/hacks/', '/news/tools/', '/news/field-notes/',
+           '/hacks/', '/tools/', '/posts/', '/docs/', '/about/']
+  # News sections (issue #337): pages/_posts/<section>/<date>-<slug>.md -> classic URL.
+  Dir.glob(File.join(Explorer::ROOT, 'pages', '_posts', '{hacks,tools,field-notes}', '*.md')).each do |f|
+    m = LH.rel(f).match(%r{\Apages/_posts/(hacks|tools|field-notes)/(\d{4})-(\d{2})-(\d{2})-(.+)\.md\z}) or next
+    sec, y, mo, d, slug = m.captures
+    paths << ("/hacks/#{slug}/"          if sec == 'hacks')
+    paths << ("/tools/#{slug}/"          if sec == 'tools')
+    paths << ("/posts/#{y}/#{mo}/#{d}/#{slug}/" if sec == 'field-notes')
   end
-  paths.uniq
+  # Flat leaf collections.
+  Dir.glob(File.join(Explorer::ROOT, 'pages', '_{docs,about}', '*.md')).each do |f|
+    m = LH.rel(f).match(%r{\Apages/_(docs|about)/(.+)\.md\z}) or next
+    paths << "/#{m[1]}/#{m[2]}/"
+  end
+  paths.compact.uniq
 end
 
 all = content_paths
@@ -55,7 +54,7 @@ shuffled = all.shuffle(random: rng)
 # Each persona gets its own window into the shuffle so they don't all visit the
 # same first N pages, but the home + one hub are ALWAYS in every persona's set
 # (those are the highest-traffic surfaces; never skip them).
-anchors = ['/', shuffled.find { |p| p =~ %r{\A/(hacks|tools|docs)/\z} } || '/hacks/'].uniq
+anchors = ['/', shuffled.find { |p| p =~ %r{\A/news/(hacks|tools|field-notes)/\z} } || '/news/'].uniq
 plan = {}
 Explorer::PERSONAS.each_with_index do |persona, i|
   window = shuffled.rotate(i * per_persona)
