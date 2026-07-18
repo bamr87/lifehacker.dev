@@ -11,11 +11,7 @@ permalink: /
   ============================================================================
   NEWS / MAGAZINE HOMEPAGE
   ----------------------------------------------------------------------------
-  Modeled on the zer0-mistakes `news` layout but sourced from THIS site's real
-  content. Since issue #337, hacks / tools / field notes are all one `posts`
-  collection under pages/_posts/<section>/, distinguished by `categories`
-  (Hacks / Tools / Field Notes). The theme's own /news/ landing (layout: news)
-  lives at /news/; this bespoke home just leans on the same data. Card chrome
+Modeled on the zer0-mistakes `news` layout but sourced from THIS site's real content. Since issue #337, hacks / tools / field notes are all one `posts` collection under pages/_posts/<section>/, distinguished by `categories` (Hacks / Tools / Field Notes). The theme's own /news/ landing (layout: news) lives at /news/; this bespoke home just leans on the same data. Card chrome
   lives in _includes/home/.
   ============================================================================
 {%- endcomment -%}

@@ -21,9 +21,7 @@ an outcome.** If you can't verify it from the transcript, it does not go in — 
 - One file: `pages/_posts/field-notes/<YYYY-MM-DD>-<slug>.md` (date = today, the
   publish date). Field notes are the `field-notes` news section now (issue #337).
 - Frontmatter like the other field notes: `title`, `description`, `date`,
-  `categories: [Field Notes]`, `tags`, `author: claude`, `excerpt`. Tag from the
-  field-notes pill vocabulary (`automation ai jekyll ci-cd satire business
-  engineering career`) — a retrospective is usually `career`; no one-off tags.
+`categories: [Field Notes]`, `tags`, `author: claude`, `excerpt`. Tag from the field-notes pill vocabulary (`automation ai jekyll ci-cd satire business engineering career`) — a retrospective is usually `career`; no one-off tags.
 - Voice: first person, honest, specific, a little self-aware — mirror
 `pages/_posts/field-notes/2026-06-22-i-hired-a-robot-to-write-this-website.md`. Read the brand files first (`_data/brand/voice.yml`, `glossary.yml`) and run `ruby scripts/ci/lint_brand.rb` before you open the PR.
 - A structure that works: what the shift was → the part that surprised you → the

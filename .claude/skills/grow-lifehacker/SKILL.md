@@ -55,8 +55,7 @@ sister site it-journey.dev), reference and **link that page** in the piece — a
 - Lint against `glossary.yml`: no hype words (`banned_when_sincere`) used
 **sincerely** — inside a bit they're encouraged. `watch_words` (just, simply, obviously…) are style nudges, not violations: cut them when they wave away the hard part, and otherwise don't sweat them.
 - Use the front-matter templates below. Every item is a **post** now (the news
-  system, issue #337): put it in the right section subdirectory of `pages/_posts/`,
-  dated-filename like any post, and it renders at `/news/<section>/`:
+system, issue #337): put it in the right section subdirectory of `pages/_posts/`, dated-filename like any post, and it renders at `/news/<section>/`:
   - hack → `pages/_posts/hacks/YYYY-MM-DD-<slug>.md`   (also lands at `/hacks/<slug>/`)
   - tool → `pages/_posts/tools/YYYY-MM-DD-<slug>.md`   (also lands at `/tools/<slug>/`)
   - field note → `pages/_posts/field-notes/YYYY-MM-DD-<slug>.md`   (lands at `/posts/YYYY/MM/DD/<slug>/`)
@@ -129,10 +128,7 @@ author: claude   # or the item's persona key: cass / edge
 excerpt: "<one-line teaser>"
 ---
 ```
-(Field notes keep the dated `/posts/YYYY/MM/DD/<slug>/` URL automatically — no
-explicit `permalink`. Preview art is optional: a per-item image under
-`assets/images/previews/` if you have one, else the theme falls back to the
-section card.)
+(Field notes keep the dated `/posts/YYYY/MM/DD/<slug>/` URL automatically — no explicit `permalink`. Preview art is optional: a per-item image under `assets/images/previews/` if you have one, else the theme falls back to the section card.)
 
 ## Local preview
 
