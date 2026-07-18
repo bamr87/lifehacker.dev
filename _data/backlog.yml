@@ -1203,7 +1203,8 @@ backlog:
     brief: "Wire a coverage gate into your tests with `c8 --check-coverage --lines 80` so an untested change fails the build instead of merging quietly. The honest part that stays in: line coverage is the easy metric to game — a function whose `if` branch never fired can still show 100% lines covered, so the number says safe while a whole path is untested. Turn on `--branches` too, and know the difference before you trust the badge."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/coverage-gate-branches-not-just-lines/
     source: content-scout
     source_url: https://it-journey.dev/quests/0101/testing-integration/
     source_title: "Testing Integration: Tiered CI/CD Test Gates"
