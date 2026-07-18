@@ -1978,3 +1978,24 @@ backlog:
     source_url: https://it-journey.dev/quests/0001/forge-your-character/
     source_title: "Forge Your Character"
     fingerprint: b0a0342f5c14
+
+  # Fresh doc (autopilot run, 2026-07-18): every `kind: doc` item was already done
+  # (DOC-001..DOC-022, plus SRC-020/025/033), DOC-004 is a blocked `post`, and the
+  # only `todo` items on the whole board are OPS-001 (kind: ops, which content runs
+  # skip) and a wall of SRC-* scout ideas (all kind: hack/tool, wrong lane). No open
+  # auto:content PR is a doc (the one open content PR is a post). Rather than no-op,
+  # cross lanes, or fabricate, synthesized a fresh in-lane doc. The Meta pillar
+  # deep-dives nearly every harness station, and [the router](/docs/the-router-that-can-only-round-up/)
+  # covers which *checks* run — but the second, later narrowing (which *findings* are
+  # allowed to gate a given PR, via aggregate.rb's LH_CHANGED_FILES scoping) had no
+  # doc and no mention anywhere in pages/_docs. It's demonstrable with real captured
+  # output: 106 findings unscoped, 6/106 scoped to one file, and a global build error
+  # that refuses to be scoped away (gate FAIL) — all run on this repo this run.
+  - id: DOC-023
+    kind: doc
+    title: "The gate that only reads your own diff"
+    brief: "Deep-dive on aggregate.rb's PR-scoping: LH_CHANGED_FILES narrows the sticky comment and the merge gate to a PR's own changed files, so a content edit isn't blocked by a pre-existing lint error on a file it never touched — while findings.jsonl stays the COMPLETE repo scan. The three subtleties, each shown with real output: global findings (build with no file) always count and can't be scoped away; the link checker keys on the built _site/ path so scoping falls back to slug-matching (with a GENERIC_SLUGS blocklist so `index` doesn't re-widen to every page); and the LH_CHANGED_FILES overload (path-to-a-list vs. inline list) disambiguated by File.file?, which trips a hand-run demo when the inline value is itself a real file."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /docs/the-gate-that-only-reads-your-own-diff/
