@@ -1,0 +1,389 @@
+# =============================================================================
+# scripts/news-enrichment.yml — drives scripts/migrate-to-news-structure.rb
+# -----------------------------------------------------------------------------
+# The deterministic knobs for the collections -> news-sections migration
+# (issue #337). Adapted from year-of-ai's news migrator, which is driven by a
+# per-section icon/description/featured config plus a per-item tag vocabulary.
+#
+# This file is the SINGLE source of taxonomy truth for the migration:
+#   * `sections`       — one news section per former collection (identity + art)
+#   * `tag_vocabulary` — the small, REUSED set of pills each section may show
+#   * `tag_synonyms`   — how the old free-form tags collapse onto that vocab
+#   * `default_tag`    — the fallback pill when nothing else matches
+#
+# The section layout turns a post's `tags` into the sub-topic filter pills, so
+# the vocabulary is deliberately tiny (<=8 pills/section, no singletons). The
+# migrator normalises every item's existing tags through `tag_synonyms`, keeps
+# at most 3, and drops anything that would be a singleton pill.
+# =============================================================================
+
+sections:
+  hacks:
+    name: "Hacks"                     # the post `categories:[<name>]` value
+    title: "Hacks"                    # section-page + nav title
+    icon: "lightbulb"                 # bare (section layout renders `bi bi-<icon>`)
+    nav_icon: "bi-lightbulb"          # prefixed (news/nav render `bi <nav_icon>`)
+    description: "Real fixes for real problems — the dev kind and the life kind — with the failed attempts left in."
+    section_style: "grid"
+    old_url: "/hacks/"                # index page these items used to live under
+    permalink_pattern: "/hacks/:slug/"
+    featured: "git-worktree-two-branches-at-once"
+    gradient: ["#d946ef", "#a855f7"]  # neon fuchsia -> violet (matches home cover)
+  tools:
+    name: "Tools"
+    title: "Tools"
+    icon: "wrench-adjustable"
+    nav_icon: "bi-wrench-adjustable"
+    description: "Honest reviews of software we actually ran. We name what we uninstalled and the free thing that beat it."
+    section_style: "grid"
+    old_url: "/tools/"
+    permalink_pattern: "/tools/:slug/"
+    featured: "ripgrep-honest-review"
+    gradient: ["#22d3ee", "#6366f1"]  # neon cyan -> indigo
+  field-notes:
+    name: "Field Notes"
+    title: "Field Notes"
+    icon: "journal-text"
+    nav_icon: "bi-journal-text"
+    description: "The build log of a website that is automating its own author away — plus the occasional joke that survived review."
+    section_style: "grid"
+    old_url: "/blog/"
+    # Field Notes keep their dated /posts/:y/:m/:d/:title/ permalink (Jekyll's
+    # default posts pattern), so no explicit permalink_pattern here.
+    featured: "concepts-context-content-i-hoard-the-one-that-rots"
+    gradient: ["#22c55e", "#22d3ee"]  # neon green -> cyan
+
+# The pill vocabulary each section is allowed to surface. Order is cosmetic;
+# the section layout sorts pills alphabetically and shows the first 8.
+tag_vocabulary:
+  hacks:        [shell, git, ci-cd, jekyll, docker, security, web-dev, data]
+  tools:        [search, files, data, system, editor, productivity]
+  field-notes:  [automation, ai, jekyll, ci-cd, satire, business, engineering, career]
+
+default_tag:
+  hacks: shell
+  tools: system
+  field-notes: career
+
+# Per-item pill overrides for the handful of items whose free-form tags can't be
+# told apart by rule (e.g. every Rust CLI review carries `[cli, terminal,
+# developer-tools]`, which says nothing about whether it views files or aids
+# navigation). Keyed by <section>/<slug>. Wins over tag_synonyms mapping.
+tag_overrides:
+  tools:
+    bat-honest-review: [files]
+    eza-honest-review: [files]
+    zoxide-honest-review: [productivity]
+
+# old free-form tag (lower-cased) -> curated pill. Anything not listed is
+# dropped; an item left with no pill gets `default_tag`.
+tag_synonyms:
+  hacks:
+    bash: shell
+    shell: shell
+    zsh: shell
+    scripting: shell
+    cli: shell
+    terminal: shell
+    command-line: shell
+    awk: shell
+    grep: shell
+    sort: shell
+    aliases: shell
+    tmux: shell
+    gum: shell
+    fzf: shell
+    logging: shell
+    config: shell
+    dotfiles: shell
+    make: shell
+    linux: shell
+    wsl: shell
+    windows: shell
+    macos: shell
+    development-environment: shell
+    troubleshooting: shell
+    git: git
+    github: git
+    version-control: git
+    gh-cli: git
+    recovery: git
+    ci: ci-cd
+    ci-cd: ci-cd
+    github-actions: ci-cd
+    devops: ci-cd
+    travis: ci-cd
+    build: ci-cd
+    build-systems: ci-cd
+    deployment: ci-cd
+    workflow: ci-cd
+    timeout: ci-cd
+    compatibility: ci-cd
+    automation: ci-cd
+    error-handling: ci-cd
+    debugging: ci-cd
+    jekyll: jekyll
+    github-pages: jekyll
+    liquid: jekyll
+    front-matter: jekyll
+    frontmatter: jekyll
+    sitemap: jekyll
+    robots-txt: jekyll
+    ruby: jekyll
+    bundler: jekyll
+    ffi: jekyll
+    templates: jekyll
+    hosting: jekyll
+    seo: jekyll
+    navbar: jekyll
+    navigation: jekyll
+    sidebar: jekyll
+    ux: jekyll
+    open-source: jekyll
+    content-strategy: jekyll
+    docker: docker
+    containers: docker
+    security: security
+    secrets: security
+    threat-modeling: security
+    permissions: security
+    authentication: security
+    tokens: security
+    dns: security
+    networking: security
+    ftp: security
+    ssh: security
+    mcp: security
+    javascript: web-dev
+    react: web-dev
+    vite: web-dev
+    webpack: web-dev
+    frontend: web-dev
+    nodejs: web-dev
+    typescript: web-dev
+    css: web-dev
+    html: web-dev
+    web: web-dev
+    api: web-dev
+    extension: web-dev
+    vscode-extension: web-dev
+    vscode: web-dev
+    copilot: web-dev
+    prompt-engineering: web-dev
+    gpt: web-dev
+    playwright: web-dev
+    caching: web-dev
+    latex: web-dev
+    resume: web-dev
+    markdown: web-dev
+    web-scraping: web-dev
+    beautifulsoup: web-dev
+    nokogiri: web-dev
+    data: data
+    sql: data
+    postgres: data
+    json: data
+    jq: data
+    databases: data
+    csv: data
+    excel: data
+    finance: data
+    python: data
+    django: data
+    performance: data
+    binary: data
+    hexyl: data
+  tools:
+    search: search
+    fuzzy-finder: search
+    text: search
+    files: files
+    file-management: files
+    disk: files
+    filesystem: files
+    binary: files
+    ls: files
+    data: data
+    json: data
+    yaml: data
+    sql: data
+    databases: data
+    data-science: data
+    database: data
+    jupyter: data
+    system: system
+    process: system
+    performance: system
+    monitoring: system
+    benchmark: system
+    git: system
+    debugger: system
+    software: system
+    security: system
+    editor: editor
+    vscode: editor
+    extensions: editor
+    ide: editor
+    productivity: productivity
+    notes: productivity
+    navigation: productivity
+    workflow: productivity
+  field-notes:
+    automation: automation
+    autopilot: automation
+    task-queue: automation
+    task-queues: automation
+    backlog: automation
+    agentic-ai: automation
+    agents: automation
+    orchestration: automation
+    multi-agent: automation
+    agent-memory: automation
+    context-drift: automation
+    context-engineering: automation
+    context-management: automation
+    fleet: automation
+    ai: ai
+    claude-code: ai
+    llm: ai
+    gpt: ai
+    chatgpt: ai
+    openai: ai
+    prompt-engineering: ai
+    copilot: ai
+    generative-ai: ai
+    custom-gpt: ai
+    ai-assisted-development: ai
+    ai-assisted-writing: ai
+    ai-feedback: ai
+    ai-limitations: ai
+    chatbot: ai
+    asr: ai
+    fable: ai
+    mcp: ai
+    evaluation: ai
+    jekyll: jekyll
+    zer0-mistakes: jekyll
+    github-pages: jekyll
+    remote-theme: jekyll
+    liquid: jekyll
+    static-sites: jekyll
+    bootstrap: jekyll
+    design-tokens: jekyll
+    svg: jekyll
+    nanobar: jekyll
+    giscus: jekyll
+    comments: jekyll
+    front-matter: jekyll
+    ci-cd: ci-cd
+    ci: ci-cd
+    github-actions: ci-cd
+    devops: ci-cd
+    guardrails: ci-cd
+    observability: ci-cd
+    github: ci-cd
+    git: ci-cd
+    git-hooks: ci-cd
+    version-control: ci-cd
+    code-review: ci-cd
+    linting: ci-cd
+    gitattributes: ci-cd
+    github-cli: ci-cd
+    compliance: ci-cd
+    audit-trail: ci-cd
+    satire: satire
+    fiction: satire
+    comedy: satire
+    humor: satire
+    parody: satire
+    creative: satire
+    music: satire
+    mock-news: satire
+    metaphor: satire
+    lyrics: satire
+    flobots: satire
+    cooking: satire
+    pets: satire
+    cats: satire
+    dogs: satire
+    culture: satire
+    erp: business
+    economics: business
+    finance: business
+    capitalism: business
+    enterprise-architecture: business
+    enterprise-software: business
+    consulting: business
+    manufacturing: business
+    data-modeling: business
+    corporate: business
+    due-diligence: business
+    edgar: business
+    filings: business
+    democracy: business
+    arab-americans: business
+    demographics: business
+    generational-takes: business
+    bash: engineering
+    python: engineering
+    ruby: engineering
+    javascript: engineering
+    docker: engineering
+    debugging: engineering
+    refactoring: engineering
+    aws: engineering
+    lambda: engineering
+    serverless: engineering
+    cloud: engineering
+    azure: engineering
+    django: engineering
+    database: engineering
+    databases: engineering
+    excel: engineering
+    macos: engineering
+    windows: engineering
+    apple-silicon: engineering
+    bootable-media: engineering
+    bootable-usb: engineering
+    dd: engineering
+    createinstallmedia: engineering
+    bootloader: engineering
+    dual-boot: engineering
+    retropie: engineering
+    sql: engineering
+    deployment: engineering
+    seo: engineering
+    web: engineering
+    programming: engineering
+    cli-tools: engineering
+    command-line: engineering
+    cheatsheet: engineering
+    terminal: engineering
+    dependencies: engineering
+    bundler: engineering
+    performance: engineering
+    architecture: engineering
+    career: career
+    opinion: career
+    learning: career
+    developer-culture: career
+    developer-mindset: career
+    developer-experience: career
+    essay: career
+    philosophy: career
+    meta: career
+    deliberate-practice: career
+    autonomy: career
+    ego: career
+    authorship: career
+    attribution: career
+    git-blame: career
+    branding: career
+    content-strategy: career
+    content-design: career
+    content-governance: career
+    documentation: career
+    docs-as-code: career
+    hype: career
+    complexity: career
+    retrospective: career
