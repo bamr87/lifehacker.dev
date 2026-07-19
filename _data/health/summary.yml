@@ -1,12 +1,25 @@
-generated_at: '2026-07-17T08:33:54Z'
-queue_size: 1
+generated_at: '2026-07-19T08:37:47Z'
+queue_size: 3
 by_severity:
+  sev2: 2
   sev4: 1
 by_type:
-  type/link-rot: 1
+  type/drift: 1
+  type/link-rot: 2
 by_route:
+  local: 2
   upstream: 1
 top:
+- severity: sev2
+  type: type/drift
+  title: "[sev2] drift: backlog-published-deadlink (_data/backlog.yml)"
+  score: 5.0
+  repo: bamr87/lifehacker.dev
+- severity: sev2
+  type: type/link-rot
+  title: "[sev2] link-rot: link:Links > Internal (/news/field-notes/)"
+  score: 5.0
+  repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/link-rot
   title: "[sev4] link-rot: theme-origin-links-ignored"
