@@ -79,11 +79,15 @@ improvements:
     metric: backlog.todo_by_kind.tool
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Tool lane starved (todo_by_kind.tool = 0; starved_kinds included `tool`).
       Promoted harvested TOOL-020 (ncdu/gdu honest review, offline) as todo.
       todo_by_kind.tool 0->1; starved_kinds emptied. Metadata only.
+      2026-07-20 verdict — VERIFIED: verify_improvements measured
+      backlog.todo_by_kind.tool 0 -> 1 (up is better). TOOL-020 was picked and
+      shipped (status:done) and the tool lane still shows a todo, so the refill
+      held across the window.
 
   - id: 2026-07-13-destarve-post
     date: 2026-07-13
@@ -96,6 +100,11 @@ improvements:
       Post lane starved (todo_by_kind.post = 0). Promoted harvested POST-019
       (field-note meta-confession, reflection-only/offline) as todo.
       todo_by_kind.post 0->1. Metadata only — the factory writes the prose.
+      2026-07-20 verdict — still pending: POST-019 was picked and shipped
+      (status:done), so todo_by_kind.post returned to 0 and verify_improvements
+      cannot distinguish "consumed" from "never moved". The promotion worked (the
+      factory used the measured brief); the lane drained again and is re-fed this
+      run — see 2026-07-20-destarve-post.
 
   - id: 2026-07-13-destarve-doc
     date: 2026-07-13
@@ -108,3 +117,39 @@ improvements:
       Doc lane starved (todo_by_kind.doc = 0). Promoted harvested DOC-021
       (record_build.rb single-source-of-truth deep-dive, offline) as todo.
       todo_by_kind.doc 0->1. Metadata only — the factory writes the prose.
+      2026-07-20 verdict — still pending: DOC-021 was picked and shipped
+      (status:done), so todo_by_kind.doc returned to 0 and verify_improvements
+      cannot distinguish "consumed" from "never moved". The promotion worked; the
+      lane drained again and is re-fed this run — see 2026-07-20-destarve-doc.
+
+  # --- loop-tuner 2026-07-20: post/doc lanes re-starved after last refill drained
+  # The 2026-07-13 refills (POST-019/DOC-021) shipped and drained; growable todos
+  # are again almost all kind:hack (SRC-* scout stream). Re-fed each lane with one
+  # non-duplicate, offline-testable harvested idea so the factory picks a MEASURED
+  # brief instead of improvising. Per-kind metrics so each lane verifies alone.
+  - id: 2026-07-20-destarve-post
+    date: 2026-07-20
+    pr: TBD
+    metric: backlog.todo_by_kind.post
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Post lane starved again (todo_by_kind.post = 0; starved_kinds included
+      `post`). Harvested 12 candidates from merged PRs; promoted POST-025
+      (field-note reproducing the empty-report/sev1 bug, reflection-only/offline)
+      as todo. todo_by_kind.post 0->1; starved_kinds emptied. Metadata only — the
+      factory writes the prose.
+
+  - id: 2026-07-20-destarve-doc
+    date: 2026-07-20
+    pr: TBD
+    metric: backlog.todo_by_kind.doc
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Doc lane starved again (todo_by_kind.doc = 0; starved_kinds included `doc`).
+      Promoted harvested DOC-024 (aggregate.rb deep-dive: JSON -> findings.jsonl ->
+      gate verdict, offline) as todo. todo_by_kind.doc 0->1; starved_kinds emptied.
+      Metadata only — the factory writes the prose.
