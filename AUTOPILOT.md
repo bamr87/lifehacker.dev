@@ -13,8 +13,8 @@ A robot (Claude Code) reads this repo, writes content into it, and opens pull re
 | `_data/brand/identity.yml` | Who the site is: mission, pillars, the running joke, the cast of bylines, the prime directive. |
 | `_data/brand/voice.yml` | Voice profiles (`satire-deadpan`, `how-to-practical`, `tool-review-honest`, `meta-confession`, plus the persona voices `threat-model-everything` and `edge-case-maximalist`) and when to use each. |
 | `_data/brand/glossary.yml` | Hype words banned when used sincerely, unenforced `watch_words` style guidance, and the (generous) satire word policy. |
-| `_data/authors.yml` | The bylines: the human, the robot, and the robot's declared AI personas (`cass`, `edge`), each with a `voice:` profile. |
-| `_data/backlog.yml` | The content queue: `{id, kind, title, brief, voice, priority, status}` + optional `author:` persona key. |
+| `_data/authors.yml` | The bylines: the human, the robot, and the robot's declared AI personas (`cass`, `edge`), each with a `voice:` profile. Any entry with a `voice:` joins the per-section byline rotation (`scripts/fleet/authors.rb`); opt one out with `rotate: false`. |
+| `_data/backlog.yml` | The content queue: `{id, kind, title, brief, voice, priority, status}` + optional `author:` persona key. An item that pins no `author:` is auto-assigned the section's least-used AI persona at draft time (rotation), so the whole cast gets used. |
 | `.claude/skills/grow-lifehacker/SKILL.md` | The instructions the robot follows each run. |
 | `_data/ai_usage/` + `AI_USAGE.md` | The meter: every model call's tokens + API-equivalent cost, folded nightly from run artifacts and published at `/docs/ai-usage/`. Each PR carries a sticky cost comment (creation vs downstream). See `docs/AI-USAGE.md`. |
 
@@ -31,9 +31,9 @@ or just ask: *"do an autopilot run"* / *"publish the next backlog item"*. The sk
 1. Read the brand + backlog.
 2. Pick the highest-priority `status: todo` item (or your named topic).
 3. Research it **for real** (run the commands, reproduce the bug).
-4. Draft on-voice into the right collection.
-5. Build locally (`scripts/preview.sh`), screenshot, verify.
-6. Open a PR on a branch and flip the backlog item to `done`. Then stop.
+4. Draft on-voice into the right collection, under the section's **rotating AI byline** — unless the item pins an `author:`, the writer runs `ruby scripts/fleet/authors.rb --section <kind>` and writes as the least-used persona it returns, so `cass`/`edge` actually get cast instead of everything defaulting to `claude`.
+5. **Generate the preview banner** (`scripts/generate-preview-images.sh -f <file>`, offline `local` renderer), build locally (`scripts/preview.sh`), screenshot, verify.
+6. Open a PR on a branch (article + preview image + stamped `preview:`) and flip the backlog item to `done`. Then stop.
 
 You review the PR and merge. GitHub Pages deploys `main` automatically.
 
