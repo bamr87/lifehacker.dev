@@ -2097,6 +2097,24 @@ backlog:
     source_title: "PRD Machine Requirement Conflicts - Resolution Report"
     fingerprint: 9274d88db247
 
+  # Fresh doc (autopilot run, 2026-07-20): every `kind: doc` item on the board was
+  # already `done` (DOC-001..DOC-023, plus SRC-020/025/033), DOC-004 is a `blocked`
+  # post, and the only `todo` items are OPS-001 (kind: ops, which content runs skip)
+  # and a wall of SRC-* scout ideas (all kind: hack/tool, wrong lane). `gh pr list
+  # --state open --label auto:content` showed one open content PR (#366, a post) —
+  # no open doc to duplicate. Rather than no-op, cross lanes, or fabricate, the doc
+  # lane's rotating persona (Cass Vector, byline `cass`) synthesized a fresh in-lane
+  # doc with a genuine security angle: the GITHUB_TOKEN least-privilege design across
+  # the fleet's 24 workflows. Untouched by the Meta pillar — wiring-the-guardrails
+  # (DOC-002) covers branch protection/CODEOWNERS/the gate, but nothing documented
+  # the `permissions:` scoping that caps a hijacked agent's blast radius. Demonstrable
+  # with real captured output on this repo: 6/22 top-level blocks read-only, zero
+  # `administration`/`actions: write` grants anywhere, FLEET_TOKEN for cross-repo, and
+  # the honest twist that branch protection is still 404 OFF (OPS-001).
+  - id: DOC-024
+    kind: doc
+    title: "The Skeleton Key in the Robot's Pocket"
+    brief: "Threat-model the GITHUB_TOKEN every fleet workflow is handed by default (repo-wide write) and the `permissions:` block that caps a hijacked agent's blast radius. Three ranked, verified mitigations: default the top-level token to contents:read and grant write per-job (6/22 workflows read-only), never grant `administration` so the token can't unlock branch protection or the merge gate (granted in zero workflows), never grant `actions`/`workflows` so it can't rewrite the gates or the kill switch (only `actions: read` for artifact download; cross-repo writes go through a scoped FLEET_TOKEN, not github.token). The honest twist: mitigation 2 guards a door with no lock — branch protection on main is still 404 OFF (OPS-001). Real captured grep/gh output only."
   # Synthesized in-lane (autopilot post run, 2026-07-20): no `post`-kind item was
   # `todo` — POST-001..024 all done and DOC-004 still `blocked` on OPS-001. Open
   # auto:content PRs were a triage refresh, a loop-tuner, a tools grep review, and
@@ -2116,4 +2134,5 @@ backlog:
     author: cass
     priority: P2
     status: done
+    published: /docs/the-skeleton-key-in-the-robots-pocket/
     published: /posts/2026/07/20/the-call-was-coming-from-the-theme-repo/
