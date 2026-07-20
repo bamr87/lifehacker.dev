@@ -14,6 +14,7 @@
 require 'digest'
 require_relative '../triage/_lib'   # Triage + LH (reuses scripts/ci/_lib)
 require_relative '../fleet/plan'    # Fleet::Plan + Fleet::Policy
+require_relative '../fleet/authors' # Fleet::Authors (per-section byline rotation)
 
 CAPS = LH.yload(LH.read(File.join(LH::ROOT, '_data', 'fleet', 'budget.yml')))
 
@@ -157,6 +158,35 @@ scenario 'sev2 reserved grower is not starved by saturating fixers'
 manyfix = Array.new(8) { |i| finding(check_id: 'htmlproofer', severity: 'error', file: "_site/p#{i}/index.html", rule: 'link:Links') }
 plan = Fleet::Plan.compute(queue: Triage.build(manyfix), backlog: [todo('A', 'a'), todo('B', 'b')], open_prs: 0, caps: CAPS)
 check('sev2 mode keeps grow >= 1 even with many fixers', plan[:decision][:mode] == 'sev2' && plan[:decision][:slots][:grow] >= 1, plan[:decision].inspect)
+
+# ---------------------------------------------------------------------------
+scenario 'per-section byline rotation — the personas actually get cast'
+ring = %w[claude cass edge]
+# Pure assign: least-used wins; a persona with zero pieces is the pick.
+check('unused persona (edge=0) wins over the incumbent', Fleet::Authors.assign({ 'claude' => 28, 'cass' => 1, 'edge' => 0 }, ring) == 'edge')
+check('tie broken by ring order (cass before edge)', Fleet::Authors.assign({ 'claude' => 23, 'cass' => 0, 'edge' => 0 }, ring) == 'cass')
+# Once balanced it degrades to a strict round-robin through the ring.
+check('all-equal -> ring head (round-robin start)', Fleet::Authors.assign({ 'claude' => 5, 'cass' => 5, 'edge' => 5 }, ring) == 'claude')
+check('after claude +1 -> next in ring', Fleet::Authors.assign({ 'claude' => 6, 'cass' => 5, 'edge' => 5 }, ring) == 'cass')
+# The real ring is data-driven from _data/authors.yml: AI personas (a `voice:`),
+# never the human byline or the `default` alias.
+realring = Fleet::Authors.ring
+check('ring includes every declared AI persona', (%w[claude cass edge] - realring).empty?, realring.inspect)
+check('ring excludes the human + the default alias', !realring.include?('amr') && !realring.include?('default'), realring.inspect)
+# The selector annotates each grow item with its byline: a pinned author wins,
+# an unpinned item takes the section rotation. (Stub the rotation so the pure
+# selector stays deterministic — dispatch.rb injects the disk-reading one.)
+rot = ->(kind) { { 'hack' => 'cass', 'tool' => 'edge' }[kind] || 'claude' }
+bl  = [{ 'id' => 'H1', 'kind' => 'hack', 'status' => 'todo', 'title' => 'unpinned hack' },
+       { 'id' => 'T1', 'kind' => 'tool', 'status' => 'todo', 'title' => 'pinned tool', 'author' => 'claude' }]
+routed = Fleet::Plan.compute(queue: [], backlog: bl, open_prs: 0, caps: CAPS, fresh: true, author_for: rot)[:dispatched]
+h1 = routed.find { |d| d[:target] == 'H1' }
+t1 = routed.find { |d| d[:target] == 'T1' }
+check('unpinned item takes the section rotation', h1 && h1[:author] == 'cass', h1.inspect)
+check('a pinned author overrides rotation', t1 && t1[:author] == 'claude', t1.inspect)
+# No author_for -> legacy shape, no annotation (keeps the pure selector stable).
+legacy = Fleet::Plan.compute(queue: [], backlog: bl, open_prs: 0, caps: CAPS, fresh: true)[:dispatched]
+check('rotation is opt-in — no author_for leaves items un-annotated', legacy.none? { |d| d.key?(:author) })
 
 # ---------------------------------------------------------------------------
 scenario 'idempotency + analytics outage'

@@ -10,6 +10,10 @@
 # Optional `author: <key>` assigns a persona byline from _data/authors.yml
 # (cass = paranoid security persona, edge = QA/edge-case persona): the writer
 # drafts AS that persona, in their voice profile, under their byline.
+# An item that PINS no `author:` is not silently written by claude: the writer
+# runs `ruby scripts/fleet/authors.rb --section <kind>` and drafts as the
+# least-used AI persona for that section (byline rotation). Pin `author:` only
+# when a specific persona is required; otherwise let the rotation balance the cast.
 # =============================================================================
 
 backlog:
