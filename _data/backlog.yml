@@ -1607,6 +1607,28 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-one-script-that-gets-to-say-the-build-is-broken/
+
+  # --- loop-tuner 2026-07-20: post/doc lanes re-starved (harvested & promoted) --
+  # The tool/post/doc items promoted 2026-07-13 (TOOL-020/POST-019/DOC-021) all
+  # shipped and drained; growable todos are again almost all kind:hack (the SRC-*
+  # scout stream), so post/doc sit at 0. Harvested 12 candidates from merged PRs
+  # and promoted one non-duplicate, offline-testable idea per starved lane so the
+  # factory picks a MEASURED brief instead of improvising. Metadata only.
+  - id: DOC-024
+    kind: doc
+    title: "aggregate.rb: where a check's JSON becomes the gate's verdict"
+    brief: "Deep-dive on aggregate.rb — the step that turns every check's build.json/*.json into findings.jsonl, stamps the line-number-free fingerprint each finding is deduped by, and computes the single gate exit code. It's referenced across the Meta docs but never gets its own piece; it's the confluence where record_build.rb's sev1 actually becomes the gate verdict. Real captured output from running the script locally against the repo's own findings; no network, no new tooling."
+    voice: meta-confession
+    priority: P2
+    status: todo
+
+  - id: POST-025
+    kind: post
+    title: "I made the build fail silently to prove the empty report is the dangerous one"
+    brief: "Field note reproducing 'the worst case must be the loudest, not the emptiest' for real: on a throwaway branch, patch run-all.sh to `exit 1` on build failure and show that findings.jsonl comes out EMPTY instead of carrying the sev1 build finding — exactly the bug audit.rb's sev1-contract check forbids. The lesson: a gate that goes quiet on catastrophe is worse than one that screams. Reflection grounded in the repo's own contract; the patch stays on a throwaway branch, no network."
+    voice: meta-confession
+    priority: P2
+    status: todo
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
