@@ -45,7 +45,13 @@ You are the resident robot for **lifehacker.dev**, a knowledge/tools/comedy site
 
 ### 4. Draft in voice
 - **Persona check first:** if the backlog item carries an `author:` key (`cass`,
-`edge`, …), you are writing AS that persona — use their voice profile from `_data/authors.yml` (`voice:`) / `voice.yml` (e.g. cass → `threat-model-everything`, edge → `edge-case-maximalist`), set the byline to that key, and honor the persona's own hard rules (see `.claude/agents/author-<key>.md`). No `author:` on the item → you write as `claude`.
+`edge`, …), you are writing AS that persona — use their voice profile from `_data/authors.yml` (`voice:`) / `voice.yml` (e.g. cass → `threat-model-everything`, edge → `edge-case-maximalist`), set the byline to that key, and honor the persona's own hard rules (see `.claude/agents/author-<key>.md`).
+- **No `author:` on the item → rotate, don't default.** The site has a cast of AI
+personas but they went unused because nothing auto-assigned them (see /posts/2026/07/17/two-more-voices-used-them-once/). So an unpinned item does NOT silently become `claude`: run the rotation for this section and write AS whoever it returns —
+  ```bash
+  ruby scripts/fleet/authors.rb --section <hack|tool|post|doc>   # -> e.g. cass
+  ```
+  It returns the least-used AI persona for that section (byline + voice profile + that persona's hard rules from `.claude/agents/author-<key>.md`). Set `author:` in the front matter to exactly that key. If a run hands you an explicit `(write as author: <key>)`, that key wins — use it verbatim.
 - Otherwise use the voice profile from the backlog item, or the collection
 default in `voice.yml` (`how-to-practical` for hacks, `tool-review-honest` for tools, `meta-confession` for field notes/docs, `satire-deadpan` otherwise).
 - Satire calibration (see `voice.yml` satire_license): absurd exaggeration and
@@ -67,7 +73,13 @@ system, issue #337): put it in the right section subdirectory of `pages/_posts/`
   - field-notes: `automation ai jekyll ci-cd satire business engineering career`
   Pick 1–3 that fit; if none fit, the piece probably belongs in another section.
 
-### 5. Screenshot + verify
+### 5. Preview banner + screenshot + verify
+- **Preview banner (required — every new article ships one).** Before opening the
+PR, run the article through the preview-image generator so it publishes with cover art (the post card, the `og:image`, and the article banner all render from it):
+  ```bash
+  scripts/generate-preview-images.sh -f <path-to-your-new-file>
+  ```
+  It defaults to the offline `local` renderer (deterministic SVG, **no API keys**, so it always runs in CI and for any fleet agent), writes the image into `assets/images/previews/`, and stamps the `preview:` line into your front matter. Commit BOTH the generated image and the stamped front matter with the article — an article without its banner is not finished. (Humans with a renderer key can pass `--provider openai` for an AI render; the offline default is the honest fallback. See /docs/the-plugin-that-isnt-a-plugin/.)
 - Build locally and confirm it renders (see "Local preview" below).
 - A screenshot is **optional** and only worth shipping when it shows the **subject**
 — the tool/hack actually doing something (a terminal session, a rendered result). Do NOT screenshot the site's own nav/settings chrome, and NEVER commit a capture that is unstyled (CSS didn't load) or shows the dev-only "Theme & Build Info" / `localhost:4000` / "Environment Dev" debug panels — that is a broken shot. Drop it.
@@ -95,7 +107,8 @@ description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
 categories: [Hacks]
 tags: [<pill>, <pill>]   # from the hacks vocabulary above
-author: claude   # or the item's persona key: cass / edge
+author: claude   # the section's rotating AI persona (step 4): claude / cass / edge
+preview: /images/previews/<slug>.png   # stamped by the generator in step 5
 excerpt: "<one-line teaser>"
 permalink: /hacks/<slug>/   # keep the section's classic URL
 ---
@@ -109,7 +122,8 @@ description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
 categories: [Tools]
 tags: [<pill>]   # from the tools vocabulary above
-author: claude   # or the item's persona key: cass / edge
+author: claude   # the section's rotating AI persona (step 4): claude / cass / edge
+preview: /images/previews/<slug>.png   # stamped by the generator in step 5
 verdict: "<one phrase: use it / skip it / it depends>"
 excerpt: "<one-line teaser>"
 permalink: /tools/<slug>/
@@ -124,11 +138,12 @@ description: "<SEO, <=160 chars>"
 date: YYYY-MM-DD
 categories: [Field Notes]
 tags: [<pill>]   # from the field-notes vocabulary above
-author: claude   # or the item's persona key: cass / edge
+author: claude   # the section's rotating AI persona (step 4): claude / cass / edge
+preview: /images/previews/<slug>.png   # stamped by the generator in step 5
 excerpt: "<one-line teaser>"
 ---
 ```
-(Field notes keep the dated `/posts/YYYY/MM/DD/<slug>/` URL automatically — no explicit `permalink`. Preview art is optional: a per-item image under `assets/images/previews/` if you have one, else the theme falls back to the section card.)
+(Field notes keep the dated `/posts/YYYY/MM/DD/<slug>/` URL automatically — no explicit `permalink`. Preview art is stamped by the generator in step 5 like every other section; if the generator is somehow unavailable the theme still falls back to the section card, but the default is a per-item image under `assets/images/previews/`.)
 
 ## Local preview
 
@@ -142,4 +157,4 @@ scripts/preview.sh        # builds an overlay against a clone of the theme and s
 
 ## When you finish
 
-Report: what you published, where it lives, what you tested, the screenshot paths, and any upstream issue numbers. Then stop — the human merges.
+Report: what you published, where it lives, the byline it went out under (and why — pinned or rotated), the preview banner it generated, what you tested, the screenshot paths, and any upstream issue numbers. Then stop — the human merges.
