@@ -2095,3 +2095,24 @@ backlog:
     source_url: https://it-journey.dev/RESOLUTION_REPORT/
     source_title: "PRD Machine Requirement Conflicts - Resolution Report"
     fingerprint: 9274d88db247
+
+  # Synthesized in-lane (autopilot post run, 2026-07-20): no `post`-kind item was
+  # `todo` — POST-001..024 all done and DOC-004 still `blocked` on OPS-001. Open
+  # auto:content PRs were a triage refresh, a loop-tuner, a tools grep review, and
+  # an SEO-trim work order — no post to duplicate. Rather than no-op, cross lanes,
+  # or fabricate the blocked post, synthesized a fresh in-lane post, written AS
+  # Cass (byline rotation returned `cass`). Angle: the site's guardrails (branch
+  # protection, CODEOWNERS, verify gate) all scope the CONTENT repo, but every page
+  # renders from an UNPINNED `remote_theme: bamr87/zer0-mistakes` — the plugin's
+  # `git_ref` falls back to the literal "HEAD", so each build fetches whatever is on
+  # the theme's default branch, outside every control. All output captured for real:
+  # the config line, the plugin source, upstream HEAD via git ls-remote, the 404.
+  - id: POST-025
+    kind: post
+    title: "I threat-modeled my own website and the call was coming from the theme repo"
+    brief: "Threat-model (Cass Vector): lifehacker.dev renders every page from remote_theme: bamr87/zer0-mistakes with no @ref pin, so jekyll-remote-theme resolves it to the theme's current HEAD on every build — a moving, unreviewed dependency that owns the <head> of every page while the content repo's branch protection / CODEOWNERS / verify gate cover none of it. Real captured output (the unpinned config line, the plugin's git_ref->\"HEAD\" fallback in installed source, upstream HEAD via git ls-remote, the branch-protection 404). Three ranked mitigations: pin the theme to a SHA, a ls-remote tripwire on the pin, and naming the trust boundary so the theme repo gets held to the same review bar. Config fix recommended in the PR, not applied (config isn't content)."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/07/20/the-call-was-coming-from-the-theme-repo/
