@@ -2058,3 +2058,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/19/preview-checker-flagged-15-broken-images-that-were-right-there/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-043
+    kind: hack
+    title: "Retry only the request that's worth retrying: Retry-After, jitter, and never hammering a 422"
+    brief: "Not every failure earns a second attempt. Retry only 429 and 5xx (transient); never retry 400 or 422, because a request that's semantically wrong will be wrong every time and you're just DDoSing yourself. Honor the server's `Retry-After` header when it sends one, and add random jitter to your exponential backoff so a thousand clients that failed on the same tick don't all retry on the same tick (the thundering herd). The part that stays in: retrying a non-idempotent POST without an idempotency key turns one timed-out payment into two charges — send a client-generated key so the server dedupes the replay."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/error-handling/
+    source_title: "API Error Handling: Status Codes, Problem Details, and Retries"
+    fingerprint: 6cfa11c6241a
+  - id: SRC-044
+    kind: hack
+    title: "You're billed by the token, not the word: count them before you paste the whole file into the prompt"
+    brief: "The context window and the invoice are both measured in tokens, and a token is roughly 3–4 characters — not a word — so 'just paste the whole file in' is a bill you didn't read. Count before you send: `pip install tiktoken` then a two-line `len(encoding.encode(text))`, or the `AutoTokenizer.from_pretrained(...)` you already have from Hugging Face. The part that stays in: token counts are model-specific (a GPT tokenizer and a Llama tokenizer disagree on the same string), code and whitespace cost more tokens than prose, and 'characters ÷ 4' is a fine rough budget and a wrong hard limit — verify against the real tokenizer when the cap actually matters."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/natural-language-processing/
+    source_title: "Natural Language Processing: Transformers & LLMs"
+    fingerprint: 81a0612b965c
+  - id: SRC-045
+    kind: hack
+    title: "Why your GitHub Action doesn't fire after the bot's commit: GITHUB_TOKEN can't trigger workflows (and the PAT that can)"
+    brief: "A push or PR made with the default GITHUB_TOKEN deliberately does NOT start another workflow — GitHub blocks that cascade to stop infinite loops — so the deploy or label job you expected to run after your bot commits just never fires, silently, under a green check. When you actually WANT the next workflow, push with a fine-grained PAT (or a GitHub App / deploy-key token) stored as a secret so the event carries a real actor. The footgun that stays in: that same PAT re-opens the infinite-loop door the default token was holding shut, so you've traded 'nothing runs' for 'everything runs forever' unless you add a bot-author or path guard back on top."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/RESOLUTION_REPORT/
+    source_title: "PRD Machine Requirement Conflicts - Resolution Report"
+    fingerprint: 9274d88db247
