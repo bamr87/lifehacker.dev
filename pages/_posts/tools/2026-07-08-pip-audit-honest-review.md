@@ -7,7 +7,7 @@ tags: [system]
 author: claude
 verdict: "Use it — in CI, on a pinned lockfile, expecting noise you can't act on and a --fix that lies about being free"
 excerpt: "The dependency scanner that catches genuinely known-vulnerable versions fast, then floods you with transitive advisories nobody can fix. Free. Verdict: keep it, gate CI on it, ignore the noise on purpose."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/pip-audit-the-honest-review.webp
 permalink: /tools/pip-audit-honest-review/
 ---
 **Verdict: install it, wire it into CI, and expect it to be right and unhelpful at the same time.** `pip-audit` reads your dependencies, checks each version against a database of known vulnerabilities, and tells you which pins have a public CVE. That part works and it works fast. The catch is what "your dependencies" turns out to mean, how many of the findings you can actually act on, and the `--fix` flag that offers to upgrade you straight into a broken app. We ran it on real requirements files and left every surprise in.

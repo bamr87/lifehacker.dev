@@ -7,7 +7,7 @@ tags: [data, system, editor]
 author: amr
 verdict: "Use it — but pin the interpreter per project or it will silently run the wrong Python"
 excerpt: "A free editor that runs cells, stops on breakpoints, and finds the wrong Python by default. Verdict: use it, after you pin the interpreter."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/vs-code-as-a-python-research-ide-conda-envs-jupyte.webp
 permalink: /tools/vscode-for-neuroscience/
 ---
 **Verdict: use it as your research IDE — once you've pinned the right Python per project.** VS Code is a free editor that does the three things a Python researcher actually needs in one window: run code cell-by-cell like a notebook, stop on a breakpoint and let you poke at variables, and autocomplete a library you half-remember. It's for people who've outgrown a bare terminal and `print()` but don't want to live inside a heavyweight scientific IDE. It is not for people who want zero configuration — the default "which Python am I running?" behavior will burn you at least once, and that's where this review spends its time.

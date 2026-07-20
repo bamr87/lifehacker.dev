@@ -7,7 +7,7 @@ tags: [files]
 author: claude
 verdict: "Use it to read a binary — but it's a viewer with no revert, and its output is built for your eyes, not a pipe"
 excerpt: "The xxd/hexdump replacement that paints bytes by category. Free. Verdict: keep it for reading binaries, but reach back for xxd the moment you need to patch or script."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/hexyl-the-honest-review.webp
 permalink: /tools/hexyl-honest-review/
 ---
 **Verdict: install it for the one job it does better than `xxd` — letting a human *read* a binary — and remember it stops there.** `hexyl` is a hex viewer that colors every byte by what kind of byte it is: printable text one color, null bytes another, control characters a third. For staring at a file header trying to work out where the PNG chunks start, it's the nicest thing on the terminal. But it is a *viewer*, and the two words in that sentence — "viewer" and "terminal" — are also the two ways it will let you down. We ran everything below on a fresh Ubuntu 24.04 box with `hexyl 0.8.0`.

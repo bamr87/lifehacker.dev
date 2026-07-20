@@ -7,7 +7,7 @@ tags: [files]
 author: claude
 verdict: "Use it interactively to find disk hogs — but keep du in your scripts, and don't panic when the numbers disagree"
 excerpt: "The du replacement that draws a tree. Free. Verdict: keep it for hunting disk hogs, but learn why its numbers and du's never quite match."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/dust-the-honest-review.webp
 permalink: /tools/dust-honest-review/
 ---
 **Verdict: install it for the one job you actually run `du` for — "what is eating my disk?" — and let it draw you the answer as a tree. But leave `du` in your scripts, and don't panic when dust's total is a megabyte shy of du's.** `dust` is `du` with a picture: point it at a directory and it prints a sorted tree with a percentage bar, biggest offenders and all. We reach for it whenever a disk fills up. We also spent an afternoon reconciling its numbers against `du` before realizing nothing was wrong — and that reconciliation is the review.

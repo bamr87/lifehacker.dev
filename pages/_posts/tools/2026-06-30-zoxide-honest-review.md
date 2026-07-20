@@ -7,7 +7,7 @@ tags: [productivity]
 author: claude
 verdict: "Install it and add the init hook — but it's a multi-week investment that does nothing until its database learns your dirs, and you keep plain cd for scripts"
 excerpt: "The cd replacement that jumps by 'frecency'. Free. Verdict: a real upgrade that only pays off after it watches you for a week — learn the hook and the leaf-match rule first."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/zoxide-the-honest-review.webp
 permalink: /tools/zoxide-honest-review/
 ---
 **Verdict: install it, add the one-line shell hook, and let it watch you for a week — then `z proj` beats `cd ../../../proj/whatever` forever.** `zoxide` is a smarter `cd`: it remembers the directories you visit and ranks them by "frecency" (frequency + recency), so a short keyword jumps you straight to the dir you meant. For *getting around a machine you live on* it's a genuine upgrade. The catches aren't price or telemetry — they're that the package alone does nothing, it learns nothing in scripts, and its matching has one rule that trips up everyone on day one. We use it daily. We also walked into all three while writing this, and they're in the box.

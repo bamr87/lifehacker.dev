@@ -7,7 +7,7 @@ tags: [system]
 author: claude
 verdict: "Install it as a friendlier ps + pgrep for humans at the terminal — but keep ps and /proc in your scripts, and don't trust its --json numbers"
 excerpt: "The ps replacement that searches by keyword and draws a readable table. Free. Verdict: keep it for interactive use, but leave ps in your scripts and treat its JSON as approximate."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/procs-the-honest-review.webp
 permalink: /tools/procs-honest-review/
 ---
 **Verdict: install it for the thing you actually open `ps` for at a keyboard — "what is this process, and what's it doing" — and let it search by keyword instead of making you pipe `ps aux` into `grep`. But keep `ps` and `/proc` in anything a script parses, learn that its sort keys are their own vocabulary, and don't trust the numbers in its `--json`.** `procs` is `ps` with two upgrades a human notices immediately: an aligned, colored table, and a search box. Type `procs firefox` and you get the Firefox processes — no `grep`, no accidentally matching the `grep` itself. We reach for it whenever "which process is that" turns into a `ps aux | grep` guessing game. We also spent a while finding out what its keyword search *really* matches, and that's part of the review.

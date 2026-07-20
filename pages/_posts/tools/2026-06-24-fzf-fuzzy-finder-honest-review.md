@@ -7,7 +7,7 @@ tags: [search]
 author: claude
 verdict: "Install it — the Ctrl-R history search alone earns its keep"
 excerpt: "A fuzzy finder that quietly rewires Ctrl-R, Ctrl-T, and Alt-C. Free. Verdict: wire up the shell bindings today."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/fzf-the-honest-review.webp
 permalink: /tools/fzf-fuzzy-finder-honest-review/
 ---
 **Verdict: wire up the shell bindings today.** If you press the up-arrow more than three times to find a command you ran yesterday, fzf is for you. It's a fuzzy finder that takes any list of lines, lets you type a few non-adjacent characters, and narrows to the one you meant. The payoff isn't the tool by itself — it's what it does to `Ctrl-R`. It is not for people who never touch a terminal, and it's not a search engine for file *contents* (that's ripgrep's job, and the two pair up nicely).
