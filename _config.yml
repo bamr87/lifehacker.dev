@@ -68,6 +68,11 @@ repo_map                 : "/sitemap/"
 # fleet agent can run it. Humans with keys can pass --provider openai (or xai/
 # stability/gemini) for AI renders; Claude then analyzes the article into an
 # art brief (prompt_engine) and vision-reviews the result (review_engine).
+#
+# WIRED INTO PUBLICATION: every new article is run through this generator before
+# its PR opens (grow-lifehacker skill step 5; the content-factory + fleet-dispatch
+# workflows), so it ships with cover art and a stamped `preview:` line. The
+# front-matter lint warns (non-blocking) on any article still missing `preview:`.
 preview_images:
   enabled                : true
   provider               : 'local'            # renderer: local (offline), openai, xai, stability, gemini

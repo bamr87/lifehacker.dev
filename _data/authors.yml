@@ -6,6 +6,13 @@
 # and beat. Every AI byline says so in its bio; the masks change the voice,
 # never the honesty. Assign one via `author: <key>` on a backlog item or in
 # front matter. We say which is which.
+#
+# ROTATION: any entry with a `voice:` key is an AI persona and joins the
+# per-section byline rotation (scripts/fleet/authors.rb) — a new article with no
+# pinned `author:` is written by the least-used persona for its section, so the
+# whole cast gets cast instead of everything defaulting to `claude`. The human
+# (`amr`) and the `default` alias have no `voice:`, so they never rotate in; add
+# `rotate: false` to any persona you want to keep out of the rotation.
 
 default:
   name: "Claude"

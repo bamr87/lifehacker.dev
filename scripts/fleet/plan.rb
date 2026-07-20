@@ -19,8 +19,14 @@ module Fleet
     # fresh:   is the queue trustworthy (present + recently regenerated)? When
     #          false the absence of data must NOT read as "safe to grow" — we
     #          fail safe and dispatch nothing. dispatch.rb decides freshness.
-    # -> { obs:, decision:, dispatched: [ {role, target, desc}, ... ] }
-    def compute(queue:, backlog:, open_prs:, caps:, fresh: true)
+    # author_for: optional callable(kind) -> author_key. When given, each grow
+    #          item is annotated with the persona that should write it — the
+    #          item's own `author:` if it pins one, else the section's rotating
+    #          AI author (fleet/authors.rb). Kept injectable so this stays a pure
+    #          function: dispatch.rb passes the real (disk-reading) rotation, the
+    #          simulation passes a stub. No callable -> no annotation (legacy).
+    # -> { obs:, decision:, dispatched: [ {role, target, desc, author?}, ... ] }
+    def compute(queue:, backlog:, open_prs:, caps:, fresh: true, author_for: nil)
       unless fresh
         return { obs: { open_prs: open_prs, fresh: false },
                  decision: { mode: 'stale', slots: { grow: 0, fix: 0 }, available_slots: 0,
@@ -50,7 +56,12 @@ module Fleet
         dispatched << { role: 'fleet-bugfix', target: i['fingerprint'], desc: i['title'].to_s }
       end
       growable.first(decision[:slots][:grow]).each do |b|
-        dispatched << { role: 'grow-lifehacker', target: b['id'].to_s, desc: b['title'].to_s }
+        item = { role: 'grow-lifehacker', target: b['id'].to_s, desc: b['title'].to_s }
+        if author_for
+          pinned = b['author'].to_s.strip
+          item[:author] = pinned.empty? ? author_for.call(b['kind'].to_s) : pinned
+        end
+        dispatched << item
       end
 
       { obs: obs, decision: decision, dispatched: dispatched }

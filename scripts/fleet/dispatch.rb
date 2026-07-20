@@ -24,6 +24,7 @@ require_relative '../ci/_lib'
 require_relative 'policy'
 require_relative 'plan'
 require_relative 'lease'
+require_relative 'authors'
 
 APPLY = ARGV.include?('--apply')
 
@@ -77,15 +78,23 @@ end
 # command goes through the universal runner (scripts/ai/run.sh), NOT a raw
 # `claude -p`, so model / auth (CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY) /
 # fallback stay configured in one place.
-def spawn_cmd(skill, target, desc)
-  "bash scripts/ai/run.sh --prompt #{("/" + skill + " " + target).inspect}  # #{desc[0, 60]}"
+def spawn_cmd(skill, target, desc, author = nil)
+  prompt = "/#{skill} #{target}"
+  # The rotating persona travels IN the prompt so the leased grow agent writes
+  # AS that author (byline + voice) even though it only receives the item id.
+  prompt += " (write as author: #{author})" if author && !author.empty?
+  "bash scripts/ai/run.sh --prompt #{prompt.inspect}  # #{desc[0, 60]}"
 end
 
 # --- Observe + Decide (pure) -------------------------------------------------
 queue   = jload(File.join(LH::ROOT, '_data', 'health', 'queue.json'))
 backlog = ((LH.yload(LH.read(File.join(LH::ROOT, '_data', 'backlog.yml'))) || {})['backlog'] rescue []) || []
 
-result     = Fleet::Plan.compute(queue: queue, backlog: backlog, open_prs: gh_open_pr_count, caps: caps, fresh: fresh)
+# Rotation authority (fleet/authors.rb): quota-based per-section AI-author pick.
+# Injected so plan.rb stays pure; only grow items that don't pin an author use it.
+author_for = ->(kind) { Fleet::Authors.next_author(kind) }
+
+result     = Fleet::Plan.compute(queue: queue, backlog: backlog, open_prs: gh_open_pr_count, caps: caps, fresh: fresh, author_for: author_for)
 obs        = result[:obs]
 plan       = result[:decision]
 planned    = result[:dispatched]
@@ -113,8 +122,9 @@ puts "[dispatch] decide:  #{plan[:mode]}  grow=#{plan[:slots][:grow]} fix=#{plan
 puts "[dispatch]          #{plan[:reason]}"
 puts "[dispatch] act:     mode=#{APPLY ? 'APPLY (leased + spawning)' : 'plan-only'} — #{dispatched.size} agent(s)"
 dispatched.each do |d|
-  puts "  #{d[:role]}  <- #{d[:target]}"
-  puts "      #{spawn_cmd(d[:role], d[:target], d[:desc])}"
+  byline = d[:author] ? "  (as #{d[:author]})" : ''
+  puts "  #{d[:role]}  <- #{d[:target]}#{byline}"
+  puts "      #{spawn_cmd(d[:role], d[:target], d[:desc], d[:author])}"
 end
 puts '  (nothing to dispatch — queue clean or capped)' if dispatched.empty?
 
@@ -125,6 +135,10 @@ puts '  (nothing to dispatch — queue clean or capped)' if dispatched.empty?
 # switch is off the dispatcher exits early above, so no plan is emitted and the
 # spawn job is skipped — FLEET_ENABLED transitively gates spawning.)
 if (gho = ENV['GITHUB_OUTPUT'])
-  plan_items = dispatched.map { |d| { 'role' => d[:role].to_s, 'target' => d[:target].to_s } }
+  plan_items = dispatched.map do |d|
+    h = { 'role' => d[:role].to_s, 'target' => d[:target].to_s }
+    h['author'] = d[:author].to_s if d[:author] && !d[:author].to_s.empty?
+    h
+  end
   File.open(gho, 'a') { |io| io.puts "plan=#{JSON.generate(plan_items)}" }
 end

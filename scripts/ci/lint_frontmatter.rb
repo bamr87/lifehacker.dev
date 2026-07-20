@@ -59,6 +59,17 @@ SPECS.each do |spec|
                              evidence: "#{fm['description'].to_s.length} chars (SEO cap is 160)")
     end
 
+    # preview banner: every new article should ship one (the post card, og:image,
+    # and article banner all render from `preview:`). Warn-only so the gate stays
+    # green on the pre-existing posts that predate the wiring, while steering
+    # every new draft to run `scripts/generate-preview-images.sh -f <file>`, which
+    # stamps this line. See _config.yml `preview_images` + the grow-lifehacker skill.
+    unless present?(fm['preview'])
+      findings << LH.finding(check_id: 'frontmatter', severity: 'warning',
+                             rule: 'missing-preview', file: rel,
+                             evidence: 'no `preview:` banner — run scripts/generate-preview-images.sh -f <file>')
+    end
+
     # author must be a known persona key.
     if present?(fm['author']) && !AUTHOR_KEYS.include?(fm['author'].to_s)
       findings << LH.finding(check_id: 'frontmatter', severity: 'error',
