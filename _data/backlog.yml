@@ -1231,7 +1231,8 @@ backlog:
     brief: "The obvious guard — `if: secrets.MY_TOKEN != ''` — doesn't work, because GitHub Actions won't evaluate `secrets.*` in a job-level `if:`. Copy the secret to a step output or a job env first, then branch on that, so a workflow that needs a token skips cleanly instead of failing when it's absent. The footgun that stays in: pull requests from forks get empty secrets by design, so any agent step that assumes the token exists breaks on exactly the PRs strangers open — the graceful no-op is the fix, not a louder error."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/secret-in-if-promote-to-env/
     source: content-scout
     source_url: https://it-journey.dev/quests/0011/ouroboros-loop-03-summon-the-golem/
     source_title: "Summon the Golem: Claude Code as a Headless CI Agent"
