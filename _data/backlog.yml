@@ -1215,7 +1215,8 @@ backlog:
     brief: "A GitHub Actions job doesn't have to bury its result in 800 lines of log. Echo Markdown to the `$GITHUB_STEP_SUMMARY` file and it renders as a table on the run's summary page — pass/fail counts, the one number that mattered, a link. The gotchas that stay in: it appends (every `>>` adds, so `>` when you meant `>>` eats the earlier lines), it's per-job not global, and echoing untrusted text into it is a Markdown-injection footgun you handle by not piping raw input through it."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/github-step-summary-stop-scrolling-ci-logs/
     source: content-scout
     source_url: https://it-journey.dev/quests/0111/agentic-codex-01-agents-in-the-sdlc/
     source_title: "Initiation Rites: Agents in the SDLC"
