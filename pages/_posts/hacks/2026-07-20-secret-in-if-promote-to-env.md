@@ -1,6 +1,6 @@
 ---
 title: "You can't gate a workflow step on a secret in if: — promote it to an env first"
-description: "GitHub Actions won't read secrets.* in an if: conditional, so the guard silently never gates. Promote the secret to a job env, then branch on that — and don't guard in shell without quotes."
+description: "GitHub Actions won't read secrets.* in an if:, so the guard never gates. Promote the secret to a job env, branch on that — and quote it once it hits a shell."
 date: 2026-07-20
 categories: [Hacks]
 tags: [ci-cd, security, shell]
