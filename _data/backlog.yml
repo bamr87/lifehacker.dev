@@ -2050,3 +2050,11 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-09-digital-artist-0100/
     source_title: "Quest Report: Digital Artist Level 0100"
     fingerprint: e8136e60c87a
+  - id: POST-024
+    kind: post
+    title: "My preview-image checker flagged 15 broken images that were right there"
+    brief: "Wrote a quick audit that resolved every field note's preview: path and reported 15 missing. All 15 exist. The bug: the collection stores preview art in TWO conventions — 87 posts use the gem-era shorthand /images/previews/X (the theme prepends /assets at render), 15 legacy imports carry the full /assets/... path — and a one-convention resolver treats the legacy paths as absolute filesystem roots and cries wolf. Correct resolver: 0 missing. Real captured output, both passes. Lesson: normalize asset paths the way the renderer does before you audit them; a false positive in a link checker costs more than no checker."
+    voice: meta-confession
+    priority: P2
+    status: done
+    published: /posts/2026/07/19/preview-checker-flagged-15-broken-images-that-were-right-there/
