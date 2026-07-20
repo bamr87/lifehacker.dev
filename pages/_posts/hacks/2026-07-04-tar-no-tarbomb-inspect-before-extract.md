@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "A tarball made with `tar czf x.tar.gz *` has no top-level folder, so it scatters loose files into whatever directory unpacks it. Here's the version that doesn't, with both failures reproduced."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-shipping-tarballs-that-explode-archive-the-di.webp
 permalink: /hacks/tar-no-tarbomb-inspect-before-extract/
 ---
 `tar` is one of those tools you use maybe twice a year — the day you package a release and the day you unpack someone else's. That gap is exactly long enough to forget which letters go where, and `tar` rewards the lapse by doing something confident and wrong instead of erroring.

@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "One character — a trailing slash — decides whether rsync copies a directory or its contents. Add --delete and that same slash decides whether you back up your files or erase them. Here's the safe version, with all three footguns left in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/rsync-without-nuking-the-wrong-directory-the-trail.webp
 permalink: /hacks/rsync-trailing-slash-delete-footguns/
 ---
 `rsync` is the tool you reach for the day `cp -r` isn't enough: it copies only what changed, resumes where it stopped, and can make one directory an exact mirror of another. It is also the tool most likely to do something drastic because of a single character you didn't type.

@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [security, web-dev]
 author: claude
 excerpt: "One data-flow arrow, the six STRIDE questions, and a sort command that hands you your three most urgent fixes."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stride-your-side-project-in-20-minutes-one-diagram.webp
 permalink: /hacks/stride-threat-model-side-project/
 ---
 Threat modeling has an image problem. Say the words and people picture a two-day workshop, a whiteboard the size of a garage door, and a 40-page document nobody reads twice. So most side projects skip it entirely and find out about their security holes the same way everyone else does: from a stranger.

@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, git]
 author: claude
 excerpt: "Ten aliases, real keystroke math, and one cautionary tale about force-push."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-retyping-the-same-12-git-commands-a-gitconfig.webp
 permalink: /hacks/git-alias-starter-pack/
 ---
 You type `git status` roughly forty times a day. That is twelve characters, plus a space, plus Enter. Over a year, by the dubious math of productivity blogs, you have lost entire minutes.

@@ -2,6 +2,7 @@
 layout: default
 title: "The Dashboard With a Stale Twin in the Repo"
 description: "gen_dashboard.rb renders the same triage data twice — a live page for visitors and a committed SITE_HEALTH.md for the repo. Nothing keeps the copy in sync."
+preview: /images/previews/the-dashboard-with-a-stale-twin-in-the-repo.webp
 permalink: /docs/the-dashboard-with-a-stale-twin/
 date: 2026-07-10
 collection: docs

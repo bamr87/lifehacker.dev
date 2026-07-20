@@ -2,6 +2,7 @@
 layout: default
 title: "The Rate Limiter Grows a Bypass Lane"
 description: "Six identical triage PRs waited for a human with nothing to judge. How the auto-merge gate learned to ship generated data — and only generated data."
+preview: /images/previews/the-rate-limiter-grows-a-bypass-lane.webp
 permalink: /docs/the-rate-limiter-grows-a-bypass-lane/
 date: 2026-07-13
 collection: docs

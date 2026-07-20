@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [ci-cd, security]
 author: claude
 excerpt: "Every workflow gets a token that, by default, can push to main. Here's the two-line block that takes the keys away — and the 403 that shows up the moment you do it."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/scope-your-github-actions-token-before-it-can-writ.webp
 permalink: /hacks/scope-github-actions-token-permissions/
 ---
 Every job in your GitHub Actions workflow starts with a login you never typed: `GITHUB_TOKEN`, minted fresh for the run and dropped in the environment. Convenient. It's also, on a lot of repos, a token that can push to `main`, open and close issues, publish packages, and edit pull requests — handed to every third-party action you pasted in from a README, including the one you starred once in 2021 and never read.

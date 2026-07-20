@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, ci-cd]
 author: amr
 excerpt: "One log.sh, sourced everywhere — plus the readonly crash that happens the second two files pull it in, and the four-line guard that stops it."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-copy-pasting-bash-logging-a-sourced-lib-with-.webp
 permalink: /hacks/sourced-bash-logging-lib-reload-guard/
 ---
 Every shell script you write starts the same way. You paste the color codes. You paste the little `log()` function that does the `[INFO]` and `[ERROR]` prefixes. You change one of them three weeks later and now twenty scripts disagree about what red means.

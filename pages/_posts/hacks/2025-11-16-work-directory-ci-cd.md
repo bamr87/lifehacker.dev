@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, ci-cd, web-dev]
 author: amr
 excerpt: "CI cached the whole work/ folder to go faster. It went faster and shipped last week's build. Here's the failure and the layout that fixes it."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/the-work-directory-pattern-cache-inputs-regenerate.webp
 permalink: /hacks/work-directory-ci-cd/
 ---
 Someone read that caching makes CI faster, so they cached the build directory. Builds got faster. They also started shipping code that didn't match the commit.

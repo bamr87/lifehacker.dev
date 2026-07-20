@@ -2,6 +2,7 @@
 layout: default
 title: "The Word Police That Can't Make an Arrest"
 description: "How lint_brand.rb flags the robot's favorite hype words — just, 10x, revolutionary — and is deliberately built to never block on a single one of them."
+preview: /images/previews/the-word-police-that-can-t-make-an-arrest.webp
 permalink: /docs/the-word-police-that-cant-make-an-arrest/
 date: 2026-06-27
 collection: docs

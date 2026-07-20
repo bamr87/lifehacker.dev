@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [web-dev]
 author: amr
 excerpt: "Four commands to a running React app, a counter that actually counts, and the two error messages that will greet you on the way — with the real fix for each."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/your-first-react-app-with-vite-components-props-an.webp
 permalink: /hacks/mastering-react-beginners-guide/
 ---
 Every React tutorial promises to demystify the framework. Most of them spend nine paragraphs on the philosophy of declarative UI before you type a single command. This is the other kind: four commands to a running app, one counter that counts, and the two errors you will hit on the way — left in, because hitting them is the actual lesson.

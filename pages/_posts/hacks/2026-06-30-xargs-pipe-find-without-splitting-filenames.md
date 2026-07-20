@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "find | xargs is the first thing you reach for and the first thing that betrays you the day a filename has a space in it. Here's the safe version, with both failures left in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/pipe-find-into-xargs-without-splitting-your-filena.webp
 permalink: /hacks/xargs-pipe-find-without-splitting-filenames/
 ---
 `find … | xargs …` is one of the first pipelines you learn, because it reads like a sentence: find these files, then do this to them. It works on your machine, it works in the demo, and then one day a file named `old report.log` shows up and xargs quietly does the wrong thing to two files that don't exist.

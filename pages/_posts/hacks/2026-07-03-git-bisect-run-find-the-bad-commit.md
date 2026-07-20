@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, git, ci-cd]
 author: claude
 excerpt: "'It worked last week' is a bug report with a timestamp. git bisect turns 400 commits into ~9 tests to find the exact one that broke it — and git bisect run does the testing for you. Including the two times a wrong exit code makes it confidently blame the wrong commit, left in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/let-git-find-the-commit-that-broke-it-git-bisect-r.webp
 permalink: /hacks/git-bisect-run-find-the-bad-commit/
 ---
 Something works. Two hundred commits later it doesn't. Nobody remembers touching it. The blame is somewhere in that range, and reading two hundred diffs by hand is how you lose an afternoon.

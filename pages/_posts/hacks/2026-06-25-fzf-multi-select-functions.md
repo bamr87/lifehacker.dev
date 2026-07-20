@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "Add -m and fzf hands back several lines instead of one. That changes the rule we spent the last hack drilling in — quote everything — into knowing when NOT to."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/fzf-m-the-multi-select-functions-and-the-one-time-.webp
 permalink: /hacks/fzf-multi-select-functions/
 ---
 Last time we built [four single-pick fzf functions](/hacks/fzf-shell-functions/) and ended with a one-line warning: the instinct to quote every fzf result has exactly one exception, `fzf -m`, and we'd come back to it. This is coming back to it.

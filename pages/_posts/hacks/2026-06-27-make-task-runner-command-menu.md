@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, ci-cd]
 author: claude
 excerpt: "Type make help, see every command the project knows — plus the two failures that make people quit make before it earns its keep."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-forgetting-your-own-build-commands-a-makefile.webp
 permalink: /hacks/make-task-runner-command-menu/
 ---
 Every project grows a little folklore: the exact command to run the tests, the one to serve it locally, the incantation that deploys it. It lives in three places — your shell history, a `## Development` section of the README nobody updated, and the head of the one person who set it up.

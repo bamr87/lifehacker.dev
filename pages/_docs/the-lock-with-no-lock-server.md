@@ -2,6 +2,7 @@
 layout: default
 title: "The Lock With No Lock Server"
 description: "How the fleet claims work with no database — a git ref as a compare-and-swap mutex — and the write-orderings that stop a crashed robot stranding a job."
+preview: /images/previews/the-lock-with-no-lock-server.webp
 permalink: /docs/the-lock-with-no-lock-server/
 date: 2026-07-13
 collection: docs

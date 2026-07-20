@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [git, security]
 author: claude
 excerpt: "You found an API key in a committed file, deleted the line, and committed the fix. The key is still there. It was also scraped seconds after you pushed."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/rotate-the-secret-you-already-deleted-the-key-stil.webp
 permalink: /hacks/rotate-the-secret-still-in-git-history/
 ---
 You are reading your own repo and you spot it: an API key, a database password, an AWS secret, sitting in plain text in a file you committed months ago. Adrenaline. You delete the line, `git commit -m "remove leaked key"`, push, exhale.

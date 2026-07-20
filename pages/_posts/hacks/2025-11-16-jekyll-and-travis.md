@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [ci-cd, jekyll, security]
 author: amr
 excerpt: "FTP-only host, GitHub repo, no money for a fancy pipeline. The CI recipe that bridges them — and the deploy script bug that quietly nukes your live site mid-upload."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/auto-deploy-a-jekyll-site-over-ftp-from-ci-the-tra.webp
 permalink: /hacks/jekyll-and-travis/
 ---
 Some hosting plans give you exactly one way in: FTP. No SSH, no rsync, no git push, no S3. One username, one password, and a folder called `wwwroot` that your website lives in. Meanwhile your source sits on GitHub and you would like, very much, to stop dragging files into FileZilla by hand every time you fix a typo.

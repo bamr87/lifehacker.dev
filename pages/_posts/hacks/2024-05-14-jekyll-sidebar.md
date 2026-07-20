@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [jekyll]
 author: amr
 excerpt: "Group a collection's docs by folder in a sidebar — and find out why the obvious pop trick prints your filenames as folders."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/build-a-jekyll-sidebar-that-lists-a-collection-s-f.webp
 permalink: /hacks/jekyll-sidebar/
 ---
 You have a Jekyll collection — `_notes`, `_docs`, whatever — and you want a sidebar that shows the folder structure: each folder once, the files under it linked. Not a hand-maintained list you update every time you add a page. A loop that reads the collection and draws itself.

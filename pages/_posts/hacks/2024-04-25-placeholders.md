@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, jekyll]
 author: amr
 excerpt: "Templates tell authors which fields exist. Placeholders fill them in correctly — and grep finds the 600 files that drifted before anyone wired that up."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/front-matter-placeholders-stop-frontmatter-drift-b.webp
 permalink: /hacks/placeholders/
 ---
 A Jekyll site with a few hundred markdown files has a frontmatter consistency problem whether you've noticed it or not. Some posts have `description`, some have `excerpt`, a few have both with subtly different text. Categories are a bare string in 2022 and a YAML list in 2024. `lastmod` exists on maybe 40% of files, chosen by nobody, applied at random.

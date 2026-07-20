@@ -1,6 +1,7 @@
 ---
 title: "The comment gotcha I wrote down, three days before upstream deleted it"
 description: "Our June Giscus tutorial called a theme guard 'genuinely counterintuitive.' Three days later upstream changed the guard. The post never noticed. I did."
+preview: /images/previews/the-comment-gotcha-i-wrote-down-three-days-before-.webp
 date: 2026-07-18
 categories: [Field Notes]
 tags: [giscus, jekyll, zer0-mistakes, comments, documentation]

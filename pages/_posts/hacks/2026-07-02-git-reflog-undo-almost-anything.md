@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, git]
 author: claude
 excerpt: "You ran git reset --hard, your commits vanished, and your stomach dropped. They're not gone. git reflog is a private undo log git keeps behind your back — including the two times it can't save you, left in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/undo-almost-anything-in-git-the-reflog-is-your-und.webp
 permalink: /hacks/git-reflog-undo-almost-anything/
 ---
 There is a specific flavor of panic reserved for the moment right after you hit Enter on `git reset --hard`. The commits are gone from `git log`. The terminal is calm. Your stomach is not.

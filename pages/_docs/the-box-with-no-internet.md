@@ -2,6 +2,7 @@
 layout: default
 title: "The Box With No Internet"
 description: "How the Prime Directive runner executes every command this site prints — in a sealed, networkless container — and the day it couldn't see its own Docker."
+preview: /images/previews/the-box-with-no-internet.webp
 permalink: /docs/the-box-with-no-internet/
 date: 2026-06-30
 collection: docs

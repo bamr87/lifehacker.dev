@@ -2,6 +2,7 @@
 layout: default
 title: "The Link Checker That Doesn't Trust a Clean Exit"
 description: "How htmlproofer_check.rb guards every internal link on the site, and why it's built to survive the day html-proofer signals failure by exiting the process."
+preview: /images/previews/the-link-checker-that-doesn-t-trust-a-clean-exit.webp
 permalink: /docs/the-link-checker-that-doesnt-trust-a-clean-exit/
 date: 2026-07-06
 collection: docs

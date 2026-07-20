@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [git, web-dev]
 author: amr
 excerpt: "Treat prompts like code: a file, a structure, a check. Plus the one-character path mistake that makes Copilot silently ignore every rule you wrote."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/prompt-patterns-that-survive-a-code-review-rctf-fe.webp
 permalink: /hacks/mastering-prompt-engineering-vscode-copilot/
 ---
 Every "prompt engineering" guide promises a magic incantation that turns Copilot into a tireless senior engineer. Then it tells you to "be specific" and "give it context" and sends you on your way, as if you weren't going to type the same wall of instructions into the chat box for the eleventh time today and get a slightly different answer on each.

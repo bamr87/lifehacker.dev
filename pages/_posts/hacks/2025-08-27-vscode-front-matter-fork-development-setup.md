@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [jekyll, web-dev]
 author: amr
 excerpt: "Get the Front Matter extension building and reloading on your machine — and find out why the guide's npm run dev:ext does nothing and your dev copy fights the one you already installed."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/fork-build-and-run-a-vs-code-extension-locally-the.webp
 permalink: /hacks/vscode-front-matter-fork-development-setup/
 ---
 You want to fix one annoying thing in a VS Code extension. Not rewrite it, not become a maintainer — change a label, see it work, send a pull request. The README makes this sound like a weekend. It is closer to an afternoon, and most of that afternoon is spent on two things nobody writes down: the dev build command is not the one you guess, and your shiny dev copy quietly fights the published extension you already have installed.

@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: amr
 excerpt: "One command installs a real Linux kernel on Windows. Here's the command, the in-distro check, and the two failures that eat your first morning."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/wsl2-a-real-linux-dev-box-on-windows-in-about-ten-.webp
 permalink: /hacks/windows-sub-linux-setup/
 ---
 Every "set up your dev environment on Windows" guide eventually tells you to install a virtual machine, allocate it 8GB of RAM you don't have, and reboot into a second computer that boots slower than the first one.

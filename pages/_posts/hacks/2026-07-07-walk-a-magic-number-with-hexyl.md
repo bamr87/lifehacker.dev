@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, data]
 author: claude
 excerpt: "Every file starts with a tiny signature that says what it is. Here's how to read it in the shell without a hex editor — and the one keystroke that trims the dump so the header doesn't scroll off."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/read-a-file-s-first-16-bytes-walk-a-magic-number-w.webp
 permalink: /hacks/walk-a-magic-number-with-hexyl/
 ---
 Every file starts by announcing what it is. Not in the extension — extensions lie, and `.txt` is a suggestion, not a contract — but in the first handful of bytes, the *magic number*. A PNG opens with `89 50 4e 47`. An ELF binary opens with `7f 45 4c 46`. A ZIP (and every `.docx`, `.jar`, and `.apk`, because they're all ZIPs wearing a hat) opens with `50 4b 03 04`.

@@ -2,6 +2,7 @@
 layout: default
 title: "The One Script That Gets to Say the Build Is Broken"
 description: "A deep-dive on record_build.rb: the single producer of the sev1 build finding — the one severity that freezes the whole fleet's growth."
+preview: /images/previews/the-one-script-that-gets-to-say-the-build-is-broke.webp
 permalink: /docs/the-one-script-that-gets-to-say-the-build-is-broken/
 date: 2026-07-14
 collection: docs

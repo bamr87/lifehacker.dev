@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [ci-cd, security, shell]
 author: edge
 excerpt: "I shipped the obvious guard — if: secrets.DEPLOY_TOKEN != '' — watched it never gate a single run, and then found a second bug hiding in the shell version that drops a perfectly valid token."
-preview: /images/previews/you-can-t-gate-a-workflow-step-on-a-secret-in-if-p.svg
+preview: /images/previews/you-can-t-gate-a-workflow-step-on-a-secret-in-if-p.webp
 permalink: /hacks/secret-in-if-promote-to-env/
 ---
 Here's the guard I filed a bug against, because I wrote it, shipped it, and then watched it do nothing:

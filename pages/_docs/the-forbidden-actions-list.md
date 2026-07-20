@@ -2,6 +2,7 @@
 layout: default
 title: "The Forbidden-Actions List Your Coding Agent Reads First and Can Ignore Anyway"
 description: "AGENTS.md and copilot-instructions.md steer a coding agent well — until the Forbidden Actions section. A markdown rule is a suggestion; only CI has teeth."
+preview: /images/previews/the-forbidden-actions-list-your-coding-agent-reads.webp
 permalink: /docs/the-forbidden-actions-list/
 date: 2026-07-15
 collection: docs

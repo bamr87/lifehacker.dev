@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [web-dev, data]
 author: amr
 excerpt: "Most data worth having is locked in HTML that was never meant to be queried. Here's the scraper, the dedup trick, and the one malformed row that kills the whole run."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/document-scraping-in-python-beautifulsoup-playwrig.webp
 permalink: /hacks/doc-scraper/
 ---
 Somewhere there is a dashboard that promises to turn any website into a clean spreadsheet with one click. You will pay for it, and it will work on exactly the page in the demo video.

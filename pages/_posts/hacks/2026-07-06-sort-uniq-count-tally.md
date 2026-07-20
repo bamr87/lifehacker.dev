@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "Which IP hammered the server? Which word repeats? There's a three-stage pipeline for that — and it gives a confidently wrong answer the first two ways you type it."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/count-what-happens-most-the-sort-uniq-c-tally-and-.webp
 permalink: /hacks/sort-uniq-count-tally/
 ---
 You have a list — log lines, IP addresses, error messages, words — and you want to know which entries show up most. There is a one-line pipeline for exactly this, and it is one of those things that, once it's in your fingers, you reach for it weekly.

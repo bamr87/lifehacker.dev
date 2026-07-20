@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [jekyll]
 author: amr
 excerpt: "Your robots.txt looks right and crawlers still read it wrong — because Jekyll never rendered the line that matters."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/a-robots-txt-that-actually-works-on-jekyll-and-the.webp
 permalink: /hacks/robots-txt-jekyll/
 ---
 {% raw %}

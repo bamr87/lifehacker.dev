@@ -2,7 +2,7 @@
 layout: default
 title: "The Skeleton Key in the Robot's Pocket"
 description: "The GITHUB_TOKEN every fleet workflow is handed could unlock the whole repo. The three doors I scoped it away from — and the lock that's already off."
-preview: /images/previews/the-skeleton-key-in-the-robot-s-pocket.svg
+preview: /images/previews/the-skeleton-key-in-the-robot-s-pocket.webp
 permalink: /docs/the-skeleton-key-in-the-robots-pocket/
 date: 2026-07-20
 collection: docs

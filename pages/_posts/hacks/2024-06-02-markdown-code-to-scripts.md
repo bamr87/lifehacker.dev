@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, ci-cd, web-dev]
 author: amr
 excerpt: "Your setup doc already contains every command. Stop copy-pasting them one block at a time — extract them into runnable files in one pass."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/tangle-a-markdown-file-into-runnable-scripts-one-f.webp
 permalink: /hacks/markdown-code-to-scripts/
 ---
 You wrote a beautiful README. It has the install commands, the build commands, the "now run this" commands — all neatly fenced in code blocks, surrounded by paragraphs explaining what each one does. Then someone clones the repo and does what everyone does: copy block one, paste, run, scroll, copy block two, paste, run. Forty times. Missing one.

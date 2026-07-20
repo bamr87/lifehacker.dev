@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "Before you paste alias ls='ls --color' into your .bashrc, ask the shell what 'ls' already means. It usually means more than you think."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/run-type-a-before-you-alias-so-you-don-t-shadow-a-.webp
 permalink: /hacks/type-a-before-you-alias/
 ---
 You are about to improve your life by one keystroke. You open `~/.bashrc`, you type `alias ls='ls --color=auto'`, and you feel the quiet satisfaction of a person who has their environment dialed in.

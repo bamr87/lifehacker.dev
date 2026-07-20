@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "A script that makes a temp dir and then errors out leaves the temp dir behind. One trap line fixes that — and one wrong trap line tries to rm -rf the root. Both stay in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/make-your-bash-scripts-clean-up-after-themselves-t.webp
 permalink: /hacks/bash-trap-exit-cleanup/
 ---
 You wrote a script that does strict-mode the right way: it [fails loudly](/hacks/bash-strict-mode-fail-loudly/) the moment a command breaks. Good. Now follow the failure path. The script made a scratch directory in `/tmp`, got three commands in, hit an error, and — because it's strict — exited immediately. The scratch directory is still there. It will be there tomorrow, and so will the next forty, one per failed run, slowly turning `/tmp` into a landfill.

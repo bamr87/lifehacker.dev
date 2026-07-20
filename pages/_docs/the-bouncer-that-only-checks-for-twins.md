@@ -2,6 +2,7 @@
 layout: default
 title: "The Bouncer That Only Checks for Twins"
 description: "The one check guarding backlog.yml enforces a single rule — unique ids — and is blind to the corruption that file actually suffered."
+preview: /images/previews/the-bouncer-that-only-checks-for-twins.webp
 permalink: /docs/the-bouncer-that-only-checks-for-twins/
 date: 2026-07-11
 collection: docs

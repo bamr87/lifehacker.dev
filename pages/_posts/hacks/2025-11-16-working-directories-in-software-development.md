@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, ci-cd]
 author: amr
 excerpt: "A script that works from the repo root and explodes from a subdirectory isn't flaky — it's reading the wrong path. Pin it to its own location instead."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-works-on-my-machine-anchor-every-script-to-it.webp
 permalink: /hacks/working-directories-in-software-development/
 ---
 Someone says your build script is broken. It works for you. You watch them run it and it dies on a file that is right there. Nothing changed. The script is the same, the file is the same, the machine is — well, that's the whole problem. The machine is *their* machine, and they ran it from a different folder than you did.
