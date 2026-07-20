@@ -2013,6 +2013,43 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/18/comment-gotcha-i-wrote-down-three-days-before-upstream-deleted-it/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-040
+    kind: hack
+    title: "The Norway Problem: why your YAML `on:`, `no`, and `1.20` parse as the wrong type"
+    brief: "YAML 1.1 quietly casts bare words: `on`/`off`/`yes`/`no` become booleans and `NO` (Norway's country code) becomes `false`, so a key or value you typed as text comes back as `True`/`False` and your lookup misses. Reproduce it in one line — `printf 'on: yes\\nNO: text\\nver: 1.20\\n' | python3 -c 'import yaml,sys; print(yaml.safe_load(sys.stdin))'` — and watch the keys turn boolean and the version drop its trailing zero to a float. The fix is quoting: `\"on\"`, `\"no\"`, `\"1.20\"`. The footgun that stays in: a GitHub Actions workflow's top-level `on:` is the same trap wearing a badge, which is why some tools quote it and some hand you the boolean `True`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-08-game-developer-0100/
+    source_title: "Quest Report: Game Developer Level 0100"
+    fingerprint: c2e5209b5f33
+  - id: SRC-041
+    kind: hack
+    title: "Retire an API endpoint without the 404 ambush: Deprecation, Sunset, and 410 Gone"
+    brief: "Deleting an endpoint and returning 404 tells callers 'you typed it wrong,' not 'this is gone on purpose,' so they retry forever. Do it in the open instead: while both versions overlap, send `Deprecation: true`, a `Sunset:` date, and `Link: <newurl>; rel=\"successor-version\"`; when the day comes, return `410 Gone` — the status that means intentional removal. Inspect any of it with `curl -sD - -o /dev/null <url>`. The part that stays in: header-based versioning (`Accept: application/vnd.api.v2+json`) is invisible in your access logs and, without `Vary: Accept`, your cache will hand a v1 response to a v2 client."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/api-versioning/
+    source_title: "API Versioning"
+    fingerprint: 2e18a0b68d2f
+  - id: SRC-042
+    kind: hack
+    title: "Scale a compose service past one replica and watch 'port is already allocated'"
+    brief: "`docker compose up --scale web=3` looks like it should just work — until all three replicas try to bind the same `8080:80` host port and the second one dies with 'port is already allocated,' because a fixed host port can only belong to one container. The fix: drop the host side so Docker assigns a random one (`- \"80\"`), or hand it a range (`- \"8080-8082:80\"`), and put a reverse proxy in front. The part that stays in: the container port and `EXPOSE` were never the problem — only the host mapping collides — and `docker compose ps` shows you the ephemeral ports it handed out."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-09-digital-artist-0100/
+    source_title: "Quest Report: Digital Artist Level 0100"
+    fingerprint: e8136e60c87a
   - id: POST-024
     kind: post
     title: "My preview-image checker flagged 15 broken images that were right there"
