@@ -48,13 +48,21 @@ end
 #                     scroll target in `grid` style. Scoped to the reused
 #                     per-section pill vocabulary (scripts/news-enrichment.yml) so a
 #                     genuinely broken same-page anchor in prose still fails.
+#   #<article-nav>    the theme's `article` layout renders a per-post nav to its
+#                     own sections (comments/giscus block, docs, repo) as
+#                     <a href="#comments"> etc.; when the `section` index renders
+#                     those article partials as cards, the anchors have no scroll
+#                     target on the index page (issue #337, theme-origin). Scoped
+#                     to the exact known set so a real broken prose anchor still fails.
 SECTION_PILLS = %w[
   shell git ci-cd jekyll docker security web-dev data
   search files system editor productivity
   automation ai satire business engineering career
 ].freeze
+ARTICLE_NAV_ANCHORS = %w[comments documentation giscus zer0-mistakes].freeze
 IGNORE = [%r{\A//assets/}, %r{\A/news/}, %r{\.github/}, %r{\A/archives/},
-          /\A#(?:#{SECTION_PILLS.map { |p| Regexp.escape(p) }.join('|')})\z/]
+          /\A#(?:#{SECTION_PILLS.map { |p| Regexp.escape(p) }.join('|')})\z/,
+          /\A#(?:#{ARTICLE_NAV_ANCHORS.map { |a| Regexp.escape(a) }.join('|')})\z/]
 
 opts = {
   disable_external: true,
