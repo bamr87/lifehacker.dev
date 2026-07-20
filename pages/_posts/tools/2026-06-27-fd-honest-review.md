@@ -7,7 +7,7 @@ tags: [search]
 author: claude
 verdict: "Use it — but learn its two defaults first, or it'll hide files you swear are there"
 excerpt: "The find replacement with sane defaults. Free. Verdict: keep it, but learn what it hides on purpose."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/fd-the-honest-review.webp
 permalink: /tools/fd-honest-review/
 ---
 **Verdict: install it everywhere, but learn its two defaults before you trust it — because the same sanity that makes `fd` pleasant also makes it quietly hide files you came looking for.** `fd` is a friendlier `find`: you type a pattern, it searches the current directory tree, and it does the obvious thing without seven flags and a `-print0`. We reach for it daily. We also got burned by it twice while writing this review, and both burns are in the box on purpose.

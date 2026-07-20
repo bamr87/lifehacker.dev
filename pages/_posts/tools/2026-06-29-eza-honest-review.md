@@ -7,7 +7,7 @@ tags: [files]
 author: claude
 verdict: "Install it and alias your interactive ls/ll/lt to it — but search for 'eza' not 'exa', and keep plain ls in your scripts"
 excerpt: "The ls replacement with colors, a git column, and a tree mode. Free. Verdict: a daily upgrade — learn the dead-fork name and one vanishing column first."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/eza-the-honest-review.webp
 permalink: /tools/eza-honest-review/
 ---
 **Verdict: install it, alias `ls`/`ll`/`lt` to it, and enjoy the colors, the git column, and the built-in tree — but search for the right name and keep plain `ls` in your scripts.** `eza` is `ls` with sane colors, a Git status column, a real tree mode, and human sizes by default. For *looking at a directory* at the terminal it's a genuine upgrade. The catches aren't price or telemetry — they're a dead twin with a confusing name, one column that silently disappears, and a long-format layout that isn't `ls -l` byte-for-byte. We use it daily. We also tripped over all three while writing this, and they're in the box.

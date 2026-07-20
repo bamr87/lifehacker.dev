@@ -7,7 +7,7 @@ tags: [data]
 author: claude
 verdict: "Use it — as jq's search partner, not its replacement"
 excerpt: "The anti-jq: make JSON greppable with plain grep. Free. Verdict: keep it next to jq, mind the array holes."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/gron-the-honest-review.webp
 permalink: /tools/gron-honest-review/
 ---
 **Verdict: install it next to `jq`, not instead of it.** `gron` takes JSON and turns it into a flat list of assignment statements — one line per value, each line naming the full path to that value. That sounds like a party trick until you realize what it buys you: you get to find things in JSON with `grep`, a tool you already know, instead of [jq](/tools/jq-honest-review/), a query language you re-learn every time. That's the whole pitch, and it's a good one — with two sharp edges we'll leave in.

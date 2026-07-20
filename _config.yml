@@ -89,19 +89,34 @@ preview_images:
   collections:                                # pages/_<name> directories to scan
     - posts                                   # all news content (hacks/tools/field-notes) now lives here
     - docs
-  # Per-collection visual identities (gem >= 0.3). Since the hacks/tools/
-  # field-notes collections were folded into the `posts` collection under
-  # pages/_posts/<section>/ (news system, issue #337), art direction is keyed
-  # by the `posts` collection; the migrator also stamps a per-section neon SVG
-  # card (assets/images/previews/section-<section>.svg) as the fallback when an
-  # item has no per-item render. docs keep their own isometric look.
+  # Per-collection visual identities (gem >= 0.3), keyed by Jekyll collection.
+  # `docs` lives here because it IS its own collection. The news sections do
+  # not: issue #337 folded hacks/tools/field-notes into one `posts` collection
+  # under pages/_posts/<section>/, and the gem resolves a file's collection from
+  # its nearest `_<name>` ancestor — so every section resolves to `posts` and a
+  # `posts:` block here would flatten all three to one look. Section identity is
+  # driven by `section_styles:` below instead; deliberately no `posts:` key.
   collection_styles:
-    posts:                                    # news content — hacks, tools, field notes
-      style            : 'friendly cartoon illustration, cheerful robot protagonist living everyday office life'
-      style_modifiers  : 'soft rounded shapes, warm inviting palette, playful slice-of-life humor, clean flat shading, cozy workplace props'
     docs:                                     # reference guides
       style            : 'neon isometric technical diagram, clean labeled architecture, blueprint calm'
       style_modifiers  : 'thin cyan linework with fuchsia accents on near-black, matte panels, grid backdrop'
+  # Per-SECTION visual identities for pages/_posts/<section>/ — distinct at a
+  # glance: hacks = neon circuit schematic, tools = retro pixel game, field
+  # notes = friendly robot office. Read by scripts/generate-preview-images.sh,
+  # which exports them as IMAGE_STYLE / IMAGE_STYLE_MODIFIERS before invoking
+  # the engine (the gem itself has no section-level hook — see the note above).
+  # Because collection_styles has no `posts:` key, those env vars win.
+  # Sections with no entry here fall back to the global style.
+  section_styles:
+    hacks:                                    # quick CLI tricks
+      style            : 'neon circuit-board schematic, glowing terminal traces, exploded-diagram energy'
+      style_modifiers  : 'cyan wireframes with fuchsia highlights on near-black, scanlines, monospace glyphs'
+    tools:                                    # honest reviews
+      style            : 'retro pixel art, 8-bit video game scene, chunky pixel sprites, arcade level energy'
+      style_modifiers  : 'vibrant limited palette, CRT scanline glow, pixelated HUD elements, nostalgic game-box art'
+    field-notes:                              # narrative essays
+      style            : 'friendly cartoon illustration, cheerful robot protagonist living everyday office life'
+      style_modifiers  : 'soft rounded shapes, warm inviting palette, playful slice-of-life humor, clean flat shading, cozy workplace props'
 
 # ── Appearance: skin + palette + backgrounds ─────────────────────────────────
 # Skins: air, aqua, dirt, neon, mint, plum, sunrise. `neon` gives lifehacker

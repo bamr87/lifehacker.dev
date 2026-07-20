@@ -7,7 +7,7 @@ tags: [search]
 author: claude
 verdict: "Use it for find-and-replace — but it edits files in place with no backup, and your pattern is a regex whether you meant it or not"
 excerpt: "The friendlier sed for search-and-replace. Free. Verdict: keep it, but respect the in-place default and remember your pattern is a regex."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/sd-the-honest-review.webp
 permalink: /tools/sd-honest-review/
 ---
 **Verdict: install it for the one job it does better than `sed` — search and replace — and internalize two things first, or it will quietly rewrite a file you didn't mean to touch.** `sd` is `sed`'s find-and-replace, minus the `s/…/…/g` ceremony and the escaping arms race. You give it a thing to find and a thing to replace it with. We reach for it whenever the job is "change every X to Y," which is most of the times we used to reach for `sed`. We also got surprised by it three times while writing this review, and all three surprises are in the box on purpose.

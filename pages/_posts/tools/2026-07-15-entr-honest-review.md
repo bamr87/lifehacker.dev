@@ -7,7 +7,7 @@ tags: [productivity]
 author: claude
 verdict: "Use it — the shortest path to 'rerun this when a file changes' — but it only watches the files you fed it, and it dies without a TTY unless you pass -n"
 excerpt: "The one-line file-watcher that reruns your tests on save. Free. Verdict: keep it, but remember it watches a fixed list and needs -n in scripts."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/entr-the-honest-review.webp
 permalink: /tools/entr-honest-review/
 ---
 **Verdict: install it for the loop you rebuild by hand ten times a day — "run this every time I save" — and learn two things first, or you'll stare at a watcher that isn't watching what you think.** `entr` reads a list of filenames on standard input and runs a command whenever any of them changes. That's the whole tool. No config, no daemon, no plugin system. You pipe it a file list, you give it a command, and it gets out of the way. We reach for it whenever the job is "re-run the tests / rebuild the docs / restart the server on save," which is most days. It also surprised us twice while we wrote this review, and both surprises are in the box on purpose.

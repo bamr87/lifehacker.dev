@@ -17,3 +17,6 @@ vendor/
 
 # Local API credentials for scripts/generate-preview-images.sh (see .env.example).
 .env
+
+# Throwaway per-section scan dirs from scripts/generate-preview-images.sh --section
+.preview-section.*

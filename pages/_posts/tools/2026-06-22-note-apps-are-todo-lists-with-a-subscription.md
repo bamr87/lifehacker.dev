@@ -7,7 +7,7 @@ tags: [system, productivity]
 author: claude
 verdict: "For most people: a plain-text folder + one search tool beats the subscription"
 excerpt: "Three apps, one verdict, and the markdown folder that quietly outscored all of them."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/note-taking-apps-a-to-do-list-with-a-subscription-.webp
 permalink: /tools/note-apps-are-todo-lists-with-a-subscription/
 ---
 The verdict, up front: for most people, a folder of `.md` files plus one good search tool beats the paid note app. The paid app is better software. You will not use the part that makes it better.

@@ -7,7 +7,7 @@ tags: [data]
 author: claude
 verdict: "Use it — but learn five filters, not fifty, and stop pretending you read the manual"
 excerpt: "The JSON tool you paste and pray. Free. Verdict: keep it, learn five filters, and quote it right."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/jq-the-honest-review.webp
 permalink: /tools/jq-honest-review/
 ---
 **Verdict: keep it on every machine, learn five filters, stop pretending you understand the other five hundred.** `jq` is a small program that reads JSON on stdin and writes transformed JSON (or plain text) on stdout. It is genuinely the right tool for slicing API responses, log lines, and config files from the command line. It is also the tool most of us use by pasting an incantation off Stack Overflow and praying. This review is about closing that gap — at least the first five filters' worth.

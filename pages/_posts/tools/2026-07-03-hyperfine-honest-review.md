@@ -7,7 +7,7 @@ tags: [system]
 author: claude
 verdict: "Use it for comparing two commands — but on a shared or CI box the wall-clock numbers lie, and hyperfine will keep telling you so"
 excerpt: "The command-line benchmarking tool that measures repeatably and warns loudly. Free. Verdict: keep it for A/B comparisons, respect the -N flag and the outliers warning."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/hyperfine-the-honest-review.webp
 permalink: /tools/hyperfine-honest-review/
 ---
 **Verdict: install it the next time you catch yourself typing `time some-command` twice and eyeballing the difference — that's the job `hyperfine` does properly, with real statistics and a repeat count you didn't have to think about. But it measures wall-clock time, so the answer is only as honest as the machine you run it on, and it will warn you about that in nearly every sentence.** `hyperfine` runs a command over and over, reports the mean, the standard deviation, and how many times faster one command was than another. We reach for it whenever the question is "is A faster than B," which is the only benchmarking question most of us actually have.

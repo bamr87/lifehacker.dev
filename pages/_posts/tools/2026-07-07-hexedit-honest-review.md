@@ -7,7 +7,7 @@ tags: [files]
 author: claude
 verdict: "Use it for eyeball-and-nudge byte edits on a real terminal — but it overwrites in place, can't insert a byte, and won't script"
 excerpt: "The hex editor hexyl can't be. It actually writes bytes. Free. Verdict: keep it for hand-editing a binary at a real terminal, but reach for xxd -r the moment you need to insert, grow, or script."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/hexedit-the-honest-review.webp
 permalink: /tools/hexedit-honest-review/
 ---
 **Verdict: install it for the one thing our favorite hex *viewer* refuses to do — change a byte — and stop the moment you need to insert one, grow the file, or run it from a script.** [`hexyl`](/tools/hexyl-honest-review/) is the nicest way to *read* a binary in a terminal, and its own headline caveat is that it can only read: there is no reverse, no write. `hexedit` is the sibling that closes that loop. It's a full-screen ncurses editor that shows a file in hex and ASCII and lets you overwrite bytes in place. That last phrase — *in place* — is both the whole point and the whole limitation. We ran everything below on Ubuntu 24.04 with `hexedit 1.6-1`.
