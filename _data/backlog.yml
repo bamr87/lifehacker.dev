@@ -1629,7 +1629,8 @@ backlog:
     brief: "Field note reproducing 'the worst case must be the loudest, not the emptiest' for real: on a throwaway branch, patch run-all.sh to `exit 1` on build failure and show that findings.jsonl comes out EMPTY instead of carrying the sev1 build finding — exactly the bug audit.rb's sev1-contract check forbids. The lesson: a gate that goes quiet on catastrophe is worse than one that screams. Reflection grounded in the repo's own contract; the patch stays on a throwaway branch, no network."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /posts/2026/07/21/i-made-the-build-fail-silently/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
