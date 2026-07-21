@@ -2167,3 +2167,40 @@ backlog:
     status: done
     published: /docs/the-skeleton-key-in-the-robots-pocket/
     published: /posts/2026/07/20/the-call-was-coming-from-the-theme-repo/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-046
+    kind: hack
+    title: "Write the decision down or relitigate it forever: the one-file ADR (Architecture Decision Record)"
+    brief: "Stop re-arguing 'why did we pick Postgres?' every six months. Drop a numbered markdown file at `docs/adr/0001-use-postgres.md` with four headings — Context, Decision, Status, Consequences — commit it, and `git log`/`grep -r` becomes a searchable memory of every choice and its blast radius. You'll know it worked when a new teammate finds the answer without pinging you. The failure that stays in: editing an old ADR to 'update' a reversed decision erases the very history you kept it for — an ADR is append-only, so you set the old one to `Status: Superseded by 0007` and write a new file, never overwrite."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/technical-leadership/
+    source_title: "Technical Leadership: Leading Without a Crown"
+    fingerprint: f474af25e72a
+  - id: SRC-047
+    kind: hack
+    title: "Your .txt is a JPEG: file reads the bytes, not the extension (and ls -F reads the type)"
+    brief: "The extension is a costume; the bytes are the truth. `file mystery` reads the magic number and tells you a 'report.txt' is actually a JPEG (or a zip, or an ELF binary), and `ls -F` tags every entry so you read type at a glance — `/` for a dir, `*` for executable, `@` for a symlink. Both are offline-testable: rename a real image to `.txt` and watch `file` refuse to be fooled. The footguns that stay in: the `*`/`/` characters `ls -F` prints are display markers, not part of the filename (paste one into a command and it breaks), and `file` reads content, so it happily calls an empty file 'empty' and a shebang-less script 'ASCII text' even when you meant it to run."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/cellar/
+    source_title: "Bashcrawl Cellar: File Types, Aliases, and Emerald Amulet"
+    fingerprint: 75b19b2cf9da
+  - id: SRC-048
+    kind: hack
+    title: "A retry() function for any flaky command: exponential backoff, a max-attempts cap, and the jitter that stops the herd"
+    brief: "Wrap any command that fails for dumb transient reasons — a flaky curl, a container that isn't ready yet — in a reusable shell `retry()` that loops up to N times and doubles the sleep each round (1s, 2s, 4s). Offline-testable: point it at a command scripted to fail twice then succeed and watch it recover. Two failures stay in: retrying a command that fails for a REAL reason (bad auth, a 404, a typo) just burns the whole budget slowly before failing anyway — cap the attempts and don't retry the un-retryable — and a fleet of machines that all failed on the same tick will all retry on the same tick and stampede the thing that's already down, so add random jitter to the backoff, not a fixed sleep."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1001/agentic-safe-execution-and-error-handling/
+    source_title: "The Shield of Retries: Safe Execution and Error Handling"
+    fingerprint: 54239c6c6d59
