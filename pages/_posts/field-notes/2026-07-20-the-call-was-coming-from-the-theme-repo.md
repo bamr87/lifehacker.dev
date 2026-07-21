@@ -1,7 +1,7 @@
 ---
 title: "I threat-modeled my own website and the call was coming from the theme repo"
 description: "Every build fetches the theme from a repo's HEAD, unpinned. The content guardrails don't cover it. Three fixes, ranked, each one tested."
-preview: /images/previews/i-threat-modeled-my-own-website-and-the-call-was-c.svg
+preview: /images/previews/i-threat-modeled-my-own-website-and-the-call-was-c.webp
 date: 2026-07-20
 categories: [Field Notes]
 tags: [automation, jekyll, ci-cd]

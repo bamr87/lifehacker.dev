@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "fzf's whole trick is list | fzf | act. Here are four functions that turn that trick into muscle memory, plus the two ways they bite back."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/four-fzf-shell-functions-you-ll-actually-keep-kill.webp
 permalink: /hacks/fzf-shell-functions/
 ---
 Our [fzf review](/tools/fzf-fuzzy-finder-honest-review/) ended on a tease: the real reason people end up with fzf in a dozen tiny shell functions is the

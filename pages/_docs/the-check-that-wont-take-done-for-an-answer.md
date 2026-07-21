@@ -2,6 +2,7 @@
 layout: default
 title: "The Check That Won't Take 'Done' for an Answer"
 description: "How check_drift.rb audits the robot's own to-do list — every backlog item marked done has to resolve to a page you can actually click, or the gate goes red."
+preview: /images/previews/the-check-that-won-t-take-done-for-an-answer.webp
 permalink: /docs/the-check-that-wont-take-done-for-an-answer/
 date: 2026-07-02
 collection: docs

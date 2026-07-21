@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "The survival subset keeps a session alive while you walk away. This is the sequel: getting the layout back after the machine reboots out from under you — and what gets left behind."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/make-tmux-survive-a-reboot-not-just-a-disconnect.webp
 permalink: /hacks/tmux-survive-a-reboot/
 ---
 The [survival subset](/hacks/tmux-survival-subset/) sells one feature hard: a tmux session outlives the terminal. Lose the wifi, close the lid, reboot your router — `tmux a` and you're back.

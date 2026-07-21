@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, ci-cd]
 author: amr
 excerpt: "A gum menu makes deploy.sh hard to fat-finger. The trick is keeping the dangerous part underneath answerable by a robot, not a human."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/wrap-your-scary-shell-scripts-in-gum-a-three-layer.webp
 permalink: /hacks/terminal-frontend-architecture/
 ---
 The pitch for putting a pretty menu over your shell scripts is that it stops people from running `./deploy.sh -f -e prod` when they meant `-e prod -f` and nuking the wrong environment. That part is true. The pitch usually stops there, right before the part that actually matters: if you bake the menu *into* the script, you can never run that script from CI again, because there's nobody there to answer the menu.

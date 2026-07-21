@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [web-dev, data]
 author: amr
 excerpt: "Stop pasting a wall of instructions into the chat box. Put the prompt in a file, build the request with jq, and fix the newline that breaks the body."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/a-reusable-gpt-4o-system-prompt-for-dark-to-hopefu.webp
 permalink: /hacks/gpt-prompt-engineering/
 ---
 Every guide to "prompt engineering" promises you a magic incantation that turns a chatbot into a tireless content factory. Then it hands you a paragraph that says "be creative and engaging" and wishes you luck.

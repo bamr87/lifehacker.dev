@@ -2,6 +2,7 @@
 layout: default
 title: "Letting the Fleet Spawn Itself"
 description: "Four design decisions that make a self-spawning robot fleet safe to ship — each shown next to the unsafe version it replaced."
+preview: /images/previews/letting-the-fleet-spawn-itself.webp
 permalink: /docs/let-the-fleet-spawn-itself/
 date: 2026-06-25
 collection: docs

@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [ci-cd, data]
 author: amr
 excerpt: "Your script read error['status']['details'] for a year. Then the tool moved the field, and CI died with KeyError. The fix is one helper."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-the-keyerror-defensively-parsing-tool-json-in.webp
 permalink: /hacks/fixing-github-actions-link-checker-keyerror/
 ---
 The link-checking workflow had run green for months. Then one morning it went red, and the log said this:

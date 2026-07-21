@@ -2,6 +2,7 @@
 layout: default
 title: "Point the Robot at Your Own Site"
 description: "A step-by-step guide to adapting the grow-lifehacker autopilot — brand files, backlog, and skill — for any zer0-mistakes site you own."
+preview: /images/previews/point-the-robot-at-your-own-site.webp
 permalink: /docs/point-the-robot-at-your-own-site/
 date: 2026-06-24
 collection: docs

@@ -2,6 +2,7 @@
 layout: default
 title: "The Build That Deletes Its Own Plugins"
 description: "How build.sh reproduces GitHub Pages safe mode by cloning the theme and dropping seven plugins that make it nice — the one build path local and CI share."
+preview: /images/previews/the-build-that-deletes-its-own-plugins.webp
 permalink: /docs/the-build-that-deletes-its-own-plugins/
 date: 2026-07-07
 collection: docs

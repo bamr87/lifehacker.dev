@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [jekyll, security]
 author: amr
 excerpt: "Push a folder, get a website — plus the apex DNS records and the one-line CNAME file everyone fills in wrong."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/host-a-site-free-on-github-pages-repo-jekyll-confi.webp
 permalink: /hacks/github-pages-hidden-gem/
 ---
 You want a website. The internet wants you to compare hosting plans, pick a tier, enter a card, and then babysit a server that exists only to serve files that never change.

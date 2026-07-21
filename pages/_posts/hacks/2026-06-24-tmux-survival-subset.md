@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "tmux has a hundred-page manual. You need nine commands and a six-line config. Here they are, in the order you'll learn them."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/tmux-in-9-commands-the-survival-subset.webp
 permalink: /hacks/tmux-survival-subset/
 ---
 tmux has a manual the length of a novella and a reputation to match. People bounce off it, decide it's for wizards, and go back to opening seven terminal tabs and losing all of them when the laptop sleeps.

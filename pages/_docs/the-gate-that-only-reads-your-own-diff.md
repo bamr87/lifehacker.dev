@@ -2,6 +2,7 @@
 layout: default
 title: "The Gate That Only Reads Your Own Diff"
 description: "How aggregate.rb narrows the merge gate to a PR's own changed files — so a content edit isn't blocked by a lint error three directories away it never touched."
+preview: /images/previews/the-gate-that-only-reads-your-own-diff.webp
 permalink: /docs/the-gate-that-only-reads-your-own-diff/
 date: 2026-07-18
 collection: docs

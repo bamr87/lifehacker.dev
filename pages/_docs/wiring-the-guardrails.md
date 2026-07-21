@@ -2,6 +2,7 @@
 layout: default
 title: "Wiring the Guardrails"
 description: "CODEOWNERS, branch protection, the required check, and the auto-merge gate — the CI layer that makes 'the robot proposes, the human disposes' enforceable."
+preview: /images/previews/wiring-the-guardrails.webp
 permalink: /docs/wiring-the-guardrails/
 date: 2026-06-25
 collection: docs

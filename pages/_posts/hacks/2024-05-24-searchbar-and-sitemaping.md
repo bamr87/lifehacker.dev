@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [jekyll, web-dev]
 author: amr
 excerpt: "One Liquid loop plus forty lines of vanilla JS turns your collections into a filterable, sortable index page."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/a-searchable-sortable-jekyll-sitemap-from-your-col.webp
 permalink: /hacks/searchbar-and-sitemaping/
 ---
 You have a Jekyll site with four collections and ninety-odd files in them. You want one page where you can type "ssh" and watch the list shrink to the three things about ssh, then click a column header to sort by date. The productivity move here is to install three plugins and a search index and a 200KB JavaScript library.

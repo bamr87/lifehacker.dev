@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [web-dev]
 author: amr
 excerpt: "The whole loop from empty folder to a working command in the palette — and the one-line mismatch that makes your command vanish."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/scaffold-a-vs-code-extension-in-five-minutes-yo-co.webp
 permalink: /hacks/building-code-extension/
 ---
 You have an editor command you run by hand forty times a week: select some text, reformat it, save it somewhere. The productivity blogs wave a hand and say "write a VS Code extension." They never show you the part where you spend an afternoon fighting the generator and staring at a Command Palette that swears your command doesn't exist.

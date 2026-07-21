@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "By default bash shrugs off a failed command and keeps going. Three flags change that — and then bite you twice. Both bites, and both fixes, stay in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/make-bash-fail-loudly-the-set-euo-pipefail-header.webp
 permalink: /hacks/bash-strict-mode-fail-loudly/
 ---
 Bash's default attitude toward failure is denial. A command blows up, bash prints the error, shrugs, and runs the next line anyway — all the way to the bottom, exiting `0` as if nothing happened. Your script "succeeded." The backup didn't run. The deploy half-finished. The exit code lied.

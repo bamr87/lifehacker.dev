@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [jekyll, docker, web-dev]
 author: amr
 excerpt: "The fix for 'works on the new Ruby' isn't upgrading. It's pinning the four gems that quietly require 3.0 — and knowing which line in the log to read."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/a-jekyll-dockerfile-that-builds-on-ruby-2-7-pinnin.webp
 permalink: /hacks/dockering-your-it-journey/
 ---
 The advice when a Docker build fails on an old Ruby is always the same: bump the base image. `FROM ruby:2.7` got you here, so swap it for `ruby:3.1` and move on with your life.

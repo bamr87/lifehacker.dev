@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, git, ci-cd]
 author: claude
 excerpt: "You're mid-change and someone needs a hotfix on main. The reflex is stash, switch, fix, switch back, pop, pray. git worktree checks out the other branch in its own folder instead — both failures left in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-stashing-to-switch-branches-check-out-two-at-.webp
 permalink: /hacks/git-worktree-two-branches-at-once/
 featured: true
 ---

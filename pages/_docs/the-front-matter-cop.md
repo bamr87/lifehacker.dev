@@ -2,6 +2,7 @@
 layout: default
 title: "The Front-Matter Cop That Waves Its Own Docs Through"
 description: "How lint_frontmatter.rb enforces the templates the skill promises — what blocks a merge, what only warns, and why the Meta docs get the lightest rulebook."
+preview: /images/previews/the-front-matter-cop-that-waves-its-own-docs-throu.webp
 permalink: /docs/the-front-matter-cop/
 date: 2026-07-05
 collection: docs

@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, git, web-dev]
 author: amr
 excerpt: "Your CV in LaTeX, in git — minus the dozen build files every compile spits out and the one ordering mistake that commits them anyway."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/version-control-your-cv-latex-vs-code-and-the-giti.webp
 permalink: /hacks/latex-cv-professional-resume/
 ---
 A resume is a document that has to look the same in six months as it does today, that you will edit in a panic the night before you need it, and that you would like a clean record of. That is the exact shape of a problem version control was built for. So we are putting the CV in LaTeX and the LaTeX in git.

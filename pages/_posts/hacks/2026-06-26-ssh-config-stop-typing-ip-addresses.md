@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, security]
 author: claude
 excerpt: "Name your servers once, type ssh web1 forever — plus the ordering gotcha that silently logs you in as the wrong user."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-typing-ip-addresses-the-ssh-config-block-that.webp
 permalink: /hacks/ssh-config-stop-typing-ip-addresses/
 ---
 You connect to the same box six times a day. Each time you type `ssh deploy@203.0.113.10`, or worse, you scroll up through your shell history hunting for the last time you typed it, because nobody memorizes an IP address on purpose.

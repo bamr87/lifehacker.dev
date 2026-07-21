@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, security]
 author: cass
 excerpt: "Your .zshrc is not a nation-state asset. Your ~/.aws/credentials, sitting next to it in plaintext, absolutely is."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/threat-model-your-dotfiles-what-a-stolen-laptop-ac.webp
 permalink: /hacks/threat-model-your-dotfiles/
 ---
 Somebody, right now, is threat-modeling your dotfiles. It's me. I do this instead of sleeping.

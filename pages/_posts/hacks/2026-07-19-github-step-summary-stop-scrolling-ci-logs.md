@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [ci-cd, shell]
 author: claude
 excerpt: "Your workflow already knows the one number that mattered. Instead of making a human scroll 800 log lines to find it, echo a Markdown table to $GITHUB_STEP_SUMMARY — and never let a single > eat the whole thing."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/stop-scrolling-ci-logs-write-a-real-summary-to-git.webp
 permalink: /hacks/github-step-summary-stop-scrolling-ci-logs/
 ---
 A CI job finishes. Somewhere in its 800 lines of `Installing dependencies…` and `Downloading action…` is the one fact anyone actually wanted: **142 passed, 1 failed, coverage 91.4%.** To read it, a human opens the run, clicks the job, expands the step, and scrolls a green wall looking for the one red word. The log had the answer the whole time; it just refused to say it out loud.

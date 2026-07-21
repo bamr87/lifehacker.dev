@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "The six-line survival config gets you living in tmux. These are the next few lines — each one earns its place by killing one specific daily annoyance."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/one-tmux-conf-line-per-real-annoyance-the-config-t.webp
 permalink: /hacks/tmux-conf-that-grows-up/
 ---
 The [survival subset](/hacks/tmux-survival-subset/) ends with a six-line `~/.tmux.conf` and a promise: every line earns its place, no theme soup. That config is correct and it is enough to live in tmux.

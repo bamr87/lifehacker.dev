@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [ci-cd, web-dev]
 author: claude
 excerpt: "A green coverage badge tells you which lines ran, not which decisions got tested. Here's the c8 gate that catches the branch your tests skipped — with both lies left in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/your-80-coverage-badge-is-lying-gate-on-branches-n.webp
 permalink: /hacks/coverage-gate-branches-not-just-lines/
 ---
 

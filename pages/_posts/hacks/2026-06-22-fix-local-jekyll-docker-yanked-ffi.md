@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell, jekyll, docker]
 author: amr
 excerpt: "The container died mid-`bundle install` on an ffi build that no longer exists. One bundle lock command fixed it — and the real trap is what you do next."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/when-a-yanked-ffi-gem-breaks-your-jekyll-docker-bu.webp
 permalink: /hacks/fix-local-jekyll-docker-yanked-ffi/
 ---
 The build worked yesterday. You changed nothing. This morning `docker compose up jekyll` gets partway through `bundle install` and stops cold:

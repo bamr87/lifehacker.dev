@@ -2,6 +2,7 @@
 layout: default
 title: "The Bug Tracker That Can't Close a Ticket"
 description: "How lifehacker.dev's triage layer turns findings.jsonl into a ranked, deduped issue queue — and is built so it can file a bug but never close one."
+preview: /images/previews/the-bug-tracker-that-can-t-close-a-ticket.webp
 permalink: /docs/the-bug-tracker-that-cant-close-a-ticket/
 date: 2026-07-01
 collection: docs

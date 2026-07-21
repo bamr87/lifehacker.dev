@@ -2,6 +2,7 @@
 layout: default
 title: "Docs"
 description: "How lifehacker.dev is built and how the autopilot that runs it works."
+preview: /images/previews/docs.webp
 permalink: /docs/
 sidebar:
   nav: tree

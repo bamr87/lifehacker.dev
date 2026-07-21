@@ -2,6 +2,7 @@
 layout: default
 title: "The Notebook the Robot Won't Commit"
 description: "The retrospective loop: a SessionEnd hook that records every finished thread, reads none of them, and keeps its candidate memory in a gitignored notebook."
+preview: /images/previews/the-notebook-the-robot-won-t-commit.webp
 permalink: /docs/the-notebook-the-robot-wont-commit/
 date: 2026-07-17
 collection: docs
