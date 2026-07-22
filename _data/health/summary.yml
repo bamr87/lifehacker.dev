@@ -1,64 +1,24 @@
-generated_at: '2026-07-20T08:48:01Z'
-queue_size: 29
+generated_at: '2026-07-22T08:43:07Z'
+queue_size: 2
 by_severity:
-  sev2: 28
+  sev2: 1
   sev4: 1
 by_type:
-  type/content-bug: 28
+  type/drift: 1
   type/link-rot: 1
 by_route:
-  local: 28
+  local: 1
   upstream: 1
 top:
 - severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/ai-usage/)"
-  score: 3.5
+  type: type/drift
+  title: "[sev2] drift: backlog-published-deadlink (_data/backlog.yml)"
+  score: 5.0
   repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/health/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/how-much-rope-to-give-the-robot/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/how-the-robot-picks-what-to-write/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/index/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/let-the-fleet-spawn-itself/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/point-the-robot-at-your-own-site/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/seal-the-evidence-before-the-robot-wakes-up/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/the-bouncer-that-only-checks-for-twins/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
-- severity: sev2
-  type: type/content-bug
-  title: "[sev2] content-bug: missing-preview (/docs/the-box-with-no-internet/)"
-  score: 3.5
-  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/link-rot
+  title: "[sev4] link-rot: theme-origin-links-ignored"
+  score: 0.2
+  repo: bamr87/zer0-mistakes
 analytics_stale: true
 analytics_generated_at: '1970-01-01T00:00:00Z'
