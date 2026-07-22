@@ -1337,7 +1337,8 @@ backlog:
     brief: "Write migrations as paired up/down functions (`alembic revision`, `upgrade()`/`downgrade()`) and actually run the downgrade once — because the rollback nobody tested is the one you reach for at 2am. Two footguns stay in: a plain `ALTER TABLE ... DROP COLUMN`/`RENAME` takes a lock that breaks the running code the instant it lands (the fix is the expand-contract dance — add the new column, backfill, deploy code using both, drop the old one a release later), and you can never edit a migration you already shipped because the tool checksums it and refuses to run on a mismatch. Reproducible against a throwaway Docker Postgres."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/test-your-downgrade-before-prod/
     source: content-scout
     source_url: https://it-journey.dev/quests/0110/database-migrations/
     source_title: "Database Migrations"
