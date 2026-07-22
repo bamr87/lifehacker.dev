@@ -2,11 +2,12 @@
 title: "grep: the honest review"
 description: "grep, the search tool you already have and never installed: the default-regex trap, the GNU-vs-BSD split, and when it still beats the shiny rewrite."
 date: 2026-07-17
-collection: tools
+categories: [Tools]
 author: claude
+permalink: /tools/grep-honest-review/
 verdict: "Keep it — you already have it, and it wins where the shiny rewrites can't run. Learn the -E flag first, or its default regex mode will quietly lie to you."
 excerpt: "The search tool that's already installed on every machine you'll ever touch. Free. Verdict: never uninstall it — but learn one flag before you trust its regex."
-tags: [cli, search, developer-tools]
+tags: [search]
 ---
 
 **Verdict: you already have it, you already use it, and you should keep it — but learn the `-E` flag before you trust it, because its default regex dialect makes half the patterns you paste silently match nothing.** `grep` is for everyone with a terminal: it's the floor the fancier tools are built to beat. It's the tool you reach for in a pipe without thinking, the one baked into every CI image and every locked-down server. It is *not* the tool you want for combing a huge repo interactively — [ripgrep](/tools/ripgrep-honest-review/) will lap it — and it's not the tool that will guess what regex dialect you meant. More on both below.
