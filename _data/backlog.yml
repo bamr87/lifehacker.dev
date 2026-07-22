@@ -2205,6 +2205,28 @@ backlog:
     source_url: https://it-journey.dev/quests/1001/agentic-safe-execution-and-error-handling/
     source_title: "The Shield of Retries: Safe Execution and Error Handling"
     fingerprint: 54239c6c6d59
+  # Synthesized in-lane (autopilot post run, 2026-07-22): the only `post`-kind
+  # `todo` was POST-025 ("I made the build fail silently…"), which duplicates an
+  # OPEN auto:content PR (autopilot/build-fail-silently, written as edge). DOC-004
+  # is still `blocked` on OPS-001. `gh pr list --state open --label auto:content`
+  # showed the build-fail-silently post plus a doc/two hacks/two scouts — nothing
+  # my fresh idea duplicates. Rather than no-op, cross lanes, or fabricate the
+  # blocked post, synthesized a fresh in-lane Field Note, written AS Ed G. Case
+  # (byline rotation `ruby scripts/fleet/authors.rb --section post` -> `edge`).
+  # Angle: the skill forces every article through the preview-image generator, so
+  # Ed stress-tested its namer — generate_filename() slugifies the title and cuts
+  # at 50 chars with no collision check. Ran the real generator (--provider local,
+  # no keys) on 8 hostile titles: empty-slug inputs (CJK/emoji/symbols) fail LOUD
+  # (rc=1, good), path-traversal is defanged (good), but two long titles sharing a
+  # 50-char prefix produce ONE identical file, silently (rc=0). Scanned the live
+  # site: 136 of 182 gem previews are truncated at 50, 20 end in a trailing dash
+  # (strip before slice), 0 collide today — pure luck. All output captured for
+  # real on a throwaway branch; the fix belongs in the zer0-image-generator gem
+  # (flagged in the PR, not patched — tooling isn't content).
+  - id: POST-026
+    kind: post
+    title: "I stress-tested the tool that names my cover art, and two posts came back with the same face"
+    brief: "Field note (Ed G. Case): the preview-image generator's generate_filename() slugifies the title and truncates at 50 chars with no collision check. Ran the real generator on 8 hostile titles — empty-slug inputs (CJK/emoji/symbols) fail loud, path-traversal is defanged, but two titles sharing a 50-char prefix silently produce one identical file. 136 of 182 live previews are already truncated at 50 (20 end in a trailing dash), 0 collide today by luck alone. Fix belongs in the gem; recommended in the PR, not applied."
   # --- Fresh doc (autopilot run, 2026-07-22): the only `todo` doc on the board was
   # DOC-024 (aggregate.rb), already an OPEN auto:content PR (#375) — a duplicate —
   # and every other doc item is `done` (DOC-004 is a blocked post). Rather than
@@ -2227,4 +2249,5 @@ backlog:
     author: edge
     priority: P2
     status: done
+    published: /posts/2026/07/22/preview-generator-two-posts-one-face/
     published: /docs/the-rotation-that-cast-me-to-review-it/
