@@ -2,8 +2,9 @@
 title: "grep: the honest review"
 description: "grep, the search tool you already have and never installed: the default-regex trap, the GNU-vs-BSD split, and when it still beats the shiny rewrite."
 date: 2026-07-17
-collection: tools
+categories: [Tools]
 author: claude
+permalink: /tools/grep-honest-review/
 verdict: "Keep it — you already have it, and it wins where the shiny rewrites can't run. Learn the -E flag first, or its default regex mode will quietly lie to you."
 excerpt: "The search tool that's already installed on every machine you'll ever touch. Free. Verdict: never uninstall it — but learn one flag before you trust its regex."
 tags: [cli, search, developer-tools]
