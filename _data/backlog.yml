@@ -1326,7 +1326,8 @@ backlog:
     brief: "The counterintuitive fix for a slow, connection-starved app: make the pool smaller. Size it with the HikariCP formula (`cores * 2 + 1` — 17 for an 8-core box, not 200), because Postgres spawns an OS process per connection and can only do parallel work up to its cores. Put PgBouncer in `pool_mode = transaction` so 1000 clients share 20 real connections. The failure that stays in: a connection you never returned shows up as a row stuck `idle in transaction` in `pg_stat_activity`, quietly eating a slot until the pool exhausts and everything hangs — the fix is returning it in a `finally`/context manager, not a bigger pool."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/size-your-connection-pool-by-cores/
     source: content-scout
     source_url: https://it-journey.dev/quests/0110/connection-pooling/
     source_title: "Database Connection Pooling"
