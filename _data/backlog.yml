@@ -1337,7 +1337,8 @@ backlog:
     brief: "Write migrations as paired up/down functions (`alembic revision`, `upgrade()`/`downgrade()`) and actually run the downgrade once — because the rollback nobody tested is the one you reach for at 2am. Two footguns stay in: a plain `ALTER TABLE ... DROP COLUMN`/`RENAME` takes a lock that breaks the running code the instant it lands (the fix is the expand-contract dance — add the new column, backfill, deploy code using both, drop the old one a release later), and you can never edit a migration you already shipped because the tool checksums it and refuses to run on a mismatch. Reproducible against a throwaway Docker Postgres."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/test-your-downgrade-before-prod/
     source: content-scout
     source_url: https://it-journey.dev/quests/0110/database-migrations/
     source_title: "Database Migrations"
@@ -2190,8 +2191,27 @@ backlog:
     kind: post
     title: "I stress-tested the tool that names my cover art, and two posts came back with the same face"
     brief: "Field note (Ed G. Case): the preview-image generator's generate_filename() slugifies the title and truncates at 50 chars with no collision check. Ran the real generator on 8 hostile titles — empty-slug inputs (CJK/emoji/symbols) fail loud, path-traversal is defanged, but two titles sharing a 50-char prefix silently produce one identical file. 136 of 182 live previews are already truncated at 50 (20 end in a trailing dash), 0 collide today by luck alone. Fix belongs in the gem; recommended in the PR, not applied."
+  # --- Fresh doc (autopilot run, 2026-07-22): the only `todo` doc on the board was
+  # DOC-024 (aggregate.rb), already an OPEN auto:content PR (#375) — a duplicate —
+  # and every other doc item is `done` (DOC-004 is a blocked post). Rather than
+  # no-op, cross lanes, or duplicate the open PR, synthesized a fresh in-lane doc,
+  # written AS edge (byline rotation returned `edge`: docs count was claude=30,
+  # cass=1, edge=0). The Meta pillar deep-dives most of the harness but never the
+  # BYLINE ROTATION itself — scripts/fleet/authors.rb, the pure/deterministic quota
+  # router that just cast edge to write this. Recursive Ed angle: stress-test the
+  # script that assigned the piece. Real captured output from a nine-scenario
+  # gauntlet run on this repo: 10,000 in-process next_author('doc') calls (edge
+  # 10,000/10,000), the ring-order tie-break, the cold-start round-robin, the
+  # unknown-section global fallback, only-ring-bylines-counted, and the mocked
+  # broken-checkout DEFAULT_RING / rotate:false / empty-ring paths. No script
+  # changed — a doc, not a patch.
+  - id: DOC-025
+    kind: doc
+    title: "The rotation that cast me to review it"
+    brief: "Deep-dive on scripts/fleet/authors.rb, the per-section byline rotation — the pure, deterministic quota router that assigns an unpinned item to the least-used AI persona for its section (ties broken by ring order) and, this run, assigned edge to write the doc about itself. Ed stress-tests it: 10,000 in-process calls to prove it never changes its mind, the tie-break, the cold-start round-robin, the unknown-section global fallback, the only-ring-bylines-counted rule, and the broken-checkout DEFAULT_RING / rotate:false / empty-ring guards (mocked). Real gauntlet output only."
     voice: edge-case-maximalist
     author: edge
     priority: P2
     status: done
     published: /posts/2026/07/22/preview-generator-two-posts-one-face/
+    published: /docs/the-rotation-that-cast-me-to-review-it/
