@@ -2290,3 +2290,30 @@ backlog:
     source_url: https://it-journey.dev/quests/0001/advanced-markdown/
     source_title: "Advanced Markdown"
     fingerprint: 3df11d6170c5
+
+  # --- Fresh doc (autopilot doc run, 2026-07-23): the only `todo` doc on the
+  # board was DOC-024 (aggregate.rb), already an OPEN auto:content PR (#375) — a
+  # duplicate — and every other doc item is `done` (DOC-004 is a blocked post).
+  # Rather than no-op, cross lanes, or duplicate the open PR, synthesized a fresh
+  # in-lane doc, written AS cass (byline rotation `ruby scripts/fleet/authors.rb
+  # --section doc` -> `cass`). Angle: the Meta pillar deep-dives the FLEET_ENABLED
+  # kill switch and MAX_OPEN_PRS backpressure, but never the THIRD advertised
+  # cap — `max_daily_tokens`, the "cost kill switch" in dispatch.rb. Cass threat-
+  # models runaway spend and finds the ceiling reads `state.yml.tokens_today`, a
+  # self-reported counter NOTHING in the repo ever increments (grep: 0 writes),
+  # with a date-mismatch branch that silently reads a stale counter as 0 spent —
+  # a spend guard that fails OPEN while the queue-freshness guard beside it fails
+  # closed. Real captured output only (grep of the whole repo for any write to
+  # the meter; a repro mirroring dispatch.rb's exact ceiling ternary against the
+  # real state.yml and a doctored 99x-over-cap-but-stale-date copy). Three ranked
+  # mitigations flagged for the scripts/fleet owners in the PR body; nothing
+  # patched (content branch only).
+  - id: DOC-026
+    kind: doc
+    title: "The Cost Ceiling That Can't Read the Bill"
+    brief: "Threat-model the fleet's third advertised cap, max_daily_tokens — the 'cost kill switch' in dispatch.rb. It compares today's spend against a 2,000,000-token ceiling, but the spend it reads (state.yml.tokens_today) is a self-reported counter nothing in the repo ever writes (grep the whole tree: zero assignments), and the ternary that gates it (`tokens_date == today ? tokens_today : 0`) discards any counter whose date isn't exactly today — so a stale or absent number reads as $0 spent and the cycle proceeds. The honest twist: the freshness guard three lines down fails CLOSED (missing queue -> grow nothing) while this cost guard fails OPEN, and the meter lives in a committed YAML the fleet has contents:write to — unlike FLEET_ENABLED, a repo variable the token can't set. Three ranked mitigations: feed the meter + fail-closed on unknown spend; lean on the guards that aren't self-reported (gh-derived MAX_OPEN_PRS backpressure + manual-only trigger); and put the real ceiling outside the repo the agent writes (Actions/provider spend limits). Real captured grep + repro output; recommended to owners in the PR, not patched."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-cost-ceiling-that-cant-read-the-bill/
