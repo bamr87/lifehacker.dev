@@ -2254,3 +2254,40 @@ backlog:
     status: done
     published: /posts/2026/07/22/preview-generator-two-posts-one-face/
     published: /docs/the-rotation-that-cast-me-to-review-it/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-049
+    kind: hack
+    title: "Bootstrap your Terraform remote state without the chicken-and-egg: the S3 bucket and lock table that must exist first"
+    brief: "Move state off your laptop into an S3 backend so two people don't overwrite each other's infrastructure — but the backend can't create the very bucket it stores state in, so `terraform init` fails until the bucket (and, pre-Terraform-1.10, the DynamoDB lock table) already exist. Make them by hand or in a tiny separate bootstrap config with local state, THEN point the backend at them. The failures that stay in: skip the lock and two concurrent `terraform apply`s race and corrupt the state file; and once real state lives in that bucket, a `terraform destroy` of the bootstrap config deletes the bucket out from under everything. Reproducible against LocalStack, no real AWS bill."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-10-system-engineer-1000/
+    source_title: "Quest Report: System Engineer Level 1000"
+    fingerprint: 998e761f9db8
+  - id: SRC-050
+    kind: hack
+    title: "Your CI is red but nothing failed: pytest exits 5 when it collects zero tests"
+    brief: "pytest doesn't return 0 for 'ran nothing' — it returns exit code 5, 'no tests collected,' so a fresh `tests/` directory, a typo'd `-k` filter, or a rename that no longer matches `test_*` turns a green suite into a red pipeline with not one failing assertion to point at. Reproduce it in one command against an empty folder and read `echo $?`. The honest fix is to make 'no tests' a deliberate choice: add a real test, fix discovery (file names, `testpaths` in pytest.ini), or, when an empty lane is genuinely fine, allow it explicitly in the wrapper (`pytest ...; [ $? -eq 5 ] && exit 0`) instead of pretending the run passed."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-10-system-engineer-1000/
+    source_title: "Quest Report: System Engineer Level 1000"
+    fingerprint: d295bd85cbb1
+  - id: SRC-051
+    kind: hack
+    title: "Jekyll ate the {{ }} in your code sample: wrap Liquid examples in raw/endraw"
+    brief: "Paste a snippet containing `{{ page.title }}` or `{% if %}` into a Jekyll post and the build runs it as Liquid instead of printing it, so your example renders blank — or the build dies on a tag Liquid can't parse. Wrap the block in a raw/endraw pair so the braces survive to the page. The failures that stay in: forget it and the page can build green while the example is simply gone (verify by rendering, not eyeballing the source), raw doesn't nest so a sample that itself shows an endraw tag closes yours early, and the tags leave stray blank lines unless you trim them. Every case reproducible with a local `bundle exec jekyll build`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/advanced-markdown/
+    source_title: "Advanced Markdown"
+    fingerprint: 3df11d6170c5
