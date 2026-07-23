@@ -64,6 +64,7 @@ The framework doesn't just run on a schedule — it **remembers**, so every cycl
 | Backlog | `_data/backlog.yml` | humans, explorer gaps, **content-scout** (sister-site it-journey.dev ideas, before the factory), triage promotions | content factory + fleet (starved kinds surface as a loop-tuner signal; `scripts/triage/harvest_ideas.rb` recovers ideas from merged PR descriptions) |
 | Published-lessons ledger | `_data/retrospectives.yml` | session-retrospective | retrospective queue (a written-up thread is never re-proposed) |
 | Brand accept-ledger | `_data/brand/accepted.yml` | brand-fixer / humans | brand lint (an accepted use never re-flags) |
+| Issue tracker | GitHub issues carrying the `triage-fp:` marker | triage: `file_issues.rb` files/reopens (weekly still-failing heartbeat), `close_stale.rb` closes once a finding stops reproducing — fixed, moved, or rule retired — and closes factory work orders whose members are all closed; human issues are never touched | issue factory (batcher → work orders → fixer PRs); a regression auto-reopens the closed issue |
 
 The cycle: **measure → verify last run's claims → fix the upstream cause → record the claim + snapshot → PR → human merges → next run verifies.** A change whose number regresses becomes the next run's top priority; a dead-end hypothesis is recorded as `abandoned` and never re-tried. That's the ratchet.
 

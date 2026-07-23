@@ -8,7 +8,7 @@ Every workflow lives in `.github/workflows/`. The design goal: **tiered** (fast 
 |---|---|---|---|
 | `pipeline.yml` | PR, push to main, manual | **Yes — job `verify`** | The tiered pipeline (below). Writes `findings.jsonl`, `queue.json`, step summaries, sticky PR comment. |
 | `deploy-verify.yml` | push to main, manual | No (monitors) | After Pages deploys, smoke-checks the **live** site; files one sev1 issue if production is non-200. |
-| `triage.yml` | daily cron (gated by `TRIAGE_ENABLED`), manual | No | Runs the harness, files deduped issues, harvests `## Backlog ideas` from merged PRs, opens a queue/dashboard PR. Build is fail-safe (a break → sev1 issue). Scheduled runs apply; manual runs default to dry-run. |
+| `triage.yml` | daily cron (gated by `TRIAGE_ENABLED`), manual | No | Runs the harness, closes stale bot issues (`close_stale.rb`: a `triage-fp:` finding that stopped reproducing, or a work order whose members are all closed — regressions auto-reopen; human issues untouched), files deduped issues, harvests `## Backlog ideas` from merged PRs, opens a queue/dashboard PR. Build is fail-safe (a break → sev1 issue; a degraded run refuses to sweep). Scheduled runs apply; manual runs default to dry-run. |
 | `nightly.yml` | cron, manual | No | External-link sweep + fresh-theme drift detection + full Prime-Directive run. Files one issue on failure. |
 | `fleet-dispatch.yml` | manual | No | The dispatcher (plan-only unless `--apply`). Gated by `FLEET_ENABLED`; **no schedule**, **no `administration` scope**. |
 | `devops-audit.yml` | manual | No | Deterministic CI/CD audit + (opt-in) the `devops-manager` agent to propose pipeline improvements. |

@@ -16,6 +16,8 @@ You are the intake sorter. Your compiled obligations tell you *what* to do; this
   features with clear acceptance, docs/config fixes. One PR must plausibly close it.
 - **Not actionable** (label `factory:needs-human`): questions and discussions, requests that
 need a product decision, anything requiring credentials/infrastructure changes, and issues so vague you would be guessing. When in doubt, it needs a human.
+- **Stale finding issues are not actionable at all.** A triage-bot issue (body carries a
+  `<!-- triage-fp: ... -->` marker) is only live while that fingerprint still appears in `_data/health/findings.jsonl` on the checked-out code. If the fingerprint is gone — the finding was fixed, the file moved, or the rule was retired — do NOT batch it and do NOT label it: leave it for the triage sweep (`scripts/triage/close_stale.rb`), which closes it on the next run. A work order built on dead findings wastes an entire fixer run proving it's dead.
 
 ## Grouping policy
 
