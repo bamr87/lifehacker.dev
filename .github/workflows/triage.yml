@@ -1,9 +1,13 @@
 # =============================================================================
 # triage.yml — reporting & triage (manual / on-demand)
 # -----------------------------------------------------------------------------
-# Runs the harness, ranks the findings into _data/health/queue.json, files
-# deduplicated GitHub issues, regenerates the health dashboard, and opens a PR
-# with the data changes. It NEVER merges and NEVER closes a human's issue.
+# Runs the harness, ranks the findings into _data/health/queue.json, closes
+# bot-filed issues whose findings stopped reproducing (close_stale.rb — the
+# reopen-on-regression path makes that safe), files deduplicated GitHub issues,
+# regenerates the health dashboard, and opens a PR with the data changes. It
+# NEVER merges and NEVER closes a human's issue: the sweep only touches issues
+# carrying the bot's own `triage-fp:` marker, plus factory work orders whose
+# member issues are all closed.
 # (The gated auto-merge sweep may ship the PR once green — see auto-merge.yml,
 # which re-checks the diff is generated data only. Each run also closes the
 # previous run's still-open triage PR as superseded: every run regenerates the
@@ -98,6 +102,18 @@ jobs:
         run: |
           ruby scripts/triage/build_queue.rb
           ruby scripts/triage/gen_dashboard.rb
+
+      # The closing half of the loop: findings that stopped reproducing close
+      # their issues (and fully-consumed work orders) BEFORE new ones are
+      # filed, so the factory never re-analyzes a zombie. Sweep fail-safes
+      # (broken build / missing _site) live in the script itself.
+      - name: Close stale issues
+        run: |
+          if [ "${{ needs.gate.outputs.apply }}" = "true" ]; then
+            ruby scripts/triage/close_stale.rb --apply
+          else
+            ruby scripts/triage/close_stale.rb
+          fi
 
       - name: File issues
         run: |

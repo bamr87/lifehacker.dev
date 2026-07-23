@@ -66,12 +66,21 @@ jobs:
             PLAN/APPLY MODE — when APPLY is false this is a DRY RUN: do the full analysis, then, instead of performing the write obligations below, report the exact plan of what you WOULD do and stop. Perform the obligations only when APPLY is true.
 
             OBLIGATIONS (complete every item, nothing else):
-            1. [sink.open_pr fpr] Commit your changes on a new branch (`factory/issue-*`) and open a pull request with a clear summary. Never push to the default branch.
-            2. [sink.comment fcm] Post exactly one comment on the relevant issue/PR (find it via gh) that links the fix PR on every member issue of the work order it addressed.
+            1. [sink.open_pr fpr] If you picked a LIVE work order: commit your changes on a new branch (`factory/issue-*`) and open a pull request with a clear summary. Never push to the default branch. A run that only closed obsolete work orders (per the prompt's close-out step) legitimately ends with zero PRs — closing IS the deliverable in that case, and you must actually close them, not recommend closing.
+            2. [sink.comment fcm] Post exactly one comment on the relevant issue/PR (find it via gh) that links the fix PR on every member issue of the work order it addressed. For an obsolete order, the one-line closing comment satisfies this — never re-post an analysis a previous run already made.
           claude_args: |-
             --model claude-opus-4-8
             --max-turns 100
-            --allowedTools "Bash(gh issue list:*),Bash(gh search issues:*),Bash(gh issue view:*),Bash(gh pr list:*),Bash(gh pr view:*),Bash(gh pr diff:*),Read,Glob,Grep,Edit,Write,Bash(git switch:*),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*),Bash(gh issue comment:*),Bash(gh pr comment:*)"
+            --allowedTools "Bash(gh issue list:*),Bash(gh search issues:*),Bash(gh issue view:*),Bash(gh pr list:*),Bash(gh pr view:*),Bash(gh pr diff:*),Read,Glob,Grep,Edit,Write,Bash(git switch:*),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*),Bash(gh issue comment:*),Bash(gh pr comment:*),Bash(gh issue close:*)"
+      # ^ MANUAL EDIT to this generated file (2026-07-23, mirror in the
+      # blueprint's intent): the fixer can now `gh issue close` and may end a
+      # run with zero PRs when every order it consumed was obsolete. Before
+      # this, an obsolete work order was unresolvable — the fixer could only
+      # comment "recommend closing", nothing ever closed it, and the next run
+      # picked the same oldest order and re-derived the same analysis daily
+      # (issue #173 collected five identical conclusions). If the factory
+      # regenerates this file, RE-APPLY: the close-out obligations wording
+      # above and `Bash(gh issue close:*)` in --allowedTools.
       # lh-ai-usage metering — MANUAL ADDITION to this generated file. If the
       # factory regenerates it from the blueprint, RE-ADD these two steps: the
       # devops audit (scripts/devops/audit.rb) fails loudly when a workflow uses

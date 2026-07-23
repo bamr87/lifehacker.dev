@@ -245,6 +245,40 @@ end
 ENV.delete('LH_AI_LEDGER_DIR')
 
 # ---------------------------------------------------------------------------
+scenario 'stale sweep — vanished/downgraded findings close, live + human survive'
+# Yesterday's warnings (what the filer filed issues for)...
+was_live = finding(check_id: 'frontmatter', severity: 'warning', file: 'pages/_docs/a.md', rule: 'missing-preview')
+was_gone = finding(check_id: 'brand', severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-x.md', rule: 'banned-when-sincere:just')
+was_down = finding(check_id: 'brand', severity: 'warning', file: 'pages/_docs/b.md', rule: 'banned-when-sincere:10x')
+# ...vs today's harness run: a still reproduces, x vanished (rule retired), b
+# downgraded to satire-info (same fingerprint — severity is not part of it).
+today = [was_live, finding(check_id: 'brand', severity: 'info', file: 'pages/_docs/b.md', rule: 'banned-when-sincere:10x')]
+live_fps = Triage.live_fingerprints(today)
+check('downgraded-to-info fingerprint is NOT live (file/close symmetry)', !live_fps.include?(was_down['fingerprint']))
+issue_for = ->(f, num) { { number: num, title: 't', body: Triage.issue_body(Triage.build([f]).first), labels: [] } }
+issues = [
+  issue_for.call(was_live, 1),
+  issue_for.call(was_gone, 2),
+  issue_for.call(was_down, 3),
+  { number: 4, title: 'human bug report', body: 'my build is broken, please help', labels: [] },
+  { number: 5, title: 'wo done', body: "## Member issues\n- [ ] #2 — x\n- [x] #3 — y", labels: ['factory:work-order'] },
+  { number: 6, title: 'wo live', body: "## Member issues\n- [ ] #1 — a\n- [ ] #2 — x", labels: ['factory:work-order'] },
+  { number: 7, title: 'wo unknown', body: "## Member issues\n- [ ] #99 — ?", labels: ['factory:work-order'] },
+  { number: 8, title: 'wo memberless', body: 'no task list here', labels: ['factory:work-order'] }
+]
+stale = Triage.sweep_stale_findings(issues, live_fps)
+check('vanished + downgraded close; live survives', stale.map { |i| i[:number] }.sort == [2, 3], stale.map { |i| i[:number] }.inspect)
+check('a human issue (no triage-fp marker) is untouchable', stale.none? { |i| i[:number] == 4 })
+orders = issues.select { |i| i[:labels].include?('factory:work-order') }
+states = { 1 => 'OPEN', 2 => 'CLOSED', 3 => 'CLOSED' } # 99 unknown on purpose
+done = Triage.sweep_finished_orders(orders, states)
+check('all-members-closed order closes; open/unknown/memberless stay', done.map { |i| i[:number] } == [5], done.map { |i| i[:number] }.inspect)
+check('sweep_safe? refuses empty findings', !Triage.sweep_safe?([]).first)
+check('sweep_safe? refuses a broken-build run', !Triage.sweep_safe?([finding(check_id: 'build', severity: 'error', rule: 'jekyll-build-failed')]).first)
+check('sweep_safe? refuses an unproofed-_site run', !Triage.sweep_safe?([was_live, finding(check_id: 'htmlproofer', severity: 'info', rule: 'no-site')]).first)
+check('sweep_safe? accepts a healthy run', Triage.sweep_safe?(today).first)
+
+# ---------------------------------------------------------------------------
 scenario 'kill-switch matrix — only the exact string "true" runs the fleet'
 disp = File.join(LH::ROOT, 'scripts/fleet/dispatch.rb')
 [%w[empty ''], %w[false false], %w[upper TRUE], %w[zero 0], %w[yes yes]].each do |label, val|
@@ -259,6 +293,12 @@ scenario 'guardrail invariants survive end-to-end (static)'
 filer = LH.read(File.join(LH::ROOT, 'scripts/triage/file_issues.rb'))
 check('filer never runs `gh issue close`', !filer.match?(/gh\s+issue\s+close/))
 check('filer never runs `gh pr merge`',   !filer.match?(/gh\s+pr\s+merge/))
+sweeper = LH.read(File.join(LH::ROOT, 'scripts/triage/close_stale.rb'))
+check('sweeper decides via the pure marker-owned fns only',
+      sweeper.include?('sweep_stale_findings') && sweeper.include?('sweep_finished_orders'))
+check('sweeper is dry-run by default', sweeper.include?("ARGV.include?('--apply')"))
+check('sweeper honors the degraded-findings fail-safe', sweeper.include?('sweep_safe?'))
+check('sweeper never merges or edits PRs', !sweeper.match?(/gh\s+pr\s+(merge|close|create)/))
 disp = LH.read(File.join(LH::ROOT, 'scripts/fleet/dispatch.rb'))
 check('dispatcher honors FLEET_ENABLED kill switch', disp.include?('FLEET_ENABLED'))
 fw = LH.read(File.join(LH::ROOT, '.github/workflows/fleet-dispatch.yml'))
