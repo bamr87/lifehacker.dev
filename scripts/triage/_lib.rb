@@ -3,9 +3,10 @@
 # -----------------------------------------------------------------------------
 # Turns PR1's findings into a classified, scored, deduplicated work queue. Pure
 # functions (no gh / no network) so build_queue.rb is fully testable; the
-# side-effecting gh calls live in file_issues.rb. Reuses scripts/ci/_lib.rb for
-# YAML/JSON reading and the repo root.
+# side-effecting gh calls live in file_issues.rb and close_stale.rb. Reuses
+# scripts/ci/_lib.rb for YAML/JSON reading and the repo root.
 # =============================================================================
+require 'set'
 require_relative '../ci/_lib'
 
 module Triage
@@ -175,5 +176,70 @@ module Triage
     end
 
     items.sort_by { |i| [-i['score'], i['severity'], i['file'].to_s] }
+  end
+
+  # --- stale-issue sweep (the closing half of the filing contract) -------------
+  # file_issues.rb finds-or-files by the `triage-fp:` marker and never closes;
+  # close_stale.rb closes a bot issue once its fingerprint stops mapping to an
+  # actionable finding (fixed, file moved, or rule retired — same outcome:
+  # nothing left to do). The filer's reopen-on-regression path is what makes
+  # closing safe. Decisions are pure here so the E2E simulation asserts them;
+  # the gh calls stay in close_stale.rb.
+
+  FP_MARKER   = /<!--\s*triage-fp:\s*(\h{6,40})\s*-->/
+  ORDER_LABEL = 'factory:work-order'
+  # A member line in a work-order body: "- [ ] #152 — title" (checked or not).
+  MEMBER_LINE = /^\s*-\s*\[[ xX]\]\s*#(\d+)/
+
+  def issue_fingerprint(body)
+    body.to_s[FP_MARKER, 1]
+  end
+
+  def member_numbers(body)
+    body.to_s.scan(MEMBER_LINE).flatten.map(&:to_i).uniq
+  end
+
+  # Fingerprints the current harness run still considers worth a tracked issue —
+  # the same actionable? filter the filer uses, so file and close cannot
+  # disagree about what counts.
+  def live_fingerprints(findings)
+    findings.select { |f| actionable?(f) }.map { |f| f['fingerprint'] }.to_set
+  end
+
+  # Refuse to sweep on degraded findings: after a broken build or an unproofed
+  # _site, fingerprints vanish for the wrong reason (the check didn't run, not
+  # "the problem didn't reproduce"). Returns [ok, reason].
+  def sweep_safe?(findings)
+    return [false, 'findings.jsonl is empty'] if findings.empty?
+    if findings.any? { |f| f['check_id'] == 'build' && f['severity'] == 'error' }
+      return [false, 'the build failed this run — findings are incomplete']
+    end
+    if findings.any? { |f| f['check_id'] == 'htmlproofer' && %w[no-site gem-missing].include?(f['rule'].to_s) }
+      return [false, 'the link check did not run — link fingerprints unverifiable']
+    end
+    [true, nil]
+  end
+
+  # Open issues (normalized {number:, body:, labels: [names]}) -> the subset the
+  # sweep may close. ONLY an issue carrying our own triage-fp marker qualifies;
+  # a human-authored issue never matches, which keeps the no-close promise.
+  def sweep_stale_findings(open_issues, live_fps)
+    open_issues.select do |i|
+      fp = issue_fingerprint(i[:body] || i['body'])
+      fp && !live_fps.include?(fp)
+    end
+  end
+
+  # Work orders whose every member is closed are finished batches (shipped or
+  # void — either way there is nothing left to consume). member_state maps
+  # issue number -> 'OPEN'/'CLOSED'; an unknown state never counts as closed,
+  # and an order with no parseable member list is left for a human.
+  def sweep_finished_orders(open_issues, member_state)
+    open_issues.select do |i|
+      labels = i[:labels] || i['labels'] || []
+      next false unless labels.include?(ORDER_LABEL)
+      members = member_numbers(i[:body] || i['body'])
+      !members.empty? && members.all? { |n| member_state[n].to_s.upcase == 'CLOSED' }
+    end
   end
 end

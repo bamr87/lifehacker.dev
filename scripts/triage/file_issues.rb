@@ -10,6 +10,9 @@
 # It NEVER closes an issue and NEVER touches a human-authored issue — it only
 # acts on issues carrying its own fingerprint marker. The single human gate
 # (merge) is unaffected; issues are cheap and a human can close any of them.
+# Closing is close_stale.rb's job (same marker-ownership rule): once a
+# fingerprint stops reproducing, the sweep closes the issue and the reopen
+# path above brings it back on regression.
 #
 # DRY-RUN BY DEFAULT (prints the gh commands). Pass --apply to execute. A
 # MAX_NEW cap stops a first run from flooding the reviewer with hundreds of
@@ -18,10 +21,16 @@
 #   ruby scripts/triage/file_issues.rb [--apply] [--max-new N]
 # =============================================================================
 require 'shellwords'
+require 'time'
 require_relative '_lib'
 
 APPLY   = ARGV.include?('--apply')
 MAX_NEW = (ARGV[ARGV.index('--max-new') + 1].to_i if ARGV.include?('--max-new')) || 10
+
+# "Still failing" is a weekly heartbeat, not a metronome: the dashboard is the
+# live record, and a daily still-failing note on every open issue was the bulk
+# of the bot's comment volume (2026-07 issue-hygiene review).
+STILL_FAILING_EVERY_DAYS = 7
 
 queue = JSON.parse(LH.read(File.join(Triage::HEALTH, 'queue.json')))
 abort 'queue.json is empty; run build_queue.rb first' if queue.empty?
@@ -49,6 +58,18 @@ def find_existing(repo, fp, apply)
   data.empty? ? [nil, nil] : [data[0]['number'], data[0]['state']]
 end
 
+# True when the issue already carries a "Still failing" note fresher than the
+# heartbeat interval — skip re-posting it (only reached in APPLY mode, via the
+# OPEN branch below).
+def recent_still_failing?(repo, num)
+  jq = '[.comments[] | select(.body | startswith("Still failing"))] | last | .createdAt'
+  out, ok = sh("gh issue view #{num} --repo #{repo} --json comments --jq #{Shellwords.escape(jq)}")
+  return false unless ok && out =~ /\A\d{4}-\d{2}-\d{2}/
+  (Time.now - Time.parse(out)) < STILL_FAILING_EVERY_DAYS * 86_400
+rescue ArgumentError
+  false
+end
+
 new_count = 0
 filed = []
 deferred = []
@@ -59,8 +80,12 @@ queue.each do |item|
   num, state = find_existing(repo, fp, APPLY)
 
   if num && state == 'OPEN'
-    gh("issue comment #{num} --repo #{repo} --body #{Shellwords.escape("Still failing as of this triage run (occurrences: #{item['occurrences']}, score: #{item['score']}).")}", APPLY)
-    filed << "updated ##{num} (#{repo})"
+    if recent_still_failing?(repo, num)
+      filed << "skipped ##{num} (#{repo}) — still-failing note is < #{STILL_FAILING_EVERY_DAYS}d old"
+    else
+      gh("issue comment #{num} --repo #{repo} --body #{Shellwords.escape("Still failing as of this triage run (occurrences: #{item['occurrences']}, score: #{item['score']}).")}", APPLY)
+      filed << "updated ##{num} (#{repo})"
+    end
     next
   end
 
