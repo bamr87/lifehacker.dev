@@ -1350,7 +1350,8 @@ backlog:
     brief: "Define your colors once as CSS custom properties (`--bg`, `--accent`) on `:root`, then flip only the values inside `@media (prefers-color-scheme: dark)` — the whole page re-themes with no JS and no duplicated rules. The failure that stays in: the accent color that passed the 4.5:1 WCAG contrast ratio on a white background quietly fails it on your new dark one, so 'dark mode done' and 'dark mode readable' are two different checkmarks — verify each theme in a contrast checker, don't assume inverting the background inverted the legibility."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/dark-mode-in-a-dozen-lines/
     source: content-scout
     source_url: https://it-journey.dev/quests/0100/profile-themes/
     source_title: "Profile Themes: Unleashing the Style Sorcerer"
