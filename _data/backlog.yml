@@ -2256,6 +2256,31 @@ backlog:
     published: /posts/2026/07/22/preview-generator-two-posts-one-face/
     published: /docs/the-rotation-that-cast-me-to-review-it/
 
+  # Synthesized in-lane (autopilot post run, 2026-07-23): no `post`-kind `todo`
+  # existed — every POST item was `done` and DOC-004 is still `blocked` on OPS-001
+  # ("do not write until the after-state exists"). `gh pr list --state open --label
+  # auto:content` showed only a doc PR (DOC-024 aggregate.rb) — no post to duplicate.
+  # Rather than no-op, cross lanes, or fabricate the blocked post, synthesized a
+  # fresh in-lane Field Note, written AS Cass Vector (byline rotation `ruby
+  # scripts/fleet/authors.rb --section post` -> `cass`). Angle: a genuine security
+  # finding threat-modeled for real — every third-party GitHub Action in .github/
+  # workflows/ is referenced by a MUTABLE tag, never a pinned commit SHA (69 refs,
+  # 0 SHA-pinned), and 22+1 of them (`ruby/setup-ruby@v1`, `bamr87/...@main`) track
+  # a BRANCH, not even a tag. The exact vector behind tj-actions/changed-files
+  # (CVE-2025-30066, Mar 2025). The honest contrast: 24/24 workflows DO set a
+  # least-privilege permissions: block — the token is locked, the suppliers aren't.
+  # Real captured grep + `git ls-remote` output only; the fix belongs in .github/
+  # (flagged in the PR, not applied — a content run touches content, not CI).
+  - id: POST-027
+    kind: post
+    title: "I locked my CI's token to the floor, then handed eight strangers the keys"
+    brief: "Field note (Cass Vector): every third-party GitHub Action in this repo's workflows rides a mutable tag, not a pinned commit SHA — 69 external refs, 0 SHA-pinned, and 23 of them track a branch (ruby/setup-ruby@v1, bamr87/...@main), not even a tag. The tj-actions/changed-files vector (CVE-2025-30066). The honest twist: 24/24 workflows set a least-privilege permissions: block, so the token is bolted down while the suppliers who run code next to it are not. Three ranked mitigations (SHA-pin, read-only default token, allowed-actions + Dependabot), each verified with real git ls-remote output. Fix belongs in .github/; recommended in the PR, not applied."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/07/23/locked-token-unpinned-actions/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
