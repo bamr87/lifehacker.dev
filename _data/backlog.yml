@@ -1625,7 +1625,8 @@ backlog:
     brief: "Deep-dive on aggregate.rb — the step that turns every check's build.json/*.json into findings.jsonl, stamps the line-number-free fingerprint each finding is deduped by, and computes the single gate exit code. It's referenced across the Meta docs but never gets its own piece; it's the confluence where record_build.rb's sev1 actually becomes the gate verdict. Real captured output from running the script locally against the repo's own findings; no network, no new tooling."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /docs/the-fingerprint-that-throws-away-the-line-number/
 
   - id: POST-025
     kind: post
