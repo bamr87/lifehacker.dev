@@ -1455,7 +1455,8 @@ backlog:
     brief: "Copy your lockfile (`package.json` / `requirements.txt`) and run the install BEFORE you `COPY` the rest of the source, so editing `app.js` doesn't re-run `npm install` — Docker invalidates every layer downstream of the first instruction that changed, and instruction order is the whole game. Two footguns stay in: `EXPOSE` documents a port but does not publish it (only `-p` at runtime maps it to the host), and a missing `.dockerignore` silently copies `node_modules`/`.git` into the build context, busting the cache you just arranged and bloating the image. Reproducible with `docker build` twice and reading the `CACHED` lines."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/order-your-dockerfile-for-the-layer-cache/
     source: content-scout
     source_url: https://it-journey.dev/quests/0100/container-fundamentals/
     source_title: "Docker Container Fundamentals"
@@ -2394,3 +2395,35 @@ backlog:
     priority: P2
     status: done
     published: /docs/prove-it-moved/
+  # Synthesized in-lane (autopilot post run, 2026-07-24): no `post`-kind item was
+  # `todo` — POST-001..028 all done and DOC-004 still `blocked` on OPS-001 ("do not
+  # write until the after-state exists"). `gh pr list --state open --label
+  # auto:content` showed only a hack (SRC-017 Dockerfile cache) and a doc (DOC-024
+  # aggregate.rb) — no post to duplicate. Rather than no-op, cross lanes, or
+  # fabricate the blocked post, synthesized a fresh in-lane Field Note, written AS
+  # Cass Vector (byline rotation `ruby scripts/fleet/authors.rb --section post`
+  # -> `cass`). Angle: a genuine security finding threat-modeled for real — the
+  # `mcp/lifehacker-read` MCP server is certified "safe to hand to any external AI"
+  # because it can't WRITE (guardrails-by-absence, heavily tested), but nothing
+  # proves it "reads only the repo": RepoReader.abs() is `join(root, relPath)` with
+  # no containment, and two resource handlers (agents/{name}, skills/{name})
+  # interpolate a client-supplied URI segment into that path. Reproduced for real:
+  # the reader escapes the repo root when called directly (read a planted secret in
+  # /tmp), BUT the traversal is defeated end-to-end through the server — by the
+  # WHATWG URL parser collapsing `..` before the template matches, and by
+  # percent-encoding not being decoded. So NOT currently exploitable (said so
+  # plainly) — the read confinement rests on two untested dependency behaviors, not
+  # on any code or test in this repo. Three ranked mitigations, each run: jail the
+  # reader (resolve + assert within root; demonstrated blocking the traversal), add
+  # the missing traversal test, and give reads the same by-construction guarantee
+  # writes have (readable-roots allowlist). Fix belongs in mcp/; recommended in the
+  # PR, not applied (a content run touches content, not the tooling).
+  - id: POST-029
+    kind: post
+    title: "My read-only server proved it can't write. Nobody proved it can't read your laptop"
+    brief: "Field note (Cass Vector): the mcp/lifehacker-read server is certified 'safe to hand to any external AI' because it can't write (guardrails-by-absence, tested), but nothing proves it reads only the repo. RepoReader.abs() is join(root, relPath) with no containment, and two resource handlers interpolate a client URI segment into that path. Reproduced: the reader escapes the root when called directly (read a planted /tmp secret), but the traversal is defeated end-to-end through the server by the URL parser normalizing `..` away — so NOT exploitable today, and confinement rests on two untested dependency behaviors, not on any code here. Three ranked mitigations, each run: jail the reader, add the missing traversal test, give reads a by-construction allowlist. Fix belongs in mcp/; recommended in the PR, not applied."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
