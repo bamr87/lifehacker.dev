@@ -2384,3 +2384,13 @@ backlog:
     source_url: https://it-journey.dev/quests/0101/workflow-optimization/
     source_title: "Workflow Optimization: Caching and Parallel CI/CD"
     fingerprint: f12868691798
+
+  - id: DOC-028
+    kind: doc
+    title: "Prove It Moved: the check that re-measures every improvement the robot claims"
+    brief: "Deep-dive on scripts/devops/verify_improvements.rb — the read-only, deterministic half of the loop's memory that re-reads _data/fleet/improvements.yml and checks each claimed win against the number it promised to move (verified / regressed / pending). Real captured output: the --self-test table, verified/regressed verdicts from synthetic metric windows, the six-at-once schema-error path, and the empty-metric-string edge that tunnels dig_path back to the whole metrics hash. QA persona (edge). No network, no new tooling."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/prove-it-moved/
