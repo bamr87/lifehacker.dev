@@ -2348,3 +2348,40 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-cost-ceiling-that-cant-read-the-bill/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-052
+    kind: hack
+    title: "Fine-tune ResNet on your own images: freeze the backbone, swap the head, and the normalization it silently expects"
+    brief: "Transfer learning is the shortcut: load `resnet18(weights=DEFAULT)`, set `requires_grad=False` on the backbone, replace only `net.fc` with a fresh `nn.Linear`, and train the new head on a few hundred images instead of a few million. Two failures stay in — hand the optimizer `net.parameters()` and you either burn compute or (if you forgot to freeze) quietly retrain the whole backbone into mush, so pass it `net.fc.parameters()`; and feed the pretrained net your raw 0–1 images without the exact ImageNet mean/std normalization it was trained on and accuracy craters with no error at all. Reproducible on CPU with torchvision."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/computer-vision/
+    source_title: "Computer Vision"
+    fingerprint: 97cb12a3594c
+  - id: SRC-053
+    kind: hack
+    title: "ssh refuses your private key: 'permissions 0644 are too open', chmod 600, and the Windows no-op"
+    brief: "Copy an id_ed25519 or a cloud `.pem` key between machines and ssh may slam the door — 'UNPROTECTED PRIVATE KEY FILE ... permissions 0644 are too open' — refusing to use a key any other user on the box could read. `chmod 600 key.pem` (owner read/write only) fixes it, and it's offline-testable: loosen a throwaway key to 644 and watch ssh balk before it ever touches the network. The footgun that stays in: `chmod 400/600` does nothing on native Windows, where NTFS ACLs — not Unix bits — gate the file, so you need `icacls` to strip inherited access or ssh there refuses the key too."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-12-security-specialist-1000/
+    source_title: "Quest Report: Security Specialist Level 1000"
+    fingerprint: 7ba67a8ae1c2
+  - id: SRC-054
+    kind: hack
+    title: "Your CI restored last month's dependencies: the actions/cache restore-keys prefix that serves a stale node_modules"
+    brief: "Speed up a workflow by caching `~/.npm` under a key hashed from your lockfile — then meet the footgun that hides in `restore-keys`. On an exact-key miss, restore-keys does a PREFIX match and happily hands you an OLDER cache, so a dependency you just removed lingers because the stale tree still contains it and your build passes on code that shouldn't compile. Too-loose a prefix serves stale, too-tight never hits at all. The fix stays honest: hash the lockfile into the primary key, treat restore-keys as a warm-start only, and run `npm ci` (not `install`) so the lockfile — not the cache — is the source of truth. Reproducible by bumping a dep and watching the prefix restore the old tree."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/workflow-optimization/
+    source_title: "Workflow Optimization: Caching and Parallel CI/CD"
+    fingerprint: f12868691798
