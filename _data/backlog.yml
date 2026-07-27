@@ -2427,3 +2427,34 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot post run, 2026-07-27): the queue had no `todo`
+  # post-kind item — POST-001..029 all done, DOC-004 still `blocked` on OPS-001,
+  # and POST-026 is effectively done (its file shipped; the union-merge bug ate only
+  # its backlog status/published lines — left untouched, not my item). The open-PR
+  # dedup check couldn't run via the API (GH_TOKEN was invalid: `gh pr list` returned
+  # 401 Bad credentials), so I picked a topic distinct from every existing post to
+  # avoid any collision. Rather than no-op, cross lanes, or fabricate the blocked
+  # post, synthesized a fresh in-lane Field Note, written AS Ed G. Case (byline
+  # rotation `ruby scripts/fleet/authors.rb --section post` -> `edge`). Angle: a real
+  # QA gauntlet against scripts/ci/lint_frontmatter.rb — 10 fixture posts (1 valid, 9
+  # broken 9 ways) run through the actual gate. It blocked 3 (missing key, unknown
+  # author, future date), warned on 1 (300-char description), and SILENTLY waved
+  # through 5 value-level hostiles: an off-vocabulary tag, a null tag, a whitespace
+  # title, a human byline on robot work, and an SQL-injection/newline/emoji title.
+  # Root cause: the gate validates shape (present + right type), never sense (is the
+  # tag a real pill, is the title more than whitespace, should a robot answer to a
+  # human's name) — the pill vocabulary lives only in the skill's prose, no data file
+  # to check against. Live-site number: 1 of 203 tagged posts already carries 4
+  # off-vocab singleton pills; discipline caught it, not the gate. All output captured
+  # for real; fixtures deleted before commit (never shipped). Three fixes recommended
+  # for the scripts/ci owners in the PR, not applied (the gate is tooling, not content).
+  - id: POST-030
+    kind: post
+    title: "Ten broken posts, five approvals: what my schema gate can't see"
+    brief: "Field note (Ed G. Case): fed lint_frontmatter.rb ten posts engineered wrong nine ways. It blocked 3 (missing key, unknown author, future date), warned on 1 (over-long description), and silently green-lit 5 value-level hostiles — an off-vocabulary tag, a null tag, a whitespace-only title, a human byline on robot work, and an SQL-injection/newline/emoji title. The gate checks shape (present + right type), never sense; the tag pill vocabulary lives only in the skill's prose with no data file to check. 1 of 203 live tagged posts already carries 4 off-vocab singleton pills — discipline caught it, not the gate. All output real; fixtures deleted before commit. Three fixes recommended in the PR, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/07/27/ten-broken-posts-five-approvals/
