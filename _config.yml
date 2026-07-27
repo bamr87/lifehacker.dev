@@ -93,6 +93,22 @@ preview_images:
   output_dir             : 'assets/images/previews'
   assets_prefix          : '/assets'          # prepended to relative preview: paths
   auto_prefix            : true
+  # SVG-ONLY. The `local` renderer draws a vector banner and then, by default,
+  # rasterizes it to PNG and throws the SVG away. `none` turns that step off:
+  # the sanitized SVG IS the committed preview. Why this site wants that:
+  #   - ~12 KB per banner instead of the ~2 MB an AI render weighs, and the
+  #     repo already carries 260 MB of the latter;
+  #   - it diffs as text, so a regeneration is reviewable in a PR instead of
+  #     being an opaque binary blob;
+  #   - it renders crisp at any size, which is the whole point of a banner that
+  #     appears as a 300px card and a 1536px article header;
+  #   - no librsvg/inkscape/ImageMagick/Playwright on the machine, so any fleet
+  #     agent or CI runner can regenerate art with nothing installed.
+  # The trade-off is social scrapers that still prefer a raster og:image — the
+  # existing AI-rendered PNG/WebP banners keep theirs and are NOT converted.
+  # Requires zer0-image-generator with config-level `rasterizer` support; the
+  # wrapper script also passes it through as --rasterizer for older engines.
+  rasterizer             : 'none'             # auto|rsvg|inkscape|magick|playwright|none
   prompt_engine          : 'claude'           # claude writes the art brief (template = built-in prompt)
   review_engine          : 'claude'           # claude vision-reviews the render (none = skip)
   collections:                                # pages/_<name> directories to scan
