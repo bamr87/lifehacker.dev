@@ -1467,7 +1467,8 @@ backlog:
     brief: "Turn 'wip', 'more wip', 'typo' into one honest commit with `git rebase -i` (squash/reword/drop), or mark corrections as you go with `git commit --fixup <sha>` and let `git rebase -i --autosquash` file each fix under the commit it belongs to. The failure that stays in: rebasing rewrites the commit SHAs, so doing it to anything you've already pushed forces everyone who pulled it into a diverged history and a mess of duplicate commits — the rule is rewrite what's local, never what's shared. Fully reproducible in a throwaway repo."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/git-rebase-clean-commits-not-shared-history/
     source: content-scout
     source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
     source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
