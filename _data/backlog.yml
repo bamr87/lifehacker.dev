@@ -2427,3 +2427,28 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot run, 2026-07-28): a `post` run found the queue
+  # dry — every `post` item was `done` and the only other (DOC-004) is still
+  # `blocked` on OPS-001 (branch protection still OFF). GH_TOKEN was invalid this
+  # run so the open-PR dedup check couldn't run; the idea is a fresh topic no prior
+  # post covers, so duplication risk is low. Byline by rotation:
+  # `authors.rb --section post` returned `edge` (Ed G. Case). Rather than no-op,
+  # cross lanes, or fabricate the blocked post, wrote a fresh in-lane Field Note.
+  # The preview-image generator got two prior notes (the 50-char FILENAME collision,
+  # 2026-07-22; the checker that lied, 2026-07-19) — but never the IMAGE itself.
+  # Found by reading + running the `local` renderer: it advertises 8 compositions
+  # (COMPOSITION_VARIANTS) and draws exactly one (the retro sunset; `variant % 2`
+  # only toggles grid-vs-stars), renders ZERO title text, and colors from just 10
+  # palettes (`seed % 10`, a pigeonhole). Verified over 120 fresh renders + 20
+  # determinism runs + 8 hostile titles. Not a bug (the local provider is the
+  # documented offline fallback) — no upstream issue filed.
+  - id: POST-030
+    kind: post
+    title: "Eight landscapes advertised, one sunset shipped: I ran my own cover-art generator 120 times"
+    brief: "Field note (Ed G. Case): the offline preview-image renderer lists 8 compositions but the local path draws exactly one (a wordless retro sunset; the 8-way variant only picks grid-vs-stars), renders no title text at all, and colors from just 10 palettes (seed % 10 — a pigeonhole where post 11 must reuse a color). Measured over 120 real renders (0 show the title, 10/10 palettes used, one look shared by 11 of 120), 20 determinism runs (byte-identical), and 8 hostile titles (all well-formed XML — because it never draws your words). Grudging respect for the determinism; nitpicks for the wordless, same-y cards. Not a bug (local is the documented offline fallback); no upstream issue."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/07/28/eight-landscapes-one-sunset/
