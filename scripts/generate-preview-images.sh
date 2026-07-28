@@ -26,8 +26,11 @@
 # Dependencies:
 #   - bundler with the project bundle installed (provides the engine gem)
 #   - python3 (3.9+) with PyYAML
-#   - Optional SVG rasterizers for the local template provider:
-#     rsvg-convert | inkscape | magick | Playwright (scripts/dev/rasterize-svg.js)
+#   - No SVG rasterizer needed: _config.yml pins
+#     `preview_images.rasterizer: none`, so the local provider commits its
+#     vector banner as .svg instead of converting it to PNG. Pass
+#     --rasterizer auto to opt back into PNG for a one-off run (needs one of
+#     rsvg-convert | inkscape | magick | Playwright on PATH).
 #
 # Environment — renderer key (default openai): OPENAI_API_KEY (or XAI_API_KEY /
 # STABILITY_API_KEY / GEMINI_API_KEY for the matching --provider). Claude
@@ -120,17 +123,54 @@ apply_section_style() {  # $1 = section name
     echo "[INFO] Section '$section' art direction applied"
 }
 
-# Scan args for the target file (-f/--file) and our own --section flag.
+# ── SVG-only output ──────────────────────────────────────────────────────────
+# _config.yml sets `preview_images.rasterizer: none`, which makes the local
+# renderer keep its vector banner instead of rasterizing it to PNG. Engines
+# from the gem >= 0.8 read that key themselves; older ones only accept it as
+# --rasterizer, so this wrapper reads the config and forwards it. Either way
+# _config.yml stays the one place the policy is written down. A caller who
+# passes --rasterizer explicitly always wins.
+config_rasterizer() {  # prints the configured rasterizer, or nothing
+    python3 - "$REPO_DIR/_config.yml" <<'PY' 2>/dev/null || true
+import sys
+try:
+    import yaml
+except ImportError:
+    sys.exit(0)
+try:
+    with open(sys.argv[1]) as fh:
+        cfg = yaml.safe_load(fh) or {}
+except OSError:
+    sys.exit(0)
+value = (cfg.get("preview_images") or {}).get("rasterizer")
+if value:
+    print(value)
+PY
+}
+
+# Scan args for the target file (-f/--file), our own --section flag, and whether
+# the caller pinned --rasterizer themselves.
 TARGET_FILE=""
 SECTION=""
+RASTERIZER_GIVEN=0
 ARGS=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -f|--file)   TARGET_FILE="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
         --section)   SECTION="${2:-}"; shift 2 ;;   # consumed here, not passed on
+        --rasterizer) RASTERIZER_GIVEN=1; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --rasterizer=*) RASTERIZER_GIVEN=1; ARGS+=("$1"); shift ;;
         *)           ARGS+=("$1"); shift ;;
     esac
 done
+
+if [[ "$RASTERIZER_GIVEN" -eq 0 ]]; then
+    CFG_RASTERIZER="$(config_rasterizer)"
+    if [[ -n "$CFG_RASTERIZER" ]]; then
+        ARGS+=(--rasterizer "$CFG_RASTERIZER")
+        [[ "$CFG_RASTERIZER" == "none" ]] && echo "[INFO] SVG-only output (_config.yml preview_images.rasterizer: none)"
+    fi
+fi
 
 # A single -f run: infer the section from the file's own path.
 if [[ -n "$TARGET_FILE" && -z "$SECTION" ]]; then
