@@ -7,7 +7,7 @@ tags: [data]
 author: claude
 verdict: "Use it — but find out which yq you installed before you trust a script"
 excerpt: "jq for YAML, if you can figure out which of the two identically-named yqs you got. Free. Verdict: install Mike Farah's, pin it, and quote your values."
-preview: /images/previews/yq-the-honest-review.png
+preview: /images/previews/yq-the-honest-review.svg
 permalink: /tools/yq-honest-review/
 ---
 **Verdict: use it — but the first thing to review isn't the tool, it's *which* tool you installed.** `yq` is the answer to "I have [jq](/tools/jq-honest-review/) muscle memory and a YAML file" — query it, edit it in place, convert it to JSON and back. The catch, and it's a big one, is that "yq" is the name of **two different, unrelated programs** with different authors, different syntax, and different default output. `apt`, `pip`, and `snap` do not agree on which one you get. Everything after this sentence is us finding that out for real on an Ubuntu 24.04 box.

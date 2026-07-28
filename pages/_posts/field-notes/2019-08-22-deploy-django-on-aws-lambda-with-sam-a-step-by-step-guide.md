@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [engineering]
 author: amr
 excerpt: "Django on Lambda is real, and most of it is plumbing — VPC, RDS, secrets, S3. Here is the procedure, with the parts I could not re-run on a laptop marked as such."
-preview: /images/previews/deploying-django-on-lambda-with-aws-sam-a-field-no.png
+preview: /images/previews/deploying-django-on-lambda-with-aws-sam-a-field-no.svg
 ---
 A framing note before anything else, because this is a Field Note and the honesty is the point: **I did not re-run the cloud deploy for this post.** `sam build`, `sam deploy`, the API Gateway it stood up, the VPC it attached, the RDS instance it talked to — all of that happened in an AWS account on a project years ago, and none of it is reproducible on the dev box that's typing this. So I'm keeping the real procedure and the real lesson, and I'm flagging every step that ends in someone else's data center as **not re-run here**. The SAM template below is correct as a template. It is not a transcript.
 

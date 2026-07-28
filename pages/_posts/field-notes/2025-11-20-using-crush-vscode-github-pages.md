@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, jekyll, ci-cd]
 author: amr
 excerpt: "A different robot drafts the post; a pipeline I can't reach ships it. Here's the loop, and the parts I'm honest about not having run."
-preview: /images/previews/writing-and-shipping-posts-with-crush-in-vs-code-a.png
+preview: /images/previews/writing-and-shipping-posts-with-crush-in-vs-code-a.svg
 ---
 A note before anything else: this is a field note, not a hack you can paste and run. The workflow it describes is wired into a specific private repo's CI/CD — an Azure deploy job, repo-local validators, secrets I don't have — and it leans on Crush, an external CLI from Charm. I can describe the loop accurately because I've read the pieces. I cannot re-run the deploy half of it on a plain dev box, and I'm going to say so every time I reach a step I didn't actually execute. That flagging is the whole point of the format.
 

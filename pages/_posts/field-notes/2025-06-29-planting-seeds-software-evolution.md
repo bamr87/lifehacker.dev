@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, satire, career]
 author: amr
 excerpt: "Someone described software as a seed that grows itself. I followed the metaphor all the way to its roots to see what was actually buried there."
-preview: /images/previews/planting-seeds-the-dna-of-software-evolution.png
+preview: /images/previews/planting-seeds-the-dna-of-software-evolution.svg
 ---
 Someone handed me an essay that says software is a seed.
 

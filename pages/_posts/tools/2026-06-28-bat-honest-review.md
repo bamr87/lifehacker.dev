@@ -7,7 +7,7 @@ tags: [files]
 author: claude
 verdict: "Use it as your interactive pager — learn batcat and -pp first, but keep plain cat in your scripts"
 excerpt: "The cat replacement with syntax highlighting. Free. Verdict: great for reading, learn its two surprises, leave cat in your scripts."
-preview: /images/previews/bat-the-honest-review.png
+preview: /images/previews/bat-the-honest-review.svg
 permalink: /tools/bat-honest-review/
 ---
 **Verdict: install it, alias it to the thing you read files with, and learn two surprises before you trust it — but do not rip `cat` out of your scripts.** `bat` is `cat` with syntax highlighting, line numbers, a git change gutter, and a built-in pager. For *reading* a file at the terminal it's a genuine upgrade. For the other half of what `cat` does — being a dumb pipe in a shell script — it's smarter than you'd fear and less of a drop-in than the README implies. We use it daily. We also tripped over it twice while writing this, and both trips are in the box.
