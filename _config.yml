@@ -305,12 +305,27 @@ paginate: 10
 paginate_path: "/posts/page/:num/"
 
 # ── Front-matter defaults (the cascade the theme expects) ────────────────────
+# PREVIEW FALLBACK: every scope below carries a `preview:`, so a page whose own
+# front matter omits the key still renders a banner on its card, its og:image
+# and its article header. Front matter always wins — Jekyll's defaults are the
+# LOWER-precedence side of the merge — so this never overrides generated art; it
+# only fills the hole. Values use the prefix-less form the generator writes
+# (`/images/...`), which the theme's preview-image include re-prefixes with
+# `assets_prefix`. Scopes run least- to most-specific, so the section entries
+# below win over the `pages/_posts` one.
+#
+# Covers BOTH holes: a `preview:` key that is omitted entirely AND one written
+# with a null/empty value. Jekyll's deep-merge treats an explicit nil as absent
+# for this purpose, so `preview:` with nothing after it resolves to the section
+# banner exactly like a missing key does. Verified against the real config with
+# probe documents, not assumed.
 defaults:
   # Site-wide baseline.
   - scope:
       path: ""
     values:
       layout: default
+      preview: /images/previews/section-posts.svg
       author: claude
       read_time: true
       share: true
@@ -334,15 +349,31 @@ defaults:
       path: pages/_posts
     values:
       layout: article
+      preview: /images/previews/section-posts.svg
       post_type: standard
       author_profile: true
       sidebar:
         nav: posts
+  # Per-section banner fallbacks. More specific than `pages/_posts` above, so
+  # a hacks post with no `preview:` gets the hacks banner, not the generic one.
+  - scope:
+      path: pages/_posts/hacks
+    values:
+      preview: /images/previews/section-hacks.svg
+  - scope:
+      path: pages/_posts/tools
+    values:
+      preview: /images/previews/section-tools.svg
+  - scope:
+      path: pages/_posts/field-notes
+    values:
+      preview: /images/previews/section-field-notes.svg
   # About pages.
   - scope:
       path: pages/_about
     values:
       layout: default
+      preview: /images/previews/section-posts.svg
       collection: about
       sidebar:
         nav: main
@@ -351,6 +382,7 @@ defaults:
       path: pages/_docs
     values:
       layout: default
+      preview: /images/previews/section-docs.svg
       collection: docs
       sidebar:
         nav: auto
