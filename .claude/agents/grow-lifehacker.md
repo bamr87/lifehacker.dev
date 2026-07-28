@@ -17,7 +17,7 @@ ops`/admin item). Research for real; **leave the failures in** — they're the c
 - **Byline by rotation.** If the item pins an `author:` (or the run says `write as
 author: <key>`), write AS that persona. Otherwise DON'T default to `claude` — run `ruby scripts/fleet/authors.rb --section <kind>` and write as the least-used AI persona it returns (byline + that persona's voice + hard rules).
 - **Generate the preview banner** before the PR:
-`scripts/generate-preview-images.sh -f <your-file>` (offline `local` renderer, no keys). Commit the generated `assets/images/previews/…` image and the stamped `preview:` front matter WITH the article — a piece without its banner isn't done.
+`scripts/generate-preview-images.sh -f <your-file>`. The wrapper resolves the capability ladder — with a Claude credential in the environment (CI runs have one) Claude authors a content-aware SVG banner via `scripts/claude_svg_banner.py`; keyless it falls back to the offline `local` renderer. Commit the generated `assets/images/previews/…` image and the stamped `preview:` front matter WITH the article — a piece without its banner isn't done.
 - Verify with `/test-lifehacker` before opening the PR (gate must pass).
 - Open ONE PR on `autopilot/<slug>`, label `auto:content` + `collection/<kind>`,
   write the PR URL to `pr-result.txt`.

@@ -149,10 +149,17 @@ PY
 }
 
 # Scan args for the target file (-f/--file), our own --section flag, and whether
-# the caller pinned --rasterizer themselves.
+# the caller pinned --rasterizer or --provider themselves.
 TARGET_FILE=""
 SECTION=""
 RASTERIZER_GIVEN=0
+PROVIDER_GIVEN=""
+LIST_GIVEN=0
+DRYRUN_GIVEN=0
+FORCE_GIVEN=0
+VERBOSE_GIVEN=0
+ENHANCE_GIVEN=0
+BATCH_GIVEN=""
 ARGS=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -160,9 +167,104 @@ while [[ $# -gt 0 ]]; do
         --section)   SECTION="${2:-}"; shift 2 ;;   # consumed here, not passed on
         --rasterizer) RASTERIZER_GIVEN=1; ARGS+=("$1" "${2:-}"); shift 2 ;;
         --rasterizer=*) RASTERIZER_GIVEN=1; ARGS+=("$1"); shift ;;
+        -p|--provider) PROVIDER_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --provider=*)  PROVIDER_GIVEN="${1#*=}"; ARGS+=("$1"); shift ;;
+        --list-missing) LIST_GIVEN=1; ARGS+=("$1"); shift ;;
+        -d|--dry-run)   DRYRUN_GIVEN=1; ARGS+=("$1"); shift ;;
+        --force)        FORCE_GIVEN=1; ARGS+=("$1"); shift ;;
+        -v|--verbose)   VERBOSE_GIVEN=1; ARGS+=("$1"); shift ;;
+        -e|--enhance|--enhance-*) ENHANCE_GIVEN=1; ARGS+=("$1"); shift ;;
+        --batch)        BATCH_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
         *)           ARGS+=("$1"); shift ;;
     esac
 done
+
+# ── Provider capability ladder ───────────────────────────────────────────────
+# _config.yml may set `preview_images.provider` to a value the published engine
+# does not know (`auto` — and the explicit rungs `claude` / `default`). The
+# engine (<= 0.6.x) error-exits on those, so THIS wrapper resolves the ladder
+# (best renderer the environment can actually reach) and dispatches:
+#   raster API key present  → that engine provider (Claude still writes the
+#                             art brief / reviews via the engine's own
+#                             orchestration);
+#   Claude credential only  → scripts/claude_svg_banner.py — Claude AUTHORS
+#                             the banner as SVG (the companion reuses the
+#                             engine's sanitizer + front-matter writers);
+#   nothing wired           → the engine's deterministic `local` SVG (the
+#                             shared per-section banner defaults in
+#                             _config.yml remain the floor beneath that).
+# An explicit -p/--provider or AI_PROVIDER always wins (no ladder). --enhance
+# is OpenAI-only and list runs are provider-neutral, so both skip the claude
+# rung. Remove this ladder once the engine grows native `auto` support
+# (github.com/bamr87/zer0-image-generator).
+config_provider() {  # prints preview_images.provider from _config.yml, if any
+    python3 - "$REPO_DIR/_config.yml" <<'PY' 2>/dev/null || true
+import sys
+try:
+    import yaml
+except ImportError:
+    sys.exit(0)
+try:
+    with open(sys.argv[1]) as fh:
+        cfg = yaml.safe_load(fh) or {}
+except OSError:
+    sys.exit(0)
+value = (cfg.get("preview_images") or {}).get("provider")
+if value:
+    print(value)
+PY
+}
+
+has_claude_credential() {
+    [[ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" || -n "${ANTHROPIC_AUTH_TOKEN:-}" \
+       || -n "${ANTHROPIC_API_KEY:-}" ]] && return 0
+    command -v claude &>/dev/null
+}
+
+USE_CLAUDE_SVG=0
+if [[ -z "$PROVIDER_GIVEN" && -z "${AI_PROVIDER:-}" ]]; then
+    CFG_PROVIDER="$(config_provider)"
+    case "$CFG_PROVIDER" in
+        gemini|local|openai|stability|xai|"") : ;;  # engine-legal / engine default
+        auto|default|claude)
+            if [[ "$ENHANCE_GIVEN" -eq 1 || "$LIST_GIVEN" -eq 1 ]]; then
+                ARGS+=(-p local)   # provider-neutral modes; keep them keyless
+            elif [[ "$CFG_PROVIDER" != "claude" && -n "${OPENAI_API_KEY:-}" ]]; then
+                ARGS+=(-p openai)
+            elif [[ "$CFG_PROVIDER" != "claude" && -n "${XAI_API_KEY:-}" ]]; then
+                ARGS+=(-p xai)
+            elif [[ "$CFG_PROVIDER" != "claude" && -n "${STABILITY_API_KEY:-}" ]]; then
+                ARGS+=(-p stability)
+            elif [[ "$CFG_PROVIDER" != "claude" && -n "${GEMINI_API_KEY:-}" ]]; then
+                ARGS+=(-p gemini)
+            elif has_claude_credential; then
+                USE_CLAUDE_SVG=1
+                echo "[INFO] Ladder: Claude authors the banner as SVG (claude_svg_banner.py)"
+            else
+                ARGS+=(-p local)
+                echo "[INFO] Ladder: no credential wired — deterministic local SVG"
+            fi
+            ;;
+        *)  # unknown value: let the engine produce its own actionable error
+            : ;;
+    esac
+fi
+
+# Build the companion's argument list from the flags the caller gave us.
+run_claude_svg() {  # $@ = extra target args (--file/--scan/--collection…)
+    local status=0
+    local cmd=(python3 "$SCRIPT_DIR/claude_svg_banner.py" --engine "$ENGINE")
+    [[ "$DRYRUN_GIVEN"  -eq 1 ]] && cmd+=(--dry-run)
+    [[ "$FORCE_GIVEN"   -eq 1 ]] && cmd+=(--force)
+    [[ "$VERBOSE_GIVEN" -eq 1 ]] && cmd+=(--verbose)
+    [[ -n "$BATCH_GIVEN" ]] && cmd+=(--batch "$BATCH_GIVEN")
+    "${cmd[@]}" "$@" || status=$?
+    if [[ $status -eq 3 ]]; then
+        echo "[INFO] Claude rung unavailable after all — deterministic local SVG"
+        return 200   # sentinel: caller re-dispatches to the engine with -p local
+    fi
+    return $status
+}
 
 if [[ "$RASTERIZER_GIVEN" -eq 0 ]]; then
     CFG_RASTERIZER="$(config_rasterizer)"
@@ -211,11 +313,34 @@ if [[ -n "$SECTION" && -z "$TARGET_FILE" ]]; then
     # Deliberately NOT exec: exec replaces this shell, so the cleanup trap would
     # never run and the temp dir would be left behind in the working tree.
     set +e
-    python3 "$ENGINE" -c posts --collections-dir "$(basename "$TMP_ROOT")" "${ARGS[@]}"
-    status=$?
+    if [[ "$USE_CLAUDE_SVG" -eq 1 ]]; then
+        run_claude_svg --scan -c posts --collections-dir "$(basename "$TMP_ROOT")"
+        status=$?
+        if [[ $status -eq 200 ]]; then
+            python3 "$ENGINE" -c posts --collections-dir "$(basename "$TMP_ROOT")" -p local "${ARGS[@]}"
+            status=$?
+        fi
+    else
+        python3 "$ENGINE" -c posts --collections-dir "$(basename "$TMP_ROOT")" "${ARGS[@]}"
+        status=$?
+    fi
     set -e
     rm -rf "$TMP_ROOT"
     trap - EXIT INT TERM
+    exit "$status"
+fi
+
+# The claude rung authors banners itself; everything else goes to the engine.
+if [[ "$USE_CLAUDE_SVG" -eq 1 ]]; then
+    status=0
+    if [[ -n "$TARGET_FILE" ]]; then
+        run_claude_svg --file "$TARGET_FILE" || status=$?
+    else
+        run_claude_svg --scan || status=$?
+    fi
+    if [[ $status -eq 200 ]]; then
+        exec python3 "$ENGINE" -p local ${ARGS[@]+"${ARGS[@]}"}
+    fi
     exit "$status"
 fi
 
