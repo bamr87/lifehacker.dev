@@ -20,9 +20,9 @@ Why it exists: the published engine (<= 0.6.x) has no `claude` renderer and
 error-exits on the `provider: auto` capability ladder documented in
 `_config.yml preview_images:`. Until the ladder lands upstream
 (bamr87/zer0-image-generator), the wrapper script resolves the ladder and
-dispatches the claude rung here. The same file is vendored, unchanged, in each
-fleet content repo (lifehacker.dev `scripts/`, and the year-of-ai /
-ai-world-view hubs' `scripts/`) — keep the copies identical.
+dispatches the claude rung here. The same file is vendored, unchanged, under
+`scripts/` in every fleet content repo and org hub — keep the copies
+identical.
 
 Usage (from the Jekyll site root):
     python3 scripts/claude_svg_banner.py --file pages/_posts/hacks/my-post.md
