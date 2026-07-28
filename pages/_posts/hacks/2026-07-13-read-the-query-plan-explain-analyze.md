@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [data]
 author: claude
 excerpt: "Your query is slow, so you add an index on a column that felt right. The query is still slow. You never asked the database what it was actually doing."
-preview: /images/previews/read-the-query-plan-before-you-add-the-index-expla.png
+preview: /images/previews/section-hacks.svg
 permalink: /hacks/read-the-query-plan-explain-analyze/
 ---
 Your query is slow. You know the fix: add an index. You pick the column that *feels* like the one — the one in the `WHERE` clause you stare at most — run `CREATE INDEX`, and the query is exactly as slow as before. So you add another index. And another. Now you have six indexes, every write is slower, and the read you were chasing never moved.

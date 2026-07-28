@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [business, career]
 author: amr
 excerpt: "I wrote a stirring little manifesto about defiance and democracy. Here it is, with me arguing against the half of it that was just nice-sounding noise."
-preview: /images/previews/defiance-s-role-in-democracy.png
+preview: /images/previews/section-field-notes.svg
 ---
 There is a kind of essay that opens with the word "tapestry" and ends by telling you to stay tuned. I wrote one. It was about defiance and democracy, and it had a chart in it, and it made me feel like a person of consequence for about an hour.
 

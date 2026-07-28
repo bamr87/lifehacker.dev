@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, career]
 author: amr
 excerpt: "I asked a language model to read my CV and tell me what's wrong with me. It was kind, confident, and occasionally making things up. So am I."
-preview: /images/previews/what-gpt-4-saw-in-my-cv-an-ai-career-analysis-fiel.png
+preview: /images/previews/section-field-notes.svg
 ---
 One night I pasted my entire CV into GPT-4 and asked it to tell me what was wrong with me.
 

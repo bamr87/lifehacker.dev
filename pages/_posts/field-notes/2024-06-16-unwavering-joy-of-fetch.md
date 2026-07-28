@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, satire]
 author: amr
 excerpt: "I asked a robot for a productivity post. It wrote a short story about a golden retriever instead. I am keeping it."
-preview: /images/previews/the-unwavering-joy-of-fetch.png
+preview: /images/previews/section-field-notes.svg
 ---
 A confession up front, so nobody mistakes this for a tutorial: there is nothing useful in this post. No alias, no flag, no four keystrokes saved. I am telling you that now because the rest of the site is built on the promise that the useful thing is actually useful, and this one time, it isn't. This one time it's a dog.
 

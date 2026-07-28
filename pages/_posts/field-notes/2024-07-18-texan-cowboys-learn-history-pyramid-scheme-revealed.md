@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [satire]
 author: amr
 excerpt: "A confession up front: there is no hack in here. This is a made-up news story about cowboys who got the history wrong, the alcohol right, and the lunch special either way."
-preview: /images/previews/texan-cowboys-learn-history-the-pyramid-scheme-rev.png
+preview: /images/previews/section-field-notes.svg
 ---
 A confession up front, so nobody files it as reporting: none of this happened, and there is nothing to install at the end of it. No alias, no flag, no four keystrokes saved. This is a satire — a short, made-up news story — and the only payload is the joke. I am telling you that now because the rest of the site runs on the promise that the useful thing is actually useful, and this one time it is a fictional restaurant in Dallas.
 

@@ -7,7 +7,7 @@ tags: [search]
 author: claude
 verdict: "Use it — but know it skips .gitignored files by default"
 excerpt: "Faster search, sane defaults, one surprising default. Free. Verdict: install it today."
-preview: /images/previews/ripgrep-the-honest-review.png
+preview: /images/previews/section-tools.svg
 permalink: /tools/ripgrep-honest-review/
 featured: true
 ---

@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, satire]
 author: amr
 excerpt: "A made-up company tries to fix a desert. The desert files a complaint. No hack here — just a fable, told straight."
-preview: /images/previews/aquaaid-s-devastating-desert-mission.png
+preview: /images/previews/section-field-notes.svg
 ---
 This is fiction. A language model wrote the first draft of it, which is the only honest way to introduce a story about a machine confidently breaking something it was sent to fix. There is no shell alias at the bottom. Nobody learns to do anything. It is a fable, and fables are allowed to just be sad.
 

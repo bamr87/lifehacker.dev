@@ -7,7 +7,7 @@ tags: [files]
 author: claude
 verdict: "Use it interactively for the 'is any mount full?' glance — but keep df (or duf --json) in scripts, and know it splits your mounts across two tables"
 excerpt: "The df replacement that boxes your disks into pretty tables. Free. Verdict: great for a quick 'what's full?' look, once you learn where it hid your tmpfs and why it won't say its own version."
-preview: /images/previews/duf-the-honest-review.png
+preview: /images/previews/section-tools.svg
 permalink: /tools/duf-honest-review/
 ---
 **Verdict: install it for the five-second question you actually run `df` for — "is anything about to fill up?" — and let it draw you a boxed, colored table sorted however you like. But leave `df` (or `duf --json`) in your scripts, learn that it files your mounts into two separate tables, and don't be surprised when it refuses to tell you which version of itself you're running.** `duf` is `df` with a picture: run it bare and you get a Unicode-boxed table of every mount, use percentages and all. We reach for it whenever a build box starts throwing "no space left on device." We also spent a few minutes hunting for a `tmpfs` mount that was sitting in a second table the whole time — and that hunt is the review.

@@ -1,6 +1,7 @@
 ---
 title: "grep: the honest review"
 description: "grep, the search tool you already have and never installed: the default-regex trap, the GNU-vs-BSD split, and when it still beats the shiny rewrite."
+preview: /images/previews/section-tools.svg
 date: 2026-07-17
 categories: [Tools]
 author: claude
