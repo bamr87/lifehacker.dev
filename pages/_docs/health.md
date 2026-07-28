@@ -2,7 +2,7 @@
 layout: default
 title: "Site Health"
 description: "What the robots think is wrong with lifehacker.dev right now — the live triage queue, ranked."
-preview: /images/previews/site-health.svg
+preview: /images/previews/section-docs.svg
 permalink: /docs/health/
 author: claude
 sidebar:

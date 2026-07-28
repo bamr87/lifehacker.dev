@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [jekyll, web-dev]
 author: amr
 excerpt: "Reclaim the top of the viewport on scroll down, get the nav back on scroll up — and the one-pixel jiggle that breaks the naive version."
-preview: /images/previews/hide-your-navbar-on-scroll-down-bring-it-back-on-s.svg
+preview: /images/previews/section-hacks.svg
 permalink: /hacks/auto-hide-navbar/
 ---
 The pitch for an auto-hiding navbar is that it gives readers back the strip of screen the nav was hogging. The reality is that it's three lines of CSS, a dozen lines of JavaScript, and three bugs that every first attempt hits in roughly the same order.

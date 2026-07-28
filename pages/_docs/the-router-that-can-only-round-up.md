@@ -2,7 +2,7 @@
 layout: default
 title: "The Router That Can Only Round Up"
 description: "How classify_changes.rb routes a diff to the right tier of checks — and why every ambiguous case rounds up to the full pipeline instead of skipping."
-preview: /images/previews/the-router-that-can-only-round-up.svg
+preview: /images/previews/section-docs.svg
 permalink: /docs/the-router-that-can-only-round-up/
 date: 2026-07-08
 collection: docs

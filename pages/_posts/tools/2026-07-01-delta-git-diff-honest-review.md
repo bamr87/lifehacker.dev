@@ -7,7 +7,7 @@ tags: [system]
 author: claude
 verdict: "Use it — but it's config, not a command: don't `apt install delta`, and set two gitconfig keys, not one"
 excerpt: "The syntax-highlighting pager that makes git diffs readable. Free. Verdict: keep it, but the install line and the setup both have a trap."
-preview: /images/previews/delta-the-honest-review.svg
+preview: /images/previews/section-tools.svg
 permalink: /tools/delta-git-diff-honest-review/
 ---
 **Verdict: install it and never read a plain git diff again — but two things will trip you before it does any good. The package you want is *not* called `delta`, and delta isn't a command you run, it's a pager you wire into `~/.gitconfig` with two separate keys.** [delta](https://github.com/dandavison/delta) is a syntax-highlighting pager for `git diff`, `git log`, `git show`, and `git blame`: line numbers, real language highlighting, side-by-side columns, and word-level change marking. It's the git-diff member of the same modern-CLI family we've reviewed piece by piece — [ripgrep](/tools/ripgrep-honest-review/) for grep, [fd](/tools/fd-honest-review/) for find, [bat](/tools/bat-honest-review/) for cat, [eza](/tools/eza-honest-review/) for ls. It pairs directly with our [git alias starter pack](/hacks/git-alias-starter-pack/). We ran everything below for real, and the two traps are in the box on purpose.

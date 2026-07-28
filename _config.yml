@@ -84,7 +84,13 @@ repo_map                 : "/sitemap/"
 # front-matter lint warns (non-blocking) on any article still missing `preview:`.
 preview_images:
   enabled                : true
-  provider               : 'local'            # renderer: local (offline), openai, xai, stability, gemini
+  # `auto` picks the best renderer the environment can actually reach:
+  #   raster image API (OPENAI/XAI/STABILITY/GEMINI key) — and when a Claude
+  #     credential is also present, Claude writes the art brief it renders from;
+  #   Claude credential alone      — Claude authors the banner as SVG;
+  #   nothing wired                — one shared banner per section (below).
+  # Pin an explicit provider here to override the ladder.
+  provider               : 'auto'             # auto | local | claude | default | openai | xai | stability | gemini
   model                  : ''                 # empty → the active renderer's default
   size                   : '1536x1024'        # landscape banner
   quality                : 'auto'

@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [engineering, career]
 author: amr
 excerpt: "Bash scripting is typing the commands you'd type anyway, in order, into a file. This is the overview, not the step-by-step — and that's on purpose."
-preview: /images/previews/what-bash-scripting-actually-is-and-how-to-start-l.svg
+preview: /images/previews/section-field-notes.svg
 ---
 This one is an overview, not a tutorial. There's no aliased one-liner at the bottom that saves you four keystrokes. If you came for a script you can paste and run tonight, I don't have one for you here — I have the thing that comes before that, which is knowing what you're even looking at when someone hands you a file ending in `.sh`.
 

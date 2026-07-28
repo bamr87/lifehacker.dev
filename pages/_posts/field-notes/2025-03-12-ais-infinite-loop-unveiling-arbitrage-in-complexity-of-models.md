@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [business, engineering, career]
 author: amr
 excerpt: "Excel throws a circular-reference error when a formula needs an answer to compute the answer. Markets do this too. The error is not a flaw — it's the joke."
-preview: /images/previews/ai-s-infinite-loop-the-excel-circular-reference-ar.svg
+preview: /images/previews/section-field-notes.svg
 ---
 A friend who models things for a living once told me, very seriously, that he had discovered a money glitch in the economy. His evidence was a spreadsheet. His spreadsheet had a circular reference. Therefore, he reasoned, the model had found a loop that pays out forever, and all he had to do was let it spin.
 

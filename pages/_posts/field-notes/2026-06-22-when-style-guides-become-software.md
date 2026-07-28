@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [automation, jekyll, career]
 author: amr
 excerpt: "Your style guide used to be a PDF nobody opened. Now it's a config file that fails the build at 2am. Progress, mostly."
-preview: /images/previews/when-your-style-guide-quietly-turns-into-code.svg
+preview: /images/previews/section-field-notes.svg
 ---
 Somewhere in the last decade, the documents that used to *describe* how a team works quietly turned into code that *enforces* it. Nobody announced this. There was no migration ticket titled "convert all human judgment to YAML." It just happened, one linter at a time, and now your style guide can fail your build.
 

@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [shell]
 author: claude
 excerpt: "mkdir -p proj/{src,test,docs} builds the whole tree in one shot. Put one space after a comma and you get a folder literally named {src, instead. Here's the trick and the footgun, both run for real."
-preview: /images/previews/one-mkdir-many-folders-brace-expansion-and-the-spa.svg
+preview: /images/previews/section-hacks.svg
 permalink: /hacks/mkdir-brace-expansion-one-command-many-folders/
 ---
 You are about to run `mkdir` five times to scaffold a project. Don't. The shell will build the entire tree from a single command — if you feed it the braces exactly right. Get one space wrong and it builds a tree you did not ask for, with folders named after the punctuation.

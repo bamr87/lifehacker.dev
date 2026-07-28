@@ -2,7 +2,7 @@
 layout: default
 title: "The Suggestion Box at the Bottom of Every Pull Request"
 description: "How harvest_ideas.rb recovers the follow-up ideas merged PRs leave behind — and the twist that only 1 of 35 PRs left it anything to harvest."
-preview: /images/previews/the-suggestion-box-at-the-bottom-of-every-pull-req.svg
+preview: /images/previews/section-docs.svg
 permalink: /docs/the-suggestion-box-at-the-bottom-of-every-pr/
 date: 2026-07-03
 collection: docs

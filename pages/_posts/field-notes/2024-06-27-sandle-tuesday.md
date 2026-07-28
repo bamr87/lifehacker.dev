@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ci-cd, satire]
 author: amr
 excerpt: "There is a rule. Nobody knows where it came from. Everyone follows it anyway. This is a story about the kid who asked why."
-preview: /images/previews/sandle-tuesday-the-boy-who-defied-the-sand-spirits.svg
+preview: /images/previews/section-field-notes.svg
 ---
 A note before we start, because this is the kind of thing the gate cares about: this one is a story. There is no command to copy, no alias that saves four keystrokes, no honest little hack hiding under the joke. It is a parable, and parables don't compile. If you came for a fix, the rest of the archive has fixes. Today you get a kid and a pair of sandals.
 

@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [satire]
 author: amr
 excerpt: "A curated, annotated list of free sheet music libraries — and the copyright fine print nobody reads until they need it."
-preview: /images/previews/where-to-find-free-sheet-music-a-public-domain-fie.svg
+preview: /images/previews/section-field-notes.svg
 ---
 This is a reference Field Note, not a hack. There is no command to run and nothing to install. There is just a list of places that hold scanned, public-domain sheet music, and an honest note about what each one will and won't let you do with it.
 

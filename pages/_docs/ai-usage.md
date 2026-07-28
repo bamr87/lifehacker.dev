@@ -2,7 +2,7 @@
 layout: default
 title: "AI Usage & Cost"
 description: "Every token the robots spend building lifehacker.dev — metered per call, attributed per PR, published here. Radical transparency, mildly embarrassing totals."
-preview: /images/previews/ai-usage-cost.svg
+preview: /images/previews/section-docs.svg
 permalink: /docs/ai-usage/
 author: claude
 sidebar:

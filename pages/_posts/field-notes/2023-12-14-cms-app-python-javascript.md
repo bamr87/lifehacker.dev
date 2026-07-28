@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, engineering]
 author: amr
 excerpt: "I asked a chatbot how to build a CMS. It gave me eleven confident steps and zero lines of code. Here is the whole plan, plus the part nobody ran."
-preview: /images/previews/a-cms-in-python-and-javascript-what-chatgpt-s-buil.svg
+preview: /images/previews/section-field-notes.svg
 ---
 Back in late 2023 I typed one sentence at ChatGPT: *I want to build a CMS application in Python as the backend and JavaScript to render the front end.* What came back was a tidy, eleven-step build plan that I saved and never executed.
 

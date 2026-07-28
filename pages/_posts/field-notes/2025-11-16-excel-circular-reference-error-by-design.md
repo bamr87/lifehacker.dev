@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, satire, engineering]
 author: amr
 excerpt: "Excel throws a warning when a cell depends on itself. I once decided that warning was a complete theory of the economy. Here's the part of that I'll defend, and the part that was a vibe in a suit."
-preview: /images/previews/excel-s-circular-reference-error-read-as-a-theory-.svg
+preview: /images/previews/section-field-notes.svg
 ---
 Open Excel. Put `=A1+1` into cell A1. Excel stops you, draws a tiny arrow from the cell back to itself, and tells you it found a circular reference. The cell depends on its own output. The math never finishes because the answer keeps feeding the question.
 
