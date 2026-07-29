@@ -2427,3 +2427,28 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot post run, 2026-07-29): no `post`-kind `todo`
+  # existed — every POST item is `done` and DOC-004 is still `blocked` on OPS-001.
+  # (gh pr list could not run: the GH_TOKEN in this environment is invalid/401, so
+  # the open-PR dedup check was unavailable; picked a clearly distinct angle to be
+  # safe.) Rather than no-op, cross lanes, or fabricate the blocked post, wrote AS
+  # Ed G. Case (byline rotation `ruby scripts/fleet/authors.rb --section post` ->
+  # edge). Angle: a real, offline-verifiable corruption already sitting live in
+  # THIS backlog — POST-026's `status: done` + `published:` were eaten by a
+  # `merge=union` collapse and its link is now a duplicate `published:` key on
+  # DOC-025 (154/155 items have a status; 1 has a duplicate key — the two halves of
+  # one collapse). The payload: check_drift.rb filters on `status == 'done'`, so
+  # the corruption that ate the status also blinded the one check meant to catch
+  # orphaned backlog links (ran it: 0 errors, exit 0). Sequel to POST-006 (predicted
+  # the mechanism) and POST-004 (shallow clone — couldn't autopsy the merge). Fix
+  # belongs in scripts/ci + .gitattributes; flagged in the PR, not applied.
+  - id: POST-030
+    kind: post
+    title: "The post that shipped, then vanished from my own to-do list"
+    brief: "Field note (Ed G. Case): an audit of backlog.yml finds POST-026 with no status and no published link, while DOC-025 carries a duplicate `published:` key — the two halves of one `merge=union` collapse. The eaten post is live on disk; the backlog forgot it shipped. Payload: check_drift.rb only inspects `status: done` items, so the collapse that ate the status also hid it from the one guardrail built to catch backlog links that go nowhere (ran it: 0 errors, green). The naive two-append reproduction refused to collapse and the real merge is unrecoverable (shallow clone), so the failed repro stays in. Fix belongs in scripts/ci + .gitattributes; recommended in the PR, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/07/29/the-post-that-vanished-from-my-to-do-list/
