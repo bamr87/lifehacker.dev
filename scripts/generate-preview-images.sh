@@ -160,11 +160,19 @@ FORCE_GIVEN=0
 VERBOSE_GIVEN=0
 ENHANCE_GIVEN=0
 BATCH_GIVEN=""
+STYLE_GIVEN=""
+STYLE_MODS_GIVEN=""
+OUTPUT_DIR_GIVEN=""
+FM_KEY_GIVEN=""
+COLLECTION_GIVEN=""
+COLLECTIONS_DIR_GIVEN=""
 ARGS=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -f|--file)   TARGET_FILE="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --file=*)    TARGET_FILE="${1#*=}"; ARGS+=("$1"); shift ;;
         --section)   SECTION="${2:-}"; shift 2 ;;   # consumed here, not passed on
+        --section=*) SECTION="${1#*=}"; shift ;;
         --rasterizer) RASTERIZER_GIVEN=1; ARGS+=("$1" "${2:-}"); shift 2 ;;
         --rasterizer=*) RASTERIZER_GIVEN=1; ARGS+=("$1"); shift ;;
         -p|--provider) PROVIDER_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
@@ -175,9 +183,33 @@ while [[ $# -gt 0 ]]; do
         -v|--verbose)   VERBOSE_GIVEN=1; ARGS+=("$1"); shift ;;
         -e|--enhance|--enhance-*) ENHANCE_GIVEN=1; ARGS+=("$1"); shift ;;
         --batch)        BATCH_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --batch=*)      BATCH_GIVEN="${1#*=}"; ARGS+=("$1"); shift ;;
+        # Captured so the claude rung receives them too (they stay in ARGS for
+        # the engine path).
+        --style)        STYLE_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --style=*)      STYLE_GIVEN="${1#*=}"; ARGS+=("$1"); shift ;;
+        # Wrapper/companion-only (the engine reads modifiers from env/config
+        # and would reject the flag) — consumed here, not passed on. The engine
+        # path still honours it via the IMAGE_STYLE_MODIFIERS export below.
+        --style-modifiers)   STYLE_MODS_GIVEN="${2:-}"; shift 2 ;;
+        --style-modifiers=*) STYLE_MODS_GIVEN="${1#*=}"; shift ;;
+        --output-dir)   OUTPUT_DIR_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --output-dir=*) OUTPUT_DIR_GIVEN="${1#*=}"; ARGS+=("$1"); shift ;;
+        --front-matter-key)   FM_KEY_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --front-matter-key=*) FM_KEY_GIVEN="${1#*=}"; ARGS+=("$1"); shift ;;
+        -c|--collection)  COLLECTION_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --collection=*)   COLLECTION_GIVEN="${1#*=}"; ARGS+=("$1"); shift ;;
+        --collections-dir)   COLLECTIONS_DIR_GIVEN="${2:-}"; ARGS+=("$1" "${2:-}"); shift 2 ;;
+        --collections-dir=*) COLLECTIONS_DIR_GIVEN="${1#*=}"; ARGS+=("$1"); shift ;;
         *)           ARGS+=("$1"); shift ;;
     esac
 done
+
+# --style-modifiers has no engine flag; surface it to the engine as the env
+# var it does read (an env already set by the caller wins).
+if [[ -n "$STYLE_MODS_GIVEN" && -z "${IMAGE_STYLE_MODIFIERS:-}" ]]; then
+    export IMAGE_STYLE_MODIFIERS="$STYLE_MODS_GIVEN"
+fi
 
 # ── Provider capability ladder ───────────────────────────────────────────────
 # _config.yml may set `preview_images.provider` to a value the published engine
@@ -227,8 +259,18 @@ if [[ -z "$PROVIDER_GIVEN" && -z "${AI_PROVIDER:-}" ]]; then
     case "$CFG_PROVIDER" in
         gemini|local|openai|stability|xai|"") : ;;  # engine-legal / engine default
         auto|default|claude)
-            if [[ "$ENHANCE_GIVEN" -eq 1 || "$LIST_GIVEN" -eq 1 ]]; then
-                ARGS+=(-p local)   # provider-neutral modes; keep them keyless
+            if [[ "$ENHANCE_GIVEN" -eq 1 ]]; then
+                # --enhance is OpenAI images/edits only. The local provider's
+                # edit() is a no-op that still reports success, so routing
+                # enhance to `-p local` would silently do nothing.
+                if [[ -n "${OPENAI_API_KEY:-}" ]]; then
+                    ARGS+=(-p openai)
+                else
+                    echo "[ERROR] --enhance needs OPENAI_API_KEY (OpenAI images/edits); the auto ladder has no keyless enhance rung." >&2
+                    exit 1
+                fi
+            elif [[ "$LIST_GIVEN" -eq 1 ]]; then
+                ARGS+=(-p local)   # listing is provider-neutral; keep it keyless
             elif [[ "$CFG_PROVIDER" != "claude" && -n "${OPENAI_API_KEY:-}" ]]; then
                 ARGS+=(-p openai)
             elif [[ "$CFG_PROVIDER" != "claude" && -n "${XAI_API_KEY:-}" ]]; then
@@ -250,7 +292,9 @@ if [[ -z "$PROVIDER_GIVEN" && -z "${AI_PROVIDER:-}" ]]; then
     esac
 fi
 
-# Build the companion's argument list from the flags the caller gave us.
+# Build the companion's argument list from the flags the caller gave us —
+# forward every captured engine-shared flag so the claude rung honours the
+# same request the engine would have received.
 run_claude_svg() {  # $@ = extra target args (--file/--scan/--collection…)
     local status=0
     local cmd=(python3 "$SCRIPT_DIR/claude_svg_banner.py" --engine "$ENGINE")
@@ -258,6 +302,10 @@ run_claude_svg() {  # $@ = extra target args (--file/--scan/--collection…)
     [[ "$FORCE_GIVEN"   -eq 1 ]] && cmd+=(--force)
     [[ "$VERBOSE_GIVEN" -eq 1 ]] && cmd+=(--verbose)
     [[ -n "$BATCH_GIVEN" ]] && cmd+=(--batch "$BATCH_GIVEN")
+    [[ -n "$STYLE_GIVEN" ]] && cmd+=(--style "$STYLE_GIVEN")
+    [[ -n "$STYLE_MODS_GIVEN" ]] && cmd+=(--style-modifiers "$STYLE_MODS_GIVEN")
+    [[ -n "$OUTPUT_DIR_GIVEN" ]] && cmd+=(--output-dir "$OUTPUT_DIR_GIVEN")
+    [[ -n "$FM_KEY_GIVEN" ]] && cmd+=(--front-matter-key "$FM_KEY_GIVEN")
     "${cmd[@]}" "$@" || status=$?
     if [[ $status -eq 3 ]]; then
         echo "[INFO] Claude rung unavailable after all — deterministic local SVG"
@@ -336,7 +384,10 @@ if [[ "$USE_CLAUDE_SVG" -eq 1 ]]; then
     if [[ -n "$TARGET_FILE" ]]; then
         run_claude_svg --file "$TARGET_FILE" || status=$?
     else
-        run_claude_svg --scan || status=$?
+        scan_args=(--scan)
+        [[ -n "$COLLECTION_GIVEN" ]] && scan_args+=(-c "$COLLECTION_GIVEN")
+        [[ -n "$COLLECTIONS_DIR_GIVEN" ]] && scan_args+=(--collections-dir "$COLLECTIONS_DIR_GIVEN")
+        run_claude_svg "${scan_args[@]}" || status=$?
     fi
     if [[ $status -eq 200 ]]; then
         exec python3 "$ENGINE" -p local ${ARGS[@]+"${ARGS[@]}"}

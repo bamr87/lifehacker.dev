@@ -202,28 +202,48 @@ def body_excerpt(text: str, limit: int = 1500) -> str:
     return body[:limit]
 
 
-def git_changed_markdown(root: Path, exclude_re: Optional[str]) -> List[Path]:
+def _unquote_git_path(path: str) -> str:
+    """Undo git's C-style quoting (`"p\\303\\244ge.md"`) so non-ASCII names
+    survive --changed mode instead of being silently dropped."""
+    if not (path.startswith('"') and path.endswith('"')):
+        return path
+    inner = path[1:-1]
     try:
-        out = subprocess.run(["git", "status", "--porcelain"], cwd=root,
-                             capture_output=True, text=True, timeout=60)
+        return (inner.encode("latin-1", "backslashreplace")
+                .decode("unicode_escape")
+                .encode("latin-1")
+                .decode("utf-8"))
+    except (UnicodeDecodeError, UnicodeEncodeError):
+        return inner
+
+
+def git_changed_markdown(root: Path,
+                         exclude_re: Optional[str]) -> List[tuple]:
+    """(path, is_new) for every new/modified markdown file. `-uall` matters:
+    plain --porcelain collapses a brand-new directory to one `?? dir/` line,
+    hiding every article inside it."""
+    try:
+        out = subprocess.run(["git", "status", "--porcelain", "-uall"],
+                             cwd=root, capture_output=True, text=True,
+                             timeout=60)
     except (OSError, subprocess.TimeoutExpired) as exc:
         warn(f"git status failed: {exc}")
         return []
-    files: List[Path] = []
+    files: List[tuple] = []
     for line in out.stdout.splitlines():
         if len(line) < 4 or line[:2] in ("D ", " D"):
             continue
-        path = line[3:]
+        status, path = line[:2], line[3:]
         if " -> " in path:                      # rename: take the new side
             path = path.split(" -> ", 1)[1]
-        path = path.strip().strip('"')
+        path = _unquote_git_path(path.strip())
         if not path.endswith((".md", ".markdown")):
             continue
         if exclude_re and re.search(exclude_re, line):
             continue
         candidate = root / path
         if candidate.is_file():
-            files.append(candidate)
+            files.append((candidate, status == "??" or status.startswith("A")))
     return files
 
 
@@ -260,8 +280,13 @@ def extract_svg(response: str) -> Optional[str]:
 
 
 def ensure_accessible(svg: str, title: str) -> str:
-    """Guarantee role="img" + a first-child <title> (the sanitizer keeps both)."""
-    if 'role="img"' not in svg.split(">", 1)[0]:
+    """Guarantee role="img" + a first-child <title> (the sanitizer keeps both).
+
+    The role check is attribute-aware (single/double quotes, spaces) — a naive
+    substring test would inject a duplicate `role` attribute and make the XML
+    unparseable for the sanitizer."""
+    root_tag = svg.split(">", 1)[0]
+    if not re.search(r"""\brole\s*=\s*["']img["']""", root_tag):
         svg = svg.replace("<svg", '<svg role="img"', 1)
     if "<title" not in svg:
         safe = title.replace("&", "&amp;").replace("<", "&lt;")
@@ -355,15 +380,23 @@ def main(argv: Optional[List[str]] = None) -> int:
     effort = str(cfg.get("claude_effort") or "low")
 
     # ---- target selection ---------------------------------------------------
-    targets: List[Path] = []
+    # Each target is (path, is_new). New files matter: the site's authoring
+    # conventions may stamp a brand-new article with the shared SECTION
+    # placeholder banner (which exists on disk), and treating that as "already
+    # illustrated" would silently skip exactly the articles this tool exists
+    # for. A new file is therefore re-illustrated unless its stamp already
+    # points at its OWN slug-named banner or an external URL.
+    generated = failed = skipped = 0
+    targets: List[tuple] = []
     for name in args.file:
         path = Path(name)
         if not path.is_absolute():
             path = root / path
         if path.is_file():
-            targets.append(path)
+            targets.append((path, False))
         else:
             warn(f"no such file: {name}")
+            failed += 1
     if args.changed:
         targets.extend(git_changed_markdown(root, args.exclude_re))
     if args.scan:
@@ -375,20 +408,22 @@ def main(argv: Optional[List[str]] = None) -> int:
             str(c) for c in (cfg.get("collections") or ["posts"])
             if isinstance(c, str)
         ]
-        targets.extend(scan_collections(root, collections_dir.strip("/"),
-                                        collections))
-    # de-dup, stable order
-    seen = set()
-    targets = [t for t in targets if not (t in seen or seen.add(t))]
+        targets.extend((p, False) for p in scan_collections(
+            root, collections_dir.strip("/"), collections))
+    # de-dup, stable order (is_new wins if any source marked it new)
+    by_path: Dict[Path, bool] = {}
+    for path, is_new in targets:
+        by_path[path] = by_path.get(path, False) or is_new
+    targets = list(by_path.items())
+    # --batch caps ATTEMPTS (engine parity: the engine slices the file list).
+    if args.batch:
+        targets = targets[:args.batch]
     if not targets:
         log("nothing to illustrate")
-        return 0
+        return EXIT_FAILED if failed else 0
 
     out_dir = root / output_dir
-    generated = failed = skipped = 0
-    for path in targets:
-        if args.batch and generated >= args.batch:
-            break
+    for path, is_new in targets:
         try:
             text = path.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError) as exc:
@@ -396,17 +431,34 @@ def main(argv: Optional[List[str]] = None) -> int:
             failed += 1
             continue
         fields = parse_front_matter(text)
-        title = fields.get("title") or path.stem.replace("-", " ").title()
-        if not args.force and preview_exists(fields, root, assets_prefix):
+        if not fields:
+            # No front-matter block (README/TIMELINE/INDEX…): a banner could
+            # never be stamped, so don't spend a model call producing an
+            # orphan image. Not a failure — these files are expected in
+            # --changed mode.
             if args.verbose:
-                log(f"skip (preview exists): {path.relative_to(root)}")
+                log(f"skip (no front matter): {path.relative_to(root)}")
             skipped += 1
             continue
+        title = fields.get("title") or path.stem.replace("-", " ").title()
         slug = engine.generate_filename(title)
         if not slug:
             warn(f"{path}: cannot derive slug from title")
             failed += 1
             continue
+        preview_value = fields.get("preview") or fields.get("image") or ""
+        external = preview_value.startswith(("http://", "https://"))
+        has_own_banner = bool(preview_value) and Path(preview_value).stem == slug
+        replace_placeholder = is_new and not external and not has_own_banner
+        if (not args.force and not replace_placeholder
+                and preview_exists(fields, root, assets_prefix)):
+            if args.verbose:
+                log(f"skip (preview exists): {path.relative_to(root)}")
+            skipped += 1
+            continue
+        if replace_placeholder and preview_value and args.verbose:
+            log(f"new article carries a shared/placeholder preview — "
+                f"authoring its own banner: {path.relative_to(root)}")
 
         if args.dry_run:
             log(f"[DRY RUN] would illustrate {path.relative_to(root)} → "

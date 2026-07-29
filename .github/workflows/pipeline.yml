@@ -169,6 +169,16 @@ jobs:
           [ -f test-results/comment.md ] || exit 0
           cid=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments?per_page=100" \
                   --jq '[.[] | select(.body | startswith("<!-- lh-test-report -->"))][0].id' 2>/dev/null || true)
+          # Comment noise policy: a fully green run (PASS, zero errors and
+          # warnings) never CREATES the report comment — the required `verify`
+          # check is that signal. It still UPDATES an existing report so a
+          # previously red PR visibly shows the recovery.
+          if { [ -z "$cid" ] || [ "$cid" = "null" ]; } \
+             && grep -q "Gate: PASS" test-results/comment.md \
+             && grep -q "0 error, 0 warning" test-results/comment.md; then
+            echo "Gate green with no findings and no prior report comment — skipping comment creation."
+            exit 0
+          fi
           body=$(ruby -rjson -e 'puts JSON.generate({"body" => File.read("test-results/comment.md")})')
           if [ -n "$cid" ] && [ "$cid" != "null" ]; then
             printf '%s' "$body" | gh api -X PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${cid}" --input - > /dev/null
