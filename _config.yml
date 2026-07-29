@@ -87,9 +87,15 @@ preview_images:
   # `auto` picks the best renderer the environment can actually reach:
   #   raster image API (OPENAI/XAI/STABILITY/GEMINI key) — and when a Claude
   #     credential is also present, Claude writes the art brief it renders from;
-  #   Claude credential alone      — Claude authors the banner as SVG;
-  #   nothing wired                — one shared banner per section (below).
-  # Pin an explicit provider here to override the ladder.
+  #   Claude credential alone      — Claude authors the banner as SVG
+  #                                  (scripts/claude_svg_banner.py);
+  #   nothing wired                — deterministic local SVG, floored by the
+  #                                  shared per-section banner defaults (below).
+  # Pin an explicit provider here to override the ladder. The published engine
+  # (<= 0.6.x) does not know `auto` — scripts/generate-preview-images.sh
+  # resolves the ladder before dispatching, so ALWAYS go through the wrapper
+  # (a bare `jekyll preview-images` run will error on `auto` until the ladder
+  # lands upstream in bamr87/zer0-image-generator).
   provider               : 'auto'             # auto | local | claude | default | openai | xai | stability | gemini
   model                  : ''                 # empty → the active renderer's default
   size                   : '1536x1024'        # landscape banner
