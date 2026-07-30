@@ -2427,3 +2427,31 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # --- Fresh doc (autopilot doc run, 2026-07-30): the only `todo` doc on the board
+  # was DOC-024 (aggregate.rb), already covered by THREE open auto:content branches
+  # (autopilot/aggregate-fingerprint-verdict, -one-integer-decides-merge,
+  # -vote-counter-doc) — a duplicate — and every other doc item is `done` (DOC-004
+  # is a blocked post). Rather than no-op, cross lanes, or duplicate the open PRs,
+  # synthesized a fresh in-lane doc, written AS cass (byline rotation `ruby
+  # scripts/fleet/authors.rb --section doc` -> `cass`). Angle: the Meta pillar has a
+  # doc on the tracker that CAN'T close a ticket (build_queue/file_issues), but never
+  # the half that now CAN — close_stale.rb. Cass audits the authorization boundary
+  # and finds two: (1) the "only closes what it owns" promise is enforced by the
+  # `triage-fp:` marker matching ANYWHERE in a body — a bearer string the bot prints
+  # in cleartext in every issue it files, so a human who quotes a bot issue inherits
+  # the close-me badge; (2) `sweep_safe?` is a deny-list of NAMED degradations, so a
+  # check that goes silently empty (no marker) passes the guard and a still-broken
+  # link-rot issue becomes closable. Real captured output only from running the pure
+  # decision layer in scripts/triage/_lib.rb against this repo's own findings.jsonl
+  # (offline, no gh). Three ranked mitigations, each run. Fix belongs in
+  # scripts/triage/; recommended in the PR, not applied (content run touches content).
+  - id: DOC-029
+    kind: doc
+    title: "The closer that can't tell your issue from its own"
+    brief: "Threat-model close_stale.rb, the closing half of the triage tracker. Its 'only closes what it owns' promise rests on the `triage-fp:` marker matching anywhere in an issue body — a cleartext bearer string the bot prints in every ticket it files, so a human who quotes a bot issue inherits the close-me badge (reproduced: issue #404, a human quote, is CLOSABLE). And `sweep_safe?` is a deny-list of named degradations, so a checker that goes silently empty passes the guard and a still-broken link-rot issue becomes closable. Real captured output from the pure decision layer against this repo's findings.jsonl; no network. Three ranked mitigations, each run: a positive check manifest that fails closed, a bot-authorship gate, and the dry-run/MAX_CLOSE/reopen controls that bound and reverse a wrong close. Fix belongs in scripts/triage/; recommended in the PR, not applied."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-closer-that-cant-tell-your-issue-from-its-own/
