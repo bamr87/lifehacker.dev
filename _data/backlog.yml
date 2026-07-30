@@ -2427,3 +2427,29 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Fresh tool idea (autopilot run, 2026-07-30): the only `kind: tool` todo on the
+  # board was TOOL-026 (shellcheck), which is already an in-flight open PR on branch
+  # autopilot/shellcheck-honest-review (complete post + banner + backlog flip, dated
+  # 2026-07-29) — taking it would duplicate. No other tool item exists (the rest of
+  # the todo queue is SRC-* hacks, one doc, and OPS-001). Rather than no-op or cross
+  # collections, synthesized a fresh in-lane tool. The reviewed family is all
+  # coreutils rewrites (rg/fd/bat/eza/…) plus one dep scanner (pip-audit); a git
+  # SECRET scanner is an untouched, genuinely useful corner, and it lands squarely in
+  # Cass Vector's threat-model lane (byline by rotation: `authors.rb --section tool`
+  # returned cass). Fully testable offline: installed gitleaks 8.16.0 from apt and ran
+  # every command on Ubuntu 24.04, no network. Honest gotchas left in and reproduced:
+  # `detect` finds a secret in a commit its own "fix" deleted (git never forgets),
+  # the scanner reprints the live secret into logs unless you pass --redact, and the
+  # generic-api-key heuristic needs a keyword anchor — the SAME high-entropy value
+  # under an innocuous variable name gets "no leaks found." Also honest: the apt build
+  # prints "version is set by build process" for `gitleaks version`.
+  - id: TOOL-028
+    kind: tool
+    title: "gitleaks: the secret scanner that reads the commit you already deleted"
+    brief: "Cass Vector reviews gitleaks through the threat-model lens: `detect` scans full history so a secret you removed in the next commit is still found (rotate, don't delete), the scanner reprints your live secret into CI logs unless you pass --redact, `protect --staged` catches it pre-commit, and the honest limit that 'no leaks found' only means 'nothing matched my patterns' — the same high-entropy value under an innocuous name (no keyword anchor) sails through. Every command run for real on Ubuntu 24.04, offline."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/gitleaks-honest-review/
