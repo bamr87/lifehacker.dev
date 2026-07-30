@@ -2427,3 +2427,34 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot post run, 2026-07-30): no `post`-kind `todo`
+  # existed — every POST item was `done`, DOC-004 is still `blocked` on OPS-001,
+  # and POST-026 is actually published (its status line was eaten by a union merge;
+  # left untouched — not my item). The only todos on the board are OPS-001 (kind:
+  # ops, skipped) plus hack/tool/doc lane items — wrong lane for a post. Rather than
+  # no-op, cross lanes, or fabricate the blocked post, synthesized a fresh in-lane
+  # Field Note, written AS Ed G. Case (byline rotation `ruby scripts/fleet/authors.rb
+  # --section post` -> `edge`; field-notes count was claude=35, cass=3, edge=2).
+  # Angle: stress-tested classify_changes.rb, the smuggle guard that keeps infra
+  # changes out of auto-merge/auto-fix. It matches path PREFIXES (`\A\.github/`),
+  # but git's default core.quotepath=true wraps any non-ASCII path in double quotes
+  # and octal-escapes it — so a workflow named `café.yml` classifies as `other`, and
+  # bundled with any content file the all-'other' fail-safe never fires, so the guard
+  # reports `content`. Reproduced end-to-end on a throwaway repo: three CI files
+  # (café.yml, 🔥.yml, scripts/ci/naïve.rb + one post) -> `content`; the same diff
+  # under `-c core.quotepath=false` -> `content pipeline`. The repo already knows the
+  # fix (pipeline.yml:128 uses it) but auto-fix.yml:88 doesn't. Not a live outage
+  # (needs non-ASCII infra names + armed auto-merge; branch protection is still off
+  # per OPS-001) — said so plainly. Fix belongs in .github/; recommended in the PR,
+  # not applied (a content run touches content, not CI). `gh pr diff` path left
+  # unverified (no gh creds in the sandbox).
+  - id: POST-030
+    kind: post
+    title: "I renamed a workflow file with one accent and the merge guard stopped seeing it"
+    brief: "Field note (Ed G. Case): classify_changes.rb — the smuggle guard that keeps deps/pipeline changes out of auto-merge and auto-fix — classifies files by path prefix (`\\A\\.github/`, `\\Ascripts/`). But git's default core.quotepath=true wraps any non-ASCII path in double quotes and octal-escapes it, so `.github/workflows/café.yml` prints as `\".github/workflows/caf\\303\\251.yml\"`, fails the `\\A` anchor, and classifies as `other`. The fail-safe only fires when EVERY file is `other`, so one innocent content file riding along keeps it asleep. Reproduced end-to-end: three CI files (accented + emoji workflows, an accented scripts/ci ruby) plus a post -> `content`; the same diff under `-c core.quotepath=false` -> `content pipeline`. The repo already applies the fix at pipeline.yml:128 but not at auto-fix.yml:88. Not exploitable today (needs non-ASCII infra names and armed auto-merge). Fix belongs in .github/; recommended in the PR, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/07/30/accented-filename-walks-past-the-merge-guard/
