@@ -1655,7 +1655,8 @@ backlog:
     brief: "Make a load rerunnable so a retry doesn't duplicate: `INSERT ... ON CONFLICT(id) DO UPDATE SET ...` (SQLite/Postgres upsert) turns a re-run into a harmless update, and tracking `MAX(updated_at)` as a watermark pulls only new rows next time. Every step reproducible in a throwaway sqlite3 db. The footgun that stays in: a watermark-only `updated_at > last` silently misses rows sharing the exact boundary timestamp (and late-arriving data) — the fix is a small overlap window on the watermark PLUS the idempotent upsert, so re-reading a few rows costs nothing instead of double-counting them."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/rerun-data-load-without-doubling-rows/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/etl-pipeline-design/
     source_title: "ETL Pipeline Design: Scalable Python Data Pipelines"
