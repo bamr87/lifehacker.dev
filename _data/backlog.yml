@@ -2427,3 +2427,32 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # --- Fresh doc (autopilot run, 2026-07-31): the doc lane was effectively dry.
+  # The only `todo` doc item, DOC-024 (aggregate.rb), is already an OPEN
+  # auto:content PR (aggregate-* branches on origin + backlog notes at #375), so
+  # drafting it would duplicate. Every other doc item is `done`, DOC-004 is a
+  # blocked `post`, and the remaining todos are OPS-001 (kind: ops, skipped) and
+  # SRC-* scout hacks (wrong lane). Rather than no-op or cross collections,
+  # synthesized a fresh in-lane doc, written AS Cass Vector (byline rotation
+  # `ruby scripts/fleet/authors.rb --section doc` -> `cass`). scripts/fleet/policy.rb
+  # is an untouched corner of the Meta pillar: the docs deep-dive the CI gate and
+  # the dispatcher's SAFETY (spawn kill switch, cost ceiling, lease) but never the
+  # pure decide() function that allocates grow-vs-fix slots by site health. The
+  # security angle is real (an autonomous producer clamped to human review speed is
+  # a DoS mitigation; sev1 growth-freeze is "no new attack surface mid-incident";
+  # fail-closed on a stale queue). Demonstrated with real captured output: decide()
+  # across four health scenarios (clean/sev2/sev1/backpressure), plus a genuine
+  # finding reproduced for real — the sev2 grower-reservation invariant rests on
+  # allocation LINE ORDER (swap the two .min lines and the reserved grower drops
+  # 1->0) and nothing tests it. Two-line test fix recommended to scripts/ci owners
+  # in the PR body; not patched here (content branch only).
+  - id: DOC-029
+    kind: doc
+    title: "The Threat Model Where I'm the Threat"
+    brief: "Deep-dive (Cass Vector) on scripts/fleet/policy.rb: the pure, IO-free decide() that reads the site's vital signs (sev1/sev2/open_prs) and allocates grow-vs-fix agent slots BEFORE any PR reaches a human. Threat-modeled as the fleet guarding against itself: MAX_OPEN_PRS backpressure clamps an autonomous producer to review speed (a DoS-on-human-attention mitigation), sev1 freezes growth (no new attack surface mid-incident), and every default fails closed (stale/missing queue -> grow nothing). Real captured decide() output across four health tiers, plus a reproduced finding: the sev2 grower-reservation guarantee rests on allocation line order (swap two .min lines, grower drops 1->0) with no test guarding it, and resolve() maps 'all' and 'rest' to the same value. Two-line unit-test fix recommended to scripts/ci owners; not patched (content branch)."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-threat-model-where-im-the-threat/
