@@ -2427,3 +2427,33 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+  # Synthesized in-lane (autopilot post run, 2026-07-31): no `post`-kind item was
+  # `todo` — POST-001..029 all done and DOC-004 still `blocked` on OPS-001. The
+  # gh API token in this run was invalid (HTTP 401), so the open-PR dedup check
+  # used `git ls-remote --heads origin` instead: no autopilot branch covers the
+  # banner-SVG-well-formedness angle (the nearest, 2026-07-22 "two posts one face",
+  # is the SAME tool's *namer*, a different failure mode — cited in the piece).
+  # Rather than no-op, cross lanes, or fabricate the blocked post, synthesized a
+  # fresh in-lane Field Note, written AS Ed G. Case (byline rotation `ruby
+  # scripts/fleet/authors.rb --section post` -> `edge`). Angle: stress-test the
+  # OTHER half of the preview-image generator — render_local_svg (the deterministic
+  # offline rung every keyless fleet run falls back to). It escapes only `&` and
+  # `<` in the title, drops it into an SVG <title>, and never parses its own
+  # output. Ran the real engine's function against 14 cursed titles and parsed each
+  # with ElementTree: 4 produce invalid XML (the `]]>` CDATA-close sequence — a
+  # printable-ASCII human could type — plus NUL/ESC/vertical-tab control chars).
+  # The contrast that makes it a design note: the AI rung's sanitize_svg DOES
+  # ET.fromstring + raise on bad XML, so the "can't fail" deterministic floor is
+  # the one with no validation gate. Latent, not a live outage (no shipped title
+  # carries those bytes — said so plainly). Fix lives in the zer0-image-generator
+  # gem, not this content repo — recommended for the engine owners in the PR, not
+  # patched here.
+  - id: POST-030
+    kind: post
+    title: "The banner generator that never reads its own SVG"
+    brief: "Field note (Ed G. Case): the offline banner renderer (render_local_svg, the keyless fleet fallback) escapes only & and < in an article title, drops it into an SVG <title>, and never parses what it wrote. Ran the real engine against 14 cursed titles and parsed each with ElementTree — 4 come back invalid XML (the `]]>` CDATA-close sequence, plus NUL/ESC/vertical-tab control chars). The design note: the AI rung's sanitize_svg calls ET.fromstring and raises on bad XML, so the deterministic 'can't fail' floor is the rung with no validation gate. Latent, not a live outage. Fix belongs in the zer0-image-generator gem; recommended in the PR, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/07/31/the-banner-generator-that-never-reads-its-own-svg/
