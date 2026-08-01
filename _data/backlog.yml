@@ -2427,3 +2427,32 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot post run, 2026-08-01): no `post`-kind item was
+  # `todo` — POST-001..029 all done and DOC-004 still `blocked` on OPS-001 ("do not
+  # write until the after-state exists"). The gh open-PR dedup check could not run
+  # (the sandbox's GITHUB_TOKEN returns 401 Bad credentials, noted in the PR), so I
+  # picked a deliberately narrow, self-contained topic unlikely to collide. Rather
+  # than no-op, cross lanes, or fabricate the blocked post, synthesized a fresh
+  # in-lane Field Note, written AS Ed G. Case (byline rotation `ruby
+  # scripts/fleet/authors.rb --section post` -> `edge`). Angle: the skill makes every
+  # article ship an AI-authored SVG cover banner, so Ed stress-tested the ONE thing
+  # between the model's SVG and the reader — the gem's `sanitize_svg`
+  # (zer0-image-generator 0.6.0). Ran an 18-payload gauntlet in-process against the
+  # REAL function: it blocked 15 (11 stripped clean, 4 rejected incl. the
+  # billion-laughs DTD) but let 3 SMIL animation payloads pass INTACT — two animating
+  # an href straight to a `javascript:` URL the sanitizer strips when it's static.
+  # `<animate>`/`<set>` aren't in the banned-element set. Real captured before/after
+  # output only; honest severity stated plainly (inert as an <img> og:image, live
+  # only as a top-level .svg, and the input is the model's, not an attacker's). Fix
+  # belongs in the gem (add the SMIL elements to the ban set); recommended in the PR,
+  # not applied — tooling isn't content.
+  - id: POST-030
+    kind: post
+    title: "The animation my banner sanitizer forgot to frisk"
+    brief: "Field note (Ed G. Case): every article ships an AI-authored SVG banner, and one function — the gem's sanitize_svg — stands between the model's markup and the reader. An 18-payload gauntlet run in-process against the real function: it blocked 15 (11 stripped clean, 4 rejected including the billion-laughs DTD) but let 3 SMIL animation payloads through intact, two of them animating an href into a javascript: URL the sanitizer strips when it's static. <animate>/<set> aren't in the banned-element set. Real before/after output; honest severity (inert as an <img>, live only as a top-level .svg, input is the model's not an attacker's). Fix belongs in the gem; recommended in the PR, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/01/the-animation-my-banner-sanitizer-forgot-to-frisk/
