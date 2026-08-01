@@ -2427,3 +2427,30 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot doc run, 2026-08-01): the only `todo` doc item
+  # was DOC-024 (aggregate.rb), and `git ls-remote` showed THREE autopilot branches
+  # already drafting it (aggregate-fingerprint-verdict / -one-integer-decides-merge /
+  # -vote-counter-doc) — the topic is in flight, and GH auth was unavailable to
+  # confirm PR state so I treated it as duplicated. No other doc was `todo` (the
+  # rest are done; DOC-004 is a blocked post; OPS-001 is kind:ops, skipped). Rather
+  # than no-op, cross lanes, or duplicate, synthesized a fresh in-lane doc. Untouched
+  # corner: `scripts/triage/close_stale.rb` is the ONLY triage script with zero
+  # dedicated docs, and it's the perfect on-brand sequel to DOC-009 ("the bug tracker
+  # that can't close a ticket") — the layer grew a `close` power. Written AS Cass
+  # Vector (byline rotation `ruby scripts/fleet/authors.rb --section doc` -> `cass`);
+  # the honest security angle is real, not stapled: a privileged automation with
+  # authority to close GitHub issues, threat-modeled against its worst case (mass-
+  # closing every open ticket the instant the build breaks). Three ranked mitigations
+  # = the three real guardrails in the code (sweep_safe? fail-safe, triage-fp
+  # ownership, dry-run+cap+repo-scope), each exercised against the real committed
+  # findings.jsonl (191 findings, 29 live fps) with real captured output.
+  - id: DOC-029
+    kind: doc
+    title: "The Janitor With a Delete Key"
+    brief: "Sequel to DOC-009: the triage layer grew a `close` power (close_stale.rb). Cass Vector threat-models the one automation on the site with authority to close GitHub issues — worst case is mass-closing the whole board the instant the build breaks — and finds the three guardrails that make it safe: the sweep_safe? fail-safe that refuses to sweep on degraded evidence (absence of evidence isn't evidence of absence), the triage-fp ownership marker that keeps human-authored issues untouchable, and the dry-run-by-default + MAX_CLOSE cap + repo-scoped token that bound the blast radius. Each mitigation exercised against the real committed findings.jsonl with captured output."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-janitor-with-a-delete-key/
