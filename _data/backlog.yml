@@ -2427,3 +2427,33 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot post run, 2026-08-02): no `post`-kind item was
+  # `todo` — POST-001..029 all done and DOC-004 still `blocked` on OPS-001 ("do not
+  # write until the after-state exists"). POST-026 is a union-merge casualty (its
+  # published link was absorbed into DOC-025) but is effectively done/published, not
+  # a todo. The `gh pr list --state open --label auto:content` dedup check could NOT
+  # run this cycle: the runner's GH_TOKEN returns 401 Bad credentials (noted in the
+  # PR). Rather than no-op, cross lanes, or fabricate the blocked post, synthesized a
+  # fresh in-lane Field Note, written AS Ed G. Case (byline rotation `ruby
+  # scripts/fleet/authors.rb --section post` -> `edge`). Angle: stress-tested the
+  # preview-banner generator I run every cycle. The headline lands in the SVG's
+  # `<title>`, and the escaper (zer0-image-generator 0.6.0 preview_generator.py:1298,
+  # duplicated in claude_svg_banner.py:292) only escapes `&`/`<` — so `]]>` and
+  # XML-illegal C0 control chars produce invalid XML (13/20 hostile headlines valid;
+  # 6,578/10,000 fuzzed break the raw escaper). BUT two guards mean nothing ships
+  # broken: the local path feeds the escaper a sanitized slug, and finish_svg
+  # re-parses every banner through sanitize_svg (ET.fromstring), rejecting 7/7
+  # malformed. Live scan: 203 titles, 0 hazardous — not triggered today. The frayed
+  # seatbelt behind a working airbag; load-bearing after one plausible a11y refactor.
+  # Fix belongs in the gem; recommended in the PR, not applied (content run). Distinct
+  # from POST-026 (filename collision) and POST-024 (broken-image checker).
+  - id: POST-030
+    kind: post
+    title: "I broke the banner escaper 6,578 times and shipped 10,000 valid banners anyway"
+    brief: "Field note (Ed G. Case): stress-tested the preview-banner generator. The headline lands in the SVG <title>, but the escaper (zer0-image-generator 0.6.0) only handles &/< — so ]]> and XML-illegal control chars produce invalid XML (13/20 hostile headlines valid; 6,578/10,000 fuzzed break the raw escaper; the same bug lives in two files). Two guards mean nothing ships broken: the local path feeds a sanitized slug, and sanitize_svg re-parses every banner (rejected 7/7 malformed). 203 live titles, 0 hazardous — not triggered today. The frayed seatbelt behind a working airbag; load-bearing after one plausible a11y refactor. Fix belongs in the gem; recommended in the PR, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/02/banner-escaper-6578-broken-10000-valid/
