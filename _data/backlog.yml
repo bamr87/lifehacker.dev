@@ -1736,7 +1736,8 @@ backlog:
     brief: "A workflow with `contents: write` that commits and pushes will fire the very event that started it and run forever. The fix is a guard at the top: read the head commit's author with `git log -1 --format='%an'` and exit early when it's your bot (`content-review[bot]`). The failures that stay in: the check needs `fetch-depth: 2` or there's no history to read the author from, and a `[skip ci]` in the commit message is flimsier than the author check because a human can trip it by accident too."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/stop-your-workflow-triggering-itself/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/self-operating-website-06-the-editors-eye/
     source_title: "The Self-Operating Website 06: The Editor's Eye"
