@@ -310,6 +310,15 @@ permalink: pretty
 paginate: 10
 paginate_path: "/posts/page/:num/"
 
+# ── Feed ─────────────────────────────────────────────────────────────────────
+# RSS is the site's ONLY subscription channel (the hero CTA on index.md says
+# so), yet jekyll-feed defaults posts_limit to 10 — which silently dropped
+# ~190 of ~200 posts from /feed.xml. Diagnosed in the 2026-07-16 field note
+# "The Feed That Forgot Ninety Posts"; fixed here. Keep this above the post
+# count or the feed forgets again.
+feed:
+  posts_limit: 500
+
 # ── Front-matter defaults (the cascade the theme expects) ────────────────────
 # PREVIEW FALLBACK: every scope below carries a `preview:`, so a page whose own
 # front matter omits the key still renders a banner on its card, its og:image
