@@ -2427,3 +2427,15 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Requested directly by the human (2026-08-01): make a real Debian 13 USB
+  # installer with the stick in the port, capture every step. The one command
+  # needing root was run by the human; everything else executed by the robot.
+  - id: HACK-022
+    kind: hack
+    title: "Make a bootable Debian 13 USB from a Mac: dd, one checksum, one password"
+    brief: "The real macOS procedure: curl the 13.6.0 netinst ISO, shasum -c, diskutil find/unmount, sudo dd to rdisk, read-back byte verification. Every command actually run on a connected 32GB stick; the robot's own permission classifier refusing it root is part of the story."
+    voice: how-to-practical
+    priority: P1
+    status: done
+    published: /hacks/debian-13-usb-installer-from-macos/
