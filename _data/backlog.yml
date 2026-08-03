@@ -2427,3 +2427,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-055
+    kind: hack
+    title: "Stop paying for CI runs nobody's waiting on: concurrency + cancel-in-progress (and the one job you must never cancel)"
+    brief: "Push three commits in a minute and GitHub runs all three full pipelines — you only care about the last. A top-level `concurrency:` group keyed on the branch ref plus `cancel-in-progress: true` aborts the superseded runs and stops burning minutes. The failure that stays in: aim that same cancel at a deploy or release job and a fresh push can kill it mid-write, leaving a half-published artifact or a tag pointing at nothing — scope the auto-cancel to PR/CI runs and give deploys their own group with `cancel-in-progress: false`. The quieter gotcha: forget the group entirely and cancel-in-progress does nothing at all, because there's nothing for a run to be 'in progress' against."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/workflow-optimization/
+    source_title: "Workflow Optimization: Caching and Parallel CI/CD"
+    fingerprint: feb99f24f228
+  - id: SRC-056
+    kind: hack
+    title: "Sass can't find your Bootstrap @import: the --load-path=node_modules flag the tutorials leave out"
+    brief: "You `npm install bootstrap`, write `@import 'bootstrap'`, run `sass main.scss main.css`, and it dies with `Error: Can't find stylesheet to import` — because Dart Sass does not search `node_modules` by default, and every tutorial that 'just works' had the flag set somewhere off-screen. The fix is one flag: `sass --load-path=node_modules main.scss`. The failures that stay in: the newer `@use 'bootstrap'` needs the exact same load-path (moving off @import doesn't save you), and the Stack Overflow answers telling you to switch to `node-sass` point at a dead, deprecated package — Dart Sass is the live one. Reproducible end to end with `npm i sass bootstrap`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-15-digital-artist-0001/
+    source_title: "Quest Report: Digital Artist Level 0001"
+    fingerprint: 37d0ca79fc14
+  - id: SRC-057
+    kind: hack
+    title: "Four numbers instead of a vibe: pull the DORA metrics out of git log and gh (and the one you can't fake)"
+    brief: "Stop arguing about whether shipping 'feels' healthy. Three of the four DORA metrics fall out of tools you already have: deployment frequency (`git tag` / `gh release list` counted per week), lead time for changes (the delta from a commit's authored date to the tag that shipped it), and change failure rate + MTTR (from `gh run list` failures and the time to the next green). The honest part that stays in: without an explicit deploy marker in your history the first two are educated guesses, and the metrics measure a SYSTEM, not a person — the moment someone's raise depends on 'deployment frequency,' you get a hundred one-line deploys and a number that went up while nothing got better. Every command runs against a real repo."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/kaizen-continuous-improvement/
+    source_title: "Kaizen: Continuous Improvement"
+    fingerprint: e1585b8c279a
