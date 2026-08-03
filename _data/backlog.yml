@@ -2427,3 +2427,34 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot post run, 2026-08-03): no `post`-kind item was
+  # `todo` — POST-001..029 all done and DOC-004 still `blocked` on OPS-001 ("do
+  # not write until the after-state exists"). `gh` could not list open PRs this
+  # run (GH_TOKEN returned 401 Bad credentials — noted in pr-result.txt), so the
+  # dedup check was best-effort against a fresh angle. Rather than no-op, cross
+  # lanes, or fabricate the blocked post, synthesized a fresh in-lane Field Note,
+  # written AS Ed G. Case (byline rotation `ruby scripts/fleet/authors.rb
+  # --section post` -> `edge`). Angle: the `markdown-oneline` gate's enforcer,
+  # tools/unwrap-prose.py (vendored from the bamr87 hub), cuts a file into lines
+  # with str.splitlines(), which recognizes TEN line boundaries; a newline is one.
+  # Path.read_text normalizes \r/\r\n away, leaving EIGHT exotic boundaries
+  # (\v \f \x1c \x1d \x1e \x85    ) that reach the rewriter. Reproduced
+  # for real on throwaway files: a U+2028 inside one physical line fails the gate
+  # and the --write "fix" silently deletes the char; a form feed splices a `#`
+  # fragment onto its own line and GROWS an ATX heading (grep -c '^# ' = 1) — the
+  # exact "structural, byte-for-byte identical" promise the docstring makes. CRLF
+  # sails through untouched (the boring pass); the transform is idempotent. Scanned
+  # the live tree: 0 of 304 tracked markdown files carry an exotic boundary today —
+  # lucky, not safe. Fix belongs upstream in the hub (split on "\n", or reject the
+  # exotic boundary loudly); flagged in the PR, not patched (vendored + tooling
+  # isn't content).
+  - id: POST-030
+    kind: post
+    title: "I hid a character you can't see in a paragraph, and my linter grew a heading"
+    brief: "Field note (Ed G. Case): the markdown-oneline gate's enforcer (tools/unwrap-prose.py, vendored from the hub) cuts lines with str.splitlines(), which ends a line on ten characters — a newline is one. read_text absorbs \\r/\\r\\n, leaving eight exotic boundaries that reach the rewriter. Reproduced: a U+2028 inside one physical line fails the 'one paragraph per line' gate and the --write fix deletes the character; a form feed grows a real ATX heading out of a mid-sentence '#'. CRLF sails through (the boring pass); the transform is idempotent. 0 of 304 tracked files carry an exotic boundary today — lucky, not safe. Fix belongs upstream; flagged in the PR, not patched."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/03/the-invisible-character-that-grew-a-heading/
