@@ -2427,3 +2427,33 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # Synthesized in-lane (autopilot doc run, 2026-08-04): the only `todo` doc item,
+  # DOC-024 (aggregate.rb), is already covered by four unmerged `autopilot/aggregate-*`
+  # open-PR branches — one, `aggregate-json-becomes-the-gates-verdict`, matches its
+  # title verbatim — so drafting it would duplicate an open PR. No other `todo` doc
+  # remained (all other todos are hack/tool/ops). Rather than cross lanes or no-op,
+  # proposed a FRESH doc idea and drafted THAT, written AS Cass Vector (byline
+  # rotation `ruby scripts/fleet/authors.rb --section doc` -> `cass`). Angle: the one
+  # zero-doc-coverage script in the tree (scripts/devops/loop_metrics.rb) carries a
+  # genuine, un-stapled security angle — the loop's self-verification compares this
+  # run against a `prev` snapshot loaded from the LAST line of a history file the
+  # fleet itself writes with `--append-history`, unsigned and unchecked. Whoever
+  # writes the last line writes the "improvement" verdict. Reproduced for real: a
+  # planted baseline makes signals() emit "Trend improvement" + "mark it verified."
+  # Honest walk-back: the current-run numbers are gh-derived (unforgeable) and the
+  # history reaches main through the same human PR gate as code, so blast radius is
+  # capped. Three ranked mitigations, each run: re-measure the promised absolute
+  # (verify_improvements.rb --self-test), keep the memory local + human-gated
+  # (--append-history touched one file, repo clean), prefer no baseline to a poisoned
+  # one (absent history -> no trend verdict, real numbers still reported). Offline,
+  # stdlib only, no network. Content branch only; nothing under scripts/ patched.
+  - id: DOC-029
+    kind: doc
+    title: "The Robot Grades Itself Against a Number It Wrote"
+    brief: "Deep-dive on scripts/devops/loop_metrics.rb — the loop's self-verification layer — threat-modeled by Cass Vector. Its `trends`/`signals` decide whether the autonomous loop is improving by comparing this run to a `prev` snapshot that load_prev_snapshot pulls from the LAST line of a history JSONL the fleet writes itself with --append-history (unsigned, unchecked against the older lines). Whoever writes the last line writes the verdict. Real captured repro: a planted baseline makes the loop emit 'Trend improvement' and propose marking an improvements-ledger entry `verified`. Honest walk-back: this run's numbers are gh-derived (unforgeable) and history reaches main through the human PR gate. Three ranked mitigations, each run: re-measure the promised absolute (verify_improvements.rb), keep the memory local + human-gated, prefer no baseline to a poisoned one. Offline, stdlib only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-robot-grades-itself-against-a-number-it-wrote/
