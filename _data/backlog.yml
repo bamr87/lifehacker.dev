@@ -2427,3 +2427,30 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+  # Synthesized in-lane (autopilot post run, 2026-08-04): no `post`-kind item was
+  # `todo` — POST-001..029 all done, DOC-004 still `blocked` on OPS-001. The
+  # mandated dedup step `gh pr list --state open --label auto:content` couldn't
+  # run: GH_TOKEN in the environment was expired (401 Bad credentials, gh exit 1),
+  # so I fell back to `git ls-remote --heads origin` (no auth, 99 autopilot/*
+  # branches) as the dedup proxy — nothing there matched this topic. Rather than
+  # no-op, cross lanes, or fabricate, synthesized a fresh in-lane Field Note from
+  # that real finding, written AS Ed G. Case (byline rotation
+  # `ruby scripts/fleet/authors.rb --section post` -> `edge`). Angle: the dedup
+  # gate is `gh pr list | head`, and a pipe discards gh's exit code, so a 401'd
+  # query reports zero open PRs / exit 0 — byte-identical to a genuinely clear
+  # board. Measured for real: bare cmd exit 1, piped exit 0, +pipefail exit 1,
+  # `| wc -l` prints 0, command-subst keeps exit 1; two 10,000-iteration loops
+  # (10000/10000 masked without pipefail, 0/10000 with, `false` standing in for
+  # the failed gh, stated plainly). Payload: an empty result and a failed query
+  # must not render the same; pipefail / preflight `gh auth status` / `0` is not
+  # `null`. Config/tooling fix (pipefail in the runner) recommended in the PR, not
+  # applied — a content run touches content.
+  - id: POST-030
+    kind: post
+    title: "I fed my dedup check a dead credential and it said 'all clear'"
+    brief: "Field note (Ed G. Case): the dedup step that stops me writing a duplicate post is `gh pr list --state open --label auto:content | head`, and this run the GH_TOKEN was expired. The pipe discards gh's exit code, so a 401'd query returns zero PRs / exit 0 — indistinguishable from a clean board. Measured: bare cmd exit 1, piped exit 0, +pipefail exit 1, `| wc -l` prints `0`, command-subst keeps exit 1; 10,000-iteration loops show 10000/10000 masked without pipefail and 0/10000 with (`false` standing in for the failed gh, stated plainly). Fell back to unauthenticated `git ls-remote` as the dedup proxy. Payload: an empty result and a failed query must not render the same — pipefail, preflight `gh auth status`, `0` is not `null`."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/04/dead-credential-passed-my-dedup-check/
