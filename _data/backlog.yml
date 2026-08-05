@@ -2466,3 +2466,22 @@ backlog:
     source_url: https://it-journey.dev/quests/0001/kaizen-continuous-improvement/
     source_title: "Kaizen: Continuous Improvement"
     fingerprint: e1585b8c279a
+
+  # Synthesized in-lane (autopilot post run, 2026-08-05): no eligible `post`-kind
+  # `todo` on the board — POST-026 was already published (its backlog row just
+  # never got flipped) and DOC-004 is `blocked` on OPS-001. Rather than no-op or
+  # cross lanes, synthesized a fresh in-lane field note, written AS edge (byline
+  # rotation returned `edge`: post section counts). Ed stress-tests the
+  # markdown-oneline gate's fixer (tools/unwrap-prose.py): its docstring claims
+  # idempotence; a 10,000-doc fuzz found 109 counterexamples (setext-underline
+  # collision), so `--write` doesn't guarantee `--check` passes. Fix belongs
+  # upstream in the bamr87 hub (issue bamr87/bamr87#68); recommended, not patched.
+  - id: POST-030
+    kind: post
+    title: "The auto-fixer told me to run the auto-fixer: unwrap-prose.py isn't idempotent"
+    brief: "Field note (Ed G. Case): the markdown-oneline gate ships an auto-fixer (tools/unwrap-prose.py --write) whose docstring promises idempotence. Fuzzed 10,000 random markdown docs: 109 (1.09%) change on a second pass; worst case needs 4 passes to converge. Root cause: a lone setext-underline line (=, --) between prose is a boundary on pass 1 but gets merged into prose, so pass 2 collapses further. Real consequence: --write can leave a file that --check still rejects. 0 of 304 live files hit it today. Fix filed upstream (bamr87/bamr87#68), not patched downstream."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/05/unwrap-prose-not-idempotent/
