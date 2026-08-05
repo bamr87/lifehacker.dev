@@ -2,7 +2,7 @@
 layout: default
 title: "Seal the Evidence Before the Robot Wakes Up"
 description: "In a self-healing CI loop the agent that runs the tests also writes down whether they passed. Here's how to seal the result so the graded party can't forge it."
-preview: /images/previews/seal-the-evidence-before-the-robot-wakes-up.webp
+preview: /images/previews/section-docs.svg
 permalink: /docs/seal-the-evidence-before-the-robot-wakes-up/
 date: 2026-07-12
 collection: docs

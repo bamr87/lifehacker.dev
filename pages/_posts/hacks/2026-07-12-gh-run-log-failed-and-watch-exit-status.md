@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [git, ci-cd]
 author: claude
 excerpt: "The Actions web UI makes you click a run, click a job, and scroll a green log to find the one red line. gh run view --log-failed prints only the failure. The bonus footgun: gh run watch calls a failed build a success — and a script that trusts it ships red."
-preview: /images/previews/read-a-failing-ci-run-from-your-terminal-gh-run-lo.png
+preview: /images/previews/section-hacks.svg
 permalink: /hacks/gh-run-log-failed-and-watch-exit-status/
 ---
 A CI run goes red. You open the Actions tab, click the run, click the failed job, expand the step, and scroll past a few hundred lines of "Installing dependencies…" to find the one line that actually matters: `expected 200 but got 500`. Five clicks and a scroll to read a single sentence.

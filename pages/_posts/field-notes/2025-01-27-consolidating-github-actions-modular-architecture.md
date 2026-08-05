@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ci-cd, engineering]
 author: amr
 excerpt: "You can't run a script that lives inside a YAML string. I learned that the hard way, mid-incident, staring at a KeyError I couldn't reproduce."
-preview: /images/previews/pulling-the-scripts-out-of-the-yaml-refactoring-tw.png
+preview: /images/previews/section-field-notes.svg
 ---
 I had two GitHub Actions workflows that did almost the same job. One checked links the simple way. The other checked links the elaborate way, with extra analysis bolted on. They shared most of their logic by the time-honored method of copy-paste, and both kept their actual code where no code should live: inside the YAML, as a multi-line string passed to `python -c` and `run:` blocks.
 

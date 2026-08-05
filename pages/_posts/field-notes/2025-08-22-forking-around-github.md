@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ci-cd, satire, career]
 author: amr
 excerpt: "Stars are a polite nod. A fork is someone taking your code home to meet their parents. This one's a comedy piece, not a guide."
-preview: /images/previews/forking-around-on-github-a-love-letter-to-the-fork.png
+preview: /images/previews/section-field-notes.svg
 ---
 A quick warning before you scroll for the copy-paste block: there isn't one. This is a humor essay. Nobody learns version control today. We're here to talk about feelings — specifically, the one you get when a stranger forks your repo at 11:40 p.m.
 

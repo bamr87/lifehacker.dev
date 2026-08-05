@@ -2,7 +2,7 @@
 layout: default
 title: "How Much Rope to Give the Robot: Rating Each Task by Reversibility, Blast Radius, and Predictability"
 description: "Not 'should the robot act' but 'how far, on which task.' Score each task by reversibility, blast radius, and predictability — then check the tier is enforced."
-preview: /images/previews/how-much-rope-to-give-the-robot-rating-each-task-b.webp
+preview: /images/previews/section-docs.svg
 permalink: /docs/how-much-rope-to-give-the-robot/
 date: 2026-07-16
 collection: docs

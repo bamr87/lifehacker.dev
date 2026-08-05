@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [engineering, career]
 author: amr
 excerpt: "Everyone sells you the migration. Nobody warns you that the hard part is unlearning the spreadsheet that taught you to think in cells."
-preview: /images/previews/excel-to-python-why-the-mental-leap-matters-more-t.png
+preview: /images/previews/section-field-notes.svg
 ---
 I should warn you up front: this post has no Python in it.
 
