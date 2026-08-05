@@ -143,8 +143,7 @@ Those two are unpushed: squash, reword, drop, reorder them to your heart's conte
 Two seatbelts, both one command. First, prefer the `--fixup`/`--autosquash` flow from earlier over hand-editing the to-do list — the manual edit is where you `drop` the line you meant to `squash`. Second, before you touch anything, drop a bailout ref so the pre-rebase state has a name:
 
 ```console
-$ git branch pre-rebase
-  pre-rebase -> 30c5eb9
+$ git branch pre-rebase          # silent on success — pre-rebase now marks the tip, 30c5eb9
 ```
 
 And if a rebase goes sideways *while it's running* — a conflict, or you just changed your mind — you are never trapped. `git rebase --abort` rewinds the whole thing as if you'd never started:
