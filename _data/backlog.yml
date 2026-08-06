@@ -1525,7 +1525,8 @@ backlog:
     brief: "PyTorch accumulates gradients by design, so a loop missing `optimizer.zero_grad()` adds each batch's gradients on top of the last one's and the loss lurches around instead of falling. The fix is one line at the top of the loop — zero_grad → forward → `loss.backward()` → `optimizer.step()` — and leaving it out sends you chasing a 'bad learning rate' that was never the problem. Reproducible on CPU with a tiny linear model (no GPU needed); the sibling footgun — a model on the GPU can't multiply a tensor still on the CPU — gets a one-line `.to(device)` note."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/loss-bounces-add-zero-grad/
     source: content-scout
     source_url: https://it-journey.dev/quests/1101/deep-learning-frameworks/
     source_title: "Deep Learning Frameworks: PyTorch vs TensorFlow"
