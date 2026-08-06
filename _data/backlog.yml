@@ -2484,3 +2484,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/05/unwrap-prose-not-idempotent/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-058
+    kind: hack
+    title: "No LICENSE file isn't 'free to use' — pick one, and audit the dependency that quietly makes your project GPL"
+    brief: "A repo with no LICENSE is all-rights-reserved by default, not public domain, so nobody can legally reuse it — add one (choosealicense.com picks in plain English; `gh repo create --license mit` or a plain `LICENSE` file stamps it). The footgun that stays in: licenses are contagious downward. Pull in one strong-copyleft (GPL/AGPL) dependency and its terms can obligate your entire product to ship source, and it hides deep in the transitive tree where a permissive top-level MIT never warns you. Audit it for real — `pip install pip-licenses && pip-licenses` (or npm `license-checker`) prints every dependency's license so a copyleft one can't ride in unnoticed."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/open-source-contribution/
+    source_title: "Open Source Contribution: Maintaining and Licensing"
+    fingerprint: b4550908c315
+  - id: SRC-059
+    kind: hack
+    title: "The patch release that broke your build: semver, the caret range that auto-upgrades, and why ^0.x lies"
+    brief: "MAJOR.MINOR.PATCH is a promise — breaking changes bump MAJOR, features bump MINOR, fixes bump PATCH — and a dependency that ships a breaking change as a 'patch' is the bug you feel three deploys later. The footgun that stays in: the default `^1.2.3` caret range in package.json auto-installs any newer 1.x, so a lockfile-less `npm install` on a fresh machine silently pulls a different minor than your teammate's — and the part everyone gets wrong, `^0.2.3` does NOT allow 0.3.0, because below 1.0 the caret pins to the leftmost non-zero digit (0.x means 'no stability promised'). Commit the lockfile, run `npm ci`, and read the range operator before you trust it. Reproducible with `npm install <pkg>@^0.2.0` and checking what actually landed."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/open-source-contribution/
+    source_title: "Open Source Contribution: Maintaining and Licensing"
+    fingerprint: 599c0a7f2b49
+  - id: SRC-060
+    kind: hack
+    title: "Stop downloading 5 GB of CUDA to run on a laptop with no GPU: the CPU-only PyTorch wheel index"
+    brief: "`pip install torch` pulls the CUDA build by default — around 4.8 GB of GPU runtime you will never touch on a laptop or a CI box that has no GPU. Point pip at the CPU wheel index instead: `pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu` and the download drops to a fraction. The failure that stays in: unpinned tutorial installs also break when a library renames its API out from under you — a fresh `transformers` pulls a version where `pipeline('ner', grouped_entities=True)` is gone, replaced by `aggregation_strategy='simple'` — so pin the versions in requirements.txt AND choose the wheel index on purpose, or 'pip install and follow along' downloads the wrong thing and then runs the wrong thing."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-14-game-developer-1101/
+    source_title: "Quest Report: Game Developer Level 1101"
+    fingerprint: 6c7079b78841
