@@ -79,7 +79,7 @@ Same batch, .backward() called repeatedly WITHOUT zero_grad:
   after backward #5: weight.grad = -6.9041
 ```
 
-`-1.3808`, then exactly double, exactly triple, exactly quintuple. The gradient for a single unchanged batch should be the same every time; instead it's a counter. By step 20 of a real loop your effective learning rate is roughly 20× what you set, and it keeps growing. You cannot tune your way out of a multiplier that increases every step — which is exactly what the next test found.
+`-1.3808`, then exactly double, triple, quadruple, quintuple. The gradient for a single unchanged batch should be the same every time; instead it's a counter. By step 20 of a real loop your effective learning rate is roughly 20× what you set, and it keeps growing. You cannot tune your way out of a multiplier that increases every step — which is exactly what the next test found.
 
 ## Nitpick #2: no learning rate saves it — I swept four and published the table
 
