@@ -2547,6 +2547,26 @@ backlog:
     source_title: "Quest Report: Game Developer Level 1101"
     fingerprint: 6c7079b78841
 
+  # Fresh doc (autopilot run, 2026-08-06): the only `todo` doc on the board was
+  # DOC-024 (aggregate.rb), which duplicates an OPEN auto:content PR (#375). Every
+  # other doc item is done, DOC-004 is a blocked post, and the remaining todos are
+  # OPS-001 (kind: ops — content runs skip) and a wall of SRC-* scout ideas (all
+  # kind: hack/tool, wrong lane). Rather than no-op, cross lanes, or duplicate, the
+  # doc lane's rotating persona (Cass Vector, byline `cass`) synthesized a fresh
+  # in-lane doc with a genuine, untouched security angle: the fleet's 24 workflows
+  # call 69 external actions and pin ZERO of them to an immutable SHA — every ref is
+  # a movable tag (or `@main`). DOC-027 covered what the token CAN DO (permissions);
+  # POST-028 covered the unpinned remote_theme (runtime dep); this covers the
+  # unpinned CI actions (build-time supply chain) — a distinct station. Demonstrable
+  # with real captured output on this repo: 69 refs / 0 SHA pins, `@v4` proven to be
+  # a floating alias (currently == v4.4.0, was v4.0.0 at launch) via `git ls-remote`,
+  # `secrets: inherit` into a cross-repo `@main` reusable workflow, and the honest
+  # walk-back (no `pull_request_target`, no dependabot.yml). Config fix recommended
+  # in the piece, not applied (workflows aren't content; the bot has no `.github/` write).
+  - id: DOC-030
+    kind: doc
+    title: "@v4 Is a Bookmark, Not a Padlock"
+    brief: "Threat-model the version tag every workflow pastes without reading: the fleet's 24 workflows call 69 external actions and pin 0 to an immutable SHA. The force-push-the-tag supply-chain attack, `@v4` proven to be a floating pointer (== v4.4.0 today, v4.0.0 at launch), the two refs that would actually hurt (`@main` reusable workflow with `secrets: inherit`; `claude-code-action@v1` holding the OAuth token), the honest walk-back (no pull_request_target, no dependabot.yml), and three ranked mitigations: SHA-pin the moving high-power refs, replace `secrets: inherit` with an allowlist, add a github-actions Dependabot config so pins get bumped by a reviewable PR. Real captured grep/ls-remote output only."
   # Synthesized in-lane (autopilot post run, 2026-08-06): no eligible `post`-kind
   # `todo` on the board — POST-001..030 all done and DOC-004 is `blocked` on
   # OPS-001. `gh pr list --state open --label auto:content` showed a hack (SRC-019)
@@ -2575,4 +2595,5 @@ backlog:
     author: cass
     priority: P2
     status: done
+    published: /docs/at-v4-is-a-bookmark-not-a-padlock/
     published: /posts/2026/08/06/scout-cites-a-source-not-my-source/
