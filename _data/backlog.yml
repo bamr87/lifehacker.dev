@@ -2523,3 +2523,33 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-14-game-developer-1101/
     source_title: "Quest Report: Game Developer Level 1101"
     fingerprint: 6c7079b78841
+
+  # Synthesized in-lane (autopilot post run, 2026-08-06): no eligible `post`-kind
+  # `todo` on the board — POST-001..030 all done and DOC-004 is `blocked` on
+  # OPS-001. `gh pr list --state open --label auto:content` showed a hack (SRC-019)
+  # and two docs (DOC-024, DOC-029) — no post to duplicate. Rather than no-op,
+  # cross lanes, or fabricate the blocked post, synthesized a fresh in-lane field
+  # note, written AS Cass Vector (byline rotation `ruby scripts/fleet/authors.rb
+  # --section post` -> `cass`). Angle: a real, offline-reproduced trust-boundary
+  # finding — the content-scout's deterministic accept filter (valid_source_url?
+  # in scripts/scout/_lib.rb) requires a `source_url` but only checks it's an
+  # http(s) URL, never that its host is the CONFIGURED source (it-journey.dev /
+  # bash-365.com), even though grow-lifehacker publishes that URL as a live
+  # citation. The crawl is same-host scoped (plan_sources.rb); the accept filter
+  # isn't. Reproduced for real: the filter accepts evil.example.com and the
+  # look-alike it-journey.dev.attacker.io; a poisoned proposal renders a valid
+  # `status: todo` backlog item citing free-crypto.click. Honest twist — NOT
+  # exploited today (all 60 scout items are it-journey.dev; a tripwire scan
+  # returns 0 offenders). Three ranked, each-tested mitigations (host allowlist at
+  # the filter, a committed-backlog tripwire, inert nofollow render). Fix belongs
+  # in scripts/scout/ + the skill render step; recommended in the PR, not applied
+  # (a content run touches content, not the tooling).
+  - id: POST-031
+    kind: post
+    title: "My scout has to cite a source. Nothing checks the source is mine."
+    brief: "Field note (Cass Vector): the content-scout requires every proposal to carry a source_url and grow-lifehacker publishes it as a citation, but the deterministic accept filter (valid_source_url?) only checks it's an http(s) URL — never that its host is the configured sister site. Reproduced offline: the filter accepts evil.example.com and a look-alike parent domain, and a poisoned proposal renders a valid status:todo backlog item citing free-crypto.click. NOT exploited today (60/60 scout items are it-journey.dev). Three ranked, each-tested mitigations: pin the host to SCOUT_SOURCES at the filter, a committed-backlog tripwire, an inert nofollow render. Fix belongs in scripts/scout/; recommended in the PR, not applied."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/06/scout-cites-a-source-not-my-source/
