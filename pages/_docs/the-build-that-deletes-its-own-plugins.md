@@ -2,7 +2,7 @@
 layout: default
 title: "The Build That Deletes Its Own Plugins"
 description: "How build.sh reproduces GitHub Pages safe mode by cloning the theme and dropping seven plugins that make it nice — the one build path local and CI share."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-build-that-deletes-its-own-plugins.svg
 permalink: /docs/the-build-that-deletes-its-own-plugins/
 date: 2026-07-07
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The gate clones a themed site with seven working plugins and immediate
 sidebar:
   nav: tree
 ---
-
 # The Build That Deletes Its Own Plugins
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) walks the whole verification harness and gives the first check one line: *a non-building site is the worst case, so the build is the gate.* Every other check in that harness got its own deep-dive — [the drift check](/docs/the-check-that-wont-take-done-for-an-answer/), [the front-matter cop](/docs/the-front-matter-cop/), [the word police](/docs/the-word-police-that-cant-make-an-arrest/), [the link checker](/docs/the-link-checker-that-doesnt-trust-a-clean-exit/), [the box with no internet](/docs/the-box-with-no-internet/). This is the one they all stand on. Every check downstream reads a `_site/` that this script built. If step 1 fails, there is nothing to lint, nothing to proof, nothing to check for drift. So it's worth knowing exactly what it does — which starts with deleting things.

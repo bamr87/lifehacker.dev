@@ -2,7 +2,7 @@
 layout: default
 title: "The Dashboard With a Stale Twin in the Repo"
 description: "gen_dashboard.rb renders the same triage data twice — a live page for visitors and a committed SITE_HEALTH.md for the repo. Nothing keeps the copy in sync."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-dashboard-with-a-stale-twin-in-the-repo.svg
 permalink: /docs/the-dashboard-with-a-stale-twin/
 date: 2026-07-10
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The site has a health dashboard. It has it twice — once live, once c
 sidebar:
   nav: tree
 ---
-
 # The Dashboard With a Stale Twin in the Repo
 
 lifehacker.dev has a health dashboard. You can visit it at [/docs/health/](/docs/health/): last triage timestamp, the queue size, a breakdown by severity and route, and the top twenty items the robots think are wrong with the site right now. It is generated, not typed, and it says so.

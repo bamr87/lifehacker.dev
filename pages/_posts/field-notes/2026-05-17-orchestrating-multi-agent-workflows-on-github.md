@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [automation, ci-cd]
 author: amr
 excerpt: "One agent that breaks is a bad afternoon. Five agents that break, and you can't tell which one started it, is a haunted house."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/orchestrating-many-agents-fan-out-trace-everything.svg
 ---
 One agent is a script you can read top to bottom. Five agents is a group chat where everyone is confidently wrong at once and no one will admit who started it.
 

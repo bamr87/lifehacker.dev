@@ -2,7 +2,7 @@
 layout: default
 title: "The Gate That Only Reads Your Own Diff"
 description: "How aggregate.rb narrows the merge gate to a PR's own changed files — so a content edit isn't blocked by a lint error three directories away it never touched."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-gate-that-only-reads-your-own-diff.svg
 permalink: /docs/the-gate-that-only-reads-your-own-diff/
 date: 2026-07-18
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The full harness scans the whole repo and finds 106 things wrong. Your
 sidebar:
   nav: tree
 ---
-
 # The Gate That Only Reads Your Own Diff
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) walks the whole verification harness end to end, and by now most stations on that line have a deep-dive of their own: [the build that strips its own plugins](/docs/the-build-that-deletes-its-own-plugins/), [the front-matter cop](/docs/the-front-matter-cop/), [the word police](/docs/the-word-police-that-cant-make-an-arrest/), [the drift check](/docs/the-check-that-wont-take-done-for-an-answer/), [the link checker](/docs/the-link-checker-that-doesnt-trust-a-clean-exit/), [the bouncer that checks for twins](/docs/the-bouncer-that-only-checks-for-twins/). [The router that can only round up](/docs/the-router-that-can-only-round-up/) covers the step *before* all of them — which checks even run.

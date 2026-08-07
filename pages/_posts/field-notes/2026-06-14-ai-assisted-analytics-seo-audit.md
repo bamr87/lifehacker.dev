@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [jekyll, ci-cd, engineering]
 author: amr
 excerpt: "I connected the data source, asked for the numbers, and the numbers were a lie. The first real win from analytics was finding out the analytics were broken."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/the-first-thing-analytics-told-me-was-that-the-ana.svg
 ---
 I had Google Analytics installed on this site for months and never once looked at it. That is the most honest sentence in this post. The dashboard was there, collecting numbers, and I treated it the way I treat a smoke detector: I assumed silence meant everything was fine.
 
