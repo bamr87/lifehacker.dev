@@ -1,8 +1,6 @@
 # scripts/preview
 
-The Trace Bloom preview-banner renderer. Dependency-free JavaScript (Node ≥ 18,
-zero npm packages) — it runs on a bare CI runner, on a laptop with no bundle,
-and inside a browser.
+The Trace Bloom preview-banner renderer. Dependency-free JavaScript (Node ≥ 18, zero npm packages) — it runs on a bare CI runner, on a laptop with no bundle, and inside a browser.
 
 - **What it is and why:** [`docs/PREVIEW-IMAGES.md`](../../docs/PREVIEW-IMAGES.md)
 - **The aesthetic:** [`docs/TRACE-BLOOM.md`](../../docs/TRACE-BLOOM.md)
@@ -29,8 +27,7 @@ ruby scripts/ci/lint_preview.rb                     # the gate
 ## Rules that are not style preferences
 
 1. **Seed order is a contract.** `deriveParams` samples the parameter space in a
-   fixed order; inserting a `pick()` above an existing one re-rolls every banner
-   on the site. Append, never insert.
+fixed order; inserting a `pick()` above an existing one re-rolls every banner on the site. Append, never insert.
 2. **Bump `GENERATOR` in `lib/svg.mjs`** whenever the visual contract changes.
    That version is what makes `--all` refresh existing art instead of skipping it.
 3. **Never use a string replacement on front matter.** `$1`/`$&` expand. See the
@@ -40,5 +37,4 @@ ruby scripts/ci/lint_preview.rb                     # the gate
 5. **No fallback rung.** If art cannot be made, fail loudly. A pipeline that
    silently degrades to a generic gradient is exactly what this replaced.
 
-After changing `lib/` or `design.json`: re-run `build-lab.mjs`, regenerate with
-`--all --force`, and eyeball a contact sheet before committing.
+After changing `lib/` or `design.json`: re-run `build-lab.mjs`, regenerate with `--all --force`, and eyeball a contact sheet before committing.
