@@ -29,7 +29,7 @@ require_relative '_lib'
 require 'time'
 require 'set'
 
-CHECK_FILES = %w[frontmatter drift brand prime-directive htmlproofer build]
+CHECK_FILES = %w[frontmatter drift brand prime-directive htmlproofer build artifacts]
 SEV_ORDER = { 'error' => 0, 'warning' => 1, 'info' => 2 }.freeze
 
 findings = []
