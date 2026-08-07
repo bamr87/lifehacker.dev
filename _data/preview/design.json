@@ -1,0 +1,78 @@
+{
+  "_comment": "Trace Bloom design tokens. JSON so BOTH Jekyll (_data/preview/design) and the Node renderer (scripts/preview/) read the same file — see docs/PREVIEW-IMAGES.md and docs/TRACE-BLOOM.md. Editing a palette here re-skins every regenerated banner.",
+
+  "canvas": { "width": 1536, "height": 1024 },
+
+  "type": {
+    "sans": "Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "mono": "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+    "headline": { "size": 92, "leading": 1.1, "weight": 700, "tracking": -2, "maxLines": 4 },
+    "eyebrow":  { "size": 26, "weight": 600, "tracking": 6 },
+    "byline":   { "size": 24, "weight": 500, "tracking": 1 }
+  },
+
+  "_comment_safe": "SAFE BAND. The theme renders cards as background-size:cover at 120-150px (home/cover.html), so a 3:2 banner is centre-cropped to as narrow as 2.5:1 — only the middle 60% of the height survives. og:image (1.91:1) keeps ~78%. Every glyph must sit inside safeTop..safeBottom or it is cut off in the grid. scripts/ci/lint_preview.rb enforces this.",
+  "layout": {
+    "margin": 96,
+    "plateWidth": 0.56,
+    "scrimStop": 0.72,
+    "safeTop": 0.20,
+    "safeBottom": 0.80
+  },
+
+  "motion": {
+    "sweepSeconds": 2.6,
+    "buckets": 14,
+    "breatheSeconds": 7
+  },
+
+  "sections": {
+    "hacks": {
+      "label": "Hacks",
+      "lattice": "manhattan",
+      "palette": {
+        "bg0": "#05070d", "bg1": "#0b1020", "grid": "#1b2b44",
+        "cool": "#22d3ee", "warm": "#f472b6",
+        "ink": "#eaf6ff", "muted": "#7f9ab8", "accent": "#22d3ee"
+      }
+    },
+    "tools": {
+      "label": "Tools",
+      "lattice": "quantized",
+      "palette": {
+        "bg0": "#0a0614", "bg1": "#170c28", "grid": "#33215a",
+        "cool": "#a78bfa", "warm": "#fbbf24",
+        "ink": "#f6efff", "muted": "#9d8ac4", "accent": "#fbbf24"
+      }
+    },
+    "field-notes": {
+      "label": "Field Notes",
+      "lattice": "organic",
+      "palette": {
+        "bg0": "#060d0c", "bg1": "#0c1a18", "grid": "#1d3a36",
+        "cool": "#2dd4bf", "warm": "#fb7185",
+        "ink": "#eafffb", "muted": "#79a8a1", "accent": "#fb7185"
+      }
+    },
+    "docs": {
+      "label": "Meta",
+      "lattice": "isometric",
+      "palette": {
+        "bg0": "#040a12", "bg1": "#0a1526", "grid": "#17304f",
+        "cool": "#38bdf8", "warm": "#818cf8",
+        "ink": "#e8f3ff", "muted": "#7593b5", "accent": "#38bdf8"
+      }
+    }
+  },
+
+  "_comment_bounds": "Closed parameter space: the algorithm may only wander inside these ranges, because every seed in them was swept for a usable frame. See TRACE-BLOOM.md 'the parameter space must be closed'.",
+  "bounds": {
+    "density":      { "min": 15, "max": 24 },
+    "probes":       { "min": 2,  "max": 4 },
+    "decay":        { "min": 0.16, "max": 0.44 },
+    "interference": { "min": 0.55, "max": 1.0 },
+    "relax":        { "min": 2,  "max": 5 },
+    "drift":        { "min": 0.1, "max": 0.55 },
+    "bloom":        { "min": 0.6, "max": 1.25 }
+  }
+}

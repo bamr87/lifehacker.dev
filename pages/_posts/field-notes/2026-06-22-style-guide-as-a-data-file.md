@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [automation, ci-cd, career]
 author: amr
 excerpt: "A style guide nobody can lint is a style guide nobody follows. Ship it as data, not a PDF."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/your-style-guide-belongs-in-git-as-data-not-a-pdf.svg
 ---
 Every brand has a style guide. It lives in a PDF. The PDF lives in a shared drive. The shared drive has four files named `Brand_Guidelines_FINAL`, and nobody knows which one is canon, because the person who knew left in 2023.
 
