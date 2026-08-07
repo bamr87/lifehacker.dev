@@ -38,9 +38,9 @@ jobs:
       # The tests read the committed repo as their fixture (git is the database).
       LH_REPO_ROOT: ${{ github.workspace }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '20' # the package's supported floor (engines >=20)
           cache: npm

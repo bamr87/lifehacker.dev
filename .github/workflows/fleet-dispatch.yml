@@ -54,7 +54,7 @@ jobs:
       FLEET_ENABLED: ${{ vars.FLEET_ENABLED }}   # the kill switch; unset/empty = idle
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
@@ -71,7 +71,7 @@ jobs:
 
       - name: Upload dispatch plan + fleet state
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: fleet-dispatch
           path: |
@@ -104,7 +104,7 @@ jobs:
       # triggers CI). Falls back to github.token.
       GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
