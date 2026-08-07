@@ -26,6 +26,28 @@ SPECS = [
 COMMON = %w[title description date author excerpt tags] # hacks/tools/posts
 findings = []
 
+# --- Changed-file scoping ----------------------------------------------------
+# Mirror lint_brand.rb's explicit-list scoping so the MCP (and parallel CI) can
+# validate ONE draft with a single-file call instead of globbing all four dirs
+# and post-filtering. Resolution: LH_FRONTMATTER_CHANGED_FILES, else the shared
+# LH_CHANGED_FILES (the content-PR whole-report scope). The value is a path to a
+# newline-list file OR an inline whitespace/comma list. Unset => nil => full
+# scan (behavior identical to before). A single content path scopes to itself and
+# is never mis-read as a list file.
+def lh_fm_clean_paths(text)
+  text.to_s.split(/\r?\n/).map { |p| p.strip.sub(%r{\A\./}, '') }.reject(&:empty?)
+end
+
+def lh_fm_scope
+  raw = ENV['LH_FRONTMATTER_CHANGED_FILES'].to_s.strip
+  raw = ENV['LH_CHANGED_FILES'].to_s.strip if raw.empty?
+  return nil if raw.empty?
+  listfile = File.file?(raw) && !raw.match?(%r{\A(?:\./)?pages/_\w+/.+\.md\z})
+  lh_fm_clean_paths(listfile ? File.read(raw, encoding: 'UTF-8') : raw.gsub(/[\s,]+/, "\n"))
+end
+SCOPE = lh_fm_scope
+warn "[frontmatter] scope: #{SCOPE ? "#{SCOPE.size} changed file(s)" : 'full repo'}"
+
 def present?(v)
   return false if v.nil?
   return !v.empty? if v.respond_to?(:empty?)
@@ -34,6 +56,7 @@ end
 
 SPECS.each do |spec|
   Dir.glob(File.join(LH::ROOT, spec[:dir], '*.md')).sort.each do |path|
+    next if SCOPE && !SCOPE.include?(LH.rel(path))
     fm, = LH.parse(path)
     rel = LH.rel(path)
 
