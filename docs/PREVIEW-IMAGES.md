@@ -83,13 +83,16 @@ What it will **not** touch: bespoke art. An article pointing at a hand-picked sc
 | Rule | Severity | Catches |
 |---|---|---|
 | `missing-preview-file` | error | stamp resolves to nothing — card renders blank |
+| `missing-body-image` | error | an article embeds preview art that isn't there |
 | `shared-preview` | error >2, warn 2 | one image doing duty for many articles |
-| `textless-banner` | error | no headline — unreadable at 300px |
+| `textless-banner` | error | cover art with no headline — unreadable at 300px |
 | `unsafe-svg` | error | script / foreignObject / external reference |
 | `preview-outside-safe-band` | warning | type the card crop cuts off |
-| `orphan-preview` | warning | art nothing references |
+| `orphan-preview` | warning | art nothing references, in front matter or body |
 
 Two `shared-preview` warnings are expected and correct: two grandfathered pairs of legacy posts share a photo apiece.
+
+**Cover art vs. exhibits.** `textless-banner` and `preview-outside-safe-band` apply only to art an article stamps as `preview:` — that is what has to survive a 300px card. Art embedded in a *body* is an exhibit and is held to `unsafe-svg` only: `docs/the-plugin-that-isnt-a-plugin` deliberately displays the retired pipeline's textless template output as evidence of what it produced. The first version of this lint called that file an orphan, it got deleted, and the page shipped a broken image — which is why `orphan-preview` now counts body mentions and `missing-body-image` exists. Note the deliberate asymmetry: `missing-body-image` matches only real `![](…)` / `<img>` embeds outside code fences, because these articles are *about* the preview pipeline and their code blocks are full of example paths; `orphan-preview` treats a mention *anywhere*, code fences included, as reason enough never to delete the file.
 
 ## The explorer
 

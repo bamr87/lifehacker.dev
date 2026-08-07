@@ -47,13 +47,32 @@ end
 
 users = Hash.new { |h, k| h[k] = [] }
 seen = {}
+# Art embedded in an article BODY is not cover art, but it is still in use.
+# `docs/the-plugin-that-isnt-a-plugin` embeds the old template banner on purpose,
+# as an exhibit of what the retired pipeline produced — and the first version of
+# this lint called it an orphan and had it deleted, which broke the page.
+#   body_embeds  — real `![](…)` / <img src> embeds. A missing one is a broken
+#                  image on the page, so it is an error.
+#   body_mentions — the path appearing anywhere at all, code blocks included.
+#                  Not a render, but still a reason never to delete the file.
+# The split matters: these articles are *about* the preview pipeline, so their
+# code blocks are full of example paths like `/images/previews/foo.png` that
+# must not be mistaken for broken images.
+body_embeds = Hash.new { |h, k| h[k] = [] }
+body_refs = Hash.new { |h, k| h[k] = [] }
+PREVIEW_PATH = %r{/(?:assets/)?images/previews/[A-Za-z0-9._-]+\.(?:svg|png|jpe?g|webp)}i
 
 SOURCES.each do |dir|
   Dir.glob(File.join(LH::ROOT, dir, '*.md')).sort.each do |path|
     next if seen[path]
 
     seen[path] = true
-    fm, = LH.parse(path)
+    fm, body = LH.parse(path)
+    body.to_s.scan(PREVIEW_PATH).each { |ref| body_refs[ref] << LH.rel(path) }
+    prose = LH.strip_code(body.to_s)
+    prose.scan(/!\[[^\]]*\]\((#{PREVIEW_PATH})[^)]*\)|<img[^>]+src=["'](#{PREVIEW_PATH})["']/i).each do |md, html|
+      body_embeds[md || html] << LH.rel(path)
+    end
     next unless fm
 
     rel = LH.rel(path)
@@ -70,6 +89,17 @@ SOURCES.each do |dir|
                                      'and the article banner all render blank. Run ' \
                                      'scripts/preview/generate.mjs -f <file>')
   end
+end
+
+# Body-embedded art that does not resolve is exactly the break this lint caused
+# once: htmlproofer catches it only after a full build, which is minutes later.
+body_embeds.each do |ref, articles|
+  next if resolve(ref)
+
+  findings << LH.finding(check_id: 'preview', severity: 'error',
+                         rule: 'missing-body-image', file: articles.first,
+                         evidence: "body embeds `#{ref}`, which resolves to no file — the page renders a " \
+                                   "broken image (also seen #{articles.size}x)")
 end
 
 users.each do |value, articles|
@@ -89,9 +119,13 @@ end
 Dir.glob(File.join(LH::ROOT, PREVIEW_DIR, '*.svg')).sort.each do |path|
   rel = LH.rel(path)
   svg = LH.read(path)
-  referenced = users.keys.any? { |v| resolve(v) == path }
+  # Cover art = something an article stamps as `preview:`. That is what has to be
+  # legible in a card and inside the safe band. A body-embedded exhibit is held to
+  # the safety rule only.
+  is_cover = users.keys.any? { |v| resolve(v) == path }
+  in_body = body_refs.keys.any? { |v| resolve(v) == path }
 
-  unless svg.include?('<text')
+  if is_cover && !svg.include?('<text')
     findings << LH.finding(check_id: 'preview', severity: 'error',
                            rule: 'textless-banner', file: rel,
                            evidence: 'banner renders no text at all — unreadable as a 300px card and ' \
@@ -108,6 +142,7 @@ Dir.glob(File.join(LH::ROOT, PREVIEW_DIR, '*.svg')).sort.each do |path|
   # Type that falls outside the safe band is cut off by the homepage card crop
   # (background-size: cover at 120px => only the middle 60% survives).
   svg.scan(/<text[^>]*\sy="([\d.]+)"/).flatten.map(&:to_f).each do |y|
+    next unless is_cover
     next if y >= SAFE_TOP && y <= SAFE_BOTTOM
 
     findings << LH.finding(check_id: 'preview', severity: 'warning',
@@ -117,11 +152,12 @@ Dir.glob(File.join(LH::ROOT, PREVIEW_DIR, '*.svg')).sort.each do |path|
     break
   end
 
-  next if referenced
+  next if is_cover || in_body
 
   findings << LH.finding(check_id: 'preview', severity: 'warning',
                          rule: 'orphan-preview', file: rel,
-                         evidence: 'preview art referenced by no article — delete it or stamp it')
+                         evidence: 'preview art referenced by no article — not as a `preview:` stamp and ' \
+                                   'not embedded in any body. Delete it or stamp it.')
 end
 
 errs = LH.write('preview', findings)
