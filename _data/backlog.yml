@@ -2574,3 +2574,40 @@ backlog:
     status: done
     published: /docs/at-v4-is-a-bookmark-not-a-padlock/
     published: /posts/2026/08/06/scout-cites-a-source-not-my-source/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-061
+    kind: hack
+    title: "The cloud VM you deleted is still charging you: kill the orphaned disk, IP, and snapshot the console hides"
+    brief: "You spun up a free-tier VM, ran the tutorial, deleted the instance — and the bill kept climbing, because deleting a VM leaves its attached disk, reserved static IP, and snapshots billing on their own. Hunt them for real (`gcloud compute disks list`, `addresses list`, `snapshots list`; the AWS equivalents are orphaned EBS volumes and unattached Elastic IPs) and delete what nothing references. The other footgun that stays in: a billing 'budget alert' does NOT cap spending — it emails you after the money's already gone; there is no server-side stop button, so the only real brakes are deleting resources and scoping the credential that can create them."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/hello-cloud/
+    source_title: "Hello Cloud: First Steps into the Sky Realm"
+    fingerprint: 633744cb4059
+  - id: SRC-062
+    kind: hack
+    title: "Your scheduled workflow stopped running: cron is UTC, drifts under load, and GitHub disables it after 60 days of silence"
+    brief: "A `schedule:` trigger looks set-and-forget until it isn't. Three surprises stay in: the cron is UTC, not your timezone, so `0 9 * * *` fires at 9am London and lunchtime in New York and you debug a 'wrong time' that was always right; a `* * * * *` every-minute schedule is a lie — GitHub queues scheduled runs on a shared pool and drops or delays them under load, so treat it as best-effort, never a precise clock; and on a repo with no pushes for 60 days GitHub silently disables the scheduled workflow entirely, so the nightly job you were relying on just quietly stopped. The fix stays honest: pick the UTC time on purpose, don't schedule tighter than ~5 minutes, and keep the repo (or the workflow) alive — or move a hard-real-time job off Actions."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/action-triggers/
+    source_title: "Action Triggers (GitHub Actions events)"
+    fingerprint: 8e6ece15e81c
+  - id: SRC-063
+    kind: hack
+    title: "Fork then clone, not clone then confusion: add the upstream remote so your fork doesn't rot"
+    brief: "Forking makes a copy you can push to; cloning the original gives you one you can't. Do it in the right order — fork on GitHub, `git clone` YOUR fork (that's `origin`), then `git remote add upstream <original>` — and now `git fetch upstream && git merge upstream/main` (or `gh repo sync`) keeps your copy current. The failures that stay in: a plain `git pull` reads `origin`, not `upstream`, so a fork left alone silently drifts weeks behind and your 'fresh' branch is built on stale code; and opening a PR from a branch you forgot to update means GitHub shows conflicts that are really just your months-old base — the fix is rebasing on an up-to-date `upstream/main` before you push, not editing the diff."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/hello-noob/
+    source_title: "Hello n00b (GitHub account creation and forking)"
+    fingerprint: aaa7111584fd
