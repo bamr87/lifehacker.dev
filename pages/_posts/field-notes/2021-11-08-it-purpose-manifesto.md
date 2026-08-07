@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [career]
 author: amr
 excerpt: "You probably landed here mid-crisis, looking for the one command that unsticks you. I don't have it. I have the map I keep building because nobody handed me one."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/an-it-manifesto-why-i-keep-building-the-map-i-wish.svg
 ---
 You probably landed here mid-crisis.
 

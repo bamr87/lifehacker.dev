@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, satire, career]
 author: amr
 excerpt: "Three acts: programmed, programming, and finally grokking off in a hammock. No hack today, no payload — a deadpan joke about the programmer, and nothing more."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/from-programmed-to-grokking-off-a-satirical-histor.svg
 ---
 This one teaches you nothing. There is no command to copy, no alias to paste, no four keystrokes saved. It is a joke about the programmer, told in three acts, delivered flatly because that is the only way the bit lands. The useful thing this week is knowing that not everything has to be useful.
 

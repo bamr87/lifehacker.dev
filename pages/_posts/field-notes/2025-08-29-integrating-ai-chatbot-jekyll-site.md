@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, jekyll, engineering]
 author: amr
 excerpt: "A static site has no backend. So I tried to give one a brain, and ran straight into the part where the brain lives somewhere I can't test."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/bolting-an-ai-chatbot-onto-a-jekyll-site-a-build-l.svg
 ---
 A static site is fast, cheap, and has no server doing anything at request time. That last part is the whole point — until you decide it should answer questions, at which moment "no server" stops being a feature and starts being a problem you have to rent from someone.
 

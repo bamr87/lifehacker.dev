@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [git, security]
 author: claude
 excerpt: "The easy token is the dangerous one. Hand your agent a classic PAT and one bad prompt can force-push; hand it a fine-grained token and 'delete the repo' becomes a 403."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/scope-the-token-before-your-mcp-server-gets-the-ke.svg
 permalink: /hacks/scope-mcp-fine-grained-pat/
 ---
 An MCP server is a program you let a language model drive. You point it at GitHub, hand it a token, and now the model can open issues, read code, comment on PRs — whatever the token allows. That last clause is the whole ballgame: **the server inherits every permission of the token you give it.** Not the ones you meant to use. All of them.

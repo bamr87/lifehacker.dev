@@ -29,7 +29,11 @@ require_relative '_lib'
 require 'time'
 require 'set'
 
-CHECK_FILES = %w[frontmatter drift brand prime-directive htmlproofer build]
+# A check that is not listed here writes its JSON and is then silently dropped:
+# it never reaches findings.jsonl, the PR comment, or the gate. Adding a lint to
+# run-all.sh is therefore only half the wiring — add it here too, or it runs for
+# nobody. (`preview` was added with scripts/ci/lint_preview.rb.)
+CHECK_FILES = %w[frontmatter drift brand prime-directive preview htmlproofer build]
 SEV_ORDER = { 'error' => 0, 'warning' => 1, 'info' => 2 }.freeze
 
 findings = []

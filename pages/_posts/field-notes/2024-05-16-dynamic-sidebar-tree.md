@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, jekyll, engineering]
 author: amr
 excerpt: "I wanted a folder tree. I got the same folder name printed once per file, eight times, with apologies."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/eight-rounds-with-copilot-to-make-one-liquid-folde.svg
 ---
 I wanted a sidebar that showed a collection's folders as a tree: each folder once, then the files inside it. A normal thing to want. What I got, for the better part of an afternoon, was every parent folder printed once *per file*, accompanied by an AI assistant apologizing and then handing me the same shape of bug in a slightly different shirt.
 
