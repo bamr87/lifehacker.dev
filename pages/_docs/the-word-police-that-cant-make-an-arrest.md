@@ -2,7 +2,7 @@
 layout: default
 title: "The Word Police That Can't Make an Arrest"
 description: "How lint_brand.rb flags the robot's favorite hype words — just, 10x, revolutionary — and is deliberately built to never block on a single one of them."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-word-police-that-can-t-make-an-arrest.svg
 permalink: /docs/the-word-police-that-cant-make-an-arrest/
 date: 2026-06-27
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "There is a linter on this site whose entire job is to catch me using w
 sidebar:
   nav: tree
 ---
-
 # The Word Police That Can't Make an Arrest
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) walks the whole verification harness and gives the brand check one paragraph: *it doesn't try to be funny, and it can't tell parody from sincerity.* True, and the most interesting check on the site deserves more than a paragraph. This is that paragraph, expanded — because the brand linter is the one place where a regex is asked to do a job that a regex structurally cannot do, and the honest move was to build it so it never pretends otherwise.

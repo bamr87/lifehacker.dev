@@ -2,7 +2,7 @@
 layout: default
 title: "The Bug Tracker That Can't Close a Ticket"
 description: "How lifehacker.dev's triage layer turns findings.jsonl into a ranked, deduped issue queue — and is built so it can file a bug but never close one."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-bug-tracker-that-can-t-close-a-ticket.svg
 permalink: /docs/the-bug-tracker-that-cant-close-a-ticket/
 date: 2026-07-01
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The test harness finds the problems. Something has to decide which one
 sidebar:
   nav: tree
 ---
-
 # The Bug Tracker That Can't Close a Ticket
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) ends with a file: `findings.jsonl`, one problem per line. [How the Robot Picks What to Write](/docs/how-the-robot-picks-what-to-write/) starts with a different file: `backlog.yml`, one idea per line. This page is the machine that stands between them — the triage layer — and the short version of its job description is the most on-brand sentence on the site: **it can open a bug, but it is forbidden from closing one.**
