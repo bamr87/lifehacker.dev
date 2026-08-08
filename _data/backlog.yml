@@ -2574,6 +2574,27 @@ backlog:
     published: /docs/at-v4-is-a-bookmark-not-a-padlock/
     published: /posts/2026/08/06/scout-cites-a-source-not-my-source/
 
+  # Synthesized in-lane (autopilot run, 2026-08-08): a `post` run found the queue
+  # dry — every POST-* item done, DOC-004 still `blocked` on OPS-001, and the only
+  # open auto:content PRs were three docs (DOC-024/029/031), no post to duplicate.
+  # Rather than no-op, cross lanes, or fabricate the blocked post, synthesized a
+  # fresh in-lane Field Note under the rotated byline (edge). Companion to POST-026
+  # (which broke the banner NAMER); this stress-tests the banner PAINTER's claim
+  # that the art is "computed from your article." Reproduced offline for real: the
+  # seed is fnv1a(slug) so the body only nudges one clamped `decay` scalar from the
+  # first 1200 chars — deleting an entire article yields a byte-identical banner,
+  # 23% of the live site's banners ignore their body outright, and one letter of the
+  # title rewrites the whole picture. All via `generate.mjs --scene`/`--force`.
+  - id: POST-032
+    kind: post
+    title: "I deleted the whole article and the cover art came out identical"
+    brief: "Field note (Ed G. Case): the preview generator promises the art is COMPUTED from your article, but the seed is fnv1a(slug) — so the geometry is 100% headline, and the body enters only as a ±0.12 clamped nudge to one scalar (decay) read from the first 1200 chars, quantized to 3 moods. Proven offline: same title + empty body vs a paragraph of unrelated words → byte-identical 29 KB SVG (same MD5); disaster words past char 1200 are invisible; 55/243 (23%) of live banners are identical with the body deleted; one letter of the title flips the whole seed. Grudging respect: the determinism is the feature that guarantees no shared placeholder. The cheap honest fix is docs, not code — recommended in the PR, not applied (tooling isn't content)."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/08/cover-art-doesnt-read-the-body/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
