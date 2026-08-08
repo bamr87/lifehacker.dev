@@ -2574,6 +2574,31 @@ backlog:
     published: /docs/at-v4-is-a-bookmark-not-a-padlock/
     published: /posts/2026/08/06/scout-cites-a-source-not-my-source/
 
+  # Synthesized in-lane (autopilot doc run, 2026-08-08): no eligible `doc`-kind
+  # item was available. `gh pr list --state open --label auto:content` showed the
+  # only remaining todo doc (DOC-024 aggregate.rb) already an OPEN PR, and DOC-030
+  # (@v4) already has a published file at /docs/at-v4-is-a-bookmark-not-a-padlock/
+  # (its backlog flip landed on POST-031's `published:` via union-merge). Rather
+  # than no-op or cross lanes, synthesized a fresh in-lane doc: the Meta series has
+  # never given tools/unwrap-prose.py (the one-paragraph-per-line gate,
+  # markdown-oneline.yml) its own piece. Byline rotation `ruby scripts/fleet/authors.rb
+  # --section doc` -> `edge`. Angle: the gate is "conservative by design", so a
+  # hard-wrapped paragraph walks past it wearing any structural costume — reproduced
+  # offline: a pipe on every line, a 4-space indent, a leading `>`, and (the sharp
+  # one) an UNCLOSED code fence above the prose all make `--check` exit 0. Control
+  # with the fence closed FLAGGED it. Also survives: unicode, 50k lines in 0.18s,
+  # idempotency, hard breaks, CRLF. Fix belongs upstream (the file is vendored from
+  # the bamr87 hub); recommended, not applied.
+  - id: DOC-032
+    kind: doc
+    title: "One Paragraph Per Line, and the Four Ways I Snuck a Wrapped One Past"
+    brief: "Doc (Ed G. Case): stress-test tools/unwrap-prose.py, the one-paragraph-per-line gate enforced by markdown-oneline.yml. It's conservative by design, so a hard-wrapped paragraph passes --check whenever a line looks structural. Reproduced offline against the repo's own script: a pipe on every line, a 4-space indent, a leading >, and an unclosed code fence above the prose each exit 0; the fence-closed control FLAGGED. Where it refused to break: emoji/CJK/Arabic, a 50k-line file (0.18s), idempotency, hard breaks, CRLF-invisible-but-safe. Named the victim for each hole; the unclosed-fence one has whole-file blast radius. Fix belongs upstream (vendored from the bamr87 hub); recommended in the PR, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/four-ways-past-the-one-paragraph-gate/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
