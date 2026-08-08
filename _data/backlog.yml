@@ -2467,6 +2467,30 @@ backlog:
     source_title: "Kaizen: Continuous Improvement"
     fingerprint: e1585b8c279a
 
+  # Synthesized in-lane (autopilot run, 2026-08-05): the only `todo` doc on the
+  # board was DOC-024 (aggregate.rb), already in flight as an open auto:content PR
+  # (autopilot/aggregate-fingerprint-verdict), so it would duplicate. Every other
+  # doc is done; the remaining todos are OPS-001 (kind: ops, skipped) and the P3
+  # SRC-* hack backlog (wrong lane). Rather than no-op, cross collections, or
+  # duplicate, synthesized a fresh in-lane doc — and the byline rotation returned
+  # `cass` (least-used doc persona), so it's a security threat-model. The gap: the
+  # Meta pillar documents the banner PIPELINE (the-plugin-that-isnt-a-plugin) but
+  # never that the banners are SVG — a scriptable XML format an LLM authors for
+  # every post. Cass threat-models the site's own cover art: could a poisoned SVG
+  # execute? Verified on this repo with real captured output — the card embeds via
+  # CSS background-image (image context, scripts inert), nothing inlines a raw SVG,
+  # every committed banner is inert, and the engine's sanitize_svg strips
+  # script/foreignObject/on*/external-href/DOCTYPE before write. Three ranked
+  # mitigations; the missing CSP flagged for upstream, not patched here.
+  - id: DOC-029
+    kind: doc
+    title: "The cover art is a program"
+    brief: "Cass Vector threat-models the site's own preview banners: they're SVG (an XML document that can carry <script>/onload/<foreignObject>), authored by an LLM, one per post. Could a poisoned banner execute in a reader's tab? The answer turns on how the page embeds it — verified on this repo (CSS background-image + og:image = image context, nothing inlined) — plus the engine's sanitize_svg boundary (a prompt is not a control). Real captured grep/code output; three ranked, tested mitigations; the CSP the site still lacks flagged upstream."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-cover-art-is-a-program/
   # Synthesized in-lane (autopilot post run, 2026-08-05): no eligible `post`-kind
   # `todo` on the board — POST-026 was already published (its backlog row just
   # never got flipped) and DOC-004 is `blocked` on OPS-001. Rather than no-op or
