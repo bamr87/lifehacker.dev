@@ -103,7 +103,17 @@ lh_overlay() {
   # build rejects; frontend/ and node_modules/ are build tooling, not pages. The
   # theme's own dev config excludes these, but we build with OUR _config_dev, so
   # remove them here to keep the overlay to real content + delivered theme files.
-  rm -rf "$dest/templates" "$dest/frontend" "$dest/node_modules"
+  #
+  # examples/ is the same class of thing and matters for the same reason: it
+  # holds complete standalone demo SITES (e.g. examples/swerve-of-shore/, added
+  # upstream 2026-08-05) with their own pages/ and their own _includes/. Jekyll
+  # would build those markdown pages as ours, but resolves {% include %} only
+  # against the overlay's ROOT _includes/ — so the demo's
+  # {% include page-header.html %} dies with "Could not locate the included
+  # file". Production never sees this: remote_theme delivers only _layouts,
+  # _includes, _sass and assets, never examples/. Stripping it here is what
+  # keeps the overlay faithful to that.
+  rm -rf "$dest/templates" "$dest/frontend" "$dest/node_modules" "$dest/examples"
   echo "==> overlay ready"
 }
 
