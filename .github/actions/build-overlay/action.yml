@@ -19,7 +19,7 @@ runs:
       shell: bash
       run: echo "ymd=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
     - if: ${{ inputs.fresh-theme != 'true' }}
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: /tmp/zer0-theme
         key: zer0-theme-${{ steps.date.outputs.ymd }}
