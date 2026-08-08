@@ -2634,3 +2634,40 @@ backlog:
     source_url: https://it-journey.dev/quests/0000/hello-noob/
     source_title: "Hello n00b (GitHub account creation and forking)"
     fingerprint: aaa7111584fd
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-064
+    kind: hack
+    title: "Override a theme file in Jekyll without forking the theme: same path wins, and finding the file to copy"
+    brief: "A gem-based Jekyll theme (like the one this very site runs) ships its `_layouts`, `_includes`, and `_sass` inside the gem, not your repo — so to change the header you don't fork the theme, you drop a file at the SAME path in your project and Jekyll's lookup prefers yours. The step everyone misses: you can't edit what you can't see, so find the original first with `bundle info --path <theme>` (or `gem contents <theme>`) and copy that exact file in before you change it. The failures that stay in: copy only half an include and the theme's own partials that referenced the other half break; and a theme version bump changes the upstream file you overrode, so your copy silently goes stale and re-introduces the bug the update fixed — pin the theme version and diff on upgrade."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0100/frontend/
+    source_title: "Frontend: Jekyll Site Building with Bootstrap 5"
+    fingerprint: 67bc454c87f2
+  - id: SRC-065
+    kind: hack
+    title: "One JSON object per line: why JSONL beats a JSON array for logs you append to (and the half-written line a crash leaves)"
+    brief: "When you're appending events — agent traces, findings, a build log — a single big JSON array is the wrong shape: every append means parsing the whole file, deleting the closing `]`, and rewriting it, so two writers or one crash mid-write corrupts the lot. JSONL (one complete JSON object per line) lets you append with a plain `>>`, stream it line-by-line without loading it all, and `grep`/`jq -c` each record on its own. The failures that stay in: a process killed mid-append leaves a truncated final line, so every reader must skip a line that won't parse instead of dying on it; and a stray newline inside a value (a pretty-printed object, an embedded `\\n`) breaks the one-object-per-line contract, so you write compact and validate each line, not the file as a whole."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1011/agentic-multi-agent-observability/
+    source_title: "Multi-Agent System Observability"
+    fingerprint: 03ccf65762bc
+  - id: SRC-066
+    kind: hack
+    title: "curl said 200 and your script marched on: curl exits 0 on a 404 until you pass --fail"
+    brief: "A pipeline that does `curl -o out.json https://api/thing` treats a 404 or a 500 as success, because curl only fails on network errors, not HTTP ones — so it happily saves an error page as your data and the build stays green on garbage. Add `-f/--fail` to make curl exit non-zero on a 4xx/5xx, or read the code yourself with `curl -s -o /dev/null -w '%{http_code}'` and branch on it. The footguns that stay in: plain `--fail` throws away the error body you'd want for debugging (use `--fail-with-body` on modern curl to keep it), and a bare request doesn't follow redirects, so a 301/302 you expected to work returns a 3xx and an empty file until you add `-L`. Testable against any endpoint that returns a chosen status."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/api-fundamentals/
+    source_title: "API Fundamentals: HTTP, Requests, and JSON"
+    fingerprint: b9a7585e78c9
