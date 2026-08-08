@@ -57,7 +57,7 @@ jobs:
       # just logs the quest instead of filing).
       GH_TOKEN: ${{ secrets.IT_JOURNEY_TOKEN || secrets.FLEET_TOKEN || github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0           # full history so collect_merged sees every merge
       - uses: ruby/setup-ruby@v1

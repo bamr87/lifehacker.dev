@@ -56,7 +56,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
@@ -84,7 +84,7 @@ jobs:
           { echo "<!-- improvements-ledger -->"; cat ledger.out; } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload metrics
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: loop-metrics
           path: test-results/loop-metrics.json
@@ -114,7 +114,7 @@ jobs:
       # FLEET_TOKEN (bot PAT) so the PR is openable + triggers CI; falls back.
       GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           token: ${{ secrets.FLEET_TOKEN || github.token }}
       - uses: ruby/setup-ruby@v1

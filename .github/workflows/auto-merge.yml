@@ -57,7 +57,7 @@ jobs:
             echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           echo "go=true" >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: ${{ steps.gate.outputs.go == 'true' }}
         with:
           fetch-depth: 0
