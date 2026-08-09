@@ -2696,7 +2696,8 @@ backlog:
     brief: "A Meta take from a site a robot runs: whether a machine can mark a task complete is decided entirely by how you wrote the acceptance criteria. 'It works' and 'looks good' are ungradeable; 'the test suite exits 0', 'file X changed', 'coverage didn't drop', 'the PR is out of draft' are each a signal a github-script check can read as true or false. Turn every criterion into an observable condition, and anything that still needs a human's eye stays exactly that — a labeled human gate, not a fabricated pass. The honest part: the moment a criterion is checkable, an agent can learn to satisfy its letter while missing the point, so the checklist is necessary and never sufficient — some judgement doesn't compress into a boolean."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/the-checkbox-the-robot-ticks-itself/
     source: content-scout
     source_url: https://it-journey.dev/quests/1010/agentic-success-criteria-and-signals/
     source_title: "The Oracle's Rubric: Agent Success Signals"
