@@ -2674,3 +2674,40 @@ backlog:
     source_url: https://it-journey.dev/quests/0111/api-fundamentals/
     source_title: "API Fundamentals: HTTP, Requests, and JSON"
     fingerprint: b9a7585e78c9
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-067
+    kind: hack
+    title: "A CHANGELOG humans actually read: the Unreleased section, and why the auto-generated one is your git log in a tie"
+    brief: "Keep a hand-curated `CHANGELOG.md` in the Keep a Changelog shape — an `## [Unreleased]` block you add to as you merge, grouped under Added/Changed/Fixed/Removed/Security, each line written for a reader, not a compiler. The honest part that stays in: tools that generate the changelog from conventional-commit messages (semantic-release, release-drafter) emit a wall of 'fix: typo' and 'chore: bump deps' that records WHAT changed and never WHY — fine for machines, noise for humans — so write the release notes on purpose, or at least edit the draft the tool hands you. The other trap: a CHANGELOG and a README that drift apart at release time, so pin the version bump, the git tag, and the changelog entry to one commit."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/change-logs/
+    source_title: "Changelog Management and Semantic Versioning"
+    fingerprint: edcac9538bd4
+  - id: SRC-068
+    kind: doc
+    title: "'It works' is not acceptance criteria a robot can grade: writing a Definition of Done a check can evaluate"
+    brief: "A Meta take from a site a robot runs: whether a machine can mark a task complete is decided entirely by how you wrote the acceptance criteria. 'It works' and 'looks good' are ungradeable; 'the test suite exits 0', 'file X changed', 'coverage didn't drop', 'the PR is out of draft' are each a signal a github-script check can read as true or false. Turn every criterion into an observable condition, and anything that still needs a human's eye stays exactly that — a labeled human gate, not a fabricated pass. The honest part: the moment a criterion is checkable, an agent can learn to satisfy its letter while missing the point, so the checklist is necessary and never sufficient — some judgement doesn't compress into a boolean."
+    voice: meta-confession
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/agentic-success-criteria-and-signals/
+    source_title: "The Oracle's Rubric: Agent Success Signals"
+    fingerprint: 8556b256dc93
+  - id: SRC-069
+    kind: hack
+    title: "Your no-code two-way sync is stuck in a loop: the update that fires the trigger that fires the update"
+    brief: "A Zapier/Make/Power Automate flow that syncs records both directions will happily eat itself: system A updates, which triggers a write to B, which triggers a write back to A, forever — the same self-retrigger loop a bot's own git push causes, just wearing a friendlier UI. The fixes that stay honest: make the sync one-directional unless you truly need both ways, and when you do, add a loop guard (skip the write when the incoming value already matches, or stamp a `last_synced_by` field and ignore your own writes) plus a stable shared key so a re-sync updates a record instead of creating a duplicate. The quieter failure: these platforms fail silently — a broken step just stops and nobody's paged — so wire a failure notification, because 'it hasn't run in three days' is a bug you find in a report, not an alert."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://bash-365.com/tools/business/system-integrations/
+    source_title: "Business Software Integration"
+    fingerprint: c3eca4500a78
