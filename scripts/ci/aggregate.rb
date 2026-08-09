@@ -126,14 +126,43 @@ summary = {
 File.write(File.join(LH::RESULTS, 'summary.json'), JSON.pretty_generate(summary))
 
 # --- sticky PR comment -------------------------------------------------------
+# How many rows each section prints before deferring to the artifact. Whenever a
+# cap bites, the comment SAYS so (see the `capped` note below) — a silently
+# truncated list reads as "that's all of them", which is how a 1,786-error report
+# can look like a 25-error one.
+BLOCKING_ROWS = 25
+WARNING_ROWS  = 50
+EVIDENCE_MAX  = 120
+
+def loc_of(f)
+  f['file'].to_s.empty? ? '—' : "`#{f['file']}#{f['line'] ? ":#{f['line']}" : ''}`"
+end
+
+# One table cell from arbitrary finding evidence. Order matters: squash, then
+# TRUNCATE, then escape. Escaping first lets the cut land between a backslash and
+# the pipe it escapes, leaving a trailing `\` that eats the cell's own closing
+# delimiter and smears the row across the table. The ellipsis is the tell that
+# there is more — without it a mid-word cut reads as the evidence itself.
+def cell(text)
+  s = text.to_s.gsub(/\s+/, ' ').strip
+  s = "#{s[0, EVIDENCE_MAX - 1]}…" if s.length > EVIDENCE_MAX
+  s.gsub('|', '\\|')
+end
+
 def row(f)
-  loc = f['file'].to_s.empty? ? '—' : "`#{f['file']}#{f['line'] ? ":#{f['line']}" : ''}`"
-  "| #{f['severity']} | #{f['check_id']} | #{loc} | #{f['rule']} | #{f['evidence'].to_s.gsub('|', '\\|')[0, 120]} |"
+  "| #{f['severity']} | #{f['check_id']} | #{loc_of(f)} | #{f['rule']} | #{cell(f['evidence'])} |"
+end
+
+# "showing N of M" whenever a section printed fewer rows than it has findings.
+def capped(shown_rows, total)
+  return nil if total <= shown_rows
+  "_Showing #{shown_rows} of #{total}; the rest are in the `findings.jsonl` artifact._"
 end
 
 verdict = errors.zero? ? 'PASS' : 'FAIL'
 blocking = shown.select { |f| f['severity'] == 'error' }
 notable  = shown.select { |f| f['severity'] == 'warning' }
+quiet    = shown.select { |f| f['severity'] == 'info' }
 
 lines = []
 lines << '<!-- lh-test-report -->'
@@ -149,15 +178,40 @@ unless blocking.empty?
   lines << '### Blocking (must fix to merge)'
   lines << '| sev | check | where | rule | evidence |'
   lines << '|---|---|---|---|---|'
-  blocking.first(25).each { |f| lines << row(f) }
+  blocking.first(BLOCKING_ROWS).each { |f| lines << row(f) }
+  if (note = capped(BLOCKING_ROWS, blocking.size))
+    lines << ''
+    lines << note
+  end
   lines << ''
 end
 unless notable.empty?
-  lines << "<details><summary>#{notable.size} warnings (non-blocking)</summary>"
+  lines << "<details><summary>#{notable.size} warning(s) (non-blocking)</summary>"
   lines << ''
   lines << '| sev | check | where | rule | evidence |'
   lines << '|---|---|---|---|---|'
-  notable.first(50).each { |f| lines << row(f) }
+  notable.first(WARNING_ROWS).each { |f| lines << row(f) }
+  if (note = capped(WARNING_ROWS, notable.size))
+    lines << ''
+    lines << note
+  end
+  lines << '</details>'
+  lines << ''
+end
+# Info findings were counted in the header and then shown NOWHERE, so "58 info"
+# was a number with no way to see what it stood for short of downloading the
+# artifact. They are context rather than defects (an unverifiable command block,
+# a deliberately ignored theme link), and they repeat heavily — 56 of one rule is
+# routine — so a row each would bury the warnings above. Group by check+rule with
+# a count and one example instead: same information, two rows instead of 58.
+unless quiet.empty?
+  groups = quiet.group_by { |f| [f['check_id'], f['rule']] }
+                .sort_by { |_, fs| -fs.size }
+  lines << "<details><summary>#{quiet.size} info (context, nothing to fix)</summary>"
+  lines << ''
+  lines << '| count | check | rule | example |'
+  lines << '|---|---|---|---|'
+  groups.each { |(check, rule), fs| lines << "| #{fs.size} | #{check} | #{rule} | #{loc_of(fs.first)} |" }
   lines << '</details>'
   lines << ''
 end
