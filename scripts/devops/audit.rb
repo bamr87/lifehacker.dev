@@ -125,6 +125,26 @@ if File.exist?(bh_path)
   add(findings, 'error', 'sev1-contract', 'build-and-harness composite lacks the LH_BUILD_RC + continue-on-error fail-safe') unless bh.include?('LH_BUILD_RC') && bh.include?('continue-on-error')
 end
 
+# Every harness check must be WIRED to the findings contract, twice over: run by
+# run-all.sh, and listed in aggregate.rb's CHECK_FILES. Miss the second and the
+# check still runs, still prints, still exits non-zero — and changes nothing,
+# because run-all.sh swallows exit codes on purpose (`|| true`) and the gate is
+# decided solely by findings.jsonl. That silent failure mode shipped three
+# guards that never gated (artifacts, agents, and a duplicate-key check added in
+# #441 whose own commit message claimed it gated). It is invisible in review —
+# the check looks correct in isolation — so it has to be caught mechanically.
+agg_src = read.call(File.join(LH::ROOT, 'scripts/ci/aggregate.rb'))
+listed  = agg_src[/CHECK_FILES\s*=\s*%w\[(.*?)\]/m, 1].to_s.split
+Dir[File.join(LH::ROOT, 'scripts/ci/*.rb')].sort.each do |path|
+  base = File.basename(path)
+  LH.read(path).scan(/LH\.write\('([a-z-]+)'/).flatten.uniq.each do |check|
+    add(findings, 'error', 'findings-contract',
+        "#{base} writes `#{check}.json` but aggregate.rb's CHECK_FILES omits `#{check}` — its findings never reach findings.jsonl, so the check cannot gate, cannot appear in the PR report, and is invisible to fleet-bugfix") unless listed.include?(check)
+    add(findings, 'warn', 'findings-contract',
+        "#{base} writes `#{check}.json` but run-all.sh never runs it — the check is dead code") unless runall.include?(base)
+  end
+end
+
 # --- 3. Required checks present (errors/warn) -------------------------------
 add(findings, 'error', 'gate', 'no workflow defines a `verify` job (the required status check)') unless wf_read.values.any? { |c| c =~ /^\s*verify:/ }
 pipe = wf_read['pipeline.yml'].to_s
