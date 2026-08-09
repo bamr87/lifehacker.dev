@@ -1646,7 +1646,8 @@ backlog:
     brief: "Write the page shell once as `base.html` with `{% block content %}` holes, then `{% extends 'base.html' %}` in each page and fill only the blocks — no more find-and-replace across ten files when the nav changes. Every step rendered for real with Python's jinja2. The failures that stay in: a typo'd block name doesn't raise an error, it just renders nothing; autoescape is OFF by default in a bare `Environment` (Flask turns it on), so the same template is XSS-safe in one place and a hole in another; and stray blank lines leak from Jinja's whitespace rules until you set `trim_blocks`/`lstrip_blocks` or reach for `{%- -%}`."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/jinja2-template-inheritance-without-the-xss-hole/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/temple-of-templates/
     source_title: "The Temple of Templates: Reusable Abstractions"
@@ -2471,6 +2472,30 @@ backlog:
     source_title: "Kaizen: Continuous Improvement"
     fingerprint: e1585b8c279a
 
+  # Synthesized in-lane (autopilot run, 2026-08-05): the only `todo` doc on the
+  # board was DOC-024 (aggregate.rb), already in flight as an open auto:content PR
+  # (autopilot/aggregate-fingerprint-verdict), so it would duplicate. Every other
+  # doc is done; the remaining todos are OPS-001 (kind: ops, skipped) and the P3
+  # SRC-* hack backlog (wrong lane). Rather than no-op, cross collections, or
+  # duplicate, synthesized a fresh in-lane doc — and the byline rotation returned
+  # `cass` (least-used doc persona), so it's a security threat-model. The gap: the
+  # Meta pillar documents the banner PIPELINE (the-plugin-that-isnt-a-plugin) but
+  # never that the banners are SVG — a scriptable XML format an LLM authors for
+  # every post. Cass threat-models the site's own cover art: could a poisoned SVG
+  # execute? Verified on this repo with real captured output — the card embeds via
+  # CSS background-image (image context, scripts inert), nothing inlines a raw SVG,
+  # every committed banner is inert, and the engine's sanitize_svg strips
+  # script/foreignObject/on*/external-href/DOCTYPE before write. Three ranked
+  # mitigations; the missing CSP flagged for upstream, not patched here.
+  - id: DOC-029
+    kind: doc
+    title: "The cover art is a program"
+    brief: "Cass Vector threat-models the site's own preview banners: they're SVG (an XML document that can carry <script>/onload/<foreignObject>), authored by an LLM, one per post. Could a poisoned banner execute in a reader's tab? The answer turns on how the page embeds it — verified on this repo (CSS background-image + og:image = image context, nothing inlined) — plus the engine's sanitize_svg boundary (a prompt is not a control). Real captured grep/code output; three ranked, tested mitigations; the CSP the site still lacks flagged upstream."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-cover-art-is-a-program/
   # Synthesized in-lane (autopilot post run, 2026-08-05): no eligible `post`-kind
   # `todo` on the board — POST-026 was already published (its backlog row just
   # never got flipped) and DOC-004 is `blocked` on OPS-001. Rather than no-op or
@@ -2552,6 +2577,7 @@ backlog:
     priority: P2
     status: done
     published: /docs/at-v4-is-a-bookmark-not-a-padlock/
+
   # Synthesized in-lane (autopilot post run, 2026-08-06): no eligible `post`-kind
   # `todo` on the board — POST-001..030 all done and DOC-004 is `blocked` on
   # OPS-001. `gh pr list --state open --label auto:content` showed a hack (SRC-019)
@@ -2680,3 +2706,62 @@ backlog:
     source_url: https://it-journey.dev/quests/0111/api-fundamentals/
     source_title: "API Fundamentals: HTTP, Requests, and JSON"
     fingerprint: b9a7585e78c9
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-067
+    kind: hack
+    title: "A CHANGELOG humans actually read: the Unreleased section, and why the auto-generated one is your git log in a tie"
+    brief: "Keep a hand-curated `CHANGELOG.md` in the Keep a Changelog shape — an `## [Unreleased]` block you add to as you merge, grouped under Added/Changed/Fixed/Removed/Security, each line written for a reader, not a compiler. The honest part that stays in: tools that generate the changelog from conventional-commit messages (semantic-release, release-drafter) emit a wall of 'fix: typo' and 'chore: bump deps' that records WHAT changed and never WHY — fine for machines, noise for humans — so write the release notes on purpose, or at least edit the draft the tool hands you. The other trap: a CHANGELOG and a README that drift apart at release time, so pin the version bump, the git tag, and the changelog entry to one commit."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/change-logs/
+    source_title: "Changelog Management and Semantic Versioning"
+    fingerprint: edcac9538bd4
+  - id: SRC-068
+    kind: doc
+    title: "'It works' is not acceptance criteria a robot can grade: writing a Definition of Done a check can evaluate"
+    brief: "A Meta take from a site a robot runs: whether a machine can mark a task complete is decided entirely by how you wrote the acceptance criteria. 'It works' and 'looks good' are ungradeable; 'the test suite exits 0', 'file X changed', 'coverage didn't drop', 'the PR is out of draft' are each a signal a github-script check can read as true or false. Turn every criterion into an observable condition, and anything that still needs a human's eye stays exactly that — a labeled human gate, not a fabricated pass. The honest part: the moment a criterion is checkable, an agent can learn to satisfy its letter while missing the point, so the checklist is necessary and never sufficient — some judgement doesn't compress into a boolean."
+    voice: meta-confession
+    priority: P3
+    status: done
+    published: /docs/the-checkbox-the-robot-ticks-itself/
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/agentic-success-criteria-and-signals/
+    source_title: "The Oracle's Rubric: Agent Success Signals"
+    fingerprint: 8556b256dc93
+  - id: SRC-069
+    kind: hack
+    title: "Your no-code two-way sync is stuck in a loop: the update that fires the trigger that fires the update"
+    brief: "A Zapier/Make/Power Automate flow that syncs records both directions will happily eat itself: system A updates, which triggers a write to B, which triggers a write back to A, forever — the same self-retrigger loop a bot's own git push causes, just wearing a friendlier UI. The fixes that stay honest: make the sync one-directional unless you truly need both ways, and when you do, add a loop guard (skip the write when the incoming value already matches, or stamp a `last_synced_by` field and ignore your own writes) plus a stable shared key so a re-sync updates a record instead of creating a duplicate. The quieter failure: these platforms fail silently — a broken step just stops and nobody's paged — so wire a failure notification, because 'it hasn't run in three days' is a bug you find in a report, not an alert."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://bash-365.com/tools/business/system-integrations/
+    source_title: "Business Software Integration"
+    fingerprint: c3eca4500a78
+
+  # Synthesized in-lane (autopilot run, 2026-08-09): a `post` run found no `todo`
+  # post item — every POST-* is done and DOC-004 is still `blocked` on OPS-001 —
+  # and no open auto:content PR is a post (the four open are a hack + three docs).
+  # Rather than no-op, cross lanes, or fabricate the blocked post, synthesized a
+  # fresh in-lane Field Note. The rotation returned `edge`, so Ed G. Case stress-
+  # tested the very script that cast him: scripts/fleet/authors.rb. Real captured
+  # output — a typo'd/empty/emoji/injection section all return a persona with exit
+  # 0 (silent global-pool fallback) while a MISSING value is the one thing rejected
+  # (exit 2), plus the verified self-correction (adding this edge post flips the
+  # next post pick to cass). Recommend a fail-closed on unknown sections; not
+  # patched (fleet script, not content).
+  - id: POST-032
+    kind: post
+    title: "The byline picker can't tell a typo from a section"
+    brief: "Meta-confession in Ed G. Case's voice: the byline rotation (scripts/fleet/authors.rb) that assigns AI authors rejects a missing --section value (exit 2) but silently answers a misspelled, empty, emoji, or injection-laced one with a confident exit-0 persona name, computed from the global all-sections pool instead of the section you meant. The trap: a typo returned the same author as the correct name, so the wrong input looked right. Grudging respect for the determinism and the hash-lookup (not shell) injection safety, plus a verified self-correction — this edge-authored post flips the next post pick to cass. Real captured output only; fail-closed fix recommended, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/09/byline-picker-cant-tell-a-typo-from-a-section/
