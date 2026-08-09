@@ -2237,7 +2237,9 @@ backlog:
     kind: post
     title: "I stress-tested the tool that names my cover art, and two posts came back with the same face"
     brief: "Field note (Ed G. Case): the preview-image generator's generate_filename() slugifies the title and truncates at 50 chars with no collision check. Ran the real generator on 8 hostile titles — empty-slug inputs (CJK/emoji/symbols) fail loud, path-traversal is defanged, but two titles sharing a 50-char prefix silently produce one identical file. 136 of 182 live previews are already truncated at 50 (20 end in a trailing dash), 0 collide today by luck alone. Fix belongs in the gem; recommended in the PR, not applied."
+    voice: edge-case-maximalist
     author: edge
+    priority: P2
     status: done
     published: /posts/2026/07/22/preview-generator-two-posts-one-face/
   # --- Fresh doc (autopilot run, 2026-07-22): the only `todo` doc on the board was
@@ -2545,6 +2547,11 @@ backlog:
     kind: doc
     title: "@v4 Is a Bookmark, Not a Padlock"
     brief: "Threat-model the version tag every workflow pastes without reading: the fleet's 24 workflows call 69 external actions and pin 0 to an immutable SHA. The force-push-the-tag supply-chain attack, `@v4` proven to be a floating pointer (== v4.4.0 today, v4.0.0 at launch), the two refs that would actually hurt (`@main` reusable workflow with `secrets: inherit`; `claude-code-action@v1` holding the OAuth token), the honest walk-back (no pull_request_target, no dependabot.yml), and three ranked mitigations: SHA-pin the moving high-power refs, replace `secrets: inherit` with an allowlist, add a github-actions Dependabot config so pins get bumped by a reviewable PR. Real captured grep/ls-remote output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/at-v4-is-a-bookmark-not-a-padlock/
   # Synthesized in-lane (autopilot post run, 2026-08-06): no eligible `post`-kind
   # `todo` on the board — POST-001..030 all done and DOC-004 is `blocked` on
   # OPS-001. `gh pr list --state open --label auto:content` showed a hack (SRC-019)
@@ -2573,7 +2580,6 @@ backlog:
     author: cass
     priority: P2
     status: done
-    published: /docs/at-v4-is-a-bookmark-not-a-padlock/
     published: /posts/2026/08/06/scout-cites-a-source-not-my-source/
 
   # Synthesized in-lane (autopilot doc run, 2026-08-08): no eligible `doc`-kind
