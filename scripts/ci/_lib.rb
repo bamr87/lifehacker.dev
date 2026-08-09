@@ -12,11 +12,16 @@ require 'yaml'
 require 'json'
 require 'date'
 require 'digest'
+require 'fileutils'
 
 module LH
   # scripts/ci/_lib.rb -> repo root is two dirs up from __dir__ (scripts/ci).
   ROOT    = File.expand_path('../..', __dir__)
-  RESULTS = File.join(ROOT, 'test-results')
+  # Where each check writes its <name>.json. Overridable so the MCP (and parallel
+  # CI) can give every invocation a PRIVATE output dir instead of clobbering the
+  # one shared test-results/ — two concurrent lint runs would otherwise race on
+  # the same files. Unset => identical to before (ROOT/test-results).
+  RESULTS = ENV['LH_RESULTS_DIR'].to_s.strip.empty? ? File.join(ROOT, 'test-results') : File.expand_path(ENV['LH_RESULTS_DIR'])
 
   module_function
 
@@ -91,7 +96,7 @@ module LH
   # Write a check's findings to test-results/<name>.json and echo a summary.
   # Returns the number of error-severity findings (the caller's exit hint).
   def write(name, findings)
-    Dir.mkdir(RESULTS) unless Dir.exist?(RESULTS)
+    FileUtils.mkdir_p(RESULTS) unless Dir.exist?(RESULTS)  # mkdir_p: an override dir may be nested
     File.write(File.join(RESULTS, "#{name}.json"), JSON.pretty_generate(findings))
     errs  = findings.count { |f| f['severity'] == 'error' }
     warns = findings.count { |f| f['severity'] == 'warning' }
