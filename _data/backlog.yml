@@ -2668,6 +2668,28 @@ backlog:
     source_title: "Hello n00b (GitHub account creation and forking)"
     fingerprint: aaa7111584fd
 
+  # --- Fresh doc (autopilot run, 2026-08-07): the only `todo` doc (DOC-024,
+  # aggregate.rb) is already an OPEN auto:content PR (autopilot/aggregate-
+  # fingerprint-verdict), and the other open doc PR (DOC-029) covers the SVG
+  # generator's threat model — no other `todo` doc exists (the rest are
+  # hack/ops/tool). Rather than no-op, cross lanes, or duplicate, synthesized a
+  # fresh in-lane doc. lint_preview.rb — the cover-art gate — had NO dedicated
+  # Meta doc despite its six rules being born from the 200-articles-4-pictures
+  # silent regression. Rotation returned `edge`, so Ed G. Case stress-tested it:
+  # one bad banner per rule (all six caught) plus two evasions it doesn't
+  # recognize — an empty `<text></text>` that satisfies the textless substring
+  # check, and an `<svg onload=…>` the unsafe-svg regex misses. Every fixture run
+  # for real against the live linter, then deleted; the two hardening one-liners
+  # are in the PR description, not patched here. Byline: edge (rotation).
+  - id: DOC-031
+    kind: doc
+    title: "The banner cop that frisks every cover but two"
+    brief: "Deep-dive companion to the Meta harness docs on lint_preview.rb, the cover-art gate. Ed G. Case feeds it one bad banner per advertised rule (missing file, shared image, textless, unsafe SVG, out-of-safe-band, orphan — all caught) then finds the shapes it misses: a 2-way share that only warns, an empty `<text></text>` that beats the textless substring test, and an inline `onload=` the unsafe-svg regex waves through. Real captured linter output, fixtures deleted after."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-banner-cop-that-frisks-every-cover/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
