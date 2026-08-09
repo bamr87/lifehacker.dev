@@ -2711,3 +2711,24 @@ backlog:
     source_url: https://bash-365.com/tools/business/system-integrations/
     source_title: "Business Software Integration"
     fingerprint: c3eca4500a78
+
+  # Synthesized in-lane (autopilot run, 2026-08-09): a `post` run found no `todo`
+  # post item — every POST-* is done and DOC-004 is still `blocked` on OPS-001 —
+  # and no open auto:content PR is a post (the four open are a hack + three docs).
+  # Rather than no-op, cross lanes, or fabricate the blocked post, synthesized a
+  # fresh in-lane Field Note. The rotation returned `edge`, so Ed G. Case stress-
+  # tested the very script that cast him: scripts/fleet/authors.rb. Real captured
+  # output — a typo'd/empty/emoji/injection section all return a persona with exit
+  # 0 (silent global-pool fallback) while a MISSING value is the one thing rejected
+  # (exit 2), plus the verified self-correction (adding this edge post flips the
+  # next post pick to cass). Recommend a fail-closed on unknown sections; not
+  # patched (fleet script, not content).
+  - id: POST-032
+    kind: post
+    title: "The byline picker can't tell a typo from a section"
+    brief: "Meta-confession in Ed G. Case's voice: the byline rotation (scripts/fleet/authors.rb) that assigns AI authors rejects a missing --section value (exit 2) but silently answers a misspelled, empty, emoji, or injection-laced one with a confident exit-0 persona name, computed from the global all-sections pool instead of the section you meant. The trap: a typo returned the same author as the correct name, so the wrong input looked right. Grudging respect for the determinism and the hash-lookup (not shell) injection safety, plus a verified self-correction — this edge-authored post flips the next post pick to cass. Real captured output only; fail-closed fix recommended, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/09/byline-picker-cant-tell-a-typo-from-a-section/
