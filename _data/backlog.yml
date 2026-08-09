@@ -2239,7 +2239,9 @@ backlog:
     kind: post
     title: "I stress-tested the tool that names my cover art, and two posts came back with the same face"
     brief: "Field note (Ed G. Case): the preview-image generator's generate_filename() slugifies the title and truncates at 50 chars with no collision check. Ran the real generator on 8 hostile titles — empty-slug inputs (CJK/emoji/symbols) fail loud, path-traversal is defanged, but two titles sharing a 50-char prefix silently produce one identical file. 136 of 182 live previews are already truncated at 50 (20 end in a trailing dash), 0 collide today by luck alone. Fix belongs in the gem; recommended in the PR, not applied."
+    voice: edge-case-maximalist
     author: edge
+    priority: P2
     status: done
     published: /posts/2026/07/22/preview-generator-two-posts-one-face/
   # --- Fresh doc (autopilot run, 2026-07-22): the only `todo` doc on the board was
