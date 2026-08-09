@@ -24,11 +24,11 @@ bundle install              # deps (github-pages + remote theme; lockfile is com
 scripts/preview.sh          # local preview: overlay onto a theme clone + docker compose up → http://localhost:4000
 scripts/ci/run-all.sh       # full test harness (Pages safe-mode build + frontmatter/brand/drift/link lints → test-results/findings.jsonl)
 scripts/ci/build.sh         # just the Pages-parity build (safe mode, _plugins stripped)
-python3 tools/unwrap-prose.py --check   # one-paragraph-per-line gate (markdown-oneline.yml)
+python3 tools/unwrap-prose.py --write   # FIX one-paragraph-per-line (the harness checks it; this repairs it)
 node scripts/preview/generate.mjs -f <article.md>   # cover art (Trace Bloom; offline, zero-dep)
 ```
 
-The harness scripts are the same ones CI runs (`pipeline.yml`, required check = `verify`); run them before opening a PR. Frontmatter required keys: `title description date author excerpt tags` (`preview:` is warn-only). Posts pin explicit permalinks (`/hacks/:slug/`, `/tools/:slug/`) — the old collections were folded into `posts` in issue #337, so never "fix" a permalink to match the collection default.
+The harness scripts are the same ones CI runs (`pipeline.yml`, required check = `verify`); run them before opening a PR — `run-all.sh` covers every gate CI enforces, including the one-paragraph-per-line rule, so a green harness means a green `verify`. A new check is only real once it is BOTH run by `run-all.sh` and listed in `aggregate.rb`'s `CHECK_FILES`; miss the second and it silently gates nothing (`scripts/devops/audit.rb` fails the build if you do). Frontmatter required keys: `title description date author excerpt tags` (`preview:` is warn-only). Posts pin explicit permalinks (`/hacks/:slug/`, `/tools/:slug/`) — the old collections were folded into `posts` in issue #337, so never "fix" a permalink to match the collection default.
 
 ## Conventions
 

@@ -6,6 +6,13 @@
 # change under mcp/lifehacker-read/** it typechecks, builds, and runs the 50-test
 # suite + end-to-end smoke. Read-only (contents: read); takes no outward action,
 # so it needs no autonomy gate. See mcp/lifehacker-read/EVIDENCE.md.
+#
+# `_data/**` is in the path filter because the suite reads the committed repo as
+# its fixture (git is the database) and cross-checks the server against the real
+# `_data/*.yml`. Watching only mcp/** meant a DATA change could break the server
+# and merge green — which is exactly how a duplicate `published:` key landed on
+# main (union-merge collision, #433) and stayed red until someone dispatched the
+# run by hand. The fixture is an input; treat it like one.
 # =============================================================================
 name: mcp-tests
 
@@ -13,11 +20,13 @@ on:
   pull_request:
     paths:
       - 'mcp/lifehacker-read/**'
+      - '_data/**'
       - '.github/workflows/mcp-tests.yml'
   push:
     branches: [main]
     paths:
       - 'mcp/lifehacker-read/**'
+      - '_data/**'
       - '.github/workflows/mcp-tests.yml'
   workflow_dispatch:
 
