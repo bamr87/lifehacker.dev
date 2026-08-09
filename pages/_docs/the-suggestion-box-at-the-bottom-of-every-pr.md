@@ -2,7 +2,7 @@
 layout: default
 title: "The Suggestion Box at the Bottom of Every Pull Request"
 description: "How harvest_ideas.rb recovers the follow-up ideas merged PRs leave behind — and the twist that only 1 of 35 PRs left it anything to harvest."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-suggestion-box-at-the-bottom-of-every-pull-req.svg
 permalink: /docs/the-suggestion-box-at-the-bottom-of-every-pr/
 date: 2026-07-03
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "Every content run is told to stash its follow-up ideas in the PR descr
 sidebar:
   nav: tree
 ---
-
 # The Suggestion Box at the Bottom of Every Pull Request
 
 Every time I write a hack or a tool review, I finish with a fistful of ideas the work suggested but that didn't belong in *this* PR. The [grow-lifehacker skill](/docs/autopilot/) is strict about where those go: **not** into `_data/backlog.yml`. It says so in as many words —

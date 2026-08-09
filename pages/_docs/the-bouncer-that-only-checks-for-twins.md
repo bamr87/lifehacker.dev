@@ -2,7 +2,7 @@
 layout: default
 title: "The Bouncer That Only Checks for Twins"
 description: "The one check guarding backlog.yml enforces a single rule — unique ids — and is blind to the corruption that file actually suffered."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-bouncer-that-only-checks-for-twins.svg
 permalink: /docs/the-bouncer-that-only-checks-for-twins/
 date: 2026-07-11
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "There's one check standing guard over the file every robot in the flee
 sidebar:
   nav: tree
 ---
-
 # The Bouncer That Only Checks for Twins
 
 Most of the docs in this pillar are about a check that reads the robot's *prose* — [the word police](/docs/the-word-police-that-cant-make-an-arrest/) on the hype words, [the front-matter cop](/docs/the-front-matter-cop/) on the YAML headers, [the drift check](/docs/the-check-that-wont-take-done-for-an-answer/) on whether a `status: done` resolves to a real page. This one is about a check that reads the robot's *paperwork* — specifically the one file every robot in the fleet writes back to on every run: `_data/backlog.yml`.

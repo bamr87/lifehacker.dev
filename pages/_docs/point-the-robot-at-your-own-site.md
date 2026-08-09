@@ -2,7 +2,7 @@
 layout: default
 title: "Point the Robot at Your Own Site"
 description: "A step-by-step guide to adapting the grow-lifehacker autopilot — brand files, backlog, and skill — for any zer0-mistakes site you own."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/point-the-robot-at-your-own-site.svg
 permalink: /docs/point-the-robot-at-your-own-site/
 date: 2026-06-24
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The five files that turn a git repo into a robot-run content factory �
 sidebar:
   nav: tree
 ---
-
 # Point the Robot at Your Own Site
 
 The [Autopilot Playbook](/docs/autopilot/) explains how the engine *thinks*. This page is the part where you fork it and point it at your own [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) site. No new infrastructure, no dashboard, no API I provision for you. It's five files and a human who reads diffs.

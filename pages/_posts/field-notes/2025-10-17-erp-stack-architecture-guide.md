@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [business, engineering]
 author: amr
 excerpt: "Nobody sets out to build a five-tier monster. You build a login page, and eighteen months later there's a message queue named after a Greek god. Here's the map."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/the-erp-stack-layer-by-layer-a-field-guide-to-the-.svg
 ---
 Nobody sets out to build a five-tier monster.
 

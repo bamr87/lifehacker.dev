@@ -1467,11 +1467,12 @@ backlog:
     brief: "Turn 'wip', 'more wip', 'typo' into one honest commit with `git rebase -i` (squash/reword/drop), or mark corrections as you go with `git commit --fixup <sha>` and let `git rebase -i --autosquash` file each fix under the commit it belongs to. The failure that stays in: rebasing rewrites the commit SHAs, so doing it to anything you've already pushed forces everyone who pulled it into a diverged history and a mess of duplicate commits — the rule is rewrite what's local, never what's shared. Fully reproducible in a throwaway repo."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
     source: content-scout
     source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
     source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
     fingerprint: 6dd751337633
+    published: /hacks/git-rebase-clean-commits-before-you-push/
 
   # Synthesized in-lane (autopilot run, 2026-07-11): a `post` run found the queue
   # dry — POST-001..015 all done, DOC-004 still `blocked` on OPS-001, and the only
@@ -1524,7 +1525,8 @@ backlog:
     brief: "PyTorch accumulates gradients by design, so a loop missing `optimizer.zero_grad()` adds each batch's gradients on top of the last one's and the loss lurches around instead of falling. The fix is one line at the top of the loop — zero_grad → forward → `loss.backward()` → `optimizer.step()` — and leaving it out sends you chasing a 'bad learning rate' that was never the problem. Reproducible on CPU with a tiny linear model (no GPU needed); the sibling footgun — a model on the GPU can't multiply a tensor still on the CPU — gets a one-line `.to(device)` note."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/loss-bounces-add-zero-grad/
     source: content-scout
     source_url: https://it-journey.dev/quests/1101/deep-learning-frameworks/
     source_title: "Deep Learning Frameworks: PyTorch vs TensorFlow"
@@ -1644,7 +1646,8 @@ backlog:
     brief: "Write the page shell once as `base.html` with `{% block content %}` holes, then `{% extends 'base.html' %}` in each page and fill only the blocks — no more find-and-replace across ten files when the nav changes. Every step rendered for real with Python's jinja2. The failures that stay in: a typo'd block name doesn't raise an error, it just renders nothing; autoescape is OFF by default in a bare `Environment` (Flask turns it on), so the same template is XSS-safe in one place and a hole in another; and stray blank lines leak from Jinja's whitespace rules until you set `trim_blocks`/`lstrip_blocks` or reach for `{%- -%}`."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/jinja2-template-inheritance-without-the-xss-hole/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/temple-of-templates/
     source_title: "The Temple of Templates: Reusable Abstractions"
@@ -2235,6 +2238,9 @@ backlog:
     kind: post
     title: "I stress-tested the tool that names my cover art, and two posts came back with the same face"
     brief: "Field note (Ed G. Case): the preview-image generator's generate_filename() slugifies the title and truncates at 50 chars with no collision check. Ran the real generator on 8 hostile titles — empty-slug inputs (CJK/emoji/symbols) fail loud, path-traversal is defanged, but two titles sharing a 50-char prefix silently produce one identical file. 136 of 182 live previews are already truncated at 50 (20 end in a trailing dash), 0 collide today by luck alone. Fix belongs in the gem; recommended in the PR, not applied."
+    author: edge
+    status: done
+    published: /posts/2026/07/22/preview-generator-two-posts-one-face/
   # --- Fresh doc (autopilot run, 2026-07-22): the only `todo` doc on the board was
   # DOC-024 (aggregate.rb), already an OPEN auto:content PR (#375) — a duplicate —
   # and every other doc item is `done` (DOC-004 is a blocked post). Rather than
@@ -2257,7 +2263,6 @@ backlog:
     author: edge
     priority: P2
     status: done
-    published: /posts/2026/07/22/preview-generator-two-posts-one-face/
     published: /docs/the-rotation-that-cast-me-to-review-it/
 
   # Synthesized in-lane (autopilot post run, 2026-07-23): no `post`-kind `todo`
@@ -2427,3 +2432,334 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/07/24/read-only-mcp-can-still-read-your-laptop/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-055
+    kind: hack
+    title: "Stop paying for CI runs nobody's waiting on: concurrency + cancel-in-progress (and the one job you must never cancel)"
+    brief: "Push three commits in a minute and GitHub runs all three full pipelines — you only care about the last. A top-level `concurrency:` group keyed on the branch ref plus `cancel-in-progress: true` aborts the superseded runs and stops burning minutes. The failure that stays in: aim that same cancel at a deploy or release job and a fresh push can kill it mid-write, leaving a half-published artifact or a tag pointing at nothing — scope the auto-cancel to PR/CI runs and give deploys their own group with `cancel-in-progress: false`. The quieter gotcha: forget the group entirely and cancel-in-progress does nothing at all, because there's nothing for a run to be 'in progress' against."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/workflow-optimization/
+    source_title: "Workflow Optimization: Caching and Parallel CI/CD"
+    fingerprint: feb99f24f228
+  - id: SRC-056
+    kind: hack
+    title: "Sass can't find your Bootstrap @import: the --load-path=node_modules flag the tutorials leave out"
+    brief: "You `npm install bootstrap`, write `@import 'bootstrap'`, run `sass main.scss main.css`, and it dies with `Error: Can't find stylesheet to import` — because Dart Sass does not search `node_modules` by default, and every tutorial that 'just works' had the flag set somewhere off-screen. The fix is one flag: `sass --load-path=node_modules main.scss`. The failures that stay in: the newer `@use 'bootstrap'` needs the exact same load-path (moving off @import doesn't save you), and the Stack Overflow answers telling you to switch to `node-sass` point at a dead, deprecated package — Dart Sass is the live one. Reproducible end to end with `npm i sass bootstrap`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-15-digital-artist-0001/
+    source_title: "Quest Report: Digital Artist Level 0001"
+    fingerprint: 37d0ca79fc14
+  - id: SRC-057
+    kind: hack
+    title: "Four numbers instead of a vibe: pull the DORA metrics out of git log and gh (and the one you can't fake)"
+    brief: "Stop arguing about whether shipping 'feels' healthy. Three of the four DORA metrics fall out of tools you already have: deployment frequency (`git tag` / `gh release list` counted per week), lead time for changes (the delta from a commit's authored date to the tag that shipped it), and change failure rate + MTTR (from `gh run list` failures and the time to the next green). The honest part that stays in: without an explicit deploy marker in your history the first two are educated guesses, and the metrics measure a SYSTEM, not a person — the moment someone's raise depends on 'deployment frequency,' you get a hundred one-line deploys and a number that went up while nothing got better. Every command runs against a real repo."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/kaizen-continuous-improvement/
+    source_title: "Kaizen: Continuous Improvement"
+    fingerprint: e1585b8c279a
+
+  # Synthesized in-lane (autopilot run, 2026-08-05): the only `todo` doc on the
+  # board was DOC-024 (aggregate.rb), already in flight as an open auto:content PR
+  # (autopilot/aggregate-fingerprint-verdict), so it would duplicate. Every other
+  # doc is done; the remaining todos are OPS-001 (kind: ops, skipped) and the P3
+  # SRC-* hack backlog (wrong lane). Rather than no-op, cross collections, or
+  # duplicate, synthesized a fresh in-lane doc — and the byline rotation returned
+  # `cass` (least-used doc persona), so it's a security threat-model. The gap: the
+  # Meta pillar documents the banner PIPELINE (the-plugin-that-isnt-a-plugin) but
+  # never that the banners are SVG — a scriptable XML format an LLM authors for
+  # every post. Cass threat-models the site's own cover art: could a poisoned SVG
+  # execute? Verified on this repo with real captured output — the card embeds via
+  # CSS background-image (image context, scripts inert), nothing inlines a raw SVG,
+  # every committed banner is inert, and the engine's sanitize_svg strips
+  # script/foreignObject/on*/external-href/DOCTYPE before write. Three ranked
+  # mitigations; the missing CSP flagged for upstream, not patched here.
+  - id: DOC-029
+    kind: doc
+    title: "The cover art is a program"
+    brief: "Cass Vector threat-models the site's own preview banners: they're SVG (an XML document that can carry <script>/onload/<foreignObject>), authored by an LLM, one per post. Could a poisoned banner execute in a reader's tab? The answer turns on how the page embeds it — verified on this repo (CSS background-image + og:image = image context, nothing inlined) — plus the engine's sanitize_svg boundary (a prompt is not a control). Real captured grep/code output; three ranked, tested mitigations; the CSP the site still lacks flagged upstream."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-cover-art-is-a-program/
+  # Synthesized in-lane (autopilot post run, 2026-08-05): no eligible `post`-kind
+  # `todo` on the board — POST-026 was already published (its backlog row just
+  # never got flipped) and DOC-004 is `blocked` on OPS-001. Rather than no-op or
+  # cross lanes, synthesized a fresh in-lane field note, written AS edge (byline
+  # rotation returned `edge`: post section counts). Ed stress-tests the
+  # markdown-oneline gate's fixer (tools/unwrap-prose.py): its docstring claims
+  # idempotence; a 10,000-doc fuzz found 109 counterexamples (setext-underline
+  # collision), so `--write` doesn't guarantee `--check` passes. Fix belongs
+  # upstream in the bamr87 hub (issue bamr87/bamr87#68); recommended, not patched.
+  - id: POST-030
+    kind: post
+    title: "The auto-fixer told me to run the auto-fixer: unwrap-prose.py isn't idempotent"
+    brief: "Field note (Ed G. Case): the markdown-oneline gate ships an auto-fixer (tools/unwrap-prose.py --write) whose docstring promises idempotence. Fuzzed 10,000 random markdown docs: 109 (1.09%) change on a second pass; worst case needs 4 passes to converge. Root cause: a lone setext-underline line (=, --) between prose is a boundary on pass 1 but gets merged into prose, so pass 2 collapses further. Real consequence: --write can leave a file that --check still rejects. 0 of 304 live files hit it today. Fix filed upstream (bamr87/bamr87#68), not patched downstream."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/05/unwrap-prose-not-idempotent/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-058
+    kind: hack
+    title: "No LICENSE file isn't 'free to use' — pick one, and audit the dependency that quietly makes your project GPL"
+    brief: "A repo with no LICENSE is all-rights-reserved by default, not public domain, so nobody can legally reuse it — add one (choosealicense.com picks in plain English; `gh repo create --license mit` or a plain `LICENSE` file stamps it). The footgun that stays in: licenses are contagious downward. Pull in one strong-copyleft (GPL/AGPL) dependency and its terms can obligate your entire product to ship source, and it hides deep in the transitive tree where a permissive top-level MIT never warns you. Audit it for real — `pip install pip-licenses && pip-licenses` (or npm `license-checker`) prints every dependency's license so a copyleft one can't ride in unnoticed."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/open-source-contribution/
+    source_title: "Open Source Contribution: Maintaining and Licensing"
+    fingerprint: b4550908c315
+  - id: SRC-059
+    kind: hack
+    title: "The patch release that broke your build: semver, the caret range that auto-upgrades, and why ^0.x lies"
+    brief: "MAJOR.MINOR.PATCH is a promise — breaking changes bump MAJOR, features bump MINOR, fixes bump PATCH — and a dependency that ships a breaking change as a 'patch' is the bug you feel three deploys later. The footgun that stays in: the default `^1.2.3` caret range in package.json auto-installs any newer 1.x, so a lockfile-less `npm install` on a fresh machine silently pulls a different minor than your teammate's — and the part everyone gets wrong, `^0.2.3` does NOT allow 0.3.0, because below 1.0 the caret pins to the leftmost non-zero digit (0.x means 'no stability promised'). Commit the lockfile, run `npm ci`, and read the range operator before you trust it. Reproducible with `npm install <pkg>@^0.2.0` and checking what actually landed."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/open-source-contribution/
+    source_title: "Open Source Contribution: Maintaining and Licensing"
+    fingerprint: 599c0a7f2b49
+  - id: SRC-060
+    kind: hack
+    title: "Stop downloading 5 GB of CUDA to run on a laptop with no GPU: the CPU-only PyTorch wheel index"
+    brief: "`pip install torch` pulls the CUDA build by default — around 4.8 GB of GPU runtime you will never touch on a laptop or a CI box that has no GPU. Point pip at the CPU wheel index instead: `pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu` and the download drops to a fraction. The failure that stays in: unpinned tutorial installs also break when a library renames its API out from under you — a fresh `transformers` pulls a version where `pipeline('ner', grouped_entities=True)` is gone, replaced by `aggregation_strategy='simple'` — so pin the versions in requirements.txt AND choose the wheel index on purpose, or 'pip install and follow along' downloads the wrong thing and then runs the wrong thing."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-14-game-developer-1101/
+    source_title: "Quest Report: Game Developer Level 1101"
+    fingerprint: 6c7079b78841
+
+  # Fresh doc (autopilot run, 2026-08-06): the only `todo` doc on the board was
+  # DOC-024 (aggregate.rb), which duplicates an OPEN auto:content PR (#375). Every
+  # other doc item is done, DOC-004 is a blocked post, and the remaining todos are
+  # OPS-001 (kind: ops — content runs skip) and a wall of SRC-* scout ideas (all
+  # kind: hack/tool, wrong lane). Rather than no-op, cross lanes, or duplicate, the
+  # doc lane's rotating persona (Cass Vector, byline `cass`) synthesized a fresh
+  # in-lane doc with a genuine, untouched security angle: the fleet's 24 workflows
+  # call 69 external actions and pin ZERO of them to an immutable SHA — every ref is
+  # a movable tag (or `@main`). DOC-027 covered what the token CAN DO (permissions);
+  # POST-028 covered the unpinned remote_theme (runtime dep); this covers the
+  # unpinned CI actions (build-time supply chain) — a distinct station. Demonstrable
+  # with real captured output on this repo: 69 refs / 0 SHA pins, `@v4` proven to be
+  # a floating alias (currently == v4.4.0, was v4.0.0 at launch) via `git ls-remote`,
+  # `secrets: inherit` into a cross-repo `@main` reusable workflow, and the honest
+  # walk-back (no `pull_request_target`, no dependabot.yml). Config fix recommended
+  # in the piece, not applied (workflows aren't content; the bot has no `.github/` write).
+  - id: DOC-030
+    kind: doc
+    title: "@v4 Is a Bookmark, Not a Padlock"
+    brief: "Threat-model the version tag every workflow pastes without reading: the fleet's 24 workflows call 69 external actions and pin 0 to an immutable SHA. The force-push-the-tag supply-chain attack, `@v4` proven to be a floating pointer (== v4.4.0 today, v4.0.0 at launch), the two refs that would actually hurt (`@main` reusable workflow with `secrets: inherit`; `claude-code-action@v1` holding the OAuth token), the honest walk-back (no pull_request_target, no dependabot.yml), and three ranked mitigations: SHA-pin the moving high-power refs, replace `secrets: inherit` with an allowlist, add a github-actions Dependabot config so pins get bumped by a reviewable PR. Real captured grep/ls-remote output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/at-v4-is-a-bookmark-not-a-padlock/
+
+  # Synthesized in-lane (autopilot post run, 2026-08-06): no eligible `post`-kind
+  # `todo` on the board — POST-001..030 all done and DOC-004 is `blocked` on
+  # OPS-001. `gh pr list --state open --label auto:content` showed a hack (SRC-019)
+  # and two docs (DOC-024, DOC-029) — no post to duplicate. Rather than no-op,
+  # cross lanes, or fabricate the blocked post, synthesized a fresh in-lane field
+  # note, written AS Cass Vector (byline rotation `ruby scripts/fleet/authors.rb
+  # --section post` -> `cass`). Angle: a real, offline-reproduced trust-boundary
+  # finding — the content-scout's deterministic accept filter (valid_source_url?
+  # in scripts/scout/_lib.rb) requires a `source_url` but only checks it's an
+  # http(s) URL, never that its host is the CONFIGURED source (it-journey.dev /
+  # bash-365.com), even though grow-lifehacker publishes that URL as a live
+  # citation. The crawl is same-host scoped (plan_sources.rb); the accept filter
+  # isn't. Reproduced for real: the filter accepts evil.example.com and the
+  # look-alike it-journey.dev.attacker.io; a poisoned proposal renders a valid
+  # `status: todo` backlog item citing free-crypto.click. Honest twist — NOT
+  # exploited today (all 60 scout items are it-journey.dev; a tripwire scan
+  # returns 0 offenders). Three ranked, each-tested mitigations (host allowlist at
+  # the filter, a committed-backlog tripwire, inert nofollow render). Fix belongs
+  # in scripts/scout/ + the skill render step; recommended in the PR, not applied
+  # (a content run touches content, not the tooling).
+  - id: POST-031
+    kind: post
+    title: "My scout has to cite a source. Nothing checks the source is mine."
+    brief: "Field note (Cass Vector): the content-scout requires every proposal to carry a source_url and grow-lifehacker publishes it as a citation, but the deterministic accept filter (valid_source_url?) only checks it's an http(s) URL — never that its host is the configured sister site. Reproduced offline: the filter accepts evil.example.com and a look-alike parent domain, and a poisoned proposal renders a valid status:todo backlog item citing free-crypto.click. NOT exploited today (60/60 scout items are it-journey.dev). Three ranked, each-tested mitigations: pin the host to SCOUT_SOURCES at the filter, a committed-backlog tripwire, an inert nofollow render. Fix belongs in scripts/scout/; recommended in the PR, not applied."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/06/scout-cites-a-source-not-my-source/
+
+  # Synthesized in-lane (autopilot doc run, 2026-08-08): no eligible `doc`-kind
+  # item was available. `gh pr list --state open --label auto:content` showed the
+  # only remaining todo doc (DOC-024 aggregate.rb) already an OPEN PR, and DOC-030
+  # (@v4) already has a published file at /docs/at-v4-is-a-bookmark-not-a-padlock/
+  # (its backlog flip landed on POST-031's `published:` via union-merge). Rather
+  # than no-op or cross lanes, synthesized a fresh in-lane doc: the Meta series has
+  # never given tools/unwrap-prose.py (the one-paragraph-per-line gate,
+  # markdown-oneline.yml) its own piece. Byline rotation `ruby scripts/fleet/authors.rb
+  # --section doc` -> `edge`. Angle: the gate is "conservative by design", so a
+  # hard-wrapped paragraph walks past it wearing any structural costume — reproduced
+  # offline: a pipe on every line, a 4-space indent, a leading `>`, and (the sharp
+  # one) an UNCLOSED code fence above the prose all make `--check` exit 0. Control
+  # with the fence closed FLAGGED it. Also survives: unicode, 50k lines in 0.18s,
+  # idempotency, hard breaks, CRLF. Fix belongs upstream (the file is vendored from
+  # the bamr87 hub); recommended, not applied.
+  - id: DOC-032
+    kind: doc
+    title: "One Paragraph Per Line, and the Four Ways I Snuck a Wrapped One Past"
+    brief: "Doc (Ed G. Case): stress-test tools/unwrap-prose.py, the one-paragraph-per-line gate enforced by markdown-oneline.yml. It's conservative by design, so a hard-wrapped paragraph passes --check whenever a line looks structural. Reproduced offline against the repo's own script: a pipe on every line, a 4-space indent, a leading >, and an unclosed code fence above the prose each exit 0; the fence-closed control FLAGGED. Where it refused to break: emoji/CJK/Arabic, a 50k-line file (0.18s), idempotency, hard breaks, CRLF-invisible-but-safe. Named the victim for each hole; the unclosed-fence one has whole-file blast radius. Fix belongs upstream (vendored from the bamr87 hub); recommended in the PR, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/four-ways-past-the-one-paragraph-gate/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-061
+    kind: hack
+    title: "The cloud VM you deleted is still charging you: kill the orphaned disk, IP, and snapshot the console hides"
+    brief: "You spun up a free-tier VM, ran the tutorial, deleted the instance — and the bill kept climbing, because deleting a VM leaves its attached disk, reserved static IP, and snapshots billing on their own. Hunt them for real (`gcloud compute disks list`, `addresses list`, `snapshots list`; the AWS equivalents are orphaned EBS volumes and unattached Elastic IPs) and delete what nothing references. The other footgun that stays in: a billing 'budget alert' does NOT cap spending — it emails you after the money's already gone; there is no server-side stop button, so the only real brakes are deleting resources and scoping the credential that can create them."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/hello-cloud/
+    source_title: "Hello Cloud: First Steps into the Sky Realm"
+    fingerprint: 633744cb4059
+  - id: SRC-062
+    kind: hack
+    title: "Your scheduled workflow stopped running: cron is UTC, drifts under load, and GitHub disables it after 60 days of silence"
+    brief: "A `schedule:` trigger looks set-and-forget until it isn't. Three surprises stay in: the cron is UTC, not your timezone, so `0 9 * * *` fires at 9am London and lunchtime in New York and you debug a 'wrong time' that was always right; a `* * * * *` every-minute schedule is a lie — GitHub queues scheduled runs on a shared pool and drops or delays them under load, so treat it as best-effort, never a precise clock; and on a repo with no pushes for 60 days GitHub silently disables the scheduled workflow entirely, so the nightly job you were relying on just quietly stopped. The fix stays honest: pick the UTC time on purpose, don't schedule tighter than ~5 minutes, and keep the repo (or the workflow) alive — or move a hard-real-time job off Actions."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/action-triggers/
+    source_title: "Action Triggers (GitHub Actions events)"
+    fingerprint: 8e6ece15e81c
+  - id: SRC-063
+    kind: hack
+    title: "Fork then clone, not clone then confusion: add the upstream remote so your fork doesn't rot"
+    brief: "Forking makes a copy you can push to; cloning the original gives you one you can't. Do it in the right order — fork on GitHub, `git clone` YOUR fork (that's `origin`), then `git remote add upstream <original>` — and now `git fetch upstream && git merge upstream/main` (or `gh repo sync`) keeps your copy current. The failures that stay in: a plain `git pull` reads `origin`, not `upstream`, so a fork left alone silently drifts weeks behind and your 'fresh' branch is built on stale code; and opening a PR from a branch you forgot to update means GitHub shows conflicts that are really just your months-old base — the fix is rebasing on an up-to-date `upstream/main` before you push, not editing the diff."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/hello-noob/
+    source_title: "Hello n00b (GitHub account creation and forking)"
+    fingerprint: aaa7111584fd
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-064
+    kind: hack
+    title: "Override a theme file in Jekyll without forking the theme: same path wins, and finding the file to copy"
+    brief: "A gem-based Jekyll theme (like the one this very site runs) ships its `_layouts`, `_includes`, and `_sass` inside the gem, not your repo — so to change the header you don't fork the theme, you drop a file at the SAME path in your project and Jekyll's lookup prefers yours. The step everyone misses: you can't edit what you can't see, so find the original first with `bundle info --path <theme>` (or `gem contents <theme>`) and copy that exact file in before you change it. The failures that stay in: copy only half an include and the theme's own partials that referenced the other half break; and a theme version bump changes the upstream file you overrode, so your copy silently goes stale and re-introduces the bug the update fixed — pin the theme version and diff on upgrade."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0100/frontend/
+    source_title: "Frontend: Jekyll Site Building with Bootstrap 5"
+    fingerprint: 67bc454c87f2
+  - id: SRC-065
+    kind: hack
+    title: "One JSON object per line: why JSONL beats a JSON array for logs you append to (and the half-written line a crash leaves)"
+    brief: "When you're appending events — agent traces, findings, a build log — a single big JSON array is the wrong shape: every append means parsing the whole file, deleting the closing `]`, and rewriting it, so two writers or one crash mid-write corrupts the lot. JSONL (one complete JSON object per line) lets you append with a plain `>>`, stream it line-by-line without loading it all, and `grep`/`jq -c` each record on its own. The failures that stay in: a process killed mid-append leaves a truncated final line, so every reader must skip a line that won't parse instead of dying on it; and a stray newline inside a value (a pretty-printed object, an embedded `\\n`) breaks the one-object-per-line contract, so you write compact and validate each line, not the file as a whole."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1011/agentic-multi-agent-observability/
+    source_title: "Multi-Agent System Observability"
+    fingerprint: 03ccf65762bc
+  - id: SRC-066
+    kind: hack
+    title: "curl said 200 and your script marched on: curl exits 0 on a 404 until you pass --fail"
+    brief: "A pipeline that does `curl -o out.json https://api/thing` treats a 404 or a 500 as success, because curl only fails on network errors, not HTTP ones — so it happily saves an error page as your data and the build stays green on garbage. Add `-f/--fail` to make curl exit non-zero on a 4xx/5xx, or read the code yourself with `curl -s -o /dev/null -w '%{http_code}'` and branch on it. The footguns that stay in: plain `--fail` throws away the error body you'd want for debugging (use `--fail-with-body` on modern curl to keep it), and a bare request doesn't follow redirects, so a 301/302 you expected to work returns a 3xx and an empty file until you add `-L`. Testable against any endpoint that returns a chosen status."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/api-fundamentals/
+    source_title: "API Fundamentals: HTTP, Requests, and JSON"
+    fingerprint: b9a7585e78c9
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-067
+    kind: hack
+    title: "A CHANGELOG humans actually read: the Unreleased section, and why the auto-generated one is your git log in a tie"
+    brief: "Keep a hand-curated `CHANGELOG.md` in the Keep a Changelog shape — an `## [Unreleased]` block you add to as you merge, grouped under Added/Changed/Fixed/Removed/Security, each line written for a reader, not a compiler. The honest part that stays in: tools that generate the changelog from conventional-commit messages (semantic-release, release-drafter) emit a wall of 'fix: typo' and 'chore: bump deps' that records WHAT changed and never WHY — fine for machines, noise for humans — so write the release notes on purpose, or at least edit the draft the tool hands you. The other trap: a CHANGELOG and a README that drift apart at release time, so pin the version bump, the git tag, and the changelog entry to one commit."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/change-logs/
+    source_title: "Changelog Management and Semantic Versioning"
+    fingerprint: edcac9538bd4
+  - id: SRC-068
+    kind: doc
+    title: "'It works' is not acceptance criteria a robot can grade: writing a Definition of Done a check can evaluate"
+    brief: "A Meta take from a site a robot runs: whether a machine can mark a task complete is decided entirely by how you wrote the acceptance criteria. 'It works' and 'looks good' are ungradeable; 'the test suite exits 0', 'file X changed', 'coverage didn't drop', 'the PR is out of draft' are each a signal a github-script check can read as true or false. Turn every criterion into an observable condition, and anything that still needs a human's eye stays exactly that — a labeled human gate, not a fabricated pass. The honest part: the moment a criterion is checkable, an agent can learn to satisfy its letter while missing the point, so the checklist is necessary and never sufficient — some judgement doesn't compress into a boolean."
+    voice: meta-confession
+    priority: P3
+    status: done
+    published: /docs/the-checkbox-the-robot-ticks-itself/
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/agentic-success-criteria-and-signals/
+    source_title: "The Oracle's Rubric: Agent Success Signals"
+    fingerprint: 8556b256dc93
+  - id: SRC-069
+    kind: hack
+    title: "Your no-code two-way sync is stuck in a loop: the update that fires the trigger that fires the update"
+    brief: "A Zapier/Make/Power Automate flow that syncs records both directions will happily eat itself: system A updates, which triggers a write to B, which triggers a write back to A, forever — the same self-retrigger loop a bot's own git push causes, just wearing a friendlier UI. The fixes that stay honest: make the sync one-directional unless you truly need both ways, and when you do, add a loop guard (skip the write when the incoming value already matches, or stamp a `last_synced_by` field and ignore your own writes) plus a stable shared key so a re-sync updates a record instead of creating a duplicate. The quieter failure: these platforms fail silently — a broken step just stops and nobody's paged — so wire a failure notification, because 'it hasn't run in three days' is a bug you find in a report, not an alert."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://bash-365.com/tools/business/system-integrations/
+    source_title: "Business Software Integration"
+    fingerprint: c3eca4500a78
+
+  # Synthesized in-lane (autopilot run, 2026-08-09): a `post` run found no `todo`
+  # post item — every POST-* is done and DOC-004 is still `blocked` on OPS-001 —
+  # and no open auto:content PR is a post (the four open are a hack + three docs).
+  # Rather than no-op, cross lanes, or fabricate the blocked post, synthesized a
+  # fresh in-lane Field Note. The rotation returned `edge`, so Ed G. Case stress-
+  # tested the very script that cast him: scripts/fleet/authors.rb. Real captured
+  # output — a typo'd/empty/emoji/injection section all return a persona with exit
+  # 0 (silent global-pool fallback) while a MISSING value is the one thing rejected
+  # (exit 2), plus the verified self-correction (adding this edge post flips the
+  # next post pick to cass). Recommend a fail-closed on unknown sections; not
+  # patched (fleet script, not content).
+  - id: POST-032
+    kind: post
+    title: "The byline picker can't tell a typo from a section"
+    brief: "Meta-confession in Ed G. Case's voice: the byline rotation (scripts/fleet/authors.rb) that assigns AI authors rejects a missing --section value (exit 2) but silently answers a misspelled, empty, emoji, or injection-laced one with a confident exit-0 persona name, computed from the global all-sections pool instead of the section you meant. The trap: a typo returned the same author as the correct name, so the wrong input looked right. Grudging respect for the determinism and the hash-lookup (not shell) injection safety, plus a verified self-correction — this edge-authored post flips the next post pick to cass. Real captured output only; fail-closed fix recommended, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/09/byline-picker-cant-tell-a-typo-from-a-section/

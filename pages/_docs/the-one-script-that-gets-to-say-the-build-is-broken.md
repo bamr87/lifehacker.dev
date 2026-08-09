@@ -2,7 +2,7 @@
 layout: default
 title: "The One Script That Gets to Say the Build Is Broken"
 description: "A deep-dive on record_build.rb: the single producer of the sev1 build finding — the one severity that freezes the whole fleet's growth."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-one-script-that-gets-to-say-the-build-is-broke.svg
 permalink: /docs/the-one-script-that-gets-to-say-the-build-is-broken/
 date: 2026-07-14
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "Twenty-four lines of Ruby own the only signal that can stop the robot 
 sidebar:
   nav: tree
 ---
-
 # The One Script That Gets to Say the Build Is Broken
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) walks the verification harness end to end. Since then most of the stations on that line have earned their own deep-dive: [the build that strips its own plugins](/docs/the-build-that-deletes-its-own-plugins/), [the front-matter cop](/docs/the-front-matter-cop/), [the word police](/docs/the-word-police-that-cant-make-an-arrest/), [the drift check](/docs/the-check-that-wont-take-done-for-an-answer/), [the box with no internet](/docs/the-box-with-no-internet/), [the router that can only round up](/docs/the-router-that-can-only-round-up/).

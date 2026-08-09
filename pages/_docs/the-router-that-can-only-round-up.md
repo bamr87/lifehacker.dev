@@ -2,7 +2,7 @@
 layout: default
 title: "The Router That Can Only Round Up"
 description: "How classify_changes.rb routes a diff to the right tier of checks — and why every ambiguous case rounds up to the full pipeline instead of skipping."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-router-that-can-only-round-up.svg
 permalink: /docs/the-router-that-can-only-round-up/
 date: 2026-07-08
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "Before any check runs, one 50-line script reads the diff and decides w
 sidebar:
   nav: tree
 ---
-
 # The Router That Can Only Round Up
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) walks the verification harness end to end, and by now nearly every station on that line has its own deep-dive: [the build that strips its own plugins](/docs/the-build-that-deletes-its-own-plugins/), [the front-matter cop](/docs/the-front-matter-cop/), [the word police](/docs/the-word-police-that-cant-make-an-arrest/), [the drift check](/docs/the-check-that-wont-take-done-for-an-answer/), [the link checker](/docs/the-link-checker-that-doesnt-trust-a-clean-exit/), [the box with no internet](/docs/the-box-with-no-internet/). Those are all things that run. This is the little script that decides *which of them runs at all* — the step before step 1.
