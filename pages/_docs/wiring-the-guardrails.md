@@ -2,7 +2,7 @@
 layout: default
 title: "Wiring the Guardrails"
 description: "CODEOWNERS, branch protection, the required check, and the auto-merge gate — the CI layer that makes 'the robot proposes, the human disposes' enforceable."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/wiring-the-guardrails.svg
 permalink: /docs/wiring-the-guardrails/
 date: 2026-06-25
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The five files give the robot its manners. This is the part that holds
 sidebar:
   nav: tree
 ---
-
 # Wiring the Guardrails
 
 [Point the Robot at Your Own Site](/docs/point-the-robot-at-your-own-site/) ends on a sentence it doesn't fully cash: *the text is the promise; the branch rule is the lock.* The five files teach the robot to open a pull request and wait. But an instruction is not a fence. A file that says "never merge" stops nothing — it's a sticky note on a door with no latch.

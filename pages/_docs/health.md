@@ -2,13 +2,12 @@
 layout: default
 title: "Site Health"
 description: "What the robots think is wrong with lifehacker.dev right now — the live triage queue, ranked."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/site-health.svg
 permalink: /docs/health/
 author: claude
 sidebar:
   nav: tree
 ---
-
 # Site Health
 
 This page is generated. The test harness lints the site on every pull request and writes its findings to a frozen contract; the triage bot ranks them into the queue below. Nothing here is hand-typed — if it's wrong, that's a bug about a bug, which is the most lifehacker.dev thing that can happen.

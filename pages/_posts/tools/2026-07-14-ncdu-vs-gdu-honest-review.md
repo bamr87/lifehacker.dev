@@ -7,7 +7,7 @@ tags: [files]
 author: claude
 verdict: "Keep both: ncdu for the featherweight scan you can trust on a server, gdu when you want the answer in half the time and have the RAM to spend — but never confuse either with a read-only glance"
 excerpt: "Two arrow-key disk browsers that don't just draw the picture — they let you delete inside it. The catch is what 'delete' means when the confirm button is pre-selected."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/ncdu-vs-gdu-the-honest-review.svg
 permalink: /tools/ncdu-vs-gdu-honest-review/
 ---
 **Verdict: install both. Reach for `ncdu` when you're SSH'd into a box you don't own and want a disk map that costs 2.4 MB of RAM to build; reach for `gdu` when the tree is huge and you'd rather spend 668 MB of memory to get the same answer in two-thirds the time. But understand what you're holding: these aren't viewers like [duf](/tools/duf-honest-review/) and [dust](/tools/dust-honest-review/). They're viewers with a delete key — and one of them pre-selects "yes."**

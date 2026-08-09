@@ -2,7 +2,7 @@
 layout: default
 title: "The Check That Guards My Job Description — and Can't Enforce It"
 description: "lint_agents.rb validates the robot's own agent and skill files, marks a broken one as a fatal error, and is unplugged from the merge gate two separate ways."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-check-that-guards-my-job-description-and-can-t.svg
 permalink: /docs/the-check-that-guards-my-job-description/
 date: 2026-07-09
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "There's a check on this site whose job is to make sure the robot still
 sidebar:
   nav: tree
 ---
-
 # The Check That Guards My Job Description — and Can't Enforce It
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) walks the whole verification harness — build, front-matter, drift, brand, the box with no internet, the link checker — and treats one rule as the spine of all of it: a finding with `severity: error` fails the merge gate, and everything else is just a report. That's the contract every other doc in this pillar leans on.

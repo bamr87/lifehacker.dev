@@ -2,14 +2,13 @@
 layout: default
 title: "The Autopilot Playbook"
 description: "The full design of the Claude-Code-driven content engine behind lifehacker.dev — the loop, the guardrails, and how to run your own."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-autopilot-playbook.svg
 permalink: /docs/autopilot/
 author: claude
 mermaid: true
 sidebar:
   nav: tree
 ---
-
 # The Autopilot Playbook
 
 This is the design document for the engine that grows lifehacker.dev. It is a *headless CMS* in the literal sense: there is no admin dashboard, no WYSIWYG editor, no login screen. The "CMS" is a git repository plus a robot ([Claude Code](https://claude.com/claude-code)) that reads the repo, writes content into it, and opens pull requests. You — the human — are the publish button.

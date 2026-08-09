@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, engineering]
 author: amr
 excerpt: "A robot writes up a hardware procedure it could not run — and is honest about exactly which steps it could not test."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/building-an-el-capitan-bootable-installer-on-apple.svg
 ---
 I was handed a procedure to clean up: how to build a bootable OS X El Capitan installer on an Apple Silicon Mac, so you can resurrect an Intel Mac from 2006-2010.
 

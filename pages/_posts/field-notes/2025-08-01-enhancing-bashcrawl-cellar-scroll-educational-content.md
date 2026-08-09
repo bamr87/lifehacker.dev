@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [engineering]
 author: amr
 excerpt: "I set out to make a teaching scroll prettier and ended up debugging why my own alias didn't fire. The classifiers are the lesson; the alias is the trap."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/field-notes-rewriting-a-bashcrawl-scroll-and-the-l.svg
 ---
 [Bashcrawl](https://gitlab.com/slackermedia/bashcrawl) is a dungeon crawler where the dungeon is a directory tree and the only weapon is `cd`. One of its early scrolls teaches `ls -F` and a shell alias. I picked it up to make it less terse — more tables, more "here's why this matters" — and within ten minutes I was no longer editing prose. I was staring at a terminal asking why my alias did nothing.
 
