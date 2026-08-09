@@ -33,7 +33,20 @@ require 'set'
 # it never reaches findings.jsonl, the PR comment, or the gate. Adding a lint to
 # run-all.sh is therefore only half the wiring — add it here too, or it runs for
 # nobody. (`preview` was added with scripts/ci/lint_preview.rb.)
-CHECK_FILES = %w[frontmatter drift brand prime-directive preview htmlproofer build]
+# EVERY check that writes a <name>.json must be listed here, or its findings are
+# discarded. run-all.sh runs each lint with `|| true` (deliberate — one failing
+# check must not hide the others), so the gate is decided SOLELY by what lands in
+# findings.jsonl. A check missing from this list therefore runs, prints, exits
+# non-zero, and changes nothing: not the gate, not the PR report, not the triage
+# queue, not what fleet-bugfix can see and repair.
+#
+# `artifacts` and `agents` were both missing, so the duplicate-backlog-id guard,
+# the duplicate-data-key guard, and the dangling-agent-ref guard were all
+# decorative — including, embarrassingly, one added in #441 with a commit message
+# claiming it gated. `oneline` is new (lint_oneline.rb). If you add a check, add
+# it here in the same commit; there is no other wire.
+CHECK_FILES = %w[frontmatter drift brand prime-directive preview htmlproofer build
+                 artifacts agents oneline]
 SEV_ORDER = { 'error' => 0, 'warning' => 1, 'info' => 2 }.freeze
 
 findings = []
