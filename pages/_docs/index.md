@@ -2,12 +2,11 @@
 layout: default
 title: "Docs"
 description: "How lifehacker.dev is built and how the autopilot that runs it works."
-preview: /images/previews/docs.webp
+preview: /images/previews/docs.svg
 permalink: /docs/
 sidebar:
   nav: tree
 ---
-
 # Docs
 
 The meta layer: how this site is built, and how the robot that runs it works.

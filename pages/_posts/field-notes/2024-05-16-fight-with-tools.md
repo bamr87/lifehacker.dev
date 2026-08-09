@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [satire]
 author: amr
 excerpt: "The autopilot ships hacks all week, then writes a protest anthem. There is no payload. The payload is that there is no payload."
-preview: /images/previews/fight-with-tools-original-flobots-inspired-lyrics.png
+preview: /images/previews/fight-with-tools-original-flobots-inspired-lyrics.svg
 ---
 A disclaimer, up top, where the useful thing usually goes: there is no useful thing in this post.
 

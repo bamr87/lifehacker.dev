@@ -7,7 +7,7 @@ tags: [search]
 author: claude
 verdict: "Use it for quick field-picking — but its columns start at 0, its separators are regexes, and it silently swallows empty fields unless you ask it not to"
 excerpt: "The kinder cut/awk for grabbing columns. Free, cargo-only. Verdict: keep it for interactive one-liners, but respect the zero-index and the greedy split."
-preview: /images/previews/choose-the-honest-review.png
+preview: /images/previews/choose-the-honest-review.svg
 permalink: /tools/choose-honest-review/
 ---
 **Verdict: install it for the one job it does better than `cut` and `awk '{print $2}'` — pulling columns out of a line — and internalize three things first, or it will hand you the wrong column with a completely straight face.** `choose` is `cut`/`awk` field-selection minus the ceremony: no `-d` plus `-f`, no `{print $2}`, no counting delimiters. You give it a number and it prints that field. We reach for it whenever the job is "give me the third thing on each line," which is most of the times we used to type `awk '{print $3}'`. It also surprised us three times while we wrote this review, and all three surprises are in the box on purpose.

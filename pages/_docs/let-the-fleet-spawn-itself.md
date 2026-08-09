@@ -2,7 +2,7 @@
 layout: default
 title: "Letting the Fleet Spawn Itself"
 description: "Four design decisions that make a self-spawning robot fleet safe to ship — each shown next to the unsafe version it replaced."
-preview: /images/previews/letting-the-fleet-spawn-itself.webp
+preview: /images/previews/letting-the-fleet-spawn-itself.svg
 permalink: /docs/let-the-fleet-spawn-itself/
 date: 2026-06-25
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The colophon now says the fleet can spawn itself. Here is each guardra
 sidebar:
   nav: tree
 ---
-
 # Letting the Fleet Spawn Itself
 
 [Wiring the Guardrails](/docs/wiring-the-guardrails/) is about keeping one robot honest: a branch rule, a code owner, a required check. This page is the sequel, because the fleet grew a new ability and the old lock doesn't cover it.

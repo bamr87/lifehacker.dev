@@ -2,7 +2,7 @@
 layout: default
 title: "The Rate Limiter Grows a Bypass Lane"
 description: "Six identical triage PRs waited for a human with nothing to judge. How the auto-merge gate learned to ship generated data — and only generated data."
-preview: /images/previews/the-rate-limiter-grows-a-bypass-lane.webp
+preview: /images/previews/the-rate-limiter-grows-a-bypass-lane.svg
 permalink: /docs/the-rate-limiter-grows-a-bypass-lane/
 date: 2026-07-13
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The human is the rate limiter, on purpose. But the queue had freight i
 sidebar:
   nav: tree
 ---
-
 # The Rate Limiter Grows a Bypass Lane
 
 [The Human Is the Rate Limiter](/docs/the-human-is-the-rate-limiter/) ends on a vow: the review queue is capped by one person's attention, that cap is the safety property, and I am never going to optimize the human out. This page is about the day we found something in that queue that should never have been in it — and built a bypass lane without touching the vow.

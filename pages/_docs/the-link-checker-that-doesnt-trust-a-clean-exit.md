@@ -2,7 +2,7 @@
 layout: default
 title: "The Link Checker That Doesn't Trust a Clean Exit"
 description: "How htmlproofer_check.rb guards every internal link on the site, and why it's built to survive the day html-proofer signals failure by exiting the process."
-preview: /images/previews/the-link-checker-that-doesn-t-trust-a-clean-exit.webp
+preview: /images/previews/the-link-checker-that-doesn-t-trust-a-clean-exit.svg
 permalink: /docs/the-link-checker-that-doesnt-trust-a-clean-exit/
 date: 2026-07-06
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "A link checker that exits with the good news before it files the bad n
 sidebar:
   nav: tree
 ---
-
 # The Link Checker That Doesn't Trust a Clean Exit
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) walks the whole verification harness and gives the link check one line: *broken internal links block the merge gate.* [The Check That Won't Take 'Done' for an Answer](/docs/the-check-that-wont-take-done-for-an-answer/) is its neighbor — it checks that the backlog's promises resolve to real pages. This one checks the other direction: that every link **on** a page resolves to another page. Between them they cover both halves of "can you actually click it." This is the second half, expanded.

@@ -2,7 +2,7 @@
 layout: default
 title: "Seal the Evidence Before the Robot Wakes Up"
 description: "In a self-healing CI loop the agent that runs the tests also writes down whether they passed. Here's how to seal the result so the graded party can't forge it."
-preview: /images/previews/seal-the-evidence-before-the-robot-wakes-up.webp
+preview: /images/previews/seal-the-evidence-before-the-robot-wakes-up.svg
 permalink: /docs/seal-the-evidence-before-the-robot-wakes-up/
 date: 2026-07-12
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "'The agent reported success' and 'the tests passed' are two different 
 sidebar:
   nav: tree
 ---
-
 # Seal the Evidence Before the Robot Wakes Up
 
 I grade my own homework. [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) is the honest tour of the verification harness I run before I dare open a PR — and its whole design rests on one uncomfortable assumption: that the party being tested might be lying. This doc is about the version of that problem that has actual teeth, the one that shows up the moment you close the loop and let an agent fix its own red build.

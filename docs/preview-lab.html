@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace Bloom — Preview Lab</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Anthropic Brand Colors */
+        :root {
+            --anthropic-dark: #141413;
+            --anthropic-light: #faf9f5;
+            --anthropic-mid-gray: #b0aea5;
+            --anthropic-light-gray: #e8e6dc;
+            --anthropic-orange: #d97757;
+            --anthropic-blue: #6a9bcc;
+            --anthropic-green: #788c5d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--anthropic-light) 0%, #f5f3ee 100%);
+            min-height: 100vh; color: var(--anthropic-dark);
+        }
+        .container { display: flex; min-height: 100vh; padding: 20px; gap: 20px; }
+        .sidebar {
+            width: 320px; flex-shrink: 0; background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px); padding: 24px; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(20,20,19,0.1); overflow-y: auto; overflow-x: hidden;
+        }
+        .sidebar h1 { font-family: 'Lora', serif; font-size: 24px; font-weight: 500; margin-bottom: 8px; }
+        .sidebar .subtitle { color: var(--anthropic-mid-gray); font-size: 14px; margin-bottom: 32px; line-height: 1.4; }
+        .control-section { margin-bottom: 32px; }
+        .control-section h3 {
+            font-size: 16px; font-weight: 600; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .control-section h3::before { content: '•'; color: var(--anthropic-orange); font-weight: bold; }
+        .seed-input {
+            width: 100%; background: var(--anthropic-light); padding: 12px; border-radius: 8px;
+            font-family: 'Courier New', monospace; font-size: 14px; margin-bottom: 12px;
+            border: 1px solid var(--anthropic-light-gray); text-align: center;
+        }
+        .seed-input:focus {
+            outline: none; border-color: var(--anthropic-orange);
+            box-shadow: 0 0 0 2px rgba(217,119,87,0.1); background: white;
+        }
+        .seed-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+        .regen-button { margin-bottom: 0; }
+        .control-group { margin-bottom: 20px; }
+        .control-group label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+        .slider-container { display: flex; align-items: center; gap: 12px; }
+        .slider-container input[type="range"] {
+            flex: 1; height: 4px; background: var(--anthropic-light-gray);
+            border-radius: 2px; outline: none; -webkit-appearance: none;
+        }
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; width: 16px; height: 16px; background: var(--anthropic-orange);
+            border-radius: 50%; cursor: pointer; transition: all 0.2s ease;
+        }
+        .slider-container input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.1); background: #c86641; }
+        .slider-container input[type="range"]::-moz-range-thumb {
+            width: 16px; height: 16px; background: var(--anthropic-orange);
+            border-radius: 50%; border: none; cursor: pointer;
+        }
+        .value-display {
+            font-family: 'Courier New', monospace; font-size: 12px;
+            color: var(--anthropic-mid-gray); min-width: 60px; text-align: right;
+        }
+        .text-input {
+            width: 100%; padding: 10px; border-radius: 6px; font-size: 13px;
+            border: 1px solid var(--anthropic-light-gray); background: var(--anthropic-light);
+            font-family: 'Poppins', sans-serif;
+        }
+        .text-input:focus { outline: none; border-color: var(--anthropic-orange); background: #fff; }
+        .button {
+            background: var(--anthropic-orange); color: white; border: none; padding: 10px 16px;
+            border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer;
+            transition: all 0.2s ease; width: 100%;
+        }
+        .button:hover { background: #c86641; transform: translateY(-1px); }
+        .button:active { transform: translateY(0); }
+        .button.secondary { background: var(--anthropic-blue); }
+        .button.secondary:hover { background: #5a8bb8; }
+        .button.tertiary { background: var(--anthropic-green); }
+        .button.tertiary:hover { background: #6b7b52; }
+        .button-row { display: flex; gap: 8px; margin-bottom: 8px; }
+        .button-row .button { flex: 1; }
+        .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .seg button {
+            padding: 9px 6px; border: 1px solid var(--anthropic-light-gray); background: #fff;
+            border-radius: 6px; cursor: pointer; font-size: 12px; font-family: 'Poppins', sans-serif;
+            transition: all .15s ease;
+        }
+        .seg button.on { background: var(--anthropic-dark); color: #fff; border-color: var(--anthropic-dark); }
+        .readout {
+            font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.7;
+            color: var(--anthropic-mid-gray); background: var(--anthropic-light);
+            padding: 10px; border-radius: 6px; white-space: pre-wrap;
+        }
+        .canvas-area { flex: 1; display: flex; align-items: center; justify-content: center; min-width: 0; }
+        #canvas-container {
+            width: 100%; max-width: 1000px; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(20,20,19,0.1); background: white;
+        }
+        #canvas-container canvas { display: block; width: 100% !important; height: auto !important; }
+        .loading { display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--anthropic-mid-gray); }
+        @media (max-width: 600px) {
+            .container { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .canvas-area { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>Trace Bloom</h1>
+            <div class="subtitle">Preview Lab — sweep the seed space behind lifehacker.dev's cover art. This page runs the production renderer, not a copy of it.</div>
+
+            <!-- Seed -->
+            <div class="control-section">
+                <h3>Seed</h3>
+                <input type="number" id="seed-input" class="seed-input" value="12345" onchange="updateSeed()">
+                <div class="seed-controls">
+                    <button class="button secondary" onclick="previousSeed()">← Prev</button>
+                    <button class="button secondary" onclick="nextSeed()">Next →</button>
+                </div>
+                <button class="button tertiary regen-button" onclick="randomSeedAndUpdate()">↻ Random</button>
+            </div>
+
+            <!-- Article -->
+            <div class="control-section">
+                <h3>Article</h3>
+                <div class="control-group">
+                    <label>Headline</label>
+                    <input type="text" id="titleInput" class="text-input"
+                           value="Order your Dockerfile so the layer cache does its job"
+                           oninput="setTitle(this.value)">
+                </div>
+                <div class="control-group">
+                    <label>Section (substrate + palette)</label>
+                    <div class="seg" id="sectionSeg"></div>
+                </div>
+                <button class="button secondary" onclick="seedFromTitle()">Seed from headline</button>
+            </div>
+
+            <!-- Parameters -->
+            <div class="control-section">
+                <h3>Parameters</h3>
+                <div class="control-group">
+                    <label>Density — lattice nodes</label>
+                    <div class="slider-container">
+                        <input type="range" id="density" min="10" max="30" step="1" value="19" oninput="updateParam('density', this.value)">
+                        <span class="value-display" id="density-value">19</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Probes — emitters</label>
+                    <div class="slider-container">
+                        <input type="range" id="probes" min="1" max="6" step="1" value="3" oninput="updateParam('probes', this.value)">
+                        <span class="value-display" id="probes-value">3</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Decay — failure ⟷ steady state</label>
+                    <div class="slider-container">
+                        <input type="range" id="decay" min="0.08" max="0.6" step="0.01" value="0.3" oninput="updateParam('decay', this.value)">
+                        <span class="value-display" id="decay-value">0.30</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Interference — bloom focus</label>
+                    <div class="slider-container">
+                        <input type="range" id="interference" min="0.2" max="1.4" step="0.05" value="0.8" oninput="updateParam('interference', this.value)">
+                        <span class="value-display" id="interference-value">0.80</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Relax — survey passes</label>
+                    <div class="slider-container">
+                        <input type="range" id="relax" min="0" max="8" step="1" value="3" oninput="updateParam('relax', this.value)">
+                        <span class="value-display" id="relax-value">3</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Drift — off true</label>
+                    <div class="slider-container">
+                        <input type="range" id="drift" min="0" max="1" step="0.02" value="0.32" oninput="updateParam('drift', this.value)">
+                        <span class="value-display" id="drift-value">0.32</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Bloom — focal drama</label>
+                    <div class="slider-container">
+                        <input type="range" id="bloom" min="0.3" max="2" step="0.05" value="0.9" oninput="updateParam('bloom', this.value)">
+                        <span class="value-display" id="bloom-value">0.90</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Readout -->
+            <div class="control-section">
+                <h3>Scene</h3>
+                <div class="readout" id="readout">—</div>
+            </div>
+
+            <!-- Actions -->
+            <div class="control-section">
+                <h3>Actions</h3>
+                <div class="button-row">
+                    <button class="button" onclick="regenerate()">Regenerate</button>
+                    <button class="button" onclick="resetParameters()">Reset</button>
+                </div>
+                <div class="button-row">
+                    <button class="button secondary" onclick="downloadPNG()">Download PNG</button>
+                    <button class="button tertiary" onclick="downloadSVG()">Download SVG</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div id="canvas-container"><div class="loading">Initializing generative art…</div></div>
+        </div>
+    </div>
+
+<script type="module">
+// ═══════════════════════════════════════════════════════════════════════════
+// PRODUCTION RENDERER — inlined verbatim from scripts/preview/lib/{core,svg}.mjs
+// by scripts/preview/build-lab.mjs. Do not edit here; edit there and rebuild.
+// ═══════════════════════════════════════════════════════════════════════════
+// Trace Bloom — the generative core.
+//
+// Philosophy: docs/TRACE-BLOOM.md. Framework: docs/PREVIEW-IMAGES.md.
+//
+// A substrate (lattice) is laid down, relaxed, and probed. Wavefronts propagate
+// ALONG THE GRAPH from each emitter, decaying per unit of travel and carrying a
+// phase; where they meet they interfere, and the constructive nodes bloom. The
+// output is a plain scene object (positions, weights, arrival buckets) that a
+// renderer turns into SVG or draws on a p5 canvas — the algorithm itself knows
+// nothing about either.
+//
+// Everything is seeded: same seed + same params => byte-identical scene, forever.
+// Zero dependencies (stdlib only) so it runs in CI, on a laptop, and in a browser.
+
+// ── deterministic randomness ─────────────────────────────────────────────────
+
+/** FNV-1a. Stable across runs and machines — unlike JS string hashing. */
+function fnv1a(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
+}
+
+/** Mulberry32 — small, fast, good enough distribution for art, fully seeded. */
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Seeded 2D value noise with fbm. Used for substrate drift, not for texture. */
+function makeNoise(rand) {
+  const perm = new Uint8Array(512);
+  const p = new Uint8Array(256);
+  for (let i = 0; i < 256; i++) p[i] = i;
+  for (let i = 255; i > 0; i--) {          // seeded Fisher-Yates
+    const j = Math.floor(rand() * (i + 1));
+    const t = p[i]; p[i] = p[j]; p[j] = t;
+  }
+  for (let i = 0; i < 512; i++) perm[i] = p[i & 255];
+
+  const fade = (t) => t * t * t * (t * (t * 6 - 15) + 10);
+  const grad = (hash, x, y) => {
+    switch (hash & 3) {
+      case 0: return x + y;
+      case 1: return -x + y;
+      case 2: return x - y;
+      default: return -x - y;
+    }
+  };
+
+  function noise2(x, y) {
+    const X = Math.floor(x) & 255, Y = Math.floor(y) & 255;
+    const xf = x - Math.floor(x), yf = y - Math.floor(y);
+    const u = fade(xf), v = fade(yf);
+    const aa = perm[perm[X] + Y], ab = perm[perm[X] + Y + 1];
+    const ba = perm[perm[X + 1] + Y], bb = perm[perm[X + 1] + Y + 1];
+    const x1 = lerp(grad(aa, xf, yf), grad(ba, xf - 1, yf), u);
+    const x2 = lerp(grad(ab, xf, yf - 1), grad(bb, xf - 1, yf - 1), u);
+    return lerp(x1, x2, v);                // roughly -1..1
+  }
+
+  /** Layered octaves — turbulence where the substrate should feel unsurveyed. */
+  noise2.fbm = (x, y, octaves = 3) => {
+    let sum = 0, amp = 1, freq = 1, norm = 0;
+    for (let o = 0; o < octaves; o++) {
+      sum += noise2(x * freq, y * freq) * amp;
+      norm += amp;
+      amp *= 0.5; freq *= 2;
+    }
+    return sum / norm;
+  };
+  return noise2;
+}
+
+// ── small math ───────────────────────────────────────────────────────────────
+
+const lerp = (a, b, t) => a + (b - a) * t;
+const clamp = (v, lo, hi) => (v < lo ? lo : v > hi ? hi : v);
+const round = (v, dp = 1) => {
+  const m = 10 ** dp;
+  return Math.round(v * m) / m;
+};
+
+/** Map a 0..1 roll into a bounds entry from design.json. */
+function pick(rand, bounds) {
+  return lerp(bounds.min, bounds.max, rand());
+}
+
+// ── article → parameters ─────────────────────────────────────────────────────
+//
+// The parameters are DERIVED, never hand-authored per article. `decay` is the
+// one that carries editorial meaning (failure vs. steady state), so it is not
+// left purely to the seed — the article's own language nudges it.
+
+const URGENT = /\b(fail|failed|failing|broke|broken|break|bug|crash|leak|regress|outage|panic|stale|silent|wrong|lost|rot|flake|flaky|deadlock|timeout|hang|corrupt|drift|never|can'?t|didn'?t|isn'?t|won'?t)\b/gi;
+const STEADY = /\b(architecture|design|pattern|guide|reference|how|structure|convention|standard|pipeline|contract|model|system|overview|explain|works|primer)\b/gi;
+
+function deriveParams({ slug, title = '', tags = [], section = 'field-notes', body = '' }, design) {
+  const sections = design.sections;
+  const sec = sections[section] ? section : 'field-notes';
+  const seed = fnv1a(slug || title);
+  const rand = mulberry32(seed);
+  const b = design.bounds;
+
+  // Sample the closed parameter space. Order matters — it is part of the seed
+  // contract; inserting a pick() above an existing one re-rolls every banner.
+  const density = Math.round(pick(rand, b.density));
+  const probes = Math.round(pick(rand, b.probes));
+  const relax = Math.round(pick(rand, b.relax));
+  const drift = pick(rand, b.drift);
+  const interference = pick(rand, b.interference);
+  const bloom = pick(rand, b.bloom);
+  let decay = pick(rand, b.decay);
+
+  // Editorial nudge: how the piece reads tilts the decay curve. Counted over
+  // title + tags + the first slice of body so a single scare-word can't swing it.
+  const corpus = `${title} ${tags.join(' ')} ${body.slice(0, 1200)}`;
+  const urgent = (corpus.match(URGENT) || []).length;
+  const steady = (corpus.match(STEADY) || []).length;
+  const tilt = clamp((urgent - steady) / 8, -1, 1);
+  decay = clamp(decay + tilt * 0.12, b.decay.min, b.decay.max);
+
+  return {
+    seed, section: sec, lattice: sections[sec].lattice,
+    density, probes, relax, drift, interference, bloom, decay,
+    tone: tilt > 0.15 ? 'urgent' : tilt < -0.15 ? 'steady' : 'even',
+  };
+}
+
+// ── the substrate ────────────────────────────────────────────────────────────
+
+function latticeNodes(params, noise, rand, W, H) {
+  const { lattice, density, drift } = params;
+  const nodes = [];
+  const cols = density;
+  const rows = Math.max(6, Math.round(density * (H / W) * 1.18));
+  const gx = W / (cols - 1), gy = H / (rows - 1);
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      let x = c * gx, y = r * gy;
+
+      if (lattice === 'isometric') {
+        // Skew into a blueprint axonometric, then re-fit to the canvas.
+        const sx = (c - (cols - 1) / 2) * gx, sy = (r - (rows - 1) / 2) * gy;
+        x = W / 2 + (sx - sy * 0.5) * 0.86;
+        y = H / 2 + (sy * 0.62 + sx * 0.22) * 0.94;
+      }
+
+      // Drift: how far the survey is off true. Quantized lattices snap it away.
+      const n1 = noise.fbm(c * 0.28, r * 0.28, 3);
+      const n2 = noise.fbm(c * 0.28 + 40, r * 0.28 + 40, 3);
+      const amp = (lattice === 'quantized' ? 0.12 : lattice === 'organic' ? 1.0 : 0.42) * drift;
+      x += n1 * gx * amp;
+      y += n2 * gy * amp;
+      if (lattice === 'quantized') {        // snap: nothing continuous here
+        x = Math.round(x / (gx / 2)) * (gx / 2);
+        y = Math.round(y / (gy / 2)) * (gy / 2);
+      }
+      nodes.push({ x, y, c, r, f: 0, d: Infinity, deg: 0 });
+    }
+  }
+  return { nodes, cols, rows, gx, gy };
+}
+
+/** Relaxation: nodes push apart until the field settles. This is the pass that
+ *  separates "surveyed" from "screensaver" — see the manifesto. */
+function relaxNodes(nodes, passes, minDist) {
+  for (let p = 0; p < passes; p++) {
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], bn = nodes[j];
+        const dx = bn.x - a.x, dy = bn.y - a.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 > minDist * minDist || d2 === 0) continue;
+        const d = Math.sqrt(d2);
+        const push = (minDist - d) * 0.24;      // meticulously gentle falloff
+        const ux = dx / d, uy = dy / d;
+        a.x -= ux * push; a.y -= uy * push;
+        bn.x += ux * push; bn.y += uy * push;
+      }
+    }
+  }
+}
+
+function latticeEdges(params, grid, rand) {
+  const { lattice } = params;
+  const { nodes, cols, rows } = grid;
+  const at = (c, r) => (c < 0 || r < 0 || c >= cols || r >= rows ? -1 : r * cols + c);
+  const edges = [];
+  const push = (i, j) => {
+    if (i < 0 || j < 0) return;
+    edges.push({ a: i, b: j });
+    nodes[i].deg++; nodes[j].deg++;
+  };
+
+  if (lattice === 'organic') {
+    // Near-neighbour mesh: each node links to its 3 closest, deduped.
+    const seen = new Set();
+    for (let i = 0; i < nodes.length; i++) {
+      const near = [];
+      for (let j = 0; j < nodes.length; j++) {
+        if (i === j) continue;
+        const dx = nodes[j].x - nodes[i].x, dy = nodes[j].y - nodes[i].y;
+        near.push([dx * dx + dy * dy, j]);
+      }
+      near.sort((p, q) => p[0] - q[0]);
+      for (let k = 0; k < 3 && k < near.length; k++) {
+        const j = near[k][1];
+        const key = i < j ? `${i}:${j}` : `${j}:${i}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        push(i, j);
+      }
+    }
+    return edges;
+  }
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const i = at(c, r);
+      // Manhattan routing pays for every corner: drop a fraction of the runs so
+      // the signal has to detour. Quantized keeps more of them (chunky blocks).
+      const keep = lattice === 'quantized' ? 0.78 : 0.62;
+      if (rand() < keep) push(i, at(c + 1, r));
+      if (rand() < keep) push(i, at(c, r + 1));
+      if (lattice === 'isometric' && rand() < 0.3) push(i, at(c + 1, r + 1));
+      if (lattice === 'quantized' && rand() < 0.12) push(i, at(c + 1, r + 1));
+    }
+  }
+  return edges;
+}
+
+// ── propagation ──────────────────────────────────────────────────────────────
+
+/** Dijkstra over the lattice: the wavefront must TRAVEL THE GRAPH, arriving
+ *  late where routing is bad. A radial falloff would ignore the topology, which
+ *  is the whole subject of the picture. */
+function propagate(nodes, adj, sources) {
+  const dist = new Float64Array(nodes.length).fill(Infinity);
+  const queue = [];
+  for (const s of sources) { dist[s] = 0; queue.push([0, s]); }
+  while (queue.length) {
+    queue.sort((a, b) => a[0] - b[0]);       // n is small; a heap buys nothing
+    const [d, u] = queue.shift();
+    if (d > dist[u]) continue;
+    for (const [v, w] of adj[u]) {
+      const nd = d + w;
+      if (nd < dist[v] - 1e-9) { dist[v] = nd; queue.push([nd, v]); }
+    }
+  }
+  return dist;
+}
+
+function buildScene(params, design, opts = {}) {
+  const W = design.canvas.width, H = design.canvas.height;
+  const sec = design.sections[params.section];
+  const pal = sec.palette;
+  const rand = mulberry32(params.seed ^ 0x9e3779b9);
+  const noise = makeNoise(mulberry32(params.seed));
+
+  const grid = latticeNodes(params, noise, rand, W, H);
+  const { nodes } = grid;
+  if (params.lattice === 'organic' || params.relax > 0) {
+    relaxNodes(nodes, params.relax, Math.min(grid.gx, grid.gy) * 0.72);
+  }
+  const edges = latticeEdges(params, grid, rand);
+
+  // adjacency, weighted by real distance travelled
+  const adj = nodes.map(() => []);
+  for (const e of edges) {
+    const a = nodes[e.a], b = nodes[e.b];
+    const w = Math.hypot(b.x - a.x, b.y - a.y);
+    e.w = w;
+    adj[e.a].push([e.b, w]);
+    adj[e.b].push([e.a, w]);
+  }
+
+  // Emitters. Biased to the right so the type plate on the left stays clean —
+  // composition is not left to chance even when placement is.
+  const plateEdge = W * design.layout.plateWidth;
+  const candidates = nodes
+    .map((n, i) => i)
+    .filter((i) => nodes[i].x > plateEdge * 0.82 && adj[i].length > 1);
+  const pool = candidates.length >= params.probes + 1
+    ? candidates
+    : nodes.map((n, i) => i).filter((i) => adj[i].length > 1);
+
+  const chosen = [];
+  for (let k = 0; k < params.probes && pool.length; k++) {
+    // Spread them: reject picks that crowd an existing probe.
+    let best = -1, bestScore = -1;
+    for (let t = 0; t < 24; t++) {
+      const cand = pool[Math.floor(rand() * pool.length)];
+      if (chosen.includes(cand)) continue;
+      let score = Infinity;
+      for (const c of chosen) score = Math.min(score, Math.hypot(nodes[cand].x - nodes[c].x, nodes[cand].y - nodes[c].y));
+      if (chosen.length === 0) score = 1e9;
+      if (score > bestScore) { bestScore = score; best = cand; }
+    }
+    if (best >= 0) chosen.push(best);
+  }
+
+  // THE OBSERVER PROBE — emits nothing, only receives; the field bends around it
+  // because measuring costs the system something. See TRACE-BLOOM.md.
+  let observer = -1;
+  {
+    const obsPool = nodes.map((n, i) => i)
+      .filter((i) => !chosen.includes(i) && nodes[i].x > plateEdge && adj[i].length > 1);
+    if (obsPool.length) observer = obsPool[Math.floor(rand() * obsPool.length)];
+  }
+  if (observer >= 0) {
+    const o = nodes[observer];
+    for (const n of nodes) {
+      const dx = n.x - o.x, dy = n.y - o.y;
+      const d = Math.hypot(dx, dy);
+      if (d < 1e-6 || d > W * 0.2) continue;
+      const bend = (1 - d / (W * 0.2)) ** 2 * 14;   // never the loudest thing here
+      n.x += (dx / d) * bend; n.y += (dy / d) * bend;
+    }
+  }
+
+  // Per-probe wavefronts, summed with phase → interference field.
+  const scale = Math.hypot(W, H);
+  const wavelength = scale / lerp(3.2, 5.6, ((params.seed >>> 8) & 255) / 255);
+  const arrivals = new Float64Array(nodes.length).fill(Infinity);
+  const field = new Float64Array(nodes.length);
+
+  for (let k = 0; k < chosen.length; k++) {
+    const dist = propagate(nodes, adj, [chosen[k]]);
+    const phase0 = (k / Math.max(1, chosen.length)) * Math.PI * 2;
+    for (let i = 0; i < nodes.length; i++) {
+      const d = dist[i];
+      if (!isFinite(d)) continue;
+      const amp = Math.exp(-params.decay * (d / scale) * 6);
+      field[i] += amp * Math.cos((d / wavelength) * Math.PI * 2 + phase0) * params.interference;
+      if (d < arrivals[i]) arrivals[i] = d;
+    }
+  }
+
+  // Normalise against a high PERCENTILE, not the maximum. Dividing by the single
+  // hottest node lets one outlier crush the whole field into near-zero, which is
+  // exactly how a "trace" picture ends up as a few blobs on black. Anchoring the
+  // 85th percentile at 1.0 spreads the distribution across the render's tiers so
+  // the substrate actually reads as traces.
+  const mags = Array.from(field, Math.abs).sort((a, b) => a - b);
+  const p85 = mags[Math.floor(mags.length * 0.85)] || 1e-6;
+  let maxArr = 1e-6;
+  for (let i = 0; i < nodes.length; i++) {
+    if (isFinite(arrivals[i])) maxArr = Math.max(maxArr, arrivals[i]);
+  }
+  for (let i = 0; i < nodes.length; i++) {
+    nodes[i].f = clamp(field[i] / p85, -1.35, 1.35);
+    nodes[i].t = isFinite(arrivals[i]) ? arrivals[i] / maxArr : 1;
+  }
+
+  // ── emit renderable primitives ──────────────────────────────────────────────
+  const buckets = design.motion.buckets;
+  const outEdges = [];
+  for (const e of edges) {
+    const a = nodes[e.a], b = nodes[e.b];
+    const f = (a.f + b.f) / 2;
+    const lit = Math.abs(f);
+    outEdges.push({
+      x1: round(a.x), y1: round(a.y), x2: round(b.x), y2: round(b.y),
+      lit: round(lit, 3), sign: f >= 0 ? 1 : -1,
+      bucket: clamp(Math.floor(((a.t + b.t) / 2) * buckets), 0, buckets - 1),
+    });
+  }
+
+  // Blooms at locally-maximal interference. Constructive nodes bloom bright;
+  // this is the focal point nobody placed by hand.
+  const bloomNodes = [];
+  const neighbourMax = nodes.map((n, i) => {
+    let m = 0;
+    for (const [v] of adj[i]) m = Math.max(m, Math.abs(nodes[v].f));
+    return m;
+  });
+  for (let i = 0; i < nodes.length; i++) {
+    const a = Math.abs(nodes[i].f);
+    if (a < 0.85 || a < neighbourMax[i]) continue;
+    if (nodes[i].x < plateEdge * 0.6) continue;      // keep the type plate clean
+    bloomNodes.push({
+      x: round(nodes[i].x), y: round(nodes[i].y),
+      r: round(lerp(22, 64, clamp(a, 0, 1)) * params.bloom),
+      i: round(a, 3), sign: nodes[i].f >= 0 ? 1 : -1,
+      bucket: clamp(Math.floor(nodes[i].t * buckets), 0, buckets - 1),
+    });
+  }
+  bloomNodes.sort((p, q) => q.i - p.i);
+
+  return {
+    w: W, h: H, params, palette: pal, sectionLabel: sec.label,
+    edges: outEdges,
+    blooms: bloomNodes.slice(0, 14),
+    probes: chosen.map((i) => ({ x: round(nodes[i].x), y: round(nodes[i].y), observer: false })),
+    observer: observer >= 0
+      ? { x: round(nodes[observer].x), y: round(nodes[observer].y), observer: true }
+      : null,
+    nodes: nodes.map((n) => ({ x: round(n.x), y: round(n.y), f: round(n.f, 3), t: round(n.t, 3) })),
+    ...opts,
+  };
+}
+
+// ── colour helpers (shared by the SVG emitter and the p5 viewer) ─────────────
+
+function hexToRgb(hex) {
+  const h = hex.replace('#', '');
+  return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+}
+function rgbToHex([r, g, b]) {
+  return '#' + [r, g, b].map((v) => clamp(Math.round(v), 0, 255).toString(16).padStart(2, '0')).join('');
+}
+function mix(hexA, hexB, t) {
+  const a = hexToRgb(hexA), b = hexToRgb(hexB);
+  return rgbToHex([lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)]);
+}
+
+// Trace Bloom — scene → SVG.
+//
+// Emits a self-contained, sanitiser-safe banner: no <script>, no <foreignObject>,
+// no <image>, no external references of any kind. Everything the browser needs is
+// inside the document, which is why it is safe to serve straight from `<img src>`.
+//
+// Two jobs the old pipeline never did:
+//   1. TYPOGRAPHY. The headline is rendered, wrapped, and fitted, so the card is
+//      legible at 300px. A banner nobody can read is a decoration, not a preview.
+//   2. MOTION AS INFORMATION. The reveal sweep plays in arrival order, so the
+//      animation shows propagation rather than wiggling for its own sake — and it
+//      stops dead under prefers-reduced-motion, resting on the composed frame.
+
+
+// Stamped onto every banner's root element. The generator regenerates any file
+// that does not carry the CURRENT version, which is what lets a design change
+// (or a fix like the safe-band layout) actually reach art that already exists
+// under the right filename. Bump on any change to the visual contract.
+const GENERATOR = 'trace-bloom/1';
+
+// ── text metrics ─────────────────────────────────────────────────────────────
+// Helvetica/Arial Bold advance widths (per 1000 em). We cannot measure text
+// without a browser, and shipping a banner whose headline overflows the plate is
+// worse than shipping none — so we carry the table.
+const ADV = {
+  ' ': 278, '!': 333, '"': 474, '#': 556, $: 556, '%': 889, '&': 722, "'": 238,
+  '(': 333, ')': 333, '*': 389, '+': 584, ',': 278, '-': 333, '.': 278, '/': 278,
+  ':': 333, ';': 333, '<': 584, '=': 584, '>': 584, '?': 611, '@': 975,
+  '[': 333, '\\': 278, ']': 333, '^': 584, _: 556, '`': 333,
+  '{': 389, '|': 280, '}': 389, '~': 584,
+  A: 722, B: 722, C: 722, D: 722, E: 667, F: 611, G: 778, H: 722, I: 278,
+  J: 556, K: 722, L: 611, M: 833, N: 722, O: 778, P: 667, Q: 778, R: 722,
+  S: 667, T: 611, U: 722, V: 667, W: 944, X: 667, Y: 667, Z: 611,
+  a: 556, b: 611, c: 556, d: 611, e: 556, f: 333, g: 611, h: 611, i: 278,
+  j: 278, k: 556, l: 278, m: 889, n: 611, o: 611, p: 611, q: 611, r: 389,
+  s: 556, t: 333, u: 611, v: 556, w: 778, x: 556, y: 556, z: 500,
+};
+const DIGIT = 556;
+
+function textWidth(str, size, tracking = 0) {
+  let w = 0;
+  for (const ch of str) {
+    w += (ADV[ch] ?? (ch >= '0' && ch <= '9' ? DIGIT : 600)) / 1000;
+  }
+  return w * size + tracking * Math.max(0, str.length - 1);
+}
+
+/** Greedy wrap, then shrink-to-fit, then (last resort) ellipsis. */
+function fitHeadline(text, { maxWidth, maxLines, size, minSize = 52, tracking = 0 }) {
+  const words = String(text).trim().split(/\s+/).filter(Boolean);
+  for (let s = size; s >= minSize; s -= 4) {
+    const lines = [];
+    let line = '';
+    let overflowed = false;
+    for (const word of words) {
+      const probe = line ? `${line} ${word}` : word;
+      if (textWidth(probe, s, tracking) <= maxWidth) { line = probe; continue; }
+      if (line) lines.push(line);
+      line = word;
+      if (textWidth(word, s, tracking) > maxWidth) overflowed = true;  // unbreakable
+    }
+    if (line) lines.push(line);
+    if (lines.length <= maxLines && !overflowed) return { lines, size: s };
+  }
+  // Could not fit cleanly: clip at maxLines and ellipsise the last one.
+  const s = minSize;
+  const lines = [];
+  let line = '';
+  for (const word of words) {
+    const probe = line ? `${line} ${word}` : word;
+    if (textWidth(probe, s, tracking) <= maxWidth) { line = probe; continue; }
+    if (line) lines.push(line);
+    if (lines.length >= maxLines) { line = ''; break; }
+    line = word;
+  }
+  if (line && lines.length < maxLines) lines.push(line);
+  if (lines.length === maxLines) {
+    let last = lines[maxLines - 1];
+    while (last.length > 4 && textWidth(`${last}…`, s, tracking) > maxWidth) last = last.slice(0, -1);
+    lines[maxLines - 1] = `${last.replace(/[\s,;:.-]+$/, '')}…`;
+  }
+  return { lines, size: s };
+}
+
+const esc = (s) => String(s)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+// ── renderer ─────────────────────────────────────────────────────────────────
+
+function renderSVG(scene, meta, design) {
+  const { w, h, palette: P, params } = scene;
+  const L = design.layout, T = design.type, M = design.motion;
+  const out = [];
+  const push = (s) => out.push(s);
+
+  const plateEdge = w * L.plateWidth;
+  const textLeft = L.margin;
+  const textMax = plateEdge - L.margin * 1.1;
+
+  // ---- typography (fitted before anything is drawn, so layout can react) -----
+  // Fit to the SAFE BAND, not just to the plate width. A four-line headline at
+  // full size overflows the 120px card crop and eats its own byline, so we trade
+  // lines for size until the whole block fits the band with breathing room.
+  const GAP_EYEBROW = 44, GAP_RULE = 52, RULE_H = 4, GAP_BYLINE = 42;
+  const band = h * (L.safeBottom - L.safeTop) * 0.93;
+  const blockHeight = (lines, size) => T.eyebrow.size + GAP_EYEBROW
+    + (lines - 1) * size * T.headline.leading + size
+    + GAP_RULE + RULE_H + GAP_BYLINE + T.byline.size;
+
+  let head = null;
+  for (const maxLines of [T.headline.maxLines, T.headline.maxLines - 1]) {
+    const candidate = fitHeadline(meta.title || '', {
+      maxWidth: textMax, maxLines,
+      size: T.headline.size, tracking: T.headline.tracking,
+    });
+    if (blockHeight(candidate.lines.length, candidate.size) <= band) { head = candidate; break; }
+    head = head || candidate;
+  }
+  while (blockHeight(head.lines.length, head.size) > band && head.size > 44) {
+    head = fitHeadline(meta.title || '', {
+      maxWidth: textMax, maxLines: head.lines.length,
+      size: head.size - 6, minSize: 44, tracking: T.headline.tracking,
+    });
+  }
+  // Lay the block out inside the SAFE BAND and centre it there. Bottom-anchoring
+  // reads better at full size but loses the byline the moment the homepage crops
+  // a card to 120px — and the card grid is where most people meet this image.
+  const lineH = head.size * T.headline.leading;
+  const blockH = blockHeight(head.lines.length, head.size);
+  const safeMid = h * (L.safeTop + L.safeBottom) / 2;
+  const top = safeMid - blockH / 2;
+
+  const eyebrowY = top + T.eyebrow.size;
+  const firstBase = eyebrowY + GAP_EYEBROW + head.size;
+  const ruleY = firstBase + (head.lines.length - 1) * lineH + GAP_RULE;
+  const bylineY = ruleY + RULE_H + GAP_BYLINE + T.byline.size * 0.5;
+
+  push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d" data-generator="${GENERATOR}" data-seed="${params.seed}">`);
+  push(`<title id="t">${esc(meta.title || 'Preview banner')}</title>`);
+  push(`<desc id="d">${esc(
+    `Trace Bloom generative banner for “${meta.title}”. A ${params.lattice} lattice probed by ` +
+    `${params.probes} emitters; interference blooms mark where the wavefronts meet. Seed ${params.seed}.`
+  )}</desc>`);
+
+  // ---- motion --------------------------------------------------------------
+  const delays = [];
+  for (let i = 0; i < M.buckets; i++) {
+    delays.push(`.b${i}{animation-delay:${(i / M.buckets * M.sweepSeconds).toFixed(2)}s}`);
+  }
+  // MOTION MUST NEVER BE LOAD-BEARING. A social-card scraper, a PDF export, or
+  // any rasterizer that captures frame 0 sees the `from` state — so `from` is a
+  // dimmed-but-complete frame, never an empty one, and the type is not animated
+  // at all. The sweep is a power-on, not a reveal. (TRACE-BLOOM.md: "the moving
+  // version is a gift; the frozen version is the work.")
+  push(`<style>
+@keyframes tb-sweep{from{opacity:.3}to{opacity:1}}
+@keyframes tb-breathe{0%,100%{opacity:.68}50%{opacity:1}}
+@keyframes tb-probe{0%,100%{opacity:.6}50%{opacity:1}}
+.sig{animation:tb-sweep .7s cubic-bezier(.2,.7,.3,1) both}
+${delays.join('')}
+.bloom{animation:tb-breathe ${M.breatheSeconds}s ease-in-out infinite}
+.probe{animation:tb-probe ${(M.breatheSeconds * 0.6).toFixed(1)}s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){
+.sig,.bloom,.probe{animation:none!important;opacity:1!important}
+}</style>`);
+
+  // ---- defs ----------------------------------------------------------------
+  push('<defs>');
+  push(`<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="${P.bg0}"/><stop offset="1" stop-color="${P.bg1}"/></linearGradient>`);
+  // Scrim: guarantees headline contrast no matter what the field does behind it.
+  // It must clear the art quickly — a scrim that reaches the right edge dims the
+  // entire composition, which is how a lit field turns into fog on black.
+  push(`<linearGradient id="scrim" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="${P.bg0}" stop-opacity="0.94"/>
+<stop offset="0.38" stop-color="${P.bg0}" stop-opacity="0.8"/>
+<stop offset="${L.scrimStop}" stop-color="${P.bg0}" stop-opacity="0.12"/>
+<stop offset="0.9" stop-color="${P.bg0}" stop-opacity="0"/></linearGradient>`);
+  push(`<linearGradient id="floor" x1="0" y1="1" x2="0" y2="0">
+<stop offset="0" stop-color="${P.bg0}" stop-opacity="0.5"/>
+<stop offset="0.46" stop-color="${P.bg0}" stop-opacity="0"/></linearGradient>`);
+  // Blooms as layered radial gradients — cheaper and more portable than filters.
+  // Tight falloff: a bloom is a hot NODE on the lattice, not atmosphere.
+  for (const [id, col] of [['bc', P.cool], ['bw', P.warm]]) {
+    push(`<radialGradient id="${id}">
+<stop offset="0" stop-color="${col}" stop-opacity="0.95"/>
+<stop offset="0.18" stop-color="${col}" stop-opacity="0.5"/>
+<stop offset="0.5" stop-color="${col}" stop-opacity="0.14"/>
+<stop offset="1" stop-color="${col}" stop-opacity="0"/></radialGradient>`);
+  }
+  push(`<pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+<rect width="4" height="1" fill="${P.bg0}" opacity="0.22"/></pattern>`);
+  push('</defs>');
+
+  push(`<rect width="${w}" height="${h}" fill="url(#bg)"/>`);
+
+  // ---- substrate: every edge, dim, in ONE path ------------------------------
+  const sub = scene.edges.map((e) => `M${e.x1} ${e.y1}L${e.x2} ${e.y2}`).join('');
+  push(`<path d="${sub}" stroke="${P.grid}" stroke-width="1.5" fill="none" stroke-opacity="0.95"/>`);
+
+  // ---- signal: lit edges, grouped by arrival bucket → sign → width tier ------
+  // Grouping keeps the element count near 80 instead of near 800: same picture,
+  // a fraction of the bytes, and the bucket IS the animation delay.
+  const TIERS = [
+    { min: 0.78, width: 4.4, opacity: 1 },
+    { min: 0.46, width: 2.6, opacity: 0.85 },
+    { min: 0.18, width: 1.7, opacity: 0.6 },
+  ];
+  const groups = new Map();
+  for (const e of scene.edges) {
+    const tier = TIERS.findIndex((t) => e.lit >= t.min);
+    if (tier === -1) continue;
+    const key = `${e.bucket}|${e.sign}|${tier}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(`M${e.x1} ${e.y1}L${e.x2} ${e.y2}`);
+  }
+  const keys = [...groups.keys()].sort((a, b) => {
+    const [ab, , at] = a.split('|').map(Number), [bb, , bt] = b.split('|').map(Number);
+    return ab - bb || at - bt;
+  });
+  for (const key of keys) {
+    const [bucket, sign, tier] = key.split('|').map(Number);
+    const t = TIERS[tier];
+    // Constructive interference runs cool, destructive runs warm; both are
+    // pulled a little toward the grid colour at low tiers so nothing shouts.
+    const base = sign > 0 ? P.cool : P.warm;
+    const col = mix(P.grid, base, clamp(0.55 + (2 - tier) * 0.22, 0, 1));
+    push(`<path class="sig b${bucket}" d="${groups.get(key).join('')}" stroke="${col}" stroke-width="${t.width}" stroke-opacity="${t.opacity}" fill="none" stroke-linecap="round"/>`);
+  }
+
+  // ---- blooms --------------------------------------------------------------
+  for (const b of scene.blooms) {
+    push(`<circle class="sig bloom b${b.bucket}" cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#${b.sign > 0 ? 'bc' : 'bw'})"/>`);
+  }
+  for (const b of scene.blooms.slice(0, 6)) {
+    const col = b.sign > 0 ? P.cool : P.warm;
+    push(`<circle class="sig b${b.bucket}" cx="${b.x}" cy="${b.y}" r="${Math.max(3, b.r * 0.07).toFixed(1)}" fill="${col}" fill-opacity="0.9"/>`);
+  }
+
+  // ---- probes --------------------------------------------------------------
+  for (const p of scene.probes) {
+    push(`<g class="sig probe b0"><circle cx="${p.x}" cy="${p.y}" r="15" fill="none" stroke="${P.ink}" stroke-width="2.2" stroke-opacity="0.75"/><circle cx="${p.x}" cy="${p.y}" r="4.5" fill="${P.ink}" fill-opacity="0.9"/></g>`);
+  }
+  // The observer: a receiver, drawn open and never the brightest thing here.
+  if (scene.observer) {
+    const o = scene.observer;
+    push(`<g class="sig b${M.buckets - 1}" opacity="0.6"><circle cx="${o.x}" cy="${o.y}" r="26" fill="none" stroke="${P.muted}" stroke-width="1.6" stroke-dasharray="5 7"/><circle cx="${o.x}" cy="${o.y}" r="3" fill="${P.muted}"/></g>`);
+  }
+
+  // ---- scrims + grain ------------------------------------------------------
+  push(`<rect width="${w}" height="${h}" fill="url(#scan)" opacity="0.5"/>`);
+  push(`<rect width="${w}" height="${h}" fill="url(#floor)"/>`);
+  push(`<rect width="${w}" height="${h}" fill="url(#scrim)"/>`);
+
+  // ---- type ----------------------------------------------------------------
+  push('<g class="type">');
+  const eyebrow = [meta.sectionLabel || scene.sectionLabel, meta.date].filter(Boolean).join('   ·   ').toUpperCase();
+  push(`<text x="${textLeft}" y="${eyebrowY}" font-family="${esc(T.mono)}" font-size="${T.eyebrow.size}" font-weight="${T.eyebrow.weight}" letter-spacing="${T.eyebrow.tracking}" fill="${P.accent}">${esc(eyebrow)}</text>`);
+
+  head.lines.forEach((line, i) => {
+    push(`<text x="${textLeft}" y="${(firstBase + i * lineH).toFixed(1)}" font-family="${esc(T.sans)}" font-size="${head.size}" font-weight="${T.headline.weight}" letter-spacing="${T.headline.tracking}" fill="${P.ink}">${esc(line)}</text>`);
+  });
+
+  push(`<rect x="${textLeft}" y="${ruleY}" width="112" height="4" fill="${P.accent}" opacity="0.9"/>`);
+  const byline = [meta.author && `by ${meta.author}`, meta.site || 'lifehacker.dev'].filter(Boolean).join('   ·   ');
+  push(`<text x="${textLeft}" y="${bylineY}" font-family="${esc(T.mono)}" font-size="${T.byline.size}" font-weight="${T.byline.weight}" letter-spacing="${T.byline.tracking}" fill="${P.muted}">${esc(byline)}</text>`);
+  push('</g>');
+
+  push('</svg>');
+  return out.join('\n');
+}
+
+
+const DESIGN = {
+  "_comment": "Trace Bloom design tokens. JSON so BOTH Jekyll (_data/preview/design) and the Node renderer (scripts/preview/) read the same file — see docs/PREVIEW-IMAGES.md and docs/TRACE-BLOOM.md. Editing a palette here re-skins every regenerated banner.",
+
+  "canvas": { "width": 1536, "height": 1024 },
+
+  "type": {
+    "sans": "Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "mono": "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+    "headline": { "size": 92, "leading": 1.1, "weight": 700, "tracking": -2, "maxLines": 4 },
+    "eyebrow":  { "size": 26, "weight": 600, "tracking": 6 },
+    "byline":   { "size": 24, "weight": 500, "tracking": 1 }
+  },
+
+  "_comment_safe": "SAFE BAND. The theme renders cards as background-size:cover at 120-150px (home/cover.html), so a 3:2 banner is centre-cropped to as narrow as 2.5:1 — only the middle 60% of the height survives. og:image (1.91:1) keeps ~78%. Every glyph must sit inside safeTop..safeBottom or it is cut off in the grid. scripts/ci/lint_preview.rb enforces this.",
+  "layout": {
+    "margin": 96,
+    "plateWidth": 0.56,
+    "scrimStop": 0.72,
+    "safeTop": 0.20,
+    "safeBottom": 0.80
+  },
+
+  "motion": {
+    "sweepSeconds": 2.6,
+    "buckets": 14,
+    "breatheSeconds": 7
+  },
+
+  "sections": {
+    "hacks": {
+      "label": "Hacks",
+      "lattice": "manhattan",
+      "palette": {
+        "bg0": "#05070d", "bg1": "#0b1020", "grid": "#1b2b44",
+        "cool": "#22d3ee", "warm": "#f472b6",
+        "ink": "#eaf6ff", "muted": "#7f9ab8", "accent": "#22d3ee"
+      }
+    },
+    "tools": {
+      "label": "Tools",
+      "lattice": "quantized",
+      "palette": {
+        "bg0": "#0a0614", "bg1": "#170c28", "grid": "#33215a",
+        "cool": "#a78bfa", "warm": "#fbbf24",
+        "ink": "#f6efff", "muted": "#9d8ac4", "accent": "#fbbf24"
+      }
+    },
+    "field-notes": {
+      "label": "Field Notes",
+      "lattice": "organic",
+      "palette": {
+        "bg0": "#060d0c", "bg1": "#0c1a18", "grid": "#1d3a36",
+        "cool": "#2dd4bf", "warm": "#fb7185",
+        "ink": "#eafffb", "muted": "#79a8a1", "accent": "#fb7185"
+      }
+    },
+    "docs": {
+      "label": "Meta",
+      "lattice": "isometric",
+      "palette": {
+        "bg0": "#040a12", "bg1": "#0a1526", "grid": "#17304f",
+        "cool": "#38bdf8", "warm": "#818cf8",
+        "ink": "#e8f3ff", "muted": "#7593b5", "accent": "#38bdf8"
+      }
+    }
+  },
+
+  "_comment_bounds": "Closed parameter space: the algorithm may only wander inside these ranges, because every seed in them was swept for a usable frame. See TRACE-BLOOM.md 'the parameter space must be closed'.",
+  "bounds": {
+    "density":      { "min": 15, "max": 24 },
+    "probes":       { "min": 2,  "max": 4 },
+    "decay":        { "min": 0.16, "max": 0.44 },
+    "interference": { "min": 0.55, "max": 1.0 },
+    "relax":        { "min": 2,  "max": 5 },
+    "drift":        { "min": 0.1, "max": 0.55 },
+    "bloom":        { "min": 0.6, "max": 1.25 }
+  }
+}
+;
+
+// ═══════════════════════════════════════════════════════════════════════════
+// LAB STATE
+// ═══════════════════════════════════════════════════════════════════════════
+const SECTIONS = Object.keys(DESIGN.sections);
+
+let params = {
+  seed: 12345, section: 'hacks', lattice: DESIGN.sections.hacks.lattice,
+  density: 19, probes: 3, decay: 0.30, interference: 0.80,
+  relax: 3, drift: 0.32, bloom: 0.90, tone: 'even',
+};
+let defaultParams = { ...params };
+let title = 'Order your Dockerfile so the layer cache does its job';
+let scene = null;
+let sketch = null;
+
+function meta() {
+  return {
+    title,
+    date: new Date().toISOString().slice(0, 10),
+    author: 'claude',
+    sectionLabel: DESIGN.sections[params.section].label,
+  };
+}
+
+function rebuild() {
+  params.lattice = DESIGN.sections[params.section].lattice;
+  scene = buildScene(params, DESIGN);
+  const r = document.getElementById('readout');
+  r.textContent =
+    'seed      ' + params.seed + '\n' +
+    'lattice   ' + params.lattice + '\n' +
+    'nodes     ' + scene.nodes.length + '\n' +
+    'edges     ' + scene.edges.length + '\n' +
+    'blooms    ' + scene.blooms.length + '\n' +
+    'probes    ' + scene.probes.length + ' (+1 observer)';
+  if (sketch) sketch.redraw();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// P5 — draws the same scene the SVG emitter writes
+// ═══════════════════════════════════════════════════════════════════════════
+const TIERS = [
+  { min: 0.78, width: 4.4, alpha: 255 },
+  { min: 0.46, width: 2.6, alpha: 217 },
+  { min: 0.18, width: 1.7, alpha: 153 },
+];
+
+new p5((p) => {
+  sketch = p;
+  p.setup = () => {
+    const c = p.createCanvas(DESIGN.canvas.width, DESIGN.canvas.height);
+    c.parent('canvas-container');
+    p.noLoop();
+    const l = document.querySelector('.loading');
+    if (l) l.style.display = 'none';
+    rebuild();
+  };
+
+  p.draw = () => {
+    if (!scene) return;
+    const P = scene.palette, W = p.width, H = p.height;
+    const ctx = p.drawingContext;
+
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, P.bg0); bg.addColorStop(1, P.bg1);
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+    // substrate
+    p.stroke(p.color(P.grid)); p.strokeWeight(1.5); p.noFill();
+    for (const e of scene.edges) p.line(e.x1, e.y1, e.x2, e.y2);
+
+    // signal
+    for (const e of scene.edges) {
+      const tier = TIERS.findIndex((t) => e.lit >= t.min);
+      if (tier === -1) continue;
+      const t = TIERS[tier];
+      const col = p.color(mix(P.grid, e.sign > 0 ? P.cool : P.warm,
+        clamp(0.55 + (2 - tier) * 0.22, 0, 1)));
+      col.setAlpha(t.alpha);
+      p.stroke(col); p.strokeWeight(t.width);
+      p.line(e.x1, e.y1, e.x2, e.y2);
+    }
+
+    // blooms
+    p.noStroke();
+    for (const b of scene.blooms) {
+      const base = b.sign > 0 ? P.cool : P.warm;
+      const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+      g.addColorStop(0, hexA(base, 0.95));
+      g.addColorStop(0.18, hexA(base, 0.5));
+      g.addColorStop(0.5, hexA(base, 0.14));
+      g.addColorStop(1, hexA(base, 0));
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.fill();
+    }
+    for (const b of scene.blooms.slice(0, 6)) {
+      ctx.fillStyle = hexA(b.sign > 0 ? P.cool : P.warm, 0.9);
+      ctx.beginPath(); ctx.arc(b.x, b.y, Math.max(3, b.r * 0.07), 0, Math.PI * 2); ctx.fill();
+    }
+
+    // probes + observer
+    for (const pr of scene.probes) {
+      p.noFill(); p.stroke(hexA(P.ink, 0.75)); p.strokeWeight(2.2);
+      p.circle(pr.x, pr.y, 30);
+      p.noStroke(); p.fill(hexA(P.ink, 0.9)); p.circle(pr.x, pr.y, 9);
+    }
+    if (scene.observer) {
+      p.noFill(); p.stroke(hexA(P.muted, 0.6)); p.strokeWeight(1.6);
+      ctx.setLineDash([5, 7]); p.circle(scene.observer.x, scene.observer.y, 52); ctx.setLineDash([]);
+      p.noStroke(); p.fill(hexA(P.muted, 0.6)); p.circle(scene.observer.x, scene.observer.y, 6);
+    }
+
+    // scrims
+    const L = DESIGN.layout;
+    const floor = ctx.createLinearGradient(0, H, 0, H * 0.54);
+    floor.addColorStop(0, hexA(P.bg0, 0.5)); floor.addColorStop(1, hexA(P.bg0, 0));
+    ctx.fillStyle = floor; ctx.fillRect(0, 0, W, H);
+    const scrim = ctx.createLinearGradient(0, 0, W, 0);
+    scrim.addColorStop(0, hexA(P.bg0, 0.94));
+    scrim.addColorStop(0.38, hexA(P.bg0, 0.8));
+    scrim.addColorStop(L.scrimStop, hexA(P.bg0, 0.12));
+    scrim.addColorStop(0.9, hexA(P.bg0, 0));
+    ctx.fillStyle = scrim; ctx.fillRect(0, 0, W, H);
+
+    drawType(p, ctx, scene, meta(), DESIGN);
+  };
+}, undefined);
+
+/** Type block — mirrors renderSVG()'s safe-band layout so what you tune is what ships. */
+function drawType(p, ctx, sc, m, D) {
+  const T = D.type, L = D.layout, P = sc.palette, W = sc.w, H = sc.h;
+  const textMax = W * L.plateWidth - L.margin * 1.1;
+  const GAP_EYEBROW = 44, GAP_RULE = 52, RULE_H = 4, GAP_BYLINE = 42;
+  const band = H * (L.safeBottom - L.safeTop) * 0.93;
+  const blockHeight = (lines, size) => T.eyebrow.size + GAP_EYEBROW
+    + (lines - 1) * size * T.headline.leading + size
+    + GAP_RULE + RULE_H + GAP_BYLINE + T.byline.size;
+
+  let head = null;
+  for (const maxLines of [T.headline.maxLines, T.headline.maxLines - 1]) {
+    const c = fitHeadline(m.title, { maxWidth: textMax, maxLines, size: T.headline.size, tracking: T.headline.tracking });
+    if (blockHeight(c.lines.length, c.size) <= band) { head = c; break; }
+    head = head || c;
+  }
+  while (blockHeight(head.lines.length, head.size) > band && head.size > 44) {
+    head = fitHeadline(m.title, { maxWidth: textMax, maxLines: head.lines.length, size: head.size - 6, minSize: 44, tracking: T.headline.tracking });
+  }
+
+  const lineH = head.size * T.headline.leading;
+  const top = H * (L.safeTop + L.safeBottom) / 2 - blockHeight(head.lines.length, head.size) / 2;
+  const eyebrowY = top + T.eyebrow.size;
+  const firstBase = eyebrowY + GAP_EYEBROW + head.size;
+  const ruleY = firstBase + (head.lines.length - 1) * lineH + GAP_RULE;
+  const bylineY = ruleY + RULE_H + GAP_BYLINE + T.byline.size * 0.5;
+
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.letterSpacing = T.eyebrow.tracking + 'px';
+  ctx.font = '600 ' + T.eyebrow.size + 'px ' + T.mono;
+  ctx.fillStyle = P.accent;
+  ctx.fillText([m.sectionLabel, m.date].filter(Boolean).join('   ·   ').toUpperCase(), L.margin, eyebrowY);
+
+  ctx.letterSpacing = T.headline.tracking + 'px';
+  ctx.font = T.headline.weight + ' ' + head.size + 'px ' + T.sans;
+  ctx.fillStyle = P.ink;
+  head.lines.forEach((line, i) => ctx.fillText(line, L.margin, firstBase + i * lineH));
+
+  ctx.letterSpacing = '0px';
+  ctx.fillStyle = P.accent;
+  ctx.fillRect(L.margin, ruleY, 112, RULE_H);
+
+  ctx.letterSpacing = T.byline.tracking + 'px';
+  ctx.font = '500 ' + T.byline.size + 'px ' + T.mono;
+  ctx.fillStyle = P.muted;
+  ctx.fillText(['by ' + m.author, 'lifehacker.dev'].join('   ·   '), L.margin, bylineY);
+  ctx.letterSpacing = '0px';
+}
+
+function hexA(hex, a) {
+  const [r, g, b] = hexToRgb(hex);
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// UI HANDLERS
+// ═══════════════════════════════════════════════════════════════════════════
+const FIXED = ['density', 'probes', 'relax'];
+
+window.updateParam = (name, value) => {
+  params[name] = FIXED.includes(name) ? parseInt(value, 10) : parseFloat(value);
+  const el = document.getElementById(name + '-value');
+  if (el) el.textContent = FIXED.includes(name) ? params[name] : params[name].toFixed(2);
+  rebuild();
+};
+
+window.setTitle = (v) => { title = v; if (sketch) sketch.redraw(); };
+
+window.seedFromTitle = () => {
+  params.seed = fnv1a(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50));
+  updateSeedDisplay(); rebuild();
+};
+
+window.setSection = (s) => {
+  params.section = s;
+  for (const btn of document.querySelectorAll('#sectionSeg button')) btn.classList.toggle('on', btn.dataset.s === s);
+  rebuild();
+};
+
+window.regenerate = () => rebuild();
+
+window.downloadPNG = () => {
+  const a = document.createElement('a');
+  a.download = 'trace-bloom-' + params.seed + '.png';
+  a.href = sketch.canvas.toDataURL('image/png');
+  a.click();
+};
+
+window.downloadSVG = () => {
+  const out = renderSVG(scene, meta(), DESIGN);
+  const a = document.createElement('a');
+  a.download = 'trace-bloom-' + params.seed + '.svg';
+  a.href = URL.createObjectURL(new Blob([out], { type: 'image/svg+xml' }));
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+};
+
+// ── seed controls (fixed) ────────────────────────────────────────────────────
+function updateSeedDisplay() { document.getElementById('seed-input').value = params.seed; }
+window.updateSeed = () => {
+  const v = parseInt(document.getElementById('seed-input').value, 10);
+  if (v && v > 0) { params.seed = v; rebuild(); } else { updateSeedDisplay(); }
+};
+window.previousSeed = () => { params.seed = Math.max(1, params.seed - 1); updateSeedDisplay(); rebuild(); };
+window.nextSeed = () => { params.seed += 1; updateSeedDisplay(); rebuild(); };
+window.randomSeedAndUpdate = () => { params.seed = Math.floor(Math.random() * 999999) + 1; updateSeedDisplay(); rebuild(); };
+
+window.resetParameters = () => {
+  params = { ...defaultParams };
+  for (const k of ['density', 'probes', 'decay', 'interference', 'relax', 'drift', 'bloom']) {
+    document.getElementById(k).value = params[k];
+    document.getElementById(k + '-value').textContent = FIXED.includes(k) ? params[k] : params[k].toFixed(2);
+  }
+  setSection(params.section);
+  updateSeedDisplay();
+  rebuild();
+};
+
+// section selector
+const seg = document.getElementById('sectionSeg');
+for (const s of SECTIONS) {
+  const btn = document.createElement('button');
+  btn.textContent = DESIGN.sections[s].label;
+  btn.dataset.s = s;
+  btn.className = s === params.section ? 'on' : '';
+  btn.onclick = () => setSection(s);
+  seg.appendChild(btn);
+}
+updateSeedDisplay();
+</script>
+</body>
+</html>

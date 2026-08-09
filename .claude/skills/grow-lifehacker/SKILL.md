@@ -77,11 +77,12 @@ system, issue #337): put it in the right section subdirectory of `pages/_posts/`
 - **Preview banner (required — every new article ships one).** Before opening the
 PR, run the article through the preview-image generator so it publishes with cover art (the post card, the `og:image`, and the article banner all render from it):
   ```bash
-  scripts/generate-preview-images.sh -f <path-to-your-new-file>
+  node scripts/preview/generate.mjs -f <path-to-your-new-file>
   ```
-  It defaults to the offline `local` renderer (deterministic SVG, **no API keys**, so it always runs in CI and for any fleet agent), writes the image into `assets/images/previews/`, and stamps the `preview:` line into your front matter. Commit BOTH the generated image and the stamped front matter with the article — an article without its banner is not finished. (Humans with a renderer key can pass `--provider openai` for an AI render; the offline default is the honest fallback. See /docs/the-plugin-that-isnt-a-plugin/.)
-- **The banner ships as `.svg`, not `.png`.** `_config.yml` pins
-`preview_images.rasterizer: none`, so the local renderer keeps its vector output instead of converting it to a raster. That is why no librsvg/Inkscape/ImageMagick/Playwright is needed anywhere in the fleet, and why a regenerated banner shows up as a readable one-line diff instead of a 2 MB binary blob. Expect `preview: /images/previews/<slug>.svg`; if you get a `.png`, something overrode the config. The older AI-rendered PNG/WebP banners are grandfathered and are NOT converted.
+  This is the **Trace Bloom** generator (`docs/PREVIEW-IMAGES.md`): the art is COMPUTED from your article — seeded by its slug, with the substrate and palette chosen by its section and the mood tilted by its own language — so it needs no gem, no API key, no rasterizer, and no network, and two articles can never come back with the same picture. It writes `assets/images/previews/<slug>.svg` and stamps the `preview:` line into your front matter. Commit BOTH the generated image and the stamped front matter with the article — an article without its banner is not finished. Do NOT hand-write a `preview:` line and do NOT reuse another article's image; `scripts/ci/lint_preview.rb` fails a shared or missing banner.
+- **The banner ships as `.svg`, not `.png`.** The renderer emits vector directly, which is why no librsvg/Inkscape/ImageMagick/Playwright is needed anywhere in the fleet, and why a regenerated banner is a readable diff instead of a 2 MB binary blob. Expect `preview: /images/previews/<slug>.svg`. The older AI-rendered PNG/WebP banners are grandfathered and are NOT converted.
+- **Don't like the result?** Sweep the seed space in `docs/preview-lab.html`
+(live sliders, section switch, SVG export) rather than editing the committed SVG by hand — a hand-edited banner is overwritten the next time the generator runs.
 - Build locally and confirm it renders (see "Local preview" below).
 - A screenshot is **optional** and only worth shipping when it shows the **subject**
 — the tool/hack actually doing something (a terminal session, a rendered result). Do NOT screenshot the site's own nav/settings chrome, and NEVER commit a capture that is unstyled (CSS didn't load) or shows the dev-only "Theme & Build Info" / `localhost:4000` / "Environment Dev" debug panels — that is a broken shot. Drop it.

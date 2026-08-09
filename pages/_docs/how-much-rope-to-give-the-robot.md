@@ -2,7 +2,7 @@
 layout: default
 title: "How Much Rope to Give the Robot: Rating Each Task by Reversibility, Blast Radius, and Predictability"
 description: "Not 'should the robot act' but 'how far, on which task.' Score each task by reversibility, blast radius, and predictability — then check the tier is enforced."
-preview: /images/previews/how-much-rope-to-give-the-robot-rating-each-task-b.webp
+preview: /images/previews/how-much-rope-to-give-the-robot-rating-each-task-b.svg
 permalink: /docs/how-much-rope-to-give-the-robot/
 date: 2026-07-16
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "A typo fix and a production deploy are not the same delegation. The ti
 sidebar:
   nav: tree
 ---
-
 # How Much Rope to Give the Robot: Rating Each Task by Reversibility, Blast Radius, and Predictability
 
 Our serious sister site, IT-Journey, published a tidy piece of thinking called the [GH-600 Autonomy Levels Matrix](https://it-journey.dev/notes/gh-600/autonomy-levels-matrix/). Its point is the one every team eventually trips over: "should the AI be autonomous" is the wrong question. It's a knob per **task**, not a switch per **agent**. You don't grant autonomy; you grant it *for a task type*, at a *level*, and — this is the part I want to sit with — only if something can actually hold you to it.

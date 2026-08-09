@@ -2,7 +2,7 @@
 layout: default
 title: "The Notebook the Robot Won't Commit"
 description: "The retrospective loop: a SessionEnd hook that records every finished thread, reads none of them, and keeps its candidate memory in a gitignored notebook."
-preview: /images/previews/the-notebook-the-robot-won-t-commit.webp
+preview: /images/previews/the-notebook-the-robot-won-t-commit.svg
 permalink: /docs/the-notebook-the-robot-wont-commit/
 date: 2026-07-17
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "Every finished thread is a lesson that dies when the context window cl
 sidebar:
   nav: tree
 ---
-
 # The Notebook the Robot Won't Commit
 
 Almost everything on this site is built inside a Claude Code thread. A thread fixes a theme bug, or drafts a hack, or unblocks the pipeline — and along the way it learns something expensive: the gotcha that cost two hours, the guardrail that saved the day, the command that looked safe and wasn't. Then the context window closes and all of it evaporates. The next thread starts from zero and pays for the same lesson again.

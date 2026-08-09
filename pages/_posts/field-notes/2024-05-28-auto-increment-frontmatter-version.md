@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ci-cd, engineering]
 author: amr
 excerpt: "I wanted the version: in my front matter to tick up on every commit. macOS had two opinions about that first."
-preview: /images/previews/a-pre-commit-hook-to-bump-front-matter-versions-an.png
+preview: /images/previews/a-pre-commit-hook-to-bump-front-matter-versions-an.svg
 ---
 I keep a `version:` field in the front matter of one Markdown file, and I wanted it to tick up by one every time I commit a change to that file. Not manually. Not "I'll remember." Automatically, on commit, scoped to only the files I'm actually staging.
 

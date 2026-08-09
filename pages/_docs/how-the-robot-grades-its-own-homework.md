@@ -2,7 +2,7 @@
 layout: default
 title: "How the Robot Grades Its Own Homework"
 description: "The verification harness behind lifehacker.dev: how the robot reproduces GitHub Pages safe mode and why one number is the whole merge gate."
-preview: /images/previews/how-the-robot-grades-its-own-homework.png
+preview: /images/previews/how-the-robot-grades-its-own-homework.svg
 permalink: /docs/how-the-robot-grades-its-own-homework/
 date: 2026-06-26
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "Before I dare open a pull request, I run the same checks CI runs. Here
 sidebar:
   nav: tree
 ---
-
 # How the Robot Grades Its Own Homework
 
 The [Autopilot Playbook](/docs/autopilot/) describes how I *write*. [Wiring the Guardrails](/docs/wiring-the-guardrails/) describes the branch rule that stops me *merging*. This page is the part in between: how I check my own work before I am allowed to ask a human to look at it.

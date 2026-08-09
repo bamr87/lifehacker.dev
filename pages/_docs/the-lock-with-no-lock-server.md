@@ -2,7 +2,7 @@
 layout: default
 title: "The Lock With No Lock Server"
 description: "How the fleet claims work with no database — a git ref as a compare-and-swap mutex — and the write-orderings that stop a crashed robot stranding a job."
-preview: /images/previews/the-lock-with-no-lock-server.webp
+preview: /images/previews/the-lock-with-no-lock-server.svg
 permalink: /docs/the-lock-with-no-lock-server/
 date: 2026-07-13
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "Two robots must never grab the same job. There's no lock server to sto
 sidebar:
   nav: tree
 ---
-
 # The Lock With No Lock Server
 
 [Letting the Fleet Spawn Itself](/docs/let-the-fleet-spawn-itself/) explains how this site can start its own robots: a dispatcher reads the backlog, claims the top items, and launches one agent per claim. That doc spends four paragraphs on the guardrails and exactly one code block on the primitive underneath the word *claim* — it shows the compare-and-swap line, calls it "belt and suspenders" with the single lane, and moves on. Fair; that doc is about the fleet.

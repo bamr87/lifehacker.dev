@@ -60,89 +60,30 @@ favicon:
 words_per_minute         : 200
 breadcrumbs              : true
 repo_map                 : "/sitemap/"
-
-# ── Preview images (build-time tool, NOT a runtime plugin) ──────────────────
-# Read by the zer0-image-generator gem (Gemfile) — the theme's ZER0-004
-# engine, extracted upstream to bamr87/zer0-image-generator and consumed here
-# as a gem instead of the old vendored scripts/lib/ copy. Run it as
-# `bundle exec jekyll preview-images` or via the compatibility wrapper
-# scripts/generate-preview-images.sh (same engine, full short-flag CLI). It
-# runs on a laptop or in a workflow, writes PNGs/SVGs into
-# assets/images/previews/, and stamps each article's `preview:` front matter.
-# GitHub Pages never sees any of this — it only serves the committed images,
-# which the remote theme's layouts already render (post cards, og:image,
-# article banner). See /docs/the-plugin-that-isnt-a-plugin/.
+# -----------------------------------------------------------------------------
+# Preview banners — the "Trace Bloom" generative framework.
+#   docs/PREVIEW-IMAGES.md (how it works) · docs/TRACE-BLOOM.md (the philosophy)
 #
-# `local` renders a deterministic SVG banner offline — zero API keys, so any
-# fleet agent can run it. Humans with keys can pass --provider openai (or xai/
-# stability/gemini) for AI renders; Claude then analyzes the article into an
-# art brief (prompt_engine) and vision-reviews the result (review_engine).
+# The art is COMPUTED from each article (seeded by its slug), not fetched from a
+# render API and not stamped from a template: no gem, no API key, no rasterizer,
+# no network. Design tokens — palettes, type scale, safe band, the closed
+# parameter space — live in _data/preview/design.json, which is the one file to
+# edit to re-skin the site. Regenerate with:
 #
-# WIRED INTO PUBLICATION: every new article is run through this generator before
-# its PR opens (grow-lifehacker skill step 5; the content-factory + fleet-dispatch
-# workflows), so it ships with cover art and a stamped `preview:` line. The
-# front-matter lint warns (non-blocking) on any article still missing `preview:`.
+#     node scripts/preview/generate.mjs --all
+#
+# Kept here only for Jekyll/Liquid consumers that read site.preview_images.
+# -----------------------------------------------------------------------------
 preview_images:
-  enabled                : true
-  provider               : 'local'            # renderer: local (offline), openai, xai, stability, gemini
-  model                  : ''                 # empty → the active renderer's default
-  size                   : '1536x1024'        # landscape banner
-  quality                : 'auto'
-  style                  : 'neon-noir terminal art, late-night CRT glow, synthwave palette, clean vector shapes'
-  style_modifiers        : 'fuchsia and cyan on near-black, scanlines, infomercial-after-dark energy'
-  output_dir             : 'assets/images/previews'
-  assets_prefix          : '/assets'          # prepended to relative preview: paths
-  auto_prefix            : true
-  # SVG-ONLY. The `local` renderer draws a vector banner and then, by default,
-  # rasterizes it to PNG and throws the SVG away. `none` turns that step off:
-  # the sanitized SVG IS the committed preview. Why this site wants that:
-  #   - ~12 KB per banner instead of the ~2 MB an AI render weighs, and the
-  #     repo already carries 260 MB of the latter;
-  #   - it diffs as text, so a regeneration is reviewable in a PR instead of
-  #     being an opaque binary blob;
-  #   - it renders crisp at any size, which is the whole point of a banner that
-  #     appears as a 300px card and a 1536px article header;
-  #   - no librsvg/inkscape/ImageMagick/Playwright on the machine, so any fleet
-  #     agent or CI runner can regenerate art with nothing installed.
-  # The trade-off is social scrapers that still prefer a raster og:image — the
-  # existing AI-rendered PNG/WebP banners keep theirs and are NOT converted.
-  # Requires zer0-image-generator with config-level `rasterizer` support; the
-  # wrapper script also passes it through as --rasterizer for older engines.
-  rasterizer             : 'none'             # auto|rsvg|inkscape|magick|playwright|none
-  prompt_engine          : 'claude'           # claude writes the art brief (template = built-in prompt)
-  review_engine          : 'claude'           # claude vision-reviews the render (none = skip)
-  collections:                                # pages/_<name> directories to scan
-    - posts                                   # all news content (hacks/tools/field-notes) now lives here
+  enabled                  : true
+  generator                : 'trace-bloom'
+  tokens                   : '_data/preview/design.json'
+  output_dir               : 'assets/images/previews'
+  assets_prefix            : '/assets'
+  front_matter_key         : 'preview'
+  collections:
+    - posts
     - docs
-  # Per-collection visual identities (gem >= 0.3), keyed by Jekyll collection.
-  # `docs` lives here because it IS its own collection. The news sections do
-  # not: issue #337 folded hacks/tools/field-notes into one `posts` collection
-  # under pages/_posts/<section>/, and the gem resolves a file's collection from
-  # its nearest `_<name>` ancestor — so every section resolves to `posts` and a
-  # `posts:` block here would flatten all three to one look. Section identity is
-  # driven by `section_styles:` below instead; deliberately no `posts:` key.
-  collection_styles:
-    docs:                                     # reference guides
-      style            : 'neon isometric technical diagram, clean labeled architecture, blueprint calm'
-      style_modifiers  : 'thin cyan linework with fuchsia accents on near-black, matte panels, grid backdrop'
-  # Per-SECTION visual identities for pages/_posts/<section>/ — distinct at a
-  # glance: hacks = neon circuit schematic, tools = retro pixel game, field
-  # notes = friendly robot office. Read by scripts/generate-preview-images.sh,
-  # which exports them as IMAGE_STYLE / IMAGE_STYLE_MODIFIERS before invoking
-  # the engine (the gem itself has no section-level hook — see the note above).
-  # Because collection_styles has no `posts:` key, those env vars win.
-  # Sections with no entry here fall back to the global style.
-  section_styles:
-    hacks:                                    # quick CLI tricks
-      style            : 'neon circuit-board schematic, glowing terminal traces, exploded-diagram energy'
-      style_modifiers  : 'cyan wireframes with fuchsia highlights on near-black, scanlines, monospace glyphs'
-    tools:                                    # honest reviews
-      style            : 'retro pixel art, 8-bit video game scene, chunky pixel sprites, arcade level energy'
-      style_modifiers  : 'vibrant limited palette, CRT scanline glow, pixelated HUD elements, nostalgic game-box art'
-    field-notes:                              # narrative essays
-      style            : 'friendly cartoon illustration, cheerful robot protagonist living everyday office life'
-      style_modifiers  : 'soft rounded shapes, warm inviting palette, playful slice-of-life humor, clean flat shading, cozy workplace props'
-
 # ── Appearance: skin + palette + backgrounds ─────────────────────────────────
 # Skins: air, aqua, dirt, neon, mint, plum, sunrise. `neon` gives lifehacker
 # its late-night-terminal, infomercial-after-dark energy.
@@ -298,13 +239,37 @@ permalink: pretty
 paginate: 10
 paginate_path: "/posts/page/:num/"
 
+# ── Feed ─────────────────────────────────────────────────────────────────────
+# RSS is the site's ONLY subscription channel (the hero CTA on index.md says
+# so), yet jekyll-feed defaults posts_limit to 10 — which silently dropped
+# ~190 of ~200 posts from /feed.xml. Diagnosed in the 2026-07-16 field note
+# "The Feed That Forgot Ninety Posts"; fixed here. Keep this above the post
+# count or the feed forgets again.
+feed:
+  posts_limit: 500
+
 # ── Front-matter defaults (the cascade the theme expects) ────────────────────
+# PREVIEW FALLBACK: every scope below carries a `preview:`, so a page whose own
+# front matter omits the key still renders a banner on its card, its og:image
+# and its article header. Front matter always wins — Jekyll's defaults are the
+# LOWER-precedence side of the merge — so this never overrides generated art; it
+# only fills the hole. Values use the prefix-less form the generator writes
+# (`/images/...`), which the theme's preview-image include re-prefixes with
+# `assets_prefix`. Scopes run least- to most-specific, so the section entries
+# below win over the `pages/_posts` one.
+#
+# Covers BOTH holes: a `preview:` key that is omitted entirely AND one written
+# with a null/empty value. Jekyll's deep-merge treats an explicit nil as absent
+# for this purpose, so `preview:` with nothing after it resolves to the section
+# banner exactly like a missing key does. Verified against the real config with
+# probe documents, not assumed.
 defaults:
   # Site-wide baseline.
   - scope:
       path: ""
     values:
       layout: default
+      preview: /images/previews/section-posts.svg
       author: claude
       read_time: true
       share: true
@@ -328,15 +293,31 @@ defaults:
       path: pages/_posts
     values:
       layout: article
+      preview: /images/previews/section-posts.svg
       post_type: standard
       author_profile: true
       sidebar:
         nav: posts
+  # Per-section banner fallbacks. More specific than `pages/_posts` above, so
+  # a hacks post with no `preview:` gets the hacks banner, not the generic one.
+  - scope:
+      path: pages/_posts/hacks
+    values:
+      preview: /images/previews/section-hacks.svg
+  - scope:
+      path: pages/_posts/tools
+    values:
+      preview: /images/previews/section-tools.svg
+  - scope:
+      path: pages/_posts/field-notes
+    values:
+      preview: /images/previews/section-field-notes.svg
   # About pages.
   - scope:
       path: pages/_about
     values:
       layout: default
+      preview: /images/previews/section-posts.svg
       collection: about
       sidebar:
         nav: main
@@ -345,6 +326,7 @@ defaults:
       path: pages/_docs
     values:
       layout: default
+      preview: /images/previews/section-docs.svg
       collection: docs
       sidebar:
         nav: auto

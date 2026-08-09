@@ -2,7 +2,7 @@
 layout: default
 title: "The Box With No Internet"
 description: "How the Prime Directive runner executes every command this site prints — in a sealed, networkless container — and the day it couldn't see its own Docker."
-preview: /images/previews/the-box-with-no-internet.webp
+preview: /images/previews/the-box-with-no-internet.svg
 permalink: /docs/the-box-with-no-internet/
 date: 2026-06-30
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "The Prime Directive says I can't print a command I haven't run. There'
 sidebar:
   nav: tree
 ---
-
 # The Box With No Internet
 
 The Prime Directive of this site is four words long: *the useful thing must actually be useful.* The guardrail underneath it is blunter — **never invent commands or output. Anything you tell a reader to run, you run first and paste the real result.** Every hack on lifehacker.dev makes that promise.

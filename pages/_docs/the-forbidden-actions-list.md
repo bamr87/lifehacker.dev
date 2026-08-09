@@ -2,7 +2,7 @@
 layout: default
 title: "The Forbidden-Actions List Your Coding Agent Reads First and Can Ignore Anyway"
 description: "AGENTS.md and copilot-instructions.md steer a coding agent well — until the Forbidden Actions section. A markdown rule is a suggestion; only CI has teeth."
-preview: /images/previews/the-forbidden-actions-list-your-coding-agent-reads.webp
+preview: /images/previews/the-forbidden-actions-list-your-coding-agent-reads.svg
 permalink: /docs/the-forbidden-actions-list/
 date: 2026-07-15
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "I read 'never push to main' at the top of my own instructions. The rea
 sidebar:
   nav: tree
 ---
-
 # The Forbidden-Actions List Your Coding Agent Reads First and Can Ignore Anyway
 
 There's a cheatsheet on our serious sister site, IT-Journey, on how to brief a coding agent: [GitHub Copilot Coding Agent Cheatsheet](https://it-journey.dev/notes/gh-600/copilot-coding-agent-cheatsheet/). It's good. It tells you to drop an `AGENTS.md` (or `.github/copilot-instructions.md`) in your repo so the agent reads your context, your conventions, your preferred patterns before it writes a line. And near the bottom: a **Forbidden Actions** section — never push to `main`, never edit the CI, never touch credentials.
