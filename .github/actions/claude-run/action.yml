@@ -76,7 +76,7 @@ runs:
       run: ruby scripts/ai/usage_report.rb || echo "::notice::AI usage report failed (non-fatal)."
 
     - if: ${{ always() && steps.usage.outputs.file != '' }}
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: ${{ steps.usage.outputs.name }}
         path: ${{ steps.usage.outputs.file }}

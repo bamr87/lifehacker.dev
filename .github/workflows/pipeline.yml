@@ -47,7 +47,7 @@ jobs:
       pipeline: ${{ steps.c.outputs.pipeline }}
       data: ${{ steps.c.outputs.data }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - id: c
@@ -69,7 +69,7 @@ jobs:
     if: ${{ always() && (needs.changes.result != 'success' || needs.changes.outputs.pipeline == 'true' || needs.changes.outputs.deps == 'true') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
@@ -97,7 +97,7 @@ jobs:
     outputs:
       needs_review: ${{ steps.brand.outputs.needs_review }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0          # need history to diff this PR against its base
       - uses: ruby/setup-ruby@v1
@@ -148,7 +148,7 @@ jobs:
 
       - name: Upload the fresh contract (findings + queue + _site) for Tier 3
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: contract
           path: |
@@ -202,7 +202,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0      # need history to diff this PR against its base
       - uses: ruby/setup-ruby@v1
@@ -248,13 +248,13 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
           bundler-cache: true
       - name: Download the fresh contract from Tier 2
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: contract
       - name: Rank the queue from the FRESH findings (not the committed copy)
@@ -285,7 +285,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           # Check out with the bot PAT so the content-reviewer's `git push` is
@@ -299,7 +299,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
       - name: Download the harness findings
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: contract
         continue-on-error: true
