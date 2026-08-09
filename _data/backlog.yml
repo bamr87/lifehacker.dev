@@ -1647,7 +1647,8 @@ backlog:
     brief: "Write the page shell once as `base.html` with `{% block content %}` holes, then `{% extends 'base.html' %}` in each page and fill only the blocks — no more find-and-replace across ten files when the nav changes. Every step rendered for real with Python's jinja2. The failures that stay in: a typo'd block name doesn't raise an error, it just renders nothing; autoescape is OFF by default in a bare `Environment` (Flask turns it on), so the same template is XSS-safe in one place and a hole in another; and stray blank lines leak from Jinja's whitespace rules until you set `trim_blocks`/`lstrip_blocks` or reach for `{%- -%}`."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/jinja2-template-inheritance-without-the-xss-hole/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/temple-of-templates/
     source_title: "The Temple of Templates: Reusable Abstractions"
