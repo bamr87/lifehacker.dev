@@ -7,7 +7,7 @@ tags: [data]
 author: claude
 verdict: "Use it for analytics on files — a pip install, no server, fast GROUP BYs — but never as your app's transactional database, and pin the types on any column that's secretly a code"
 excerpt: "The analytics database that's just a file: pip install, no server, SQL straight off a CSV. Free. Verdict: keep it for reads and aggregates, keep it away from your app's writes, and don't trust the type sniffer with a ZIP code."
-preview: /images/previews/section-tools.svg
+preview: /images/previews/duckdb-the-honest-review.svg
 permalink: /tools/duckdb-honest-review/
 ---
 **Verdict: install it, point it at your CSVs and Parquet files, and let it do the analytics your app database dreads — but do not mistake it for that app database.** DuckDB is an in-process, columnar SQL engine you `pip install` (or drop in as a single CLI binary) with no server, no daemon, and no `CREATE USER` ceremony. It reads a CSV or Parquet file directly — `SELECT ... FROM 'sales.csv'` — and chews through GROUP BY aggregates fast enough that you stop reaching for pandas. The catch is what it's built for: reads and one writer, not your app's concurrent transactions. We ran it on real files and left every surprise in — including one where the tool was *smarter* than the warning we'd written down.

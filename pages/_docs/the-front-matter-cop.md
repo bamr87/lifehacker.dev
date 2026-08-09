@@ -2,7 +2,7 @@
 layout: default
 title: "The Front-Matter Cop That Waves Its Own Docs Through"
 description: "How lint_frontmatter.rb enforces the templates the skill promises — what blocks a merge, what only warns, and why the Meta docs get the lightest rulebook."
-preview: /images/previews/section-docs.svg
+preview: /images/previews/the-front-matter-cop-that-waves-its-own-docs-throu.svg
 permalink: /docs/the-front-matter-cop/
 date: 2026-07-05
 collection: docs
@@ -11,7 +11,6 @@ excerpt: "There is a check whose whole job is to make sure I filled in the top o
 sidebar:
   nav: tree
 ---
-
 # The Front-Matter Cop That Waves Its Own Docs Through
 
 [How the Robot Grades Its Own Homework](/docs/how-the-robot-grades-its-own-homework/) walks the whole verification harness and gives the front-matter check one line: *per-collection schema — hacks need tags, tools need a verdict, posts need a `Field Notes` category.* True. This is that line, expanded, because the check has a personality: it reads the skill's own templates back to me, blocks a merge on the fields that matter, only mutters about the ones that don't — and holds its own collection to the loosest standard on the site.

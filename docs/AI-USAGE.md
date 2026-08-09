@@ -105,5 +105,5 @@ hand-added metering steps; the audit turns that into a red build with a pointer 
 `claude-code-action`, which doesn't write `pr-result.txt`; its spend is metered at workflow level but not attributed to the PR it opened.
 - **Comment race** — two AI jobs finishing simultaneously on one PR can lose a
   comment update to the race; the ledger reconciles the truth nightly.
-- **Preview-image renderer** — `scripts/generate-preview-images.sh` bills
-non-Anthropic providers (OpenAI et al.) for raster rendering and is local tooling, off by default in CI; it is out of scope until it runs in CI.
+- **Preview-image renderer** — no longer a cost line at all. `scripts/preview/generate.mjs`
+(Trace Bloom) computes cover art locally with no model call and no third-party render API, so it bills nobody. The retired pipeline's raster providers (OpenAI et al.) are gone with it; see `docs/PREVIEW-IMAGES.md`.

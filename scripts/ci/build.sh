@@ -103,7 +103,39 @@ lh_overlay() {
   # build rejects; frontend/ and node_modules/ are build tooling, not pages. The
   # theme's own dev config excludes these, but we build with OUR _config_dev, so
   # remove them here to keep the overlay to real content + delivered theme files.
-  rm -rf "$dest/templates" "$dest/frontend" "$dest/node_modules"
+  #
+  # examples/ is the same class of thing and matters for the same reason: it
+  # holds complete standalone demo SITES (e.g. examples/swerve-of-shore/, added
+  # upstream 2026-08-05) with their own pages/ and their own _includes/. Jekyll
+  # would build those markdown pages as ours, but resolves {% include %} only
+  # against the overlay's ROOT _includes/ — so the demo's
+  # {% include page-header.html %} dies with "Could not locate the included
+  # file". Production never sees this: remote_theme delivers only _layouts,
+  # _includes, _sass and assets, never examples/. Stripping it here is what
+  # keeps the overlay faithful to that.
+  rm -rf "$dest/templates" "$dest/frontend" "$dest/node_modules" "$dest/examples"
+
+  # Same class as examples/, and the same reason: the theme commits MACHINE-
+  # TRANSLATED alternates of its own pages at the repo root (`fr/**`, generated
+  # by the theme's scripts/translate.rb from its `translation.languages`).
+  # remote_theme delivers only _layouts, _includes, _sass and assets, so
+  # production never sees them — but the overlay is a whole-repo copy, so Jekyll
+  # happily builds all 149 of them as lifehacker.dev pages. Each one then links
+  # to an /fr/ index and /posts/:slug/ permalinks this site does not have, which
+  # is thousands of phantom internal-link errors in a report that is supposed to
+  # be about OUR content. lifehacker.dev sets no `translation:` key at all — it
+  # has not opted into multilingual — so the alternates are theme scaffolding
+  # here, not content.
+  #
+  # The language list comes from the THEME's config (read before ours replaced
+  # it above) so a language added upstream is handled without editing this file.
+  local lang
+  for lang in $(ruby -ryaml -e '
+    cfg = (YAML.respond_to?(:unsafe_load_file) ? YAML.unsafe_load_file(ARGV[0]) : YAML.load_file(ARGV[0])) || {}
+    puts(((cfg["translation"] || {})["languages"] || []).grep(/\A[a-z]{2}(-[A-Za-z]{2})?\z/).join(" "))
+  ' "$THEME_CACHE/_config.yml" 2>/dev/null); do
+    rm -rf "${dest:?}/$lang"
+  done
   echo "==> overlay ready"
 }
 

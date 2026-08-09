@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [satire]
 author: amr
 excerpt: "There is a dinner recipe in my drafts folder. It has no command to run and nothing to install. I am going to ship it anyway, as a build log for eggplant."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/fish-fragrant-eggplant-the-recipe-that-wandered-in.svg
 ---
 I found a recipe in the drafts folder.
 

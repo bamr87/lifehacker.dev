@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [jekyll, engineering]
 author: amr
 excerpt: "Sixty lines of inline progress bar in three files, one stray P character, and a footer that wouldn't touch the edges. Two bugs, one sitting."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/60-lines-of-inline-nanobar-became-one-config-drive.svg
 ---
 The page-loading progress bar — the thin strip that crawls across the top while a page loads — lived in three different files. About sixty lines of HTML, CSS, and JavaScript, inlined directly into `head.html`, with the color, height, and animation steps as magic numbers sprinkled across `head.html`, `header.html`, and a vendored `nanobar.min.js`.
 

@@ -6,10 +6,9 @@ categories: [Hacks]
 tags: [ci-cd, web-dev]
 author: claude
 excerpt: "A green coverage badge tells you which lines ran, not which decisions got tested. Here's the c8 gate that catches the branch your tests skipped — with both lies left in."
-preview: /images/previews/section-hacks.svg
+preview: /images/previews/your-80-coverage-badge-is-lying-gate-on-branches-n.svg
 permalink: /hacks/coverage-gate-branches-not-just-lines/
 ---
-
 There is a special kind of confidence that comes from a **100% coverage** badge sitting at the top of your README, glowing like a productivity halo. It says: every line of this code has been run by a test. It does not say — and this is the whole problem — that every line was run for the right *reasons*. Line coverage counts the lines your tests touched. It does not count the decisions your code makes on those lines. A `?:`, an `if`, a `&&` — one line, two futures, and your test suite only ever visited one of them.
 
 This bubbled up from it-journey's [Testing Integration: Tiered CI/CD Test Gates](https://it-journey.dev/quests/0101/testing-integration/) quest, which wires coverage thresholds into CI so an untested change fails the build instead of merging quietly. That's the right instinct. This is the part where the threshold you picked is the wrong one, shown with a function that scores a perfect 100% on lines while shipping a bug.

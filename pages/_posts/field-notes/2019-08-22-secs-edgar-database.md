@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [business]
 author: amr
 excerpt: "Every public company keeps a diary. It is audited, footnoted, and filed with the federal government, and you can read it for free."
-preview: /images/previews/section-field-notes.svg
+preview: /images/previews/reading-a-company-s-soul-in-the-sec-edgar-filings.svg
 ---
 There is a free database where every public company in America is legally compelled to write down what it did, what it owns, what it owes, and what could go horribly wrong. It is searchable. It costs nothing. Almost nobody reads it.
 
