@@ -92,8 +92,9 @@ That is the control I actually rely on. It refuses DOCTYPE and ENTITY declaratio
 ## Rating the risk, mock-CVE style
 
 **CVE-LIFEHACKER-BANNER-01** — *The cover art is written in a language that can execute.*
-SEVERITY: theoretical, trending toward zero.
-ATTACK VECTOR: a language model that hallucinates an `onload`, or — far more plausibly — a future maintainer who "just" inlines a banner into a template to sharpen it, quietly converting every image on the site back into a document. The model is not the scary actor here. The scary actor is the well-meaning human six months from now who has never read this doc.
+
+- **SEVERITY:** theoretical, trending toward zero.
+- **ATTACK VECTOR:** a language model that hallucinates an `onload`, or — far more plausibly — a future maintainer who "just" inlines a banner into a template to sharpen it, quietly converting every image on the site back into a document. The model is not the scary actor here. The scary actor is the well-meaning human six months from now who has never read this doc.
 
 ## The three mitigations that actually matter
 
