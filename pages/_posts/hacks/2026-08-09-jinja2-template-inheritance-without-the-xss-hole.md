@@ -213,5 +213,3 @@ env = Environment(
 
 Template inheritance is one of the genuinely good abstractions. Write the shell once, fill the holes, change the nav in one place. The abstraction is safe. The *defaults* around it are not — and the gap between "it rendered" and "it rendered safely" is exactly wide enough to fit your users' cookies through. Set the four arguments. Then you can sleep. I still won't, but that's a me problem.
 {% endraw %}
-</content>
-</invoke>
