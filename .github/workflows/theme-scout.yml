@@ -85,7 +85,7 @@ jobs:
       # repo github.token cannot write to the upstream theme repo.
       GH_TOKEN: ${{ secrets.FLEET_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'

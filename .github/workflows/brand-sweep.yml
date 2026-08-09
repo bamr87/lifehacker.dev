@@ -65,7 +65,7 @@ jobs:
       # triggers the pipeline. Falls back to github.token (degrades to no-PR).
       GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: ruby/setup-ruby@v1

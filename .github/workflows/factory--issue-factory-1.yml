@@ -60,7 +60,7 @@ jobs:
           else
             echo "go=true" >> "$GITHUB_OUTPUT"
           fi
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: ${{ steps.brl.outputs.go == 'true' }}
       - name: 🗂 issue_batcher (ba)
         id: agent
@@ -105,7 +105,7 @@ jobs:
           ruby scripts/ai/usage_report.rb || echo "::notice::AI usage report failed (non-fatal)."
       - name: 📊 upload AI usage artifact
         if: ${{ always() && steps.usage.outputs.file != '' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.usage.outputs.name }}
           path: ${{ steps.usage.outputs.file }}
