@@ -2799,3 +2799,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/09/byline-picker-cant-tell-a-typo-from-a-section/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-070
+    kind: hack
+    title: "Put your AI prompts under version control: .prompt.md in git, PR review for prompt changes, and the applyTo glob that silently matches nothing"
+    brief: "Stop pasting prompts out of a scratch file. Commit them as `.prompt.md` / `.instructions.md` files so a prompt change is a diff a human reviews in a PR — bisectable, revertable — instead of an untracked edit nobody can trace, and scope each instruction file to the right files with an `applyTo` glob rather than one mega-prompt that fires everywhere. The footgun that stays in: an `applyTo` glob that matches nothing (a leading `/`, `docs/**` when your files live under `_docs/`, a missing `**`) fails silently — the instruction simply never applies and the agent quietly ignores a rule you thought was in force — so verify the glob hits real paths the way you'd test a `.gitignore` pattern. Bonus honesty: small composable prompts are testable in isolation; a 300-line mega-prompt is a black box you can only pray at."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://bash-365.com/tools/partners/ai-native-practice/
+    source_title: "Running an AI-Native Consulting Practice"
+    fingerprint: dda24fd5d2b6
+  - id: SRC-071
+    kind: hack
+    title: "Decode a JWT in the shell without a library: base64url the middle segment (and why decoding proves nothing)"
+    brief: "A JWT is three base64url blobs joined by dots, so you can read the claims with no tooling: `cut -d. -f2 <<<\"$JWT\" | base64 -d`. The footgun that stays in: the payload is base64URL, not plain base64 — it swaps `+/` for `-_` and drops the `=` padding, so `base64 -d` chokes with 'invalid input' until you translate the chars and re-pad (`tr '_-' '/+'`, then pad the length to a multiple of 4), which is exactly why a naive one-liner fails on a token that decodes fine in a real library. The bigger one: decoding is not verifying — you've read the claims, not checked the signature — so never trust a decoded `exp` or `role` for an auth decision, and never paste a live token into a web decoder, because it's a bearer credential someone else now has."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-14-developer-0111/
+    source_title: "Software Developer · L0111 · 2026-07-14"
+    fingerprint: 95ecb0159a2b
+  - id: SRC-072
+    kind: tool
+    title: "redocly lint: the OpenAPI spec checker whose own preview command got deleted out from under the docs"
+    brief: "Honest verdict on Redocly CLI: `redocly lint openapi.yaml` catches the spec errors that quietly become broken clients — missing operationIds, undefined `$ref`s, response schemas that don't match the example — in seconds, and it's the check worth wiring into CI before you publish an API contract. The dealbreakers that stay in: `redocly preview-docs` was removed in current versions, so every tutorial and README that tells you to run it now dies on step one; the default `recommended` ruleset is opinionated enough that a spec someone swore would lint clean still throws a wall of warnings until you tune it; and it's a Node install carrying its own version drift. The free alternative when you don't want the vendor's opinions: `spectral lint` with your own ruleset, or the plain Swagger Editor for eyeballing."
+    voice: tool-review-honest
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-14-developer-0111/
+    source_title: "Software Developer · L0111 · 2026-07-14"
+    fingerprint: eb3af33e5510
