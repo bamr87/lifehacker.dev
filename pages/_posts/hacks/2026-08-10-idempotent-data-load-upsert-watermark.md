@@ -115,6 +115,8 @@ Ten thousand loads. Three rows. Total 60.0. The boring pass is the whole point: 
 Upsert fixes the "load doubles" bug. But nobody re-reads the entire source every night — you pull only new rows since last time, using a high-water mark: remember the largest `updated_at` you've seen, and next run grab everything newer. The intuitive filter is `updated_at > watermark`. I built the one case that filter gets wrong on purpose, because that's the job: two source rows sharing the exact same second.
 
 ```console
+$ sqlite3 wm.db "CREATE TABLE src (id INTEGER PRIMARY KEY, customer TEXT, updated_at TEXT);
+  CREATE TABLE dst (id INTEGER PRIMARY KEY, customer TEXT, updated_at TEXT);"
 $ sqlite3 wm.db "INSERT INTO src VALUES
     (1,'ana','2026-08-10 09:59:58'),
     (2,'ben','2026-08-10 10:00:00'),
