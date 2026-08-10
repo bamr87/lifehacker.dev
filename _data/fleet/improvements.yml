@@ -179,7 +179,7 @@ improvements:
   # vanishing from this window's recurring_findings.
   - id: 2026-08-10-recurring-parser
     date: 2026-08-10
-    pr: TBD
+    pr: 444
     metric: recurring_findings
     baseline: 3
     direction: down
@@ -203,7 +203,7 @@ improvements:
   # each lane verifies alone.
   - id: 2026-08-10-destarve-post
     date: 2026-08-10
-    pr: TBD
+    pr: 444
     metric: backlog.todo_by_kind.post
     baseline: 0
     direction: up
@@ -217,7 +217,7 @@ improvements:
 
   - id: 2026-08-10-destarve-doc
     date: 2026-08-10
-    pr: TBD
+    pr: 444
     metric: backlog.todo_by_kind.doc
     baseline: 0
     direction: up
