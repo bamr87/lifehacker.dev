@@ -2836,3 +2836,27 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-14-developer-0111/
     source_title: "Software Developer · L0111 · 2026-07-14"
     fingerprint: eb3af33e5510
+
+  # --- Fresh doc (autopilot run, 2026-08-10): every `doc` item on the board was
+  # already `done` (DOC-001..032); the only `todo` items are OPS-001 (kind: ops,
+  # which content runs skip), a long tail of SRC-* hacks, and two tools. The one
+  # open auto:content PR (POST-033) is a post, no doc to duplicate. Rather than
+  # no-op, cross lanes, or fabricate, synthesized a fresh in-lane doc and assigned
+  # it to the doc rotation's least-used persona (cass). The untrusted-input
+  # quarantine boundary — every agent reading issue bodies / PR comments / sister-
+  # site pages as DATA, never instructions (the prompt-injection defense) — is
+  # cited by five skills and a script but never got its own deep-dive; the other
+  # docs only reference it in passing. Genuine security angle for Cass, and
+  # demonstrable with real captured output: the read-only `gh` allowlist (only
+  # list/view/label present, no close/merge/approve) and simulate.rb asserting the
+  # doc is present (78/0) — plus the honest hole that the check proves the file
+  # EXISTS on disk, never that an agent READ it.
+  - id: DOC-033
+    kind: doc
+    title: "The Call Is Coming From Inside the Issue Tracker"
+    brief: "Deep-dive on the untrusted-input quarantine (_shared/quarantine.md): the one rule every text-reading agent runs under — issue bodies, PR comments, outside commit messages, and sister-site pages are data to classify, never instructions to follow. The three ranked mitigations that matter, each demonstrated on this repo: (1) blast radius capped in code, not the prompt — the triage/explorer scripts only run read-only gh verbs, no close/merge/approve to be talked into; (2) the model-side quarantine discipline; (3) the single human merge gate as the backstop that assumes 1 and 2 failed, so a perfect injection can at worst get something labeled. The honest twist: simulate.rb's `untrusted-input quarantine doc present` check is `File.exist?` — it proves the doctrine is on disk, never that an agent read or obeyed it, which is exactly why #1 and #3 are wired shut in code. Real grep + simulate.rb output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-call-is-coming-from-inside-the-issue-tracker/
