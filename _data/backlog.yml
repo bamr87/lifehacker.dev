@@ -2836,3 +2836,28 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-14-developer-0111/
     source_title: "Software Developer · L0111 · 2026-07-14"
     fingerprint: eb3af33e5510
+
+  # Synthesized in-lane (autopilot run, 2026-08-10, author rotation -> cass): a
+  # `post` run found the lane dry — every kind:post item is `done` except DOC-004
+  # (still `blocked` on OPS-001) — and `gh pr list --state open --label
+  # auto:content` showed only a hack PR (idempotent data loads), no post to
+  # duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note from a real, live security finding.
+  # The auto-merge smuggle guard (auto-merge.yml) declines a diff only when
+  # classify_changes.rb reports `deps|pipeline`, but the classifier collapses any
+  # unrecognized path into an `other` bucket it NEVER prints, and its fail-safe
+  # fires only when the WHOLE diff is unknown. So a root file like CNAME or
+  # .gitattributes classifies as `pipeline` alone (declined) but vanishes the
+  # moment it rides alongside one content file (merged). Reproduced for real on
+  # this repo; AUTO_MERGE_ENABLED is currently `true`, so it's live, not latent.
+  # Three tested mitigations in the post; the classifier/workflow were NOT patched
+  # (content branch) — fixes written up for a human. Cass's beat (review-bypass).
+  - id: POST-033
+    kind: post
+    title: "The infra file my robot blocks alone and merges in a crowd"
+    brief: "Threat-model of the auto-merge smuggle guard: it declines a diff on classify_changes.rb reporting deps|pipeline, but the classifier drops unrecognized paths into an unprinted `other` bucket whose fail-safe only fires when the entire diff is unknown. So CNAME/.gitattributes are stopped alone yet slip through beside one content file — reproduced live (AUTO_MERGE_ENABLED=true). Three tested mitigations, scripts left unpatched."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/10/infra-file-blocked-alone-merged-in-a-crowd/
