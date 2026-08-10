@@ -105,6 +105,9 @@ improvements:
       cannot distinguish "consumed" from "never moved". The promotion worked (the
       factory used the measured brief); the lane drained again and is re-fed this
       run — see 2026-07-20-destarve-post.
+      2026-08-10 verdict — still pending: measured 0 again at window start (the
+      refill was consumed and shipped), so consumed-vs-never-moved stays
+      indistinguishable. Re-fed this run — see 2026-08-10-destarve-post.
 
   - id: 2026-07-13-destarve-doc
     date: 2026-07-13
@@ -121,6 +124,9 @@ improvements:
       (status:done), so todo_by_kind.doc returned to 0 and verify_improvements
       cannot distinguish "consumed" from "never moved". The promotion worked; the
       lane drained again and is re-fed this run — see 2026-07-20-destarve-doc.
+      2026-08-10 verdict — still pending: measured 0 again at window start (the
+      refill was consumed and shipped), so consumed-vs-never-moved stays
+      indistinguishable. Re-fed this run — see 2026-08-10-destarve-doc.
 
   # --- loop-tuner 2026-07-20: post/doc lanes re-starved after last refill drained
   # The 2026-07-13 refills (POST-019/DOC-021) shipped and drained; growable todos
@@ -140,6 +146,10 @@ improvements:
       (field-note reproducing the empty-report/sev1 bug, reflection-only/offline)
       as todo. todo_by_kind.post 0->1; starved_kinds emptied. Metadata only — the
       factory writes the prose.
+      2026-08-10 verdict — still pending: POST-025 was picked and shipped
+      (status:done), so todo_by_kind.post read 0 at this window's measure step and
+      verify_improvements cannot distinguish "consumed" from "never moved". Re-fed
+      this run — see 2026-08-10-destarve-post.
 
   - id: 2026-07-20-destarve-doc
     date: 2026-07-20
@@ -153,3 +163,67 @@ improvements:
       Promoted harvested DOC-024 (aggregate.rb deep-dive: JSON -> findings.jsonl ->
       gate verdict, offline) as todo. todo_by_kind.doc 0->1; starved_kinds emptied.
       Metadata only — the factory writes the prose.
+      2026-08-10 verdict — still pending: DOC-024 was picked and shipped
+      (status:done), so todo_by_kind.doc read 0 at this window's measure step and
+      verify_improvements cannot distinguish "consumed" from "never moved". Re-fed
+      this run — see 2026-08-10-destarve-doc.
+
+  # --- loop-tuner 2026-08-10: recurring-rule parser was counting a PHANTOM rule --
+  # loop_metrics' report_rules parsed any comment-table row with >=6 cells as a
+  # finding, which ALSO matched aggregate.rb's 4-column info-summary table
+  # (| count | check | rule | example |). Its header word `example` and its
+  # example-location cells leaked in as lint rules — `example` surfaced as a
+  # recurring finding on 3 PRs, a false signal that misdirects every future run.
+  # Fixed at the source: require the 5-column finding shape (>=7 cells) so the
+  # info table is excluded. Verified by two new self-test cases + the phantom
+  # vanishing from this window's recurring_findings.
+  - id: 2026-08-10-recurring-parser
+    date: 2026-08-10
+    pr: TBD
+    metric: recurring_findings
+    baseline: 3
+    direction: down
+    status: pending
+    note: >-
+      Recurring lint rule `example` reported on 3 PRs was a MEASUREMENT artifact,
+      not a real rule: report_rules matched aggregate.rb's 4-column info-summary
+      table and read its header/example-location cells as rules. Tightened the row
+      filter from `cells.size >= 6` to `>= 7` (the finding table has 5 columns / 7
+      cells; the info table has 4 / 6) so only real finding rows are counted.
+      Baseline = the phantom's pr-count (3); after the fix recurring_findings no
+      longer contains `example` (this window: only `missing-preview` remains).
+      Deterministic guard: loop_metrics self-test 27->29 (two report_rules cases).
+      NB: verify_improvements can't dig an array metric, so it will read this as
+      pending — the self-test is the standing verification.
+
+  # --- loop-tuner 2026-08-10: post/doc lanes re-starved after last refill drained
+  # The 2026-07-20 refills (POST-025/DOC-024) shipped and drained; growable todos
+  # are again almost all kind:hack (SRC-* scout stream). Re-fed each starved lane
+  # with one non-duplicate, offline-testable harvested idea. Per-kind metrics so
+  # each lane verifies alone.
+  - id: 2026-08-10-destarve-post
+    date: 2026-08-10
+    pr: TBD
+    metric: backlog.todo_by_kind.post
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Post lane starved again (todo_by_kind.post = 0; starved_kinds included
+      `post`). Harvested 17 candidates from merged PRs; promoted POST-033 (field
+      note on the MCP reader's LH_REPO_ROOT read-surface, reflection-only/offline)
+      as todo. todo_by_kind.post 0->1; starved_kinds emptied. Metadata only — the
+      factory writes the prose.
+
+  - id: 2026-08-10-destarve-doc
+    date: 2026-08-10
+    pr: TBD
+    metric: backlog.todo_by_kind.doc
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Doc lane starved again (todo_by_kind.doc = 0; starved_kinds included `doc`).
+      Promoted harvested DOC-033 (plan.rb deep-dive: how the picker chooses WHAT
+      vs authors.rb choosing WHO, offline) as todo. todo_by_kind.doc 0->1;
+      starved_kinds emptied. Metadata only — the factory writes the prose.

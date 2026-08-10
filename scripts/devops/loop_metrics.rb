@@ -291,13 +291,20 @@ module LoopMetrics
   end
 
   # Pull the `rule` column out of the most recent lh-test-report comment table.
-  # Each row looks like: | warning | brand | `file:line` | rule-name | evidence |
+  # A FINDING row has 5 columns: | sev | check | where | rule | evidence | —
+  # split on `|` yields 7 cells (leading empty + 5 + trailing empty). The report
+  # ALSO carries a 4-column info-summary table (| count | check | rule | example |,
+  # aggregate.rb) whose rows split to 6 cells; requiring >= 7 excludes it so its
+  # header word `example` and its example-location cells never masquerade as lint
+  # rules (they were surfacing as a phantom recurring finding). Evidence text may
+  # contain escaped pipes, inflating a finding row past 7 cells — but the rule is
+  # at index 4, before evidence, so it is read correctly regardless.
   def report_rules(bodies)
     report = bodies.reverse.find { |b| b.include?(REPORT_MARKER) }
     return [] unless report
     report.each_line.filter_map do |line|
       cells = line.split('|').map(&:strip)
-      next unless cells.size >= 6           # leading + 5 columns + trailing
+      next unless cells.size >= 7           # leading + 5 finding columns + trailing
       rule = cells[4]
       next if rule.nil? || rule.empty? || rule == 'rule'   # skip header
       next unless rule =~ /\A[a-z0-9]/i      # skip separators like ---
@@ -423,6 +430,18 @@ module LoopMetrics
       'autofix.max' => [r['auto_fix']['max_attempts'], 3],
       'recurring top rule' => [r['recurring_findings'].first['rule'], 'description-too-long'],
       'recurring top count' => [r['recurring_findings'].first['prs'], 3],
+      # report_rules reads only 5-column FINDING rows; the 4-column info-summary
+      # table (| count | check | rule | example |) must NOT leak `example` or its
+      # example-location cells as phantom rules.
+      'report_rules keeps finding rule' => [report_rules([
+        "#{REPORT_MARKER}\n| sev | check | where | rule | evidence |\n" \
+        "|---|---|---|---|---|\n| warning | brand | `f.md:3` | avoid-phrase | just |\n"
+      ]), ['avoid-phrase']],
+      'report_rules ignores info table' => [report_rules([
+        "#{REPORT_MARKER}\n<details><summary>58 info</summary>\n\n" \
+        "| count | check | rule | example |\n|---|---|---|---|\n" \
+        "| 3 | preview | orphan-preview | `previews/foo.png` |\n"
+      ]), []],
       'conflicts.open_not_mergeable' => [r['conflicts']['open_not_mergeable'], 1]
     }
     failed = checks.reject { |_, (got, want)| got == want }

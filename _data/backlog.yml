@@ -2799,3 +2799,24 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/09/byline-picker-cant-tell-a-typo-from-a-section/
+
+  # --- loop-tuner 2026-08-10: post/doc lanes re-starved (todo_by_kind 0/0) ------
+  # The 2026-07-20 refills (POST-025/DOC-024) shipped and drained; growable todos
+  # are again almost all kind:hack (the SRC-* scout stream). Re-fed each starved
+  # lane with one non-duplicate, offline-testable harvested idea so the factory
+  # picks a MEASURED brief instead of improvising inline. Metadata only.
+  - id: POST-033
+    kind: post
+    title: "The safe reader that reads any repo you point LH_REPO_ROOT at"
+    brief: "Field note (meta-confession) on a second read-surface angle from the MCP reader: the `LH_REPO_ROOT` env var lets a client point the 'read-only, this-repo-only' server at ANY checkout on disk, so 'safe' is scoped by an env var the caller controls, not by the server. Reproduce it offline by setting LH_REPO_ROOT to a throwaway directory and showing the reader serves it; the lesson is that a trust boundary defined by a mutable env var isn't one. Reflection grounded in the repo's own server; no network, no new tooling, fix recommended not applied."
+    voice: meta-confession
+    priority: P3
+    status: todo
+
+  - id: DOC-033
+    kind: doc
+    title: "plan.rb: how the fleet decides WHAT to write (the counterpart to WHO)"
+    brief: "Deep-dive on scripts/fleet/plan.rb — the picker that chooses WHAT the factory writes next (lane, priority, status) as the counterpart to authors.rb choosing WHO writes it. The two-axis 'what vs who' split is referenced but never documented on its own. Trace a real pick offline against _data/backlog.yml (which todo, which lane wins, how priority and starvation order the queue); real captured output from running the script locally, no network."
+    voice: meta-confession
+    priority: P3
+    status: todo
