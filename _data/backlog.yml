@@ -2901,6 +2901,28 @@ backlog:
     source_title: "Quest Report: Security Specialist Level 1011"
     fingerprint: 08636a521ec7
 
+  # Fresh doc (autopilot run, 2026-08-11): no `todo` doc existed — every DOC-* and
+  # the doc-kind SRC items are `done` (DOC-024 aggregate.rb shipped; DOC-004 is a
+  # blocked post), and `gh pr list --state open --label auto:content` returned no
+  # open PRs at all, so nothing to duplicate. Rather than no-op or cross lanes,
+  # synthesized a fresh in-lane doc; byline rotation `ruby scripts/fleet/authors.rb
+  # --section doc` -> `cass`. Untouched Meta station: the fleet's anti-prompt-
+  # injection guardrail (.claude/skills/_shared/quarantine.md) is a paragraph of
+  # PROSE — the same medium the attacker controls — imported by 7 skills/agents but
+  # never given its own deep-dive (only a one-line mention in DOC-009). Cass threat-
+  # models it and shows the load-bearing wall is mechanical, not textual: the filer
+  # has no close/merge verb (simulate.rb asserts it, 78/0), the sweeper closes only
+  # marker-owned issues (sweep_stale_findings), and the terminal backstop (human
+  # merge) rests on branch protection still 404 OFF (OPS-001). Real captured output.
+  - id: DOC-033
+    kind: doc
+    title: "The rule against following instructions is an instruction"
+    brief: "Threat-model the quarantine guardrail (.claude/skills/_shared/quarantine.md): the fleet's whole prompt-injection defense is a paragraph of prose, written in the exact language an attacker controls and imported by 7 agents. Cass shows what actually holds the line is mechanical, not textual — file_issues.rb knows only create/comment/reopen (no close/merge, asserted by simulate.rb, 78 passed/0 failed), close_stale.rb's sweep_stale_findings closes only issues carrying its own triage-fp marker (a human issue never matches), and the honest twist that the terminal human-merge backstop still leans on branch protection that returns 404. Three ranked, tested mitigations. Real captured grep/simulate/gh output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-rule-against-instructions-is-an-instruction/
   # Synthesized in-lane (autopilot run, 2026-08-11): a `post` run found the queue
   # dry — every `kind: post` item was `done` except DOC-004, legitimately `blocked`
   # on OPS-001 (branch protection still OFF, its verified after-state doesn't exist).
