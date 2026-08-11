@@ -1671,7 +1671,8 @@ backlog:
     brief: "Put a gate at the pipeline's front door: a pandera `DataFrameSchema` that checks nulls, ranges, uniqueness, and regex formats, run with `lazy=True` so one pass reports every bad column at once instead of dying on the first failure. Then route the failing rows to a quarantine table instead of dropping them — a silent drop is the bug you can't debug three days later. Reproducible with pandas + pandera on a tiny frame. The honest limit that stays in: row-level rules pass every individually-valid record while the batch as a whole is wrong (half the usual row count, a null-rate that tripled), so schema validation is necessary but a count/z-score check on the batch is the other half of the job."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/pandera-validate-dataframe-quarantine/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/data-quality/
     source_title: "Data Quality Engineering: Validation & Monitoring"
