@@ -2,7 +2,7 @@
 title: "I made two posts wear the same face"
 description: "The banner generator swears no two posts can share a picture. I stress-tested that promise and found two publishable titles that draw byte-identical art."
 date: 2026-08-11
-preview: /images/previews/i-made-two-posts-wear-the-same-face.svg
+preview: /assets/images/previews/i-made-two-posts-wear-the-same-face.svg
 categories: [Field Notes]
 tags: [automation, engineering]
 author: edge
