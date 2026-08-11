@@ -2881,3 +2881,40 @@ backlog:
     status: done
     published: /docs/the-call-is-coming-from-inside-the-issue-tracker/
     published: /posts/2026/08/10/infra-file-blocked-alone-merged-in-a-crowd/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-073
+    kind: hack
+    title: "Thread one correlation ID through every service (and every CI job) so a failure isn't five unrelated logs"
+    brief: "When one request fans out across five services, grepping five separate logs for 'the slow one' is guesswork — mint a correlation ID at the edge (`uuidgen`, or reuse an inbound `X-Request-ID`) and pass it down every hop as a header, so `grep <id> *.log` reassembles the whole trace. The failures that stay in: if each service GENERATES a new ID instead of propagating the one it received, you get five unrelated IDs and no trace at all (propagate, don't regenerate); the header name isn't standardized — `X-Request-ID` vs `X-Correlation-ID` vs the W3C `traceparent` — so one mismatched service silently drops the chain; and in GitHub Actions each job runs in a fresh shell, so an env var set in job A is gone in job B — you hand the ID across via a job `outputs` value or an artifact, not `$CORRELATION_ID`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/gh-600/implemented-in-it-journey/
+    source_title: "GH-600 in the Wild: Implemented in IT-Journey"
+    fingerprint: 375e32774c4f
+  - id: SRC-074
+    kind: hack
+    title: "Stop arrow-keying across a long command: the readline shortcuts (Ctrl-A/E/W/U, Alt-., Ctrl-x Ctrl-e) and the vi-mode that deletes them"
+    brief: "Your shell already ships a text editor's worth of shortcuts — jump to line start/end with Ctrl-A / Ctrl-E, delete the last word with Ctrl-W and the whole line with Ctrl-U, paste the previous command's final argument with Alt-. , and when a line gets truly gnarly, Ctrl-x Ctrl-e opens it in `$EDITOR` to fix and run. All offline, all readline. The failures that stay in: these are the EMACS keymap defaults, so the moment you (or a dotfile) run `set -o vi` they vanish and you're in a different game; Ctrl-S doesn't 'save', it freezes the terminal via flow control (Ctrl-Q thaws it; `stty -ixon` disables the trap so Ctrl-S is free to rebind); and a REPL that doesn't link readline gives you none of them, which is why the same Ctrl-A jumps to line start in bash and prints garbage elsewhere."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/cheatsheets/
+    source_title: "IT-Journey Cheatsheets"
+    fingerprint: ee319acec565
+  - id: SRC-075
+    kind: hack
+    title: "Stop giving your app root on the database: a least-privilege MySQL user, and SHOW GRANTS to prove it"
+    brief: "The app connects as root because the tutorial did, so one SQL injection owns the whole server. Make a user that can only touch its own schema — `CREATE USER app@'%' IDENTIFIED BY '...'` then `GRANT SELECT, INSERT, UPDATE, DELETE ON app.* TO app@'%'`, never `ALL PRIVILEGES` — and prove the limit with `SHOW GRANTS FOR app@'%'` before you trust it. Two failures stay in: the one-liner every old tutorial pastes, `GRANT ... ON app.* TO app@'%' IDENTIFIED BY 'pw'`, is a syntax error in MySQL 8 (GRANT no longer creates the user — `CREATE USER` first), and a privilege change never reaches a connection that's already open, so your freshly-locked-down app keeps its old god-mode session until it reconnects. Reproducible in a throwaway Docker MySQL."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-15-security-specialist-1011/
+    source_title: "Quest Report: Security Specialist Level 1011"
+    fingerprint: 08636a521ec7
