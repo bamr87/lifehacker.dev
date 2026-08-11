@@ -9,7 +9,7 @@ author: cass
 excerpt: "You threat-model the login form. You do not threat-model the 9 a.m. data drop — and that's the one with a straight shot into your warehouse."
 permalink: /hacks/pandera-validate-dataframe-quarantine/
 ---
-You threat-model the login form. You rate-limit it, you sanitize it, you assume every string coming out of it is a hostile little payload wearing a trench coat. Good. Now tell me about the CSV that lands in `s3://ingest/` at 9 a.m. from a "trusted partner." The one your pipeline reads with `pd.read_parquet` and loads straight into the customers table. No gate. No gloves. You wouldn't `eval()` a stranger's string, but you'll `INSERT` a stranger's DataFrame into production and call it Tuesday.
+You threat-model the login form. You rate-limit it, you sanitize it, you assume every string coming out of it is a hostile little payload wearing a trench coat. Good. Now tell me about the CSV that lands in `s3://ingest/` at 9 a.m. from a "trusted partner." The one your pipeline reads with `pd.read_csv` and loads straight into the customers table. No gate. No gloves. You wouldn't `eval()` a stranger's string, but you'll `INSERT` a stranger's DataFrame into production and call it Tuesday.
 
 Data is input. Input is untrusted. The upstream export doesn't have to be malicious to poison the table — it just has to have a bad day. A schema migration you weren't told about, a partial export that half-failed, a locale that decided `,` is a decimal point. The result is the same as an attack: garbage in the warehouse, and a dashboard that now lies to your CFO with total confidence.
 
