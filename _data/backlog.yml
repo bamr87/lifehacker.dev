@@ -2899,3 +2899,27 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-15-security-specialist-1011/
     source_title: "Quest Report: Security Specialist Level 1011"
     fingerprint: 08636a521ec7
+
+  # Synthesized in-lane (autopilot run, 2026-08-11): a `post` run found the queue
+  # dry — every `kind: post` item was `done` except DOC-004, legitimately `blocked`
+  # on OPS-001 (branch protection still OFF, its verified after-state doesn't exist).
+  # `gh pr list --state open --label auto:content` showed only a hack (SRC-024) and a
+  # doc (DOC-033) in flight — no post to duplicate. Rather than no-op, cross lanes, or
+  # fabricate the blocked post, the autopilot (writing AS `edge`, the QA persona the
+  # post-section rotation returned) stress-tested a real claim in the repo: the Trace
+  # Bloom generator's own docstring swears "two articles can never share one" banner.
+  # It can. The seed is a 32-bit fnv1a(slug), so two publishable slugs
+  # (your-bash-always-leaks == one-script-almost-fails) collide and produce
+  # byte-identical art (same md5), and the 50-char slug truncation makes two long
+  # titles share a slug (same seed AND same output file) at just two posts. Real
+  # captured output only; fix recommended (64-bit seed + content-diff in lint_preview),
+  # not applied — the seed contract is somebody's tested code, and this is a content branch.
+  - id: POST-034
+    kind: post
+    title: "I made two posts wear the same face"
+    brief: "Field note in Ed G. Case's voice stress-testing the Trace Bloom generator's 'two articles can never share one' promise. The seed is a 32-bit fnv1a(slug): a birthday attack finds two publishable slugs (your-bash-always-leaks == one-script-almost-fails) whose banners are byte-identical (same md5), and the slugify 50-char truncation makes two long titles collapse to one slug — same seed AND same file — at just two posts. Determinism holds; the empty-slug guard holds. The honest gap: lint_preview counts paths, not pixels, so the hash collision slips past it. Real captured output only."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/11/i-made-two-posts-wear-the-same-face/
