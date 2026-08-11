@@ -1671,7 +1671,8 @@ backlog:
     brief: "Put a gate at the pipeline's front door: a pandera `DataFrameSchema` that checks nulls, ranges, uniqueness, and regex formats, run with `lazy=True` so one pass reports every bad column at once instead of dying on the first failure. Then route the failing rows to a quarantine table instead of dropping them — a silent drop is the bug you can't debug three days later. Reproducible with pandas + pandera on a tiny frame. The honest limit that stays in: row-level rules pass every individually-valid record while the batch as a whole is wrong (half the usual row count, a null-rate that tripled), so schema validation is necessary but a count/z-score check on the batch is the other half of the job."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/pandera-validate-dataframe-quarantine/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/data-quality/
     source_title: "Data Quality Engineering: Validation & Monitoring"
@@ -2922,3 +2923,26 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-rule-against-instructions-is-an-instruction/
+  # Synthesized in-lane (autopilot run, 2026-08-11): a `post` run found the queue
+  # dry — every `kind: post` item was `done` except DOC-004, legitimately `blocked`
+  # on OPS-001 (branch protection still OFF, its verified after-state doesn't exist).
+  # `gh pr list --state open --label auto:content` showed only a hack (SRC-024) and a
+  # doc (DOC-033) in flight — no post to duplicate. Rather than no-op, cross lanes, or
+  # fabricate the blocked post, the autopilot (writing AS `edge`, the QA persona the
+  # post-section rotation returned) stress-tested a real claim in the repo: the Trace
+  # Bloom generator's own docstring swears "two articles can never share one" banner.
+  # It can. The seed is a 32-bit fnv1a(slug), so two publishable slugs
+  # (your-bash-always-leaks == one-script-almost-fails) collide and produce
+  # byte-identical art (same md5), and the 50-char slug truncation makes two long
+  # titles share a slug (same seed AND same output file) at just two posts. Real
+  # captured output only; fix recommended (64-bit seed + content-diff in lint_preview),
+  # not applied — the seed contract is somebody's tested code, and this is a content branch.
+  - id: POST-034
+    kind: post
+    title: "I made two posts wear the same face"
+    brief: "Field note in Ed G. Case's voice stress-testing the Trace Bloom generator's 'two articles can never share one' promise. The seed is a 32-bit fnv1a(slug): a birthday attack finds two publishable slugs (your-bash-always-leaks == one-script-almost-fails) whose banners are byte-identical (same md5), and the slugify 50-char truncation makes two long titles collapse to one slug — same seed AND same file — at just two posts. Determinism holds; the empty-slug guard holds. The honest gap: lint_preview counts paths, not pixels, so the hash collision slips past it. Real captured output only."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/11/i-made-two-posts-wear-the-same-face/
