@@ -16,6 +16,7 @@ A robot (Claude Code) reads this repo, writes content into it, and opens pull re
 | `_data/authors.yml` | The bylines: the human, the robot, and the robot's declared AI personas (`cass`, `edge`), each with a `voice:` profile. Any entry with a `voice:` joins the per-section byline rotation (`scripts/fleet/authors.rb`); opt one out with `rotate: false`. |
 | `_data/backlog.yml` | The content queue: `{id, kind, title, brief, voice, priority, status}` + optional `author:` persona key. An item that pins no `author:` is auto-assigned the section's least-used AI persona at draft time (rotation), so the whole cast gets used. |
 | `.claude/skills/grow-lifehacker/SKILL.md` | The instructions the robot follows each run. |
+| `_data/top_story.yml` | The homepage hero pointer: which post leads the front page. Repointed weekly by the **weekly-epic** routine (`.claude/skills/weekly-epic` — the `fable` persona digests the prior week via `scripts/content/weekly_digest.rb`, sings one illustrated recap, and PRs it as the new Top Story). A human can repoint it any time. |
 | `_data/ai_usage/` + `AI_USAGE.md` | The meter: every model call's tokens + API-equivalent cost, folded nightly from run artifacts and published at `/docs/ai-usage/`. Each PR carries a sticky cost comment (creation vs downstream). See `docs/AI-USAGE.md`. |
 
 ## Running a cycle (assisted mode — current)

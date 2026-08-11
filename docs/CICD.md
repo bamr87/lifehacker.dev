@@ -15,6 +15,7 @@ Every workflow lives in `.github/workflows/`. The design goal: **tiered** (fast 
 | `mcp-tests.yml` | PR + push to main touching `mcp/lifehacker-read/**`, manual | No (own check) | Typechecks, builds, and runs the Node MCP server's 50-test suite + stdio smoke. The Ruby `verify` gate lints the site, not the MCP server; this covers that gap. Read-only. |
 | `loop-tuner.yml` | weekly cron (agent gated by `LOOP_TUNER_ENABLED`), manual | No | Always measures the loop's *observed* behaviour (`scripts/devops/loop_metrics.rb` — run times, failure/escalation rates, auto-fix attempts, recurring lint rules, conflicts, backlog starvation, trends vs `_data/metrics/history.jsonl`) and verifies the improvements ledger (`_data/fleet/improvements.yml`); when `LOOP_TUNER_ENABLED` + key, the `loop-tuner` agent settles ledger verdicts, fixes the upstream cause, records new ledger entries + a history snapshot, and opens ONE PR. Content-agnostic. |
 | `ai-usage.yml` | daily cron (gated by `AI_USAGE_ENABLED`), manual | No | The AI cost ledger. Sweeps the `ai-usage-*` artifacts every AI job uploads, folds them into `_data/ai_usage/ledger.jsonl` (dedup by record id), regenerates `summary.yml` + `AI_USAGE.md` + the `/docs/ai-usage/` page data, and opens ONE data-only PR (label `source/ai-usage-bot`; auto-merge holds it to the same pure-data bar as triage). Makes zero model calls. See `docs/AI-USAGE.md`. |
+| `weekly-epic.yml` | weekly cron Mon 07:45 UTC (gated by `WEEKLY_EPIC_ENABLED`), manual | No | The Top Story. The `weekly-epic` agent (the `fable` persona, on the Fable 5 model by default — `WEEKLY_EPIC_MODEL` overrides) digests the prior 7 days (`scripts/content/weekly_digest.rb`), writes ONE illustrated epic recap covering every published article, generates deterministic figures (`scripts/media/figures.mjs`) + an *optional* OpenAI hero image (double-gated: `OPENAI_IMAGES_ENABLED` var **and** `OPENAI_API_KEY` secret), repoints `_data/top_story.yml`, and opens ONE `auto:content` + `weekly-epic` PR. A quiet week (<3 articles) is a recorded no-op. |
 
 ## The tiered pipeline (`pipeline.yml`)
 
@@ -102,6 +103,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 |---|---|---|---|
 | `content-scout.yml` | daily cron (08:07, before the factory), manual | `CONTENT_SCOUT_ENABLED` + key | Crawls a sister site (it-journey.dev by default; `SCOUT_SOURCES`) via WebFetch, proposes on-brand topics, and opens one `auto:content` PR appending `status: todo` backlog items — **each pinned to its source it-journey.dev page**. Scheduled runs apply; manual runs default to dry-run. |
 | `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
+| `weekly-epic.yml` | weekly cron (Mon, before the factory), manual | `WEEKLY_EPIC_ENABLED` + key | One `weekly-epic` run → the illustrated recap of the prior week's publications, `_data/top_story.yml` repointed → one `auto:content` + `weekly-epic` PR that becomes the homepage hero on merge. |
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
 | `explore.yml` | daily cron, manual | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. Scheduled runs apply; manual runs default to dry-run. |
 | `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
@@ -117,6 +119,7 @@ Each capability is its own switch, off by default. Turn on only what you trust:
 ```
 gh variable set FLEET_ENABLED true              # the fix/grow fleet
 gh variable set CONTENT_FACTORY_ENABLED true    # daily content generation
+gh variable set WEEKLY_EPIC_ENABLED true        # Monday Top Story: the fable persona's illustrated recap of the prior week (WEEKLY_EPIC_MODEL to override its model; add OPENAI_IMAGES_ENABLED=true + the OPENAI_API_KEY secret to also paint one hero image per epic via the OpenAI API)
 gh variable set CONTENT_SCOUT_ENABLED true      # daily sister-site crawl → backlog ideas, before the factory (SCOUT_SOURCES to retarget; needs FLEET_TOKEN to auto-merge)
 gh variable set EXPLORER_ENABLED true           # live-site persona QA
 gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs

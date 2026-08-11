@@ -38,7 +38,8 @@ add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml does not read FLEET_
   'brand-sweep.yml' => 'BRAND_SWEEP_ENABLED',
   'theme-scout.yml' => 'THEME_SCOUT_ENABLED', 'agent-review.yml' => 'AGENT_REVIEW_ENABLED',
   'quest-forge.yml' => 'QUEST_FORGE_ENABLED', 'triage.yml' => 'TRIAGE_ENABLED',
-  'ai-usage.yml' => 'AI_USAGE_ENABLED' }.each do |wf, gate|
+  'ai-usage.yml' => 'AI_USAGE_ENABLED',
+  'weekly-epic.yml' => 'WEEKLY_EPIC_ENABLED' }.each do |wf, gate|
   c = wf_read[wf].to_s
   add(findings, 'error', 'autonomy-gate', "#{wf} is not gated by #{gate}") unless c.empty? || c.include?(gate)
 end

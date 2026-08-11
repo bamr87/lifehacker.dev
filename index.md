@@ -21,8 +21,10 @@ Modeled on the zer0-mistakes `news` layout but sourced from THIS site's real con
 {%- assign tools = site.posts | where_exp: "p", "p.categories contains 'Tools'" | sort: 'date' | reverse -%}
 {%- assign notes = site.posts | where_exp: "p", "p.categories contains 'Field Notes'" | sort: 'date' | reverse -%}
 
-{%- comment -%} Hero = the site's current signature story, with a graceful fallback to newest. {%- endcomment -%}
-{%- assign hero = site.posts | where_exp: "p", "p.title contains 'Hoard the One That Rots'" | first -%}
+{%- comment -%} Hero = the current Top Story, pointed at by _data/top_story.yml (the
+weekly-epic routine repoints that file at each new weekly epic; a human can repoint it anywhere). Graceful fallbacks: pointer unset/stale -> the signature story -> newest. {%- endcomment -%}
+{%- assign hero = site.posts | where_exp: "p", "p.url == site.data.top_story.url" | first -%}
+{%- unless hero -%}{%- assign hero = site.posts | where_exp: "p", "p.title contains 'Hoard the One That Rots'" | first -%}{%- endunless -%}
 {%- unless hero -%}{%- assign hero = all_items | first -%}{%- endunless -%}
 {%- assign rest = all_items | where_exp: "i", "i.url != hero.url" -%}
 {%- assign main_featured = rest | first -%}
@@ -71,7 +73,15 @@ Modeled on the zer0-mistakes `news` layout but sourced from THIS site's real con
       </a>
     </div>
     <div class="col-lg-5 d-none d-lg-block position-relative">
-      <img src="{{ site.og_image | relative_url }}" alt="{{ hero.title }}" class="w-100 h-100" style="object-fit: cover; min-height: 360px;">
+      {%- comment -%} The hero wears its own cover art (theme convention: a `preview:`
+        may omit the /assets prefix — same normalization as home/cover.html), falling
+        back to the site banner when the story has none. {%- endcomment -%}
+      {%- assign hero_img = site.og_image -%}
+      {%- if hero.preview and hero.preview != '' -%}
+        {%- assign hero_img = hero.preview -%}
+        {%- unless hero_img contains '://' or hero_img contains '/assets' -%}{%- assign hero_img = '/assets' | append: hero_img -%}{%- endunless -%}
+      {%- endif -%}
+      <img src="{{ hero_img | relative_url }}" alt="{{ hero.title }}" class="w-100 h-100" style="object-fit: cover; min-height: 360px;">
     </div>
   </div>
 </section>
