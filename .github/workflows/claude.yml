@@ -21,7 +21,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: claude-${{ github.event.issue.number || github.event.pull_request.number || github.run_id }}
+  group: claude-${{ github.event.issue.number || github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
 jobs:
