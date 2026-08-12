@@ -1,14 +1,19 @@
-generated_at: '2026-08-09T08:06:16Z'
-queue_size: 3
+generated_at: '2026-08-12T08:17:21Z'
+queue_size: 4
 by_severity:
-  sev4: 3
+  sev4: 4
 by_type:
-  type/other: 2
+  type/other: 3
   type/link-rot: 1
 by_route:
-  local: 2
+  local: 3
   upstream: 1
 top:
+- severity: sev4
+  type: type/other
+  title: "[sev4] other: orphan-preview (assets/images/previews/section-hacks.svg)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/other
   title: "[sev4] other: shared-preview (/posts/2024/06/17/wizard-topples-capitalist-dominance-ingeniously/)"

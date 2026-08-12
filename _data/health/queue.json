@@ -1,5 +1,26 @@
 [
   {
+    "fingerprint": "d64ad3351457",
+    "check_id": "preview",
+    "rule": "orphan-preview",
+    "file": "assets/images/previews/section-hacks.svg",
+    "line": null,
+    "evidence": "preview art referenced by no article — not as a `preview:` stamp and not embedded in any body. Delete it or stamp it.",
+    "type": "type/other",
+    "area": "area/site",
+    "severity": "sev4",
+    "route": "local",
+    "repo": "bamr87/lifehacker.dev",
+    "url_path": null,
+    "reach_views": 0,
+    "occurrences": 1,
+    "prime_directive_candidate": false,
+    "score": 0.7,
+    "issue_number": null,
+    "blocked_on": null,
+    "title": "[sev4] other: orphan-preview (assets/images/previews/section-hacks.svg)"
+  },
+  {
     "fingerprint": "8479dd2bcf2c",
     "check_id": "preview",
     "rule": "shared-preview",
