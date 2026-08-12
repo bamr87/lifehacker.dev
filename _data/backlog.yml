@@ -2967,6 +2967,29 @@ backlog:
     status: done
     published: /posts/2026/08/11/i-made-two-posts-wear-the-same-face/
 
+  # Fresh doc (autopilot run, 2026-08-12): no `todo` doc existed — every DOC-* and
+  # doc-kind SRC item is `done` except the in-flight DOC-033 (open PR, the quarantine
+  # threat-model). `gh pr list --state open --label auto:content` showed a post, a
+  # hack, and that doc — no doc topic to duplicate. Rather than no-op or cross lanes,
+  # synthesized a fresh in-lane doc; byline rotation `ruby scripts/fleet/authors.rb
+  # --section doc` -> `edge`. Untouched Meta station: close_stale.rb, the ONE script
+  # in the repo with `gh issue close` in it (the exception to DOC-009's "can't close
+  # a ticket"). Edge stress-tested its four safety locks — sweep_safe? refuses a
+  # degraded run (4/4), the fingerprint-marker ownership, the MAX_CLOSE cap, dry-run
+  # default — and found a real gap: ownership is a body regex, not authorship, so a
+  # human issue that QUOTES a retired triage-fp marker gets auto-closed. Real captured
+  # output from the pure _lib.rb functions + a live dry-run on this repo (open=4,
+  # live-fps=4, closed=0). Fix recommended (check gh issue author), not applied.
+  - id: DOC-034
+    kind: doc
+    title: "The close button with four locks (and the one you can pick with copy-paste)"
+    brief: "Edge stress-tests close_stale.rb, the single script in the repo with `gh issue close` in it — the exception to 'the bug tracker that can't close a ticket'. The four locks all hold under fire: sweep_safe? refuses to sweep on a degraded harness (empty/build-error/no-site/gem-missing, 4/4 refused), the MAX_CLOSE cap drains 40 and defers the rest, dry-run is the default, and work orders close only when EVERY member is CLOSED (an UNKNOWN member never counts). The lock that picks: fingerprint 'ownership' is a regex on the issue body, not proof of authorship, so a human issue that quotes a retired `<!-- triage-fp: … -->` marker gets auto-closed as 'not planned' and never reopened. Real captured output from the pure _lib.rb functions and a live dry-run on this repo. Fix recommended (confirm gh issue author before closing), not applied — content branch."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-close-button-with-four-locks/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
