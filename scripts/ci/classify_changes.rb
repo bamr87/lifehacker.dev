@@ -28,7 +28,7 @@ def kind_of(path)
   when %r{\Apages/},
        %r{\Anews/},
        %r{\A_data/(brand|navigation)/},
-       %r{\A_data/(authors|landing|backlog)\.yml\z},
+       %r{\A_data/(authors|landing|backlog|top_story)\.yml\z},
        %r{\Aassets/},
        %r{\A(index|blog|hacks|tools|news|categories|tags|contact|search|sitemap)\.(md|html|json)\z},
        %r{\A404\.html\z}

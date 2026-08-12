@@ -307,5 +307,66 @@ check('fleet workflow grants NO administration scope', !fw.match?(/administratio
 check('untrusted-input quarantine doc present', File.exist?(File.join(LH::ROOT, '.claude/skills/_shared/quarantine.md')))
 
 # ---------------------------------------------------------------------------
+scenario 'backlog merge driver — two appends stack, they never splice (PR #453)'
+require 'tmpdir'
+driver = File.join(LH::ROOT, 'scripts/ci/merge_backlog.rb')
+check('driver exists', File.exist?(driver))
+
+# Two items by the SAME persona: the four identical middle lines are exactly
+# what made the old `merge=union` interleave them instead of stacking them.
+item = lambda do |id, title, published|
+  "  # rationale for #{id}\n  - id: #{id}\n    kind: doc\n    title: \"#{title}\"\n" \
+  "    voice: threat-model-everything\n    author: cass\n    priority: P2\n" \
+  "    status: done\n    published: #{published}\n\n"
+end
+base_yml = "backlog:\n#{item.call('DOC-001', 'first', '/docs/first/')}"
+
+merge3 = lambda do |base, ours, theirs|
+  Dir.mktmpdir do |dir|
+    o = File.join(dir, 'o.yml'); a = File.join(dir, 'a.yml'); b = File.join(dir, 'b.yml')
+    File.write(o, base); File.write(a, ours); File.write(b, theirs)
+    ok = system('ruby', driver, o, a, b, out: File::NULL, err: File::NULL)
+    [ok, File.read(a, encoding: 'UTF-8')]
+  end
+end
+
+ok, out = merge3.call(base_yml,
+                      base_yml + item.call('DOC-002', 'ours',   '/docs/ours/'),
+                      base_yml + item.call('DOC-003', 'theirs', '/docs/theirs/'))
+check('disjoint appends merge cleanly', ok)
+check('both new items survive', out.include?('id: DOC-002') && out.include?('id: DOC-003'))
+check('no item is spliced (every item keeps its own published)',
+      out.scan(/published:/).size == 3 &&
+      !out.match?(/published:.*\n\s*published:/))
+check('each item keeps its full key set',
+      out.scan(/^\s+status: done$/).size == 3 && out.scan(/^\s+author: cass$/).size == 3)
+
+ok2, = merge3.call(base_yml,
+                   base_yml + item.call('DOC-002', 'ours',   '/docs/ours/'),
+                   base_yml + item.call('DOC-002', 'theirs', '/docs/theirs/'))
+check('same id added on BOTH sides is a conflict, not a silent duplicate', !ok2)
+
+ok3, out3 = merge3.call(base_yml, base_yml, base_yml)
+check('identity merge round-trips byte-for-byte', ok3 && out3 == base_yml)
+
+# An in-place status flip on one side must survive a fresh append on the other.
+flipped = base_yml.sub('status: done', 'status: todo')
+ok4, out4 = merge3.call(base_yml, flipped, base_yml + item.call('DOC-002', 'theirs', '/docs/t/'))
+check('in-place edit + append on the other side merges cleanly', ok4)
+check('the in-place edit is preserved', out4.include?('status: todo') && out4.include?('id: DOC-002'))
+
+# The lint that backs the auto-update guard must still SEE the backlog: it scopes
+# itself from .gitattributes, so matching a driver NAME would have retired it.
+attrs = LH.read(File.join(LH::ROOT, '.gitattributes'))
+check('backlog.yml has a merge driver', attrs.match?(/^_data\/backlog\.yml\s+merge=/))
+scoped = attrs.lines.reject { |l| l.lstrip.start_with?('#') }
+             .filter_map { |l| p, *a = l.split; p if p && a.any? { |x| x.start_with?('merge=') } }
+check('artifact lint still scopes the backlog for duplicate keys', scoped.include?('_data/backlog.yml'))
+au = LH.read(File.join(LH::ROOT, '.github/workflows/auto-update.yml'))
+check('auto-update registers the driver', au.include?('merge.backlog.driver'))
+check('auto-update guards with the artifact lint, not a bare YAML parse',
+      au.include?('ruby scripts/ci/lint_artifacts.rb') && !au.include?("ruby -ryaml -e 'YAML.load_file"))
+
+# ---------------------------------------------------------------------------
 puts "\n[simulate] #{$pass} passed, #{$fail} failed across the end-to-end contract flow"
 exit($fail.zero? ? 0 : 1)

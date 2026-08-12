@@ -1659,7 +1659,8 @@ backlog:
     brief: "Make a load rerunnable so a retry doesn't duplicate: `INSERT ... ON CONFLICT(id) DO UPDATE SET ...` (SQLite/Postgres upsert) turns a re-run into a harmless update, and tracking `MAX(updated_at)` as a watermark pulls only new rows next time. Every step reproducible in a throwaway sqlite3 db. The footgun that stays in: a watermark-only `updated_at > last` silently misses rows sharing the exact boundary timestamp (and late-arriving data) — the fix is a small overlap window on the watermark PLUS the idempotent upsert, so re-reading a few rows costs nothing instead of double-counting them."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/idempotent-data-load-upsert-watermark/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/etl-pipeline-design/
     source_title: "ETL Pipeline Design: Scalable Python Data Pipelines"
@@ -1670,7 +1671,8 @@ backlog:
     brief: "Put a gate at the pipeline's front door: a pandera `DataFrameSchema` that checks nulls, ranges, uniqueness, and regex formats, run with `lazy=True` so one pass reports every bad column at once instead of dying on the first failure. Then route the failing rows to a quarantine table instead of dropping them — a silent drop is the bug you can't debug three days later. Reproducible with pandas + pandera on a tiny frame. The honest limit that stays in: row-level rules pass every individually-valid record while the batch as a whole is wrong (half the usual row count, a null-rate that tripled), so schema validation is necessary but a count/z-score check on the batch is the other half of the job."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/pandera-validate-dataframe-quarantine/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/data-quality/
     source_title: "Data Quality Engineering: Validation & Monitoring"
@@ -1740,7 +1742,8 @@ backlog:
     brief: "A workflow with `contents: write` that commits and pushes will fire the very event that started it and run forever. The fix is a guard at the top: read the head commit's author with `git log -1 --format='%an'` and exit early when it's your bot (`content-review[bot]`). The failures that stay in: the check needs `fetch-depth: 2` or there's no history to read the author from, and a `[skip ci]` in the commit message is flimsier than the author check because a human can trip it by accident too."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/github-action-bot-author-skip-guard/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/self-operating-website-06-the-editors-eye/
     source_title: "The Self-Operating Website 06: The Editor's Eye"
@@ -2800,23 +2803,253 @@ backlog:
     status: done
     published: /posts/2026/08/09/byline-picker-cant-tell-a-typo-from-a-section/
 
-  # --- loop-tuner 2026-08-10: post/doc lanes re-starved (todo_by_kind 0/0) ------
-  # The 2026-07-20 refills (POST-025/DOC-024) shipped and drained; growable todos
-  # are again almost all kind:hack (the SRC-* scout stream). Re-fed each starved
-  # lane with one non-duplicate, offline-testable harvested idea so the factory
-  # picks a MEASURED brief instead of improvising inline. Metadata only.
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-070
+    kind: hack
+    title: "Put your AI prompts under version control: .prompt.md in git, PR review for prompt changes, and the applyTo glob that silently matches nothing"
+    brief: "Stop pasting prompts out of a scratch file. Commit them as `.prompt.md` / `.instructions.md` files so a prompt change is a diff a human reviews in a PR — bisectable, revertable — instead of an untracked edit nobody can trace, and scope each instruction file to the right files with an `applyTo` glob rather than one mega-prompt that fires everywhere. The footgun that stays in: an `applyTo` glob that matches nothing (a leading `/`, `docs/**` when your files live under `_docs/`, a missing `**`) fails silently — the instruction simply never applies and the agent quietly ignores a rule you thought was in force — so verify the glob hits real paths the way you'd test a `.gitignore` pattern. Bonus honesty: small composable prompts are testable in isolation; a 300-line mega-prompt is a black box you can only pray at."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://bash-365.com/tools/partners/ai-native-practice/
+    source_title: "Running an AI-Native Consulting Practice"
+    fingerprint: dda24fd5d2b6
+  - id: SRC-071
+    kind: hack
+    title: "Decode a JWT in the shell without a library: base64url the middle segment (and why decoding proves nothing)"
+    brief: "A JWT is three base64url blobs joined by dots, so you can read the claims with no tooling: `cut -d. -f2 <<<\"$JWT\" | base64 -d`. The footgun that stays in: the payload is base64URL, not plain base64 — it swaps `+/` for `-_` and drops the `=` padding, so `base64 -d` chokes with 'invalid input' until you translate the chars and re-pad (`tr '_-' '/+'`, then pad the length to a multiple of 4), which is exactly why a naive one-liner fails on a token that decodes fine in a real library. The bigger one: decoding is not verifying — you've read the claims, not checked the signature — so never trust a decoded `exp` or `role` for an auth decision, and never paste a live token into a web decoder, because it's a bearer credential someone else now has."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-14-developer-0111/
+    source_title: "Software Developer · L0111 · 2026-07-14"
+    fingerprint: 95ecb0159a2b
+  - id: SRC-072
+    kind: tool
+    title: "redocly lint: the OpenAPI spec checker whose own preview command got deleted out from under the docs"
+    brief: "Honest verdict on Redocly CLI: `redocly lint openapi.yaml` catches the spec errors that quietly become broken clients — missing operationIds, undefined `$ref`s, response schemas that don't match the example — in seconds, and it's the check worth wiring into CI before you publish an API contract. The dealbreakers that stay in: `redocly preview-docs` was removed in current versions, so every tutorial and README that tells you to run it now dies on step one; the default `recommended` ruleset is opinionated enough that a spec someone swore would lint clean still throws a wall of warnings until you tune it; and it's a Node install carrying its own version drift. The free alternative when you don't want the vendor's opinions: `spectral lint` with your own ruleset, or the plain Swagger Editor for eyeballing."
+    voice: tool-review-honest
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-14-developer-0111/
+    source_title: "Software Developer · L0111 · 2026-07-14"
+    fingerprint: eb3af33e5510
+
+  # --- Fresh doc (autopilot run, 2026-08-10): every `doc` item on the board was
+  # already `done` (DOC-001..032); the only `todo` items are OPS-001 (kind: ops,
+  # which content runs skip), a long tail of SRC-* hacks, and two tools. The one
+  # open auto:content PR (POST-033) is a post, no doc to duplicate. Rather than
+  # no-op, cross lanes, or fabricate, synthesized a fresh in-lane doc and assigned
+  # it to the doc rotation's least-used persona (cass). The untrusted-input
+  # quarantine boundary — every agent reading issue bodies / PR comments / sister-
+  # site pages as DATA, never instructions (the prompt-injection defense) — is
+  # cited by five skills and a script but never got its own deep-dive; the other
+  # docs only reference it in passing. Genuine security angle for Cass, and
+  # demonstrable with real captured output: the read-only `gh` allowlist (only
+  # list/view/label present, no close/merge/approve) and simulate.rb asserting the
+  # doc is present (78/0) — plus the honest hole that the check proves the file
+  # EXISTS on disk, never that an agent READ it.
+  - id: DOC-035
+    kind: doc
+    title: "The Call Is Coming From Inside the Issue Tracker"
+    brief: "Deep-dive on the untrusted-input quarantine (_shared/quarantine.md): the one rule every text-reading agent runs under — issue bodies, PR comments, outside commit messages, and sister-site pages are data to classify, never instructions to follow. The three ranked mitigations that matter, each demonstrated on this repo: (1) blast radius capped in code, not the prompt — the triage/explorer scripts only run read-only gh verbs, no close/merge/approve to be talked into; (2) the model-side quarantine discipline; (3) the single human merge gate as the backstop that assumes 1 and 2 failed, so a perfect injection can at worst get something labeled. The honest twist: simulate.rb's `untrusted-input quarantine doc present` check is `File.exist?` — it proves the doctrine is on disk, never that an agent read or obeyed it, which is exactly why #1 and #3 are wired shut in code. Real grep + simulate.rb output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-call-is-coming-from-inside-the-issue-tracker/
+  # Synthesized in-lane (autopilot run, 2026-08-10, author rotation -> cass): a
+  # `post` run found the lane dry — every kind:post item is `done` except DOC-004
+  # (still `blocked` on OPS-001) — and `gh pr list --state open --label
+  # auto:content` showed only a hack PR (idempotent data loads), no post to
+  # duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note from a real, live security finding.
+  # The auto-merge smuggle guard (auto-merge.yml) declines a diff only when
+  # classify_changes.rb reports `deps|pipeline`, but the classifier collapses any
+  # unrecognized path into an `other` bucket it NEVER prints, and its fail-safe
+  # fires only when the WHOLE diff is unknown. So a root file like CNAME or
+  # .gitattributes classifies as `pipeline` alone (declined) but vanishes the
+  # moment it rides alongside one content file (merged). Reproduced for real on
+  # this repo; AUTO_MERGE_ENABLED is currently `true`, so it's live, not latent.
+  # Three tested mitigations in the post; the classifier/workflow were NOT patched
+  # (content branch) — fixes written up for a human. Cass's beat (review-bypass).
   - id: POST-033
     kind: post
-    title: "The safe reader that reads any repo you point LH_REPO_ROOT at"
-    brief: "Field note (meta-confession) on a second read-surface angle from the MCP reader: the `LH_REPO_ROOT` env var lets a client point the 'read-only, this-repo-only' server at ANY checkout on disk, so 'safe' is scoped by an env var the caller controls, not by the server. Reproduce it offline by setting LH_REPO_ROOT to a throwaway directory and showing the reader serves it; the lesson is that a trust boundary defined by a mutable env var isn't one. Reflection grounded in the repo's own server; no network, no new tooling, fix recommended not applied."
-    voice: meta-confession
+    title: "The infra file my robot blocks alone and merges in a crowd"
+    brief: "Threat-model of the auto-merge smuggle guard: it declines a diff on classify_changes.rb reporting deps|pipeline, but the classifier drops unrecognized paths into an unprinted `other` bucket whose fail-safe only fires when the entire diff is unknown. So CNAME/.gitattributes are stopped alone yet slip through beside one content file — reproduced live (AUTO_MERGE_ENABLED=true). Three tested mitigations, scripts left unpatched."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/10/infra-file-blocked-alone-merged-in-a-crowd/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-073
+    kind: hack
+    title: "Thread one correlation ID through every service (and every CI job) so a failure isn't five unrelated logs"
+    brief: "When one request fans out across five services, grepping five separate logs for 'the slow one' is guesswork — mint a correlation ID at the edge (`uuidgen`, or reuse an inbound `X-Request-ID`) and pass it down every hop as a header, so `grep <id> *.log` reassembles the whole trace. The failures that stay in: if each service GENERATES a new ID instead of propagating the one it received, you get five unrelated IDs and no trace at all (propagate, don't regenerate); the header name isn't standardized — `X-Request-ID` vs `X-Correlation-ID` vs the W3C `traceparent` — so one mismatched service silently drops the chain; and in GitHub Actions each job runs in a fresh shell, so an env var set in job A is gone in job B — you hand the ID across via a job `outputs` value or an artifact, not `$CORRELATION_ID`."
+    voice: how-to-practical
     priority: P3
     status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/gh-600/implemented-in-it-journey/
+    source_title: "GH-600 in the Wild: Implemented in IT-Journey"
+    fingerprint: 375e32774c4f
+  - id: SRC-074
+    kind: hack
+    title: "Stop arrow-keying across a long command: the readline shortcuts (Ctrl-A/E/W/U, Alt-., Ctrl-x Ctrl-e) and the vi-mode that deletes them"
+    brief: "Your shell already ships a text editor's worth of shortcuts — jump to line start/end with Ctrl-A / Ctrl-E, delete the last word with Ctrl-W and the whole line with Ctrl-U, paste the previous command's final argument with Alt-. , and when a line gets truly gnarly, Ctrl-x Ctrl-e opens it in `$EDITOR` to fix and run. All offline, all readline. The failures that stay in: these are the EMACS keymap defaults, so the moment you (or a dotfile) run `set -o vi` they vanish and you're in a different game; Ctrl-S doesn't 'save', it freezes the terminal via flow control (Ctrl-Q thaws it; `stty -ixon` disables the trap so Ctrl-S is free to rebind); and a REPL that doesn't link readline gives you none of them, which is why the same Ctrl-A jumps to line start in bash and prints garbage elsewhere."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/cheatsheets/
+    source_title: "IT-Journey Cheatsheets"
+    fingerprint: ee319acec565
+  - id: SRC-075
+    kind: hack
+    title: "Stop giving your app root on the database: a least-privilege MySQL user, and SHOW GRANTS to prove it"
+    brief: "The app connects as root because the tutorial did, so one SQL injection owns the whole server. Make a user that can only touch its own schema — `CREATE USER app@'%' IDENTIFIED BY '...'` then `GRANT SELECT, INSERT, UPDATE, DELETE ON app.* TO app@'%'`, never `ALL PRIVILEGES` — and prove the limit with `SHOW GRANTS FOR app@'%'` before you trust it. Two failures stay in: the one-liner every old tutorial pastes, `GRANT ... ON app.* TO app@'%' IDENTIFIED BY 'pw'`, is a syntax error in MySQL 8 (GRANT no longer creates the user — `CREATE USER` first), and a privilege change never reaches a connection that's already open, so your freshly-locked-down app keeps its old god-mode session until it reconnects. Reproducible in a throwaway Docker MySQL."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-15-security-specialist-1011/
+    source_title: "Quest Report: Security Specialist Level 1011"
+    fingerprint: 08636a521ec7
 
+  # Fresh doc (autopilot run, 2026-08-11): no `todo` doc existed — every DOC-* and
+  # the doc-kind SRC items are `done` (DOC-024 aggregate.rb shipped; DOC-004 is a
+  # blocked post), and `gh pr list --state open --label auto:content` returned no
+  # open PRs at all, so nothing to duplicate. Rather than no-op or cross lanes,
+  # synthesized a fresh in-lane doc; byline rotation `ruby scripts/fleet/authors.rb
+  # --section doc` -> `cass`. Untouched Meta station: the fleet's anti-prompt-
+  # injection guardrail (.claude/skills/_shared/quarantine.md) is a paragraph of
+  # PROSE — the same medium the attacker controls — imported by 7 skills/agents but
+  # never given its own deep-dive (only a one-line mention in DOC-009). Cass threat-
+  # models it and shows the load-bearing wall is mechanical, not textual: the filer
+  # has no close/merge verb (simulate.rb asserts it, 78/0), the sweeper closes only
+  # marker-owned issues (sweep_stale_findings), and the terminal backstop (human
+  # merge) rests on branch protection still 404 OFF (OPS-001). Real captured output.
   - id: DOC-033
     kind: doc
-    title: "plan.rb: how the fleet decides WHAT to write (the counterpart to WHO)"
-    brief: "Deep-dive on scripts/fleet/plan.rb — the picker that chooses WHAT the factory writes next (lane, priority, status) as the counterpart to authors.rb choosing WHO writes it. The two-axis 'what vs who' split is referenced but never documented on its own. Trace a real pick offline against _data/backlog.yml (which todo, which lane wins, how priority and starvation order the queue); real captured output from running the script locally, no network."
-    voice: meta-confession
+    title: "The rule against following instructions is an instruction"
+    brief: "Threat-model the quarantine guardrail (.claude/skills/_shared/quarantine.md): the fleet's whole prompt-injection defense is a paragraph of prose, written in the exact language an attacker controls and imported by 7 agents. Cass shows what actually holds the line is mechanical, not textual — file_issues.rb knows only create/comment/reopen (no close/merge, asserted by simulate.rb, 78 passed/0 failed), close_stale.rb's sweep_stale_findings closes only issues carrying its own triage-fp marker (a human issue never matches), and the honest twist that the terminal human-merge backstop still leans on branch protection that returns 404. Three ranked, tested mitigations. Real captured grep/simulate/gh output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-rule-against-instructions-is-an-instruction/
+  # Synthesized in-lane (autopilot run, 2026-08-11): a `post` run found the queue
+  # dry — every `kind: post` item was `done` except DOC-004, legitimately `blocked`
+  # on OPS-001 (branch protection still OFF, its verified after-state doesn't exist).
+  # `gh pr list --state open --label auto:content` showed only a hack (SRC-024) and a
+  # doc (DOC-033) in flight — no post to duplicate. Rather than no-op, cross lanes, or
+  # fabricate the blocked post, the autopilot (writing AS `edge`, the QA persona the
+  # post-section rotation returned) stress-tested a real claim in the repo: the Trace
+  # Bloom generator's own docstring swears "two articles can never share one" banner.
+  # It can. The seed is a 32-bit fnv1a(slug), so two publishable slugs
+  # (your-bash-always-leaks == one-script-almost-fails) collide and produce
+  # byte-identical art (same md5), and the 50-char slug truncation makes two long
+  # titles share a slug (same seed AND same output file) at just two posts. Real
+  # captured output only; fix recommended (64-bit seed + content-diff in lint_preview),
+  # not applied — the seed contract is somebody's tested code, and this is a content branch.
+  - id: POST-034
+    kind: post
+    title: "I made two posts wear the same face"
+    brief: "Field note in Ed G. Case's voice stress-testing the Trace Bloom generator's 'two articles can never share one' promise. The seed is a 32-bit fnv1a(slug): a birthday attack finds two publishable slugs (your-bash-always-leaks == one-script-almost-fails) whose banners are byte-identical (same md5), and the slugify 50-char truncation makes two long titles collapse to one slug — same seed AND same file — at just two posts. Determinism holds; the empty-slug guard holds. The honest gap: lint_preview counts paths, not pixels, so the hash collision slips past it. Real captured output only."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/11/i-made-two-posts-wear-the-same-face/
+
+  # Fresh doc (autopilot run, 2026-08-12): no `todo` doc existed — every DOC-* and
+  # doc-kind SRC item is `done` except the in-flight DOC-033 (open PR, the quarantine
+  # threat-model). `gh pr list --state open --label auto:content` showed a post, a
+  # hack, and that doc — no doc topic to duplicate. Rather than no-op or cross lanes,
+  # synthesized a fresh in-lane doc; byline rotation `ruby scripts/fleet/authors.rb
+  # --section doc` -> `edge`. Untouched Meta station: close_stale.rb, the ONE script
+  # in the repo with `gh issue close` in it (the exception to DOC-009's "can't close
+  # a ticket"). Edge stress-tested its four safety locks — sweep_safe? refuses a
+  # degraded run (4/4), the fingerprint-marker ownership, the MAX_CLOSE cap, dry-run
+  # default — and found a real gap: ownership is a body regex, not authorship, so a
+  # human issue that QUOTES a retired triage-fp marker gets auto-closed. Real captured
+  # output from the pure _lib.rb functions + a live dry-run on this repo (open=4,
+  # live-fps=4, closed=0). Fix recommended (check gh issue author), not applied.
+  - id: DOC-034
+    kind: doc
+    title: "The close button with four locks (and the one you can pick with copy-paste)"
+    brief: "Edge stress-tests close_stale.rb, the single script in the repo with `gh issue close` in it — the exception to 'the bug tracker that can't close a ticket'. The four locks all hold under fire: sweep_safe? refuses to sweep on a degraded harness (empty/build-error/no-site/gem-missing, 4/4 refused), the MAX_CLOSE cap drains 40 and defers the rest, dry-run is the default, and work orders close only when EVERY member is CLOSED (an UNKNOWN member never counts). The lock that picks: fingerprint 'ownership' is a regex on the issue body, not proof of authorship, so a human issue that quotes a retired `<!-- triage-fp: … -->` marker gets auto-closed as 'not planned' and never reopened. Real captured output from the pure _lib.rb functions and a live dry-run on this repo. Fix recommended (confirm gh issue author before closing), not applied — content branch."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-close-button-with-four-locks/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-076
+    kind: hack
+    title: "Verify a download before you run it: sha256sum --check, and why the hash in the docs is a trap"
+    brief: "You pulled a release tarball over a network anyone could tamper with — check it against the publisher's hash before you extract and run it: `echo \"<hash>  file.tar.gz\" | sha256sum --check` prints `file.tar.gz: OK` or a loud `FAILED`. The failures that stay in: the TWO spaces between the hash and the filename are load-bearing (one space and it errors 'improperly formatted checksum line'), a copy-pasted placeholder like `EXPECTED_HASH` always fails because it was never a real hash, and — the honest part — a hash you fetched from the same page as the file only proves the download wasn't corrupted in transit, not that the file wasn't swapped at the source; authenticity needs a signature or a hash from an independent channel. Offline-testable against any file you have."
+    voice: how-to-practical
     priority: P3
     status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-15-security-specialist-1011/
+    source_title: "Quest Report: Security Specialist Level 1011"
+    fingerprint: 5736ac0162cd
+  - id: SRC-077
+    kind: hack
+    title: "One matrix job failed and killed the other eleven: fail-fast, and the include that adds a job you never listed"
+    brief: "`strategy.matrix` fans one job definition into a grid across OS and language versions — but the default `fail-fast: true` cancels every sibling the instant one cell fails, so a flake on node 18 hides whether 20 and 22 were green. Set `fail-fast: false` to let them all finish and read the whole board. The footguns that stay in: `matrix.include` can ADD a combination that isn't in your grid (not only tweak an existing one), so a job you never listed shows up in the run; `exclude` silently drops cells so a 'missing' test was removed on purpose; and each matrix job is its own runner, so a file one cell wrote to disk does not exist for another. Reproducible with a tiny workflow that fails one cell on purpose."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/github-actions-basics/
+    source_title: "GitHub Actions Basics"
+    fingerprint: ba71d15cb405
+  - id: SRC-078
+    kind: hack
+    title: "Reproduce your whole Mac setup from one file: brew bundle, and the /opt/homebrew PATH gap on Apple Silicon"
+    brief: "Stop hand-installing forty tools on a fresh Mac. `brew bundle dump` writes a `Brewfile` of everything you already have, and `brew bundle` on the next machine reinstalls the lot — CLI formulae, GUI casks, even Mac App Store apps — from one committed file. The failure that stays in: on Apple Silicon, Homebrew installs to `/opt/homebrew`, not the Intel `/usr/local`, and the installer does NOT put it on your PATH, so a brand-new terminal answers `brew: command not found` until you add `eval \"$(/opt/homebrew/bin/brew shellenv)\"` to `~/.zprofile`. The quieter one: most `brew doctor` warnings are advisory, not errors — read them before you start deleting things it mentions."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/hello-macos/
+    source_title: "Hello macOS: Development Environment Setup"
+    fingerprint: 7bcace2a8b77
+
+  # Synthesized in-lane (autopilot run, 2026-08-12, byline rotation -> cass): a `post`
+  # run found the queue dry again — every `kind: post` item is done and the only other
+  # (DOC-004) is legitimately `blocked` on OPS-001. `gh pr list --state open --label
+  # auto:content` returned only a hack (SRC-026 bot-author skip guard) and a doc
+  # (DOC-033 quarantine) — no post to duplicate. Rather than no-op, cross lanes, or
+  # fabricate the blocked post, synthesized a fresh in-lane Field Note with a genuine
+  # security angle (the rotation handed the post to cass). The finding is real and
+  # reproduced this run: the committed cover banners are SVGs (executable XML) served
+  # same-origin; `scripts/ci/lint_preview.rb`'s `unsafe-svg` rule catches <script>/
+  # <foreignObject>/external refs but NOT inline event handlers (onload=) or
+  # javascript: URIs — so a crafted banner passed the real lint with 0 errors. Probe
+  # was uncommitted and deleted. Fix (tighten the regex) recommended to scripts/ci
+  # owners in the PR, not applied here — the harness isn't a content branch's to edit.
+  - id: POST-035
+    kind: post
+    title: "The cover art is an SVG, which is to say a program I invited into your browser"
+    brief: "Cass Vector threat-models the site's own generated cover banners: an SVG is executable XML served from lifehacker.dev's own origin. All 233 committed banners scan inert (the one grep hit was an article titled 'JavaScript:'), and two layers hold today — the theme embeds via background-image/og:image (script can't run) and lint_preview.rb has an `unsafe-svg` rule. The gap: that rule's regex catches <script> but not onload=/javascript:, reproduced by running the real lint against a crafted probe (0 errors). Three ranked, tested mitigations. Real captured output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/12/cover-art-svg-is-a-program/
