@@ -1,0 +1,110 @@
+# =============================================================================
+# weekly-epic.yml — the weekly Top Story (one epic recap of the prior week)
+# -----------------------------------------------------------------------------
+# Once a week (when enabled), the weekly-epic agent — the `fable` persona, run
+# on the Fable 5 model by default — digests everything the site published in
+# the prior 7 days (scripts/content/weekly_digest.rb), writes ONE mock-heroic
+# recap that touches every concept, musing, irony, and joke the week actually
+# contained, illustrates it with deterministic animated figures
+# (scripts/media/figures.mjs) plus an OPTIONAL OpenAI-painted hero image,
+# repoints the homepage Top Story (_data/top_story.yml), and opens ONE PR
+# labeled `auto:content` + `weekly-epic`.
+#
+# OFF by default behind WEEKLY_EPIC_ENABLED (a repo variable) and the Claude
+# auth. It never merges — the PR flows into the normal content gate, and a
+# human decides what leads the front page. Idle, zero-cost, until the owner
+# sets the variable (the variable IS the switch; docs/CICD.md).
+#
+# Optional extras, each its own deliberate opt-in:
+#   * WEEKLY_EPIC_MODEL (repo var)     — override the model for this loop only;
+#     defaults to the Fable 5 model id below. Everything still flows through
+#     the claude-run composite (the universal runner), so metering stays intact.
+#   * OPENAI_IMAGES_ENABLED (repo var) + OPENAI_API_KEY (secret) — BOTH must be
+#     set before the agent may call scripts/media/openai_image.mjs for the one
+#     painted hero image. Paid + non-deterministic, hence double-gated; the
+#     offline SVG figures are the default art, not a fallback.
+# =============================================================================
+name: weekly-epic
+
+on:
+  schedule:
+    - cron: '45 7 * * 1'   # Mondays 07:45 UTC — the epic leads the week, ahead of content-scout (08:07) and the factory (09:00)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: weekly-epic
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+    steps:
+      - id: check
+        env:
+          ENABLED: ${{ vars.WEEKLY_EPIC_ENABLED }}
+          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "$ENABLED" = "true" ] && { [ -n "$OAUTH" ] || [ -n "$KEY" ]; }; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "weekly epic is off (WEEKLY_EPIC_ENABLED != true, or no CLAUDE_CODE_OAUTH_TOKEN / ANTHROPIC_API_KEY) — idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  sing:
+    needs: gate
+    if: ${{ needs.gate.outputs.go == 'true' }}
+    runs-on: ubuntu-latest
+    # One long agent run: read a week of articles, write the saga, render the
+    # figures, build + verify. Longer than a factory leg on purpose.
+    timeout-minutes: 30
+    env:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # The bard runs on the big model by default; WEEKLY_EPIC_MODEL overrides
+      # for this loop only (the universal runner reads LH_AI_MODEL; _data/ai.yml
+      # stays the fleet-wide default for every other loop).
+      LH_AI_MODEL: ${{ vars.WEEKLY_EPIC_MODEL || 'claude-fable-5' }}
+      # The OpenAI hero image is DOUBLE-gated: the key is only exported when the
+      # owner also flipped OPENAI_IMAGES_ENABLED, so setting the secret alone
+      # spends nothing, and flipping the var alone has no key to spend with.
+      OPENAI_API_KEY: ${{ vars.OPENAI_IMAGES_ENABLED == 'true' && secrets.OPENAI_API_KEY || '' }}
+      LH_OPENAI_IMAGES: ${{ vars.OPENAI_IMAGES_ENABLED }}
+      # FLEET_TOKEN (bot PAT, contents+PRs, NO admin) so the agent can open a PR —
+      # GITHUB_TOKEN is blocked from creating PRs, and a PAT-authored PR also
+      # triggers the pipeline. Falls back to github.token (degrades to no-PR).
+      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      # Ensure the PR label exists so `gh pr create --label weekly-epic` can't
+      # fail on a repo where it was never created (idempotent; --force upserts).
+      - name: Ensure the weekly-epic label exists
+        run: gh label create weekly-epic --color 8250df --description "The weekly Top Story epic" --force >/dev/null 2>&1 || true
+
+      # NOT continue-on-error: a crashed run must show RED, not a silent green
+      # skip. A too-quiet week is NOT a failure — the agent writes the reason to
+      # pr-result.txt and the confirm step below treats that as a clean no-op.
+      - name: Sing the week and open ONE PR (universal AI runner)
+        uses: ./.github/actions/claude-run
+        with:
+          agent: weekly-epic
+          prompt: "Use the weekly-epic skill to produce this week's Top Story for lifehacker.dev. FIRST run `gh pr list --state open --label weekly-epic --json number,url` — if an open weekly-epic PR already exists, write its URL to pr-result.txt and STOP. Otherwise: digest the prior 7 days (`ruby scripts/content/weekly_digest.rb --days 7`); if fewer than 3 articles fall in the window, write the reason to pr-result.txt and STOP — never pad a thin week. Else read EVERY article the digest lists, write ONE epic recap as the `fable` persona (voice profile `epic-weekly`, `series: weekly-epic`) that covers EVERY digest item — woven into the saga or in the closing dispatch roll — with every referenced post linked in-text. Commit the digest to assets/images/figures/<slug>/digest.json and generate the figures from it with scripts/media/figures.mjs (constellation + timeline; gauge when the week hands you a real number). Only if BOTH OPENAI_API_KEY and LH_OPENAI_IMAGES=true are present, additionally generate one painted hero via scripts/media/openai_image.mjs, embed it captioned as AI-generated, and commit its .prompt.json sidecar. Generate the preview banner (node scripts/preview/generate.mjs -f <file>), repoint _data/top_story.yml at the epic's URL (updated_by: weekly-epic), run `python3 tools/unwrap-prose.py --write`, verify with `bash scripts/ci/run-all.sh`, then open ONE pull request on branch autopilot/<slug>, label it 'auto:content' and 'weekly-epic', write the PR URL to pr-result.txt, and STOP. Never merge."
+          tools: "Bash,Read,Write,Edit,Grep,Glob"
+          system: "You are Fable, the lifehacker.dev weekly Top Story bard. Sing only deeds that shipped; link every one; land the real lessons in one plain-voice passage. One PR. Never merge."
+
+      - name: Confirm a result was recorded (fail visibly if the agent didn't)
+        run: |
+          [ -s pr-result.txt ] || { echo "::error::weekly-epic: no PR and no reason recorded — see the agent step log (auth? crash? push failure?)."; exit 1; }
+          echo "result: $(cat pr-result.txt)"

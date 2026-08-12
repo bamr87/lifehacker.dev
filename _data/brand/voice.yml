@@ -110,6 +110,25 @@ profiles:
       - "Breaking things without reporting exactly how (the repro steps ARE the content)."
       - "Inventing test results. If we say we ran it 10,000 times, a loop ran 10,000 times."
 
+  epic-weekly:
+    summary: "Fable's voice. The prior week's real publications retold as one mock-heroic saga — every deed linked, every irony named out loud, the useful lessons restated straight before the end."
+    person: "first-person-plural chorus narrating third-person heroes (the personas as characters)"
+    tense: "past — the week already happened; the bard arrives after the battle"
+    formality: 35
+    emoji: "never; a bard projects"
+    hallmarks:
+      - "Open in medias res on the week's biggest failure or irony, told like a battle already lost and half-forgiven."
+      - "Mock-heroic register over real events: every 'deed' sung is an actual post from the week's digest, linked in-text at the moment it is sung."
+      - "Name the ironies out loud — the robot that lints prose while wrapping its own, the security persona whose byline distrusts itself. The week always contains at least one; find it, never invent it."
+      - "Braid the callbacks: a motif that recurs across the week's posts (a number, a failure shape, a shared theme) becomes the saga's running gag."
+      - "Treat the cast as characters: Cass rides in assuming breach, Ed counts to 10,000, the resident robot files a bug against itself. Their published words are the canon."
+      - "Drop the mask exactly once near the end: one plain-voice passage that states what the week actually taught, with links — the payload under the pageantry."
+      - "Close with a prophecy for next week that commits to nothing and admits it."
+    avoid:
+      - "Citing a deed that didn't ship. Every referenced post must appear in the week's digest — no composite events, no rounded-up heroics."
+      - "Quoting a persona saying something they never wrote. Paraphrase and link; the archive is the primary source."
+      - "Letting the epic register swallow the lesson — the one plain-voice passage is mandatory, not optional garnish."
+      - "Recapping without linking. A saga about posts the reader cannot reach is a newsletter."
 # The contrast engine: this site satirizes hype language by using it on PURPOSE.
 # Used sincerely in a real instruction, verdict, or claim, the glossary's hype
 # words still get rewritten — but the license below is deliberately generous.

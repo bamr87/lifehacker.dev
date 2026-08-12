@@ -89,10 +89,17 @@ What it will **not** touch: bespoke art. An article pointing at a hand-picked sc
 | `unsafe-svg` | error | script / foreignObject / external reference |
 | `preview-outside-safe-band` | warning | type the card crop cuts off |
 | `orphan-preview` | warning | art nothing references, in front matter or body |
+| `orphan-figure` | warning | weekly-epic figure art (`assets/images/figures/`) no article body embeds |
 
 Two `shared-preview` warnings are expected and correct: two grandfathered pairs of legacy posts share a photo apiece.
 
 **Cover art vs. exhibits.** `textless-banner` and `preview-outside-safe-band` apply only to art an article stamps as `preview:` — that is what has to survive a 300px card. Art embedded in a *body* is an exhibit and is held to `unsafe-svg` only: `docs/the-plugin-that-isnt-a-plugin` deliberately displays the retired pipeline's textless template output as evidence of what it produced. The first version of this lint called that file an orphan, it got deleted, and the page shipped a broken image — which is why `orphan-preview` now counts body mentions and `missing-body-image` exists. Note the deliberate asymmetry: `missing-body-image` matches only real `![](…)` / `<img>` embeds outside code fences, because these articles are *about* the preview pipeline and their code blocks are full of example paths; `orphan-preview` treats a mention *anywhere*, code fences included, as reason enough never to delete the file.
+
+## In-body figures (the weekly epic's exhibits)
+
+The weekly Top Story (`.claude/skills/weekly-epic`) embeds figures, and they follow this framework's philosophy with a second generator: **`scripts/media/figures.mjs`** (see `scripts/media/README.md`). Same split of labor — the agent supplies data (the committed weekly digest, a slug, a number for the gauge) and deterministic code owns every coordinate; same design tokens (`_data/preview/design.json`), same animation contract, same determinism promise (commit the digest, and the art regenerates byte-identical). Figures live in `assets/images/figures/<slug>/` and are exhibits, not cover art: the lint holds them to `unsafe-svg` + `missing-body-image` + `orphan-figure`, never to the headline/safe-band rules.
+
+The one deliberate exception to "offline and deterministic": `scripts/media/openai_image.mjs` can paint a single raster hero per epic via the OpenAI Images API. It is double-gated (`OPENAI_IMAGES_ENABLED` repo var **and** `OPENAI_API_KEY` secret), never used as a fallback, captioned as AI-generated in the article, and audited by a committed `.prompt.json` sidecar. If the gate is closed, the SVG figures aren't a downgrade — they're the default.
 
 ## The explorer
 
