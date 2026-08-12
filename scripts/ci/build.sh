@@ -57,11 +57,18 @@ lh_overlay() {
   rm -rf "$dest/pages"
   cp -R "$REPO_DIR/pages" "$dest/pages"
 
-  # Overlay ALL of our _data over the theme's. GitHub Pages reads the whole repo
-  # _data/, so to stay production-faithful the build must too — including
-  # _data/health (the /docs/health/ dashboard), _data/analytics, and _data/fleet,
-  # which a hand-picked subset would silently drop. Theme-only _data not present
-  # in our repo (if any) survives the merge.
+  # Our _data REPLACES the theme's entirely. GitHub Pages ignores a remote
+  # theme's _data/ (a gem/remote theme delivers only _layouts, _includes, _sass
+  # and assets), so a theme data file surviving into the overlay builds pages
+  # production can never build. That stopped being hypothetical with
+  # zer0-mistakes 1.28.0 (2026-08-09): the theme began shipping
+  # _data/navigation/docs.yml for its OWN docs site, and the old merge-keep
+  # behavior gave every overlay-built /docs/ page a sidebar of 47 links to
+  # theme-repo pages this site doesn't have — 1,987 phantom broken-link errors
+  # the live site would never serve. Whole-repo _data still ships (health,
+  # analytics, fleet, …) — it just ships alone, exactly like production.
+  rm -rf "$dest/_data"
+  mkdir -p "$dest/_data"
   cp -R "$REPO_DIR/_data/." "$dest/_data/"
 
   # Overlay our own _includes (e.g. the homepage card partials in _includes/home/)

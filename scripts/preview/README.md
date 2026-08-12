@@ -5,6 +5,7 @@ The Trace Bloom preview-banner renderer. Dependency-free JavaScript (Node ≥ 18
 - **What it is and why:** [`docs/PREVIEW-IMAGES.md`](../../docs/PREVIEW-IMAGES.md)
 - **The aesthetic:** [`docs/TRACE-BLOOM.md`](../../docs/TRACE-BLOOM.md)
 - **Design tokens (edit here to re-skin):** [`_data/preview/design.json`](../../_data/preview/design.json)
+- **Sibling — in-body figures for the weekly epic:** [`scripts/media/`](../media/README.md) (same tokens, same contracts, exhibits instead of covers)
 
 ```bash
 node scripts/preview/generate.mjs -f <article.md>   # one article

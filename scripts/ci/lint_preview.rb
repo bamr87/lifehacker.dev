@@ -19,6 +19,10 @@
 require_relative '_lib'
 
 PREVIEW_DIR = 'assets/images/previews'.freeze
+# In-body figure art (scripts/media/figures.mjs + openai_image.mjs, one subdir
+# per article slug). Figures are exhibits, never cover art, so they are held to
+# the safety + existence rules only — not the headline/safe-band rules.
+FIGURES_DIR = 'assets/images/figures'.freeze
 DESIGN = begin
   JSON.parse(LH.read(File.join(LH::ROOT, '_data', 'preview', 'design.json')))
 rescue StandardError
@@ -60,7 +64,9 @@ seen = {}
 # must not be mistaken for broken images.
 body_embeds = Hash.new { |h, k| h[k] = [] }
 body_refs = Hash.new { |h, k| h[k] = [] }
-PREVIEW_PATH = %r{/(?:assets/)?images/previews/[A-Za-z0-9._-]+\.(?:svg|png|jpe?g|webp)}i
+# Both art trees count as "in use": cover art under previews/, and the weekly
+# epic's in-body figures under figures/<slug>/ (one extra path segment).
+PREVIEW_PATH = %r{/(?:assets/)?images/(?:previews/[A-Za-z0-9._-]+|figures/[A-Za-z0-9._-]+/[A-Za-z0-9._-]+)\.(?:svg|png|jpe?g|webp)}i
 
 SOURCES.each do |dir|
   Dir.glob(File.join(LH::ROOT, dir, '*.md')).sort.each do |path|
@@ -158,6 +164,30 @@ Dir.glob(File.join(LH::ROOT, PREVIEW_DIR, '*.svg')).sort.each do |path|
                          rule: 'orphan-preview', file: rel,
                          evidence: 'preview art referenced by no article — not as a `preview:` stamp and ' \
                                    'not embedded in any body. Delete it or stamp it.')
+end
+
+# ── 3. figure art (the weekly epic's in-body exhibits) ───────────────────────
+# Same inertness bar as the banners — these SVGs render on the page, and an
+# animated figure is exactly where a <script> would love to hide. Existence is
+# already covered above (missing-body-image now matches figure paths); headline
+# and safe-band rules deliberately do NOT apply, because a figure is not a card.
+Dir.glob(File.join(LH::ROOT, FIGURES_DIR, '**', '*.{svg,png,jpg,jpeg,webp}')).sort.each do |path|
+  rel = LH.rel(path)
+  if path.end_with?('.svg')
+    svg = LH.read(path)
+    if svg =~ /<script|<foreignObject|<image\b/i || svg =~ /(?:href|src)\s*=\s*["']https?:/i
+      findings << LH.finding(check_id: 'preview', severity: 'error',
+                             rule: 'unsafe-svg', file: rel,
+                             evidence: 'figure contains a script, foreignObject, or external reference — ' \
+                                       'in-body art must be self-contained and inert')
+    end
+  end
+  next if body_refs.keys.any? { |v| resolve(v) == path }
+
+  findings << LH.finding(check_id: 'preview', severity: 'warning',
+                         rule: 'orphan-figure', file: rel,
+                         evidence: 'figure art referenced by no article body — regenerate the epic that ' \
+                                   'owns it or delete the file (its digest.json/.prompt.json sidecars go with it)')
 end
 
 errs = LH.write('preview', findings)
