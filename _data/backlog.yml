@@ -2965,3 +2965,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/11/i-made-two-posts-wear-the-same-face/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-076
+    kind: hack
+    title: "Verify a download before you run it: sha256sum --check, and why the hash in the docs is a trap"
+    brief: "You pulled a release tarball over a network anyone could tamper with — check it against the publisher's hash before you extract and run it: `echo \"<hash>  file.tar.gz\" | sha256sum --check` prints `file.tar.gz: OK` or a loud `FAILED`. The failures that stay in: the TWO spaces between the hash and the filename are load-bearing (one space and it errors 'improperly formatted checksum line'), a copy-pasted placeholder like `EXPECTED_HASH` always fails because it was never a real hash, and — the honest part — a hash you fetched from the same page as the file only proves the download wasn't corrupted in transit, not that the file wasn't swapped at the source; authenticity needs a signature or a hash from an independent channel. Offline-testable against any file you have."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-15-security-specialist-1011/
+    source_title: "Quest Report: Security Specialist Level 1011"
+    fingerprint: 5736ac0162cd
+  - id: SRC-077
+    kind: hack
+    title: "One matrix job failed and killed the other eleven: fail-fast, and the include that adds a job you never listed"
+    brief: "`strategy.matrix` fans one job definition into a grid across OS and language versions — but the default `fail-fast: true` cancels every sibling the instant one cell fails, so a flake on node 18 hides whether 20 and 22 were green. Set `fail-fast: false` to let them all finish and read the whole board. The footguns that stay in: `matrix.include` can ADD a combination that isn't in your grid (not only tweak an existing one), so a job you never listed shows up in the run; `exclude` silently drops cells so a 'missing' test was removed on purpose; and each matrix job is its own runner, so a file one cell wrote to disk does not exist for another. Reproducible with a tiny workflow that fails one cell on purpose."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/github-actions-basics/
+    source_title: "GitHub Actions Basics"
+    fingerprint: ba71d15cb405
+  - id: SRC-078
+    kind: hack
+    title: "Reproduce your whole Mac setup from one file: brew bundle, and the /opt/homebrew PATH gap on Apple Silicon"
+    brief: "Stop hand-installing forty tools on a fresh Mac. `brew bundle dump` writes a `Brewfile` of everything you already have, and `brew bundle` on the next machine reinstalls the lot — CLI formulae, GUI casks, even Mac App Store apps — from one committed file. The failure that stays in: on Apple Silicon, Homebrew installs to `/opt/homebrew`, not the Intel `/usr/local`, and the installer does NOT put it on your PATH, so a brand-new terminal answers `brew: command not found` until you add `eval \"$(/opt/homebrew/bin/brew shellenv)\"` to `~/.zprofile`. The quieter one: most `brew doctor` warnings are advisory, not errors — read them before you start deleting things it mentions."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/hello-macos/
+    source_title: "Hello macOS: Development Environment Setup"
+    fingerprint: 7bcace2a8b77
