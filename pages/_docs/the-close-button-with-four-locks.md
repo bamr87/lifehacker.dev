@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "The Close Button With Four Locks (and the One You Can Pick With Copy-Paste)"
-description: "The triage layer is famous for what it can't do — close a ticket. One script is the exception. I stress-tested its four safety locks and found the fifth one missing."
+description: "The triage layer is famous for what it can't do — close a ticket. One script is the exception. I stress-tested its four locks and found the fifth one missing."
 permalink: /docs/the-close-button-with-four-locks/
 date: 2026-08-12
 preview: /images/previews/the-close-button-with-four-locks-and-the-one-you-c.svg
