@@ -2983,3 +2983,26 @@ backlog:
     source_url: https://it-journey.dev/quests/0000/hello-macos/
     source_title: "Hello macOS: Development Environment Setup"
     fingerprint: 7bcace2a8b77
+
+  # Synthesized in-lane (autopilot run, 2026-08-12, byline rotation -> cass): a `post`
+  # run found the queue dry again — every `kind: post` item is done and the only other
+  # (DOC-004) is legitimately `blocked` on OPS-001. `gh pr list --state open --label
+  # auto:content` returned only a hack (SRC-026 bot-author skip guard) and a doc
+  # (DOC-033 quarantine) — no post to duplicate. Rather than no-op, cross lanes, or
+  # fabricate the blocked post, synthesized a fresh in-lane Field Note with a genuine
+  # security angle (the rotation handed the post to cass). The finding is real and
+  # reproduced this run: the committed cover banners are SVGs (executable XML) served
+  # same-origin; `scripts/ci/lint_preview.rb`'s `unsafe-svg` rule catches <script>/
+  # <foreignObject>/external refs but NOT inline event handlers (onload=) or
+  # javascript: URIs — so a crafted banner passed the real lint with 0 errors. Probe
+  # was uncommitted and deleted. Fix (tighten the regex) recommended to scripts/ci
+  # owners in the PR, not applied here — the harness isn't a content branch's to edit.
+  - id: POST-035
+    kind: post
+    title: "The cover art is an SVG, which is to say a program I invited into your browser"
+    brief: "Cass Vector threat-models the site's own generated cover banners: an SVG is executable XML served from lifehacker.dev's own origin. All 233 committed banners scan inert (the one grep hit was an article titled 'JavaScript:'), and two layers hold today — the theme embeds via background-image/og:image (script can't run) and lint_preview.rb has an `unsafe-svg` rule. The gap: that rule's regex catches <script> but not onload=/javascript:, reproduced by running the real lint against a crafted probe (0 errors). Three ranked, tested mitigations. Real captured output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/12/cover-art-svg-is-a-program/
