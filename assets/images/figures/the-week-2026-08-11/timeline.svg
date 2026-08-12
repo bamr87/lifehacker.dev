@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 640" width="1536" height="640" role="img" aria-labelledby="t d" data-generator="trace-figures/1" data-seed="1442922208">
+<title id="t">Seven days of shipping — 2026-08-05 to 2026-08-11</title>
+<desc id="d">Publication timeline for the week: 16 articles as dots, one column per day, colored by section, stacked in publish order. Computed from the committed weekly digest.</desc>
+<style>
+@keyframes tf-breathe{0%,100%{opacity:.62}50%{opacity:1}}
+@keyframes tf-drift{to{stroke-dashoffset:-160}}
+@keyframes tf-shimmer{0%,100%{opacity:.1}50%{opacity:.3}}
+.tfb{animation:tf-breathe 7s ease-in-out infinite}
+.tfe{animation:tf-drift 9s linear infinite}
+.tfs{animation:tf-shimmer 8s ease-in-out infinite}
+@keyframes tf-pan{from{transform:translateX(0)}to{transform:translateX(1216px)}}
+.tfp{animation:tf-shimmer 8s ease-in-out infinite,tf-pan 16s linear infinite alternate}
+@media (prefers-reduced-motion:reduce){.tfp{animation:none!important;opacity:.12!important}}
+@media (prefers-reduced-motion:reduce){.tfb,.tfe,.tfs{animation:none!important;opacity:1!important}}
+</style>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#060d0c"/><stop offset="1" stop-color="#0c1a18"/></linearGradient>
+<radialGradient id="halo-hacks">
+<stop offset="0" stop-color="#22d3ee" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#22d3ee" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo-tools">
+<stop offset="0" stop-color="#fbbf24" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#fbbf24" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#fbbf24" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo-field-notes">
+<stop offset="0" stop-color="#fb7185" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#fb7185" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#fb7185" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo-docs">
+<stop offset="0" stop-color="#38bdf8" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#38bdf8" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1536" height="640" fill="url(#bg)"/>
+<defs><linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#2dd4bf" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#2dd4bf" stop-opacity="1"/>
+<stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient></defs>
+<rect x="60" y="0" width="300" height="640" fill="url(#band)" opacity="0.1" class="tfp"/>
+<text x="48" y="76" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="26" font-weight="600" letter-spacing="6" fill="#fb7185">SEVEN DAYS OF SHIPPING</text>
+<line x1="80" y1="496" x2="1466" y2="496" stroke="#1d3a36" stroke-width="2"/>
+<text x="206.1" y="536" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#79a8a1">WED 08-05</text>
+<g class="tfb" style="animation-delay:0.00s">
+<circle cx="206.1" cy="448" r="26" fill="url(#halo-docs)"/>
+<circle cx="206.1" cy="448" r="12" fill="#38bdf8"><title>The Cover Art Is a Program</title></circle>
+</g>
+<g class="tfb" style="animation-delay:0.25s">
+<circle cx="206.1" cy="404" r="26" fill="url(#halo-field-notes)"/>
+<circle cx="206.1" cy="404" r="12" fill="#fb7185"><title>The auto-fixer told me to run the auto-fixer: unwrap-prose.py isn't idempotent</title></circle>
+</g>
+<g class="tfb" style="animation-delay:0.50s">
+<circle cx="206.1" cy="360" r="26" fill="url(#halo-hacks)"/>
+<circle cx="206.1" cy="360" r="12" fill="#22d3ee"><title>Rebase your messy commits — before you push, never after</title></circle>
+</g>
+<text x="206.1" y="298" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="600" fill="#eafffb">3</text>
+<text x="398.4" y="536" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#79a8a1">THU 08-06</text>
+<g class="tfb" style="animation-delay:0.50s">
+<circle cx="398.4" cy="448" r="26" fill="url(#halo-docs)"/>
+<circle cx="398.4" cy="448" r="12" fill="#38bdf8"><title>@v4 Is a Bookmark, Not a Padlock</title></circle>
+</g>
+<g class="tfb" style="animation-delay:0.75s">
+<circle cx="398.4" cy="404" r="26" fill="url(#halo-field-notes)"/>
+<circle cx="398.4" cy="404" r="12" fill="#fb7185"><title>My scout has to cite a source. Nothing checks the source is mine.</title></circle>
+</g>
+<g class="tfb" style="animation-delay:1.00s">
+<circle cx="398.4" cy="360" r="26" fill="url(#halo-hacks)"/>
+<circle cx="398.4" cy="360" r="12" fill="#22d3ee"><title>Your loss climbs back up and it isn't the learning rate: the zero_grad() line the loop can't skip</title></circle>
+</g>
+<text x="398.4" y="298" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="600" fill="#eafffb">3</text>
+<text x="590.7" y="536" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#79a8a1">FRI 08-07</text>
+<g class="tfb" style="animation-delay:1.00s">
+<circle cx="590.7" cy="448" r="26" fill="url(#halo-docs)"/>
+<circle cx="590.7" cy="448" r="12" fill="#38bdf8"><title>The banner cop that frisks every cover but two</title></circle>
+</g>
+<text x="590.7" y="386" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="600" fill="#eafffb">1</text>
+<text x="783" y="536" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#79a8a1">SAT 08-08</text>
+<g class="tfb" style="animation-delay:1.50s">
+<circle cx="783" cy="448" r="26" fill="url(#halo-docs)"/>
+<circle cx="783" cy="448" r="12" fill="#38bdf8"><title>One Paragraph Per Line, and the Four Ways I Snuck a Wrapped One Past</title></circle>
+</g>
+<text x="783" y="386" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="600" fill="#eafffb">1</text>
+<text x="975.3" y="536" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#79a8a1">SUN 08-09</text>
+<g class="tfb" style="animation-delay:2.00s">
+<circle cx="975.3" cy="448" r="26" fill="url(#halo-docs)"/>
+<circle cx="975.3" cy="448" r="12" fill="#38bdf8"><title>The Checkbox the Robot Learned to Tick Itself</title></circle>
+</g>
+<g class="tfb" style="animation-delay:2.25s">
+<circle cx="975.3" cy="404" r="26" fill="url(#halo-field-notes)"/>
+<circle cx="975.3" cy="404" r="12" fill="#fb7185"><title>The byline picker can't tell a typo from a section</title></circle>
+</g>
+<g class="tfb" style="animation-delay:2.50s">
+<circle cx="975.3" cy="360" r="26" fill="url(#halo-hacks)"/>
+<circle cx="975.3" cy="360" r="12" fill="#22d3ee"><title>Write your page shell once with Jinja2 inheritance — without leaving an XSS hole open</title></circle>
+</g>
+<text x="975.3" y="298" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="600" fill="#eafffb">3</text>
+<text x="1167.6" y="536" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#79a8a1">MON 08-10</text>
+<g class="tfb" style="animation-delay:2.50s">
+<circle cx="1167.6" cy="448" r="26" fill="url(#halo-field-notes)"/>
+<circle cx="1167.6" cy="448" r="12" fill="#fb7185"><title>The infra file my robot blocks alone and merges in a crowd</title></circle>
+</g>
+<g class="tfb" style="animation-delay:2.75s">
+<circle cx="1167.6" cy="404" r="26" fill="url(#halo-hacks)"/>
+<circle cx="1167.6" cy="404" r="12" fill="#22d3ee"><title>Run your data load twice on purpose: the upsert and watermark that survive a retry</title></circle>
+</g>
+<text x="1167.6" y="342" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="600" fill="#eafffb">2</text>
+<text x="1359.9" y="536" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#79a8a1">TUE 08-11</text>
+<g class="tfb" style="animation-delay:3.00s">
+<circle cx="1359.9" cy="448" r="26" fill="url(#halo-docs)"/>
+<circle cx="1359.9" cy="448" r="12" fill="#38bdf8"><title>The rule against following instructions is an instruction</title></circle>
+</g>
+<g class="tfb" style="animation-delay:3.25s">
+<circle cx="1359.9" cy="404" r="26" fill="url(#halo-field-notes)"/>
+<circle cx="1359.9" cy="404" r="12" fill="#fb7185"><title>I made two posts wear the same face</title></circle>
+</g>
+<g class="tfb" style="animation-delay:3.50s">
+<circle cx="1359.9" cy="360" r="26" fill="url(#halo-hacks)"/>
+<circle cx="1359.9" cy="360" r="12" fill="#22d3ee"><title>Validate a DataFrame before it poisons the table: a pandera schema and a quarantine bin</title></circle>
+</g>
+<text x="1359.9" y="298" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="600" fill="#eafffb">3</text>
+<circle cx="48" cy="557" r="7" fill="#22d3ee"/><text x="64" y="564" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" letter-spacing="1" fill="#79a8a1">HACKS ×5</text><circle cx="214" cy="557" r="7" fill="#fb7185"/><text x="230" y="564" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" letter-spacing="1" fill="#79a8a1">FIELD NOTES ×5</text><circle cx="458" cy="557" r="7" fill="#38bdf8"/><text x="474" y="564" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" letter-spacing="1" fill="#79a8a1">META ×6</text>
+<text x="48" y="606" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" letter-spacing="2" fill="#79a8a1">SEED 1442922208</text>
+<text x="1488" y="606" text-anchor="end" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" letter-spacing="2" fill="#79a8a1">16 DISPATCHES / 7 DAYS</text>
+</svg>
