@@ -107,7 +107,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
 | `explore.yml` | daily cron, manual | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. Scheduled runs apply; manual runs default to dry-run. |
 | `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
-| `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=union` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts → `needs-human`. |
+| `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=backlog` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts, duplicate backlog ids, and any merge that fails `lint_artifacts.rb` → `needs-human`, never pushed. |
 | `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
 
 **The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies every candidate PR's diff and declines (labels `needs-human`) anything touching `deps`/`pipeline`, even if it's labeled `auto:content`. So auto-merge can only ever ship pure content; dependency, pipeline, and workflow changes are **always** human-gated. `scripts/devops/audit.rb` enforces both the per-workflow `*_ENABLED` gates and the smuggle guard, so these invariants fail CI if they regress.
@@ -123,7 +123,7 @@ gh variable set WEEKLY_EPIC_ENABLED true        # Monday Top Story: the fable pe
 gh variable set CONTENT_SCOUT_ENABLED true      # daily sister-site crawl → backlog ideas, before the factory (SCOUT_SOURCES to retarget; needs FLEET_TOKEN to auto-merge)
 gh variable set EXPLORER_ENABLED true           # live-site persona QA
 gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
-gh variable set AUTO_UPDATE_ENABLED true        # keep colliding content PRs mergeable (union-merges main in; needs FLEET_TOKEN)
+gh variable set AUTO_UPDATE_ENABLED true        # keep colliding content PRs mergeable (item-merges main in; needs FLEET_TOKEN)
 gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (retires human content review)
 gh variable set LOOP_TUNER_ENABLED true         # let the loop-tuner agent open improvement PRs from the metrics (measure runs regardless)
 gh variable set TRIAGE_ENABLED true             # daily scheduled triage (queue + dashboard + deduped issues + idea harvest)
