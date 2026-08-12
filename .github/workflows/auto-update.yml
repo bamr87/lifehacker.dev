@@ -7,22 +7,26 @@
 # tail-append hunk collides with main and they go `dirty` — the recurring "one
 # file the whole fleet fights over" conflict (see PR #82 vs #83).
 #
-# `.gitattributes` already marks that file `merge=union`, which makes real `git`
-# stack both appends into valid YAML automatically. The catch: GitHub's
-# mergeability check and the green merge button DO NOT run merge drivers, so
-# they still report a conflict and `auto-merge.yml` skips the PR forever. The
-# union driver only takes effect when an actual `git merge`/`git rebase` runs.
+# `.gitattributes` marks that file `merge=backlog` (`scripts/ci/merge_backlog.rb`),
+# which merges the two appends per ITEM BLOCK so real `git` stacks them into
+# valid YAML automatically. The catch: GitHub's mergeability check and the green
+# merge button DO NOT run merge drivers, so they still report a conflict and
+# `auto-merge.yml` skips the PR forever. A merge driver only takes effect when
+# an actual `git merge`/`git rebase` runs.
 #
 # THE FIX. This workflow IS that actual `git merge`. Whenever main advances, it
-# merges main into each open `auto:content` PR branch in a runner — where the
-# union driver applies — and pushes the result. GitHub then sees the branch
-# already contains main, so the PR is genuinely mergeable and auto-merge (or a
-# human) can land it. A push via FLEET_TOKEN re-triggers the pipeline, so the
-# updated branch is re-validated before it merges.
+# merges main into each open `auto:content` PR branch in a runner — registering
+# and applying the backlog driver — and pushes the result. GitHub then sees the
+# branch already contains main, so the PR is genuinely mergeable and auto-merge
+# (or a human) can land it. A push via FLEET_TOKEN re-triggers the pipeline, so
+# the updated branch is re-validated before it merges.
 #
-# If a merge hits a REAL conflict (anything the union driver can't resolve), or
-# the union'd `_data/backlog.yml` no longer parses, the branch is left untouched
-# and the PR is labeled `needs-human` — we never push a broken or guessed merge.
+# If a merge hits a REAL conflict (anything the driver won't resolve — including
+# two branches claiming one backlog id), or the merged `_data/backlog.yml` fails
+# `scripts/ci/lint_artifacts.rb`, the branch is left untouched and the PR is
+# labeled `needs-human` — we never push a broken or guessed merge. That lint is
+# deliberately stricter than the "does it still parse?" check it replaced: the
+# damage this workflow can do (see PR #453) parses perfectly well.
 #
 # OFF by default behind AUTO_UPDATE_ENABLED + FLEET_TOKEN. Enable it alongside
 # content-factory; with no FLEET_TOKEN it can't push (a github.token push won't
@@ -90,12 +94,20 @@ jobs:
         with:
           ruby-version: '3.3'
 
-      - name: Merge main into each open content PR (union-resolve, push, re-validate)
+      - name: Merge main into each open content PR (item-merge, push, re-validate)
         if: ${{ steps.gate.outputs.go == 'true' }}
         run: |
           set -u
           git config user.name  "lifehacker-bot"
           git config user.email "bot@lifehacker.dev"
+          # Register the `merge=backlog` driver `.gitattributes` asks for. Unlike
+          # the built-in `union` it replaced, a custom driver has to exist in git
+          # config or git silently falls back to the normal text merge. That
+          # fallback is SAFE (an append/append collision just conflicts and the
+          # PR is escalated below), but registering it here is what keeps the
+          # fleet flowing without a human. %O=base %A=ours/output %B=theirs.
+          git config merge.backlog.name   "backlog.yml item-block merge"
+          git config merge.backlog.driver "ruby $GITHUB_WORKSPACE/scripts/ci/merge_backlog.rb %O %A %B"
           git fetch origin main --quiet
           synced=0; ok=0; conflict=0; skipped=0
 
@@ -120,15 +132,15 @@ jobs:
             # Work on a detached copy of the PR head, then merge main in.
             git checkout --quiet -B "auto-update/$branch" "origin/$branch"
             if ! git merge --no-edit origin/main; then
-              echo "CONFLICT #$pr: real merge conflict the union driver can't resolve — escalating."
+              echo "CONFLICT #$pr: real merge conflict the backlog driver can't resolve — escalating."
               git merge --abort || true
               gh pr edit "$pr" --add-label needs-human || true
-              gh pr comment "$pr" --body "Auto-update could not merge \`main\` cleanly: a real conflict remains after the \`union\` driver ran (so it's outside the append-only \`_data/backlog.yml\` tail). Labeled \`needs-human\`." || true
+              gh pr comment "$pr" --body "Auto-update could not merge \`main\` cleanly: a real conflict remains after the \`backlog\` item-merge driver ran — either the collision is outside \`_data/backlog.yml\`, or both branches claimed the same backlog id / edited one item differently (which the driver reports rather than guessing). Labeled \`needs-human\`." || true
               conflict=$((conflict+1)); git checkout --quiet -; echo "::endgroup::"; continue
             fi
 
             # Defense in depth: confirm nothing is left UNMERGED (shouldn't happen
-            # if `git merge` exited 0) and the union'd backlog still parses as YAML.
+            # if `git merge` exited 0) and the merged backlog passes artifact lint.
             # Use `git ls-files -u` (the index's unmerged entries) — NOT a text grep
             # for `<<<<<<<`/`=======`: this site PUBLISHES content about merge
             # conflicts (e.g. the "one file the whole fleet fights over" Field Note),
@@ -140,11 +152,22 @@ jobs:
               gh pr edit "$pr" --add-label needs-human || true
               conflict=$((conflict+1)); git checkout --quiet -; echo "::endgroup::"; continue
             fi
-            if ! ruby -ryaml -e 'YAML.load_file("_data/backlog.yml")' 2>/dev/null; then
-              echo "BROKEN #$pr: _data/backlog.yml no longer parses after union merge — escalating, not pushing."
+            # "Does it still parse?" is NOT a strong enough post-merge check, and
+            # PR #453 proved it: the union driver spliced two backlog items into
+            # each other, producing a duplicate `published` key that Psych
+            # resolves silently — so YAML.load_file returned happily, this guard
+            # passed, and the mangled merge was pushed. It then failed the
+            # pipeline identically 13 times over three days, re-pushed by this
+            # very workflow on every main advance, with nothing able to heal it.
+            # Check with the lint that actually understands the damage instead:
+            # duplicate mapping keys AND duplicate backlog ids, the two rules the
+            # required `verify` gate would reject downstream anyway. Escalating
+            # here costs one PR a human; pushing it costs every run until noticed.
+            if ! ruby scripts/ci/lint_artifacts.rb; then
+              echo "BROKEN #$pr: _data/backlog.yml failed artifact lint after merge — escalating, not pushing."
               git reset --hard "origin/$branch" --quiet
               gh pr edit "$pr" --add-label needs-human || true
-              gh pr comment "$pr" --body "Auto-update merged \`main\` but the union'd \`_data/backlog.yml\` no longer parses as YAML. Left the branch untouched and labeled \`needs-human\`." || true
+              gh pr comment "$pr" --body "Auto-update merged \`main\`, but the merged \`_data/backlog.yml\` fails \`scripts/ci/lint_artifacts.rb\` (duplicate mapping key or duplicate backlog id) — the same rules the required \`verify\` gate enforces. Left the branch untouched and labeled \`needs-human\` rather than pushing a merge that could never go green." || true
               conflict=$((conflict+1)); git checkout --quiet -; echo "::endgroup::"; continue
             fi
 

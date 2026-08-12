@@ -87,9 +87,11 @@ block = "\n  # --- content-scout topic ideas (auto-appended; humans may edit/rep
 if APPLY
   # Append inside the top-level `backlog:` list. The file ends with the last
   # entry; appending at EOF keeps it a valid sequence under `backlog:`.
-  # .gitattributes marks backlog.yml merge=union, so parallel appends don't
-  # hard-conflict (union keeps both) — but this script is serialized by the
-  # workflow's concurrency group, so it never races itself.
+  # .gitattributes marks backlog.yml merge=backlog, so parallel appends don't
+  # hard-conflict (scripts/ci/merge_backlog.rb stacks both as whole item blocks)
+  # — but this script is serialized by the workflow's concurrency group, so it
+  # never races itself. Note the driver conflicts on purpose if two branches mint
+  # the SAME id, so ids must still be unique across everything in flight.
   File.open(Scout::BACKLOG, 'a') { |io| io.write(block) }
   puts "  wrote #{to_add.size} entries to #{LH.rel(Scout::BACKLOG)}"
 else

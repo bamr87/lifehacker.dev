@@ -6,21 +6,38 @@
 # branched off the same `main` reliably collide on those final lines — the
 # recurring "the one file the whole fleet fights over" merge conflict.
 #
-# The `union` merge driver resolves an append/append collision by keeping BOTH
-# sides' lines instead of failing. Each run appends a distinct, well-formed
-# YAML list item, so the union of two appends is still valid YAML — exactly the
-# behaviour we want. Status flips and `published:` edits land on unique
-# in-place lines and already merge cleanly; union only changes the outcome for
-# the overlapping tail-append hunk.
+# THIS USED TO BE `merge=union`, AND UNION WAS WRONG HERE. Union resolves an
+# append/append collision by keeping BOTH sides' lines, which is right only when
+# the two appends share no lines. Two backlog items written by the same persona
+# share byte-identical middle lines (`voice:`, `author:`, `priority: P2`,
+# `status: done`); the diff aligns those as common context, splitting one clean
+# append/append hunk into several small ones, and the union of THOSE interleaves
+# the two items rather than stacking them. On PR #453 the incoming item lost its
+# `voice/author/priority/status` and its `published:` line was stranded inside
+# the PREVIOUS item's mapping — a duplicate key that Psych resolves silently, so
+# the file still parsed and the breakage survived 13 pipeline runs. Union also
+# stacked two items claiming the SAME id, which is a collision, not a merge.
 #
-# `union` is a built-in git driver (no `.git/config` setup needed). IMPORTANT:
-# it only takes effect when a REAL `git merge`/`git rebase` runs — GitHub's
-# mergeability check and the green merge button DO NOT run merge drivers, so on
-# GitHub a colliding PR still shows `dirty` and auto-merge skips it. The actual
-# union resolution is applied in a runner by `.github/workflows/auto-update.yml`,
-# which merges main into each open content PR (where this driver fires) and
-# pushes the result so GitHub then sees the branch as genuinely mergeable.
-# Scope it narrowly — never union-merge prose or structured config, where it
-# would silently duplicate content.
+# `merge=backlog` is `scripts/ci/merge_backlog.rb`: the same 3-way merge done
+# per ITEM BLOCK keyed by id, on raw lines (comments and formatting survive
+# byte-for-byte). A block is atomic, so two items can never be spliced together
+# however many lines they share, and a real collision — the same new id on both
+# sides, or one item edited differently on both sides — exits non-zero so git
+# reports an honest conflict instead of a mangled file.
+#
+# IMPORTANT, AND UNCHANGED FROM THE UNION ERA: merge drivers only take effect
+# when a REAL `git merge`/`git rebase` runs. GitHub's mergeability check and the
+# green merge button DO NOT run them, so on GitHub a colliding PR still shows
+# `dirty` and auto-merge skips it. The resolution is applied in a runner by
+# `.github/workflows/auto-update.yml`, which merges main into each open content
+# PR and pushes the result so GitHub then sees the branch as genuinely
+# mergeable. Unlike `union`, a custom driver needs to be registered in git
+# config; that workflow does it, and anywhere it is NOT registered git falls
+# back to the normal text merge — a conflict, which is the safe direction.
+#
+# Scope any merge driver narrowly — never apply one to prose, and never apply a
+# line-based one (like `union`) to structured config. `lint_artifacts.rb` reads
+# this file to decide which data files to scan for duplicate mapping keys, so an
+# entry here is also what puts a file under that guard.
 # =============================================================================
-_data/backlog.yml merge=union
+_data/backlog.yml merge=backlog

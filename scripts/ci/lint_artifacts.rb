@@ -7,26 +7,30 @@
 #   * backlog ids must be UNIQUE. Two open content PRs can each append (append-
 #     only) an item that reuses an id; the second merge then collides or silently
 #     clobbers. This is an ERROR — the queue/lease layer keys on the id.
-#   * union-merged data files must have NO DUPLICATE MAPPING KEYS. The files
-#     marked `merge=union` in .gitattributes trade conflicts for kept-both-sides
-#     lines, which is right for a tail append and wrong for two in-place edits of
-#     the SAME key — the union of `published: a` and `published: b` is both lines
-#     on one item. Psych keeps the last silently, so Jekyll builds green and the
-#     damage only surfaces in a strict parser downstream. This is an ERROR.
+#   * custom-merged data files must have NO DUPLICATE MAPPING KEYS. Any file
+#     given a `merge=` driver in .gitattributes trades conflicts for an
+#     automatic resolution, and an automatic resolution can stack two values of
+#     the SAME key — `published: a` and `published: b` as two lines on one item.
+#     Psych keeps the last silently, so Jekyll builds green and the damage only
+#     surfaces in a strict parser downstream. This is an ERROR.
 # Stdlib only. Run: ruby scripts/ci/lint_artifacts.rb
 # =============================================================================
 require_relative '_lib'
 
 findings = []
 
-# --- Duplicate mapping keys in union-merged data files -----------------------
+# --- Duplicate mapping keys in custom-merged data files ----------------------
 # Scope comes from .gitattributes rather than a hardcoded list: whatever the
-# fleet opts into `merge=union` is exactly what can grow a duplicate key.
+# fleet opts into a `merge=` driver is exactly what can grow a duplicate key.
+# Match the ATTRIBUTE, not one driver name — this used to test for the literal
+# `merge=union`, so swapping `_data/backlog.yml` to the safer `merge=backlog`
+# driver would have silently emptied this list and retired the guard that caught
+# the splice in the first place.
 gitattributes = File.join(LH::ROOT, '.gitattributes')
 union_globs = File.exist?(gitattributes) ? LH.read(gitattributes).lines.filter_map { |line|
   next if line.lstrip.start_with?('#')
   pattern, *attrs = line.split
-  pattern if pattern && attrs.include?('merge=union')
+  pattern if pattern && attrs.any? { |a| a.start_with?('merge=') }
 } : []
 
 union_globs.flat_map { |glob| Dir.glob(File.join(LH::ROOT, glob)) }
@@ -54,8 +58,8 @@ union_globs.flat_map { |glob| Dir.glob(File.join(LH::ROOT, glob)) }
                                rule: 'duplicate-data-key', file: LH.rel(path),
                                line: key.start_line + 1,
                                evidence: "key `#{key.value}` is set twice in the same mapping " \
-                                         "(first at line #{seen[key.value]}) — a `merge=union` " \
-                                         'collision on an in-place edit; Psych keeps the LAST ' \
+                                         "(first at line #{seen[key.value]}) — a merge driver " \
+                                         'stacked two values of one key; Psych keeps the LAST ' \
                                          'silently, strict parsers reject the file')
       else
         seen[key.value] = key.start_line + 1
