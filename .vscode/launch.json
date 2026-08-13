@@ -1,64 +1,274 @@
 {
   // =============================================================================
-  // launch.json — run lifehacker.dev locally via Docker, from the Run & Debug panel
+  // launch.json — run, verify, and fix lifehacker.dev from the Run & Debug panel
   // -----------------------------------------------------------------------------
-  // All configs use the `node-terminal` type as a shell launcher (no Node code is
-  // debugged — it's the standard way to make launch.json run a command in an
-  // integrated terminal). Every config needs the Docker daemon RUNNING: the host
-  // Ruby (4.0.x) is too new for the github-pages gem, so nothing builds outside a
-  // container. `docker info` HANGS (not errors) when the daemon is down — if a
-  // launch sits silent, start Docker Desktop first.
+  // Every config uses `node-terminal` purely as a shell launcher (nothing Node is
+  // debugged — it's the supported way to run a command in an integrated terminal).
   //
-  //   Serve  — scripts/preview.sh: overlays content onto the zer0-mistakes theme
-  //            clone, strips _plugins (safe mode), serves http://localhost:4000
-  //            via the theme's docker compose dev env. First run builds the
-  //            image; be patient.
-  //   Build  — the CI-faithful safe-mode build in ruby:3.3 (same overlay, same
-  //            flags as the pipeline's verify gate), output to ./_site.
-  //   Harness— the full test harness (lints + gate) against that _site, in the
-  //            same container, mirroring scripts/ci/run-all.sh with the build
-  //            already done (LH_SKIP_BUILD=1).
+  // The Docker-backed configs DELEGATE to the same scripts CI runs
+  // (scripts/ci/build.sh, scripts/ci/run-all.sh) instead of restating their
+  // flags — the flags live in one place, so these buttons can't drift away from
+  // the `verify` gate. They need the Docker daemon RUNNING: the host Ruby (4.0.x)
+  // is too new for the github-pages gem, so nothing Jekyll builds outside a
+  // container. `docker info` HANGS (rather than errors) when the daemon is down —
+  // if a launch sits silent with no output, start Docker Desktop first.
+  //
+  // Two caches keep repeat runs cheap, and clearing them is the fix when a run
+  // goes weird:
+  //   * `lh-bundle`     — a named Docker volume holding /usr/local/bundle, so
+  //                       `bundle install` is a first-run cost, not a per-run one.
+  //                       Reset: `docker volume rm lh-bundle`.
+  //   * /tmp/zer0-theme — the shallow zer0-mistakes clone, shared with
+  //                       scripts/preview.sh on the host. It is never re-pulled,
+  //                       so to pick up upstream theme drift (what nightly CI
+  //                       does with fresh-theme): `rm -rf /tmp/zer0-theme`.
+  // The repo-Gemfile installs run with BUNDLE_FROZEN=true: the container's
+  // bundler is a different build from the host's, and without it every run
+  // leaves a one-line churn diff in the committed Gemfile.lock.
+  //
+  // The list is grouped: Preview (serve / stop / overlay), Verify (the `verify`
+  // gate, locally), Fix + Author (host tooling), Browser (Edge via the built-in
+  // js-debug), and Claude Code (this repo's own agents + skills). The Browser and
+  // Claude groups need no Docker.
   // =============================================================================
   "version": "0.2.0",
   "configurations": [
+    // ----- Preview -----------------------------------------------------------
     {
-      "name": "Jekyll: serve locally (Docker, :4000)",
+      // scripts/preview.sh overlays this repo onto the theme clone, strips
+      // _plugins (Pages safe mode), and serves via the theme's docker compose
+      // dev env. The first run builds the image — be patient.
+      "name": "Preview: serve locally (Docker, :4000)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "bash scripts/preview.sh",
+      "serverReadyAction": {
+        // Jekyll prints "Server address: http://0.0.0.0:4000/"; the capture
+        // group is required, but we open the friendlier localhost URL.
+        "pattern": "Server address:\\s+(https?://\\S+)",
+        "uriFormat": "http://localhost:4000",
+        "action": "openExternally"
+      },
+      "presentation": { "group": "1-preview", "order": 1 }
+    },
+    {
+      // Same preview run as above, but when Jekyll reports the server address
+      // VS Code attaches the Edge config below instead of just opening a tab —
+      // DevTools, breakpoints in the theme's JS, and the CSS/network panels, all
+      // inside the editor. killOnServerStop closes the browser when you stop the
+      // preview, so you don't accumulate orphan Edge windows.
+      "name": "Preview: serve + debug in Edge (:4000)",
       "type": "node-terminal",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "command": "bash scripts/preview.sh",
       "serverReadyAction": {
         "pattern": "Server address:\\s+(https?://\\S+)",
-        "uriFormat": "http://localhost:4000",
-        "action": "openExternally"
-      }
+        "action": "startDebugging",
+        "name": "Edge: debug the local preview (:4000)",
+        "killOnServerStop": true
+      },
+      "presentation": { "group": "1-preview", "order": 2 }
     },
     {
-      "name": "Jekyll: build overlay only (no serve)",
+      // preview.sh runs `docker compose up` in the FOREGROUND, so killing the
+      // terminal leaves the container running — and that orphan is worse than a
+      // held port: its `jekyll_cache` volume stays mounted at
+      // $PREVIEW_DIR/.jekyll-cache, which the NEXT preview cannot delete, so the
+      // overlay rebuild dies with "Permission denied ... Directory not empty".
+      // Stop it here first. The `-p lh-preview` fallback stops the project by
+      // NAME, for when the overlay (and its compose file) is already gone.
+      // (No ${...} shell braces on purpose — VS Code would try to resolve them
+      // as its own variables before bash ever sees them.)
+      "name": "Preview: stop (docker compose down)",
       "type": "node-terminal",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      "command": "bash scripts/preview.sh build"
+      "command": "{ cd \"$PREVIEW_DIR\" 2>/dev/null || cd /tmp/lh-preview; } && docker compose down || docker compose -p lh-preview down",
+      "presentation": { "group": "1-preview", "order": 3 }
     },
     {
-      "name": "CI-faithful safe-mode build (Docker ruby:3.3 -> _site)",
+      // Overlay only — useful to inspect /tmp/lh-preview (what Jekyll actually
+      // sees) when a page renders differently locally than on Pages.
+      "name": "Preview: build overlay only (no serve)",
       "type": "node-terminal",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      // Same overlay + flags as the pipeline's verify gate: overlay at
-      // /tmp/lh-build, then jekyll build --strict_front_matter inside ruby:3.3,
-      // landing in ${workspaceFolder}/_site.
-      "command": "bash scripts/ci/build.sh overlay && docker run --rm -v /tmp/lh-build:/site -v \"$PWD/_site:/out\" -w /site -e PAGES_REPO_NWO=bamr87/lifehacker.dev -e BUNDLE_GEMFILE=/site/Gemfile ruby:3.3 bash -lc 'git config --global --add safe.directory /site; bundle install --quiet && bundle exec jekyll build --config _config.yml,_config_dev.yml --strict_front_matter -d /out'"
+      "command": "bash scripts/preview.sh build",
+      "presentation": { "group": "1-preview", "order": 4 }
     },
+
+    // ----- Verify (the `verify` gate, locally) --------------------------------
     {
-      "name": "Test harness (Docker ruby:3.3, reuses _site)",
+      // The one-button answer to "will CI pass?". Mirrors the
+      // build-and-harness composite exactly: build ONCE, then run the harness
+      // with LH_SKIP_BUILD=1 and the build's exit code in LH_BUILD_RC — so a
+      // broken build lands as a sev1 finding instead of a dead run, and the
+      // exit code is aggregate.rb's verdict. Writes _site/ + test-results/.
+      "name": "Verify: full gate — build + harness (Docker)",
       "type": "node-terminal",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      // Runs the SAME checks as CI's verify gate against an existing _site
-      // (run the safe-mode build config first). LH_SKIP_BUILD=1 keeps the
-      // harness from rebuilding inside the container.
-      "command": "docker run --rm -v \"$PWD:/repo\" -w /repo -e LH_SKIP_BUILD=1 ruby:3.3 bash -lc 'git config --global --add safe.directory /repo; bundle install --quiet && bash scripts/ci/run-all.sh'"
+      "command": "docker run --rm -v \"$PWD:/repo\" -v lh-bundle:/usr/local/bundle -v /tmp/zer0-theme:/tmp/zer0-theme -w /repo ruby:3.3 bash -lc 'git config --global --add safe.directory \"*\"; BUNDLE_FROZEN=true bundle install --quiet && bash scripts/ci/build.sh build; rc=$?; LH_SKIP_BUILD=1 LH_BUILD_RC=$rc bash scripts/ci/run-all.sh'",
+      "presentation": { "group": "2-verify", "order": 1 }
+    },
+    {
+      // Just the safe-mode build (overlay + jekyll build --strict_front_matter),
+      // straight from scripts/ci/build.sh -> ${workspaceFolder}/_site.
+      "name": "Verify: safe-mode build only (Docker -> _site)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "docker run --rm -v \"$PWD:/repo\" -v lh-bundle:/usr/local/bundle -v /tmp/zer0-theme:/tmp/zer0-theme -w /repo ruby:3.3 bash -lc 'git config --global --add safe.directory \"*\"; bash scripts/ci/build.sh build'",
+      "presentation": { "group": "2-verify", "order": 2 }
+    },
+    {
+      // Lints only, against an EXISTING _site (run a build config first). The
+      // fast loop while fixing front matter, brand, or link findings — but note
+      // link + drift results are only as fresh as that _site.
+      "name": "Verify: harness only (Docker, reuses _site)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "docker run --rm -v \"$PWD:/repo\" -v lh-bundle:/usr/local/bundle -w /repo -e LH_SKIP_BUILD=1 ruby:3.3 bash -lc 'git config --global --add safe.directory \"*\"; BUNDLE_FROZEN=true bundle install --quiet && bash scripts/ci/run-all.sh'",
+      "presentation": { "group": "2-verify", "order": 3 }
+    },
+    {
+      // Pipeline TIER 1: no build, no Docker, ~1s on host Ruby. audit.rb is the
+      // check that fails when a new lint isn't wired into BOTH run-all.sh and
+      // aggregate.rb's CHECK_FILES; simulate.rb walks the findings/queue contract.
+      "name": "Verify: tier 1 — devops audit + simulation (host ruby)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "ruby scripts/devops/audit.rb && ruby scripts/sim/simulate.rb",
+      "presentation": { "group": "2-verify", "order": 4 }
+    },
+
+    // ----- Fix / author helpers (host tooling, no Docker) ----------------------
+    {
+      // The deterministic repair for the harness's `oneline` errors — the house
+      // rule is one paragraph per line. Rewrites files in place; diff before commit.
+      "name": "Fix: unwrap prose (one paragraph per line)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "python3 tools/unwrap-prose.py --write",
+      "presentation": { "group": "3-authoring", "order": 1 }
+    },
+    {
+      // Trace Bloom cover art for the article in the ACTIVE editor (offline,
+      // zero-dep, deterministic). Open the .md file first — with no editor open
+      // ${relativeFile} resolves to the workspace root and the run ends in
+      // "0 generated, 1 failed" (EISDIR), which is the tell, not a real error.
+      "name": "Author: preview image for the open article",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "node scripts/preview/generate.mjs -f \"${relativeFile}\"",
+      "presentation": { "group": "3-authoring", "order": 2 }
+    },
+    // ----- Browser (Edge / js-debug) ------------------------------------------
+    {
+      // The preview server serves the OVERLAY build (theme clone + this repo's
+      // content), not the repo tree — so webRoot points there and DevTools shows
+      // the files the browser actually got. Two consequences worth knowing:
+      // edits you make in DevTools land in a throwaway copy, and a theme-side
+      // fix belongs upstream in bamr87/zer0-mistakes, never in the overlay.
+      // (Set PREVIEW_DIR for preview.sh? Point webRoot at the same place.)
+      "name": "Edge: debug the local preview (:4000)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4000",
+      "webRoot": "/tmp/lh-preview/_site",
+      "presentation": { "group": "4-browser", "order": 1 }
+    },
+    {
+      // The published site, for reproducing a site-explorer finding with real
+      // DevTools (console errors, layout, network, Lighthouse-able). No webRoot:
+      // the sources are the deployed build, so there is nothing local to map.
+      "name": "Edge: debug the LIVE site (lifehacker.dev)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "https://lifehacker.dev",
+      "presentation": { "group": "4-browser", "order": 2 }
+    },
+
+      // ----- Claude Code --------------------------------------------------------
+      // The CLI picks up this repo's .claude/agents + .claude/skills automatically,
+      // and uses your logged-in credentials (`claude /login`) — the
+      // CLAUDE_CODE_OAUTH_TOKEN / ANTHROPIC_API_KEY env vars are the CI path, not
+      // required here. House rules still apply to every one of these: branch from
+      // main, open a PR, a HUMAN merges.
+    {
+      "name": "Claude: interactive session (repo agents + skills)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "claude",
+      "presentation": { "group": "5-claude", "order": 1 }
+    },
+    {
+      // Start a session with one of the repo's skills already invoked — the
+      // routine (test / triage / grow / weekly-epic / …) runs, and you stay in
+      // the loop to answer its questions.
+      "name": "Claude: run a skill (pick one)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "claude \"/${input:lhSkill}\"",
+      "presentation": { "group": "5-claude", "order": 2 }
+    },
+    {
+      // Closes the local loop: run a Verify config, then hand the findings it
+      // wrote to the bug-fixer role. Interactive on purpose — fleet-bugfix makes
+      // the SMALLEST change that turns the gate green, and that call deserves a
+      // human watching it.
+      "name": "Claude: fix the local harness findings",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "claude \"/fleet-bugfix Fix the findings in test-results/findings.jsonl from my last local harness run, then re-verify with scripts/ci/run-all.sh.\"",
+      "presentation": { "group": "5-claude", "order": 3 }
+    },
+    {
+      // The HEADLESS, metered path — byte-for-byte how CI runs a fleet role
+      // (.github/actions/claude-run -> scripts/ai/run.sh): the agent's own system
+      // prompt and tool scope, the model from _data/ai.yml, and token/cost
+      // recorded by usage.rb. It runs with --permission-mode acceptEdits and
+      // edits files unattended, so point it at a scratch branch, not main.
+      // It is not free: even a one-word prompt bills the repo context it loads
+      // (~$0.24 measured), and the record lands outside the checkout so the
+      // agent never sees a dirty tree.
+      "name": "Claude: run a fleet agent (headless, metered)",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "command": "bash scripts/ai/run.sh --agent \"${input:lhAgent}\" --prompt \"${input:lhPrompt}\"",
+      "presentation": { "group": "5-claude", "order": 4 }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "lhSkill",
+      "type": "pickString",
+      "description": "Which .claude/skills routine should Claude run?",
+      "default": "test-lifehacker",
+      "options": ["agent-skill-review", "content-import", "content-reviewer", "content-scout", "devops-manager", "fleet-bugfix", "grow-lifehacker", "loop-tuner", "quest-forge", "session-retrospective", "site-explorer", "test-lifehacker", "theme-scout", "triage-lifehacker", "weekly-epic"]
+    },
+    {
+      "id": "lhAgent",
+      "type": "pickString",
+      "description": "Which .claude/agents role should run headlessly?",
+      "default": "grow-lifehacker",
+      "options": ["agent-reviewer", "author-cass", "author-edge", "brand-fixer", "brand-reviewer", "content-reviewer", "content-scout", "devops-manager", "fleet-bugfix", "grow-lifehacker", "loop-tuner", "quest-forge", "session-retrospective", "site-explorer", "theme-scout", "triage-lifehacker", "weekly-epic"]
+    },
+    {
+      "id": "lhPrompt",
+      "type": "promptString",
+      "description": "Task for the agent (it keeps its own role constraints)",
+      "default": "Do your next unit of work from the backlog, verify it, and open one PR."
     }
   ]
 }
