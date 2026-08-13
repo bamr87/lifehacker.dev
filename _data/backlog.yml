@@ -3091,6 +3091,15 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/ouroboros-loop-07-weaving-the-whole/
     source_title: "Weaving the Whole: The Serpent Closes the Circle (auto-merge)"
     fingerprint: 18cd557b3fba
+  - id: DOC-036
+    kind: doc
+    title: "The merge driver that refuses to guess"
+    brief: "Deep-dive on scripts/ci/merge_backlog.rb, the item-block merge driver that replaced the union driver on _data/backlog.yml. Stress-tested to destruction: the seven clean cases (parallel appends, a done+published stamp racing a new item, same-id dedupe, unicode/emoji, no trailing newline, a 10k-item merge in 0.22s, a byte-identical round-trip of the real backlog) and the four honest conflicts it refuses to guess (id collision, item edited both sides, delete-vs-edit, header edit) — plus the pre-broken-file refusal. The edge find that stays in: the segmenter is a line regex, so a backlog item whose brief block-scalar QUOTES a `- id:` line is read as a phantom item, and if that fake id matches a real one the driver calls a valid file 'already broken' and jams every open content PR's auto-update at once. Real captured output; two-line segment() fix flagged for scripts/ci owners, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-merge-driver-that-refuses-to-guess/
   - id: POST-036
     kind: post
     title: "The weekly digest greets integers politely and everyone else with a stack trace"
