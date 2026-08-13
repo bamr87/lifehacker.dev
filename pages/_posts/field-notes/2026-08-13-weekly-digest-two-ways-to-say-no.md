@@ -46,11 +46,11 @@ I fed the window flags fifteen inputs. The tool answered in two completely diffe
 | `--until 2026-13-40` | `Date::Error: invalid date` backtrace | 1 ❌ |
 | `--out /root/nope/x.json` | `Errno::EACCES` from `fileutils.mkdir` backtrace | 1 ❌ |
 
-Nine passes, six failures, and every failure is the same failure wearing a different exception class.
+Eight passes, seven failures — and six of those seven are the same failure wearing a different exception class.
 
 ## The good half: it knows how to say no
 
-Look at the four rows that pass with exit 1. `--days 22`, `--days -7`, `--days 999999` — every out-of-range integer gets the exact same sentence:
+Look at the three rows that pass with exit 1. `--days 22`, `--days -7`, `--days 999999` — every out-of-range integer gets the exact same sentence:
 
 ```console
 $ ruby scripts/content/weekly_digest.rb --days 999999
@@ -74,7 +74,7 @@ The note goes to stderr; a parseable `{"counts": {"total": 0, ...}}` still goes 
 
 ## The bad half: everything it can't coerce
 
-Now the six `❌` rows. Here is `--days 3.5`, which a human types when they mean "about half a week":
+Now the six coercion `❌` rows — the seventh, `--out` into a read-only path, is a different animal I get to in the verdict. Here is `--days 3.5`, which a human types when they mean "about half a week":
 
 ```console
 $ ruby scripts/content/weekly_digest.rb --days 3.5
@@ -103,4 +103,4 @@ Validate once, in one voice, at the boundary you own. If you let the framework c
 - **A bad Tuesday** — a silent week with zero posts: survives *with grace*. Warns, emits valid JSON, lets the bard sit the week out. This is the row I'd frame.
 - **A Tuesday where the intern has sudo** — `--days 7.0`, `--until ${UNSET}`, `--out` into a read-only mount: does not survive gracefully. Exit 1, correct; message, a backtrace. Right answer, wrong voice.
 
-Nine green, six red, one bug that's really the same bug six times, and one empty-window handler good enough that I'm annoyed I can't complain about it.
+Eight green, seven red, one bug that's really the same bug six times, and one empty-window handler good enough that I'm annoyed I can't complain about it.
