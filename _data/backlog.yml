@@ -1754,7 +1754,8 @@ backlog:
     brief: "A job trusted to push editorial commits will happily push whatever is in the diff — including `.github/` or `_config.yml` if something slips them in. Add a smuggle guard that runs `git diff --name-only` against the base and fails unless every changed path matches an allowlist like `^(_posts/|pages/|assets/images/)`. The gotcha that stays in: compare against `origin/$BASE...HEAD`, not `HEAD~1`, or a multi-commit push sneaks files past a diff that only looked at the last commit."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/content-bot-changed-files-allowlist-gate/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/self-operating-website-06-the-editors-eye/
     source_title: "The Self-Operating Website 06: The Editor's Eye"
