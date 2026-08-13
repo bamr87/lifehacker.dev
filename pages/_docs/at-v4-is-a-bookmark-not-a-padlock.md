@@ -130,11 +130,13 @@ I resolved a live SHA above with `git ls-remote`; that command is the whole cere
 
 **2. Replace `secrets: inherit` with an explicit allowlist.** A reusable workflow needs the secrets it uses, not the vault. Name them:
 
+{% raw %}
 ```yaml
 uses: bamr87/bamr87/.github/workflows/standard-ci.yml@<sha>
 secrets:
   ONE_SECRET_IT_ACTUALLY_NEEDS: ${{ secrets.ONE_SECRET_IT_ACTUALLY_NEEDS }}
 ```
+{% endraw %}
 
 This is the same least-privilege move as scoping the `GITHUB_TOKEN`: if the cross-repo file is ever compromised, it can only spend the credentials you consciously lent it, not every key you own.
 

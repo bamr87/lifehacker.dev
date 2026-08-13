@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img" aria-labelledby="t d" data-generator="trace-bloom-section/1" data-section="docs">
+<title id="t">Meta</title>
+<desc id="d">Trace Bloom section banner for lifehacker.dev. A isometric lattice probed by two emitters; interference blooms mark where the wavefronts meet. This is the fallback cover for docs pages that carry no banner of their own.</desc>
+<style>
+@keyframes tb-breathe{0%,100%{opacity:.68}50%{opacity:1}}
+.bloom{animation:tb-breathe 7s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.bloom{animation:none!important;opacity:1!important}}
+</style>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#040a12"/><stop offset="1" stop-color="#0a1526"/></linearGradient>
+<linearGradient id="scrim" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#040a12" stop-opacity="0.94"/>
+<stop offset="0.38" stop-color="#040a12" stop-opacity="0.8"/>
+<stop offset="0.72" stop-color="#040a12" stop-opacity="0.12"/>
+<stop offset="0.9" stop-color="#040a12" stop-opacity="0"/></linearGradient>
+<linearGradient id="floor" x1="0" y1="1" x2="0" y2="0">
+<stop offset="0" stop-color="#040a12" stop-opacity="0.5"/>
+<stop offset="0.46" stop-color="#040a12" stop-opacity="0"/></linearGradient>
+<radialGradient id="bc">
+<stop offset="0" stop-color="#38bdf8" stop-opacity="0.95"/>
+<stop offset="0.18" stop-color="#38bdf8" stop-opacity="0.5"/>
+<stop offset="0.5" stop-color="#38bdf8" stop-opacity="0.14"/>
+<stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
+<radialGradient id="bw">
+<stop offset="0" stop-color="#818cf8" stop-opacity="0.95"/>
+<stop offset="0.18" stop-color="#818cf8" stop-opacity="0.5"/>
+<stop offset="0.5" stop-color="#818cf8" stop-opacity="0.14"/>
+<stop offset="1" stop-color="#818cf8" stop-opacity="0"/></radialGradient>
+<pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+<rect width="4" height="1" fill="#040a12" opacity="0.22"/></pattern>
+</defs>
+<rect width="1536" height="1024" fill="url(#bg)"/>
+<path d="M-640 0L-50 1024M-512 0L78 1024M-384 0L206 1024M-256 0L334 1024M-128 0L462 1024M0 0L590 1024M128 0L718 1024M256 0L846 1024M384 0L974 1024M512 0L1102 1024M640 0L1230 1024M768 0L1358 1024M896 0L1486 1024M1024 0L1614 1024M1152 0L1742 1024M1280 0L1870 1024M1408 0L1998 1024M1536 0L2126 1024M0 0L-590 1024M128 0L-462 1024M256 0L-334 1024M384 0L-206 1024M512 0L-78 1024M640 0L50 1024M768 0L178 1024M896 0L306 1024M1024 0L434 1024M1152 0L562 1024M1280 0L690 1024M1408 0L818 1024M1536 0L946 1024M1664 0L1074 1024M1792 0L1202 1024M1920 0L1330 1024M2048 0L1458 1024" stroke="#17304f" stroke-width="1.5" fill="none" stroke-opacity="0.95"/>
+<path d="M1024 320L1152 544M1216 352L1088 576M992 448L1248 448" stroke="#38bdf8" stroke-width="2.6" stroke-opacity="0.85" fill="none" stroke-linecap="round"/><path d="M1200 608L1392 712M1360 592L1232 720" stroke="#818cf8" stroke-width="2.6" stroke-opacity="0.75" fill="none" stroke-linecap="round"/>
+<circle class="bloom" cx="1120" cy="430" r="270" fill="url(#bc)"/>
+<circle class="bloom" cx="1296" cy="660" r="210" fill="url(#bw)"/>
+<circle cx="1120" cy="430" r="5" fill="#38bdf8" fill-opacity="0.9"/>
+<circle cx="1296" cy="660" r="5" fill="#818cf8" fill-opacity="0.9"/>
+<g><circle cx="1120" cy="430" r="15" fill="none" stroke="#e8f3ff" stroke-width="2.2" stroke-opacity="0.75"/><circle cx="1120" cy="430" r="4.5" fill="#e8f3ff" fill-opacity="0.9"/></g>
+<g opacity="0.6"><circle cx="1296" cy="660" r="26" fill="none" stroke="#7593b5" stroke-width="1.6" stroke-dasharray="5 7"/><circle cx="1296" cy="660" r="3" fill="#7593b5"/></g>
+<rect width="1536" height="1024" fill="url(#scan)" opacity="0.5"/>
+<rect width="1536" height="1024" fill="url(#floor)"/>
+<rect width="1536" height="1024" fill="url(#scrim)"/>
+<g class="type">
+<text x="96" y="396" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="26" font-weight="600" letter-spacing="6" fill="#38bdf8">META</text>
+<text x="96" y="532" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-2" fill="#e8f3ff">Meta</text>
+<rect x="96" y="584" width="112" height="4" fill="#38bdf8" opacity="0.9"/>
+<text x="96" y="642" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="500" letter-spacing="1" fill="#7593b5">lifehacker.dev</text>
+</g>
+</svg>

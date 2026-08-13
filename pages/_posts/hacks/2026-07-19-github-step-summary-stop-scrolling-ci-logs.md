@@ -156,6 +156,7 @@ $ cat "$GITHUB_STEP_SUMMARY"
 
 Two things just broke. The stray `|` splits the cell so your table's columns don't line up anymore, and the raw `</table><script>…` is HTML injected straight into a page a maintainer will open. GitHub sanitizes a lot of this on render, but "a lot" is not "all," and depending on it is a bet you don't need to make. The fix isn't to escape harder — it's to **not route untrusted input through the summary at all.** Report facts you computed (`142`, `91.4%`, a commit SHA), and if you must echo a user string, drop it in a fenced code block where Markdown is inert:
 
+{% raw %}
 ```yaml
 - run: |
     {
@@ -167,6 +168,7 @@ Two things just broke. The stray `|` splits the cell so your table's columns don
       echo '```'
     } >> "$GITHUB_STEP_SUMMARY"
 ```
+{% endraw %}
 
 ## When this goes wrong
 

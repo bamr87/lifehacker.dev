@@ -22,11 +22,13 @@ I had set `GH_TOKEN` to the real bot's token. The `gh` commands worked. The push
 
 Here is the thing I did not know and now will not forget: `gh` and `git push` do not share a login. Setting `GH_TOKEN` in the environment fixes `gh`. It does nothing for `git push`, which authenticates with whatever credential `actions/checkout` stored on disk — and that was the default bot. The fix was one line, in the file I had not been staring at:
 
+{% raw %}
 ```yaml
 - uses: actions/checkout@v4
   with:
     token: ${{ secrets.FLEET_TOKEN }}
 ```
+{% endraw %}
 
 Hand the checkout the real token, and the push is signed by the account that's allowed to trigger runs ([the fix is in PR #35](https://github.com/bamr87/lifehacker.dev/pull/35)). Two different auth systems wearing the same hoodie. I spent an hour blaming the gate.
 

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img" aria-labelledby="t d" data-generator="trace-bloom-section/1" data-section="posts">
+<title id="t">News</title>
+<desc id="d">Trace Bloom section banner for lifehacker.dev. A manhattan lattice probed by two emitters; interference blooms mark where the wavefronts meet. This is the generic fallback cover for posts and pages that carry no banner of their own.</desc>
+<style>
+@keyframes tb-breathe{0%,100%{opacity:.68}50%{opacity:1}}
+.bloom{animation:tb-breathe 7s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.bloom{animation:none!important;opacity:1!important}}
+</style>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#05070d"/><stop offset="1" stop-color="#0e1420"/></linearGradient>
+<linearGradient id="scrim" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#05070d" stop-opacity="0.94"/>
+<stop offset="0.38" stop-color="#05070d" stop-opacity="0.8"/>
+<stop offset="0.72" stop-color="#05070d" stop-opacity="0.12"/>
+<stop offset="0.9" stop-color="#05070d" stop-opacity="0"/></linearGradient>
+<linearGradient id="floor" x1="0" y1="1" x2="0" y2="0">
+<stop offset="0" stop-color="#05070d" stop-opacity="0.5"/>
+<stop offset="0.46" stop-color="#05070d" stop-opacity="0"/></linearGradient>
+<radialGradient id="bc">
+<stop offset="0" stop-color="#60a5fa" stop-opacity="0.95"/>
+<stop offset="0.18" stop-color="#60a5fa" stop-opacity="0.5"/>
+<stop offset="0.5" stop-color="#60a5fa" stop-opacity="0.14"/>
+<stop offset="1" stop-color="#60a5fa" stop-opacity="0"/></radialGradient>
+<radialGradient id="bw">
+<stop offset="0" stop-color="#34d399" stop-opacity="0.95"/>
+<stop offset="0.18" stop-color="#34d399" stop-opacity="0.5"/>
+<stop offset="0.5" stop-color="#34d399" stop-opacity="0.14"/>
+<stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+<pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+<rect width="4" height="1" fill="#05070d" opacity="0.22"/></pattern>
+</defs>
+<rect width="1536" height="1024" fill="url(#bg)"/>
+<path d="M0 0L0 1024M96 0L96 1024M192 0L192 1024M288 0L288 1024M384 0L384 1024M480 0L480 1024M576 0L576 1024M672 0L672 1024M768 0L768 1024M864 0L864 1024M960 0L960 1024M1056 0L1056 1024M1152 0L1152 1024M1248 0L1248 1024M1344 0L1344 1024M1440 0L1440 1024M1536 0L1536 1024M0 0L1536 0M0 96L1536 96M0 192L1536 192M0 288L1536 288M0 384L1536 384M0 480L1536 480M0 576L1536 576M0 672L1536 672M0 768L1536 768M0 864L1536 864M0 960L1536 960" stroke="#1f2d40" stroke-width="1.5" fill="none" stroke-opacity="0.95"/>
+<path d="M1056 288L1056 576M1152 288L1152 576M960 384L1248 384M960 480L1248 480" stroke="#60a5fa" stroke-width="2.6" stroke-opacity="0.85" fill="none" stroke-linecap="round"/><path d="M1248 576L1248 768M1152 672L1440 672" stroke="#34d399" stroke-width="2.6" stroke-opacity="0.75" fill="none" stroke-linecap="round"/>
+<circle class="bloom" cx="1120" cy="430" r="270" fill="url(#bc)"/>
+<circle class="bloom" cx="1296" cy="660" r="210" fill="url(#bw)"/>
+<circle cx="1120" cy="430" r="5" fill="#60a5fa" fill-opacity="0.9"/>
+<circle cx="1296" cy="660" r="5" fill="#34d399" fill-opacity="0.9"/>
+<g><circle cx="1120" cy="430" r="15" fill="none" stroke="#ecf3fb" stroke-width="2.2" stroke-opacity="0.75"/><circle cx="1120" cy="430" r="4.5" fill="#ecf3fb" fill-opacity="0.9"/></g>
+<g opacity="0.6"><circle cx="1296" cy="660" r="26" fill="none" stroke="#8296ad" stroke-width="1.6" stroke-dasharray="5 7"/><circle cx="1296" cy="660" r="3" fill="#8296ad"/></g>
+<rect width="1536" height="1024" fill="url(#scan)" opacity="0.5"/>
+<rect width="1536" height="1024" fill="url(#floor)"/>
+<rect width="1536" height="1024" fill="url(#scrim)"/>
+<g class="type">
+<text x="96" y="396" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="26" font-weight="600" letter-spacing="6" fill="#60a5fa">NEWS</text>
+<text x="96" y="532" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-2" fill="#ecf3fb">News</text>
+<rect x="96" y="584" width="112" height="4" fill="#60a5fa" opacity="0.9"/>
+<text x="96" y="642" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="500" letter-spacing="1" fill="#8296ad">lifehacker.dev</text>
+</g>
+</svg>

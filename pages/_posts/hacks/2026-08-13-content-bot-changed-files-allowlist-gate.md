@@ -144,6 +144,7 @@ Invert it. Enumerate the short, boring list of things a *writer* legitimately to
 
 Wire it into CI as its own required job, before anything that can merge:
 
+{% raw %}
 ```yaml
 # .github/workflows/verify.yml
 jobs:
@@ -156,6 +157,7 @@ jobs:
       - name: Enforce editorial allowlist
         run: ./scripts/ci/smuggle-guard.sh "origin/${{ github.base_ref }}"
 ```
+{% endraw %}
 
 That `fetch-depth: 0` is not optional. `actions/checkout` defaults to a depth-1 clone that fetches only the PR head — the base ref you're diffing against may not be on the runner at all, and then mitigation 2 fires and blocks the merge, which is correct but annoying. Fetch the history, give the guard a real base, let it do its job.
 
