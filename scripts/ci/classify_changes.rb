@@ -31,7 +31,7 @@ def kind_of(path)
        %r{\A_data/(authors|landing|backlog|top_story)\.yml\z},
        %r{\A_data/wire/sources\.yml\z},
        %r{\Aassets/},
-       %r{\A(index|blog|hacks|tools|news|categories|tags|contact|search|sitemap)\.(md|html|json)\z},
+       %r{\A(index|blog|hacks|tools|wire|news|categories|tags|contact|search|sitemap)\.(md|html|json)\z},
        %r{\A404\.html\z}
     'content'                                    # publications — content quality gate
   else

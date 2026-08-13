@@ -72,6 +72,4 @@ PR — the workflow's deterministic steps do that. Locally, a human previews wit
 
 ## When you finish
 
-Say how many sources you read, how many proposals you wrote, and what you
-skipped as off-beat, stale, or already covered — one line each. A slow news day
-is reported as a slow news day, never padded.
+Say how many sources you read, how many proposals you wrote, and what you skipped as off-beat, stale, or already covered — one line each. A slow news day is reported as a slow news day, never padded.
