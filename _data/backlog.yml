@@ -3091,3 +3091,12 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/ouroboros-loop-07-weaving-the-whole/
     source_title: "Weaving the Whole: The Serpent Closes the Circle (auto-merge)"
     fingerprint: 18cd557b3fba
+  - id: POST-036
+    kind: post
+    title: "The weekly digest greets integers politely and everyone else with a stack trace"
+    brief: "Ed stress-tests the window flags on weekly_digest.rb (the tool that feeds Fable's saga): out-of-range integers get a friendly `--days must be 1..21`, but 3.5 / '' / bad --until dates dodge the guard and dump a raw Ruby backtrace, because OptionParser's Integer coercion runs before the range check. Payload: validate once, in one voice, at the boundary you own."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/13/weekly-digest-two-ways-to-say-no/
