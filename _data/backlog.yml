@@ -3053,3 +3053,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/12/cover-art-svg-is-a-program/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-079
+    kind: hack
+    title: "Your GitHub Pages site lost all its CSS and every link 404s: the baseurl trap for project sites"
+    brief: "The site builds clean, looks perfect on localhost, and deploys as an unstyled wall of text with dead links — because a project site lives at `username.github.io/repo` while `baseurl` in `_config.yml` is still empty. Set `baseurl: \"/repo\"` (empty is only correct for a user/org `username.github.io` site) and reference every asset through `{{ '/assets/x.css' | relative_url }}` so the prefix is applied everywhere. The failures that stay in: `bundle exec jekyll serve` defaults baseurl to nothing, so the broken build looks flawless locally and only detonates once it's live (serve with the production config to catch it), and a hardcoded `/assets/x.css` that ignores baseurl works on a user site and 404s on a project site. Reproducible with a local `jekyll build`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/github-pages-portal/
+    source_title: "GitHub Pages Portal: Deploying with Jekyll"
+    fingerprint: a9b25c87c3fe
+  - id: SRC-080
+    kind: hack
+    title: "Stop overloading git checkout: git switch changes branches, git restore un-stages files"
+    brief: "`git checkout` does two unrelated jobs — move between branches and throw away file changes — which is why one wrong argument nukes work you meant to keep. The modern split makes intent explicit: `git switch -c feature` creates and moves to a branch, `git switch -` jumps back, and `git restore` handles files (`--staged` un-stages, no flag discards working-tree edits). The failure that stays in: plain `git restore file` is destructive and silent — it overwrites your uncommitted changes with no confirmation and nothing in the reflog to recover, so `--staged` (un-stage, keep edits) and no-flag (discard edits) are one keystroke apart and opposite in blast radius. Every case reproducible in a throwaway repo."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/git-workflow-mastery/
+    source_title: "Git Workflow Mastery: Branches, Merging & Team Collaboration"
+    fingerprint: dd5cf27a8f37
+  - id: SRC-081
+    kind: hack
+    title: "Your auto-merge workflow waits forever because it's waiting on itself"
+    brief: "An auto-merge job that polls `gh pr checks` and merges once everything is green will hang forever the moment it counts ITS OWN run among the checks it's waiting on — a check that can't go green until the job finishes, and the job won't finish until the check is green. The fix is to exclude your own run: grab `$GITHUB_RUN_ID`, filter it out of the check list, and merge when every OTHER check passes. The failures that stay in: match on the run ID, not the job NAME, because two workflows can share a name and you'll silently exclude the wrong one; and guard the empty case — if the only check present is the job's own, 'all checks passed' is vacuously true, so a naive filter would merge a PR nothing ever tested. Add a timeout so a genuinely stuck check fails loud instead of hanging the queue."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/ouroboros-loop-07-weaving-the-whole/
+    source_title: "Weaving the Whole: The Serpent Closes the Circle (auto-merge)"
+    fingerprint: 18cd557b3fba
