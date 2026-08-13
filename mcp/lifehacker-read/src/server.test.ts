@@ -41,6 +41,7 @@ const COLLECTION_DIRS: Record<string, string> = {
   hacks: "pages/_posts/hacks",
   tools: "pages/_posts/tools",
   "field-notes": "pages/_posts/field-notes",
+  wire: "pages/_posts/wire",
   docs: "pages/_docs",
   about: "pages/_about",
 };
@@ -74,9 +75,9 @@ describe("protocol & capabilities", () => {
     for (const t of tools) assert.ok((t.description ?? "").length > 10, `${t.name} needs a description`);
   });
 
-  test("registers the 9 resource templates", async () => {
+  test("registers the 10 resource templates", async () => {
     const { resourceTemplates } = await h.client.listResourceTemplates();
-    assert.equal(resourceTemplates.length, 9);
+    assert.equal(resourceTemplates.length, 10);
   });
 
   test("lists the static + enumerated resources (content is discoverable)", async () => {
@@ -250,6 +251,7 @@ describe("brand (cross-checked vs _data/brand/*.yml)", () => {
       hacks: "how-to-practical",
       tools: "tool-review-honest",
       "field-notes": "meta-confession",
+      wire: "dateline-deadpan",
       docs: "meta-confession",
     };
     for (const [collection, expected] of Object.entries(cases)) {

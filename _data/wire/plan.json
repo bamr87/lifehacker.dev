@@ -1,0 +1,120 @@
+{
+  "generated_at": "2026-08-13T03:38:43Z",
+  "date": "2026-08-12",
+  "weekday": "wed",
+  "recency_days": 14,
+  "max_proposals_per_run": 3,
+  "wander_slots": 1,
+  "filters": {
+    "beat": [
+      "model releases, deprecations, and pricing changes",
+      "benchmark and eval results (and the charts they arrive in)",
+      "AI lab announcements, papers, and press releases",
+      "incidents, outages, and postmortems",
+      "policy, copyright, and press-freedom news about AI"
+    ],
+    "exclude": [
+      "webinar",
+      "sponsored",
+      "hiring",
+      "giveaway",
+      "airdrop"
+    ]
+  },
+  "sources": [
+    {
+      "id": "anthropic-news",
+      "name": "Anthropic newsroom",
+      "url": "https://www.anthropic.com/news",
+      "type": "html",
+      "trust": "primary",
+      "frequency": "daily",
+      "topics": [
+        "claude",
+        "model releases",
+        "research",
+        "safety"
+      ],
+      "include": [],
+      "exclude": [],
+      "max_items": 2
+    },
+    {
+      "id": "openai-news",
+      "name": "OpenAI news",
+      "url": "https://openai.com/news/",
+      "type": "html",
+      "trust": "primary",
+      "frequency": "daily",
+      "topics": [
+        "gpt",
+        "model releases",
+        "research"
+      ],
+      "include": [],
+      "exclude": [],
+      "max_items": 2
+    },
+    {
+      "id": "deepmind-blog",
+      "name": "Google DeepMind blog",
+      "url": "https://deepmind.google/discover/blog/",
+      "type": "html",
+      "trust": "primary",
+      "frequency": "weekdays",
+      "topics": [
+        "gemini",
+        "model releases",
+        "research"
+      ],
+      "include": [],
+      "exclude": [],
+      "max_items": 2
+    },
+    {
+      "id": "mistral-news",
+      "name": "Mistral AI news",
+      "url": "https://mistral.ai/news/",
+      "type": "html",
+      "trust": "primary",
+      "frequency": "weekly",
+      "weekday": "wed",
+      "topics": [
+        "mistral",
+        "open weights",
+        "model releases"
+      ],
+      "include": [],
+      "exclude": [],
+      "max_items": 2
+    },
+    {
+      "id": "hn-front",
+      "name": "Hacker News front page",
+      "url": "https://news.ycombinator.com/",
+      "type": "html",
+      "trust": "community",
+      "frequency": "daily",
+      "topics": [
+        "the discourse"
+      ],
+      "include": [
+        "claude",
+        "gpt",
+        "gemini",
+        "llama",
+        "mistral",
+        "anthropic",
+        "openai",
+        "deepmind",
+        "llm",
+        "ai model"
+      ],
+      "exclude": [
+        "show hn",
+        "ask hn"
+      ],
+      "max_items": 1
+    }
+  ]
+}

@@ -20,7 +20,7 @@
 # --until <yesterday> captures exactly the prior Tue..Mon of publications.
 # Exit 0 with an empty items[] when the week was silent; the CALLER decides
 # whether a silent week is a no-op (it is — no honest epic without deeds).
-# Stdlib only. Sections scanned: hacks, tools, field-notes (posts) + docs.
+# Stdlib only. Sections scanned: hacks, tools, field-notes, wire (posts) + docs.
 # =============================================================================
 require_relative '../ci/_lib'
 require 'optparse'
@@ -32,6 +32,7 @@ module WeeklyDigest
     { dir: 'pages/_posts/hacks',       section: 'hacks' },
     { dir: 'pages/_posts/tools',       section: 'tools' },
     { dir: 'pages/_posts/field-notes', section: 'field-notes' },
+    { dir: 'pages/_posts/wire',        section: 'wire' },
     { dir: 'pages/_docs',              section: 'docs' }
   ].freeze
 

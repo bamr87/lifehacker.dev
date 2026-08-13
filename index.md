@@ -11,7 +11,7 @@ permalink: /
   ============================================================================
   NEWS / MAGAZINE HOMEPAGE
   ----------------------------------------------------------------------------
-Modeled on the zer0-mistakes `news` layout but sourced from THIS site's real content. Since issue #337, hacks / tools / field notes are all one `posts` collection under pages/_posts/<section>/, distinguished by `categories` (Hacks / Tools / Field Notes). The theme's own /news/ landing (layout: news) lives at /news/; this bespoke home just leans on the same data. Card chrome
+Modeled on the zer0-mistakes `news` layout but sourced from THIS site's real content. Since issue #337, hacks / tools / field notes / wire dispatches are all one `posts` collection under pages/_posts/<section>/, distinguished by `categories` (Hacks / Tools / Field Notes / The Wire). The theme's own /news/ landing (layout: news) lives at /news/; this bespoke home just leans on the same data. Card chrome
   lives in _includes/home/.
   ============================================================================
 {%- endcomment -%}
@@ -20,6 +20,7 @@ Modeled on the zer0-mistakes `news` layout but sourced from THIS site's real con
 {%- assign hacks = site.posts | where_exp: "p", "p.categories contains 'Hacks'" | sort: 'date' | reverse -%}
 {%- assign tools = site.posts | where_exp: "p", "p.categories contains 'Tools'" | sort: 'date' | reverse -%}
 {%- assign notes = site.posts | where_exp: "p", "p.categories contains 'Field Notes'" | sort: 'date' | reverse -%}
+{%- assign wire = site.posts | where_exp: "p", "p.categories contains 'The Wire'" | sort: 'date' | reverse -%}
 
 {%- comment -%} Hero = the current Top Story, pointed at by _data/top_story.yml (the
 weekly-epic routine repoints that file at each new weekly epic; a human can repoint it anywhere). Graceful fallbacks: pointer unset/stale -> the signature story -> newest. {%- endcomment -%}
@@ -47,6 +48,7 @@ weekly-epic routine repoints that file at each new weekly epic; a human can repo
           <a class="nav-link text-white-50" href="{{ '/news/hacks/' | relative_url }}"><i class="bi bi-lightbulb me-1"></i>Hacks</a>
           <a class="nav-link text-white-50" href="{{ '/news/tools/' | relative_url }}"><i class="bi bi-wrench-adjustable me-1"></i>Tools</a>
           <a class="nav-link text-white-50" href="{{ '/news/field-notes/' | relative_url }}"><i class="bi bi-journal-text me-1"></i>Field Notes</a>
+          <a class="nav-link text-white-50" href="{{ '/news/wire/' | relative_url }}"><i class="bi bi-broadcast me-1"></i>The Wire</a>
           <a class="nav-link text-white-50" href="{{ '/tags/' | relative_url }}"><i class="bi bi-tags me-1"></i>Tags</a>
         </nav>
       </div>
@@ -89,13 +91,14 @@ weekly-epic routine repoints that file at each new weekly epic; a human can repo
 
 <!-- ============================= SECTION NAVIGATION ============================= -->
 <section class="mb-5">
-  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
-    {%- assign nav_sections = "hacks,tools,notes,docs,about" | split: "," -%}
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
+    {%- assign nav_sections = "hacks,tools,notes,wire,docs,about" | split: "," -%}
     {% for coll in nav_sections %}
       {%- case coll -%}
         {%- when 'hacks' -%}{%- assign n_label='Hacks' -%}{%- assign n_icon='bi-lightbulb' -%}{%- assign n_url='/news/hacks/' -%}{%- assign n_count=hacks.size -%}
         {%- when 'tools' -%}{%- assign n_label='Tools' -%}{%- assign n_icon='bi-wrench-adjustable' -%}{%- assign n_url='/news/tools/' -%}{%- assign n_count=tools.size -%}
         {%- when 'notes' -%}{%- assign n_label='Field Notes' -%}{%- assign n_icon='bi-journal-text' -%}{%- assign n_url='/news/field-notes/' -%}{%- assign n_count=notes.size -%}
+        {%- when 'wire'  -%}{%- assign n_label='The Wire' -%}{%- assign n_icon='bi-broadcast' -%}{%- assign n_url='/news/wire/' -%}{%- assign n_count=wire.size -%}
         {%- when 'docs'  -%}{%- assign n_label='Docs' -%}{%- assign n_icon='bi-robot' -%}{%- assign n_url='/docs/' -%}{%- assign n_count=site.docs.size -%}
         {%- when 'about' -%}{%- assign n_label='About' -%}{%- assign n_icon='bi-info-circle' -%}{%- assign n_url='/about/' -%}{%- assign n_count=site.about.size -%}
       {%- endcase -%}
@@ -148,12 +151,13 @@ weekly-epic routine repoints that file at each new weekly epic; a human can repo
 {% endif %}
 
 <!-- ============================= POSTS BY SECTION ============================= -->
-{%- assign feed_sections = "hacks,tools,notes" | split: "," -%}
+{%- assign feed_sections = "hacks,tools,notes,wire" | split: "," -%}
 {% for coll in feed_sections %}
   {%- case coll -%}
     {%- when 'hacks' -%}{%- assign s_label='Hacks' -%}{%- assign s_icon='bi-lightbulb' -%}{%- assign s_url='/news/hacks/' -%}{%- assign s_color='text-primary' -%}{%- assign s_items=hacks -%}
     {%- when 'tools' -%}{%- assign s_label='Tools' -%}{%- assign s_icon='bi-wrench-adjustable' -%}{%- assign s_url='/news/tools/' -%}{%- assign s_color='text-info' -%}{%- assign s_items=tools -%}
     {%- when 'notes' -%}{%- assign s_label='Field Notes' -%}{%- assign s_icon='bi-journal-text' -%}{%- assign s_url='/news/field-notes/' -%}{%- assign s_color='text-success' -%}{%- assign s_items=notes -%}
+    {%- when 'wire' -%}{%- assign s_label='The Wire' -%}{%- assign s_icon='bi-broadcast' -%}{%- assign s_url='/news/wire/' -%}{%- assign s_color='text-warning' -%}{%- assign s_items=wire -%}
   {%- endcase -%}
   {% if s_items.size > 0 %}
   <section class="mb-5 pb-4 border-bottom">
@@ -182,6 +186,7 @@ weekly-epic routine repoints that file at each new weekly epic; a human can repo
         {%- when 'Hacks' -%}{%- assign l_label='Hack' -%}{%- assign l_badge='text-bg-primary' -%}{%- assign l_section='hacks' -%}
         {%- when 'Tools' -%}{%- assign l_label='Tool' -%}{%- assign l_badge='text-bg-info' -%}{%- assign l_section='tools' -%}
         {%- when 'Field Notes' -%}{%- assign l_label='Field Note' -%}{%- assign l_badge='text-bg-success' -%}{%- assign l_section='posts' -%}
+        {%- when 'The Wire' -%}{%- assign l_label='Dispatch' -%}{%- assign l_badge='text-bg-warning' -%}{%- assign l_section='wire' -%}
         {%- else -%}{%- assign l_label=l_cat | default: 'Post' -%}{%- assign l_badge='text-bg-secondary' -%}{%- assign l_section='posts' -%}
       {%- endcase -%}
       <div class="col-md-6 col-lg-4">

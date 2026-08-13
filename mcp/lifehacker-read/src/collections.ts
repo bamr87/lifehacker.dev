@@ -1,10 +1,10 @@
 // =============================================================================
 // collections.ts — the content model, read-side.
 // -----------------------------------------------------------------------------
-// The site's content, organized as five logical SECTIONS. Three of them are
+// The site's content, organized as six logical SECTIONS. Four of them are
 // section subdirectories of Jekyll's `posts` collection (hacks, tools,
-// field-notes live under pages/_posts/<section>/), and two are standalone page
-// collections (docs, about). This module loads, lists, and searches them the way
+// field-notes, wire live under pages/_posts/<section>/), and two are standalone
+// page collections (docs, about). This module loads, lists, and searches them the way
 // index.md / tags.md do in Liquid, and computes each item's public permalink.
 // The public URLs are PRESERVED across the reorg — a hack is still /hacks/<slug>/,
 // a field note is still /posts/<YYYY>/<MM>/<DD>/<slug>/. The canonical
@@ -14,7 +14,7 @@
 import { asTags, parsePage } from "./frontmatter.js";
 import type { RepoReader } from "./repo.js";
 
-export type CollectionName = "hacks" | "tools" | "field-notes" | "docs" | "about";
+export type CollectionName = "hacks" | "tools" | "field-notes" | "wire" | "docs" | "about";
 
 const POST_FILE = /^(\d{4})-(\d{2})-(\d{2})-(.+)\.md$/;
 
@@ -38,6 +38,7 @@ export const COLLECTIONS: Record<CollectionName, CollectionDef> = {
       return m ? `/posts/${m[1]}/${m[2]}/${m[3]}/${slug}/` : `/posts/${slug}/`;
     },
   },
+  wire: { dir: "pages/_posts/wire", dated: true, urlFor: (slug) => `/wire/${slug}/` },
   docs: { dir: "pages/_docs", dated: false, urlFor: (slug) => `/docs/${slug}/` },
   about: { dir: "pages/_about", dated: false, urlFor: (slug) => `/about/${slug}/` },
 };

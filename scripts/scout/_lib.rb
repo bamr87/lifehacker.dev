@@ -42,6 +42,8 @@ module Scout
   # The lifehacker collections a proposal can target. This is the CLOSED set the
   # agent must choose from — an open-ended kind would never map to a pillar or a
   # voice. Mirrors _data/brand/identity.yml pillars (hacks/tools/field-notes/meta).
+  # The `wire` pillar is deliberately absent: news dispatches come from the
+  # wire-scout (scripts/wire/, _data/wire/sources.yml), never the sister-site crawl.
   COLLECTIONS = %w[hack tool post doc].freeze
 
   # Default voice per collection, from _data/brand/voice.yml (the same mapping

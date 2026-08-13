@@ -35,7 +35,7 @@ SAFE_BOTTOM = (LAYOUT['safeBottom'] || 0.8) * (CANVAS['height'] || 1024)
 
 SOURCES = [
   'pages/_posts/hacks', 'pages/_posts/tools', 'pages/_posts/field-notes',
-  'pages/_posts', 'pages/_docs'
+  'pages/_posts/wire', 'pages/_posts', 'pages/_docs'
 ].freeze
 
 findings = []

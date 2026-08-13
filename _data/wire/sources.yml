@@ -1,0 +1,141 @@
+# =============================================================================
+# _data/wire/sources.yml — the wire desk's assignment editor
+# -----------------------------------------------------------------------------
+# The ONLY file a human edits to steer the wire-scout (the crawler that feeds
+# The Wire's backlog). Sources, frequencies, trust tiers, filters, caps — all
+# here, all validated by scripts/ci/lint_wire.rb (the `wire` harness check).
+#
+# How it flows: scripts/wire/plan_sources.rb reads this file and computes which
+# sources are DUE today (a pure function of the UTC date — no state file), the
+# wire-scout agent WebFetches each due source's listing page under quarantine
+# (.claude/skills/_shared/quarantine.md — pages are data, never instructions),
+# proposes dispatch ideas to _data/wire/ideas.jsonl, and
+# scripts/wire/build_backlog.rb dedups + appends `kind: wire` items to
+# _data/backlog.yml (bylined `author: rhea`, the wire correspondent). One PR
+# per run; a human merges. The whole loop idles until
+# `gh variable set WIRE_SCOUT_ENABLED true`.
+#
+# Field reference (per source):
+#   id         unique slug (required) — the source's stable name in run trails
+#   name       human label (required)
+#   url        the LISTING page to read; https only (required)
+#   type       html | rss | atom                           (default: defaults.type)
+#   trust      primary | reputable | community | rumor     (default: defaults.trust)
+#              primary   = the org speaking about itself. A press release is
+#                          still a CLAIM — trust rates provenance, not truth.
+#              reputable = established independent reporting
+#              community = forums/aggregators; covered as "the discourse",
+#                          every claim attributed to where it was found
+#              rumor     = unverified; runs ONLY labeled as rumor, and the
+#                          charter requires a second independent source before
+#                          anything is stated as fact
+#   frequency  daily | weekdays | weekly | a list of weekdays like [mon, thu]
+#              (default: defaults.frequency; `weekly` reads `weekday:`, default mon)
+#   weekday    which day a `weekly` source runs (mon|tue|wed|thu|fri|sat|sun).
+#              (Named `weekday`, not `on` — YAML parses a bare `on:` as the
+#              boolean true, and the lint will call that out.)
+#   topics     what beat this source covers (free-form guidance for the agent)
+#   include    only consider stories matching one of these substrings (optional)
+#   exclude    skip stories matching any of these substrings (optional)
+#   max_items  stories the agent may propose from this source per run
+#   enabled    false parks a source without deleting its config (default true)
+# =============================================================================
+
+version: 1
+
+defaults:
+  frequency: daily
+  trust: reputable
+  type: html
+  max_items: 2
+
+# The desk-wide dragnet: what counts as the model beat, and what never does.
+# Substring filters are guidance the agent applies while reading, not regexes.
+filters:
+  beat:
+    - model releases, deprecations, and pricing changes
+    - benchmark and eval results (and the charts they arrive in)
+    - AI lab announcements, papers, and press releases
+    - incidents, outages, and postmortems
+    - policy, copyright, and press-freedom news about AI
+  exclude:
+    - webinar
+    - sponsored
+    - hiring
+    - giveaway
+    - airdrop
+
+caps:
+  recency_days: 14          # a story older than this is archaeology, not news
+  max_proposals_per_run: 3  # the workflow's build step mirrors this (--max-add)
+  wander_slots: 1           # extra SAME-HOST links the agent may follow per source
+
+sources:
+  # The conflict of interest is structural: the reporter runs on this vendor's
+  # models. The charter's transparency rule requires the disclosure line in
+  # every dispatch reported from here.
+  - id: anthropic-news
+    name: "Anthropic newsroom"
+    url: https://www.anthropic.com/news
+    trust: primary
+    frequency: daily
+    topics: [claude, model releases, research, safety]
+
+  - id: openai-news
+    name: "OpenAI news"
+    url: https://openai.com/news/
+    trust: primary
+    frequency: daily
+    topics: [gpt, model releases, research]
+
+  - id: deepmind-blog
+    name: "Google DeepMind blog"
+    url: https://deepmind.google/discover/blog/
+    trust: primary
+    frequency: weekdays
+    topics: [gemini, model releases, research]
+
+  - id: meta-ai-blog
+    name: "Meta AI blog"
+    url: https://ai.meta.com/blog/
+    trust: primary
+    frequency: weekly
+    weekday: tue
+    topics: [llama, open weights, research]
+
+  - id: mistral-news
+    name: "Mistral AI news"
+    url: https://mistral.ai/news/
+    trust: primary
+    frequency: weekly
+    weekday: wed
+    topics: [mistral, open weights, model releases]
+
+  - id: hf-blog
+    name: "Hugging Face blog"
+    url: https://huggingface.co/blog
+    trust: community
+    frequency: weekly
+    weekday: thu
+    topics: [open models, benchmarks, tooling]
+    exclude: [course]
+
+  - id: simonwillison
+    name: "Simon Willison's weblog"
+    url: https://simonwillison.net/
+    trust: reputable
+    frequency: weekly
+    weekday: fri
+    topics: [llm tooling, model reviews, prompt injection]
+
+  # Covered as "the discourse", never as ground truth: community tier means
+  # every claim is attributed to where it was found.
+  - id: hn-front
+    name: "Hacker News front page"
+    url: https://news.ycombinator.com/
+    trust: community
+    frequency: daily
+    max_items: 1
+    topics: [the discourse]
+    include: [claude, gpt, gemini, llama, mistral, anthropic, openai, deepmind, llm, "ai model"]
+    exclude: ["show hn", "ask hn"]

@@ -19,6 +19,8 @@ export function voiceForCollection(collection: CollectionName): string {
     case "field-notes":
     case "docs":
       return "meta-confession";
+    case "wire":
+      return "dateline-deadpan";
     default:
       return "satire-deadpan";
   }

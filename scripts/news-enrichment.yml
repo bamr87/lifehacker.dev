@@ -52,6 +52,18 @@ sections:
     # default posts pattern), so no explicit permalink_pattern here.
     featured: "concepts-context-content-i-hoard-the-one-that-rots"
     gradient: ["#22c55e", "#22d3ee"]  # neon green -> cyan
+  wire:
+    name: "The Wire"
+    title: "The Wire"
+    icon: "broadcast"
+    nav_icon: "bi-broadcast"
+    description: "The model beat, reported straight: releases, benchmarks, incidents, and the theater around them. Every dispatch pins its sources."
+    section_style: "grid"
+    # No old_url: The Wire was born inside the news system (feat/wire-newsroom,
+    # 2026-08) — there is no legacy index to redirect from.
+    permalink_pattern: "/wire/:slug/"
+    featured: "the-wire-opens"
+    gradient: ["#f59e0b", "#ef4444"]  # breaking-news amber -> red (matches home cover)
 
 # The pill vocabulary each section is allowed to surface. Order is cosmetic;
 # the section layout sorts pills alphabetically and shows the first 8.
@@ -59,11 +71,13 @@ tag_vocabulary:
   hacks:        [shell, git, ci-cd, jekyll, docker, security, web-dev, data]
   tools:        [search, files, data, system, editor, productivity]
   field-notes:  [automation, ai, jekyll, ci-cd, satire, business, engineering, career]
+  wire:         [ai, models, news, satire, security, business]
 
 default_tag:
   hacks: shell
   tools: system
   field-notes: career
+  wire: news
 
 # Per-item pill overrides for the handful of items whose free-form tags can't be
 # told apart by rule (e.g. every Rust CLI review carries `[cli, terminal,

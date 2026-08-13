@@ -19,7 +19,7 @@ import { findConcepts, getConcept, listConcepts } from "./concepts.js";
 import { conceptCoverage, conceptsFor, relateConcept, suggestConceptGrowth } from "./engine.js";
 import type { RepoReader } from "./repo.js";
 
-const CollectionEnum = z.enum(["hacks", "tools", "field-notes", "docs", "about"]);
+const CollectionEnum = z.enum(["hacks", "tools", "field-notes", "wire", "docs", "about"]);
 
 function text(payload: unknown) {
   return {
@@ -38,7 +38,7 @@ export function registerTools(server: McpServer, reader: RepoReader): void {
     {
       title: "Search content",
       description:
-        "Full-text/metadata search across hacks+tools+field-notes+docs+about (title/tags/description/excerpt/body). Filter by collection and/or tag.",
+        "Full-text/metadata search across hacks+tools+field-notes+wire+docs+about (title/tags/description/excerpt/body). Filter by collection and/or tag.",
       inputSchema: {
         query: z.string().describe("Search terms. Empty string + a tag filter lists everything with that tag."),
         collection: CollectionEnum.optional(),

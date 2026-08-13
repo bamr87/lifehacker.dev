@@ -16,7 +16,8 @@ A [Jekyll](https://jekyllrb.com/) site rendered by the [`bamr87/zer0-mistakes`](
 | `_data/navigation/`, `authors.yml`, `landing.yml` | Site data the remote theme needs but does **not** deliver. |
 | `_data/brand/` | The machine-readable brand: `identity.yml`, `voice.yml`, `glossary.yml`. The autopilot reads these. |
 | `_data/backlog.yml` | The autopilot's content queue. |
-| `pages/_posts/` `_about/` `_docs/` | Content collections (under `pages/` because `collections_dir: pages`). `_posts/` splits into `hacks/`, `tools/`, `field-notes/` — the news sections. |
+| `pages/_posts/` `_about/` `_docs/` | Content collections (under `pages/` because `collections_dir: pages`). `_posts/` splits into `hacks/`, `tools/`, `field-notes/`, `wire/` — the news sections. |
+| `_data/wire/` | The Wire's assignment editor (`sources.yml`: news sources, frequencies, trust tiers, filters) + the crawl trail the `wire-scout` loop writes. The press charter it answers to lives in `_data/brand/identity.yml`. |
 | `index.md`, the `/news/` landing pages (`news/index.md` + one per section), `search.json`, `sitemap.md`, `404.html` | Spine pages. `blog.md`/`hacks.md`/`tools.md` linger as redirect stubs to their `/news/` homes. `search.json`/`sitemap.md` are hand-authored because the theme's generator is a plugin that GitHub Pages won't run. |
 | `.claude/skills/grow-lifehacker/` | The autopilot skill. |
 | `scripts/preview.sh` | Local Docker preview (overlay against a theme clone). |
