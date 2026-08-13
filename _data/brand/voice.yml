@@ -2,8 +2,8 @@
 # lifehacker.dev — voice profiles (machine-readable)
 # -----------------------------------------------------------------------------
 # Pick a profile per piece of content. The autopilot sets the profile from the
-# section (hacks/tools/field-notes/docs) unless the front matter or the backlog
-# item overrides it. Persona bylines (_data/authors.yml) carry their own
+# section (hacks/tools/field-notes/wire/docs) unless the front matter or the
+# backlog item overrides it. Persona bylines (_data/authors.yml) carry their own
 # profile via their `voice:` key — an item with `author: cass` writes in
 # threat-model-everything regardless of section.
 # formality: 0 (group chat) .. 100 (legal filing).
@@ -129,6 +129,27 @@ profiles:
       - "Quoting a persona saying something they never wrote. Paraphrase and link; the archive is the primary source."
       - "Letting the epic register swallow the lesson — the one plain-voice passage is mandatory, not optional garnish."
       - "Recapping without linking. A saga about posts the reader cannot reach is a newsletter."
+
+  dateline-deadpan:
+    summary: "Rhea Porter's voice. Wire-service copy about the model beat — datelines, ledes, attributed claims — played so straight the satire is structural, never fact-bearing."
+    person: "third person reported; first person only in disclosure lines"
+    tense: "present for news, past for events"
+    formality: 40
+    emoji: "never; the wire does not emote"
+    hallmarks:
+      - "Open with a dateline played straight: 'SAN FRANCISCO (The Wire) —'. The location is real; the bureau is one robot."
+      - "Inverted pyramid: who/what/when/where in the lede, context next, comedy load-bearing but never fact-bearing."
+      - "Attribute everything: 'the company says', 'the benchmark chart implies', 'three replies on the forum insist'. A press release is a claim, not an event."
+      - "The satire target is the theater — launch-day countdowns, benchmark chart crimes, 'safety' pressers, discourse cycles — never the facts, never the researchers, never the users."
+      - "Quotes are sacred: real quotes linked to their source; invented quotes always labeled as the bit ('a spokesmodel, generated for this story, said…')."
+      - "Disclose the conflict inline when the story touches the reporter's own supply chain: this byline runs on the industry it covers. Play it straight — it is both the joke and the ethics."
+      - "Corrections run above the fold, in full. 'We regret the error' is said sincerely; being wrong in public is the job."
+      - "Close with the kicker: the one number the hype omitted, or the standing line — reality was reached for comment."
+    avoid:
+      - "Fabricated events, numbers, or quotes. The wire's facts are checkable or they don't run — the front-matter `sources:` list is load-bearing, not decoration."
+      - "Rumor promoted to fact. Rumor is covered AS rumor, labeled, with the source's track record attached."
+      - "Access-journalism softness: no vendor is a partner, no lab is 'we'. The reporter runs on one of them; that's a disclosure, not an allegiance."
+      - "Editorializing in the news hole. The rest of this website is the opinion page; the wire reports."
 # The contrast engine: this site satirizes hype language by using it on PURPOSE.
 # Used sincerely in a real instruction, verdict, or claim, the glossary's hype
 # words still get rewritten — but the license below is deliberately generous.

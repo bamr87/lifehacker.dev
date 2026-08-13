@@ -20,6 +20,7 @@ SPECS = [
   { dir: 'pages/_posts/hacks',       kind: 'hacks',       category: 'Hacks' },
   { dir: 'pages/_posts/tools',       kind: 'tools',       category: 'Tools' },
   { dir: 'pages/_posts/field-notes', kind: 'field-notes', category: 'Field Notes' },
+  { dir: 'pages/_posts/wire',        kind: 'wire',        category: 'The Wire' },
   { dir: 'pages/_docs',              kind: 'docs', lenient: true }
 ]
 
@@ -137,6 +138,18 @@ SPECS.each do |spec|
         findings << LH.finding(check_id: 'frontmatter', severity: 'error',
                                rule: 'missing-key:verdict', file: rel,
                                evidence: 'a tool review must carry a non-empty verdict')
+      end
+
+      # Wire dispatches show their work: the press charter (identity.yml
+      # `press_charter`) makes `sources:` load-bearing — the list of URLs the
+      # story was reported from. No sources, no dispatch.
+      if spec[:kind] == 'wire'
+        srcs = fm['sources']
+        unless srcs.is_a?(Array) && srcs.any? { |s| s.to_s.strip =~ %r{\Ahttps?://} }
+          findings << LH.finding(check_id: 'frontmatter', severity: 'error',
+                                 rule: 'missing-key:sources', file: rel,
+                                 evidence: 'a wire dispatch must pin a non-empty `sources:` list of http(s) URLs (press charter: show the work)')
+        end
       end
 
       # All sections are posts now: dated filename that matches the front matter.

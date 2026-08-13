@@ -12,7 +12,7 @@ sidebar:
 
 Every page on the site. (The machine-readable version for search engines lives at [/sitemap.xml](/sitemap.xml).)
 
-The [Newsroom](/news/) collects it all; each section below is also its own landing: [Hacks](/news/hacks/) · [Tools](/news/tools/) · [Field Notes](/news/field-notes/).
+The [Newsroom](/news/) collects it all; each section below is also its own landing: [Hacks](/news/hacks/) · [Tools](/news/tools/) · [Field Notes](/news/field-notes/) · [The Wire](/news/wire/).
 
 ## Hacks
 <ul>
@@ -33,6 +33,13 @@ The [Newsroom](/news/) collects it all; each section below is also its own landi
 {% assign notes = site.posts | where_exp: "p", "p.categories contains 'Field Notes'" | sort: 'date' | reverse %}
 {% for p in notes %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a> <span class="text-body-secondary small">— {{ p.date | date: "%Y-%m-%d" }}</span></li>{% endfor %}
 {% unless notes.size > 0 %}<li class="text-body-secondary">Nothing here yet.</li>{% endunless %}
+</ul>
+
+## The Wire
+<ul>
+{% assign wire = site.posts | where_exp: "p", "p.categories contains 'The Wire'" | sort: 'date' | reverse %}
+{% for w in wire %}<li><a href="{{ w.url | relative_url }}">{{ w.title }}</a> <span class="text-body-secondary small">— {{ w.date | date: "%Y-%m-%d" }}</span></li>{% endfor %}
+{% unless wire.size > 0 %}<li class="text-body-secondary">Nothing here yet.</li>{% endunless %}
 </ul>
 
 ## About &amp; Docs

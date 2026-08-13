@@ -88,7 +88,7 @@ The pipeline runs only the tier each change needs. A `changes` job classifies th
 
 | Change kind | Examples | Runs |
 |---|---|---|
-| **content** | `pages/**`, `_data/brand|navigation`, backlog, root content pages, assets | `verify` (build + content gate) + `content-review` |
+| **content** | `pages/**`, `_data/brand|navigation`, backlog, `_data/wire/sources.yml`, root content pages, assets | `verify` (build + content gate) + `content-review` |
 | **deps** | `Gemfile*`, `_config*.yml` | `verify` + `fast` (build + harness + audit + sim) |
 | **pipeline** | `scripts/**`, `.github/**`, `.claude/**` | `verify` + `fast` (audit + sim test the changed machinery) |
 | **data** | `_data/health|fleet|analytics`, `SITE_HEALTH.md` | `verify` only |
@@ -102,6 +102,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 | Workflow | Trigger | Gate | What it does |
 |---|---|---|---|
 | `content-scout.yml` | daily cron (08:07, before the factory), manual | `CONTENT_SCOUT_ENABLED` + key | Crawls a sister site (it-journey.dev by default; `SCOUT_SOURCES`) via WebFetch, proposes on-brand topics, and opens one `auto:content` PR appending `status: todo` backlog items — **each pinned to its source it-journey.dev page**. Scheduled runs apply; manual runs default to dry-run. |
+| `wire-scout.yml` | daily cron (08:27, after content-scout, before the factory), manual | `WIRE_SCOUT_ENABLED` + key | Crawls the model-beat news sources configured in `_data/wire/sources.yml` (per-source frequency / trust tier / filters, validated by the harness's `wire` check) via WebFetch under the press charter + quarantine, and opens one `auto:content` PR appending `kind: wire` backlog items — **each pinned to the story URL it was reported from**, bylined `author: rhea`. Scheduled runs apply; manual runs default to dry-run. |
 | `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
 | `weekly-epic.yml` | weekly cron (Mon, before the factory), manual | `WEEKLY_EPIC_ENABLED` + key | One `weekly-epic` run → the illustrated recap of the prior week's publications, `_data/top_story.yml` repointed → one `auto:content` + `weekly-epic` PR that becomes the homepage hero on merge. |
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
@@ -121,6 +122,7 @@ gh variable set FLEET_ENABLED true              # the fix/grow fleet
 gh variable set CONTENT_FACTORY_ENABLED true    # daily content generation
 gh variable set WEEKLY_EPIC_ENABLED true        # Monday Top Story: the fable persona's illustrated recap of the prior week (WEEKLY_EPIC_MODEL to override its model; add OPENAI_IMAGES_ENABLED=true + the OPENAI_API_KEY secret to also paint one hero image per epic via the OpenAI API)
 gh variable set CONTENT_SCOUT_ENABLED true      # daily sister-site crawl → backlog ideas, before the factory (SCOUT_SOURCES to retarget; needs FLEET_TOKEN to auto-merge)
+gh variable set WIRE_SCOUT_ENABLED true         # daily model-beat news crawl → wire backlog items for The Wire (sources/frequencies/filters in _data/wire/sources.yml; needs FLEET_TOKEN to auto-merge)
 gh variable set EXPLORER_ENABLED true           # live-site persona QA
 gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
 gh variable set AUTO_UPDATE_ENABLED true        # keep colliding content PRs mergeable (item-merges main in; needs FLEET_TOKEN)

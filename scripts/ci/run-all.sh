@@ -36,6 +36,7 @@ ruby "$HERE/lint_artifacts.rb"     || true
 ruby "$HERE/lint_preview.rb"       || true
 ruby "$HERE/lint_agents.rb"        || true
 ruby "$HERE/lint_oneline.rb"       || true
+ruby "$HERE/lint_wire.rb"          || true
 ruby "$HERE/run_hack_commands.rb"  || true
 ruby "$HERE/htmlproofer_check.rb"  || true
 

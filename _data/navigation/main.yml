@@ -14,6 +14,8 @@
       url: /news/tools/
     - title: Field Notes
       url: /news/field-notes/
+    - title: The Wire
+      url: /news/wire/
 
 - title: Hacks
   icon: bi-lightbulb
@@ -41,6 +43,15 @@
       url: /categories/
     - title: Tags
       url: /tags/
+
+- title: The Wire
+  icon: bi-broadcast
+  url: /news/wire/
+  children:
+    - title: All Dispatches
+      url: /news/wire/
+    - title: The Press Charter
+      url: /docs/press-charter/
 
 - title: Concepts
   icon: bi-gem

@@ -74,11 +74,12 @@ module Triage
       return file.sub(%r{\A_site}, '').sub(%r{index\.html\z}, '')
     end
     # News sections (issue #337): pages/_posts/<section>/<date>-<slug>.md keep
-    # their classic URLs — hacks/tools by slug, field notes by date.
-    if (ns = file.match(%r{\Apages/_posts/(hacks|tools|field-notes)/(\d{4})-(\d{2})-(\d{2})-(.+)\.md\z}))
+    # their classic URLs — hacks/tools/wire by slug, field notes by date.
+    if (ns = file.match(%r{\Apages/_posts/(hacks|tools|field-notes|wire)/(\d{4})-(\d{2})-(\d{2})-(.+)\.md\z}))
       sec, y, mo, d, slug = ns.captures
       return "/hacks/#{slug}/" if sec == 'hacks'
       return "/tools/#{slug}/" if sec == 'tools'
+      return "/wire/#{slug}/"  if sec == 'wire'
       return "/posts/#{y}/#{mo}/#{d}/#{slug}/"
     end
     m = file.match(%r{\Apages/_(\w+)/(.+)\.md\z})

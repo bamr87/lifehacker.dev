@@ -81,9 +81,11 @@ lh_overlay() {
   fi
 
   # Top-level spine pages. blog.md/hacks.md/tools.md are now thin redirects to
-  # their /news/<section>/ homes (issue #337) but still ship so old links resolve.
+  # their /news/<section>/ homes (issue #337) but still ship so old links resolve;
+  # wire.md is the same stub for The Wire (it gives the theme's /wire/ breadcrumb
+  # parent a real page — born with the section, not a legacy URL).
   local f
-  for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md concepts.md categories.md tags.md contact.md; do
+  for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md wire.md concepts.md categories.md tags.md contact.md; do
     [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$dest/$f"
   done
 

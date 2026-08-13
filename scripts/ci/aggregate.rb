@@ -46,7 +46,7 @@ require 'set'
 # claiming it gated. `oneline` is new (lint_oneline.rb). If you add a check, add
 # it here in the same commit; there is no other wire.
 CHECK_FILES = %w[frontmatter drift brand prime-directive preview htmlproofer build
-                 artifacts agents oneline]
+                 artifacts agents oneline wire]
 SEV_ORDER = { 'error' => 0, 'warning' => 1, 'info' => 2 }.freeze
 
 findings = []
@@ -86,7 +86,7 @@ scoped        = !changed.empty?
 changed_paths = changed.map { |p| p.sub(%r{\A\./}, '') }.to_set
 # Distinctive slugs of changed collection items; skip generic top-level page names
 # (index, blog, …) whose slug would over-match every page's _site output.
-GENERIC_SLUGS = %w[index blog hacks tools news field-notes categories tags contact search sitemap 404 about].freeze
+GENERIC_SLUGS = %w[index blog hacks tools news field-notes wire categories tags contact search sitemap 404 about].freeze
 changed_slugs = changed_paths.map { |p|
   next nil unless p =~ %r{\Apages/_[a-z]+/(.+)\.md\z}
   slug = File.basename(Regexp.last_match(1)).sub(/\A\d{4}-\d{2}-\d{2}-/, '')

@@ -3055,6 +3055,26 @@ backlog:
     status: done
     published: /posts/2026/08/12/cover-art-svg-is-a-program/
 
+  # --- The Wire launch (feat/wire-newsroom, 2026-08-12) --------------------------
+  # The news desk's first assignments. WIRE-### is the wire desk's id series
+  # (scripts/wire/_lib.rb allocates the next ones); every wire item is rhea's.
+  - id: WIRE-001
+    kind: wire
+    title: "The Wire opens: this website now has a newsroom, and the newsroom has rules"
+    brief: "Launch dispatch: the press charter (journalism for AI, about AI, using AI), what the model beat covers, how the YAML masthead works, and the disclosure that the reporter runs on the industry it covers."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/the-wire-opens/
+  - id: WIRE-002
+    kind: wire
+    title: "How to read a model launch chart: a field guide to benchmark theater"
+    brief: "The desk's first explainer: truncated y-axes, apples-vs-oranges eval bars, 'up to' arithmetic, and the three questions to ask any launch graph. Real charts from real launches, every one cited in sources: — the numbers stay sacred, the theater gets covered."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: todo
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.

@@ -22,7 +22,7 @@ The checks live in `scripts/ci/` as plain Ruby/Bash (stdlib only, so they run on
 1. **Build (the gate).** `scripts/ci/build.sh` — clones the theme, overlays this
 repo's content, **strips `_plugins`** (GitHub Pages safe mode), and runs `jekyll build --strict_front_matter`. If this fails, STOP: the site does not build, that is the finding. A `Liquid Exception: Unknown tag` here means a plugin-dependent tag (e.g. `include_cached`) is used but not enabled — that is the canonical remote-theme failure; route it to the theme (`zer0-mistakes`).
 2. **Front matter.** `ruby scripts/ci/lint_frontmatter.rb` — per-collection schema
-(hacks need tags; tools need a verdict; posts need a `Field Notes` category and a filename date matching `date:`; author must exist in `_data/authors.yml`).
+(hacks need tags; tools need a verdict; posts need a `Field Notes` category and a filename date matching `date:`; wire dispatches need a `The Wire` category and a non-empty `sources:` URL list — the press charter, mechanically enforced; author must exist in `_data/authors.yml`).
 3. **Drift.** `ruby scripts/ci/check_drift.rb` — every backlog `status: done` item
 resolves to a real page; the hand-authored sitemap "About & Docs" links resolve; `search.json` actually built. Runs against `_site/`.
 4. **Brand, tier 1.** `ruby scripts/ci/lint_brand.rb` — flags glossary

@@ -2,10 +2,11 @@
   home/card.html — one standard magazine card for any content item.
   Used by the section grids and the featured secondary grid on the homepage.
 
-  Since hacks, tools, and field notes are all `posts` now (news system,
-  issue #337), the card discriminates by the item's first category
-  (Hacks / Tools / Field Notes), not by `it.collection` (which is always
-  `posts`). The `section` value maps to the cover-art key in home/cover.html.
+  Since hacks, tools, field notes, and wire dispatches are all `posts` now
+  (news system, issue #337), the card discriminates by the item's first
+  category (Hacks / Tools / Field Notes / The Wire), not by `it.collection`
+  (which is always `posts`). The `section` value maps to the cover-art key in
+  home/cover.html.
 
   Params:
     item         : a post object
@@ -17,6 +18,7 @@
   {%- when 'Hacks' -%}{%- assign label = 'Hack' -%}{%- assign badge = 'text-bg-primary' -%}{%- assign section = 'hacks' -%}
   {%- when 'Tools' -%}{%- assign label = 'Tool' -%}{%- assign badge = 'text-bg-info' -%}{%- assign section = 'tools' -%}
   {%- when 'Field Notes' -%}{%- assign label = 'Field Note' -%}{%- assign badge = 'text-bg-success' -%}{%- assign section = 'posts' -%}
+  {%- when 'The Wire' -%}{%- assign label = 'Dispatch' -%}{%- assign badge = 'text-bg-warning' -%}{%- assign section = 'wire' -%}
   {%- else -%}{%- assign label = cat | default: 'Post' -%}{%- assign badge = 'text-bg-secondary' -%}{%- assign section = 'posts' -%}
 {%- endcase -%}
 <div class="card h-100 border-0 shadow-sm hover-lift overflow-hidden">

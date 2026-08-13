@@ -42,7 +42,7 @@ export const GENERATOR = 'trace-figures/1';
 // of the site re-skins the figures on the next regeneration. The epic itself is
 // a Field Note, so figures sit on the field-notes substrate colors while each
 // plotted article keeps its own section's accent.
-const SECTIONS = ['hacks', 'tools', 'field-notes', 'docs'];
+const SECTIONS = ['hacks', 'tools', 'field-notes', 'wire', 'docs'];
 const PAL = (s) => (DESIGN.sections[s] || DESIGN.sections['field-notes']).palette;
 const BASE = PAL('field-notes');
 const MONO = DESIGN.type.mono;

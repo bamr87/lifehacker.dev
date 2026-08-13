@@ -40,8 +40,17 @@ module Fleet
       'posts'       => 'pages/_posts/field-notes',
       'field-note'  => 'pages/_posts/field-notes',
       'field-notes' => 'pages/_posts/field-notes',
+      'wire'        => 'pages/_posts/wire',
       'doc'         => 'pages/_docs',
       'docs'        => 'pages/_docs'
+    }.freeze
+
+    # Desk assignments: a section with a dedicated persona SKIPS the rotation.
+    # The Wire is rhea's whole territory (the way the weekly epic is fable's),
+    # so `--section wire` always returns rhea; rhea also carries `rotate: false`
+    # in _data/authors.yml so the wire byline never leaks into other sections.
+    SECTION_AUTHORS = {
+      'wire' => 'rhea'
     }.freeze
 
     # Fallback ring if _data/authors.yml can't be read for some reason. The real
@@ -94,8 +103,11 @@ module Fleet
       ring_keys.min_by { |a| [counts[a].to_i, ring_keys.index(a)] }
     end
 
-    # The rotation decision for a section: the least-used AI persona there.
+    # The rotation decision for a section: a dedicated desk persona when one is
+    # assigned (wire -> rhea), else the least-used AI persona there.
     def next_author(section)
+      pinned = SECTION_AUTHORS[section.to_s.strip.downcase]
+      return pinned if pinned
       r = ring
       assign(counts_for(section, r), r)
     end
@@ -112,9 +124,9 @@ module Fleet
         r = ring
         puts "AI author rotation ring (from _data/authors.yml): #{r.join(', ')}"
         puts
-        %w[hacks tools field-notes docs].each do |section|
+        %w[hacks tools field-notes wire docs].each do |section|
           counts = counts_for(section, r)
-          pick   = assign(counts, r)
+          pick   = SECTION_AUTHORS[section] || assign(counts, r)
           tally  = r.map { |a| "#{a}=#{counts[a]}" }.join('  ')
           puts format('  %-12s next: %-8s  (%s)', section, pick, tally)
         end
@@ -124,7 +136,7 @@ module Fleet
       i = argv.index('--section')
       section = i ? argv[i + 1] : nil
       unless section
-        warn 'usage: authors.rb --section <hack|tool|post|doc>   (or --table)'
+        warn 'usage: authors.rb --section <hack|tool|post|doc|wire>   (or --table)'
         return 2
       end
       pick = next_author(section)

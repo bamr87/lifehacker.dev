@@ -61,7 +61,7 @@ jobs:
       # agent see its siblings' already-open PRs, so dedup actually works.
       max-parallel: 1
       matrix:
-        collection: [hack, tool, post, doc]
+        collection: [hack, tool, post, doc, wire]
     env:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

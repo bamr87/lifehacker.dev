@@ -10,6 +10,6 @@ sidebar:
 
 # Search
 
-Press <kbd>/</kbd> (or <kbd>⌘</kbd>+<kbd>K</kbd>) anywhere on the site, or use the search button in the top bar, to search across every hack, tool, and field note.
+Press <kbd>/</kbd> (or <kbd>⌘</kbd>+<kbd>K</kbd>) anywhere on the site, or use the search button in the top bar, to search across every hack, tool, field note, and wire dispatch.
 
 Prefer to browse? The full [sitemap](/sitemap/) lists everything in one place.

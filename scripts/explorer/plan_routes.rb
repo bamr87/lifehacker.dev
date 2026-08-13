@@ -29,13 +29,14 @@ seed = (seed_arg || Time.now.utc.strftime('%Y%m%d')).to_s
 # Collect candidate paths from the committed content (network-free, always works).
 def content_paths
   paths = ['/', '/news/', '/news/hacks/', '/news/tools/', '/news/field-notes/',
-           '/hacks/', '/tools/', '/posts/', '/docs/', '/about/']
+           '/news/wire/', '/hacks/', '/tools/', '/posts/', '/docs/', '/about/']
   # News sections (issue #337): pages/_posts/<section>/<date>-<slug>.md -> classic URL.
-  Dir.glob(File.join(Explorer::ROOT, 'pages', '_posts', '{hacks,tools,field-notes}', '*.md')).each do |f|
-    m = LH.rel(f).match(%r{\Apages/_posts/(hacks|tools|field-notes)/(\d{4})-(\d{2})-(\d{2})-(.+)\.md\z}) or next
+  Dir.glob(File.join(Explorer::ROOT, 'pages', '_posts', '{hacks,tools,field-notes,wire}', '*.md')).each do |f|
+    m = LH.rel(f).match(%r{\Apages/_posts/(hacks|tools|field-notes|wire)/(\d{4})-(\d{2})-(\d{2})-(.+)\.md\z}) or next
     sec, y, mo, d, slug = m.captures
     paths << ("/hacks/#{slug}/"          if sec == 'hacks')
     paths << ("/tools/#{slug}/"          if sec == 'tools')
+    paths << ("/wire/#{slug}/"           if sec == 'wire')
     paths << ("/posts/#{y}/#{mo}/#{d}/#{slug}/" if sec == 'field-notes')
   end
   # Flat leaf collections.
@@ -54,7 +55,7 @@ shuffled = all.shuffle(random: rng)
 # Each persona gets its own window into the shuffle so they don't all visit the
 # same first N pages, but the home + one hub are ALWAYS in every persona's set
 # (those are the highest-traffic surfaces; never skip them).
-anchors = ['/', shuffled.find { |p| p =~ %r{\A/news/(hacks|tools|field-notes)/\z} } || '/news/'].uniq
+anchors = ['/', shuffled.find { |p| p =~ %r{\A/news/(hacks|tools|field-notes|wire)/\z} } || '/news/'].uniq
 plan = {}
 Explorer::PERSONAS.each_with_index do |persona, i|
   window = shuffled.rotate(i * per_persona)

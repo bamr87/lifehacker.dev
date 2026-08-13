@@ -68,6 +68,7 @@ describe("brand helpers", () => {
     assert.equal(voiceForCollection("hacks"), "how-to-practical");
     assert.equal(voiceForCollection("tools"), "tool-review-honest");
     assert.equal(voiceForCollection("field-notes"), "meta-confession");
+    assert.equal(voiceForCollection("wire"), "dateline-deadpan");
     assert.equal(voiceForCollection("docs"), "meta-confession");
     assert.equal(voiceForCollection("about"), "satire-deadpan");
   });

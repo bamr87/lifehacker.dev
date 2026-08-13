@@ -285,10 +285,10 @@ defaults:
       layout: default
       sidebar:
         nav: main
-  # News content — hacks, tools, and field notes all live under
-  # pages/_posts/<section>/ now, so one posts default gives them all the
-  # `article` layout and the Field-Notes sidebar. Section-specific chrome comes
-  # from each post's `categories` (Hacks / Tools / Field Notes), not a scope.
+  # News content — hacks, tools, field notes, and wire dispatches all live
+  # under pages/_posts/<section>/ now, so one posts default gives them all the
+  # `article` layout and the posts sidebar. Section-specific chrome comes from
+  # each post's `categories` (Hacks / Tools / Field Notes / The Wire), not a scope.
   - scope:
       path: pages/_posts
     values:
@@ -312,6 +312,10 @@ defaults:
       path: pages/_posts/field-notes
     values:
       preview: /images/previews/section-field-notes.svg
+  - scope:
+      path: pages/_posts/wire
+    values:
+      preview: /images/previews/section-wire.svg
   # About pages.
   - scope:
       path: pages/_about

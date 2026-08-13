@@ -67,7 +67,7 @@ const HELP = `Trace Bloom preview banners
   -f, --file <path>   article to illustrate (repeatable)
       --changed       every git-new/modified markdown file
       --all           every article under pages/_posts and pages/_docs
-      --section <s>   restrict --all to one section (hacks|tools|field-notes|docs)
+      --section <s>   restrict --all to one section (hacks|tools|field-notes|wire|docs)
       --force         regenerate even when the banner already exists
   -n, --dry-run       report what would be written
       --scene         print the generated scene as JSON (no files written)

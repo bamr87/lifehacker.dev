@@ -58,6 +58,7 @@ SECTION_PILLS = %w[
   shell git ci-cd jekyll docker security web-dev data
   search files system editor productivity
   automation ai satire business engineering career
+  models news
 ].freeze
 ARTICLE_NAV_ANCHORS = %w[comments documentation giscus zer0-mistakes].freeze
 IGNORE = [%r{\A//assets/}, %r{\A/news/}, %r{\.github/}, %r{\A/archives/},
