@@ -1754,7 +1754,8 @@ backlog:
     brief: "A job trusted to push editorial commits will happily push whatever is in the diff — including `.github/` or `_config.yml` if something slips them in. Add a smuggle guard that runs `git diff --name-only` against the base and fails unless every changed path matches an allowlist like `^(_posts/|pages/|assets/images/)`. The gotcha that stays in: compare against `origin/$BASE...HEAD`, not `HEAD~1`, or a multi-commit push sneaks files past a diff that only looked at the last commit."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/content-bot-changed-files-allowlist-gate/
     source: content-scout
     source_url: https://it-journey.dev/quests/1100/self-operating-website-06-the-editors-eye/
     source_title: "The Self-Operating Website 06: The Editor's Eye"
@@ -3090,7 +3091,6 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/ouroboros-loop-07-weaving-the-whole/
     source_title: "Weaving the Whole: The Serpent Closes the Circle (auto-merge)"
     fingerprint: 18cd557b3fba
-
   - id: DOC-036
     kind: doc
     title: "The merge driver that refuses to guess"
@@ -3100,3 +3100,12 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-merge-driver-that-refuses-to-guess/
+  - id: POST-036
+    kind: post
+    title: "The weekly digest greets integers politely and everyone else with a stack trace"
+    brief: "Ed stress-tests the window flags on weekly_digest.rb (the tool that feeds Fable's saga): out-of-range integers get a friendly `--days must be 1..21`, but 3.5 / '' / bad --until dates dodge the guard and dump a raw Ruby backtrace, because OptionParser's Integer coercion runs before the range check. Payload: validate once, in one voice, at the boundary you own."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/13/weekly-digest-two-ways-to-say-no/
