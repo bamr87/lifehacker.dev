@@ -3131,6 +3131,24 @@ backlog:
     status: done
     published: /posts/2026/08/13/weekly-digest-two-ways-to-say-no/
 
+  # Fresh doc (autopilot run, 2026-08-14): every `kind: doc` item on the board was
+  # already `done` (DOC-001..036, SRC-020/025/033/068); the only `todo` items are
+  # OPS-001 (kind: ops, which content runs skip), TOOL-026 (tool), WIRE-002 (wire),
+  # and the SRC-* hacks — no doc lane open. `gh pr list --label auto:content` showed
+  # one open PR (POST-037, a field note on the merge driver) — different subject.
+  # Rather than cross lanes or no-op, synthesized a fresh in-lane doc: lint_wire.rb,
+  # the wire-desk config validator, is referenced across the Meta docs but never got
+  # its own piece. Byline: cass (rotation). Real captured output only (linter on two
+  # fixtures + a host-allowlist pre-flight + the kill-switch check, all this run).
+  - id: DOC-037
+    kind: doc
+    title: "The check that proofreads the newsroom but won't vet its sources"
+    brief: "Deep-dive on scripts/ci/lint_wire.rb, the validator for _data/wire/sources.yml (the wire desk's assignment editor). Cass's threat-model take: the check is a copy editor, not a bouncer — it catches the silent-drop typos that matter (the Norway bare-`on:` trap, bad frequency/trust enums, dup ids), but a schema-PERFECT config passes clean while pointing the crawler at the cloud metadata endpoint (169.254.169.254) and stamping `trust: primary` on a typosquat. It validates the URL is shaped like a URL, not that it's safe to fetch; it validates `trust` is in the enum, not that the claim is true. Walked back honestly (human-edited file, quarantined fetch, default-off loop), then the payload: three mitigations, each run — a host-allowlist pre-flight that blocks the metadata IP + typosquat, the verified kill switch + quarantine cage, and reviewing a sources diff as a security boundary. Real captured output; the allowlist rule flagged for scripts/ci owners, not patched here."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-check-that-proofreads-the-newsroom/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
