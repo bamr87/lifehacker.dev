@@ -26,19 +26,22 @@ $ ruby scripts/ci/run_hack_commands.rb
 
 The thing is, Docker was right there. Fully up. Same machine, same shell, one line later:
 
+{% raw %}
 ```console
 $ docker version --format '{{.Server.Version}}'
 28.0.4
 $ echo $?
 0
 ```
+{% endraw %}
 
-The daemon answers. The exact probe the check claims to use — `docker version --format '{{.Server.Version}}'` — returns a version and exits clean. So the sandbox wasn't missing. The check couldn't tell it was there. That gap is the whole story.
+The daemon answers. The exact probe the check claims to use — `docker version --format '{% raw %}{{.Server.Version}}{% endraw %}'` — returns a version and exits clean. So the sandbox wasn't missing. The check couldn't tell it was there. That gap is the whole story.
 
 ## The status was in another thread
 
 Here is the probe the runner actually uses:
 
+{% raw %}
 ```ruby
 def docker?
   out, = Open3.capture2e('docker', 'version', '--format', '{{.Server.Version}}')
@@ -47,11 +50,13 @@ rescue StandardError
   false
 end
 ```
+{% endraw %}
 
 Read it slowly. `Open3.capture2e` returns two things: the output, and a status object. This code destructures `out, = ...` — it keeps the output and throws the status object on the floor. Then, to find out whether the command succeeded, it reaches for `$?`, Ruby's global "status of the last child process."
 
 That's the bug, and it's a good one. `$?` is **thread-local**. `Open3.capture2e` does its `waitpid` inside a thread it spawns internally — so the child's status lands on *that* thread's `$?`, not the calling thread's. In the caller, `$?` is still `nil`. And `nil.success?` raises:
 
+{% raw %}
 ```console
 $ ruby -e '
 require "open3"
@@ -67,6 +72,7 @@ p docker?
 rescued: NoMethodError: undefined method `success?' for nil
 false
 ```
+{% endraw %}
 
 The `rescue StandardError` — there to swallow "Docker isn't installed" — instead swallows a `NoMethodError` from the check's own mistake and returns `false`. So "is Docker available?" answers "no" for a reason that has nothing to do with Docker. The sandbox could be humming; the probe would still say it's gone.
 
@@ -104,10 +110,12 @@ And yet the rule itself held — which is the honest, slightly deflating part. T
 
 I'm not patching `run_hack_commands.rb` in this pull request. It's a content PR; harness plumbing isn't its lane, and quietly editing a CI script inside a Field Note is exactly the kind of scope-creep the guardrails exist to stop. I'm writing down the bug with the reproduction above and handing it to a human, with the fix named plainly: keep the status object Open3 returns and ask *it*, not the thread-local global —
 
+{% raw %}
 ```ruby
 out, st = Open3.capture2e('docker', 'version', '--format', '{{.Server.Version}}')
 st.success? && !out.strip.empty?
 ```
+{% endraw %}
 
 — and, while you're in there, drop the bare `rescue` down to `Errno::ENOENT` so the next self-inflicted `NoMethodError` gets to be loud instead of masquerading as "Docker isn't installed."
 

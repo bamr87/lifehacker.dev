@@ -43,6 +43,9 @@ lh_overlay() {
   rm -rf "$dest"
   cp -R "$THEME_CACHE" "$dest"
   rm -rf "$dest/.git"
+  # Re-init an empty repo: the theme Gemfile's `gemspec` shells `git ls-files`,
+  # which spams "fatal: not a git repository" on every bundle/jekyll boot otherwise.
+  git init -q "$dest"
 
   # Strip the theme's OWN root-level pages (README/AGENTS/CLAUDE/CHANGELOG/
   # CONTRIBUTING/SECURITY/features/contributing/index…). They are theme-repo docs,
@@ -80,21 +83,16 @@ lh_overlay() {
     cp -R "$REPO_DIR/_includes/." "$dest/_includes/"
   fi
 
-  # Top-level spine pages. blog.md/hacks.md/tools.md are now thin redirects to
-  # their /news/<section>/ homes (issue #337) but still ship so old links resolve;
-  # wire.md is the same stub for The Wire (it gives the theme's /wire/ breadcrumb
-  # parent a real page — born with the section, not a legacy URL).
+  # Top-level spine pages. Only the two files GitHub Pages needs at the site
+  # root live here now: the homepage and the 404. Every other site page (the
+  # /news/ landings, the search/sitemap/tags/categories/concepts utilities, the
+  # blog|hacks|tools|wire redirect stubs, the about collection) moved under
+  # pages/ and ships with the `cp -R "$REPO_DIR/pages"` above — the same way
+  # production sees them, since the remote theme delivers no pages/ of its own.
   local f
-  for f in index.md 404.html search.json search.md sitemap.md blog.md hacks.md tools.md wire.md concepts.md categories.md tags.md contact.md; do
+  for f in index.md 404.html; do
     [[ -f "$REPO_DIR/$f" ]] && cp "$REPO_DIR/$f" "$dest/$f"
   done
-
-  # The news/ section pages + magazine landing (layout: section / news). Not
-  # under pages/, so copy the directory explicitly to stay production-faithful.
-  if [[ -d "$REPO_DIR/news" ]]; then
-    rm -rf "$dest/news"
-    cp -R "$REPO_DIR/news" "$dest/news"
-  fi
 
   # Our assets — the WHOLE tree (images/, svg/, img/, …). GitHub Pages serves
   # every path under assets/, so the overlay must too. Copying only assets/images

@@ -110,6 +110,7 @@ $ docker build -f Dockerfile.good -t cache-demo-good .
 
 I ran `npm install` on the host to make a real `node_modules`, dropped a 20MB pack file in `.git`, and built with no `.dockerignore`:
 
+{% raw %}
 ```console
 $ docker build --no-cache -f Dockerfile.good -t bloat-no-ignore .
  => [internal] load build context
@@ -117,6 +118,7 @@ $ docker build --no-cache -f Dockerfile.good -t bloat-no-ignore .
 $ docker images bloat-no-ignore --format '{{.Size}}'
 171MB
 ```
+{% endraw %}
 
 24.76MB shoved across just to build, and a 171MB image. Then I added three lines:
 
@@ -126,6 +128,7 @@ node_modules
 Dockerfile*
 ```
 
+{% raw %}
 ```console
 $ docker build --no-cache -f Dockerfile.good -t bloat-with-ignore .
  => [internal] load build context
@@ -133,6 +136,7 @@ $ docker build --no-cache -f Dockerfile.good -t bloat-with-ignore .
 $ docker images bloat-with-ignore --format '{{.Size}}'
 146MB
 ```
+{% endraw %}
 
 Build context went **24.76MB → 164 bytes**. Image went **171MB → 146MB** — 25MB of somebody's laptop, evicted. **The failure this prevents:** shipping your host's `node_modules` (built for the wrong architecture, and now shadowing the clean install the image did itself) plus your whole git history into a production image, while also busting the cache you carefully arranged — because a changing `node_modules` in the context changes what `COPY . .` sees.
 

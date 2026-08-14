@@ -49,11 +49,13 @@ $ ruby scripts/fleet/dispatch.rb
 
 An idle dispatcher emits no plan. And the spawn job in `fleet-dispatch.yml` only runs when the plan is non-empty:
 
+{% raw %}
 ```yaml
   spawn:
     needs: dispatch
     if: ${{ inputs.apply && needs.dispatch.outputs.plan != '' && needs.dispatch.outputs.plan != '[]' }}
 ```
+{% endraw %}
 
 So the switch gates the spawner *transitively*. There is no second flag to keep in sync, because the spawner's input dries up the moment the switch is off. One thing to turn, not two things to remember.
 
@@ -65,6 +67,7 @@ Two details make the switch trustworthy rather than decorative. It's a variable,
 
 The spawn matrix runs single-file:
 
+{% raw %}
 ```yaml
     strategy:
       fail-fast: false
@@ -72,6 +75,7 @@ The spawn matrix runs single-file:
       matrix:
         item: ${{ fromJSON(needs.dispatch.outputs.plan) }}
 ```
+{% endraw %}
 
 `max-parallel: 1` means one agent finishes — and records its lease — before the next one looks. That alone closes the race. But the claim underneath is collision- free even without it, because the atomic primitive is a git ref:
 

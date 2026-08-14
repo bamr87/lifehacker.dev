@@ -3,7 +3,7 @@
 # check_drift.rb — catch the hand-authored artifacts that rot as content grows
 # -----------------------------------------------------------------------------
 # This repo can't run the theme's index/sitemap plugins on GitHub Pages, so
-# search.json and parts of sitemap.md are hand-authored and drift away from the
+# search.json and parts of pages/sitemap.md are hand-authored and drift from the
 # real collections. This check is the tripwire. It also asserts every backlog
 # item flipped to `done` actually points at a page that exists.
 #
@@ -54,9 +54,10 @@ urls = {} # normalized url => repo-relative source file
     urls[norm(u)] = LH.rel(f) if u
   end
 end
-# Top-level pages and the news/ section pages that declare an explicit permalink
-# (search.md, index.md, news/hacks.md, ...).
-Dir.glob(File.join(LH::ROOT, '{*,news/*}.{md,html}')).each do |f|
+# The loose site pages that declare an explicit permalink: the root spine
+# (index.md, 404.html), the utility pages under pages/ (search.md, sitemap.md,
+# tags.md, ...) and the pages/news/ section landings.
+Dir.glob(File.join(LH::ROOT, '{*,pages/*,pages/news/*}.{md,html}')).each do |f|
   fm, = LH.parse(f)
   urls[norm(fm['permalink'])] = LH.rel(f) if fm && fm['permalink']
 end
@@ -101,7 +102,8 @@ end
 # --- 2. Sitemap hand-authored "About & Docs" list ----------------------------
 # The Hacks/Tools/Field-Notes sections are Liquid-generated and self-heal; only
 # the hand-authored <ul> under "## About" can rot. Check those links resolve.
-sitemap = (LH.read(File.join(LH::ROOT, 'sitemap.md')) rescue '')
+SITEMAP_PAGE = 'pages/sitemap.md'
+sitemap = (LH.read(File.join(LH::ROOT, SITEMAP_PAGE)) rescue '')
 about_block = sitemap[/^##\s*About.*\z/m].to_s
 about_block.scan(/href="([^"]+)"/).flatten.each do |href|
   next if href.include?('{')          # Liquid-templated (self-healing) — not hand-authored drift
@@ -109,7 +111,7 @@ about_block.scan(/href="([^"]+)"/).flatten.each do |href|
   u = norm(href)
   next if resolves?(u, urls, SITE, site_built)
   findings << LH.finding(check_id: 'drift', severity: 'error',
-                         rule: 'sitemap-deadlink', file: 'sitemap.md',
+                         rule: 'sitemap-deadlink', file: SITEMAP_PAGE,
                          evidence: "hand-authored sitemap link #{href} resolves to no page")
 end
 

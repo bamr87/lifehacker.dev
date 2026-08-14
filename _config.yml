@@ -193,7 +193,6 @@ plugins:
   - jekyll-include-cache
   - jekyll-relative-links
   - jekyll-redirect-from
-  - jekyll-paginate
 
 # In-content .md links inside collections must be rewritten or they 404.
 # `collections: true` is the gotcha it-journey documents — keep it.
@@ -234,10 +233,6 @@ collections:
     permalink: /docs/:name/
 
 permalink: pretty
-
-# ── Pagination ───────────────────────────────────────────────────────────────
-paginate: 10
-paginate_path: "/posts/page/:num/"
 
 # ── Feed ─────────────────────────────────────────────────────────────────────
 # RSS is the site's ONLY subscription channel (the hero CTA on index.md says

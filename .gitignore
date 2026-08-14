@@ -21,3 +21,6 @@ vendor/
 # Throwaway per-section scan dirs from scripts/generate-preview-images.sh --section
 .preview-section.*
 .DS_Store
+
+# Front Matter CMS (VSCode extension) local cache — the config (frontmatter.json) IS committed
+.frontmatter/database/

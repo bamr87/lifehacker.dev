@@ -97,11 +97,13 @@ pipeline
 
 Now the part that keeps the router honest about its own importance. You'd assume the required merge check — the build — reads this router and skips itself for a data-only PR. It does not. In `.github/workflows/pipeline.yml`, the fast tier *is* gated on the router:
 
+{% raw %}
 ```yaml
 fast:
   needs: changes
   if: ${{ always() && (needs.changes.result != 'success' || ...) }}
 ```
+{% endraw %}
 
 But the `verify` job — the one required check, the one whose exit code is the gate — deliberately carries no `needs: changes` at all. Its own comment explains why:
 
