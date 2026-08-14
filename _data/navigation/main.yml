@@ -16,42 +16,10 @@
       url: /news/field-notes/
     - title: The Wire
       url: /news/wire/
-
-- title: Hacks
-  icon: bi-lightbulb
-  url: /news/hacks/
-  children:
-    - title: All Hacks
-      url: /news/hacks/
-    - title: Categories
-      url: /categories/
-
-- title: Tools
-  icon: bi-wrench-adjustable
-  url: /news/tools/
-  children:
-    - title: All Tools
-      url: /news/tools/
-
-- title: Field Notes
-  icon: bi-journal-text
-  url: /news/field-notes/
-  children:
-    - title: All Field Notes
-      url: /news/field-notes/
     - title: Categories
       url: /categories/
     - title: Tags
       url: /tags/
-
-- title: The Wire
-  icon: bi-broadcast
-  url: /news/wire/
-  children:
-    - title: All Dispatches
-      url: /news/wire/
-    - title: The Press Charter
-      url: /docs/press-charter/
 
 - title: Concepts
   icon: bi-gem
@@ -65,6 +33,20 @@
       url: /about/
     - title: Colophon — how this runs itself
       url: /about/colophon/
+    - title: The Authors
+      url: /authors/
+    - title: Amr Abdel-Motaleb
+      url: /authors/amr/
+    - title: Claude
+      url: /authors/claude/
+    - title: Cass Vector
+      url: /authors/cass/
+    - title: Ed G. Case
+      url: /authors/edge/
+    - title: Fable
+      url: /authors/fable/
+    - title: Rhea Porter
+      url: /authors/rhea/
 
 - title: Docs
   icon: bi-robot
@@ -74,3 +56,5 @@
       url: /docs/
     - title: The Autopilot Playbook
       url: /docs/autopilot/
+    - title: The Press Charter
+      url: /docs/press-charter/

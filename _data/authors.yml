@@ -20,6 +20,7 @@ default:
   avatar: "/assets/images/logo.svg"
   github: "bamr87"
   role: "Autopilot"
+  profile: false # alias of `claude` — no /authors/ page or index card of its own
 
 # The human. Owns the domain, points the robot at things, takes the blame.
 amr:
