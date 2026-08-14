@@ -1770,7 +1770,8 @@ backlog:
     brief: "That powerline/oh-my-zsh/starship prompt shows tofu boxes and question marks because the glyphs need a patched Nerd Font. Install one (`brew install --cask font-meslo-lg-nerd-font`, or download then `fc-cache -fv` on Linux), verify with `fc-list | grep -i meslo`, and — the step everyone misses — set the font on the TERMINAL profile, not only your editor, because VS Code's `editor.fontFamily` never touches the integrated terminal's. The other failure that stays in: blurry glyphs usually mean GPU acceleration, fixed with `terminal.integrated.gpuAcceleration: off`."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/nerd-font-tofu-boxes/
     source: content-scout
     source_url: https://it-journey.dev/quests/0010/nerd-font-enchantment/
     source_title: "Nerd Font Enchantment: Terminal Icon Mastery"
