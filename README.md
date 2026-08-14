@@ -18,7 +18,9 @@ A [Jekyll](https://jekyllrb.com/) site rendered by the [`bamr87/zer0-mistakes`](
 | `_data/backlog.yml` | The autopilot's content queue. |
 | `pages/_posts/` `_about/` `_docs/` | Content collections (under `pages/` because `collections_dir: pages`). `_posts/` splits into `hacks/`, `tools/`, `field-notes/`, `wire/` — the news sections. |
 | `_data/wire/` | The Wire's assignment editor (`sources.yml`: news sources, frequencies, trust tiers, filters) + the crawl trail the `wire-scout` loop writes. The press charter it answers to lives in `_data/brand/identity.yml`. |
-| `index.md`, the `/news/` landing pages (`news/index.md` + one per section), `search.json`, `sitemap.md`, `404.html` | Spine pages. `blog.md`/`hacks.md`/`tools.md` linger as redirect stubs to their `/news/` homes. `search.json`/`sitemap.md` are hand-authored because the theme's generator is a plugin that GitHub Pages won't run. |
+| `index.md`, `404.html` | The only two site pages left at the repo root — the ones GitHub Pages wants there. |
+| `pages/news/` | The `/news/` landing pages (`index.md` + one per section). |
+| `pages/*.md`, `pages/search.json` | Loose site pages: the `search`/`sitemap`/`tags`/`categories`/`concepts` utilities, plus the `blog`/`hacks`/`tools`/`wire` redirect stubs that keep old URLs resolving to their `/news/` homes. Each pins its own `permalink`, so living under `pages/` costs them nothing. `search.json`/`sitemap.md` are hand-authored because the theme's generator is a plugin that GitHub Pages won't run. |
 | `.claude/skills/grow-lifehacker/` | The autopilot skill. |
 | `scripts/preview.sh` | Local Docker preview (overlay against a theme clone). |
 | `docs/` | The setup tutorial and the build journey log (excluded from the site build). |

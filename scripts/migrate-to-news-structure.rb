@@ -16,9 +16,9 @@
 # explicit `permalink:` to the item's OLD public URL so nothing 404s. Field
 # Notes keep Jekyll's default dated posts permalink.
 #
-# It also generates the section index pages (news/<section>.md, category-driven
+# It also generates the section index pages (pages/news/<section>.md, category-driven
 # so the theme's `section` layout aggregates by `categories`, not by a fragile
-# path substring), the /news/ magazine landing (news/index.md),
+# path substring), the /news/ magazine landing (pages/news/index.md),
 # _data/navigation/posts.yml, and one self-contained neon SVG preview card per
 # section (used when an item has no per-item image).
 #
@@ -219,7 +219,7 @@ SECTIONS.each do |slug, sec|
 end
 
 # ── section index pages (regular pages, category-driven) ─────────────────────
-FileUtils.mkdir_p(File.join(ROOT, 'news'))
+FileUtils.mkdir_p(File.join(ROOT, 'pages', 'news'))
 SECTIONS.each do |slug, sec|
   front = "---\n" \
           "layout: section\n" \
@@ -231,7 +231,7 @@ SECTIONS.each do |slug, sec|
           "section_style: #{sec['section_style']}\n" \
           "sidebar: false\n" \
           "---\n"
-  File.write(File.join(ROOT, 'news', "#{slug}.md"), front)
+  File.write(File.join(ROOT, 'pages', 'news', "#{slug}.md"), front)
 end
 
 # ── /news/ magazine landing ──────────────────────────────────────────────────
@@ -245,7 +245,7 @@ landing = <<~MD
   sidebar: false
   ---
 MD
-File.write(File.join(ROOT, 'news', 'index.md'), landing)
+File.write(File.join(ROOT, 'pages', 'news', 'index.md'), landing)
 
 # ── _data/navigation/posts.yml (section list the news/section layouts read) ──
 nav = +"# News sections — read by the theme's `news` and `section` layouts.\n" \

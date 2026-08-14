@@ -25,14 +25,15 @@ def kind_of(path)
     'deps'                                       # build inputs changed — full build + tests
   when %r{\A_data/(health|fleet|analytics|explorer|scout|ai_usage)/}, %r{\A_data/wire/(plan\.json|ideas\.jsonl)\z}, %r{\A(SITE_HEALTH|AI_USAGE)\.md\z}
     'data'                                       # generated state / bot run-trails — lightest path
+  # Every site page now lives under pages/ — the collections, the pages/news/
+  # landings, and the loose search/sitemap/tags/categories/concepts + redirect
+  # stubs. Only the homepage and the 404 are still at the repo root.
   when %r{\Apages/},
-       %r{\Anews/},
        %r{\A_data/(brand|navigation)/},
        %r{\A_data/(authors|landing|backlog|top_story)\.yml\z},
        %r{\A_data/wire/sources\.yml\z},
        %r{\Aassets/},
-       %r{\A(index|blog|hacks|tools|wire|news|categories|tags|contact|search|sitemap)\.(md|html|json)\z},
-       %r{\A404\.html\z}
+       %r{\A(index\.md|404\.html)\z}
     'content'                                    # publications — content quality gate
   else
     'other'
