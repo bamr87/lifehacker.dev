@@ -36,7 +36,9 @@ if [[ "$MODE" == "build" ]]; then
   exit 0
 fi
 
-# Serve via the theme's Docker dev env.
+# Serve via the theme's Docker dev env. Point jekyll-github-metadata at THIS
+# repo — the theme compose file's PAGES_REPO_NWO default is bamr87/zer0-mistakes.
+export PAGES_REPO_NWO="${PAGES_REPO_NWO:-bamr87/lifehacker.dev}"
 cd "$PREVIEW_DIR"
 echo "==> starting docker compose (first run builds the image; be patient)"
 exec docker compose up

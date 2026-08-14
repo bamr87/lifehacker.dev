@@ -43,6 +43,9 @@ lh_overlay() {
   rm -rf "$dest"
   cp -R "$THEME_CACHE" "$dest"
   rm -rf "$dest/.git"
+  # Re-init an empty repo: the theme Gemfile's `gemspec` shells `git ls-files`,
+  # which spams "fatal: not a git repository" on every bundle/jekyll boot otherwise.
+  git init -q "$dest"
 
   # Strip the theme's OWN root-level pages (README/AGENTS/CLAUDE/CHANGELOG/
   # CONTRIBUTING/SECURITY/features/contributing/index…). They are theme-repo docs,
