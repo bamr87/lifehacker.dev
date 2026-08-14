@@ -1,18 +1,43 @@
-generated_at: '2026-08-13T08:17:25Z'
-queue_size: 5
+generated_at: '2026-08-14T08:16:56Z'
+queue_size: 10
 by_severity:
-  sev4: 5
+  sev4: 10
 by_type:
-  type/other: 3
+  type/other: 8
   type/content-polish: 1
   type/link-rot: 1
 by_route:
-  local: 4
+  local: 9
   upstream: 1
 top:
 - severity: sev4
   type: type/other
+  title: "[sev4] other: orphan-preview (assets/images/previews/section-docs.svg)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/other
+  title: "[sev4] other: orphan-preview (assets/images/previews/section-field-notes.svg)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/other
   title: "[sev4] other: orphan-preview (assets/images/previews/section-hacks.svg)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/other
+  title: "[sev4] other: orphan-preview (assets/images/previews/section-posts.svg)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/other
+  title: "[sev4] other: orphan-preview (assets/images/previews/section-tools.svg)"
+  score: 0.7
+  repo: bamr87/lifehacker.dev
+- severity: sev4
+  type: type/other
+  title: "[sev4] other: orphan-preview (assets/images/previews/section-wire.svg)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 - severity: sev4
