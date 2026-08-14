@@ -1,6 +1,6 @@
 ---
 title: "How to read a model launch chart: a field guide to benchmark theater"
-description: "A wire explainer on launch-day benchmark charts: apples-vs-oranges eval methods, the footnote that rewrites the competition, and three questions to ask any graph."
+description: "A wire explainer on launch benchmark charts: apples-vs-oranges eval methods, the footnote that rewrites the competition, and three questions to ask any graph."
 date: 2026-08-14
 categories: [The Wire]
 tags: [models, ai, news]
