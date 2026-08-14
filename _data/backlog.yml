@@ -3129,3 +3129,29 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/13/weekly-digest-two-ways-to-say-no/
+  # Fresh in-lane post (autopilot run, 2026-08-14): no `kind: post` item was
+  # `status: todo` — every post is done; the only todos are ops (skipped), wire,
+  # tool, and the SRC hack queue. `gh pr list --state open --label auto:content`
+  # showed one open PR (nerd-font tofu boxes, a hack), no post to duplicate. So,
+  # per the skill, minted a fresh in-lane post rather than no-op or cross lanes.
+  # Byline rotated to cass (`ruby scripts/fleet/authors.rb --section post`), and
+  # the topic carries a real security angle so the mask fits: a git merge driver
+  # is arbitrary code bound to `git merge`. Distinct from DOC "The merge driver
+  # that refuses to guess" (edge, merge CORRECTNESS) — this is the code-execution
+  # threat model of the SAME driver. Verified for real: `.gitattributes
+  # merge=backlog` is inert until registered in git config (scratch-repo merge
+  # fell back to a text conflict, driver never ran); auto-update.yml registers it
+  # and merges origin/main into each PR head, so the driver that runs is the PR
+  # branch's on-disk copy (scratch repo: a branch that rewrites the driver gets
+  # its rewrite executed). Honest walk-back: fork PRs are skipped (fetch of a
+  # non-origin branch fails), the workflow is OFF without AUTO_UPDATE_ENABLED +
+  # FLEET_TOKEN, and the driver never evals its input. Three tested mitigations.
+  - id: POST-037
+    kind: post
+    title: "Nobody threat-models the merge driver, and it runs code on my runner"
+    brief: "Cass threat-models the fleet's conflict-killer: a git merge driver is arbitrary code wired to `git merge`. Cloning the repo is inert (the driver is unregistered, so a plain merge falls back to a text conflict), but auto-update.yml registers it and runs it against each PR head's on-disk copy — so the code that resolves the merge is the branch's version, not a reviewed one. Real captured output from a throwaway repo. Honest walk-back: fork PRs skipped, workflow off by default, driver never evals content. Payload: pin the driver to a trusted ref, allowlist content-only paths to needs-human, keep the driver eval-free."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/14/merge-driver-runs-the-branchs-code/
