@@ -17,9 +17,9 @@ If you want the earnest, no-grudge version of this quest, IT-Journey wrote it up
 
 ## What the tofu actually is
 
-Your prompt tool (starship, powerline, oh-my-zsh, p10k) prints Unicode characters up in the Private Use Area — things like `U+E0B0` (the powerline arrow) and `U+E0A0` (the git branch). Regular fonts don't map those slots. Nerd Fonts patch **12,759 codepoints** worth of icons into an otherwise normal monospace face, so those slots finally point at a glyph instead of at nothing.
+Your prompt tool (starship, powerline, oh-my-zsh, p10k) prints Unicode characters up in the Private Use Area — things like `U+E0B0` (the powerline arrow) and `U+E0A0` (the git branch). Regular fonts don't map those slots. A Nerd Font is an otherwise normal monospace face with a fat block of icon glyphs patched in — **12,759 codepoints** of coverage all told — so those slots finally point at a glyph instead of at nothing.
 
-I counted that number instead of trusting the marketing:
+I counted that whole-charset number instead of trusting the marketing:
 
 ```bash
 fc-query --format='%{charset}\n' ~/.local/share/fonts/MesloLGSNerdFont-Regular.ttf \
