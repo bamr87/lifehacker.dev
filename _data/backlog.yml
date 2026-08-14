@@ -1770,7 +1770,8 @@ backlog:
     brief: "That powerline/oh-my-zsh/starship prompt shows tofu boxes and question marks because the glyphs need a patched Nerd Font. Install one (`brew install --cask font-meslo-lg-nerd-font`, or download then `fc-cache -fv` on Linux), verify with `fc-list | grep -i meslo`, and — the step everyone misses — set the font on the TERMINAL profile, not only your editor, because VS Code's `editor.fontFamily` never touches the integrated terminal's. The other failure that stays in: blurry glyphs usually mean GPU acceleration, fixed with `terminal.integrated.gpuAcceleration: off`."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/nerd-font-tofu-boxes/
     source: content-scout
     source_url: https://it-journey.dev/quests/0010/nerd-font-enchantment/
     source_title: "Nerd Font Enchantment: Terminal Icon Mastery"
@@ -3129,6 +3130,7 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/13/weekly-digest-two-ways-to-say-no/
+
   # Fresh doc (autopilot run, 2026-08-14): every `kind: doc` item on the board was
   # already `done` (DOC-001..036, SRC-020/025/033/068); the only `todo` items are
   # OPS-001 (kind: ops, which content runs skip), TOOL-026 (tool), WIRE-002 (wire),
@@ -3147,3 +3149,39 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-check-that-proofreads-the-newsroom/
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-082
+    kind: hack
+    title: "pull_request_target: the trigger that hands your secrets to a stranger's fork"
+    brief: "SEVERITY: your whole repo. ATTACK VECTOR: a friendly-looking pull request. The `pull_request` trigger runs fork PRs with a read-only token and no secrets on purpose — so a maintainer 'fixes' the missing secrets by switching to `pull_request_target`, which runs in the BASE repo's context with full secrets and a write token. Do that and then `actions/checkout` the PR's head, and you're executing an attacker's code (a malicious build script, a poisoned dependency) with your credentials in the environment — the classic pwn-request. The three mitigations that actually matter: (1) keep untrusted-code jobs on plain `pull_request`; (2) if you must use `pull_request_target`, never check out or run the PR's code in it — use it only for labeling/triage on trusted files; (3) gate anything privileged behind a manual `environment:` approval and a least-privilege `permissions:` block. Verified by reading which context the token comes from, not by trusting the PR author."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/github-actions-basics/
+    source_title: "GitHub Actions Basics"
+    fingerprint: 109b27c3268f
+  - id: SRC-083
+    kind: hack
+    title: "It works in preview and breaks in production: the JEKYLL_ENV=production gate you forgot you set"
+    brief: "Jekyll flips behavior on `JEKYLL_ENV`, which defaults to `development` locally and is set to `production` on GitHub Pages — so anything wrapped in `{% if jekyll.environment == 'production' %}` (analytics, comment widgets, CSS minification, the robots meta) simply does not exist in your local `serve` and only appears once deployed. The failure that stays in: you test the page locally, it's perfect, and the live site loads an analytics snippet or a comments block you never saw render — the one build where you can eyeball it is the one build where that code is switched off. The inverse bites too: a `development`-only debug banner or draft can leak to prod if you gated it on the wrong branch of that `if`. Reproduce both by building twice — `jekyll build` then `JEKYLL_ENV=production jekyll build` — and diffing the output."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-22-digital-artist-0001/
+    source_title: "Quest Report: Digital Artist Level 0001 (JEKYLL_ENV production gating)"
+    fingerprint: 1e479be1c81c
+  - id: SRC-084
+    kind: hack
+    title: "Inject config into a pod without rebuilding the image: ConfigMap as env vars vs a mounted volume (and the one that never updates)"
+    brief: "Keep config out of your container image: `kubectl create configmap app-config --from-literal=LOG_LEVEL=info`, then wire it in two ways — `valueFrom.configMapKeyRef` for env vars, or a `configMap` volume mounted as files. The failure that stays in: env vars are frozen at container start, so editing the ConfigMap changes nothing until you `kubectl rollout restart deployment/app`, while a mounted volume syncs the new value into the file on its own (after a short delay) with no restart — pick the injection method by whether you need live reload. The quieter one: a pod that references a ConfigMap or Secret that doesn't exist never starts, it just sits there, so `kubectl describe pod` before you blame your app. Reproducible on kind/minikube."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1001/k8s-config-secrets/
+    source_title: "Kubernetes ConfigMaps and Secrets"
+    fingerprint: 69d3e261c793
