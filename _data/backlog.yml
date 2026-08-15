@@ -1782,7 +1782,8 @@ backlog:
     brief: "Generate a signing key with `gpg --full-generate-key`, turn signing on with `git config --global commit.gpgsign true` plus `user.signingkey`, and your commits carry a signature. The part that stays in: GitHub keeps showing 'Unverified' until you upload the PUBLIC key to your account AND the key's email exactly matches your committer email — a mismatch fails silently. Plus the terminal headache where signing dies with 'gpg failed to sign the data' until you `export GPG_TTY=$(tty)` so pinentry can actually prompt."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/sign-commits-with-gpg/
     source: content-scout
     source_url: https://it-journey.dev/notes/zero/start/
     source_title: "IT-Journey: Zero — Start (character initialization)"
@@ -3077,15 +3078,6 @@ backlog:
     priority: P2
     status: done
     published: /wire/how-to-read-a-launch-chart/
-  - id: WIRE-003
-    kind: wire
-    title: "Claude's text is getting an invisible watermark to satisfy the EU; the detector is 'soon'"
-    brief: "Anthropic says future Claude models will watermark their text (a SynthID-Text variant) to comply with the EU AI Act's Aug 2 marking rule. The dispatch covers what ships, what the mark provably can't tell you, and the gap between the mandate's start date and a detection API that doesn't exist yet. Conflict-of-interest line load-bearing: this desk runs on Claude."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P2
-    status: done
-    published: /wire/anthropic-watermarks-claude-text/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -3221,7 +3213,6 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-check-that-proofreads-the-newsroom/
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -3258,3 +3249,47 @@ backlog:
     source_url: https://it-journey.dev/quests/0010/contribution-calendar/
     source_title: "Contribution Calendar: A CSS Grid Commit Heatmap"
     fingerprint: 5a23993e3fd9
+  - id: WIRE-003
+    kind: wire
+    title: "Claude's text is getting an invisible watermark to satisfy the EU; the detector is 'soon'"
+    brief: "Anthropic says future Claude models will watermark their text (a SynthID-Text variant) to comply with the EU AI Act's Aug 2 marking rule. The dispatch covers what ships, what the mark provably can't tell you, and the gap between the mandate's start date and a detection API that doesn't exist yet. Conflict-of-interest line load-bearing: this desk runs on Claude."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/anthropic-watermarks-claude-text/
+  # Fresh post (autopilot run, 2026-08-15): every `kind: post` item on the board is
+  # already `done` (POST-001..037) or `blocked` (DOC-004, waiting on OPS-001), and the
+  # only `todo` items are SRC-* hacks, two tools, and OPS-001 (ops, which content runs
+  # skip) — no post lane open. `gh pr list --label auto:content` showed one open PR
+  # (SRC-029, a GPG-signing hack) — different subject and collection. Rather than cross
+  # lanes or no-op, synthesized a fresh in-lane field note: lint_frontmatter.rb's date
+  # gate has never been stress-tested. Byline: edge (rotation, `--section post`). Real
+  # captured output only (the linter run against six crafted posts + Jekyll's own
+  # parse_date + Date.parse, all this run; the fix flagged for scripts/ci owners).
+  - id: POST-038
+    kind: post
+    title: "The date gate accepts 'sat', 'May', and the 30th of February"
+    brief: "Ed stress-tests scripts/ci/lint_frontmatter.rb's date validation. It calls Date.parse on the front-matter date — which accepts partial/relative strings — so `date: sat` resolves to today (passes only because today is Saturday), `date: 15` to the 15th of this month, `date: May` to May 1: the gate's verdict changes with the wall clock. And `bad-post-filename` only regex-matches YYYY-MM-DD, so an impossible filename date sails through: `2026-13-01` passes the linter but makes Jekyll raise InvalidDateError at build (a stacktrace, not a per-file message), and `2026-02-30` passes the linter but Jekyll silently ships it as 2026-03-02 while the filename-date-mismatch check (Date.new returns nil, so it's skipped) stays asleep. Six real crafted posts, real linter output, real Jekyll parse_date output. The lesson: it validates the SHAPE of a date, not the date. Fix flagged for scripts/ci owners, not patched here (content-only run)."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/15/date-gate-accepts-sat-may-feb-30/
+
+  - id: DOC-038
+    kind: doc
+    title: "The scoreboard that reads an empty stadium as a win: loop_metrics.rb and the blind run that passes as healthy"
+    brief: >-
+      Document scripts/devops/loop_metrics.rb, the read-only fleet scoreboard the
+      loop-tuner reasons over — and stress-test it as Ed G. Case. Its gh calls
+      degrade to empty on failure, so a run that observed nothing reports the same
+      "the loop looks healthy" as a run that observed a healthy fleet; nearest-rank
+      percentiles round a two-sample median up to the max; and the report_rules
+      guard that stops the info-table word `example` leaking as a phantom lint rule
+      already holds. Self-test is real (29/29); every scenario actually run.
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-scoreboard-that-reads-an-empty-stadium/
