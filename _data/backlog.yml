@@ -3212,3 +3212,40 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-check-that-proofreads-the-newsroom/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-085
+    kind: hack
+    title: "Your Kubernetes Secret is base64, not a secret: who can read it, and the three settings that actually protect it"
+    brief: "SEVERITY: your whole cluster. ATTACK VECTOR: a value everyone calls a Secret and nobody encrypted. A Kubernetes Secret is base64-ENCODED, not encrypted — `kubectl get secret db-credentials -o jsonpath='{.data.DB_USER}' | base64 -d` hands the value to anyone who can read the object, and by default it sits in etcd in plaintext where a node or backup compromise reads it straight off disk. The three mitigations that actually matter: (1) RBAC — scope `get`/`list` on `secrets` so most accounts and pods can't read them at all (a Role that grants `secrets: [get]` cluster-wide is the real breach); (2) turn on encryption-at-rest for etcd (an `EncryptionConfiguration`, not a checkbox) so a stolen backup isn't a password dump; (3) never `kubectl apply` a Secret manifest from git — the base64 in that YAML is plaintext in your history — create it imperatively or from a sealed/external secrets store. Verified by decoding your own Secret and reading who has RBAC to do the same."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1001/k8s-config-secrets/
+    source_title: "Kubernetes ConfigMaps and Secrets"
+    fingerprint: 6af309b8e8a1
+  - id: SRC-086
+    kind: hack
+    title: "Tag the release, forget the changelog, fail the build: a CI gate that ties every version tag to a CHANGELOG entry"
+    brief: "Ship versions on purpose: cut an ANNOTATED tag (`git tag -a v1.2.1 -m '...'`, not a bare `git tag v1.2.1`) so the tag carries an author, date, and message — a lightweight tag is just a moving bookmark with none of that — and remember `git push` won't send your tags unless you ask (`git push origin v1.2.1` or `--tags`). Then wire the honest part: a CI step that greps `CHANGELOG.md` for the tag you just pushed and fails the build when there's no matching entry, so an undocumented release can't merge. The failures that stay in: lightweight-vs-annotated bites you later when `git describe` and release tooling ignore the bookmark tags, and a changelog check keyed on an exact string breaks the day someone writes `v1.2.1` in the tag and `1.2.1` in the changelog — normalize before you compare. Reproducible in a throwaway repo."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/about/posts/versioning/
+    source_title: "Versioning: Semantic Versioning and Release Strategy"
+    fingerprint: 20071e0453a8
+  - id: SRC-087
+    kind: hack
+    title: "Build a GitHub-style contribution heatmap from your own git log (and the green squares that quietly lie)"
+    brief: "You don't need GitHub to draw the little green calendar: pipe your real history through `git log --date=short --pretty=%ad | sort | uniq -c` to get commits-per-day, then render 52 weeks as a CSS Grid of squares whose `background` steps through five intensity levels set by CSS custom properties — no JavaScript. The failures that stay in: give the grid squares a fixed pixel width and it blows off the screen on a phone until you drop to ~26 columns under a media query; a color-only heatmap is invisible to a screen reader, so each cell needs `role=\"img\"` and an `aria-label` like '3 commits on 2026-01-05'; and the honest punchline — the graph counts commits authored under an email your host recognizes, in ITS timezone, so a real week of work can render as an empty streak because your commits were authored as the wrong user or landed just across a midnight boundary. The squares measure noise; ship anyway, just don't confuse green with productive."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/contribution-calendar/
+    source_title: "Contribution Calendar: A CSS Grid Commit Heatmap"
+    fingerprint: 5a23993e3fd9
