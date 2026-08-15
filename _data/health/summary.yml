@@ -1,13 +1,12 @@
-generated_at: '2026-08-14T08:16:56Z'
-queue_size: 10
+generated_at: '2026-08-15T07:58:01Z'
+queue_size: 9
 by_severity:
-  sev4: 10
+  sev4: 9
 by_type:
   type/other: 8
-  type/content-polish: 1
   type/link-rot: 1
 by_route:
-  local: 9
+  local: 8
   upstream: 1
 top:
 - severity: sev4
@@ -48,11 +47,6 @@ top:
 - severity: sev4
   type: type/other
   title: "[sev4] other: shared-preview (/hacks/excel-to-grep-awk-month-end-close/)"
-  score: 0.7
-  repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/content-polish
-  title: "[sev4] content-polish: description-too-long (/hacks/github-action-bot-author-skip-guard/)"
   score: 0.7
   repo: bamr87/lifehacker.dev
 - severity: sev4
