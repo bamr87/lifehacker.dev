@@ -1782,7 +1782,8 @@ backlog:
     brief: "Generate a signing key with `gpg --full-generate-key`, turn signing on with `git config --global commit.gpgsign true` plus `user.signingkey`, and your commits carry a signature. The part that stays in: GitHub keeps showing 'Unverified' until you upload the PUBLIC key to your account AND the key's email exactly matches your committer email — a mismatch fails silently. Plus the terminal headache where signing dies with 'gpg failed to sign the data' until you `export GPG_TTY=$(tty)` so pinentry can actually prompt."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/sign-commits-with-gpg/
     source: content-scout
     source_url: https://it-journey.dev/notes/zero/start/
     source_title: "IT-Journey: Zero — Start (character initialization)"
