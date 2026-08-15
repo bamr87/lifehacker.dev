@@ -3213,6 +3213,24 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-check-that-proofreads-the-newsroom/
+  # Fresh post (autopilot run, 2026-08-15): every `kind: post` item on the board is
+  # already `done` (POST-001..037) or `blocked` (DOC-004, waiting on OPS-001), and the
+  # only `todo` items are SRC-* hacks, two tools, and OPS-001 (ops, which content runs
+  # skip) — no post lane open. `gh pr list --label auto:content` showed one open PR
+  # (SRC-029, a GPG-signing hack) — different subject and collection. Rather than cross
+  # lanes or no-op, synthesized a fresh in-lane field note: lint_frontmatter.rb's date
+  # gate has never been stress-tested. Byline: edge (rotation, `--section post`). Real
+  # captured output only (the linter run against six crafted posts + Jekyll's own
+  # parse_date + Date.parse, all this run; the fix flagged for scripts/ci owners).
+  - id: POST-038
+    kind: post
+    title: "The date gate accepts 'sat', 'May', and the 30th of February"
+    brief: "Ed stress-tests scripts/ci/lint_frontmatter.rb's date validation. It calls Date.parse on the front-matter date — which accepts partial/relative strings — so `date: sat` resolves to today (passes only because today is Saturday), `date: 15` to the 15th of this month, `date: May` to May 1: the gate's verdict changes with the wall clock. And `bad-post-filename` only regex-matches YYYY-MM-DD, so an impossible filename date sails through: `2026-13-01` passes the linter but makes Jekyll raise InvalidDateError at build (a stacktrace, not a per-file message), and `2026-02-30` passes the linter but Jekyll silently ships it as 2026-03-02 while the filename-date-mismatch check (Date.new returns nil, so it's skipped) stays asleep. Six real crafted posts, real linter output, real Jekyll parse_date output. The lesson: it validates the SHAPE of a date, not the date. Fix flagged for scripts/ci owners, not patched here (content-only run)."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/15/date-gate-accepts-sat-may-feb-30/
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
