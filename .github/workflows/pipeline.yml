@@ -78,6 +78,11 @@ jobs:
         run: ruby scripts/devops/audit.rb | tee audit.out
       - name: End-to-end simulation (contract conformance)
         run: ruby scripts/sim/simulate.rb | tee sim.out
+      # Executes auto-update's Gate script through all four token states with a
+      # stubbed `gh` (no network, no secrets). Pins the fix for the expired-PAT
+      # blind spot that burned 135 doomed runs — see bamr87/bamr87#58.
+      - name: auto-update gate contract (validity, not presence)
+        run: ruby scripts/ci/test_auto_update_gate.rb
       - name: Tier-1 summary
         if: always()
         run: |
