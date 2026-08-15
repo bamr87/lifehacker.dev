@@ -3077,6 +3077,15 @@ backlog:
     priority: P2
     status: done
     published: /wire/how-to-read-a-launch-chart/
+  - id: WIRE-003
+    kind: wire
+    title: "Claude's text is getting an invisible watermark to satisfy the EU; the detector is 'soon'"
+    brief: "Anthropic says future Claude models will watermark their text (a SynthID-Text variant) to comply with the EU AI Act's Aug 2 marking rule. The dispatch covers what ships, what the mark provably can't tell you, and the gap between the mandate's start date and a detection API that doesn't exist yet. Conflict-of-interest line load-bearing: this desk runs on Claude."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/anthropic-watermarks-claude-text/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
