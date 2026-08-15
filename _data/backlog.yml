@@ -3268,3 +3268,19 @@ backlog:
     source_url: https://it-journey.dev/quests/0010/contribution-calendar/
     source_title: "Contribution Calendar: A CSS Grid Commit Heatmap"
     fingerprint: 5a23993e3fd9
+  - id: DOC-038
+    kind: doc
+    title: "The scoreboard that reads an empty stadium as a win: loop_metrics.rb and the blind run that passes as healthy"
+    brief: >-
+      Document scripts/devops/loop_metrics.rb, the read-only fleet scoreboard the
+      loop-tuner reasons over — and stress-test it as Ed G. Case. Its gh calls
+      degrade to empty on failure, so a run that observed nothing reports the same
+      "the loop looks healthy" as a run that observed a healthy fleet; nearest-rank
+      percentiles round a two-sample median up to the max; and the report_rules
+      guard that stops the info-table word `example` leaking as a phantom lint rule
+      already holds. Self-test is real (29/29); every scenario actually run.
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-scoreboard-that-reads-an-empty-stadium/
