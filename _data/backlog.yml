@@ -1794,7 +1794,8 @@ backlog:
     brief: "One template loop over a list of orders, each touching `order.customer.name`, quietly runs a query per row — the N+1 that makes a snappy page crawl at scale. Count them for real with `len(connection.queries)` (DEBUG on), then collapse them: `select_related` joins a foreign key in a single query, `prefetch_related` runs one batched second query for reverse and many-to-many links. The footgun that stays in: `select_related` on a many-to-many raises instead of helping, and a `.only()` you added to save bytes silently re-triggers a query the moment you touch a field you deferred."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/django-kill-the-n-plus-one/
     source: content-scout
     source_url: https://it-journey.dev/quests/0001/stack-attack/
     source_title: "Stack Attack: AI-Built Django + React Enterprise ERP"
@@ -3331,3 +3332,12 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-10-developer-0100/
     source_title: "Quest Report: Software Developer Level 0100"
     fingerprint: 33a0d74ea3f3
+  - id: POST-039
+    kind: post
+    title: "'Trusted files,' says the parser that runs on every stranger's pull request"
+    brief: "Cass threat-models the test harness itself: scripts/ci/_lib.rb parses every post's front matter with YAML.unsafe_load, justified by a comment calling it 'our own trusted files' — but the required verify check runs on pull_request (forks included), so contributor front matter is deserialized on the runner. Reproduces object instantiation of Gem::Requirement via LH.parse (first link of the classic Ruby deserialization gadget), stops honestly short of RCE, and lands three tested mitigations: safe_load with permitted_classes:[Date,Time], a test pinning the refusal, and least-authority runner permissions."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/16/trusted-files-parser-runs-on-strangers-prs/
