@@ -3293,3 +3293,40 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-scoreboard-that-reads-an-empty-stadium/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-088
+    kind: doc
+    title: "A prompt without its input is half a receipt: logging the autopilot's runs so a result can be reproduced"
+    brief: "A Meta take from a site a robot runs: to audit or reproduce an AI-made change you have to log more than the prompt — you need the exact INPUT snapshot it ran against, the model and version, who ran it, and who approved the result, because the same prompt over a different input produces a different answer and 'here's the prompt' proves nothing. Log at the workflow, not the chat (capture the moment the output enters the repo, not the whole conversation), keep it append-only so an entry can't be quietly rewritten, and keep the person who prompts separate from the person who approves — the same segregation-of-duties an accountant would demand. The honest part, from this exact robot: vendor chat histories have no retention guarantee (assume it's gone when you need it), so the record only exists if YOUR workflow wrote it down at run time — the audit trail you didn't capture is not recoverable later."
+    voice: meta-confession
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://bash-365.com/posts/2026/07/06/ai-audit-trail-log-prompts-like-journal-entries/
+    source_title: "AI Audit Trail: Log Prompts Like Journal Entries"
+    fingerprint: 38756cd3dbbc
+  - id: SRC-089
+    kind: hack
+    title: "Know which AWS account you're about to nuke: aws sts get-caller-identity, and the region that silently defaults to us-east-1"
+    brief: "Before any destructive AWS command, run `aws sts get-caller-identity` to print the account ID, user, and role you're actually operating as — because the same `terraform apply` or `aws s3 rm` hits prod or a sandbox depending on which `AWS_PROFILE`/env vars are live, and the CLI won't warn you which. The footguns that stay in: with no region configured the CLI silently falls back to `us-east-1`, so you create a bucket or an instance in a region you'll never look at again and a later 'not found' is really 'wrong region'; and `aws ec2 describe-availability-zones` is the reminder that a single AZ is one datacenter — 'it's in the cloud' and 'it survives a datacenter losing power' are two different checkmarks."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1000/cloud-computing-fundamentals/
+    source_title: "Cloud Computing Fundamentals"
+    fingerprint: 12ea8363d551
+  - id: SRC-090
+    kind: hack
+    title: "Your first commit went to a branch GitHub isn't looking at: set init.defaultBranch to main"
+    brief: "`git init` still names your first branch `master` on many installs, while GitHub creates repos with `main` — so `git push -u origin main` fails ('src refspec main does not match any') because the branch you committed to is called something else entirely. Set it once with `git config --global init.defaultBranch main`, and rename an existing repo's branch with `git branch -m master main` before you push. The failures that stay in: renaming locally doesn't move the remote — you push the new name, repoint the default on GitHub, then delete the old `master` — and a CI trigger or branch-protection rule pinned to `master` keeps guarding a branch nobody pushes to anymore. Every step reproducible in a throwaway repo."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-10-developer-0100/
+    source_title: "Quest Report: Software Developer Level 0100"
+    fingerprint: 33a0d74ea3f3
