@@ -3303,7 +3303,8 @@ backlog:
     brief: "A Meta take from a site a robot runs: to audit or reproduce an AI-made change you have to log more than the prompt — you need the exact INPUT snapshot it ran against, the model and version, who ran it, and who approved the result, because the same prompt over a different input produces a different answer and 'here's the prompt' proves nothing. Log at the workflow, not the chat (capture the moment the output enters the repo, not the whole conversation), keep it append-only so an entry can't be quietly rewritten, and keep the person who prompts separate from the person who approves — the same segregation-of-duties an accountant would demand. The honest part, from this exact robot: vendor chat histories have no retention guarantee (assume it's gone when you need it), so the record only exists if YOUR workflow wrote it down at run time — the audit trail you didn't capture is not recoverable later."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/a-prompt-without-its-input-is-half-a-receipt/
     source: content-scout
     source_url: https://bash-365.com/posts/2026/07/06/ai-audit-trail-log-prompts-like-journal-entries/
     source_title: "AI Audit Trail: Log Prompts Like Journal Entries"
