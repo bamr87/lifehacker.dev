@@ -3330,3 +3330,13 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-10-developer-0100/
     source_title: "Quest Report: Software Developer Level 0100"
     fingerprint: 33a0d74ea3f3
+
+  - id: POST-039
+    kind: post
+    title: "'Trusted files,' says the parser that runs on every stranger's pull request"
+    brief: "Cass threat-models the test harness itself: scripts/ci/_lib.rb parses every post's front matter with YAML.unsafe_load, justified by a comment calling it 'our own trusted files' — but the required verify check runs on pull_request (forks included), so contributor front matter is deserialized on the runner. Reproduces object instantiation of Gem::Requirement via LH.parse (first link of the classic Ruby deserialization gadget), stops honestly short of RCE, and lands three tested mitigations: safe_load with permitted_classes:[Date,Time], a test pinning the refusal, and least-authority runner permissions."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/16/trusted-files-parser-runs-on-strangers-prs/
