@@ -57,6 +57,12 @@ module Triage
                                : ['type/brand-lint', 'area/voice', 'sev4']
       when 'prime-directive'
         ['type/field-note-candidate', 'area/content', 'sev3']
+      when 'tokens'
+        # A credential trap is a pipeline bug, not a content one. An error means
+        # the trap was newly introduced (or reintroduced into a workflow already
+        # migrated) — that is a real regression and outranks tracked debt, which
+        # arrives as a warning and sits at sev3.
+        ['type/ci-bug', 'area/pipeline', err ? 'sev2' : 'sev3']
       else
         ['type/other', 'area/site', 'sev4']
       end

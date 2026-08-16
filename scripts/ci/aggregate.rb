@@ -46,7 +46,7 @@ require 'set'
 # claiming it gated. `oneline` is new (lint_oneline.rb). If you add a check, add
 # it here in the same commit; there is no other wire.
 CHECK_FILES = %w[frontmatter drift brand prime-directive preview htmlproofer build
-                 artifacts agents oneline wire]
+                 artifacts agents oneline wire tokens]
 SEV_ORDER = { 'error' => 0, 'warning' => 1, 'info' => 2 }.freeze
 
 findings = []

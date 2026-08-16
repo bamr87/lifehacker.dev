@@ -96,15 +96,34 @@ jobs:
     env:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      # FLEET_TOKEN (bot PAT, contents+PRs, NO admin) so the PR TRIGGERS the
-      # pipeline — a github.token-authored PR is suppressed from starting
-      # workflows, so its checks never run and auto-merge could never see it green.
-      # Falls back to github.token (PR still opens for a human; won't auto-merge).
-      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+      # GH_TOKEN is deliberately NOT set here. It is resolved by the
+      # `Resolve a usable GitHub token` step below, which probes FLEET_TOKEN
+      # against the API and exports the winner.
+      #
+      # It used to read `${{ secrets.FLEET_TOKEN || github.token }}`. That is
+      # the bug in bamr87/bamr87#53: `||` returns the first NON-EMPTY operand,
+      # and an expired PAT is non-empty, so github.token was unreachable and
+      # the fallback documented on this very line never happened. Presence is
+      # not validity — do not restore the `||` form.
       # Configurable crawl targets (comma-separated). Default: the sister site.
       SCOUT_SOURCES: ${{ vars.SCOUT_SOURCES || 'https://it-journey.dev' }}
     steps:
       - uses: actions/checkout@v7
+
+      # Fail in second one, not minute twelve. This probes FLEET_TOKEN with
+      # `gh api user` and exports GH_TOKEN — the real PAT when it works, and
+      # github.token (loudly, via ::warning::) when it is missing or expired.
+      # Placed immediately after checkout so every `gh` call below sees it, and
+      # so ~10 minutes of agent browse is never spent on work that cannot be
+      # delivered. See bamr87/bamr87#53.
+      - name: Resolve a usable GitHub token
+        id: tok
+        uses: ./.github/actions/resolve-gh-token
+        with:
+          candidate: ${{ secrets.FLEET_TOKEN }}
+          fallback: ${{ github.token }}
+          candidate-name: FLEET_TOKEN
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
@@ -118,9 +137,15 @@ jobs:
             ${SEED:+--seed "$SEED"} \
             --per-source "${{ needs.gate.outputs.per_source }}"
 
+      # NOT `|| true`. That bare mask swallowed the first HTTP 401 at second one
+      # and let the run march on for another ~12 minutes before dying at
+      # `gh pr create` (bamr87/bamr87#53). The script now classifies its own
+      # failures: an auth failure annotates as an ::error:: and stops here,
+      # anything else warns and continues, because a missing label is cosmetic
+      # while a dead credential means nothing downstream can be delivered.
       - name: Ensure labels exist
         if: ${{ needs.gate.outputs.apply == 'true' }}
-        run: scripts/scout/bootstrap-labels.sh || true
+        run: scripts/scout/bootstrap-labels.sh
 
       # 2. Read the planned source pages and propose on-brand topics. The skill
       #    writes _data/scout/ideas.jsonl — it does NOT edit the backlog or open a
