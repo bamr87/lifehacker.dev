@@ -1794,7 +1794,8 @@ backlog:
     brief: "One template loop over a list of orders, each touching `order.customer.name`, quietly runs a query per row — the N+1 that makes a snappy page crawl at scale. Count them for real with `len(connection.queries)` (DEBUG on), then collapse them: `select_related` joins a foreign key in a single query, `prefetch_related` runs one batched second query for reverse and many-to-many links. The footgun that stays in: `select_related` on a many-to-many raises instead of helping, and a `.only()` you added to save bytes silently re-triggers a query the moment you touch a field you deferred."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/django-kill-the-n-plus-one/
     source: content-scout
     source_url: https://it-journey.dev/quests/0001/stack-attack/
     source_title: "Stack Attack: AI-Built Django + React Enterprise ERP"
