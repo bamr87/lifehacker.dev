@@ -3356,3 +3356,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/16/trusted-files-parser-runs-on-strangers-prs/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-091
+    kind: hack
+    title: "The Jekyll plugin you added to _config.yml and never installed: why your feed and sitemap silently don't exist"
+    brief: "Listing `jekyll-feed` (or jekyll-sitemap, jekyll-seo-tag) under `plugins:` in `_config.yml` does nothing on its own — the gem still has to be installed, so `bundle add jekyll-feed` plus a matching Gemfile line is the half everyone forgets, and `bundle exec jekyll build` then quietly produces no `feed.xml` with no error at all. The footguns that stay in: on GitHub Pages only whitelisted plugins run and only via the `github-pages` gem, so a plugin that works locally can vanish on deploy (or the reverse); and the old `gems:` key was renamed to `plugins:` years ago, so a copy-pasted config can file your plugin under a key Jekyll ignores. Verify by checking the built `_site/` actually contains the file, not by trusting a green build."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-23-digital-artist-0001/
+    source_title: "Quest Report: Digital Artist Level 0001"
+    fingerprint: faee46e78d0a
+  - id: SRC-092
+    kind: hack
+    title: "Rate-limit your own API: a token bucket in 15 lines, and the limit that quietly multiplies behind a load balancer"
+    brief: "Build a token bucket that refills `capacity` tokens at `rate`/second, permits short bursts, and answers an over-limit caller with `429 Too Many Requests` plus honest `RateLimit-Remaining`/`RateLimit-Reset`/`Retry-After` headers so a well-behaved client can slow itself down before you have to reject it. Reproducible in plain Python with a fake clock — no server needed. The footgun that stays in: an in-process limiter set to '100 requests/second' becomes 100×N the moment you run N replicas, because each process counts its own private bucket and nobody counts the total, so the number you advertised is a lie the instant you scale out — the fix is a shared counter (Redis INCR + EXPIRE) so the limit is global. Plus the rate-vs-quota mix-up: a per-second rate never stops one client from burning a whole month's quota in an afternoon."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/rate-limiting/
+    source_title: "Rate Limiting: Token Buckets, 429s, and Quotas"
+    fingerprint: 442fea18b52d
+  - id: SRC-093
+    kind: hack
+    title: "Your 99% accuracy is a data leak: fit the scaler after the train/test split, not before"
+    brief: "That suspiciously great score is usually the model peeking at its own exam. Call `StandardScaler().fit()` on the whole dataset before `train_test_split` and you've leaked the test set's mean and variance into training — the number looks brilliant and means nothing. Fit on the training fold only, or wrap scaler-plus-model in a `Pipeline` so `cross_val_score` re-fits per fold and the leak can't happen. Fully reproducible on CPU with scikit-learn: watch the 'accuracy' fall back to earth the moment you stop cheating. The companion lie that stays in: 95% accuracy on a 95/5 imbalanced set is exactly what you get by always guessing the majority class, so read the `classification_report` precision/recall/F1, not the headline number."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/ml-fundamentals/
+    source_title: "Machine Learning Fundamentals with Scikit-Learn"
+    fingerprint: 0c409cf32032
