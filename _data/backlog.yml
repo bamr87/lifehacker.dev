@@ -3393,3 +3393,40 @@ backlog:
     source_url: https://it-journey.dev/quests/1101/ml-fundamentals/
     source_title: "Machine Learning Fundamentals with Scikit-Learn"
     fingerprint: 0c409cf32032
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-094
+    kind: hack
+    title: "Stop putting your auth token in localStorage: httpOnly cookies, and the CSRF bill they hand you"
+    brief: "Any script that runs on your page — including one an XSS hole injected — can read `localStorage.getItem('token')` and walk off with a live bearer credential, because localStorage is readable by all JavaScript on the origin. Store the session token in a cookie set `HttpOnly; Secure; SameSite=Lax` instead, so JavaScript can't read it at all and the browser attaches it automatically. Prove the difference in devtools: `document.cookie` shows a normal cookie and stays blind to an HttpOnly one. The trade that stays in: cookies get sent on every request to the origin, so you've closed the XSS-theft door and opened a CSRF one — `SameSite` plus a CSRF token is the other half of the job, not optional — and a token in the URL query string (`?token=...`) is worst of all because it lands in server logs and browser history."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/api-authentication/
+    source_title: "API Authentication: Keys, Tokens, OAuth2, and JWT"
+    fingerprint: fe686a842793
+  - id: SRC-095
+    kind: hack
+    title: "Get MathJax to render on GitHub Pages: the kramdown that eats your math before the CDN loads"
+    brief: "Render real equations on a Jekyll/Pages site by gating a MathJax CDN include on a `mathjax: true` front-matter flag, so only the pages that need it pay the load. The failure that stays in: it renders perfectly on your laptop and breaks the instant GitHub Pages builds it, because kramdown mangles the source before MathJax ever runs — a single-backslash line break in an `align` block collapses unless you quadruple it, an `*` or `_` inside `$...$` gets swallowed as Markdown emphasis and italicizes your formula, and a `$$` block flush against text needs blank lines around it to survive. The fix is escaping or wrapping the math (a fenced `$$...$$` block, or guarded `\\(...\\)` delimiters) so the Markdown processor leaves it alone. Verify by building, not eyeballing — the one render where it always looks fine is the local one."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/cheatsheets/mathjax-symbols/
+    source_title: "MathJax Cheatsheet"
+    fingerprint: 6bd9d8d60a4f
+  - id: SRC-096
+    kind: hack
+    title: "Prove the bug is the theme's, not yours: a minimal reproduction against the bare theme before you file upstream"
+    brief: "When your site misbehaves, the honest first question is whether the fault is your code or the framework's — and you answer it by isolation, not by guessing. Build your full site once, then build a single throwaway page against the un-customized theme with its OWN `--source` and `--config` (`bundle exec jekyll build --source repro/ --config repro/_config.yml --destination repro/_site`): if the bug survives with every one of your customizations stripped away, it's upstream and you file it; if it vanishes, the call was coming from inside your repo. The failures that stay in: rebuilding inside your own project doesn't isolate anything (your real `_config.yml`, plugins, and data still load), so the minimal build only proves something when it uses its own source and config; and 'reproduces on my machine' isn't a report until you pin the exact theme commit SHA the maintainer can check out, because a repro against a moving `main` is a repro against nothing."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/self-operating-website-08-the-cartographer/
+    source_title: "The Self-Operating Website 08: The Cartographer (product vs platform bug triage)"
+    fingerprint: 9d46582745c2
