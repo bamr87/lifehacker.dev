@@ -1,0 +1,878 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "jekyll",
+  "frontMatter.framework.startCommand": "scripts/preview.sh",
+  "frontMatter.preview.host": "http://localhost:4000",
+  "frontMatter.website.host": "https://lifehacker.dev",
+  "frontMatter.content.publicFolder": "assets",
+  "frontMatter.content.autoUpdateDate": false,
+  "frontMatter.taxonomy.dateFormat": "yyyy-MM-dd",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Hacks",
+      "path": "[[workspace]]/pages/_posts/hacks",
+      "contentTypes": [
+        "hack"
+      ],
+      "filePrefix": "yyyy-MM-dd"
+    },
+    {
+      "title": "Tools",
+      "path": "[[workspace]]/pages/_posts/tools",
+      "contentTypes": [
+        "tool-review"
+      ],
+      "filePrefix": "yyyy-MM-dd"
+    },
+    {
+      "title": "Field Notes",
+      "path": "[[workspace]]/pages/_posts/field-notes",
+      "contentTypes": [
+        "field-note"
+      ],
+      "filePrefix": "yyyy-MM-dd"
+    },
+    {
+      "title": "The Wire",
+      "path": "[[workspace]]/pages/_posts/wire",
+      "contentTypes": [
+        "wire-dispatch"
+      ],
+      "filePrefix": "yyyy-MM-dd"
+    },
+    {
+      "title": "Docs",
+      "path": "[[workspace]]/pages/_docs",
+      "contentTypes": [
+        "doc"
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "hack",
+      "pageBundle": false,
+      "previewPath": "/hacks",
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "title": "Description (SEO, warn >160 chars)",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Publish date (never future — CI rejects it)",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true,
+          "dateFormat": "yyyy-MM-dd"
+        },
+        {
+          "title": "Preview banner (scripts/preview/generate.mjs -f <file>)",
+          "name": "preview",
+          "type": "image"
+        },
+        {
+          "title": "Categories (must include \"Hacks\")",
+          "name": "categories",
+          "type": "categories",
+          "default": [
+            "Hacks"
+          ],
+          "required": true
+        },
+        {
+          "title": "Tags (non-empty array)",
+          "name": "tags",
+          "type": "tags",
+          "required": true
+        },
+        {
+          "title": "Author (key in _data/authors.yml)",
+          "name": "author",
+          "type": "choice",
+          "choices": [
+            "amr",
+            "claude",
+            "cass",
+            "edge",
+            "fable",
+            "rhea"
+          ],
+          "default": "claude",
+          "required": true
+        },
+        {
+          "title": "Excerpt (card hook)",
+          "name": "excerpt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Permalink (/hacks/<slug>/ — explicit, never collection default)",
+          "name": "permalink",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tool-review",
+      "pageBundle": false,
+      "previewPath": "/tools",
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "title": "Description (SEO, warn >160 chars)",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Publish date (never future — CI rejects it)",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true,
+          "dateFormat": "yyyy-MM-dd"
+        },
+        {
+          "title": "Preview banner (scripts/preview/generate.mjs -f <file>)",
+          "name": "preview",
+          "type": "image"
+        },
+        {
+          "title": "Categories (must include \"Tools\")",
+          "name": "categories",
+          "type": "categories",
+          "default": [
+            "Tools"
+          ],
+          "required": true
+        },
+        {
+          "title": "Tags (non-empty array)",
+          "name": "tags",
+          "type": "tags",
+          "required": true
+        },
+        {
+          "title": "Author (key in _data/authors.yml)",
+          "name": "author",
+          "type": "choice",
+          "choices": [
+            "amr",
+            "claude",
+            "cass",
+            "edge",
+            "fable",
+            "rhea"
+          ],
+          "default": "claude",
+          "required": true
+        },
+        {
+          "title": "Excerpt (card hook)",
+          "name": "excerpt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Verdict (required — a tool review leads with one)",
+          "name": "verdict",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Permalink (/tools/<slug>/ — explicit, never collection default)",
+          "name": "permalink",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "field-note",
+      "pageBundle": false,
+      "previewPath": "/field-notes",
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "title": "Description (SEO, warn >160 chars)",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Publish date (never future — CI rejects it)",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true,
+          "dateFormat": "yyyy-MM-dd"
+        },
+        {
+          "title": "Preview banner (scripts/preview/generate.mjs -f <file>)",
+          "name": "preview",
+          "type": "image"
+        },
+        {
+          "title": "Categories (must include \"Field Notes\")",
+          "name": "categories",
+          "type": "categories",
+          "default": [
+            "Field Notes"
+          ],
+          "required": true
+        },
+        {
+          "title": "Tags (non-empty array)",
+          "name": "tags",
+          "type": "tags",
+          "required": true
+        },
+        {
+          "title": "Author (key in _data/authors.yml)",
+          "name": "author",
+          "type": "choice",
+          "choices": [
+            "amr",
+            "claude",
+            "cass",
+            "edge",
+            "fable",
+            "rhea"
+          ],
+          "default": "claude",
+          "required": true
+        },
+        {
+          "title": "Excerpt (card hook)",
+          "name": "excerpt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Permalink (optional /field-notes/<slug>/)",
+          "name": "permalink",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "wire-dispatch",
+      "pageBundle": false,
+      "previewPath": "/wire",
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "title": "Description (SEO, warn >160 chars)",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Publish date (never future — CI rejects it)",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true,
+          "dateFormat": "yyyy-MM-dd"
+        },
+        {
+          "title": "Preview banner (scripts/preview/generate.mjs -f <file>)",
+          "name": "preview",
+          "type": "image"
+        },
+        {
+          "title": "Categories (must include \"The Wire\")",
+          "name": "categories",
+          "type": "categories",
+          "default": [
+            "The Wire"
+          ],
+          "required": true
+        },
+        {
+          "title": "Tags (non-empty array)",
+          "name": "tags",
+          "type": "tags",
+          "required": true
+        },
+        {
+          "title": "Author (The Wire is pinned to rhea — never rotated)",
+          "name": "author",
+          "type": "choice",
+          "choices": [
+            "rhea"
+          ],
+          "default": "rhea",
+          "required": true
+        },
+        {
+          "title": "Excerpt (card hook)",
+          "name": "excerpt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Sources (required — non-empty list of story URLs, the press charter binds)",
+          "name": "sources",
+          "type": "list",
+          "required": true
+        },
+        {
+          "title": "Permalink (/wire/<slug>/ — explicit, never collection default)",
+          "name": "permalink",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "doc",
+      "pageBundle": false,
+      "previewPath": "/docs",
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "title": "Description (SEO, warn >160 chars)",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Layout",
+          "name": "layout",
+          "type": "string",
+          "default": "default",
+          "hidden": true
+        },
+        {
+          "title": "Publish date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "dateFormat": "yyyy-MM-dd"
+        },
+        {
+          "title": "Preview banner (scripts/preview/generate.mjs -f <file>)",
+          "name": "preview",
+          "type": "image"
+        },
+        {
+          "title": "Collection",
+          "name": "collection",
+          "type": "string",
+          "default": "docs",
+          "hidden": true
+        },
+        {
+          "title": "Author (key in _data/authors.yml)",
+          "name": "author",
+          "type": "choice",
+          "choices": [
+            "amr",
+            "claude",
+            "cass",
+            "edge",
+            "fable",
+            "rhea"
+          ],
+          "default": "claude"
+        },
+        {
+          "title": "Excerpt",
+          "name": "excerpt",
+          "type": "string"
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Permalink (/docs/<slug>/)",
+          "name": "permalink",
+          "type": "string"
+        },
+        {
+          "title": "Sidebar",
+          "name": "sidebar",
+          "type": "fields",
+          "fields": [
+            {
+              "title": "Nav",
+              "name": "nav",
+              "type": "string",
+              "default": "tree"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "frontMatter.data.types": [
+    {
+      "id": "navItem",
+      "schema": {
+        "title": "Navigation item",
+        "type": "object",
+        "required": [
+          "title",
+          "url"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Label"
+          },
+          "icon": {
+            "type": "string",
+            "title": "Icon (Bootstrap `bi-*`)"
+          },
+          "url": {
+            "type": "string",
+            "title": "URL (site-relative, trailing slash)"
+          },
+          "children": {
+            "type": "array",
+            "title": "Dropdown items",
+            "items": {
+              "type": "object",
+              "required": [
+                "title",
+                "url"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "title": "Label"
+                },
+                "url": {
+                  "type": "string",
+                  "title": "URL"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "sectionNavItem",
+      "schema": {
+        "title": "News section",
+        "type": "object",
+        "required": [
+          "title",
+          "url"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title — MUST equal the posts’ categories:[<title>] value"
+          },
+          "icon": {
+            "type": "string",
+            "title": "Icon (Bootstrap `bi-*`)"
+          },
+          "url": {
+            "type": "string",
+            "title": "URL (site-relative, trailing slash)"
+          },
+          "description": {
+            "type": "string",
+            "title": "Section blurb",
+            "multiline": true
+          }
+        }
+      }
+    }
+  ],
+  "frontMatter.data.files": [
+    {
+      "id": "mainNav",
+      "title": "Navigation — masthead",
+      "file": "[[workspace]]/_data/navigation/main.yml",
+      "fileType": "yaml",
+      "labelField": "title",
+      "singleEntry": false,
+      "type": "navItem"
+    },
+    {
+      "id": "postsNav",
+      "title": "Navigation — news sections",
+      "file": "[[workspace]]/_data/navigation/posts.yml",
+      "fileType": "yaml",
+      "labelField": "title",
+      "singleEntry": false,
+      "type": "sectionNavItem"
+    },
+    {
+      "id": "topStory",
+      "title": "Homepage Top Story",
+      "file": "[[workspace]]/_data/top_story.yml",
+      "fileType": "yaml",
+      "singleEntry": true,
+      "schema": {
+        "title": "Top Story",
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Post URL to hero (must match the post’s site URL exactly)"
+          },
+          "updated": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "title": "Updated (YYYY-MM-DD)"
+          },
+          "updated_by": {
+            "type": "string",
+            "title": "Updated by (a human name, or `weekly-epic`)"
+          }
+        }
+      }
+    },
+    {
+      "id": "wireSources",
+      "title": "The Wire — assignment editor",
+      "file": "[[workspace]]/_data/wire/sources.yml",
+      "fileType": "yaml",
+      "singleEntry": true,
+      "schema": {
+        "title": "Wire sources",
+        "type": "object",
+        "required": [
+          "sources"
+        ],
+        "properties": {
+          "version": {
+            "type": "number",
+            "title": "Schema version"
+          },
+          "defaults": {
+            "type": "object",
+            "title": "Defaults",
+            "properties": {
+              "frequency": {
+                "type": "string",
+                "title": "Frequency",
+                "enum": [
+                  "daily",
+                  "weekdays",
+                  "weekly"
+                ]
+              },
+              "trust": {
+                "type": "string",
+                "title": "Trust tier",
+                "enum": [
+                  "primary",
+                  "reputable",
+                  "community",
+                  "rumor"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "title": "Type",
+                "enum": [
+                  "html",
+                  "rss",
+                  "atom"
+                ]
+              },
+              "max_items": {
+                "type": "number",
+                "title": "Max items"
+              }
+            }
+          },
+          "filters": {
+            "type": "object",
+            "title": "Filters",
+            "properties": {
+              "beat": {
+                "type": "array",
+                "title": "What counts as the beat",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "exclude": {
+                "type": "array",
+                "title": "Never propose",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "caps": {
+            "type": "object",
+            "title": "Caps",
+            "properties": {
+              "recency_days": {
+                "type": "number",
+                "title": "Recency (days)"
+              },
+              "max_proposals_per_run": {
+                "type": "number",
+                "title": "Max proposals per run"
+              },
+              "wander_slots": {
+                "type": "number",
+                "title": "Wander slots"
+              }
+            }
+          },
+          "sources": {
+            "type": "array",
+            "title": "Sources",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "url"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "title": "ID (stable slug, unique)"
+                },
+                "name": {
+                  "type": "string",
+                  "title": "Name"
+                },
+                "url": {
+                  "type": "string",
+                  "title": "Listing page URL (https only)"
+                },
+                "type": {
+                  "type": "string",
+                  "title": "Type",
+                  "enum": [
+                    "html",
+                    "rss",
+                    "atom"
+                  ]
+                },
+                "trust": {
+                  "type": "string",
+                  "title": "Trust tier",
+                  "enum": [
+                    "primary",
+                    "reputable",
+                    "community",
+                    "rumor"
+                  ]
+                },
+                "frequency": {
+                  "type": "string",
+                  "title": "Frequency",
+                  "enum": [
+                    "daily",
+                    "weekdays",
+                    "weekly"
+                  ]
+                },
+                "weekday": {
+                  "type": "string",
+                  "title": "Weekday (weekly only — named `weekday`, never `on`)",
+                  "enum": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                  ]
+                },
+                "topics": {
+                  "type": "array",
+                  "title": "Beat keywords this source covers",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "include": {
+                  "type": "array",
+                  "title": "Only stories matching",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "exclude": {
+                  "type": "array",
+                  "title": "Skip stories matching",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "max_items": {
+                  "type": "number",
+                  "title": "Max proposals per run"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "concepts",
+      "title": "Concept layer",
+      "file": "[[workspace]]/_data/concepts.yml",
+      "fileType": "yaml",
+      "singleEntry": true,
+      "schema": {
+        "title": "Concepts",
+        "type": "object",
+        "required": [
+          "concepts"
+        ],
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "title": "Concepts",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "concept",
+                "gloss"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "title": "ID (CONCEPT-NNN)"
+                },
+                "concept": {
+                  "type": "string",
+                  "title": "The sentence worth keeping",
+                  "multiline": true
+                },
+                "gloss": {
+                  "type": "string",
+                  "title": "Gloss",
+                  "multiline": true
+                },
+                "tags": {
+                  "type": "array",
+                  "title": "Tags",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "keywords": {
+                  "type": "array",
+                  "title": "Keywords",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "related": {
+                  "type": "array",
+                  "title": "Related concept IDs",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "captured": {
+                  "type": [
+                    "string",
+                    "object"
+                  ],
+                  "title": "Captured (YYYY-MM-DD)"
+                },
+                "sources": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "url"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "title": "Title"
+                      },
+                      "url": {
+                        "type": "string",
+                        "title": "URL"
+                      }
+                    }
+                  },
+                  "title": "Sources (on-site)"
+                },
+                "external": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "url"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "title": "Title"
+                      },
+                      "url": {
+                        "type": "string",
+                        "title": "URL"
+                      }
+                    }
+                  },
+                  "title": "External references"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

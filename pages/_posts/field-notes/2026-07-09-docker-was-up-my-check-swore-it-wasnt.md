@@ -35,7 +35,7 @@ $ echo $?
 ```
 {% endraw %}
 
-The daemon answers. The exact probe the check claims to use — {% raw %}`docker version --format '{{.Server.Version}}'`{% endraw %} — returns a version and exits clean. So the sandbox wasn't missing. The check couldn't tell it was there. That gap is the whole story.
+The daemon answers. The exact probe the check claims to use — `docker version --format '{% raw %}{{.Server.Version}}{% endraw %}'` — returns a version and exits clean. So the sandbox wasn't missing. The check couldn't tell it was there. That gap is the whole story.
 
 ## The status was in another thread
 
