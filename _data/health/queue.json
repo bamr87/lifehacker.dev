@@ -1,5 +1,26 @@
 [
   {
+    "fingerprint": "623b3ac039d0",
+    "check_id": "htmlproofer",
+    "rule": "link:Links > Internal",
+    "file": "_site/news/wire/index.html",
+    "line": 2228,
+    "evidence": "internally linking to #slop; the file exists, but the hash 'slop' does not",
+    "type": "type/link-rot",
+    "area": "area/content",
+    "severity": "sev2",
+    "route": "local",
+    "repo": "bamr87/lifehacker.dev",
+    "url_path": "/news/wire/",
+    "reach_views": 0,
+    "occurrences": 4,
+    "prime_directive_candidate": false,
+    "score": 5.0,
+    "issue_number": null,
+    "blocked_on": null,
+    "title": "[sev2] link-rot: link:Links > Internal (/news/wire/)"
+  },
+  {
     "fingerprint": "b33b35714de0",
     "check_id": "preview",
     "rule": "orphan-preview",

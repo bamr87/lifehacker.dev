@@ -1,14 +1,20 @@
-generated_at: '2026-08-17T08:05:55Z'
-queue_size: 9
+generated_at: '2026-08-18T08:03:27Z'
+queue_size: 10
 by_severity:
+  sev2: 1
   sev4: 9
 by_type:
+  type/link-rot: 2
   type/other: 8
-  type/link-rot: 1
 by_route:
-  local: 8
+  local: 9
   upstream: 1
 top:
+- severity: sev2
+  type: type/link-rot
+  title: "[sev2] link-rot: link:Links > Internal (/news/wire/)"
+  score: 5.0
+  repo: bamr87/lifehacker.dev
 - severity: sev4
   type: type/other
   title: "[sev4] other: orphan-preview (assets/images/previews/section-docs.svg)"
