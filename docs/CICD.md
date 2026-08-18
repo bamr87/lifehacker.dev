@@ -75,19 +75,9 @@ Workflows run on `pull_request` (not `pull_request_target`), so secrets are neve
 
 ### Token validity: presence is not validity
 
-**Never write `GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}`.** `||` in an
-Actions expression returns the first **non-empty** operand, not the first *working*
-one. An expired PAT is a perfectly non-empty string, so it wins the `||` and
-`github.token` is never reached — the "degrade to a human-reviewed PR" fallback that
-these lines are usually commented with is unreachable, and an expired secret becomes
-strictly worse than no secret.
+**Never write `GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}`.** `||` in an Actions expression returns the first **non-empty** operand, not the first *working* one. An expired PAT is a perfectly non-empty string, so it wins the `||` and `github.token` is never reached — the "degrade to a human-reviewed PR" fallback that these lines are usually commented with is unreachable, and an expired secret becomes strictly worse than no secret.
 
-This is not hypothetical. When `FLEET_TOKEN` expired around 2026-07-24, it took out
-four workflows at once with two different signatures, and `content-scout` failed for
-**11 consecutive days** (2026-07-25 → 08-04) — each run buying ~10 minutes of agent
-browse, pushing its branch, then 401'ing on `gh pr create` and leaving an orphan
-`scout/*` ref with no PR. 13 orphan branches accumulated before anyone noticed
-(bamr87/bamr87#53).
+This is not hypothetical. When `FLEET_TOKEN` expired around 2026-07-24, it took out four workflows at once with two different signatures, and `content-scout` failed for **11 consecutive days** (2026-07-25 → 08-04) — each run buying ~10 minutes of agent browse, pushing its branch, then 401'ing on `gh pr create` and leaving an orphan `scout/*` ref with no PR. 13 orphan branches accumulated before anyone noticed (bamr87/bamr87#53).
 
 Use the preflight instead, which **probes** the credential and degrades loudly:
 
@@ -103,23 +93,11 @@ steps:
   # every later step now sees a GH_TOKEN that actually authenticates
 ```
 
-It runs `gh api user`, exports `GH_TOKEN` to the rest of the job, and sets the output
-`source` to `fleet` or `default`. On the degraded path it emits
-`::warning::FLEET_TOKEN is set but REJECTED by the API` in the first seconds and the
-run still completes and still opens its PR (for a human, without auto-merge). Worked
-example: `content-scout.yml`. Unit tests: `scripts/ci/test_resolve_gh_token.sh`.
+It runs `gh api user`, exports `GH_TOKEN` to the rest of the job, and sets the output `source` to `fleet` or `default`. On the degraded path it emits `::warning::FLEET_TOKEN is set but REJECTED by the API` in the first seconds and the run still completes and still opens its PR (for a human, without auto-merge). Worked example: `content-scout.yml`. Unit tests: `scripts/ci/test_resolve_gh_token.sh`.
 
-`scripts/ci/lint_tokens.rb` (harness check `tokens`) enforces this. The trap cannot
-be introduced anywhere new — that's an **error** and blocks the gate — while the
-workflows that still carry it from before the check existed are listed in its
-`MIGRATING` array and reported as **warnings**, so the remaining debt is visible on
-every run instead of buried in a PR description. Migrating a workflow means deleting
-its line from `MIGRATING` in the same PR; the check fails if you forget.
+`scripts/ci/lint_tokens.rb` (harness check `tokens`) enforces this. The trap cannot be introduced anywhere new — that's an **error** and blocks the gate — while the workflows that still carry it from before the check existed are listed in its `MIGRATING` array and reported as **warnings**, so the remaining debt is visible on every run instead of buried in a PR description. Migrating a workflow means deleting its line from `MIGRATING` in the same PR; the check fails if you forget.
 
-For `actions/checkout`'s `token:` the same idiom is still wrong but fails *fast*
-(`could not read Username`) rather than silently, and fixing it needs the probe to
-run before checkout — which a repo-local composite action cannot do. Those are
-tracked separately, at warning severity.
+For `actions/checkout`'s `token:` the same idiom is still wrong but fails *fast* (`could not read Username`) rather than silently, and fixing it needs the probe to run before checkout — which a repo-local composite action cannot do. Those are tracked separately, at warning severity.
 
 ## Throughput notes
 
