@@ -33,6 +33,15 @@
 # re-trigger the pipeline), so it stays idle rather than pushing un-revalidated
 # branches. Content-only by construction: merging main in adds only main's
 # already-reviewed commits; it never alters a PR's own contribution.
+#
+# THE GATE CHECKS VALIDITY, NOT JUST PRESENCE. It distinguishes three states:
+# disabled or no token -> idle, green, `go=false`; token set but REJECTED by the
+# API -> the job FAILS with an `::error::` naming expiry/revocation; token live
+# -> `go=true`. The middle case exists because an expired PAT satisfies a
+# presence test perfectly and then dies in `Checkout` with "could not read
+# Username", which names neither the token nor its expiry — that is how this
+# workflow burned 135 doomed runs over 14 days. It fails loudly rather than
+# idling so the fleet's failure-ranked remediation loop can still see it.
 # =============================================================================
 name: auto-update
 
@@ -70,15 +79,32 @@ jobs:
         id: gate
         env:
           ENABLED: ${{ vars.AUTO_UPDATE_ENABLED }}
-          HAS_FLEET_TOKEN: ${{ secrets.FLEET_TOKEN != '' }}
+          FLEET_TOKEN: ${{ secrets.FLEET_TOKEN }}
         run: |
           if [ "$ENABLED" != "true" ]; then
             echo "AUTO_UPDATE_ENABLED != true — auto-update is OFF. Nothing synced."
             echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          if [ "$HAS_FLEET_TOKEN" != "true" ]; then
+          # UNSET token: a deliberate, supported "off" state — idle quietly.
+          if [ -z "$FLEET_TOKEN" ]; then
             echo "no FLEET_TOKEN — a github.token push won't re-trigger the pipeline, so a synced branch would merge un-revalidated. Idle."
             echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          # SET BUT REJECTED token: presence is not validity. An expired PAT
+          # satisfies `-n` exactly as well as a live one, then dies in Checkout
+          # with "could not read Username" — a message that names neither the
+          # token nor its expiry. That is how this workflow burned 135 doomed
+          # runs (55.7m) over 14 days before anyone traced it. One API call
+          # here turns that into one honest failure.
+          #
+          # This FAILS the run rather than idling to `go=false`: the fleet's
+          # remediation loop ranks candidates by standing workflow failures, so
+          # a green-with-an-annotation run would hide the next expiry from the
+          # very system that caught this one. One red run per schedule tick is
+          # the signal; it still skips the checkout, the retries and Ruby setup.
+          if ! GH_TOKEN="$FLEET_TOKEN" gh api "repos/$GITHUB_REPOSITORY" --silent 2>/dev/null; then
+            echo "::error::FLEET_TOKEN is set but rejected by the GitHub API — expired or revoked. Rotate it in this repo's secrets (see the fleet token contract in bamr87/bamr87 _data/fleet.yml; audit with \`dash secrets\`). Failing now instead of burning a doomed checkout every run."
+            exit 1
           fi
           echo "go=true" >> "$GITHUB_OUTPUT"
 

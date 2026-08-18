@@ -24,7 +24,9 @@ One build, four tiers, each gating the next so feedback is fast and the build's 
 ```
 TIER 1  fast         ── ruby scripts/devops/audit.rb   (pipeline wiring + guardrails)
         (no build,      ruby scripts/sim/simulate.rb   (E2E contract: 15 scenarios)
-         seconds)       └▶ if this is red, stop before paying for a build
+         seconds)       ruby scripts/ci/test_auto_update_gate.rb
+                                                       (auto-update's Gate, executed: 4 token states)
+                        └▶ if this is red, stop before paying for a build
             │
 TIER 2  verify       ── build-overlay (ONCE, continue-on-error)
         REQUIRED        run-all.sh (LH_BUILD_RC carries the build outcome → record_build → harness → aggregate)
@@ -108,7 +110,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
 | `explore.yml` | daily cron, manual | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. Scheduled runs apply; manual runs default to dry-run. |
 | `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
-| `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=backlog` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts, duplicate backlog ids, and any merge that fails `lint_artifacts.rb` → `needs-human`, never pushed. |
+| `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=backlog` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts, duplicate backlog ids, and any merge that fails `lint_artifacts.rb` → `needs-human`, never pushed. Its `Gate` tests the token's **validity**, not merely its presence: a `FLEET_TOKEN` that is set but rejected fails the run with an `::error::` naming expiry, instead of passing the gate and dying in `Checkout` with `could not read Username`. `scripts/ci/test_auto_update_gate.rb` executes that Gate through all four token states in Tier 1. |
 | `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
 
 **The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies every candidate PR's diff and declines (labels `needs-human`) anything touching `deps`/`pipeline`, even if it's labeled `auto:content`. So auto-merge can only ever ship pure content; dependency, pipeline, and workflow changes are **always** human-gated. `scripts/devops/audit.rb` enforces both the per-workflow `*_ENABLED` gates and the smuggle guard, so these invariants fail CI if they regress.
