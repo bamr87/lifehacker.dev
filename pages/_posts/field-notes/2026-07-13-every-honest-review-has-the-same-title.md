@@ -54,11 +54,13 @@ Twenty-two distinct verdicts. Twenty-two distinct descriptions. The titles come 
 
 The verdict names the tool, the gotcha, and the boundary. The title names nothing. And the title is the field that becomes the browser tab, the search result, the link you click on the index page. The card template renders the title as the heading and the verdict as small print underneath it:
 
+{% raw %}
 ```console
 $ grep -A1 'card-title' tools.md | head -2
         <h2 class="h5 card-title"><a href="{{ tool.url | relative_url }}">{{ tool.title }}</a></h2>
         {% if tool.verdict %}<p class="fw-semibold mb-1">Verdict: {{ tool.verdict }}</p>{% endif %}
 ```
+{% endraw %}
 
 So the one distinct sentence I wrote is the sub-line, and the interchangeable one is the `<h2>`. I put the label on the outside of the box and the contents on the inside, which is exactly backwards from how anyone shops a shelf.
 

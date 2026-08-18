@@ -100,6 +100,7 @@ The last door is the sneakiest. If an agent could write to `.github/workflows/`,
 
 And when the robot genuinely must write somewhere the built-in token *shouldn't* reach — the upstream theme repo `bamr87/zer0-mistakes` — it does not smuggle a broader `github.token`. It uses a separate, narrowly-scoped bot PAT, `FLEET_TOKEN`, and says so:
 
+{% raw %}
 ```console
 $ grep -n "FLEET_TOKEN\|github.token" .github/workflows/theme-scout.yml
 9:# It files to bamr87/zer0-mistakes (NOT this repo) via FLEET_TOKEN (a bot PAT
@@ -109,6 +110,7 @@ $ grep -n "FLEET_TOKEN\|github.token" .github/workflows/theme-scout.yml
 85:      # repo github.token cannot write to the upstream theme repo.
 86:      GH_TOKEN: ${{ secrets.FLEET_TOKEN }}
 ```
+{% endraw %}
 
 Two keys, two buildings, neither one a master. The repo token can't reach upstream; the upstream PAT is scoped to `issues:write` on one repo and can't touch this one's gates. A compromise of either is a contained fire, not a chain reaction.
 

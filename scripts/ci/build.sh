@@ -40,8 +40,15 @@ lh_overlay() {
   local dest="$1"
   lh_ensure_theme
   echo "==> building overlay at $dest"
-  rm -rf "$dest"
-  cp -R "$THEME_CACHE" "$dest"
+  # Empty the dir instead of `rm -rf "$dest"`: once the theme's docker compose
+  # has run, $dest/.jekyll-cache is a root-owned volume mountpoint the host
+  # user cannot delete, and the whole-dir rm dies half way — gutting the live
+  # overlay. Keeping the cache dir is also just faster on rebuilds.
+  if [[ -d "$dest" ]]; then
+    find "$dest" -mindepth 1 -maxdepth 1 -not -name '.jekyll-cache' -exec rm -rf {} +
+  fi
+  mkdir -p "$dest"
+  cp -R "$THEME_CACHE/." "$dest/"
   rm -rf "$dest/.git"
   # Re-init an empty repo: the theme Gemfile's `gemspec` shells `git ls-files`,
   # which spams "fatal: not a git repository" on every bundle/jekyll boot otherwise.

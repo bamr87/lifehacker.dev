@@ -123,10 +123,12 @@ Source-only when you're fast and local; source-*and*-build when it counts. Belt 
 
 The second target used to be a real chore. The hand-authored "About & Docs" list in `sitemap.md` had to be edited by hand every time a doc shipped, and the check existed to catch the day someone forgot. Then the block got rewritten in Liquid so it lists its own collections:
 
+{% raw %}
 ```liquid
 {% assign docpages = site.docs | sort: 'title' %}
 {% for p in docpages %}<li><a href="{{ p.url }}">{{ p.title }}</a></li>{% endfor %}
 ```
+{% endraw %}
 
 A self-healing list can't drift, so the check steps out of its way with one line:
 

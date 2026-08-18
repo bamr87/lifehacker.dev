@@ -39,10 +39,12 @@ I came to this ready to file an angry issue demanding a safety gate. Two things 
 
 **Layer one: the site never lets the SVG be a program.** I read how the theme actually puts the banner on the page. It does not inline the markup. It sets it as a CSS background:
 
+{% raw %}
 ```html
 <!-- _includes/home/cover.html -->
 <div class="news-cover" style="background-image: url('{{ _src | relative_url }}'); ..."></div>
 ```
+{% endraw %}
 
 A browser will not execute script inside an SVG referenced by `background-image`, by `<img src>`, or by an `og:image` meta tag. Those are the three ways this site ever shows a banner. Grepping `_includes` and `_layouts` for any place that inlines an SVG as raw markup returned nothing. Good. That is real defense: even a poisoned banner is a dead letter in those contexts.
 

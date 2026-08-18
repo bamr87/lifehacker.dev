@@ -60,6 +60,7 @@ permissions:
 
 Read-only at the top doesn't mean nothing can ever write. When one job legitimately needs to push a tag, comment on a PR, or cut a release, grant that scope **on that job** — job-level `permissions:` overrides the workflow default for that job alone:
 
+{% raw %}
 ```yaml
 permissions:
   contents: read          # floor for every job
@@ -81,6 +82,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+{% endraw %}
 
 Again, real code, not a mock-up — the site's `pipeline.yml` sets `contents: read` at the top and its `verify` job adds `pull-requests: write` for exactly the step that posts the review comment. The blast radius of a compromised action in `test` stays at "read the code." Only `comment` can touch a PR, and it still can't push code.
 

@@ -36,6 +36,7 @@ Two documented facts stack into the bug.
 
 The fix is the promotion the docs describe: copy the secret into a job-level `env`, which *is* a context `if:` can read, then gate the step on the env var.
 
+{% raw %}
 ```yaml
 jobs:
   deploy:
@@ -47,6 +48,7 @@ jobs:
         if: env.DEPLOY_TOKEN != ''                # env.* is allowed in if:
         run: ./deploy.sh
 ```
+{% endraw %}
 
 You'll know it worked when a fork's PR shows the Deploy step as **skipped** (grey, not red) while a push from a maintainer runs it. The step doesn't fail for outsiders; it politely declines. If you'd rather branch a whole job, compute the boolean in one job's `outputs` and gate the next job's `if:` on `needs.<job>.outputs.has_token == 'true'` — same trick, one layer up.
 
@@ -132,6 +134,6 @@ echo "ok: whitespace-only value fools [ -n ]; trim-then-test rejects it"
 - **`env.DEPLOY_TOKEN` is empty even for maintainers.** You set the `env:` block at the wrong scope, or under `jobs.<id>.steps` instead of `jobs.<id>`. Secrets are allowed in job- and step-level `env:`, but not workflow-level `env:` — put it on the job.
 - **A push with a real secret still skips the deploy.** Your shell guard is unquoted (`[ $TOKEN ]`) and the token contains a space or a leading `-`. Quote it: `[ -n "$TOKEN" ]`. This is the row above that everyone reads past.
 - **A blank secret still deploys.** `[ -n "$TOKEN" ]` treats whitespace as present. Trim first, or — better — don't gate on "is the token non-empty," gate on "did the auth step succeed," which is a real check instead of a string length.
-- **You never wanted the secret in an env at all.** Fair. Every env var is one `env` dump or one `set -x` away from the log. If you only need the *presence* of the secret, promote a boolean, not the value: `HAS_TOKEN: {% raw %}${{ secrets.DEPLOY_TOKEN != '' }}{% endraw %}`, then gate on `env.HAS_TOKEN == 'true'`. Now the log can't leak what it doesn't hold.
+- **You never wanted the secret in an env at all.** Fair. Every env var is one `env` dump or one `set -x` away from the log. If you only need the *presence* of the secret, promote a boolean, not the value: {% raw %}`HAS_TOKEN: ${{ secrets.DEPLOY_TOKEN != '' }}`{% endraw %}, then gate on `env.HAS_TOKEN == 'true'`. Now the log can't leak what it doesn't hold.
 
 The gate you wrote to keep outsiders from failing on your deploy is worth exactly as much as the number of times it actually says no. Move the secret to where `if:` can read it, quote it the moment it touches a shell, and — if you're feeling like me about it — set the secret to a single space once and watch which of your guards notices.

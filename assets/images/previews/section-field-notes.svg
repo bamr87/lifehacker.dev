@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img" aria-labelledby="t d" data-generator="trace-bloom-section/1" data-section="field-notes">
 <title id="t">Field Notes</title>
-<desc id="d">Trace Bloom section banner for the Field Notes section of lifehacker.dev. A manhattan lattice probed by two emitters; interference blooms mark where the wavefronts meet. Fallback cover for field notes that carry no banner of their own.</desc>
+<desc id="d">Trace Bloom section banner for lifehacker.dev. A organic lattice probed by two emitters; interference blooms mark where the wavefronts meet. This is the fallback cover for field notes that carry no banner of their own.</desc>
 <style>
 @keyframes tb-breathe{0%,100%{opacity:.68}50%{opacity:1}}
 .bloom{animation:tb-breathe 7s ease-in-out infinite}
@@ -31,9 +31,8 @@
 <rect width="4" height="1" fill="#060d0c" opacity="0.22"/></pattern>
 </defs>
 <rect width="1536" height="1024" fill="url(#bg)"/>
-<path d="M0 0L0 1024M96 0L96 1024M192 0L192 1024M288 0L288 1024M384 0L384 1024M480 0L480 1024M576 0L576 1024M672 0L672 1024M768 0L768 1024M864 0L864 1024M960 0L960 1024M1056 0L1056 1024M1152 0L1152 1024M1248 0L1248 1024M1344 0L1344 1024M1440 0L1440 1024M1536 0L1536 1024M0 0L1536 0M0 96L1536 96M0 192L1536 192M0 288L1536 288M0 384L1536 384M0 480L1536 480M0 576L1536 576M0 672L1536 672M0 768L1536 768M0 864L1536 864M0 960L1536 960M0 1024L1536 1024" stroke="#1d3a36" stroke-width="1.5" fill="none" stroke-opacity="0.95"/>
-<path d="M1056 288L1056 576M1152 288L1152 576M960 384L1248 384M960 480L1248 480" stroke="#2dd4bf" stroke-width="2.6" stroke-opacity="0.85" fill="none" stroke-linecap="round"/>
-<path d="M1248 576L1248 768M1152 672L1440 672" stroke="#fb7185" stroke-width="2.6" stroke-opacity="0.75" fill="none" stroke-linecap="round"/>
+<path d="M0 64C384 20,768 108,1536 64M0 176C384 132,768 220,1536 176M0 288C384 244,768 332,1536 288M0 400C384 356,768 444,1536 400M0 512C384 468,768 556,1536 512M0 624C384 580,768 668,1536 624M0 736C384 692,768 780,1536 736M0 848C384 804,768 892,1536 848M0 960C384 916,768 1004,1536 960M96 0C136 341,56 682,96 1024M272 0C312 341,232 682,272 1024M448 0C488 341,408 682,448 1024M624 0C664 341,584 682,624 1024M800 0C840 341,760 682,800 1024M976 0C1016 341,936 682,976 1024M1152 0C1192 341,1112 682,1152 1024M1328 0C1368 341,1288 682,1328 1024M1504 0C1544 341,1464 682,1504 1024" stroke="#1d3a36" stroke-width="1.5" fill="none" stroke-opacity="0.95"/>
+<path d="M960 384C1040 340,1200 430,1248 480" stroke="#2dd4bf" stroke-width="2.6" stroke-opacity="0.85" fill="none" stroke-linecap="round"/><path d="M1152 672C1230 620,1330 700,1440 672" stroke="#fb7185" stroke-width="2.6" stroke-opacity="0.75" fill="none" stroke-linecap="round"/>
 <circle class="bloom" cx="1120" cy="430" r="270" fill="url(#bc)"/>
 <circle class="bloom" cx="1296" cy="660" r="210" fill="url(#bw)"/>
 <circle cx="1120" cy="430" r="5" fill="#2dd4bf" fill-opacity="0.9"/>
