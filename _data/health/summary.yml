@@ -1,58 +1,65 @@
-generated_at: '2026-08-17T08:05:55Z'
-queue_size: 9
+generated_at: '2026-08-19T08:03:13Z'
+queue_size: 24
 by_severity:
+  sev3: 15
   sev4: 9
 by_type:
+  type/ci-bug: 15
   type/other: 8
   type/link-rot: 1
 by_route:
-  local: 8
+  local: 23
   upstream: 1
 top:
-- severity: sev4
-  type: type/other
-  title: "[sev4] other: orphan-preview (assets/images/previews/section-docs.svg)"
-  score: 0.7
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/agent-review.yml)"
+  score: 1.4
   repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/other
-  title: "[sev4] other: orphan-preview (assets/images/previews/section-field-notes.svg)"
-  score: 0.7
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: checkout-token-presence-fallback (.github/workflows/agent-review.yml)"
+  score: 1.4
   repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/other
-  title: "[sev4] other: orphan-preview (assets/images/previews/section-hacks.svg)"
-  score: 0.7
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/auto-fix.yml)"
+  score: 1.4
   repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/other
-  title: "[sev4] other: orphan-preview (assets/images/previews/section-posts.svg)"
-  score: 0.7
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/auto-update.yml)"
+  score: 1.4
   repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/other
-  title: "[sev4] other: orphan-preview (assets/images/previews/section-tools.svg)"
-  score: 0.7
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/brand-sweep.yml)"
+  score: 1.4
   repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/other
-  title: "[sev4] other: orphan-preview (assets/images/previews/section-wire.svg)"
-  score: 0.7
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/content-factory.yml)"
+  score: 1.4
   repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/other
-  title: "[sev4] other: shared-preview (/posts/2024/06/17/wizard-topples-capitalist-dominance-ingeniously/)"
-  score: 0.7
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/fleet-dispatch.yml)"
+  score: 1.4
   repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/other
-  title: "[sev4] other: shared-preview (/hacks/excel-to-grep-awk-month-end-close/)"
-  score: 0.7
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/loop-tuner.yml)"
+  score: 1.4
   repo: bamr87/lifehacker.dev
-- severity: sev4
-  type: type/link-rot
-  title: "[sev4] link-rot: theme-origin-links-ignored"
-  score: 0.2
-  repo: bamr87/zer0-mistakes
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: checkout-token-presence-fallback (.github/workflows/loop-tuner.yml)"
+  score: 1.4
+  repo: bamr87/lifehacker.dev
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: checkout-token-presence-fallback (.github/workflows/pipeline.yml)"
+  score: 1.4
+  repo: bamr87/lifehacker.dev
 analytics_stale: true
 analytics_generated_at: '1970-01-01T00:00:00Z'
