@@ -43,27 +43,65 @@ end
 #   .github/...       theme repo doc refs leaking from a theme include
 #   /archives/#...    the `news` layout's archive widget links to an /archives/ page
 #                     the theme never ships (issue #337; magazine landing only)
-#   #<subtopic>       the `section` layout's sub-topic sidebar renders JS filter
-#                     anchors <a href="#<tag>" data-section=...> that have no
-#                     scroll target in `grid` style. Scoped to the reused
-#                     per-section pill vocabulary (scripts/news-enrichment.yml) so a
-#                     genuinely broken same-page anchor in prose still fails.
+#   #<subtopic>       the `section` layout's sub-topic sidebar renders one
+#                     <a href="#<tag>" data-section=...> per tag, and in `grid`
+#                     style the layout emits no matching scroll target, so every
+#                     one of them dangles. Derived from the tags we actually
+#                     publish (see SUBTOPIC_ANCHORS) rather than hand-listed: the
+#                     sidebar emits one anchor per tag, so any tag a new post
+#                     coins is a new dangling anchor. The old hardcoded 22-slug
+#                     allowlist could not express that and failed open every time
+#                     a dispatch invented a term — which is exactly how `slop` and
+#                     `writing` from the slop-economy dispatch took `main` red.
+#                     A broken same-page anchor in prose still fails, because its
+#                     fragment will not be one of our published tag slugs.
+#                     RETIRABLE once the theme fix (bamr87/zer0-mistakes#402) is
+#                     in the cached theme clone — it stops emitting these anchors
+#                     entirely for grid/list sections, and this rule goes inert.
 #   #<article-nav>    the theme's `article` layout renders a per-post nav to its
 #                     own sections (comments/giscus block, docs, repo) as
 #                     <a href="#comments"> etc.; when the `section` index renders
 #                     those article partials as cards, the anchors have no scroll
 #                     target on the index page (issue #337, theme-origin). Scoped
 #                     to the exact known set so a real broken prose anchor still fails.
-SECTION_PILLS = %w[
-  shell git ci-cd jekyll docker security web-dev data
-  search files system editor productivity
-  automation ai satire business engineering career
-  models news
-].freeze
+# Every tag we publish, slugified the way Jekyll's `slugify` filter does — which
+# is exactly the set of sub-topic anchors the theme's section sidebar can emit.
+# Read from post front matter so the set maintains itself; a tag coined by a new
+# dispatch is covered the moment the post lands, with nothing to hand-append.
+def published_tag_slugs
+  slugs = Dir.glob(File.join(LH::ROOT, 'pages', '_posts', '**', '*.md')).flat_map do |path|
+    # Explicit UTF-8: File.read otherwise inherits the runner's locale, and a
+    # post with any non-ASCII character raises under a non-UTF-8 default —
+    # which would silently empty this set and take the gate red again.
+    front = File.read(path, encoding: 'UTF-8')[/\A---\s*\n(.*?)^---\s*$/m, 1]
+    next [] unless front
+
+    # Deliberately not YAML.safe_load: front matter here carries dates and the
+    # occasional odd scalar, and a parse error must not take the link check down.
+    block = front[/^tags:\s*\n((?:[ \t]*-[ \t]*.+\n)+)/, 1]
+    inline = front[/^tags:[ \t]*\[(.+?)\]/, 1]
+    if block
+      block.scan(/^[ \t]*-[ \t]*(.+?)[ \t]*$/).flatten
+    elsif inline
+      inline.split(',')
+    else
+      []
+    end
+  end
+  slugs.map { |t| t.to_s.strip.delete('"\'').downcase.gsub(/[^a-z0-9]+/, '-').gsub(/\A-+|-+\z/, '') }
+       .reject(&:empty?).uniq
+rescue StandardError
+  [] # never let tag discovery break the gate; worst case these anchors fail loudly
+end
+
+SUBTOPIC_ANCHORS = published_tag_slugs.freeze
 ARTICLE_NAV_ANCHORS = %w[comments documentation giscus zer0-mistakes].freeze
 IGNORE = [%r{\A//assets/}, %r{\A/news/}, %r{\.github/}, %r{\A/archives/},
-          /\A#(?:#{SECTION_PILLS.map { |p| Regexp.escape(p) }.join('|')})\z/,
           /\A#(?:#{ARTICLE_NAV_ANCHORS.map { |a| Regexp.escape(a) }.join('|')})\z/]
+unless SUBTOPIC_ANCHORS.empty?
+  IGNORE << /\A#(?:#{SUBTOPIC_ANCHORS.map { |p| Regexp.escape(p) }.join('|')})\z/
+end
+IGNORE.freeze
 
 opts = {
   disable_external: true,
