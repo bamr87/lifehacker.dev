@@ -113,7 +113,9 @@ samples = {
   'fm-warn'      => finding(check_id: 'frontmatter',   severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-b.md',  rule: 'description-too-long'),
   'drift'        => finding(check_id: 'drift',         severity: 'error',   file: '_data/backlog.yml',  rule: 'backlog-published-deadlink'),
   'brand-avoid'  => finding(check_id: 'brand',         severity: 'error',   file: 'pages/_posts/hacks/2026-01-01-c.md',  rule: 'avoid-phrase'),
-  'brand-cand'   => finding(check_id: 'brand',         severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-d.md',  rule: 'banned-when-sincere:just')
+  'brand-cand'   => finding(check_id: 'brand',         severity: 'warning', file: 'pages/_posts/hacks/2026-01-01-d.md',  rule: 'banned-when-sincere:just'),
+  'tokens-new'   => finding(check_id: 'tokens',        severity: 'error',   file: '.github/workflows/content-scout.yml', rule: 'gh-token-presence-fallback'),
+  'tokens-debt'  => finding(check_id: 'tokens',        severity: 'warning', file: '.github/workflows/triage.yml',        rule: 'gh-token-presence-fallback')
 }
 tiers = samples.map { |k, f| [k, Triage.build([f]).first && Triage.build([f]).first['severity']] }.to_h
 check('only the build check yields sev1', tiers.select { |_, v| v == 'sev1' }.keys == ['build'], tiers.inspect)
@@ -122,6 +124,10 @@ check('frontmatter missing-key -> sev2', tiers['frontmatter'] == 'sev2')
 check('frontmatter description -> sev4', tiers['fm-warn'] == 'sev4')
 check('drift deadlink -> sev2', tiers['drift'] == 'sev2')
 check('brand avoid-phrase -> sev3, candidate -> sev4', tiers['brand-avoid'] == 'sev3' && tiers['brand-cand'] == 'sev4')
+# A newly-introduced token trap outranks the tracked pre-existing ones, so the
+# migration backlog can never bury a fresh regression (bamr87/bamr87#53).
+check('tokens error -> sev2, tracked warning -> sev3',
+      tiers['tokens-new'] == 'sev2' && tiers['tokens-debt'] == 'sev3', tiers.inspect)
 check('record_build.rb is the canonical sev1 producer',
       LH.read(File.join(LH::ROOT, 'scripts/ci/record_build.rb')) =~ /check_id:\s*'build'.*severity:\s*'error'.*rule:\s*'jekyll-build-failed'/m)
 

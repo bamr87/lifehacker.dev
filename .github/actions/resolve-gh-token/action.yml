@@ -1,0 +1,40 @@
+name: 'Resolve a usable GitHub token'
+description: >-
+  Probe a PAT against the GitHub API and export GH_TOKEN, degrading to
+  github.token when the PAT is missing OR rejected. Replaces the
+  `${{ secrets.X || github.token }}` idiom, which tests emptiness rather than
+  validity and so cannot see an expired token (bamr87/bamr87#53).
+
+inputs:
+  candidate:
+    description: 'Preferred token, e.g. ${{ secrets.FLEET_TOKEN }}. May be empty.'
+    required: false
+    default: ''
+  fallback:
+    description: 'Token to degrade to — normally ${{ github.token }}.'
+    required: true
+  candidate-name:
+    description: 'Name of the candidate secret, used in log lines.'
+    required: false
+    default: 'FLEET_TOKEN'
+  export:
+    description: 'Export the chosen token as GH_TOKEN for subsequent steps.'
+    required: false
+    default: 'true'
+
+outputs:
+  source:
+    description: '`fleet` when the candidate was accepted, `default` when it degraded.'
+    value: ${{ steps.resolve.outputs.source }}
+
+runs:
+  using: composite
+  steps:
+    - id: resolve
+      shell: bash
+      env:
+        CANDIDATE: ${{ inputs.candidate }}
+        FALLBACK: ${{ inputs.fallback }}
+        CANDIDATE_NAME: ${{ inputs.candidate-name }}
+        EXPORT_GH_TOKEN: ${{ inputs.export }}
+      run: bash "${GITHUB_ACTION_PATH}/resolve.sh"
