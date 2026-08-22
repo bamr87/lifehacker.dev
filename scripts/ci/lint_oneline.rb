@@ -46,8 +46,29 @@ end
 done([LH.finding(check_id: 'oneline', severity: 'info', rule: 'tool-missing',
                  evidence: 'tools/unwrap-prose.py not present; skipped')]) unless File.exist?(TOOL)
 
+# With no PATHS the tool defaults to `git ls-files`, which sees only TRACKED
+# markdown — so a brand-new article, doc, or README is invisible to the harness
+# right up until it is staged. That is precisely the local-vs-CI gap this check
+# exists to close, and the most common shape of it here: every content-factory
+# run creates new markdown, runs the harness, sees green, and then goes red in
+# CI, where the file IS tracked. So enumerate the file list ourselves —
+# tracked + untracked-but-not-ignored, i.e. what the commit will actually
+# contain — and pass it explicitly. (The tool is seeded from the bamr87 hub's
+# prose kit; fixing the gap here rather than there keeps that copy in step.)
+def prose_files
+  out, status = Open3.capture2('git', 'ls-files', '-z', '--cached', '--others',
+                               '--exclude-standard', '*.md', '*.markdown',
+                               chdir: LH::ROOT)
+  return [] unless status.success?
+
+  out.split("\0").reject(&:empty?).uniq.sort
+rescue StandardError
+  []   # fall back to the tool's own default set
+end
+
 cmd = ['python3', TOOL, '--check']
 EXCLUDES.each { |e| cmd.push('--exclude', e) }
+cmd.concat(prose_files)
 
 out, status = begin
   Open3.capture2e(*cmd, chdir: LH::ROOT)
