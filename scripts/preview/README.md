@@ -15,14 +15,22 @@ node scripts/preview/generate.mjs --all --force     # re-skin everything
 node scripts/preview/generate.mjs --scene -f <f>    # dump the scene as JSON
 node scripts/preview/build-lab.mjs                  # rebuild docs/preview-lab.html
 ruby scripts/ci/lint_preview.rb                     # the gate
+
+node scripts/preview/illustrate.mjs -f <article.md> # Claude draws the subject, then re-renders
+node scripts/preview/illustrate.mjs --self-test     # the whitelist fixtures (offline)
+node scripts/preview/illustrate.mjs --check         # validate committed motifs (what the gate runs)
 ```
+
+The generator is offline and free. The **illustrator** is the one part that calls a model — once per article, ever, through `scripts/ai/run.sh` (subscription auth, model from `_data/ai.yml illustrator_model`). Its output is committed to `_data/preview/motifs/<slug>.svg`, so every later render is offline again.
 
 | File | Job |
 |---|---|
 | `lib/core.mjs` | Hash, PRNG, value noise, lattices, relaxation, Dijkstra propagation, interference → a scene |
 | `lib/svg.mjs` | Scene → SVG: text metrics, headline fitting, safe-band layout, blooms, the animation contract |
-| `lib/article.mjs` | Front-matter read, slug, section, `preview:` stamp |
+| `lib/motif.mjs` | The illustration contract: parse, whitelist, geometry checks, re-serialize, composite |
+| `lib/article.mjs` | Front-matter read, slug, section, `preview:` stamp, motif load |
 | `generate.mjs` | CLI + the skip/refresh policy |
+| `illustrate.mjs` | The Claude rung: brief → validate → retry → commit the motif → re-render |
 | `build-lab.mjs` | Inlines `lib/` into the interactive explorer |
 
 ## Rules that are not style preferences

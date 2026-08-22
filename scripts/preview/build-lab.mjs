@@ -18,6 +18,10 @@ const ROOT = path.resolve(HERE, '..', '..');
 
 const design = fs.readFileSync(path.join(ROOT, '_data/preview/design.json'), 'utf8');
 const core = fs.readFileSync(path.join(HERE, 'lib/core.mjs'), 'utf8');
+// svg.mjs imports the motif compositor, so the lab has to carry it too — an
+// explorer missing half the renderer is exactly the drift this inlining exists
+// to prevent, even though the lab itself never passes a motif.
+const motif = fs.readFileSync(path.join(HERE, 'lib/motif.mjs'), 'utf8');
 const svg = fs.readFileSync(path.join(HERE, 'lib/svg.mjs'), 'utf8');
 
 /** Flatten an ES module into inline-script scope: drop imports, drop `export`. */
@@ -25,7 +29,7 @@ const inline = (src) => src
   .replace(/^import[\s\S]*?from\s+['"][^'"]+['"];\s*$/gm, '')
   .replace(/^export\s+/gm, '');
 
-const ALGORITHM = `${inline(core)}\n${inline(svg)}`;
+const ALGORITHM = `${inline(core)}\n${inline(motif)}\n${inline(svg)}`;
 
 const HTML = `<!DOCTYPE html>
 <html lang="en">

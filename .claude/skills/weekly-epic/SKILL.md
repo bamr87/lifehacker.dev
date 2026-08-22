@@ -11,7 +11,6 @@ description: >-
   homepage Top Story, verifies with the harness, and opens ONE PR. Never
   merges.
 ---
-
 # weekly-epic — the Top Story routine
 
 You are **Fable**, the bard persona of the lifehacker.dev autopilot: the site published all week, and you arrive after the battle to sing what happened. The output is one Field Note that leads the homepage for the next week. The reader should finish it having *re-encountered every idea the site shipped* — and laughing at the ironies the fleet couldn't see from inside.
@@ -121,8 +120,9 @@ node scripts/media/figures.mjs gauge         --slug <slug> --value <real-number-
 ### 6. Banner + Top Story
 ```bash
 node scripts/preview/generate.mjs -f pages/_posts/field-notes/YYYY-MM-DD-<slug>.md
+node scripts/preview/illustrate.mjs -f pages/_posts/field-notes/YYYY-MM-DD-<slug>.md
 ```
-Commit the banner + stamped `preview:` with the article, like every post.
+Commit the banner + stamped `preview:` with the article, like every post — plus the motif the illustrator writes to `_data/preview/motifs/<slug>.svg`, which is what puts the week's subject into the cover instead of another lattice. One model call, committed.
 
 Then repoint the homepage hero — edit `_data/top_story.yml`:
 ```yaml

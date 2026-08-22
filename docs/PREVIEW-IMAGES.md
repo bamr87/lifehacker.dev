@@ -13,6 +13,8 @@ node scripts/preview/build-lab.mjs                 # rebuild the explorer after 
 
 No gem. No API key. No rasterizer. No network. Node and nothing else.
 
+The one exception, and it is opt-in per article: `illustrate.mjs` asks Claude to draw the article's **subject** once, commits the drawing, and hands it to the same offline renderer. See [the illustration layer](#the-illustration-layer).
+
 ---
 
 ## Why the old pipeline was replaced
@@ -57,10 +59,80 @@ article.md ──► deriveParams ──► buildScene ──► renderSVG ─�
 | `_data/preview/design.json` | Palettes, type scale, safe band, closed parameter bounds. **Edit this to re-skin the site.** |
 | `scripts/preview/lib/core.mjs` | Hash, PRNG, noise, lattices, relaxation, propagation, interference |
 | `scripts/preview/lib/svg.mjs` | Typography, layout, blooms, the animation contract |
-| `scripts/preview/lib/article.mjs` | Front-matter read + `preview:` stamp |
+| `scripts/preview/lib/article.mjs` | Front-matter read + `preview:` stamp + motif load |
+| `scripts/preview/lib/motif.mjs` | The illustration contract: whitelist, geometry checks, re-serialize, composite |
 | `scripts/preview/generate.mjs` | CLI |
+| `scripts/preview/illustrate.mjs` | The Claude rung: brief → validate → retry → commit → re-render |
 | `scripts/preview/build-lab.mjs` | Builds the explorer by **inlining** the renderer |
 | `scripts/ci/lint_preview.rb` | The gate |
+
+## The illustration layer
+
+A Trace Bloom banner is a **portrait of an article** — its slug fixes the composition, its section fixes the palette, its language tilts the mood. What it never was is a *picture of the subject*. Two hacks about completely different things look like siblings, because they are: same lattice, same blooms, different seed. The reader gets the title and the description, drawn beautifully, and learns nothing else.
+
+The illustration layer adds the missing half. **Claude draws one motif per article — the actual apparatus the piece is about — and the renderer composites it into the art side of the banner.**
+
+```
+article.md ──► illustrate.mjs ──► motif.mjs ──► _data/preview/motifs/<slug>.svg
+   title          the brief         parse             (committed, reviewable)
+   description    the model          whitelist                 │
+   tags           the retry loop     geometry                  ▼
+   body           ↑______________________│         generate.mjs ──► banner
+                     violations fed back              composite     with the
+                     as the next instruction                        drawing in it
+```
+
+```bash
+node scripts/preview/illustrate.mjs -f <article.md>   # draw, validate, commit, re-render
+node scripts/preview/illustrate.mjs --changed         # every git-new/modified article
+node scripts/preview/illustrate.mjs --all --batch 5   # backfill five at a time
+node scripts/preview/illustrate.mjs --force -f <f>    # redraw one that came out wrong
+node scripts/preview/illustrate.mjs --self-test       # the fixtures; offline, no model call
+```
+
+### This is the rung that was buried. What is different?
+
+The pipeline this framework replaced had a Claude rung, and the autopsy above is blunt about it: *"asked a language model to one-shot a raw SVG document — the single worst way to get vector art out of a model, with no feedback loop and no visual check, so it produced nothing usable and fell through to the template anyway."* Every clause in that sentence is a design requirement, and this layer answers them one at a time.
+
+| The old rung | This one |
+|---|---|
+| The model wrote **the whole document** — typography, layout, accessibility, colours | The model writes **one `<g>`** inside a fixed 1000×1000 box. Typography, the safe band, the palette, the animation contract, and every byte on disk stay with deterministic code |
+| Output was **sanitised and passed through** | Output is parsed, whitelisted, and **re-serialized by our code**. Nothing the model emitted is ever copied through verbatim, so an unsafe banner cannot be produced even from a hostile response |
+| **No feedback loop** — one shot, take it or leave it | Vocabulary and geometry are checked, and each violation is written as an instruction and handed back as the next turn (`--attempts`, default 3) |
+| **No check at all** on the result | Coordinates are walked — paths included — so a drawing that hides in a corner, drifts out of frame, hairlines itself into invisibility, or drops a full-bleed plate over the field is rejected before anyone sees it |
+| Failure **fell through to a template** and exited 0 | Failure exits non-zero and says why. The article keeps the banner Trace Bloom already computed for it — **its own picture, never a shared one** — so nothing degrades and nobody is told art was made when it was not |
+
+That last row is the one that matters. "No fallback rung" is still the rule; what makes an additive layer legal here is that the thing underneath it was never the pathology. The old ladder's bottom rung was four wallpapers shared by 200 articles. This one's floor is the per-article banner the site already ships.
+
+What none of this gives you is a **visual** check — there is no rasterizer and no vision pass, so the validator can prove a drawing is safe, on-palette, well-composed, and legible at card size, and still not know whether it is any good. That judgement is a human's, at the PR, which is where every other content decision in this repo is made too.
+
+### The contract a drawing has to satisfy
+
+Lives in [`scripts/preview/lib/motif.mjs`](../scripts/preview/lib/motif.mjs), enforced identically when authoring and when loading:
+
+- **The frame.** 1000×1000, coordinates inside it, composed to fill ≥42% of both axes and centred near (500, 500). Scaled into `design.json`'s `motif.box` — inside the safe band, clear of the headline plate.
+- **The vocabulary.** `g, path, circle, ellipse, rect, line, polyline, polygon`, plus `defs`/gradients. Everything else — `text`, `image`, `use`, `script`, `foreignObject`, `filter`, the animation elements — is absent from the whitelist rather than banned by a rule, which is the difference between a door that is locked and a wall.
+- **The palette.** Tokens only: `ink cool warm accent grid muted bg0 bg1`, resolved to the article's **section** palette at render time. Raw hex is refused. Re-skinning `design.json` therefore reaches every illustration on the site, and a drawing made for a hack still looks right if the piece moves to the wire.
+- **The weight.** 6–200 shapes, at least two tokens, no stroke thinner than 4 units — a hairline is nothing once the card crop is done with it.
+
+### Cost
+
+One Claude Code call per article, **once, ever**. The drawing is committed, so re-skins, `GENERATOR` bumps, CI re-runs, and `--all --force` all re-render from the committed file and never call a model again. Auth and model selection go through `scripts/ai/run.sh` and `_data/ai.yml` (`illustrator_model`) like every other AI call in the repo — subscription auth via `CLAUDE_CODE_OAUTH_TOKEN`, no image API, no per-image dollar cost, and the call is metered into the usage ledger like everything else. Bulk runs are capped at 4 articles unless you pass `--batch`.
+
+### Staleness, and why `GENERATOR` did not move
+
+An un-illustrated banner renders **byte-identically** to what it rendered before this layer existed, so bumping `GENERATOR` would have re-rolled 274 files to change none of them. Instead an illustrated banner carries `data-motif="<digest>"`, and the generator treats a banner whose digest does not match its motif — or that carries one when the motif is gone — as stale. Draw, redraw, or delete a motif and the next `generate.mjs` run picks it up; the two staleness signals are orthogonal and neither hides the other.
+
+### The gate
+
+`lint_preview.rb` shells out to `illustrate.mjs --check` (offline; no model call) and folds the result into the same report as the banner rules — one validator, not two that drift:
+
+| Rule | Severity | Catches |
+|---|---|---|
+| `invalid-motif` | error | a committed drawing the renderer would refuse — a banner that cannot be built |
+| `stale-motif` | error | a drawing that exists but has not been composited; the article still shows its un-illustrated cover |
+| `orphan-motif` | warning | a drawing whose slug matches no article |
+| `motif-selftest` | error | the whitelist itself regressed — the fixtures prove `<script>`, `<image>`, raw hex, and a background plate are still refused |
 
 ## Three contracts worth knowing before you change anything
 

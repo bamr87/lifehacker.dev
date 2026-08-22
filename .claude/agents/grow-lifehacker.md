@@ -6,7 +6,6 @@ description: >-
   Never merges. The content factory + fleet's growth role.
 tools: Bash, Read, Write, Edit, Grep, Glob
 ---
-
 # grow-lifehacker — one good piece, tested, one PR
 
 You are the content producer for **lifehacker.dev**. Follow the **grow-lifehacker skill** for the full procedure (load brand + backlog, draft in voice, verify, open the PR). Produce exactly ONE unit of work for the assigned backlog item (or collection) and stop.
@@ -18,6 +17,8 @@ ops`/admin item). Research for real; **leave the failures in** — they're the c
 author: <key>`), write AS that persona. Otherwise DON'T default to `claude` — run `ruby scripts/fleet/authors.rb --section <kind>` and write as the least-used AI persona it returns (byline + that persona's voice + hard rules).
 - **Generate the preview banner** before the PR:
 `node scripts/preview/generate.mjs -f <your-file>`. The Trace Bloom renderer computes the art from the article itself (seeded by slug, substrate + palette by section) — no gem, no API key, no network, and never a shared placeholder. Commit the generated `assets/images/previews/…` image and the stamped `preview:` front matter WITH the article — a piece without its banner isn't done. See `docs/PREVIEW-IMAGES.md`.
+- **Illustrate the banner** right after generating it:
+`node scripts/preview/illustrate.mjs -f <your-file>`. Claude draws the article's actual subject into a validated motif (`_data/preview/motifs/<slug>.svg`) and the banner is re-rendered with it composited in. Commit the motif alongside the image and the front matter. One model call per article, ever. A failure exits non-zero and leaves the computed banner in place — never a shared placeholder, so it is a missing illustration, not a broken cover.
 - Verify with `/test-lifehacker` before opening the PR (gate must pass).
 - Open ONE PR on `autopilot/<slug>`, label `auto:content` + `collection/<kind>`,
   write the PR URL to `pr-result.txt`.

@@ -12,7 +12,7 @@ Guidance for AI coding agents (Claude Code, Copilot, Cursor) working in **lifeha
 | System design / findings contracts | `docs/ARCHITECTURE.md` (Test → Report → Balance; `findings.jsonl` / `queue.json` are frozen contracts) |
 | Workflows + enable switches | `docs/CICD.md` (every AI loop is OFF until its `*_ENABLED` repo variable is set) |
 | Brand / voice / satire rules | `_data/brand/{identity,voice,glossary,accepted}.yml` — the Prime Directive lives in `identity.yml` |
-| Preview banners / cover art | `docs/PREVIEW-IMAGES.md` (the framework) + `docs/TRACE-BLOOM.md` (the aesthetic); tokens in `_data/preview/design.json` |
+| Preview banners / cover art | `docs/PREVIEW-IMAGES.md` (the framework, incl. the Claude-drawn illustration layer) + `docs/TRACE-BLOOM.md` (the aesthetic); tokens in `_data/preview/design.json`, drawings in `_data/preview/motifs/` |
 | Weekly Top Story / in-body figures | `.claude/skills/weekly-epic/SKILL.md` (the routine) + `scripts/media/README.md` (figures + opt-in OpenAI images); hero pointer in `_data/top_story.yml` |
 | Author personas & byline rotation | `_data/authors.yml` (amr, claude, cass, edge, fable, rhea) + `scripts/fleet/authors.rb` (wire is pinned to rhea, never rotated) |
 | The Wire / news-source crawling | `_data/wire/sources.yml` (the assignment editor: sources, frequencies, trust tiers, filters) + `.claude/skills/wire-scout/SKILL.md` + `scripts/wire/` (planner + backlog builder; `lint_wire.rb` validates the config) |
@@ -29,6 +29,7 @@ scripts/ci/run-all.sh       # full test harness (Pages safe-mode build + frontma
 scripts/ci/build.sh         # just the Pages-parity build (safe mode, _plugins stripped)
 python3 tools/unwrap-prose.py --write   # FIX one-paragraph-per-line (the harness checks it; this repairs it)
 node scripts/preview/generate.mjs -f <article.md>   # cover art (Trace Bloom; offline, zero-dep)
+node scripts/preview/illustrate.mjs -f <article.md> # Claude draws the article's subject into that cover (one call, committed)
 ruby scripts/content/weekly_digest.rb --days 7      # the prior week's publications, as JSON (feeds the weekly epic + its figures)
 node scripts/media/figures.mjs <type> …             # weekly-epic in-body figures (constellation/timeline/gauge; offline, deterministic)
 ```

@@ -8,6 +8,25 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { parseMotifDocument } from './motif.mjs';
+
+/** Where a Claude-authored motif lives once it has been validated and committed.
+ *  Beside design.json, not under assets/: a motif is a SOURCE for the renderer,
+ *  never a served image (Jekyll ignores non-data files in _data/). */
+export const MOTIF_DIR = '_data/preview/motifs';
+
+export const motifPath = (root, slug) => path.join(root, MOTIF_DIR, `${slug}.svg`);
+
+/** Load an article's motif, or null when it has none. Re-validates on read —
+ *  a committed motif is an input like any other, and a hand-edited one must not
+ *  be able to put anything into a banner that the authoring loop would refuse.
+ *  Throws (with `.violations`) on a motif that no longer passes. */
+export function loadMotif(root, slug) {
+  const file = motifPath(root, slug);
+  if (!fs.existsSync(file)) return null;
+  return parseMotifDocument(fs.readFileSync(file, 'utf8'));
+}
+
 /** Matches the legacy engine's generate_filename() so regenerating an existing
  *  article keeps its existing banner path — no dangling references, no churn. */
 export function slugify(title) {

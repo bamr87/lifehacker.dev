@@ -22,7 +22,8 @@ import { fileURLToPath } from 'node:url';
 
 import { deriveParams, buildScene } from './lib/core.mjs';
 import { renderSVG, GENERATOR } from './lib/svg.mjs';
-import { readArticle, stampPreview, findMarkdown, slugify } from './lib/article.mjs';
+import { motifStamp } from './lib/motif.mjs';
+import { readArticle, stampPreview, findMarkdown, slugify, loadMotif } from './lib/article.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..', '..');
@@ -83,7 +84,13 @@ function gitChanged() {
       .map((l) => l.slice(3).trim())
       .map((p) => (p.includes(' -> ') ? p.split(' -> ')[1] : p))
       .map((p) => p.replace(/^"|"$/g, ''))
-      .filter((p) => /\.(md|markdown)$/.test(p))
+      // ARTICLES ONLY. Every other markdown in this repo — SKILL.md, the agent
+      // definitions, the docs — carries front matter too, so without this filter
+      // a run that touched an agent file stamps `preview:` into it and paints it
+      // a banner. Both SKILL.md files even derive the same slug, which is the
+      // one-image-many-articles pathology this whole framework exists to stop,
+      // reproduced inside .claude/.
+      .filter((p) => /\.(md|markdown)$/.test(p) && /^pages\//.test(p))
       .map((p) => path.join(ROOT, p))
       .filter((p) => fs.existsSync(p));
   } catch (e) {
@@ -131,13 +138,32 @@ function main() {
     const svgPath = path.join(outAbs, `${article.slug}.svg`);
     const stamp = `${FM_VALUE_PREFIX}/${article.slug}.svg`;
     const current = article.fields.preview || '';
+
+    // The article's ILLUSTRATION, if Claude has drawn one (scripts/preview/
+    // illustrate.mjs). Absent, this renderer behaves exactly as it always has —
+    // the motif is additive, and a failure to load one is loud, never silent.
+    let motif = null;
+    try {
+      motif = loadMotif(ROOT, article.slug);
+    } catch (e) {
+      warn(`${path.relative(ROOT, file)}: motif rejected — ${e.message}`);
+      failed++; continue;
+    }
+
     // "Owns a banner" is about CONTENT, not filename. An article whose stamp
     // already points at <slug>.svg can still be carrying art from a previous
     // generation — that is how the old template output survived a rewrite. Only
     // a file bearing the current generator version counts as up to date.
     const isOwnPath = current === stamp;
-    const ownsBanner = isOwnPath && fs.existsSync(svgPath)
-      && fs.readFileSync(svgPath, 'utf8').includes(`data-generator="${GENERATOR}"`);
+    const existingSvg = fs.existsSync(svgPath) ? fs.readFileSync(svgPath, 'utf8') : '';
+    // A motif that has been drawn, redrawn, or deleted since the banner was
+    // composited makes that banner stale even though the generator version is
+    // unchanged — so illustration churn does not need a GENERATOR bump (which
+    // would needlessly re-roll every un-illustrated banner on the site).
+    const motifCurrent = motif
+      ? existingSvg.includes(`data-motif="${motifStamp(motif)}"`)
+      : !existingSvg.includes('data-motif="');
+    const ownsBanner = isOwnPath && existingSvg.includes(`data-generator="${GENERATOR}"`) && motifCurrent;
     // A SHARED placeholder is the thing we exist to replace; a bespoke image
     // (the grandfathered AI-rendered PNGs, a hand-picked screenshot) is somebody's
     // real work and is left alone unless --force says otherwise.
@@ -168,7 +194,7 @@ function main() {
       made++; continue;
     }
     if (args.dryRun) {
-      log(`[dry run] ${rel} → ${args.outDir}/${article.slug}.svg  (${params.lattice}, seed ${params.seed}, ${params.tone})`);
+      log(`[dry run] ${rel} → ${args.outDir}/${article.slug}.svg  (${params.lattice}, seed ${params.seed}, ${params.tone}${motif ? ', illustrated' : ''})`);
       made++; continue;
     }
 
@@ -177,6 +203,7 @@ function main() {
       date: article.date,
       author: article.author,
       sectionLabel: DESIGN.sections[params.section]?.label,
+      motif,
     }, DESIGN);
 
     try {
@@ -184,7 +211,7 @@ function main() {
       fs.writeFileSync(svgPath, svg + '\n', 'utf8');
       stampPreview(file, stamp);
       made++;
-      log(`✓ ${args.outDir}/${article.slug}.svg  ${params.lattice}/${params.tone} seed ${params.seed} (${(svg.length / 1024).toFixed(1)} kB)`);
+      log(`✓ ${args.outDir}/${article.slug}.svg  ${params.lattice}/${params.tone} seed ${params.seed}${motif ? ` +motif ${motif.digest}` : ''} (${(svg.length / 1024).toFixed(1)} kB)`);
     } catch (e) {
       warn(`${rel}: ${e.message}`); failed++;
     }

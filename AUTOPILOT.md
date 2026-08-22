@@ -34,7 +34,7 @@ or just ask: *"do an autopilot run"* / *"publish the next backlog item"*. The sk
 2. Pick the highest-priority `status: todo` item (or your named topic).
 3. Research it **for real** (run the commands, reproduce the bug).
 4. Draft on-voice into the right collection, under the section's **rotating AI byline** — unless the item pins an `author:`, the writer runs `ruby scripts/fleet/authors.rb --section <kind>` and writes as the least-used persona it returns, so `cass`/`edge` actually get cast instead of everything defaulting to `claude`.
-5. **Generate the preview banner** (`node scripts/preview/generate.mjs -f <file>` — the Trace Bloom generative renderer, offline and deterministic; see `docs/PREVIEW-IMAGES.md`), build locally (`scripts/preview.sh`), screenshot, verify.
+5. **Generate the preview banner** (`node scripts/preview/generate.mjs -f <file>` — the Trace Bloom generative renderer, offline and deterministic; see `docs/PREVIEW-IMAGES.md`), then **illustrate it** (`node scripts/preview/illustrate.mjs -f <file>` — Claude draws the article's subject into the banner, once, and commits the drawing to `_data/preview/motifs/`), build locally (`scripts/preview.sh`), screenshot, verify.
 6. Open a PR on a branch (article + preview image + stamped `preview:`) and flip the backlog item to `done`. Then stop.
 
 You review the PR and merge. GitHub Pages deploys `main` automatically.
