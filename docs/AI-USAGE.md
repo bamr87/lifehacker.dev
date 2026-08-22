@@ -105,5 +105,7 @@ hand-added metering steps; the audit turns that into a red build with a pointer 
 `claude-code-action`, which doesn't write `pr-result.txt`; its spend is metered at workflow level but not attributed to the PR it opened.
 - **Comment race** — two AI jobs finishing simultaneously on one PR can lose a
   comment update to the race; the ledger reconciles the truth nightly.
-- **Preview-image renderer** — no longer a cost line at all. `scripts/preview/generate.mjs`
+- **Preview-image renderer** — still not a cost line. `scripts/preview/generate.mjs`
 (Trace Bloom) computes cover art locally with no model call and no third-party render API, so it bills nobody. The retired pipeline's raster providers (OpenAI et al.) are gone with it; see `docs/PREVIEW-IMAGES.md`.
+- **Preview illustrations** — the one preview cost, and a small one.
+`scripts/preview/illustrate.mjs` calls Claude through `run.sh` (so it is metered like everything else) to draw an article's subject, at most **once per article, ever**: the drawing is committed to `_data/preview/motifs/<slug>.svg` and every later render — re-skins, `GENERATOR` bumps, CI, `--all --force` — reads the file instead of a model. Model is `illustrator_model` in `_data/ai.yml` (deliberately below the default tier); bulk runs cap at 4 articles unless `--batch` says otherwise.

@@ -20,6 +20,13 @@
     "safeBottom": 0.80
   },
 
+  "_comment_motif": "MOTIF BOX. Claude draws the article's subject inside a 1000x1000 frame (scripts/preview/lib/motif.mjs) and the renderer scales it into this box — inside the safe band, in the art half of the canvas, clear of the headline plate (plateWidth 0.56 => x 860). fieldDim damps the lattice blooms so the drawing, not the weather, is the subject; stageOpacity seats it on a soft pool of bg0. Move the box here and every illustrated banner follows on the next regeneration.",
+  "motif": {
+    "box": { "x": 862, "y": 224, "size": 576 },
+    "fieldDim": 0.55,
+    "stageOpacity": 0.62
+  },
+
   "motion": {
     "sweepSeconds": 2.6,
     "buckets": 14,

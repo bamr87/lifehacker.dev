@@ -12,6 +12,7 @@
 //      stops dead under prefers-reduced-motion, resting on the composed frame.
 
 import { mix, clamp } from './core.mjs';
+import { renderMotifLayer, motifStamp } from './motif.mjs';
 
 // Stamped onto every banner's root element. The generator regenerates any file
 // that does not carry the CURRENT version, which is what lets a design change
@@ -137,9 +138,18 @@ export function renderSVG(scene, meta, design) {
   const ruleY = firstBase + (head.lines.length - 1) * lineH + GAP_RULE;
   const bylineY = ruleY + RULE_H + GAP_BYLINE + T.byline.size * 0.5;
 
-  push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d" data-generator="${GENERATOR}" data-seed="${params.seed}">`);
+  // A MOTIF is the article's subject, drawn by Claude inside a fixed box and
+  // validated by lib/motif.mjs. It is optional and additive: without one this
+  // renderer emits exactly the bytes it always did, which is why adding the
+  // layer did not need a GENERATOR bump. Staleness is tracked separately, by
+  // the digest stamped below (see generate.mjs).
+  const motif = meta.motif || null;
+  const motifLayer = motif ? renderMotifLayer(motif, design, P, { bucket: Math.round(M.buckets * 0.45) }) : null;
+
+  push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d" data-generator="${GENERATOR}" data-seed="${params.seed}"${motif ? ` data-motif="${motifStamp(motif)}"` : ''}>`);
   push(`<title id="t">${esc(meta.title || 'Preview banner')}</title>`);
   push(`<desc id="d">${esc(
+    (motif && motif.concept ? `${motif.concept.replace(/\s+$/, '')} ` : '') +
     `Trace Bloom generative banner for “${meta.title}”. A ${params.lattice} lattice probed by ` +
     `${params.probes} emitters; interference blooms mark where the wavefronts meet. Seed ${params.seed}.`
   )}</desc>`);
@@ -161,9 +171,11 @@ export function renderSVG(scene, meta, design) {
 .sig{animation:tb-sweep .7s cubic-bezier(.2,.7,.3,1) both}
 ${delays.join('')}
 .bloom{animation:tb-breathe ${M.breatheSeconds}s ease-in-out infinite}
-.probe{animation:tb-probe ${(M.breatheSeconds * 0.6).toFixed(1)}s ease-in-out infinite}
+.probe{animation:tb-probe ${(M.breatheSeconds * 0.6).toFixed(1)}s ease-in-out infinite}${motif ? `
+@keyframes tb-motif{from{opacity:.72}to{opacity:1}}
+.motif{animation:tb-motif .9s cubic-bezier(.2,.7,.3,1) both;animation-delay:${(M.sweepSeconds * 0.34).toFixed(2)}s}` : ''}
 @media (prefers-reduced-motion:reduce){
-.sig,.bloom,.probe{animation:none!important;opacity:1!important}
+.sig,.bloom,.probe,.motif{animation:none!important;opacity:1!important}
 }</style>`);
 
   // ---- defs ----------------------------------------------------------------
@@ -192,6 +204,7 @@ ${delays.join('')}
   }
   push(`<pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
 <rect width="4" height="1" fill="${P.bg0}" opacity="0.22"/></pattern>`);
+  if (motifLayer) push(motifLayer.defs);
   push('</defs>');
 
   push(`<rect width="${w}" height="${h}" fill="url(#bg)"/>`);
@@ -231,6 +244,11 @@ ${delays.join('')}
   }
 
   // ---- blooms --------------------------------------------------------------
+  // With a motif in the frame the blooms stop being the subject and become
+  // weather. Left at full strength they compete with the drawing for the same
+  // eye, and the article's own picture loses.
+  const bloomDim = motif ? (design.motif?.fieldDim ?? 0.55) : 1;
+  if (motif) push(`<g opacity="${bloomDim}">`);
   for (const b of scene.blooms) {
     push(`<circle class="sig bloom b${b.bucket}" cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#${b.sign > 0 ? 'bc' : 'bw'})"/>`);
   }
@@ -238,6 +256,8 @@ ${delays.join('')}
     const col = b.sign > 0 ? P.cool : P.warm;
     push(`<circle class="sig b${b.bucket}" cx="${b.x}" cy="${b.y}" r="${Math.max(3, b.r * 0.07).toFixed(1)}" fill="${col}" fill-opacity="0.9"/>`);
   }
+
+  if (motif) push('</g>');
 
   // ---- probes --------------------------------------------------------------
   for (const p of scene.probes) {
@@ -248,6 +268,12 @@ ${delays.join('')}
     const o = scene.observer;
     push(`<g class="sig b${M.buckets - 1}" opacity="0.6"><circle cx="${o.x}" cy="${o.y}" r="26" fill="none" stroke="${P.muted}" stroke-width="1.6" stroke-dasharray="5 7"/><circle cx="${o.x}" cy="${o.y}" r="3" fill="${P.muted}"/></g>`);
   }
+
+  // ---- the motif -----------------------------------------------------------
+  // Above the field (it is the subject) and BELOW the scrims (so the same scan
+  // lines, floor, and headline scrim fall across it — an illustration pasted on
+  // top of the grain reads as a sticker, not as part of the picture).
+  if (motifLayer) push(motifLayer.layer);
 
   // ---- scrims + grain ------------------------------------------------------
   push(`<rect width="${w}" height="${h}" fill="url(#scan)" opacity="0.5"/>`);

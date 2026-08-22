@@ -23,6 +23,14 @@ model: claude-opus-4-8
 # cheaper single-shot fallback). Defaults to `model` when unset.
 fallback_model: claude-opus-4-8
 
+# The model that DRAWS preview illustrations (scripts/preview/illustrate.mjs).
+# Deliberately not the default model: a motif is a bounded drawing task with a
+# validator and a retry loop behind it, so the cheapest model that draws well
+# enough is the right one — and it is called at most once per article, ever,
+# because the drawing is committed. Drop it to claude-haiku-4-5 to spend less;
+# raise it to the default model when a section's art is not landing.
+illustrator_model: claude-sonnet-4-6
+
 # Per-call output ceiling for the API fallback.
 max_tokens: 8000
 

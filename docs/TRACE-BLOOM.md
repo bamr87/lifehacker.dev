@@ -2,7 +2,7 @@
 
 **An algorithmic philosophy for lifehacker.dev cover art.**
 
-Movement: *Trace Bloom* · Substrate, probe, propagation, interference, decay. Implementation: `scripts/preview/` · Explorer: `docs/preview-lab.html`
+Movement: *Trace Bloom* · Substrate, probe, propagation, interference, decay — and, since 2026-08, a drawn **motif** (see the amendment below). Implementation: `scripts/preview/` · Explorer: `docs/preview-lab.html`
 
 ---
 
@@ -19,6 +19,25 @@ Decay is the moral of the piece and it must be tuned by someone who has stared a
 Nothing here is a template and nothing here repeats. The seed is derived from the article's own identity, so a given piece of writing has exactly one portrait and will regenerate to it byte-for-byte forever, while no two pieces of writing ever collide. Reproducibility is not a convenience for the build system, it is a promise to the reader: this image belongs to this article and to no other. But the algorithm must earn that promise at every seed. A generative system is only as good as its worst output, so the parameter space must be closed — bounded such that there is no seed in it that produces a bad frame. That closure is reached the way it is always reached: by running the thing thousands of times, watching where it goes ugly, and tightening the bounds until the ugly regions are outside the space. Countless iterations, deep computational expertise, and the refusal to ship a range you have not personally swept.
 
 And finally, motion, because a trace is a thing that *happens*. The signal sweeps the lattice once, blooms at the interference nodes, and decays — a single legible pulse rather than a loop of ambient wiggling. Animation here is diagrammatic, not decorative: it shows propagation order, which is information. It respects the reader who asked their operating system to stop moving things, and it must remain a complete, balanced, gallery-quality composition at rest, because the still frame is what ships to the card, the feed, and the share preview. Anything that only works while it is moving has failed. The moving version is a gift; the frozen version is the work.
+
+---
+
+## Amendment: the motif (2026-08)
+
+The manifesto above says, in as many words, that *a banner under this philosophy is not a picture of a Dockerfile.* That sentence is now half wrong, and it is worth saying which half.
+
+The readout stands. What was actually failing was the other half of the promise: a readout is only legible to someone who knows what was instrumented. Every banner said "a signal passed through a lattice"; none of them said **through what**. Two articles that share nothing but a section arrived looking like siblings, because under the philosophy they *are* siblings — same substrate, same physics, different seed. The reader got the headline and a beautiful proof that the machine had been running. That is a readout of the system with the subject cropped out of frame.
+
+So the composition is now two things, and the split is the same one the whole framework is built on. **The field remains the evidence** — substrate, probes, propagation, interference, decay, unchanged, still derived from the article, still closed, still the thing the eye reads as texture. **The motif is the subject**: one flat vector drawing of the apparatus the article is actually about, drawn by Claude inside a fixed box, and seated in the art half over a damped field. The blooms drop back to weather when a motif is present, because with a subject in frame they are no longer the subject.
+
+The rules the drawing inherits are the ones that were never negotiable:
+
+- **It is drawn in tokens, not colours.** A motif paints only in `ink cool warm accent grid muted bg0 bg1`, resolved against the article's section palette at render time. The colorway still belongs to the section, not to the illustrator.
+- **It never touches type, the safe band, or the animation contract.** Those stay with deterministic code, which is what "the parameter space must be closed" means when a model is in the room: bound what it can do, not what it should do.
+- **Frame 0 is still the work.** The motif joins the same sweep, in its own bucket, and rests complete.
+- **One article, one drawing, forever.** The motif is committed beside the design tokens. The promise that this image belongs to this article and no other now covers the half a seed could never guarantee: the subject.
+
+The observer probe is untouched. A machine that instruments itself and publishes the readout can also, it turns out, draw what it was looking at.
 
 ---
 

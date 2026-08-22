@@ -13,6 +13,10 @@
 #   unsafe-svg             script / foreignObject / external ref smuggled into art
 #   preview-outside-safe-band  type that the homepage's 120px card crop cuts off
 #   orphan-preview         art on disk that nothing references
+#   invalid-motif          a committed illustration the renderer would refuse
+#   stale-motif            an illustration that has not been composited yet
+#   orphan-motif           an illustration no article's slug claims
+#   motif-selftest         the illustration whitelist itself has regressed
 #
 # Stdlib only. Run: ruby scripts/ci/lint_preview.rb
 # =============================================================================
@@ -188,6 +192,42 @@ Dir.glob(File.join(LH::ROOT, FIGURES_DIR, '**', '*.{svg,png,jpg,jpeg,webp}')).so
                          rule: 'orphan-figure', file: rel,
                          evidence: 'figure art referenced by no article body — regenerate the epic that ' \
                                    'owns it or delete the file (its digest.json/.prompt.json sidecars go with it)')
+end
+
+# ── 4. the illustration layer (Claude-authored motifs) ───────────────────────
+# A motif (_data/preview/motifs/<slug>.svg) is a committed INPUT to the renderer,
+# so it is gated like the art it becomes part of: invalid ones cannot be
+# composited, orphans are drawings nothing shows, and a motif whose banner has
+# not been re-rendered means the article is still wearing its un-illustrated
+# cover. The validator itself lives in JS — it is the same code the authoring
+# loop rejects a drawing with (scripts/preview/lib/motif.mjs), and two
+# implementations of a whitelist is one implementation too many — so this shells
+# out for the findings and folds them into this report.
+motif_json =
+  begin
+    IO.popen(['node', File.join(LH::ROOT, 'scripts/preview/illustrate.mjs'), '--check'],
+             err: File::NULL, &:read)
+  rescue Errno::ENOENT, IOError, SystemCallError
+    nil
+  end
+
+if motif_json.nil?
+  findings << LH.finding(check_id: 'preview', severity: 'info', rule: 'motif-check-skipped',
+                         file: 'scripts/preview/illustrate.mjs',
+                         evidence: 'node is not on PATH, so the motif validator and its self-test did not run')
+else
+  parsed = (JSON.parse(motif_json) rescue nil)
+  if parsed.is_a?(Array)
+    parsed.each do |f|
+      findings << LH.finding(check_id: 'preview', severity: f['severity'] || 'error',
+                             rule: f['rule'], file: f['file'], evidence: f['evidence'])
+    end
+  else
+    findings << LH.finding(check_id: 'preview', severity: 'warning', rule: 'motif-check-failed',
+                           file: 'scripts/preview/illustrate.mjs',
+                           evidence: 'the motif validator produced no findings JSON — run ' \
+                                     '`node scripts/preview/illustrate.mjs --check` to see why')
+  end
 end
 
 errs = LH.write('preview', findings)

@@ -14,6 +14,11 @@
 #
 #   node scripts/preview/generate.mjs -f <article.md>
 #
+# A Claude rung DOES exist again, but as an additive layer rather than a rung in
+# a ladder: scripts/preview/illustrate.mjs has Claude draw the article's subject
+# into a validated motif, and a failure there is loud and leaves the computed
+# banner in place. It is never reached by this shim — call it directly.
+#
 # This shim stays because the workflow prompt, the grow-lifehacker skill, and a
 # lot of muscle memory all call the old path. It forwards the flags that still
 # mean something and drops the ones that described renderers that no longer
