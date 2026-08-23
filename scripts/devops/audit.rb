@@ -97,9 +97,14 @@ if File.exist?(cr_path)
   add(findings, 'error', 'ai-metering', 'claude-run composite lacks the usage_report post-step — records would never be published') unless cr.include?('usage_report')
 end
 wf_read.each do |name, c|
-  needs_report = c.include?('claude-code-action') || c =~ %r{scripts/ai/run\.sh}
+  # Judge the STEPS, not the prose: a comment that merely names the runner (or
+  # the metering) is documentation, and reading it as wiring costs a false red
+  # in both directions — an alarm for a workflow that only mentions run.sh, and
+  # silence for one whose metering step was demoted to a comment.
+  code = c.lines.reject { |l| l =~ /^\s*#/ }.join
+  needs_report = code.include?('claude-code-action') || code =~ %r{scripts/ai/run\.sh}
   next unless needs_report
-  add(findings, 'error', 'ai-metering', "#{name} runs a model outside claude-run but has no usage_report step — its spend is unmetered (re-add the metering steps; see docs/AI-USAGE.md)") unless c.include?('usage_report')
+  add(findings, 'error', 'ai-metering', "#{name} runs a model outside claude-run but has no usage_report step — its spend is unmetered (re-add the metering steps; see docs/AI-USAGE.md)") unless code.include?('usage_report')
 end
 add(findings, 'warn', 'ai-metering', '_data/ai_pricing.yml is missing — API-fallback records cannot be estimated') unless File.exist?(File.join(LH::ROOT, '_data/ai_pricing.yml'))
 

@@ -81,6 +81,18 @@ module AIUsage
     'none'
   end
 
+  # One safe, bounded line out of a model-supplied error string: credentials
+  # masked, whitespace collapsed, length capped. These records ship as build
+  # artifacts and land in the public ledger, so nothing verbatim goes in.
+  MAX_ERROR_CHARS = 500
+  def scrub(text)
+    text.to_s
+        .gsub(/sk-ant-[A-Za-z0-9_-]{8,}/, 'sk-ant-***')
+        .gsub(/\s+/, ' ')
+        .strip[0, MAX_ERROR_CHARS]
+        .to_s
+  end
+
   def ci_context
     {
       'repo'        => ENV['GITHUB_REPOSITORY'].to_s,
@@ -129,6 +141,16 @@ module AIUsage
     rec['duration_ms'] = res['duration_ms']
     rec['num_turns']   = res['num_turns']
     rec['session_id']  = res['session_id']
+    # WHY it failed, not just that it did. A rejected call reports zero tokens
+    # and an empty model, so without this the record is indistinguishable from
+    # any other dead run and the caller's evidence is already gone.
+    if rec['status'] == 'error'
+      rec['error'] = {
+        'subtype'   => res['subtype'].to_s,
+        'exit_code' => exit_code.to_i,
+        'message'   => scrub(res['result'] || res['error'])
+      }
+    end
 
     usage = res['usage'] || {}
     rec['tokens'] = {
@@ -276,6 +298,7 @@ if __FILE__ == $PROGRAM_NAME
     end
     rec = AIUsage.append(AIUsage.from_claude_result(res, agent: agent, exit_code: rc))
     warn "[usage] recorded #{rec['id']}: #{rec['model']} $#{format('%.4f', rec['cost_usd'])} (#{rec['tokens']['output']} out tok, #{rec['status']})"
+    warn "[usage] failure: #{[rec['error']['subtype'], rec['error']['message']].reject { |v| v.to_s.empty? }.join(' — ')}" if rec['error']
     # Emit the result text only on success — on error the caller falls back to
     # the API path, and emitting here would double the output it produces.
     print res['result'].to_s if emit && rec['status'] == 'success'
