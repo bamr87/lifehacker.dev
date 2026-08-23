@@ -19,6 +19,16 @@
 #                             Claude API fallback (api_call.rb) can use.
 # Env: LH_AI_FORCE_API=1 (skip Claude Code, go straight to the API),
 #      LH_AI_MODEL (override the model from _data/ai.yml).
+#
+# EXIT CODES — a failed call is never silently green:
+#   0  the call ran, or no AI call was ever attempted (no `claude` on PATH and
+#      no API key: the documented no-op, so a human running a skill locally
+#      without credentials degrades gracefully instead of aborting).
+#   1  the call was ATTEMPTED and FAILED with no usable fallback. The reason the
+#      run gave (auth rejected, quota exhausted, model unavailable) is printed
+#      and, under Actions, raised as a ::error:: annotation. Before this, such a
+#      run exited 0 and the caller only learned of it a step later, as a generic
+#      "no PR was opened", with the evidence already deleted.
 # =============================================================================
 set -uo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -76,7 +86,38 @@ run_claude_code() {
   fi
 }
 
+# `claude -p --output-format json` writes its FAILURE to stdout too: a result
+# payload carrying `subtype` and a `result` message that says what the API
+# refused and why. Pull that out (secrets scrubbed, one line, bounded) so the
+# job log names the cause instead of guessing at it.
+claude_failure_reason() {
+  ruby -rjson -e '
+    raw = (File.read(ARGV[0], encoding: "UTF-8") rescue "")
+    res = (JSON.parse(raw) rescue nil)
+    text = res.is_a?(Hash) ? [res["subtype"], res["result"] || res["error"]].compact.map(&:to_s).reject(&:empty?).join(": ") : raw
+    puts text.to_s.gsub(/sk-ant-[A-Za-z0-9_-]{8,}/, "sk-ant-***").gsub(/\s+/, " ").strip[0, 600].to_s
+  ' "$1" 2>/dev/null
+}
+
+# Name the operator action for the failures that actually recur here. Advisory
+# only — the run's own message is always printed alongside it.
+claude_failure_hint() {
+  case "$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')" in
+    *"usage limit"*|*rate_limit*|*"too many requests"*|*429*)
+      echo "the Claude quota behind this credential is exhausted — wait for the window to reset, or move the lane to a metered ANTHROPIC_API_KEY" ;;
+    *authentication*|*unauthorized*|*"invalid api key"*|*invalid_api_key*|*expired*|*"/login"*|*401*|*403*)
+      echo "the Claude credential was rejected — mint a fresh CLAUDE_CODE_OAUTH_TOKEN with \`claude setup-token\` and update the repo secret" ;;
+    *overloaded*|*529*|*503*|*502*)
+      echo "the API was overloaded — transient; the next scheduled run should recover" ;;
+    *not_found*|*"does not support"*|*"unknown model"*)
+      echo "the model pinned in _data/ai.yml is not available to this credential — check \`model:\` there" ;;
+    *) echo "" ;;
+  esac
+}
+
 # --- Primary: Claude Code ----------------------------------------------------
+primary_failed=0
+reason=""
 if [ "${LH_AI_FORCE_API:-0}" != "1" ] && command -v claude >/dev/null 2>&1; then
   tmp_json="$(mktemp "${TMPDIR:-/tmp}/lh-ai-result.XXXXXX")"
   run_claude_code > "$tmp_json"
@@ -94,20 +135,44 @@ if [ "${LH_AI_FORCE_API:-0}" != "1" ] && command -v claude >/dev/null 2>&1; then
         rm -f "$tmp_json"; exit 0
       fi
     fi
-  else
-    # The run failed, but tokens may still have been spent — record them
-    # (status:error) before falling back. Best-effort, never masks the failure.
-    ruby "$REPO/scripts/ai/usage.rb" ingest-claude "$tmp_json" --agent "$agent" --rc "$rc" >/dev/null 2>&1 || true
   fi
+  # Reaching here means the run failed: a non-zero exit, or an exit-0 payload the
+  # ingester refused (an is_error result, or not a result at all). Tokens may
+  # still have been spent — record them (status:error, with the reason) before
+  # falling back, and no longer swallow the ingester's stderr, because that line
+  # is half the diagnosis. Only the non-zero path ingests here: the exit-0 path
+  # already ran the ingester above, and re-running it would append the record
+  # twice (same stable id, but the step summary and ledger both count rows).
+  primary_failed=1
+  [ "$rc" -ne 0 ] && { ruby "$REPO/scripts/ai/usage.rb" ingest-claude "$tmp_json" --agent "$agent" --rc "$rc" || true; }
+  reason="$(claude_failure_reason "$tmp_json")"
   rm -f "$tmp_json"
-  echo "[ai] Claude Code unavailable/failed — falling back to the Claude API." >&2
+  if [ "$rc" -ne 0 ]; then
+    echo "[ai] Claude Code failed (exit $rc): ${reason:-no result payload — claude produced no JSON}" >&2
+  else
+    echo "[ai] Claude Code exited 0 with an unusable result: ${reason:-no result payload — claude produced no JSON}" >&2
+  fi
+  hint="$(claude_failure_hint "$reason")"
+  [ -n "$hint" ] && echo "[ai] likely cause: $hint" >&2
+  echo "[ai] falling back to the Claude API." >&2
 fi
 
 # --- Fallback: Claude API (single-shot) --------------------------------------
-# The raw API needs an ANTHROPIC_API_KEY. If there's none (OAuth-only auth, or no
-# auth at all), don't hard-abort — no-op cleanly (exit 0), matching the claude-run
-# action's "no auth -> no-op" behavior, so direct callers degrade gracefully.
+# The raw API needs an ANTHROPIC_API_KEY. With none, what decides the exit code
+# is what happened BEFORE this point, not whether a key exists:
+#   * nothing was attempted (no `claude` on PATH, or LH_AI_FORCE_API with no key)
+#     -> the documented no-op, exit 0, so direct callers degrade gracefully.
+#   * the primary path RAN AND FAILED -> exit non-zero. A rejected model call is
+#     a failure, and a green step that produced nothing is how six days of dead
+#     content-factory runs came to read as "no PR was opened (auth? duplicate?
+#     build failure?)" one step downstream.
 if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+  if [ "$primary_failed" -eq 1 ]; then
+    echo "[ai] no ANTHROPIC_API_KEY to fall back to — the AI step failed." >&2
+    [ "${GITHUB_ACTIONS:-}" = "true" ] && \
+      echo "::error::AI step failed${agent:+ (agent: $agent)}: ${reason:-Claude Code produced no result payload}"
+    exit 1
+  fi
   echo "[ai] no ANTHROPIC_API_KEY for the Claude API fallback — skipping (no-op)." >&2
   exit 0
 fi

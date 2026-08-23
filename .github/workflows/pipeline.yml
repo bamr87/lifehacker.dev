@@ -83,6 +83,11 @@ jobs:
       # blind spot that burned 135 doomed runs — see bamr87/bamr87#58.
       - name: auto-update gate contract (validity, not presence)
         run: ruby scripts/ci/test_auto_update_gate.rb
+      # Executes the universal AI runner through a stubbed `claude` (no network,
+      # no credentials). Pins the fix for the silent-no-op blind spot that ran
+      # the content factory dead for six days — see the header of the test.
+      - name: AI runner contract (a rejected call exits non-zero)
+        run: bash scripts/ci/test_ai_runner.sh
       - name: Tier-1 summary
         if: always()
         run: |

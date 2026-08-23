@@ -112,6 +112,14 @@ if ENV['GITHUB_STEP_SUMMARY']
              "| #{fmt_usd.call(r['cost_usd'])}#{r['cost_source'] == 'estimated' ? '*' : ''} | #{r['auth']} |"
   end
   lines << ''
+  # A failed call bills nothing, so it is invisible in the table above — spell
+  # out what the model refused, right where the operator is already looking.
+  records.select { |r| r['error'] }.each do |r|
+    e = r['error']
+    lines << "> ❌ **#{r['agent'].to_s.empty? ? 'AI call' : r['agent']} failed** " \
+             "(`#{e['subtype'].to_s.empty? ? "exit #{e['exit_code']}" : e['subtype']}`): #{e['message']}"
+    lines << ''
+  end
   lines << "**Job total: #{fmt_usd.call(total)}** (API-equivalent#{records.any? { |r| r['cost_source'] == 'estimated' } ? '; * = estimated from _data/ai_pricing.yml' : ''})."
   lines << ''
   File.open(ENV['GITHUB_STEP_SUMMARY'], 'a') { |io| io.puts(lines.join("\n")) }
