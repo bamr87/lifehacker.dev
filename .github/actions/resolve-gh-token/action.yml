@@ -1,17 +1,25 @@
 name: 'Resolve a usable GitHub token'
+# NOTE: every `${{ ... }}` in this file is EVALUATED when the runner loads the
+# manifest — including the ones inside `description:`. `secrets` and `github`
+# are not in scope here, so writing an expression as a prose EXAMPLE fails the
+# whole manifest to load ("Unrecognized named-value: 'secrets'") and takes down
+# every workflow that uses the action. That is not hypothetical: it broke
+# content-scout on every run from 2026-08-19 to 2026-08-24. Name contexts in
+# prose WITHOUT the braces, as below. scripts/devops/audit.rb now fails CI on a
+# templated description in any action manifest.
 description: >-
   Probe a PAT against the GitHub API and export GH_TOKEN, degrading to
   github.token when the PAT is missing OR rejected. Replaces the
-  `${{ secrets.X || github.token }}` idiom, which tests emptiness rather than
+  `secrets.X || github.token` idiom, which tests emptiness rather than
   validity and so cannot see an expired token (bamr87/bamr87#53).
 
 inputs:
   candidate:
-    description: 'Preferred token, e.g. ${{ secrets.FLEET_TOKEN }}. May be empty.'
+    description: 'Preferred token, e.g. secrets.FLEET_TOKEN. May be empty.'
     required: false
     default: ''
   fallback:
-    description: 'Token to degrade to — normally ${{ github.token }}.'
+    description: 'Token to degrade to — normally github.token.'
     required: true
   candidate-name:
     description: 'Name of the candidate secret, used in log lines.'
