@@ -9,6 +9,7 @@
 # or hygiene; info is context. Exit non-zero on any error.
 #   ruby scripts/devops/audit.rb
 # =============================================================================
+require 'yaml'
 require_relative '../ci/_lib'
 
 WF_DIR = File.join(LH::ROOT, '.github', 'workflows')
@@ -95,6 +96,42 @@ cr_path = File.join(LH::ROOT, '.github', 'actions', 'claude-run', 'action.yml')
 if File.exist?(cr_path)
   cr = LH.read(cr_path)
   add(findings, 'error', 'ai-metering', 'claude-run composite lacks the usage_report post-step — records would never be published') unless cr.include?('usage_report')
+end
+
+# --- 1c. Action manifests must not template their own prose (errors) ---------
+# The runner evaluates EVERY `${{ ... }}` in an action.yml when it LOADS the
+# manifest — `description:` included. `secrets` and `github` are out of scope
+# there, so an expression written as a prose example ("replaces the
+# `${{ secrets.X || github.token }}` idiom") fails the whole manifest with
+# "Unrecognized named-value", and every workflow using the action dies at load
+# with no hint that a doc string caused it. resolve-gh-token shipped exactly
+# that on 2026-08-18 and killed content-scout on every run until 2026-08-24 —
+# while its unit tests stayed green, because they exercise resolve.sh and never
+# load the manifest. Name contexts in prose without the braces.
+Dir[File.join(LH::ROOT, '.github', 'actions', '*', 'action.yml')].sort.each do |path|
+  doc = begin
+    YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(LH.read(path)) : YAML.load(LH.read(path))
+  rescue StandardError => e
+    add(findings, 'error', 'action-manifest', "#{File.basename(File.dirname(path))}/action.yml does not parse as YAML (#{e.class}) — the runner cannot load it")
+    next
+  end
+  # Walk every `description:` value in the manifest, at any depth.
+  descriptions = lambda do |node, &blk|
+    case node
+    when Hash
+      node.each do |k, v|
+        blk.call(v) if k.to_s == 'description' && v.is_a?(String)
+        descriptions.call(v, &blk)
+      end
+    when Array then node.each { |v| descriptions.call(v, &blk) }
+    end
+  end
+  descriptions.call(doc) do |text|
+    expr = text[/\$\{\{.*?\}\}/m]
+    next unless expr
+    add(findings, 'error', 'action-manifest',
+        "#{File.basename(File.dirname(path))}/action.yml templates a `description:` (`#{expr.gsub(/\s+/, ' ')}`) — the runner evaluates it at load time and the manifest fails to load; write the context name without the braces")
+  end
 end
 wf_read.each do |name, c|
   # Judge the STEPS, not the prose: a comment that merely names the runner (or
