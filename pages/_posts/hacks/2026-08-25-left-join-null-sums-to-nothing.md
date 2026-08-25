@@ -143,7 +143,7 @@ Grace      40
 Katherine  200
 ```
 
-Back to **four rows**. Dorothy's gone *again* — and this time she took Radia with her, because Radia's only order was a refund. Here's the mechanism, and it's worth burning into memory: the `LEFT JOIN` dutifully produces a Dorothy row with all the `orders` columns set to `NULL`. Then the `WHERE o.status = 'paid'` runs *after* the join and asks, is `NULL` equal to `'paid'`? The answer is `NULL`, which is not true, so the row is discarded. A `WHERE` condition on a right-table column silently converts your `LEFT JOIN` back into an `INNER JOIN`. You wrote `LEFT`; the optimizer heard `INNER`; nobody told you.
+Down to **three rows** — worse than the original crime scene. Dorothy's gone *again*, and this time she took Radia with her, because Radia's only order was a refund. Here's the mechanism, and it's worth burning into memory: the `LEFT JOIN` dutifully produces a Dorothy row with all the `orders` columns set to `NULL`. Then the `WHERE o.status = 'paid'` runs *after* the join and asks, is `NULL` equal to `'paid'`? The answer is `NULL`, which is not true, so the row is discarded. A `WHERE` condition on a right-table column silently converts your `LEFT JOIN` back into an `INNER JOIN`. You wrote `LEFT`; the optimizer heard `INNER`; nobody told you.
 
 The fix is to move the condition into the `ON` clause, where it filters *which order rows get joined* instead of *which result rows survive*:
 
