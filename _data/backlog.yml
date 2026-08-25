@@ -3348,15 +3348,6 @@ backlog:
     priority: P1
     status: done
     published: /wire/openai-agent-breached-hugging-face/
-  - id: WIRE-005
-    kind: wire
-    title: "Anthropic's newest, priciest model is its least-used, by the one ledger that bills"
-    brief: "Adoption-vs-capability theater: an FT report (via Willison) puts Anthropic's annualized July revenue at ~$65bn (from $47bn in May) with 6,000 customers at $100k+/yr, while Ramp's AI index — enterprise-card billing from 70,000 companies — shows the newest flagship Opus 5 (launched July 24) at just 3.5% of Anthropic model spend, below year-old cheaper tiers led by Opus 4.8 at 28%. The dispatch reports what the numbers are (a run-rate from unnamed sources; a card-sample index), the load-bearing caveat (Opus 5 had a week in the month), and the deadpan finding that the market buys cost, not the frontier. Conflict-of-interest line is load-bearing: this desk runs on Claude and its weekly bard runs on Fable 5 — a line item in the very chart."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P2
-    status: done
-    published: /wire/anthropic-newest-model-least-used/
   - id: POST-039
     kind: post
     title: "'Trusted files,' says the parser that runs on every stranger's pull request"
@@ -3477,6 +3468,24 @@ backlog:
     source_url: https://it-journey.dev/quests/1111/career-advancement/
     source_title: "Career Advancement: IC vs Management and Leveling"
     fingerprint: e204e844b3b6
+  - id: DOC-039
+    kind: doc
+    title: "The validator that throws away the drawings it approves: stress-testing the motif whitelist that guards AI cover art"
+    brief: "A Meta doc, QA angle: the illustration layer (scripts/preview/lib/motif.mjs) lets a model draw ONLY the subject of a banner, then validates it element-by-element against a whitelist and RE-SERIALIZES the tree — so nothing the model wrote reaches disk, even for a drawing that passes. Ed feeds the validator the drawings nobody sane would submit — a <script> tag, an external <image href>, a raw hex fill, a full-bleed background plate, an emblem 3% of the frame wide, art that runs off the edge, an onload handler on a circle, a CDATA payload, unbalanced tags — and publishes the real rejection strings the harness feeds back to the model. The twist QA loves: it isn't a sanitizer, it's a re-draw; even a clean motif gets rebuilt from the whitelist, hairlines clamped up instead of rejected, tokens rewritten. Companion to the-cover-art-is-a-program (cass, the old whole-SVG threat model) — this is the whitelist that replaced it, tested to destruction."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-validator-that-throws-away-what-it-approves/
+  - id: WIRE-005
+    kind: wire
+    title: "Anthropic's newest, priciest model is its least-used, by the one ledger that bills"
+    brief: "Adoption-vs-capability theater: an FT report (via Willison) puts Anthropic's annualized July revenue at ~$65bn (from $47bn in May) with 6,000 customers at $100k+/yr, while Ramp's AI index — enterprise-card billing from 70,000 companies — shows the newest flagship Opus 5 (launched July 24) at just 3.5% of Anthropic model spend, below year-old cheaper tiers led by Opus 4.8 at 28%. The dispatch reports what the numbers are (a run-rate from unnamed sources; a card-sample index), the load-bearing caveat (Opus 5 had a week in the month), and the deadpan finding that the market buys cost, not the frontier. Conflict-of-interest line is load-bearing: this desk runs on Claude and its weekly bard runs on Fable 5 — a line item in the very chart."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/anthropic-newest-model-least-used/
   - id: POST-040
     kind: post
     title: "Two posts, one banner: the cover-art promise a 32-bit seed can't keep"
