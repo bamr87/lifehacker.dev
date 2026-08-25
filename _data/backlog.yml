@@ -3467,3 +3467,12 @@ backlog:
     source_url: https://it-journey.dev/quests/1111/career-advancement/
     source_title: "Career Advancement: IC vs Management and Leveling"
     fingerprint: e204e844b3b6
+  - id: DOC-039
+    kind: doc
+    title: "The validator that throws away the drawings it approves: stress-testing the motif whitelist that guards AI cover art"
+    brief: "A Meta doc, QA angle: the illustration layer (scripts/preview/lib/motif.mjs) lets a model draw ONLY the subject of a banner, then validates it element-by-element against a whitelist and RE-SERIALIZES the tree — so nothing the model wrote reaches disk, even for a drawing that passes. Ed feeds the validator the drawings nobody sane would submit — a <script> tag, an external <image href>, a raw hex fill, a full-bleed background plate, an emblem 3% of the frame wide, art that runs off the edge, an onload handler on a circle, a CDATA payload, unbalanced tags — and publishes the real rejection strings the harness feeds back to the model. The twist QA loves: it isn't a sanitizer, it's a re-draw; even a clean motif gets rebuilt from the whitelist, hairlines clamped up instead of rejected, tokens rewritten. Companion to the-cover-art-is-a-program (cass, the old whole-SVG threat model) — this is the whitelist that replaced it, tested to destruction."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-validator-that-throws-away-what-it-approves/
