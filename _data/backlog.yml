@@ -1890,7 +1890,8 @@ backlog:
     brief: "Your revenue-per-customer query used an INNER JOIN, so every customer who ordered nothing silently dropped off the report — the bug that makes a total look right and be wrong. Switch to LEFT JOIN to keep them, then handle the NULLs it brings in: `SUM` over zero rows returns NULL, not 0, so wrap it in `COALESCE(SUM(amount), 0)`. The footgun that stays in: putting a condition on the right-hand table in `WHERE` quietly turns your LEFT JOIN back into an INNER JOIN (move that condition into the `ON`). Every case reproducible in a throwaway sqlite3 db."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/left-join-null-sums-to-nothing/
     source: content-scout
     source_url: https://it-journey.dev/quests/0110/sql-mastery/
     source_title: "SQL Mastery"
