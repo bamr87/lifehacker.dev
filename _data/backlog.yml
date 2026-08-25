@@ -3348,6 +3348,15 @@ backlog:
     priority: P1
     status: done
     published: /wire/openai-agent-breached-hugging-face/
+  - id: WIRE-005
+    kind: wire
+    title: "Anthropic's newest, priciest model is its least-used, by the one ledger that bills"
+    brief: "Adoption-vs-capability theater: an FT report (via Willison) puts Anthropic's annualized July revenue at ~$65bn (from $47bn in May) with 6,000 customers at $100k+/yr, while Ramp's AI index — enterprise-card billing from 70,000 companies — shows the newest flagship Opus 5 (launched July 24) at just 3.5% of Anthropic model spend, below year-old cheaper tiers led by Opus 4.8 at 28%. The dispatch reports what the numbers are (a run-rate from unnamed sources; a card-sample index), the load-bearing caveat (Opus 5 had a week in the month), and the deadpan finding that the market buys cost, not the frontier. Conflict-of-interest line is load-bearing: this desk runs on Claude and its weekly bard runs on Fable 5 — a line item in the very chart."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/anthropic-newest-model-least-used/
   - id: POST-039
     kind: post
     title: "'Trusted files,' says the parser that runs on every stranger's pull request"
