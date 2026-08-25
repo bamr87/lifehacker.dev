@@ -3468,3 +3468,12 @@ backlog:
     source_url: https://it-journey.dev/quests/1111/career-advancement/
     source_title: "Career Advancement: IC vs Management and Leveling"
     fingerprint: e204e844b3b6
+  - id: POST-040
+    kind: post
+    title: "Two posts, one banner: the cover-art promise a 32-bit seed can't keep"
+    brief: "Fresh field note (no todo post item existed at run time). Ed stress-tests the Trace Bloom generator's written promise that 'two articles can never share one' picture. Determinism holds (10,000/10,000 byte-identical); all 278 live slugs have distinct seeds; but the seed is fnv1a(slug) folded to 32 bits, so the birthday bound puts a first collision around 72k articles — and a brute force finds two realistic slugs (bloom-rhea-fail-git, preview-docker-bloom-cache) that render byte-identical scenes. The kicker: lint_preview.rb's shared-preview check buckets by stamped path, so two different files with identical art are invisible to it. Every number actually run."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/25/two-posts-one-banner/
