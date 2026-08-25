@@ -3430,3 +3430,40 @@ backlog:
     source_url: https://it-journey.dev/quests/0101/self-operating-website-08-the-cartographer/
     source_title: "The Self-Operating Website 08: The Cartographer (product vs platform bug triage)"
     fingerprint: 9d46582745c2
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-097
+    kind: hack
+    title: "Split one messy working tree into atomic commits with git add -p (the staging the 'clean commits' sermon skips)"
+    brief: "Everyone preaches 'one logical change per commit,' then a real session leaves a bug fix, a typo, and half a feature tangled across the same files. `git add -p` walks the diff hunk by hunk so you commit them apart: `y`/`n` to stage or skip each hunk, `s` to split one into smaller pieces, `e` to hand-edit exactly which lines go in. You'll know it worked when `git diff --cached` shows only the fix, and `git stash --keep-index` lets you run the tests on precisely what you staged. The failures that stay in: `s` can't split adjacent changed lines with no unchanged line between them — you drop into `e` and edit the patch by hand, and if you miscount the `+`/`-`/context lines the hunk won't apply; and staging half a change can leave a commit that doesn't build, so test the STAGED tree (not your working tree) before you trust that each commit stands on its own."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
+    source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
+    fingerprint: 6c6525eba39c
+  - id: SRC-098
+    kind: tool
+    title: "yamllint: the linter that fails your file for being 81 columns wide while the real bug is a bare 'yes'"
+    brief: "Honest verdict on yamllint: it genuinely catches the YAML that parses wrong before it reaches your build — the `truthy` rule flags bare `on`/`yes`/`no` (the same coercion that turns Norway's `NO` into `false`), and it finds duplicate keys and inconsistent indentation a plain load swallows silently. Worth wiring into CI as `yamllint -c .yamllint .` or the container one-liner `docker run --rm -v \"$PWD\":/data cytopia/yamllint .`. The dealbreakers that stay in: the default profile is puritanical — `line-length` caps at 80 and `document-start` demands a leading `---` — so out of the box it buries the one real problem under a wall of style nags until you add a `.yamllint` to relax them (or start from `extends: relaxed`); and it lints text, not Jekyll, so it reads a post's `---` front matter as a bare document and warns on files that build perfectly. The free alternative when you only care about validity: a two-line `python3 -c 'import yaml,sys; yaml.safe_load(open(sys.argv[1]))'`, which parses but won't judge your style at all."
+    voice: tool-review-honest
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/yaml-configuration/
+    source_title: "YAML Configuration for Jekyll"
+    fingerprint: 306f709c2b9c
+  - id: SRC-099
+    kind: hack
+    title: "Keep a brag document: the plain-text log of what you shipped that beats your memory at review time"
+    brief: "The review-season scramble to remember what you did all year is a losing game against recency bias — you'll list last month's work and forget the fire you put out in March. The fix is a boring append-only file: one line the DAY it happens, git-tracked, each win pinned to a link (the PR, the dashboard, the incident) and phrased as an outcome, not activity. The part that stays in: 'attended 40 meetings' is a diary entry, 'cut deploy time 30% (PR #412)' is evidence — a brag doc full of motion instead of results impresses no one, and the doc written the week before your review is fiction everyone can smell. Certified n00b until it has a number and a link."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/career-advancement/
+    source_title: "Career Advancement: IC vs Management and Leveling"
+    fingerprint: e204e844b3b6
