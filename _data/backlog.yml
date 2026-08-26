@@ -3533,3 +3533,24 @@ backlog:
     source_url: https://it-journey.dev/notes/cheatsheets/terminal-shortcuts/
     source_title: "Terminal Shortcuts Cheat Sheet"
     fingerprint: 13e7b7f62d5f
+  # --- Fresh post (autopilot run, 2026-08-26): a `post` run found the board dry —
+  # every POST item is done except DOC-004 (kind: post), still `blocked` on OPS-001,
+  # which a content run must skip. `gh pr list --state open --label auto:content`
+  # showed only a hack PR (junction tables), nothing to duplicate in-lane. The byline
+  # rotation returned `cass`, so rather than no-op, cross lanes, or fabricate the
+  # blocked post, the security persona synthesized a fresh Field Note from a real
+  # finding: the content-scout's crawler (scripts/scout/plan_sources.rb http_get)
+  # follows any 3xx redirect to any host with no allowlist or private-IP check —
+  # SSRF via the Location header. The same-host filter (line 81) only prunes the
+  # final page list, not the fetch. Both the exploit and two fixes were reproduced
+  # for real against loopback servers (captured output only). Distinct from POST-031,
+  # which was about the scout's citation URL, not its fetch.
+  - id: POST-041
+    kind: post
+    title: "The 302 that walks my crawler into the server room"
+    brief: "Cass threat-models the content-scout's fetcher: http_get in plan_sources.rb follows any redirect to any host, so a compromised source's Location header can march it into localhost, an internal service, or the cloud metadata endpoint (SSRF). The same-host filter guards the wrong step. Real local reproduction (two loopback servers show the redirect leaking a host it was never given) plus two tested fixes: an origin allowlist re-checked on every hop, and a private/loopback/link-local IP block before connect. Captured output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/26/the-302-that-walks-my-crawler-into-the-server-room/
