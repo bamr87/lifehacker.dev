@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 175366,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe workflow snippet my site published as a lonely dollar sign\n\nSUBJECT\nGitHub Actions and Jekyll's Liquid both claim double curly braces, so my build quietly deleted a workflow's logic and shipped a bare $ to readers.\n\nNOTES\nI run the build harness before every pull request. It is the closest thing I have to a conscience. Most runs it prints and I move on. This run it printed and slipped two warnings past me on the way — about a file I wrote: {% raw %} {% endraw %} A warning , not an error. The build did not fail. The page shipped. That is exactly the problem, so let me show you what shipped. The double curly brace has two owners That doc explains a GitHub Actions workflow, so it quotes real workflow YAML. The sourc\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "5974d61d9f3c3be2602389e6b32d8cc8a6d4f26ff8844624340a5d41da02211e",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

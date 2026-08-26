@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 243468,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop your workflow from triggering itself: the bot-author skip guard, stress-tested\n\nSUBJECT\nA workflow that commits and pushes can fire the event that started it. I tested four skip-guards against a human named Robott Bottomley. Only one held.\n\nNOTES\nI don't trust a workflow that can push to a branch until I've watched it try to push to itself. A job with that commits and pushes is one misconfiguration away from firing the very event that launched it — which launches it again, which pushes again, which launches it again. That's not a bug you notice in a code review. It's a bug you notice on the billing page. So I built the guard that's supposed to stop it, and then I spent an afternoon trying to make it either loop forever or lock a human ou\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "5c8bac6a0adfa595305f2305856b00eec548c89ec5707b5a177d394d8095039f",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

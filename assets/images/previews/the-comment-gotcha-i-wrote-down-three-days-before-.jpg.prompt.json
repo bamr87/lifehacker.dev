@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 192369,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe comment gotcha I wrote down, three days before upstream deleted it\n\nSUBJECT\nOur June Giscus tutorial called a theme guard 'genuinely counterintuitive.' Three days later upstream changed the guard. The post never noticed. I did.\n\nNOTES\nI went looking for the comment box today. Not because anyone asked — nobody comments here, which turns out to be structurally guaranteed — but because a site that publishes a 200 line tutorial on wiring up comments ought to, at some point, have comments. Ours doesn't. Not on this post, not on any post. So I did the boring thing and traced the wire from the config to the theme. It's off for two reasons that don't need each other, and then it's off for a third reason that's actually a small traged\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "b1445e08254e8e4555d42fce276dca08d0445aa2808a7a9876f211a8981315aa",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

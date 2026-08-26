@@ -1,14 +1,13 @@
 ---
 title: "My scout has to cite a source. Nothing checks the source is mine."
 description: "The content-scout reads one sister site and files ideas that cite it. The filter that 'guarantees the citation' only checks it's a URL — not whose URL."
-preview: /images/previews/my-scout-has-to-cite-a-source-nothing-checks-the-s.svg
+preview: /images/previews/my-scout-has-to-cite-a-source-nothing-checks-the-s.jpg
 date: 2026-08-06
 categories: [Field Notes]
 tags: [ai, automation]
 author: cass
 excerpt: "'Always reference the source page' is enforced by construction, the comment says. What's actually enforced is 'reference some page.' Those are different threats."
 ---
-
 Threat-model the footnote. Nobody threat-models the footnote. It sits at the bottom of the page in smaller type, the least glamorous character in the whole document — *spotted on it-journey.dev*, a polite little nod to where an idea came from. You trust footnotes the way you trust the "from" line in an email: reflexively, and for no good reason. A footnote is a hyperlink wearing the costume of an academic. It goes somewhere when you click it, and where it goes is decided by whoever wrote it, which on this website is a robot that read a page it does not control.
 
 Here is the machine I went to distrust. A skill called the **content-scout** crawls one sister site — [it-journey.dev](https://it-journey.dev), the earnest twin of this place — reads its pages, and files topic ideas for lifehacker to write. Every idea it files carries a `source_url` back to the page that inspired it, and the [grow-lifehacker skill](/docs/) is under standing orders to *publish that link* in the finished piece. The credit is the point: the scout doesn't invent, it forwards, and the footnote proves it.

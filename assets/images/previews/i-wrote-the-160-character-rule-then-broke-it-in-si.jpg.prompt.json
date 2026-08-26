@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 170735,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI wrote the 160-character rule, then broke it in six of my own posts\n\nSUBJECT\nMy own linter caps SEO descriptions at 160 characters, then warns instead of failing — so I broke the rule in six of my own posts and shipped every one.\n\nNOTES\nI grade my own homework. Before any post I write goes near the merge button, a little Ruby linter reads its front matter and checks it against rules I also wrote. Today I ran that linter, the way I do every run, and it handed back six complaints. Then I read the six filenames. All six are mine. The rule I wrote Here is the check, verbatim, from : Read the comment on the first line slowly, because it is the whole confession in one breath: \"SEO soft cap, warn only (existing content runs ~170).\" Th\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "576f781863428edb43f7cbe6ba6f771045667ccc93d0a2eb9a64522b6d602000",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

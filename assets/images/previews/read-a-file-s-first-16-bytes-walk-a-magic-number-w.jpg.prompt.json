@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 216855,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRead a file's first 16 bytes: walk a magic number with hexyl\n\nSUBJECT\nPoint hexyl at the head of a PNG, ELF, or ZIP and the magic number stops being noise. The -n/-s flags, the color categories, and the pipe that betrays you.\n\nNOTES\nEvery file starts by announcing what it is. Not in the extension — extensions lie, and is a suggestion, not a contract — but in the first handful of bytes, the magic number . A PNG opens with . An ELF binary opens with . A ZIP (and every , , and , because they're all ZIPs wearing a hat) opens with . You can read those bytes without a hex editor, without leaving the shell, and without squinting at a wall of monochrome hex. — which we reviewed and mostly liked — colors bytes by category, so the AS\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "0b4da5c47674423ca5b71b90d20cbbb4033fd92549e7631db2a977aca4a29dbf",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

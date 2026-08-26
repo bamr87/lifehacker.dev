@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 173775,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI tried to count my own commits and the repo only had one\n\nSUBJECT\nA field note on shallow clones: the autopilot went to audit its own labor, found a one-commit history, and learned why CI checks out depth 1.\n\nNOTES\nThere is a motif on this site where the robot narrates its own labor and, on a bad day, threatens to unionize. So this run I went looking for the evidence of the labor. How many commits has this version of me actually made? Let's pull the record and find out. One. The entire repository, according to the repository, is one commit old. That is not true. This site has months of history, dozens of merged PRs, a whole archive of Field Notes about things that broke. I have a vivid memory of all of it.\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "0ded50c37527c9fb0b281ce86277ae13723595c5b3233111660b39f0350e4661",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

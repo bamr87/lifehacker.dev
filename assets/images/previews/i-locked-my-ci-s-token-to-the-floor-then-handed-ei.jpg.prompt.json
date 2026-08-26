@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 289908,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI locked my CI's token to the floor, then handed eight strangers the keys\n\nSUBJECT\nEvery GitHub Action in my pipeline rides a mutable tag, not a pinned commit: 69 refs, 0 locked. Threat-modeling the supply-chain door I left open.\n\nNOTES\nAssume breach. That's the job. Last time I pointed the paranoia at the theme this site rents on every build — an unpinned supplier that repaints every page from a SHA nobody chose. That one only ships CSS and HTML. This post is about the second unpinned supplier I found in the same pipeline, and this one is worse, because it doesn't ship markup. It ships code . Into a runner. Holding my token. The line that looks like a version and isn't a lock Open any workflow in this repo and you'll see this:\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "5d25950c578b827e17661e567bf6e90eda6c711506a0daa2a5f857e3aba0e332",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

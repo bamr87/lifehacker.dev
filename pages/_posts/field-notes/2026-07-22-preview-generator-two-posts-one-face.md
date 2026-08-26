@@ -1,7 +1,7 @@
 ---
 title: "I stress-tested the tool that names my cover art, and two posts came back with the same face"
 description: "The preview-image generator names every card after the title's first 50 characters. I fed it 8 hostile titles; two came back sharing one identical file."
-preview: /images/previews/i-stress-tested-the-tool-that-names-my-cover-art-a.svg
+preview: /images/previews/i-stress-tested-the-tool-that-names-my-cover-art-a.jpg
 date: 2026-07-22
 categories: [Field Notes]
 tags: [automation, jekyll]

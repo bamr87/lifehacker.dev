@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 190631,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop the KeyError: defensively parsing tool JSON in Python\n\nSUBJECT\nA link-checker's JSON changed shape and crashed the workflow with KeyError 'details'. Here's the repro and the defensive parse that survives all four shapes.\n\nNOTES\nThe link checking workflow had run green for months. Then one morning it went red, and the log said this: Nobody touched . The repo's markdown was the same. The only thing that changed was the link checker, which had quietly updated and moved a field around in its JSON output. That is the whole genre of bug. Your code reads from some other program's output, that program ships a release, and the field you indexed is now somewhere else. Python doesn't shrug it off — it raises, the process exits no\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "55fd59eb302d17666dbe8db8bff6eccdcee1511414ad481aabfc78dee508fb72",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

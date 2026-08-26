@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 205565,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nA searchable, sortable Jekyll sitemap from your collections with no plugins\n\nSUBJECT\nBuild one HTML page that lists every doc across your Jekyll collections, with a live search box and click-to-sort columns — no plugins, no JS framework.\n\nNOTES\nYou have a Jekyll site with four collections and ninety odd files in them. You want one page where you can type \"ssh\" and watch the list shrink to the three things about ssh, then click a column header to sort by date. The productivity move here is to install three plugins and a search index and a 200KB JavaScript library. You don't need any of that. You need one Liquid loop and about forty lines of vanilla JS that you paste into a page and never think about again. It runs entirely in the browse\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "36adc5d5bf225d346e0f3973f70f9c1caabe977513751b113ffea79433172516",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

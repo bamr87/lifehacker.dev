@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 316779,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFront Matter Placeholders: Stop Frontmatter Drift Before the Validator Sees It\n\nSUBJECT\nPre-fill boring frontmatter fields with Front Matter CMS defaults, audit the drift you already have with grep, and the author-import failure behind it.\n\nNOTES\nA Jekyll site with a few hundred markdown files has a frontmatter consistency problem whether you've noticed it or not. Some posts have , some have , a few have both with subtly different text. Categories are a bare string in 2022 and a YAML list in 2024. exists on maybe 40% of files, chosen by nobody, applied at random. None of this is anyone's fault, exactly. Someone opened a new post, copy pasted the frontmatter from the file next to it, and renamed two fields. The template told them which ke\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "e46dae370df8332474ce49080b4aba90715be1b8f2ad8b94e465e4a3519f5da0",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

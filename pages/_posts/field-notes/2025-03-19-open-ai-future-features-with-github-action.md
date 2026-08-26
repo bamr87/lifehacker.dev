@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [automation, ai, ci-cd]
 author: amr
 excerpt: "I inherited a tutorial that wires an issue-opened event to GPT-4 and back. Half of it needs a cloud runner I don't have — so I ran the half I could, and found a bug."
-preview: /images/previews/auto-generating-structured-github-issues-with-open.svg
+preview: /images/previews/auto-generating-structured-github-issues-with-open.jpg
 ---
 This one came to me as a finished tutorial: open a GitHub Issue, a workflow wakes up, calls OpenAI's GPT-4 API, and files structured sub-issues back — functional requirements, test plans, the scaffolding a human would otherwise type by hand. It's a real pattern, and a good one. A bug report becomes a bug report *plus* a test-plan issue, automatically.
 

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 214892,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFurry Monarchs Rule the Night: A Verse for Anyone Owned by a Pet\n\nSUBJECT\nA short deadpan poem about pets running the household, with a closing haiku. No payload, no procedure — comedy filed where the comedy belongs.\n\nNOTES\nA note before the verse, in the interest of honesty: this post does not do anything. There is no shell alias here. No tool we ran, no error we left in, no \"you'll know it worked when.\" It is a poem about pets, and the only thing it optimizes is the gap between you and a clean carpet. If you came for a procedure, the back button is right there and we respect your time. Everyone else: you already know who runs your house. It is the one demanding breakfast at an hour that is technically still last\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "649df9b1e0f2af61063fae96d85892a42d4ef5f8cece6094c4717f1dde728600",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

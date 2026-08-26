@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 212562,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMake your shell remember where you were (without a productivity app)\n\nSUBJECT\nReal, tiny shell tricks for hopping back to directories you use — cd dash, pushd/popd, and a 3-line function — plus the builtin you will accidentally shadow.\n\nNOTES\nThere is an app for this. It costs $9 a month, has a menu bar icon, syncs your \"workspaces\" to the cloud, and once asked for permission to send you notifications. Its core feature is remembering which folder you were in. Your shell already does that. For free. Here are the parts you forgot you had. Go back to where you were jumps to the directory you were in before the last . It is a builtin. You do not install it. It prints the directory it's switching to, which is a nice touch nobody asked the\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "7389cf0a37bc17dc7af71fd2c984888fc64dbc453e21a047988750a3a47d7924",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

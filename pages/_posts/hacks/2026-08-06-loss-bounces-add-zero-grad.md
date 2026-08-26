@@ -1,7 +1,7 @@
 ---
 title: "Your loss climbs back up and it isn't the learning rate: the zero_grad() line the loop can't skip"
 description: "PyTorch accumulates gradients on purpose, so a loop missing optimizer.zero_grad() stacks every batch on the last — and no learning rate saves it."
-preview: /images/previews/your-loss-climbs-back-up-and-it-isn-t-the-learning.svg
+preview: /images/previews/your-loss-climbs-back-up-and-it-isn-t-the-learning.jpg
 date: 2026-08-06
 categories: [Hacks]
 tags: [data]

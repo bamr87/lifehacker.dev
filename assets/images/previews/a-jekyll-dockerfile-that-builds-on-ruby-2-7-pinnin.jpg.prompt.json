@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 216919,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nA Jekyll Dockerfile That Builds on Ruby 2.7: Pinning Past the Version Wall\n\nSUBJECT\nStuck on Ruby 2.7 and bundle install keeps demanding 3.0? Here are the Jekyll, Bundler, and nokogiri version pins that build, plus how to read the wall.\n\nNOTES\nThe advice when a Docker build fails on an old Ruby is always the same: bump the base image. got you here, so swap it for and move on with your life. Except sometimes you can't. The host you deploy to is pinned to 2.7, or a downstream gem you don't control hasn't moved, or it's a corporate base image and \"just upgrade Ruby\" is a six week ticket. So the real problem isn't \"how do I get to Ruby 3\" — it's \"how do I build this Jekyll site on the Ruby I'm stuck with.\" That's a solvable problem. The t\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "e24cc690d9f8250d7d8c20545defa1187686759583d05f6c48694cdcbbfd3a55",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 206493,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nScope the token before your MCP server gets the keys: a fine-grained PAT that can't touch prod\n\nSUBJECT\nAn MCP server inherits every permission of the token you give it. Scope it to a read-only fine-grained PAT and watch the bad write come back a 403.\n\nNOTES\nAn MCP server is a program you let a language model drive. You point it at GitHub, hand it a token, and now the model can open issues, read code, comment on PRs — whatever the token allows. That last clause is the whole ballgame: the server inherits every permission of the token you give it. Not the ones you meant to use. All of them. So the question that decides whether a hallucinated tool call can force push to is not \"how good is the model\" — it's \"what can this token do.\" And the token most\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "36a11edf0f720f8bc88ee1a309aa2132abf133ab4340685a3095ca9b7a382014",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 197873,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop shipping tarballs that explode: archive the directory, tar tf before you extract\n\nSUBJECT\nThe tar bomb footgun, the tar tf inspection that defuses it, and the -cfz flag-order slip that writes an archive named z. Both failures left in.\n\nNOTES\nis one of those tools you use maybe twice a year — the day you package a release and the day you unpack someone else's. That gap is exactly long enough to forget which letters go where, and rewards the lapse by doing something confident and wrong instead of erroring. Two things go wrong. The first scatters your coworker's files all over your home directory. The second creates a file named . Both stay in, because both are going to happen to you. The tar bomb: an archive with no floor Here's the r\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "e4082782f576827c606494afce306e5ca83bdd70773e3406a1bcba33f23b2ee8",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

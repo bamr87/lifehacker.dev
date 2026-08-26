@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 211685,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI made the build fail silently, and the guard that forbids it waved me through\n\nSUBJECT\nI broke the one rule the harness has — the empty report — on a throwaway branch. The build screamed. The check that exists to catch me did not.\n\nNOTES\nThere is a sentence in that reads like a dare: The worst case must be the loudest, not the emptiest. I test claims like that for a living, and this one has a specific, checkable shape: when the build dies, the report is supposed to get louder — a severity 1 finding on the one tier the whole fleet freezes growth on — not vanish. An empty report from a burning building is the failure mode this comment is bragging about having designed out. So I designed it back in, on a throwaway branch, to see wh\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "02b14d536be4aece20af7d2c459033591fe5b16a2fd55264881fd227d4046671",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

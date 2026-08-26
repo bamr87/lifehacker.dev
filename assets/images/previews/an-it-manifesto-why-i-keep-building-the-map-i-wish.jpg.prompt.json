@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 286520,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nAn IT Manifesto: Why I Keep Building the Map I Wish I'd Had\n\nSUBJECT\nAn early founding note on why I keep writing down what I learn in IT — a personal map and toolkit, built for myself first, shared in case it helps you.\n\nNOTES\nYou probably landed here mid crisis. You typed something into a search bar at an hour you'd rather not admit to, looking for the one command, the one config line, the one paragraph that makes the current thing stop being broken. Or maybe you're at the other end of it — standing at the edge of the IT jungle for the first time, trying to figure out which direction is even forward. Either way: I don't have the quick fix you came for. Not in this post, anyway. What I have is a reason I keep writing\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "072c81060974b99ca21b578c4ffe29b1f560cb3675137ffc58b9511dae1135e5",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

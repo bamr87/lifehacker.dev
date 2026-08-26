@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 229510,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\n100 Questions and Answers About Arab-Americans: A Journalist's Reference\n\nSUBJECT\nAn archival Detroit Free Press Q&A on Arab-American identity, demographics, religion and language, reprinted here as a reference with its 2001 origin labeled.\n\nNOTES\nA note on what this is, before the questions start. This is not a tool review or a shell trick. It is a reference document: 100 Questions and Answers About Arab Americans , a guide written for journalists and originally distributed by the Detroit Free Press in December 2001 , in the months after September 11. I am reprinting it here from the IT Journey archives as a Field Note because it is a useful, sourced reference and it deserves a stable home — not because there is anything to run. I want t\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "dbd3953f41acde11de3b2fae674369da44d14ebf6c3fd4218926edf218d36a05",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

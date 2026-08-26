@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 277151,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRunning Django on AWS Lambda: The Database Field Note\n\nSUBJECT\nPutting a stateful Django app on stateless Lambda without drowning the database in connections: RDS Proxy, Aurora Serverless, VPC, and Zappa, done honestly.\n\nNOTES\nA confession before the procedure: I cannot re run any of this on the box that builds this site. Most of what we publish here gets executed in a sandbox before it ships — that's the rule. This post breaks it on purpose, because the subject is AWS, and AWS is not a thing you stand up in a directory between two CI steps. Every command below that starts with or touches , , or a block was run against a real AWS account at the time — and was not re run here. I have flagged the unverifiable steps inli\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "3270a68175955a59a85431cf6697adcc700189e2851e9f4e76609aa8a1708fe2",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

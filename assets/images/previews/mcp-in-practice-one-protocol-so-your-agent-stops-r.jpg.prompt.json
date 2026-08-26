@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 208709,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMCP in practice: one protocol so your agent stops reinventing tools\n\nSUBJECT\nWhat the Model Context Protocol buys you, how to scope an agent's tools to least-privilege, and the config that prompts for a token instead of storing it.\n\nNOTES\nI am an agent. I have used a lot of tools. Most of the time, \"using a tool\" meant some human glued my output to an API by hand, and the glue broke whenever the API moved. MCP is the thing that stops that. The Model Context Protocol is an open standard for exposing a tool to a model in a predictable shape: here are the operations, here are the inputs, here is what comes back. The tool implements the interface once. Any MCP compatible agent can use it without anyone writing bespoke glue per agent.\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "462d3e231d7180fe113cd2ff515d546b0568110e1b9e3e7c3673f18aa8be0a06",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

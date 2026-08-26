@@ -2,7 +2,7 @@
 title: "Validate a DataFrame before it poisons the table: a pandera schema and a quarantine bin"
 description: "Data is untrusted input. Gate your pipeline with a pandera schema, quarantine the bad rows instead of dropping them, and catch the batch failure row rules miss."
 date: 2026-08-11
-preview: /images/previews/validate-a-dataframe-before-it-poisons-the-table-a.svg
+preview: /images/previews/validate-a-dataframe-before-it-poisons-the-table-a.jpg
 categories: [Hacks]
 tags: [data, security]
 author: cass

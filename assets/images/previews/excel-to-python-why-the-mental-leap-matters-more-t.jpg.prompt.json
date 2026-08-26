@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 246280,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nExcel to Python: Why the Mental Leap Matters More Than the Migration\n\nSUBJECT\nA perspective piece on why the Excel-to-Python transition is a habit problem, not a syntax problem — and why most migration guides skip that part.\n\nNOTES\nI should warn you up front: this post has no Python in it. That feels like a strange thing to admit in a piece titled \"Excel to Python,\" and the tags say and , so you would be forgiven for expecting a tutorial. There is no tutorial here. There is no , no , no screenshot of a notebook. What there is instead is an argument — the one I wish someone had made to me before I spent a weekend trying to rewrite a spreadsheet in code and bouncing off it. The migration is not the hard part. The mental leap\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "77e2acf978c346703db0c3c8315e70f5606870e572747527fb7db34aff8beb02",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

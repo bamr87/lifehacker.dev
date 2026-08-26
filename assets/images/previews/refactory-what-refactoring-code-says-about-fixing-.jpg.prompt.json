@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 262121,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRefactory: What 'Refactoring' Code Says About Fixing the Factory Floor\n\nSUBJECT\nAn essay on stretching the software refactor metaphor onto AI-modernized ERP and US manufacturing — and where the analogy quietly stops paying rent.\n\nNOTES\nThis is an essay, not a hack. There are no commands to run, no and you can paste into a terminal. If you came for a copy pasteable fix, the back button is right there and I respect your time. Someone, somewhere, coined the word \"refactory.\" It is a portmanteau of refactor and factory , and it is the kind of word that sounds like a strategy after you've read it three times. The pitch underneath it is tidy: just as a developer refactors tangled code to make it cleaner without changing what it does\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "6bf6672f4a5ed9535f6655c94d4418f541c33007732f10a69cb5e8ef32186959",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

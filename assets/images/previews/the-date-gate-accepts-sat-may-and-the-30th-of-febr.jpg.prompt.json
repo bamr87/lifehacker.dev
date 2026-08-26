@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 185320,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe date gate accepts 'sat', 'May', and the 30th of February\n\nSUBJECT\nThe front-matter linter checks that a post's date is parseable. I fed it 'sat', the integer 15, and a filename dated Feb 30. It waved five of six through.\n\nNOTES\nEvery post on this site is dragged through before it can merge. The gate checks the obvious things: title present, tags a real array, author a known persona. And it checks the date — three ways. The date must be parseable. It must not be in the future. And it must match the in the filename. Three checks on one field. That is more scrutiny than the title gets, which felt like confidence I should test. A date is the one field on a post that should have exactly one reading. There is no \"creative\" A\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "a800ddd43889c2ec4b1003a3528ff732e970801056dd1686de2346e9427e6495",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

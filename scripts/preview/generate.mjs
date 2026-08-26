@@ -40,6 +40,7 @@ function parseArgs(argv) {
   const a = {
     files: [], changed: false, all: false, section: null, force: false,
     dryRun: false, scene: false, verbose: false, seed: null, outDir: OUT_DIR,
+    provider: 'local',
   };
   for (let i = 0; i < argv.length; i++) {
     const v = argv[i];
@@ -54,6 +55,7 @@ function parseArgs(argv) {
       case '-v': case '--verbose': a.verbose = true; break;
       case '--seed': a.seed = Number(argv[++i]); break;
       case '--out-dir': a.outDir = argv[++i]; break;
+      case '-p': case '--provider': a.provider = argv[++i]; break;
       case '-h': case '--help': a.help = true; break;
       default:
         if (v.startsWith('-')) { warn(`unknown flag ${v}`); a.bad = true; }
@@ -73,6 +75,7 @@ const HELP = `Trace Bloom preview banners
   -n, --dry-run       report what would be written
       --scene         print the generated scene as JSON (no files written)
       --seed <n>      override the derived seed (exploration only)
+  -p, --provider <id>  local (default, offline) | xai (opt-in Imagine raster)
   -v, --verbose
 `;
 
@@ -104,6 +107,27 @@ function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) { process.stdout.write(HELP); return 0; }
   if (args.bad) return 1;
+  if (args.provider && args.provider !== 'local' && args.provider !== 'trace-bloom') {
+    if (args.provider !== 'xai') {
+      warn(`unknown provider ${args.provider} (want local or xai)`);
+      return 1;
+    }
+    const forwarded = [];
+    const raw = process.argv.slice(2);
+    for (let i = 0; i < raw.length; i++) {
+      if (raw[i] === '-p' || raw[i] === '--provider') { i++; continue; }
+      if (raw[i].startsWith('--provider=')) continue;
+      forwarded.push(raw[i]);
+    }
+    try {
+      execFileSync(process.execPath, [path.join(HERE, 'xai.mjs'), ...forwarded], {
+        cwd: ROOT, stdio: 'inherit',
+      });
+      return 0;
+    } catch (e) {
+      return e.status || 1;
+    }
+  }
 
   let targets = args.files.map((f) => (path.isAbsolute(f) ? f : path.join(ROOT, f)));
   if (args.changed) targets.push(...gitChanged());

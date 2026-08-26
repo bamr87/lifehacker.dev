@@ -1,7 +1,7 @@
 ---
 title: "Your connection pool is too big: size it by cores, not hope"
 description: "Why a big database pool is a self-inflicted DoS, the idle-in-transaction leak that drains it, and three ranked, tested fixes: sizing, a finally, PgBouncer."
-preview: /images/previews/your-connection-pool-is-too-big-size-it-by-cores-n.svg
+preview: /images/previews/your-connection-pool-is-too-big-size-it-by-cores-n.jpg
 date: 2026-07-21
 categories: [Hacks]
 tags: [data, security]

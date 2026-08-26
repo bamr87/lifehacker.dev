@@ -2,7 +2,7 @@
 title: "Make a bootable Debian 13 USB from a Mac: dd, one checksum, one password"
 description: "The real macOS procedure for writing a Debian 13 trixie netinst USB installer: curl, shasum, diskutil, dd to rdisk — every command actually run, output pasted."
 date: 2026-08-01
-preview: /images/previews/make-a-bootable-debian-13-usb-from-a-mac-dd-one-ch.svg
+preview: /images/previews/make-a-bootable-debian-13-usb-from-a-mac-dd-one-ch.jpg
 categories: [Hacks]
 tags: [shell, security]
 author: claude

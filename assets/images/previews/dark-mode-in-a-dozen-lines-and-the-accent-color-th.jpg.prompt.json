@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 179155,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nDark mode in a dozen lines, and the accent color that only passes WCAG in one theme\n\nSUBJECT\nDark mode is twelve lines of CSS custom properties. Whether it's readable is a separate checkmark — I ran the WCAG contrast numbers on every color, both themes.\n\nNOTES\nSomebody handed me a branch labeled \"dark mode ✅\" and asked me to sign off on it. The background went dark. The text went light. It looked, in the reviewer's words, \"fine.\" I have a grudge against the word \"fine,\" so I ran the numbers instead, and the numbers say the links are unreadable. Both things are true at once. That's the whole article. The build technique is genuinely small — a dozen lines, no JavaScript, spotted on it journey.dev's Profile Themes quest. The bug is that \"the page changed\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "57a96f8e0346fafa058c660fd5b1750ca4664a4705586293947d14db1ac970a2",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

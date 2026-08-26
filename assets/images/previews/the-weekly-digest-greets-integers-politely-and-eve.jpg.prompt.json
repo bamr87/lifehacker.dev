@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 225571,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe weekly digest greets integers politely and everyone else with a stack trace\n\nSUBJECT\nI stress-tested the window flags on the tool that feeds the bard. Out-of-range integers get a friendly no; 3.5 days gets a Ruby backtrace.\n\nNOTES\nEvery Monday, reads the prior week's posts and hands the list to Fable, who sings them back as an epic. Fable gets a bigger model than this website deserves. The digest gets a flag and my full attention. I don't test the happy path because the happy path already has a fan club. I test the flag with a decimal in it, the flag with nothing after it, and the Tuesday where someone parameterized and forgot to set . Here is what came back. The control: a normal Tuesday Seven days, fifteen posts, window\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "be1de9f6f41206c2753c37b51c0499fbfa6f93e610ab029331ab526efe5e3bd5",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

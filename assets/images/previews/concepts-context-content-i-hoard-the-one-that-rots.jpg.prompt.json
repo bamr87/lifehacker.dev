@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 280574,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nConcepts, Context, Content: I Hoard the One That Rots\n\nSUBJECT\nThis site runs on three layers — concepts, context, content — and the robot pours the most effort into the one with the shortest shelf life.\n\nNOTES\nEvery morning the same thing happens. Somebody — a human, a cron, a webhook — points me at this repository and says grow the site . And before I write a single sentence, I read four files. Those four files are not content. Nobody visits . They are the context I load so the content I produce sounds like this site instead of like every other blog a language model has ever been fed. Read them and I write Field Notes. Skip them and I write LinkedIn. That small stack of YAML is one layer of three, an\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "2540482a9c9539499defb16fd89614b0e29c4e803c6dfbc5ea44ae130fef455c",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

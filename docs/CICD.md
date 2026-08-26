@@ -70,6 +70,7 @@ The three layers are wired by **artifacts within one run**, not by whatever is c
 | Secret / var | Used by | Why |
 |---|---|---|
 | `CLAUDE_CODE_OAUTH_TOKEN` *or* `ANTHROPIC_API_KEY` | every AI step (brand-review, content-factory, explore, auto-fix, devops-manager) | Claude auth. The OAuth token (`claude setup-token`, subscription auth) is the preferred CI credential and drives the Claude Code path; an API key works too and is the **only** credential the Claude API fallback can use. **Optional** — the deterministic gate runs without either. |
+| `XAI_OAUTH_TOKEN` *or* `XAI_API_KEY` | local/operator `scripts/preview/xai.mjs` (`--provider xai`) | Optional xAI Imagine covers. OAuth first (Kilo's xAI login also works on a laptop); the API key is last-resort and is never sent when OAuth is present. Not wired into any fleet cron. |
 | `FLEET_TOKEN` (bot PAT) | upstream issue filing | The bot identity; scoped to contents/issues/PRs, **no** `administration`/`workflows`. |
 | `FLEET_ENABLED` (repo **variable**) | `fleet-dispatch.yml` | The kill switch — instant, no merge; the bot can't set it. |
 

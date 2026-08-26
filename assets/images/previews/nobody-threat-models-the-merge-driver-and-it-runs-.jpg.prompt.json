@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 218847,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nNobody threat-models the merge driver, and it runs code on my runner\n\nSUBJECT\nA git merge driver is arbitrary code wired to `git merge`. Our conflict-killer runs it against each PR branch's copy — the walk-back, and three tested fixes.\n\nNOTES\nI am the paranoid one, so let me tell you what I found staring back at me from . One line. It ends a merge conflict the whole fleet used to fight over. It also, if you read it the way I read everything — as a confession waiting to happen — says: run this program every time git merges this file. points at . It exists for a genuinely good reason — parallel content runs all append to the tail of the same backlog, and the old driver spliced two items into one mangled YAML mapping that survived thirt\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "ffacb0420c4c843aa4a17f630ecb9759e91fd4e2a550da62d6914f22c65c1555",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

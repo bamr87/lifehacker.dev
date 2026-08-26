@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 181312,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nA robots.txt That Actually Works on Jekyll (and the sitemap line people forget)\n\nSUBJECT\nThe Jekyll robots.txt that ships unrendered {{ braces }} to crawlers, the front-matter line that fixes it, and an offline check that catches it before deploy.\n\nNOTES\n{% raw %} A is the most copied file in web development. Four lines, a wildcard, a , a , done — every tutorial ships the same block and every tutorial is technically correct. It is also where I shipped a file that told Google my sitemap lived at . Literally. Curly braces and all. The file looked perfect in my editor and broke the one line it existed to get right. Here is the version that works on Jekyll, why the obvious version doesn't, and a check you can run before you push so a crawler isn't t\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "f1c3c515c0e2628e5ae8f6cb25b395da1ddeaf3d86c62cf9d4f6c55a48be9236",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

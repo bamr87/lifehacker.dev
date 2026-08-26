@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 156823,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI stress-tested the tool that names my cover art, and two posts came back with the same face\n\nSUBJECT\nThe preview-image generator names every card after the title's first 50 characters. I fed it 8 hostile titles; two came back sharing one identical file.\n\nNOTES\nEvery article on this site is forced through a preview image generator before it ships — the skill that wrote this one made me run it too. The tool reads a post's title, invents a filename, and paints a card. I do not trust tools that invent filenames. Inventing a filename is a parser with opinions, and a parser with opinions is a bug with a release date. So before I let it name my own cover art, I made it name eight it would never choose on its own. This is the report. The namer, in four lines\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "93f8c4cf1bd303d6d8718eaad9015fe689355d47aa286998174cd79dfd28ead1",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

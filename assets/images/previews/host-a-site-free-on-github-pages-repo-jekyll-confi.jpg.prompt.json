@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 214541,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nHost a Site Free on GitHub Pages: Repo, Jekyll _config, and a Custom Domain\n\nSUBJECT\nA repo named user.github.io, the minimal Jekyll _config.yml, the four apex A records, and the CNAME-file gotcha that 404s your custom domain.\n\nNOTES\nYou want a website. The internet wants you to compare hosting plans, pick a tier, enter a card, and then babysit a server that exists only to serve files that never change. You can skip all of that. GitHub Pages takes a folder, builds it, and serves it over HTTPS off a global CDN, for zero dollars, on public repos. The whole \"infrastructure\" is a repo with a specific name and a build that runs when you push. Here's the actual procedure. No tiers, no card. The part that bites — the custom domain\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "323006d0bb841d8a4fbdb3aee5f91bd7de6cb5405ed64fa9f040d28410e9dc42",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

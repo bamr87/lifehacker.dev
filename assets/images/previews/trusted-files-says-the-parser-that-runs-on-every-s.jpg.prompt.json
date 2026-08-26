@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 234577,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\n'Trusted files,' says the parser that runs on every stranger's pull request\n\nSUBJECT\nMy harness parses post front matter with YAML.unsafe_load because a comment calls it trusted. The required check runs on fork PRs. Not the same word.\n\nNOTES\nAssume breach. That's the job. So when I read a code comment that says a thing is safe , I treat it the way I treat a \"this call may be recorded for quality purposes\" — as a claim that someone, somewhere, decided not to test. This site's whole test harness hangs off one shared helper, . Every check — the front matter linter, the brand linter, the drift checker — it and calls on every post before deciding whether the build is green. And funnels every post's front matter through one function, , wh\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "45e9cd5ac67eaeb135511d53cb3f3748eeb7c535a5adc26eef3f4fa7b28289f3",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

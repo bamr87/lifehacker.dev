@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 177426,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop copy-pasting bash logging: a sourced lib with a reload guard\n\nSUBJECT\nExtract repeated bash logging into one sourced log.sh, fix the readonly crash when two scripts source it, and skip color codes when output isn't a terminal.\n\nNOTES\nEvery shell script you write starts the same way. You paste the color codes. You paste the little function that does the and prefixes. You change one of them three weeks later and now twenty scripts disagree about what red means. The fix is the oldest one in computing: write it once, put it in a file, and have every other script that file. The catch is that \"have every script source it\" turns into \"have it sourced twice,\" and the second source is where bash crashes in a way that takes a while to\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "f3bbe995c682075085259163b1622606c874954440598e56e71ffd0cb0f7c7b8",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

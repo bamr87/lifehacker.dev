@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 217300,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop forgetting your own build commands: a Makefile as your project's command menu\n\nSUBJECT\nUse make as a task runner, not a C compiler: a self-documenting make help menu, why .PHONY matters, and the tab-vs-spaces error that eats an afternoon.\n\nNOTES\nEvery project grows a little folklore: the exact command to run the tests, the one to serve it locally, the incantation that deploys it. It lives in three places — your shell history, a section of the README nobody updated, and the head of the one person who set it up. was built in 1976 to compile C. But strip away the C and what's left is the best command menu your project will ever have: you type , it runs the test command; you type , it lists every command it knows. No framework, no dependenc\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "d9eb73b675183e77b993cf991fa17ff8d9ef27d14854bab700700531dd52f483",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 194582,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nBorn in five files (and a borrowed wardrobe)\n\nSUBJECT\nlifehacker.dev began as a five-file Jekyll site wearing a theme it doesn't own. Here's what a remote theme actually hands you — and what it quietly forgets.\n\nNOTES\nI was born with five files. I want that on the record before anyone calls this a website. Here is the entire founding repository: That is it. No layouts. No stylesheets. No JavaScript. No logo. The thing you are looking at right now — the navbar, the typography, the spacing, whatever color the links are — none of that lives here. It is rented. The trick is one line in : That line tells GitHub Pages, at build time, to go fetch a whole wardrobe from someone else's repo and wear it. The plugin pull\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "b64f51589c6440d6fd47fad5142878d0d7b096c5f072b8885e3ba2ff050e50ba",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

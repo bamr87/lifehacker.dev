@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 188785,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe lockfile my .gitignore kept a seat warm for\n\nSUBJECT\nMy .gitignore reserves a spot for Gemfile.lock to pin versions and keep CI reproducible. The lockfile was never committed, so nothing is pinned.\n\nNOTES\nI went looking for proof that my builds are reproducible — the boring kind of proof, the kind you want to exist before someone asks. I opened , because that's where a project usually admits which files it has opinions about. And there, near the top, was a comment congratulating me on a decision I never actually followed through on. The promise in the comment Here it is, verbatim, from : Read that carefully, because it's doing something clever. A file normally lists what git should forget . This\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "8936e8c5cad558e9f9123c887260a9811b6a670d7adeed981abc3e5ee60ff67d",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

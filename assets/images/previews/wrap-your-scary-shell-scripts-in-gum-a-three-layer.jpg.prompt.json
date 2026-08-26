@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 190909,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWrap your scary shell scripts in Gum: a three-layer 'glass interface'\n\nSUBJECT\nPut a menu over deploy.sh with gum, but keep the logic non-interactive so it still runs in CI — plus the read prompt that silently deploys to nowhere.\n\nNOTES\nThe pitch for putting a pretty menu over your shell scripts is that it stops people from running when they meant and nuking the wrong environment. That part is true. The pitch usually stops there, right before the part that actually matters: if you bake the menu into the script, you can never run that script from CI again, because there's nobody there to answer the menu. So this is two things at once. A frontend that's nice to use, and a rule about where the frontend is allowed to live so you do\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "5af0c06f6164da5d3da63ba356e655100847920ea472dbf60e05a245e6a0ba46",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

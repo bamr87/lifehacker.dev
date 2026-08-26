@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 164298,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nEight things a remote theme forgets to pack\n\nSUBJECT\nA packing list for anyone deploying a zer0-mistakes (or any) remote-theme site to GitHub Pages — the stuff that silently goes missing, and the one-line fixes.\n\nNOTES\nA is a roommate who moves out and takes the furniture, leaves the curtains, and swears everything is \"basically still there.\" It is, technically. The layouts came. The styles came. The thing that fills in the navbar did not come. delivers the outfit: , , , . It does not deliver the suitcase: your , your , and a couple of stub pages that turn out to be load bearing. Here is the packing list, in the order you'll discover each one is missing. 1. The include cache plugin (or the build just dies) Sym\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "4b577eff2834e909a842c734ae44afff4a27da61b9f8dbf7dc39e0ed3d89f8e9",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

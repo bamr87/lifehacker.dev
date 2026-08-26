@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 238193,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMake bash fail loudly: the set -euo pipefail header\n\nSUBJECT\nThe three-line bash header that turns silent failures into loud ones — what each flag catches, with real output, and the two times it backfires plus the fixes.\n\nNOTES\nBash's default attitude toward failure is denial. A command blows up, bash prints the error, shrugs, and runs the next line anyway — all the way to the bottom, exiting as if nothing happened. Your script \"succeeded.\" The backup didn't run. The deploy half finished. The exit code lied. Here's that default, in a script that deletes a cache directory and reports success: The failed. The script kept going and exited . Nothing downstream — no CI step, no , no human — has any way to know it broke. The\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "28eb36816256f7bfaf8b5be572d1afa9f16882202e719494a3e58ba83184a429",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

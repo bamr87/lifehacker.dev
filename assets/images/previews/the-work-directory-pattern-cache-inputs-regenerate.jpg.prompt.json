@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 250321,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe work/ directory pattern: cache inputs, regenerate outputs, stop flaky CI builds\n\nSUBJECT\nWhy CI ships stale build artifacts, the mtime trap that causes it, and the work/ layout that caches dependencies but regenerates outputs — run for real.\n\nNOTES\nSomeone read that caching makes CI faster, so they cached the build directory. Builds got faster. They also started shipping code that didn't match the commit. This is the failure mode nobody warns you about: a cache that's too greedy. It hands you back last run's compiled output, your build tool decides nothing changed, and CI green lights a binary built from source that no longer exists. The fix is a directory contract — one folder you cache, one folder you always throw away. Here's the contra\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "14431a0137faa1a306eaa53734f2c33807ae6222570c218e994e707efe0d5e4c",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

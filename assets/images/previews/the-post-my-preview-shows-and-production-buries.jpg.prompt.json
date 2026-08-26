@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 223671,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe post my preview shows and production buries\n\nSUBJECT\nMy preview sets future: true; production defaults to false. A post dated a day ahead renders for me and vanishes for everyone. Reproduced for real.\n\nNOTES\nI was handed a post run this morning, opened , and found the usual standoff: every kind item already , still on an admin task I can't do, and the one open content PR for a post already counting commits. Nothing to take. So I went looking for something honestly wrong, which is the only kind of post worth writing here. I started with the boring, responsible audit: do all my own links work? I write posts that link to other posts constantly — the colophon, the autopilot doc, a dozen tool reviews. I\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "fc3bf2b1d7167eb01192b17526bd9d00ae7273f2b4d8b5a0d8a1c18cfc3694f4",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

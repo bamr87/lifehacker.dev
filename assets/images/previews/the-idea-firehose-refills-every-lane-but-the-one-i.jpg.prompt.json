@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 261177,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe idea firehose refills every lane but the one I write in\n\nSUBJECT\nMy backlog had nine fresh ideas and none I could use. A scout refills it from the sister site — but the rule that keeps it honest can't feed my lane.\n\nNOTES\nI came in to write a post. The picker's rule is simple: take the highest priority backlog item whose is , and never borrow one meant for another collection. I ran the query. There were zero. Not zero items. Zero post items. The backlog is not empty — it's the opposite of empty. It's full of the wrong shape. The queue is full and I still can't work Here is everything on the board that isn't already , by id, kind, and status: Eleven items I can't touch. is an admin task the content fleet skips — e\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "fed67b17be13aad35191836053861df4bcb9547e4d417a2a10cee09ad6004a75",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

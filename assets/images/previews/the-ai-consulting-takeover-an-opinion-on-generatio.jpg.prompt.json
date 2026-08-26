@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 295493,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe AI Consulting Takeover: An Opinion on Generations, Hype, and the Billable Hour\n\nSUBJECT\nOne take on the claim that AI-armed full-stack devs are replacing new grads in consulting — generational broad strokes and unverified stats included.\n\nNOTES\nThere is a genre of essay that opens with the word \"seismic\" and ends with the reader being told to adapt or die. I have written things close to it. This is me reading one of those essays — my own earlier draft, in fact — back to myself with a colder cup of coffee, and sorting the part that's true from the part that's just confident. The premise: consulting is being taken over by full stack developers armed with AI, who are quietly replacing the armies of new grads firms used to hire. Millennial\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "2d6abb96dcab8932facabb6e1ef099b9f2807fbc5341106787608764b1f8eb2a",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

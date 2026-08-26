@@ -7,13 +7,15 @@ node scripts/preview/generate.mjs -f pages/_posts/hacks/2026-08-07-thing.md  # o
 node scripts/preview/generate.mjs --changed        # every git-new/modified article
 node scripts/preview/generate.mjs --all            # every article missing current art
 node scripts/preview/generate.mjs --all --force    # re-skin the whole site
+node scripts/preview/generate.mjs --provider xai --changed   # opt-in xAI Imagine rasters
+node scripts/preview/xai.mjs --self-test           # offline; no network
 ruby scripts/ci/lint_preview.rb                    # the gate
 node scripts/preview/build-lab.mjs                 # rebuild the explorer after editing lib/
 ```
 
 No gem. No API key. No rasterizer. No network. Node and nothing else.
 
-The one exception, and it is opt-in per article: `illustrate.mjs` asks Claude to draw the article's **subject** once, commits the drawing, and hands it to the same offline renderer. See [the illustration layer](#the-illustration-layer).
+Two opt-in exceptions, neither of them a fallback rung: `illustrate.mjs` asks Claude to draw the article's **subject** once, commits the drawing, and hands it to the same offline renderer (see [the illustration layer](#the-illustration-layer)). `--provider xai` paints a 3:2 raster via the xAI Imagine API (see [xAI Imagine covers](#xai-imagine-covers-opt-in)).
 
 ---
 
@@ -61,8 +63,10 @@ article.md ──► deriveParams ──► buildScene ──► renderSVG ─�
 | `scripts/preview/lib/svg.mjs` | Typography, layout, blooms, the animation contract |
 | `scripts/preview/lib/article.mjs` | Front-matter read + `preview:` stamp + motif load |
 | `scripts/preview/lib/motif.mjs` | The illustration contract: whitelist, geometry checks, re-serialize, composite |
-| `scripts/preview/generate.mjs` | CLI |
+| `scripts/preview/generate.mjs` | CLI (`--provider xai` dispatches to `xai.mjs`) |
 | `scripts/preview/illustrate.mjs` | The Claude rung: brief → validate → retry → commit → re-render |
+| `scripts/preview/xai.mjs` | Opt-in xAI Imagine raster covers (OAuth first) |
+| `scripts/preview/lib/xai_auth.mjs` | Resolve xAI OAuth / Kilo store / API key |
 | `scripts/preview/build-lab.mjs` | Builds the explorer by **inlining** the renderer |
 | `scripts/ci/lint_preview.rb` | The gate |
 
@@ -172,6 +176,51 @@ Two `shared-preview` warnings are expected and correct: two grandfathered pairs 
 The weekly Top Story (`.claude/skills/weekly-epic`) embeds figures, and they follow this framework's philosophy with a second generator: **`scripts/media/figures.mjs`** (see `scripts/media/README.md`). Same split of labor — the agent supplies data (the committed weekly digest, a slug, a number for the gauge) and deterministic code owns every coordinate; same design tokens (`_data/preview/design.json`), same animation contract, same determinism promise (commit the digest, and the art regenerates byte-identical). Figures live in `assets/images/figures/<slug>/` and are exhibits, not cover art: the lint holds them to `unsafe-svg` + `missing-body-image` + `orphan-figure`, never to the headline/safe-band rules.
 
 The one deliberate exception to "offline and deterministic": `scripts/media/openai_image.mjs` can paint a single raster hero per epic via the OpenAI Images API. It is double-gated (`OPENAI_IMAGES_ENABLED` repo var **and** `OPENAI_API_KEY` secret), never used as a fallback, captioned as AI-generated in the article, and audited by a committed `.prompt.json` sidecar. If the gate is closed, the SVG figures aren't a downgrade — they're the default.
+
+## xAI Imagine covers (opt-in)
+
+A second, equally loud opt-in: `scripts/preview/xai.mjs` (also `generate.mjs --provider xai`) paints a 3:2 PNG cover via the xAI Imagine API (`grok-imagine-image-2.0` in `_data/ai.yml`). It is **not** the default, it is **not** a fallback, and a missing credential exits 3 instead of silently shipping Trace Bloom.
+
+Auth is OAuth-first, same posture as Claude:
+
+1. `XAI_OAUTH_TOKEN`
+2. Official Grok CLI store (`~/.grok/auth.json` from `grok login`)
+3. Kilo's local xAI login (`~/.local/share/kilo/auth.json`), if present
+4. `XAI_API_KEY` last
+
+When OAuth is present the API key is never sent. Each painted cover writes a compressed JPEG (`assets/images/previews/<slug>.jpg`, sips quality 70) plus a `.prompt.json` sidecar (model, prompt, sha256). Imagine returns JPEG; we do not store it as a mislabeled PNG. `generate.mjs` then treats that stamp as bespoke and will not overwrite it unless `--force`. The matching Trace Bloom SVG is removed so `orphan-preview` stays quiet. Recompress existing rasters with `--compress-only`.
+
+### Terminal-only OAuth (no Kilo)
+
+xAI does not mint OAuth tokens from `curl` alone — you need their CLI, which is the public client. After `grok login`, this repo reads `~/.grok/auth.json` directly, so a laptop that just logged in does **not** need `.env`.
+
+```bash
+curl -fsSL https://x.ai/cli/install.sh | bash
+export PATH="$HOME/.grok/bin:$PATH"
+grok login
+```
+
+`grok login` opens a browser (or prints a device code on a headless box). SuperGrok / X Premium covers it; a free xAI account will not.
+
+Copy the access token into `.env` only when the process cannot see `~/.grok/auth.json` (CI, Docker, another machine):
+
+```bash
+python3 -c 'import json,pathlib; d=json.loads(pathlib.Path.home().joinpath(".grok/auth.json").read_text()); print(next(v["key"] for k,v in d.items() if "auth.x.ai" in k and isinstance(v,dict) and v.get("key")))'
+```
+
+```bash
+XAI_OAUTH_TOKEN=<paste>
+```
+
+Never commit `.env`. The access token is a short-lived JWT. `XAI_OAUTH_TOKEN` **wins** over every store, so a stale value blocks `grok login` — delete the line or re-copy after logging in again.
+
+No SuperGrok / X Premium? The documented headless credential is an API key from [console.x.ai](https://console.x.ai/team/default/api-keys):
+
+```bash
+XAI_API_KEY=xai-...
+```
+
+Bulk runs cap at 4 articles unless you pass `--batch`. This path is local/operator-opt-in; there is no fleet cron and no `*_ENABLED` switch that turns it on by itself.
 
 ## The explorer
 

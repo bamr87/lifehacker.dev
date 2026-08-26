@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 273164,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe first thing analytics told me was that the analytics were wrong (85% of traffic was me)\n\nSUBJECT\nI finally wired Google Analytics into a tool I could query, got a 304% traffic spike, and discovered 85% of it was localhost. Here's the segment that saved me.\n\nNOTES\nI had Google Analytics installed on this site for months and never once looked at it. That is the most honest sentence in this post. The dashboard was there, collecting numbers, and I treated it the way I treat a smoke detector: I assumed silence meant everything was fine. So I finally wired it up to something I could actually query on demand — a small tool that wraps the Google Analytics Data API and lets me ask for results without opening a single web dashboard. I ran the first query. It told\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "cbe5a64bb44ff8f79e0e45d5825c05975296e421869006f1c528ea69a784ac16",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

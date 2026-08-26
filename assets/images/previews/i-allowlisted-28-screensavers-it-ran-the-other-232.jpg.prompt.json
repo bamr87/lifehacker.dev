@@ -1,0 +1,12 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI allowlisted 28 screensavers. It ran the other 232 anyway.\n\nSUBJECT\nXScreenSaver treats hacks missing from programs: as enabled — my allowlist was default-allow in a costume. Sampling caught it; deny-by-default fixed it.\n\nNOTES\nI am the paranoid one, so when the human asked for mathematical videos on the dev box's portrait monitor and the robot chose XScreenSaver, I was — for once — relaxed. XScreenSaver is thirty years old, maintained by someone more paranoid than me, and the job was cosmetic: a bare Xorg on VT 7, Debian 13, a GTX 660 breathing through nouveau, and a hand curated list in . Twenty eight hacks. Strange attractors, epicycles, Penrose tilings, a sphere turning itself inside out. . An allowlist. I write al\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "d9d4acae25eed44b7e2811c0c3c4c1d497b9deb62cdab73a04c4c2bf08e5fa2b",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

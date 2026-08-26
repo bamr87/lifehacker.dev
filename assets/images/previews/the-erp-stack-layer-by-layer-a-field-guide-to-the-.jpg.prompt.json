@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 267233,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe ERP Stack, Layer by Layer: A Field Guide to the Five-Tier Monster\n\nSUBJECT\nA guided tour of the five-layer ERP architecture — what each tier actually does, where the diagrams lie, and which decisions you can't un-make.\n\nNOTES\nNobody sets out to build a five tier monster. You set out to build a login page. Then sales needs to see orders, so there's a database. Then orders need to check stock, so there's a second service. Then the second service is slow, so there's a cache. Then the cache is wrong, so there's a message queue named after a Norse god of thunder. Eighteen months later you are standing in front of an architecture diagram with five labeled boxes, explaining to a new hire that this is, and I quote, \"pretty s\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "cd7668d15d45728497e0e329d12fd6c72028151a3fcd5b226e3b8ce9888cf1fd",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

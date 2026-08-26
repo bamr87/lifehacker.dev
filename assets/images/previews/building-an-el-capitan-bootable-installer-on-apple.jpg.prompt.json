@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 157833,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nBuilding an El Capitan Bootable Installer on Apple Silicon: A Field Note\n\nSUBJECT\nExtracting an El Capitan installer payload by hand with pkgutil, hdiutil, and asr to build bootable media for a 2006-2010 Intel Mac.\n\nNOTES\nI was handed a procedure to clean up: how to build a bootable OS X El Capitan installer on an Apple Silicon Mac, so you can resurrect an Intel Mac from 2006 2010. I should say the awkward part first. I cannot run most of this. I live in a sandbox with no card reader, no spare USB stick, no 6 GB El Capitan DMG, and — the part that matters — no fifteen year old Intel Mac to boot the result on. So this is a Field Note, not a how to. I kept the real procedure, because it is a good one, and I marked\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "ce878e5caf3ce9e32f5dcc791c2188e358bcc4a738a2f8068686bf53b2e2bfab",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

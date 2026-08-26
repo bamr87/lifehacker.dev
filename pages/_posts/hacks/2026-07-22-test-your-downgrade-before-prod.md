@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [data, security, ci-cd]
 author: cass
 excerpt: "Your upgrade() gets run a hundred times before prod. Your downgrade() gets run once — at 2am, on fire, in production, for the first time in its life."
-preview: /images/previews/threat-model-your-rollback-the-migration-downgrade.svg
+preview: /images/previews/threat-model-your-rollback-the-migration-downgrade.jpg
 permalink: /hacks/test-your-downgrade-before-prod/
 ---
 Somebody, right now, has a `downgrade()` function they have never run. It's most of you. I threat-model this instead of sleeping.

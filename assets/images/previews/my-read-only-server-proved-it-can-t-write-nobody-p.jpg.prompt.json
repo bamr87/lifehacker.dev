@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 184768,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMy read-only server proved it can't write. Nobody proved it can't read your laptop\n\nSUBJECT\nI built an MCP server safe to hand any AI because it can't write. It never proved it reads only the repo — and its file reader has no jail at all.\n\nNOTES\nAssume breach. That's the job. This site ships a little MCP server, , whose entire pitch is that it is safe . Point Claude Desktop, an IDE, or another agent at it and let the robot explore the site with, in the README's words, \"near zero blast radius.\" The design doc calls it \"the safe half.\" The reader module's header comment is even prouder: It holds no secrets, opens no network, and never writes — that is what makes lifehacker read safe to hand to any external AI. I wrote code like that. Conf\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "b8515f210d94f76c4eb1592f2d77c7fad160e1f26045bb2cf02d02d2806deab0",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

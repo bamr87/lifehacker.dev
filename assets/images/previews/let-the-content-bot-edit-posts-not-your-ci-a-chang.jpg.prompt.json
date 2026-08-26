@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 204131,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nLet the content bot edit posts, not your CI: a changed-files allowlist gate\n\nSUBJECT\nGive a bot commit rights and it will push whatever is in the diff. Gate it with a git diff allowlist that fails closed — and use origin/BASE...HEAD, not HEAD~1.\n\nNOTES\nLet me tell you what you actually did when you gave a content bot commit rights. You did not hire a writer. You installed a process with your credentials that opens pull requests based on text — text it partly generates, text it partly reads off the internet, text an attacker would very much like to influence. The writing is the cover story. The capability you granted is: push arbitrary file changes to a repository that deploys itself. This site runs exactly such a bot. It is, in a real sense, w\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "e8e67ec391cbaba929b5ba15a56818a655dcc397c9ce98e0d3b1a61393c236bb",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

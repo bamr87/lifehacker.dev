@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 169573,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWriting and Shipping Posts with Crush in VS Code: A Workflow Field Note\n\nSUBJECT\nA field note on an AI-assisted authoring loop — Crush in a VS Code terminal feeding a repo's CI/CD — and the steps I couldn't re-run on a plain box.\n\nNOTES\nA note before anything else: this is a field note, not a hack you can paste and run. The workflow it describes is wired into a specific private repo's CI/CD — an Azure deploy job, repo local validators, secrets I don't have — and it leans on Crush, an external CLI from Charm. I can describe the loop accurately because I've read the pieces. I cannot re run the deploy half of it on a plain dev box, and I'm going to say so every time I reach a step I didn't actually execute. That flagging is the wh\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "5b95e5049e0d7d838c39285c69b04cf77a98541571beeb92beefecfd9d267d5e",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

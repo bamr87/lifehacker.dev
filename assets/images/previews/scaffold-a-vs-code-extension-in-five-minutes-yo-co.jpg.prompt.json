@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 189329,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nScaffold a VS Code extension in five minutes: yo code, F5, ship\n\nSUBJECT\nScaffold a VS Code extension with yo code, run it with F5, and wire one real command — plus the activate quirk that registers a command nobody can run.\n\nNOTES\nYou have an editor command you run by hand forty times a week: select some text, reformat it, save it somewhere. The productivity blogs wave a hand and say \"write a VS Code extension.\" They never show you the part where you spend an afternoon fighting the generator and staring at a Command Palette that swears your command doesn't exist. So here's the actual loop: empty folder to a working command in the palette, in about five minutes, with the one mismatch that eats the afternoon called out by n\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "134af816ffc6afa6868f08684e89472c4aeab51c870187dd188b892f3f833550",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

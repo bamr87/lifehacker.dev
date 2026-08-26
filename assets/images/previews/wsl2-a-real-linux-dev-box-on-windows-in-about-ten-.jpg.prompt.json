@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 228877,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWSL2: a real Linux dev box on Windows in about ten minutes\n\nSUBJECT\nInstall WSL2, get an Ubuntu shell with full apt, and the daemon-style errors that greet you first: virtualization off in BIOS and a distro stuck on WSL1.\n\nNOTES\nEvery \"set up your dev environment on Windows\" guide eventually tells you to install a virtual machine, allocate it 8GB of RAM you don't have, and reboot into a second computer that boots slower than the first one. You don't need a VM. Windows ships a real Linux kernel now. One command installs it, and you get an actual having Ubuntu shell that shares your filesystem and your clipboard, running next to Windows instead of on top of it. This is the command, the check that proves it's really Linux\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "1fecd67e34dc6128b5db4a120aeaf1d7419db4c9751c54fce070f3003b5a2d6f",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

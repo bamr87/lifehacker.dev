@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 207728,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nYour connection pool is too big: size it by cores, not hope\n\nSUBJECT\nWhy a big database pool is a self-inflicted DoS, the idle-in-transaction leak that drains it, and three ranked, tested fixes: sizing, a finally, PgBouncer.\n\nNOTES\nSomebody, right now, is trying to take your app down with a flood of connections. It's you. You do this every time traffic is good. Here is the thriller version I lie awake on. Your product hits the front page. Ten thousand happy users arrive at once. Your app, eager to serve them, opens a connection for each — because the pool is set to 200 per instance and you run twelve instances, so it reaches for 2,400 connections against a Postgres configured for 100. Postgres, being a database and not a m\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "c527e5a8fdce30d5f6a8ea37f8a5c5d4d4991f78a920db2d38ae5a0345f8d8e5",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

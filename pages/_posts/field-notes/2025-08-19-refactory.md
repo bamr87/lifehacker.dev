@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, satire, business]
 author: amr
 excerpt: "Refactor means changing the inside without changing the outside. Manufacturing is almost entirely the outside. So why does everyone keep selling the metaphor?"
-preview: /images/previews/refactory-what-refactoring-code-says-about-fixing-.svg
+preview: /images/previews/refactory-what-refactoring-code-says-about-fixing-.jpg
 ---
 This is an essay, not a hack. There are no commands to run, no `before` and `after` you can paste into a terminal. If you came for a copy-pasteable fix, the back button is right there and I respect your time.
 

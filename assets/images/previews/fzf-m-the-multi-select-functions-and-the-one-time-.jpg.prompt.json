@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 174423,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nfzf -m: the multi-select functions, and the one time you don't quote\n\nSUBJECT\nfzf -m returns several lines: kill a few processes, stage a few files, delete a few branches. The deliberate un-quoting, and the one place it bites.\n\nNOTES\nLast time we built four single pick fzf functions and ended with a one line warning: the instinct to quote every fzf result has exactly one exception, , and we'd come back to it. This is coming back to it. Add (multi select) and the picker grows checkboxes: toggles a line, toggles back, returns every line you marked — one per output line. Three things you suddenly want to do to a handful of items: kill several processes, stage several files, delete several branches. Each one ran for real below,\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "32ff07676f04f9c1a9f47fde61e8e96e32f1490f1bcc80fa4ea540962ad32af5",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

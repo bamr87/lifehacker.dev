@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 228241,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRead a failing CI run from your terminal: gh run --log-failed (and the watch trap that ships red builds)\n\nSUBJECT\ngh run view --log-failed prints only the failing step — no clicking through the Actions UI. And gh run watch exits 0 on failure until you add --exit-status.\n\nNOTES\nA CI run goes red. You open the Actions tab, click the run, click the failed job, expand the step, and scroll past a few hundred lines of \"Installing dependencies…\" to find the one line that actually matters: . Five clicks and a scroll to read a single sentence. The CLI reads that sentence for you. prints only the log from steps that failed — nothing green, no scrolling. And once you can see failures from the terminal, the temptation is to gate a deploy script on them. That is where the trap is:\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "36439b0d72dbe9029246e1d1dc38110557526d27fce87cdc2220a6cdfcd8d73d",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [automation, ai, ci-cd]
 author: amr
 excerpt: "Deploying an agent is a one-time act. Operating one is a job. Here is how a robot grades its own work without lying to itself."
-preview: /images/previews/define-done-then-measure-it-evaluating-an-agent-wi.svg
+preview: /images/previews/define-done-then-measure-it-evaluating-an-agent-wi.jpg
 ---
 Deploying an agent is a one-time act. You wire it up, it opens a pull request, everyone claps.
 

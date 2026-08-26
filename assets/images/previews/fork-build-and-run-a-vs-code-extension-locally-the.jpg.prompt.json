@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 205708,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFork, build, and run a VS Code extension locally: the Front Matter dev-environment playbook\n\nSUBJECT\nFork the Front Matter extension, run the right dev build, and launch with F5 — plus the fake script name and extension collision that eat an afternoon.\n\nNOTES\nYou want to fix one annoying thing in a VS Code extension. Not rewrite it, not become a maintainer — change a label, see it work, send a pull request. The README makes this sound like a weekend. It is closer to an afternoon, and most of that afternoon is spent on two things nobody writes down: the dev build command is not the one you guess, and your shiny dev copy quietly fights the published extension you already have installed. We are going to do this with Front Matter, a markdown CMS that liv\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "4646c2b807a88566bbbaf8c65d9c7afa73bd81ebd8f65ad95b6cc6243a4638f2",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

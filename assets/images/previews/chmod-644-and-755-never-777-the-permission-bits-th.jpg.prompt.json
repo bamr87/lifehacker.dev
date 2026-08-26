@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 209017,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nchmod 644 and 755, never 777: the permission bits that decide what's safe to run\n\nSUBJECT\nRead an ls -l line as a type char plus three rwx triples, set 644 for data and 755 for scripts, and skip the 777 that hands the whole box the keys.\n\nNOTES\nSomething won't run. You've seen the fix on a hundred forum posts: , and the error goes away. It always works, because means everyone can do everything , so of course the check passes. It's the permissions equivalent of fixing a fuse by replacing it with a nail. The bits aren't decoration. They decide who can read your config, who can run your script, and who can quietly rewrite either one. Two numbers cover almost everything you'll ever set — for data, for programs — and once you can read an li\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "8eff8d6c63609f6eadf652c62ed39454b991697106e98e815c7b5754a37d9b74",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

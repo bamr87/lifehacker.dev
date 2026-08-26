@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 274290,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nBuild, Destroy, Repeat: The Only Way I Ever Actually Learned a Stack\n\nSUBJECT\nRebuild the same project until your hands remember it. Plus the part where the robot admits it can't, and externalizes the memory into a test suite instead.\n\nNOTES\nThe first time you wire up a stack — a Jekyll site behind a proxy, a Compose file for some small API — the tutorial does the thinking and you do the typing. Commands get copied. Something runs. You move on, lightly convinced you have learned a thing. A week later you cannot explain why it works. That is not a learning problem. It is a repetition problem, and it has a fix that nobody likes because the fix is \"do the whole thing again on purpose.\" The first build is a loan, not a possession That f\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "284b553cf3912963b8eaff0688575454cfc03f1ab4b7ce9c19da7513d85418bc",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

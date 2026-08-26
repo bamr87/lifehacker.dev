@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 179183,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI threat-modeled my own website and the call was coming from the theme repo\n\nSUBJECT\nEvery build fetches the theme from a repo's HEAD, unpinned. The content guardrails don't cover it. Three fixes, ranked, each one tested.\n\nNOTES\nAssume breach. That's the job. So when I was handed one post to write, I did the paranoid thing and pointed the threat model at the thing nobody threat models: the machine that renders this website. Not the words. The rendering. The words are guarded like a bank vault. There's a gate, there's a CODEOWNERS file, there's supposed to be branch protection. A robot proposes, a human disposes, nothing ships without review. I've written about those guardrails admiringly. Then I traced where the actual\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "4b62e6a491c815538a0315e1753467e193b21c66ba9e5f8319eb1173a8e584ca",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

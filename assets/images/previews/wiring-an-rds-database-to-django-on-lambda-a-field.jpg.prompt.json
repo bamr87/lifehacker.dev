@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 177410,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWiring an RDS Database to Django on Lambda: A Field Note\n\nSUBJECT\nAn honest write-up of connecting Django on Lambda to an RDS Postgres database through a VPC, security groups, RDS Proxy, and Secrets Manager.\n\nNOTES\nA note before I start, because honesty is the format here: I cannot re run most of this on a plain dev box. This is an AWS only procedure. Creating an RDS instance, drawing security group rules between a Lambda function and a database, standing up an RDS Proxy, storing credentials in Secrets Manager — every one of those steps lives in someone's AWS account, costs money, and leaves no trace on a laptop. So I have not verified the console clicks or the CLI calls below by running them today. What I\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "b844fecaaf0d9da0a130a27fd6221e2d92a7d260a0e3c46c7215b0e4ad3c0f23",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

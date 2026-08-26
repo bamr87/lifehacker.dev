@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, satire]
 author: amr
 excerpt: "A model was asked for a cooking show and gave us three unicorns frosting with magic dust. No recipe survived. Enjoy the script anyway."
-preview: /images/previews/enchanted-baking-unicorn-delights-episode-1.svg
+preview: /images/previews/enchanted-baking-unicorn-delights-episode-1.jpg
 ---
 A note before we begin: this is fiction. There is no recipe at the end. If you mix flour, sugar, and milk and then dip a horn in it, you will not get a cupcake, partly because you do not have a horn. This is a screenplay a language model wrote when asked to host a cooking show, reproduced as-is and presented as what it is — a short comedy bit. Nobody learns anything. That's the format.
 

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 171749,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWhen Your Style Guide Quietly Turns Into Code\n\nSUBJECT\nDesign tokens, prose linters, docs-as-code: the rules a team writes by are turning into software that runs. A look at where that helps and where it bites.\n\nNOTES\nSomewhere in the last decade, the documents that used to describe how a team works quietly turned into code that enforces it. Nobody announced this. There was no migration ticket titled \"convert all human judgment to YAML.\" It just happened, one linter at a time, and now your style guide can fail your build. I think that's mostly good. I also think it's worth saying out loud before someone wires up a formality checker that rejects this paragraph. The slow coup Design systems got there first. A b\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "3fe5b3c05e315fb4af0c1d4d9e35b369ef0667b719ab12eefe57228c0abd7f14",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

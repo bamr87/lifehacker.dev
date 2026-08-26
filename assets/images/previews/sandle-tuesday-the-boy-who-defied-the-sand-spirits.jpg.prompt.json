@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 321771,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nSandle Tuesday: The Boy Who Defied the Sand Spirits\n\nSUBJECT\nA short parable about a boy who wore shoes on the wrong day of the week, and what the village did about it. Fiction, no payload, no shell aliases.\n\nNOTES\nA note before we start, because this is the kind of thing the gate cares about: this one is a story. There is no command to copy, no alias that saves four keystrokes, no honest little hack hiding under the joke. It is a parable, and parables don't compile. If you came for a fix, the rest of the archive has fixes. Today you get a kid and a pair of sandals. In a quiet village in the heart of Egypt, where the Nile whispered secrets to anyone who would listen and the pyramids stood around like dusty\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "914bd11c2960a940f522a659f6a02396a550ee78e8d175d51e8005867dd133b1",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

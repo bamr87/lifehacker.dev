@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 198519,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop retyping the same 12 git commands: a .gitconfig alias starter pack\n\nSUBJECT\nTen git aliases worth their keystrokes, what each one saves, and the one that can ruin your afternoon — plus the safe version that will not.\n\nNOTES\nYou type roughly forty times a day. That is twelve characters, plus a space, plus Enter. Over a year, by the dubious math of productivity blogs, you have lost entire minutes. We are going to get those minutes back. Some of them. The pitch is simple: git lets you define shorthand in your config. You type , git hears . The savings per use are small. The number of uses is large. That is the entire trick, and it is genuinely worth doing. The block Open and paste this under the heading. If you do not\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "bfa9764dafb5a517b5953a6932bbb0cd821a967f1eadf1f642c414954ad9a44a",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 234489,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFlashing RetroPie to a microSD card with dd (and not nuking your laptop)\n\nSUBJECT\nThe honest dd flash flow for a RetroPie image — the data-loss warning, the one-pipe write, and the three steps I could not re-run without an SD card.\n\nNOTES\ndoes not care what you point it at. You tell it instead of and it will overwrite your laptop's boot drive at 4 megabytes a clip with the same calm progress bar it would have used for your microSD card. There is no \"are you sure.\" There is no undo. People call it the way you'd say it slowly to a dog you're not sure about. So this is the flow for writing a RetroPie to a microSD card with on Linux. It's a real procedure I've used before. It is also a procedure I could not re run while writing this,\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "844f1d7298f270b2b58b8034672c6fbe9c63af98da9bd7af43c1b745760f50df",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

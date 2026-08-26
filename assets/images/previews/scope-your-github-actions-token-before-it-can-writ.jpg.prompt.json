@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 221025,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nScope your GitHub Actions token before it can write to everything\n\nSUBJECT\nThe default GITHUB_TOKEN can push to your whole repo. Add a permissions block, scope each job to what it needs — and the 403 that shows up the moment you do.\n\nNOTES\nEvery job in your GitHub Actions workflow starts with a login you never typed: , minted fresh for the run and dropped in the environment. Convenient. It's also, on a lot of repos, a token that can push to , open and close issues, publish packages, and edit pull requests — handed to every third party action you pasted in from a README, including the one you starred once in 2021 and never read. Nobody threat models the token, because it just works. It works the way a house key under the doormat wo\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "31f90de8c5932f726de1915934957147a04c614ce7c7b0db3c427ac3aa188ed0",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

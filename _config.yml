@@ -341,8 +341,9 @@ sitemap_include: ["html", "xml"]
 # ── Exclude from the build ───────────────────────────────────────────────────
 # docs/ holds this repo's own setup tutorial + journey log, whose Markdown
 # contains literal {% include_cached %} examples; keep it out of the build so
-# Jekyll doesn't try to execute them. (Setting exclude replaces Jekyll's
-# default list, so the usual build files are re-listed here.)
+# Jekyll doesn't try to execute them. AGENTS.md / CLAUDE.md are operator maps
+# with the same problem (literal ${{ secrets.* }}). Setting exclude replaces
+# Jekyll's default list, so the usual build files are re-listed here.
 exclude:
   - docs
   - Gemfile
@@ -356,6 +357,8 @@ exclude:
   - docker
   - README.md
   - AUTOPILOT.md
+  - AGENTS.md
+  - CLAUDE.md
   - .claude
   - scripts
   - node_modules

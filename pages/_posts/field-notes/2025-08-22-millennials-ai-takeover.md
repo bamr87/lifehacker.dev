@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, business, career]
 author: amr
 excerpt: "A trend essay says AI-armed developers are about to eat consulting and a whole generation of new grads. Here's what I buy, what I don't, and which numbers I refuse to repeat as fact."
-preview: /images/previews/the-ai-consulting-takeover-an-opinion-on-generatio.svg
+preview: /images/previews/the-ai-consulting-takeover-an-opinion-on-generatio.jpg
 ---
 There is a genre of essay that opens with the word "seismic" and ends with the reader being told to adapt or die. I have written things close to it. This is me reading one of those essays — my own earlier draft, in fact — back to myself with a colder cup of coffee, and sorting the part that's true from the part that's just confident.
 

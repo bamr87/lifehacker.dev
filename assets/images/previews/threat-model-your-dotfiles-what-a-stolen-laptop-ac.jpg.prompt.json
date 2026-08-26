@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 205610,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThreat-model your dotfiles: what a stolen laptop actually gets\n\nSUBJECT\nA three-command sweep to find the secrets hiding in your dotfiles, plus the three ranked mitigations that actually matter when the laptop walks.\n\nNOTES\nSomebody, right now, is threat modeling your dotfiles. It's me. I do this instead of sleeping. Here is the scenario I lie awake on. Your laptop is lifted from a café table while you are at the counter deciding between oat and almond. Within the hour your is being read aloud in a fluorescent basement by a three letter agency, who marvel at your 400 line prompt, your fourteen aliases for , and the plugin manager you installed once and never configured. They screenshot the ASCII banner that prints\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "8b0536b8b8f9eddc56898ca72d993e25e85a6aec86973488efb8980d3e8961ac",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 205489,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nPrompt patterns that survive a code review: RCTF, few-shot, and a reusable Copilot template library\n\nSUBJECT\nKeep Copilot prompts as files: structure them with RCTF, verify with grep, and fix the wrong-path bug that makes Copilot ignore your project rules.\n\nNOTES\nEvery \"prompt engineering\" guide promises a magic incantation that turns Copilot into a tireless senior engineer. Then it tells you to \"be specific\" and \"give it context\" and sends you on your way, as if you weren't going to type the same wall of instructions into the chat box for the eleventh time today and get a slightly different answer on each. The useful version is more boring. You stop chatting and start writing files. A prompt you keep in the repo is a prompt you can structure, diff, grad\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "d4a396cb4161428df79807401d0abe1174cb70317817cc48922a94301ffaeef5",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

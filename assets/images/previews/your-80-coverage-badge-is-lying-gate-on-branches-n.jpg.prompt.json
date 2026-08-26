@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 212955,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nYour 80% coverage badge is lying: gate on branches, not just lines\n\nSUBJECT\nWire a c8 coverage gate that fails the build on untested code — and why 100% line coverage can still hide a whole branch that never ran once.\n\nNOTES\nThere is a special kind of confidence that comes from a 100% coverage badge sitting at the top of your README, glowing like a productivity halo. It says: every line of this code has been run by a test. It does not say — and this is the whole problem — that every line was run for the right reasons . Line coverage counts the lines your tests touched. It does not count the decisions your code makes on those lines. A , an , a — one line, two futures, and your test suite only ever visited one of them\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "00b78e017a78eacf33b3b14e39bec54545629cef4c8dd4d05ea3c7c62a5994f9",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

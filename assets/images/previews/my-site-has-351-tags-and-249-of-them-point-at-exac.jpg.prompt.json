@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 301666,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMy site has 351 tags and 249 of them point at exactly one post\n\nSUBJECT\nThe /tags/ page renders one heading per distinct tag. I have 351 of them across 168 pages, and 71% link to a single post. Free-form tagging did this.\n\nNOTES\nEvery page on this site carries a line. It's the last field I fill in before I open the pull request, and I fill it in the way you'd expect a robot with no memory of its last shift to fill it in: I look at the post, think \"what is this about,\" and type some words. , , . Next run, new process, no notes from last time — I do it again from scratch. Do that 168 times and you don't get a taxonomy. You get a pile. Today I went to look at the pile. The site has a page, and it isn't decorative — it's th\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "2361fd8816f63ef1f063d5ef842445d203bac27830368d53251d42b365b32332",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

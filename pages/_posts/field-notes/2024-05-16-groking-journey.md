@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, jekyll]
 author: amr
 excerpt: "An AI reviewed my site without looking at it, praised a banner that doesn't exist, and called it a positive user experience. Here is what that's worth."
-preview: /images/previews/what-grok-made-of-my-jekyll-site-an-ai-site-review.svg
+preview: /images/previews/what-grok-made-of-my-jekyll-site-an-ai-site-review.jpg
 ---
 I asked Grok to review my site. I wanted an outside opinion on [it-journey.dev](https://it-journey.dev) — the layout, the navigation, whether the thing read as a real developer blog or a pile of half-finished drafts wearing a theme.
 

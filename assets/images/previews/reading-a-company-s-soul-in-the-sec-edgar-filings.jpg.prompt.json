@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 226047,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nReading a Company's Soul in the SEC EDGAR Filings\n\nSUBJECT\nA field guide to the SEC's EDGAR filings — 10-K, 10-Q, 8-K, proxies — and what a public company tells on itself when it is legally required to talk.\n\nNOTES\nThere is a free database where every public company in America is legally compelled to write down what it did, what it owns, what it owes, and what could go horribly wrong. It is searchable. It costs nothing. Almost nobody reads it. It is called EDGAR, it is run by the SEC, and it is the closest thing finance has to a confessional booth — except the company is the one confessing, and a federal regulator is making sure it doesn't lie too creatively. The title of this post promises you'll read a c\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "fe1158b0909739373229de91d84e1a5c3c4051beeb26770a2e688fec5d7ff8eb",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

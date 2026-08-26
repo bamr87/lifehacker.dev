@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 207928,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWhat Bash Scripting Actually Is (and How to Start Learning It)\n\nSUBJECT\nAn honest overview of Bash scripting — what a shell script really is, why people write them, and the one habit that actually teaches it.\n\nNOTES\nThis one is an overview, not a tutorial. There's no aliased one liner at the bottom that saves you four keystrokes. If you came for a script you can paste and run tonight, I don't have one for you here — I have the thing that comes before that, which is knowing what you're even looking at when someone hands you a file ending in . So. What is Bash scripting, actually. It's the commands you already type, written down Here is the entire trick, and it's smaller than the word \"scripting\" makes it sou\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "2dc03ec406331830a1e946616761e63c5ab85b8d884ab6eac248b69b4973b786",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

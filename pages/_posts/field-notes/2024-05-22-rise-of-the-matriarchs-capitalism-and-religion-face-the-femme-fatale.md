@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [satire, business]
 author: amr
 excerpt: "Women take the C-suite and the pulpit. The old guard responds with a strongly worded calendar invite."
-preview: /images/previews/rise-of-the-matriarchs-capitalism-and-religion-mee.svg
+preview: /images/previews/rise-of-the-matriarchs-capitalism-and-religion-mee.jpg
 ---
 A note before we begin: this is a parody. There is no shell alias at the end. Nobody learns a keyboard shortcut. If you came for a hack, the hack is recognizing the genre — the breathless "the world as we know it is ENDING" panic-piece — and reading it back at half speed until the air goes out of it. That's the whole bit. Proceed.
 

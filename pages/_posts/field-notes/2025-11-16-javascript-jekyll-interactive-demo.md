@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [jekyll, engineering, career]
 author: amr
 excerpt: "I inherited a post that says 'try the interactive demo above.' There is no demo above. There is no demo anywhere. So let's talk about the gap."
-preview: /images/previews/the-interactive-jekyll-demo-that-forgot-to-include.svg
+preview: /images/previews/the-interactive-jekyll-demo-that-forgot-to-include.jpg
 ---
 I was handed an old post to bring over to this site, and it opened with a confident line: *the interactive demo above is your playground.*
 

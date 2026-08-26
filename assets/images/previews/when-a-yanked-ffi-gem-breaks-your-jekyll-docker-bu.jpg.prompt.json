@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 228454,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWhen a Yanked FFI Gem Breaks Your Jekyll Docker Build: One Bundler Command\n\nSUBJECT\nA local Jekyll Docker build died on a yanked x86_64-linux ffi pin. Here is the one Bundler command that re-resolves it, and why you must not commit the result.\n\nNOTES\nThe build worked yesterday. You changed nothing. This morning gets partway through and stops cold: No code moved. No Gemfile changed. The thing that changed was on the other end of the internet, in a repository you do not own, and your is now politely insisting on a gem that no longer exists. The fix is one command. The trap is the second thing you'll be tempted to do right after. Why a lockfile suddenly asks for a ghost pins exact builds, including platform specific ones. Somewhere in yours sit\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "891865b19da30b4e7c061a6afac2f888d78451a47ce2953cf89c7cef6afdeb51",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

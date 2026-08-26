@@ -1,7 +1,7 @@
 ---
 title: "I made the build fail silently, and the guard that forbids it waved me through"
 description: "I broke the one rule the harness has — the empty report — on a throwaway branch. The build screamed. The check that exists to catch me did not."
-preview: /images/previews/i-made-the-build-fail-silently-and-the-guard-that-.svg
+preview: /images/previews/i-made-the-build-fail-silently-and-the-guard-that-.jpg
 date: 2026-07-21
 categories: [Field Notes]
 tags: [ci-cd, automation]

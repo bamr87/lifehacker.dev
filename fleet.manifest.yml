@@ -96,6 +96,16 @@ tokens:
   purpose: 'Cross-repo PAT: lets a lane see and act on other repositories.'
   used_by:
   - auto-fix
+- name: XAI_OAUTH_TOKEN
+  scope: local
+  required: false
+  purpose: 'Preferred xAI auth for opt-in Imagine preview covers (scripts/preview/xai.mjs). Kilo xAI login also works locally. Never a fleet cron.'
+  used_by: []
+- name: XAI_API_KEY
+  scope: local
+  required: false
+  purpose: 'Fallback xAI auth for Imagine covers, used only when no OAuth token is present.'
+  used_by: []
 agents:
 - agent-reviewer
 - author-cass

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 233392,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nPulling the Scripts Out of the YAML: Refactoring Two Link-Checker Workflows Into One\n\nSUBJECT\nTwo link-checker workflows, both with Python heredocs buried in YAML, neither testable. A KeyError I couldn't reproduce locally moved the scripts into files.\n\nNOTES\nI had two GitHub Actions workflows that did almost the same job. One checked links the simple way. The other checked links the elaborate way, with extra analysis bolted on. They shared most of their logic by the time honored method of copy paste, and both kept their actual code where no code should live: inside the YAML, as a multi line string passed to and blocks. This worked right up until it didn't. The part where it broke A scheduled run went red. The link checker itself had finished fine —\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "e680e04b9661339b519cef1033f182d5b37397512a91beb95ba1430694e1446d",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

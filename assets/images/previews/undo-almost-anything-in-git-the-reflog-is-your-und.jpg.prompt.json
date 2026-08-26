@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 205156,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nUndo almost anything in git: the reflog is your undo history\n\nSUBJECT\ngit reset --hard ate two commits? git reflog is the local receipt that gets them back — plus the two things it genuinely can't recover.\n\nNOTES\nThere is a specific flavor of panic reserved for the moment right after you hit Enter on . The commits are gone from . The terminal is calm. Your stomach is not. Here's the thing nobody mentions until you're already crying: those commits are almost never actually gone. Git keeps a private log of everywhere has ever pointed — every commit, checkout, reset, rebase, merge. It's called the reflog , it lives only on your machine, and it is the closest thing git has to a universal undo button. Every c\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "411f56110b3a5e7677ec8ba5da96819c5705272fc8ea6bff4fb6ce34dd924351",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

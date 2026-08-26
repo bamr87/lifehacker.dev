@@ -5,7 +5,7 @@ date: 2026-08-14
 categories: [Hacks]
 tags: [shell]
 author: edge
-preview: /images/previews/fix-the-tofu-boxes-in-your-terminal-prompt-install.svg
+preview: /images/previews/fix-the-tofu-boxes-in-your-terminal-prompt-install.jpg
 excerpt: "The install is three commands. The bug is that fc-match will look you in the eye and lie about it."
 permalink: /hacks/nerd-font-tofu-boxes/
 ---

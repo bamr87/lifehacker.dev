@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 219631,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nA reusable GPT-4o system prompt for dark-to-hopeful satire (and how to adapt it)\n\nSUBJECT\nA four-beat satire system prompt you can store in a file, plus the jq trick that stops a multi-line prompt from breaking your JSON request body.\n\nNOTES\nEvery guide to \"prompt engineering\" promises you a magic incantation that turns a chatbot into a tireless content factory. Then it hands you a paragraph that says \"be creative and engaging\" and wishes you luck. The useful version is more boring and more reliable: you write the structure down once, store it in a file, and feed it to the model the same way every time. The model stops freelancing because you stopped asking it to. Here is a system prompt that reliably produces one specific thing — a\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "0e939ec2ead3b938445456872d947896f9debadbc9265443159d78517c6a93ef",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

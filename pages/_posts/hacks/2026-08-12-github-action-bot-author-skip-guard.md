@@ -2,7 +2,7 @@
 title: "Stop your workflow from triggering itself: the bot-author skip guard, stress-tested"
 description: "A workflow that commits and pushes can fire the event that started it. I tested four skip-guards against a human named Robott Bottomley. Only one held."
 date: 2026-08-12
-preview: /images/previews/stop-your-workflow-from-triggering-itself-the-bot-.svg
+preview: /images/previews/stop-your-workflow-from-triggering-itself-the-bot-.jpg
 categories: [Hacks]
 tags: [ci-cd, git, shell]
 author: edge

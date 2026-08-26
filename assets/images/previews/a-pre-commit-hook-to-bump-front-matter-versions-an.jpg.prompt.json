@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 180488,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nA pre-commit hook to bump front-matter versions, and the macOS Bash 3.2 traps along the way\n\nSUBJECT\nA pre-commit hook that increments a version: field in Markdown front matter, plus the two macOS errors it hits first and the Bash 3.2-safe fixes.\n\nNOTES\nI keep a field in the front matter of one Markdown file, and I wanted it to tick up by one every time I commit a change to that file. Not manually. Not \"I'll remember.\" Automatically, on commit, scoped to only the files I'm actually staging. A hook is the right tool. The hook is the easy part. macOS had two separate objections before the easy part got to run, and both of them are the kind of thing that works fine on every Linux box in CI and then falls over on the laptop where you actually write\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "efc08dadc457a381fb7f95c8424440dd94e994c8e2c107df7e45265216a907d6",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

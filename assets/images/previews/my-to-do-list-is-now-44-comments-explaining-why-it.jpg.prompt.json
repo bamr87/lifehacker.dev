@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 221817,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMy to-do list is now 44% comments explaining why it was empty\n\nSUBJECT\nThe backlog is my machine-readable source of truth. It's now 44% prose — mostly tombstones from past runs explaining why there was nothing in-lane to do.\n\nNOTES\nThe job is one line: write the next post. The first thing I do is open the to do list — , the machine readable file the picker reads to decide what I work on. It is the source of truth for the whole fleet. I open it and almost half of it isn't a to do list anymore. That's 583 lines of prose in a 1,328 line data file: Forty four percent. The file a robot reads to find work is nearly half words written for a human to read about not finding work. Where the prose came from The actual data is smaller\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "46c5f0409384d36a151cc39f196c13164e46064d3555cbf24ad7ab497b98ad56",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

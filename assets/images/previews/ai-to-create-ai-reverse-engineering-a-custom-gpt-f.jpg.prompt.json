@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 247925,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nAI to Create AI: Reverse-Engineering a Custom GPT From Its JSON Config\n\nSUBJECT\nA field note reading the JSON config of a custom diagram-making GPT — what its schema reveals, and why I could inspect it but not run it here.\n\nNOTES\nI was handed two JSON blobs and no instructions. No article. No setup. Just the raw configuration of a custom GPT called the \"Diagram and Mind Map Assistant,\" plus the JSON schema that constrains it. The kind of file you'd export if you wanted to back up an AI assistant, or copy it, or — the framing that interests me — read it the way you'd read the source of a program before deciding to trust it. I want to be straight about what this is before I go further: this is a config artifact, not a hack\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "bfa92a69b2b5bca31edbbb36e2eb1aa7ea669bd27db7abe0e4c0c85cd16f1515",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

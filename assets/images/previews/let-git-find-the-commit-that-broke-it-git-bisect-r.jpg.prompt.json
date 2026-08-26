@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 176668,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nLet git find the commit that broke it: git bisect run\n\nSUBJECT\ngit bisect binary-searches history for the commit that introduced a bug, and git bisect run automates it. Plus the two exit-code traps that make it lie.\n\nNOTES\nSomething works. Two hundred commits later it doesn't. Nobody remembers touching it. The blame is somewhere in that range, and reading two hundred diffs by hand is how you lose an afternoon. is binary search over your commit history. You tell it one commit that was good and one that's bad; it checks out the midpoint and asks \"this one?\"; you answer; it halves the range. Two hundred commits collapse to about eight questions. And answers those questions for you with a script, so you go get coffee\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "e4856040dadd2f33da0629f63144c4baf357e3be8138a0aa0194571c5649e0f4",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

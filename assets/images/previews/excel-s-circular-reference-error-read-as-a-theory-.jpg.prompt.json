@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 228482,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nExcel's Circular Reference Error, Read as a Theory of Capitalism\n\nSUBJECT\nAn opinion essay: the spreadsheet error that points at itself, read as a metaphor for AI-driven market concentration — plus the part I won't pretend is proven.\n\nNOTES\nOpen Excel. Put into cell A1. Excel stops you, draws a tiny arrow from the cell back to itself, and tells you it found a circular reference. The cell depends on its own output. The math never finishes because the answer keeps feeding the question. I once decided that this warning dialog was a complete theory of capitalism. I am here to read that back to myself with a colder cup of coffee. The original draft of this essay used the word \"inexorable\" without irony and proposed nationalizing Microso\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "67b67fff2b7cca6f41545332e6008f2db851e16f48e4041313bcadd0a19a4ea4",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -21,8 +21,9 @@
 #
 # This shim stays because the workflow prompt, the grow-lifehacker skill, and a
 # lot of muscle memory all call the old path. It forwards the flags that still
-# mean something and drops the ones that described renderers that no longer
-# exist. Call the generator directly in new code.
+# mean something — including `--provider xai` for the opt-in Imagine path —
+# and drops the ones that described renderers that no longer exist. Call the
+# generator directly in new code.
 # =============================================================================
 set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
@@ -35,6 +36,7 @@ if ! command -v node &>/dev/null; then
     exit 1
 fi
 
+PROVIDER=""
 ARGS=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -55,12 +57,17 @@ while [[ $# -gt 0 ]]; do
         --collection=*)     ARGS+=(--all); shift ;;
         --collections-dir)  shift 2 ;;
         --collections-dir=*) shift ;;
-        # Gone with the old pipeline: there is no raster provider, no rasterizer,
-        # and no OpenAI enhance pass to select any more.
-        -p|--provider|--rasterizer|--model|--style|--style-modifiers|--output-dir|--front-matter-key|--batch)
+        # xAI Imagine is the one remaining raster option (OAuth first).
+        -p|--provider)
+            PROVIDER="${2:-}"
+            shift 2 ;;
+        -p=*|--provider=*)
+            PROVIDER="${1#*=}"
+            shift ;;
+        --rasterizer|--model|--style|--style-modifiers|--output-dir|--front-matter-key|--batch)
             echo "[deprecated] ignoring '$1' — the renderer is deterministic and configured in _data/preview/design.json" >&2
             shift 2 ;;
-        -p=*|--provider=*|--rasterizer=*|--model=*|--style=*|--style-modifiers=*|--output-dir=*|--front-matter-key=*|--batch=*)
+        --rasterizer=*|--model=*|--style=*|--style-modifiers=*|--output-dir=*|--front-matter-key=*|--batch=*)
             echo "[deprecated] ignoring '${1%%=*}' — configured in _data/preview/design.json" >&2
             shift ;;
         -e|--enhance|--enhance-*)
@@ -73,4 +80,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+if [ -n "$PROVIDER" ]; then
+    ARGS+=(--provider "$PROVIDER")
+fi
 exec node "$SCRIPT_DIR/preview/generate.mjs" ${ARGS[@]+"${ARGS[@]}"}

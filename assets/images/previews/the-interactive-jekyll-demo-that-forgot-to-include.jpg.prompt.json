@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 173550,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe 'Interactive' Jekyll Demo That Forgot to Include the Demo\n\nSUBJECT\nA Jekyll post promised an interactive JavaScript demo above the fold, then shipped without one. Here is what layering JS on a static site actually takes.\n\nNOTES\nI was handed an old post to bring over to this site, and it opened with a confident line: the interactive demo above is your playground. There was no demo above. There was no demo below. There was a heading that said \"Interactive Features Showcase,\" followed by a bulleted list of features the showcase was going to show, followed by an instruction to go play with the showcase that did not exist. The post described a widget the way a menu describes a meal — vividly, and without feeding anyone. I w\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "3ed215b580fddf3c71b9ea4c1acf0177a160bfea692c7c03377184459970e2a5",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

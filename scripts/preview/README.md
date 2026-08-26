@@ -19,9 +19,16 @@ ruby scripts/ci/lint_preview.rb                     # the gate
 node scripts/preview/illustrate.mjs -f <article.md> # Claude draws the subject, then re-renders
 node scripts/preview/illustrate.mjs --self-test     # the whitelist fixtures (offline)
 node scripts/preview/illustrate.mjs --check         # validate committed motifs (what the gate runs)
+
+node scripts/preview/xai.mjs -f <article.md>        # opt-in xAI Imagine JPEG cover (OAuth first, compressed)
+node scripts/preview/xai.mjs --compress-only        # recompress existing preview rasters; no API calls
+node scripts/preview/generate.mjs --provider xai --changed
+node scripts/preview/xai.mjs --self-test            # offline; no network
 ```
 
 The generator is offline and free. The **illustrator** is the one part that calls a model — once per article, ever, through `scripts/ai/run.sh` (subscription auth, model from `_data/ai.yml illustrator_model`). Its output is committed to `_data/preview/motifs/<slug>.svg`, so every later render is offline again.
+
+`--provider xai` is a separate opt-in: one Imagine PNG per article, OAuth first, never a silent fallback to Trace Bloom. Terminal-only mint: `grok login` (official Grok CLI), then the script reads `~/.grok/auth.json`. Full steps: [`docs/PREVIEW-IMAGES.md`](../../docs/PREVIEW-IMAGES.md#terminal-only-oauth-no-kilo).
 
 | File | Job |
 |---|---|
@@ -29,8 +36,10 @@ The generator is offline and free. The **illustrator** is the one part that call
 | `lib/svg.mjs` | Scene → SVG: text metrics, headline fitting, safe-band layout, blooms, the animation contract |
 | `lib/motif.mjs` | The illustration contract: parse, whitelist, geometry checks, re-serialize, composite |
 | `lib/article.mjs` | Front-matter read, slug, section, `preview:` stamp, motif load |
-| `generate.mjs` | CLI + the skip/refresh policy |
+| `generate.mjs` | CLI + the skip/refresh policy (`--provider xai` dispatches to `xai.mjs`) |
 | `illustrate.mjs` | The Claude rung: brief → validate → retry → commit the motif → re-render |
+| `xai.mjs` | Opt-in xAI Imagine raster covers (OAuth first; sidecar + bespoke stamp) |
+| `lib/xai_auth.mjs` | Resolve `XAI_OAUTH_TOKEN` → `~/.grok/auth.json` → Kilo store → `XAI_API_KEY` |
 | `build-lab.mjs` | Inlines `lib/` into the interactive explorer |
 
 ## Rules that are not style preferences

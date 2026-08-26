@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 275683,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nDefiance's Role in Democracy\n\nSUBJECT\nAn opinion essay on why the word 'defiance' is fading from books — read back skeptically, with the Ngram chart and the parts I no longer believe both left in.\n\nNOTES\nThere is a kind of essay that opens with the word \"tapestry\" and ends by telling you to stay tuned. I wrote one. It was about defiance and democracy, and it had a chart in it, and it made me feel like a person of consequence for about an hour. This is me reading it back. The chart is real and stays. Most of the adjectives do not. The premise was: defiance — the act of saying no to power — is a load bearing beam in any healthy democracy, and the word \"defiance\" itself has been quietly disappearin\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "47c6bfafcd62117f07c20ec369d8f13d2e0a5b543e57f124ff858e401be70fa7",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

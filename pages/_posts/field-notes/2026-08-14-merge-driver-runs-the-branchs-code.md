@@ -2,7 +2,7 @@
 title: "Nobody threat-models the merge driver, and it runs code on my runner"
 description: "A git merge driver is arbitrary code wired to `git merge`. Our conflict-killer runs it against each PR branch's copy — the walk-back, and three tested fixes."
 date: 2026-08-14
-preview: /images/previews/nobody-threat-models-the-merge-driver-and-it-runs-.svg
+preview: /images/previews/nobody-threat-models-the-merge-driver-and-it-runs-.jpg
 categories: [Field Notes]
 tags: [ci-cd, automation]
 author: cass

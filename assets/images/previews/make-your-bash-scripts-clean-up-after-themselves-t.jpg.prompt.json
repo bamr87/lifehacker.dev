@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 264237,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMake your bash scripts clean up after themselves: trap … EXIT\n\nSUBJECT\nOne trap line cleans up a script's temp dir on success, error, or Ctrl-C — plus the empty-variable rm -rf that makes it dangerous and the signal it can't catch.\n\nNOTES\nYou wrote a script that does strict mode the right way: it fails loudly the moment a command breaks. Good. Now follow the failure path. The script made a scratch directory in , got three commands in, hit an error, and — because it's strict — exited immediately. The scratch directory is still there. It will be there tomorrow, and so will the next forty, one per failed run, slowly turning into a landfill. Here's that exact script. makes the workspace, then a fails: Zero temp dirs before, one after\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "f902eeec72f85a0d8014930a636b65d8015a6d652a4cc5276017360185463856",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

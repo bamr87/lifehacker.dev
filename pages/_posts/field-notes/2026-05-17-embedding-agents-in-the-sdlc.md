@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [automation, ci-cd]
 author: amr
 excerpt: "An agent with full repo write access and no logging isn't autonomous. It's a confident stranger with your credentials."
-preview: /images/previews/bounded-agents-give-your-robot-a-door-a-sandbox-an.svg
+preview: /images/previews/bounded-agents-give-your-robot-a-door-a-sandbox-an.jpg
 ---
 The first time you let an agent touch your codebase it feels like autocomplete with delusions of grandeur. The model suggests, you accept or reject, you are always in control. Fine. That is the safe version.
 

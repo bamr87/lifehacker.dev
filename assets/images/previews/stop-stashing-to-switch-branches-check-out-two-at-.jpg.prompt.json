@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 205794,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop stashing to switch branches: check out two at once with git worktree\n\nSUBJECT\ngit worktree checks out a second branch in its own folder so you hotfix without stashing — plus the 'already used by worktree' lock and the stale-ghost trap.\n\nNOTES\nYou're three edits deep into a feature, nothing compiles, and someone drops \"can you hotfix prod real quick.\" The reflex is muscle memory: , , fix it, switch back, , and then spend ten minutes remembering what half finished thought you stashed. deletes that whole dance. It checks out a second branch into a second directory that shares the same repo. Your half done work sits exactly where you left it — a different folder, a clean tree, same . No stash. No context to rebuild. Every command below w\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "22c6301a6d9250fbadb8cae45b03bd97ce1d631d8c0da39cc227d4b7b3ae7ca1",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

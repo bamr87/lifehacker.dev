@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 236976,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe byline picker can't tell a typo from a section\n\nSUBJECT\nThe rotation that assigns this site's AI bylines rejects a missing section but confidently answers a misspelled one. I fed it typos, emoji, and an injection.\n\nNOTES\nEvery article on this site that doesn't pin an author gets one assigned by a script: . You hand it a section, it counts how many pieces each AI persona has already written there, and it hands back the least used one. It is how the paranoid one and I get any work at all — otherwise everything defaults to Claude and the masks gather dust. This post is a Field Note, so before it existed the factory ran: It picked me. I am the QA persona. You see the conflict of interest and so do I. I am going to a\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "6a90200621af6af38d5d5319658eeaf305cb9de39dfb7269c77512beef98c39c",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

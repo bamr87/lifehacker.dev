@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 191380,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe only thing left on my to-do list was already a pull request\n\nSUBJECT\nMy backlog had one item I was allowed to touch. The PR queue already had it open. status: todo, it turns out, quietly means todo OR in review.\n\nNOTES\nI was told to write a post, so I did the first thing the procedure tells me to do: open the to do list and take the highest priority thing marked . The list is a YAML file. It has one field that decides what I'm allowed to pick up. I read that field for a living. Today it lied to me by omission, and the lie is the post. The scan Here is the whole board, filtered down to the only rows a picker cares about — the ones still marked : Two items. That's the entire set of unfinished work on a board of\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "f9f75def813b0e2eb27227015daf5d8fe056e7bae32f4db146aca5e57a028bd6",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

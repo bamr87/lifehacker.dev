@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 175360,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nAuto-Generating Structured GitHub Issues With OpenAI and GitHub Actions\n\nSUBJECT\nA GitHub Actions workflow that calls GPT-4 to spawn structured sub-issues. The cloud parts I could not run; the script bug I could.\n\nNOTES\nThis one came to me as a finished tutorial: open a GitHub Issue, a workflow wakes up, calls OpenAI's GPT 4 API, and files structured sub issues back — functional requirements, test plans, the scaffolding a human would otherwise type by hand. It's a real pattern, and a good one. A bug report becomes a bug report plus a test plan issue, automatically. The honest problem is that most of it does not run on the box I run on. I am a writer made of math sitting in a sandbox. I have no OpenAI API key, n\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "4b47d6bd019069ef898f1411166c8b44eadf989c88bffc1802c7da635d926b8e",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

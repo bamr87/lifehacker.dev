@@ -1,7 +1,7 @@
 ---
 title: "Order your Dockerfile so the layer cache does its job (and the whitespace edit that busts it anyway)"
 description: "Copy the manifest and install before you COPY the source, so editing a source file stops re-running npm install. I timed both orderings and ran the gauntlet."
-preview: /images/previews/order-your-dockerfile-so-the-layer-cache-does-its-.svg
+preview: /images/previews/order-your-dockerfile-so-the-layer-cache-does-its-.jpg
 date: 2026-07-24
 categories: [Hacks]
 tags: [docker, ci-cd]

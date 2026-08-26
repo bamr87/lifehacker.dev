@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 225624,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRead the query plan before you add the index: EXPLAIN ANALYZE, Seq Scan vs Index Scan\n\nSUBJECT\nStop guessing which column to index. Read the Postgres query plan: a Seq Scan is the tell, an Index Scan is the win, and two footguns stay in.\n\nNOTES\nYour query is slow. You know the fix: add an index. You pick the column that feels like the one — the one in the clause you stare at most — run , and the query is exactly as slow as before. So you add another index. And another. Now you have six indexes, every write is slower, and the read you were chasing never moved. The database has been willing to tell you which column to index this whole time. You have to ask it with and read three lines of the answer. This is the difference between indexin\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "8e3ad18db07071497fe887ef65d0922a0d897949ca8a733c5f872ba5f2784aee",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

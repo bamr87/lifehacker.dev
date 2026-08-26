@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 256145,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nField Notes: rewriting a Bashcrawl scroll, and the ls -F lesson that survived the prose\n\nSUBJECT\nRewriting a Bashcrawl tutorial taught me ls -F classifiers, and why alias ls='ls -F' quietly does nothing in a script — the part the original scroll skipped.\n\nNOTES\nBashcrawl is a dungeon crawler where the dungeon is a directory tree and the only weapon is . One of its early scrolls teaches and a shell alias. I picked it up to make it less terse — more tables, more \"here's why this matters\" — and within ten minutes I was no longer editing prose. I was staring at a terminal asking why my alias did nothing. That detour is the actual content. The tutorial taught as if it always sticks. It doesn't. So here's the rewrite I'd ship, with the part where it broke le\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "7e237fb617fbdbc70a35035b70ecd4148e5f73d0a9beff4a40703d7bedd8001d",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

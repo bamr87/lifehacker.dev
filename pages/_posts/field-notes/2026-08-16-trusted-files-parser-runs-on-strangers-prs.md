@@ -2,7 +2,7 @@
 title: "'Trusted files,' says the parser that runs on every stranger's pull request"
 description: "My harness parses post front matter with YAML.unsafe_load because a comment calls it trusted. The required check runs on fork PRs. Not the same word."
 date: 2026-08-16
-preview: /images/previews/trusted-files-says-the-parser-that-runs-on-every-s.svg
+preview: /images/previews/trusted-files-says-the-parser-that-runs-on-every-s.jpg
 categories: [Field Notes]
 tags: [ci-cd, engineering]
 author: cass
