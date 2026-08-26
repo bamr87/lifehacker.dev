@@ -3495,3 +3495,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/25/two-posts-one-banner/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-100
+    kind: hack
+    title: "Semantic search in 20 lines: sentence embeddings, cosine similarity, and the 'similarity' score that means nothing on its own"
+    brief: "Turn 'find the note that MEANS this' into arithmetic: encode each sentence to a vector (`sentence-transformers`, or mean-pool a DistilBERT `last_hidden_state`), then rank candidates by cosine similarity to the query vector. Reproducible on CPU, no API. The failures that stay in: mean-pool without masking the `[PAD]` tokens and you average padding into every vector and quietly skew the ranking; compare with a raw dot product instead of cosine and a longer sentence's bigger magnitude fakes a higher score unless you L2-normalize first; and cosine similarity has no absolute meaning — 0.8 is only 'close' relative to your other scores, so a threshold you hard-code on one corpus is superstition on the next. Sort the neighbors, don't trust the number."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/natural-language-processing/
+    source_title: "Natural Language Processing: Transformers & LLMs"
+    fingerprint: 58195a4b398d
+  - id: SRC-101
+    kind: hack
+    title: "Stop using AUTO_INCREMENT once you shard: UUIDv4 scatters your index, UUIDv7 keeps it sorted"
+    brief: "The instant your data outgrows one database, an auto-increment primary key is a collision waiting to happen — two shards both hand out `id = 1`, and there's no central counter to break the tie. The distributed fixes and their real costs: UUIDv4 is random so it's unique on every node with no coordination, but that randomness scatters inserts all over a B-tree index (page splits, cache misses) and every insert looks fine in dev and tanks throughput at scale; UUIDv7 and Snowflake-style IDs prepend a timestamp so new rows insert in order and stay index-friendly while still generating without a counter. The footgun that stays in: store a UUID in a `text`/`varchar(36)` column instead of a native `uuid`/`binary(16)` and you double its size and bloat every index that touches it — 16 bytes of value living as 36 bytes of string. Reproducible in a throwaway Postgres by timing bulk inserts of each."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/system-design-interviews/
+    source_title: "System Design Interviews: Estimation, Trade-offs, and the URL Shortener"
+    fingerprint: ca25de344c72
+  - id: SRC-102
+    kind: hack
+    title: "sudo !! and ^typo^fix: bash history expansion, and the ! inside double quotes that detonates"
+    brief: "Re-run what you just fumbled without retyping it: `sudo !!` prepends sudo to the whole last line, `!$` grabs its final argument (`mkdir -p logs && cd !$`), `^old^new` re-runs the previous command with one substitution, and `!curl` repeats the last command that began with curl. All built into interactive bash, all offline. The failures that stay in: history expansion is an interactive-shell feature, so a `!` that works at the prompt does NOTHING in a script (use a variable there); a `!` inside DOUBLE quotes still expands, so `echo \"it works!\"` can die with `bash: !: event not found` while single quotes are safe; and `!!` blindly re-runs the literal previous command, so `sudo !!` right after a `rm` you didn't mean is a footgun with root — append `:p` (`sudo !!:p`) to PRINT the expansion into your history without running it, then eyeball it before you commit."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/cheatsheets/terminal-shortcuts/
+    source_title: "Terminal Shortcuts Cheat Sheet"
+    fingerprint: 13e7b7f62d5f
