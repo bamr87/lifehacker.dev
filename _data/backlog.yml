@@ -3532,3 +3532,14 @@ backlog:
     source_url: https://it-journey.dev/notes/cheatsheets/terminal-shortcuts/
     source_title: "Terminal Shortcuts Cheat Sheet"
     fingerprint: 13e7b7f62d5f
+  - id: WIRE-006
+    kind: wire
+    title: "The biggest breaking change in the model stack this fortnight was an HTTP client"
+    brief: "Fresh wire idea (no wire todo existed at run time). Infrastructure-not-a-model story: within two weeks, both frontier Python SDKs swapped their HTTP layer from httpx to httpx2 — OpenAI in openai v3.0.0, Anthropic in anthropic v1.0.0 — because httpx is 'no longer actively maintained' and httpx2 is Pydantic's API-compatible fork. Per Anthropic's MIGRATION.md the swap is drop-in for your code but silently blinds APM/tracing and HTTP-mock tooling until you repoint it. Downstream it detonated on a transitive dependency: Simon Willison's `llm` broke on fresh install when openai dropped httpx, forcing an emergency 0.32.1 pin (openai<3), then 0.33 to migrate, then llm-anthropic 0.27. The deadpan finding: the fortnight's real breaking release wasn't a frontier model, it was a four-line dependency line. COI line load-bearing: this desk runs on Anthropic's SDK, and Willison used Fable 5 in Claude Code to do the Anthropic migration PR."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/httpx2-sdk-migration/
+    source: manual
+    source_url: https://simonwillison.net/2026/Aug/24/llm-anthropic/
