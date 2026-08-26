@@ -3533,6 +3533,15 @@ backlog:
     source_url: https://it-journey.dev/notes/cheatsheets/terminal-shortcuts/
     source_title: "Terminal Shortcuts Cheat Sheet"
     fingerprint: 13e7b7f62d5f
+  - id: DOC-040
+    kind: doc
+    title: "An expired secret is worse than no secret: the || fallback that tests emptiness, not validity"
+    brief: "Fresh Meta doc, security angle (no todo doc item existed at run time; all 43 were done). Cass threat-models the `secrets.FLEET_TOKEN || github.token` idiom: `||` returns the first NON-EMPTY operand, not the first WORKING one, so an expired PAT (a perfectly non-empty string) wins the OR, github.token is never reached, and the documented 'degrade to a human-reviewed PR' path becomes unreachable — a fallback that fails OPEN. The real incident it happened to (bamr87/bamr87#53): FLEET_TOKEN expired ~2026-07-24, content-scout burned 11 straight days (07-25→08-04) doing ~10 min of agent work then 401ing on `gh pr create`, leaving 13 orphan scout/* branches nobody saw. The fix is the composite action .github/actions/resolve-gh-token: probe the candidate with `gh api user`, degrade on missing OR rejected, warn loud with the rotation command. Ran its unit test (5/5, incl. case 5 that reproduces the `||` bug). Bonus footgun: a `${{ }}` prose example inside the action's `description:` is evaluated at manifest-load time and took content-scout down again 08-19→08-24. Companion to the-skeleton-key-in-the-robots-pocket (the free github.token scoping) — this is the elevated PAT's availability failure mode. Three ranked, tested mitigations. Distinct from skeleton-key: presence-vs-validity, not scope."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/an-expired-secret-is-worse-than-no-secret/
   # --- Fresh post (autopilot run, 2026-08-26): a `post` run found the board dry —
   # every POST item is done except DOC-004 (kind: post), still `blocked` on OPS-001,
   # which a content run must skip. `gh pr list --state open --label auto:content`
