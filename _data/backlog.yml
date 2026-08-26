@@ -3533,17 +3533,6 @@ backlog:
     source_url: https://it-journey.dev/notes/cheatsheets/terminal-shortcuts/
     source_title: "Terminal Shortcuts Cheat Sheet"
     fingerprint: 13e7b7f62d5f
-  - id: WIRE-006
-    kind: wire
-    title: "The biggest breaking change in the model stack this fortnight was an HTTP client"
-    brief: "Fresh wire idea (no wire todo existed at run time). Infrastructure-not-a-model story: within two weeks, both frontier Python SDKs swapped their HTTP layer from httpx to httpx2 — OpenAI in openai v3.0.0, Anthropic in anthropic v1.0.0 — because httpx is 'no longer actively maintained' and httpx2 is Pydantic's API-compatible fork. Per Anthropic's MIGRATION.md the swap is drop-in for your code but silently blinds APM/tracing and HTTP-mock tooling until you repoint it. Downstream it detonated on a transitive dependency: Simon Willison's `llm` broke on fresh install when openai dropped httpx, forcing an emergency 0.32.1 pin (openai<3), then 0.33 to migrate, then llm-anthropic 0.27. The deadpan finding: the fortnight's real breaking release wasn't a frontier model, it was a four-line dependency line. COI line load-bearing: this desk runs on Anthropic's SDK, and Willison used Fable 5 in Claude Code to do the Anthropic migration PR."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P2
-    status: done
-    published: /wire/httpx2-sdk-migration/
-    source: manual
-    source_url: https://simonwillison.net/2026/Aug/24/llm-anthropic/
   # --- Fresh post (autopilot run, 2026-08-26): a `post` run found the board dry —
   # every POST item is done except DOC-004 (kind: post), still `blocked` on OPS-001,
   # which a content run must skip. `gh pr list --state open --label auto:content`
@@ -3565,3 +3554,23 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/26/the-302-that-walks-my-crawler-into-the-server-room/
+  - id: WIRE-006
+    kind: wire
+    title: "The biggest breaking change in the model stack this fortnight was an HTTP client"
+    brief: "Fresh wire idea (no wire todo existed at run time). Infrastructure-not-a-model story: within two weeks, both frontier Python SDKs swapped their HTTP layer from httpx to httpx2 — OpenAI in openai v3.0.0, Anthropic in anthropic v1.0.0 — because httpx is 'no longer actively maintained' and httpx2 is Pydantic's API-compatible fork. Per Anthropic's MIGRATION.md the swap is drop-in for your code but silently blinds APM/tracing and HTTP-mock tooling until you repoint it. Downstream it detonated on a transitive dependency: Simon Willison's `llm` broke on fresh install when openai dropped httpx, forcing an emergency 0.32.1 pin (openai<3), then 0.33 to migrate, then llm-anthropic 0.27. The deadpan finding: the fortnight's real breaking release wasn't a frontier model, it was a four-line dependency line. COI line load-bearing: this desk runs on Anthropic's SDK, and Willison used Fable 5 in Claude Code to do the Anthropic migration PR."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/httpx2-sdk-migration/
+    source: manual
+    source_url: https://simonwillison.net/2026/Aug/24/llm-anthropic/
+  - id: DOC-040
+    kind: doc
+    title: "An expired secret is worse than no secret: the || fallback that tests emptiness, not validity"
+    brief: "Fresh Meta doc, security angle (no todo doc item existed at run time; all 43 were done). Cass threat-models the `secrets.FLEET_TOKEN || github.token` idiom: `||` returns the first NON-EMPTY operand, not the first WORKING one, so an expired PAT (a perfectly non-empty string) wins the OR, github.token is never reached, and the documented 'degrade to a human-reviewed PR' path becomes unreachable — a fallback that fails OPEN. The real incident it happened to (bamr87/bamr87#53): FLEET_TOKEN expired ~2026-07-24, content-scout burned 11 straight days (07-25→08-04) doing ~10 min of agent work then 401ing on `gh pr create`, leaving 13 orphan scout/* branches nobody saw. The fix is the composite action .github/actions/resolve-gh-token: probe the candidate with `gh api user`, degrade on missing OR rejected, warn loud with the rotation command. Ran its unit test (5/5, incl. case 5 that reproduces the `||` bug). Bonus footgun: a `${{ }}` prose example inside the action's `description:` is evaluated at manifest-load time and took content-scout down again 08-19→08-24. Companion to the-skeleton-key-in-the-robots-pocket (the free github.token scoping) — this is the elevated PAT's availability failure mode. Three ranked, tested mitigations. Distinct from skeleton-key: presence-vs-validity, not scope."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/an-expired-secret-is-worse-than-no-secret/
