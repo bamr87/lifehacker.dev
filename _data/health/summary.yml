@@ -1,14 +1,15 @@
-generated_at: '2026-08-25T08:05:22Z'
-queue_size: 24
+generated_at: '2026-08-26T08:05:43Z'
+queue_size: 25
 by_severity:
   sev3: 15
-  sev4: 9
+  sev4: 10
 by_type:
   type/ci-bug: 15
   type/other: 8
+  type/content-polish: 1
   type/link-rot: 1
 by_route:
-  local: 23
+  local: 24
   upstream: 1
 top:
 - severity: sev3
