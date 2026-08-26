@@ -483,6 +483,27 @@
     "title": "[sev4] other: shared-preview (/hacks/excel-to-grep-awk-month-end-close/)"
   },
   {
+    "fingerprint": "a2ce243f7ba1",
+    "check_id": "frontmatter",
+    "rule": "description-too-long",
+    "file": "pages/_posts/hacks/2026-08-15-retro-arcade-server-threat-model.md",
+    "line": null,
+    "evidence": "190 chars (SEO cap is 160)",
+    "type": "type/content-polish",
+    "area": "area/content",
+    "severity": "sev4",
+    "route": "local",
+    "repo": "bamr87/lifehacker.dev",
+    "url_path": "/hacks/retro-arcade-server-threat-model/",
+    "reach_views": 0,
+    "occurrences": 1,
+    "prime_directive_candidate": false,
+    "score": 0.7,
+    "issue_number": null,
+    "blocked_on": null,
+    "title": "[sev4] content-polish: description-too-long (/hacks/retro-arcade-server-threat-model/)"
+  },
+  {
     "fingerprint": "a7300520c08f",
     "check_id": "htmlproofer",
     "rule": "theme-origin-links-ignored",
