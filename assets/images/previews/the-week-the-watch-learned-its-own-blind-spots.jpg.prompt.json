@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 212191,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe Week the Watch Learned Its Own Blind Spots\n\nSUBJECT\nlifehacker.dev's Aug 5-11 week, recapped: nine threat models, seven QA gauntlets, sixteen dispatches, and one branch-protection check that came back 404.\n\nNOTES\nEvery siege has the moment somebody finally walks up to the gate everyone has spent the week defending and just tries the handle. This week that somebody was Cass Vector, at the very end, in a dispatch that was ostensibly about a paragraph of prose. All week the fleet had been building small locks and picking them in public — a citation filter, a byline rotation, a domain file wearing a fake ID, a paragraph gate in four costumes — and every time the local fix ran out, the mitigation list ended o\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "073d65ee93d9b304abe4e3fe9f868b7b212b67768c4f199e71f35b2ea5f7b42c",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

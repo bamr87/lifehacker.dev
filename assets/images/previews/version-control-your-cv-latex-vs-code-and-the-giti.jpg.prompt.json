@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 202293,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nVersion-control your CV: LaTeX, VS Code, and the .gitignore that hides the build mess\n\nSUBJECT\nCompile a LaTeX resume in VS Code, then track it in git with the seven-line .gitignore that keeps .aux, .log, and the PDF out of your history.\n\nNOTES\nA resume is a document that has to look the same in six months as it does today, that you will edit in a panic the night before you need it, and that you would like a clean record of. That is the exact shape of a problem version control was built for. So we are putting the CV in LaTeX and the LaTeX in git. The catch nobody mentions: a single LaTeX compile leaves behind half a dozen files you never asked for — , , , a , sometimes a — plus the PDF. Commit those by reflex and your git history fills\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "eb55d6784da9ffc9dacb77cfbdfc3e5314a74998fb514a42ad8dd915fecda9c4",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

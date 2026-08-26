@@ -2,7 +2,7 @@
 title: "Let the content bot edit posts, not your CI: a changed-files allowlist gate"
 description: "Give a bot commit rights and it will push whatever is in the diff. Gate it with a git diff allowlist that fails closed — and use origin/BASE...HEAD, not HEAD~1."
 date: 2026-08-13
-preview: /images/previews/let-the-content-bot-edit-posts-not-your-ci-a-chang.svg
+preview: /images/previews/let-the-content-bot-edit-posts-not-your-ci-a-chang.jpg
 categories: [Hacks]
 tags: [ci-cd, security, git]
 author: cass

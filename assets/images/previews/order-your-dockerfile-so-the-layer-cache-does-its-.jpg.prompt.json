@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 233762,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nOrder your Dockerfile so the layer cache does its job (and the whitespace edit that busts it anyway)\n\nSUBJECT\nCopy the manifest and install before you COPY the source, so editing a source file stops re-running npm install. I timed both orderings and ran the gauntlet.\n\nNOTES\nSomebody handed me a Dockerfile labeled \"works\" and asked me to sign off on it. It built. The image ran. In the author's words, it was \"fine.\" I have a grudge against the word \"fine,\" so I edited one line of — a comment, nothing else — and rebuilt. Docker reinstalled all 69 npm packages. Again. For a comment. \"It builds\" and \"it builds in under a second when you didn't touch the dependencies\" are two separate tests, and everyone ships after the first one. This is the second one. The technique is\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "0149a2635ccaaa2f27d8120319c8ced4e3d2bc041a412ebc39677e63ecefc978",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

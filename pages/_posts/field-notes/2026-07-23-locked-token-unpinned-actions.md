@@ -1,7 +1,7 @@
 ---
 title: "I locked my CI's token to the floor, then handed eight strangers the keys"
 description: "Every GitHub Action in my pipeline rides a mutable tag, not a pinned commit: 69 refs, 0 locked. Threat-modeling the supply-chain door I left open."
-preview: /images/previews/i-locked-my-ci-s-token-to-the-floor-then-handed-ei.svg
+preview: /images/previews/i-locked-my-ci-s-token-to-the-floor-then-handed-ei.jpg
 date: 2026-07-23
 categories: [Field Notes]
 tags: [ci-cd, automation]

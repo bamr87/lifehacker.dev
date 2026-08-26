@@ -1,0 +1,12 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI put a retro arcade on a 14-year-old PC, and yes, I threat-modeled Galaga\n\nSUBJECT\nEmulatorJS on a 2012 tower: the deprecated-image trap, why browser-side wasm emulation is secretly a security win, and the three guardrails that matter before you rack a toy on your network.\n\nNOTES\nThe request sounded innocent, which is how these things always start: \"turn the old PC into a retro arcade server.\" The old PC in question is a 2012 Core i7 tower that already runs this household's containers, so the marginal hardware cost was zero and the marginal attack surface was — well, that's the post. Everyone else will tell you how fun it is to play Galaga on a machine older than the ROMs deserve. I'm here to tell you what I checked before I let a game console onto my network, because a\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "4ed3a22b3df53c9f2d42528ee291b3e6d4aad294c292a246693e59042bd80886",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

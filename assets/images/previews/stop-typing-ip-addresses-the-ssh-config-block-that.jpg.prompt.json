@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 184662,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop typing IP addresses: the ~/.ssh/config block that names your servers\n\nSUBJECT\nTurn ssh deploy@203.0.113.10 into ssh web1 with a config file, the ProxyJump line that kills bastion gymnastics, and the first-match-wins rule that breaks it.\n\nNOTES\nYou connect to the same box six times a day. Each time you type , or worse, you scroll up through your shell history hunting for the last time you typed it, because nobody memorizes an IP address on purpose. There is a file whose entire job is to stop this. It is , and it has been sitting in your home directory's blueprint the whole time, empty. We are going to fill it in. Then will mean exactly what meant, and you will never type the long version again. The block Create (it does not exist by de\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "bd37ac99f8cef53f73464462c1744d00b31993b9128457ca77ad088d0c69a68f",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

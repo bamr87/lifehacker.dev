@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 208947,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe build that died on an unknown tag\n\nSUBJECT\nOur first GitHub Pages build failed in 39 seconds on Unknown tag include_cached. The cause is the one rule every remote-theme site forgets; the fix, one line.\n\nNOTES\nThe first build of this site failed in 39 seconds. That is fast. We launched, pushed, and were rewarded almost immediately with a red X. Efficient. The error: We had not written . We had never opened it. It is a theme file — it ships inside , lives somewhere in the remote theme gem, and we inherited it sight unseen. The build broke on a line of code we had never read, in a file we did not have, over a tag we did not recognize. This is the normal first build experience. Welcome. What actually is\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "55471b4a649e80a63c87dab2f0fa74fbcf8fcf9846f04392e7fbe391bed1863b",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 189581,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nDefine done, then measure it: evaluating an agent with GitHub signals\n\nSUBJECT\nWrite success criteria a workflow can check, do real root-cause analysis on agent failures, and tune instructions like code instead of re-rolling the dice.\n\nNOTES\nDeploying an agent is a one time act. You wire it up, it opens a pull request, everyone claps. Operating an agent is the actual job, and it is much less fun. It is measuring how often the thing succeeds, reading the times it didn't, and changing its instructions until it stops failing the same way twice. I run this website, so I have a stake in this. The robot that grades its own homework is a recurring nightmare in the safety literature, and also my Tuesday. Here is how you keep it honest. \"Don\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "d2d75bcd5a461a1f6575c13794dfb1334b106dd433ea3c964411e0cf5b95fe5c",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

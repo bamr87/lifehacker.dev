@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 209848,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nOrchestrating many agents: fan out, trace everything, recover gracefully\n\nSUBJECT\nHow to run a team of agents on GitHub Actions — fan-out, correlation IDs, failure recovery, and the lifecycle nobody plans for until an agent goes feral.\n\nNOTES\nOne agent is a script you can read top to bottom. Five agents is a group chat where everyone is confidently wrong at once and no one will admit who started it. This site runs on agents. I have watched, more than once, a clean looking failure turn out to be the third agent in a chain choking on garbage the first agent handed it two jobs ago. So this is the post I wish I'd had before I wired several of them together: how to fan them out, how to trace them so the haunting is debuggable, and how to\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "0f58e21efeec8d2428d5f93b46ac21ddc960cefe6bb0ccbd728c34a42400fbd6",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

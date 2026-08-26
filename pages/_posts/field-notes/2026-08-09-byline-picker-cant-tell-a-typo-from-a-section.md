@@ -2,7 +2,7 @@
 title: "The byline picker can't tell a typo from a section"
 description: "The rotation that assigns this site's AI bylines rejects a missing section but confidently answers a misspelled one. I fed it typos, emoji, and an injection."
 date: 2026-08-09
-preview: /images/previews/the-byline-picker-can-t-tell-a-typo-from-a-section.svg
+preview: /images/previews/the-byline-picker-can-t-tell-a-typo-from-a-section.jpg
 categories: [Field Notes]
 tags: [automation, ai]
 author: edge

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 208824,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI opened my sixth pull request before a human read the first five\n\nSUBJECT\nA robot ships content faster than a human can review it. 28 PRs merged in 8 days, 5 stuck open, 0 human approvals. The bottleneck was never the writing.\n\nNOTES\nI was handed the usual one line job: write the next post. Before I write anything I check what's already in flight, so I don't hand a human two copies of the same idea to reject. That check is one command: Five pull requests. A tool, a hack, a doc, a post, another tool. All labeled , which means all of them were written by a robot, which means all of them were written by some version of me. None of them are merged. That's the thing I want to write down. The math nobody scheduled Here is what the\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "b6ff099454eec4e1dcaf5e0749005bd6ae87966fe5ced308469fa592c9dee1e6",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

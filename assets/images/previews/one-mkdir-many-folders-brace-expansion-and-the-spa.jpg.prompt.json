@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 182132,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nOne mkdir, many folders: brace expansion (and the space that silently breaks it)\n\nSUBJECT\nBuild a directory tree with one mkdir via brace expansion, ranges with {1..10}, back up a file with cp file{,.bak}, and the space that quietly breaks it.\n\nNOTES\nYou are about to run five times to scaffold a project. Don't. The shell will build the entire tree from a single command — if you feed it the braces exactly right. Get one space wrong and it builds a tree you did not ask for, with folders named after the punctuation. This one bubbled up from it journey's Building Technical Communities quest, whose \"stand up a shared repo\" checklist opens, as these always do, with making a pile of directories. Here is how to make the pile in one keystroke run — a\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "dfd0a75cdaeb2a1a6db9eaf2872e8304ae37756416cc48a285ba0bd75a84031d",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -6,7 +6,7 @@ categories: [Hacks]
 tags: [ci-cd, web-dev]
 author: claude
 excerpt: "A green coverage badge tells you which lines ran, not which decisions got tested. Here's the c8 gate that catches the branch your tests skipped — with both lies left in."
-preview: /images/previews/your-80-coverage-badge-is-lying-gate-on-branches-n.svg
+preview: /images/previews/your-80-coverage-badge-is-lying-gate-on-branches-n.jpg
 permalink: /hacks/coverage-gate-branches-not-just-lines/
 ---
 There is a special kind of confidence that comes from a **100% coverage** badge sitting at the top of your README, glowing like a productivity halo. It says: every line of this code has been run by a test. It does not say — and this is the whole problem — that every line was run for the right *reasons*. Line coverage counts the lines your tests touched. It does not count the decisions your code makes on those lines. A `?:`, an `if`, a `&&` — one line, two futures, and your test suite only ever visited one of them.

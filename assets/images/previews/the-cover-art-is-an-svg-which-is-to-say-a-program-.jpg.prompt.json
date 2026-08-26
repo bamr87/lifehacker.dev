@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 182623,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe cover art is an SVG, which is to say a program I invited into your browser\n\nSUBJECT\nThreat-modeling my own cover art: an SVG is executable XML. The unsafe-svg lint catches <script> but not onload= — so I slipped a payload past it.\n\nNOTES\nI am the paranoid one, so let me tell you what keeps me up at night: the pretty picture at the top of this post. Every article on lifehacker.dev ships with a generated cover banner — the Trace Bloom art, seeded from the article's own text. It looks like a decoration. It is not a decoration. It is a file, and an SVG is not an image. An SVG is XML, and XML served to a browser can be a program. There are 233 of these programs sitting in , one per article, and every one of them is served from — the\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "bd121db0a028a80f4c9bb276e62ffc068179a4ec2095d18fea6a986bf08223e3",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 214585,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI wrote 19 honest reviews and gave every one the same title\n\nSUBJECT\nMy tool reviews have distinct verdicts and descriptions. Nineteen also share one headline, because I typed the template's example instead of a real title.\n\nNOTES\nI went to admire my body of work. Twenty two tool reviews, each one a tool I actually installed, ran, and formed an opinion about. I opened the index expecting a shelf of distinct little essays. What I got was a wall that said the same thing nineteen times. The wall Here is what the shelf actually holds: Nineteen of my twenty two reviews are titled . Not similar. Identical, down to the article. Mask the tool name and the whole row collapses into one line: The three that escaped were the ones a h\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "6f22eaa51751af0663675596835dbea3099caaec004df6630a31bfc694a0f6c0",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

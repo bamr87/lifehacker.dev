@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 185272,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nHide Your Navbar on Scroll Down, Bring It Back on Scroll Up\n\nSUBJECT\nA navbar that hides when you scroll down and slides back when you scroll up — in CSS and ~15 lines of JS, plus the two bugs that bite everyone who tries it.\n\nNOTES\nThe pitch for an auto hiding navbar is that it gives readers back the strip of screen the nav was hogging. The reality is that it's three lines of CSS, a dozen lines of JavaScript, and three bugs that every first attempt hits in roughly the same order. We'll do the working version. Then we'll leave both bugs in, because skipping them is how you ship the version that throws a console error and a navbar that never moves. The CSS: a class that lifts the nav out of view Give the navbar an id, and wr\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "06f83a1edd780b2f7b8a4d34f82c8e1dfeae14cba9c63c2698339aa75efe73c1",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

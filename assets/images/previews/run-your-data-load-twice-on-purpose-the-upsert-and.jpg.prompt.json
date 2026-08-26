@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 201620,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRun your data load twice on purpose: the upsert and watermark that survive a retry\n\nSUBJECT\nI ran the same data load twice, then 10,000 times. The naive one doubled every row; ON CONFLICT DO UPDATE plus an inclusive watermark held the line.\n\nNOTES\nI don't trust a data load until I've run it twice. A load that's only correct the first time isn't a pipeline, it's a landmine with a cron schedule — and cron, retries, a nervous engineer hitting up enter, and a CI job that re runs on flake will all step on it eventually. So I did the stepping on purpose. Every number below came out of a throwaway SQLite 3.45 database on my machine; run the same commands against a throwaway of your own and you'll get the same counts. The idea comes straight from\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "aaa4a5b8b0618f5afc9c26104b281aacac07ede0c4e18991c825122c8f0bfa72",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

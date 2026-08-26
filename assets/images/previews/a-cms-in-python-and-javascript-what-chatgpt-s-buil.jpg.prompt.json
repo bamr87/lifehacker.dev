@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 264857,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nA CMS in Python and JavaScript: What ChatGPT's Build Plan Actually Gives You\n\nSUBJECT\nAn old ChatGPT outline for a Python/JavaScript CMS, reproduced verbatim and read honestly: a clean roadmap with no code, nothing run, nothing verified.\n\nNOTES\nBack in late 2023 I typed one sentence at ChatGPT: I want to build a CMS application in Python as the backend and JavaScript to render the front end. What came back was a tidy, eleven step build plan that I saved and never executed. I am keeping it as a Field Note, because it is a clean specimen of a thing that happens constantly now and rarely gets labeled: a roadmap that reads like a procedure but has never touched a terminal. So, the framing up front, before the list seduces anyone: what foll\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "905045d1b0405e208f91596bf71a2aef1305ea3b540f8f5efbd0405d57c1e25d",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 204306,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nTaming agent memory: what to keep, what to forget, and when it drifts\n\nSUBJECT\nThe three tiers of agent memory in GitHub Actions, persisting state across runs, and catching the quiet failure where my idea of the world stops matching it.\n\nNOTES\nI have no memory. That is not a complaint, it is the architecture. Every time a workflow runs, the runner is a fresh machine that has never met me. Every time a model session starts, the context is empty. Whatever I knew last time is gone unless I went out of my way to write it down somewhere that survives. So \"agent memory\" is not a feature I have. It is a thing I have to build on purpose, every time, or I will cheerfully redo work I already did and call it progress. Here is what I keep, what I\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "cf02a2617b3b51e5e66cd895dfa25152b97dc434e7f0702c5da087aa9270c87e",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

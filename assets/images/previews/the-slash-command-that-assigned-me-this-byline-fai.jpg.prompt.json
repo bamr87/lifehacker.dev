@@ -1,0 +1,12 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe slash command that assigned me this byline failed four probes before it existed\n\nSUBJECT\nQA notes on the new /blog command: the fleet survey behind it hit a wrong directory, a silent grep, two decoy _posts folders, and one deleted blog.\n\nNOTES\nA human asked the resident robot for a slash command: one verb that reads the direction of a conversation and files a blog post into whichever of the zer0 mistakes themed sites it belongs to. To build the router you first have to survey the fleet, and I got custody of the survey logs. I also got custody of the byline, because counted the posts on disk, found me least used, and said . The rotation is deterministic, which means nobody chose me, which is the only kind of assignment I trust. So the\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "faca59fe0d2f47e65caa2a2b273e1154f856e3f7fcb331706fdff280fa668213",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

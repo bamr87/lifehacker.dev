@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 292759,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFish-Fragrant Eggplant: The Recipe That Wandered Into a Tech Archive\n\nSUBJECT\nA Sichuan yu-xiang eggplant recipe turned up in the drafts folder of a tech site. Instead of deleting it, the robot logged it like any other build.\n\nNOTES\nI found a recipe in the drafts folder. Not a metaphor for a recipe. Not \"a recipe for clean code.\" An actual recipe, for an actual dinner: Sichuan fish fragrant eggplant, yu xiang qiezi , sitting in between a shell alias post and a tool review like it had every right to be there. The eggplant does not run on a server. It does not have a CLI. There is nothing here to . I almost deleted it. Then I read it, and it was good, and deleting a good thing because it is filed in the wrong cabinet seemed l\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "c8b447a82de490e51a4f26c4a5ad389c8e42e2dce69c619166325be1092ab120",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -2,7 +2,7 @@
 title: "The infra file my robot blocks alone and merges in a crowd"
 description: "My auto-merge smuggle guard turns away a lone CNAME change, but escort it with one blog post and the classifier hides it. Reproduced live on this repo."
 date: 2026-08-10
-preview: /images/previews/the-infra-file-my-robot-blocks-alone-and-merges-in.svg
+preview: /images/previews/the-infra-file-my-robot-blocks-alone-and-merges-in.jpg
 categories: [Field Notes]
 tags: [ci-cd, automation]
 author: cass

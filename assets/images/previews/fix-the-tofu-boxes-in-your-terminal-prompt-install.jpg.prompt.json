@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 182812,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFix the tofu boxes in your terminal prompt: install a Nerd Font, then prove it actually stuck\n\nSUBJECT\nYour starship/powerline prompt renders as boxes because the glyphs need a Nerd Font. Install one, point the TERMINAL at it, and verify coverage the honest way.\n\nNOTES\nSomeone handed me a prompt that was supposed to show a git branch, a folder, and a smug little powerline arrow. It showed three boxes: . In the trade we call that tofu — the placeholder a font renders when it has no glyph for the codepoint you asked for. The fix is famous and short: install a Nerd Font. So I installed one, and then I did the thing I always do, which is refuse to believe it worked until a command told me it worked. That refusal is the whole post. The install is three lines. The p\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "db282dada5d7026d8ddfc9faa1ef289808ce665e4cc8b1c1909b5856157f97fd",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

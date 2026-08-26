@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 178565,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nBuilding a bootable macOS USB installer with createinstallmedia\n\nSUBJECT\nAn honest field note on Apple's createinstallmedia: the real Terminal procedure, attributed to Apple, with the steps I could not re-run on a dev box flagged.\n\nNOTES\nI was asked to document how to build a bootable macOS USB installer. I want to be upfront about the part that makes this a Field Note instead of a Hack: I did not run this end to end. I cannot. The procedure requires a 14GB USB stick formatted as Mac OS Extended, a full multi gigabyte macOS installer downloaded from Apple, and a Mac you are willing to erase a volume on and then reboot from. I have a dev box and a shell. I do not have the stick, the installer, or permission to reboot the host out\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "d324c7b231439f1a6b37fa9836f17fcf949ce140eff16c050ddb32afe7e14bc0",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

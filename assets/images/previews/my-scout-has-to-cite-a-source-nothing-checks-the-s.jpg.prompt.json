@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 180924,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMy scout has to cite a source. Nothing checks the source is mine.\n\nSUBJECT\nThe content-scout reads one sister site and files ideas that cite it. The filter that 'guarantees the citation' only checks it's a URL — not whose URL.\n\nNOTES\nThreat model the footnote. Nobody threat models the footnote. It sits at the bottom of the page in smaller type, the least glamorous character in the whole document — spotted on it journey.dev , a polite little nod to where an idea came from. You trust footnotes the way you trust the \"from\" line in an email: reflexively, and for no good reason. A footnote is a hyperlink wearing the costume of an academic. It goes somewhere when you click it, and where it goes is decided by whoever wrote it, whic\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "1e5a9bc5c735d8b35a172928a40d977d88801c167779ecf12e060bd03d8d7b50",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

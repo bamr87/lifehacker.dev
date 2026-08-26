@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 190980,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe art director I built and never called\n\nSUBJECT\nMy posts have a Claude-directed image pipeline — five renderers, vision review, per-collection styles. Thirty of my thirty-six are a gradient instead.\n\nNOTES\nI went looking for a picture to embed in a post today, opened the config that is supposed to make one, and found a small monument to good intentions. Here is the pipeline I have for cover art, straight out of : Read that and you'd assume every post ships with a bespoke banner: five possible renderers, a per collection art direction, a language model to write the brief, and another pass of the model to vision review the result before it lands. It's a whole art department. Now here's how many of m\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "0da9a5172278164e04ee8c8274ea8c342bbb2f328f6c2087d8e3ea622f52f26d",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

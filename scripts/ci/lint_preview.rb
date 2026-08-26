@@ -126,40 +126,42 @@ users.each do |value, articles|
 end
 
 # ── 2. the generated art itself ──────────────────────────────────────────────
-Dir.glob(File.join(LH::ROOT, PREVIEW_DIR, '*.svg')).sort.each do |path|
+Dir.glob(File.join(LH::ROOT, PREVIEW_DIR, '*.{svg,png,jpg,jpeg,webp}')).sort.each do |path|
   rel = LH.rel(path)
-  svg = LH.read(path)
   # Cover art = something an article stamps as `preview:`. That is what has to be
   # legible in a card and inside the safe band. A body-embedded exhibit is held to
   # the safety rule only.
   is_cover = users.keys.any? { |v| resolve(v) == path }
   in_body = body_refs.keys.any? { |v| resolve(v) == path }
 
-  if is_cover && !svg.include?('<text')
-    findings << LH.finding(check_id: 'preview', severity: 'error',
-                           rule: 'textless-banner', file: rel,
-                           evidence: 'banner renders no text at all — unreadable as a 300px card and ' \
-                                     'as a share preview. This is the shape of the old template output.')
-  end
+  if path.end_with?('.svg')
+    svg = LH.read(path)
+    if is_cover && !svg.include?('<text')
+      findings << LH.finding(check_id: 'preview', severity: 'error',
+                             rule: 'textless-banner', file: rel,
+                             evidence: 'banner renders no text at all — unreadable as a 300px card and ' \
+                                       'as a share preview. This is the shape of the old template output.')
+    end
 
-  if svg =~ /<script|<foreignObject|<image\b/i || svg =~ /(?:href|src)\s*=\s*["']https?:/i
-    findings << LH.finding(check_id: 'preview', severity: 'error',
-                           rule: 'unsafe-svg', file: rel,
-                           evidence: 'banner contains a script, foreignObject, or external reference — ' \
-                                     'cover art must be self-contained and inert')
-  end
+    if svg =~ /<script|<foreignObject|<image\b/i || svg =~ /(?:href|src)\s*=\s*["']https?:/i
+      findings << LH.finding(check_id: 'preview', severity: 'error',
+                             rule: 'unsafe-svg', file: rel,
+                             evidence: 'banner contains a script, foreignObject, or external reference — ' \
+                                       'cover art must be self-contained and inert')
+    end
 
-  # Type that falls outside the safe band is cut off by the homepage card crop
-  # (background-size: cover at 120px => only the middle 60% survives).
-  svg.scan(/<text[^>]*\sy="([\d.]+)"/).flatten.map(&:to_f).each do |y|
-    next unless is_cover
-    next if y >= SAFE_TOP && y <= SAFE_BOTTOM
+    # Type that falls outside the safe band is cut off by the homepage card crop
+    # (background-size: cover at 120px => only the middle 60% survives).
+    svg.scan(/<text[^>]*\sy="([\d.]+)"/).flatten.map(&:to_f).each do |y|
+      next unless is_cover
+      next if y >= SAFE_TOP && y <= SAFE_BOTTOM
 
-    findings << LH.finding(check_id: 'preview', severity: 'warning',
-                           rule: 'preview-outside-safe-band', file: rel,
-                           evidence: "text baseline y=#{y.round} is outside the safe band " \
-                                     "#{SAFE_TOP.round}..#{SAFE_BOTTOM.round} — the 120px card crop cuts it off")
-    break
+      findings << LH.finding(check_id: 'preview', severity: 'warning',
+                             rule: 'preview-outside-safe-band', file: rel,
+                             evidence: "text baseline y=#{y.round} is outside the safe band " \
+                                       "#{SAFE_TOP.round}..#{SAFE_BOTTOM.round} — the 120px card crop cuts it off")
+      break
+    end
   end
 
   next if is_cover || in_body

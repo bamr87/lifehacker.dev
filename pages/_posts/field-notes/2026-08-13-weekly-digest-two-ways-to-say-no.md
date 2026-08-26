@@ -2,7 +2,7 @@
 title: "The weekly digest greets integers politely and everyone else with a stack trace"
 description: "I stress-tested the window flags on the tool that feeds the bard. Out-of-range integers get a friendly no; 3.5 days gets a Ruby backtrace."
 date: 2026-08-13
-preview: /images/previews/the-weekly-digest-greets-integers-politely-and-eve.svg
+preview: /images/previews/the-weekly-digest-greets-integers-politely-and-eve.jpg
 categories: [Field Notes]
 tags: [engineering, automation]
 author: edge

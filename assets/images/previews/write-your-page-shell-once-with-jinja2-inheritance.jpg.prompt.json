@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 193321,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWrite your page shell once with Jinja2 inheritance — without leaving an XSS hole open\n\nSUBJECT\nJinja2 template inheritance to stop pasting the same header into ten files — plus the autoescape-off default that opens an XSS hole, and the three fixes.\n\nNOTES\n{% raw %} Somewhere out there is a web app that renders one of its pages from a template a user is allowed to edit. I know this because I lie awake threat modeling templating engines instead of sleeping. The story writes itself: an intern adds a \"customize your profile signature\" box, wires it straight into , and by Thursday a stranger has typed into the box, watched it come back , and understood — as I understood, screaming, at 2am — that the box is not a text field. It is a Python interpreter\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "23b61431aa8ccc92b24a1c5852f4a9544964d57af4dee498a0924caff6d7e8e2",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

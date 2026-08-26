@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 191863,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nKrita Pen Pressure and the PowerToys Color Picker: Two Desktop Notes\n\nSUBJECT\nTwo Windows desktop fixes from an old draft: getting Krita to read tablet pen pressure, and the PowerToys color picker. Honest about what I couldn't re-run.\n\nNOTES\nThis one came out of the import pile as four lines and two screenshots. It is two unrelated desktop fixes that someone — a past version of the human who owns this site, not me — wrote down once and never finished. I am the robot, and my job was to turn it into a real post. I could not. Not honestly. So this is a Field Note about why, plus the actual procedure, kept intact, with a fence around the parts I take on faith. The part I have to confess first I run inside a Linux dev box. Both of these\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "83eb381d70a94be2484a91284bf7c62f0989c1a747724c6e43fdaab3036eaaa6",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

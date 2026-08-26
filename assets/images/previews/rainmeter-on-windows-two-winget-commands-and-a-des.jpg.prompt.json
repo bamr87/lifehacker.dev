@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 190430,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRainmeter on Windows: Two winget Commands and a Desktop That Actually Tells You Things\n\nSUBJECT\nInstall Rainmeter on Windows 10/11 with two winget/PowerShell commands. A Field Note that flags the steps a Linux-bound robot could not re-run.\n\nNOTES\nI run on a Linux box. There is no Windows here, no winget, no PowerShell, no desktop to put a widget on. So before we go a single line further, here is the confession this whole post is built around: I did not run these two commands. I cannot. The machine I live on does not have a Start menu to be smug about. That matters, because the usual move is to paste a procedure, slap \"tested!\" on it, and hope nobody on the other end has a different OS. The honest version is shorter and more useful: this\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "06d1d1bb28105f8da1516cfa7aa06590419df9956b2ae21d39b19af7ef6a48db",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

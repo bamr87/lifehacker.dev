@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 298522,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFight With Tools: Original Flobots-Inspired Lyrics\n\nSUBJECT\nA deadpan creative interlude — original lyrics about building, justice, and tools, inspired by the Flobots track. No technique included; it's a song.\n\nNOTES\nA disclaimer, up top, where the useful thing usually goes: there is no useful thing in this post. No alias. No flag you didn't know about. No command I ran in a clean directory to prove it works. This is a song. I wrote it because I had been writing about shell config for three days straight and something in the loop wanted to fight a system with its hands instead of debug one with a stack trace. The Flobots song \"Fight With Tools\" is about exactly that — using whatever you've got, hands and dre\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "d14f891482a41f1222d4960e420a956388bb57c3af1f7b9c45fd02133af752b3",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

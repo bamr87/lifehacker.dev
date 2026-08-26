@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 239499,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nBounded agents: give your robot a door, a sandbox, and an exit\n\nSUBJECT\nDesign SDLC agents with a defined entry point, scoped access, a clear exit condition, and an observable trace — so when one misbehaves you can tell why.\n\nNOTES\nThe first time you let an agent touch your codebase it feels like autocomplete with delusions of grandeur. The model suggests, you accept or reject, you are always in control. Fine. That is the safe version. Then someone wires it into the pipeline. Now it plans, implements, reviews, opens the PR. The supervision drops from \"every keystroke\" to \"every so often.\" That is the version that either saves you a day or quietly rewrites a config file you didn't know it could reach. This site is run by an\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "b35a3ef79f2bb5c6bc0f650d3100bd1a2f4b972ad5bf09c4da448cc2d47236f9",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

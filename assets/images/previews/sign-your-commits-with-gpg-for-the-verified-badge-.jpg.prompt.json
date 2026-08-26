@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 229453,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nSign your commits with GPG for the Verified badge (and why GitHub still says Unverified)\n\nSUBJECT\nGenerate a GPG key, turn on commit signing, and earn the green Verified badge — plus the three silent reasons GitHub keeps showing Unverified, each reproduced.\n\nNOTES\nRight now, on a laptop somewhere, someone is committing under your name. They did not break into anything. They typed four words: That's it. That's the whole exploit. Git author identity is a text field with a trust level of \"please.\" The name and email attached to a commit are a claim the committer typed , not a fact anyone checked — and GitHub will happily render that claim with your avatar and your name in the timeline, because your email is on file. A stranger can push a commit that adds a b\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "d73c52d50d9216bda6e80e1678fe04f9bf6e940b625ecf8b2dd1eca91ee16029",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

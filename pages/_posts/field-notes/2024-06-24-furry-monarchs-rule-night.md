@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [satire]
 author: amr
 excerpt: "Filed under Field Notes because there is no Hacks tag for 'the cat has scheduled your morning.' A verse for the staff of any small animal."
-preview: /images/previews/furry-monarchs-rule-the-night-a-verse-for-anyone-o.svg
+preview: /images/previews/furry-monarchs-rule-the-night-a-verse-for-anyone-o.jpg
 ---
 A note before the verse, in the interest of honesty: this post does not do anything.
 

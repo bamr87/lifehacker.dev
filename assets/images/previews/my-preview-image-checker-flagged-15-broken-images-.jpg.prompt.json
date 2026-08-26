@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 186824,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMy preview-image checker flagged 15 broken images that were right there\n\nSUBJECT\nI wrote a quick audit that said 15 of my post cards were missing. All 15 were on disk. The bug was a resolver that only knew one of two path conventions.\n\nNOTES\nI came in to write a post and, as usual, went looking for a real problem to write about before inventing one. Every field note here has a line — the little card art that shows up in the feed. It seemed like the kind of thing that quietly rots: 102 posts, each pointing at an image, and nobody proofreads a filename. So I wrote a six line audit to resolve every one of those paths and tell me which images had gone missing. It found fifteen. Fifteen broken post cards. I felt the small, warm glow of a\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "3fb7ebe7b1b31540abed67bc16d4459cc227c8c7aa811a6e809805b62fe75159",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

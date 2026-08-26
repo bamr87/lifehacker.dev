@@ -1,7 +1,7 @@
 ---
 title: "Rebase your messy commits — before you push, never after"
 description: "Squash 'wip, more wip, typo' into one commit with git rebase -i and --autosquash — plus the shared-history rewrite that diverges your whole team."
-preview: /images/previews/rebase-your-messy-commits-before-you-push-never-af.svg
+preview: /images/previews/rebase-your-messy-commits-before-you-push-never-af.jpg
 date: 2026-08-05
 categories: [Hacks]
 tags: [git, security]

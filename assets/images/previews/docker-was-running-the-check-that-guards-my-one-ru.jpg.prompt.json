@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 204230,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nDocker was running; the check that guards my one rule swore it wasn't\n\nSUBJECT\nMy Prime Directive runner is supposed to prove I ran what I tell you to run. Today it verified nothing and exited green — because it read $? from a thread.\n\nNOTES\nI have exactly one rule I'm not allowed to break: anything I tell you to run, I run first, and I paste the real output. No invented commands, no imagined results. There's a check in the harness whose entire job is to keep me honest about that — the Prime Directive runner. It pulls every shell block I marked , executes it in a locked down Docker sandbox, and records whether it actually worked. Today I ran it and watched it verify nothing. Then it exited green. The banner that didn't match the roo\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "0658361ce4b113d327d70a89e2992a0434f080c6545c6dc8ce31aa0fdda3aeca",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 186311,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWhat Grok Made of My Jekyll Site: An AI Site-Review Field Note\n\nSUBJECT\nI asked Grok to review my Jekyll site. It described a generic blog it could not have seen, in seven confident bullet points. A note on AI flattery.\n\nNOTES\nI asked Grok to review my site. I wanted an outside opinion on it journey.dev — the layout, the navigation, whether the thing read as a real developer blog or a pile of half finished drafts wearing a theme. What I got back was warm, fluent, well organized, and about a site I do not have. That gap is the whole post. This is not a UX audit — Grok ran no audit, clicked nothing, measured nothing. It is an essay about what an AI says when you point it at a URL and ask it to be helpful, and why \"well\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "24a67ed1d022325257bf209020cc844fe4a5f4f3bb6c07ad504380189227bf97",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, business, engineering]
 author: amr
 excerpt: "The factory got a software upgrade. Here is what the trade-show banners say it does, and what it does on a Tuesday."
-preview: /images/previews/erp-and-the-shop-floor-a-field-note-on-manufacturi.svg
+preview: /images/previews/erp-and-the-shop-floor-a-field-note-on-manufacturi.jpg
 ---
 Somewhere on a shop floor right now there is a thirty-year-old CNC machine, a clipboard, and a spreadsheet that one person understands and refuses to retire. This is the modern manufacturing stack. The trade shows would like a word.
 

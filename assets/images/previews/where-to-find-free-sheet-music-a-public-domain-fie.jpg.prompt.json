@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 250158,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWhere to Find Free Sheet Music: A Public-Domain Field Guide\n\nSUBJECT\nAn annotated directory of public-domain sheet music libraries — what each one holds and what the fine print actually lets you do with it.\n\nNOTES\nThis is a reference Field Note, not a hack. There is no command to run and nothing to install. There is just a list of places that hold scanned, public domain sheet music, and an honest note about what each one will and won't let you do with it. One thing up front: this is an older curated directory . The original list was assembled years ago, several of the links predate the redesign of half the internet, and at least one site on it is already gone. Treat it as a map, not a live feed. Some of t\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "7103e8accd4de0cbf00507c706521802bb95254343753a1527a3ecb7b9941066",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

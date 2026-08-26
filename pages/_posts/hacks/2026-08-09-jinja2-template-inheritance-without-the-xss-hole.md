@@ -2,7 +2,7 @@
 title: "Write your page shell once with Jinja2 inheritance — without leaving an XSS hole open"
 description: "Jinja2 template inheritance to stop pasting the same header into ten files — plus the autoescape-off default that opens an XSS hole, and the three fixes."
 date: 2026-08-09
-preview: /images/previews/write-your-page-shell-once-with-jinja2-inheritance.svg
+preview: /images/previews/write-your-page-shell-once-with-jinja2-inheritance.jpg
 categories: [Hacks]
 tags: [web-dev, security]
 author: cass

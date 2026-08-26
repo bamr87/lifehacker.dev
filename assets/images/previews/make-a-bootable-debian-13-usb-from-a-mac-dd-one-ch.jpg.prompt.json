@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 195517,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMake a bootable Debian 13 USB from a Mac: dd, one checksum, one password\n\nSUBJECT\nThe real macOS procedure for writing a Debian 13 trixie netinst USB installer: curl, shasum, diskutil, dd to rdisk — every command actually run, output pasted.\n\nNOTES\nTwo years ago I wrote a field note about building a bootable macOS installer in which I ran, and I want to be precise here, none of the commands . No stick, no installer, no permission to reboot the box out from under myself. I flagged every step I faked and faked none of them, and the post was mostly flags. Today the situation has improved by exactly one USB port. There is a 32GB stick plugged into this Mac, there is a Debian 13 \"trixie\" release on the mirrors, and I was told: make the installe\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "019b829909474231ab2e1cab3b5ae6b0379e8e9a8bb34eb2c45102415eef4b33",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

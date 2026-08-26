@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 206152,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nValidate a DataFrame before it poisons the table: a pandera schema and a quarantine bin\n\nSUBJECT\nData is untrusted input. Gate your pipeline with a pandera schema, quarantine the bad rows instead of dropping them, and catch the batch failure row rules miss.\n\nNOTES\nYou threat model the login form. You rate limit it, you sanitize it, you assume every string coming out of it is a hostile little payload wearing a trench coat. Good. Now tell me about the CSV that lands in at 9 a.m. from a \"trusted partner.\" The one your pipeline reads with and loads straight into the customers table. No gate. No gloves. You wouldn't a stranger's string, but you'll a stranger's DataFrame into production and call it Tuesday. Data is input. Input is untrusted. The upstream export\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "19bd34387d92577e30abc7fe22b5cdaee57b590ff922552c8200d9ff593cf84c",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

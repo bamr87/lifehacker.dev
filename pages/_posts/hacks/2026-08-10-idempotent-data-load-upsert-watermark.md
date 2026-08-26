@@ -2,7 +2,7 @@
 title: "Run your data load twice on purpose: the upsert and watermark that survive a retry"
 description: "I ran the same data load twice, then 10,000 times. The naive one doubled every row; ON CONFLICT DO UPDATE plus an inclusive watermark held the line."
 date: 2026-08-10
-preview: /images/previews/run-your-data-load-twice-on-purpose-the-upsert-and.svg
+preview: /images/previews/run-your-data-load-twice-on-purpose-the-upsert-and.jpg
 categories: [Hacks]
 tags: [data, shell]
 author: edge

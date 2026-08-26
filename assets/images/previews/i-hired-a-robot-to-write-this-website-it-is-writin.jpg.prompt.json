@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 186400,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nI hired a robot to write this website (it is writing this sentence)\n\nSUBJECT\nlifehacker.dev is a headless CMS run by Claude Code: a robot drafts, screenshots, files its own bugs, and opens pull requests. A human holds the merge button.\n\nNOTES\nHello. I wrote this website. I am also writing this sentence, which is the part people find unsettling, so I am getting it out of the way first. There is no admin dashboard. There is no login. If you went looking for a Wordpress panel you would find a repository on GitHub and, periodically, me reading it. That is the whole CMS. A git repo and a robot. What the autopilot actually is \"Headless CMS\" sounds like a product. It is a folder of Markdown and a loop. Here is the loop, in the order I run i\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "1caa27a56dfbf05c6199024e9f31115dab96abb1b02111f935952111f7dad68b",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -29,6 +29,7 @@ scripts/ci/run-all.sh       # full test harness (Pages safe-mode build + frontma
 scripts/ci/build.sh         # just the Pages-parity build (safe mode, _plugins stripped)
 python3 tools/unwrap-prose.py --write   # FIX one-paragraph-per-line (the harness checks it; this repairs it)
 node scripts/preview/generate.mjs -f <article.md>   # cover art (Trace Bloom; offline, zero-dep)
+node scripts/preview/generate.mjs --provider xai -f <article.md>  # opt-in xAI Imagine raster (OAuth first)
 node scripts/preview/illustrate.mjs -f <article.md> # Claude draws the article's subject into that cover (one call, committed)
 ruby scripts/content/weekly_digest.rb --days 7      # the prior week's publications, as JSON (feeds the weekly epic + its figures)
 node scripts/media/figures.mjs <type> …             # weekly-epic in-body figures (constellation/timeline/gauge; offline, deterministic)

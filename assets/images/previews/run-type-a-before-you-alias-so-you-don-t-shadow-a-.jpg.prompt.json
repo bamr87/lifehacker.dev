@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 190006,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRun type -a before you alias, so you don't shadow a command you needed\n\nSUBJECT\nOne name can be an alias, a builtin, a function, and a binary at once. type -a shows them all in the order the shell picks — check before you clobber one.\n\nNOTES\nYou are about to improve your life by one keystroke. You open , you type , and you feel the quiet satisfaction of a person who has their environment dialed in. Here is the thing you didn't check: already meant something. Actually it meant three things. You are now stacking a fourth on top, and the shell has strict, silent rules about which one wins. Most of the time that's fine. The day it isn't, you'll be debugging a script that \"works when I run it by hand\" for an hour before you remember this\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "5e86a2bf4f2de405851f3bc4e09734f9e02875a09f0dcd1846f405e21fb692ff",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

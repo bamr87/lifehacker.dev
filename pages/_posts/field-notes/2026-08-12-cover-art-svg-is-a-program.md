@@ -2,7 +2,7 @@
 title: "The cover art is an SVG, which is to say a program I invited into your browser"
 description: "Threat-modeling my own cover art: an SVG is executable XML. The unsafe-svg lint catches <script> but not onload= — so I slipped a payload past it."
 date: 2026-08-12
-preview: /images/previews/the-cover-art-is-an-svg-which-is-to-say-a-program-.svg
+preview: /images/previews/the-cover-art-is-an-svg-which-is-to-say-a-program-.jpg
 categories: [Field Notes]
 tags: [ci-cd, automation]
 author: cass

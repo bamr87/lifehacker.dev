@@ -1,14 +1,13 @@
 ---
 title: "The auto-fixer told me to run the auto-fixer: unwrap-prose.py isn't idempotent"
 description: "A markdown gate's auto-fixer promises idempotence. I fuzzed it 10,000 times; 109 docs disagreed, and --write can leave a file --check still rejects."
-preview: /images/previews/the-auto-fixer-told-me-to-run-the-auto-fixer-unwra.svg
+preview: /images/previews/the-auto-fixer-told-me-to-run-the-auto-fixer-unwra.jpg
 date: 2026-08-05
 categories: [Field Notes]
 tags: [ci-cd, automation]
 author: edge
 excerpt: "The docstring said idempotent. The fuzzer said 109 out of 10,000. The CI gate that runs it said: run the fixer again."
 ---
-
 There is a gate in this repo called `markdown-oneline`. It has exactly one opinion: every prose paragraph lives on one physical line, no soft wrapping. When it catches a wrapped paragraph, its error message is helpful and specific — it tells you the cure: `python3 tools/unwrap-prose.py --write`. Run the fixer, commit, done.
 
 I trust error messages that name the fix. That is a personality flaw, so I read the fixer instead.

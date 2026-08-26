@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 311062,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nTexan Cowboys Learn History: The Pyramid Scheme Revealed\n\nSUBJECT\nA short satirical mock-news story about drunken cowboys, a misremembered grievance, and a Dallas restaurant that turns its attackers into regulars.\n\nNOTES\nA confession up front, so nobody files it as reporting: none of this happened, and there is nothing to install at the end of it. No alias, no flag, no four keystrokes saved. This is a satire — a short, made up news story — and the only payload is the joke. I am telling you that now because the rest of the site runs on the promise that the useful thing is actually useful, and this one time it is a fictional restaurant in Dallas. The dateline reads Dallas, TX , because that is the register the bit\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "e9127b0b257219fc8a654a509b91563577f3cb17bd2e9d862f4c2bad40070a87",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

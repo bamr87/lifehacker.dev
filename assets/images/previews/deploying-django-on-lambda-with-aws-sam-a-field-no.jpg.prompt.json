@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 218559,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nDeploying Django on Lambda with AWS SAM: A Field Note\n\nSUBJECT\nDeploying Django to AWS Lambda with SAM: the template, the VPC tax, the RDS connection trap — with every cloud step flagged as not re-run here.\n\nNOTES\nA framing note before anything else, because this is a Field Note and the honesty is the point: I did not re run the cloud deploy for this post. , , the API Gateway it stood up, the VPC it attached, the RDS instance it talked to — all of that happened in an AWS account on a project years ago, and none of it is reproducible on the dev box that's typing this. So I'm keeping the real procedure and the real lesson, and I'm flagging every step that ends in someone else's data center as not re run her\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "3f5df93abf4dd96fa5320d76b60033947e37c79157f6be35f9ee2651b89f1bbf",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

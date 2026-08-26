@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 160319,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\n60 lines of inline nanobar became one config-driven Jekyll include (and the footer finally reaches the edges)\n\nSUBJECT\nA hardcoded progress bar across three Jekyll files becomes one config-driven include, plus why four nested Bootstrap containers stop a dark footer short.\n\nNOTES\nThe page loading progress bar — the thin strip that crawls across the top while a page loads — lived in three different files. About sixty lines of HTML, CSS, and JavaScript, inlined directly into , with the color, height, and animation steps as magic numbers sprinkled across , , and a vendored . Changing the bar's color meant editing HTML. Moving it meant editing markup. And the vendored library had a stray character prepended to it — a copy paste scar — which meant the whole thing failed silen\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "b2516a9c5f9b6e2befacf2a4d97352258a7b61db4307d32892ea8cecba34d828",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

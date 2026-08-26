@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 252267,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nYour loss climbs back up and it isn't the learning rate: the zero_grad() line the loop can't skip\n\nSUBJECT\nPyTorch accumulates gradients on purpose, so a loop missing optimizer.zero_grad() stacks every batch on the last — and no learning rate saves it.\n\nNOTES\nSomebody handed me a training loop that \"almost works.\" The loss dropped for a few steps, then wandered back up and sat there. The author had already tried three learning rates and was reaching for a fourth. I have a grudge against the phrase \"almost works,\" so I ran their loop myself, on a problem so small there is nowhere for a bug to hide: fit with a single . If a one parameter line won't converge, the model isn't the problem. It didn't converge. And every experiment below says the learning r\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "9e0004658a0ab6339ebdf4c8ae47b45f1a5a93d55e779f5ead3bef7023c4239f",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

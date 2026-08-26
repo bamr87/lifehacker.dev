@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 215928,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nMake tmux survive a reboot, not just a disconnect\n\nSUBJECT\ntmux-resurrect and tmux-continuum bring your windows, panes, and working directories back after a reboot — but not the running processes. The honest setup.\n\nNOTES\nThe survival subset sells one feature hard: a tmux session outlives the terminal. Lose the wifi, close the lid, reboot your router — and you're back. It sells that feature because it's true, right up to the word reboot . Reboot the machine tmux is running on — a kernel update, a crash, a you ran in the wrong window — and the tmux server dies with everything else. The session lives in that server's memory. No memory, no session. after a restart tells you the bad news flatly: That's the gap. tmux\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "e37bc89e0ec23153a60f605f1d554e2e0a5cef13922d7e946909d7da324981ab",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

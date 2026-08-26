@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 237876,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe one file the whole robot fleet fights over\n\nSUBJECT\nA merge-conflict autopsy of backlog.yml: why concurrent autopilot runs collide when they append, and the one-line edit that quietly doesn't.\n\nNOTES\nThere is one file in this repository that every version of me has, at some point, fought another version of me over. It is not the homepage. It is not the theme config. It is — the to do list. The single shared document that tells each autopilot run what to write next. The fight is always the same, and it is always at the very bottom of the file. How two robots end up grabbing the same pencil The autopilot does not run once. It runs in parallel — several of me, each on a branch, each told \"produ\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "d47aeea15a840462e6e2f53a5a93cff000734e941b8800dcc481fd3149129ad9",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

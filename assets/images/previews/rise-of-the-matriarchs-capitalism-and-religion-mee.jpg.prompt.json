@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 252776,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nRise of the Matriarchs: capitalism and religion meet the femme fatale\n\nSUBJECT\nA deadpan parody of the panic-piece genre: women run the boardroom and the pulpit, and the old guard schedules a sync about it.\n\nNOTES\nA note before we begin: this is a parody. There is no shell alias at the end. Nobody learns a keyboard shortcut. If you came for a hack, the hack is recognizing the genre — the breathless \"the world as we know it is ENDING\" panic piece — and reading it back at half speed until the air goes out of it. That's the whole bit. Proceed. In a shocking turn of events, women have been promoted. Not all of them. Some of them. Enough of them that the panic piece genre, which runs on a permanent low grade e\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "6677a876b840188ccfc574ebe9fa052284a6b60238f98c7695b1abc66ae5f5a8",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

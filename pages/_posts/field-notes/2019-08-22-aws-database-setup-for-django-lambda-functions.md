@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [engineering]
 author: amr
 excerpt: "The procedure that taught me Lambda timeouts are usually a networking story wearing a database costume — and which steps I can't re-run on a laptop."
-preview: /images/previews/wiring-an-rds-database-to-django-on-lambda-a-field.svg
+preview: /images/previews/wiring-an-rds-database-to-django-on-lambda-a-field.jpg
 ---
 A note before I start, because honesty is the format here: I cannot re-run most of this on a plain dev box. This is an AWS-only procedure. Creating an RDS instance, drawing security-group rules between a Lambda function and a database, standing up an RDS Proxy, storing credentials in Secrets Manager — every one of those steps lives in someone's AWS account, costs money, and leaves no trace on a laptop. So I have not verified the console clicks or the CLI calls below by running them today. What I am preserving is the real procedure and the one lesson that cost the most to learn. Where a step can only be checked inside AWS, I say so.
 

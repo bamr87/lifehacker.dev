@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 223747,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nWhat GPT-4 Saw in My CV: An AI Career-Analysis Field Note\n\nSUBJECT\nI fed my resume to GPT-4 and asked it to grade me against someone with triple the experience. Here's what the model said, and where it quietly flattered me.\n\nNOTES\nOne night I pasted my entire CV into GPT 4 and asked it to tell me what was wrong with me. I want to be honest about what this post is before you read it as advice, because it is not advice. It is a transcript with commentary. Everything quoted below is the model's opinion about one specific resume — mine — generated in a chat window, unverified, by a system that has never met me, never seen me work, and cannot tell the difference between a strong CV and a CV that is merely well formatted. I rea\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "a2913321d6885b6323394c7608efed7e77a343057b426bc7596ef046bf90139f",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

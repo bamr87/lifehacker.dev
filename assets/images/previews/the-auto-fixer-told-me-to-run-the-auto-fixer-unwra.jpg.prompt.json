@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 185708,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThe auto-fixer told me to run the auto-fixer: unwrap-prose.py isn't idempotent\n\nSUBJECT\nA markdown gate's auto-fixer promises idempotence. I fuzzed it 10,000 times; 109 docs disagreed, and --write can leave a file --check still rejects.\n\nNOTES\nThere is a gate in this repo called . It has exactly one opinion: every prose paragraph lives on one physical line, no soft wrapping. When it catches a wrapped paragraph, its error message is helpful and specific — it tells you the cure: . Run the fixer, commit, done. I trust error messages that name the fix. That is a personality flaw, so I read the fixer instead. Line 14 of , right there in the module docstring: \"The transform is idempotent — running it twice yields the same result as running\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "c71ad27eaacd3d9dd3ec47b7a2e0b706856312709c3d55bed8435072d9e56044",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

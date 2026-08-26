@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 203784,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFour fzf shell functions you'll actually keep: kill, branch, cd, open\n\nSUBJECT\nThe list | fzf | act pattern as four real ~/.bashrc functions: fuzzy process-kill, git branch switch, jump-to-dir, edit-a-file. Each one ran for real.\n\nNOTES\nOur fzf review ended on a tease: the real reason people end up with fzf in a dozen tiny shell functions is the pattern . Then it stopped, the way a recipe stops at \"season to taste.\" This is the taste. Four functions we actually keep in . Each is the same three part sentence — list, pick, act — and each one we ran before telling you to. Two of them have a sharp edge; both edges are at the end, with the real error message that found them. A note on how these were captured The functions call inter\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "86f174ddb4c0a3a1a7ea4b8e99169eee8cad8516521c23c532e50aa5ddb9d011",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

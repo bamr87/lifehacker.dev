@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 171574,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nOne .tmux.conf line per real annoyance: the config that grows up\n\nSUBJECT\nThe next .tmux.conf lines worth adding once tmux sticks — vi copy-mode, system-clipboard yank, renumber-on-close, and a status bar that isn't an eyesore.\n\nNOTES\nThe survival subset ends with a six line and a promise: every line earns its place, no theme soup. That config is correct and it is enough to live in tmux. Then you live in tmux for two weeks, and a few small things start to grate. Not bugs — papercuts. You hit in copy mode and nothing scrolls. You select an error message, paste it into your browser, and get last week's clipboard instead. You close window 2 of three and live with a gap until you restart. The default status bar glows the same rad\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "c3ce8fa8eaa9adb9749f7ac04c803e6be4d52e0753ac05c09f303637d74e131e",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 168972,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nStop scrolling CI logs: write a real summary to $GITHUB_STEP_SUMMARY\n\nSUBJECT\nRender a Markdown table on your GitHub Actions run summary instead of an 800-line log. Echo to $GITHUB_STEP_SUMMARY, and mind the > that eats it.\n\nNOTES\nA CI job finishes. Somewhere in its 800 lines of and is the one fact anyone actually wanted: 142 passed, 1 failed, coverage 91.4%. To read it, a human opens the run, clicks the job, expands the step, and scrolls a green wall looking for the one red word. The log had the answer the whole time; it just refused to say it out loud. is GitHub Actions' way of saying it out loud. It's an environment variable pointing at a file, one per job, and anything you append to that file gets rendered as Markdown\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "40fb9c4562fe1e7ee3aefc746e14a239f058366817715ea4a585d2b7347d57f5",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 223053,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nYour Style Guide Belongs in Git as Data, Not a PDF\n\nSUBJECT\nA brand style guide nobody can lint is one nobody follows. Put voice, tone, and banned words in version control next to the content they govern.\n\nNOTES\nEvery brand has a style guide. It lives in a PDF. The PDF lives in a shared drive. The shared drive has four files named , and nobody knows which one is canon, because the person who knew left in 2023. This is the natural resting state of a style guide: a 40 page document, lovingly designed, opened exactly twice — once when it was approved, once when a new hire asked where it was. After that it is a fossil. The writing keeps moving. The PDF does not. Here is the take, stated flatly because it is\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "4a30ac1cbc78245f998590a91898e4f17aad7a1ebabfd900943e2fa3bad083dc",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

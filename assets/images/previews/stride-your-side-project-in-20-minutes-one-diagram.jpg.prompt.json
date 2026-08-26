@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 158273,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nSTRIDE your side project in 20 minutes: one diagram, six questions, a ranked fix list\n\nSUBJECT\nSkip the threat-model binder: one data-flow arrow, the six STRIDE questions, a likelihood-times-impact ranking, and three fixes worth doing this week.\n\nNOTES\nThreat modeling has an image problem. Say the words and people picture a two day workshop, a whiteboard the size of a garage door, and a 40 page document nobody reads twice. So most side projects skip it entirely and find out about their security holes the same way everyone else does: from a stranger. There is a smaller version that fits in a coffee break. It came from the sister site's Threat Modeling quest — they cover the discipline properly; here is the twenty minute field version you can ac\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "77c0f35ea5c5a07e2f636da771377330aa7426e2c4c1a40e144fbcefcc18291f",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

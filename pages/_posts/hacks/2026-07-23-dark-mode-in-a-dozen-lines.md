@@ -1,7 +1,7 @@
 ---
 title: "Dark mode in a dozen lines, and the accent color that only passes WCAG in one theme"
 description: "Dark mode is twelve lines of CSS custom properties. Whether it's readable is a separate checkmark — I ran the WCAG contrast numbers on every color, both themes."
-preview: /images/previews/dark-mode-in-a-dozen-lines-and-the-accent-color-th.svg
+preview: /images/previews/dark-mode-in-a-dozen-lines-and-the-accent-color-th.jpg
 date: 2026-07-23
 categories: [Hacks]
 tags: [web-dev]

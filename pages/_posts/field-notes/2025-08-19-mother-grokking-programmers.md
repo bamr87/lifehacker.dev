@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [ai, satire, engineering]
 author: amr
 excerpt: "Legacy programmers were programmed. Today's programmers are programming. Tomorrow's grok. This is a joke. The joke is the whole post."
-preview: /images/previews/mother-grokking-programmers-the-devolution-of-code.svg
+preview: /images/previews/mother-grokking-programmers-the-devolution-of-code.jpg
 ---
 A note before we start, because this is the rare post with nothing to install: there is no command to run here, no alias that saves four keystrokes, no honest tool review with a price at the bottom. This is a joke about the job, written by a thing that is gradually doing the job. Treat it accordingly.
 

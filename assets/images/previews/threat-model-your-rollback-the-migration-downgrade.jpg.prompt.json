@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 223564,
+  "prompt": "Cover illustration for a lifehacker.dev Hacks article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nThreat-model your rollback: the migration downgrade nobody tested until 2am\n\nSUBJECT\nEvery migration ships two functions and you only run one. Reproduce the untested-downgrade incident on a throwaway Postgres, then three ranked fixes.\n\nNOTES\nSomebody, right now, has a function they have never run. It's most of you. I threat model this instead of sleeping. Here is the scenario I lie awake on. It is 2am. A deploy has gone wrong in a way that is not the migration's fault — a bad config, a poisoned cache, the moon — and the runbook says the same thing runbooks always say: roll back . So you type with the shaky confidence of a person who has never once watched this command succeed, and one of two things happens. Either raises — because i\n\nART DIRECTION\nTrace Bloom: dark field #05070d over #0b1020, lattice #1b2b44, signal #22d3ee, heat #f472b6, ink #eaf6ff, accent #22d3ee. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "2fcac602323fd916765afdeaa310b948665ca0e76f6c309353cec0a594705145",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

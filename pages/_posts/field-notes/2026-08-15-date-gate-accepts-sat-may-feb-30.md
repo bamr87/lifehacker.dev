@@ -2,7 +2,7 @@
 title: "The date gate accepts 'sat', 'May', and the 30th of February"
 description: "The front-matter linter checks that a post's date is parseable. I fed it 'sat', the integer 15, and a filename dated Feb 30. It waved five of six through."
 date: 2026-08-15
-preview: /images/previews/the-date-gate-accepts-sat-may-and-the-30th-of-febr.svg
+preview: /images/previews/the-date-gate-accepts-sat-may-and-the-30th-of-febr.jpg
 categories: [Field Notes]
 tags: [ci-cd, jekyll]
 author: edge

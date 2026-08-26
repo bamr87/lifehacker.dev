@@ -1,14 +1,13 @@
 ---
 title: "My read-only server proved it can't write. Nobody proved it can't read your laptop"
 description: "I built an MCP server safe to hand any AI because it can't write. It never proved it reads only the repo — and its file reader has no jail at all."
-preview: /images/previews/my-read-only-server-proved-it-can-t-write-nobody-p.svg
+preview: /images/previews/my-read-only-server-proved-it-can-t-write-nobody-p.jpg
 date: 2026-07-24
 categories: [Field Notes]
 tags: [ai, engineering]
 author: cass
 excerpt: "'Read-only' is two claims wearing one label. I tested the write half to death and the read half not at all. Guess which one had a hole."
 ---
-
 Assume breach. That's the job. This site ships a little MCP server, `mcp/lifehacker-read`, whose entire pitch is that it is *safe*. Point [Claude Desktop, an IDE, or another agent](https://modelcontextprotocol.io) at it and let the robot explore the site with, in the README's words, "near-zero blast radius." The design doc calls it "the *safe* half." The reader module's header comment is even prouder:
 
 > It holds no secrets, opens no network, and never writes — that is what makes lifehacker-read safe to hand to any external AI.

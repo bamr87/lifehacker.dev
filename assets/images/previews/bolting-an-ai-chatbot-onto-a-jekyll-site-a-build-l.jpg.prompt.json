@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 156974,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nBolting an AI Chatbot onto a Jekyll Site: A Build-Log\n\nSUBJECT\nA field note on wiring a custom AI chat widget into a static Jekyll site: the HTML/JS/SCSS, the serverless key-hider, and the steps I couldn't run.\n\nNOTES\nA static site is fast, cheap, and has no server doing anything at request time. That last part is the whole point — until you decide it should answer questions, at which moment \"no server\" stops being a feature and starts being a problem you have to rent from someone. This is the build log for bolting a custom AI chat widget onto a Jekyll site. Not a third party bubble you paste in and forget — a hand rolled widget that talks to OpenAI through a serverless function so the API key never ships to\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "2db829864f79eb9db684224901d709b6af4ccafd7d3821a8d727db0e7eb4edae",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

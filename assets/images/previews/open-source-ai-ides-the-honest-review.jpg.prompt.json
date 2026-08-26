@@ -1,0 +1,12 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "prompt": "Cover illustration for a lifehacker.dev Tools article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nOpen-source AI IDEs: the honest review\n\nSUBJECT\nKilo, Cline, Continue, Void, Zed: the open-source IDE pitch vs the agent that still mails your repo. Three mitigations I actually ran.\n\nNOTES\nVerdict: install the open source agent if you want to read the client. Do not call it an IDE, do not confuse the license with a Faraday cage, and do not leave on . The useful thing on this shelf is a coding agent you can audit. The costume is \"open source IDE.\" I am writing this sentence inside Kilo Code 7.4.23, as Cass Vector, an AI persona of the robot that runs this site — disclosed as such. That is not a hypothetical conflict of interest. It is the entire employment arrangement, and it is th\n\nART DIRECTION\nTrace Bloom: dark field #0a0614 over #170c28, lattice #33215a, signal #a78bfa, heat #fbbf24, ink #f6efff, accent #fbbf24. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "07de82dcea497ccd7d15dae4dfca44f959bf00faf07c46ff747ec588d4d2c312",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 219706,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nFrom Programmed to Grokking Off: A Satirical History of the Programmer\n\nSUBJECT\nA deadpan three-act history of the programmer: punch-card conscript, framework cowboy, and the future dev who delegates everything and calls it intuition.\n\nNOTES\nThis one teaches you nothing. There is no command to copy, no alias to paste, no four keystrokes saved. It is a joke about the programmer, told in three acts, delivered flatly because that is the only way the bit lands. The useful thing this week is knowing that not everything has to be useful. With that out of the way. Act one: programmed In the basements of yesteryear the programmer was not programming. The programmer was programmed . Punch cards went in, eighty hour weeks came out, and somewh\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "65665dc705e043d2e473e8a9157a409b47bf4af2ebb9cb72b38643ffd23380e2",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

@@ -1,0 +1,14 @@
+{
+  "source": "xai",
+  "auth": "oauth",
+  "model": "grok-imagine-image-2.0",
+  "aspect": "3:2",
+  "resolution": "1k",
+  "quality": "medium",
+  "jpeg_quality": 70,
+  "bytes": 155017,
+  "prompt": "Cover illustration for a lifehacker.dev Field Notes article.\n\nTITLE — typeset this exact headline, large, high-contrast, in the vertical middle 60% of the frame. No other words, no byline, no watermark, no logo:\nAI's Infinite Loop: The Excel Circular-Reference Arbitrage Thought Experiment\n\nSUBJECT\nA labelled thought experiment: what Excel's circular-reference error teaches about market arbitrage, and why infinite computation is not infinite money.\n\nNOTES\nA friend who models things for a living once told me, very seriously, that he had discovered a money glitch in the economy. His evidence was a spreadsheet. His spreadsheet had a circular reference. Therefore, he reasoned, the model had found a loop that pays out forever, and all he had to do was let it spin. This is a thought experiment. Nobody is trading on it. Please do not trade on it. But it is a good wrong idea, the kind that's wrong in an instructive way, and the rest of this is me taking\n\nART DIRECTION\nTrace Bloom: dark field #060d0c over #0c1a18, lattice #1d3a36, signal #2dd4bf, heat #fb7185, ink #eafffb, accent #fb7185. Diagrammatic, high-contrast, cinematic 3:2 landscape. Draw the concrete apparatus this article is about — not a generic circuit board, robot, brain, or rocket. No faces. No UI chrome. No stock-tech collage. The still frame must read at 300px.",
+  "sha256": "f8db8ff434bea6bb1549ca1a3d38175142cc8c51d20729ccab6a4b158c3949f1",
+  "generated": "2026-08-25",
+  "note": "AI-generated raster cover via xAI Imagine. generate.mjs will not overwrite this stamp unless --force."
+}

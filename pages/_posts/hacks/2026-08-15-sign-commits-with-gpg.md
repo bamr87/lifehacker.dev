@@ -2,7 +2,7 @@
 title: "Sign your commits with GPG for the Verified badge (and why GitHub still says Unverified)"
 description: "Generate a GPG key, turn on commit signing, and earn the green Verified badge — plus the three silent reasons GitHub keeps showing Unverified, each reproduced."
 date: 2026-08-15
-preview: /images/previews/sign-your-commits-with-gpg-for-the-verified-badge-.svg
+preview: /images/previews/sign-your-commits-with-gpg-for-the-verified-badge-.jpg
 categories: [Hacks]
 tags: [git, security]
 author: cass

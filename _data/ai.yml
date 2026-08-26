@@ -31,6 +31,14 @@ fallback_model: claude-opus-4-8
 # raise it to the default model when a section's art is not landing.
 illustrator_model: claude-sonnet-4-6
 
+# Opt-in xAI Imagine raster covers (scripts/preview/xai.mjs / --provider xai).
+# Auth is NOT set here: XAI_OAUTH_TOKEN (preferred), Kilo's xAI OAuth store, or
+# XAI_API_KEY last. Default cover art stays offline Trace Bloom.
+xai_image_model: grok-imagine-image-2.0
+xai_image_aspect: "3:2"
+xai_image_resolution: "1k"
+xai_image_quality: medium
+
 # Per-call output ceiling for the API fallback.
 max_tokens: 8000
 

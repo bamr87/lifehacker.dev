@@ -6,7 +6,7 @@ categories: [Field Notes]
 tags: [business]
 author: amr
 excerpt: "Not a hack. A 100-question reference guide for reporters, reprinted as-is — with a clear note on where it came from and how old it is."
-preview: /images/previews/100-questions-and-answers-about-arab-americans-a-j.svg
+preview: /images/previews/100-questions-and-answers-about-arab-americans-a-j.jpg
 ---
 A note on what this is, before the questions start.
 
