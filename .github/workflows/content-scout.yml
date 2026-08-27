@@ -63,6 +63,7 @@ jobs:
   # Scheduled runs apply with the documented defaults; manual runs use inputs.
   gate:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       go: ${{ steps.check.outputs.go }}
       apply: ${{ steps.check.outputs.apply }}
@@ -93,6 +94,13 @@ jobs:
     needs: gate
     if: ${{ needs.gate.outputs.go == 'true' }}
     runs-on: ubuntu-latest
+    # The browse is an agent reading remote pages over the network, so its
+    # duration is bounded by nothing in this repo — p95 over the last 14 days is
+    # 26m and the ceiling was GitHub's default of 6 HOURS. One hung fetch could
+    # therefore bill ~14x the worst legitimate run before anything noticed, on a
+    # workflow that runs on a daily cron with no human watching. 45m is well
+    # clear of p95 while turning a hang into a fast, legible failure.
+    timeout-minutes: 45
     env:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
