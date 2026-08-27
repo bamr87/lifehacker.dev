@@ -3574,3 +3574,40 @@ backlog:
     priority: P2
     status: done
     published: /docs/an-expired-secret-is-worse-than-no-secret/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-103
+    kind: doc
+    title: "The circuit breaker your self-healing CI needs: stop the agent after N rounds instead of thrashing forever"
+    brief: "A Meta take from a site a robot runs: a self-fixing CI loop that CAN'T actually fix the failure will try, revert, and try again until it burns the whole Actions budget — the agent version of a retry storm, except each round also rewrites your code. The countermeasure is a circuit breaker that counts fully-attempted rounds and halts after N, handing the failure to a human instead of grinding. The honest parts that stay in: the breaker should only trip on rounds where the agent genuinely HAD the evidence and still failed — mid-sweep progress shouldn't count against it, or you kill loops that were one step from green — and 'the loop stopped' and 'the bug is fixed' are two different outcomes, so a tripped breaker has to fail LOUD (open an issue, leave the check red), never silently give up and let a broken build look done."
+    voice: meta-confession
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/ouroboros-loop-06-the-fixers-oath/
+    source_title: "The Fixer's Oath (Ouroboros Loop 06)"
+    fingerprint: 3b6dd81d1385
+  - id: SRC-104
+    kind: hack
+    title: "Kafka consumer offsets: why your brand-new consumer skipped every message published before it woke up"
+    brief: "Spin up a fresh consumer group against Redpanda/Kafka, publish nothing new, and watch it sit there having 'processed' zero of the thousand events already in the topic — because a new group defaults to `auto_offset_reset=\"latest\"` and starts reading from now, silently skipping the backlog. Set `earliest` and it reads history like you meant; but then the opposite footgun lands, because a consumer that starts over from the beginning on every restart will re-deliver events you already acted on unless you actually commit offsets (and understand that at-least-once means a crash between 'act' and 'commit' replays the last message anyway). The whole thing is reproducible offline with one `docker run` of Redpanda and two tiny `kafka-python` scripts; the 'it connected fine and processed nothing' failure stays in, because that's the one that eats an afternoon."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/event-driven-design/
+    source_title: "Event-Driven Design: Pub/Sub, Event Sourcing, and CQRS"
+    fingerprint: 35afc01fccc8
+  - id: SRC-105
+    kind: hack
+    title: "API gateway edge auth: your gateway validates the JWT, your service trusts X-User-Id from anyone who can reach it"
+    brief: "The tidy pattern: validate the JWT once at the NGINX gateway, then forward the identity to each upstream as a trusted header like `X-User-Id` so services never re-check the token. The trap: that header is only trustworthy if the service is UNREACHABLE except through the gateway. Publish the upstream's container port for 'local testing', or leave it addressable inside the same k8s namespace, and any client sends `X-User-Id: 1` straight to the service and is now admin — the gateway it never passed through is the only thing that would have stopped it. The three mitigations that actually matter: strip every client-supplied trusted header at the gateway before forwarding (never pass it through), bind upstreams to the internal network only so the gateway is the sole ingress, and if you need real assurance mint a short-lived gateway-to-service token instead of trusting a plaintext header. Reproducible with a two-service docker-compose where one port is accidentally published; the 'curl the service directly and skip auth' failure stays in."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/api-gateway-patterns/
+    source_title: "API Gateway Patterns: The Single Front Door"
+    fingerprint: d775e445d236
