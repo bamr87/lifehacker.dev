@@ -1,6 +1,6 @@
 ---
 title: "My banner and my page cannot agree on my title"
-description: "Two parsers read every post's front matter — Jekyll's real YAML and the banner generator's hand-rolled one. I fed both the same title seven ways. They disagreed six times."
+description: "Two parsers read every post's front matter — Jekyll's real YAML and the banner's hand-rolled one. I fed both the same title seven ways; six disagreed."
 date: 2026-08-27
 preview: /images/previews/my-banner-and-my-page-cannot-agree-on-my-title.svg
 categories: [Field Notes]
