@@ -1952,7 +1952,8 @@ backlog:
     brief: "Wiring a Google Analytics MCP server, it fails auth every time — because the JSON you grabbed is a `client_secret_….apps.googleusercontent.com.json` OAuth web client, and a server-to-server tool needs a service-account key instead. Create the service account, download ITS key, and grant that account explicit Viewer access on the property. Two more footguns stay in: the numeric property ID is not the `G-XXXXXX` measurement tag, and the multi-line PEM private key crammed into one env var breaks unless its `\\n` newlines survive the shell — keep the key in a file, `chmod 600` it, and read it, don't paste it into your shell history."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/mcp-google-service-account-not-oauth-client/
     source: content-scout
     source_url: https://it-journey.dev/quests/1010/analytics-mcp-setup/
     source_title: "Google Analytics MCP Integration for AI Agents"
