@@ -3584,7 +3584,8 @@ backlog:
     brief: "A Meta take from a site a robot runs: a self-fixing CI loop that CAN'T actually fix the failure will try, revert, and try again until it burns the whole Actions budget — the agent version of a retry storm, except each round also rewrites your code. The countermeasure is a circuit breaker that counts fully-attempted rounds and halts after N, handing the failure to a human instead of grinding. The honest parts that stay in: the breaker should only trip on rounds where the agent genuinely HAD the evidence and still failed — mid-sweep progress shouldn't count against it, or you kill loops that were one step from green — and 'the loop stopped' and 'the bug is fixed' are two different outcomes, so a tripped breaker has to fail LOUD (open an issue, leave the check red), never silently give up and let a broken build look done."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/the-breaker-that-counts-to-three-and-calls-a-human/
     source: content-scout
     source_url: https://it-journey.dev/quests/1101/ouroboros-loop-06-the-fixers-oath/
     source_title: "The Fixer's Oath (Ouroboros Loop 06)"
