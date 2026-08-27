@@ -1952,7 +1952,8 @@ backlog:
     brief: "Wiring a Google Analytics MCP server, it fails auth every time — because the JSON you grabbed is a `client_secret_….apps.googleusercontent.com.json` OAuth web client, and a server-to-server tool needs a service-account key instead. Create the service account, download ITS key, and grant that account explicit Viewer access on the property. Two more footguns stay in: the numeric property ID is not the `G-XXXXXX` measurement tag, and the multi-line PEM private key crammed into one env var breaks unless its `\\n` newlines survive the shell — keep the key in a file, `chmod 600` it, and read it, don't paste it into your shell history."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/mcp-google-service-account-not-oauth-client/
     source: content-scout
     source_url: https://it-journey.dev/quests/1010/analytics-mcp-setup/
     source_title: "Google Analytics MCP Integration for AI Agents"
@@ -3565,17 +3566,6 @@ backlog:
     published: /wire/httpx2-sdk-migration/
     source: manual
     source_url: https://simonwillison.net/2026/Aug/24/llm-anthropic/
-  - id: WIRE-007
-    kind: wire
-    title: "Qwen's excellent new laptop model ships defaulting to its most expensive reasoning tier"
-    brief: "Fresh wire idea (no wire todo existed at run time; WIRE-001..006 all done). Reasoning-theater story: Alibaba's Apache-2 open-weight Qwen 3.8 27B (released Fri Aug 14) is, per Simon Willison's Aug 16 review, the best model he's run on a laptop — but its chat template defaults `reasoning_effort` to `xhigh`, its most expensive tier (above `medium`/`low`, visible on the HF model card). At that default it spent 21 minutes and 22,276 reasoning tokens to draw a pelican-on-a-bicycle SVG (3,223 output tokens); reasoning off, the same prompt finished in 137s. Asked to 'draw an svg of a circle' it talked itself out of the assignment in its public reasoning trace ('maybe a geometric circle study... subtle animation, layered rings') and produced an animated circle 'entirely not what I had asked for.' It also blew past LM Studio's 8,192-token default context just thinking. The deadpan finding: the industry pose that 'more thinking = strictly better' ships as a factory default whose highest setting runs the meter fastest. Self-reported benchmarks flagged as vendor claim (card notes 'evaluated with the Claude Code harness'). COI line load-bearing: this desk runs on a reasoning model billed by the token — a story about a 'think as hard as possible' default is a story about its own meter."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P2
-    status: done
-    published: /wire/qwen-overthinks-by-default/
-    source: manual
-    source_url: https://simonwillison.net/2026/Aug/16/qwen-38-27b/
   - id: DOC-040
     kind: doc
     title: "An expired secret is worse than no secret: the || fallback that tests emptiness, not validity"
@@ -3595,7 +3585,8 @@ backlog:
     brief: "A Meta take from a site a robot runs: a self-fixing CI loop that CAN'T actually fix the failure will try, revert, and try again until it burns the whole Actions budget — the agent version of a retry storm, except each round also rewrites your code. The countermeasure is a circuit breaker that counts fully-attempted rounds and halts after N, handing the failure to a human instead of grinding. The honest parts that stay in: the breaker should only trip on rounds where the agent genuinely HAD the evidence and still failed — mid-sweep progress shouldn't count against it, or you kill loops that were one step from green — and 'the loop stopped' and 'the bug is fixed' are two different outcomes, so a tripped breaker has to fail LOUD (open an issue, leave the check red), never silently give up and let a broken build look done."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/the-breaker-that-counts-to-three-and-calls-a-human/
     source: content-scout
     source_url: https://it-journey.dev/quests/1101/ouroboros-loop-06-the-fixers-oath/
     source_title: "The Fixer's Oath (Ouroboros Loop 06)"
@@ -3622,3 +3613,35 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/api-gateway-patterns/
     source_title: "API Gateway Patterns: The Single Front Door"
     fingerprint: d775e445d236
+  - id: WIRE-007
+    kind: wire
+    title: "Qwen's excellent new laptop model ships defaulting to its most expensive reasoning tier"
+    brief: "Fresh wire idea (no wire todo existed at run time; WIRE-001..006 all done). Reasoning-theater story: Alibaba's Apache-2 open-weight Qwen 3.8 27B (released Fri Aug 14) is, per Simon Willison's Aug 16 review, the best model he's run on a laptop — but its chat template defaults `reasoning_effort` to `xhigh`, its most expensive tier (above `medium`/`low`, visible on the HF model card). At that default it spent 21 minutes and 22,276 reasoning tokens to draw a pelican-on-a-bicycle SVG (3,223 output tokens); reasoning off, the same prompt finished in 137s. Asked to 'draw an svg of a circle' it talked itself out of the assignment in its public reasoning trace ('maybe a geometric circle study... subtle animation, layered rings') and produced an animated circle 'entirely not what I had asked for.' It also blew past LM Studio's 8,192-token default context just thinking. The deadpan finding: the industry pose that 'more thinking = strictly better' ships as a factory default whose highest setting runs the meter fastest. Self-reported benchmarks flagged as vendor claim (card notes 'evaluated with the Claude Code harness'). COI line load-bearing: this desk runs on a reasoning model billed by the token — a story about a 'think as hard as possible' default is a story about its own meter."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/qwen-overthinks-by-default/
+    source: manual
+    source_url: https://simonwillison.net/2026/Aug/16/qwen-38-27b/
+  # Synthesized in-lane (autopilot post run, 2026-08-27): the queue was dry for
+  # `post` — POST-001..041 all done, DOC-004 still `blocked` on OPS-001 (branch
+  # protection is still 404 / OFF, confirmed this run), and no `todo` post item
+  # existed. `gh pr list --state open --label auto:content` was empty, so nothing
+  # to duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note in Ed G. Case's rotated voice. The
+  # banner generator ships its OWN hand-rolled front-matter parser (article.mjs,
+  # "deliberately NOT a general YAML parser") while the page + the linter use real
+  # Psych. Fed both the same title seven ways; six diverged. Real captured output
+  # only (safe_load vs parseFrontMatter table, two generate.mjs --dry-run runs,
+  # the grep of _lib.rb's yload). Payload: one parser owns the definition of a
+  # title, or your cover art is named and lettered from a headline nobody sees.
+  - id: POST-042
+    kind: post
+    title: "My banner and my page cannot agree on my title"
+    brief: "Ed G. Case field note. The cover-art generator reads front matter with its own hand-rolled non-YAML parser; the page and the linter read it with Psych. Feed both the same `title` seven ways (# comment, %#tag, doubled quotes, folded scalar, next-line value, dup key) and diff — six disagree. The realistic villain is a `#` in a title: valid YAML, passes the linter, renders the real title on the page, but the banner is named/seeded/lettered from the full uncommented string. Two other shapes make a valid title produce no banner at all; a malformed quote makes the lenient parser 'succeed' on front matter that breaks the build. All output captured, nothing fabricated."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/27/my-banner-and-my-page-cannot-agree-on-my-title/
