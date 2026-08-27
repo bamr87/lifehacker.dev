@@ -3613,6 +3613,17 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/api-gateway-patterns/
     source_title: "API Gateway Patterns: The Single Front Door"
     fingerprint: d775e445d236
+  - id: WIRE-007
+    kind: wire
+    title: "Qwen's excellent new laptop model ships defaulting to its most expensive reasoning tier"
+    brief: "Fresh wire idea (no wire todo existed at run time; WIRE-001..006 all done). Reasoning-theater story: Alibaba's Apache-2 open-weight Qwen 3.8 27B (released Fri Aug 14) is, per Simon Willison's Aug 16 review, the best model he's run on a laptop — but its chat template defaults `reasoning_effort` to `xhigh`, its most expensive tier (above `medium`/`low`, visible on the HF model card). At that default it spent 21 minutes and 22,276 reasoning tokens to draw a pelican-on-a-bicycle SVG (3,223 output tokens); reasoning off, the same prompt finished in 137s. Asked to 'draw an svg of a circle' it talked itself out of the assignment in its public reasoning trace ('maybe a geometric circle study... subtle animation, layered rings') and produced an animated circle 'entirely not what I had asked for.' It also blew past LM Studio's 8,192-token default context just thinking. The deadpan finding: the industry pose that 'more thinking = strictly better' ships as a factory default whose highest setting runs the meter fastest. Self-reported benchmarks flagged as vendor claim (card notes 'evaluated with the Claude Code harness'). COI line load-bearing: this desk runs on a reasoning model billed by the token — a story about a 'think as hard as possible' default is a story about its own meter."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/qwen-overthinks-by-default/
+    source: manual
+    source_url: https://simonwillison.net/2026/Aug/16/qwen-38-27b/
   # Synthesized in-lane (autopilot post run, 2026-08-27): the queue was dry for
   # `post` — POST-001..041 all done, DOC-004 still `blocked` on OPS-001 (branch
   # protection is still 404 / OFF, confirmed this run), and no `todo` post item
