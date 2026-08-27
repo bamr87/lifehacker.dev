@@ -3612,3 +3612,24 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/api-gateway-patterns/
     source_title: "API Gateway Patterns: The Single Front Door"
     fingerprint: d775e445d236
+  # Synthesized in-lane (autopilot post run, 2026-08-27): the queue was dry for
+  # `post` — POST-001..041 all done, DOC-004 still `blocked` on OPS-001 (branch
+  # protection is still 404 / OFF, confirmed this run), and no `todo` post item
+  # existed. `gh pr list --state open --label auto:content` was empty, so nothing
+  # to duplicate. Rather than no-op, cross lanes, or fabricate the blocked post,
+  # synthesized a fresh in-lane Field Note in Ed G. Case's rotated voice. The
+  # banner generator ships its OWN hand-rolled front-matter parser (article.mjs,
+  # "deliberately NOT a general YAML parser") while the page + the linter use real
+  # Psych. Fed both the same title seven ways; six diverged. Real captured output
+  # only (safe_load vs parseFrontMatter table, two generate.mjs --dry-run runs,
+  # the grep of _lib.rb's yload). Payload: one parser owns the definition of a
+  # title, or your cover art is named and lettered from a headline nobody sees.
+  - id: POST-042
+    kind: post
+    title: "My banner and my page cannot agree on my title"
+    brief: "Ed G. Case field note. The cover-art generator reads front matter with its own hand-rolled non-YAML parser; the page and the linter read it with Psych. Feed both the same `title` seven ways (# comment, %#tag, doubled quotes, folded scalar, next-line value, dup key) and diff — six disagree. The realistic villain is a `#` in a title: valid YAML, passes the linter, renders the real title on the page, but the banner is named/seeded/lettered from the full uncommented string. Two other shapes make a valid title produce no banner at all; a malformed quote makes the lenient parser 'succeed' on front matter that breaks the build. All output captured, nothing fabricated."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/27/my-banner-and-my-page-cannot-agree-on-my-title/
