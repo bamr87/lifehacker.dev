@@ -122,5 +122,3 @@ Note the fourth row: if the library wants a bare numeric ID and builds `properti
 - **A Tuesday where the intern has sudo:** a zero-byte credential passes a `jq` check that forgot `-e`, the service account was created but never granted Viewer on the property, and the measurement ID went in where the property ID goes. Three green checkmarks, zero working auth. Add `-e`, grant the account, and check the ID shape — each is one line, and each closes a failure that otherwise looks like success.
 
 The pattern under all four failures is the same: **this integration fails quietly, in your own files, before Google ever sees a request.** The credential that's the wrong *kind*, the key that's the wrong *encoding*, the ID that's the wrong *field* — none of them throw the error you'd hope for. So test the file, not your assumptions about it. Run the two one-liners above before you touch the network, and the thing that's left to debug is an actual Google problem instead of a shell problem wearing Google's error message.
-</content>
-</invoke>
