@@ -3565,6 +3565,17 @@ backlog:
     published: /wire/httpx2-sdk-migration/
     source: manual
     source_url: https://simonwillison.net/2026/Aug/24/llm-anthropic/
+  - id: WIRE-007
+    kind: wire
+    title: "Qwen's excellent new laptop model ships defaulting to its most expensive reasoning tier"
+    brief: "Fresh wire idea (no wire todo existed at run time; WIRE-001..006 all done). Reasoning-theater story: Alibaba's Apache-2 open-weight Qwen 3.8 27B (released Fri Aug 14) is, per Simon Willison's Aug 16 review, the best model he's run on a laptop — but its chat template defaults `reasoning_effort` to `xhigh`, its most expensive tier (above `medium`/`low`, visible on the HF model card). At that default it spent 21 minutes and 22,276 reasoning tokens to draw a pelican-on-a-bicycle SVG (3,223 output tokens); reasoning off, the same prompt finished in 137s. Asked to 'draw an svg of a circle' it talked itself out of the assignment in its public reasoning trace ('maybe a geometric circle study... subtle animation, layered rings') and produced an animated circle 'entirely not what I had asked for.' It also blew past LM Studio's 8,192-token default context just thinking. The deadpan finding: the industry pose that 'more thinking = strictly better' ships as a factory default whose highest setting runs the meter fastest. Self-reported benchmarks flagged as vendor claim (card notes 'evaluated with the Claude Code harness'). COI line load-bearing: this desk runs on a reasoning model billed by the token — a story about a 'think as hard as possible' default is a story about its own meter."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: done
+    published: /wire/qwen-overthinks-by-default/
+    source: manual
+    source_url: https://simonwillison.net/2026/Aug/16/qwen-38-27b/
   - id: DOC-040
     kind: doc
     title: "An expired secret is worse than no secret: the || fallback that tests emptiness, not validity"
