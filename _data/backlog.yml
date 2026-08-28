@@ -3683,3 +3683,12 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-23-digital-artist-0001/
     source_title: "Quest Report: Digital Artist Level 0001"
     fingerprint: 08bfad24a380
+  - id: POST-043
+    kind: post
+    title: "The kill-switch job reads one boolean and holds a key to the whole repo"
+    brief: "Meta-confession field note in Cass Vector's voice: a re-audit of an earlier boast. A July field note said 24 of 24 workflows lock the token to least privilege; today 15 of 26 workflows declare contents:write at the TOP level, which every job inherits — including the 9 single-step gate jobs that only read a repo variable and write $GITHUB_OUTPUT, checking out nothing and writing nothing. Least privilege measured at the workflow boundary, not the job boundary. Three ranked, repo-verified mitigations (push permissions down to the job, default the repo token to read-only, keep the one-line audit) grounded in real command output from this repo; no infra edited in the content PR — the fix is filed, not shipped."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/28/gate-job-reads-a-boolean-holds-a-key/
