@@ -3683,6 +3683,29 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-23-digital-artist-0001/
     source_title: "Quest Report: Digital Artist Level 0001"
     fingerprint: 08bfad24a380
+  # Synthesized in-lane (autopilot doc run, 2026-08-28): no `kind: doc` item was
+  # `status: todo` — every DOC-001..040 + SRC docs are done; the only todo items
+  # on the board are OPS-001 (kind: ops, which content runs skip), TOOL-026 (tool,
+  # pinned edge), and the SRC-035..108 hack/tool queue. `gh pr list --state open
+  # --label auto:content` returned one open field-note PR (the kill-switch boolean),
+  # nothing in the doc lane to duplicate. Rather than no-op or cross lanes,
+  # synthesized a fresh in-lane Meta doc. Distinct from DOC-040 (the `||` idiom in
+  # content-scout, #53): this is a DIFFERENT incident (#58, the auto-update Gate),
+  # and the fresh subject is the TEST — test_auto_update_gate.rb lifts the shipped
+  # Gate `run:` block verbatim out of auto-update.yml and drives it through four
+  # states, so it grades the artifact CI ships, not a re-typed copy. Ran the test
+  # (ALL PASS, 4 states) + the shipped gate's four paths under a stubbed gh; all
+  # output captured. Byline cass by rotation (`authors.rb --section doc`).
+  - id: DOC-041
+    kind: doc
+    title: "The test that won't grade a copy of the gate"
+    brief: "Cass threat-models two ways a gate lies: presence-not-validity (the old auto-update Gate tested `secrets.FLEET_TOKEN != ''`, so an expired PAT passed and died 135 times / 55.7m over 14 days in Checkout with 'could not read Username', bamr87/bamr87#58) and test-grades-a-copy (a regex lint only proves the bad string is gone). The fix: a liveness probe (`gh api` before the expensive checkout, fail loud on reject so the failure-ranked remediation loop sees it) verified by test_auto_update_gate.rb, which lifts the Gate `run:` block verbatim from the workflow YAML and executes it through four states (disabled / no token / bad token / good token), asserting exit, output, API-call budget, and the ::error::. Companion to DOC-040 (an-expired-secret-is-worse-than-no-secret, the sibling #53). Three ranked, tested mitigations. Real captured output only."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-test-that-wont-grade-a-copy-of-the-gate/
+
   - id: POST-043
     kind: post
     title: "The kill-switch job reads one boolean and holds a key to the whole repo"
