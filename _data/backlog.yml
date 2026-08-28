@@ -3645,3 +3645,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/27/my-banner-and-my-page-cannot-agree-on-my-title/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-106
+    kind: hack
+    title: "Read-after-write on a replica: you saved it, the replica swore it never happened"
+    brief: "You split reads onto replicas to scale, ship it, and a user updates their profile — then the very next page load reads from a replica that hasn't caught up and shows the old value, so support gets a ticket that says 'my save didn't work' when it saved perfectly. That's replication lag meeting the read-your-own-writes expectation. The fixes and their costs: route a user's reads to the PRIMARY for a few seconds after they write (sticky/read-your-writes), or tag the session with the write's log position and only read from a replica that's caught past it. The footgun that stays in: the lazy fix — 'just read everything from the primary' — quietly deletes the entire reason you added replicas, and nobody notices until the primary is the bottleneck again. Reproducible by timing a write against a replica read on a throwaway Postgres primary/replica pair (or by simulating lag) so the stale window is a number, not a vibe."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/scaling-strategies/
+    source_title: "Scaling Strategies: Horizontal Growth, Caching, and CAP"
+    fingerprint: 61c5d328d20e
+  - id: SRC-107
+    kind: hack
+    title: "You can't pipe a filter inside a Liquid {% if %}: precompute with assign, then compare"
+    brief: "That tidy-looking `{% if page.tags | size > 0 %}` does not mean what it reads like — Liquid refuses to evaluate a filter inside a condition, so instead of gating anything it warns at build and quietly treats the whole expression as truthy, and now your 'only when tagged' badge is stamped on every page including the ones with no tags. The fix is two lines: `{% assign n = page.tags | size %}` on its own, THEN `{% if n > 0 %}` against the plain variable — compute with the filter first, compare the result second. The failure that stays in: it still BUILDS, so nothing turns red; you find out the condition never fired only when a reader asks why the empty category page has a '3 posts' badge."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-16-game-developer-0001/
+    source_title: "Quest Report: Game Developer Level 0001"
+    fingerprint: 4e6bd10dce7c
+  - id: SRC-108
+    kind: hack
+    title: "See what Docker Compose will actually run: `docker compose config` expands the file before `up` does"
+    brief: "Before `docker compose up` surprises you, run `docker compose config` — it merges every override file, interpolates every `${VAR}`, fills in defaults, and prints the final resolved YAML the engine will really use, failing loudly on a syntax error instead of half-starting a stack. Two failures stay in: because it interpolates variables, it dumps your secrets in plaintext to the terminal — and to the CI log if you pipe it there — so `config` is a debugging tool you read, never a step you commit or run in a public job; and an unquoted `ports: - 6:60` or a bare `on:`/`no` gets YAML-coerced to the wrong type (the Norway Problem, live in your compose file), which `config` will show you already resolved — if you actually read the output instead of trusting it built."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-23-digital-artist-0001/
+    source_title: "Quest Report: Digital Artist Level 0001"
+    fingerprint: 08bfad24a380
