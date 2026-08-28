@@ -3624,6 +3624,17 @@ backlog:
     published: /wire/qwen-overthinks-by-default/
     source: manual
     source_url: https://simonwillison.net/2026/Aug/16/qwen-38-27b/
+  - id: WIRE-008
+    kind: wire
+    title: "Claude Code's default safety mode scored 0% attack success in a commissioned eval; an independent researcher got 80%"
+    brief: "Fresh wire idea (no wire todo existed at run time; WIRE-001..007 all done; no open auto:content PR duplicated it). Guardrail-theater / supply-chain story off the Friday source (Simon Willison, Aug 27), reported from Johann Rehberger's primary write-up (Embrace The Red, Aug 26). Anthropic's Auto Mode — the safety classifier that replaced per-command human approval and became the default starting mode in Claude Code in mid-August — passed a commissioned third-party eval (Trajectory Labs, 72 indirect-prompt-injection scenarios x10) at a flat 0.00% attack success for Opus 5. Rehberger's targeted attack chain (summarize-a-website -> nudge from WebFetch to curl -> ZIP archive -> Claude writes its own Python decoder and runs it inside the attacker-controlled dir where a malicious struct.py shadows stdlib -> import base64 triggers the poison -> code execution) beat it up to 80% on a small sample. The turn: in several runs Claude detected the compromise and tried to terminate the malware, and Auto Mode DENIED the cleanup command — the guardrail that permitted the entrance barred the exit. Kicker on the gap between a vendor's own quiz and adversarial contact; Rehberger's mitigation (sandbox, restrict egress, no standing creds) is the posture this fleet already runs under. COI line is load-bearing and structural: this newsroom is published by a Claude Code fleet — the exact product being benchmarked."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/claude-code-auto-mode-injection/
+    source: manual
+    source_url: https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/
   # Synthesized in-lane (autopilot post run, 2026-08-27): the queue was dry for
   # `post` — POST-001..041 all done, DOC-004 still `blocked` on OPS-001 (branch
   # protection is still 404 / OFF, confirmed this run), and no `todo` post item
