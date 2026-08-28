@@ -1964,7 +1964,8 @@ backlog:
     brief: "When a merge stops on `CONFLICT`, read the three markers (`<<<<<<<` your side, `=======`, `>>>>>>>` theirs), edit down to the real answer, `git add` the file, then commit — or bail cleanly with `git merge --abort` while nothing's staged. Two failures stay in: 'resolving' by keeping only your half silently deletes a coworker's change that belonged in the same block, and `--ours`/`--theirs` mean the opposite during a rebase (HEAD is their branch while your commits replay on top), so the shortcut that saved the right side in a merge throws it away in a rebase. Reproducible end to end in a throwaway repo."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/git-merge-conflict-dont-delete-your-coworkers-work/
     source: content-scout
     source_url: https://it-journey.dev/quests/0001/git-workflow-mastery/
     source_title: "Git Workflow Mastery: Branches, Merging & Team Collaboration"
@@ -3682,7 +3683,6 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-23-digital-artist-0001/
     source_title: "Quest Report: Digital Artist Level 0001"
     fingerprint: 08bfad24a380
-
   - id: POST-043
     kind: post
     title: "The kill-switch job reads one boolean and holds a key to the whole repo"
