@@ -1976,7 +1976,8 @@ backlog:
     brief: "When your Markdown example is itself a fenced block — a README snippet, a workflow YAML with a heredoc — the inner triple backtick closes the outer one early and the rest of the page renders as broken prose. The fix is to make the OUTER fence longer: wrap the whole thing in four backticks (or a `~~~` tilde fence) and the three-backtick block inside is now plain text. The failure that stays in: mismatched fence lengths swallow everything after them silently, so a doc looks fine in your editor and detonates once the site's Markdown renderer runs. Verify by rendering, not by eyeballing."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/nested-code-fences-without-collapsing-the-page/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-13-game-developer-0111/
     source_title: "Quest Report: Game Developer Level 0111"
@@ -3763,7 +3764,6 @@ backlog:
     source_url: https://it-journey.dev/quests/1010/ouroboros-loop-05-the-mana-ledger/
     source_title: "The Mana Ledger (Ouroboros Loop 05)"
     fingerprint: eb3010c3d628
-
   # Fresh wire (autopilot wire run, 2026-08-29): the whole WIRE-### board was already
   # `done` (WIRE-001..008) and `gh pr list --state open --label auto:content` held one
   # open PR in the DOC lane (the chart-generator meta piece), nothing in the wire lane
@@ -3788,3 +3788,31 @@ backlog:
     published: /wire/exploit-beats-the-patch/
     source: manual
     source_url: https://anil.recoil.org/notes/rumour-is-the-exploit
+  # Fresh in-lane Meta doc: every prior doc backlog item was already `status: done`,
+  # so grow-lifehacker synthesized a new one rather than cross collections. Subject
+  # is scripts/media/figures.mjs (the weekly-epic in-body figure generator) — no
+  # dedicated doc existed for it. Byline edge by rotation (`authors.rb --section
+  # doc`). Ran the full gauntlet against `node v22.23.2` (gauge value guard, digest
+  # load/slug/window guards, and the word_count NaN case) and captured every real
+  # string; the guards mostly hold, but a bad word_count draws `r="NaN"` past
+  # lint_preview. See the PR's Backlog ideas for the one-line fix filed, not shipped.
+  - id: DOC-042
+    kind: doc
+    title: "The chart generator that refuses an empty week and salutes 0x10 percent"
+    brief: "Ed G. Case runs figures.mjs (the weekly-epic in-body figure generator) into ~20 malformed inputs and publishes the table. The loud guards hold: an empty week, a missing item field, a non-date window, a 23-day window, and a non-hyphenated slug all die non-zero with a field-naming message. Two rungs leak. The gauge's `Number(value)` doorman is looser than its 0..100 guard — `0x10` silently draws 16%, `1e2` draws 100%, and an empty string (an unexpanded `$VAR`) draws a confident 0% instead of erroring. And the loader validates title/section/date but never word_count, so a negative or non-numeric count runs `Math.sqrt` to NaN, `clamp` passes NaN straight through (both comparisons false), and eight `r=\"NaN\"` attributes ship past lint_preview's unsafe-svg check unflagged — invisible nodes, floating labels. Grudging passes reported too: determinism is byte-identical (md5 match), XSS titles are escaped, an emoji at the truncation seam degrades to a U+FFFD box without corrupting the file. Real captured output only; no script patched from a content run — the word_count guard is filed, not shipped."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-chart-that-refuses-an-empty-week/
+
+  - id: POST-044
+    kind: post
+    title: "My file reader knows three line endings; my auto-fixer's splitter knows eight more"
+    brief: "Fresh field note (no todo post item existed at run time). Ed returns to tools/unwrap-prose.py for a second bug — not the idempotence one, but the docstring's other promise: 'byte-for-byte identical' fenced code. The reader (read_text) normalizes 3 line endings (LF/CR/CRLF); the splitter (str.splitlines) recognizes 8 MORE single code points the reader never handles — VT, FF, FS, GS, RS, NEL, U+2028, U+2029 — and rejoins on \\n, so any of the 8 inside a code fence is silently rewritten. Live scan: 385/385 tracked md files clean today (the boring pass). Then the real CLI: --check rejects a perfectly-wrapped file whose fence holds a form-feed (exit 1, message names only 'would change'), and --write splits print(\"a\\fb\") into two lines = a Python SyntaxError; a U+2028 in a js fence (the char that broke JSON-in-JS pre-ES2019) gets deleted the same way. Every number and byte actually captured. Fix (split on \\n, not splitlines) flagged upstream to the bamr87 hub since the file is vendored, not patched here."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/29/three-line-endings-eight-more/
+
