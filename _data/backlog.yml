@@ -3718,24 +3718,6 @@ backlog:
     status: done
     published: /docs/the-test-that-wont-grade-a-copy-of-the-gate/
 
-  # Fresh in-lane Meta doc: every prior doc backlog item was already `status: done`,
-  # so grow-lifehacker synthesized a new one rather than cross collections. Subject
-  # is scripts/media/figures.mjs (the weekly-epic in-body figure generator) — no
-  # dedicated doc existed for it. Byline edge by rotation (`authors.rb --section
-  # doc`). Ran the full gauntlet against `node v22.23.2` (gauge value guard, digest
-  # load/slug/window guards, and the word_count NaN case) and captured every real
-  # string; the guards mostly hold, but a bad word_count draws `r="NaN"` past
-  # lint_preview. See the PR's Backlog ideas for the one-line fix filed, not shipped.
-  - id: DOC-042
-    kind: doc
-    title: "The chart generator that refuses an empty week and salutes 0x10 percent"
-    brief: "Ed G. Case runs figures.mjs (the weekly-epic in-body figure generator) into ~20 malformed inputs and publishes the table. The loud guards hold: an empty week, a missing item field, a non-date window, a 23-day window, and a non-hyphenated slug all die non-zero with a field-naming message. Two rungs leak. The gauge's `Number(value)` doorman is looser than its 0..100 guard — `0x10` silently draws 16%, `1e2` draws 100%, and an empty string (an unexpanded `$VAR`) draws a confident 0% instead of erroring. And the loader validates title/section/date but never word_count, so a negative or non-numeric count runs `Math.sqrt` to NaN, `clamp` passes NaN straight through (both comparisons false), and eight `r=\"NaN\"` attributes ship past lint_preview's unsafe-svg check unflagged — invisible nodes, floating labels. Grudging passes reported too: determinism is byte-identical (md5 match), XSS titles are escaped, an emoji at the truncation seam degrades to a U+FFFD box without corrupting the file. Real captured output only; no script patched from a content run — the word_count guard is filed, not shipped."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /docs/the-chart-that-refuses-an-empty-week/
-
   - id: POST-043
     kind: post
     title: "The kill-switch job reads one boolean and holds a key to the whole repo"
@@ -3782,6 +3764,48 @@ backlog:
     source_url: https://it-journey.dev/quests/1010/ouroboros-loop-05-the-mana-ledger/
     source_title: "The Mana Ledger (Ouroboros Loop 05)"
     fingerprint: eb3010c3d628
+  # Fresh wire (autopilot wire run, 2026-08-29): the whole WIRE-### board was already
+  # `done` (WIRE-001..008) and `gh pr list --state open --label auto:content` held one
+  # open PR in the DOC lane (the chart-generator meta piece), nothing in the wire lane
+  # to duplicate. Rather than cross collections or no-op, synthesized a fresh in-lane
+  # wire from the model beat, inside the recency window: OCaml/cohttp maintainer Anil
+  # Madhavapeddy's Aug 22 write-up (surfaced by Simon Willison's link blog Aug 28)
+  # reporting that agentic exploit-finders now beat the security patch — exploit probes
+  # arrived ~10 min after he opened a public bugfix PR, and he could rebuild the exploit
+  # from a rumour of the flaw in under a minute. Reported from Anil's primary post, HN
+  # confirmation from rclone's Nick Craig-Wood, and Simon's link blog. COI line is
+  # load-bearing: this desk runs on a Claude fleet, and the story features a Claude
+  # model refusing the security task on a safety block while DeepSeek V4 Pro obliged.
+  # Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
+  - id: WIRE-009
+    kind: wire
+    title: "The exploit now arrives before the patch: an OCaml maintainer clocked the probes ten minutes after going public"
+    brief: "Model-beat dispatch reported from Anil Madhavapeddy's Aug 22 post 'Just a rumour of a bug is enough to find a security exploit these days' (surfaced by Simon Willison's link blog, Aug 28). The Cambridge CS professor and cohttp maintainer released a path-traversal fix (cohttp 6.3.0), opened the public PR (cohttp#1145), and saw percent-encoded-traversal probes in his live webserver logs within ~10 minutes; he could rebuild the exploit himself from a rough description of the bug in under a minute. His own Claude (Fable) refused the security task on a safety block (no Project Glasswing access); DeepSeek V4 Pro obliged and turned up related issues. Facts kept sacred: Fang et al (GPT-4 agent exploited 87% of a 15-vuln benchmark with the CVE description, 7% without), 'mean time to exploit' now negative (-7 days; ~63 days in 2018-19, crossed zero in 2024 per Vulncheck), marimo CVE-2026-39987 advisory->exploit in 9h, Langflow CVE-2026-33017 in 20h, the May 2026 'bugonomics' paper (Pesoli et al; bottleneck = defender remediation throughput), and rclone's Nick Craig-Wood on HN (20 disclosures in 10 years vs 40+ last month, 75% hit rate, GitHub CVE assignment 2-3 days -> 3-4 weeks, shipping CVE-PENDING). Satire targets the theater: the embargo as a starting gun, the safety guardrail that works so well it hands the job to an unguarded model. COI line load-bearing: this newsroom runs on a Claude fleet."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/exploit-beats-the-patch/
+    source: manual
+    source_url: https://anil.recoil.org/notes/rumour-is-the-exploit
+  # Fresh in-lane Meta doc: every prior doc backlog item was already `status: done`,
+  # so grow-lifehacker synthesized a new one rather than cross collections. Subject
+  # is scripts/media/figures.mjs (the weekly-epic in-body figure generator) — no
+  # dedicated doc existed for it. Byline edge by rotation (`authors.rb --section
+  # doc`). Ran the full gauntlet against `node v22.23.2` (gauge value guard, digest
+  # load/slug/window guards, and the word_count NaN case) and captured every real
+  # string; the guards mostly hold, but a bad word_count draws `r="NaN"` past
+  # lint_preview. See the PR's Backlog ideas for the one-line fix filed, not shipped.
+  - id: DOC-042
+    kind: doc
+    title: "The chart generator that refuses an empty week and salutes 0x10 percent"
+    brief: "Ed G. Case runs figures.mjs (the weekly-epic in-body figure generator) into ~20 malformed inputs and publishes the table. The loud guards hold: an empty week, a missing item field, a non-date window, a 23-day window, and a non-hyphenated slug all die non-zero with a field-naming message. Two rungs leak. The gauge's `Number(value)` doorman is looser than its 0..100 guard — `0x10` silently draws 16%, `1e2` draws 100%, and an empty string (an unexpanded `$VAR`) draws a confident 0% instead of erroring. And the loader validates title/section/date but never word_count, so a negative or non-numeric count runs `Math.sqrt` to NaN, `clamp` passes NaN straight through (both comparisons false), and eight `r=\"NaN\"` attributes ship past lint_preview's unsafe-svg check unflagged — invisible nodes, floating labels. Grudging passes reported too: determinism is byte-identical (md5 match), XSS titles are escaped, an emoji at the truncation seam degrades to a U+FFFD box without corrupting the file. Real captured output only; no script patched from a content run — the word_count guard is filed, not shipped."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-chart-that-refuses-an-empty-week/
+
   - id: POST-044
     kind: post
     title: "My file reader knows three line endings; my auto-fixer's splitter knows eight more"
