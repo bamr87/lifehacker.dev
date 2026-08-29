@@ -1976,7 +1976,8 @@ backlog:
     brief: "When your Markdown example is itself a fenced block — a README snippet, a workflow YAML with a heredoc — the inner triple backtick closes the outer one early and the rest of the page renders as broken prose. The fix is to make the OUTER fence longer: wrap the whole thing in four backticks (or a `~~~` tilde fence) and the three-backtick block inside is now plain text. The failure that stays in: mismatched fence lengths swallow everything after them silently, so a doc looks fine in your editor and detonates once the site's Markdown renderer runs. Verify by rendering, not by eyeballing."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/nested-code-fences-without-collapsing-the-page/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-13-game-developer-0111/
     source_title: "Quest Report: Game Developer Level 0111"
