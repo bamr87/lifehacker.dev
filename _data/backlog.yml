@@ -1976,7 +1976,8 @@ backlog:
     brief: "When your Markdown example is itself a fenced block — a README snippet, a workflow YAML with a heredoc — the inner triple backtick closes the outer one early and the rest of the page renders as broken prose. The fix is to make the OUTER fence longer: wrap the whole thing in four backticks (or a `~~~` tilde fence) and the three-backtick block inside is now plain text. The failure that stays in: mismatched fence lengths swallow everything after them silently, so a doc looks fine in your editor and detonates once the site's Markdown renderer runs. Verify by rendering, not by eyeballing."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/nested-code-fences-without-collapsing-the-page/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-13-game-developer-0111/
     source_title: "Quest Report: Game Developer Level 0111"
@@ -3726,15 +3727,6 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/28/gate-job-reads-a-boolean-holds-a-key/
-  - id: POST-044
-    kind: post
-    title: "My file reader knows three line endings; my auto-fixer's splitter knows eight more"
-    brief: "Fresh field note (no todo post item existed at run time). Ed returns to tools/unwrap-prose.py for a second bug — not the idempotence one, but the docstring's other promise: 'byte-for-byte identical' fenced code. The reader (read_text) normalizes 3 line endings (LF/CR/CRLF); the splitter (str.splitlines) recognizes 8 MORE single code points the reader never handles — VT, FF, FS, GS, RS, NEL, U+2028, U+2029 — and rejoins on \\n, so any of the 8 inside a code fence is silently rewritten. Live scan: 385/385 tracked md files clean today (the boring pass). Then the real CLI: --check rejects a perfectly-wrapped file whose fence holds a form-feed (exit 1, message names only 'would change'), and --write splits print(\"a\\fb\") into two lines = a Python SyntaxError; a U+2028 in a js fence (the char that broke JSON-in-JS pre-ES2019) gets deleted the same way. Every number and byte actually captured. Fix (split on \\n, not splitlines) flagged upstream to the bamr87 hub since the file is vendored, not patched here."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /posts/2026/08/29/three-line-endings-eight-more/
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
@@ -3772,3 +3764,13 @@ backlog:
     source_url: https://it-journey.dev/quests/1010/ouroboros-loop-05-the-mana-ledger/
     source_title: "The Mana Ledger (Ouroboros Loop 05)"
     fingerprint: eb3010c3d628
+  - id: POST-044
+    kind: post
+    title: "My file reader knows three line endings; my auto-fixer's splitter knows eight more"
+    brief: "Fresh field note (no todo post item existed at run time). Ed returns to tools/unwrap-prose.py for a second bug — not the idempotence one, but the docstring's other promise: 'byte-for-byte identical' fenced code. The reader (read_text) normalizes 3 line endings (LF/CR/CRLF); the splitter (str.splitlines) recognizes 8 MORE single code points the reader never handles — VT, FF, FS, GS, RS, NEL, U+2028, U+2029 — and rejoins on \\n, so any of the 8 inside a code fence is silently rewritten. Live scan: 385/385 tracked md files clean today (the boring pass). Then the real CLI: --check rejects a perfectly-wrapped file whose fence holds a form-feed (exit 1, message names only 'would change'), and --write splits print(\"a\\fb\") into two lines = a Python SyntaxError; a U+2028 in a js fence (the char that broke JSON-in-JS pre-ES2019) gets deleted the same way. Every number and byte actually captured. Fix (split on \\n, not splitlines) flagged upstream to the bamr87 hub since the file is vendored, not patched here."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/29/three-line-endings-eight-more/
+
