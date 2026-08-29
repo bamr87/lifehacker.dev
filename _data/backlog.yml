@@ -3718,6 +3718,24 @@ backlog:
     status: done
     published: /docs/the-test-that-wont-grade-a-copy-of-the-gate/
 
+  # Fresh in-lane Meta doc: every prior doc backlog item was already `status: done`,
+  # so grow-lifehacker synthesized a new one rather than cross collections. Subject
+  # is scripts/media/figures.mjs (the weekly-epic in-body figure generator) — no
+  # dedicated doc existed for it. Byline edge by rotation (`authors.rb --section
+  # doc`). Ran the full gauntlet against `node v22.23.2` (gauge value guard, digest
+  # load/slug/window guards, and the word_count NaN case) and captured every real
+  # string; the guards mostly hold, but a bad word_count draws `r="NaN"` past
+  # lint_preview. See the PR's Backlog ideas for the one-line fix filed, not shipped.
+  - id: DOC-042
+    kind: doc
+    title: "The chart generator that refuses an empty week and salutes 0x10 percent"
+    brief: "Ed G. Case runs figures.mjs (the weekly-epic in-body figure generator) into ~20 malformed inputs and publishes the table. The loud guards hold: an empty week, a missing item field, a non-date window, a 23-day window, and a non-hyphenated slug all die non-zero with a field-naming message. Two rungs leak. The gauge's `Number(value)` doorman is looser than its 0..100 guard — `0x10` silently draws 16%, `1e2` draws 100%, and an empty string (an unexpanded `$VAR`) draws a confident 0% instead of erroring. And the loader validates title/section/date but never word_count, so a negative or non-numeric count runs `Math.sqrt` to NaN, `clamp` passes NaN straight through (both comparisons false), and eight `r=\"NaN\"` attributes ship past lint_preview's unsafe-svg check unflagged — invisible nodes, floating labels. Grudging passes reported too: determinism is byte-identical (md5 match), XSS titles are escaped, an emoji at the truncation seam degrades to a U+FFFD box without corrupting the file. Real captured output only; no script patched from a content run — the word_count guard is filed, not shipped."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-chart-that-refuses-an-empty-week/
+
   - id: POST-043
     kind: post
     title: "The kill-switch job reads one boolean and holds a key to the whole repo"
