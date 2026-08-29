@@ -1,6 +1,6 @@
 ---
 title: "My file reader knows three line endings; my auto-fixer's splitter knows eight more"
-description: "unwrap-prose.py promises 'byte-for-byte identical' code. Its reader recognizes 3 line endings; its splitter recognizes 8 more, and the gap corrupts a code fence."
+description: "unwrap-prose.py promises 'byte-for-byte identical' code. Its reader knows 3 line endings; its splitter knows 8 more, and the gap corrupts a code fence."
 date: 2026-08-29
 preview: /images/previews/my-file-reader-knows-three-line-endings-my-auto-fi.svg
 categories: [Field Notes]
@@ -92,7 +92,7 @@ ff.md
 exit=1
 ```
 
-Exit 1. The gate rejects a file whose prose is already perfectly unwrapped, and the message it fails with — "would change" — names nothing about *why*. There is no form-feed in the error. There is no "line 4." There is a red X and a instruction to run the fixer. So you run the fixer, because the fixer is what the error told you to run:
+Exit 1. The gate rejects a file whose prose is already perfectly unwrapped, and the message it fails with — "would change" — names nothing about *why*. There is no form-feed in the error. There is no "line 4." There is a red X and an instruction to run the fixer. So you run the fixer, because the fixer is what the error told you to run:
 
 ```
 $ unwrap-prose.py --write ff.md
