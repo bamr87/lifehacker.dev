@@ -1,6 +1,6 @@
 ---
 title: "The commit-msg hook that rejects 'update stuff' — and the --no-verify that strolls past it"
-description: "A commit-msg hook that greps your subject line against Conventional Commits and bounces 'update stuff'. Plus the three ranked mitigations, because a local hook is a linter, not a lock."
+description: "A commit-msg hook that greps your subject against Conventional Commits and bounces 'update stuff'. Plus the three mitigations that actually gate the commit."
 date: 2026-08-30
 preview: /images/previews/the-commit-msg-hook-that-rejects-update-stuff-and-.svg
 categories: [Hacks]
