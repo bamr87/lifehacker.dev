@@ -3816,3 +3816,40 @@ backlog:
     status: done
     published: /posts/2026/08/29/three-line-endings-eight-more/
 
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-112
+    kind: hack
+    title: "One database, three hundred app connections: put PgBouncer in transaction mode (and the prepared-statement trap it sets)"
+    brief: "Sizing your own pool by cores only helps until you run six app servers, each with its own pool — now the database is drowning in hundreds of mostly-idle connections and refusing new ones. PgBouncer collapses them: point every app at the pooler, let it multiplex a few hundred client connections onto a couple dozen real Postgres ones. The mode is the whole decision — `session` hands a client a connection for its whole session (safe, barely shares), `transaction` returns the connection after each COMMIT (the web-app sweet spot, huge sharing), `statement` shares hardest. The failure that stays in: transaction mode silently breaks anything that spans transactions — server-side prepared statements, session `SET`s, advisory locks, `LISTEN/NOTIFY` — so a driver that prepares statements (asyncpg, some JDBC setups) throws 'prepared statement already exists' under load, and the fix is to disable prepared statements or set `pool_mode=session` for that path, not to shrug. Reproducible with one PgBouncer container in front of Postgres and a loop that opens more clients than the pool has real connections."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/connection-pooling/
+    source_title: "Connection Pooling: Efficient Database Resource Management"
+    fingerprint: e3003c5406c1
+  - id: SRC-113
+    kind: hack
+    title: "Stop the double charge: a client-generated Idempotency-Key that makes a retried POST safe"
+    brief: "A POST is not idempotent, so the honest retry advice ('retry 5xx and 429 with backoff') has a hole: the request that timed out may have SUCCEEDED before the network dropped the response, and your retry charges the card twice. The fix Stripe-style: the CLIENT generates a unique `Idempotency-Key` (a UUID) per logical operation and sends it on the request AND every retry; the server records the key with its result the first time and, on any later request with the same key, returns the stored result instead of doing the work again. The failures that stay in: the key must be stored atomically with the side effect (same transaction) or two near-simultaneous retries both miss the record and both charge — a unique constraint on the key column is what actually serializes them; and a key you reuse across DIFFERENT operations returns the wrong cached answer, so scope it to one intent and expire it, don't keep it forever. Reproducible by firing the same keyed request twice at a tiny Flask handler backed by one Postgres table."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/error-handling/
+    source_title: "Error Handling in APIs: Status Codes, Problem+JSON, Idempotency, and Retries"
+    fingerprint: 452287f609d7
+  - id: SRC-114
+    kind: hack
+    title: "Your from-scratch backprop crashes on NumPy 2.5: it's float(x.item()), not float(x)"
+    brief: "You copy the textbook neural-net forward pass verbatim, run it on a fresh 2026 scientific-Python stack, and the very first `float(y_hat)` dies with `TypeError: only 0-dimensional arrays can be converted to Python scalars`. It isn't your math — NumPy 2.x tightened scalar conversion, and `float()` now refuses any array that isn't exactly 0-dimensional, so a shape-`(1,)` or `(1,1)` result that used to coerce fine throws. The fix is `float(y_hat.item())`: `.item()` pulls the single scalar out regardless of shape, and it's the version that survives the upgrade. The gotchas that stay in: `.item()` raises `can only convert an array of size 1` the moment the array holds more than one element, which is a genuinely useful early warning that your loss should be a scalar and isn't — don't paper over it by reaching for `.flatten()[0]`; and the same tightening breaks `int(some_array)` and implicit truthiness the identical way, so grep the notebook for every place you treated a 1-element array as a number. Reproducible in three lines on NumPy ≥ 2.0."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-15-data-scientist-1101/
+    source_title: "Quest Report: Data Scientist Level 1101"
+    fingerprint: e43c53901396
