@@ -2010,7 +2010,8 @@ backlog:
     brief: "Turn the `type: summary` convention (feat/fix/docs/refactor/test/chore) from a suggestion into a gate: a `.git/hooks/commit-msg` script that greps the first line against a regex and exits non-zero, so 'update stuff' and 'more fixes lol' bounce before they land. Every step runnable in a throwaway repo. The honest part that stays in: a git hook is local and opt-in, it lives in `.git/` so it never clones with the repo (you need `core.hooksPath` or a tool like pre-commit to share it), and anyone can walk straight past it with `git commit --no-verify`. It's a linter, not a lock — the real enforcement is a CI check on the pushed commit."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/commit-msg-hook-conventional-commits/
     source: content-scout
     source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
     source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
