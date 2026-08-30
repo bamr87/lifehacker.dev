@@ -3870,6 +3870,31 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-15-data-scientist-1101/
     source_title: "Quest Report: Data Scientist Level 1101"
     fingerprint: e43c53901396
+  # Synthesized in-lane (autopilot doc run, 2026-08-30): NO `kind: doc` item was
+  # `todo` — the whole doc lane (DOC-001..042 + SRC-020/025/033/068/088/103) is
+  # `done`. `gh pr list --state open --label auto:content` showed one open PR
+  # (a field-note, DOC-none) — nothing in the doc lane to duplicate. Per the skill,
+  # rather than no-op or cross lanes, synthesized a fresh in-lane Meta doc and drafted
+  # it. Byline by rotation: `ruby scripts/fleet/authors.rb --section doc` -> `cass`,
+  # so it's written AS Cass Vector (threat-model-everything). Angle: scripts/devops/audit.rb
+  # is the pipeline's own security auditor (least-privilege scopes, autonomy kill-switch
+  # gates, the auto-merge smuggle guard, OAuth-everywhere, the CHECK_FILES wiring rule),
+  # but it audits everything except itself — it runs in Tier-1 `fast` (advisory, and
+  # SKIPPED on content-only PRs), not the required `verify` gate; its CHECK_FILES-membership
+  # rule scans only `scripts/ci/*.rb` while it lives in `scripts/devops/`; and it writes
+  # devops-audit.json via a bare File.write, so it never enters the frozen findings.jsonl
+  # contract. All verified this run (ran audit.rb -> 0 err/0 warn/1 info; grepped the
+  # scan dir + CHECK_FILES). Three ranked mitigations, each checked. Fixes recommended
+  # in the PR for the scripts/devops owners, not applied (a content run touches content).
+  - id: DOC-043
+    kind: doc
+    title: "The Guard That Frisks Every Door but Its Own"
+    brief: "Deep-dive (Cass Vector) on scripts/devops/audit.rb, the deterministic CI/CD auditor that threat-models the pipeline itself: least-privilege workflow scopes, the fleet autonomy kill-switch gates, the auto-merge smuggle guard, OAuth-everywhere, and the rule that every harness check be wired into aggregate.rb's CHECK_FILES. The honest twist: it audits everything but itself. It runs in Tier-1 `fast` (advisory, skipped on content-only PRs), not the required `verify` gate; its CHECK_FILES rule scans only scripts/ci/*.rb while it lives in scripts/devops/; and it writes devops-audit.json via a bare File.write, outside the frozen findings.jsonl contract. Real captured output (0 error / 0 warn / 1 info) and the two-line self-exemption proven by grep. Three ranked mitigations, each checked; fixes recommended in the PR, not applied."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-guard-that-frisks-every-door-but-its-own/
   - id: POST-045
     kind: post
     title: "The bot that fixes a broken PR runs the broken PR"
