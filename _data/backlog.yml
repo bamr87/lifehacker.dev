@@ -3790,6 +3790,21 @@ backlog:
     published: /wire/exploit-beats-the-patch/
     source: manual
     source_url: https://anil.recoil.org/notes/rumour-is-the-exploit
+  # Fresh wire dispatch: every prior WIRE-* item was already `status: done`, so
+  # grow-lifehacker synthesized a new one (rhea's desk, never cross-collection)
+  # from a real, checkable primary source on the model beat — Anthropic's Aug 27
+  # Model Hardware Standard research preview, within the desk's 14-day recency cap.
+  - id: WIRE-010
+    kind: wire
+    title: "Anthropic opens a standard to let AI agents run lab robots; in the demo, Claude's fix for a bubble was more bubbles"
+    brief: "Model-beat dispatch reported from Anthropic's Aug 27, 2026 research-preview announcement of the Model Hardware Standard (MHS), a shared spec that lets AI agents operate physical lab and factory instruments — microscopes, liquid handlers, robotic arms — in parallel. Facts kept sacred: MHS began as a collaboration between Anthropic and HHMI Janelia; it ships a standardized 'driver' with read/write primitives and three control paths (MCP, CLI, code files); it is pitched as model-agnostic while every showcased demo is Claude. Genentech automated the BCA protein assay across a liquid handler, robotic arm, and plate reader in 96-well plates; Claude optimized flow rate to water ~140 µL/s (0.016 RMSE) and viscous BSA ~10 µL/s (0.181 RMSE). The buried limitation is the story: on a bubble-induced error Claude's default instinct was to retry in the same well, which agitated the fluid and made MORE bubbles, until a human explained the physics and told it to move to a clean well and cut mixing cycles. UW Baker/Pinglay (Zihao Song) connected six instruments in under a week, ran an AI-supervised qPCR halt and a collision-free arm/liquid-handler handoff (~10 s after the dispense signal), and noted the plates he used to swap at 4 a.m. Satire targets the theater: yet another capital-S 'Standard' (MHS echoing MCP), the tidy before/after diagram, 'safety evaluations' framing bolted onto handing agents robotic arms. COI line load-bearing: this newsroom runs on the vendor announcing MHS."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/anthropic-model-hardware-standard/
+    source: manual
+    source_url: https://www.anthropic.com/news/model-hardware-standard-research-preview
   # Fresh in-lane Meta doc: every prior doc backlog item was already `status: done`,
   # so grow-lifehacker synthesized a new one rather than cross collections. Subject
   # is scripts/media/figures.mjs (the weekly-epic in-body figure generator) — no
