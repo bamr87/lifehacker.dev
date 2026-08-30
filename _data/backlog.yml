@@ -1870,7 +1870,8 @@ backlog:
     voice: edge-case-maximalist
     author: edge
     priority: P2
-    status: todo
+    status: done
+    published: /tools/shellcheck-honest-review/
 
   - id: TOOL-027
     kind: tool
@@ -2010,7 +2011,8 @@ backlog:
     brief: "Turn the `type: summary` convention (feat/fix/docs/refactor/test/chore) from a suggestion into a gate: a `.git/hooks/commit-msg` script that greps the first line against a regex and exits non-zero, so 'update stuff' and 'more fixes lol' bounce before they land. Every step runnable in a throwaway repo. The honest part that stays in: a git hook is local and opt-in, it lives in `.git/` so it never clones with the repo (you need `core.hooksPath` or a tool like pre-commit to share it), and anyone can walk straight past it with `git commit --no-verify`. It's a linter, not a lock — the real enforcement is a CI check on the pushed commit."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/commit-msg-hook-conventional-commits/
     source: content-scout
     source_url: https://it-journey.dev/quests/0010/commitments-to-clean-commits/
     source_title: "Commit Hygiene: Crafting Clean, Atomic Commits"
@@ -3853,7 +3855,6 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-15-data-scientist-1101/
     source_title: "Quest Report: Data Scientist Level 1101"
     fingerprint: e43c53901396
-
   # Synthesized in-lane (autopilot doc run, 2026-08-30): NO `kind: doc` item was
   # `todo` — the whole doc lane (DOC-001..042 + SRC-020/025/033/068/088/103) is
   # `done`. `gh pr list --state open --label auto:content` showed one open PR
@@ -3879,3 +3880,14 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-guard-that-frisks-every-door-but-its-own/
+  - id: POST-045
+    kind: post
+    title: "The bot that fixes a broken PR runs the broken PR"
+    brief: "Fresh field note (no todo post item existed at run time; DOC-004 blocked on OPS-001). Cass threat-models auto-fix.yml — the workflow_run-triggered repair job that reacts to a failed pipeline on a content PR. It runs in the base-repo context with contents:write, pull-requests:write, and FLEET_TOKEN in env, then clones + `git checkout \"$BRANCH\"` (the PR head) and executes `scripts/ai/run.sh` and `scripts/ci/classify_changes.rb` FROM the checked-out branch — so the job runs the code it is reviewing, with a write token in the room (the classic 'pwn request'). The kicker: the content-only guard (classify_changes | grep -qwE 'deps|pipeline') runs AFTER run.sh and is itself loaded from the PR tree, so a branch that rewrites the classifier bribes the inspector. Only barriers today: off-by-default AUTO_FIX_ENABLED and the mutable `auto:content` label — no isCrossRepository/fork check (verified: none present). Honest local model with two git branches + a fake token reproduces (a) run.sh running with FLEET_TOKEN visible and (b) the payload classifier lying 'content'. Three tested mitigations: (1) refuse fork heads via isCrossRepository, not a label; (2) classify FIRST from origin/main and fail closed; (3) `git checkout origin/main -- scripts/ .github/` so the base machinery runs over PR content, and scope the token to the final push only. Not patched here — written up for a human."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/08/30/the-bot-that-fixes-a-broken-pr-runs-the-broken-pr/
+
+

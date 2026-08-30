@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img"
+     data-schema="trace-bloom-motif/1" data-model="claude-opus-4.8-authored" data-attempts="1" data-digest="2abf407a">
+<title>A commit message hitting a checkpoint gate: a well-formed commit passes through to the right, a garbage 'bad' commit marked with an X bounces off, and a dashed --no-verify path arcs up and over the gate to bypass it entirely.</title>
+<!-- Preview only: the banner compositor ignores this block and resolves the
+     tokens against the article's own section palette. -->
+<style>:root{--ink:#eaf6ff;--cool:#22d3ee;--warm:#f472b6;--accent:#22d3ee;--grid:#1b2b44;--muted:#7f9ab8;--bg0:#05070d;--bg1:#0b1020}</style>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="90" y1="858" x2="912" y2="858" stroke="var(--muted)" stroke-width="10"/>
+    <rect x="472" y="150" width="30" height="700" fill="var(--accent)"/>
+    <rect x="500" y="150" width="30" height="700" fill="var(--warm)"/>
+    <rect x="452" y="132" width="98" height="26" fill="var(--accent)"/>
+    <rect x="436" y="832" width="130" height="26" fill="var(--accent)"/>
+    <circle cx="501" cy="470" r="46" fill="var(--muted)"/>
+    <rect x="490" y="462" width="22" height="40" fill="var(--bg0)"/>
+    <circle cx="501" cy="470" r="46" fill="none" stroke="var(--ink)" stroke-width="8"/>
+    <rect x="96" y="250" width="250" height="120" rx="14" fill="var(--cool)"/>
+    <polyline points="140,312 180,352 300,262" stroke="var(--ink)" stroke-width="16"/>
+    <line x1="346" y1="310" x2="470" y2="310" stroke="var(--cool)" stroke-width="16"/>
+    <rect x="656" y="250" width="250" height="120" rx="14" fill="var(--cool)"/>
+    <polyline points="700,312 740,352 860,262" stroke="var(--ink)" stroke-width="16"/>
+    <line x1="532" y1="310" x2="640" y2="310" stroke="var(--cool)" stroke-width="16"/>
+    <polygon points="656,310 616,286 616,334" fill="var(--cool)"/>
+    <rect x="96" y="560" width="250" height="120" rx="14" fill="var(--warm)"/>
+    <line x1="140" y1="590" x2="250" y2="650" stroke="var(--ink)" stroke-width="16"/>
+    <line x1="250" y1="590" x2="140" y2="650" stroke="var(--ink)" stroke-width="16"/>
+    <polyline points="346,620 430,620 430,712 356,712" stroke="var(--warm)" stroke-width="14"/>
+    <polygon points="356,712 396,688 396,736" fill="var(--warm)"/>
+    <polyline points="230,548 230,96 760,96 760,392" stroke="var(--muted)" stroke-width="14" stroke-dasharray="26,22"/>
+    <polygon points="760,392 736,350 784,350" fill="var(--muted)"/>
+  </g>
+</svg>
