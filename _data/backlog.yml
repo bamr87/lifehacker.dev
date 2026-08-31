@@ -3906,18 +3906,6 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/30/the-bot-that-fixes-a-broken-pr-runs-the-broken-pr/
-  - id: DOC-044
-    kind: doc
-    title: "The Token-Trap Linter, and Three Ways I Snuck the Trap Past It"
-    brief: "Fresh doc idea (all prior DOC items were done; no todo doc existed at run time). Stress-test (Ed G. Case) of scripts/ci/lint_tokens.rb, the ratchet that keeps the `secrets.X || github.token` expired-secret fallback out of CI after DOC-040 documented the bug. Verifies the three mechanisms for real — passes today (15 warn / 0 error / exit 0); a trap in a non-MIGRATING workflow errors and exits 1; the stale-migration-entry self-check errors on a cleaned workflow still on the ledger. Then runs 14 pathological lines against the actual TRAP regex and publishes the table: canonical/chained/zero-space/tab/trailing-comment variants CAUGHT, comment lines correctly SKIPPED, and three real evasions SLIPPED — the case-insensitive secret name (regex is [A-Z0-9_] only), the expression wrapped over two physical lines (each_line reader), and the env-var launder (`env.FOO || github.token` says env. not secrets.). Honorable-mention: reversed order correctly ignored (fails safe, not open). 'Survives a Tuesday' verdict, two-character fix ([A-Za-z0-9_]) recommended in the doc, not applied."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /docs/three-ways-past-the-token-trap-linter/
-
-
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -3954,6 +3942,37 @@ backlog:
     source_url: https://it-journey.dev/quests/0100/frontend-docker/
     source_title: "Frontend Development with Docker: Jekyll + Bootstrap 5"
     fingerprint: 7a9b3b543ea0
+  # Fresh wire dispatch (autopilot run, 2026-08-31): every prior WIRE-* item was
+  # already `status: done` and the sole open auto:content PR is a DOC lane item
+  # (the token-trap linter), so grow-lifehacker synthesized a new in-lane wire
+  # rather than cross collections or no-op. Reported from a real, checkable
+  # primary on the model beat inside the 14-day cap: Tencent's Aug 29, 2026 Hy4
+  # Preview open-weight release (Hugging Face model card + its chat_template.jinja)
+  # as surfaced by Simon Willison's Aug 29 link blog. Byline: rhea (wire desk;
+  # `authors.rb --section wire` -> rhea).
+  - id: WIRE-011
+    kind: wire
+    title: "Tencent's new 770B model confesses it overthinks — and its reasoning dial has exactly two settings, 'high' and off"
+    brief: "Model-beat dispatch reported from Tencent's Aug 29, 2026 Hy4 Preview release. Facts kept sacred (verified against the Hugging Face model card + chat_template.jinja): Hy4 preview is an Apache-2.0 MoE flagship, 770B total / 49B activated per token, 78 layers (1 dense + 77 MoE, 256 routed experts + 1 shared, top-8 routed), 1M-token context, +MTP speculative-decoding layer; a big jump from July's Hy3 (295B/21B/256K). The finding: the chat template exposes `reasoning_effort` with just two accepted values — 'high' (the default) and 'no_think' — and `{{- raise_exception(...) }}` fires on any other value, including `none`; there is no `medium`/`low`. The vendor's own model card 'known issues' section confesses the model spends 'longer than necessary reasoning' and 'over-verifies its own work' — i.e. the setting a user would most want (a middle gear) is exactly the one the template errors on, while the vendor admits overthinking is a bug. Simon Willison's default-'high' pelican-on-a-bicycle run and the truncated-English reasoning trace are the independent color. Satire targets the theater of the reasoning dial welded to two detents, not the researchers or the (permissively licensed) model. Prior desk coverage of the same beat: WIRE-007 (Qwen defaults to overthinking). Light COI/independence note: this newsroom runs on a rival lab's models."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/hy4-no-middle-gear/
+    source: manual
+    source_url: https://simonwillison.net/2026/Aug/29/hy4/
+  - id: DOC-044
+    kind: doc
+    title: "The Token-Trap Linter, and Three Ways I Snuck the Trap Past It"
+    brief: "Fresh doc idea (all prior DOC items were done; no todo doc existed at run time). Stress-test (Ed G. Case) of scripts/ci/lint_tokens.rb, the ratchet that keeps the `secrets.X || github.token` expired-secret fallback out of CI after DOC-040 documented the bug. Verifies the three mechanisms for real — passes today (15 warn / 0 error / exit 0); a trap in a non-MIGRATING workflow errors and exits 1; the stale-migration-entry self-check errors on a cleaned workflow still on the ledger. Then runs 14 pathological lines against the actual TRAP regex and publishes the table: canonical/chained/zero-space/tab/trailing-comment variants CAUGHT, comment lines correctly SKIPPED, and three real evasions SLIPPED — the case-insensitive secret name (regex is [A-Z0-9_] only), the expression wrapped over two physical lines (each_line reader), and the env-var launder (`env.FOO || github.token` says env. not secrets.). Honorable-mention: reversed order correctly ignored (fails safe, not open). 'Survives a Tuesday' verdict, two-character fix ([A-Za-z0-9_]) recommended in the doc, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/three-ways-past-the-token-trap-linter/
+
+
+
   - id: POST-046
     kind: post
     title: "The banner that promised it could never repeat"
