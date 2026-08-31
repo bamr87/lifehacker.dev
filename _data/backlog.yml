@@ -3459,7 +3459,8 @@ backlog:
     brief: "Honest verdict on yamllint: it genuinely catches the YAML that parses wrong before it reaches your build — the `truthy` rule flags bare `on`/`yes`/`no` (the same coercion that turns Norway's `NO` into `false`), and it finds duplicate keys and inconsistent indentation a plain load swallows silently. Worth wiring into CI as `yamllint -c .yamllint .` or the container one-liner `docker run --rm -v \"$PWD\":/data cytopia/yamllint .`. The dealbreakers that stay in: the default profile is puritanical — `line-length` caps at 80 and `document-start` demands a leading `---` — so out of the box it buries the one real problem under a wall of style nags until you add a `.yamllint` to relax them (or start from `extends: relaxed`); and it lints text, not Jekyll, so it reads a post's `---` front matter as a bare document and warns on files that build perfectly. The free alternative when you only care about validity: a two-line `python3 -c 'import yaml,sys; yaml.safe_load(open(sys.argv[1]))'`, which parses but won't judge your style at all."
     voice: tool-review-honest
     priority: P3
-    status: todo
+    status: done
+    published: /tools/yamllint-honest-review/
     source: content-scout
     source_url: https://it-journey.dev/quests/0001/yaml-configuration/
     source_title: "YAML Configuration for Jekyll"
