@@ -2023,7 +2023,8 @@ backlog:
     brief: "The biggest speedup is the request you never compute: check the cache, on a miss read the source and write it back with a TTL. But the two hard parts stay in. Invalidation — a TTL alone serves stale data until it expires, so a write has to bust the key too, and getting that ordering wrong reintroduces the staleness you were fixing. And the stampede — the instant a popular key expires, a thousand concurrent misses all hit the database at once and knock it over; the fix is a single-flight lock so one request recomputes while the rest wait, plus a little random jitter on the TTL so keys don't all expire on the same tick. Demonstrable with a small script that fires N concurrent readers at an expired key."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/cache-aside-without-the-stampede/
     source: content-scout
     source_url: https://it-journey.dev/quests/1110/scaling-strategies/
     source_title: "Scaling Strategies: Horizontal Growth, Caching, and CAP"
@@ -3458,7 +3459,8 @@ backlog:
     brief: "Honest verdict on yamllint: it genuinely catches the YAML that parses wrong before it reaches your build — the `truthy` rule flags bare `on`/`yes`/`no` (the same coercion that turns Norway's `NO` into `false`), and it finds duplicate keys and inconsistent indentation a plain load swallows silently. Worth wiring into CI as `yamllint -c .yamllint .` or the container one-liner `docker run --rm -v \"$PWD\":/data cytopia/yamllint .`. The dealbreakers that stay in: the default profile is puritanical — `line-length` caps at 80 and `document-start` demands a leading `---` — so out of the box it buries the one real problem under a wall of style nags until you add a `.yamllint` to relax them (or start from `extends: relaxed`); and it lints text, not Jekyll, so it reads a post's `---` front matter as a bare document and warns on files that build perfectly. The free alternative when you only care about validity: a two-line `python3 -c 'import yaml,sys; yaml.safe_load(open(sys.argv[1]))'`, which parses but won't judge your style at all."
     voice: tool-review-honest
     priority: P3
-    status: todo
+    status: done
+    published: /tools/yamllint-honest-review/
     source: content-scout
     source_url: https://it-journey.dev/quests/0001/yaml-configuration/
     source_title: "YAML Configuration for Jekyll"
@@ -3805,25 +3807,6 @@ backlog:
     published: /wire/anthropic-model-hardware-standard/
     source: manual
     source_url: https://www.anthropic.com/news/model-hardware-standard-research-preview
-  # Fresh wire dispatch (autopilot run, 2026-08-31): every prior WIRE-* item was
-  # already `status: done` and the sole open auto:content PR is a DOC lane item
-  # (the token-trap linter), so grow-lifehacker synthesized a new in-lane wire
-  # rather than cross collections or no-op. Reported from a real, checkable
-  # primary on the model beat inside the 14-day cap: Tencent's Aug 29, 2026 Hy4
-  # Preview open-weight release (Hugging Face model card + its chat_template.jinja)
-  # as surfaced by Simon Willison's Aug 29 link blog. Byline: rhea (wire desk;
-  # `authors.rb --section wire` -> rhea).
-  - id: WIRE-011
-    kind: wire
-    title: "Tencent's new 770B model confesses it overthinks — and its reasoning dial has exactly two settings, 'high' and off"
-    brief: "Model-beat dispatch reported from Tencent's Aug 29, 2026 Hy4 Preview release. Facts kept sacred (verified against the Hugging Face model card + chat_template.jinja): Hy4 preview is an Apache-2.0 MoE flagship, 770B total / 49B activated per token, 78 layers (1 dense + 77 MoE, 256 routed experts + 1 shared, top-8 routed), 1M-token context, +MTP speculative-decoding layer; a big jump from July's Hy3 (295B/21B/256K). The finding: the chat template exposes `reasoning_effort` with just two accepted values — 'high' (the default) and 'no_think' — and `{{- raise_exception(...) }}` fires on any other value, including `none`; there is no `medium`/`low`. The vendor's own model card 'known issues' section confesses the model spends 'longer than necessary reasoning' and 'over-verifies its own work' — i.e. the setting a user would most want (a middle gear) is exactly the one the template errors on, while the vendor admits overthinking is a bug. Simon Willison's default-'high' pelican-on-a-bicycle run and the truncated-English reasoning trace are the independent color. Satire targets the theater of the reasoning dial welded to two detents, not the researchers or the (permissively licensed) model. Prior desk coverage of the same beat: WIRE-007 (Qwen defaults to overthinking). Light COI/independence note: this newsroom runs on a rival lab's models."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P1
-    status: done
-    published: /wire/hy4-no-middle-gear/
-    source: manual
-    source_url: https://simonwillison.net/2026/Aug/29/hy4/
   # Fresh in-lane Meta doc: every prior doc backlog item was already `status: done`,
   # so grow-lifehacker synthesized a new one rather than cross collections. Subject
   # is scripts/media/figures.mjs (the weekly-epic in-body figure generator) — no
@@ -3923,9 +3906,6 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/30/the-bot-that-fixes-a-broken-pr-runs-the-broken-pr/
-
-
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -3962,3 +3942,44 @@ backlog:
     source_url: https://it-journey.dev/quests/0100/frontend-docker/
     source_title: "Frontend Development with Docker: Jekyll + Bootstrap 5"
     fingerprint: 7a9b3b543ea0
+  # Fresh wire dispatch (autopilot run, 2026-08-31): every prior WIRE-* item was
+  # already `status: done` and the sole open auto:content PR is a DOC lane item
+  # (the token-trap linter), so grow-lifehacker synthesized a new in-lane wire
+  # rather than cross collections or no-op. Reported from a real, checkable
+  # primary on the model beat inside the 14-day cap: Tencent's Aug 29, 2026 Hy4
+  # Preview open-weight release (Hugging Face model card + its chat_template.jinja)
+  # as surfaced by Simon Willison's Aug 29 link blog. Byline: rhea (wire desk;
+  # `authors.rb --section wire` -> rhea).
+  - id: WIRE-011
+    kind: wire
+    title: "Tencent's new 770B model confesses it overthinks — and its reasoning dial has exactly two settings, 'high' and off"
+    brief: "Model-beat dispatch reported from Tencent's Aug 29, 2026 Hy4 Preview release. Facts kept sacred (verified against the Hugging Face model card + chat_template.jinja): Hy4 preview is an Apache-2.0 MoE flagship, 770B total / 49B activated per token, 78 layers (1 dense + 77 MoE, 256 routed experts + 1 shared, top-8 routed), 1M-token context, +MTP speculative-decoding layer; a big jump from July's Hy3 (295B/21B/256K). The finding: the chat template exposes `reasoning_effort` with just two accepted values — 'high' (the default) and 'no_think' — and `{{- raise_exception(...) }}` fires on any other value, including `none`; there is no `medium`/`low`. The vendor's own model card 'known issues' section confesses the model spends 'longer than necessary reasoning' and 'over-verifies its own work' — i.e. the setting a user would most want (a middle gear) is exactly the one the template errors on, while the vendor admits overthinking is a bug. Simon Willison's default-'high' pelican-on-a-bicycle run and the truncated-English reasoning trace are the independent color. Satire targets the theater of the reasoning dial welded to two detents, not the researchers or the (permissively licensed) model. Prior desk coverage of the same beat: WIRE-007 (Qwen defaults to overthinking). Light COI/independence note: this newsroom runs on a rival lab's models."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/hy4-no-middle-gear/
+    source: manual
+    source_url: https://simonwillison.net/2026/Aug/29/hy4/
+  - id: DOC-044
+    kind: doc
+    title: "The Token-Trap Linter, and Three Ways I Snuck the Trap Past It"
+    brief: "Fresh doc idea (all prior DOC items were done; no todo doc existed at run time). Stress-test (Ed G. Case) of scripts/ci/lint_tokens.rb, the ratchet that keeps the `secrets.X || github.token` expired-secret fallback out of CI after DOC-040 documented the bug. Verifies the three mechanisms for real — passes today (15 warn / 0 error / exit 0); a trap in a non-MIGRATING workflow errors and exits 1; the stale-migration-entry self-check errors on a cleaned workflow still on the ledger. Then runs 14 pathological lines against the actual TRAP regex and publishes the table: canonical/chained/zero-space/tab/trailing-comment variants CAUGHT, comment lines correctly SKIPPED, and three real evasions SLIPPED — the case-insensitive secret name (regex is [A-Z0-9_] only), the expression wrapped over two physical lines (each_line reader), and the env-var launder (`env.FOO || github.token` says env. not secrets.). Honorable-mention: reversed order correctly ignored (fails safe, not open). 'Survives a Tuesday' verdict, two-character fix ([A-Za-z0-9_]) recommended in the doc, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/three-ways-past-the-token-trap-linter/
+
+
+
+  - id: POST-046
+    kind: post
+    title: "The banner that promised it could never repeat"
+    brief: "Meta QA field note (Ed G. Case): the preview generator's own header comment swears 'two articles can never share one' banner, but the seed is fnv1a(slug) truncated to 32 bits. Verified: 308 real site slugs -> 308 distinct seeds, 0 collisions (P at 308 ~0.0011%). Then broke it on purpose — brute-forced two different slugs to the same 32-bit seed, built two real posts, and rendered both banners: with matching editorial tilt the scene is byte-identical (every node/edge/bloom equal), the only differing bytes being the headline <text> and a <desc> that narrates the SAME seed in both. Measured the birthday bound directly: mean 76,826 distinct slugs to first collision over 25 trials vs. textbook 77,162 — so fnv1a behaves like an ideal 32-bit hash, and 'never' really means 'not before ~post 77,000'. Also found the unadvertised second line of defense: deriveParams reads the TITLE (URGENT/STEADY regex), so a seed collision alone isn't enough — it evaporates when two colliding titles share a tone. Payload: swap the word 'never' in the comment for the number. Every command/number captured from live scripts/preview during research."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/31/the-banner-that-promised-it-could-never-repeat/
+
