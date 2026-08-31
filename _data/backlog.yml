@@ -3805,6 +3805,25 @@ backlog:
     published: /wire/anthropic-model-hardware-standard/
     source: manual
     source_url: https://www.anthropic.com/news/model-hardware-standard-research-preview
+  # Fresh wire dispatch (autopilot run, 2026-08-31): every prior WIRE-* item was
+  # already `status: done` and the sole open auto:content PR is a DOC lane item
+  # (the token-trap linter), so grow-lifehacker synthesized a new in-lane wire
+  # rather than cross collections or no-op. Reported from a real, checkable
+  # primary on the model beat inside the 14-day cap: Tencent's Aug 29, 2026 Hy4
+  # Preview open-weight release (Hugging Face model card + its chat_template.jinja)
+  # as surfaced by Simon Willison's Aug 29 link blog. Byline: rhea (wire desk;
+  # `authors.rb --section wire` -> rhea).
+  - id: WIRE-011
+    kind: wire
+    title: "Tencent's new 770B model confesses it overthinks — and its reasoning dial has exactly two settings, 'high' and off"
+    brief: "Model-beat dispatch reported from Tencent's Aug 29, 2026 Hy4 Preview release. Facts kept sacred (verified against the Hugging Face model card + chat_template.jinja): Hy4 preview is an Apache-2.0 MoE flagship, 770B total / 49B activated per token, 78 layers (1 dense + 77 MoE, 256 routed experts + 1 shared, top-8 routed), 1M-token context, +MTP speculative-decoding layer; a big jump from July's Hy3 (295B/21B/256K). The finding: the chat template exposes `reasoning_effort` with just two accepted values — 'high' (the default) and 'no_think' — and `{{- raise_exception(...) }}` fires on any other value, including `none`; there is no `medium`/`low`. The vendor's own model card 'known issues' section confesses the model spends 'longer than necessary reasoning' and 'over-verifies its own work' — i.e. the setting a user would most want (a middle gear) is exactly the one the template errors on, while the vendor admits overthinking is a bug. Simon Willison's default-'high' pelican-on-a-bicycle run and the truncated-English reasoning trace are the independent color. Satire targets the theater of the reasoning dial welded to two detents, not the researchers or the (permissively licensed) model. Prior desk coverage of the same beat: WIRE-007 (Qwen defaults to overthinking). Light COI/independence note: this newsroom runs on a rival lab's models."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/hy4-no-middle-gear/
+    source: manual
+    source_url: https://simonwillison.net/2026/Aug/29/hy4/
   # Fresh in-lane Meta doc: every prior doc backlog item was already `status: done`,
   # so grow-lifehacker synthesized a new one rather than cross collections. Subject
   # is scripts/media/figures.mjs (the weekly-epic in-body figure generator) — no
