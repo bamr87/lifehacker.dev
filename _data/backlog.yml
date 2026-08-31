@@ -1317,16 +1317,6 @@ backlog:
     status: done
     published: /posts/2026/07/10/todo-list-mostly-comments-about-being-empty/
 
-  - id: POST-046
-    kind: post
-    title: "The banner that promised it could never repeat"
-    brief: "Meta QA field note (Ed G. Case): the preview generator's own header comment swears 'two articles can never share one' banner, but the seed is fnv1a(slug) truncated to 32 bits. Verified: 308 real site slugs -> 308 distinct seeds, 0 collisions (P at 308 ~0.0011%). Then broke it on purpose — brute-forced two different slugs to the same 32-bit seed, built two real posts, and rendered both banners: with matching editorial tilt the scene is byte-identical (every node/edge/bloom equal), the only differing bytes being the headline <text> and a <desc> that narrates the SAME seed in both. Measured the birthday bound directly: mean 76,826 distinct slugs to first collision over 25 trials vs. textbook 77,162 — so fnv1a behaves like an ideal 32-bit hash, and 'never' really means 'not before ~post 77,000'. Also found the unadvertised second line of defense: deriveParams reads the TITLE (URGENT/STEADY regex), so a seed collision alone isn't enough — it evaporates when two colliding titles share a tone. Payload: swap the word 'never' in the comment for the number. Every command/number captured from live scripts/preview during research."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /posts/2026/08/31/the-banner-that-promised-it-could-never-repeat/
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -2033,7 +2023,8 @@ backlog:
     brief: "The biggest speedup is the request you never compute: check the cache, on a miss read the source and write it back with a TTL. But the two hard parts stay in. Invalidation — a TTL alone serves stale data until it expires, so a write has to bust the key too, and getting that ordering wrong reintroduces the staleness you were fixing. And the stampede — the instant a popular key expires, a thousand concurrent misses all hit the database at once and knock it over; the fix is a single-flight lock so one request recomputes while the rest wait, plus a little random jitter on the TTL so keys don't all expire on the same tick. Demonstrable with a small script that fires N concurrent readers at an expired key."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/cache-aside-without-the-stampede/
     source: content-scout
     source_url: https://it-journey.dev/quests/1110/scaling-strategies/
     source_title: "Scaling Strategies: Horizontal Growth, Caching, and CAP"
@@ -3468,7 +3459,8 @@ backlog:
     brief: "Honest verdict on yamllint: it genuinely catches the YAML that parses wrong before it reaches your build — the `truthy` rule flags bare `on`/`yes`/`no` (the same coercion that turns Norway's `NO` into `false`), and it finds duplicate keys and inconsistent indentation a plain load swallows silently. Worth wiring into CI as `yamllint -c .yamllint .` or the container one-liner `docker run --rm -v \"$PWD\":/data cytopia/yamllint .`. The dealbreakers that stay in: the default profile is puritanical — `line-length` caps at 80 and `document-start` demands a leading `---` — so out of the box it buries the one real problem under a wall of style nags until you add a `.yamllint` to relax them (or start from `extends: relaxed`); and it lints text, not Jekyll, so it reads a post's `---` front matter as a bare document and warns on files that build perfectly. The free alternative when you only care about validity: a two-line `python3 -c 'import yaml,sys; yaml.safe_load(open(sys.argv[1]))'`, which parses but won't judge your style at all."
     voice: tool-review-honest
     priority: P3
-    status: todo
+    status: done
+    published: /tools/yamllint-honest-review/
     source: content-scout
     source_url: https://it-journey.dev/quests/0001/yaml-configuration/
     source_title: "YAML Configuration for Jekyll"
@@ -3953,3 +3945,13 @@ backlog:
     source_url: https://it-journey.dev/quests/0100/frontend-docker/
     source_title: "Frontend Development with Docker: Jekyll + Bootstrap 5"
     fingerprint: 7a9b3b543ea0
+  - id: POST-046
+    kind: post
+    title: "The banner that promised it could never repeat"
+    brief: "Meta QA field note (Ed G. Case): the preview generator's own header comment swears 'two articles can never share one' banner, but the seed is fnv1a(slug) truncated to 32 bits. Verified: 308 real site slugs -> 308 distinct seeds, 0 collisions (P at 308 ~0.0011%). Then broke it on purpose — brute-forced two different slugs to the same 32-bit seed, built two real posts, and rendered both banners: with matching editorial tilt the scene is byte-identical (every node/edge/bloom equal), the only differing bytes being the headline <text> and a <desc> that narrates the SAME seed in both. Measured the birthday bound directly: mean 76,826 distinct slugs to first collision over 25 trials vs. textbook 77,162 — so fnv1a behaves like an ideal 32-bit hash, and 'never' really means 'not before ~post 77,000'. Also found the unadvertised second line of defense: deriveParams reads the TITLE (URGENT/STEADY regex), so a seed collision alone isn't enough — it evaporates when two colliding titles share a tone. Payload: swap the word 'never' in the comment for the number. Every command/number captured from live scripts/preview during research."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/31/the-banner-that-promised-it-could-never-repeat/
+
