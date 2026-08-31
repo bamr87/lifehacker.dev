@@ -3905,4 +3905,28 @@ backlog:
     status: done
     published: /posts/2026/08/30/the-bot-that-fixes-a-broken-pr-runs-the-broken-pr/
 
+  # --- loop-tuner 2026-08-31: post/doc lanes re-starved after last refill drained
+  # loop_metrics showed starved_kinds [post, doc] again — 74 growable todos, but 72
+  # are kind:hack (the SRC-* content-scout stream) + 2 tool, and post/doc read 0.
+  # The 2026-08-10 refills (POST-033/DOC-033) shipped and drained. Ran
+  # harvest_ideas.rb (18 candidates from merged PRs) and promoted one non-duplicate,
+  # offline-testable idea per starved lane so the factory picks a MEASURED brief
+  # instead of improvising. Metadata only — the factory writes the prose.
+  - id: POST-046
+    kind: post
+    title: "The banner that draws itself only when it's allowed to"
+    brief: "Field note on the preview illustration layer's credential dependency: illustrate.mjs draws the article's subject into its Trace Bloom cover with ONE model call, but when the fleet has no OAuth token the call exits 1 and the plain deterministic banner stands. Ed treats that not as a bug but as the designed degraded path — 'author the motif through the validator' (a hand-authored _data/preview/motifs entry the offline generator renders) is the supported fallback, not a workaround. Real captured output only (token-absent run → exit 1 → plain banner; motif-present run → drawn cover). The honest twist: the preview gate is warn-only (preview: is not a required frontmatter key), so a missing illustration never blocks a merge — the graceful degradation is real precisely because nothing forces the richer path."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: todo
+  - id: DOC-044
+    kind: doc
+    title: "The simulation that proves the merge, not the meaning"
+    brief: "Deep-dive (Cass) on scripts/sim/simulate.rb — the end-to-end contract simulation that shares the Tier-1 `fast` job with the devops auditor. What it actually proves, demonstrated by running it (92 passed / 0 failed): the backlog.yml merge driver exists and merges disjoint appends without splicing or silently duplicating an id, and file_issues.rb carries only create/comment/reopen verbs (no close/merge to be talked into). What it CANNOT prove: that any agent read the quarantine doc it checks for with File.exist?, or that the guardrails hold at runtime rather than on disk. The honest twist Cass can't leave alone: simulate.rb, like the auditor beside it, runs in advisory `fast` — SKIPPED on content-only PRs and outside the required `verify` gate — so the contract it verifies gates nothing until `fast` is promoted. Real captured simulate.rb output only; no fixes applied."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: todo
+
 
