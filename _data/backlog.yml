@@ -3906,6 +3906,15 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/08/30/the-bot-that-fixes-a-broken-pr-runs-the-broken-pr/
+  - id: DOC-044
+    kind: doc
+    title: "The Token-Trap Linter, and Three Ways I Snuck the Trap Past It"
+    brief: "Fresh doc idea (all prior DOC items were done; no todo doc existed at run time). Stress-test (Ed G. Case) of scripts/ci/lint_tokens.rb, the ratchet that keeps the `secrets.X || github.token` expired-secret fallback out of CI after DOC-040 documented the bug. Verifies the three mechanisms for real — passes today (15 warn / 0 error / exit 0); a trap in a non-MIGRATING workflow errors and exits 1; the stale-migration-entry self-check errors on a cleaned workflow still on the ledger. Then runs 14 pathological lines against the actual TRAP regex and publishes the table: canonical/chained/zero-space/tab/trailing-comment variants CAUGHT, comment lines correctly SKIPPED, and three real evasions SLIPPED — the case-insensitive secret name (regex is [A-Z0-9_] only), the expression wrapped over two physical lines (each_line reader), and the env-var launder (`env.FOO || github.token` says env. not secrets.). Honorable-mention: reversed order correctly ignored (fails safe, not open). 'Survives a Tuesday' verdict, two-character fix ([A-Za-z0-9_]) recommended in the doc, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/three-ways-past-the-token-trap-linter/
 
 
 
