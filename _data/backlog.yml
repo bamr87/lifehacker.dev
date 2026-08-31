@@ -2023,7 +2023,8 @@ backlog:
     brief: "The biggest speedup is the request you never compute: check the cache, on a miss read the source and write it back with a TTL. But the two hard parts stay in. Invalidation — a TTL alone serves stale data until it expires, so a write has to bust the key too, and getting that ordering wrong reintroduces the staleness you were fixing. And the stampede — the instant a popular key expires, a thousand concurrent misses all hit the database at once and knock it over; the fix is a single-flight lock so one request recomputes while the rest wait, plus a little random jitter on the TTL so keys don't all expire on the same tick. Demonstrable with a small script that fires N concurrent readers at an expired key."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/cache-aside-without-the-stampede/
     source: content-scout
     source_url: https://it-journey.dev/quests/1110/scaling-strategies/
     source_title: "Scaling Strategies: Horizontal Growth, Caching, and CAP"
