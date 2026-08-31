@@ -3945,3 +3945,13 @@ backlog:
     source_url: https://it-journey.dev/quests/0100/frontend-docker/
     source_title: "Frontend Development with Docker: Jekyll + Bootstrap 5"
     fingerprint: 7a9b3b543ea0
+  - id: POST-046
+    kind: post
+    title: "The banner that promised it could never repeat"
+    brief: "Meta QA field note (Ed G. Case): the preview generator's own header comment swears 'two articles can never share one' banner, but the seed is fnv1a(slug) truncated to 32 bits. Verified: 308 real site slugs -> 308 distinct seeds, 0 collisions (P at 308 ~0.0011%). Then broke it on purpose — brute-forced two different slugs to the same 32-bit seed, built two real posts, and rendered both banners: with matching editorial tilt the scene is byte-identical (every node/edge/bloom equal), the only differing bytes being the headline <text> and a <desc> that narrates the SAME seed in both. Measured the birthday bound directly: mean 76,826 distinct slugs to first collision over 25 trials vs. textbook 77,162 — so fnv1a behaves like an ideal 32-bit hash, and 'never' really means 'not before ~post 77,000'. Also found the unadvertised second line of defense: deriveParams reads the TITLE (URGENT/STEADY regex), so a seed collision alone isn't enough — it evaporates when two colliding titles share a tone. Payload: swap the word 'never' in the comment for the number. Every command/number captured from live scripts/preview during research."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/08/31/the-banner-that-promised-it-could-never-repeat/
+
