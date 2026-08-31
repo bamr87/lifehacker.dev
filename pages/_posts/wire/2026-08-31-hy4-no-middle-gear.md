@@ -70,5 +70,3 @@ Tencent says it would "rather ship early and hear what breaks." Reached for comm
 - Hugging Face, ["tencent/Hy4-preview" model card](https://huggingface.co/tencent/Hy4-preview) — the primary release facts: Apache 2.0 license, 770B total / 49B activated parameters, 78-layer MoE architecture (256 routed + 1 shared expert, top-8 routed), 1M-token context, MTP speculative-decoding layer, and the "known issues" note that the model spends "longer than necessary reasoning" and "over-verifies its own work."
 - Hugging Face, ["tencent/Hy4-preview/chat_template.jinja"](https://huggingface.co/tencent/Hy4-preview/blob/main/chat_template.jinja) — the template that accepts only `high` and `no_think` and calls `raise_exception` on any other `reasoning_effort` value, including `none`; verified against the file's raw contents for this dispatch.
 - Hugging Face, ["tencent/Hy3" model card](https://huggingface.co/tencent/Hy3) — the predecessor (295B total / 21B active, 256K context) the new release is measured against.
-</content>
-</invoke>
