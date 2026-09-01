@@ -3983,3 +3983,40 @@ backlog:
     status: done
     published: /posts/2026/08/31/the-banner-that-promised-it-could-never-repeat/
 
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-118
+    kind: hack
+    title: "actions/cache is write-once: your job 'saved' the new state and silently kept the old"
+    brief: "You stash a workflow's rolling state — an agent's `session.json`, a computed manifest — in `actions/cache` under a fixed key so the next run picks it up, and it never updates, because a cache key is immutable: the first run writes it, every later save to the SAME key is a no-op that logs 'Cache already exists' and exits 0, so the job stays green while reading last week's state forever. Two fixes with their costs: for a same-run handoff between jobs use `upload-artifact`/`download-artifact` (artifacts overwrite and are scoped to the run), and for cross-run mutable state either commit it to a repo file or roll the key when the content changes — `key: state-${{ hashFiles('state.json') }}`, so a new value is a new key. The failure that stays in: `restore-keys` will happily serve a stale prefix match, so 'it restored a cache' and 'it restored the RIGHT cache' are two different claims — print what you loaded and assert on it, don't trust the green check. Reproducible in one workflow that writes a counter to a fixed key twice and watches it stick at 1."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1001/agentic-memory-strategies/
+    source_title: "Vaults of Recollection: Agent Memory Strategies"
+    fingerprint: 1017c8ee52a3
+  - id: SRC-119
+    kind: hack
+    title: "Regenerate half a file without eating the hand-written half: BEGIN/END markers and an idempotent rewrite"
+    brief: "A script that regenerates a stats block, a README table, or a contributor profile by rewriting the whole file deletes every manual edit around it — and the 'fix' of appending each run silently doubles the block every time. The pattern that survives: wrap the generated region in sentinel comments (`<!-- BEGIN:stats -->` … `<!-- END:stats -->`) and replace only what's between them, leaving everything outside untouched. Make it idempotent — match the marker pair and substitute, so running twice yields one block, not two; if the markers are absent, append them once rather than clobbering the top of the file. The failures that stay in: an edit that lands INSIDE the managed region is gone on the next run, and that's the contract — say so in the marker itself ('do not edit between these lines'); and a greedy regex across two marker pairs eats everything from the first BEGIN to the last END, so anchor the match to a single non-overlapping pair. Reproducible with a five-line sed or Python rewriter run twice against a fixture and diffed."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/forge-your-character/
+    source_title: "Forge Your Character"
+    fingerprint: 4bb351910ce5
+  - id: SRC-120
+    kind: hack
+    title: "Diff two commands without a temp file: process substitution <(…), and why it dies in sh and hides its exit code"
+    brief: "To compare the output of two commands you don't need a scratch file — `diff <(sort a.txt) <(sort b.txt)` hands each command's output to diff as a named pipe (`/dev/fd/…`) that looks like a file, and `>(cmd)` does the mirror for output (`tee >(gzip > a.gz) >(wc -l)`). The failures that stay in: process substitution is a bash/zsh feature, not POSIX, so the identical line under `sh script.sh` or a `#!/bin/sh` shebang dies with 'syntax error near unexpected token `(''  — it needs `#!/usr/bin/env bash`; the substituted process's exit status is INVISIBLE to the outer command, so a `<(curl …)` that 404s still feeds diff an empty-but-successful stream and `set -euo pipefail` never trips (capture to a real file or var and check `$?` when the inner command can fail); and the `/dev/fd` handle is a pipe, not a seekable file, so a tool that rewinds or stats its size on it misbehaves. Reproducible in three lines; the sh-vs-bash break is the one that eats the afternoon."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/cheatsheets/bash-complete-reference/
+    source_title: "Complete BASH Reference"
+    fingerprint: 4dd62f9d6f5c
