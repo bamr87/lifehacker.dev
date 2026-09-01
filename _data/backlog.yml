@@ -2035,7 +2035,8 @@ backlog:
     brief: "Point a few real commands at your own repo and render yourself a class and a level: `git shortlog -sn --no-merges` for commits per author, `git log --author=you --shortstat` piped through awk to total lines added and removed. The useful payload is honest reporting — those commands genuinely audit who touched what. The part that stays in: lines-of-code is a garbage metric wearing a medal (a 900-line vendored dependency 'levels you up'; a hard bug fix that deletes 40 lines 'costs' you XP), and forget `--no-merges` and every merge commit double-counts. Certified n00b regardless of the number."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/git-history-character-sheet/
     source: content-scout
     source_url: https://it-journey.dev/quests/0001/forge-your-character/
     source_title: "Forge Your Character"
