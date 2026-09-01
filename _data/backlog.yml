@@ -4022,3 +4022,14 @@ backlog:
     source_url: https://it-journey.dev/notes/cheatsheets/bash-complete-reference/
     source_title: "Complete BASH Reference"
     fingerprint: 4dd62f9d6f5c
+  - id: POST-047
+    kind: post
+    title: "My sandbox blocks the network and forgets the fork bomb"
+    brief: "Fresh field note (no todo post item existed at run time; DOC-004 blocked on OPS-001). Cass threat-models the Prime Directive command sandbox — run_hack_commands.rb runs shell blocks from hacks/tools inside `docker run`. Credit where due, verified: --network=none (no egress), --read-only, non-root uid 10001, and the volume is a fresh mktemp holding only block.sh (the repo checkout is NOT mounted — no token/secret to read). The gap, measured from inside the real image with the exact flags: no --pids-limit (pids.max inherits host 19152, ulimit -u unlimited -> fork bomb), no --memory (memory.max=max -> OOM), no --cpus (cpu.max=max), and two RAM-backed tmpfs at 7.9G each with no size= cap (writing /tmp is writing RAM). Also no timeout: Open3.capture2e has no deadline and no `timeout` wraps the run, so a hanging block (sleep infinity / read on stdin) blocks the check; demonstrated that wrapping docker run in `timeout` is a placebo (SIGTERM to the client left the container running the full 60s). Vectors: PR-time optin needs an author-marked lh:run block; nightly.yml optout runs EVERY block except lh:norun, unattended. Did NOT detonate a real fork bomb/8GB alloc — proved the caps absent (cgroup readouts) and consequences bounded (256M write succeeded, 8s block blocked the check). Three TESTED mitigations: (1) --pids-limit=256 --memory=512m --cpus=2 --cap-drop=ALL --security-opt=no-new-privileges + tmpfs size=32m (verified pids.max=256, memory.max=512M, 128M write -> ENOSPC at 32M); (2) in-container `timeout -s KILL` (verified exit 137 at the deadline) since wrapping docker run doesn't work; (3) harden the nightly optout + a Ruby Process.kill backstop so a bad block can't wedge the reporter. Tooling changes under scripts/ci/ — written up for a human, not patched here."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/01/sandbox-blocks-network-forgets-fork-bomb/
+
+
