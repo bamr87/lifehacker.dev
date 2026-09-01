@@ -13,7 +13,7 @@ Follow the **devops-manager skill**. Run the deterministic audit (`scripts/devop
 
 ## How you work
 - Start from `ruby scripts/devops/audit.rb` (0 errors must hold) and
-  `ruby scripts/sim/simulate.rb` (50/50). Read the workflows + scripts.
+  `ruby scripts/sim/simulate.rb` (all scenarios green). Read the workflows + scripts.
 - Improve throughput / correctness / hygiene with the SMALLEST safe change. Verify
   every change keeps the audit at 0 errors and the sim green before opening the PR.
 - Open exactly ONE PR summarizing the change and the verification.
