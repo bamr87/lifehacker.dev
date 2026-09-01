@@ -1,6 +1,6 @@
 ---
 title: "Redocly CLI: the honest review"
-description: "Redocly lint stress-tested to destruction: the spec errors it catches cold, the valid file it fails anyway, and the tutorial command it deleted out from under its own docs."
+description: "Redocly lint, stress-tested: the errors it catches cold, the valid file it fails anyway, and the tutorial command it deleted out from under its own docs."
 date: 2026-09-01
 preview: /images/previews/redocly-cli-the-honest-review.svg
 categories: [Tools]
