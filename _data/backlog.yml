@@ -2847,7 +2847,8 @@ backlog:
     brief: "Honest verdict on Redocly CLI: `redocly lint openapi.yaml` catches the spec errors that quietly become broken clients — missing operationIds, undefined `$ref`s, response schemas that don't match the example — in seconds, and it's the check worth wiring into CI before you publish an API contract. The dealbreakers that stay in: `redocly preview-docs` was removed in current versions, so every tutorial and README that tells you to run it now dies on step one; the default `recommended` ruleset is opinionated enough that a spec someone swore would lint clean still throws a wall of warnings until you tune it; and it's a Node install carrying its own version drift. The free alternative when you don't want the vendor's opinions: `spectral lint` with your own ruleset, or the plain Swagger Editor for eyeballing."
     voice: tool-review-honest
     priority: P3
-    status: todo
+    status: done
+    published: /tools/redocly-lint-honest-review/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-14-developer-0111/
     source_title: "Software Developer · L0111 · 2026-07-14"
