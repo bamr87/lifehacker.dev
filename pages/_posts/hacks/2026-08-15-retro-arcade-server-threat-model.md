@@ -1,6 +1,6 @@
 ---
 title: "I put a retro arcade on a 14-year-old PC, and yes, I threat-modeled Galaga"
-description: "EmulatorJS on a 2012 tower: the deprecated-image trap, why browser-side wasm emulation is secretly a security win, and the three guardrails that matter before you rack a toy on your network."
+description: "EmulatorJS on a 2012 tower: the deprecated-image trap, why browser-side wasm is a security win, and the three guardrails that matter."
 date: 2026-08-15
 preview: /images/previews/i-put-a-retro-arcade-on-a-14-year-old-pc-and-yes-i.jpg
 categories: [Hacks]
