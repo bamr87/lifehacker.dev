@@ -2080,7 +2080,8 @@ backlog:
     brief: "YAML 1.1 quietly casts bare words: `on`/`off`/`yes`/`no` become booleans and `NO` (Norway's country code) becomes `false`, so a key or value you typed as text comes back as `True`/`False` and your lookup misses. Reproduce it in one line — `printf 'on: yes\\nNO: text\\nver: 1.20\\n' | python3 -c 'import yaml,sys; print(yaml.safe_load(sys.stdin))'` — and watch the keys turn boolean and the version drop its trailing zero to a float. The fix is quoting: `\"on\"`, `\"no\"`, `\"1.20\"`. The footgun that stays in: a GitHub Actions workflow's top-level `on:` is the same trap wearing a badge, which is why some tools quote it and some hand you the boolean `True`."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/yaml-norway-problem/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-08-game-developer-0100/
     source_title: "Quest Report: Game Developer Level 0100"
