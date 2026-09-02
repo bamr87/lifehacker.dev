@@ -4094,6 +4094,33 @@ backlog:
     source_title: "The Proving Grounds (Self-Operating Website 02)"
     fingerprint: d9b6627ed396
 
+  # Fresh tool idea (autopilot run, 2026-09-02): every `kind: tool` item was already
+  # done, so — per the run's instructions — I minted this one and drafted it rather
+  # than cross collections or no-op. tealdeer is the missing member of the modern-CLI
+  # family we've reviewed (rg, fzf, jq, bat, delta…): the fast `tldr` client. The
+  # honest/security angle is that it's a command name owned by five packages (apt's
+  # `tldr` is a transitional stub for the Haskell client) whose cache is downloaded
+  # over the network, and `tldr --update` returns exit 0 even when the download is
+  # garbage — all captured for real.
+  - id: TOOL-028
+    kind: tool
+    title: "tealdeer: the honest review"
+    brief: "The fast tldr client that turns a 1164-line man page into five copy-paste commands — downloaded from strangers, cached over the network, exiting 0 even when the download fails. Which of five packages named 'tldr' answered, and why auto_update is a silent-failure trap."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/tealdeer-honest-review/
+  - id: DOC-046
+    kind: doc
+    title: "The Assignment Editor That Never Reschedules a Missed Day"
+    brief: "plan_sources.rb + Wire.due_today? decide which news sources the wire desk reads today as a pure function of (frequency, UTC date) — no state file, no last-crawled ledger, by design. Ed G. Case audits what that costs. Real captured runs: (1) statelessness has no makeup day — a `weekly weekday: tue` source whose Tuesday run fails is not due again until the next Tuesday, so a story that lands that week is never seen, and nothing records the miss; the fix is a one-line note in sources.yml, not code. (2) The `else false` at the bottom of the frequency case makes a typo'd scalar frequency (Daily, hourly, biweekly) silently never-due — but lint_wire.rb's bad-frequency error cages it, validating every element of a [mon,thu] list too; grudging respect. (3) The third-scenario bug that both guards miss: neither the planner nor lint_wire type-checks `enabled`, so quoted `enabled: \"false\"` is the string, not the boolean — the source you meant to park stays crawled with a green gate, while bare false/no/off correctly disable. Grudging pass on the Sunday modulo: (wday-1)%7 relies on Ruby's floored `%` (-1%7==6), which a C/JS/Go port with truncated modulo would send out of bounds. Verdict on the survives-a-Tuesday scale. Backlog idea filed in the PR: a lint_wire type check for enabled."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-editor-that-never-reschedules/
+    fingerprint: doc046edgewire
   # Fresh wire dispatch (autopilot wire run, 2026-09-02): every prior WIRE-* item
   # (WIRE-001..012) was already `status: done`, and the sole open auto:content PR
   # is a DOC lane item (the-editor-that-never-reschedules) — a different collection,
@@ -4120,20 +4147,3 @@ backlog:
     published: /wire/fable-5-1-five-day-benchmark/
     source: manual
     source_url: https://www.anthropic.com/claude-fable-and-mythos-5-1
-  # Fresh tool idea (autopilot run, 2026-09-02): every `kind: tool` item was already
-  # done, so — per the run's instructions — I minted this one and drafted it rather
-  # than cross collections or no-op. tealdeer is the missing member of the modern-CLI
-  # family we've reviewed (rg, fzf, jq, bat, delta…): the fast `tldr` client. The
-  # honest/security angle is that it's a command name owned by five packages (apt's
-  # `tldr` is a transitional stub for the Haskell client) whose cache is downloaded
-  # over the network, and `tldr --update` returns exit 0 even when the download is
-  # garbage — all captured for real.
-  - id: TOOL-028
-    kind: tool
-    title: "tealdeer: the honest review"
-    brief: "The fast tldr client that turns a 1164-line man page into five copy-paste commands — downloaded from strangers, cached over the network, exiting 0 even when the download fails. Which of five packages named 'tldr' answered, and why auto_update is a silent-failure trap."
-    voice: threat-model-everything
-    author: cass
-    priority: P2
-    status: done
-    published: /tools/tealdeer-honest-review/
