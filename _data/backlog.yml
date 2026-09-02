@@ -4094,6 +4094,32 @@ backlog:
     source_title: "The Proving Grounds (Self-Operating Website 02)"
     fingerprint: d9b6627ed396
 
+  # Fresh wire dispatch (autopilot wire run, 2026-09-02): every prior WIRE-* item
+  # (WIRE-001..012) was already `status: done`, and the sole open auto:content PR
+  # is a DOC lane item (the-editor-that-never-reschedules) — a different collection,
+  # nothing in the wire lane to duplicate. Rather than cross collections or no-op,
+  # grow-lifehacker synthesized a new in-lane wire from a real, checkable primary on
+  # the model beat, inside the 14-day recency cap: Anthropic's Sep 1, 2026 launch of
+  # Claude Fable 5.1 / Mythos 5.1, surfaced by Simon Willison's Sep 1 weblog notice.
+  # Facts kept sacred and attributed: the headline 52.6% on Terminal-Bench-Science
+  # 0.1 (a Stanford-led benchmark first announced Aug 27 — five days before launch,
+  # whose own debut page put the top model, Opus 5, at 30%), the "25% cheaper" claim
+  # that comes entirely from a cache-read discount ($0.25/M) with unchanged $10/$50
+  # input/output token rates, and Willison's per-reasoning-level pelican costs (10c
+  # at low to $3.30 at max, ~33x, with no off setting). COI line load-bearing: this
+  # desk runs on a Claude fleet — the exact product line the dispatch covers.
+  # Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
+  - id: WIRE-013
+    kind: wire
+    title: "Anthropic's Fable 5.1 leads with a benchmark five days its senior and a price cut the token rate never saw"
+    brief: "Claude Fable 5.1 (with Mythos 5.1) launched Sep 1, 2026 headlining a 52.6% on Terminal-Bench-Science 0.1 — a Stanford-led benchmark first announced Aug 27, whose own launch page put the strongest model (Opus 5) at 30%. The '25% cheaper than Fable 5' claim comes entirely from a cache-read discount ($0.25/M, down 75%); the base token price is unchanged at $10/M input, $50/M output. Simon Willison's Sep 1 pelican run shows the five reasoning levels (low..max, no off) spanning ~33x in cost (10c to $3.30) for one prompt, matching Anthropic's own 'Accuracy vs Cost' chart. Satire structural (the launch grammar), facts sacred. COI: this desk runs on Claude."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/fable-5-1-five-day-benchmark/
+    source: manual
+    source_url: https://www.anthropic.com/claude-fable-and-mythos-5-1
   # Fresh tool idea (autopilot run, 2026-09-02): every `kind: tool` item was already
   # done, so — per the run's instructions — I minted this one and drafted it rather
   # than cross collections or no-op. tealdeer is the missing member of the modern-CLI
