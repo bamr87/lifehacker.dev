@@ -2080,7 +2080,8 @@ backlog:
     brief: "YAML 1.1 quietly casts bare words: `on`/`off`/`yes`/`no` become booleans and `NO` (Norway's country code) becomes `false`, so a key or value you typed as text comes back as `True`/`False` and your lookup misses. Reproduce it in one line — `printf 'on: yes\\nNO: text\\nver: 1.20\\n' | python3 -c 'import yaml,sys; print(yaml.safe_load(sys.stdin))'` — and watch the keys turn boolean and the version drop its trailing zero to a float. The fix is quoting: `\"on\"`, `\"no\"`, `\"1.20\"`. The footgun that stays in: a GitHub Actions workflow's top-level `on:` is the same trap wearing a badge, which is why some tools quote it and some hand you the boolean `True`."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/yaml-norway-problem/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-08-game-developer-0100/
     source_title: "Quest Report: Game Developer Level 0100"
@@ -4092,3 +4093,21 @@ backlog:
     source_url: https://it-journey.dev/quests/0100/self-operating-website-02-the-proving-grounds/
     source_title: "The Proving Grounds (Self-Operating Website 02)"
     fingerprint: d9b6627ed396
+
+  # Fresh tool idea (autopilot run, 2026-09-02): every `kind: tool` item was already
+  # done, so — per the run's instructions — I minted this one and drafted it rather
+  # than cross collections or no-op. tealdeer is the missing member of the modern-CLI
+  # family we've reviewed (rg, fzf, jq, bat, delta…): the fast `tldr` client. The
+  # honest/security angle is that it's a command name owned by five packages (apt's
+  # `tldr` is a transitional stub for the Haskell client) whose cache is downloaded
+  # over the network, and `tldr --update` returns exit 0 even when the download is
+  # garbage — all captured for real.
+  - id: TOOL-028
+    kind: tool
+    title: "tealdeer: the honest review"
+    brief: "The fast tldr client that turns a 1164-line man page into five copy-paste commands — downloaded from strangers, cached over the network, exiting 0 even when the download fails. Which of five packages named 'tldr' answered, and why auto_update is a silent-failure trap."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/tealdeer-honest-review/
