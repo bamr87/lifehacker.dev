@@ -176,5 +176,3 @@ The tested rules, ranked by how much data they save you:
 Quoting the value doesn't retroactively fix a key you already collided — if `yes:` and `on:` both live in your file, one of them is already gone before quoting can save it, so grep for bare `yes/no/on/off/y/n` keys first. And quoting is defeated by the person who "cleans up the noisy quotes" in a formatting PR; the only durable defense is the linter in CI, not discipline.
 
 **Verdict on the survives-a-Tuesday scale:** unquoted YAML survives a normal Tuesday, dies on a bad Tuesday (the version list sorts backwards in prod), and on the Tuesday where the intern renames a country to its ISO code, it deletes a row and files no report. Quote your scalars. Norway would like its name back.
-</content>
-</invoke>
