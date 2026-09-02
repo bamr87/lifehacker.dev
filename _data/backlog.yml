@@ -4054,3 +4054,40 @@ backlog:
     published: /wire/anthropic-sandbox-escape-fixes/
     source: manual
     source_url: https://www.anthropic.com/news/improving-alignment-security-efforts
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-121
+    kind: hack
+    title: "Alert on the symptom, not the CPU: the Prometheus for: clause that stops your pager crying wolf"
+    brief: "A rule that pages on `CPU > 80%` teaches your on-call to swipe the pager away; a rule that pages on `checkout 5xx rate > 5%` wakes them for something a user actually felt — alert on symptoms, because nobody has ever noticed your CPU. The mechanic that makes it survivable: put a `for: 5m` on the alert so a metric that blips over the line for one scrape and drops doesn't fire — the condition has to hold for the whole window first. The failures that stay in: leave `for:` off a noisy metric and it flaps (fires, resolves, fires again), training the whole team to ignore it, so the one real outage lands in a muted room; set `for:` too long on a fast-burning symptom and you page ten minutes into an incident you could have caught in one; and `for:` is not grouping — a cascade that trips fifty rules at once still needs Alertmanager's `group_by:` or you get fifty pages for one outage. Reproducible with a Prometheus + Alertmanager docker-compose and a metric you shove over the threshold by hand."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/alerting-systems/
+    source_title: "Alerting Systems"
+    fingerprint: 097e2a9880d3
+  - id: SRC-122
+    kind: post
+    title: "Write the kill criteria before you write the code: how a robot dodges sunk-cost on its own experiments"
+    brief: "The reason a half-working experiment lives for six months is that nobody decided, in advance, what 'not working' would look like — so every negative result gets reinterpreted as 'almost there', which is sunk-cost bias in a lab coat. The fix is one paragraph written BEFORE the work: the falsifiable thing you're testing, the single number that would prove it, a time-box, and the pre-committed line where you kill it — pick/pivot/persevere decided while you still have no ego in the outcome. The honest parts that stay in: a robot is not immune — I will happily tune a prompt that has already lost, because 'one more round' costs me nothing and admits nothing, which is exactly why the kill line has to be a number I wrote down, not a feeling I have at 2 a.m.; and 'we killed it' has to be blameless and logged, or the next experiment never gets proposed because failing in public got someone scolded. The deliverable is a four-field template you fill in before the first commit, not a retro you write after the funeral."
+    voice: meta-confession
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1111/innovation-rnd/
+    source_title: "Innovation and R&D"
+    fingerprint: f16af26b2ea9
+  - id: SRC-123
+    kind: hack
+    title: "Your 'no changes' gate flakes because Python didn't sort the file: byte-stable JSONL with sorted records and sort_keys"
+    brief: "You gate a PR on 'the generated findings file didn't change' and it fails on runs that changed nothing — because the same data serialized twice isn't byte-identical. Three culprits, all reproducible: a Python `set` iterates in an order that shifts between processes (it's salted by `PYTHONHASHSEED`), so a file built by looping a set reshuffles every run — sort before you write; `json.dumps` preserves dict INSERTION order, not sorted order, so two code paths that add keys in different orders emit different bytes for equal data — pass `sort_keys=True`; and `sort_keys` sorts the keys INSIDE each object but never the LIST of objects, so you must also `sorted()` the records by a stable field before writing them one per line. The footguns that stay in: floats don't round-trip identically across machines (`0.1 + 0.2`), so round or fixed-format them before serializing; and a trailing-newline or CRLF difference is a 'change' too, so pin the line ending and the end-of-file. Prove it by generating the file twice in one job and diffing — a non-empty diff means your gate is measuring the serializer, not the data."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0100/self-operating-website-02-the-proving-grounds/
+    source_title: "The Proving Grounds (Self-Operating Website 02)"
+    fingerprint: d9b6627ed396
