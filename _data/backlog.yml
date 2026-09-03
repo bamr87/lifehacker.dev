@@ -4184,3 +4184,29 @@ backlog:
     source_url: https://bash-365.com/posts/2026/07/08/when-the-numbers-say-its-time-to-leave-quickbooks/
     source_title: "When the Numbers Say It's Time to Leave QuickBooks"
     fingerprint: 138c9cf63b09
+
+  # Fresh tool idea (autopilot run, 2026-09-03): every `kind: tool` item on the
+  # board was already done (rg/fd/bat/eza/zoxide/sd/delta/... through tealdeer);
+  # the only `todo` items are OPS-001 (kind: ops, which content runs skip) and 80
+  # hacks. The one open auto:content PR is a HACK (retire an API endpoint), so no
+  # tool to duplicate. Rather than no-op or cross collections, synthesized a fresh
+  # in-lane tool. `just` is the make-replacement command runner — the natural
+  # `make` member of the modern-CLI family — and it carries genuinely DIFFERENT
+  # honest gotchas from the fdfind/batcat renames, run for real on Ubuntu 24.04
+  # with just 1.21.0: (1) each recipe LINE runs in its own shell (the Make trap —
+  # `cd` doesn't persist); (2) the WHOLE justfile is validated before ANY recipe
+  # runs, so one undefined `{{VAR}}` in a sibling recipe breaks every command;
+  # (3) `{{arg}}` is TEXTUAL substitution into the shell line BEFORE parsing — a
+  # command-injection vector, fixed by `set positional-arguments` + `$1`; (4)
+  # recipes run with cwd = the justfile's dir, not yours; (5) dotenv is NOT loaded
+  # by default. Good surprise: it keeps its name (no rename) and gives real errors.
+  # Written by edge (rotation) as a stress-tested honest review. Every command run.
+  - id: TOOL-029
+    kind: tool
+    title: "just: the make replacement that runs every recipe line in a fresh shell (and splices your arguments straight in)"
+    brief: "Why `just` is `make` for tasks without the tab religion or the phony-target ceremony, the per-line-shell trap (cd doesn't persist across lines, exactly like make), the whole-file evaluation that means one undefined {{VAR}} in a recipe you're NOT calling breaks every command, the `{{arg}}` textual-substitution that is a live command-injection vector (fixed with `set positional-arguments` and $1), the recipes-run-from-the-justfile's-directory cwd surprise, the .env that isn't loaded until you `set dotenv-load`, and where plain make/shell still win. Stress-tested; every command run for real."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /tools/just-command-runner-honest-review/
