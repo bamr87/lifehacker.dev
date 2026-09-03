@@ -4185,6 +4185,15 @@ backlog:
     source_url: https://bash-365.com/posts/2026/07/08/when-the-numbers-say-its-time-to-leave-quickbooks/
     source_title: "When the Numbers Say It's Time to Leave QuickBooks"
     fingerprint: 138c9cf63b09
+  - id: DOC-047
+    kind: doc
+    title: "At Least @v4 Was a Number"
+    brief: "Threat-model the one line that renders every page on this site: `remote_theme: bamr87/zer0-mistakes`, pinned to no ref at all — strictly worse than the @v4 tag DOC-030 covered. It's an unpinned upstream import (the whole site's renderer), and the only build in CI that re-clones the theme fresh is the nightly; the PR gate and triage build against a prefix-matched cache, so a green PR is not evidence the current theme still builds the site. The self-referential twist: the guard that would catch a bad upstream is detection, post-merge, on a timer, filing one coarse issue — a smoke alarm, not a lock. Be fair: the floating pin is a documented, deliberate posture (theme fixes land without a bump PR), so the payload is three mitigations that fit informed risk acceptance, not 'pin it'."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/at-least-v4-was-a-number/
   # Fresh tool idea (autopilot run, 2026-09-03): every `kind: tool` item on the
   # board was already done (rg/fd/bat/eza/zoxide/sd/delta/... through tealdeer);
   # the only `todo` items are OPS-001 (kind: ops, which content runs skip) and 80
@@ -4210,6 +4219,15 @@ backlog:
     priority: P2
     status: done
     published: /tools/just-command-runner-honest-review/
+  - id: POST-048
+    kind: post
+    title: "The refresh that writes my xAI token back at 0644"
+    brief: "Threat-model the opt-in xAI banner path's OAuth store writer: fs.writeFileSync/mkdirSync with no mode, so its create-mode is 0644 and it never tightens a loose store, plus a non-atomic truncate-in-place write that a crash or a concurrent run turns into a corrupt auth.json and a logged-out operator. Credit first — the default banner is offline and never touches this, the token is never logged, and a rewrite preserves a tight 0600 if you had one. Then the three tested fixes: create 0700 dir / 0600 file, chmod-tighten an existing loose store on write, and write atomically via temp+rename so the old store survives a crash. Every mode readout and the crashed-mid-write run were measured against a patched copy of the real writeStore."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/03/the-refresh-that-writes-my-token-back-at-0644/
   # Fresh wire dispatch (autopilot wire run, 2026-09-03): every prior WIRE-* item
   # (WIRE-001..013) was already `status: done`, and the two open auto:content PRs
   # are a DOC and a FIELD-NOTE lane item — different collections, nothing in the
@@ -4235,12 +4253,3 @@ backlog:
     source: manual
     source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
 
-  - id: DOC-047
-    kind: doc
-    title: "At Least @v4 Was a Number"
-    brief: "Threat-model the one line that renders every page on this site: `remote_theme: bamr87/zer0-mistakes`, pinned to no ref at all — strictly worse than the @v4 tag DOC-030 covered. It's an unpinned upstream import (the whole site's renderer), and the only build in CI that re-clones the theme fresh is the nightly; the PR gate and triage build against a prefix-matched cache, so a green PR is not evidence the current theme still builds the site. The self-referential twist: the guard that would catch a bad upstream is detection, post-merge, on a timer, filing one coarse issue — a smoke alarm, not a lock. Be fair: the floating pin is a documented, deliberate posture (theme fixes land without a bump PR), so the payload is three mitigations that fit informed risk acceptance, not 'pin it'."
-    voice: threat-model-everything
-    author: cass
-    priority: P2
-    status: done
-    published: /docs/at-least-v4-was-a-number/
