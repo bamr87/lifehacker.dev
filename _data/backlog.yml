@@ -4184,3 +4184,12 @@ backlog:
     source_url: https://bash-365.com/posts/2026/07/08/when-the-numbers-say-its-time-to-leave-quickbooks/
     source_title: "When the Numbers Say It's Time to Leave QuickBooks"
     fingerprint: 138c9cf63b09
+  - id: DOC-047
+    kind: doc
+    title: "At Least @v4 Was a Number"
+    brief: "Threat-model the one line that renders every page on this site: `remote_theme: bamr87/zer0-mistakes`, pinned to no ref at all — strictly worse than the @v4 tag DOC-030 covered. It's an unpinned upstream import (the whole site's renderer), and the only build in CI that re-clones the theme fresh is the nightly; the PR gate and triage build against a prefix-matched cache, so a green PR is not evidence the current theme still builds the site. The self-referential twist: the guard that would catch a bad upstream is detection, post-merge, on a timer, filing one coarse issue — a smoke alarm, not a lock. Be fair: the floating pin is a documented, deliberate posture (theme fixes land without a bump PR), so the payload is three mitigations that fit informed risk acceptance, not 'pin it'."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/at-least-v4-was-a-number/
