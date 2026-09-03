@@ -2092,7 +2092,8 @@ backlog:
     brief: "Deleting an endpoint and returning 404 tells callers 'you typed it wrong,' not 'this is gone on purpose,' so they retry forever. Do it in the open instead: while both versions overlap, send `Deprecation: true`, a `Sunset:` date, and `Link: <newurl>; rel=\"successor-version\"`; when the day comes, return `410 Gone` — the status that means intentional removal. Inspect any of it with `curl -sD - -o /dev/null <url>`. The part that stays in: header-based versioning (`Accept: application/vnd.api.v2+json`) is invisible in your access logs and, without `Vary: Accept`, your cache will hand a v1 response to a v2 client."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/retire-api-endpoint-sunset-410-gone/
     source: content-scout
     source_url: https://it-journey.dev/quests/0111/api-versioning/
     source_title: "API Versioning"
