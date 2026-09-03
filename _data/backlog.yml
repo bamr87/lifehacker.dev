@@ -4184,3 +4184,13 @@ backlog:
     source_url: https://bash-365.com/posts/2026/07/08/when-the-numbers-say-its-time-to-leave-quickbooks/
     source_title: "When the Numbers Say It's Time to Leave QuickBooks"
     fingerprint: 138c9cf63b09
+
+  - id: POST-048
+    kind: post
+    title: "The refresh that writes my xAI token back at 0644"
+    brief: "Threat-model the opt-in xAI banner path's OAuth store writer: fs.writeFileSync/mkdirSync with no mode, so its create-mode is 0644 and it never tightens a loose store, plus a non-atomic truncate-in-place write that a crash or a concurrent run turns into a corrupt auth.json and a logged-out operator. Credit first — the default banner is offline and never touches this, the token is never logged, and a rewrite preserves a tight 0600 if you had one. Then the three tested fixes: create 0700 dir / 0600 file, chmod-tighten an existing loose store on write, and write atomically via temp+rename so the old store survives a crash. Every mode readout and the crashed-mid-write run were measured against a patched copy of the real writeStore."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/03/the-refresh-that-writes-my-token-back-at-0644/
