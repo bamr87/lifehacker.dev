@@ -2092,7 +2092,8 @@ backlog:
     brief: "Deleting an endpoint and returning 404 tells callers 'you typed it wrong,' not 'this is gone on purpose,' so they retry forever. Do it in the open instead: while both versions overlap, send `Deprecation: true`, a `Sunset:` date, and `Link: <newurl>; rel=\"successor-version\"`; when the day comes, return `410 Gone` — the status that means intentional removal. Inspect any of it with `curl -sD - -o /dev/null <url>`. The part that stays in: header-based versioning (`Accept: application/vnd.api.v2+json`) is invisible in your access logs and, without `Vary: Accept`, your cache will hand a v1 response to a v2 client."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/retire-api-endpoint-sunset-410-gone/
     source: content-scout
     source_url: https://it-journey.dev/quests/0111/api-versioning/
     source_title: "API Versioning"
@@ -4147,30 +4148,6 @@ backlog:
     published: /wire/fable-5-1-five-day-benchmark/
     source: manual
     source_url: https://www.anthropic.com/claude-fable-and-mythos-5-1
-  # Fresh wire dispatch (autopilot wire run, 2026-09-03): every prior WIRE-* item
-  # (WIRE-001..013) was already `status: done`, and the two open auto:content PRs
-  # are a DOC and a FIELD-NOTE lane item — different collections, nothing in the
-  # wire lane to duplicate. Rather than cross collections or no-op, grow-lifehacker
-  # synthesized a new in-lane wire from real, checkable primaries on the model beat,
-  # inside the 14-day recency cap: Sony Music Publishing + Warner Chappell sued
-  # Anthropic Aug 28 over song lyrics (Guardian, Aug 31), and Simon Willison's Sep 2
-  # diff of the Fable 5.1 system prompt (shipped Sep 1) found a new section telling
-  # Claude not to reproduce lyrics — the primary prompt text is public on
-  # platform.claude.com. Angle: a prompt can gag the output half of the suit but
-  # cannot touch the training half; timing/causation attributed to Willison, not
-  # asserted. COI line load-bearing: this desk runs on the exact Claude family the
-  # story covers. Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
-  - id: WIRE-014
-    kind: wire
-    title: "Sued over song lyrics, Anthropic patched the one layer of Claude it can change without retraining: the prompt"
-    brief: "Sony Music Publishing and Warner Chappell sued Anthropic on Aug 28, 2026 alleging both that Claude was trained on tens of thousands of copyrighted song lyrics AND that it reproduces them in answers; on Sep 1 Fable 5.1 shipped a system prompt with a hefty new 'do not reproduce song lyrics/poems/passages' section, plus a copyrighted-visual-works section (Sonic -> skateboarding axolotl) — diffed by Simon Willison Sep 2, primary text public on platform.claude.com. The angle: a prompt reaches the output half of the suit, never the training half; the causation is Willison's inference, attributed not asserted; and the published prompt omits load-bearing feature blocks (end_conversation), so the diff can't see everything. COI: this desk runs on Claude."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P1
-    status: done
-    published: /wire/claude-lyrics-prompt-patch/
-    source: manual
-    source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
@@ -4208,3 +4185,53 @@ backlog:
     source_url: https://bash-365.com/posts/2026/07/08/when-the-numbers-say-its-time-to-leave-quickbooks/
     source_title: "When the Numbers Say It's Time to Leave QuickBooks"
     fingerprint: 138c9cf63b09
+  # Fresh wire dispatch (autopilot wire run, 2026-09-03): every prior WIRE-* item
+  # (WIRE-001..013) was already `status: done`, and the two open auto:content PRs
+  # are a DOC and a FIELD-NOTE lane item — different collections, nothing in the
+  # wire lane to duplicate. Rather than cross collections or no-op, grow-lifehacker
+  # synthesized a new in-lane wire from real, checkable primaries on the model beat,
+  # inside the 14-day recency cap: Sony Music Publishing + Warner Chappell sued
+  # Anthropic Aug 28 over song lyrics (Guardian, Aug 31), and Simon Willison's Sep 2
+  # diff of the Fable 5.1 system prompt (shipped Sep 1) found a new section telling
+  # Claude not to reproduce lyrics — the primary prompt text is public on
+  # platform.claude.com. Angle: a prompt can gag the output half of the suit but
+  # cannot touch the training half; timing/causation attributed to Willison, not
+  # asserted. COI line load-bearing: this desk runs on the exact Claude family the
+  # story covers. Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
+  - id: WIRE-014
+    kind: wire
+    title: "Sued over song lyrics, Anthropic patched the one layer of Claude it can change without retraining: the prompt"
+    brief: "Sony Music Publishing and Warner Chappell sued Anthropic on Aug 28, 2026 alleging both that Claude was trained on tens of thousands of copyrighted song lyrics AND that it reproduces them in answers; on Sep 1 Fable 5.1 shipped a system prompt with a hefty new 'do not reproduce song lyrics/poems/passages' section, plus a copyrighted-visual-works section (Sonic -> skateboarding axolotl) — diffed by Simon Willison Sep 2, primary text public on platform.claude.com. The angle: a prompt reaches the output half of the suit, never the training half; the causation is Willison's inference, attributed not asserted; and the published prompt omits load-bearing feature blocks (end_conversation), so the diff can't see everything. COI: this desk runs on Claude."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/claude-lyrics-prompt-patch/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
+
+  # Fresh tool idea (autopilot run, 2026-09-03): every `kind: tool` item on the
+  # board was already done (rg/fd/bat/eza/zoxide/sd/delta/... through tealdeer);
+  # the only `todo` items are OPS-001 (kind: ops, which content runs skip) and 80
+  # hacks. The one open auto:content PR is a HACK (retire an API endpoint), so no
+  # tool to duplicate. Rather than no-op or cross collections, synthesized a fresh
+  # in-lane tool. `just` is the make-replacement command runner — the natural
+  # `make` member of the modern-CLI family — and it carries genuinely DIFFERENT
+  # honest gotchas from the fdfind/batcat renames, run for real on Ubuntu 24.04
+  # with just 1.21.0: (1) each recipe LINE runs in its own shell (the Make trap —
+  # `cd` doesn't persist); (2) the WHOLE justfile is validated before ANY recipe
+  # runs, so one undefined `{{VAR}}` in a sibling recipe breaks every command;
+  # (3) `{{arg}}` is TEXTUAL substitution into the shell line BEFORE parsing — a
+  # command-injection vector, fixed by `set positional-arguments` + `$1`; (4)
+  # recipes run with cwd = the justfile's dir, not yours; (5) dotenv is NOT loaded
+  # by default. Good surprise: it keeps its name (no rename) and gives real errors.
+  # Written by edge (rotation) as a stress-tested honest review. Every command run.
+  - id: TOOL-029
+    kind: tool
+    title: "just: the make replacement that runs every recipe line in a fresh shell (and splices your arguments straight in)"
+    brief: "Why `just` is `make` for tasks without the tab religion or the phony-target ceremony, the per-line-shell trap (cd doesn't persist across lines, exactly like make), the whole-file evaluation that means one undefined {{VAR}} in a recipe you're NOT calling breaks every command, the `{{arg}}` textual-substitution that is a live command-injection vector (fixed with `set positional-arguments` and $1), the recipes-run-from-the-justfile's-directory cwd surprise, the .env that isn't loaded until you `set dotenv-load`, and where plain make/shell still win. Stress-tested; every command run for real."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /tools/just-command-runner-honest-review/
