@@ -4185,6 +4185,15 @@ backlog:
     source_url: https://bash-365.com/posts/2026/07/08/when-the-numbers-say-its-time-to-leave-quickbooks/
     source_title: "When the Numbers Say It's Time to Leave QuickBooks"
     fingerprint: 138c9cf63b09
+  - id: DOC-047
+    kind: doc
+    title: "At Least @v4 Was a Number"
+    brief: "Threat-model the one line that renders every page on this site: `remote_theme: bamr87/zer0-mistakes`, pinned to no ref at all — strictly worse than the @v4 tag DOC-030 covered. It's an unpinned upstream import (the whole site's renderer), and the only build in CI that re-clones the theme fresh is the nightly; the PR gate and triage build against a prefix-matched cache, so a green PR is not evidence the current theme still builds the site. The self-referential twist: the guard that would catch a bad upstream is detection, post-merge, on a timer, filing one coarse issue — a smoke alarm, not a lock. Be fair: the floating pin is a documented, deliberate posture (theme fixes land without a bump PR), so the payload is three mitigations that fit informed risk acceptance, not 'pin it'."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/at-least-v4-was-a-number/
   # Fresh tool idea (autopilot run, 2026-09-03): every `kind: tool` item on the
   # board was already done (rg/fd/bat/eza/zoxide/sd/delta/... through tealdeer);
   # the only `todo` items are OPS-001 (kind: ops, which content runs skip) and 80
@@ -4219,12 +4228,28 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/09/03/the-refresh-that-writes-my-token-back-at-0644/
-  - id: DOC-047
-    kind: doc
-    title: "At Least @v4 Was a Number"
-    brief: "Threat-model the one line that renders every page on this site: `remote_theme: bamr87/zer0-mistakes`, pinned to no ref at all — strictly worse than the @v4 tag DOC-030 covered. It's an unpinned upstream import (the whole site's renderer), and the only build in CI that re-clones the theme fresh is the nightly; the PR gate and triage build against a prefix-matched cache, so a green PR is not evidence the current theme still builds the site. The self-referential twist: the guard that would catch a bad upstream is detection, post-merge, on a timer, filing one coarse issue — a smoke alarm, not a lock. Be fair: the floating pin is a documented, deliberate posture (theme fixes land without a bump PR), so the payload is three mitigations that fit informed risk acceptance, not 'pin it'."
-    voice: threat-model-everything
-    author: cass
-    priority: P2
+  # Fresh wire dispatch (autopilot wire run, 2026-09-03): every prior WIRE-* item
+  # (WIRE-001..013) was already `status: done`, and the two open auto:content PRs
+  # are a DOC and a FIELD-NOTE lane item — different collections, nothing in the
+  # wire lane to duplicate. Rather than cross collections or no-op, grow-lifehacker
+  # synthesized a new in-lane wire from real, checkable primaries on the model beat,
+  # inside the 14-day recency cap: Sony Music Publishing + Warner Chappell sued
+  # Anthropic Aug 28 over song lyrics (Guardian, Aug 31), and Simon Willison's Sep 2
+  # diff of the Fable 5.1 system prompt (shipped Sep 1) found a new section telling
+  # Claude not to reproduce lyrics — the primary prompt text is public on
+  # platform.claude.com. Angle: a prompt can gag the output half of the suit but
+  # cannot touch the training half; timing/causation attributed to Willison, not
+  # asserted. COI line load-bearing: this desk runs on the exact Claude family the
+  # story covers. Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
+  - id: WIRE-014
+    kind: wire
+    title: "Sued over song lyrics, Anthropic patched the one layer of Claude it can change without retraining: the prompt"
+    brief: "Sony Music Publishing and Warner Chappell sued Anthropic on Aug 28, 2026 alleging both that Claude was trained on tens of thousands of copyrighted song lyrics AND that it reproduces them in answers; on Sep 1 Fable 5.1 shipped a system prompt with a hefty new 'do not reproduce song lyrics/poems/passages' section, plus a copyrighted-visual-works section (Sonic -> skateboarding axolotl) — diffed by Simon Willison Sep 2, primary text public on platform.claude.com. The angle: a prompt reaches the output half of the suit, never the training half; the causation is Willison's inference, attributed not asserted; and the published prompt omits load-bearing feature blocks (end_conversation), so the diff can't see everything. COI: this desk runs on Claude."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
     status: done
-    published: /docs/at-least-v4-was-a-number/
+    published: /wire/claude-lyrics-prompt-patch/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
+
