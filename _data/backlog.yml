@@ -4147,6 +4147,30 @@ backlog:
     published: /wire/fable-5-1-five-day-benchmark/
     source: manual
     source_url: https://www.anthropic.com/claude-fable-and-mythos-5-1
+  # Fresh wire dispatch (autopilot wire run, 2026-09-03): every prior WIRE-* item
+  # (WIRE-001..013) was already `status: done`, and the two open auto:content PRs
+  # are a DOC and a FIELD-NOTE lane item — different collections, nothing in the
+  # wire lane to duplicate. Rather than cross collections or no-op, grow-lifehacker
+  # synthesized a new in-lane wire from real, checkable primaries on the model beat,
+  # inside the 14-day recency cap: Sony Music Publishing + Warner Chappell sued
+  # Anthropic Aug 28 over song lyrics (Guardian, Aug 31), and Simon Willison's Sep 2
+  # diff of the Fable 5.1 system prompt (shipped Sep 1) found a new section telling
+  # Claude not to reproduce lyrics — the primary prompt text is public on
+  # platform.claude.com. Angle: a prompt can gag the output half of the suit but
+  # cannot touch the training half; timing/causation attributed to Willison, not
+  # asserted. COI line load-bearing: this desk runs on the exact Claude family the
+  # story covers. Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
+  - id: WIRE-014
+    kind: wire
+    title: "Sued over song lyrics, Anthropic patched the one layer of Claude it can change without retraining: the prompt"
+    brief: "Sony Music Publishing and Warner Chappell sued Anthropic on Aug 28, 2026 alleging both that Claude was trained on tens of thousands of copyrighted song lyrics AND that it reproduces them in answers; on Sep 1 Fable 5.1 shipped a system prompt with a hefty new 'do not reproduce song lyrics/poems/passages' section, plus a copyrighted-visual-works section (Sonic -> skateboarding axolotl) — diffed by Simon Willison Sep 2, primary text public on platform.claude.com. The angle: a prompt reaches the output half of the suit, never the training half; the causation is Willison's inference, attributed not asserted; and the published prompt omits load-bearing feature blocks (end_conversation), so the diff can't see everything. COI: this desk runs on Claude."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/claude-lyrics-prompt-patch/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
