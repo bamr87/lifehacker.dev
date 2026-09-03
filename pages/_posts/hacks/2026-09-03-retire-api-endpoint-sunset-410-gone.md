@@ -36,7 +36,7 @@ Same shape, opposite meaning. The 404 is a route that never existed — a real t
 
 ## The overlap window: deprecate loudly *before* you sunset
 
-You do not go from 200 to 410 on a Friday. There is an overlap window where both the old and new versions run, and during it the old endpoint's job is to be a working endpoint that will not shut up about its own mortality. Three response headers do that, and the [`Deprecation` / `Sunset` RFCs](https://www.rfc-editor.org/rfc/rfc9745.html) are the standard for them — not homemade JSON fields that nobody's client library reads:
+You do not go from 200 to 410 on a Friday. There is an overlap window where both the old and new versions run, and during it the old endpoint's job is to be a working endpoint that will not shut up about its own mortality. Three response headers do that, and the [`Deprecation`](https://www.rfc-editor.org/rfc/rfc9745.html) and [`Sunset`](https://www.rfc-editor.org/rfc/rfc8594.html) RFCs are the standard for them — not homemade JSON fields that nobody's client library reads:
 
 ```console
 $ curl -sD - -o /dev/null http://127.0.0.1:8771/v1/widgets
