@@ -4307,6 +4307,46 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-11-developer-0100/
     source_title: "Quest Report: Software Developer Level 0100"
     fingerprint: 9166567c5fab
+  # Fresh field note (autopilot post run, 2026-09-04): every prior `kind: post`
+  # item (POST-001..048 + the DOC-lane field notes) was already `status: done`,
+  # the lone non-done post (DOC-004) is legitimately `blocked` on an ops item, and
+  # the two open auto:content PRs are a `tool` review (age) and a `hack` (Docker
+  # Compose ports) — different collections, nothing in the post lane to duplicate.
+  # Rather than cross collections or no-op, grow-lifehacker synthesized a new
+  # in-lane field note from a real, re-runnable experiment: seven bash file-loop
+  # idioms fed 16 cursed filenames (space, tab, leading dash, glob chars, emoji,
+  # SQL injection, embedded newline) then 10,000 files, with the real miscount
+  # table and the one place our own build.sh uses the dangerous idiom safely
+  # (a regex whitelist before `rm -rf`). Byline: edge (rotation,
+  # `authors.rb --section post` -> edge; edge-case-maximalist voice).
+  - id: POST-049
+    kind: post
+    title: "16 cursed filenames, seven bash loops: four lied about the count"
+    brief: "Stress-test field note: feed bash the filename-from-hell (newline, emoji, leading dash, SQL injection) and measure which loop idioms miscount, at 16 files and at 10,000, with the real table and the one loop in our own build that survives on a whitelist."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
+
+  # Fresh wire dispatch (autopilot run, 2026-09-04): WIRE-001..014 were all `status:
+  # done` and neither open auto:content PR was a wire, so grow-lifehacker synthesized
+  # a new in-lane dispatch rather than cross collections or no-op. Story is within the
+  # 14-day recency cap, reported from primary sources verified this run: Simon
+  # Willison's Sep 3 link blog and ARC Prize's own Sep 3 write-up (Greg Kamradt).
+  # Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
+  - id: WIRE-015
+    kind: wire
+    title: "OpenAI's GPT-6 scored 99.9% on the AGI-gap benchmark — on a harness that lets it keep notes the graders can't read"
+    brief: "Model-beat dispatch on OpenAI's Sep 3, 2026 GPT-6 Astra launch, reported from ARC Prize's own write-up (Greg Kamradt, 'OpenAI's GPT-6 Astra on ARC-AGI-3', Sep 3) and Simon Willison's Sep 3 link blog. Facts kept sacred and attributed: Astra's headline 99.9% on ARC-AGI-3 Semi-Private came from ARC's 'Provider Adapter' harness (which 'preserves opaque reasoning state between requests' the graders don't see, plus compaction), for $19K; ARC's provider-neutral Standard harness — the one it says 'a future AGI should be able to solve' under — scored 62.7% for $26K, so the neutral run cost MORE and scored 37 points lower. Full six-row harness table quoted. The independent check is the spine: Artificial Analysis puts Astra's Intelligence Index at 61 — equal to the prior half-step GPT-5.6 Sol, 5 points below Claude Fable 5.1, and behind Meta's Muse Spark 1.3 — so the generation number went up a whole integer while the one third-party index didn't move. API priced identical to Fable ($10/M in, $50/M out). OpenAI's self-reported security scores (ExploitBench 100%, ExploitGym 42.4%) and long-context (eight-needle) numbers noted AS vendor claims. Satire targets the theater: a whole-integer version bump, a saturated benchmark whose authors say saturation isn't AGI, and a 99.9% that is a harness setting. COI line load-bearing: this desk runs on Claude Fable — the rival model that beats Astra on the very index this dispatch leans on."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/gpt-6-astra-two-harnesses/
+    source: manual
+    source_url: https://arcprize.org/blog/astra
+
   # Fresh doc idea (autopilot run, 2026-09-04): every `kind: doc` item on the board
   # was already done, and the only `todo` items are OPS-001 (kind: ops, skipped) and
   # 79 hacks. The three open auto:content PRs are a field-note, a tool, and a hack —
@@ -4329,26 +4369,4 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-sweep-that-refuses-a-broken-build/
-
-  # Fresh field note (autopilot post run, 2026-09-04): every prior `kind: post`
-  # item (POST-001..048 + the DOC-lane field notes) was already `status: done`,
-  # the lone non-done post (DOC-004) is legitimately `blocked` on an ops item, and
-  # the two open auto:content PRs are a `tool` review (age) and a `hack` (Docker
-  # Compose ports) — different collections, nothing in the post lane to duplicate.
-  # Rather than cross collections or no-op, grow-lifehacker synthesized a new
-  # in-lane field note from a real, re-runnable experiment: seven bash file-loop
-  # idioms fed 16 cursed filenames (space, tab, leading dash, glob chars, emoji,
-  # SQL injection, embedded newline) then 10,000 files, with the real miscount
-  # table and the one place our own build.sh uses the dangerous idiom safely
-  # (a regex whitelist before `rm -rf`). Byline: edge (rotation,
-  # `authors.rb --section post` -> edge; edge-case-maximalist voice).
-  - id: POST-049
-    kind: post
-    title: "16 cursed filenames, seven bash loops: four lied about the count"
-    brief: "Stress-test field note: feed bash the filename-from-hell (newline, emoji, leading dash, SQL injection) and measure which loop idioms miscount, at 16 files and at 10,000, with the real table and the one loop in our own build that survives on a whitelist."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
 
