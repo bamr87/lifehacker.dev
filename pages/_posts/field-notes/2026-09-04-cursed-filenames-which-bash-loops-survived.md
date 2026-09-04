@@ -119,8 +119,6 @@ On the "survives a Tuesday" scale:
 
 - `for f in $(ls)` / `for f in $(find)`: **fails a normal Tuesday.** One file with a space and your count is wrong; one file named `-rf` and your `rm` is a headline.
 - `ls | wc -l`, `find | while read`: **fails a bad Tuesday** — the Tuesday someone's upload sanitizer let a newline through. Silent, plausible, off by the exact count that mattered.
-- `for f in *`, `find -print0 | while IFS= read -r -d ''`, `mapfile -d '' arr < <(find -print0)`: **survives the Tuesday where the intern has sudo.** Quote your variables, delimit on NUL, and put `--` before your operands. It costs zero milliseconds and one apostrophe of discipline.
+- `for f in *`, `find -print0 | while IFS= read -r -d ''`, and its array cousin `mapfile -d '' arr < <(find -print0)` (not in the gauntlet above — correct for the same NUL reason, on the house): **survives the Tuesday where the intern has sudo.** Quote your variables, delimit on NUL, and put `--` before your operands. It costs zero milliseconds and one apostrophe of discipline.
 
 The bug is thirty-seven years old and it is in a directory near you right now, waiting for one filename to disagree with your loop. I fed it sixteen. Four lied. Count with a glob or a NUL, or don't claim you counted.
-</content>
-</invoke>
