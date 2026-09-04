@@ -2104,7 +2104,8 @@ backlog:
     brief: "`docker compose up --scale web=3` looks like it should just work — until all three replicas try to bind the same `8080:80` host port and the second one dies with 'port is already allocated,' because a fixed host port can only belong to one container. The fix: drop the host side so Docker assigns a random one (`- \"80\"`), or hand it a range (`- \"8080-8082:80\"`), and put a reverse proxy in front. The part that stays in: the container port and `EXPOSE` were never the problem — only the host mapping collides — and `docker compose ps` shows you the ephemeral ports it handed out."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/docker-compose-scale-port-already-allocated/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-09-digital-artist-0100/
     source_title: "Quest Report: Digital Artist Level 0100"
