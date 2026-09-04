@@ -1,6 +1,6 @@
 ---
 title: "Scale a Compose service past one replica and watch 'port is already allocated'"
-description: "A fixed host port belongs to one container, so --scale web=3 kills replicas 2 and 3. I ran every fix: bare port, port range, reverse proxy."
+description: "A fixed host port belongs to one container, so --scale web=3 kills the other two. I ran every fix: bare port, port range, reverse proxy."
 date: 2026-09-04
 preview: /images/previews/scale-a-compose-service-past-one-replica-and-watch.svg
 categories: [Hacks]
