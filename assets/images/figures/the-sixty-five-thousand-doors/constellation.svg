@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img" aria-labelledby="t d" data-generator="trace-figures/1" data-seed="3010185074">
+<title id="t">The week as a constellation — 2019-08-22 to 2026-09-04</title>
+<desc id="d">26 articles published this week, plotted as a field: node size is word count, color is section, and an edge means two articles share a tag. Computed from the committed weekly digest.</desc>
+<style>
+@keyframes tf-breathe{0%,100%{opacity:.62}50%{opacity:1}}
+@keyframes tf-drift{to{stroke-dashoffset:-160}}
+@keyframes tf-shimmer{0%,100%{opacity:.1}50%{opacity:.3}}
+.tfb{animation:tf-breathe 7s ease-in-out infinite}
+.tfe{animation:tf-drift 9s linear infinite}
+.tfs{animation:tf-shimmer 8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.tfb,.tfe,.tfs{animation:none!important;opacity:1!important}}
+</style>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#060d0c"/><stop offset="1" stop-color="#0c1a18"/></linearGradient>
+<radialGradient id="halo-hacks">
+<stop offset="0" stop-color="#22d3ee" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#22d3ee" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo-tools">
+<stop offset="0" stop-color="#fbbf24" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#fbbf24" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#fbbf24" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo-field-notes">
+<stop offset="0" stop-color="#fb7185" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#fb7185" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#fb7185" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo-wire">
+<stop offset="0" stop-color="#f59e0b" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#f59e0b" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#f59e0b" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo-docs">
+<stop offset="0" stop-color="#38bdf8" stop-opacity="0.9"/>
+<stop offset="0.35" stop-color="#38bdf8" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1536" height="1024" fill="url(#bg)"/>
+<text x="48" y="76" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="26" font-weight="600" letter-spacing="6" fill="#fb7185">THE WEEK, AS A FIELD</text>
+<text x="48" y="122" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" fill="#eafffb" opacity="0.85">Every dispatch we shipped, and every thread between them</text>
+<path d="M1003.2 688Q792.2 429.6 533.5 219" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M1003.2 688Q992.5 431 1025.9 176" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M1003.2 688Q667.8 702.4 345.2 609.7" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M533.5 219Q485.2 436.5 345.2 609.7" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M217.3 521Q627.1 361.3 1025.9 176" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M217.3 521Q526.5 393.6 860.9 391.2" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M217.3 521Q305.6 502.9 383.8 458.1" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M845.1 719.6Q796.2 789.5 740.4 854" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M860.9 391.2Q617 385.8 383.8 458.1" fill="none" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="7 9" class="tfe"/>
+<path d="M989.8 519.9Q693.3 579.2 436 738.2" fill="none" stroke="#fb7185" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M989.8 519.9Q845.5 425.4 693.6 343.9" fill="none" stroke="#fb7185" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M989.8 519.9Q989.7 427.5 1024 341.7" fill="none" stroke="#fb7185" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M436 738.2Q518.1 510.5 693.6 343.9" fill="none" stroke="#fb7185" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M436 738.2Q719.3 524.1 1024 341.7" fill="none" stroke="#fb7185" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M693.6 343.9Q858.6 321.2 1024 341.7" fill="none" stroke="#fb7185" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M663.7 510.6Q973.1 515.4 1280.1 554.7" fill="none" stroke="#fb7185" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M653.7 698.3Q955.5 576.9 1280.1 554.7" fill="none" stroke="#fb7185" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M533.5 219Q706.5 364.3 823.1 557.7" fill="none" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M823.1 557.7Q879.1 342.7 1025.9 176" fill="none" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M823.1 557.7Q822.2 640.3 845.1 719.6" fill="none" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M845.1 719.6Q1011.6 587.4 1160.4 435.4" fill="none" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M1160.4 435.4Q957 651.3 740.4 854" fill="none" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M562.7 854Q668 514.9 862.8 218.1" fill="none" stroke="#fbbf24" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M696.6 170Q967.8 398.7 1171 689.4" fill="none" stroke="#fbbf24" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M696.6 170Q639.6 392.1 507.6 579.5" fill="none" stroke="#fbbf24" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M696.6 170Q776.8 204.1 862.8 218.1" fill="none" stroke="#fbbf24" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M1171 689.4Q842.8 613.3 507.6 579.5" fill="none" stroke="#fbbf24" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M1171 689.4Q1048.7 433 862.8 218.1" fill="none" stroke="#fbbf24" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M507.6 579.5Q588.6 746.8 740.4 854" fill="none" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M860.9 391.2Q696.8 356.1 531.9 386.9" fill="none" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<path d="M531.9 386.9Q463.4 434 383.8 458.1" fill="none" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="7 9" class="tfe"/>
+<circle cx="1356" cy="364.6" r="11" fill="none" stroke="#79a8a1" stroke-opacity="0.55" stroke-width="2"/>
+<circle cx="1356" cy="364.6" r="3.5" fill="#79a8a1" fill-opacity="0.55"/>
+<g class="tfb" style="animation-delay:0.0s">
+<circle cx="989.8" cy="519.9" r="81.2" fill="url(#halo-field-notes)"/>
+<circle cx="989.8" cy="519.9" r="16.2" fill="#fb7185"/>
+<circle cx="989.8" cy="519.9" r="22.2" fill="none" stroke="#fb7185" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:0.9s">
+<circle cx="436" cy="738.2" r="78.5" fill="url(#halo-field-notes)"/>
+<circle cx="436" cy="738.2" r="15.7" fill="#fb7185"/>
+<circle cx="436" cy="738.2" r="21.7" fill="none" stroke="#fb7185" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:1.8s">
+<circle cx="693.6" cy="343.9" r="83.1" fill="url(#halo-field-notes)"/>
+<circle cx="693.6" cy="343.9" r="16.6" fill="#fb7185"/>
+<circle cx="693.6" cy="343.9" r="22.6" fill="none" stroke="#fb7185" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:2.7s">
+<circle cx="1003.2" cy="688" r="71.5" fill="url(#halo-hacks)"/>
+<circle cx="1003.2" cy="688" r="14.3" fill="#22d3ee"/>
+<circle cx="1003.2" cy="688" r="20.3" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:3.6s">
+<circle cx="663.7" cy="510.6" r="71.2" fill="url(#halo-field-notes)"/>
+<circle cx="663.7" cy="510.6" r="14.2" fill="#fb7185"/>
+<circle cx="663.7" cy="510.6" r="20.2" fill="none" stroke="#fb7185" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:4.5s">
+<circle cx="1024" cy="341.7" r="75.6" fill="url(#halo-field-notes)"/>
+<circle cx="1024" cy="341.7" r="15.1" fill="#fb7185"/>
+<circle cx="1024" cy="341.7" r="21.1" fill="none" stroke="#fb7185" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:5.4s">
+<circle cx="653.7" cy="698.3" r="81.9" fill="url(#halo-field-notes)"/>
+<circle cx="653.7" cy="698.3" r="16.4" fill="#fb7185"/>
+<circle cx="653.7" cy="698.3" r="22.4" fill="none" stroke="#fb7185" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:0.0s">
+<circle cx="533.5" cy="219" r="75.3" fill="url(#halo-hacks)"/>
+<circle cx="533.5" cy="219" r="15.1" fill="#22d3ee"/>
+<circle cx="533.5" cy="219" r="21.1" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:0.9s">
+<circle cx="823.1" cy="557.7" r="76.2" fill="url(#halo-hacks)"/>
+<circle cx="823.1" cy="557.7" r="15.2" fill="#22d3ee"/>
+<circle cx="823.1" cy="557.7" r="21.2" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:1.8s">
+<circle cx="217.3" cy="521" r="74.8" fill="url(#halo-hacks)"/>
+<circle cx="217.3" cy="521" r="15" fill="#22d3ee"/>
+<circle cx="217.3" cy="521" r="21" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:2.7s">
+<circle cx="1025.9" cy="176" r="70.8" fill="url(#halo-hacks)"/>
+<circle cx="1025.9" cy="176" r="14.2" fill="#22d3ee"/>
+<circle cx="1025.9" cy="176" r="20.2" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:3.6s">
+<circle cx="845.1" cy="719.6" r="65.6" fill="url(#halo-hacks)"/>
+<circle cx="845.1" cy="719.6" r="13.1" fill="#22d3ee"/>
+<circle cx="845.1" cy="719.6" r="19.1" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:4.5s">
+<circle cx="380" cy="288.8" r="77.4" fill="url(#halo-tools)"/>
+<circle cx="380" cy="288.8" r="15.5" fill="#fbbf24"/>
+<circle cx="380" cy="288.8" r="21.5" fill="none" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:5.4s">
+<circle cx="1160.4" cy="435.4" r="70.4" fill="url(#halo-hacks)"/>
+<circle cx="1160.4" cy="435.4" r="14.1" fill="#22d3ee"/>
+<circle cx="1160.4" cy="435.4" r="20.1" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:0.0s">
+<circle cx="562.7" cy="854" r="80.8" fill="url(#halo-tools)"/>
+<circle cx="562.7" cy="854" r="16.2" fill="#fbbf24"/>
+<circle cx="562.7" cy="854" r="22.2" fill="none" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:0.9s">
+<circle cx="696.6" cy="170" r="80.6" fill="url(#halo-tools)"/>
+<circle cx="696.6" cy="170" r="16.1" fill="#fbbf24"/>
+<circle cx="696.6" cy="170" r="22.1" fill="none" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:1.8s">
+<circle cx="1171" cy="689.4" r="79.4" fill="url(#halo-tools)"/>
+<circle cx="1171" cy="689.4" r="15.9" fill="#fbbf24"/>
+<circle cx="1171" cy="689.4" r="21.9" fill="none" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:2.7s">
+<circle cx="507.6" cy="579.5" r="85.5" fill="url(#halo-hacks)"/>
+<circle cx="507.6" cy="579.5" r="17.1" fill="#22d3ee"/>
+<circle cx="507.6" cy="579.5" r="23.1" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:3.6s">
+<circle cx="860.9" cy="391.2" r="80.8" fill="url(#halo-hacks)"/>
+<circle cx="860.9" cy="391.2" r="16.2" fill="#22d3ee"/>
+<circle cx="860.9" cy="391.2" r="22.2" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:4.5s">
+<circle cx="740.4" cy="854" r="90.7" fill="url(#halo-hacks)"/>
+<circle cx="740.4" cy="854" r="18.1" fill="#22d3ee"/>
+<circle cx="740.4" cy="854" r="24.1" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:5.4s">
+<circle cx="531.9" cy="386.9" r="66.7" fill="url(#halo-hacks)"/>
+<circle cx="531.9" cy="386.9" r="13.3" fill="#22d3ee"/>
+<circle cx="531.9" cy="386.9" r="19.3" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:0.0s">
+<circle cx="1280.1" cy="554.7" r="82.9" fill="url(#halo-field-notes)"/>
+<circle cx="1280.1" cy="554.7" r="16.6" fill="#fb7185"/>
+<circle cx="1280.1" cy="554.7" r="22.6" fill="none" stroke="#fb7185" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:0.9s">
+<circle cx="345.2" cy="609.7" r="50.4" fill="url(#halo-hacks)"/>
+<circle cx="345.2" cy="609.7" r="10.1" fill="#22d3ee"/>
+<circle cx="345.2" cy="609.7" r="16.1" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:1.8s">
+<circle cx="862.8" cy="218.1" r="81.2" fill="url(#halo-tools)"/>
+<circle cx="862.8" cy="218.1" r="16.2" fill="#fbbf24"/>
+<circle cx="862.8" cy="218.1" r="22.2" fill="none" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:2.7s">
+<circle cx="1049.7" cy="854" r="88.8" fill="url(#halo-docs)"/>
+<circle cx="1049.7" cy="854" r="17.8" fill="#38bdf8"/>
+<circle cx="1049.7" cy="854" r="23.8" fill="none" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<g class="tfb" style="animation-delay:3.6s">
+<circle cx="383.8" cy="458.1" r="76.7" fill="url(#halo-hacks)"/>
+<circle cx="383.8" cy="458.1" r="15.3" fill="#22d3ee"/>
+<circle cx="383.8" cy="458.1" r="21.3" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+</g>
+<text x="989.8" y="570.1" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Wiring an RDS Database to Dja…</text>
+<text x="436" y="787.9" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Deploying Django on Lambda wi…</text>
+<text x="693.6" y="394.5" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Running Django on AWS Lambda:…</text>
+<text x="1003.2" y="736.4" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">A Jekyll Dockerfile That Buil…</text>
+<text x="663.7" y="474.4" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Build, Destroy, Repeat: The O…</text>
+<text x="1024" y="304.6" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Excel to Python: Why the Ment…</text>
+<text x="653.7" y="659.9" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">ERP as the Operating System o…</text>
+<text x="533.5" y="268" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Fork, build, and run a VS Cod…</text>
+<text x="823.1" y="607" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Auto-deploy a Jekyll site ove…</text>
+<text x="217.3" y="570" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Docker from zero: the dozen c…</text>
+<text x="1025.9" y="224.1" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">When a Yanked FFI Gem Breaks…</text>
+<text x="845.1" y="766.8" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Stop typing IP addresses: the…</text>
+<text x="380" y="338.3" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">sd: the honest review</text>
+<text x="1160.4" y="483.5" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Stop shipping tarballs that e…</text>
+<text x="562.7" y="904.2" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">procs: the honest review</text>
+<text x="696.6" y="220.1" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">yq: the honest review</text>
+<text x="1171" y="651.5" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">DuckDB: the honest review</text>
+<text x="507.6" y="540.4" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Your connection pool is too b…</text>
+<text x="860.9" y="441.4" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Order your Dockerfile so the…</text>
+<text x="740.4" y="841.9" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Make a bootable Debian 13 USB…</text>
+<text x="531.9" y="575.6" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">I put a retro arcade on a 14-…</text>
+<text x="1280.1" y="605.3" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">The 302 that walks my crawler…</text>
+<text x="345.2" y="605.7" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Show a code fence inside a co…</text>
+<text x="862.8" y="179.9" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">yamllint: the honest review</text>
+<text x="1049.7" y="905.8" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">The Assignment Editor That Ne…</text>
+<text x="383.8" y="507.4" text-anchor="middle" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="20" fill="#eafffb" fill-opacity="0.82">Scale a Compose service past…</text>
+<circle cx="48" cy="929" r="7" fill="#22d3ee"/><text x="64" y="936" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" letter-spacing="1" fill="#79a8a1">HACKS ×13</text><circle cx="227" cy="929" r="7" fill="#fbbf24"/><text x="243" y="936" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" letter-spacing="1" fill="#79a8a1">TOOLS ×5</text><circle cx="393" cy="929" r="7" fill="#fb7185"/><text x="409" y="936" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" letter-spacing="1" fill="#79a8a1">FIELD NOTES ×7</text><circle cx="637" cy="929" r="7" fill="#38bdf8"/><text x="653" y="936" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" letter-spacing="1" fill="#79a8a1">META ×1</text>
+<text x="48" y="990" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" letter-spacing="2" fill="#79a8a1">SEED 3010185074</text>
+<text x="1488" y="990" text-anchor="end" font-family="ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" letter-spacing="2" fill="#79a8a1">2019-08-22 → 2026-09-04 · 26 DISPATCHES</text>
+</svg>
