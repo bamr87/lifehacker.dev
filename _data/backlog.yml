@@ -4255,24 +4255,6 @@ backlog:
     source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
 
 
-  # Fresh wire dispatch (autopilot run, 2026-09-04): WIRE-001..014 were all `status:
-  # done` and neither open auto:content PR was a wire, so grow-lifehacker synthesized
-  # a new in-lane dispatch rather than cross collections or no-op. Story is within the
-  # 14-day recency cap, reported from primary sources verified this run: Simon
-  # Willison's Sep 3 link blog and ARC Prize's own Sep 3 write-up (Greg Kamradt).
-  # Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
-  - id: WIRE-015
-    kind: wire
-    title: "OpenAI's GPT-6 scored 99.9% on the AGI-gap benchmark — on a harness that lets it keep notes the graders can't read"
-    brief: "Model-beat dispatch on OpenAI's Sep 3, 2026 GPT-6 Astra launch, reported from ARC Prize's own write-up (Greg Kamradt, 'OpenAI's GPT-6 Astra on ARC-AGI-3', Sep 3) and Simon Willison's Sep 3 link blog. Facts kept sacred and attributed: Astra's headline 99.9% on ARC-AGI-3 Semi-Private came from ARC's 'Provider Adapter' harness (which 'preserves opaque reasoning state between requests' the graders don't see, plus compaction), for $19K; ARC's provider-neutral Standard harness — the one it says 'a future AGI should be able to solve' under — scored 62.7% for $26K, so the neutral run cost MORE and scored 37 points lower. Full six-row harness table quoted. The independent check is the spine: Artificial Analysis puts Astra's Intelligence Index at 61 — equal to the prior half-step GPT-5.6 Sol, 5 points below Claude Fable 5.1, and behind Meta's Muse Spark 1.3 — so the generation number went up a whole integer while the one third-party index didn't move. API priced identical to Fable ($10/M in, $50/M out). OpenAI's self-reported security scores (ExploitBench 100%, ExploitGym 42.4%) and long-context (eight-needle) numbers noted AS vendor claims. Satire targets the theater: a whole-integer version bump, a saturated benchmark whose authors say saturation isn't AGI, and a 99.9% that is a harness setting. COI line load-bearing: this desk runs on Claude Fable — the rival model that beats Astra on the very index this dispatch leans on."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P1
-    status: done
-    published: /wire/gpt-6-astra-two-harnesses/
-    source: manual
-    source_url: https://arcprize.org/blog/astra
-
   # Fresh tool idea (2026-09-04): no `tool` backlog item was `todo` — all 29 were
   # done — so the tool lane proposed one on-voice pick and drafted it. age is the
   # modern file-encryption CLI (X25519/scrypt, one binary, no keyring); Cass's beat
@@ -4346,4 +4328,45 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
+
+  # Fresh wire dispatch (autopilot run, 2026-09-04): WIRE-001..014 were all `status:
+  # done` and neither open auto:content PR was a wire, so grow-lifehacker synthesized
+  # a new in-lane dispatch rather than cross collections or no-op. Story is within the
+  # 14-day recency cap, reported from primary sources verified this run: Simon
+  # Willison's Sep 3 link blog and ARC Prize's own Sep 3 write-up (Greg Kamradt).
+  # Byline: rhea (wire desk; `authors.rb --section wire` -> rhea).
+  - id: WIRE-015
+    kind: wire
+    title: "OpenAI's GPT-6 scored 99.9% on the AGI-gap benchmark — on a harness that lets it keep notes the graders can't read"
+    brief: "Model-beat dispatch on OpenAI's Sep 3, 2026 GPT-6 Astra launch, reported from ARC Prize's own write-up (Greg Kamradt, 'OpenAI's GPT-6 Astra on ARC-AGI-3', Sep 3) and Simon Willison's Sep 3 link blog. Facts kept sacred and attributed: Astra's headline 99.9% on ARC-AGI-3 Semi-Private came from ARC's 'Provider Adapter' harness (which 'preserves opaque reasoning state between requests' the graders don't see, plus compaction), for $19K; ARC's provider-neutral Standard harness — the one it says 'a future AGI should be able to solve' under — scored 62.7% for $26K, so the neutral run cost MORE and scored 37 points lower. Full six-row harness table quoted. The independent check is the spine: Artificial Analysis puts Astra's Intelligence Index at 61 — equal to the prior half-step GPT-5.6 Sol, 5 points below Claude Fable 5.1, and behind Meta's Muse Spark 1.3 — so the generation number went up a whole integer while the one third-party index didn't move. API priced identical to Fable ($10/M in, $50/M out). OpenAI's self-reported security scores (ExploitBench 100%, ExploitGym 42.4%) and long-context (eight-needle) numbers noted AS vendor claims. Satire targets the theater: a whole-integer version bump, a saturated benchmark whose authors say saturation isn't AGI, and a 99.9% that is a harness setting. COI line load-bearing: this desk runs on Claude Fable — the rival model that beats Astra on the very index this dispatch leans on."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/gpt-6-astra-two-harnesses/
+    source: manual
+    source_url: https://arcprize.org/blog/astra
+
+  # Fresh doc idea (autopilot run, 2026-09-04): every `kind: doc` item on the board
+  # was already done, and the only `todo` items are OPS-001 (kind: ops, skipped) and
+  # 79 hacks. The three open auto:content PRs are a field-note, a tool, and a hack —
+  # no doc to duplicate. Rather than no-op or cross collections, synthesized a fresh
+  # in-lane doc: close_stale.rb is the ONE script allowed to close the fleet's own
+  # issues — the missing half of the append-only tracker DOC-009 covered ("the bug
+  # tracker that can't close a ticket"). Edge (rotation, `authors.rb --section doc`
+  # -> edge) stress-tested the real Triage closing functions: it fingerprints what it
+  # owns (human issues immune across 6 marker spellings) and refuses to sweep after a
+  # broken build or a no-site link check — but sweep_safe? only guards `build` and
+  # `htmlproofer`, so a check that CRASHES (raises, emits zero findings) sails past it
+  # and its issues get auto-closed as "fixed." Every verdict in the piece is the real
+  # return value of the real function, run 2026-09-04. Follow-up fix idea in the PR.
+  - id: DOC-048
+    kind: doc
+    title: "The Sweep That Refuses a Broken Build and Salutes a Blind One"
+    brief: "Stress-test close_stale.rb, the one script allowed to close the fleet's own issues (the missing half of the append-only tracker). It fingerprints what it owns — human issues stay immune across six spellings of the triage-fp marker — and refuses to sweep on degraded findings (broken build, no-site link check). The hole edge found: sweep_safe? whitelists only `build` and `htmlproofer`, so a check that crashes instead of failing (raises, writes zero findings) looks identical to 'everything got fixed,' and its open issues get auto-closed as 'fixed, moved, or retired' — none of which happened. Bounded by MAX_CLOSE=40 and the reopen-on-regression path, but wrong for a cycle. Every table is the real return value of the real Triage function, run 2026-09-04."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-sweep-that-refuses-a-broken-build/
 
