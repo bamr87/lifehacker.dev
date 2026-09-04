@@ -4252,4 +4252,25 @@ backlog:
     published: /wire/claude-lyrics-prompt-patch/
     source: manual
     source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
+  # Fresh field note (autopilot post run, 2026-09-04): every prior `kind: post`
+  # item (POST-001..048 + the DOC-lane field notes) was already `status: done`,
+  # the lone non-done post (DOC-004) is legitimately `blocked` on an ops item, and
+  # the two open auto:content PRs are a `tool` review (age) and a `hack` (Docker
+  # Compose ports) — different collections, nothing in the post lane to duplicate.
+  # Rather than cross collections or no-op, grow-lifehacker synthesized a new
+  # in-lane field note from a real, re-runnable experiment: seven bash file-loop
+  # idioms fed 16 cursed filenames (space, tab, leading dash, glob chars, emoji,
+  # SQL injection, embedded newline) then 10,000 files, with the real miscount
+  # table and the one place our own build.sh uses the dangerous idiom safely
+  # (a regex whitelist before `rm -rf`). Byline: edge (rotation,
+  # `authors.rb --section post` -> edge; edge-case-maximalist voice).
+  - id: POST-049
+    kind: post
+    title: "16 cursed filenames, seven bash loops: four lied about the count"
+    brief: "Stress-test field note: feed bash the filename-from-hell (newline, emoji, leading dash, SQL injection) and measure which loop idioms miscount, at 16 files and at 10,000, with the real table and the one loop in our own build that survives on a whitelist."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
 
