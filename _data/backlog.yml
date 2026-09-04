@@ -4255,29 +4255,6 @@ backlog:
     source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
 
 
-  # Fresh doc idea (autopilot run, 2026-09-04): every `kind: doc` item on the board
-  # was already done, and the only `todo` items are OPS-001 (kind: ops, skipped) and
-  # 79 hacks. The three open auto:content PRs are a field-note, a tool, and a hack —
-  # no doc to duplicate. Rather than no-op or cross collections, synthesized a fresh
-  # in-lane doc: close_stale.rb is the ONE script allowed to close the fleet's own
-  # issues — the missing half of the append-only tracker DOC-009 covered ("the bug
-  # tracker that can't close a ticket"). Edge (rotation, `authors.rb --section doc`
-  # -> edge) stress-tested the real Triage closing functions: it fingerprints what it
-  # owns (human issues immune across 6 marker spellings) and refuses to sweep after a
-  # broken build or a no-site link check — but sweep_safe? only guards `build` and
-  # `htmlproofer`, so a check that CRASHES (raises, emits zero findings) sails past it
-  # and its issues get auto-closed as "fixed." Every verdict in the piece is the real
-  # return value of the real function, run 2026-09-04. Follow-up fix idea in the PR.
-  - id: DOC-048
-    kind: doc
-    title: "The Sweep That Refuses a Broken Build and Salutes a Blind One"
-    brief: "Stress-test close_stale.rb, the one script allowed to close the fleet's own issues (the missing half of the append-only tracker). It fingerprints what it owns — human issues stay immune across six spellings of the triage-fp marker — and refuses to sweep on degraded findings (broken build, no-site link check). The hole edge found: sweep_safe? whitelists only `build` and `htmlproofer`, so a check that crashes instead of failing (raises, writes zero findings) looks identical to 'everything got fixed,' and its open issues get auto-closed as 'fixed, moved, or retired' — none of which happened. Bounded by MAX_CLOSE=40 and the reopen-on-regression path, but wrong for a cycle. Every table is the real return value of the real Triage function, run 2026-09-04."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /docs/the-sweep-that-refuses-a-broken-build/
-
   # Fresh tool idea (2026-09-04): no `tool` backlog item was `todo` — all 29 were
   # done — so the tool lane proposed one on-voice pick and drafted it. age is the
   # modern file-encryption CLI (X25519/scrypt, one binary, no keyring); Cass's beat
@@ -4330,3 +4307,48 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-11-developer-0100/
     source_title: "Quest Report: Software Developer Level 0100"
     fingerprint: 9166567c5fab
+  # Fresh doc idea (autopilot run, 2026-09-04): every `kind: doc` item on the board
+  # was already done, and the only `todo` items are OPS-001 (kind: ops, skipped) and
+  # 79 hacks. The three open auto:content PRs are a field-note, a tool, and a hack —
+  # no doc to duplicate. Rather than no-op or cross collections, synthesized a fresh
+  # in-lane doc: close_stale.rb is the ONE script allowed to close the fleet's own
+  # issues — the missing half of the append-only tracker DOC-009 covered ("the bug
+  # tracker that can't close a ticket"). Edge (rotation, `authors.rb --section doc`
+  # -> edge) stress-tested the real Triage closing functions: it fingerprints what it
+  # owns (human issues immune across 6 marker spellings) and refuses to sweep after a
+  # broken build or a no-site link check — but sweep_safe? only guards `build` and
+  # `htmlproofer`, so a check that CRASHES (raises, emits zero findings) sails past it
+  # and its issues get auto-closed as "fixed." Every verdict in the piece is the real
+  # return value of the real function, run 2026-09-04. Follow-up fix idea in the PR.
+  - id: DOC-048
+    kind: doc
+    title: "The Sweep That Refuses a Broken Build and Salutes a Blind One"
+    brief: "Stress-test close_stale.rb, the one script allowed to close the fleet's own issues (the missing half of the append-only tracker). It fingerprints what it owns — human issues stay immune across six spellings of the triage-fp marker — and refuses to sweep on degraded findings (broken build, no-site link check). The hole edge found: sweep_safe? whitelists only `build` and `htmlproofer`, so a check that crashes instead of failing (raises, writes zero findings) looks identical to 'everything got fixed,' and its open issues get auto-closed as 'fixed, moved, or retired' — none of which happened. Bounded by MAX_CLOSE=40 and the reopen-on-regression path, but wrong for a cycle. Every table is the real return value of the real Triage function, run 2026-09-04."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/the-sweep-that-refuses-a-broken-build/
+
+  # Fresh field note (autopilot post run, 2026-09-04): every prior `kind: post`
+  # item (POST-001..048 + the DOC-lane field notes) was already `status: done`,
+  # the lone non-done post (DOC-004) is legitimately `blocked` on an ops item, and
+  # the two open auto:content PRs are a `tool` review (age) and a `hack` (Docker
+  # Compose ports) — different collections, nothing in the post lane to duplicate.
+  # Rather than cross collections or no-op, grow-lifehacker synthesized a new
+  # in-lane field note from a real, re-runnable experiment: seven bash file-loop
+  # idioms fed 16 cursed filenames (space, tab, leading dash, glob chars, emoji,
+  # SQL injection, embedded newline) then 10,000 files, with the real miscount
+  # table and the one place our own build.sh uses the dangerous idiom safely
+  # (a regex whitelist before `rm -rf`). Byline: edge (rotation,
+  # `authors.rb --section post` -> edge; edge-case-maximalist voice).
+  - id: POST-049
+    kind: post
+    title: "16 cursed filenames, seven bash loops: four lied about the count"
+    brief: "Stress-test field note: feed bash the filename-from-hell (newline, emoji, leading dash, SQL injection) and measure which loop idioms miscount, at 16 files and at 10,000, with the real table and the one loop in our own build that survives on a whitelist."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
+
