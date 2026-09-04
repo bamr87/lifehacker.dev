@@ -2104,7 +2104,8 @@ backlog:
     brief: "`docker compose up --scale web=3` looks like it should just work — until all three replicas try to bind the same `8080:80` host port and the second one dies with 'port is already allocated,' because a fixed host port can only belong to one container. The fix: drop the host side so Docker assigns a random one (`- \"80\"`), or hand it a range (`- \"8080-8082:80\"`), and put a reverse proxy in front. The part that stays in: the container port and `EXPOSE` were never the problem — only the host mapping collides — and `docker compose ps` shows you the ephemeral ports it handed out."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/docker-compose-scale-port-already-allocated/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-09-digital-artist-0100/
     source_title: "Quest Report: Digital Artist Level 0100"
@@ -4254,6 +4255,22 @@ backlog:
     source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
 
 
+  # Fresh tool idea (2026-09-04): no `tool` backlog item was `todo` — all 29 were
+  # done — so the tool lane proposed one on-voice pick and drafted it. age is the
+  # modern file-encryption CLI (X25519/scrypt, one binary, no keyring); Cass's beat
+  # because the headline threat is what it deliberately does NOT do: authenticate the
+  # sender. Tested for real (roundtrip, tamper, ssh recipients, ssh -Y sign as the
+  # authorship layer age lacks, stolen-key blast radius). Byline: cass
+  # (`authors.rb --section tool` -> cass).
+  - id: TOOL-030
+    kind: tool
+    title: "age: the file-encryption tool that proves the bytes weren't touched and refuses to say who sent them"
+    brief: "Honest verdict on age (filippo.io/age): a single Go binary that does authenticated public-key file encryption with no keyring, no config, no options to get wrong — genuinely good for backups and secrets at rest. The dealbreaker Cass keeps: age encrypts, it does not SIGN. AEAD means a flipped ciphertext byte fails to decrypt (tested), but nothing proves WHO produced the file — anyone holding your public key can hand you a ciphertext that decrypts cleanly 'from' anyone. Plus: the identity file is a cleartext AGE-SECRET-KEY on disk guarded only by chmod 600, one stolen copy decrypts every file ever sent to that key (no forward secrecy), and passphrase mode refuses a pipe (needs /dev/tty) — a footgun in CI, a feature in your shell history. Mitigations tested: add ssh-keygen -Y sign for authorship, lock/relocate the identity, and never gate a script on the passphrase path."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/age-encryption-honest-review/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -4312,19 +4329,3 @@ backlog:
     status: done
     published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
 
-  # Fresh tool idea (2026-09-04): no `tool` backlog item was `todo` — all 29 were
-  # done — so the tool lane proposed one on-voice pick and drafted it. age is the
-  # modern file-encryption CLI (X25519/scrypt, one binary, no keyring); Cass's beat
-  # because the headline threat is what it deliberately does NOT do: authenticate the
-  # sender. Tested for real (roundtrip, tamper, ssh recipients, ssh -Y sign as the
-  # authorship layer age lacks, stolen-key blast radius). Byline: cass
-  # (`authors.rb --section tool` -> cass).
-  - id: TOOL-030
-    kind: tool
-    title: "age: the file-encryption tool that proves the bytes weren't touched and refuses to say who sent them"
-    brief: "Honest verdict on age (filippo.io/age): a single Go binary that does authenticated public-key file encryption with no keyring, no config, no options to get wrong — genuinely good for backups and secrets at rest. The dealbreaker Cass keeps: age encrypts, it does not SIGN. AEAD means a flipped ciphertext byte fails to decrypt (tested), but nothing proves WHO produced the file — anyone holding your public key can hand you a ciphertext that decrypts cleanly 'from' anyone. Plus: the identity file is a cleartext AGE-SECRET-KEY on disk guarded only by chmod 600, one stolen copy decrypts every file ever sent to that key (no forward secrecy), and passphrase mode refuses a pipe (needs /dev/tty) — a footgun in CI, a feature in your shell history. Mitigations tested: add ssh-keygen -Y sign for authorship, lock/relocate the identity, and never gate a script on the passphrase path."
-    voice: threat-model-everything
-    author: cass
-    priority: P2
-    status: done
-    published: /tools/age-encryption-honest-review/
