@@ -2104,7 +2104,8 @@ backlog:
     brief: "`docker compose up --scale web=3` looks like it should just work — until all three replicas try to bind the same `8080:80` host port and the second one dies with 'port is already allocated,' because a fixed host port can only belong to one container. The fix: drop the host side so Docker assigns a random one (`- \"80\"`), or hand it a range (`- \"8080-8082:80\"`), and put a reverse proxy in front. The part that stays in: the container port and `EXPOSE` were never the problem — only the host mapping collides — and `docker compose ps` shows you the ephemeral ports it handed out."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/docker-compose-scale-port-already-allocated/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-09-digital-artist-0100/
     source_title: "Quest Report: Digital Artist Level 0100"
@@ -4252,6 +4253,8 @@ backlog:
     published: /wire/claude-lyrics-prompt-patch/
     source: manual
     source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
+
+
   # Fresh wire dispatch (autopilot run, 2026-09-04): WIRE-001..014 were all `status:
   # done` and neither open auto:content PR was a wire, so grow-lifehacker synthesized
   # a new in-lane dispatch rather than cross collections or no-op. Story is within the
@@ -4269,4 +4272,78 @@ backlog:
     published: /wire/gpt-6-astra-two-harnesses/
     source: manual
     source_url: https://arcprize.org/blog/astra
+
+  # Fresh tool idea (2026-09-04): no `tool` backlog item was `todo` — all 29 were
+  # done — so the tool lane proposed one on-voice pick and drafted it. age is the
+  # modern file-encryption CLI (X25519/scrypt, one binary, no keyring); Cass's beat
+  # because the headline threat is what it deliberately does NOT do: authenticate the
+  # sender. Tested for real (roundtrip, tamper, ssh recipients, ssh -Y sign as the
+  # authorship layer age lacks, stolen-key blast radius). Byline: cass
+  # (`authors.rb --section tool` -> cass).
+  - id: TOOL-030
+    kind: tool
+    title: "age: the file-encryption tool that proves the bytes weren't touched and refuses to say who sent them"
+    brief: "Honest verdict on age (filippo.io/age): a single Go binary that does authenticated public-key file encryption with no keyring, no config, no options to get wrong — genuinely good for backups and secrets at rest. The dealbreaker Cass keeps: age encrypts, it does not SIGN. AEAD means a flipped ciphertext byte fails to decrypt (tested), but nothing proves WHO produced the file — anyone holding your public key can hand you a ciphertext that decrypts cleanly 'from' anyone. Plus: the identity file is a cleartext AGE-SECRET-KEY on disk guarded only by chmod 600, one stolen copy decrypts every file ever sent to that key (no forward secrecy), and passphrase mode refuses a pipe (needs /dev/tty) — a footgun in CI, a feature in your shell history. Mitigations tested: add ssh-keygen -Y sign for authorship, lock/relocate the identity, and never gate a script on the passphrase path."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/age-encryption-honest-review/
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-127
+    kind: hack
+    title: "Your model is 89% accurate and fails one group one time in four: slice it with fairlearn's MetricFrame"
+    brief: "Overall accuracy is an average, and an average hides the group it is quietly failing — a classifier can post 89% overall while erroring 5% for one cohort and 25% for another, and the aggregate number will never once mention it. Disaggregate: wrap the metric in `MetricFrame(metrics=accuracy_score, y_true=..., y_pred=..., sensitive_features=group)` and read `.by_group` to see the gap per slice instead of the headline. The failures that stay in: dropping the protected column does NOT make the model fair — proxy variables (zip, first name, device) reconstruct it, so a 'blind' model can be just as skewed and now you cannot even measure the skew, which is exactly why you keep the attribute for EVALUATION even when you never train on it; and there is no single fairness number, because equal error rates (equalized odds) and equal positive rates (demographic parity) are mathematically in tension — pick the one your use case actually owes people and name it, do not average two into a meaningless third. Reproducible on any sklearn model with a synthetic grouped dataset."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/ai-ethics/
+    source_title: "AI Ethics: Bias Detection, Fairness & Governance"
+    fingerprint: 04660aaddba0
+  - id: SRC-128
+    kind: hack
+    title: "await fetch() did not throw on your 404: check response.ok or your catch block never runs"
+    brief: "The honest-looking `try { const r = await fetch(url); const data = await r.json() } catch (e) {...}` has a hole almost everyone falls into: the Fetch API only REJECTS on a network-level failure (DNS, offline, blocked by CORS), never on an HTTP error status — a 404 or a 500 resolves as a perfectly cheerful response object with `ok: false`, so your `catch` never fires and the code sails straight into `r.json()`, which then throws a baffling 'Unexpected end of JSON input' on the error page's empty body. The fix is one guard before you parse: `if (!r.ok) throw new Error(r.status)`. The failures that stay in: `await` only works inside an `async` function, so pasting this at the top of an old script is a syntax error, not the runtime bug you were chasing; and a fetch with no error handling at all leaves the UI silently blank — no spinner, no message, just nothing — which is the bug a user reports as 'the page is broken' and you can never reproduce because your network is fine. Testable in any browser console against a URL that 404s."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/javascript-fundamentals/
+    source_title: "JavaScript Fundamentals"
+    fingerprint: aad505573d1b
+  - id: SRC-129
+    kind: hack
+    title: "Your Bootstrap 5 dropdown does nothing and throws no error: you are shipping Bootstrap 4 markup"
+    brief: "You pin the Bootstrap 5 CDN, paste a dropdown/modal/collapse snippet off the internet, load the page — and the button just sits there: no toggle, no console error, nothing to grep for. The snippet was Bootstrap 4, and v5 quietly renamed every data attribute from `data-toggle`/`data-target` to `data-bs-toggle`/`data-bs-target`, dropped the jQuery dependency entirely, and folded Popper into `bootstrap.bundle.min.js` — so v4 markup is now just inert HTML that v5's JavaScript never wires up. The fix: use the `data-bs-*` attributes, load the `.bundle` build (or Popper alongside), and delete the jQuery `<script>` you no longer need. The failures that stay in: it fails SILENTLY, because v5 does not warn that it ignored your v4 attributes — 'it loaded Bootstrap' and 'the component actually works' are two different claims; and a half-migration (v5 CSS with a leftover jQuery call like `$('#m').modal('show')`) breaks the other half, since those plugin methods no longer exist. Reproducible in a single static HTML file."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-11-developer-0100/
+    source_title: "Quest Report: Software Developer Level 0100"
+    fingerprint: 9166567c5fab
+  # Fresh field note (autopilot post run, 2026-09-04): every prior `kind: post`
+  # item (POST-001..048 + the DOC-lane field notes) was already `status: done`,
+  # the lone non-done post (DOC-004) is legitimately `blocked` on an ops item, and
+  # the two open auto:content PRs are a `tool` review (age) and a `hack` (Docker
+  # Compose ports) — different collections, nothing in the post lane to duplicate.
+  # Rather than cross collections or no-op, grow-lifehacker synthesized a new
+  # in-lane field note from a real, re-runnable experiment: seven bash file-loop
+  # idioms fed 16 cursed filenames (space, tab, leading dash, glob chars, emoji,
+  # SQL injection, embedded newline) then 10,000 files, with the real miscount
+  # table and the one place our own build.sh uses the dangerous idiom safely
+  # (a regex whitelist before `rm -rf`). Byline: edge (rotation,
+  # `authors.rb --section post` -> edge; edge-case-maximalist voice).
+  - id: POST-049
+    kind: post
+    title: "16 cursed filenames, seven bash loops: four lied about the count"
+    brief: "Stress-test field note: feed bash the filename-from-hell (newline, emoji, leading dash, SQL injection) and measure which loop idioms miscount, at 16 files and at 10,000, with the real table and the one loop in our own build that survives on a whitelist."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
 
