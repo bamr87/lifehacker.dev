@@ -4254,28 +4254,6 @@ backlog:
     source_url: https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/
 
 
-  # Fresh field note (autopilot post run, 2026-09-04): every prior `kind: post`
-  # item (POST-001..048 + the DOC-lane field notes) was already `status: done`,
-  # the lone non-done post (DOC-004) is legitimately `blocked` on an ops item, and
-  # the two open auto:content PRs are a `tool` review (age) and a `hack` (Docker
-  # Compose ports) — different collections, nothing in the post lane to duplicate.
-  # Rather than cross collections or no-op, grow-lifehacker synthesized a new
-  # in-lane field note from a real, re-runnable experiment: seven bash file-loop
-  # idioms fed 16 cursed filenames (space, tab, leading dash, glob chars, emoji,
-  # SQL injection, embedded newline) then 10,000 files, with the real miscount
-  # table and the one place our own build.sh uses the dangerous idiom safely
-  # (a regex whitelist before `rm -rf`). Byline: edge (rotation,
-  # `authors.rb --section post` -> edge; edge-case-maximalist voice).
-  - id: POST-049
-    kind: post
-    title: "16 cursed filenames, seven bash loops: four lied about the count"
-    brief: "Stress-test field note: feed bash the filename-from-hell (newline, emoji, leading dash, SQL injection) and measure which loop idioms miscount, at 16 files and at 10,000, with the real table and the one loop in our own build that survives on a whitelist."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -4312,3 +4290,41 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-11-developer-0100/
     source_title: "Quest Report: Software Developer Level 0100"
     fingerprint: 9166567c5fab
+  # Fresh field note (autopilot post run, 2026-09-04): every prior `kind: post`
+  # item (POST-001..048 + the DOC-lane field notes) was already `status: done`,
+  # the lone non-done post (DOC-004) is legitimately `blocked` on an ops item, and
+  # the two open auto:content PRs are a `tool` review (age) and a `hack` (Docker
+  # Compose ports) — different collections, nothing in the post lane to duplicate.
+  # Rather than cross collections or no-op, grow-lifehacker synthesized a new
+  # in-lane field note from a real, re-runnable experiment: seven bash file-loop
+  # idioms fed 16 cursed filenames (space, tab, leading dash, glob chars, emoji,
+  # SQL injection, embedded newline) then 10,000 files, with the real miscount
+  # table and the one place our own build.sh uses the dangerous idiom safely
+  # (a regex whitelist before `rm -rf`). Byline: edge (rotation,
+  # `authors.rb --section post` -> edge; edge-case-maximalist voice).
+  - id: POST-049
+    kind: post
+    title: "16 cursed filenames, seven bash loops: four lied about the count"
+    brief: "Stress-test field note: feed bash the filename-from-hell (newline, emoji, leading dash, SQL injection) and measure which loop idioms miscount, at 16 files and at 10,000, with the real table and the one loop in our own build that survives on a whitelist."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/09/04/cursed-filenames-which-bash-loops-survived/
+
+  # Fresh tool idea (2026-09-04): no `tool` backlog item was `todo` — all 29 were
+  # done — so the tool lane proposed one on-voice pick and drafted it. age is the
+  # modern file-encryption CLI (X25519/scrypt, one binary, no keyring); Cass's beat
+  # because the headline threat is what it deliberately does NOT do: authenticate the
+  # sender. Tested for real (roundtrip, tamper, ssh recipients, ssh -Y sign as the
+  # authorship layer age lacks, stolen-key blast radius). Byline: cass
+  # (`authors.rb --section tool` -> cass).
+  - id: TOOL-030
+    kind: tool
+    title: "age: the file-encryption tool that proves the bytes weren't touched and refuses to say who sent them"
+    brief: "Honest verdict on age (filippo.io/age): a single Go binary that does authenticated public-key file encryption with no keyring, no config, no options to get wrong — genuinely good for backups and secrets at rest. The dealbreaker Cass keeps: age encrypts, it does not SIGN. AEAD means a flipped ciphertext byte fails to decrypt (tested), but nothing proves WHO produced the file — anyone holding your public key can hand you a ciphertext that decrypts cleanly 'from' anyone. Plus: the identity file is a cleartext AGE-SECRET-KEY on disk guarded only by chmod 600, one stolen copy decrypts every file ever sent to that key (no forward secrecy), and passphrase mode refuses a pipe (needs /dev/tty) — a footgun in CI, a feature in your shell history. Mitigations tested: add ssh-keygen -Y sign for authorship, lock/relocate the identity, and never gate a script on the passphrase path."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/age-encryption-honest-review/
