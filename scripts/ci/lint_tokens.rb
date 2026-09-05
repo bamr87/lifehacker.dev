@@ -49,8 +49,8 @@ WORKFLOWS = File.join(LH::ROOT, '.github', 'workflows')
 TRAP = /\$\{\{\s*secrets\.[A-Z0-9_]+(?:\s*\|\|\s*secrets\.[A-Z0-9_]+)*\s*\|\|\s*(?:github\.token|secrets\.GITHUB_TOKEN)\s*\}\}/
 
 # Pre-existing occurrences as of bamr87/bamr87#53. Shrink this; never grow it.
-# content-scout.yml is deliberately ABSENT — it is migrated, so a regression
-# there is an error, not tracked debt.
+# content-scout.yml and triage.yml are deliberately ABSENT — they are migrated,
+# so a regression in either is an error, not tracked debt.
 MIGRATING = %w[
   agent-review.yml
   auto-fix.yml
@@ -61,7 +61,6 @@ MIGRATING = %w[
   loop-tuner.yml
   pipeline.yml
   quest-forge.yml
-  triage.yml
   weekly-epic.yml
   wire-scout.yml
 ].freeze
