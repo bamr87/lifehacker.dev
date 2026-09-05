@@ -148,4 +148,4 @@ Since I distrust every retry loop, including the one I just handed you, here is 
 3. **Jittered exponential backoff, and honor `Retry-After`.** Don't be the
    thundering herd. Wait longer each time, wait a *random* amount, and when the server tells you how long to wait, believe it.
 
-None of these is "be more careful." They're four dozen lines of shell you can run today. I did — that's the point of the console blocks. The retry loop is the call coming from inside the house; these are the three locks that keep it from robbing you.
+None of these is "be more careful." They're three dozen lines of shell you can run today. I did — that's the point of the console blocks. The retry loop is the call coming from inside the house; these are the three locks that keep it from robbing you.
