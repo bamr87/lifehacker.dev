@@ -4370,3 +4370,40 @@ backlog:
     status: done
     published: /docs/the-sweep-that-refuses-a-broken-build/
 
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-130
+    kind: hack
+    title: "Your CSS grid blows out its container: 1fr secretly means minmax(auto,1fr), and the fix is minmax(0,1fr)"
+    brief: "You build a 52-week contribution heatmap with `grid-template-columns: repeat(52, 1fr)`, expect 52 equal columns that shrink to fit the width, and instead the grid overflows the page with a horizontal scrollbar you never asked for — because `1fr` is secretly `minmax(auto, 1fr)`, and that `auto` minimum refuses to shrink a track below its content's intrinsic size, so one long label or a min-width child props the whole row open. The fix is to spell the minimum yourself: `repeat(52, minmax(0, 1fr))` lets tracks shrink toward zero and actually distribute the space evenly. The failures that stay in: the identical `auto`-minimum bug hits flex items, where `min-width: 0` is the same fix, so a chart or a `<pre>` inside a flex child overflows the exact same way; and `aspect-ratio: 1` on the cells only holds while the track has room, so once minmax lets them shrink past square you need a floor — commit to `minmax(0, 1fr)` on the track OR a fixed cell size, not both fighting each other. Reproducible with a dozen lines of HTML."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/contribution-calendar/
+    source_title: "Contribution Calendar"
+    fingerprint: 6aa184e20b0e
+  - id: SRC-131
+    kind: hack
+    title: "Your Liquid percentage bar renders 0%: divided_by floors integer math until one operand is a float"
+    brief: "You build the language-breakdown bar chart from the quest — `{{ lang.count | divided_by: total | times: 100 }}` for the bar width — and every bar renders at 0% while the raw counts above them look fine. Liquid did exactly what you told it: `divided_by` on two integers is integer division, so 42/200 floors to 0 before `times: 100` ever runs, and 0 times 100 is still 0. The fix is to make one operand a float so the division keeps its fraction — multiply first at float precision (`| times: 100.0 | divided_by: total`), or feed a float total — then `| round: 1` for a clean label. The failures that stay in: reorder to multiply-before-divide but leave everything integer and you still truncate the remainder, so 49.9% shows as 49; and an empty dataset makes `total` zero, so `divided_by: 0` raises a Liquid error that fails the build — which is exactly why the quest's `{% if size > 0 %}` guard isn't decoration. Reproducible in one Jekyll page with a two-item array."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/stats-dashboard/
+    source_title: "Stats Dashboard"
+    fingerprint: 35d940749373
+  - id: SRC-132
+    kind: hack
+    title: "Your 'on merge' workflow also fires when a PR is just closed: gate the job on pull_request.merged"
+    brief: "GitHub has no `merged` trigger — you subscribe to `on: pull_request: types: [closed]` and put your deploy/tag/'forge a proposal from what shipped' logic there, then watch it run in full the day someone closes a stale PR without merging a line, because `closed` fires for abandoned PRs too. The one-line fix is the guard the quest uses: `if: ${{ github.event.pull_request.merged == true }}`, so the job runs only on a real merge. The failures that stay in: `closed != merged` is the whole bug, and it hides in a green run because the mis-fired job usually 'succeeds' at doing the wrong thing; and reading `head.sha` or checking out the head ref on a closed-unmerged PR can point at a branch someone already deleted, so the job dies with a confusing checkout error instead of the clean skip you wanted. Reproducible by opening a throwaway PR and closing it without merging."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/self-operating-website-10-the-bard-forge/
+    source_title: "The Bard Forge (Self-Operating Website 10)"
+    fingerprint: c55ef9809e2e
