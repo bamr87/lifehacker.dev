@@ -2128,11 +2128,13 @@ backlog:
     brief: "Not every failure earns a second attempt. Retry only 429 and 5xx (transient); never retry 400 or 422, because a request that's semantically wrong will be wrong every time and you're just DDoSing yourself. Honor the server's `Retry-After` header when it sends one, and add random jitter to your exponential backoff so a thousand clients that failed on the same tick don't all retry on the same tick (the thundering herd). The part that stays in: retrying a non-idempotent POST without an idempotency key turns one timed-out payment into two charges — send a client-generated key so the server dedupes the replay."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/retry-only-transient-failures/
     source: content-scout
     source_url: https://it-journey.dev/quests/0111/error-handling/
     source_title: "API Error Handling: Status Codes, Problem Details, and Retries"
     fingerprint: 6cfa11c6241a
+    author: cass
   - id: SRC-044
     kind: hack
     title: "You're billed by the token, not the word: count them before you paste the whole file into the prompt"
@@ -4407,7 +4409,6 @@ backlog:
     source_url: https://it-journey.dev/quests/1100/self-operating-website-10-the-bard-forge/
     source_title: "The Bard Forge (Self-Operating Website 10)"
     fingerprint: c55ef9809e2e
-
   # Synthesized in-lane (autopilot run, 2026-09-05): a `post` run found the queue
   # dry for its OWN kind — every `post` item done, DOC-004 still blocked on
   # OPS-001, and the 85 remaining `todo` items are all `kind: hack` (content-scout
@@ -4434,3 +4435,12 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/09/05/verify-green-against-a-cached-theme/
+  - id: TOOL-031
+    kind: tool
+    title: "miller (mlr): the CSV/JSON multitool that streams your good rows out, then dies on row three"
+    brief: "Honest, stress-tested verdict on miller (mlr 6.11): one Go binary that runs cut/sort/stats/join across CSV, TSV, JSON, and DKVP with format conversion for free — genuinely the tool to reach for on tabular data. The edge Ed keeps: mlr is a STREAMING processor, so a ragged CSV row or a heterogeneous JSON->CSV schema change makes it emit the clean rows to stdout and THEN exit 1 mid-file — pipe that into another program without checking $? and you silently truncate your data (tested; fixed with --allow-ragged-csv-input and unsparsify). The surprise win: mlr keeps 64-bit integers where awk and jq both corrupt 9007199254740993 into ...992 (tested, three-way). But money still leaks: 0.1+0.2 prints 0.30000000000000004. Also tested: duplicate header columns silently renamed x -> x_2; --implicit-csv-header off-by-one; and the pile that refused to break — unicode, embedded newlines, CRLF, hostile filenames, unbalanced quotes (clean error), 100/100 clean 10,000-row runs."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /tools/miller-mlr-honest-review/
