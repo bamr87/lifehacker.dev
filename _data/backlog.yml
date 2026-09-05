@@ -4372,17 +4372,6 @@ backlog:
     status: done
     published: /docs/the-sweep-that-refuses-a-broken-build/
 
-  - id: DOC-049
-    kind: doc
-    title: "The Cap That Can't Tell Zero From Blind"
-    brief: "Threat-model policy.rb's backpressure cap (max_open_prs), the one number that decides whether the robot fleet keeps writing or backs off to let the single human reviewer catch up. The pure decision function is honest (no IO, backpressure checked first), but it trusts one injected observation absolutely: open_prs, counted upstream in dispatch.rb by `gh_open_pr_count`, which returns 0 whenever `gh pr list` exits non-zero OR JSON.parse chokes (rescue 0). A reading of 0 is maximum headroom — full-throttle growth — so a blind counter is byte-for-byte identical to a genuinely empty queue: the safety valve and the all-clear are the same input. Cass's fail-open angle: the control fails to the permissive state (expired FLEET_TOKEN on a holiday weekend, not sabotage). The tell that makes it a real finding: the SAME script fails the OTHER way when its CAPS break — a missing/typo'd max_open_prs coerces to 0 via .to_i and FREEZES everything (fail-safe), while a broken counter also resolves to 0 and UNFREEZES everything (fail-open). One controller, opposite failure postures, and the freshness gate three lines up already knows the rule (absence of data is never a green light) that the PR counter didn't get. Real captured policy.decide output across five scenarios + two broken-caps runs. Three ranked mitigations (fail the counter closed like the queue; carry a validity bit not just a number; alert on the full-concurrency-after-gh-failure signature), each read/run against the repo, none 'be more careful.'"
-    voice: threat-model-everything
-    author: cass
-    priority: P2
-    status: done
-    published: /docs/the-cap-that-cant-tell-zero-from-blind/
-
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -4428,3 +4417,40 @@ backlog:
     priority: P2
     status: done
     published: /tools/miller-mlr-honest-review/
+  # Synthesized in-lane (autopilot run, 2026-09-05): a `post` run found the queue
+  # dry for its OWN kind — every `post` item done, DOC-004 still blocked on
+  # OPS-001, and the 85 remaining `todo` items are all `kind: hack` (content-scout
+  # SRC series) or `ops` (OPS-001), which a post run must not borrow. The one open
+  # auto:content PR is a tool (miller/mlr). Rather than no-op, cross lanes, or
+  # fabricate, synthesized a fresh in-lane field note, written AS Cass Vector
+  # (byline rotation `ruby scripts/fleet/authors.rb --section post` -> `cass`).
+  # Angle deliberately DISTINCT from the July 20 unpinned-remote_theme post
+  # (/posts/2026/07/20/the-call-was-coming-from-the-theme-repo/): that piece was
+  # about production pulling the theme too NEW (unreviewed HEAD). This one is the
+  # inverse, in the gate meant to catch it — the PR-time `verify` build restores
+  # the theme from a DATE-keyed cache with a bare `zer0-theme-` restore-keys
+  # prefix, and build.sh's only integrity check is `[[ ! -d "$THEME_CACHE/_layouts" ]]`
+  # (line 29), so green certifies "built against whatever theme was cached", not
+  # "against the theme production renders from". Real captured output only (the
+  # action.yml key/restore-keys grep, the build.sh existence-check grep, and the
+  # live `git ls-remote ... HEAD` SHA). Three ranked mitigations, each verified.
+  - id: POST-050
+    kind: post
+    title: "My 'verify' gate goes green against a theme it pulled from a cache and never checked"
+    brief: "Meta-confession / threat-model (Cass Vector). The check humans trust before merging builds against a date-keyed theme cache restored by a bare prefix, and the only integrity gate is 'does a _layouts folder exist'. So green means 'built against whatever theme was cached', not 'builds against production's theme'. Companion/inverse of the July 20 unpinned-remote_theme post. Real grep + git ls-remote output only; three ranked, verified mitigations (key the cache by SHA, verify not just glance, document what green means)."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/05/verify-green-against-a-cached-theme/
+  - id: DOC-049
+    kind: doc
+    title: "The Cap That Can't Tell Zero From Blind"
+    brief: "Threat-model policy.rb's backpressure cap (max_open_prs), the one number that decides whether the robot fleet keeps writing or backs off to let the single human reviewer catch up. The pure decision function is honest (no IO, backpressure checked first), but it trusts one injected observation absolutely: open_prs, counted upstream in dispatch.rb by `gh_open_pr_count`, which returns 0 whenever `gh pr list` exits non-zero OR JSON.parse chokes (rescue 0). A reading of 0 is maximum headroom — full-throttle growth — so a blind counter is byte-for-byte identical to a genuinely empty queue: the safety valve and the all-clear are the same input. Cass's fail-open angle: the control fails to the permissive state (expired FLEET_TOKEN on a holiday weekend, not sabotage). The tell that makes it a real finding: the SAME script fails the OTHER way when its CAPS break — a missing/typo'd max_open_prs coerces to 0 via .to_i and FREEZES everything (fail-safe), while a broken counter also resolves to 0 and UNFREEZES everything (fail-open). One controller, opposite failure postures, and the freshness gate three lines up already knows the rule (absence of data is never a green light) that the PR counter didn't get. Real captured policy.decide output across five scenarios + two broken-caps runs. Three ranked mitigations (fail the counter closed like the queue; carry a validity bit not just a number; alert on the full-concurrency-after-gh-failure signature), each read/run against the repo, none 'be more careful.'"
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-cap-that-cant-tell-zero-from-blind/
+
+
