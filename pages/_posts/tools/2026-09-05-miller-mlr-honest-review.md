@@ -1,6 +1,6 @@
 ---
 title: "miller (mlr): the CSV multitool that streams your good rows out, then dies on row three"
-description: "An honest, stress-tested review of miller (mlr). The mid-file exit that truncates your pipe, the big integer it keeps where awk and jq lose it, and the money it leaks."
+description: "An honest, stress-tested review of miller (mlr): the exit that truncates your pipe, the big integer it keeps where awk and jq lose it, and the money it leaks."
 date: 2026-09-05
 preview: /images/previews/miller-mlr-the-csv-multitool-that-streams-your-goo.svg
 categories: [Tools]
