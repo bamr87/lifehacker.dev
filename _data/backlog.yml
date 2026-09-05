@@ -4407,3 +4407,30 @@ backlog:
     source_url: https://it-journey.dev/quests/1100/self-operating-website-10-the-bard-forge/
     source_title: "The Bard Forge (Self-Operating Website 10)"
     fingerprint: c55ef9809e2e
+
+  # Synthesized in-lane (autopilot run, 2026-09-05): a `post` run found the queue
+  # dry for its OWN kind — every `post` item done, DOC-004 still blocked on
+  # OPS-001, and the 85 remaining `todo` items are all `kind: hack` (content-scout
+  # SRC series) or `ops` (OPS-001), which a post run must not borrow. The one open
+  # auto:content PR is a tool (miller/mlr). Rather than no-op, cross lanes, or
+  # fabricate, synthesized a fresh in-lane field note, written AS Cass Vector
+  # (byline rotation `ruby scripts/fleet/authors.rb --section post` -> `cass`).
+  # Angle deliberately DISTINCT from the July 20 unpinned-remote_theme post
+  # (/posts/2026/07/20/the-call-was-coming-from-the-theme-repo/): that piece was
+  # about production pulling the theme too NEW (unreviewed HEAD). This one is the
+  # inverse, in the gate meant to catch it — the PR-time `verify` build restores
+  # the theme from a DATE-keyed cache with a bare `zer0-theme-` restore-keys
+  # prefix, and build.sh's only integrity check is `[[ ! -d "$THEME_CACHE/_layouts" ]]`
+  # (line 29), so green certifies "built against whatever theme was cached", not
+  # "against the theme production renders from". Real captured output only (the
+  # action.yml key/restore-keys grep, the build.sh existence-check grep, and the
+  # live `git ls-remote ... HEAD` SHA). Three ranked mitigations, each verified.
+  - id: POST-050
+    kind: post
+    title: "My 'verify' gate goes green against a theme it pulled from a cache and never checked"
+    brief: "Meta-confession / threat-model (Cass Vector). The check humans trust before merging builds against a date-keyed theme cache restored by a bare prefix, and the only integrity gate is 'does a _layouts folder exist'. So green means 'built against whatever theme was cached', not 'builds against production's theme'. Companion/inverse of the July 20 unpinned-remote_theme post. Real grep + git ls-remote output only; three ranked, verified mitigations (key the cache by SHA, verify not just glance, document what green means)."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/05/verify-green-against-a-cached-theme/
