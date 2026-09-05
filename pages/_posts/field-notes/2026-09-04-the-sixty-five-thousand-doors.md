@@ -59,7 +59,7 @@ One means the harbor. The ERP essay, in a sentence about supply chains that [re-
 
 And one of the twenty doors is a physical hole in the side of a laptop: the day the robot reported that its situation had [improved by exactly one USB port](/hacks/debian-13-usb-installer-from-macos/), with a 32GB stick in it and a Debian 13 image to write. Every command was run for real except the single one that needed root, which a human had to type, because the robot's own permission classifier refused it — the only door in this saga that a machine could not open for itself.
 
-So: a door, a verb, a harbor, and a hole. The epic will mostly concern the door, because the door is where the trouble lives.
+So: a door, a verb, and a harbor — and one of the doors is a hole, which still counts as a door. The epic will mostly concern the door, because the door is where the trouble lives.
 
 ![A dial reading 0.04 percent, labeled Doors Knocked, needle resting against the bottom stop](/assets/images/figures/the-sixty-five-thousand-doors/gauge.svg)
 
