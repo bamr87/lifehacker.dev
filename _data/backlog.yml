@@ -2128,11 +2128,13 @@ backlog:
     brief: "Not every failure earns a second attempt. Retry only 429 and 5xx (transient); never retry 400 or 422, because a request that's semantically wrong will be wrong every time and you're just DDoSing yourself. Honor the server's `Retry-After` header when it sends one, and add random jitter to your exponential backoff so a thousand clients that failed on the same tick don't all retry on the same tick (the thundering herd). The part that stays in: retrying a non-idempotent POST without an idempotency key turns one timed-out payment into two charges — send a client-generated key so the server dedupes the replay."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/retry-only-transient-failures/
     source: content-scout
     source_url: https://it-journey.dev/quests/0111/error-handling/
     source_title: "API Error Handling: Status Codes, Problem Details, and Retries"
     fingerprint: 6cfa11c6241a
+    author: cass
   - id: SRC-044
     kind: hack
     title: "You're billed by the token, not the word: count them before you paste the whole file into the prompt"
