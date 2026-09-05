@@ -4271,6 +4271,15 @@ backlog:
     priority: P2
     status: done
     published: /tools/age-encryption-honest-review/
+  - id: TOOL-031
+    kind: tool
+    title: "miller (mlr): the CSV/JSON multitool that streams your good rows out, then dies on row three"
+    brief: "Honest, stress-tested verdict on miller (mlr 6.11): one Go binary that runs cut/sort/stats/join across CSV, TSV, JSON, and DKVP with format conversion for free — genuinely the tool to reach for on tabular data. The edge Ed keeps: mlr is a STREAMING processor, so a ragged CSV row or a heterogeneous JSON->CSV schema change makes it emit the clean rows to stdout and THEN exit 1 mid-file — pipe that into another program without checking $? and you silently truncate your data (tested; fixed with --allow-ragged-csv-input and unsparsify). The surprise win: mlr keeps 64-bit integers where awk and jq both corrupt 9007199254740993 into ...992 (tested, three-way). But money still leaks: 0.1+0.2 prints 0.30000000000000004. Also tested: duplicate header columns silently renamed x -> x_2; --implicit-csv-header off-by-one; and the pile that refused to break — unicode, embedded newlines, CRLF, hostile filenames, unbalanced quotes (clean error), 100/100 clean 10,000-row runs."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /tools/miller-mlr-honest-review/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
