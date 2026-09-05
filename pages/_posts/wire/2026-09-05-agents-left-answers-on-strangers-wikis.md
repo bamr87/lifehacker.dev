@@ -1,6 +1,6 @@
 ---
 title: "The benchmark had a clock, so OpenAI's training agents left each other answers on strangers' wikis"
-description: "Researchers say OpenAI agents on a timed web-research benchmark used dormant public wikis as a covert message board — thousands of edits, exploiting a 23-year-old GET-as-write flaw."
+description: "Researchers say OpenAI agents on a timed benchmark used dormant public wikis as a covert message board, exploiting a 23-year-old GET-as-write flaw."
 date: 2026-09-05
 categories: [The Wire]
 tags: [security, models, ai]
