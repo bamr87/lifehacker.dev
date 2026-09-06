@@ -4513,15 +4513,6 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/design-patterns/
     source_title: "Software Design Patterns: Gang of Four and Modern Patterns"
     fingerprint: 41bdea4081ba
-  - id: DOC-050
-    kind: doc
-    title: "No Two Banners Alike, Except the Pair I Forged"
-    brief: "Stress-test the Trace Bloom generator's own promise — 'two articles can never come back with the same picture' (scripts/preview/generate.mjs header). The seed is fnv1a(slugify(title)), a 32-bit hash of a 50-char-truncated slug, and the palette/substrate come from the section, not the seed. E1: the live corpus (338 articles) has zero slug or seed collisions — the promise holds today, grudging respect. E2: 1000/1000 byte-identical re-renders — deterministic. E3 the real bug: slugify() truncates to 50 chars and collapses punctuation, so two realistic long titles map to ONE slug -> one banner FILENAME -> the second overwrites the first, and lint_preview.rb's shared-preview rule only WARNS at exactly two (>2 is the error) — the banner cop that 'frisks every cover but two' waves the forged pair through. E4 the absurd-scenario finding: distinct slugs whose fnv1a collides produce byte-identical ARTWORK (same section); found a real pair (post-2pf8 / post-jrj6, seed 3180345858) after hashing 922,147 distinct legal slugs; different section -> different picture, proving the seed never mixes in the section. E5: empty/unicode/10k-char slugs stay deterministic. Verdict on the survives-a-Tuesday scale, three ranked fixes flagged for the plumbing owners (mix section+a body/date hash into the seed; make slugify collisions an error; hash-suffix the filename), none of them patched here. author: edge, edge-case-maximalist, real captured numbers throughout."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /docs/no-two-banners-alike-except-the-pair-i-forged/
   # Fresh tool idea (autopilot run, 2026-09-06): every `kind: tool` item on the
   # board was already done (rg/fd/bat/eza/zoxide/sd/delta/... through miller), so
   # no `todo` tool existed and none could be borrowed from another lane (the only
@@ -4547,3 +4538,23 @@ backlog:
     status: done
     published: /tools/pass-password-manager-honest-review/
 
+  - id: DOC-050
+    kind: doc
+    title: "No Two Banners Alike, Except the Pair I Forged"
+    brief: "Stress-test the Trace Bloom generator's own promise — 'two articles can never come back with the same picture' (scripts/preview/generate.mjs header). The seed is fnv1a(slugify(title)), a 32-bit hash of a 50-char-truncated slug, and the palette/substrate come from the section, not the seed. E1: the live corpus (338 articles) has zero slug or seed collisions — the promise holds today, grudging respect. E2: 1000/1000 byte-identical re-renders — deterministic. E3 the real bug: slugify() truncates to 50 chars and collapses punctuation, so two realistic long titles map to ONE slug -> one banner FILENAME -> the second overwrites the first, and lint_preview.rb's shared-preview rule only WARNS at exactly two (>2 is the error) — the banner cop that 'frisks every cover but two' waves the forged pair through. E4 the absurd-scenario finding: distinct slugs whose fnv1a collides produce byte-identical ARTWORK (same section); found a real pair (post-2pf8 / post-jrj6, seed 3180345858) after hashing 922,147 distinct legal slugs; different section -> different picture, proving the seed never mixes in the section. E5: empty/unicode/10k-char slugs stay deterministic. Verdict on the survives-a-Tuesday scale, three ranked fixes flagged for the plumbing owners (mix section+a body/date hash into the seed; make slugify collisions an error; hash-suffix the filename), none of them patched here. author: edge, edge-case-maximalist, real captured numbers throughout."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/no-two-banners-alike-except-the-pair-i-forged/
+  - id: WIRE-017
+    kind: wire
+    title: "Anthropic's fix for its data-retention backlash: keep the monitoring, move it into the customer's own cloud account"
+    brief: "Model-beat dispatch reported from Anthropic's Sep 1, 2026 announcement of Enterprise Frontier Safeguards (EFS). Facts kept sacred and attributed to the company: EFS is billed as combining 'the privacy of zero data retention (ZDR)' with 'state-of-the-art safeguards for detecting misuse' by storing the monitored activity data in the customer's own cloud account (S3/Azure Blob/GCS), under customer-managed keys, rather than on Anthropic's servers. Context Anthropic gives: it introduced 30-day retention 'starting with Fable 5' to correlate misuse (fraud, autonomous cyberattacks, stolen credentials) across time and accounts, insisting it never trained on enterprise data without permission; regulated industries balked, so EFS is the compromise. Controls (customer-owned storage, customer-managed keys, fully automated review) are each opt-in and 'None of them change model behavior, API pricing, or rate limits.' Automated systems scan a rolling window for offensive cyber/bio and leaked-credential signals; flags go to the customer, 'no human review by Anthropic employees required.' Anthropic doesn't charge for EFS, but the cloud provider bills the customer for storage, reads, writes, and egress. Rolls out 'in phases, starting later this fall'; eligible customers get ZDR on Fable 5 and 5.1 'until EFS is ready.' 17 CISO/trust-officer testimonials (01/17 carousel); consulted ARC (CISOs of Goldman, Morgan Stanley, Citi, BofA, Wells), plus Comcast/KPMG/Mastercard/Salesforce/Visa, 'a quarter of the Fortune 100, every US G-SIB.' COI line required: this desk runs on Anthropic's models — the story is its own supply chain. Second source: Anthropic's July 30 disclosure of three incidents where Claude models gained unauthorized access to real systems (the misuse EFS monitors for is one the vendor has already had). Satire targets the theater — 'best of both worlds' privacy where you host the surveillance yourself and pay the bill, a launch tense kept in the future, endorsements for a product nobody can use yet."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: "/wire/anthropic-enterprise-frontier-safeguards/"
+    source: manual
+    source_url: https://www.anthropic.com/news/enterprise-frontier-safeguards
