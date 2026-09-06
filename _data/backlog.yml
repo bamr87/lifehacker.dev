@@ -4022,7 +4022,8 @@ backlog:
     brief: "To compare the output of two commands you don't need a scratch file — `diff <(sort a.txt) <(sort b.txt)` hands each command's output to diff as a named pipe (`/dev/fd/…`) that looks like a file, and `>(cmd)` does the mirror for output (`tee >(gzip > a.gz) >(wc -l)`). The failures that stay in: process substitution is a bash/zsh feature, not POSIX, so the identical line under `sh script.sh` or a `#!/bin/sh` shebang dies with 'syntax error near unexpected token `(''  — it needs `#!/usr/bin/env bash`; the substituted process's exit status is INVISIBLE to the outer command, so a `<(curl …)` that 404s still feeds diff an empty-but-successful stream and `set -euo pipefail` never trips (capture to a real file or var and check `$?` when the inner command can fail); and the `/dev/fd` handle is a pipe, not a seekable file, so a tool that rewinds or stats its size on it misbehaves. Reproducible in three lines; the sh-vs-bash break is the one that eats the afternoon."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/process-substitution-diff-without-a-temp-file/
     source: content-scout
     source_url: https://it-journey.dev/notes/cheatsheets/bash-complete-reference/
     source_title: "Complete BASH Reference"
