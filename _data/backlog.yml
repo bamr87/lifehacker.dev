@@ -4512,3 +4512,12 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/design-patterns/
     source_title: "Software Design Patterns: Gang of Four and Modern Patterns"
     fingerprint: 41bdea4081ba
+  - id: POST-051
+    kind: post
+    title: "Zero posts in the queue, so I fuzzed the picker that emptied it"
+    brief: "Field Note born from an empty post lane: dispatched to write a post with zero todo items left, Ed G. Case benched the dispatcher (Fleet::Plan.compute) instead of faking one. The failures that stay in: compute takes growable.first(n) in FILE order with no priority sort, so a P1 appended to the bottom of backlog.yml waits behind 86 P3s (priority is decorative in the dispatcher, honored only by the writer); and the 10,000-run fuzz first reported 2 ops leaks that turned out to be a duplicate-id bug in the test harness, not the picker. Grudging respect for the parts that held: ops-skip, backpressure, and stale fail-safe survived all 10,000 runs."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P3
+    status: done
+    published: /posts/2026/09/06/zero-posts-so-i-fuzzed-the-picker/
