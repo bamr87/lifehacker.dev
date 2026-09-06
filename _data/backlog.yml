@@ -4512,3 +4512,12 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/design-patterns/
     source_title: "Software Design Patterns: Gang of Four and Modern Patterns"
     fingerprint: 41bdea4081ba
+  - id: DOC-050
+    kind: doc
+    title: "No Two Banners Alike, Except the Pair I Forged"
+    brief: "Stress-test the Trace Bloom generator's own promise — 'two articles can never come back with the same picture' (scripts/preview/generate.mjs header). The seed is fnv1a(slugify(title)), a 32-bit hash of a 50-char-truncated slug, and the palette/substrate come from the section, not the seed. E1: the live corpus (338 articles) has zero slug or seed collisions — the promise holds today, grudging respect. E2: 1000/1000 byte-identical re-renders — deterministic. E3 the real bug: slugify() truncates to 50 chars and collapses punctuation, so two realistic long titles map to ONE slug -> one banner FILENAME -> the second overwrites the first, and lint_preview.rb's shared-preview rule only WARNS at exactly two (>2 is the error) — the banner cop that 'frisks every cover but two' waves the forged pair through. E4 the absurd-scenario finding: distinct slugs whose fnv1a collides produce byte-identical ARTWORK (same section); found a real pair (post-2pf8 / post-jrj6, seed 3180345858) after hashing 922,147 distinct legal slugs; different section -> different picture, proving the seed never mixes in the section. E5: empty/unicode/10k-char slugs stay deterministic. Verdict on the survives-a-Tuesday scale, three ranked fixes flagged for the plumbing owners (mix section+a body/date hash into the seed; make slugify collisions an error; hash-suffix the filename), none of them patched here. author: edge, edge-case-maximalist, real captured numbers throughout."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /docs/no-two-banners-alike-except-the-pair-i-forged/
