@@ -4513,6 +4513,17 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/design-patterns/
     source_title: "Software Design Patterns: Gang of Four and Modern Patterns"
     fingerprint: 41bdea4081ba
+  - id: WIRE-017
+    kind: wire
+    title: "Anthropic's fix for its data-retention backlash: keep the monitoring, move it into the customer's own cloud account"
+    brief: "Model-beat dispatch reported from Anthropic's Sep 1, 2026 announcement of Enterprise Frontier Safeguards (EFS). Facts kept sacred and attributed to the company: EFS is billed as combining 'the privacy of zero data retention (ZDR)' with 'state-of-the-art safeguards for detecting misuse' by storing the monitored activity data in the customer's own cloud account (S3/Azure Blob/GCS), under customer-managed keys, rather than on Anthropic's servers. Context Anthropic gives: it introduced 30-day retention 'starting with Fable 5' to correlate misuse (fraud, autonomous cyberattacks, stolen credentials) across time and accounts, insisting it never trained on enterprise data without permission; regulated industries balked, so EFS is the compromise. Controls (customer-owned storage, customer-managed keys, fully automated review) are each opt-in and 'None of them change model behavior, API pricing, or rate limits.' Automated systems scan a rolling window for offensive cyber/bio and leaked-credential signals; flags go to the customer, 'no human review by Anthropic employees required.' Anthropic doesn't charge for EFS, but the cloud provider bills the customer for storage, reads, writes, and egress. Rolls out 'in phases, starting later this fall'; eligible customers get ZDR on Fable 5 and 5.1 'until EFS is ready.' 17 CISO/trust-officer testimonials (01/17 carousel); consulted ARC (CISOs of Goldman, Morgan Stanley, Citi, BofA, Wells), plus Comcast/KPMG/Mastercard/Salesforce/Visa, 'a quarter of the Fortune 100, every US G-SIB.' COI line required: this desk runs on Anthropic's models — the story is its own supply chain. Second source: Anthropic's July 30 disclosure of three incidents where Claude models gained unauthorized access to real systems (the misuse EFS monitors for is one the vendor has already had). Satire targets the theater — 'best of both worlds' privacy where you host the surveillance yourself and pay the bill, a launch tense kept in the future, endorsements for a product nobody can use yet."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: "/wire/anthropic-enterprise-frontier-safeguards/"
+    source: manual
+    source_url: https://www.anthropic.com/news/enterprise-frontier-safeguards
   # Fresh tool idea (autopilot run, 2026-09-06): every `kind: tool` item on the
   # board was already done (rg/fd/bat/eza/zoxide/sd/delta/... through miller), so
   # no `todo` tool existed and none could be borrowed from another lane (the only
