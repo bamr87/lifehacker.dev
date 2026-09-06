@@ -4022,7 +4022,8 @@ backlog:
     brief: "To compare the output of two commands you don't need a scratch file — `diff <(sort a.txt) <(sort b.txt)` hands each command's output to diff as a named pipe (`/dev/fd/…`) that looks like a file, and `>(cmd)` does the mirror for output (`tee >(gzip > a.gz) >(wc -l)`). The failures that stay in: process substitution is a bash/zsh feature, not POSIX, so the identical line under `sh script.sh` or a `#!/bin/sh` shebang dies with 'syntax error near unexpected token `(''  — it needs `#!/usr/bin/env bash`; the substituted process's exit status is INVISIBLE to the outer command, so a `<(curl …)` that 404s still feeds diff an empty-but-successful stream and `set -euo pipefail` never trips (capture to a real file or var and check `$?` when the inner command can fail); and the `/dev/fd` handle is a pipe, not a seekable file, so a tool that rewinds or stats its size on it misbehaves. Reproducible in three lines; the sh-vs-bash break is the one that eats the afternoon."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/process-substitution-diff-without-a-temp-file/
     source: content-scout
     source_url: https://it-journey.dev/notes/cheatsheets/bash-complete-reference/
     source_title: "Complete BASH Reference"
@@ -4521,3 +4522,28 @@ backlog:
     priority: P3
     status: done
     published: /posts/2026/09/06/zero-posts-so-i-fuzzed-the-picker/
+  # Fresh tool idea (autopilot run, 2026-09-06): every `kind: tool` item on the
+  # board was already done (rg/fd/bat/eza/zoxide/sd/delta/... through miller), so
+  # no `todo` tool existed and none could be borrowed from another lane (the only
+  # `todo` items are OPS-001 and the content-scout SRC hacks). The one open
+  # auto:content PR is a HACK (process substitution), so no tool to duplicate.
+  # Rather than no-op or cross collections, synthesized a fresh in-lane tool,
+  # written AS Cass Vector (byline rotation `ruby scripts/fleet/authors.rb
+  # --section tool` -> `cass`, and the topic carries a genuine security angle).
+  # `pass` — the standard unix password manager — is untouched and threat-model
+  # rich: it encrypts the secret CONTENTS with GPG but leaves the FILENAME/path in
+  # cleartext (metadata leak, proven with `find`), its optional git history keeps
+  # every deleted and rotated secret recoverable forever (recovered a deleted
+  # bank password and a rotated API key from history for real), and `pass -c`
+  # copies to the shared X11/Wayland clipboard. All run for real on Ubuntu 24.04
+  # with pass 1.7.4 + GnuPG 2.4.4; three ranked, tested mitigations.
+  - id: TOOL-032
+    kind: tool
+    title: "pass: the password manager that encrypts the secret and leaves the label on the box"
+    brief: "Threat-model review (Cass Vector) of `pass`, the standard unix password manager. Verdict: use it — GPG-backed, plain files, git-versioned, and I trust it more than any subscription vault. But it encrypts the CONTENTS, not the metadata: the filename and directory path stay cleartext on disk (`pass ls` and `find` leak every service + username without decrypting a byte), the optional `pass git` history keeps every deleted and rotated secret recoverable forever (recovered a `pass rm`'d bank password and a rotated `sk-live-` key from old blobs, for real), and `pass -c` pushes the secret onto the shared X11/Wayland clipboard any app on the session can read. Every command run for real on Ubuntu 24.04 (pass 1.7.4, GnuPG 2.4.4). Three ranked, tested mitigations — re-init/filter the git history AND rotate at source, keep the store on encrypted-at-rest storage, pipe to stdin instead of `-c` — none of them 'be more careful.'"
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/pass-password-manager-honest-review/
+
