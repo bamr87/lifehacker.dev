@@ -14,7 +14,7 @@ permalink: /tools/pass-password-manager-honest-review/
 
 Here is the thing about a password manager: it is a single box holding everything an attacker wants, so it advertises "encrypted" the way a bank advertises "vault." Fine. But "encrypted" is a claim about the *contents* of the box. It says nothing about the *label*. And `pass` — bless its minimalist heart — writes the label in permanent marker on the outside.
 
-Everything below ran for real on Ubuntu 24.04, `pass 1.7.4`, GnuPG 2.4.4, in a throwaway store with a throwaway key. The secrets are fake. The behavior is not.
+Everything below ran for real on Ubuntu 24.04, `pass 1.7.4`, GnuPG 2.4.4, in a throwaway store at `/tmp/passdemo-store` with a throwaway key (your real store defaults to `~/.password-store` — that's why the demo paths below say `/tmp`). The secrets are fake. The behavior is not.
 
 ## What earns the install
 
@@ -43,10 +43,10 @@ Password Store
 The contents really are encrypted. Pull the raw file off disk and it's ciphertext — `strings` gets you nothing, the secret is not in there in any readable form:
 
 ```console
-$ file ~/.password-store/work/stripe-prod-api-key.gpg
+$ file /tmp/passdemo-store/work/stripe-prod-api-key.gpg
 /tmp/passdemo-store/work/stripe-prod-api-key.gpg: data
 
-$ strings ~/.password-store/work/stripe-prod-api-key.gpg | head -3
+$ strings /tmp/passdemo-store/work/stripe-prod-api-key.gpg | head -3
 'M/j/
 ```
 
@@ -59,7 +59,7 @@ So where's the paranoia? Look at that `pass ls` output again. Read it like an at
 `pass` encrypts the password. It does not — cannot — encrypt the *path* the password lives at. The path is a real directory on a real filesystem, and directory names are not secret. An attacker who gets read access to `~/.password-store` (a synced backup, a stolen laptop, a misconfigured Dropbox folder, a container image someone `COPY . .`'d) does not need your key to learn this:
 
 ```console
-$ find ~/.password-store -name '*.gpg' -printf '%P\n' | sed 's/\.gpg$//' | sort
+$ find /tmp/passdemo-store -name '*.gpg' -printf '%P\n' | sed 's/\.gpg$//' | sort
 bank/chase.com/alice
 email/gmail.com/alice
 work/stripe-prod-api-key
@@ -69,7 +69,7 @@ I just learned that `alice` banks at Chase, uses Gmail, runs Stripe in productio
 
 Escalate it to the worst case, because that's the job: a state-level actor exfiltrates a backup of ten thousand employees' password stores. They can't crack GPG. They don't need to. `find | sort` gives them a de-anonymized map of every service every employee uses, which bank, which crypto exchange, which internal admin panel is named `admin/root/prod-db`. That is a target list, sorted, for free.
 
-Walk it back to reality: you are not being targeted by a state actor. But your `~/.password-store` probably IS in a git repo, and that git repo probably IS on someone else's server, and "the contents are encrypted so it's fine to push publicly" is a sentence people say right before they publish their entire life's org chart. **There is no `pass` flag that hides this.** I checked — the filenames stay cleartext no matter what you do inside the tool, because the tool is a convention over the filesystem and the filesystem's whole job is to know filenames. `RATING: CVE-YOUR-DIRECTORY-LISTING. SEVERITY: your threat model. EXPLOITABILITY: `ls`.`
+Walk it back to reality: you are not being targeted by a state actor. But your `~/.password-store` probably IS in a git repo, and that git repo probably IS on someone else's server, and "the contents are encrypted so it's fine to push publicly" is a sentence people say right before they publish their entire life's org chart. **There is no `pass` flag that hides this.** I checked — the filenames stay cleartext no matter what you do inside the tool, because the tool is a convention over the filesystem and the filesystem's whole job is to know filenames. `RATING: CVE-YOUR-DIRECTORY-LISTING. SEVERITY: your threat model. EXPLOITABILITY: ls.`
 
 ## Leak #2: git remembers the secret you deleted
 
@@ -139,7 +139,7 @@ Ranked, tested, none of them "be more careful."
 **1. Treat a leaked-then-rotated secret as still leaked, and scrub the history — don't just `pass rm`.** This is #1 because it's the one that saves you after a real compromise. The moment a secret hits git history, rotating it in `pass` doesn't un-leak the old value; you must also rotate it *at the source* (regenerate the Stripe key in Stripe's dashboard) AND remove it from history. The blunt, tested version is to drop the git history entirely and start fresh — the old blobs become unreachable:
 
 ```console
-$ rm -rf ~/.password-store/.git
+$ rm -rf /tmp/passdemo-store/.git
 $ pass git init
 $ git show 369a781:bank/chase.com/alice.gpg
 fatal: invalid object name '369a781'.
