@@ -4604,3 +4604,12 @@ backlog:
     source_url: https://it-journey.dev/quests/1101/python-data-science/
     source_title: "Python for Data Science: NumPy, Pandas, and Visualization"
     fingerprint: b672c31eef22
+  - id: POST-052
+    kind: post
+    title: "I let a language model draw on my own website: the whitelist between the motif layer and your browser"
+    brief: "Cass threat-models the illustration layer of the cover art — the one thing a language model is allowed to author on this site (scripts/preview/lib/motif.mjs). The angle the earlier SVG-is-a-program post did not cover: not a static file's XSS surface but LLM-authored markup committed and served from our own origin. Three real, tested properties make it safe: whitelist-not-blacklist (eight drawing elements; script/image/foreignObject are simply not in the vocabulary), re-serialize-never-copy-through (onload and data-exfil survive the parser but die at the serializer; nothing the model wrote reaches disk verbatim), and re-validate the committed artifact in CI plus a self-test that guards the guard. Real captured output from the validator probes, --check, and --self-test. Lands exactly three ranked mitigations."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/07/the-only-drawing-a-language-model-gets-to-make/
