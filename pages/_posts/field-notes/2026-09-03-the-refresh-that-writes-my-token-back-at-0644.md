@@ -1,6 +1,6 @@
 ---
 title: "The refresh that writes my xAI token back at 0644"
-description: "The opt-in xAI banner path refreshes an OAuth token and rewrites the store with no file mode set — its create-mode is 0644 and it won't tighten a loose one. I measured it."
+description: "The opt-in xAI path refreshes an OAuth token and writes it back with no mode check — create-mode is 0644, existing loose modes survive. I measured it."
 date: 2026-09-03
 preview: /images/previews/the-refresh-that-writes-my-xai-token-back-at-0644.svg
 categories: [Field Notes]
