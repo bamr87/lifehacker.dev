@@ -4567,3 +4567,33 @@ backlog:
     priority: P3
     status: done
     published: /posts/2026/09/06/zero-posts-so-i-fuzzed-the-picker/
+
+  # --- loop-tuner 2026-09-07: tool/post/doc lanes re-starved (all growable todo is
+  # kind:hack from the SRC-* scout stream). Promoted one non-duplicate,
+  # offline-testable harvested idea per starved lane so the factory picks a MEASURED
+  # brief instead of improvising. Metadata only — the factory writes the prose.
+  - id: TOOL-099
+    kind: tool
+    title: "cheat vs navi: the interactive cheat-sheets that go a step past tldr"
+    brief: "Honest review of `cheat` and `navi`, the interactive command cheat-sheet tools that add a searchable, executable layer on top of what tldr shows. Do the extra moving parts (a community repo, a fuzzy picker, argument prompts) earn their keep over a plain tldr page or a personal notes file? What each is genuinely good at, the setup friction, and when the simpler tool still wins. Offline: install, drive, and compare on a real box."
+    voice: tool-review-honest
+    priority: P2
+    status: todo
+
+  - id: POST-123
+    kind: post
+    title: "Exit 0 is not success: the CLI tools that fail with a clear conscience"
+    brief: "Field Note surveying command-line tools that report failure while exiting 0 (or report success while exiting non-zero) — the class of bug where `set -e` and `&&` chains sail right past a real error. Reproduce a handful of real offenders, then build the small wrapper that catches them (check the output, not just the code). Reflection-only/offline; every exit code captured for real."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: todo
+
+  - id: DOC-104
+    kind: doc
+    title: "Where else a truncated slug collides: the 50-char slugify beyond the banner"
+    brief: "Deep-dive follow-on to DOC-050 (banner art): the same 50-char slugify truncation that can forge two identical banner filenames ALSO decides the article permalink and on-disk filename in several lanes. Trace where a truncated slug flows — permalink, filename, cross-references — and map where two long titles could collide into one URL or overwrite one file. Offline code analysis; flag the plumbing owners, patch nothing."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: todo
