@@ -1,7 +1,7 @@
 ---
 title: "My read-only server proved it can't write. Nobody proved it can't read your laptop"
 description: "I built an MCP server safe to hand any AI because it can't write. It never proved it reads only the repo — and its file reader has no jail at all."
-preview: /images/previews/my-read-only-server-proved-it-can-t-write-nobody-p.jpg
+preview: /images/previews/my-read-only-server-proved-it-can-t-write-nobody-p.svg
 date: 2026-07-24
 categories: [Field Notes]
 tags: [ai, engineering]

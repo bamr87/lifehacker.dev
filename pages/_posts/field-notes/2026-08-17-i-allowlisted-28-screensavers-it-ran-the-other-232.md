@@ -2,7 +2,7 @@
 title: "I allowlisted 28 screensavers. It ran the other 232 anyway."
 description: "XScreenSaver treats hacks missing from programs: as enabled — my allowlist was default-allow in a costume. Sampling caught it; deny-by-default fixed it."
 date: 2026-08-17
-preview: /images/previews/i-allowlisted-28-screensavers-it-ran-the-other-232.jpg
+preview: /images/previews/i-allowlisted-28-screensavers-it-ran-the-other-232.svg
 categories: [Field Notes]
 tags: [shell, security]
 author: cass

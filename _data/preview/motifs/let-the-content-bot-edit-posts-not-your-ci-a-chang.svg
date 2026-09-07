@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img"
+     data-schema="trace-bloom-motif/1" data-model="grok-4-1-fast-non-reasoning" data-attempts="1" data-digest="5c461074">
+<title>A git diff gate: two parallel file paths (origin/BASE...HEAD) enter a narrow allowlist box; one path is blocked by a thick red slash, the other exits clean; a dashed commit arrow loops back to the box, showing the closed-fail check.</title>
+<!-- Preview only: the banner compositor ignores this block and resolves the
+     tokens against the article's own section palette. -->
+<style>:root{--ink:#fff4e0;--cool:#f59e0b;--warm:#ef4444;--accent:#f97316;--grid:#3d2a14;--muted:#a88960;--bg0:#0a0704;--bg1:#1a1008}</style>
+  <g>
+    <defs>
+      <linearGradient id="m-g1" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="var(--cool)"/>
+        <stop offset="1" stop-color="var(--accent)"/>
+      </linearGradient>
+    </defs>
+    <rect x="280" y="320" width="440" height="360" rx="12" ry="12" fill="none" stroke="var(--cool)" stroke-width="14"/>
+    <path d="M120,400 Q220,400 280,400" fill="none" stroke="var(--cool)" stroke-width="14"/>
+    <path d="M120,600 Q220,600 280,600" fill="none" stroke="var(--cool)" stroke-width="14"/>
+    <path d="M120,600 Q220,600 280,600" fill="none" stroke="var(--warm)" stroke-width="14" stroke-dasharray="24 18"/>
+    <line x1="200" y1="560" x2="280" y2="640" fill="none" stroke="var(--warm)" stroke-width="18"/>
+    <path d="M720,400 Q780,400 880,400" fill="none" stroke="var(--cool)" stroke-width="14"/>
+    <path d="M500,680 Q500,760 620,760 Q700,760 700,680" fill="none" stroke="var(--muted)" stroke-width="12" stroke-dasharray="18 18"/>
+    <polygon points="700,680 690,670 710,670" fill="var(--muted)"/>
+    <circle cx="500" cy="500" r="36" fill="none" stroke="var(--accent)" stroke-width="18"/>
+    <line x1="470" y1="470" x2="530" y2="530" fill="none" stroke="var(--accent)" stroke-width="14"/>
+  </g>
+</svg>

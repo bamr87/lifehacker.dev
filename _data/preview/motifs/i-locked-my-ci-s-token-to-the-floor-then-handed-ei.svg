@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img"
+     data-schema="trace-bloom-motif/1" data-model="grok-4-1-fast-non-reasoning" data-attempts="2" data-digest="dce25c44">
+<title>A single, centered, high-contrast diagram of a secure data pipeline: a large server rectangle with a lock icon, connected by a thick dashed line to a smaller client rectangle with a checkmark, all scaled to fill most of the frame.</title>
+<!-- Preview only: the banner compositor ignores this block and resolves the
+     tokens against the article's own section palette. -->
+<style>:root{--ink:#fff4e0;--cool:#f59e0b;--warm:#ef4444;--accent:#f97316;--grid:#3d2a14;--muted:#a88960;--bg0:#0a0704;--bg1:#1a1008}</style>
+  <g>
+    <rect x="140" y="140" width="720" height="720" rx="24" fill="none" stroke="var(--grid)" stroke-width="16"/>
+    <rect x="280" y="280" width="240" height="240" rx="16" fill="none" stroke="var(--cool)" stroke-width="16"/>
+    <circle cx="400" cy="400" r="72" fill="none" stroke="var(--ink)" stroke-width="16"/>
+    <path d="M400 328 L400 472 M328 400 L472 400" fill="none" stroke="var(--ink)" stroke-width="16"/>
+    <line x1="520" y1="400" x2="680" y2="400" stroke="var(--cool)" stroke-width="16" stroke-dasharray="36 24"/>
+    <polygon points="680,380 720,400 680,420" fill="var(--cool)"/>
+    <rect x="720" y="320" width="160" height="160" rx="12" fill="none" stroke="var(--warm)" stroke-width="16"/>
+    <path d="M760 360 L840 440 M760 440 L840 360" fill="none" stroke="var(--warm)" stroke-width="16"/>
+  </g>
+</svg>

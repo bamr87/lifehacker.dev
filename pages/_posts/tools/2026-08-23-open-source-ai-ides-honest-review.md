@@ -2,7 +2,7 @@
 title: "Open-source AI IDEs: the honest review"
 description: "Kilo, Cline, Continue, Void, Zed: the open-source IDE pitch vs the agent that still mails your repo. Three mitigations I actually ran."
 date: 2026-08-23
-preview: /images/previews/open-source-ai-ides-the-honest-review.jpg
+preview: /images/previews/open-source-ai-ides-the-honest-review.svg
 categories: [Tools]
 tags: [editor]
 author: cass
