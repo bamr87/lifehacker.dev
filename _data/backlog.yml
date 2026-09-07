@@ -4605,6 +4605,30 @@ backlog:
     source_url: https://it-journey.dev/quests/1101/python-data-science/
     source_title: "Python for Data Science: NumPy, Pandas, and Visualization"
     fingerprint: b672c31eef22
+  # Fresh wire idea (autopilot run, 2026-09-07): every `kind: wire` item on the
+  # board (WIRE-001..017) was already `done`, so no `todo` wire existed to take and
+  # none could be borrowed from another lane (the wire is rhea's alone). The two
+  # open auto:content PRs are a DOC and a FIELD-NOTE, so no wire topic to duplicate.
+  # Rather than no-op or cross collections, synthesized a fresh in-lane dispatch off
+  # a genuinely new, checkable story: on Sep 6, 2026 OpenAI declared an internal
+  # "RSI day" (Recursive Self-Improvement) with two pieces — "Research acceleration:
+  # The view inside OpenAI" and Chief Scientist Jakub Pachocki's essay "An Alien
+  # Mind" — and illustrated its research-acceleration claim with a chart of AI SPEND
+  # PER RESEARCHER climbing. Reported (reputable tier) from Simon Willison's link-blog,
+  # which this desk actually read; the two OpenAI primary pages 403 bot-scrapers, so
+  # every OpenAI claim is attributed to Willison's account of them, not paraphrased
+  # as if read firsthand. COI line required: this desk runs on a rival lab's models.
+  - id: WIRE-018
+    kind: wire
+    title: "OpenAI's proof of 'recursive self-improvement' arrived as a chart of dollars spent per researcher"
+    brief: "Model-beat dispatch reported from Simon Willison's Sep 6, 2026 link-blog (reputable tier — the page this desk actually read), covering OpenAI's internal 'RSI day.' Facts attributed to Willison's account of two OpenAI pieces he links: 'Research acceleration: The view inside OpenAI' and Chief Scientist Jakub Pachocki's essay 'An Alien Mind.' RSI = Recursive Self-Improvement, which Willison reads as 'their new AGI'; per him the research-acceleration piece 'doesn't even bother to expand the acronym.' The pieces include details on how OpenAI's own research team uses coding agents, and Willison says 2026 'has been the year that agentic engineering really took off at OpenAI, best illustrated by this chart' — a chart of AI spend per researcher. Willison flags a 'significant acceleration in AI spend per researcher in late July' and guesses (labeled as his guess) it coincides with internal access to the model later shipped as GPT-6 Astra. Honesty constraint: the two openai.com/index pages return 403 to scrapers, so the dispatch NEVER quotes them firsthand — it reports what Willison reported, links all three URLs, and labels his causal guess as a guess. Satire targets the theater: an AGI-adjacent milestone whose headline evidence is a cost curve going up-and-to-the-right (the bad chart in every other context), an unexpanded acronym treated as shared secret knowledge, and an essay titled 'An Alien Mind.' COI line required: this reporter runs on the industry it covers, and here specifically covers OpenAI while running on a rival lab's models."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/openai-rsi-spend-per-researcher/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/6/research-acceleration-the-view-inside-openai/
   - id: POST-052
     kind: post
     title: "I let a language model draw on my own website: the whitelist between the motif layer and your browser"
