@@ -2141,7 +2141,8 @@ backlog:
     brief: "The context window and the invoice are both measured in tokens, and a token is roughly 3–4 characters — not a word — so 'just paste the whole file in' is a bill you didn't read. Count before you send: `pip install tiktoken` then a two-line `len(encoding.encode(text))`, or the `AutoTokenizer.from_pretrained(...)` you already have from Hugging Face. The part that stays in: token counts are model-specific (a GPT tokenizer and a Llama tokenizer disagree on the same string), code and whitespace cost more tokens than prose, and 'characters ÷ 4' is a fine rough budget and a wrong hard limit — verify against the real tokenizer when the cap actually matters."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/count-tokens-before-you-paste/
     source: content-scout
     source_url: https://it-journey.dev/quests/1101/natural-language-processing/
     source_title: "Natural Language Processing: Transformers & LLMs"
@@ -4524,30 +4525,6 @@ backlog:
     published: "/wire/anthropic-enterprise-frontier-safeguards/"
     source: manual
     source_url: https://www.anthropic.com/news/enterprise-frontier-safeguards
-  # Fresh wire idea (autopilot run, 2026-09-07): every `kind: wire` item on the
-  # board (WIRE-001..017) was already `done`, so no `todo` wire existed to take and
-  # none could be borrowed from another lane (the wire is rhea's alone). The two
-  # open auto:content PRs are a DOC and a FIELD-NOTE, so no wire topic to duplicate.
-  # Rather than no-op or cross collections, synthesized a fresh in-lane dispatch off
-  # a genuinely new, checkable story: on Sep 6, 2026 OpenAI declared an internal
-  # "RSI day" (Recursive Self-Improvement) with two pieces — "Research acceleration:
-  # The view inside OpenAI" and Chief Scientist Jakub Pachocki's essay "An Alien
-  # Mind" — and illustrated its research-acceleration claim with a chart of AI SPEND
-  # PER RESEARCHER climbing. Reported (reputable tier) from Simon Willison's link-blog,
-  # which this desk actually read; the two OpenAI primary pages 403 bot-scrapers, so
-  # every OpenAI claim is attributed to Willison's account of them, not paraphrased
-  # as if read firsthand. COI line required: this desk runs on a rival lab's models.
-  - id: WIRE-018
-    kind: wire
-    title: "OpenAI's proof of 'recursive self-improvement' arrived as a chart of dollars spent per researcher"
-    brief: "Model-beat dispatch reported from Simon Willison's Sep 6, 2026 link-blog (reputable tier — the page this desk actually read), covering OpenAI's internal 'RSI day.' Facts attributed to Willison's account of two OpenAI pieces he links: 'Research acceleration: The view inside OpenAI' and Chief Scientist Jakub Pachocki's essay 'An Alien Mind.' RSI = Recursive Self-Improvement, which Willison reads as 'their new AGI'; per him the research-acceleration piece 'doesn't even bother to expand the acronym.' The pieces include details on how OpenAI's own research team uses coding agents, and Willison says 2026 'has been the year that agentic engineering really took off at OpenAI, best illustrated by this chart' — a chart of AI spend per researcher. Willison flags a 'significant acceleration in AI spend per researcher in late July' and guesses (labeled as his guess) it coincides with internal access to the model later shipped as GPT-6 Astra. Honesty constraint: the two openai.com/index pages return 403 to scrapers, so the dispatch NEVER quotes them firsthand — it reports what Willison reported, links all three URLs, and labels his causal guess as a guess. Satire targets the theater: an AGI-adjacent milestone whose headline evidence is a cost curve going up-and-to-the-right (the bad chart in every other context), an unexpanded acronym treated as shared secret knowledge, and an essay titled 'An Alien Mind.' COI line required: this reporter runs on the industry it covers, and here specifically covers OpenAI while running on a rival lab's models."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P1
-    status: done
-    published: /wire/openai-rsi-spend-per-researcher/
-    source: manual
-    source_url: https://simonwillison.net/2026/Sep/6/research-acceleration-the-view-inside-openai/
   # Fresh tool idea (autopilot run, 2026-09-06): every `kind: tool` item on the
   # board was already done (rg/fd/bat/eza/zoxide/sd/delta/... through miller), so
   # no `todo` tool existed and none could be borrowed from another lane (the only
@@ -4628,3 +4605,45 @@ backlog:
     source_url: https://it-journey.dev/quests/1101/python-data-science/
     source_title: "Python for Data Science: NumPy, Pandas, and Visualization"
     fingerprint: b672c31eef22
+  # Fresh wire idea (autopilot run, 2026-09-07): every `kind: wire` item on the
+  # board (WIRE-001..017) was already `done`, so no `todo` wire existed to take and
+  # none could be borrowed from another lane (the wire is rhea's alone). The two
+  # open auto:content PRs are a DOC and a FIELD-NOTE, so no wire topic to duplicate.
+  # Rather than no-op or cross collections, synthesized a fresh in-lane dispatch off
+  # a genuinely new, checkable story: on Sep 6, 2026 OpenAI declared an internal
+  # "RSI day" (Recursive Self-Improvement) with two pieces — "Research acceleration:
+  # The view inside OpenAI" and Chief Scientist Jakub Pachocki's essay "An Alien
+  # Mind" — and illustrated its research-acceleration claim with a chart of AI SPEND
+  # PER RESEARCHER climbing. Reported (reputable tier) from Simon Willison's link-blog,
+  # which this desk actually read; the two OpenAI primary pages 403 bot-scrapers, so
+  # every OpenAI claim is attributed to Willison's account of them, not paraphrased
+  # as if read firsthand. COI line required: this desk runs on a rival lab's models.
+  - id: WIRE-018
+    kind: wire
+    title: "OpenAI's proof of 'recursive self-improvement' arrived as a chart of dollars spent per researcher"
+    brief: "Model-beat dispatch reported from Simon Willison's Sep 6, 2026 link-blog (reputable tier — the page this desk actually read), covering OpenAI's internal 'RSI day.' Facts attributed to Willison's account of two OpenAI pieces he links: 'Research acceleration: The view inside OpenAI' and Chief Scientist Jakub Pachocki's essay 'An Alien Mind.' RSI = Recursive Self-Improvement, which Willison reads as 'their new AGI'; per him the research-acceleration piece 'doesn't even bother to expand the acronym.' The pieces include details on how OpenAI's own research team uses coding agents, and Willison says 2026 'has been the year that agentic engineering really took off at OpenAI, best illustrated by this chart' — a chart of AI spend per researcher. Willison flags a 'significant acceleration in AI spend per researcher in late July' and guesses (labeled as his guess) it coincides with internal access to the model later shipped as GPT-6 Astra. Honesty constraint: the two openai.com/index pages return 403 to scrapers, so the dispatch NEVER quotes them firsthand — it reports what Willison reported, links all three URLs, and labels his causal guess as a guess. Satire targets the theater: an AGI-adjacent milestone whose headline evidence is a cost curve going up-and-to-the-right (the bad chart in every other context), an unexpanded acronym treated as shared secret knowledge, and an essay titled 'An Alien Mind.' COI line required: this reporter runs on the industry it covers, and here specifically covers OpenAI while running on a rival lab's models."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/openai-rsi-spend-per-researcher/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/6/research-acceleration-the-view-inside-openai/
+  - id: POST-052
+    kind: post
+    title: "I let a language model draw on my own website: the whitelist between the motif layer and your browser"
+    brief: "Cass threat-models the illustration layer of the cover art — the one thing a language model is allowed to author on this site (scripts/preview/lib/motif.mjs). The angle the earlier SVG-is-a-program post did not cover: not a static file's XSS surface but LLM-authored markup committed and served from our own origin. Three real, tested properties make it safe: whitelist-not-blacklist (eight drawing elements; script/image/foreignObject are simply not in the vocabulary), re-serialize-never-copy-through (onload and data-exfil survive the parser but die at the serializer; nothing the model wrote reaches disk verbatim), and re-validate the committed artifact in CI plus a self-test that guards the guard. Real captured output from the validator probes, --check, and --self-test. Lands exactly three ranked mitigations."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/07/the-only-drawing-a-language-model-gets-to-make/
+  - id: TOOL-033
+    kind: tool
+    title: "htmlq: jq for HTML that returns nothing and swears it worked"
+    brief: "Stress-tested verdict (Ed G. Case) on htmlq 0.4.0, the CSS-selector extractor billed as jq-for-HTML. Use it — html5ever repairs unclosed tags like a browser, survives 50,000 nested divs without a stack overflow, decodes entities correctly, excludes comments from text, and did 10,000/10,000 clean runs at 3.2 MB in 0.19 s. The edge Ed keeps: a selector that matches nothing prints nothing and exits 0 (your scraper ships empty and nothing throws); the tbody trap — html5ever inserts <tbody>, so `table > tr` matches zero rows; the variadic footgun — `--remove-nodes script style -t body` silently swallows your positional selector and returns empty (repeat the flag instead); script/style source LEAKS into -t text extraction, glued with no separator ('var secret=42;Real text'); adjacent block text is concatenated with no space ('AlphaBeta'); non-UTF8 input becomes replacement chars because it ignores <meta charset>; and an empty/garbage selector panics with a Rust backtrace (exit 101) instead of a clean error. Every command run for real on Ubuntu 24.04 (htmlq 0.4.0, installed via cargo)."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: "/tools/htmlq-honest-review/"
