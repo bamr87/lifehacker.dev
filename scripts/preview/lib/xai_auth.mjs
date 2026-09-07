@@ -168,6 +168,7 @@ export async function resolveXaiAuth() {
 export function configuredXai(root, ymlPath) {
   const defaults = {
     model: 'grok-imagine-image-2.0',
+    svgModel: 'grok-4-1-fast-non-reasoning',
     aspect: '3:2',
     resolution: '1k',
     quality: 'medium',
@@ -182,6 +183,7 @@ export function configuredXai(root, ymlPath) {
     };
     return {
       model: process.env.LH_XAI_IMAGE_MODEL || grab('xai_image_model', defaults.model),
+      svgModel: process.env.LH_XAI_SVG_MODEL || grab('xai_svg_model', defaults.svgModel),
       aspect: process.env.LH_XAI_IMAGE_ASPECT || grab('xai_image_aspect', defaults.aspect),
       resolution: process.env.LH_XAI_IMAGE_RESOLUTION || grab('xai_image_resolution', defaults.resolution),
       quality: process.env.LH_XAI_IMAGE_QUALITY || grab('xai_image_quality', defaults.quality),

@@ -81,6 +81,21 @@
     }
   },
 
+  "_comment_authors": "Per-author visual identity. When an article's `author:` key matches, this lattice and palette REPLACE the section defaults for that banner — every cass article wears the same threat-model isometric, whether it is a hack or a field note. illustrator/format tell scripts/preview/xai.mjs how to draw: svg = Grok chat → motif fragment → Trace Bloom typesetting (never a one-shot SVG document).",
+  "authors": {
+    "cass": {
+      "lattice": "isometric",
+      "illustrator": "xai",
+      "format": "svg",
+      "direction": "Cass Vector. Tone, not iconography: the failure is already inside the machine. Put warm on the breach and cool on the intended path. Invent the metaphor from THIS page's objects — never a stock padlock, shield, skull, or checkmark unless the article is literally about that object.",
+      "palette": {
+        "bg0": "#0a0704", "bg1": "#1a1008", "grid": "#3d2a14",
+        "cool": "#f59e0b", "warm": "#ef4444",
+        "ink": "#fff4e0", "muted": "#a88960", "accent": "#f97316"
+      }
+    }
+  },
+
   "_comment_bounds": "Closed parameter space: the algorithm may only wander inside these ranges, because every seed in them was swept for a usable frame. See TRACE-BLOOM.md 'the parameter space must be closed'.",
   "bounds": {
     "density":      { "min": 15, "max": 24 },

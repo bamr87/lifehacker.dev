@@ -179,7 +179,9 @@ The one deliberate exception to "offline and deterministic": `scripts/media/open
 
 ## xAI Imagine covers (opt-in)
 
-A second, equally loud opt-in: `scripts/preview/xai.mjs` (also `generate.mjs --provider xai`) paints a 3:2 PNG cover via the xAI Imagine API (`grok-imagine-image-2.0` in `_data/ai.yml`). It is **not** the default, it is **not** a fallback, and a missing credential exits 3 instead of silently shipping Trace Bloom.
+A second, equally loud opt-in: `scripts/preview/xai.mjs` (also `generate.mjs --provider xai`). Default `--format svg` is two Grok passes: an art-director CONCEPT (a spatial metaphor of this page, not a topic icon), then a DRAW into a motif fragment (same validator as `illustrate.mjs`). Trace Bloom typesets the title. `xai_svg_model` in `_data/ai.yml` is `grok-4` on purpose — the fast non-reasoning model produced 8-shape padlocks. `--format raster` is the Imagine JPEG path. It is **not** the default generator, it is **not** a fallback, and a missing credential exits 3 instead of silently shipping Trace Bloom.
+
+Per-author identity lives in `_data/preview/design.json` `authors.<key>`. Cass Vector (`author: cass`) always wears the cass isometric lattice and amber/red palette, regardless of section: `node scripts/preview/xai.mjs --author cass`.
 
 Auth is OAuth-first, same posture as Claude:
 

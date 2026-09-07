@@ -78,13 +78,19 @@ function configuredModel() {
 
 // ── the brief ────────────────────────────────────────────────────────────────
 
-const SYSTEM = [
-  'You are a vector illustrator for lifehacker.dev, a technical publication with a',
-  'dark, high-contrast, diagrammatic house style. You draw ONE picture of what an',
-  'article is actually about — its concrete objects, structures, and process — as a',
-  'fragment of SVG that will be composited into a banner someone else typeset.',
-  'You never draw text, logos, faces, or generic technology collages.',
+export const SYSTEM = [
+  'You are a vector illustrator for lifehacker.dev. You invent ONE spatial metaphor',
+  'for the argument of a specific article, then draw it as an SVG fragment.',
+  'The picture is an abstraction of THIS page — its objects, its failure, its process —',
+  'not a clip-art noun for the topic. No text, logos, faces, or stock icons',
+  '(padlock, checkmark, robot, brain, lightbulb, rocket, circuit board, shield).',
   'You answer with a CONCEPT line and one fenced svg block. Nothing else.',
+].join(' ');
+
+export const CONCEPT_SYSTEM = [
+  'You are the art director for lifehacker.dev. You read one article and invent',
+  'a single spatial metaphor that only this page could earn. You do not draw yet.',
+  'No stock icons. No restating the title. Name objects that appear in the page.',
 ].join(' ');
 
 const ROLES = {
@@ -98,9 +104,48 @@ const ROLES = {
   bg1: 'a second background tone, same use',
 };
 
-function brief(article, sectionLabel) {
-  const excerpt = article.body.slice(0, 1400);
+export function conceptBrief(article, sectionLabel, direction = '') {
+  const excerpt = String(article.body || '').slice(0, 2800);
+  return `Read this article. Invent ONE spatial metaphor for its argument.
+
+ARTICLE
+  Section:     ${sectionLabel} (lifehacker.dev)
+  Title:       ${article.title}
+  Description: ${article.fields.description || '(none)'}
+  Tags:        ${article.tags.join(', ') || '(none)'}
+  Body:
+---
+${excerpt}
+---
+
+The picture must be an abstraction of THIS page: a relation among objects that
+appear in the piece (a token, a merge driver, a screensaver allowlist, a LEFT JOIN).
+A reader who knows the article should recognise the situation. A reader who does
+not should still see a specific machine, not a topic icon.
+
+FORBIDDEN unless the article is literally about that object: padlock, keyring,
+checkmark, shield, skull, robot head, brain, lightbulb, rocket, generic server
+rack, circuit board, "secure pipeline" clip-art.
+
+${direction ? `AUTHOR TONE\n  ${direction}\n` : ''}
+Reply with exactly three lines, nothing else:
+CONCEPT: one sentence describing the picture (the scene, not the headline)
+OBJECTS: three nouns taken from this page, semicolon-separated
+REFUSE: two stock icons you will not draw for this piece`;
+}
+
+export function brief(article, sectionLabel, direction = '', concept = null) {
+  const excerpt = article.body.slice(0, 2800);
+  const conceptBlock = concept
+    ? `APPROVED CONCEPT — draw this, do not invent a new one
+  ${concept.concept}
+  Objects that must appear: ${concept.objects || '(from the concept)'}
+  Do not draw: ${concept.refuse || 'stock padlock, checkmark, robot, brain'}
+
+`
+    : '';
   return `Draw the illustration for this article.
+${conceptBlock}
 
 ARTICLE
   Section:     ${sectionLabel} (lifehacker.dev)
@@ -130,20 +175,22 @@ HARD REQUIREMENTS
 - Reply with ONE <g> element containing the whole drawing. No <svg> wrapper.
 - Allowed elements only: g, path, circle, ellipse, rect, line, polyline, polygon,
   and defs/linearGradient/radialGradient/stop for gradients. No text, no images,
-  no scripts, no filters, no external references of any kind.
-- Between 10 and 60 shapes. Bold, flat, diagrammatic — the fewer shapes that
-  carry the idea, the better it reads. Every stroke at least 6 units wide: this
-  is seen at 300px in a card, where a hairline is nothing.
+  no scripts, no filters, no markers, no external references of any kind.
+- 16 to 80 shapes. Detail comes from overlapping paths and layered structure,
+  not from extra clip-art. Prefer <path> with curves over a pile of rectangles.
+  Every stroke at least 6 units wide: this is seen at 300px in a card.
+- Paint with tokens only: fill="cool" stroke="ink" — never hex, rgb(), or #fff.
 - At least two palette tokens, so the subject separates from its structure.
 - Do NOT fill the frame with a background rectangle. The banner has a background;
   your drawing sits on it.
 
 WHAT TO DRAW
-  The specific subject of THIS article — the actual apparatus it describes: the
-  pipeline, the cache layers, the failing check, the terminal, the wire, the loop.
-  Somebody who reads the article should recognise the picture. A reader who has
-  not should be able to guess what the piece is about. Generic circuit boards,
-  lightbulbs, robots, brains, and rocket ships are failures, not illustrations.
+  An abstraction of THIS page's argument as one spatial situation: A does B to C,
+  and C is already broken. Build it from objects that appear in the article, not
+  from topic icons. A reader of the piece should recognise the machine. A padlock,
+  checkmark, robot, brain, lightbulb, rocket, circuit board, or generic server
+  rack is a failure unless the page is about that object.
+${direction ? `\nAUTHOR TONE\n  ${direction}\n` : ''}
 
 FORMAT
 CONCEPT: one sentence naming what the drawing depicts (it becomes the image's
@@ -153,7 +200,7 @@ accessible description, so describe the picture, not the article).
 \`\`\``;
 }
 
-const RETRY = (previous, violations) => `Your drawing was rejected by the validator.
+export const RETRY = (previous, violations) => `Your drawing was rejected by the validator.
 
 WHAT YOU SENT
 \`\`\`svg
@@ -209,8 +256,10 @@ export function extractResponse(text) {
 
 function illustrate(article, { model, attempts, verbose }) {
   const sectionLabel = DESIGN.sections[article.section]?.label || article.section;
-  const palette = (DESIGN.sections[article.section] || DESIGN.sections['field-notes']).palette;
-  let prompt = brief(article, sectionLabel);
+  const authorCfg = (DESIGN.authors && DESIGN.authors[article.author]) || null;
+  const palette = (authorCfg && authorCfg.palette)
+    || (DESIGN.sections[article.section] || DESIGN.sections['field-notes']).palette;
+  let prompt = brief(article, sectionLabel, authorCfg && authorCfg.direction);
   let lastViolations = ['no response'];
 
   for (let attempt = 1; attempt <= attempts; attempt++) {
@@ -613,7 +662,8 @@ function selfTest({ quiet = false } = {}) {
 
 function renderFixtureBanner(motif) {
   const params = deriveParams({
-    slug: 'self-test', title: 'Self Test', tags: ['test'], section: 'hacks', body: 'a self test',
+    slug: 'self-test', title: 'Self Test', tags: ['test'], section: 'hacks',
+    body: 'a self test', author: 'claude',
   }, DESIGN);
   return renderSVG(buildScene(params, DESIGN), {
     title: 'Order your Dockerfile so the layer cache does its job',
@@ -621,4 +671,5 @@ function renderFixtureBanner(motif) {
   }, DESIGN);
 }
 
-process.exit(main());
+const invoked = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+if (invoked) process.exit(main());

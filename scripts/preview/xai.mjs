@@ -1,19 +1,14 @@
 #!/usr/bin/env node
-// Trace Bloom — OPT-IN xAI Imagine covers (OAuth first).
+// Trace Bloom — OPT-IN xAI covers (OAuth first).
 //
 //   node scripts/preview/xai.mjs -f pages/_posts/hacks/2026-08-01-thing.md
-//   node scripts/preview/xai.mjs --changed
-//   node scripts/preview/generate.mjs --provider xai --changed
+//   node scripts/preview/xai.mjs --author cass                 # every cass byline
+//   node scripts/preview/generate.mjs --provider xai --author cass
 //
 // Default cover art stays offline (generate.mjs). THIS path is the optional
-// extra: one painted 3:2 raster per article via the xAI Imagine API, authenticated
-// the house way — OAuth first (XAI_OAUTH_TOKEN, then the Kilo xAI login), API
-// key last. It NEVER falls back to Trace Bloom. A missing credential exits 3.
-//
-// Provenance: writes <out>.prompt.json next to the PNG so the art is auditable,
-// and generate.mjs treats the stamp as bespoke (it will not overwrite a PNG
-// cover unless --force). The matching Trace Bloom SVG is removed so the preview
-// lint does not report an orphan.
+// extra, authenticated OAuth-first. Default --format svg: Grok draws a motif
+// fragment (same validator as illustrate.mjs), Trace Bloom typesets the title.
+// --format raster is the Imagine JPEG path. A missing credential exits 3.
 //
 // Exit codes: 0 ok · 1 one or more articles failed · 3 no xAI credential.
 
@@ -24,8 +19,11 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
-import { readArticle, stampPreview, findMarkdown } from './lib/article.mjs';
+import { readArticle, stampPreview, findMarkdown, motifPath, MOTIF_DIR } from './lib/article.mjs';
 import { resolveXaiAuth, configuredXai } from './lib/xai_auth.mjs';
+import { authorStyle, resolvePalette } from './lib/author-style.mjs';
+import { parseFragment, validateTree, serializeMotifDocument } from './lib/motif.mjs';
+import { SYSTEM, CONCEPT_SYSTEM, brief, conceptBrief, RETRY, extractResponse } from './illustrate.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..', '..');
@@ -39,15 +37,19 @@ const log = (m) => console.log(`[xai-preview] ${m}`);
 const warn = (m) => console.error(`[xai-preview] WARN: ${m}`);
 const die = (m, code = EXIT_FAILED) => { console.error(`[xai-preview] ERROR: ${m}`); process.exit(code); };
 
-const HELP = `xAI Imagine preview covers — OAuth first, opt-in, no silent fallback
+const HELP = `xAI preview covers — OAuth first, opt-in, no silent fallback
 
   -f, --file <path>   article to paint (repeatable)
       --changed       every git-new/modified markdown file under pages/
       --all           every article under pages/_posts and pages/_docs
+      --author <key>  restrict to one authors.yml key (e.g. cass)
       --section <s>   restrict --all to one section
-      --force         redraw an article that already has an xAI JPEG
+      --format <id>   svg (default: Grok draws a motif, Trace Bloom typesets)
+                      raster (Imagine JPEG)
+      --force         redraw an article that already has an xAI cover
       --batch <n>     stop after n articles (default 4 for --all/--changed, 0 = no limit)
-      --model <id>    override _data/ai.yml xai_image_model
+      --model <id>    override _data/ai.yml xai_svg_model or xai_image_model
+      --attempts <n>  SVG validator retries (default 3)
       --aspect <r>    Imagine aspect ratio (default 3:2)
       --resolution <r> 1k or 2k (default 1k)
       --quality <q>   low or medium (default medium)
@@ -60,9 +62,10 @@ const HELP = `xAI Imagine preview covers — OAuth first, opt-in, no silent fall
 
 function parseArgs(argv) {
   const a = {
-    files: [], changed: false, all: false, section: null, force: false,
-    batch: null, model: null, aspect: null, resolution: null, quality: null,
-    jpegQuality: 70, compressOnly: false, dryRun: false, selfTest: false, verbose: false,
+    files: [], changed: false, all: false, author: null, section: null, force: false,
+    format: 'svg', batch: null, model: null, attempts: 3, aspect: null,
+    resolution: null, quality: null, jpegQuality: 70, compressOnly: false,
+    dryRun: false, selfTest: false, verbose: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const v = argv[i];
@@ -70,8 +73,11 @@ function parseArgs(argv) {
       case '-f': case '--file': a.files.push(argv[++i]); break;
       case '--changed': a.changed = true; break;
       case '--all': a.all = true; break;
+      case '--author': a.author = argv[++i]; break;
       case '--section': a.section = argv[++i]; break;
+      case '--format': a.format = argv[++i]; break;
       case '--force': a.force = true; break;
+      case '--attempts': a.attempts = Math.max(1, Number(argv[++i]) || 3); break;
       case '--batch': a.batch = Number(argv[++i]); break;
       case '--model': a.model = argv[++i]; break;
       case '--aspect': a.aspect = argv[++i]; break;
@@ -268,6 +274,124 @@ async function decodeImage(json) {
   throw new Error(`API response carried no image data: ${JSON.stringify(json).slice(0, 300)}`);
 }
 
+async function chatXai({ token, base, model, system, prompt, temperature = 0.4 }) {
+  const url = `${base.replace(/\/$/, '')}/chat/completions`;
+  const body = JSON.stringify({
+    model,
+    temperature,
+    max_tokens: 8000,
+    messages: [
+      { role: 'system', content: system },
+      { role: 'user', content: prompt },
+    ],
+  });
+  for (let attempt = 1; ; attempt++) {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', authorization: `Bearer ${token}` },
+      body,
+    });
+    const text = await res.text().catch(() => '');
+    if (res.ok) {
+      let json;
+      try { json = JSON.parse(text); } catch {
+        throw new Error('chat API returned non-JSON');
+      }
+      const content = json.choices && json.choices[0] && json.choices[0].message
+        && json.choices[0].message.content;
+      if (!content) throw new Error('chat API returned no message content');
+      return content;
+    }
+    const retryable = res.status === 429 || res.status >= 500;
+    if (retryable && attempt < 4) {
+      const wait = res.status === 429 ? 15000 * attempt : 5000;
+      warn(`${res.status} from chat — retrying in ${wait / 1000}s (attempt ${attempt}/4)`);
+      await new Promise((r) => setTimeout(r, wait));
+      continue;
+    }
+    throw new Error(`chat API returned ${res.status}: ${text.slice(0, 400)}`);
+  }
+}
+
+function parseConcept(text) {
+  const grab = (label) => {
+    const m = String(text).match(new RegExp(`^\\s*${label}:\\s*(.+)$`, 'mi'));
+    return m ? m[1].trim() : '';
+  };
+  return {
+    concept: grab('CONCEPT'),
+    objects: grab('OBJECTS'),
+    refuse: grab('REFUSE'),
+  };
+}
+
+async function illustrateSvg(article, { auth, cfg, attempts, verbose }) {
+  const sectionLabel = DESIGN.sections[article.section]?.label || article.section;
+  const style = authorStyle(DESIGN, article.author);
+  const palette = resolvePalette(DESIGN, article.section, article.author);
+  const model = cfg.svgModel;
+  const direction = style && style.direction;
+
+  const startedConcept = Date.now();
+  const conceptRaw = await chatXai({
+    token: auth.token, base: cfg.base, model, system: CONCEPT_SYSTEM,
+    prompt: conceptBrief(article, sectionLabel, direction),
+    temperature: 0.8,
+  });
+  const approved = parseConcept(conceptRaw);
+  if (!approved.concept) {
+    throw new Error('concept pass returned no CONCEPT line — refusing to draw a guess');
+  }
+  if (verbose) {
+    log(`  concept in ${Math.round((Date.now() - startedConcept) / 1000)}s: ${approved.concept}`);
+  }
+
+  let prompt = brief(article, sectionLabel, direction, approved);
+  let lastViolations = ['no response'];
+
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    const started = Date.now();
+    const raw = await chatXai({
+      token: auth.token, base: cfg.base, model, system: SYSTEM, prompt, temperature: 0.25,
+    });
+    if (verbose) log(`  draw ${attempt}: model replied in ${Math.round((Date.now() - started) / 1000)}s`);
+    const { concept, body } = extractResponse(raw);
+    let result;
+    try {
+      result = validateTree(parseFragment(body), { minElements: 16, maxElements: 80 });
+    } catch (e) {
+      result = { ok: false, violations: [`the SVG did not parse: ${e.message}. Send one well-formed <g> element.`] };
+    }
+    if (result.ok) {
+      if (verbose) {
+        log(`  draw ${attempt}: ${result.stats.drawables} shapes, `
+          + `${(result.stats.span[0] * 100).toFixed(0)}%x${(result.stats.span[1] * 100).toFixed(0)}% of frame`);
+      }
+      return {
+        document: serializeMotifDocument({
+          tree: result.tree,
+          concept: approved.concept || concept,
+          model, attempts: attempt, palette, title: article.title,
+        }),
+        concept: approved.concept || concept,
+      };
+    }
+    lastViolations = result.violations;
+    warn(`draw ${attempt}/${attempts} rejected: ${result.violations.join(' | ')}`);
+    prompt = RETRY(body, result.violations);
+  }
+  throw new Error(`no valid drawing after ${attempts} attempts — last: ${lastViolations.join(' | ')}`);
+}
+
+function dropRasterCover(article) {
+  for (const ext of ['jpg', 'jpeg', 'png']) {
+    const leftover = path.join(ROOT, OUT_DIR, `${article.slug}.${ext}`);
+    if (fs.existsSync(leftover)) fs.unlinkSync(leftover);
+    const side = `${leftover}.prompt.json`;
+    if (fs.existsSync(side)) fs.unlinkSync(side);
+  }
+}
+
 async function paint(article, { auth, cfg, verbose }) {
   const sectionLabel = DESIGN.sections[article.section]?.label || article.section;
   const palette = (DESIGN.sections[article.section] || DESIGN.sections['field-notes']).palette;
@@ -331,6 +455,13 @@ async function main() {
   if (args.bad) return EXIT_FAILED;
   if (args.selfTest) return selfTest();
   if (args.compressOnly) return compressOnly(args.jpegQuality, args.dryRun);
+  if (args.format !== 'svg' && args.format !== 'raster') {
+    warn(`unknown --format ${args.format} (want svg or raster)`);
+    return EXIT_FAILED;
+  }
+
+  const impliedAuthorAll = !!(args.author && !args.files.length && !args.changed && !args.all);
+  if (impliedAuthorAll) args.all = true;
 
   let targets = args.files.map((f) => (path.isAbsolute(f) ? f : path.join(ROOT, f)));
   const bulk = args.changed || args.all;
@@ -347,11 +478,14 @@ async function main() {
   if (!targets.length) { log('nothing to paint'); return 0; }
 
   const cfg = configuredXai(ROOT);
-  if (args.model) cfg.model = args.model;
+  if (args.model) {
+    if (args.format === 'svg') cfg.svgModel = args.model;
+    else cfg.model = args.model;
+  }
   if (args.aspect) cfg.aspect = args.aspect;
   if (args.resolution) cfg.resolution = args.resolution;
   if (args.quality) cfg.quality = args.quality;
-  const batch = args.batch === null ? (bulk ? 4 : 0) : args.batch;
+  const batch = args.batch === null ? (impliedAuthorAll ? 0 : (bulk ? 4 : 0)) : args.batch;
 
   let auth = null;
   if (!args.dryRun) {
@@ -384,26 +518,51 @@ async function main() {
       if (args.verbose) log(`skip (no front matter): ${rel}`);
       skipped++; continue;
     }
+    if (args.author && article.author !== args.author) {
+      skipped++; continue;
+    }
     if (isBespoke(article) && !args.force) {
       if (args.verbose) log(`skip (bespoke): ${rel}`);
       skipped++; continue;
     }
-    if (alreadyPainted(article.slug) && !args.force) {
+    const svgMode = args.format === 'svg';
+    const destMotif = motifPath(ROOT, article.slug);
+    if (svgMode && fs.existsSync(destMotif) && !args.force) {
+      if (args.verbose) log(`skip (already illustrated): ${rel}`);
+      skipped++; continue;
+    }
+    if (!svgMode && alreadyPainted(article.slug) && !args.force) {
       if (args.verbose) log(`skip (already painted): ${rel}`);
       skipped++; continue;
     }
     if (args.dryRun) {
-      log(`[dry run] would paint ${rel} → ${OUT_DIR}/${article.slug}.jpg (model ${cfg.model})`);
+      const out = svgMode
+        ? `${MOTIF_DIR}/${article.slug}.svg (model ${cfg.svgModel})`
+        : `${OUT_DIR}/${article.slug}.jpg (model ${cfg.model})`;
+      log(`[dry run] would paint ${rel} → ${out}`);
       painted++; continue;
     }
 
-    log(`painting: ${article.title}`);
+    log(`${svgMode ? 'drawing' : 'painting'}: ${article.title}`);
     try {
-      const result = await paint(article, { auth, cfg, verbose: args.verbose });
-      const written = writeCover(article, result.png, {
-        jpegQuality: args.jpegQuality, prompt: result.prompt, auth, cfg,
-      });
-      log(`  ✓ ${path.relative(ROOT, written.dest)} (${(written.bytes / 1024).toFixed(0)} kB)`);
+      if (svgMode) {
+        const result = await illustrateSvg(article, {
+          auth, cfg, attempts: args.attempts, verbose: args.verbose,
+        });
+        fs.mkdirSync(path.dirname(destMotif), { recursive: true });
+        fs.writeFileSync(destMotif, result.document, 'utf8');
+        dropRasterCover(article);
+        execFileSync(process.execPath, [path.join(HERE, 'generate.mjs'), '--force', '-f', file], {
+          cwd: ROOT, stdio: 'inherit',
+        });
+        log(`  ✓ ${MOTIF_DIR}/${article.slug}.svg — ${result.concept || '(no concept given)'}`);
+      } else {
+        const result = await paint(article, { auth, cfg, verbose: args.verbose });
+        const written = writeCover(article, result.png, {
+          jpegQuality: args.jpegQuality, prompt: result.prompt, auth, cfg,
+        });
+        log(`  ✓ ${path.relative(ROOT, written.dest)} (${(written.bytes / 1024).toFixed(0)} kB)`);
+      }
       painted++;
       await new Promise((r) => setTimeout(r, 800));
     } catch (e) {
@@ -436,8 +595,23 @@ function selfTest() {
   say('prompt carries the section palette', prompt.includes(palette.cool) && prompt.includes(palette.bg0));
   say('prompt forbids generic collage', /no faces/i.test(prompt));
   const cfg = configuredXai(ROOT);
-  say('default model is grok-imagine-image-2.0', cfg.model === 'grok-imagine-image-2.0', cfg.model);
+  say('default raster model is grok-imagine-image-2.0', cfg.model === 'grok-imagine-image-2.0', cfg.model);
+  say('default svg model is grok-4', cfg.svgModel === 'grok-4', cfg.svgModel);
   say('default aspect is 3:2', cfg.aspect === '3:2', cfg.aspect);
+  const cass = authorStyle(DESIGN, 'cass');
+  say('cass author style exists', !!(cass && cass.format === 'svg' && cass.lattice === 'isometric'));
+  say('cass palette is not the hacks palette', cass && cass.palette.cool !== DESIGN.sections.hacks.palette.cool);
+  const cassConcept = conceptBrief(
+    { title: 'Threat-model your dotfiles', fields: { description: 'x' }, body: 'x', tags: [] },
+    'Hacks', cass.direction,
+  );
+  say('concept pass forbids stock padlocks', /padlock/.test(cassConcept) && /CONCEPT:/.test(cassConcept));
+  const cassDraw = brief(
+    { title: 'Threat-model your dotfiles', fields: { description: 'x' }, body: 'x', tags: [] },
+    'Hacks', cass.direction,
+    { concept: 'a ssh config leaking through a cracked laptop hinge', objects: 'ssh config; laptop; known_hosts', refuse: 'padlock; skull' },
+  );
+  say('draw pass pins the approved concept', cassDraw.includes('cracked laptop hinge') && cassDraw.includes('APPROVED CONCEPT'));
 
   const prev = process.env.XAI_OAUTH_TOKEN;
   process.env.XAI_OAUTH_TOKEN = 'test-oauth-token';

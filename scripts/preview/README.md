@@ -20,7 +20,9 @@ node scripts/preview/illustrate.mjs -f <article.md> # Claude draws the subject, 
 node scripts/preview/illustrate.mjs --self-test     # the whitelist fixtures (offline)
 node scripts/preview/illustrate.mjs --check         # validate committed motifs (what the gate runs)
 
-node scripts/preview/xai.mjs -f <article.md>        # opt-in xAI Imagine JPEG cover (OAuth first, compressed)
+node scripts/preview/xai.mjs -f <article.md>        # opt-in xAI SVG motif (OAuth first) + Trace Bloom banner
+node scripts/preview/xai.mjs --author cass          # every cass byline, cass isometric/amber identity
+node scripts/preview/xai.mjs --format raster -f …   # Imagine JPEG instead
 node scripts/preview/xai.mjs --compress-only        # recompress existing preview rasters; no API calls
 node scripts/preview/generate.mjs --provider xai --changed
 node scripts/preview/xai.mjs --self-test            # offline; no network

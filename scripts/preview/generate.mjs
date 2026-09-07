@@ -38,7 +38,7 @@ const warn = (m) => console.error(`[trace-bloom] WARN: ${m}`);
 // ── args ─────────────────────────────────────────────────────────────────────
 function parseArgs(argv) {
   const a = {
-    files: [], changed: false, all: false, section: null, force: false,
+    files: [], changed: false, all: false, author: null, section: null, force: false,
     dryRun: false, scene: false, verbose: false, seed: null, outDir: OUT_DIR,
     provider: 'local',
   };
@@ -48,6 +48,7 @@ function parseArgs(argv) {
       case '-f': case '--file': a.files.push(argv[++i]); break;
       case '--changed': a.changed = true; break;
       case '--all': a.all = true; break;
+      case '--author': a.author = argv[++i]; break;
       case '--section': a.section = argv[++i]; break;
       case '--force': a.force = true; break;
       case '-n': case '--dry-run': a.dryRun = true; break;
@@ -71,11 +72,12 @@ const HELP = `Trace Bloom preview banners
       --changed       every git-new/modified markdown file
       --all           every article under pages/_posts and pages/_docs
       --section <s>   restrict --all to one section (hacks|tools|field-notes|wire|docs)
+      --author <key>  restrict to one authors.yml key (applies that author's design.json style)
       --force         regenerate even when the banner already exists
   -n, --dry-run       report what would be written
       --scene         print the generated scene as JSON (no files written)
       --seed <n>      override the derived seed (exploration only)
-  -p, --provider <id>  local (default, offline) | xai (opt-in Imagine raster)
+   -p, --provider <id>  local (default, offline) | xai (opt-in; default format svg)
   -v, --verbose
 `;
 
@@ -158,6 +160,10 @@ function main() {
       skipped++; continue;
     }
     if (!article.slug) { warn(`${rel}: cannot derive a slug from the title`); failed++; continue; }
+    if (args.author && article.author !== args.author) {
+      if (args.verbose) log(`skip (author ${article.author || 'none'}): ${rel}`);
+      skipped++; continue;
+    }
 
     const svgPath = path.join(outAbs, `${article.slug}.svg`);
     const stamp = `${FM_VALUE_PREFIX}/${article.slug}.svg`;
@@ -207,7 +213,7 @@ function main() {
 
     const params = deriveParams({
       slug: article.slug, title: article.title, tags: article.tags,
-      section: article.section, body: article.body,
+      section: article.section, body: article.body, author: article.author,
     }, DESIGN);
     if (args.seed !== null && Number.isFinite(args.seed)) params.seed = args.seed;
 

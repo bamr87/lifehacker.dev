@@ -21,6 +21,7 @@ ruby scripts/ci/lint_<name>.rb             # one check (frontmatter, brand, onel
 python3 tools/unwrap-prose.py --write [PATHS]
 node scripts/preview/generate.mjs -f <article.md>
 node scripts/preview/generate.mjs --provider xai -f <article.md>  # opt-in Imagine raster; OAuth first
+node scripts/preview/xai.mjs --author cass                       # SVG motifs in the cass identity
 node scripts/preview/illustrate.mjs -f <article.md>
 ruby scripts/fleet/authors.rb --section <kind>
 ```

@@ -104,12 +104,13 @@ function pick(rand, bounds) {
 const URGENT = /\b(fail|failed|failing|broke|broken|break|bug|crash|leak|regress|outage|panic|stale|silent|wrong|lost|rot|flake|flaky|deadlock|timeout|hang|corrupt|drift|never|can'?t|didn'?t|isn'?t|won'?t)\b/gi;
 const STEADY = /\b(architecture|design|pattern|guide|reference|how|structure|convention|standard|pipeline|contract|model|system|overview|explain|works|primer)\b/gi;
 
-export function deriveParams({ slug, title = '', tags = [], section = 'field-notes', body = '' }, design) {
+export function deriveParams({ slug, title = '', tags = [], section = 'field-notes', body = '', author = '' }, design) {
   const sections = design.sections;
   const sec = sections[section] ? section : 'field-notes';
   const seed = fnv1a(slug || title);
   const rand = mulberry32(seed);
   const b = design.bounds;
+  const authorCfg = (design.authors && author && design.authors[author]) || null;
 
   // Sample the closed parameter space. Order matters — it is part of the seed
   // contract; inserting a pick() above an existing one re-rolls every banner.
@@ -130,7 +131,8 @@ export function deriveParams({ slug, title = '', tags = [], section = 'field-not
   decay = clamp(decay + tilt * 0.12, b.decay.min, b.decay.max);
 
   return {
-    seed, section: sec, lattice: sections[sec].lattice,
+    seed, section: sec, author: author || '',
+    lattice: (authorCfg && authorCfg.lattice) || sections[sec].lattice,
     density, probes, relax, drift, interference, bloom, decay,
     tone: tilt > 0.15 ? 'urgent' : tilt < -0.15 ? 'steady' : 'even',
   };
@@ -264,7 +266,8 @@ function propagate(nodes, adj, sources) {
 export function buildScene(params, design, opts = {}) {
   const W = design.canvas.width, H = design.canvas.height;
   const sec = design.sections[params.section];
-  const pal = sec.palette;
+  const authorCfg = (design.authors && params.author && design.authors[params.author]) || null;
+  const pal = (authorCfg && authorCfg.palette) || sec.palette;
   const rand = mulberry32(params.seed ^ 0x9e3779b9);
   const noise = makeNoise(mulberry32(params.seed));
 

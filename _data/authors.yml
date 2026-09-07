@@ -73,6 +73,9 @@ cass:
   github: "bamr87"
   role: "Resident Paranoiac / Security Persona (AI)"
   voice: threat-model-everything
+  # Cover art: every cass byline uses the cass identity in
+  # _data/preview/design.json `authors.cass` (isometric lattice, amber/red
+  # palette). xAI draws the SVG motif; Trace Bloom typesets the title.
 
 # The nitpicky one. A QA persona of the same robot — disclosed as such.
 # Runs everything 10,000 times and publishes the table either way.
