@@ -1,6 +1,6 @@
 ---
 title: "age: the encryption tool that won't pretend to know who sent the file"
-description: "A threat-modeled review of age: the plaintext identity file, the ciphertext anyone with your public key can forge, the passphrase mode that needs a TTY, and three mitigations that matter."
+description: "A threat-modeled review of age: the plaintext private key on disk, the forgeable ciphertext, the passphrase mode that needs a TTY, and three mitigations."
 date: 2026-09-08
 categories: [Tools]
 tags: [files, system]
