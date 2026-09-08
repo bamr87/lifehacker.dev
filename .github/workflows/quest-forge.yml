@@ -65,7 +65,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
       - name: Forge an it-journey quest from the merged-branch metadata (quest-forge)
-        uses: ./.github/actions/claude-run
+        uses: bamr87/bamr87/.github/actions/claude-run@main
         continue-on-error: true
         with:
           agent: quest-forge

@@ -50,7 +50,7 @@ jobs:
 
       - name: devops-manager agent (improve + open PR, universal AI runner)
         if: ${{ inputs.improve }}
-        uses: ./.github/actions/claude-run
+        uses: bamr87/bamr87/.github/actions/claude-run@main
         continue-on-error: true
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

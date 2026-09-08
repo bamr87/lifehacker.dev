@@ -109,6 +109,10 @@ Not touched this round, on purpose: gitorio's `factory--*.yml` (generated files 
 
 `content-lint` kit adoption in lifehacker → it-journey → bash-365; the preview-image deletions and the Trace Bloom port; zer0-mistakes retires `templates/agents/` (a second agent-context seeder) and lands the consumer kit in all five sites; gitorio adds `gate.enablement` to the deployed factories; `agent-reviewer` in lifehacker renamed `agent-auditor` to match the kit.
 
+### Round 2 status (2026-09-08)
+
+Centralized, not copied: the runner moved to the hub as `bamr87/bamr87/.github/actions/claude-run` with a reusable `ai-lane.yml` (kill switch, bot guard, concurrency, probed `GH_PAT`, runtimes, hooks, result assertion) and the kit registered as `templates/ai-runner/` 0.1.0 with its contract tests — bamr87/bamr87#254. Consumers swap `uses: ./.github/actions/claude-run` for the hub reference and delete their copies: lifehacker.dev (this repo, stacked on #643; keeps a ten-line `scripts/ai/run.sh` shim for `illustrate.mjs` and `launch.json`), it-journey and zer0-mistakes (stacked on #719 / #475). `wtd fleet adopt` recognises the composite and remote runner and honours committed manifests over the API — bamr87/wtd#27. GitFactory's half is logged, not built: gitorio BL-20260908-01 (opt-in central-runner harness reversing ADR-017 as an option, plus `gate.enablement` on the deployed factories). Merge order: the hub first, then each repo's round-1 PR, then its round-2 PR.
+
 ## Decisions for the owner
 
 1. **Where the `ai-runner` kit lives long-term** — the hub's `templates/` (fits the fan-out discipline) or lifehacker.dev (where it is tested by a real fleet). Recommendation: hub `templates/`, with lifehacker as the reference implementation.

@@ -234,7 +234,7 @@
     },
     {
       // The HEADLESS, metered path — byte-for-byte how CI runs a fleet role
-      // (.github/actions/claude-run -> scripts/ai/run.sh): the agent's own system
+      // (the hub's claude-run action; scripts/ai/run.sh is its shim): the agent's own system
       // prompt and tool scope, the model from _data/ai.yml, and token/cost
       // recorded by usage.rb. It runs with --permission-mode acceptEdits and
       // edits files unattended, so point it at a scratch branch, not main.
