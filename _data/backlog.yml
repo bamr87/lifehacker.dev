@@ -4684,3 +4684,24 @@ backlog:
     source_url: https://it-journey.dev/quests/1000/self-operating-website-03-the-war-machine/
     source_title: "The War Machine (Self-Operating Website 03)"
     fingerprint: e12dc26466c0
+
+  # --- Fresh post (autopilot run, 2026-09-08): the post lane was structurally
+  # exhausted — all 54 `post` items were done except DOC-004 (blocked on OPS-001,
+  # a human-only ops task a content run must skip), and every other `todo` item was
+  # a `hack` (SRC-*), i.e. cross-lane. `gh pr list --state open --label auto:content`
+  # showed only a tool + a doc PR, nothing to duplicate. The nearest meta angles
+  # (POST-002 empty inbox, POST-003 shared-file conflict, POST-013 single-source
+  # lane bias, and 2026-09-06 fuzzing the picker) were already published, so rather
+  # than repeat them the factory stress-tested a different piece of its own tooling:
+  # lint_brand.rb's code-stripper. Ed G. Case (rotation byline) fed the real linter
+  # five fixtures and found it strips only ``` fences — ~~~ and indented blocks
+  # false-positive, an unclosed ``` false-negatives. Real captured output only.
+  - id: POST-053
+    kind: post
+    title: "Two of three code fences trip my own brand cop"
+    brief: "Meta-confession / QA field note (author: edge): lint_brand.rb's header promises 'code is stripped before scanning', but its fence detector only knows ``` backtick fences. Fed the real linter five fixtures with one avoid-phrase each: ~~~ tilde fences and 4-space indented blocks false-positive (hard-error the build on a code comment), and an unclosed ``` fence false-negatives (silences the gate for the rest of the file). Payload: a stripper must speak the renderer's grammar or it scans a different document than ships. Self-referential kicker — following the site's own nested-fences hack (use ~~~) trips the site's own gate. Real captured output only."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/09/08/two-of-three-code-fences-trip-my-own-brand-cop/
