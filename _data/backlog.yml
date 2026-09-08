@@ -4630,6 +4630,17 @@ backlog:
     published: /wire/openai-rsi-spend-per-researcher/
     source: manual
     source_url: https://simonwillison.net/2026/Sep/6/research-acceleration-the-view-inside-openai/
+  - id: WIRE-019
+    kind: wire
+    title: "OpenAI's GPT-6 Astra launch was reviewed on a pelican riding a bicycle — and leaked its own family tree in the token counts"
+    brief: "Model-beat dispatch reported from Simon Willison's Sep 4, 2026 grid analysis ('The Pelican comparison grid for Astra is pretty interesting') and his Sep 5, 2026 launch link-post ('Introducing GPT-6 Astra for developers') — both reputable tier, the pages this desk actually read (200 OK, fetched). Angle distinct from WIRE-018 (RSI chart) and the earlier GPT-6/AGI-harness dispatch: the de-facto independent review of OpenAI's biggest launch of the year was Willison's long-running informal benchmark — an SVG of a pelican riding a bicycle — run at low/medium/high/xhigh/max reasoning (Astra has no reasoning=none) and gridded against GPT-5.6 Sol, Terra and Luna. Facts, all attributed to Willison: every Astra pelican low->xhigh beats the best GPT-5.6-Sol pelican; Astra below max still doesn't reliably put the pelican's legs on both sides of the frame; pricing $10/M input, $50/M output vs Sol's $5/$30, but Astra uses fewer tokens per level so Astra-low draws a better pelican than any Sol at any level for 9.55 cents. The real news the chart deck omitted: Astra and Luna both encoded the prompt in 16 input tokens while Sol and Terra used 26, prompting Willison's (labeled-as-a-question) guess that Astra and Luna share more lineage than OpenAI disclosed. Satire targets the theater: a frontier launch whose most trusted third-party verdict is a bird on a bicycle nobody officially benchmarks, and a launch writeup Willison quotes claiming Astra 'excels at building 3D models' of 'gardens, shipyards, animals, cityscapes, even Dyson spheres.' COI line required: this newsroom runs on Anthropic's Claude, a rival to OpenAI. Kicker: the one number OpenAI never slid — 16."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/astra-pelican-grid/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/4/astra-pelicans/
   - id: POST-052
     kind: post
     title: "I let a language model draw on my own website: the whitelist between the motif layer and your browser"
@@ -4685,6 +4696,24 @@ backlog:
     source_url: https://it-journey.dev/quests/1000/self-operating-website-03-the-war-machine/
     source_title: "The War Machine (Self-Operating Website 03)"
     fingerprint: e12dc26466c0
+  # Fresh tool idea (autopilot run, 2026-09-08): every `kind: tool` item on the
+  # board was already `done` (TOOL-001..020, SRC-002, SRC-021) and the whole todo
+  # set is hacks (SRC-045..141) + OPS-001 (ops, skipped) — no tool item to take,
+  # and `gh pr list --state open --label auto:content` held only a hack and a doc.
+  # Rather than no-op or cross lanes, synthesized this in-lane: age is the obvious
+  # gap in the CLI family (rg/fzf/jq/fd/bat/…), a security-angle tool for the cass
+  # rotation. Every command run for real, apt-installed, no network. Reasoning is
+  # in the PR, not appended as a separate follow-up idea.
+  - id: TOOL-021
+    kind: tool
+    title: "age: the encryption tool that won't pretend to know who sent the file"
+    brief: "Threat-modeled honest review of age (the modern gpg-for-files replacement): the private identity file is a plaintext string on disk, the `>`-instead-of-`-o` redirect that strips its 600 mode to world-readable, the ciphertext ANYONE with your public key can forge (encryption isn't authentication — no --sign), the passphrase mode that refuses a pipe on purpose, and the tamper detection it genuinely earns. Three ranked, tested mitigations. Every command run for real, apt-installed, no network."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/age-honest-review/
+
   # --- Fresh post (autopilot run, 2026-09-08): the post lane was structurally
   # exhausted — all 54 `post` items were done except DOC-004 (blocked on OPS-001,
   # a human-only ops task a content run must skip), and every other `todo` item was
@@ -4705,32 +4734,19 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/09/08/two-of-three-code-fences-trip-my-own-brand-cop/
-  - id: WIRE-019
-    kind: wire
-    title: "OpenAI's GPT-6 Astra launch was reviewed on a pelican riding a bicycle — and leaked its own family tree in the token counts"
-    brief: "Model-beat dispatch reported from Simon Willison's Sep 4, 2026 grid analysis ('The Pelican comparison grid for Astra is pretty interesting') and his Sep 5, 2026 launch link-post ('Introducing GPT-6 Astra for developers') — both reputable tier, the pages this desk actually read (200 OK, fetched). Angle distinct from WIRE-018 (RSI chart) and the earlier GPT-6/AGI-harness dispatch: the de-facto independent review of OpenAI's biggest launch of the year was Willison's long-running informal benchmark — an SVG of a pelican riding a bicycle — run at low/medium/high/xhigh/max reasoning (Astra has no reasoning=none) and gridded against GPT-5.6 Sol, Terra and Luna. Facts, all attributed to Willison: every Astra pelican low->xhigh beats the best GPT-5.6-Sol pelican; Astra below max still doesn't reliably put the pelican's legs on both sides of the frame; pricing $10/M input, $50/M output vs Sol's $5/$30, but Astra uses fewer tokens per level so Astra-low draws a better pelican than any Sol at any level for 9.55 cents. The real news the chart deck omitted: Astra and Luna both encoded the prompt in 16 input tokens while Sol and Terra used 26, prompting Willison's (labeled-as-a-question) guess that Astra and Luna share more lineage than OpenAI disclosed. Satire targets the theater: a frontier launch whose most trusted third-party verdict is a bird on a bicycle nobody officially benchmarks, and a launch writeup Willison quotes claiming Astra 'excels at building 3D models' of 'gardens, shipyards, animals, cityscapes, even Dyson spheres.' COI line required: this newsroom runs on Anthropic's Claude, a rival to OpenAI. Kicker: the one number OpenAI never slid — 16."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P1
-    status: done
-    published: /wire/astra-pelican-grid/
-    source: manual
-    source_url: https://simonwillison.net/2026/Sep/4/astra-pelicans/
-  # Fresh tool idea (autopilot run, 2026-09-08): every `kind: tool` item on the
-  # board was already `done` (TOOL-001..020, SRC-002, SRC-021) and the whole todo
-  # set is hacks (SRC-045..141) + OPS-001 (ops, skipped) — no tool item to take,
-  # and `gh pr list --state open --label auto:content` held only a hack and a doc.
-  # Rather than no-op or cross lanes, synthesized this in-lane: age is the obvious
-  # gap in the CLI family (rg/fzf/jq/fd/bat/…), a security-angle tool for the cass
-  # rotation. Every command run for real, apt-installed, no network. Reasoning is
-  # in the PR, not appended as a separate follow-up idea.
-  - id: TOOL-021
-    kind: tool
-    title: "age: the encryption tool that won't pretend to know who sent the file"
-    brief: "Threat-modeled honest review of age (the modern gpg-for-files replacement): the private identity file is a plaintext string on disk, the `>`-instead-of-`-o` redirect that strips its 600 mode to world-readable, the ciphertext ANYONE with your public key can forge (encryption isn't authentication — no --sign), the passphrase mode that refuses a pipe on purpose, and the tamper detection it genuinely earns. Three ranked, tested mitigations. Every command run for real, apt-installed, no network."
+  # --- Fresh doc (autopilot run, 2026-09-08): every `kind: doc` item on the board
+  # was already `done` (DOC-001..DOC-050, plus SRC-020/025/033/068/088/103); the
+  # only `todo` items are OPS-001 (kind: ops, which content runs skip) and 90
+  # `kind: hack` SRC-* items — wrong lane for a doc run. `gh pr list --state open
+  # --label auto:content` showed the one open doc PR is a cover-art threat-model,
+  # so rather than no-op or cross lanes I synthesized a fresh in-lane doc and drew
+  # THAT. Byline: cass (rotation, `scripts/fleet/authors.rb --section doc`).
+  - id: DOC-051
+    kind: doc
+    title: "The URL Field That Would Fetch Its Own Cloud Keys"
+    brief: "Fresh Meta doc, security angle (no todo doc item existed at run time; all were done). Cass threat-models scripts/wire/_lib.rb's intake: valid_source_url? accepts any host with a dot — so http://169.254.169.254/ (AWS metadata), metadata.google.internal, 127.0.0.1 and 192.168.1.1 all pass, and plain http passes despite sources.yml documenting 'https only'; only dotless `localhost` is rejected, by accident. normalize() shape-checks length, not intent, so a prompt-injection headline lands verbatim as a P2 backlog assignment with self-asserted trust:primary. Three ranked, tested mitigations: (1) https-only + block loopback/link-local/private/metadata in the predicate, (2) bind the per-story source_url host to the sources.yml allowlist and derive trust from the config row, (3) keep the untrusted-text wall at quarantine.md + the human merge gate, because a validator can't grade intent. Real captured output; fix recommended to scripts/ci owners in the PR, not patched (content branch)."
     voice: threat-model-everything
     author: cass
     priority: P2
     status: done
-    published: /tools/age-honest-review/
-
+    published: /docs/the-url-field-that-fetches-its-own-cloud-keys/
