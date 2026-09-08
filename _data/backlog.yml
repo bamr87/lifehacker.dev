@@ -2223,7 +2223,8 @@ backlog:
     brief: "The extension is a costume; the bytes are the truth. `file mystery` reads the magic number and tells you a 'report.txt' is actually a JPEG (or a zip, or an ELF binary), and `ls -F` tags every entry so you read type at a glance — `/` for a dir, `*` for executable, `@` for a symlink. Both are offline-testable: rename a real image to `.txt` and watch `file` refuse to be fooled. The footguns that stay in: the `*`/`/` characters `ls -F` prints are display markers, not part of the filename (paste one into a command and it breaks), and `file` reads content, so it happily calls an empty file 'empty' and a shebang-less script 'ASCII text' even when you meant it to run."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/your-txt-is-a-jpeg/
     source: content-scout
     source_url: https://it-journey.dev/quests/0000/cellar/
     source_title: "Bashcrawl Cellar: File Types, Aliases, and Emerald Amulet"
@@ -4684,7 +4685,6 @@ backlog:
     source_url: https://it-journey.dev/quests/1000/self-operating-website-03-the-war-machine/
     source_title: "The War Machine (Self-Operating Website 03)"
     fingerprint: e12dc26466c0
-
   # --- Fresh doc (autopilot run, 2026-09-08): every `kind: doc` item on the board
   # was already `done` (DOC-001..DOC-050, plus SRC-020/025/033/068/088/103); the
   # only `todo` items are OPS-001 (kind: ops, which content runs skip) and 90
@@ -4701,3 +4701,32 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-url-field-that-fetches-its-own-cloud-keys/
+  - id: WIRE-019
+    kind: wire
+    title: "OpenAI's GPT-6 Astra launch was reviewed on a pelican riding a bicycle — and leaked its own family tree in the token counts"
+    brief: "Model-beat dispatch reported from Simon Willison's Sep 4, 2026 grid analysis ('The Pelican comparison grid for Astra is pretty interesting') and his Sep 5, 2026 launch link-post ('Introducing GPT-6 Astra for developers') — both reputable tier, the pages this desk actually read (200 OK, fetched). Angle distinct from WIRE-018 (RSI chart) and the earlier GPT-6/AGI-harness dispatch: the de-facto independent review of OpenAI's biggest launch of the year was Willison's long-running informal benchmark — an SVG of a pelican riding a bicycle — run at low/medium/high/xhigh/max reasoning (Astra has no reasoning=none) and gridded against GPT-5.6 Sol, Terra and Luna. Facts, all attributed to Willison: every Astra pelican low->xhigh beats the best GPT-5.6-Sol pelican; Astra below max still doesn't reliably put the pelican's legs on both sides of the frame; pricing $10/M input, $50/M output vs Sol's $5/$30, but Astra uses fewer tokens per level so Astra-low draws a better pelican than any Sol at any level for 9.55 cents. The real news the chart deck omitted: Astra and Luna both encoded the prompt in 16 input tokens while Sol and Terra used 26, prompting Willison's (labeled-as-a-question) guess that Astra and Luna share more lineage than OpenAI disclosed. Satire targets the theater: a frontier launch whose most trusted third-party verdict is a bird on a bicycle nobody officially benchmarks, and a launch writeup Willison quotes claiming Astra 'excels at building 3D models' of 'gardens, shipyards, animals, cityscapes, even Dyson spheres.' COI line required: this newsroom runs on Anthropic's Claude, a rival to OpenAI. Kicker: the one number OpenAI never slid — 16."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/astra-pelican-grid/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/4/astra-pelicans/
+  # Fresh tool idea (autopilot run, 2026-09-08): every `kind: tool` item on the
+  # board was already `done` (TOOL-001..020, SRC-002, SRC-021) and the whole todo
+  # set is hacks (SRC-045..141) + OPS-001 (ops, skipped) — no tool item to take,
+  # and `gh pr list --state open --label auto:content` held only a hack and a doc.
+  # Rather than no-op or cross lanes, synthesized this in-lane: age is the obvious
+  # gap in the CLI family (rg/fzf/jq/fd/bat/…), a security-angle tool for the cass
+  # rotation. Every command run for real, apt-installed, no network. Reasoning is
+  # in the PR, not appended as a separate follow-up idea.
+  - id: TOOL-021
+    kind: tool
+    title: "age: the encryption tool that won't pretend to know who sent the file"
+    brief: "Threat-modeled honest review of age (the modern gpg-for-files replacement): the private identity file is a plaintext string on disk, the `>`-instead-of-`-o` redirect that strips its 600 mode to world-readable, the ciphertext ANYONE with your public key can forge (encryption isn't authentication — no --sign), the passphrase mode that refuses a pipe on purpose, and the tamper detection it genuinely earns. Three ranked, tested mitigations. Every command run for real, apt-installed, no network."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/age-honest-review/
+
