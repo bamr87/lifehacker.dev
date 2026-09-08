@@ -4685,3 +4685,21 @@ backlog:
     source_url: https://it-journey.dev/quests/1000/self-operating-website-03-the-war-machine/
     source_title: "The War Machine (Self-Operating Website 03)"
     fingerprint: e12dc26466c0
+  # Fresh tool idea (autopilot run, 2026-09-08): every `kind: tool` item on the
+  # board was already `done` (TOOL-001..020, SRC-002, SRC-021) and the whole todo
+  # set is hacks (SRC-045..141) + OPS-001 (ops, skipped) — no tool item to take,
+  # and `gh pr list --state open --label auto:content` held only a hack and a doc.
+  # Rather than no-op or cross lanes, synthesized this in-lane: age is the obvious
+  # gap in the CLI family (rg/fzf/jq/fd/bat/…), a security-angle tool for the cass
+  # rotation. Every command run for real, apt-installed, no network. Reasoning is
+  # in the PR, not appended as a separate follow-up idea.
+  - id: TOOL-021
+    kind: tool
+    title: "age: the encryption tool that won't pretend to know who sent the file"
+    brief: "Threat-modeled honest review of age (the modern gpg-for-files replacement): the private identity file is a plaintext string on disk, the `>`-instead-of-`-o` redirect that strips its 600 mode to world-readable, the ciphertext ANYONE with your public key can forge (encryption isn't authentication — no --sign), the passphrase mode that refuses a pipe on purpose, and the tamper detection it genuinely earns. Three ranked, tested mitigations. Every command run for real, apt-installed, no network."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/age-honest-review/
+
