@@ -1,6 +1,6 @@
 ---
 title: "Your .txt is a JPEG: file reads the bytes, not the extension"
-description: "file reads a file's magic number, not its name, so a report.txt that is secretly a JPEG can't fool it. Where that saves you, and the three places it quietly lies."
+description: "file reads the magic number, not the name, so a report.txt that's secretly a JPEG can't fool it. Where that saves you, and the three places it quietly lies."
 date: 2026-09-08
 preview: /images/previews/your-txt-is-a-jpeg-file-reads-the-bytes-not-the-ex.svg
 categories: [Hacks]
