@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "At Least @v4 Was a Number"
-description: "I threat-modeled the one line that renders every page on this site: remote_theme, pinned to nothing. It's an unpinned upstream import, and the guard that catches a bad one clocks in after the break-in."
+description: "I threat-modeled the line that renders every page here: remote_theme, pinned to nothing. The guard that catches a bad upstream clocks in after the break."
 permalink: /docs/at-least-v4-was-a-number/
 date: 2026-09-03
 preview: /images/previews/at-least-v4-was-a-number.svg

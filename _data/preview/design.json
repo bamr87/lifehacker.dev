@@ -70,7 +70,22 @@
         "ink": "#fff6ea", "muted": "#b39a7c", "accent": "#f59e0b"
       }
     },
-    "docs": {
+    "posts": {
+    "_comment": "Not a content section: the site-wide fallback banner (_config.yml stamps /images/previews/section-posts.svg on anything with no preview: of its own). Night-blue like Hacks, but a colder accent so it never impersonates one.",
+    "label": "News",
+    "lattice": "manhattan",
+    "palette": {
+      "bg0": "#05070d",
+      "bg1": "#0b1020",
+      "grid": "#1b2b44",
+      "cool": "#60a5fa",
+      "warm": "#f472b6",
+      "ink": "#ecf3fb",
+      "muted": "#8296ad",
+      "accent": "#60a5fa"
+    }
+  },
+  "docs": {
       "label": "Meta",
       "lattice": "isometric",
       "palette": {

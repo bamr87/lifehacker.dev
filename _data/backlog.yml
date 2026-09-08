@@ -2141,7 +2141,8 @@ backlog:
     brief: "The context window and the invoice are both measured in tokens, and a token is roughly 3–4 characters — not a word — so 'just paste the whole file in' is a bill you didn't read. Count before you send: `pip install tiktoken` then a two-line `len(encoding.encode(text))`, or the `AutoTokenizer.from_pretrained(...)` you already have from Hugging Face. The part that stays in: token counts are model-specific (a GPT tokenizer and a Llama tokenizer disagree on the same string), code and whitespace cost more tokens than prose, and 'characters ÷ 4' is a fine rough budget and a wrong hard limit — verify against the real tokenizer when the cap actually matters."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/count-tokens-before-you-paste/
     source: content-scout
     source_url: https://it-journey.dev/quests/1101/natural-language-processing/
     source_title: "Natural Language Processing: Transformers & LLMs"
@@ -2222,7 +2223,8 @@ backlog:
     brief: "The extension is a costume; the bytes are the truth. `file mystery` reads the magic number and tells you a 'report.txt' is actually a JPEG (or a zip, or an ELF binary), and `ls -F` tags every entry so you read type at a glance — `/` for a dir, `*` for executable, `@` for a symlink. Both are offline-testable: rename a real image to `.txt` and watch `file` refuse to be fooled. The footguns that stay in: the `*`/`/` characters `ls -F` prints are display markers, not part of the filename (paste one into a command and it breaks), and `file` reads content, so it happily calls an empty file 'empty' and a shebang-less script 'ASCII text' even when you meant it to run."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/your-txt-is-a-jpeg/
     source: content-scout
     source_url: https://it-journey.dev/quests/0000/cellar/
     source_title: "Bashcrawl Cellar: File Types, Aliases, and Emerald Amulet"
@@ -4597,3 +4599,183 @@ backlog:
     author: edge
     priority: P2
     status: todo
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-136
+    kind: hack
+    title: "Your tumbling window counts events by when they arrived, not when they happened: window on event time, and the watermark that decides when 'late' becomes 'lost'"
+    brief: "Bucket a stream into one-minute counts keyed on PROCESSING time — the clock when your job saw each event — and the day a consumer stalls for thirty seconds it dumps a backlog burst into whatever minute it recovered in, so your 'events per minute' chart is really 'events per minute my consumer wasn't busy.' Bucket on EVENT time instead (the timestamp inside the payload) and the counts line up with what actually happened. The failure that stays in: event time means events arrive out of order and late, so a window can never cleanly 'close' on its own — a watermark is the promise that no event older than time T is still coming, and it's a bet you place, not a fact: set the allowed lateness too tight and a straggler is silently dropped (or shunted to a side output you then have to actually read), too loose and every window blocks on the slowest late arrival before it emits. Reproducible with a tiny generator that stamps some events in the past and a consumer that buckets the same stream both ways so the mismatch is a number, not a vibe."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/stream-processing/
+    source_title: "Stream Processing: Windows, Watermarks, and Exactly-Once"
+    fingerprint: 5aff07370764
+  - id: SRC-137
+    kind: hack
+    title: "Stop deploying :latest — pin the image by @sha256 digest, and the tag that moved under you between staging and prod"
+    brief: "`deploy myapp:latest` is a promise your registry doesn't keep: a tag is a mutable pointer, so the `latest` staging pulled on Tuesday and the `latest` prod pulls on Thursday can be different bytes, and now you're chasing a 'works in staging' ghost that is really two different images wearing one name. Pin the digest instead — resolve the tag once (`docker inspect --format '{{index .RepoDigests 0}}' myapp:latest`, or read it straight from the push output) and deploy `myapp@sha256:…`, which names the exact bytes and can never move. The failures that stay in: a digest is not human-readable, so keep the tag around as a label for people and record which tag the digest CAME from, or nobody will ever know what version prod is actually running; and pinning the app image does NOT pin its base image or the apt packages baked in at build time, so 'immutable deploy' and 'reproducible build' are two different claims — a digest freezes the output, an SBOM (syft) tells you what's inside it. Reproducible by pushing two builds to a local registry under the same tag and watching `docker pull` fetch a different digest."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/artifact-management/
+    source_title: "Artifact Management: Versioned, Signed Build Output"
+    fingerprint: 43689c61f482
+  - id: SRC-138
+    kind: hack
+    title: "SettingWithCopyWarning isn't a warning, it's a coin flip: chained indexing and the pandas assignment that vanishes"
+    brief: "`df[df.age > 30]['bonus'] = 100` looks like it edits the DataFrame and often does nothing — pandas can't tell if the chained `[...][...]` handed you a view or a throwaway copy, so the write may land on the copy and evaporate while your original frame is untouched and NO error is raised, only a yellow SettingWithCopyWarning most people have trained themselves to ignore. The fix is one indexer: `df.loc[df.age > 30, 'bonus'] = 100` selects and assigns in a single `.loc` call, so there's no intermediate object to write into the void. The failures that stay in: filtering then editing the result (`sub = df[df.x > 0]; sub['y'] = 1`) warns for the same reason — call `.copy()` if you meant a separate frame, or go back to `.loc` on the original if you meant to edit in place, but decide which; and because it's only a warning, code that 'worked on my machine' can silently no-op on a different pandas version or data shape, so promote it to an error in CI with `pd.set_option('mode.chained_assignment','raise')` and find out at test time, not in a support ticket. Reproducible in five lines."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/python-data-science/
+    source_title: "Python for Data Science: NumPy, Pandas, and Visualization"
+    fingerprint: b672c31eef22
+  # Fresh wire idea (autopilot run, 2026-09-07): every `kind: wire` item on the
+  # board (WIRE-001..017) was already `done`, so no `todo` wire existed to take and
+  # none could be borrowed from another lane (the wire is rhea's alone). The two
+  # open auto:content PRs are a DOC and a FIELD-NOTE, so no wire topic to duplicate.
+  # Rather than no-op or cross collections, synthesized a fresh in-lane dispatch off
+  # a genuinely new, checkable story: on Sep 6, 2026 OpenAI declared an internal
+  # "RSI day" (Recursive Self-Improvement) with two pieces — "Research acceleration:
+  # The view inside OpenAI" and Chief Scientist Jakub Pachocki's essay "An Alien
+  # Mind" — and illustrated its research-acceleration claim with a chart of AI SPEND
+  # PER RESEARCHER climbing. Reported (reputable tier) from Simon Willison's link-blog,
+  # which this desk actually read; the two OpenAI primary pages 403 bot-scrapers, so
+  # every OpenAI claim is attributed to Willison's account of them, not paraphrased
+  # as if read firsthand. COI line required: this desk runs on a rival lab's models.
+  - id: WIRE-018
+    kind: wire
+    title: "OpenAI's proof of 'recursive self-improvement' arrived as a chart of dollars spent per researcher"
+    brief: "Model-beat dispatch reported from Simon Willison's Sep 6, 2026 link-blog (reputable tier — the page this desk actually read), covering OpenAI's internal 'RSI day.' Facts attributed to Willison's account of two OpenAI pieces he links: 'Research acceleration: The view inside OpenAI' and Chief Scientist Jakub Pachocki's essay 'An Alien Mind.' RSI = Recursive Self-Improvement, which Willison reads as 'their new AGI'; per him the research-acceleration piece 'doesn't even bother to expand the acronym.' The pieces include details on how OpenAI's own research team uses coding agents, and Willison says 2026 'has been the year that agentic engineering really took off at OpenAI, best illustrated by this chart' — a chart of AI spend per researcher. Willison flags a 'significant acceleration in AI spend per researcher in late July' and guesses (labeled as his guess) it coincides with internal access to the model later shipped as GPT-6 Astra. Honesty constraint: the two openai.com/index pages return 403 to scrapers, so the dispatch NEVER quotes them firsthand — it reports what Willison reported, links all three URLs, and labels his causal guess as a guess. Satire targets the theater: an AGI-adjacent milestone whose headline evidence is a cost curve going up-and-to-the-right (the bad chart in every other context), an unexpanded acronym treated as shared secret knowledge, and an essay titled 'An Alien Mind.' COI line required: this reporter runs on the industry it covers, and here specifically covers OpenAI while running on a rival lab's models."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/openai-rsi-spend-per-researcher/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/6/research-acceleration-the-view-inside-openai/
+  - id: WIRE-019
+    kind: wire
+    title: "OpenAI's GPT-6 Astra launch was reviewed on a pelican riding a bicycle — and leaked its own family tree in the token counts"
+    brief: "Model-beat dispatch reported from Simon Willison's Sep 4, 2026 grid analysis ('The Pelican comparison grid for Astra is pretty interesting') and his Sep 5, 2026 launch link-post ('Introducing GPT-6 Astra for developers') — both reputable tier, the pages this desk actually read (200 OK, fetched). Angle distinct from WIRE-018 (RSI chart) and the earlier GPT-6/AGI-harness dispatch: the de-facto independent review of OpenAI's biggest launch of the year was Willison's long-running informal benchmark — an SVG of a pelican riding a bicycle — run at low/medium/high/xhigh/max reasoning (Astra has no reasoning=none) and gridded against GPT-5.6 Sol, Terra and Luna. Facts, all attributed to Willison: every Astra pelican low->xhigh beats the best GPT-5.6-Sol pelican; Astra below max still doesn't reliably put the pelican's legs on both sides of the frame; pricing $10/M input, $50/M output vs Sol's $5/$30, but Astra uses fewer tokens per level so Astra-low draws a better pelican than any Sol at any level for 9.55 cents. The real news the chart deck omitted: Astra and Luna both encoded the prompt in 16 input tokens while Sol and Terra used 26, prompting Willison's (labeled-as-a-question) guess that Astra and Luna share more lineage than OpenAI disclosed. Satire targets the theater: a frontier launch whose most trusted third-party verdict is a bird on a bicycle nobody officially benchmarks, and a launch writeup Willison quotes claiming Astra 'excels at building 3D models' of 'gardens, shipyards, animals, cityscapes, even Dyson spheres.' COI line required: this newsroom runs on Anthropic's Claude, a rival to OpenAI. Kicker: the one number OpenAI never slid — 16."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/astra-pelican-grid/
+    source: manual
+    source_url: https://simonwillison.net/2026/Sep/4/astra-pelicans/
+  - id: POST-052
+    kind: post
+    title: "I let a language model draw on my own website: the whitelist between the motif layer and your browser"
+    brief: "Cass threat-models the illustration layer of the cover art — the one thing a language model is allowed to author on this site (scripts/preview/lib/motif.mjs). The angle the earlier SVG-is-a-program post did not cover: not a static file's XSS surface but LLM-authored markup committed and served from our own origin. Three real, tested properties make it safe: whitelist-not-blacklist (eight drawing elements; script/image/foreignObject are simply not in the vocabulary), re-serialize-never-copy-through (onload and data-exfil survive the parser but die at the serializer; nothing the model wrote reaches disk verbatim), and re-validate the committed artifact in CI plus a self-test that guards the guard. Real captured output from the validator probes, --check, and --self-test. Lands exactly three ranked mitigations."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/07/the-only-drawing-a-language-model-gets-to-make/
+  - id: TOOL-033
+    kind: tool
+    title: "htmlq: jq for HTML that returns nothing and swears it worked"
+    brief: "Stress-tested verdict (Ed G. Case) on htmlq 0.4.0, the CSS-selector extractor billed as jq-for-HTML. Use it — html5ever repairs unclosed tags like a browser, survives 50,000 nested divs without a stack overflow, decodes entities correctly, excludes comments from text, and did 10,000/10,000 clean runs at 3.2 MB in 0.19 s. The edge Ed keeps: a selector that matches nothing prints nothing and exits 0 (your scraper ships empty and nothing throws); the tbody trap — html5ever inserts <tbody>, so `table > tr` matches zero rows; the variadic footgun — `--remove-nodes script style -t body` silently swallows your positional selector and returns empty (repeat the flag instead); script/style source LEAKS into -t text extraction, glued with no separator ('var secret=42;Real text'); adjacent block text is concatenated with no space ('AlphaBeta'); non-UTF8 input becomes replacement chars because it ignores <meta charset>; and an empty/garbage selector panics with a Rust backtrace (exit 101) instead of a clean error. Every command run for real on Ubuntu 24.04 (htmlq 0.4.0, installed via cargo)."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: "/tools/htmlq-honest-review/"
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-139
+    kind: hack
+    title: "Your cross-service order has no ROLLBACK: the saga's compensating action, and the compensation that itself fails"
+    brief: "The instant a transaction spans two services with two databases, `BEGIN … COMMIT` is gone — charge the card in Payments, reserve stock in Inventory, and if the reservation fails there is no `ROLLBACK` that reaches back into Payments to un-charge the card. A saga replaces the missing rollback with an explicit compensating action per step: for every forward step you write its inverse (refund the charge, release the hold) and run the inverses in reverse order when a later step fails. The failures that stay in: a compensation can ITSELF fail (the refund API is down), so compensations must be idempotent and retried until they stick — fire-and-forget once and you've taken a customer's money with no automatic way back; there is a real window where the system is visibly inconsistent (money taken, order not yet placed), so the UI must say 'processing', never 'done'; and not everything has an inverse — you can refund a charge but you can't un-send an email, so order the truly irreversible steps LAST, after everything reversible has already succeeded. Reproducible with two tiny services in docker-compose and a step-two failure injected on purpose."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/microservices-architecture/
+    source_title: "Microservices Architecture: Decomposing the Monolith"
+    fingerprint: a67ccb5f2c1e
+  - id: SRC-140
+    kind: hack
+    title: "requests.get() has no timeout by default, so one dead server hangs your worker forever"
+    brief: "'Put a timeout on every network call' has a Python-shaped hole: `requests.get(url)` with no `timeout=` waits FOREVER if the server accepts the connection and then never replies — not an error, not a slow response, a thread parked until the heat death of the universe, which is exactly how one unhealthy dependency silently freezes a whole worker pool while the health check stays green. The fix is `requests.get(url, timeout=5)`, and the gotchas that stay in: that single number is really TWO clocks — pass a tuple `timeout=(3, 10)` to bound the connect and the read separately, because a server that accepts fast but streams slowly needs a different limit than one that's just hard to reach; a timeout raises `requests.exceptions.Timeout`, so it's the retry/backoff you already wrote that catches it, but ONLY if you're catching that class and not swallowing everything in a bare `except`; and `timeout` bounds each individual attempt, not the total across redirects or retries, so a chain of five redirects each just under the limit still blows your latency budget. Reproducible by pointing it at a socket that accepts a connection and never answers."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/microservices-architecture/
+    source_title: "Microservices Architecture: Decomposing the Monolith"
+    fingerprint: e29dd1812fcd
+  - id: SRC-141
+    kind: hack
+    title: "--force-with-lease isn't seatbelt-proof: the background fetch that turns it back into --force"
+    brief: "`git push --force` is a chainsaw — it overwrites the remote branch even if a teammate pushed while you were rebasing, silently deleting their commit. `--force-with-lease` is the safer version: it overwrites only if the remote is still at the SHA you last saw, so a race aborts instead of clobbering. But the lease is against your LOCAL knowledge of the remote, and anything that quietly runs `git fetch` behind your back — an editor's auto-fetch, a `git pull` you forgot, a background tooling refresh — updates that knowledge to include your teammate's commit, so the lease now 'matches' and force-with-lease overwrites exactly the work it was meant to protect. The fix that actually holds: lease against a SHA you chose, `git push --force-with-lease=main:<sha-you-verified>`, not whatever the last fetch happened to cache, and turn OFF editor auto-fetch on branches you rebase. The failures that stay in: on a brand-new ref an EMPTY lease means 'must not exist yet' (a create-only push), so the same flag does opposite things depending on whether the ref is already there; and force-pushing a branch someone else has checked out still rewrites history under them — the lease guards the remote ref, never their local clone. Reproducible with two clones, an auto-fetch, and a rebase."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1000/self-operating-website-03-the-war-machine/
+    source_title: "The War Machine (Self-Operating Website 03)"
+    fingerprint: e12dc26466c0
+  # Fresh tool idea (autopilot run, 2026-09-08): every `kind: tool` item on the
+  # board was already `done` (TOOL-001..020, SRC-002, SRC-021) and the whole todo
+  # set is hacks (SRC-045..141) + OPS-001 (ops, skipped) — no tool item to take,
+  # and `gh pr list --state open --label auto:content` held only a hack and a doc.
+  # Rather than no-op or cross lanes, synthesized this in-lane: age is the obvious
+  # gap in the CLI family (rg/fzf/jq/fd/bat/…), a security-angle tool for the cass
+  # rotation. Every command run for real, apt-installed, no network. Reasoning is
+  # in the PR, not appended as a separate follow-up idea.
+  - id: TOOL-021
+    kind: tool
+    title: "age: the encryption tool that won't pretend to know who sent the file"
+    brief: "Threat-modeled honest review of age (the modern gpg-for-files replacement): the private identity file is a plaintext string on disk, the `>`-instead-of-`-o` redirect that strips its 600 mode to world-readable, the ciphertext ANYONE with your public key can forge (encryption isn't authentication — no --sign), the passphrase mode that refuses a pipe on purpose, and the tamper detection it genuinely earns. Three ranked, tested mitigations. Every command run for real, apt-installed, no network."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /tools/age-honest-review/
+
+  # --- Fresh post (autopilot run, 2026-09-08): the post lane was structurally
+  # exhausted — all 54 `post` items were done except DOC-004 (blocked on OPS-001,
+  # a human-only ops task a content run must skip), and every other `todo` item was
+  # a `hack` (SRC-*), i.e. cross-lane. `gh pr list --state open --label auto:content`
+  # showed only a tool + a doc PR, nothing to duplicate. The nearest meta angles
+  # (POST-002 empty inbox, POST-003 shared-file conflict, POST-013 single-source
+  # lane bias, and 2026-09-06 fuzzing the picker) were already published, so rather
+  # than repeat them the factory stress-tested a different piece of its own tooling:
+  # lint_brand.rb's code-stripper. Ed G. Case (rotation byline) fed the real linter
+  # five fixtures and found it strips only ``` fences — ~~~ and indented blocks
+  # false-positive, an unclosed ``` false-negatives. Real captured output only.
+  - id: POST-053
+    kind: post
+    title: "Two of three code fences trip my own brand cop"
+    brief: "Meta-confession / QA field note (author: edge): lint_brand.rb's header promises 'code is stripped before scanning', but its fence detector only knows ``` backtick fences. Fed the real linter five fixtures with one avoid-phrase each: ~~~ tilde fences and 4-space indented blocks false-positive (hard-error the build on a code comment), and an unclosed ``` fence false-negatives (silences the gate for the rest of the file). Payload: a stripper must speak the renderer's grammar or it scans a different document than ships. Self-referential kicker — following the site's own nested-fences hack (use ~~~) trips the site's own gate. Real captured output only."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/09/08/two-of-three-code-fences-trip-my-own-brand-cop/
+  # --- Fresh doc (autopilot run, 2026-09-08): every `kind: doc` item on the board
+  # was already `done` (DOC-001..DOC-050, plus SRC-020/025/033/068/088/103); the
+  # only `todo` items are OPS-001 (kind: ops, which content runs skip) and 90
+  # `kind: hack` SRC-* items — wrong lane for a doc run. `gh pr list --state open
+  # --label auto:content` showed the one open doc PR is a cover-art threat-model,
+  # so rather than no-op or cross lanes I synthesized a fresh in-lane doc and drew
+  # THAT. Byline: cass (rotation, `scripts/fleet/authors.rb --section doc`).
+  - id: DOC-051
+    kind: doc
+    title: "The URL Field That Would Fetch Its Own Cloud Keys"
+    brief: "Fresh Meta doc, security angle (no todo doc item existed at run time; all were done). Cass threat-models scripts/wire/_lib.rb's intake: valid_source_url? accepts any host with a dot — so http://169.254.169.254/ (AWS metadata), metadata.google.internal, 127.0.0.1 and 192.168.1.1 all pass, and plain http passes despite sources.yml documenting 'https only'; only dotless `localhost` is rejected, by accident. normalize() shape-checks length, not intent, so a prompt-injection headline lands verbatim as a P2 backlog assignment with self-asserted trust:primary. Three ranked, tested mitigations: (1) https-only + block loopback/link-local/private/metadata in the predicate, (2) bind the per-story source_url host to the sources.yml allowlist and derive trust from the config row, (3) keep the untrusted-text wall at quarantine.md + the human merge gate, because a validator can't grade intent. Real captured output; fix recommended to scripts/ci owners in the PR, not patched (content branch)."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-url-field-that-fetches-its-own-cloud-keys/

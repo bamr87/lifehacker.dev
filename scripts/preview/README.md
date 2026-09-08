@@ -13,6 +13,8 @@ node scripts/preview/generate.mjs --changed         # git-new/modified articles
 node scripts/preview/generate.mjs --all             # anything missing current art
 node scripts/preview/generate.mjs --all --force     # re-skin everything
 node scripts/preview/generate.mjs --scene -f <f>    # dump the scene as JSON
+node scripts/preview/sections.mjs                   # the six _config.yml fallback banners
+node scripts/preview/sections.mjs --check           # committed art == generated art?
 node scripts/preview/build-lab.mjs                  # rebuild docs/preview-lab.html
 ruby scripts/ci/lint_preview.rb                     # the gate
 
@@ -37,6 +39,7 @@ The generator is offline and free. The **illustrator** is the one part that call
 | `lib/motif.mjs` | The illustration contract: parse, whitelist, geometry checks, re-serialize, composite |
 | `lib/article.mjs` | Front-matter read, slug, section, `preview:` stamp, motif load |
 | `generate.mjs` | CLI + the skip/refresh policy (`--provider xai` dispatches to `xai.mjs`) |
+| `sections.mjs` | The six section fallback banners (`_config.yml` `defaults:`), captioned from each section's index page |
 | `illustrate.mjs` | The Claude rung: brief → validate → retry → commit the motif → re-render |
 | `xai.mjs` | Opt-in xAI Imagine raster covers (OAuth first; sidecar + bespoke stamp) |
 | `lib/xai_auth.mjs` | Resolve `XAI_OAUTH_TOKEN` → `~/.grok/auth.json` → Kilo store → `XAI_API_KEY` |
@@ -55,4 +58,4 @@ fixed order; inserting a `pick()` above an existing one re-rolls every banner on
 5. **No fallback rung.** If art cannot be made, fail loudly. A pipeline that
    silently degrades to a generic gradient is exactly what this replaced.
 
-After changing `lib/` or `design.json`: re-run `build-lab.mjs`, regenerate with `--all --force`, and eyeball a contact sheet before committing.
+After changing `lib/` or `design.json`: re-run `build-lab.mjs`, regenerate with `--all --force` **and `sections.mjs`** (the fallbacks share the tokens), and eyeball a contact sheet before committing.
