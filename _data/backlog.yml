@@ -2223,7 +2223,8 @@ backlog:
     brief: "The extension is a costume; the bytes are the truth. `file mystery` reads the magic number and tells you a 'report.txt' is actually a JPEG (or a zip, or an ELF binary), and `ls -F` tags every entry so you read type at a glance — `/` for a dir, `*` for executable, `@` for a symlink. Both are offline-testable: rename a real image to `.txt` and watch `file` refuse to be fooled. The footguns that stay in: the `*`/`/` characters `ls -F` prints are display markers, not part of the filename (paste one into a command and it breaks), and `file` reads content, so it happily calls an empty file 'empty' and a shebang-less script 'ASCII text' even when you meant it to run."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/your-txt-is-a-jpeg/
     source: content-scout
     source_url: https://it-journey.dev/quests/0000/cellar/
     source_title: "Bashcrawl Cellar: File Types, Aliases, and Emerald Amulet"
