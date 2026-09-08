@@ -13,7 +13,7 @@ The common framework already exists — in two places — and most of the drift 
 | One-paragraph-per-line prose gate | hub `templates/prose/` v0.3.0 (self-healing) + vendored `tools/unwrap-prose.py` | `fanout.sh --kit prose` | `unwrap-prose.py` identical in 7 repos; the workflow in 5 shapes (4 repos still on the check-only 0.2.0) |
 | Theme coupling (pin bumps, overrides audit) | `zer0-mistakes/templates/consumer/` + `_data/consumers.yml` + `propagate.rb` | `propagate-theme.yml` dispatch | Zero of five consumers carry the receiving workflow — the dispatch lands nowhere |
 | **The AI runner** (`scripts/ai/run.sh`, `_data/ai.yml`, `.github/actions/claude-run`) | none — three forks (lifehacker → it-journey → zer0-mistakes) | hand copy | it-journey exits 0 on a dead credential; zer0-mistakes exits 0 on install failure; only lifehacker meters |
-| **Content verification** (frontmatter, brand/voice, findings) | none — four validators, four brand linters in three languages | hand copy | Only lifehacker emits a machine-readable `findings.jsonl`; ai-world-view's copy of `content-review.rb` was inert |
+| **Content verification** (frontmatter, brand/voice, findings) | none — four validators, four brand linters in three languages | hand copy | Only lifehacker emits a machine-readable `findings.jsonl`; ai-world-view's copy of `content-review.rb` had drifted from the canonical one |
 | **Fleet inventory** (`fleet.manifest.yml`, spec `fleet/v1`) | `bamr87/wtd` (`wtd fleet adopt`) | run by hand | 2 of 10 AI-running repos had one; the tool did not detect the composite `claude-run` harness |
 | Preview / cover images | `zer0-image-generator` (engine, providers, Claude review loop) | gem + CLI | 5 generations of `generate-preview-images.sh` / `preview_generator.py` across 4 repos; lifehacker's Trace Bloom is a separate, better offline generator |
 
@@ -94,10 +94,10 @@ Reusable workflows in one place (the hub or `bamr87/.github`): `claude-mention` 
 | it-journey | adopt the kit byte-identically (fixes the exit-0-on-dead-credential and dual-credential bugs, adds metering); `ITJ_AI_*` → `AI_*`; `.prose-excludes`; prose gate 0.3.0; `claude.yml` stamp; guardrails doc + one-line citations; settings baseline; `fleet.manifest.yml` (15 lanes); Fleet context |
 | zer0-mistakes | adopt the kit (replaces the direct-CLI action; fixes exit-0 on install failure); settings baseline; `_data/consumers.yml` corrections (ai-world-view is floating; bash-365.com added); `fleet.manifest.yml`; Fleet context |
 | bash-365.com | `*_ENABLED` switches on the three scheduled lanes (dispatch bypasses); OAuth-first auth expression; `checkout@v7`; `claude.yml` from the kit; guardrails doc; `fleet.manifest.yml` |
-| ai-world-view.github.io | `README.md` + `CLAUDE.md` (it had neither); `content-review.rb` synced to canonical + its two config files; switches on scheduled lanes; `fleet.manifest.yml`; settings baseline |
+| ai-world-view.github.io | `content-review.rb` synced to canonical (its copy lacked the bare-URL fixpoint fix; the config files and README/CLAUDE.md had landed upstream since the survey); scheduled lanes armed behind `ORCHESTRATE_ENABLED` / `SECRET_EXPIRY_WATCH_ENABLED`; `fleet.manifest.yml`; settings baseline; README license text corrected (no LICENSE file exists) |
 | irony-works | `concurrency` on germinate / alanis-gate; `fleet.manifest.yml` with the engine's `writable_paths` and metering; Fleet context |
 | zer0-CMS, aieo | prose gate 0.3.0; `fleet.manifest.yml`; Standard deviations / Fleet context |
-| zer0-image-generator | `claude.yml` to kit 0.4.0 (adds the missing `concurrency`); prose gate 0.3.0; `fleet.manifest.yml` |
+| zer0-image-generator | prose gate 0.3.0 (its `claude.yml` had reached kit 0.4.0 upstream since the survey); `fleet.manifest.yml` |
 
 Not touched this round, on purpose: gitorio's `factory--*.yml` (generated files — the kill switch belongs in the compiler as `gate.enablement`), the year-of-ai and bashconsultants clones, and every content file.
 
