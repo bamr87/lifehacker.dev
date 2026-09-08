@@ -6,7 +6,7 @@
 # already flows through scripts/ai/run.sh (Claude Code) or scripts/ai/api_call.rb
 # (API fallback) — this library turns each call's raw usage payload into one
 # JSONL record so tokens and cost are never invisible. Records accumulate in
-# LH_AI_USAGE_DIR (default: $RUNNER_TEMP/lh-ai-usage — OUTSIDE the checkout, so
+# AI_USAGE_DIR (default: $RUNNER_TEMP/ai-usage — OUTSIDE the checkout, so
 # agents never see a dirty tree), and scripts/ai/usage_report.rb publishes them
 # (step summary + artifact + PR comment) at the end of the job.
 #
@@ -35,7 +35,7 @@ module AIUsage
   module_function
 
   def dir
-    ENV['LH_AI_USAGE_DIR'].to_s.empty? ? File.join(ENV['RUNNER_TEMP'] || ENV['TMPDIR'] || '/tmp', 'lh-ai-usage') : ENV['LH_AI_USAGE_DIR']
+    ENV['AI_USAGE_DIR'].to_s.empty? ? File.join(ENV['RUNNER_TEMP'] || ENV['TMPDIR'] || '/tmp', 'ai-usage') : ENV['AI_USAGE_DIR']
   end
 
   def records_path

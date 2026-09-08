@@ -69,9 +69,9 @@ jobs:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       # The bard runs on the big model by default; WEEKLY_EPIC_MODEL overrides
-      # for this loop only (the universal runner reads LH_AI_MODEL; _data/ai.yml
+      # for this loop only (the universal runner reads AI_MODEL; _data/ai.yml
       # stays the fleet-wide default for every other loop).
-      LH_AI_MODEL: ${{ vars.WEEKLY_EPIC_MODEL || 'claude-fable-5' }}
+      AI_MODEL: ${{ vars.WEEKLY_EPIC_MODEL || 'claude-fable-5' }}
       # The OpenAI hero image is DOUBLE-gated: the key is only exported when the
       # owner also flipped OPENAI_IMAGES_ENABLED, so setting the secret alone
       # spends nothing, and flipping the var alone has no key to spend with.
