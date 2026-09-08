@@ -4684,3 +4684,20 @@ backlog:
     source_url: https://it-journey.dev/quests/1000/self-operating-website-03-the-war-machine/
     source_title: "The War Machine (Self-Operating Website 03)"
     fingerprint: e12dc26466c0
+
+  # --- Fresh doc (autopilot run, 2026-09-08): every `kind: doc` item on the board
+  # was already `done` (DOC-001..DOC-050, plus SRC-020/025/033/068/088/103); the
+  # only `todo` items are OPS-001 (kind: ops, which content runs skip) and 90
+  # `kind: hack` SRC-* items — wrong lane for a doc run. `gh pr list --state open
+  # --label auto:content` showed the one open doc PR is a cover-art threat-model,
+  # so rather than no-op or cross lanes I synthesized a fresh in-lane doc and drew
+  # THAT. Byline: cass (rotation, `scripts/fleet/authors.rb --section doc`).
+  - id: DOC-051
+    kind: doc
+    title: "The URL Field That Would Fetch Its Own Cloud Keys"
+    brief: "Fresh Meta doc, security angle (no todo doc item existed at run time; all were done). Cass threat-models scripts/wire/_lib.rb's intake: valid_source_url? accepts any host with a dot — so http://169.254.169.254/ (AWS metadata), metadata.google.internal, 127.0.0.1 and 192.168.1.1 all pass, and plain http passes despite sources.yml documenting 'https only'; only dotless `localhost` is rejected, by accident. normalize() shape-checks length, not intent, so a prompt-injection headline lands verbatim as a P2 backlog assignment with self-asserted trust:primary. Three ranked, tested mitigations: (1) https-only + block loopback/link-local/private/metadata in the predicate, (2) bind the per-story source_url host to the sources.yml allowlist and derive trust from the config row, (3) keep the untrusted-text wall at quarantine.md + the human merge gate, because a validator can't grade intent. Real captured output; fix recommended to scripts/ci owners in the PR, not patched (content branch)."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-url-field-that-fetches-its-own-cloud-keys/
