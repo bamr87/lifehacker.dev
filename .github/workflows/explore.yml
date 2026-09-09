@@ -136,7 +136,7 @@ jobs:
       #    in CI and locally. The allow-list is SCOPED: browse + read only. No `gh`,
       #    no `pr merge`, no `issue close` — those are out of the agent's hands here.
       - name: Browse the live site (site-explorer skill, universal AI runner)
-        uses: ./.github/actions/claude-run
+        uses: bamr87/bamr87/.github/actions/claude-run@main
         continue-on-error: true
         with:
           agent: site-explorer

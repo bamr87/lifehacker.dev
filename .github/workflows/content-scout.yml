@@ -161,7 +161,7 @@ jobs:
       #    identical in CI and locally. Tools are SCOPED: WebFetch + read + write
       #    ideas.jsonl only. No `gh`, no backlog edit, no merge.
       - name: Read the sister site (content-scout skill, universal AI runner)
-        uses: ./.github/actions/claude-run
+        uses: bamr87/bamr87/.github/actions/claude-run@main
         continue-on-error: true
         with:
           agent: content-scout

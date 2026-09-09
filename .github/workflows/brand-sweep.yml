@@ -98,7 +98,7 @@ jobs:
 
       - name: Address the warnings + open ONE PR (universal AI runner)
         if: ${{ steps.scan.outputs.warnings != '0' }}
-        uses: ./.github/actions/claude-run
+        uses: bamr87/bamr87/.github/actions/claude-run@main
         with:
           agent: brand-fixer
           prompt: "Use the brand-fixer agent to address the banned-when-sincere warnings in test-results/brand.json (a full-repo scan of main). FIRST: run `gh pr list --state open --label brand-sweep --json number,url` — if an open brand-sweep PR already exists, do NOT open a second; write its URL to pr-result.txt and STOP. Otherwise, for EACH warning: rewrite a genuine sincere-violation in place with a small on-voice edit, OR — if the use is legitimately fine (a literal sense, or a flagged-satire bit tier-1 missed) — add its `accept_key` to _data/brand/accepted.yml with the file, word, a one-line note, and today's date. Do NOT mangle prose that reads well just to delete a word. Re-run `LH_BRAND_SCOPE_ALL=1 ruby scripts/ci/lint_brand.rb` and confirm the warning count dropped. Open ONE pull request on a branch with the rewrites + ledger additions, label it 'brand-sweep', write the PR URL to pr-result.txt, and STOP. Never merge."
