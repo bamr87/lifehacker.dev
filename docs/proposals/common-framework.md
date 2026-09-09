@@ -113,6 +113,20 @@ Not touched this round, on purpose: gitorio's `factory--*.yml` (generated files 
 
 Centralized, not copied: the runner moved to the hub as `bamr87/bamr87/.github/actions/claude-run` with a reusable `ai-lane.yml` (kill switch, bot guard, concurrency, probed `GH_PAT`, runtimes, hooks, result assertion) and the kit registered as `templates/ai-runner/` 0.1.0 with its contract tests — bamr87/bamr87#254. Consumers swap `uses: ./.github/actions/claude-run` for the hub reference and delete their copies: lifehacker.dev (this repo, stacked on #643; keeps a ten-line `scripts/ai/run.sh` shim for `illustrate.mjs` and `launch.json`), it-journey and zer0-mistakes (stacked on #719 / #475). `wtd fleet adopt` recognises the composite and remote runner and honours committed manifests over the API — bamr87/wtd#27. GitFactory's half is logged, not built: gitorio BL-20260908-01 (opt-in central-runner harness reversing ADR-017 as an option, plus `gate.enablement` on the deployed factories). Merge order: the hub first, then each repo's round-1 PR, then its round-2 PR.
 
+### Round 3 — the console (started 2026-09-08)
+
+The owner's direction: one centrally managed tool for content, publishing, and AI orchestration, built on the zer0-CMS framework. The division of labour that follows from what exists:
+
+| Layer | Owner | Role |
+|---|---|---|
+| **The console** | zer0-CMS (VS Code extension) | Where a human operates the fleet: content (metadata, dashboard, SEO), publishing (draft → guard → approve → publish → ledger), and now AI orchestration (a Fleet view of every lane, its kill switch and last run; switch toggles and lane dispatch behind the same human gates as publishing; an MCP read surface). Slice 1 reads the local `fleet.manifest.yml`; slice 2 reads the roster and the Actions state of every repo. |
+| **The runtime + registry** | bamr87/bamr87 hub | The `claude-run` action and reusable `ai-lane.yml` (kit `ai-runner`, #254), the registry (`_data/projects.yml`), the fleet-wide loops, the kits — and the shared engines as a package. |
+| **The engines** | `@bamr87/fleet-engines` (hub PR, lifted from GitFactory) | One implementation of the `fleet/v1` manifest, workflow facts, the audit rulebook, metrics, the harness scorecard, consumed by dependency by GitFactory and zer0-CMS. Copying these into the console would be the runner's drift all over again. |
+| **Design + observe** | GitFactory (gitorio) | Blueprints → workflows, the Fleet Ops cockpit, Observe maps, the Harness tab; reads the runner by reference (#112); compiling *to* the hub runner is its backlog. |
+| **CLI + CI gate** | bamr87/wtd | `fleet adopt / map / audit --strict` for scripts and pipelines (#27). |
+
+What binds them is the `fleet/v1` manifest each repo commits and the hub action each lane runs: the console reads the former and toggles the switch that gates the latter. zer0-CMS keeps its invariants on the way — the webview posts an intent and a lane id only, the host re-reads the manifest and re-runs the gates, `fleet.dispatchAllow` is a settings-only master gate a checked-in file can never arm, and the extension makes no network call until a human asks.
+
 ## Decisions for the owner
 
 1. **Where the `ai-runner` kit lives long-term** — the hub's `templates/` (fits the fan-out discipline) or lifehacker.dev (where it is tested by a real fleet). Recommendation: hub `templates/`, with lifehacker as the reference implementation.
