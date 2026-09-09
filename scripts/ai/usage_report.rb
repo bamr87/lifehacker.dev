@@ -3,7 +3,7 @@
 # usage_report.rb — publish a job's AI usage records (summary, artifact, PR comment)
 # -----------------------------------------------------------------------------
 # The reporting half of AI metering. usage.rb captured one JSONL record per AI
-# call into LH_AI_USAGE_DIR/records.jsonl; this script, run at the end of the
+# call into AI_USAGE_DIR/records.jsonl; this script, run at the end of the
 # job (the claude-run composite calls it automatically), does four things:
 #
 #   1. ATTRIBUTE  — resolve which PR the spend belongs to: an explicit --pr,
