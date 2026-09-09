@@ -57,7 +57,7 @@ run_case() {
   env -i \
     PATH="$path" \
     HOME="${HOME:-/root}" \
-    LH_AI_USAGE_DIR="$usage_dir" \
+    AI_USAGE_DIR="$usage_dir" \
     CLAUDE_CODE_OAUTH_TOKEN="stub-token" \
     bash "$SUT" --prompt "hello" --agent test-agent >"$outf" 2>"$errf"
   rc=$?
@@ -115,7 +115,7 @@ run_case "exit 0 but is_error: still exit 1" "$s_err0" 1 "" "unusable result"
 
 usage_dir="$(mktemp -d)"
 env -i PATH="${s_err0}:/usr/local/bin:/usr/bin:/bin" HOME="${HOME:-/root}" \
-  LH_AI_USAGE_DIR="$usage_dir" CLAUDE_CODE_OAUTH_TOKEN="stub-token" \
+  AI_USAGE_DIR="$usage_dir" CLAUDE_CODE_OAUTH_TOKEN="stub-token" \
   bash "$SUT" --prompt "hello" --agent test-agent >/dev/null 2>&1
 n="$(wc -l < "$usage_dir/records.jsonl" 2>/dev/null | tr -d ' ')"
 if [[ "$n" == "1" ]]; then
@@ -128,6 +128,44 @@ fi
 rm -rf "$usage_dir"
 
 rm -rf "$s_ok" "$s_err" "$s_silent" "$s_err0"
+
+# 6. The kit contract WITHOUT the metering companion: a repo that carries only
+#    run.sh (no scripts/ai/usage.rb) must keep the same exit semantics via the
+#    inline emitter — success prints the result, is_error still exits 1.
+kit="$(mktemp -d)"; mkdir -p "$kit/scripts/ai" "$kit/_data"
+cp "$SUT" "$kit/scripts/ai/run.sh"; printf 'model: claude-opus-4-8\n' > "$kit/_data/ai.yml"
+for want in ok err0; do
+  stub="$(stub_claude 0 "$([ "$want" = ok ] && echo "$OK_JSON" || echo "$ERR0_JSON")")"
+  outf="$(mktemp)"; errf="$(mktemp)"
+  env -i PATH="${stub}:/usr/local/bin:/usr/bin:/bin" HOME="${HOME:-/root}" CLAUDE_CODE_OAUTH_TOKEN="stub-token" \
+    bash "$kit/scripts/ai/run.sh" --prompt "hello" >"$outf" 2>"$errf"; rc=$?
+  if [ "$want" = ok ] && [ "$rc" = 0 ] && grep -qF "THE ANSWER" "$outf"; then
+    echo "PASS: no usage.rb: success emits result, exit 0"; pass=$((pass + 1))
+  elif [ "$want" = err0 ] && [ "$rc" = 1 ] && grep -qF "unusable result" "$errf"; then
+    echo "PASS: no usage.rb: is_error still exits 1"; pass=$((pass + 1))
+  else
+    echo "FAIL: no usage.rb ($want): exit $rc; stdout=$(head -c 120 "$outf"); stderr=$(head -c 200 "$errf")"; fail=$((fail + 1))
+  fi
+  rm -rf "$stub" "$outf" "$errf"
+done
+rm -rf "$kit"
+
+# 7. --max-turns / --model reach the CLI (the stub echoes its argv into the payload's result).
+argstub="$(mktemp -d)"
+cat > "$argstub/claude" <<'STUB'
+#!/usr/bin/env bash
+# A usage block is mandatory: the real CLI always sends one and usage.rb refuses a payload without it.
+printf '{"type":"result","subtype":"success","is_error":false,"usage":{"input_tokens":1,"output_tokens":1},"result":"ARGS: %s"}' "$*"
+STUB
+chmod +x "$argstub/claude"; outf="$(mktemp)"
+env -i PATH="${argstub}:/usr/local/bin:/usr/bin:/bin" HOME="${HOME:-/root}" AI_USAGE_DIR="$(mktemp -d)" CLAUDE_CODE_OAUTH_TOKEN="stub-token" \
+  bash "$SUT" --prompt "hello" --max-turns 7 --model claude-sonnet-4-6 >"$outf" 2>/dev/null
+if grep -qF -- "--max-turns 7" "$outf" && grep -qF -- "--model claude-sonnet-4-6" "$outf"; then
+  echo "PASS: --max-turns and --model are passed to the CLI"; pass=$((pass + 1))
+else
+  echo "FAIL: flags not passed: $(head -c 200 "$outf")"; fail=$((fail + 1))
+fi
+rm -rf "$argstub" "$outf"
 
 echo
 echo "ai runner contract: $pass passed, $fail failed"

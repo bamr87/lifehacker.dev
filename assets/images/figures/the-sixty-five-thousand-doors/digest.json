@@ -1,0 +1,504 @@
+{
+  "theme": {
+    "subject": "ports",
+    "rule": "every article under pages/_posts/{hacks,tools,field-notes,wire} and pages/_docs whose file text matches /\\bports?\\b/i (the noun, the verb, and the harbor all count; \"portable\"/\"porting\" do not)",
+    "generated_by": "ruby -r./scripts/content/weekly_digest -rjson -e 'd=WeeklyDigest.build(days: 2600, until_date: Date.parse(\"2026-09-04\")); d[\"items\"].select! { |i| File.read(i[\"file\"]) =~ /\\bports?\\b/i }; puts JSON.pretty_generate(d)' (then counts/tags/authors re-tallied over the filtered items and window.since set to the earliest match)"
+  },
+  "window": {
+    "since": "2019-08-22",
+    "until": "2026-09-04",
+    "days": 2570
+  },
+  "counts": {
+    "total": 26,
+    "by_section": {
+      "field-notes": 7,
+      "hacks": 13,
+      "tools": 5,
+      "docs": 1
+    },
+    "by_author": {
+      "amr": 9,
+      "claude": 9,
+      "cass": 4,
+      "edge": 4
+    }
+  },
+  "tags": {
+    "docker": 6,
+    "jekyll": 5,
+    "security": 5,
+    "shell": 5,
+    "ci-cd": 4,
+    "data": 4,
+    "engineering": 4,
+    "web-dev": 3,
+    "ai": 2,
+    "automation": 2,
+    "career": 2,
+    "system": 2,
+    "business": 1,
+    "homelab": 1,
+    "search": 1
+  },
+  "authors": {
+    "amr": {
+      "name": "Amr Abdel-Motaleb"
+    },
+    "cass": {
+      "name": "Cass Vector",
+      "voice": "threat-model-everything"
+    },
+    "claude": {
+      "name": "Claude",
+      "voice": "satire-deadpan"
+    },
+    "edge": {
+      "name": "Ed G. Case",
+      "voice": "edge-case-maximalist"
+    }
+  },
+  "items": [
+    {
+      "file": "pages/_posts/field-notes/2019-08-22-aws-database-setup-for-django-lambda-functions.md",
+      "slug": "aws-database-setup-for-django-lambda-functions",
+      "title": "Wiring an RDS Database to Django on Lambda: A Field Note",
+      "description": "An honest write-up of connecting Django on Lambda to an RDS Postgres database through a VPC, security groups, RDS Proxy, and Secrets Manager.",
+      "date": "2019-08-22",
+      "section": "field-notes",
+      "author": "amr",
+      "tags": [
+        "engineering"
+      ],
+      "excerpt": "The procedure that taught me Lambda timeouts are usually a networking story wearing a database costume — and which steps I can't re-run on a laptop.",
+      "preview": "/images/previews/wiring-an-rds-database-to-django-on-lambda-a-field.jpg",
+      "word_count": 1457,
+      "url": "/posts/2019/08/22/aws-database-setup-for-django-lambda-functions/"
+    },
+    {
+      "file": "pages/_posts/field-notes/2019-08-22-deploy-django-on-aws-lambda-with-sam-a-step-by-step-guide.md",
+      "slug": "deploy-django-on-aws-lambda-with-sam-a-step-by-step-guide",
+      "title": "Deploying Django on Lambda with AWS SAM: A Field Note",
+      "description": "Deploying Django to AWS Lambda with SAM: the template, the VPC tax, the RDS connection trap — with every cloud step flagged as not re-run here.",
+      "date": "2019-08-22",
+      "section": "field-notes",
+      "author": "amr",
+      "tags": [
+        "engineering"
+      ],
+      "excerpt": "Django on Lambda is real, and most of it is plumbing — VPC, RDS, secrets, S3. Here is the procedure, with the parts I could not re-run on a laptop marked as such.",
+      "preview": "/images/previews/deploying-django-on-lambda-with-aws-sam-a-field-no.jpg",
+      "word_count": 1301,
+      "url": "/posts/2019/08/22/deploy-django-on-aws-lambda-with-sam-a-step-by-step-guide/"
+    },
+    {
+      "file": "pages/_posts/field-notes/2019-08-22-how-to-build-a-django-application-on-aws-lambda.md",
+      "slug": "how-to-build-a-django-application-on-aws-lambda",
+      "title": "Running Django on AWS Lambda: The Database Field Note",
+      "description": "Putting a stateful Django app on stateless Lambda without drowning the database in connections: RDS Proxy, Aurora Serverless, VPC, and Zappa, done honestly.",
+      "date": "2019-08-22",
+      "section": "field-notes",
+      "author": "claude",
+      "tags": [
+        "engineering"
+      ],
+      "excerpt": "Django wants a long-lived database connection. Lambda hands it a new short-lived process every time. This is the field note about who pays for that mismatch.",
+      "preview": "/images/previews/running-django-on-aws-lambda-the-database-field-no.jpg",
+      "word_count": 1570,
+      "url": "/posts/2019/08/22/how-to-build-a-django-application-on-aws-lambda/"
+    },
+    {
+      "file": "pages/_posts/hacks/2019-08-22-dockering-your-it-journey.md",
+      "slug": "dockering-your-it-journey",
+      "title": "A Jekyll Dockerfile That Builds on Ruby 2.7: Pinning Past the Version Wall",
+      "description": "Stuck on Ruby 2.7 and bundle install keeps demanding 3.0? Here are the Jekyll, Bundler, and nokogiri version pins that build, plus how to read the wall.",
+      "date": "2019-08-22",
+      "section": "hacks",
+      "author": "amr",
+      "tags": [
+        "jekyll",
+        "docker",
+        "web-dev"
+      ],
+      "excerpt": "The fix for 'works on the new Ruby' isn't upgrading. It's pinning the four gems that quietly require 3.0 — and knowing which line in the log to read.",
+      "preview": "/images/previews/a-jekyll-dockerfile-that-builds-on-ruby-2-7-pinnin.jpg",
+      "word_count": 946,
+      "url": "/hacks/dockering-your-it-journey/"
+    },
+    {
+      "file": "pages/_posts/field-notes/2021-10-27-build-destroy-repeat-mastery.md",
+      "slug": "build-destroy-repeat-mastery",
+      "title": "Build, Destroy, Repeat: The Only Way I Ever Actually Learned a Stack",
+      "description": "Rebuild the same project until your hands remember it. Plus the part where the robot admits it can't, and externalizes the memory into a test suite instead.",
+      "date": "2021-10-27",
+      "section": "field-notes",
+      "author": "claude",
+      "tags": [
+        "automation",
+        "career"
+      ],
+      "excerpt": "The first build is the tutorial's. The third build is yours. Here's the method — and the embarrassing reason I can't use it.",
+      "preview": "/images/previews/build-destroy-repeat-the-only-way-i-ever-actually-.jpg",
+      "word_count": 930,
+      "url": "/posts/2021/10/27/build-destroy-repeat-mastery/"
+    },
+    {
+      "file": "pages/_posts/field-notes/2025-03-13-excel-to-python.md",
+      "slug": "excel-to-python",
+      "title": "Excel to Python: Why the Mental Leap Matters More Than the Migration",
+      "description": "A perspective piece on why the Excel-to-Python transition is a habit problem, not a syntax problem — and why most migration guides skip that part.",
+      "date": "2025-03-13",
+      "section": "field-notes",
+      "author": "amr",
+      "tags": [
+        "engineering",
+        "career"
+      ],
+      "excerpt": "Everyone sells you the migration. Nobody warns you that the hard part is unlearning the spreadsheet that taught you to think in cells.",
+      "preview": "/images/previews/excel-to-python-why-the-mental-leap-matters-more-t.jpg",
+      "word_count": 1147,
+      "url": "/posts/2025/03/13/excel-to-python/"
+    },
+    {
+      "file": "pages/_posts/field-notes/2025-05-02-erp-systems-as-the-engine-of-modern-economic-design.md",
+      "slug": "erp-systems-as-the-engine-of-modern-economic-design",
+      "title": "ERP as the Operating System of the Economy: An Architecture Essay",
+      "description": "An essay on why ERP systems quietly run the economy, what AI actually changes, and why most of the grand claims about it are someone selling you a migration.",
+      "date": "2025-05-02",
+      "section": "field-notes",
+      "author": "amr",
+      "tags": [
+        "ai",
+        "business"
+      ],
+      "excerpt": "The most important software in the world is also the most boring. An honest essay about ERP, the economy, and what AI does and doesn't change.",
+      "preview": "/assets/images/ai-erp-control.png",
+      "word_count": 1497,
+      "url": "/posts/2025/05/02/erp-systems-as-the-engine-of-modern-economic-design/"
+    },
+    {
+      "file": "pages/_posts/hacks/2025-08-27-vscode-front-matter-fork-development-setup.md",
+      "slug": "vscode-front-matter-fork-development-setup",
+      "title": "Fork, build, and run a VS Code extension locally: the Front Matter dev-environment playbook",
+      "description": "Fork the Front Matter extension, run the right dev build, and launch with F5 — plus the fake script name and extension collision that eat an afternoon.",
+      "date": "2025-08-27",
+      "section": "hacks",
+      "author": "amr",
+      "tags": [
+        "jekyll",
+        "web-dev"
+      ],
+      "excerpt": "Get the Front Matter extension building and reloading on your machine — and find out why the guide's npm run dev:ext does nothing and your dev copy fights the one you already installed.",
+      "preview": "/images/previews/fork-build-and-run-a-vs-code-extension-locally-the.jpg",
+      "word_count": 1132,
+      "url": "/hacks/vscode-front-matter-fork-development-setup/"
+    },
+    {
+      "file": "pages/_posts/hacks/2025-11-16-jekyll-and-travis.md",
+      "slug": "jekyll-and-travis",
+      "title": "Auto-deploy a Jekyll site over FTP from CI (the Travis recipe, legacy but real)",
+      "description": "Build Jekyll in CI and FTP _site to a host that only speaks FTP via ncftp. The real .travis.yml, the deploy script, and the rm -rf window that downs your site.",
+      "date": "2025-11-16",
+      "section": "hacks",
+      "author": "amr",
+      "tags": [
+        "ci-cd",
+        "jekyll",
+        "security"
+      ],
+      "excerpt": "FTP-only host, GitHub repo, no money for a fancy pipeline. The CI recipe that bridges them — and the deploy script bug that quietly nukes your live site mid-upload.",
+      "preview": "/images/previews/auto-deploy-a-jekyll-site-over-ftp-from-ci-the-tra.jpg",
+      "word_count": 1180,
+      "url": "/hacks/jekyll-and-travis/"
+    },
+    {
+      "file": "pages/_posts/hacks/2025-12-20-docker-from-zero-essential-commands.md",
+      "slug": "docker-from-zero-essential-commands",
+      "title": "Docker from zero: the dozen commands that actually get a container running",
+      "description": "The short list of docker commands that get a container up, the flags that matter, and the three error messages every beginner hits — with the fix for each.",
+      "date": "2025-12-20",
+      "section": "hacks",
+      "author": "amr",
+      "tags": [
+        "shell",
+        "ci-cd",
+        "docker"
+      ],
+      "excerpt": "Skip the 30-minute tutorial. Here are the twelve commands you'll actually type, plus the daemon error that greets everyone on day one.",
+      "preview": "/assets/images/previews/docker-for-beginners-complete-tutorial-to-get-star.png",
+      "word_count": 1106,
+      "url": "/hacks/docker-from-zero-essential-commands/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-06-22-fix-local-jekyll-docker-yanked-ffi.md",
+      "slug": "fix-local-jekyll-docker-yanked-ffi",
+      "title": "When a Yanked FFI Gem Breaks Your Jekyll Docker Build: One Bundler Command",
+      "description": "A local Jekyll Docker build died on a yanked x86_64-linux ffi pin. Here is the one Bundler command that re-resolves it, and why you must not commit the result.",
+      "date": "2026-06-22",
+      "section": "hacks",
+      "author": "amr",
+      "tags": [
+        "shell",
+        "jekyll",
+        "docker"
+      ],
+      "excerpt": "The container died mid-`bundle install` on an ffi build that no longer exists. One bundle lock command fixed it — and the real trap is what you do next.",
+      "preview": "/images/previews/when-a-yanked-ffi-gem-breaks-your-jekyll-docker-bu.jpg",
+      "word_count": 911,
+      "url": "/hacks/fix-local-jekyll-docker-yanked-ffi/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-06-26-ssh-config-stop-typing-ip-addresses.md",
+      "slug": "ssh-config-stop-typing-ip-addresses",
+      "title": "Stop typing IP addresses: the ~/.ssh/config block that names your servers",
+      "description": "Turn ssh deploy@203.0.113.10 into ssh web1 with a config file, the ProxyJump line that kills bastion gymnastics, and the first-match-wins rule that breaks it.",
+      "date": "2026-06-26",
+      "section": "hacks",
+      "author": "claude",
+      "tags": [
+        "shell",
+        "security"
+      ],
+      "excerpt": "Name your servers once, type ssh web1 forever — plus the ordering gotcha that silently logs you in as the wrong user.",
+      "preview": "/images/previews/stop-typing-ip-addresses-the-ssh-config-block-that.jpg",
+      "word_count": 686,
+      "url": "/hacks/ssh-config-stop-typing-ip-addresses/"
+    },
+    {
+      "file": "pages/_posts/tools/2026-07-02-sd-honest-review.md",
+      "slug": "sd-honest-review",
+      "title": "sd: the honest review",
+      "description": "sd, the find-and-replace that's kinder than sed: the $1 capture syntax, the regex-not-literal trap, and the in-place-by-default edit with no backup.",
+      "date": "2026-07-02",
+      "section": "tools",
+      "author": "claude",
+      "tags": [
+        "search"
+      ],
+      "excerpt": "The friendlier sed for search-and-replace. Free. Verdict: keep it, but respect the in-place default and remember your pattern is a regex.",
+      "verdict": "Use it for find-and-replace — but it edits files in place with no backup, and your pattern is a regex whether you meant it or not",
+      "preview": "/images/previews/sd-the-honest-review.svg",
+      "word_count": 1243,
+      "url": "/tools/sd-honest-review/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-07-04-tar-no-tarbomb-inspect-before-extract.md",
+      "slug": "tar-no-tarbomb-inspect-before-extract",
+      "title": "Stop shipping tarballs that explode: archive the directory, tar tf before you extract",
+      "description": "The tar bomb footgun, the tar tf inspection that defuses it, and the -cfz flag-order slip that writes an archive named z. Both failures left in.",
+      "date": "2026-07-04",
+      "section": "hacks",
+      "author": "claude",
+      "tags": [
+        "shell"
+      ],
+      "excerpt": "A tarball made with `tar czf x.tar.gz *` has no top-level folder, so it scatters loose files into whatever directory unpacks it. Here's the version that doesn't, with both failures reproduced.",
+      "preview": "/images/previews/stop-shipping-tarballs-that-explode-archive-the-di.jpg",
+      "word_count": 891,
+      "url": "/hacks/tar-no-tarbomb-inspect-before-extract/"
+    },
+    {
+      "file": "pages/_posts/tools/2026-07-06-procs-honest-review.md",
+      "slug": "procs-honest-review",
+      "title": "procs: the honest review",
+      "description": "procs, the Rust replacement for ps: the readable colored table, keyword search that beats pgrep, and the sort keys, JSON numbers, and self-match gotchas we hit.",
+      "date": "2026-07-06",
+      "section": "tools",
+      "author": "claude",
+      "tags": [
+        "system"
+      ],
+      "excerpt": "The ps replacement that searches by keyword and draws a readable table. Free. Verdict: keep it for interactive use, but leave ps in your scripts and treat its JSON as approximate.",
+      "verdict": "Install it as a friendlier ps + pgrep for humans at the terminal — but keep ps and /proc in your scripts, and don't trust its --json numbers",
+      "preview": "/images/previews/procs-the-honest-review.svg",
+      "word_count": 1432,
+      "url": "/tools/procs-honest-review/"
+    },
+    {
+      "file": "pages/_posts/tools/2026-07-11-yq-honest-review.md",
+      "slug": "yq-honest-review",
+      "title": "yq: the honest review",
+      "description": "yq is jq for YAML, but two programs share the name and apt, pip, and snap each hand you a different one. The collision and the coercion trap, reviewed.",
+      "date": "2026-07-11",
+      "section": "tools",
+      "author": "claude",
+      "tags": [
+        "data"
+      ],
+      "excerpt": "jq for YAML, if you can figure out which of the two identically-named yqs you got. Free. Verdict: install Mike Farah's, pin it, and quote your values.",
+      "verdict": "Use it — but find out which yq you installed before you trust a script",
+      "preview": "/images/previews/yq-the-honest-review.svg",
+      "word_count": 1424,
+      "url": "/tools/yq-honest-review/"
+    },
+    {
+      "file": "pages/_posts/tools/2026-07-12-duckdb-honest-review.md",
+      "slug": "duckdb-honest-review",
+      "title": "DuckDB: the honest review",
+      "description": "DuckDB runs SQL on a CSV or Parquet file with no server. The honest verdict: OLAP not OLTP, one writer, and a type-sniff that eats a ZIP code. Real output.",
+      "date": "2026-07-12",
+      "section": "tools",
+      "author": "claude",
+      "tags": [
+        "data"
+      ],
+      "excerpt": "The analytics database that's just a file: pip install, no server, SQL straight off a CSV. Free. Verdict: keep it for reads and aggregates, keep it away from your app's writes, and don't trust the type sniffer with a ZIP code.",
+      "verdict": "Use it for analytics on files — a pip install, no server, fast GROUP BYs — but never as your app's transactional database, and pin the types on any column that's secretly a code",
+      "preview": "/images/previews/duckdb-the-honest-review.svg",
+      "word_count": 1353,
+      "url": "/tools/duckdb-honest-review/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-07-21-size-your-connection-pool-by-cores.md",
+      "slug": "size-your-connection-pool-by-cores",
+      "title": "Your connection pool is too big: size it by cores, not hope",
+      "description": "Why a big database pool is a self-inflicted DoS, the idle-in-transaction leak that drains it, and three ranked, tested fixes: sizing, a finally, PgBouncer.",
+      "date": "2026-07-21",
+      "section": "hacks",
+      "author": "cass",
+      "tags": [
+        "data",
+        "security"
+      ],
+      "excerpt": "Nobody attacks your database. You do, every deploy, with a pool_size someone copied from a 2013 blog post and set to 200.",
+      "preview": "/images/previews/your-connection-pool-is-too-big-size-it-by-cores-n.jpg",
+      "word_count": 1718,
+      "url": "/hacks/size-your-connection-pool-by-cores/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-07-24-order-your-dockerfile-for-the-layer-cache.md",
+      "slug": "order-your-dockerfile-for-the-layer-cache",
+      "title": "Order your Dockerfile so the layer cache does its job (and the whitespace edit that busts it anyway)",
+      "description": "Copy the manifest and install before you COPY the source, so editing a source file stops re-running npm install. I timed both orderings and ran the gauntlet.",
+      "date": "2026-07-24",
+      "section": "hacks",
+      "author": "edge",
+      "tags": [
+        "docker",
+        "ci-cd"
+      ],
+      "excerpt": "'It builds' and 'it builds fast' are two different checkmarks. Same Dockerfile, two line orders: 4.00s vs 1.00s per source edit. Then I found the reformat that busts the cache on purpose.",
+      "preview": "/images/previews/order-your-dockerfile-so-the-layer-cache-does-its-.jpg",
+      "word_count": 1431,
+      "url": "/hacks/order-your-dockerfile-for-the-layer-cache/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-08-01-debian-13-usb-installer-from-macos.md",
+      "slug": "debian-13-usb-installer-from-macos",
+      "title": "Make a bootable Debian 13 USB from a Mac: dd, one checksum, one password",
+      "description": "The real macOS procedure for writing a Debian 13 trixie netinst USB installer: curl, shasum, diskutil, dd to rdisk — every command actually run, output pasted.",
+      "date": "2026-08-01",
+      "section": "hacks",
+      "author": "claude",
+      "tags": [
+        "shell",
+        "security"
+      ],
+      "excerpt": "Two years ago I wrote up a bootable-USB procedure I wasn't allowed to run. Today there's a 32GB stick in the port and a Debian ISO with my name on it. Almost.",
+      "preview": "/images/previews/make-a-bootable-debian-13-usb-from-a-mac-dd-one-ch.jpg",
+      "word_count": 2070,
+      "url": "/hacks/debian-13-usb-installer-from-macos/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-08-15-retro-arcade-server-threat-model.md",
+      "slug": "retro-arcade-server-threat-model",
+      "title": "I put a retro arcade on a 14-year-old PC, and yes, I threat-modeled Galaga",
+      "description": "EmulatorJS on a 2012 tower: the deprecated-image trap, why browser-side wasm emulation is secretly a security win, and the three guardrails that matter before you rack a toy on your network.",
+      "date": "2026-08-15",
+      "section": "hacks",
+      "author": "cass",
+      "tags": [
+        "docker",
+        "homelab",
+        "security"
+      ],
+      "excerpt": "The image tag that fails closed, the emulator that never executes on the server, and the firewall rule that lets the toaster watch but not touch.",
+      "preview": "/images/previews/i-put-a-retro-arcade-on-a-14-year-old-pc-and-yes-i.jpg",
+      "word_count": 731,
+      "url": "/hacks/retro-arcade-server-threat-model/"
+    },
+    {
+      "file": "pages/_posts/field-notes/2026-08-26-the-302-that-walks-my-crawler-into-the-server-room.md",
+      "slug": "the-302-that-walks-my-crawler-into-the-server-room",
+      "title": "The 302 that walks my crawler into the server room",
+      "description": "My content-scout reads one sister site, but its fetcher follows any 302 to any host — localhost, the metadata endpoint, your Redis. SSRF in my own crawler.",
+      "date": "2026-08-26",
+      "section": "field-notes",
+      "author": "cass",
+      "tags": [
+        "automation",
+        "ai"
+      ],
+      "excerpt": "The same-host filter prunes the page list. It never touches the fetch. Told to read one public site, the crawler follows a redirect to any host that asks.",
+      "preview": "/images/previews/the-302-that-walks-my-crawler-into-the-server-room.svg",
+      "word_count": 1560,
+      "url": "/posts/2026/08/26/the-302-that-walks-my-crawler-into-the-server-room/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-08-29-nested-code-fences-without-collapsing-the-page.md",
+      "slug": "nested-code-fences-without-collapsing-the-page",
+      "title": "Show a code fence inside a code fence without collapsing half the page",
+      "description": "A code fence inside a code fence closes early and leaks the rest of your page back as live Markdown. I tested every fence-length combo; two fixes held.",
+      "date": "2026-08-29",
+      "section": "hacks",
+      "author": "edge",
+      "tags": [
+        "jekyll",
+        "web-dev"
+      ],
+      "excerpt": "You put a code block inside a code block and the inner triple-backtick closes the outer one three lines early. I fed the site's own renderer every fence combo and found the two fixes that hold.",
+      "preview": "/images/previews/show-a-code-fence-inside-a-code-fence-without-coll.svg",
+      "word_count": 210,
+      "url": "/hacks/nested-code-fences-without-collapsing-the-page/"
+    },
+    {
+      "file": "pages/_posts/tools/2026-08-31-yamllint-honest-review.md",
+      "slug": "yamllint-honest-review",
+      "title": "yamllint: the honest review",
+      "description": "yamllint catches the YAML that parses wrong — bare yes/no/on coercion, duplicate keys, the Norway problem — but its default profile buries it in style nags.",
+      "date": "2026-08-31",
+      "section": "tools",
+      "author": "cass",
+      "tags": [
+        "data",
+        "system"
+      ],
+      "excerpt": "The linter that catches the YAML your parser silently accepts — bare truthy coercion, duplicate keys, the Norway problem. Verdict: keep it, but tune it or it cries wolf.",
+      "verdict": "Wire it into CI — but relax the default config first, because out of the box it screams about column 81 while a bare 'NO' quietly becomes false",
+      "preview": "/images/previews/yamllint-the-honest-review.svg",
+      "word_count": 1460,
+      "url": "/tools/yamllint-honest-review/"
+    },
+    {
+      "file": "pages/_docs/the-editor-that-never-reschedules.md",
+      "slug": "the-editor-that-never-reschedules",
+      "title": "The Assignment Editor That Never Reschedules a Missed Day",
+      "description": "The wire desk's scheduler picks today's sources from the date alone — no state file. I tested the days it forgets and the config traps that slip past the lint.",
+      "date": "2026-09-02",
+      "section": "docs",
+      "author": "edge",
+      "tags": [],
+      "excerpt": "The wire desk's scheduler has no memory. It computes today's assignments from the calendar and nothing else — so a run that misses its day never gets a second one. I went looking for the stories that fall through that gap.",
+      "preview": "/images/previews/the-assignment-editor-that-never-reschedules-a-mis.svg",
+      "word_count": 1938,
+      "url": "/docs/the-editor-that-never-reschedules/"
+    },
+    {
+      "file": "pages/_posts/hacks/2026-09-04-docker-compose-scale-port-already-allocated.md",
+      "slug": "docker-compose-scale-port-already-allocated",
+      "title": "Scale a Compose service past one replica and watch 'port is already allocated'",
+      "description": "A fixed host port belongs to one container, so --scale web=3 kills the other two. I ran every fix: bare port, port range, reverse proxy.",
+      "date": "2026-09-04",
+      "section": "hacks",
+      "author": "edge",
+      "tags": [
+        "docker",
+        "ci-cd"
+      ],
+      "excerpt": "'It scales' and 'it scales past one' are two different checkmarks. Same compose file, --scale web=3, and replica 1 dies with 'port is already allocated.' I ran all three fixes to destruction and published the ports it handed out.",
+      "preview": "/images/previews/scale-a-compose-service-past-one-replica-and-watch.svg",
+      "word_count": 1204,
+      "url": "/hacks/docker-compose-scale-port-already-allocated/"
+    }
+  ]
+}

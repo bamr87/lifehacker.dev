@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img"
+     data-schema="trace-bloom-motif/1" data-model="claude-opus (hand-authored via lib/motif validator)" data-attempts="1" data-digest="eff3c043">
+<title>Two identical preview-banner tiles joined by an equals sign, both funnelling down into one shared seed node, with a collision spark above — a hash collision giving two posts the same banner.</title>
+<!-- Preview only: the banner compositor ignores this block and resolves the
+     tokens against the article's own section palette. -->
+<style>:root{--ink:#eafffb;--cool:#2dd4bf;--warm:#fb7185;--accent:#fb7185;--grid:#1d3a36;--muted:#79a8a1;--bg0:#060d0c;--bg1:#0c1a18}</style>
+  <g>
+    <rect x="110" y="250" width="300" height="380" rx="24" fill="var(--bg1)" stroke="var(--cool)" stroke-width="8"/>
+    <rect x="590" y="250" width="300" height="380" rx="24" fill="var(--bg1)" stroke="var(--cool)" stroke-width="8"/>
+    <line x1="210" y1="360" x2="330" y2="430" stroke="var(--grid)" stroke-width="7"/>
+    <line x1="330" y1="430" x2="250" y2="520" stroke="var(--grid)" stroke-width="7"/>
+    <line x1="210" y1="360" x2="250" y2="520" stroke="var(--grid)" stroke-width="7"/>
+    <circle cx="210" cy="360" r="40" fill="var(--accent)"/>
+    <circle cx="330" cy="430" r="28" fill="var(--warm)"/>
+    <circle cx="250" cy="520" r="46" fill="var(--cool)"/>
+    <line x1="690" y1="360" x2="810" y2="430" stroke="var(--grid)" stroke-width="7"/>
+    <line x1="810" y1="430" x2="730" y2="520" stroke="var(--grid)" stroke-width="7"/>
+    <line x1="690" y1="360" x2="730" y2="520" stroke="var(--grid)" stroke-width="7"/>
+    <circle cx="690" cy="360" r="40" fill="var(--accent)"/>
+    <circle cx="810" cy="430" r="28" fill="var(--warm)"/>
+    <circle cx="730" cy="520" r="46" fill="var(--cool)"/>
+    <rect x="452" y="408" width="96" height="26" rx="10" fill="var(--ink)"/>
+    <rect x="452" y="470" width="96" height="26" rx="10" fill="var(--ink)"/>
+    <line x1="260" y1="630" x2="500" y2="758" stroke="var(--warm)" stroke-width="12"/>
+    <line x1="740" y1="630" x2="500" y2="758" stroke="var(--warm)" stroke-width="12"/>
+    <circle cx="500" cy="812" r="60" fill="var(--warm)" stroke="var(--ink)" stroke-width="8"/>
+    <circle cx="500" cy="812" r="26" fill="var(--bg0)"/>
+    <line x1="500" y1="96" x2="500" y2="212" stroke="var(--accent)" stroke-width="8"/>
+    <line x1="442" y1="154" x2="558" y2="154" stroke="var(--accent)" stroke-width="8"/>
+    <line x1="459" y1="113" x2="541" y2="195" stroke="var(--accent)" stroke-width="8"/>
+    <line x1="541" y1="113" x2="459" y2="195" stroke="var(--accent)" stroke-width="8"/>
+    <circle cx="500" cy="154" r="30" fill="var(--accent)" stroke="var(--ink)" stroke-width="6"/>
+  </g>
+</svg>

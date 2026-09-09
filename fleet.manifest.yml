@@ -5,9 +5,25 @@
 spec_version: fleet/v1
 repo: bamr87/lifehacker.dev
 provenance: derived
-summary: An autonomous content fleet — scouts, wire desk, triage, and auto-fix lanes
+summary: An autonomous content fleet — scouts, wire desk, triage, weekly epic, and auto-fix lanes
   publishing a Jekyll site, every loop default-OFF behind its own *_ENABLED repo variable.
 lanes:
+- id: agent-review
+  kind: review
+  harness: claude-cli
+  implementation: .github/workflows/agent-review.yml
+  description: agent-review
+  triggers:
+  - kind: schedule
+    cron: 17 5 1 * *
+  - kind: dispatch
+  switch: AGENT_REVIEW_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
 - id: auto-fix
   kind: maintenance
   harness: claude-cli
@@ -25,6 +41,22 @@ lanes:
   guardrails:
     never_merges: true
     opens_pull_requests: false
+- id: brand-sweep
+  kind: other
+  harness: claude-cli
+  implementation: .github/workflows/brand-sweep.yml
+  description: brand-sweep
+  triggers:
+  - kind: schedule
+    cron: 23 8 * * 1
+  - kind: dispatch
+  switch: BRAND_SWEEP_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
 - id: claude
   kind: mention
   harness: claude-code-action
@@ -44,6 +76,68 @@ lanes:
   guardrails:
     never_merges: true
     opens_pull_requests: false
+- id: content-factory
+  kind: content
+  harness: claude-cli
+  implementation: .github/workflows/content-factory.yml
+  description: content-factory
+  triggers:
+  - kind: schedule
+    cron: 0 9 * * *
+  - kind: dispatch
+  switch: CONTENT_FACTORY_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
+    opens_pull_requests: false
+- id: content-scout
+  kind: content
+  harness: claude-cli
+  implementation: .github/workflows/content-scout.yml
+  description: content-scout
+  triggers:
+  - kind: schedule
+    cron: 7 8 * * *
+  - kind: dispatch
+  switch: CONTENT_SCOUT_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
+- id: devops-audit
+  kind: analysis
+  harness: claude-cli
+  implementation: .github/workflows/devops-audit.yml
+  description: devops-audit
+  triggers:
+  - kind: dispatch
+  switch: null
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  guardrails:
+    never_merges: true
+    opens_pull_requests: false
+- id: explore
+  kind: analysis
+  harness: claude-cli
+  implementation: .github/workflows/explore.yml
+  description: explore
+  triggers:
+  - kind: schedule
+    cron: 23 6 * * *
+  - kind: dispatch
+  switch: EXPLORER_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  guardrails:
+    never_merges: true
 - id: factory--issue-factory-1
   kind: triage
   harness: claude-code-action
@@ -71,40 +165,209 @@ lanes:
   - CLAUDE_CODE_OAUTH_TOKEN
   guardrails:
     never_merges: true
+- id: fleet-dispatch
+  kind: other
+  harness: claude-cli
+  implementation: .github/workflows/fleet-dispatch.yml
+  description: fleet-dispatch
+  triggers:
+  - kind: schedule
+    cron: 0 8 * * *
+  - kind: dispatch
+  switch: FLEET_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
+    opens_pull_requests: false
+- id: loop-tuner
+  kind: other
+  harness: claude-cli
+  implementation: .github/workflows/loop-tuner.yml
+  description: loop-tuner
+  triggers:
+  - kind: schedule
+    cron: 23 6 * * 1
+  - kind: dispatch
+  switch: LOOP_TUNER_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
+- id: pipeline
+  kind: other
+  harness: claude-cli
+  implementation: .github/workflows/pipeline.yml
+  description: pipeline
+  triggers:
+  - kind: event
+    events:
+    - pull_request
+    - push
+  - kind: dispatch
+  switch: null
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
+    opens_pull_requests: false
+- id: quest-forge
+  kind: other
+  harness: claude-cli
+  implementation: .github/workflows/quest-forge.yml
+  description: quest-forge
+  triggers:
+  - kind: event
+    events:
+    - push
+  - kind: dispatch
+  switch: QUEST_FORGE_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  - IT_JOURNEY_TOKEN
+  guardrails:
+    never_merges: true
+    opens_pull_requests: false
+- id: theme-scout
+  kind: content
+  harness: claude-cli
+  implementation: .github/workflows/theme-scout.yml
+  description: theme-scout
+  triggers:
+  - kind: schedule
+    cron: 41 6 * * 1
+  - kind: dispatch
+  switch: THEME_SCOUT_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
+    opens_pull_requests: false
+- id: weekly-epic
+  kind: content
+  harness: claude-cli
+  implementation: .github/workflows/weekly-epic.yml
+  description: weekly-epic
+  triggers:
+  - kind: schedule
+    cron: 45 7 * * 1
+  - kind: dispatch
+  switch: WEEKLY_EPIC_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  - OPENAI_API_KEY
+  guardrails:
+    never_merges: true
+    opens_pull_requests: false
+- id: wire-scout
+  kind: content
+  harness: claude-cli
+  implementation: .github/workflows/wire-scout.yml
+  description: wire-scout
+  triggers:
+  - kind: schedule
+    cron: 27 8 * * *
+  - kind: dispatch
+  switch: WIRE_SCOUT_ENABLED
+  uses_tokens:
+  - ANTHROPIC_API_KEY
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FLEET_TOKEN
+  guardrails:
+    never_merges: true
 tokens:
 - name: ANTHROPIC_API_KEY
   scope: fleet
   required: false
   purpose: Fallback Claude auth, used only when the OAuth token is absent.
   used_by:
+  - agent-review
   - auto-fix
+  - brand-sweep
   - claude
+  - content-factory
+  - content-scout
+  - devops-audit
+  - explore
   - factory--issue-factory-1
   - factory--issue-factory-2
+  - fleet-dispatch
+  - loop-tuner
+  - pipeline
+  - quest-forge
+  - theme-scout
+  - weekly-epic
+  - wire-scout
 - name: CLAUDE_CODE_OAUTH_TOKEN
   scope: fleet
   required: true
   purpose: 'Preferred Claude auth (house convention: OAuth first). Produced by `claude setup-token`.'
   used_by:
+  - agent-review
   - auto-fix
+  - brand-sweep
   - claude
+  - content-factory
+  - content-scout
+  - devops-audit
+  - explore
   - factory--issue-factory-1
   - factory--issue-factory-2
+  - fleet-dispatch
+  - loop-tuner
+  - pipeline
+  - quest-forge
+  - theme-scout
+  - weekly-epic
+  - wire-scout
 - name: FLEET_TOKEN
   scope: fleet
   required: true
   purpose: 'Cross-repo PAT: lets a lane see and act on other repositories.'
   used_by:
+  - agent-review
   - auto-fix
+  - brand-sweep
+  - content-factory
+  - content-scout
+  - fleet-dispatch
+  - loop-tuner
+  - pipeline
+  - quest-forge
+  - theme-scout
+  - weekly-epic
+  - wire-scout
+- name: IT_JOURNEY_TOKEN
+  scope: repo
+  required: true
+  used_by:
+  - quest-forge
+- name: OPENAI_API_KEY
+  scope: repo
+  required: true
+  used_by:
+  - weekly-epic
 - name: XAI_OAUTH_TOKEN
   scope: local
   required: false
-  purpose: 'Preferred xAI auth for opt-in Imagine preview covers (scripts/preview/xai.mjs). Kilo xAI login also works locally. Never a fleet cron.'
+  purpose: "Preferred xAI auth for opt-in Imagine preview covers (scripts/preview/xai.mjs). Kilo xAI login also works locally. Never a fleet cron."
   used_by: []
 - name: XAI_API_KEY
   scope: local
   required: false
-  purpose: 'Fallback xAI auth for Imagine covers, used only when no OAuth token is present.'
+  purpose: "Fallback xAI auth for Imagine covers, used only when no OAuth token is present."
   used_by: []
 agents:
 - agent-reviewer

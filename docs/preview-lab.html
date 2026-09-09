@@ -733,7 +733,12 @@ const TRANSFORMS = /^(?:(?:translate|scale|rotate|matrix|skewX|skewY)\s*\(\s*[-\
 const PATH_DATA = /^[MmLlHhVvCcSsQqTtAaZz0-9eE.,+\-\s]+$/;
 
 /** Thinnest stroke that survives the card crop (motif units, scaled by ~0.58
- *  into a 1536px canvas and then by ~0.2 again into a 300px card). */
+ *  into a 1536px canvas and then by ~0.2 again into a 300px card). Hairlines are
+ *  CLAMPED UP on serialization rather than rejected: a detail stroke one unit
+ *  under the floor is not worth a whole redraw, and "deterministic code owns
+ *  what must never be wrong" cuts both ways — if we can just fix it, fix it.
+ *  `stroke-width="0"` is left alone; that means "no stroke", and honouring it is
+ *  not the same as letting a hairline through. */
 const MIN_STROKE = 4;
 
 /** Coordinate slack. A stroke may kiss the edge of the box; a shape may not
@@ -930,12 +935,6 @@ function validateTree(root, { minElements = 6, maxElements = 200, minSpan = 0.42
             violations.push(`${key}="${value}" on <${node.tag}> must be between 0 and 1.`);
           }
         }
-        // A hairline is nothing in a 300px card. The floor is on the EXPLICIT
-        // attribute only — a stroke-width inherited from a parent <g> is checked
-        // where it is written, not everywhere it applies.
-        if (key === 'stroke-width' && Number(value) > 0 && Number(value) < MIN_STROKE) {
-          violations.push(`stroke-width="${value}" is too thin. Use at least ${MIN_STROKE} — this art is scaled down to a 300px card, where anything finer disappears.`);
-        }
         if (key === 'transform' && !TRANSFORMS.test(value)) {
           violations.push(`transform="${value}" is not a plain translate/scale/rotate/matrix/skew list.`);
         }
@@ -1029,7 +1028,11 @@ function serializeTree(root, { resolve = (t) => `var(--${t})`, idPrefix = 'm-', 
     if (url) return `url(#${idPrefix}${url[1]})`;
     return v;
   };
-  const emit = (node) => {
+  // With an indent the output is pretty-printed one element per line, because a
+  // motif is a file a human reviews in a diff. Without one it is a single line —
+  // and that unindented form is what motifDigest hashes, so how the file is
+  // formatted can never change a drawing's identity.
+  const emit = (node, pad) => {
     const allowed = ELEMENTS[node.tag] || [];
     const attrs = [];
     for (const key of Object.keys(node.attrs)) {
@@ -1037,26 +1040,46 @@ function serializeTree(root, { resolve = (t) => `var(--${t})`, idPrefix = 'm-', 
       let value = node.attrs[key];
       if (PAINT.includes(key)) value = paint(value);
       else if (key === 'id') value = `${idPrefix}${value}`;
+      else if (key === 'stroke-width' && Number(value) > 0 && Number(value) < MIN_STROKE) {
+        value = String(MIN_STROKE);
+      }
       attrs.push(`${key}="${esc(value)}"`);
     }
     const open = `<${node.tag}${attrs.length ? ` ${attrs.join(' ')}` : ''}`;
-    if (!node.children.length) return `${open}/>`;
-    return `${open}>${node.children.map(emit).join('')}</${node.tag}>`;
+    if (!node.children.length) return `${pad}${open}/>`;
+    if (!indent) return `${pad}${open}>${node.children.map((c) => emit(c, '')).join('')}</${node.tag}>`;
+    return [`${pad}${open}>`,
+      ...node.children.map((c) => emit(c, `${pad}${indent}`)),
+      `${pad}</${node.tag}>`].join('\n');
   };
-  return root.children.map((child) => indent + emit(child)).join('\n');
+  return root.children.map((child) => emit(child, indent)).join('\n');
 }
 
-/** Stable identity for a motif's artwork — what a banner stamps as `data-motif`
- *  so the generator can tell a stale composite from a current one. */
+/** Stable identity for a motif's artwork. */
 const motifDigest = (body) => fnv1a(String(body)).toString(16).padStart(8, '0');
+
+/** Version of the COMPOSITING contract (how a motif is placed, clipped, staged
+ *  and animated into a banner) — distinct from GENERATOR, which versions the
+ *  banner as a whole. Bump it when renderMotifLayer changes shape, and every
+ *  illustrated banner goes stale on the next run while the un-illustrated ones,
+ *  which this cannot affect, are left alone. */
+const MOTIF_RENDERER = 'motif/2';
+
+/** What a banner stamps as `data-motif`: the artwork's identity AND the
+ *  compositing version, so either changing makes the banner stale. */
+const motifStamp = (motif) => `${MOTIF_RENDERER}:${motif.digest}`;
 
 /** The standalone, reviewable form written to _data/preview/motifs/<slug>.svg. */
 function serializeMotifDocument({ tree, concept, model, attempts, palette, title }) {
   const body = serializeTree(tree, { indent: '  ' });
+  // The digest is taken from the UNINDENTED serialization — the same form
+  // parseMotifDocument hashes on the way back in. Hashing the pretty-printed
+  // body here would stamp the file with an identity the banner never carries.
+  const digest = motifDigest(serializeTree(tree));
   const vars = TOKENS.map((t) => `--${t}:${(palette && palette[t]) || '#888888'}`).join(';');
   return [
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${MOTIF_GRID} ${MOTIF_GRID}" width="${MOTIF_GRID}" height="${MOTIF_GRID}" role="img"`,
-    `     data-schema="${MOTIF_SCHEMA}" data-model="${esc(model || 'unknown')}" data-attempts="${Number(attempts) || 1}" data-digest="${motifDigest(body)}">`,
+    `     data-schema="${MOTIF_SCHEMA}" data-model="${esc(model || 'unknown')}" data-attempts="${Number(attempts) || 1}" data-digest="${digest}">`,
     `<title>${esc(concept || title || 'Article motif')}</title>`,
     '<!-- Preview only: the banner compositor ignores this block and resolves the',
     '     tokens against the article\'s own section palette. -->',
@@ -1099,6 +1122,10 @@ function parseMotifDocument(text) {
  * place — defs go in <defs>, the layer goes under the scrim.
  */
 function renderMotifLayer(motif, design, palette, { bucket = 6 } = {}) {
+  // The stage rides the lattice's own sweep (it is weather). The drawing does
+  // not: it gets its own reveal, defined in svg.mjs, which starts at .72 rather
+  // than .3. Frame 0 is what every social scraper and rasterizer captures, and
+  // the subject of the picture cannot be 30% there when they do.
   const box = (design.motif && design.motif.box) || { x: 862, y: 224, size: 576 };
   const stageOpacity = (design.motif && design.motif.stageOpacity) ?? 0.62;
   const scale = box.size / MOTIF_GRID;
@@ -1111,10 +1138,20 @@ function renderMotifLayer(motif, design, palette, { bucket = 6 } = {}) {
       + `<stop offset="0.62" stop-color="${palette.bg0}" stop-opacity="${(stageOpacity * 0.45).toFixed(3)}"/>`
       + `<stop offset="1" stop-color="${palette.bg0}" stop-opacity="0"/></radialGradient>`,
   ].join('\n');
+  // The clip and the transform MUST live on separate groups. A clipPath with the
+  // default clipPathUnits="userSpaceOnUse" resolves in the user space of the
+  // element that references it — which, on an element that also carries a
+  // `transform`, is the space AFTER that transform. Putting both on one group
+  // reads the box coordinates as motif coordinates and clips the drawing away to
+  // a sliver. (It did. The first composited banner rendered one rectangle of a
+  // 35-shape illustration, and nothing in the pipeline could have caught it:
+  // the SVG was valid, the lint was green, and only a rasterized look found it.)
   const layer = [
     `<ellipse class="sig b${Math.max(0, bucket - 3)}" cx="${cx}" cy="${cy}" rx="${(box.size * 0.72).toFixed(0)}" ry="${(box.size * 0.66).toFixed(0)}" fill="url(#stage)"/>`,
-    `<g class="sig b${bucket} motif" clip-path="url(#motifclip)" transform="translate(${box.x} ${box.y}) scale(${scale.toFixed(4)})">`,
+    `<g class="motif" clip-path="url(#motifclip)">`,
+    `<g transform="translate(${box.x} ${box.y}) scale(${scale.toFixed(4)})">`,
     art,
+    '</g>',
     '</g>',
   ].join('\n');
   return { defs, layer };
@@ -1267,12 +1304,15 @@ function renderSVG(scene, meta, design) {
   const motif = meta.motif || null;
   const motifLayer = motif ? renderMotifLayer(motif, design, P, { bucket: Math.round(M.buckets * 0.45) }) : null;
 
-  push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d" data-generator="${GENERATOR}" data-seed="${params.seed}"${motif ? ` data-motif="${motif.digest}"` : ''}>`);
+  push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d" data-generator="${GENERATOR}" data-seed="${params.seed}"${motif ? ` data-motif="${motifStamp(motif)}"` : ''}>`);
   push(`<title id="t">${esc(meta.title || 'Preview banner')}</title>`);
-  push(`<desc id="d">${esc(
-    (motif && motif.concept ? `${motif.concept.replace(/\s+$/, '')} ` : '') +
+  // `meta.desc` lets a NON-article caller (scripts/preview/sections.mjs, whose
+  // subject is a section rather than a headline) say what the picture is of. No
+  // article passes it, so article banners are byte-identical with or without it.
+  push(`<desc id="d">${esc(meta.desc ||
+    ((motif && motif.concept ? `${motif.concept.replace(/\s+$/, '')} ` : '') +
     `Trace Bloom generative banner for “${meta.title}”. A ${params.lattice} lattice probed by ` +
-    `${params.probes} emitters; interference blooms mark where the wavefronts meet. Seed ${params.seed}.`
+    `${params.probes} emitters; interference blooms mark where the wavefronts meet. Seed ${params.seed}.`)
   )}</desc>`);
 
   // ---- motion --------------------------------------------------------------
@@ -1292,9 +1332,11 @@ function renderSVG(scene, meta, design) {
 .sig{animation:tb-sweep .7s cubic-bezier(.2,.7,.3,1) both}
 ${delays.join('')}
 .bloom{animation:tb-breathe ${M.breatheSeconds}s ease-in-out infinite}
-.probe{animation:tb-probe ${(M.breatheSeconds * 0.6).toFixed(1)}s ease-in-out infinite}
+.probe{animation:tb-probe ${(M.breatheSeconds * 0.6).toFixed(1)}s ease-in-out infinite}${motif ? `
+@keyframes tb-motif{from{opacity:.72}to{opacity:1}}
+.motif{animation:tb-motif .9s cubic-bezier(.2,.7,.3,1) both;animation-delay:${(M.sweepSeconds * 0.34).toFixed(2)}s}` : ''}
 @media (prefers-reduced-motion:reduce){
-.sig,.bloom,.probe{animation:none!important;opacity:1!important}
+.sig,.bloom,.probe,.motif{animation:none!important;opacity:1!important}
 }</style>`);
 
   // ---- defs ----------------------------------------------------------------
@@ -1490,7 +1532,22 @@ const DESIGN = {
         "ink": "#fff6ea", "muted": "#b39a7c", "accent": "#f59e0b"
       }
     },
-    "docs": {
+    "posts": {
+    "_comment": "Not a content section: the site-wide fallback banner (_config.yml stamps /images/previews/section-posts.svg on anything with no preview: of its own). Night-blue like Hacks, but a colder accent so it never impersonates one.",
+    "label": "News",
+    "lattice": "manhattan",
+    "palette": {
+      "bg0": "#05070d",
+      "bg1": "#0b1020",
+      "grid": "#1b2b44",
+      "cool": "#60a5fa",
+      "warm": "#f472b6",
+      "ink": "#ecf3fb",
+      "muted": "#8296ad",
+      "accent": "#60a5fa"
+    }
+  },
+  "docs": {
       "label": "Meta",
       "lattice": "isometric",
       "palette": {

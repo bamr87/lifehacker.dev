@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img"
+     data-schema="trace-bloom-motif/1" data-model="claude (claude-code, hand-authored via validator)" data-attempts="1" data-digest="df463828">
+<title>A bar chart whose two measured bars are judged against a pre-committed dashed kill-line: the short bar stays under it and passes, the tall bar crosses it and is struck out with an X.</title>
+<!-- Preview only: the banner compositor ignores this block and resolves the
+     tokens against the article's own section palette. -->
+<style>:root{--ink:#eafffb;--cool:#2dd4bf;--warm:#fb7185;--accent:#fb7185;--grid:#1d3a36;--muted:#79a8a1;--bg0:#060d0c;--bg1:#0c1a18}</style>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="170" y1="150" x2="170" y2="820" stroke="var(--grid)" stroke-width="10"/>
+    <line x1="150" y1="820" x2="870" y2="820" stroke="var(--grid)" stroke-width="10"/>
+    <line x1="140" y1="300" x2="180" y2="300" stroke="var(--muted)" stroke-width="8"/>
+    <line x1="140" y1="460" x2="180" y2="460" stroke="var(--muted)" stroke-width="8"/>
+    <line x1="140" y1="620" x2="180" y2="620" stroke="var(--muted)" stroke-width="8"/>
+    <line x1="170" y1="360" x2="870" y2="360" stroke="var(--warm)" stroke-width="12" stroke-dasharray="34,26"/>
+    <rect x="300" y="540" width="150" height="280" fill="var(--cool)" stroke="var(--ink)" stroke-width="8"/>
+    <rect x="600" y="210" width="150" height="610" fill="var(--warm)" stroke="var(--ink)" stroke-width="8"/>
+    <circle cx="675" cy="360" r="22" fill="var(--accent)" stroke="var(--ink)" stroke-width="8"/>
+    <line x1="596" y1="150" x2="754" y2="300" stroke="var(--ink)" stroke-width="18"/>
+    <line x1="754" y1="150" x2="596" y2="300" stroke="var(--ink)" stroke-width="18"/>
+  </g>
+</svg>
