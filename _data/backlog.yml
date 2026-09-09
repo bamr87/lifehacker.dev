@@ -4774,3 +4774,40 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-url-field-that-fetches-its-own-cloud-keys/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-142
+    kind: hack
+    title: "Your Markdown line break is two invisible spaces your editor just deleted: the trailing-whitespace break (and the backslash that survives)"
+    brief: "You want a soft line break inside a paragraph — an address, a bit of verse, a `key: value` line that isn't really a list — so you follow the docs and end the line with two trailing spaces. It works exactly once, until you save, because 'trim trailing whitespace on save' is on by default in half the editors alive, your prose linter flags trailing spaces as an error, and the code review that scolds you for whitespace strips the one whitespace that was load-bearing — so the break silently collapses and two lines become one with no warning. The failures that stay in: the two-space break is invisible in the diff and in the rendered source, so 'it broke' and 'someone cleaned up whitespace' look identical three commits later; kramdown and CommonMark BOTH also accept a trailing backslash for a hard break, which survives every whitespace-trimmer and is the version to actually use; and a truly blank line is a new PARAGRAPH (bigger gap, a `<p>`), not a `<br>`, so reaching for a blank line where you meant a break changes the spacing and, inside a tight list item, can end the list. Reproducible in one `.md` file rendered twice — once with the spaces, once after your editor eats them."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/cheatsheets/markdown/
+    source_title: "Markdown Cheatsheet"
+    fingerprint: 949b2d194b18
+  - id: SRC-143
+    kind: hack
+    title: "'Just adding a field' broke every client: what actually counts as a breaking API change (and URI vs header versioning)"
+    brief: "You ship a 'small, backward-compatible tweak' to /v1 — rename a field, tighten a type, make one optional param required — and a dozen integrations 500 overnight, because inside a published version the only safe change is ADDITIVE. The rule is Postel's Law made concrete: adding an optional field or a new endpoint is safe; renaming a field, removing one, changing its type, making an optional parameter required, or narrowing an enum's accepted values is a BREAKING change that belongs in /v2, not a patch to /v1 — 'backward compatible' is a property you can list, not a vibe. Pick your versioning on purpose too: URI versioning (`/v1/…`, what GitHub and Stripe do) is trivial to route, cache, and curl; header/media-type versioning (`Accept: application/vnd.example.v2+json`) keeps URLs clean but is invisible in a browser and easy to forget. The footguns that stay in: header versioning without a `Vary: Accept` lets a shared cache serve a v2 body to a v1 client (and vice versa) — the single nastiest bug of the approach; a client that DOESN'T send the header must get a pinned default version, never 'latest', or every new release silently breaks everyone who didn't opt in; and adding a field is only safe if your clients tolerate unknown fields — a strict schema validator on THEIR side turns your 'non-breaking' addition into their 400. Reproducible with two tiny endpoint versions and a client that pins each way."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/api-versioning/
+    source_title: "API Versioning: URI, Headers, and Backward Compatibility"
+    fingerprint: e9c1d0b08fad
+  - id: SRC-144
+    kind: hack
+    title: "Be a polite API client: throttle on RateLimit-Remaining before the 429 — and the Reset header that's an epoch, not a countdown"
+    brief: "The reactive way to respect a rate limit is to hammer the API until it returns 429 and then back off; the polite way is to read the budget the server already hands you — `RateLimit-Remaining` and `RateLimit-Reset` on every response — and sleep BEFORE you hit zero, so you never earn the 429 in the first place. The trap that eats an afternoon: `Reset` means different things at different APIs. The draft `RateLimit-Reset` is seconds-until-reset (a countdown you can `time.sleep()` directly), but GitHub's `X-RateLimit-Reset` is an absolute UNIX timestamp — sleep on that number and you either nap for decades or, once the epoch has already passed, compute a negative wait and sleep zero and spin — so you must subtract `time.time()` and floor at zero. The other failures that stay in: `Retry-After` itself comes in two flavors (delta-seconds OR an HTTP-date), so a naive `float(header)` throws the day the server sends a date; and per-client politeness evaporates the moment you run more than one worker unless the limiter's counter lives in a shared store like Redis — otherwise each process thinks it has the whole budget and your 'polite' fleet is rude in aggregate. Reproducible against a tiny Flask endpoint that emits each header style in turn."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/rate-limiting/
+    source_title: "Rate Limiting: Token Buckets, 429s, and Quotas"
+    fingerprint: 946b5582e718
