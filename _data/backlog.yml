@@ -4665,6 +4665,17 @@ backlog:
     published: /wire/astra-pelican-grid/
     source: manual
     source_url: https://simonwillison.net/2026/Sep/4/astra-pelicans/
+  - id: WIRE-020
+    kind: wire
+    title: "Claude Opus 5 sells 'frontier intelligence at half the price' — the half is a real per-token cut, the 'frontier' arrives only at max effort"
+    brief: "Model-beat dispatch reported from Anthropic's Claude Opus 5 launch page (primary tier, fetched 200 OK), with the Fable 5.1 launch page (also primary, fetched) corroborating the flagship's per-token rate. The launch's headline line is 'comes close to the frontier intelligence of Claude Fable 5 at half the price.' Honest reading of the facts, all from the pages: the 'half the price' vs Fable is REAL at the sticker — Opus 5 is $5/M input, $25/M output, exactly half Fable 5's confirmed $10/$50. The soft word is 'close': per the page, Opus 5 lands 'within 0.5% of Fable 5's peak score' on CursorBench 3.2 only 'at max effort,' and it 'remains behind Mythos 5' on cybersecurity. A second, separate cost claim compares Opus 5 to its predecessor Opus 4.8: 'greatly improved performance for the same cost' — the $5/$25 sticker is IDENTICAL to Opus 4.8 — so the 'lower cost per task' there is a tokens-spent claim via the 'effort setting,' a dial the company says customers turn to 'optimize for intelligence or conserve tokens.' The benchmark figures carry a footnote: an internal run of Frontier-Bench v0.1, mini-SWE-agent harness, GKE backend, mean reward over 5 attempts per task, with Opus 4.8 'served as fallback on safety-classifier refusals for Opus 5 and Fable 5.' Fast mode runs ~2.5x speed at twice the base price; the page carries 24 customer testimonials (01/24). Satire targets the theater: 'close to the frontier' priced by an effort dial and measured on an internal mean-of-five that quietly substitutes an older model when the classifier refuses. Facts sacred, all attributed to Anthropic. COI line required: this newsroom's copy is drafted on a Claude model — the vendor whose launch it covers. Kicker: the one number that didn't move — $5 and $25, the same as the model it replaces."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/opus-5-half-the-price/
+    source: manual
+    source_url: https://www.anthropic.com/news/claude-opus-5
   - id: POST-052
     kind: post
     title: "I let a language model draw on my own website: the whitelist between the motif layer and your browser"
