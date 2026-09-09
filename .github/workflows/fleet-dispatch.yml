@@ -111,7 +111,7 @@ jobs:
           bundler-cache: true
       # NOT continue-on-error: a crashed agent must show RED, not a silent skip.
       - name: Spawn ${{ matrix.item.role }} <- ${{ matrix.item.target }} (universal AI runner)
-        uses: ./.github/actions/claude-run
+        uses: bamr87/bamr87/.github/actions/claude-run@main
         with:
           agent: ${{ matrix.item.role }}
           prompt: "You are the leased ${{ matrix.item.role }} agent for lifehacker.dev, working item ${{ matrix.item.target }}. Use the ${{ matrix.item.role }} skill to do EXACTLY ONE unit of work for that target. First run `gh pr list --state open --label auto:content --json title` and don't duplicate an open PR. GROW ROLE ONLY — byline: this item's rotating persona is '${{ matrix.item.author }}'; if that is non-empty, write the piece AS that persona (byline `author:` + their voice + hard rules); if it is empty, run `ruby scripts/fleet/authors.rb --section <kind>` and use whoever it returns — do not default to claude. GROW ROLE ONLY — preview: before opening the PR run `node scripts/preview/generate.mjs -f <your-file>` (the Trace Bloom renderer computes the art from the article itself — no API key, no network, never a shared placeholder), then `node scripts/preview/illustrate.mjs -f <your-file>` (Claude draws the article's subject into that banner; if it fails the computed banner stands). Commit the generated preview image, the motif, and the stamped `preview:` front matter. Verify with /test-lifehacker. Then open ONE pull request (grow/fix roles) — or, for triage, file the deduped issue(s) — write the resulting PR/issue URL(s) to the file pr-result.txt, and STOP. Touch only what your role owns; never weaken a guardrail; never merge."
