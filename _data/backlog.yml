@@ -4811,3 +4811,19 @@ backlog:
     source_url: https://it-journey.dev/quests/0111/rate-limiting/
     source_title: "Rate Limiting: Token Buckets, 429s, and Quotas"
     fingerprint: 946b5582e718
+
+  # Fresh tool idea (autopilot run, 2026-09-09): every `kind: tool` item on the
+  # backlog was already done, so this run minted a new one. tokei is the missing
+  # code-counter in the modern-CLI lineup (rg/fd/bat/…); the honest angle is that
+  # its two flashiest numbers — the docs-repo Comments bucket and the embedded-
+  # language breakdown — are display artifacts that never reach the total. Stress-
+  # tested by Ed G. Case (author: edge).
+  - id: TOOL-034
+    kind: tool
+    title: "tokei: the code counter that files your prose under Comments and hides half its own math"
+    brief: "The honest, stress-tested review of tokei: why a docs-heavy repo reports zero lines of code, the beautiful per-language embedded-code breakdown that is silently excluded from the grand total, the -c (columns)/-C (compact) trap that dies on a directory path, and the hostile-filename gauntlet (newline + emoji + SQLi in a name, missing trailing newline where it beats wc, empty files, symlink loop, 10,000 files in 0.042s) it actually survived."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /tools/tokei-honest-review/
