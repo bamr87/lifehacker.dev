@@ -101,6 +101,29 @@ SOURCES.each do |dir|
   end
 end
 
+# ── the _config.yml fallbacks ────────────────────────────────────────────────
+# The six section banners are the only cover art on the site that no article
+# stamps: `defaults:` in _config.yml hands them to every page carrying no
+# `preview:` of its own, which makes them the MOST displayed images here. The
+# lint could not see that, so they scored as orphans (six standing warnings)
+# and — the real cost — the textless and safe-band rules below skipped them
+# entirely. A missing one is not theoretical either: _config.yml once defaulted
+# to a section-posts.svg that did not exist, and every author page rendered a
+# broken card until html-proofer caught it minutes into a build (commit 96024b6).
+# Regex, not a YAML load: these are one flat key, and this file stays stdlib.
+config_defaults = LH.read(File.join(LH::ROOT, '_config.yml'))
+                    .scan(/^\s*preview:\s*(\S+)\s*$/).flatten.uniq
+                    .reject { |v| v.start_with?('http://', 'https://') }
+config_defaults.each do |value|
+  next if resolve(value)
+
+  findings << LH.finding(check_id: 'preview', severity: 'error',
+                         rule: 'missing-preview-file', file: '_config.yml',
+                         evidence: "front-matter default `preview: #{value}` resolves to no file — every " \
+                                   'page with no banner of its own renders a broken card and og:image. ' \
+                                   'Run scripts/preview/sections.mjs')
+end
+
 # Body-embedded art that does not resolve is exactly the break this lint caused
 # once: htmlproofer catches it only after a full build, which is minutes later.
 body_embeds.each do |ref, articles|
@@ -131,7 +154,8 @@ Dir.glob(File.join(LH::ROOT, PREVIEW_DIR, '*.{svg,png,jpg,jpeg,webp}')).sort.eac
   # Cover art = something an article stamps as `preview:`. That is what has to be
   # legible in a card and inside the safe band. A body-embedded exhibit is held to
   # the safety rule only.
-  is_cover = users.keys.any? { |v| resolve(v) == path }
+  is_cover = users.keys.any? { |v| resolve(v) == path } ||
+             config_defaults.any? { |v| resolve(v) == path }
   in_body = body_refs.keys.any? { |v| resolve(v) == path }
 
   if path.end_with?('.svg')

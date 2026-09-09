@@ -148,10 +148,13 @@ export function renderSVG(scene, meta, design) {
 
   push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d" data-generator="${GENERATOR}" data-seed="${params.seed}"${motif ? ` data-motif="${motifStamp(motif)}"` : ''}>`);
   push(`<title id="t">${esc(meta.title || 'Preview banner')}</title>`);
-  push(`<desc id="d">${esc(
-    (motif && motif.concept ? `${motif.concept.replace(/\s+$/, '')} ` : '') +
+  // `meta.desc` lets a NON-article caller (scripts/preview/sections.mjs, whose
+  // subject is a section rather than a headline) say what the picture is of. No
+  // article passes it, so article banners are byte-identical with or without it.
+  push(`<desc id="d">${esc(meta.desc ||
+    ((motif && motif.concept ? `${motif.concept.replace(/\s+$/, '')} ` : '') +
     `Trace Bloom generative banner for “${meta.title}”. A ${params.lattice} lattice probed by ` +
-    `${params.probes} emitters; interference blooms mark where the wavefronts meet. Seed ${params.seed}.`
+    `${params.probes} emitters; interference blooms mark where the wavefronts meet. Seed ${params.seed}.`)
   )}</desc>`);
 
   // ---- motion --------------------------------------------------------------

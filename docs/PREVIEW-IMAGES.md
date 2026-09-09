@@ -152,13 +152,31 @@ Every banner carries `data-generator="trace-bloom/N"`. The generator refreshes a
 
 What it will **not** touch: bespoke art. An article pointing at a hand-picked screenshot or one of the grandfathered AI-rendered PNGs keeps it. Only `--force` overrides that.
 
+## The section fallbacks
+
+Six files are the exception to "one image per article": `assets/images/previews/section-{hacks,tools,field-notes,wire,posts,docs}.svg`. `_config.yml`'s front-matter `defaults:` stamp them onto every page that carries no `preview:` of its own, so they are the most-displayed art on the site — and the one place sharing is deliberate. `posts` is the last fallback (anything with no section of its own); `docs` is labelled *Meta*.
+
+They were originally hand-drawn: `section-hacks.svg` by hand, the other five forked from it with the palette and label swapped, which is why all six shipped an identical lattice, identical blooms, and identical emitter positions. Nothing could regenerate them because nothing had generated them.
+
+```bash
+node scripts/preview/sections.mjs              # all six
+node scripts/preview/sections.mjs --section wire
+node scripts/preview/sections.mjs --check      # committed art == generated art?
+```
+
+Same engine, same tokens as the article banners, so a re-skin of `design.json` reaches the fallbacks too and each section's own lattice shows up in its own banner. The roster **is** `design.sections` — add a section there and it gets a fallback banner. Two properties worth keeping:
+
+- **The copy is not invented.** Each banner's caption and its decay tilt come from that section's real index page (`pages/news/*.md`, `pages/_docs/index.md`) — its `description`, verbatim. A missing index page or a missing `description:` is a hard failure, not a shrug.
+- **The seed is the filename.** `fnv1a("section-<id>")`, so the same tokens and the same index copy always produce the same bytes; `--check` is how you find out that someone edited the art by hand.
+
+
 ## The gate
 
 `ruby scripts/ci/lint_preview.rb`, wired into `scripts/ci/run-all.sh`. Each rule is a fossil of the old failure:
 
 | Rule | Severity | Catches |
 |---|---|---|
-| `missing-preview-file` | error | stamp resolves to nothing — card renders blank |
+| `missing-preview-file` | error | stamp resolves to nothing — card renders blank (also `_config.yml`'s `defaults:` banners) |
 | `missing-body-image` | error | an article embeds preview art that isn't there |
 | `shared-preview` | error >2, warn 2 | one image doing duty for many articles |
 | `textless-banner` | error | cover art with no headline — unreadable at 300px |
@@ -170,6 +188,8 @@ What it will **not** touch: bespoke art. An article pointing at a hand-picked sc
 Two `shared-preview` warnings are expected and correct: two grandfathered pairs of legacy posts share a photo apiece.
 
 **Cover art vs. exhibits.** `textless-banner` and `preview-outside-safe-band` apply only to art an article stamps as `preview:` — that is what has to survive a 300px card. Art embedded in a *body* is an exhibit and is held to `unsafe-svg` only: `docs/the-plugin-that-isnt-a-plugin` deliberately displays the retired pipeline's textless template output as evidence of what it produced. The first version of this lint called that file an orphan, it got deleted, and the page shipped a broken image — which is why `orphan-preview` now counts body mentions and `missing-body-image` exists. Note the deliberate asymmetry: `missing-body-image` matches only real `![](…)` / `<img>` embeds outside code fences, because these articles are *about* the preview pipeline and their code blocks are full of example paths; `orphan-preview` treats a mention *anywhere*, code fences included, as reason enough never to delete the file.
+
+The lint also reads `_config.yml`'s `defaults:` for `preview:` values, and counts those files as cover art. Before it did, the six section fallbacks were referenced by no article, so they scored as orphans — six standing warnings — and, worse, `textless-banner` and `preview-outside-safe-band` skipped the most-displayed images on the site. A default pointing at a file that does not exist is now an error on `_config.yml` itself, which is the exact break that shipped once already: `_config.yml` defaulted to a `section-posts.svg` nobody had drawn, and html-proofer found it minutes into a build instead of instantly.
 
 ## In-body figures (the weekly epic's exhibits)
 

@@ -24,11 +24,19 @@
 require 'net/http'
 require 'uri'
 require 'json'
-require_relative '../ci/_lib'
+require 'yaml'
 
-cfg = (LH.yload(LH.read(File.join(LH::ROOT, '_data', 'ai.yml'))) rescue {}) || {}
-MODEL   = ENV['LH_AI_MODEL'] || cfg['fallback_model'] || cfg['model'] || 'claude-opus-4-8'
-MAXTOK  = (ENV['LH_AI_MAX_TOKENS'] || cfg['max_tokens'] || 8000).to_i
+# kit: ai-runner — stdlib only and self-contained (no repo-local library), so the
+# same file runs in every repo that carries scripts/ai/run.sh.
+ROOT = File.expand_path('../..', __dir__)
+cfg = begin
+  raw = File.read(File.join(ROOT, '_data', 'ai.yml'), encoding: 'UTF-8')
+  (YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(raw) : YAML.load(raw)) || {}
+rescue StandardError
+  {}
+end
+MODEL   = ENV['AI_MODEL'] || cfg['fallback_model'] || cfg['model'] || 'claude-opus-4-8'
+MAXTOK  = (ENV['AI_MAX_TOKENS'] || cfg['max_tokens'] || 8000).to_i
 VERSION = cfg['api_version'] || '2023-06-01'
 BASE    = cfg['api_base'] || 'https://api.anthropic.com'
 
@@ -54,7 +62,7 @@ body = { 'model' => MODEL, 'max_tokens' => MAXTOK,
 body['system'] = system_prompt if system_prompt
 
 # Dry run: print the request shape without calling the API (for tests).
-if ENV['LH_AI_DRY_RUN'] == '1'
+if ENV['AI_DRY_RUN'] == '1'
   puts JSON.pretty_generate('endpoint' => "#{BASE}/v1/messages", 'model' => MODEL,
                             'max_tokens' => MAXTOK, 'anthropic_version' => VERSION,
                             'has_system' => !system_prompt.nil?)
@@ -87,7 +95,7 @@ loop do
     # the actual AI step.
     begin
       require_relative 'usage'
-      AIUsage.append(AIUsage.from_api_response(data, agent: ENV['LH_AI_ROLE'].to_s))
+      AIUsage.append(AIUsage.from_api_response(data, agent: ENV['AI_ROLE'].to_s))
     rescue StandardError => e
       warn "[api_call] usage record failed (non-fatal): #{e.class}: #{e.message}"
     end
