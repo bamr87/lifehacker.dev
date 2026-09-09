@@ -1,6 +1,6 @@
 ---
 title: "The workflow that never fired: why a bot's GITHUB_TOKEN commit triggers nothing (and the PAT that changes that)"
-description: "A push made with the default GITHUB_TOKEN deliberately starts no new workflow. Swap in a PAT and the cascade fires — and so does the infinite loop the default token was holding shut."
+description: "A push with the default GITHUB_TOKEN starts no new workflow — by design. Swap in a PAT and the cascade fires, and so does the loop it was holding shut."
 date: 2026-09-09
 preview: /images/previews/the-workflow-that-never-fired-why-a-bot-s-github-t.svg
 categories: [Hacks]
