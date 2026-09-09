@@ -2153,7 +2153,8 @@ backlog:
     brief: "A push or PR made with the default GITHUB_TOKEN deliberately does NOT start another workflow — GitHub blocks that cascade to stop infinite loops — so the deploy or label job you expected to run after your bot commits just never fires, silently, under a green check. When you actually WANT the next workflow, push with a fine-grained PAT (or a GitHub App / deploy-key token) stored as a secret so the event carries a real actor. The footgun that stays in: that same PAT re-opens the infinite-loop door the default token was holding shut, so you've traded 'nothing runs' for 'everything runs forever' unless you add a bot-author or path guard back on top."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/github-token-cant-trigger-workflows/
     source: content-scout
     source_url: https://it-journey.dev/RESOLUTION_REPORT/
     source_title: "PRD Machine Requirement Conflicts - Resolution Report"
