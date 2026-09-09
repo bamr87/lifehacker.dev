@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img"
+     data-schema="trace-bloom-motif/1" data-model="claude-opus-4-8" data-attempts="1" data-digest="f2c3cd4c">
+<title>A CI pipeline: a running 'release' job joined by a severed connector to a greyed-out 'deploy' job marked with an X because it never ran, a key hovering over the broken link, and a loop arrow curving the cascade back on itself.</title>
+<!-- Preview only: the banner compositor ignores this block and resolves the
+     tokens against the article's own section palette. -->
+<style>:root{--ink:#eaf6ff;--cool:#22d3ee;--warm:#f472b6;--accent:#22d3ee;--grid:#1b2b44;--muted:#7f9ab8;--bg0:#05070d;--bg1:#0b1020}</style>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="90" y="380" width="300" height="240" rx="28" fill="var(--cool)" stroke="var(--ink)" stroke-width="12"/>
+    <rect x="610" y="380" width="300" height="240" rx="28" fill="var(--muted)" stroke="var(--ink)" stroke-width="12"/>
+    <circle cx="240" cy="500" r="34" stroke="var(--accent)" stroke-width="12"/>
+    <line x1="240" y1="452" x2="240" y2="548" stroke="var(--accent)" stroke-width="12"/>
+    <line x1="192" y1="500" x2="288" y2="500" stroke="var(--accent)" stroke-width="12"/>
+    <line x1="715" y1="452" x2="805" y2="548" stroke="var(--ink)" stroke-width="14"/>
+    <line x1="805" y1="452" x2="715" y2="548" stroke="var(--ink)" stroke-width="14"/>
+    <path d="M 390 500 L 468 500" stroke="var(--ink)" stroke-width="14"/>
+    <path d="M 548 500 L 600 500" stroke="var(--ink)" stroke-width="14"/>
+    <polygon points="600,478 640,500 600,522" fill="var(--ink)" stroke="none"/>
+    <polyline points="470,500 492,458 506,542 528,500" stroke="var(--accent)" stroke-width="12"/>
+    <circle cx="500" cy="382" r="26" stroke="var(--warm)" stroke-width="12"/>
+    <rect x="490" y="404" width="20" height="66" rx="6" fill="var(--warm)" stroke="none"/>
+    <line x1="510" y1="426" x2="538" y2="426" stroke="var(--warm)" stroke-width="12"/>
+    <line x1="510" y1="452" x2="532" y2="452" stroke="var(--warm)" stroke-width="12"/>
+    <path d="M 760 380 C 760 150, 240 150, 240 372" stroke="var(--warm)" stroke-width="16"/>
+    <polygon points="218,352 240,392 262,352" fill="var(--warm)" stroke="none"/>
+  </g>
+</svg>
