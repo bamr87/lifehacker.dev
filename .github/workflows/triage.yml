@@ -74,13 +74,44 @@ jobs:
     needs: gate
     if: ${{ needs.gate.outputs.go == 'true' }}
     runs-on: ubuntu-latest
-    env:
-      # FLEET_TOKEN (bot PAT) so routed theme bugs can be filed UPSTREAM
-      # (bamr87/zer0-mistakes) — the repo-scoped github.token can't write there.
-      # Falls back to github.token for same-repo issues.
-      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+    # GH_TOKEN is deliberately NOT set here. It is resolved by the
+    # `Resolve a usable GitHub token` step below, which probes FLEET_TOKEN
+    # against the API and exports the winner.
+    #
+    # It used to read `${{ secrets.FLEET_TOKEN || github.token }}` — the bug in
+    # bamr87/bamr87#53, and the cause of 10 consecutive 401 days in THIS
+    # workflow (2026-07-25 -> 08-04, bamr87/bamr87#59). `||` returns the first
+    # NON-EMPTY operand, and an expired PAT is non-empty, so it won and
+    # github.token was never reached — a 401 on this repo's OWN labels, which
+    # github.token would have served. Presence is not validity; do not restore
+    # the `||` form.
+    #
+    # It must stay UNSET rather than merely be supplemented: the composite
+    # exports GH_TOKEN via $GITHUB_ENV, and a job-level `env:` entry of the same
+    # name takes precedence over that — so leaving the old line here would look
+    # correct and change nothing.
+    #
+    # The PAT still matters. FLEET_TOKEN (bot PAT) is what lets routed theme
+    # bugs be filed UPSTREAM (bamr87/zer0-mistakes); the repo-scoped
+    # github.token can only touch this repo, so on the degraded path
+    # upstream-routed items are reported and deferred, not force-filed.
     steps:
       - uses: actions/checkout@v7
+
+      # Fail in second one, not minute twelve. Probes FLEET_TOKEN with
+      # `gh api user` and exports GH_TOKEN — the real PAT when it works, and
+      # github.token (loudly, via ::warning::) when it is missing or expired.
+      # Placed immediately after checkout (the action is local, so it needs the
+      # repo on disk) and before `Ensure labels`, which is the step that 401'd.
+      # See bamr87/bamr87#59.
+      - name: Resolve a usable GitHub token
+        id: tok
+        uses: ./.github/actions/resolve-gh-token
+        with:
+          candidate: ${{ secrets.FLEET_TOKEN }}
+          fallback: ${{ github.token }}
+          candidate-name: FLEET_TOKEN
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
