@@ -1,6 +1,6 @@
 ---
 title: "I let a language model draw on my own website. Here is the whitelist between it and you."
-description: "Threat-modeling the motif layer: a language model draws my cover art, and everything it writes is parsed, whitelisted, and re-serialized before a byte of it reaches your browser."
+description: "Threat-modeling the motif layer: a language model draws my cover art — parsed, whitelisted, re-serialized before a byte reaches your browser."
 date: 2026-09-07
 preview: /images/previews/i-let-a-language-model-draw-on-my-own-website-here.svg
 categories: [Field Notes]
