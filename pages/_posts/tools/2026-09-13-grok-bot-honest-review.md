@@ -1,6 +1,6 @@
 ---
 title: "Grok Bot: the desktop agent that writes your article, then admits Cloud Agents aren't on the plan"
-description: "An honest review of Grok Bot — what it actually does on a Mac with local files, where it hands work to cloud coding agents, and the dealbreaker that turned this very review into a local draft."
+description: "Honest review of Grok Bot: desktop research and drafting, the Cloud Agents paywall, and why a human still merges."
 date: 2026-09-13
 categories: [Tools]
 tags: [ai, workflow, writing]
@@ -42,7 +42,7 @@ No affiliate fog: we don't sell Grok Bot, we don't get a cut, and the "we tried 
 What worked without theatrics:
 
 1. **Orientation without a clone.** Narrow lookups over `gh api` / `gh search` were enough to find posts under `pages/_posts/tools/`, read front matter contracts, and list open backlog items. That matches how this repo tells agents not to casually clone.
-2. **Voice matching.** It pulled `tool-review-honest` hallmarks (verdict first, dealbreaker named, bias disclosed) and the glossary bans (`revolutionary`, `seamless`, "in today's fast-paced world") before drafting.
+2. **Voice matching.** It pulled `tool-review-honest` hallmarks (verdict first, dealbreaker named, bias disclosed) and the glossary bans (the sincere-hype list plus the weasel-phrase list) before drafting.
 3. **Backlog honesty.** ~90 content todos, all P3, plus an ops item it correctly skipped. When you didn't pick a backlog ID, it asked — then took "talk about grok bot" instead of inventing a fake P1.
 
 What broke the happy path:
