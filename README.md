@@ -36,7 +36,7 @@ scripts/preview.sh          # overlay onto a theme clone + docker compose up →
 scripts/ci/run-all.sh       # run the full test harness locally (build + lint + drift + brand)
 ```
 
-In VS Code the same runs are one click away in **Run & Debug** ([`.vscode/launch.json`](.vscode/launch.json)): serve the preview, reproduce the `verify` gate (safe-mode build + harness, in Docker), debug a page in Edge with DevTools attached, generate cover art for the article you have open, or hand the harness findings to a Claude Code role.
+In VS Code the same runs are one click away under **Terminal → Run Task** ([`.vscode/tasks.json`](.vscode/tasks.json)): `Serve` the preview, `Verify` reproduces the `verify` gate (safe-mode build + harness, in Docker), `Author: preview image` draws cover art for the article you have open, and the `Claude:` tasks hand the harness findings to a Claude Code role. **Run & Debug** ([`.vscode/launch.json`](.vscode/launch.json)) attaches Edge DevTools to the preview or the live site. Every repo in the fleet carries the same layout — the convention is written down in [`.vscode/README.md`](.vscode/README.md).
 
 GitHub Pages builds the real site from `main` on push. Pull requests are gated by a GitHub Actions **test harness** ([`.github/workflows/test.yml`](.github/workflows/test.yml)) that reproduces the Pages build in safe mode and lints content, links, drift, and brand voice. The checks live in [`scripts/ci/`](scripts/ci/) and run identically for humans (`scripts/ci/run-all.sh` or the `/test-lifehacker` skill) and in CI. A human still merges every PR — branch protection + [`CODEOWNERS`](.github/CODEOWNERS) enforce it. See [`docs/runbook-fleet.md`](docs/runbook-fleet.md) for setup.
 

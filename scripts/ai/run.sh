@@ -6,7 +6,7 @@
 # .github/actions/claude-run/run.sh and is consumed by reference: workflows use
 # `uses: bamr87/bamr87/.github/actions/claude-run@main`. This shim exists for the
 # two callers that are not a workflow step — a human running a fleet agent
-# locally (.vscode/launch.json) and a skill the agent runs from inside its own
+# locally (.vscode/tasks.json) and a skill the agent runs from inside its own
 # session (scripts/preview/illustrate.mjs). It finds the runner, in order:
 #   1. $AI_RUNNER      — exported by the hub action for nested calls in CI
 #   2. $FLEET_HUB      — a local clone of bamr87/bamr87
