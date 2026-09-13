@@ -96,7 +96,9 @@ steps:
   # every later step now sees a GH_TOKEN that actually authenticates
 ```
 
-It runs `gh api user`, exports `GH_TOKEN` to the rest of the job, and sets the output `source` to `fleet` or `default`. On the degraded path it emits `::warning::FLEET_TOKEN is set but REJECTED by the API` in the first seconds and the run still completes and still opens its PR (for a human, without auto-merge). Worked example: `content-scout.yml`. Unit tests: `scripts/ci/test_resolve_gh_token.sh`.
+It runs `gh api user`, exports `GH_TOKEN` to the rest of the job, and sets the output `source` to `fleet` or `default`. On the degraded path it emits `::warning::FLEET_TOKEN is set but REJECTED by the API` in the first seconds and the run still completes and still opens its PR (for a human, without auto-merge). Worked examples: `content-scout.yml` and `triage.yml` — the two workflows migrated so far. Unit tests: `scripts/ci/test_resolve_gh_token.sh`.
+
+**Delete the job-level `env: GH_TOKEN:` — do not merely supplement it.** The composite exports `GH_TOKEN` through `$GITHUB_ENV`, and a job-level `env:` entry of the same name takes precedence over that. Adding the resolve step while leaving the old line in place looks correct, passes review, and changes nothing: the expired PAT still wins. Both migrated workflows carry a "deliberately NOT set here" comment where the `env` block used to be, for exactly this reason.
 
 `scripts/ci/lint_tokens.rb` (harness check `tokens`) enforces this. The trap cannot be introduced anywhere new — that's an **error** and blocks the gate — while the workflows that still carry it from before the check existed are listed in its `MIGRATING` array and reported as **warnings**, so the remaining debt is visible on every run instead of buried in a PR description. Migrating a workflow means deleting its line from `MIGRATING` in the same PR; the check fails if you forget.
 
