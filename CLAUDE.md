@@ -48,6 +48,10 @@ The harness scripts are the same ones CI runs (`pipeline.yml`, required check = 
 - **The precedent is documented, not hypothetical.** `scripts/ci/build.sh` (in `lh_overlay()`, at the `rm -rf "$dest/_data"` step) records it: zer0-mistakes 1.28.0 began shipping `_data/navigation/docs.yml` for its own docs site, and the overlay's old merge-keep behavior gave every `/docs/` page a 47-link sidebar of theme-repo paths — 1,987 phantom broken-link errors the live site would never have served. The fix was to make our `_data/` **replace** the theme's wholesale, exactly like production. That is the class of break a floating pin buys, and the class the nightly exists to catch.
 - Theme problems are still fixed **upstream** (see the rule below) and picked up on the next clone — never patched around locally, and never by pinning our way out of a bug.
 
+## The zer0 stack
+
+This site consumes the zer0 stack: the `bamr87/zer0-mistakes` theme (the floating `remote_theme` above), the `zer0-image-generator` gem (`Gemfile`, `~> 0.4`; its `preview_images:` block is in `_config.yml`, while the banners themselves come from Trace Bloom in `scripts/preview/`), and zer0-CMS, which reads `zer0.json` at the repo root (content folders plus per-type required fields that mirror `scripts/ci/lint_frontmatter.rb`; `frontmatter.json` stays for Front Matter CMS for now). `.theme-overrides.yml` lists the theme files we fork on purpose, and today that list is empty. To check alignment, dispatch `.github/workflows/zer0-doctor.yml` (report-only, also runs weekly) or run `ruby -I rails/lib rails/bin/zer0-cms doctor /path/to/lifehacker.dev` from a zer0-CMS checkout. The doctor is not a harness check and never gates `verify`.
+
 ## Conventions
 
 - Conventional Commits: `type(scope): description`. The types actually in this history are `feat`, `content`, `fix`, `chore`, `docs`, `build`, `ci`, `style` — plus the standard `refactor`/`test`/`perf`, which are allowed but so far unused. `content(<section>): …` is the content lanes' type and by volume the second most common (`content(doc|post|hack|field-note)`); `build(deps): …` is Dependabot's.

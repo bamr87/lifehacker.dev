@@ -12,6 +12,7 @@ A [Jekyll](https://jekyllrb.com/) site rendered by the [`bamr87/zer0-mistakes`](
 | Path | What it is |
 |---|---|
 | `_config.yml` | The whole site config — identity, neon skin, collections, defaults, plugins. |
+| `zer0.json`, `.theme-overrides.yml` | zer0 stack config: the zer0-CMS content model (folders, content types, required fields) and the theme files this site forks on purpose (none). `.github/workflows/zer0-doctor.yml` checks the contract. |
 | `_config_dev.yml` | Local-preview overlay (disables `remote_theme` so builds use local theme files). |
 | `_data/navigation/`, `authors.yml`, `landing.yml` | Site data the remote theme needs but does **not** deliver. |
 | `_data/brand/` | The machine-readable brand: `identity.yml`, `voice.yml`, `glossary.yml`. The autopilot reads these. |
