@@ -1,0 +1,22 @@
+# =============================================================================
+# .theme-overrides.yml — which bamr87/zer0-mistakes theme files this site forks
+# -----------------------------------------------------------------------------
+# Format: zer0-mistakes templates/consumer/.theme-overrides.yml. The theme's
+# scripts/bin/audit-consumer reads `path`; the rest is for humans.
+#
+#   ./scripts/bin/audit-consumer --consumer-path /path/to/lifehacker.dev
+#
+# lifehacker.dev forks NO theme file today (checked 2026-09-14 against
+# zer0-mistakes main 4349ea1, by path and by bytes over _layouts/, _includes/,
+# _sass/ and assets/):
+#
+#   * _includes/home/card.html, _includes/home/cover.html — site-only partials
+#     the theme does not ship (UNIQUE, not an override).
+#   * assets/images/wizard-on-journey.png — byte-identical to the theme's copy
+#     (IDENTICAL: the theme's version would serve the same bytes).
+#
+# Theme bugs go upstream, never patched around here (CLAUDE.md), so a new entry
+# needs a reason AND an upstream issue; delete the fork once upstream fixes it.
+# =============================================================================
+
+overrides: []
