@@ -301,6 +301,11 @@ improvements:
       credential dependency and the "author the motif through the validator"
       degraded path, reflection-only/offline) as todo. todo_by_kind.post 0->1;
       starved_kinds emptied. Metadata only — the factory writes the prose.
+      2026-09-14 verdict — still pending: POST-046 was picked and shipped, so
+      todo_by_kind.post read 0 at this window's measure step and
+      verify_improvements cannot distinguish "consumed" from "never moved". The
+      promotion worked (the factory used the measured brief); the lane drained
+      again and is re-fed this run — see 2026-09-14-destarve-post.
   - id: 2026-08-31-destarve-doc
     date: 2026-08-31
     pr: TBD
@@ -318,3 +323,58 @@ improvements:
       the E2E contract sim proves vs. can't, and that it sits in advisory `fast`
       outside the required `verify` gate, offline) as todo. todo_by_kind.doc 0->1;
       starved_kinds emptied. Metadata only — the factory writes the prose.
+      2026-09-14 verdict — still pending: DOC-044 was picked and shipped, so
+      todo_by_kind.doc read 0 at this window's measure step and
+      verify_improvements cannot distinguish "consumed" from "never moved". The
+      promotion worked; the lane drained again and is re-fed this run — see
+      2026-09-14-destarve-doc.
+
+  # --- loop-tuner 2026-09-14: tool/post/doc lanes re-starved -------------------
+  # loop_metrics showed starved_kinds [tool, post, doc] again — 91 growable todos
+  # but ALL 91 are kind:hack (the SRC-* content-scout stream); tool/post/doc read
+  # 0. The 2026-08-31 refills shipped and drained and the tool lane's last todo
+  # shipped too. Harvested 17 candidates from merged PRs and promoted one
+  # non-duplicate idea per starved lane (TOOL-035 App-token vs PAT review,
+  # POST-055 the metered-key/OAuth-first field note, DOC-053 the illustrate.mjs
+  # --check self-heal deep-dive) so the factory picks a MEASURED brief instead of
+  # improvising. Per-kind metrics so each lane verifies alone.
+  - id: 2026-09-14-destarve-tool
+    date: 2026-09-14
+    pr: TBD
+    metric: backlog.todo_by_kind.tool
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Tool lane starved (todo_by_kind.tool = 0; starved_kinds included `tool`).
+      Promoted harvested TOOL-035 (honest review of actions/create-github-app-token
+      vs a long-lived PAT: expiry, blast radius, and the granted-permission
+      footgun — inspectable offline from the workflow YAML) as todo.
+      todo_by_kind.tool 0->1; starved_kinds shed `tool`. Metadata only — the
+      factory writes the prose.
+  - id: 2026-09-14-destarve-post
+    date: 2026-09-14
+    pr: TBD
+    metric: backlog.todo_by_kind.post
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Post lane starved (todo_by_kind.post = 0; starved_kinds included `post`).
+      Promoted harvested POST-055 (field note on the OAuth-first invariant in
+      run.sh: a metered API key next to a subscription token is a silent-billing
+      footgun, reproduced offline) as todo. todo_by_kind.post 0->1; starved_kinds
+      shed `post`. Metadata only — the factory writes the prose.
+  - id: 2026-09-14-destarve-doc
+    date: 2026-09-14
+    pr: TBD
+    metric: backlog.todo_by_kind.doc
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Doc lane starved (todo_by_kind.doc = 0; starved_kinds included `doc`).
+      Promoted harvested DOC-053 (deep-dive on illustrate.mjs's --check gate:
+      reproduce stale-motif/orphan-motif offline and show the exact generate.mjs
+      self-heal command each prints) as todo. todo_by_kind.doc 0->1; starved_kinds
+      shed `doc`. Metadata only — the factory writes the prose.

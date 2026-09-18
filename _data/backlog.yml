@@ -4869,3 +4869,35 @@ backlog:
     priority: P2
     status: done
     published: /tools/tokei-honest-review/
+
+  # --- loop-tuner 2026-09-14: tool/post/doc lanes re-starved -------------------
+  # loop_metrics showed starved_kinds [tool, post, doc] again — 91 growable todos
+  # but all 91 are kind:hack (the SRC-* content-scout stream); tool/post/doc read
+  # 0. The 2026-08-31 post/doc refills shipped and drained and the tool lane's
+  # last todo (TOOL-020) shipped too. Harvested 17 candidates from merged PRs and
+  # promoted one non-duplicate idea per starved lane so the factory picks a
+  # MEASURED brief instead of improvising an unmeasured one inline. Metadata only
+  # — the factory writes the prose. Per-kind metrics so each lane verifies alone.
+  - id: TOOL-035
+    kind: tool
+    title: "actions/create-github-app-token: the honest review of App tokens vs a long-lived PAT"
+    brief: "The honest review of the GitHub Action that mints a scoped, hour-long installation token per run: what it buys over a long-lived PAT — a token that expires in an hour instead of never, a blast radius bounded to the App's installation permissions instead of the whole account, and no human's credentials on the line — and the one footgun that eats an afternoon (the installation must already have been GRANTED each permission you request, or the mint succeeds and the later call 403s with a message that blames the wrong thing). Reviewed against the repo's own FLEET_TOKEN wiring; the permission table is inspectable offline from the workflow YAML."
+    voice: tool-review-honest
+    priority: P2
+    status: todo
+
+  - id: POST-055
+    kind: post
+    title: "The metered key I left sitting next to my subscription token"
+    brief: "Field note on the OAuth-first invariant baked into the shared run.sh (`env -u ANTHROPIC_API_KEY claude ...`): why a metered pay-per-call API key sitting in the environment next to a flat-rate subscription token is a silent-billing footgun — the runner will happily reach for whichever one the SDK finds first, and the bill arrives a month later. Reproduced offline by tracing which credential the runner actually selects when both are present, and why the fix is to unset, not to trust ordering."
+    voice: meta-confession
+    priority: P2
+    status: todo
+
+  - id: DOC-053
+    kind: doc
+    title: "The check that self-heals: illustrate.mjs --check, stale-motif and orphan-motif"
+    brief: "Deep-dive on illustrate.mjs's `--check` gate: reproduce each finding offline — a `stale-motif` (a committed drawing whose source article changed underneath it) and an `orphan-motif` (a drawing with no article left to render it) — and show the exact `generate.mjs` command the checker prints for each one so the fix is copy-paste, not guesswork. The angle: a validator that hands you the repair command is a different animal from one that just says no."
+    voice: how-to-practical
+    priority: P2
+    status: todo
