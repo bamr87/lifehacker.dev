@@ -1,5 +1,15 @@
 {
-  "//": "Project hooks for lifehacker.dev. The SessionEnd hook queues every finished Claude Code thread as a retrospective candidate (see docs/RETROSPECTIVE-HOOK.md). It is cheap, non-blocking, and never fails a session.",
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "//": "Project hooks for lifehacker.dev. The SessionEnd hook queues every finished Claude Code thread as a retrospective candidate (see docs/RETROSPECTIVE-HOOK.md). It is cheap, non-blocking, and never fails a session. Permissions are the hub agent-context kit's read-only baseline (bamr87/bamr87 templates/agent-context/settings.template.json) \u2014 add to it, never remove from it.",
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh run view:*)"
+    ]
+  },
   "hooks": {
     "SessionEnd": [
       {

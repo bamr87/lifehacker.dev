@@ -61,31 +61,45 @@ jobs:
           gh pr edit "$pr" --add-label needs-human --remove-label auto:content
           gh pr comment "$pr" --body "Auto-fix gave up after ${{ env.MAX_ATTEMPTS }} attempts. Labeled \`needs-human\` and removed \`auto:content\` so it won't auto-merge. A human's turn."
 
-      - name: Attempt a content fix
+      - name: Clone the PR branch
+        id: clone
         if: ${{ steps.gate.outputs.go == 'true' && steps.gate.outputs.attempts < env.MAX_ATTEMPTS }}
         run: |
-          pr=${{ steps.gate.outputs.pr }}
           gh repo clone "$GITHUB_REPOSITORY" repo -- -q
           cd repo && git checkout "$BRANCH"
-          base=$(git rev-parse HEAD)
+          echo "base=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           gem install bundler >/dev/null 2>&1 || true
-          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1 || true
-          # Run the fix FIRST. The attempt is recorded (and the budget spent) ONLY
-          # after a real content-only fix lands — so a transient agent/API failure
-          # doesn't burn an attempt and prematurely escalate a fixable PR.
-          # Universal AI runner (Claude Code -> Claude API fallback), from the clone.
-          bash scripts/ai/run.sh \
-            --agent fleet-bugfix \
-            --prompt "The pipeline failed on this content PR. Use the fleet-bugfix skill to fix it: run /test-lifehacker, read test-results/findings.jsonl, and make the SMALLEST content-only change that turns the gate green. Touch ONLY the content file(s) under pages/_* (and _data/backlog.yml if needed) — NEVER scripts/.github/_config/Gemfile. Commit to this branch. If it's a theme bug, file upstream and stop. Never merge." \
-            --tools "Bash(git:*),Bash(bundle:*),Bash(ruby:*),Bash(gh pr comment:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob" \
-            --system "You are fleet-bugfix for lifehacker.dev. Make the smallest content-only fix; never touch infra; never merge." \
-            || { echo "::error::auto-fix run failed — not counting this as an attempt."; exit 1; }
-          if git diff --quiet "$base" HEAD; then
+
+      # Run the fix FIRST. The attempt is recorded (and the budget spent) ONLY
+      # after a real content-only fix lands — so a transient agent/API failure
+      # doesn't burn an attempt and prematurely escalate a fixable PR. The fleet's
+      # universal runner (hub kit ai-runner: Claude Code -> Claude API fallback)
+      # acts on the clone via AI_REPO_ROOT; a call that was attempted and failed
+      # fails THIS step, which is the "not counting this as an attempt" path.
+      - name: Attempt a content fix
+        if: ${{ steps.clone.outcome == 'success' }}
+        uses: bamr87/bamr87/.github/actions/claude-run@main
+        env:
+          AI_REPO_ROOT: repo
+        with:
+          agent: fleet-bugfix
+          prompt: "The pipeline failed on this content PR. Use the fleet-bugfix skill to fix it: run /test-lifehacker, read test-results/findings.jsonl, and make the SMALLEST content-only change that turns the gate green. Touch ONLY the content file(s) under pages/_* (and _data/backlog.yml if needed) — NEVER scripts/.github/_config/Gemfile. Commit to this branch. If it's a theme bug, file upstream and stop. Never merge."
+          tools: "Bash(git:*),Bash(bundle:*),Bash(ruby:*),Bash(gh pr comment:*),Read,Edit,Write(pages/**),Write(_data/backlog.yml),Grep,Glob"
+          system: "You are fleet-bugfix for lifehacker.dev. Make the smallest content-only fix; never touch infra; never merge."
+
+      - name: Record the attempt and push (content-only fixes only)
+        if: ${{ steps.clone.outcome == 'success' }}
+        env:
+          BASE: ${{ steps.clone.outputs.base }}
+        run: |
+          pr=${{ steps.gate.outputs.pr }}
+          cd repo
+          if git diff --quiet "$BASE" HEAD; then
             echo "auto-fix produced no committed change — not counting an attempt."; exit 0
           fi
           # Defense in depth: the fix MUST be content-only. If the agent touched
           # deps/pipeline, refuse to push and escalate — never auto-ship infra.
-          kinds=$(git diff --name-only "$base" HEAD | ruby scripts/ci/classify_changes.rb)
+          kinds=$(git diff --name-only "$BASE" HEAD | ruby scripts/ci/classify_changes.rb)
           if printf '%s' "$kinds" | grep -qwE 'deps|pipeline'; then
             echo "::error::auto-fix touched non-content ($kinds) — refusing to push; escalating to a human."
             gh pr edit "$pr" --add-label needs-human --remove-label auto:content
@@ -97,9 +111,9 @@ jobs:
           Auto-fix attempt $(( ${{ steps.gate.outputs.attempts }} + 1 ))/${{ env.MAX_ATTEMPTS }}: pushed a content-only fix (${kinds}); the pipeline will re-validate."
           git push origin "$BRANCH"
 
-      # ---- AI usage metering (best-effort; this job calls run.sh directly, so
-      # it reports its own records — claude-run consumers get this for free).
-      # Runs from the clone because this workflow never checks the repo out.
+      # ---- AI usage metering (best-effort). The runner's own post-step looks for
+      # usage_report.rb at the workspace root and this job has no checkout there
+      # (it works on the clone), so the clone reports its own records here.
       - name: Report AI usage
         id: usage
         if: ${{ always() && steps.gate.outputs.go == 'true' }}

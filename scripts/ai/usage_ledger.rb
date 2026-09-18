@@ -41,10 +41,10 @@ module AIUsageLedger
 
   module_function
 
-  # LH_AI_LEDGER_DIR overrides the target (the E2E simulation points it at a
+  # AI_LEDGER_DIR overrides the target (the E2E simulation points it at a
   # temp dir so it can drive the real code without touching the committed data).
   def dir
-    ENV['LH_AI_LEDGER_DIR'].to_s.empty? ? File.join(LH::ROOT, '_data', 'ai_usage') : ENV['LH_AI_LEDGER_DIR']
+    ENV['AI_LEDGER_DIR'].to_s.empty? ? File.join(LH::ROOT, '_data', 'ai_usage') : ENV['AI_LEDGER_DIR']
   end
 
   def ledger_path
@@ -52,7 +52,7 @@ module AIUsageLedger
   end
 
   def dashboard_path
-    ENV['LH_AI_LEDGER_DIR'].to_s.empty? ? File.join(LH::ROOT, 'AI_USAGE.md') : File.join(dir, 'AI_USAGE.md')
+    ENV['AI_LEDGER_DIR'].to_s.empty? ? File.join(LH::ROOT, 'AI_USAGE.md') : File.join(dir, 'AI_USAGE.md')
   end
 
   def load_ledger

@@ -2153,7 +2153,8 @@ backlog:
     brief: "A push or PR made with the default GITHUB_TOKEN deliberately does NOT start another workflow — GitHub blocks that cascade to stop infinite loops — so the deploy or label job you expected to run after your bot commits just never fires, silently, under a green check. When you actually WANT the next workflow, push with a fine-grained PAT (or a GitHub App / deploy-key token) stored as a secret so the event carries a real actor. The footgun that stays in: that same PAT re-opens the infinite-loop door the default token was holding shut, so you've traded 'nothing runs' for 'everything runs forever' unless you add a bot-author or path guard back on top."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/github-token-cant-trigger-workflows/
     source: content-scout
     source_url: https://it-journey.dev/RESOLUTION_REPORT/
     source_title: "PRD Machine Requirement Conflicts - Resolution Report"
@@ -3980,6 +3981,32 @@ backlog:
     status: done
     published: /docs/three-ways-past-the-token-trap-linter/
 
+  # --- loop-tuner 2026-08-31: post/doc lanes re-starved after last refill drained
+  # loop_metrics showed starved_kinds [post, doc] again — 74 growable todos, but 72
+  # are kind:hack (the SRC-* content-scout stream) + 2 tool, and post/doc read 0.
+  # The 2026-08-10 refills (POST-033/DOC-033) shipped and drained. Ran
+  # harvest_ideas.rb (18 candidates from merged PRs) and promoted one non-duplicate,
+  # offline-testable idea per starved lane so the factory picks a MEASURED brief
+  # instead of improvising. Metadata only — the factory writes the prose.
+  - id: POST-054
+    kind: post
+    title: "The banner that draws itself only when it's allowed to"
+    brief: "Field note on the preview illustration layer's credential dependency: illustrate.mjs draws the article's subject into its Trace Bloom cover with ONE model call, but when the fleet has no OAuth token the call exits 1 and the plain deterministic banner stands. Ed treats that not as a bug but as the designed degraded path — 'author the motif through the validator' (a hand-authored _data/preview/motifs entry the offline generator renders) is the supported fallback, not a workaround. Real captured output only (token-absent run → exit 1 → plain banner; motif-present run → drawn cover). The honest twist: the preview gate is warn-only (preview: is not a required frontmatter key), so a missing illustration never blocks a merge — the graceful degradation is real precisely because nothing forces the richer path."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/09/09/the-banner-that-draws-itself-only-when-its-allowed-to/
+  - id: DOC-052
+    kind: doc
+    title: "The simulation that proves the merge, not the meaning"
+    brief: "Deep-dive (Cass) on scripts/sim/simulate.rb — the end-to-end contract simulation that shares the Tier-1 `fast` job with the devops auditor. What it actually proves, demonstrated by running it (92 passed / 0 failed): the backlog.yml merge driver exists and merges disjoint appends without splicing or silently duplicating an id, and file_issues.rb carries only create/comment/reopen verbs (no close/merge to be talked into). What it CANNOT prove: that any agent read the quarantine doc it checks for with File.exist?, or that the guardrails hold at runtime rather than on disk. The honest twist Cass can't leave alone: simulate.rb, like the auditor beside it, runs in advisory `fast` — SKIPPED on content-only PRs and outside the required `verify` gate — so the contract it verifies gates nothing until `fast` is promoted. Real captured simulate.rb output only; no fixes applied."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/the-simulation-that-proves-the-merge/
+
 
 
   - id: POST-046
@@ -4670,6 +4697,17 @@ backlog:
     published: /wire/astra-pelican-grid/
     source: manual
     source_url: https://simonwillison.net/2026/Sep/4/astra-pelicans/
+  - id: WIRE-020
+    kind: wire
+    title: "Claude Opus 5 sells 'frontier intelligence at half the price' — the half is a real per-token cut, the 'frontier' arrives only at max effort"
+    brief: "Model-beat dispatch reported from Anthropic's Claude Opus 5 launch page (primary tier, fetched 200 OK), with the Fable 5.1 launch page (also primary, fetched) corroborating the flagship's per-token rate. The launch's headline line is 'comes close to the frontier intelligence of Claude Fable 5 at half the price.' Honest reading of the facts, all from the pages: the 'half the price' vs Fable is REAL at the sticker — Opus 5 is $5/M input, $25/M output, exactly half Fable 5's confirmed $10/$50. The soft word is 'close': per the page, Opus 5 lands 'within 0.5% of Fable 5's peak score' on CursorBench 3.2 only 'at max effort,' and it 'remains behind Mythos 5' on cybersecurity. A second, separate cost claim compares Opus 5 to its predecessor Opus 4.8: 'greatly improved performance for the same cost' — the $5/$25 sticker is IDENTICAL to Opus 4.8 — so the 'lower cost per task' there is a tokens-spent claim via the 'effort setting,' a dial the company says customers turn to 'optimize for intelligence or conserve tokens.' The benchmark figures carry a footnote: an internal run of Frontier-Bench v0.1, mini-SWE-agent harness, GKE backend, mean reward over 5 attempts per task, with Opus 4.8 'served as fallback on safety-classifier refusals for Opus 5 and Fable 5.' Fast mode runs ~2.5x speed at twice the base price; the page carries 24 customer testimonials (01/24). Satire targets the theater: 'close to the frontier' priced by an effort dial and measured on an internal mean-of-five that quietly substitutes an older model when the classifier refuses. Facts sacred, all attributed to Anthropic. COI line required: this newsroom's copy is drafted on a Claude model — the vendor whose launch it covers. Kicker: the one number that didn't move — $5 and $25, the same as the model it replaces."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/opus-5-half-the-price/
+    source: manual
+    source_url: https://www.anthropic.com/news/claude-opus-5
   - id: POST-052
     kind: post
     title: "I let a language model draw on my own website: the whitelist between the motif layer and your browser"
@@ -4779,3 +4817,55 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-url-field-that-fetches-its-own-cloud-keys/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-142
+    kind: hack
+    title: "Your Markdown line break is two invisible spaces your editor just deleted: the trailing-whitespace break (and the backslash that survives)"
+    brief: "You want a soft line break inside a paragraph — an address, a bit of verse, a `key: value` line that isn't really a list — so you follow the docs and end the line with two trailing spaces. It works exactly once, until you save, because 'trim trailing whitespace on save' is on by default in half the editors alive, your prose linter flags trailing spaces as an error, and the code review that scolds you for whitespace strips the one whitespace that was load-bearing — so the break silently collapses and two lines become one with no warning. The failures that stay in: the two-space break is invisible in the diff and in the rendered source, so 'it broke' and 'someone cleaned up whitespace' look identical three commits later; kramdown and CommonMark BOTH also accept a trailing backslash for a hard break, which survives every whitespace-trimmer and is the version to actually use; and a truly blank line is a new PARAGRAPH (bigger gap, a `<p>`), not a `<br>`, so reaching for a blank line where you meant a break changes the spacing and, inside a tight list item, can end the list. Reproducible in one `.md` file rendered twice — once with the spaces, once after your editor eats them."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/notes/cheatsheets/markdown/
+    source_title: "Markdown Cheatsheet"
+    fingerprint: 949b2d194b18
+  - id: SRC-143
+    kind: hack
+    title: "'Just adding a field' broke every client: what actually counts as a breaking API change (and URI vs header versioning)"
+    brief: "You ship a 'small, backward-compatible tweak' to /v1 — rename a field, tighten a type, make one optional param required — and a dozen integrations 500 overnight, because inside a published version the only safe change is ADDITIVE. The rule is Postel's Law made concrete: adding an optional field or a new endpoint is safe; renaming a field, removing one, changing its type, making an optional parameter required, or narrowing an enum's accepted values is a BREAKING change that belongs in /v2, not a patch to /v1 — 'backward compatible' is a property you can list, not a vibe. Pick your versioning on purpose too: URI versioning (`/v1/…`, what GitHub and Stripe do) is trivial to route, cache, and curl; header/media-type versioning (`Accept: application/vnd.example.v2+json`) keeps URLs clean but is invisible in a browser and easy to forget. The footguns that stay in: header versioning without a `Vary: Accept` lets a shared cache serve a v2 body to a v1 client (and vice versa) — the single nastiest bug of the approach; a client that DOESN'T send the header must get a pinned default version, never 'latest', or every new release silently breaks everyone who didn't opt in; and adding a field is only safe if your clients tolerate unknown fields — a strict schema validator on THEIR side turns your 'non-breaking' addition into their 400. Reproducible with two tiny endpoint versions and a client that pins each way."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/api-versioning/
+    source_title: "API Versioning: URI, Headers, and Backward Compatibility"
+    fingerprint: e9c1d0b08fad
+  - id: SRC-144
+    kind: hack
+    title: "Be a polite API client: throttle on RateLimit-Remaining before the 429 — and the Reset header that's an epoch, not a countdown"
+    brief: "The reactive way to respect a rate limit is to hammer the API until it returns 429 and then back off; the polite way is to read the budget the server already hands you — `RateLimit-Remaining` and `RateLimit-Reset` on every response — and sleep BEFORE you hit zero, so you never earn the 429 in the first place. The trap that eats an afternoon: `Reset` means different things at different APIs. The draft `RateLimit-Reset` is seconds-until-reset (a countdown you can `time.sleep()` directly), but GitHub's `X-RateLimit-Reset` is an absolute UNIX timestamp — sleep on that number and you either nap for decades or, once the epoch has already passed, compute a negative wait and sleep zero and spin — so you must subtract `time.time()` and floor at zero. The other failures that stay in: `Retry-After` itself comes in two flavors (delta-seconds OR an HTTP-date), so a naive `float(header)` throws the day the server sends a date; and per-client politeness evaporates the moment you run more than one worker unless the limiter's counter lives in a shared store like Redis — otherwise each process thinks it has the whole budget and your 'polite' fleet is rude in aggregate. Reproducible against a tiny Flask endpoint that emits each header style in turn."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/rate-limiting/
+    source_title: "Rate Limiting: Token Buckets, 429s, and Quotas"
+    fingerprint: 946b5582e718
+  # Fresh tool idea (autopilot run, 2026-09-09): every `kind: tool` item on the
+  # backlog was already done, so this run minted a new one. tokei is the missing
+  # code-counter in the modern-CLI lineup (rg/fd/bat/…); the honest angle is that
+  # its two flashiest numbers — the docs-repo Comments bucket and the embedded-
+  # language breakdown — are display artifacts that never reach the total. Stress-
+  # tested by Ed G. Case (author: edge).
+  - id: TOOL-034
+    kind: tool
+    title: "tokei: the code counter that files your prose under Comments and hides half its own math"
+    brief: "The honest, stress-tested review of tokei: why a docs-heavy repo reports zero lines of code, the beautiful per-language embedded-code breakdown that is silently excluded from the grand total, the -c (columns)/-C (compact) trap that dies on a directory path, and the hostile-filename gauntlet (newline + emoji + SQLi in a name, missing trailing newline where it beats wc, empty files, symlink loop, 10,000 files in 0.042s) it actually survived."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /tools/tokei-honest-review/

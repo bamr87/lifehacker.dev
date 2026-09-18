@@ -59,13 +59,20 @@ if pipe_wf.include?('content-review:') && pipe_wf.include?('FLEET_TOKEN')
   add(findings, 'error', 'self-retrigger', "pipeline.yml content-review can loop (FLEET_TOKEN editorial push -> synchronize -> re-review); add the `github.event.action != 'synchronize'` loop-breaker to its `if`") unless pipe_wf.include?("github.event.action != 'synchronize'")
 end
 
-# Universal AI wiring: every model call must go through scripts/ai/run.sh (or the
-# claude-run action that wraps it), so model/auth/fallback live in ONE place
-# (_data/ai.yml). A raw `claude -p` in a workflow bypasses the fallback.
+# Universal AI wiring: every model call goes through the FLEET's runner — the
+# hub's claude-run action (bamr87/bamr87 .github/actions/claude-run, kit
+# ai-runner), consumed by reference — so model/auth/fallback live in ONE place
+# (_data/ai.yml here, the runner there). A raw `claude -p` in a workflow bypasses
+# the fallback; a local copy of the action is the drift this repo just retired.
+HUB_RUNNER = 'bamr87/bamr87/.github/actions/claude-run'
 wf_read.each do |name, c|
-  add(findings, 'warn', 'ai-wiring', "#{name} calls `claude -p` directly — route it through the claude-run action / scripts/ai/run.sh") if c =~ /\bclaude\s+-p\b/
+  code = c.lines.reject { |l| l =~ /^\s*#/ }.join
+  add(findings, 'warn', 'ai-wiring', "#{name} calls `claude -p` directly — route it through the fleet's claude-run action") if code =~ /\bclaude\s+-p\b/
+  add(findings, 'error', 'ai-wiring', "#{name} uses a LOCAL ./.github/actions/claude-run — the runner lives in the hub; use `uses: #{HUB_RUNNER}@main`") if code =~ %r{uses:\s*\./\.github/actions/claude-run}
+  add(findings, 'warn', 'ai-wiring', "#{name} pins claude-run to a ref other than @main — the fleet follows the hub's main; a pin here freezes this repo alone") if code =~ %r{#{Regexp.escape(HUB_RUNNER)}@(?!main\b)}
 end
-add(findings, 'error', 'ai-wiring', 'scripts/ai/run.sh (the universal AI runner) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/run.sh'))
+add(findings, 'error', 'ai-wiring', 'a local .github/actions/claude-run exists — the runner is consumed by reference from the hub; delete the copy') if Dir.exist?(File.join(LH::ROOT, '.github', 'actions', 'claude-run'))
+add(findings, 'error', 'ai-wiring', 'scripts/ai/run.sh (the shim to the fleet runner — illustrate.mjs and launch.json call it) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/run.sh'))
 add(findings, 'error', 'ai-wiring', 'scripts/ai/api_call.rb (the Claude API fallback) is missing') unless File.exist?(File.join(LH::ROOT, 'scripts/ai/api_call.rb'))
 
 # OAuth-everywhere invariant: any workflow that forwards ANTHROPIC_API_KEY to an
@@ -81,22 +88,22 @@ wf_read.each do |name, c|
 end
 
 # --- 1b. AI metering integrity (errors) --------------------------------------
-# Spend must never go dark: the universal runner records every call (usage.rb),
-# the claude-run composite publishes the records (usage_report.rb), and any
-# workflow that reaches a model OUTSIDE the composite — a direct run.sh call, or
-# the gitfactory-generated claude-code-action lines — must carry its own
+# Spend must never go dark. The fleet runner records every call through THIS
+# repo's scripts/ai/usage.rb and publishes through usage_report.rb (both
+# consumer-owned companions the runner probes for — absent, it degrades to
+# "unmetered" with a notice, which is exactly the dark spend this guards). The
+# runner and its post-steps are contract-tested in the hub (ai-runner-contract);
+# what this repo must keep true is that the companions exist and record. Any
+# workflow that reaches a model OUTSIDE the action — a direct run.sh call, or the
+# gitfactory-generated claude-code-action lines — must carry its own
 # usage_report step. That last check is the regeneration alarm: gitfactory
 # overwrites its workflows from the blueprint, and this is what turns "the
 # metering step silently vanished" into a red pipeline.
-runsh = read.call(File.join(LH::ROOT, 'scripts/ai/run.sh'))
-add(findings, 'error', 'ai-metering', 'scripts/ai/run.sh does not record usage (usage.rb) — AI spend would go dark') if !runsh.empty? && !runsh.include?('usage.rb')
+%w[scripts/ai/usage.rb scripts/ai/usage_report.rb].each do |companion|
+  add(findings, 'error', 'ai-metering', "#{companion} is missing — the fleet runner would run this repo unmetered (AI spend goes dark)") unless File.exist?(File.join(LH::ROOT, companion))
+end
 apirb = read.call(File.join(LH::ROOT, 'scripts/ai/api_call.rb'))
 add(findings, 'error', 'ai-metering', 'scripts/ai/api_call.rb does not record usage — fallback spend would go dark') if !apirb.empty? && !apirb.include?('AIUsage')
-cr_path = File.join(LH::ROOT, '.github', 'actions', 'claude-run', 'action.yml')
-if File.exist?(cr_path)
-  cr = LH.read(cr_path)
-  add(findings, 'error', 'ai-metering', 'claude-run composite lacks the usage_report post-step — records would never be published') unless cr.include?('usage_report')
-end
 
 # --- 1c. Action manifests must not template their own prose (errors) ---------
 # The runner evaluates EVERY `${{ ... }}` in an action.yml when it LOADS the

@@ -31,7 +31,7 @@ check, CODEOWNERS, no-`administration`-scope, the `FLEET_ENABLED` gate, the no-s
 (no `administration` scope, fleet schedule gated, `FLEET_ENABLED` honored), contract wiring (every harness entrypoint calls `record_build.rb`; the sev1 build finding can't be lost), the required `verify` check, contract-schema conformance (findings.jsonl / queue.json carry their frozen fields), script syntax, and throughput (duplicate builds, missing caching/concurrency). Errors are mis-wiring; fix them. It writes `test-results/devops-audit.json`.
 
 ### 2. Verify the contracts end to end
-- `ruby scripts/sim/simulate.rb` — the 15-scenario E2E sim must pass. It is the
+- `ruby scripts/sim/simulate.rb` — the multi-scenario E2E sim must pass. It is the
   regression net for the findings → queue → dispatch contract and every guardrail.
 - `LH_SKIP_BUILD=1 bash scripts/ci/run-all.sh` (or the full build) — the harness gate.
 

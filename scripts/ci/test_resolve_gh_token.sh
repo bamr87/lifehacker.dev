@@ -37,9 +37,14 @@ stub_gh() {
   echo "$dir"
 }
 
-# run_case <name> <gh-exit> <candidate> <fallback> <want-source> <want-token>
+# run_case <name> <gh-exit> <candidate> <fallback> <want-source> <want-token> [want-log-re]
+#
+# `want-log-re` is optional. When given, the annotation the composite printed on
+# stdout must match it — the degraded path is only correct if the operator is
+# TOLD it degraded, so silence there is a defect even when the token is right.
 run_case() {
   local name="$1" gh_rc="$2" candidate="$3" fallback="$4" want_source="$5" want_token="$6"
+  local want_log_re="${7:-}"
   local stub work out env_file rc got_source got_token
 
   stub="$(stub_gh "$gh_rc")"
@@ -66,6 +71,9 @@ run_case() {
     echo "  FAIL $name — source: want '$want_source', got '$got_source'"; ((fail++))
   elif [[ "$got_token" != "$want_token" ]]; then
     echo "  FAIL $name — GH_TOKEN: want '$want_token', got '$got_token'"; ((fail++))
+  elif [[ -n "$want_log_re" ]] && ! grep -Eq "$want_log_re" "$work/stdout"; then
+    echo "  FAIL $name — annotation: want match /$want_log_re/, got:"
+    sed 's/^/        /' "$work/stdout"; ((fail++))
   else
     echo "  ok   $name"; ((pass++))
   fi
@@ -80,10 +88,16 @@ run_case "valid PAT is used"                      0 "fleet-pat" "gh-token" "flee
 
 # 2. THE REGRESSION. Non-empty but rejected (expired/revoked) => degrade.
 #    `${{ secrets.X || github.token }}` returns the PAT here. That is the bug.
-run_case "expired PAT degrades to github.token"   1 "expired-pat" "gh-token" "default" "gh-token"
+#    A rejected PAT must also be ANNOUNCED as a ::warning:: — this is the only
+#    signal a human gets that the secret needs rotating, and a silent degrade
+#    is how an expiry goes unnoticed for ten days (bamr87/bamr87#59).
+run_case "expired PAT degrades to github.token"   1 "expired-pat" "gh-token" "default" "gh-token" \
+  '^::warning::FLEET_TOKEN is set but REJECTED'
 
-# 3. Unset PAT: degrade without even probing.
-run_case "absent PAT degrades to github.token"    1 ""           "gh-token" "default" "gh-token"
+# 3. Unset PAT: degrade without even probing. A MISSING secret is a notice, not
+#    a warning — nothing is broken, so it must not cry wolf like case 2 does.
+run_case "absent PAT degrades to github.token"    1 ""           "gh-token" "default" "gh-token" \
+  '^::notice::FLEET_TOKEN is not set'
 
 # 4. Unset PAT with a passing probe still degrades (empty is never probed).
 run_case "empty candidate is never probed"        0 ""           "gh-token" "default" "gh-token"

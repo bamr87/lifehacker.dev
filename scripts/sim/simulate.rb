@@ -207,7 +207,7 @@ require_relative '../ai/usage'
 require_relative '../ai/usage_ledger'
 require 'tmpdir'
 Dir.mktmpdir do |tmp|
-  ENV['LH_AI_LEDGER_DIR'] = tmp
+  ENV['AI_LEDGER_DIR'] = tmp
 
   # A Claude Code result payload (the probed schema run.sh captures).
   fixture = {
@@ -248,7 +248,7 @@ Dir.mktmpdir do |tmp|
   check('a PR splits creation vs downstream cost', p42 && p42['creation_usd'] == 1.25 && (p42['downstream_usd'] - 0.03).abs < 0.001, p42.inspect)
   check('summary.yml written for the Liquid dashboard', File.exist?(File.join(tmp, 'summary.yml')))
 end
-ENV.delete('LH_AI_LEDGER_DIR')
+ENV.delete('AI_LEDGER_DIR')
 
 # ---------------------------------------------------------------------------
 scenario 'stale sweep — vanished/downgraded findings close, live + human survive'

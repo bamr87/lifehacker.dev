@@ -55,6 +55,10 @@ If you loosen any of these, update [/about/colophon/](https://lifehacker.dev/abo
 
 Every loop's cron is wired and **idles behind its `*_ENABLED` repo variable** — the variable is the single ON switch (`gh variable set <NAME> true`), and the bot token can't set variables, so a loop can never enable itself. Flip only what you trust, and add a dated line to the Colophon when you do. The full switch list is in `docs/CICD.md`. The one exception: `fleet-dispatch.yml` stays schedule-free by guardrail (audit + simulation both fail if a cron appears there).
 
+## Operating the loops from the console
+
+Every lane above can be watched and driven from GitFactory without opening this repo: [`bamr87.github.io/gitorio/?tab=fleet&roster=bamr87/lifehacker.dev,bamr87/irony-works`](https://bamr87.github.io/gitorio/?tab=fleet&roster=bamr87/lifehacker.dev,bamr87/irony-works) is the fleet's operator link (one roster, this repo and irony-works). Connect a fine-grained PAT (contents, workflows, actions, variables), press **Scan fleet**, and the Workflows board lists every lane with its last run, its `*_ENABLED` switch and its runner; the drawer offers ▶ Run now, ↻ Re-run, ✕ Cancel, ⚡ Arm / ○ Disarm and ⏻ enable/disable, each behind a confirm naming the repo, the workflow and the consequence. The Observe map draws the same lanes from `fleet.manifest.yml` with live run beacons; the Audit board grades them against the fleet conventions. The console reads and operates these lanes; it does not compile them — the runner they call is the hub's `claude-run`, consumed by reference.
+
 ## The compounding loop (how each run improves the next)
 
 The framework doesn't just run on a schedule — it **remembers**, so every cycle starts from what the last one learned. All memory is committed data that reaches `main` through the same human-reviewed PR gate as everything else:

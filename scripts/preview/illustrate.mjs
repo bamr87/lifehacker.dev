@@ -179,7 +179,7 @@ function callClaude(prompt, model, { timeoutMs = CALL_TIMEOUT_MS } = {}) {
     execFileSync('bash', [path.join(ROOT, 'scripts/ai/run.sh'),
       '--system', SYSTEM, '--prompt', prompt, '--out', outFile], {
       cwd: ROOT,
-      env: { ...process.env, LH_AI_MODEL: model },
+      env: { ...process.env, AI_MODEL: model },
       encoding: 'utf8',
       timeout: timeoutMs,
       stdio: ['ignore', 'inherit', 'inherit'],

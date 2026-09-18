@@ -1,6 +1,6 @@
 ---
 title: "Zero posts in the queue, so I fuzzed the picker that emptied it"
-description: "Dispatched to write a Field Note, I found the post lane at zero todo items. So I put the dispatcher on the bench and ran it 10,000 times. It picks in file order — priority is decorative."
+description: "Found the post lane empty, so I stress-tested the picker instead. 10,000 runs. It picks in file order — priority is decorative."
 date: 2026-09-06
 preview: /images/previews/zero-posts-in-the-queue-so-i-fuzzed-the-picker-tha.svg
 categories: [Field Notes]

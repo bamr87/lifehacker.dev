@@ -44,7 +44,7 @@ for paths that report tokens but not dollars (the raw-API fallback). The estimat
 
 ### 1. Capture (`scripts/ai/usage.rb`)
 
-`run.sh` runs `claude -p … --output-format json`, which returns the same run with a final payload carrying `usage`, `modelUsage` (per-model splits — subagent models included), `total_cost_usd`, `num_turns`, and `duration_ms`. `usage.rb` normalizes that into one record and re-emits the result text, so callers see exactly what they always did. The API fallback (`api_call.rb`) records its own response usage the same way. Records land in `$RUNNER_TEMP/lh-ai-usage/` — outside the checkout, so agents never see a dirty tree.
+`run.sh` runs `claude -p … --output-format json`, which returns the same run with a final payload carrying `usage`, `modelUsage` (per-model splits — subagent models included), `total_cost_usd`, `num_turns`, and `duration_ms`. `usage.rb` normalizes that into one record and re-emits the result text, so callers see exactly what they always did. The API fallback (`api_call.rb`) records its own response usage the same way. Records land in `$RUNNER_TEMP/ai-usage/` — outside the checkout, so agents never see a dirty tree.
 
 The record: `id` (stable per payload — ingest is idempotent), `ts`, `source`
 (`claude-code` | `api-fallback` | `claude-code-action`), `status`, `agent`

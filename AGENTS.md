@@ -63,7 +63,7 @@ Cover-art seed order is a contract (`scripts/preview/`): append `pick()`s, never
 
 - AI loops are wired and **idle** until their `*_ENABLED` repo variable is set. Do not add a cron to `fleet-dispatch.yml`.
 - Never `GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}` — an expired PAT is non-empty and wins. Use `.github/actions/resolve-gh-token`.
-- All model calls go through `scripts/ai/run.sh` / `.github/actions/claude-run`. Default model is `_data/ai.yml`. Do not call `claude -p` from a workflow (`audit.rb` fails CI if you do).
+- All model calls go through the fleet's runner, `uses: bamr87/bamr87/.github/actions/claude-run@main` (hub kit `ai-runner`; `scripts/ai/run.sh` here is a shim to it). Default model is `_data/ai.yml`. Do not call `claude -p` from a workflow, and never re-vendor the action (`audit.rb` fails CI if you do).
 - `_data/backlog.yml` uses custom `merge=backlog` (`scripts/ci/merge_backlog.rb`). GitHub's merge button does **not** run it. Never `merge=union` on that file.
 - Weekly epic byline is pinned to `fable`; Wire to `rhea`. Other AI bylines rotate via `authors.rb`.
 - Vendored as a submodule of `bamr87/bamr87`: commit and push **here** first.
