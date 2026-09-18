@@ -72,14 +72,18 @@ repo_map                 : "/sitemap/"
 #
 #     node scripts/preview/generate.mjs --all
 #
-# Kept here only for Jekyll/Liquid consumers that read site.preview_images.
+# The block below uses only the zer0-image-generator gem's documented keys
+# (its README "Configuration"). Two readers: the theme's preview-image includes
+# (assets_prefix + auto_prefix re-prefix the `preview:` values) and the gem's
+# `jekyll preview-images` command. Trace Bloom reads neither — its tokens live
+# in _data/preview/design.json. No provider/style is set: the gem is not what
+# draws this site's banners.
 # -----------------------------------------------------------------------------
 preview_images:
   enabled                  : true
-  generator                : 'trace-bloom'
-  tokens                   : '_data/preview/design.json'
   output_dir               : 'assets/images/previews'
   assets_prefix            : '/assets'
+  auto_prefix              : true
   front_matter_key         : 'preview'
   collections:
     - posts
@@ -354,6 +358,7 @@ exclude:
   - _config_dev.yml
   - docker-compose.yml
   - fleet.manifest.yml
+  - zer0.json
   - docker
   - README.md
   - AUTOPILOT.md

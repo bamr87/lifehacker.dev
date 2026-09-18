@@ -9,10 +9,13 @@ gem "csv"
 gem "base64"
 gem "logger"
 
-# `jekyll preview-images` — the theme's AI preview-banner engine, now consumed
-# as the published gem instead of a vendored scripts/lib/ copy. Build-time
-# only: GitHub Pages ignores it (safe mode); it serves the committed images.
-# scripts/generate-preview-images.sh resolves the engine from this gem.
+# `jekyll preview-images` — the zer0 stack's image engine, consumed as the
+# published gem, never a vendored _plugins/ or scripts/lib/ copy. It reads the
+# `preview_images:` block in _config.yml. Build-time only: GitHub Pages ignores
+# it (safe mode) and serves the committed images. This site's banners are drawn
+# by Trace Bloom (scripts/preview/generate.mjs, docs/PREVIEW-IMAGES.md), which
+# needs no gem; scripts/generate-preview-images.sh is a shim to that generator.
+# `~> 0.4` resolves 0.6.0 in Gemfile.lock.
 gem "zer0-image-generator", "~> 0.4", group: :jekyll_plugins
 
 # CI-only. GitHub Pages ignores non-jekyll_plugins groups, so this never affects

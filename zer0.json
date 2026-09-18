@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bamr87/zer0-CMS/main/schemas/zer0.schema.json",
+  // lifehacker.dev in the zer0-CMS console dialect.
+  // Folders mirror what Jekyll actually reads (collections_dir: pages → posts, docs,
+  // about, plus the loose pages). Required keys mirror scripts/ci/lint_frontmatter.rb,
+  // the repo's own gate: title description date author excerpt tags on every news
+  // section, categories carrying the section name, verdict on tools, sources on wire;
+  // docs need only title + description. `preview` is warn-only there, so not required.
+  // frontmatter.json (Front Matter CMS) stays until this file also covers its
+  // _data file editors (navigation, top story, wire sources).
+  "platform": { "id": "jekyll", "overlay": "zer0-mistakes" },
+  "contentFolders": [
+    { "title": "Hacks", "path": "[[workspace]]/pages/_posts/hacks", "contentTypes": ["hack"], "filePrefix": "{{date|yyyy-MM-dd}}" },
+    { "title": "Tools", "path": "[[workspace]]/pages/_posts/tools", "contentTypes": ["tool-review"], "filePrefix": "{{date|yyyy-MM-dd}}" },
+    { "title": "Field Notes", "path": "[[workspace]]/pages/_posts/field-notes", "contentTypes": ["field-note"], "filePrefix": "{{date|yyyy-MM-dd}}" },
+    { "title": "The Wire", "path": "[[workspace]]/pages/_posts/wire", "contentTypes": ["wire-dispatch"], "filePrefix": "{{date|yyyy-MM-dd}}" },
+    // Jekyll also reads posts sitting directly in pages/_posts (one today). New
+    // posts belong in a section folder, so creation is off here.
+    { "title": "Posts (no section folder)", "path": "[[workspace]]/pages/_posts", "contentTypes": ["field-note"], "excludeSubdir": true, "disableCreation": true, "filePrefix": "{{date|yyyy-MM-dd}}" },
+    { "title": "Docs", "path": "[[workspace]]/pages/_docs", "contentTypes": ["doc"], "filePrefix": null },
+    { "title": "About", "path": "[[workspace]]/pages/_about", "contentTypes": ["page"], "filePrefix": null, "disableCreation": true },
+    { "title": "News landings", "path": "[[workspace]]/pages/news", "contentTypes": ["page"], "filePrefix": null, "disableCreation": true },
+    { "title": "Pages", "path": "[[workspace]]/pages", "contentTypes": ["page"], "excludeSubdir": true, "filePrefix": null, "disableCreation": true }
+  ],
+  "fieldGroups": [
+    {
+      "id": "news-core",
+      "fields": [
+        { "name": "title", "title": "Title", "type": "string", "single": true, "required": true },
+        { "name": "description", "title": "Description (SEO, warn >160 chars)", "type": "string", "required": true },
+        { "name": "date", "title": "Publish date (never future — CI rejects it)", "type": "datetime", "isPublishDate": true, "default": "{{now}}", "dateFormat": "yyyy-MM-dd", "required": true },
+        { "name": "excerpt", "title": "Excerpt (card hook)", "type": "string", "required": true },
+        { "name": "tags", "title": "Tags (non-empty array)", "type": "tags", "required": true },
+        { "name": "preview", "title": "Preview banner (node scripts/preview/generate.mjs -f <file>)", "type": "image", "isPreviewImage": true }
+      ]
+    }
+  ],
+  "contentTypes": [
+    {
+      "name": "hack",
+      "fields": [
+        { "name": "core", "type": "fieldCollection", "fieldGroup": "news-core" },
+        { "name": "categories", "title": "Categories (must include \"Hacks\")", "type": "categories", "required": true, "default": ["Hacks"] },
+        { "name": "author", "title": "Author (key in _data/authors.yml)", "type": "choice", "required": true, "default": "claude", "choices": ["amr", "claude", "cass", "edge", "fable", "rhea"] },
+        { "name": "permalink", "title": "Permalink (/hacks/<slug>/ — explicit, never the collection default)", "type": "string", "single": true },
+        { "name": "featured", "type": "boolean" }
+      ]
+    },
+    {
+      "name": "tool-review",
+      "fields": [
+        { "name": "core", "type": "fieldCollection", "fieldGroup": "news-core" },
+        { "name": "categories", "title": "Categories (must include \"Tools\")", "type": "categories", "required": true, "default": ["Tools"] },
+        { "name": "author", "title": "Author (key in _data/authors.yml)", "type": "choice", "required": true, "default": "claude", "choices": ["amr", "claude", "cass", "edge", "fable", "rhea"] },
+        { "name": "verdict", "title": "Verdict (required — a tool review leads with one)", "type": "string", "required": true },
+        { "name": "permalink", "title": "Permalink (/tools/<slug>/ — explicit, never the collection default)", "type": "string", "single": true },
+        { "name": "featured", "type": "boolean" }
+      ]
+    },
+    {
+      "name": "field-note",
+      "fields": [
+        { "name": "core", "type": "fieldCollection", "fieldGroup": "news-core" },
+        { "name": "categories", "title": "Categories (must include \"Field Notes\")", "type": "categories", "required": true, "default": ["Field Notes"] },
+        { "name": "author", "title": "Author (key in _data/authors.yml)", "type": "choice", "required": true, "default": "claude", "choices": ["amr", "claude", "cass", "edge", "fable", "rhea"] },
+        { "name": "permalink", "title": "Permalink (optional — field notes keep the dated default)", "type": "string", "single": true },
+        { "name": "series", "type": "string", "single": true },
+        { "name": "featured", "type": "boolean" }
+      ]
+    },
+    {
+      "name": "wire-dispatch",
+      "fields": [
+        { "name": "core", "type": "fieldCollection", "fieldGroup": "news-core" },
+        { "name": "categories", "title": "Categories (must include \"The Wire\")", "type": "categories", "required": true, "default": ["The Wire"] },
+        { "name": "author", "title": "Author (The Wire is pinned to rhea — never rotated)", "type": "choice", "required": true, "default": "rhea", "choices": ["rhea"] },
+        { "name": "sources", "title": "Sources (required — non-empty list of http(s) story URLs; the press charter binds)", "type": "list", "required": true },
+        { "name": "permalink", "title": "Permalink (/wire/<slug>/ — explicit, never the collection default)", "type": "string", "single": true }
+      ]
+    },
+    {
+      "name": "doc",
+      "fields": [
+        { "name": "title", "title": "Title", "type": "string", "single": true, "required": true },
+        { "name": "description", "title": "Description (SEO, warn >160 chars)", "type": "string", "required": true },
+        { "name": "layout", "title": "Layout", "type": "string", "single": true, "default": "default", "hidden": true },
+        { "name": "date", "title": "Publish date", "type": "datetime", "isPublishDate": true, "default": "{{now}}", "dateFormat": "yyyy-MM-dd" },
+        { "name": "preview", "title": "Preview banner (node scripts/preview/generate.mjs -f <file>)", "type": "image", "isPreviewImage": true },
+        { "name": "collection", "title": "Collection", "type": "string", "single": true, "default": "docs", "hidden": true },
+        { "name": "author", "title": "Author (key in _data/authors.yml)", "type": "choice", "default": "claude", "choices": ["amr", "claude", "cass", "edge", "fable", "rhea"] },
+        { "name": "excerpt", "title": "Excerpt", "type": "string" },
+        { "name": "tags", "title": "Tags", "type": "tags" },
+        { "name": "permalink", "title": "Permalink (/docs/<slug>/)", "type": "string", "single": true },
+        { "name": "sidebar", "title": "Sidebar", "type": "fields", "fields": [ { "name": "nav", "title": "Nav", "type": "string", "default": "tree" } ] }
+      ]
+    },
+    {
+      "name": "page",
+      "fields": [
+        { "name": "title", "title": "Title", "type": "string", "single": true, "required": true },
+        { "name": "description", "title": "Description", "type": "string" },
+        { "name": "layout", "title": "Layout", "type": "string", "single": true, "default": "default" },
+        { "name": "permalink", "title": "Permalink", "type": "string", "single": true }
+      ]
+    }
+  ],
+  "taxonomy": { "categories": ["Hacks", "Tools", "Field Notes", "The Wire"], "tags": [] },
+  "draftField": { "name": "draft", "type": "boolean" },
+  // The corpus writes flow-style lists (`tags: [a, b]`). Line surgery leaves an
+  // untouched key alone; only an EDITED tags/categories key is re-emitted.
+  "frontMatter": { "format": "yaml", "indentArrays": true, "quoteStringValues": false },
+  "content": { "defaultFileType": "md", "publicFolder": "assets", "filePrefix": "{{date|yyyy-MM-dd}}", "autoUpdateModifiedDate": false },
+  "seo": { "enabled": true, "descriptionLength": 160 },
+  "date": { "format": "yyyy-MM-dd", "timezone": "UTC" },
+  // Publishing stays a human-merged pull request (and the content stand-down holds).
+  "governance": { "enabled": true, "target": "jekyll", "publishAllow": false },
+  "cms": { "contentDirs": ["pages/"], "aiConfigPath": "_data/ai.yml", "verifyCommand": "scripts/ci/run-all.sh" },
+  "fleet": { "enabled": true, "manifestPath": "fleet.manifest.yml", "hub": "bamr87/bamr87" },
+  "validation": { "enabled": true }
+}
