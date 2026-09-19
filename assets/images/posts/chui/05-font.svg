@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 220" width="820" height="220" role="img" aria-label="Apple Terminal font before and after">
+<rect width="820" height="220" rx="12" fill="#05070d"/>
+<rect width="820" height="36" rx="12" fill="#0b1020"/>
+<rect y="24" width="820" height="12" fill="#0b1020"/>
+<circle cx="22" cy="18" r="6" fill="#ff5f56"/>
+<circle cx="42" cy="18" r="6" fill="#ffbd2e"/>
+<circle cx="62" cy="18" r="6" fill="#27c93f"/>
+<text x="410.0" y="23" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#7f9ab8">osascript — font name of default settings</text>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">
+<text x="28" y="70" fill="#7f9ab8" font-weight="400">$ osascript -e 'tell application "Terminal" to get font name…'</text>
+<rect x="28" y="84" width="360" height="88" rx="8" fill="#0b1020" stroke="#f87171" stroke-width="1"/>
+<text x="44" y="106" fill="#f87171" font-weight="600">before</text>
+<text x="44" y="134" fill="#eaf6ff" font-weight="700">SFMonoTerminal-Regular</text>
+<text x="44" y="156" fill="#7f9ab8" font-weight="400">ls icons →  ?  ?  ?</text>
+<rect x="430" y="84" width="360" height="88" rx="8" fill="#0b1020" stroke="#4ade80" stroke-width="1"/>
+<text x="446" y="106" fill="#4ade80" font-weight="600">after</text>
+<text x="446" y="134" fill="#eaf6ff" font-weight="700">MesloLGSNF-Regular</text>
+<text x="446" y="156" fill="#7f9ab8" font-weight="400">family: MesloLGS Nerd Font</text>
+</g></svg>
