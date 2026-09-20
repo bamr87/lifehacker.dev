@@ -4901,3 +4901,16 @@ backlog:
     voice: how-to-practical
     priority: P2
     status: todo
+
+  # Named topic (2026-09-20): write a tutorial on Apple's bootable macOS
+  # installer (support.apple.com/en-us/101578). Prime Directive: the erase
+  # was not run — Field Note, not a Hack. Cass (post rotation).
+  - id: POST-056
+    kind: post
+    title: "The installer is 17GB. The volume in the port is named bamr87."
+    brief: "Field note sequel to the 2024 createinstallmedia writeup: softwareupdate --list-full-installers, the 17GB Golden Gate app actually on disk, createinstallmedia --help (including --nointeraction), and the 256GB ExFAT Windows volume that did not get renamed MyVolume."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/09/20/the-installer-is-17gb-the-volume-is-named-bamr87/
