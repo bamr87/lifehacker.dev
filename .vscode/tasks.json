@@ -1,0 +1,244 @@
+// lifehacker.dev · .vscode/tasks.json — fleet-vscode/v1 · 2026-09-09. Convention + vocabulary: .vscode/README.md.
+// Every Docker task runs the SAME scripts CI runs (scripts/ci/build.sh, scripts/ci/run-all.sh) so the buttons cannot drift from the `verify` gate.
+// Caches: the `lh-bundle` Docker volume holds /usr/local/bundle (reset: docker volume rm lh-bundle); /tmp/zer0-theme is the shallow theme clone shared with scripts/preview.sh and is never re-pulled (rm -rf it to pick up upstream theme drift, what nightly's fresh-theme does).
+// BUNDLE_FROZEN=true on the repo-Gemfile installs: the container's bundler differs from the host's and would otherwise churn Gemfile.lock every run.
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Serve",
+      "detail": "Docker. scripts/preview.sh overlays this repo onto the theme clone, strips _plugins (Pages safe mode) and serves http://localhost:4000 through the theme's compose file. First run builds the image. Runs until Stop.",
+      "type": "shell",
+      "command": "bash scripts/preview.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "owner": "serve",
+        "pattern": {
+          "regexp": "^(never-matches)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Server (running|address)|Container \\S+\\s+Running"
+        }
+      }
+    },
+    {
+      "label": "Stop",
+      "detail": "Stops the preview stack. Killing the Serve terminal leaves the container running, and its jekyll_cache volume then blocks the next overlay rebuild (Permission denied … Directory not empty) — always stop here. The -p fallback stops by project name when the overlay dir is already gone.",
+      "type": "shell",
+      "command": "{ cd \"$PREVIEW_DIR\" 2>/dev/null || cd /tmp/lh-preview; } && docker compose down || docker compose -p lh-preview down",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build",
+      "detail": "Docker → _site. The Pages safe-mode build (overlay + jekyll build --strict_front_matter) straight from scripts/ci/build.sh.",
+      "type": "shell",
+      "command": "docker run --rm -v \"$PWD:/repo\" -v lh-bundle:/usr/local/bundle -v /tmp/zer0-theme:/tmp/zer0-theme -w /repo ruby:3.3 bash -lc 'git config --global --add safe.directory \"*\"; bash scripts/ci/build.sh build'",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Build: overlay only",
+      "detail": "Host. Writes the overlay to /tmp/lh-preview without serving — inspect what Jekyll actually sees when a page renders differently locally than on Pages.",
+      "type": "shell",
+      "command": "bash scripts/preview.sh build",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Verify",
+      "detail": "Docker. The one-button answer to \"will CI pass?\": build once, then the harness with LH_SKIP_BUILD=1 and the build's exit code in LH_BUILD_RC — the build-and-harness composite exactly, so a broken build lands as a sev1 finding and the exit code is aggregate.rb's verdict. Writes _site/ + test-results/findings.jsonl.",
+      "type": "shell",
+      "command": "docker run --rm -v \"$PWD:/repo\" -v lh-bundle:/usr/local/bundle -v /tmp/zer0-theme:/tmp/zer0-theme -w /repo ruby:3.3 bash -lc 'git config --global --add safe.directory \"*\"; BUNDLE_FROZEN=true bundle install --quiet && bash scripts/ci/build.sh build; rc=$?; LH_SKIP_BUILD=1 LH_BUILD_RC=$rc bash scripts/ci/run-all.sh'",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Lint",
+      "detail": "Docker. The harness only, against the EXISTING _site (run Build first) — the fast loop while fixing front matter, brand, or link findings. Link + drift results are only as fresh as that _site.",
+      "type": "shell",
+      "command": "docker run --rm -v \"$PWD:/repo\" -v lh-bundle:/usr/local/bundle -w /repo -e LH_SKIP_BUILD=1 ruby:3.3 bash -lc 'git config --global --add safe.directory \"*\"; BUNDLE_FROZEN=true bundle install --quiet && bash scripts/ci/run-all.sh'",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Audit: tier 1",
+      "detail": "Host ruby, ~1s, no Docker. audit.rb fails when a new lint is not wired into BOTH run-all.sh and aggregate.rb's CHECK_FILES; simulate.rb walks the findings/queue contract.",
+      "type": "shell",
+      "command": "ruby scripts/devops/audit.rb && ruby scripts/sim/simulate.rb",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Fix: unwrap prose",
+      "detail": "Host python. The deterministic repair for the harness's oneline errors (one paragraph per line). Rewrites files in place — diff before you commit.",
+      "type": "shell",
+      "command": "python3 tools/unwrap-prose.py --write",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Author: preview image",
+      "detail": "Host, offline, deterministic. Trace Bloom cover art for the article in the ACTIVE editor — open the .md first; with no editor open the run ends in EISDIR, which is the tell, not a real error.",
+      "type": "shell",
+      "command": "node scripts/preview/generate.mjs -f \"${relativeFile}\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Claude: session",
+      "detail": "Interactive Claude Code in this repo with its .claude/agents + skills, on your logged-in credentials. House rules still apply: branch from main, open a PR, a human merges.",
+      "type": "shell",
+      "command": "claude",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      }
+    },
+    {
+      "label": "Claude: skill",
+      "detail": "Start a session with one of this repo's routines already invoked; you stay in the loop to answer its questions.",
+      "type": "shell",
+      "command": "claude \"/${input:lhSkill}\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      }
+    },
+    {
+      "label": "Claude: fix harness findings",
+      "detail": "Run Verify first, then hand its findings to the bug-fixer role. Interactive on purpose — fleet-bugfix makes the SMALLEST change that turns the gate green, and that call deserves a human watching.",
+      "type": "shell",
+      "command": "claude \"/fleet-bugfix Fix the findings in test-results/findings.jsonl from my last local harness run, then re-verify with scripts/ci/run-all.sh.\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      }
+    },
+    {
+      "label": "Claude: fleet agent (headless)",
+      "detail": "The metered CI path, byte-for-byte (the hub's claude-run through the scripts/ai/run.sh shim): the agent's own prompt and tool scope, the model from _data/ai.yml, cost recorded by usage.rb. Runs with acceptEdits unattended — point it at a scratch branch. Not free: even a one-word prompt bills the repo context (~$0.24 measured).",
+      "type": "shell",
+      "command": "bash scripts/ai/run.sh --agent \"${input:lhAgent}\" --prompt \"${input:lhPrompt}\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "lhSkill",
+      "type": "pickString",
+      "description": "Which .claude/skills routine should Claude run?",
+      "options": [
+        "agent-skill-review",
+        "content-import",
+        "content-reviewer",
+        "content-scout",
+        "devops-manager",
+        "fleet-bugfix",
+        "grow-lifehacker",
+        "loop-tuner",
+        "quest-forge",
+        "session-retrospective",
+        "site-explorer",
+        "test-lifehacker",
+        "theme-scout",
+        "triage-lifehacker",
+        "weekly-epic",
+        "wire-scout"
+      ],
+      "default": "test-lifehacker"
+    },
+    {
+      "id": "lhAgent",
+      "type": "pickString",
+      "description": "Which .claude/agents role should run headlessly?",
+      "options": [
+        "agent-reviewer",
+        "author-cass",
+        "author-edge",
+        "author-rhea",
+        "brand-fixer",
+        "brand-reviewer",
+        "content-reviewer",
+        "content-scout",
+        "devops-manager",
+        "fleet-bugfix",
+        "grow-lifehacker",
+        "loop-tuner",
+        "quest-forge",
+        "session-retrospective",
+        "site-explorer",
+        "theme-scout",
+        "triage-lifehacker",
+        "weekly-epic",
+        "wire-scout"
+      ],
+      "default": "grow-lifehacker"
+    },
+    {
+      "id": "lhPrompt",
+      "type": "promptString",
+      "description": "Task for the agent (it keeps its own role constraints)",
+      "default": "Do your next unit of work from the backlog, verify it, and open one PR."
+    }
+  ]
+}
