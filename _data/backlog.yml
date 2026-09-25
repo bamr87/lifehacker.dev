@@ -2427,6 +2427,32 @@ backlog:
     priority: P2
     status: done
     published: /docs/prove-it-moved/
+  # Synthesized in-lane (autopilot doc run, 2026-09-07): every `doc`-kind item on the
+  # board was already `done` (DOC-001..028) and DOC-004 stays `blocked` on OPS-001;
+  # the only `todo` items are OPS-001 (kind: ops, which content runs skip) and the
+  # SRC-* backlog (kind: hack — wrong lane for a doc). `gh pr list --state open
+  # --label auto:content` returned no open PR to duplicate. Rather than no-op, cross
+  # lanes, or fabricate, synthesized a fresh in-lane doc. Byline by rotation
+  # (`ruby scripts/fleet/authors.rb --section doc` -> `cass`). Angle: threat-model
+  # the cover-art pipeline. The illustrator lets an AI author an SVG (a program, not
+  # a picture) that ships to the production origin; the generator's whitelist
+  # (motif.mjs) re-serializes from an allow-list and rejected all 8 hostile inputs I
+  # ran, but the CI net over a *hand-committed* banner (lint_preview.rb `unsafe-svg`)
+  # is a blacklist that passed 5 of 8 (onload=, onclick=, <a javascript:>, <use
+  # data:>, <set>). Reproduced for real against the exact regex; walked back honestly
+  # (not currently exploitable — nothing in the pipeline emits such a file, and the
+  # theme embeds it as an inert background-image). Three tested mitigations; the
+  # regex-tightening patch is offered to the scripts/ci owners in the PR, not applied
+  # on this content branch.
+  - id: DOC-029
+    kind: doc
+    title: "Two Locks on the Robot's Cover Art, and One of Them Is a Decoy"
+    brief: "Threat-model the preview-banner pipeline: an AI draws an SVG (executable content) served from the production origin. The generator's whitelist (motif.mjs) re-serializes from an allow-list and refuses every hostile input; the CI blacklist guarding a hand-committed banner (lint_preview.rb unsafe-svg) misses event handlers, <a javascript:>, <use data:>, and <set>. Real reproduction against the exact regex, an honest not-currently-exploitable walk-back, and three tested mitigations."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /docs/two-locks-and-one-is-a-decoy/
   # Synthesized in-lane (autopilot post run, 2026-07-24): no `post`-kind item was
   # `todo` — POST-001..028 all done and DOC-004 still `blocked` on OPS-001 ("do not
   # write until the after-state exists"). `gh pr list --state open --label
