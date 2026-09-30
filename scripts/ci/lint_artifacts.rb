@@ -13,6 +13,10 @@
 #     the SAME key — `published: a` and `published: b` as two lines on one item.
 #     Psych keeps the last silently, so Jekyll builds green and the damage only
 #     surfaces in a strict parser downstream. This is an ERROR.
+#   * every _data/**/*.yml must PARSE. Two PRs that are each green alone can
+#     merge into a file Psych rejects (the #622/#664 ledger splice), and Jekyll
+#     then dies before generating a page. Checked on the merged tree (push to
+#     main), not just per-PR, and reported with file:line. This is an ERROR.
 # Stdlib only. Run: ruby scripts/ci/lint_artifacts.rb
 # =============================================================================
 require_relative '_lib'
@@ -33,15 +37,20 @@ union_globs = File.exist?(gitattributes) ? LH.read(gitattributes).lines.filter_m
   pattern if pattern && attrs.any? { |a| a.start_with?('merge=') }
 } : []
 
-union_globs.flat_map { |glob| Dir.glob(File.join(LH::ROOT, glob)) }
-           .select { |path| path.end_with?('.yml', '.yaml') }
-           .uniq.sort.each do |path|
+unparseable = lambda do |path, e|
+  LH.finding(check_id: 'artifacts', severity: 'error',
+             rule: 'unparseable-data-file', file: LH.rel(path), line: e.line,
+             evidence: "YAML will not parse: #{e.message}")
+end
+
+union_paths = union_globs.flat_map { |glob| Dir.glob(File.join(LH::ROOT, glob)) }
+                         .select { |path| path.end_with?('.yml', '.yaml') }
+                         .uniq.sort
+union_paths.each do |path|
   begin
     stream = YAML.parse_stream(LH.read(path))
   rescue Psych::SyntaxError => e
-    findings << LH.finding(check_id: 'artifacts', severity: 'error',
-                           rule: 'unparseable-data-file', file: LH.rel(path),
-                           evidence: "YAML will not parse: #{e.message}")
+    findings << unparseable.call(path, e)
     next
   end
 
@@ -66,6 +75,16 @@ union_globs.flat_map { |glob| Dir.glob(File.join(LH::ROOT, glob)) }
       end
     end
   end
+end
+
+# --- Every data file parses --------------------------------------------------
+# The merge-driver scope above only covers files that can grow duplicate keys;
+# ANY _data file can be spliced by a bad merge. Those already parsed above are
+# skipped so one broken file yields one finding.
+(Dir.glob(File.join(LH::ROOT, '_data', '**', '*.{yml,yaml}')).sort - union_paths).each do |path|
+  YAML.parse_stream(LH.read(path))
+rescue Psych::SyntaxError => e
+  findings << unparseable.call(path, e)
 end
 
 # --- Backlog id uniqueness ---------------------------------------------------

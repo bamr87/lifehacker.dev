@@ -374,5 +374,31 @@ check('auto-update guards with the artifact lint, not a bare YAML parse',
       au.include?('ruby scripts/ci/lint_artifacts.rb') && !au.include?("ruby -ryaml -e 'YAML.load_file"))
 
 # ---------------------------------------------------------------------------
+scenario 'artifact lint — a spliced _data file fails the gate with file:line (bamr87/bamr87#288)'
+# The #622/#664 splice: an entry's id/date followed straight by an orphaned,
+# over-indented note continuation. Each PR was green alone; only the merge broke.
+spliced = "improvements:\n  - id: a\n    date: 2026-09-07\n" \
+          "      2026-08-31 verdict — still pending: DOC-033 was picked\n"
+repaired = "improvements:\n  - id: a\n    date: 2026-09-07\n    note: >-\n" \
+           "      2026-08-31 verdict — still pending: DOC-033 was picked\n"
+lint_data = lambda do |yml|
+  Dir.mktmpdir do |dir|
+    FileUtils.mkdir_p(File.join(dir, 'scripts/ci'))
+    FileUtils.mkdir_p(File.join(dir, '_data/fleet'))
+    %w[_lib.rb lint_artifacts.rb].each { |f| FileUtils.cp(File.join(LH::ROOT, 'scripts/ci', f), File.join(dir, 'scripts/ci')) }
+    File.write(File.join(dir, '_data/fleet/improvements.yml'), yml)
+    out = IO.popen({ 'LH_RESULTS_DIR' => File.join(dir, 'out') },
+                   ['ruby', File.join(dir, 'scripts/ci/lint_artifacts.rb')], err: [:child, :out], &:read)
+    [$?.success?, out]
+  end
+end
+ok5, out5 = lint_data.call(spliced)
+check('a spliced ledger (no merge driver) fails the artifact lint', !ok5, out5.lines.last.to_s.strip)
+check('the finding names the file and line',
+      out5.include?('unparseable-data-file _data/fleet/improvements.yml:4'))
+ok6, out6 = lint_data.call(repaired)
+check('the repaired ledger passes', ok6, out6.lines.last.to_s.strip)
+
+# ---------------------------------------------------------------------------
 puts "\n[simulate] #{$pass} passed, #{$fail} failed across the end-to-end contract flow"
 exit($fail.zero? ? 0 : 1)

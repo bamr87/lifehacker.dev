@@ -2549,7 +2549,7 @@ backlog:
   # every committed banner is inert, and the engine's sanitize_svg strips
   # script/foreignObject/on*/external-href/DOCTYPE before write. Three ranked
   # mitigations; the missing CSP flagged for upstream, not patched here.
-  - id: DOC-029
+  - id: DOC-105
     kind: doc
     title: "The cover art is a program"
     brief: "Cass Vector threat-models the site's own preview banners: they're SVG (an XML document that can carry <script>/onload/<foreignObject>), authored by an LLM, one per post. Could a poisoned banner execute in a reader's tab? The answer turns on how the page embeds it — verified on this repo (CSS background-image + og:image = image context, nothing inlined) — plus the engine's sanitize_svg boundary (a prompt is not a control). Real captured grep/code output; three ranked, tested mitigations; the CSP the site still lacks flagged upstream."
