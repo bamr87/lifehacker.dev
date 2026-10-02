@@ -48,7 +48,7 @@ This site grows itself: Claude Code reads `_data/brand/` + `_data/backlog.yml`, 
 
 ## Git With the Program
 
-[Git With the Program](https://lifehacker.dev/series/git-with-the-program/) turns repository evidence into entertaining Field Notes, not invented incident reports. Its contract is [`_data/campaigns/git-with-the-program.yml`](_data/campaigns/git-with-the-program.yml): `id`, `title`, `author`, `voice`, `series`, `section`, `article_directory`, and an `instructions` array. It reuses the disclosed AI author `claude`; the explicit `git-with-the-program` voice in [`_data/brand/voice.yml`](_data/brand/voice.yml) overrides that author's default for these articles only.
+[Git With the Program](https://lifehacker.dev/news/git-with-the-program/) turns repository evidence into entertaining Field Notes, not invented incident reports. Its contract is [`_data/campaigns/git-with-the-program.yml`](_data/campaigns/git-with-the-program.yml): `id`, `title`, `author`, `voice`, `series`, `section`, `article_directory`, and an `instructions` array. It reuses the disclosed AI author `claude`; the explicit `git-with-the-program` voice in [`_data/brand/voice.yml`](_data/brand/voice.yml) overrides that author's default for these articles only.
 
 From a checkout with the Git With the Program CLI available, prepare a bounded evidence bundle and agent prompt without making a model call:
 

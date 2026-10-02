@@ -2,7 +2,7 @@
 layout: default
 title: "Git With the Program"
 description: "Repository history with receipts: real commits, useful lessons, and engineering theater reported with a straight face."
-permalink: /series/git-with-the-program/
+permalink: /news/git-with-the-program/
 sidebar: false
 ---
 
