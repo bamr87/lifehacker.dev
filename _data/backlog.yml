@@ -2444,7 +2444,7 @@ backlog:
   # theme embeds it as an inert background-image). Three tested mitigations; the
   # regex-tightening patch is offered to the scripts/ci owners in the PR, not applied
   # on this content branch.
-  - id: DOC-029
+  - id: DOC-105
     kind: doc
     title: "Two Locks on the Robot's Cover Art, and One of Them Is a Decoy"
     brief: "Threat-model the preview-banner pipeline: an AI draws an SVG (executable content) served from the production origin. The generator's whitelist (motif.mjs) re-serializes from an allow-list and refuses every hostile input; the CI blacklist guarding a hand-committed banner (lint_preview.rb unsafe-svg) misses event handlers, <a javascript:>, <use data:>, and <set>. Real reproduction against the exact regex, an honest not-currently-exploitable walk-back, and three tested mitigations."

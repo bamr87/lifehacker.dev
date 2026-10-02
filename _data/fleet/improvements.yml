@@ -247,6 +247,11 @@ improvements:
       2026-09-07 verdict — still pending: measured 0 again at window start (the
       refill was consumed and shipped), so consumed-vs-never-moved stays
       indistinguishable. Re-fed this run — see 2026-09-07-destarve-doc.
+      2026-08-31 verdict — still pending: DOC-033 was picked and shipped
+      (status:done), so todo_by_kind.doc read 0 at this window's measure step and
+      verify_improvements cannot distinguish "consumed" from "never moved". The
+      promotion worked; the lane drained again and is re-fed this run — see
+      2026-08-31-destarve-doc.
 
   # --- loop-tuner 2026-09-07: tool/post/doc lanes re-starved after last refill drained
   # loop_metrics showed starved_kinds [tool,post,doc] (all 85 growable todos are
@@ -268,11 +273,41 @@ improvements:
 
   - id: 2026-09-07-destarve-post
     date: 2026-09-07
-      2026-08-31 verdict — still pending: DOC-033 was picked and shipped
-      (status:done), so todo_by_kind.doc read 0 at this window's measure step and
+    pr: TBD
+    metric: backlog.todo_by_kind.post
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Post lane starved again (todo_by_kind.post = 0; starved_kinds included
+      `post`). Promoted harvested POST-046 (Ed's field note on illustrate.mjs's
+      credential dependency and the "author the motif through the validator"
+      degraded path, reflection-only/offline) as todo. todo_by_kind.post 0->1;
+      starved_kinds emptied. Metadata only — the factory writes the prose.
+      2026-09-14 verdict — still pending: POST-046 was picked and shipped, so
+      todo_by_kind.post read 0 at this window's measure step and
+      verify_improvements cannot distinguish "consumed" from "never moved". The
+      promotion worked (the factory used the measured brief); the lane drained
+      again and is re-fed this run — see 2026-09-14-destarve-post.
+
+  - id: 2026-09-07-destarve-doc
+    date: 2026-09-07
+    pr: TBD
+    metric: backlog.todo_by_kind.doc
+    baseline: 0
+    direction: up
+    status: pending
+    note: >-
+      Doc lane starved again (todo_by_kind.doc = 0; starved_kinds included `doc`).
+      Promoted harvested DOC-044 (Cass deep-dive on scripts/sim/simulate.rb: what
+      the E2E contract sim proves vs. can't, and that it sits in advisory `fast`
+      outside the required `verify` gate, offline) as todo. todo_by_kind.doc 0->1;
+      starved_kinds emptied. Metadata only — the factory writes the prose.
+      2026-09-14 verdict — still pending: DOC-044 was picked and shipped, so
+      todo_by_kind.doc read 0 at this window's measure step and
       verify_improvements cannot distinguish "consumed" from "never moved". The
       promotion worked; the lane drained again and is re-fed this run — see
-      2026-08-31-destarve-doc.
+      2026-09-14-destarve-doc.
 
   # --- loop-tuner 2026-08-31: post/doc lanes re-starved after last refill drained
   # loop_metrics showed starved_kinds [post, doc] again — 74 growable todos but 72
@@ -294,18 +329,6 @@ improvements:
       reflection-only/offline) as todo. todo_by_kind.post 0->1; starved_kinds
       emptied. Metadata only — the factory writes the prose.
 
-  - id: 2026-09-07-destarve-doc
-    date: 2026-09-07
-      Post lane starved again (todo_by_kind.post = 0; starved_kinds included
-      `post`). Promoted harvested POST-046 (Ed's field note on illustrate.mjs's
-      credential dependency and the "author the motif through the validator"
-      degraded path, reflection-only/offline) as todo. todo_by_kind.post 0->1;
-      starved_kinds emptied. Metadata only — the factory writes the prose.
-      2026-09-14 verdict — still pending: POST-046 was picked and shipped, so
-      todo_by_kind.post read 0 at this window's measure step and
-      verify_improvements cannot distinguish "consumed" from "never moved". The
-      promotion worked (the factory used the measured brief); the lane drained
-      again and is re-fed this run — see 2026-09-14-destarve-post.
   - id: 2026-08-31-destarve-doc
     date: 2026-08-31
     pr: TBD
@@ -318,16 +341,6 @@ improvements:
       Promoted harvested DOC-104 (deep-dive follow-on to DOC-050: where else the
       50-char slugify truncation can collide a permalink/filename, offline) as todo.
       todo_by_kind.doc 0->1; starved_kinds emptied. Metadata only.
-      Doc lane starved again (todo_by_kind.doc = 0; starved_kinds included `doc`).
-      Promoted harvested DOC-044 (Cass deep-dive on scripts/sim/simulate.rb: what
-      the E2E contract sim proves vs. can't, and that it sits in advisory `fast`
-      outside the required `verify` gate, offline) as todo. todo_by_kind.doc 0->1;
-      starved_kinds emptied. Metadata only — the factory writes the prose.
-      2026-09-14 verdict — still pending: DOC-044 was picked and shipped, so
-      todo_by_kind.doc read 0 at this window's measure step and
-      verify_improvements cannot distinguish "consumed" from "never moved". The
-      promotion worked; the lane drained again and is re-fed this run — see
-      2026-09-14-destarve-doc.
 
   # --- loop-tuner 2026-09-14: tool/post/doc lanes re-starved -------------------
   # loop_metrics showed starved_kinds [tool, post, doc] again — 91 growable todos
