@@ -290,15 +290,45 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      # Bootstrap checkout: github.token (always valid) and only the local
+      # action, because the real checkout below needs a token that has already
+      # been probed — and the probe lives in a local action.
+      #
+      # This used to be one checkout with `secrets.FLEET_TOKEN || github.token`.
+      # `||` returns the first NON-EMPTY operand, and an expired PAT is
+      # non-empty, so it won and checkout died on a 401 ("could not read
+      # Username") before the reviewer ever ran — pipeline run 36687648349 on
+      # PR 676. Presence is not validity (bamr87/bamr87#53); do not restore the
+      # `||` form.
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: .github/actions/resolve-gh-token
+          persist-credentials: false
+
+      # Probes FLEET_TOKEN with `gh api user` and exports GH_TOKEN: the PAT when
+      # it works, github.token (loudly, via ::warning::) when it is missing or
+      # expired. GH_TOKEN is deliberately NOT set in any `env:` below — a
+      # step-level entry of the same name would win over the one the composite
+      # writes to $GITHUB_ENV.
+      - name: Resolve a usable GitHub token
+        id: tok
+        uses: ./.github/actions/resolve-gh-token
+        with:
+          candidate: ${{ secrets.FLEET_TOKEN }}
+          fallback: ${{ github.token }}
+          candidate-name: FLEET_TOKEN
+
       - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          # Check out with the bot PAT so the content-reviewer's `git push` is
-          # authenticated as the PAT, not github.token — a github.token-authored
-          # push re-triggers the pipeline as github-actions[bot], which GitHub
-          # gates with `action_required`, leaving the editorial commit unvalidated
-          # and the PR un-mergeable. (Setting GH_TOKEN alone fixes `gh`, not `git`.)
-          token: ${{ secrets.FLEET_TOKEN || github.token }}
+          # Check out with the resolved token so the content-reviewer's `git push`
+          # is authenticated as the bot PAT when it is valid, not github.token —
+          # a github.token-authored push re-triggers the pipeline as
+          # github-actions[bot], which GitHub gates with `action_required`,
+          # leaving the editorial commit unvalidated and the PR un-mergeable.
+          # On the degraded path the review still lands; it just needs a human
+          # to re-run `verify`. (Setting GH_TOKEN alone fixes `gh`, not `git`.)
+          token: ${{ env.GH_TOKEN }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
@@ -314,11 +344,11 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          # FLEET_TOKEN (bot PAT) so an editorial commit RE-TRIGGERS the pipeline:
-          # a github.token-authored push is suppressed from starting workflows, so
-          # the improvement would otherwise land un-re-validated. Falls back to
-          # github.token (improvement still lands, just without an auto re-run).
-          GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+          # GH_TOKEN comes from the `Resolve a usable GitHub token` step: the bot
+          # PAT when valid, so an editorial commit RE-TRIGGERS the pipeline (a
+          # github.token-authored push is suppressed from starting workflows);
+          # github.token otherwise (the improvement still lands, just without an
+          # auto re-run). Not set here on purpose — see that step.
         with:
           agent: content-reviewer
           prompt: "Use the content-reviewer skill on this content PR (#${{ github.event.pull_request.number }}). Read test-results/findings.jsonl, analyze the changed content under pages/_*, and apply small improvements to the content file(s) ONLY. Commit ONLY if your edits materially improve the piece; if it already reads clean and on-voice, make NO commit — just post a one-line 'looks good' PR comment. This is a single editorial pass, not an iterative polish. Post larger follow-up ideas as a PR COMMENT (do NOT append to _data/backlog.yml — concurrent content PRs collide on it). Comment judgment calls. Never touch scripts/.github/_config/Gemfile or _data/backlog.yml. Never merge."
