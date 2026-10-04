@@ -2,7 +2,8 @@
 # site-quality.yml — Lighthouse CI + accessibility (axe, pa11y) on every PR
 # -----------------------------------------------------------------------------
 # Builds the site through the same safe-mode overlay as `verify` (the
-# build-overlay composite -> scripts/ci/build.sh), serves `_site` on
+# build-overlay composite -> scripts/ci/build.sh, with a fresh theme clone so
+# it measures what production serves), serves `_site` on
 # 127.0.0.1:4000 with .github/site-quality/serve-site.mjs (gzip + GitHub
 # Pages-style URLs, so transfer sizes are realistic), then runs:
 #   1. Lighthouse CI   /, /news/, one post; mobile, 3 runs; budgets in
@@ -65,9 +66,15 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      # Same production-faithful safe-mode build as `verify` (daily theme cache).
-      - name: Build (safe-mode overlay)
+      # Same safe-mode overlay as `verify`, but with a FRESH theme clone (like
+      # nightly.yml): production's remote_theme always serves zer0-mistakes main,
+      # while the shared zer0-theme-* cache is restored via restore-keys and
+      # build.sh never re-clones an existing checkout, so the cached theme can be
+      # weeks old (it measured a 2026-09-18-era theme on 2026-10-04).
+      - name: Build (safe-mode overlay, fresh theme)
         uses: ./.github/actions/build-overlay
+        with:
+          fresh-theme: 'true'
 
       - uses: actions/setup-node@v7
         with:
@@ -86,14 +93,15 @@ jobs:
 
       - name: Serve _site on 127.0.0.1:4000
         run: |
-          nohup node "$QA_DIR/serve-site.mjs" _site 4000 > serve-site.log 2>&1 &
+          mkdir -p "$QA_DIR/reports"
+          nohup node "$QA_DIR/serve-site.mjs" _site 4000 > "$QA_DIR/reports/serve-site.log" 2>&1 &
           pid=$!
           for _ in $(seq 1 30); do
             kill -0 "$pid" 2>/dev/null || break
             curl -fsS -o /dev/null "$SITE_URL/" && { echo "server up (pid $pid)"; exit 0; }
             sleep 1
           done
-          cat serve-site.log; echo "::error::static server did not start"; exit 1
+          cat "$QA_DIR/reports/serve-site.log"; echo "::error::static server did not start"; exit 1
 
       - name: Lighthouse CI — collect (3 pages x 3 mobile runs)
         id: lh_collect
@@ -135,9 +143,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: site-quality-reports
-          path: |
-            ${{ env.QA_DIR }}/reports/
-            serve-site.log
+          # One root (reports/) so the artifact unpacks flat — a `.github/…` prefix
+          # makes `gh run download` refuse it as path traversal.
+          path: ${{ env.QA_DIR }}/reports/
           retention-days: 14
 
       - name: Gate (Lighthouse errors, axe, contrast)
