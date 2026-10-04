@@ -1,0 +1,157 @@
+# =============================================================================
+# site-quality.yml — Lighthouse CI + accessibility (axe, pa11y) on every PR
+# -----------------------------------------------------------------------------
+# Builds the site through the same safe-mode overlay as `verify` (the
+# build-overlay composite -> scripts/ci/build.sh), serves `_site` on
+# 127.0.0.1:4000 with .github/site-quality/serve-site.mjs (gzip + GitHub
+# Pages-style URLs, so transfer sizes are realistic), then runs:
+#   1. Lighthouse CI   /, /news/, one post; mobile, 3 runs; budgets in
+#                      lighthouserc.cjs. a11y / best-practices / SEO + must-pass
+#                      audits are 'error' where they already pass; perf, Web
+#                      Vitals and size budgets are 'warn' until the theme fixes land.
+#   2. axe-core        7 key pages at 390 px + 1366 px (Playwright). Fails on
+#                      critical/serious WCAG 2.0/2.1 A/AA; WCAG 2.2 (target-size)
+#                      warns; known issues in a11y.config.mjs warn with a TODO.
+#   3. pa11y contrast  WCAG 1.4.3 on /news/, one post and /search/.
+# Reports: job summary, annotations, and the `site-quality-reports` artifact
+# (Lighthouse HTML/JSON per run + axe/pa11y JSON); Lighthouse reports are also
+# uploaded to LHCI temporary public storage (public link, ~7 days).
+#
+# Deterministic: no model calls (so no *_ENABLED switch), no secrets, read-only,
+# not a required check. `verify` stays the one required gate.
+# See .github/site-quality/README.md for levels and how to tighten them.
+# =============================================================================
+name: site-quality
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'pages/**'
+      - '_includes/**'
+      - '_data/**'
+      - 'assets/**'
+      - 'index.md'
+      - '404.html'
+      - '_config*.yml'
+      - 'Gemfile*'
+      - 'scripts/ci/build.sh'
+      - '.github/actions/build-overlay/**'
+      - '.github/site-quality/**'
+      - '.github/workflows/site-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-quality-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '22'
+  QA_DIR: .github/site-quality
+  SITE_URL: http://127.0.0.1:4000
+
+jobs:
+  site-quality:
+    runs-on: ubuntu-latest
+    # overlay build (~2 min) + 9 Lighthouse runs + 14 axe page loads + 3 pa11y pages.
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      # Same production-faithful safe-mode build as `verify` (daily theme cache).
+      - name: Build (safe-mode overlay)
+        uses: ./.github/actions/build-overlay
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: ${{ env.QA_DIR }}/package-lock.json
+
+      # Browsers: the runner's preinstalled Google Chrome is used by Lighthouse,
+      # Playwright (channel: chrome) and pa11y, so skip the bundled downloads.
+      - name: Install QA tooling
+        working-directory: ${{ env.QA_DIR }}
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm ci --no-audit --no-fund
+
+      - name: Serve _site on 127.0.0.1:4000
+        run: |
+          nohup node "$QA_DIR/serve-site.mjs" _site 4000 > serve-site.log 2>&1 &
+          pid=$!
+          for _ in $(seq 1 30); do
+            kill -0 "$pid" 2>/dev/null || break
+            curl -fsS -o /dev/null "$SITE_URL/" && { echo "server up (pid $pid)"; exit 0; }
+            sleep 1
+          done
+          cat serve-site.log; echo "::error::static server did not start"; exit 1
+
+      - name: Lighthouse CI — collect (3 pages x 3 mobile runs)
+        id: lh_collect
+        working-directory: ${{ env.QA_DIR }}
+        run: npx lhci collect --config=lighthouserc.cjs
+
+      - name: Lighthouse CI — assert budgets
+        id: lh_assert
+        if: ${{ !cancelled() && steps.lh_collect.outcome == 'success' }}
+        continue-on-error: true
+        working-directory: ${{ env.QA_DIR }}
+        run: npx lhci assert --config=lighthouserc.cjs
+
+      - name: Lighthouse CI — save reports (artifact + temporary public storage)
+        if: ${{ !cancelled() && steps.lh_collect.outcome == 'success' }}
+        working-directory: ${{ env.QA_DIR }}
+        run: |
+          npx lhci upload --config=lighthouserc.cjs --target=filesystem --outputDir=reports/lighthouse
+          npx lhci upload --config=lighthouserc.cjs --target=temporary-public-storage \
+            || echo "::warning::temporary-public-storage upload failed — reports are still in the artifact"
+          node lhci-summary.mjs > /dev/null
+
+      - name: axe-core (390 px + 1366 px)
+        id: axe
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        working-directory: ${{ env.QA_DIR }}
+        run: node a11y-check.mjs
+
+      - name: pa11y colour contrast
+        id: contrast
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        working-directory: ${{ env.QA_DIR }}
+        run: node contrast-check.mjs
+
+      - name: Upload reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-quality-reports
+          path: |
+            ${{ env.QA_DIR }}/reports/
+            serve-site.log
+          retention-days: 14
+
+      - name: Gate (Lighthouse errors, axe, contrast)
+        if: ${{ !cancelled() }}
+        env:
+          LH_COLLECT: ${{ steps.lh_collect.outcome }}
+          LH_ASSERT: ${{ steps.lh_assert.outcome }}
+          AXE: ${{ steps.axe.outcome }}
+          CONTRAST: ${{ steps.contrast.outcome }}
+        run: |
+          echo "lighthouse collect=$LH_COLLECT assert=$LH_ASSERT · axe=$AXE · contrast=$CONTRAST"
+          fail=0
+          [ "$LH_COLLECT" = "success" ] || { echo "::error::Lighthouse collection failed"; fail=1; }
+          [ "$LH_ASSERT" = "success" ] || { echo "::error::Lighthouse error-level assertions failed (see job summary)"; fail=1; }
+          [ "$AXE" = "success" ] || { echo "::error::axe found blocking WCAG 2.0/2.1 A/AA violations (see job summary)"; fail=1; }
+          [ "$CONTRAST" = "success" ] || { echo "::error::contrast check failed on a gated page (see job summary)"; fail=1; }
+          exit "$fail"
