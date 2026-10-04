@@ -66,11 +66,10 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      # Same safe-mode overlay as `verify`, but with a FRESH theme clone (like
-      # nightly.yml): production's remote_theme always serves zer0-mistakes main,
-      # while the shared zer0-theme-* cache is restored via restore-keys and
-      # build.sh never re-clones an existing checkout, so the cached theme can be
-      # weeks old (it measured a 2026-09-18-era theme on 2026-10-04).
+      # Same safe-mode overlay as `verify`, with a FRESH theme clone (like
+      # nightly.yml): production's remote_theme always serves zer0-mistakes main.
+      # build-overlay pins every build to the theme's current commit (a cache
+      # keyed to that SHA); fresh-theme also skips the cache altogether.
       - name: Build (safe-mode overlay, fresh theme)
         uses: ./.github/actions/build-overlay
         with:

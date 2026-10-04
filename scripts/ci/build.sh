@@ -14,7 +14,7 @@
 #   scripts/ci/build.sh overlay    # build the overlay only (no jekyll)
 #   source scripts/ci/build.sh     # just define lh_overlay() (preview.sh does this)
 #
-# Env: THEME_REPO, THEME_CACHE, LH_BUILD_DIR, LH_SITE_OUT.
+# Env: THEME_REPO, THEME_CACHE, THEME_SHA (pin the theme commit; CI sets it), LH_BUILD_DIR, LH_SITE_OUT.
 # =============================================================================
 set -euo pipefail
 
@@ -25,12 +25,35 @@ LH_BUILD_DIR="${LH_BUILD_DIR:-/tmp/lh-build}"
 LH_SITE_OUT="${LH_SITE_OUT:-$REPO_DIR/_site}"
 
 # Ensure a shallow theme clone exists at $THEME_CACHE.
+# With THEME_SHA set (CI: the build-overlay composite resolves the theme's
+# current commit), an existing checkout is reused ONLY when it is exactly that
+# commit; anything else (a stale cache, a self-hosted runner's leftover /tmp)
+# is re-fetched at THEME_SHA. Without THEME_SHA (local preview.sh), an existing
+# checkout is reused as before.
 lh_ensure_theme() {
-  if [[ ! -d "$THEME_CACHE/_layouts" ]]; then
-    echo "==> cloning theme into $THEME_CACHE"
-    rm -rf "$THEME_CACHE"
-    git clone --depth 1 "$THEME_REPO" "$THEME_CACHE"
+  local have=""
+  if [[ -d "$THEME_CACHE/_layouts" ]]; then
+    have="$(git -C "$THEME_CACHE" rev-parse HEAD 2>/dev/null || true)"
+    if [[ -z "${THEME_SHA:-}" || "$have" == "$THEME_SHA" ]]; then
+      echo "==> theme: reusing $THEME_CACHE at ${have:-unknown commit}"
+      return 0
+    fi
+    echo "==> theme: cached checkout is ${have:-unknown}, want $THEME_SHA; re-fetching"
   fi
+  rm -rf "$THEME_CACHE"
+  if [[ -n "${THEME_SHA:-}" ]]; then
+    echo "==> fetching theme $THEME_REPO at $THEME_SHA into $THEME_CACHE"
+    if git init -q "$THEME_CACHE" \
+      && git -C "$THEME_CACHE" fetch -q --depth 1 "$THEME_REPO" "$THEME_SHA" \
+      && git -C "$THEME_CACHE" checkout -q FETCH_HEAD; then
+      return 0
+    fi
+    echo "==> theme: fetch by SHA failed; cloning the default branch instead"
+    rm -rf "$THEME_CACHE"
+  fi
+  echo "==> cloning theme into $THEME_CACHE"
+  git clone --depth 1 "$THEME_REPO" "$THEME_CACHE"
+  echo "==> theme: $THEME_REPO at $(git -C "$THEME_CACHE" rev-parse HEAD)"
 }
 
 # Build the overlay into $1: a fresh copy of the theme with this repo's content

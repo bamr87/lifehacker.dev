@@ -1,28 +1,78 @@
 # =============================================================================
 # build-overlay — build lifehacker.dev under GitHub Pages safe mode
 # -----------------------------------------------------------------------------
-# Reusable composite step shared by test.yml and nightly.yml. It caches the
-# zer0-mistakes theme clone (rebuilt daily so upstream theme drift surfaces
-# within 24h) and runs scripts/ci/build.sh, which overlays this repo's content,
-# strips _plugins, and runs `jekyll build --strict_front_matter` -> ./_site.
+# Reusable composite step shared by pipeline.yml (verify, via build-and-harness),
+# triage.yml, nightly.yml and site-quality.yml. It resolves the zer0-mistakes
+# theme's current commit (git ls-remote), builds against EXACTLY that commit,
+# and runs scripts/ci/build.sh, which overlays this repo's content, strips
+# _plugins, and runs `jekyll build --strict_front_matter` -> ./_site.
+#
+# The theme clone is cached keyed to the resolved SHA, with no restore-keys, so
+# a cache hit is always the current theme. (It used to be keyed by date with
+# `restore-keys: zer0-theme-`, and build.sh never re-cloned an existing
+# checkout, so `verify` kept building a weeks-old theme and stayed green while
+# fresh-theme builds failed.) If the SHA cannot be resolved, the cache is
+# skipped and build.sh clones fresh. The theme ref used is printed in the log,
+# written to the job summary and exposed as the `theme-sha` output.
 # =============================================================================
 name: build-overlay
-description: Overlay content onto the remote theme, strip plugins, jekyll build (safe mode).
+description: Overlay content onto the remote theme (fresh, pinned to its current commit), strip plugins, jekyll build (safe mode).
 inputs:
   fresh-theme:
-    description: Ignore the theme cache and re-clone (use nightly to catch theme drift).
+    description: Skip the theme cache entirely and clone (nightly / site-quality). The build is pinned to the theme's current commit either way.
     default: 'false'
+outputs:
+  theme-sha:
+    description: Commit of bamr87/zer0-mistakes the site was built against (empty if the build never got that far).
+    value: ${{ steps.record.outputs.sha }}
 runs:
   using: composite
   steps:
-    - id: date
+    - id: theme
       shell: bash
-      run: echo "ymd=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
-    - if: ${{ inputs.fresh-theme != 'true' }}
+      run: |
+        repo="${THEME_REPO:-https://github.com/bamr87/zer0-mistakes.git}"
+        sha="$(git ls-remote "$repo" HEAD 2>/dev/null | awk '$2 == "HEAD" {print $1; exit}' || true)"
+        if [[ "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+          echo "theme: $repo HEAD -> $sha"
+        else
+          echo "::warning title=theme::could not resolve $repo HEAD; skipping the theme cache and cloning fresh"
+          sha=""
+        fi
+        echo "repo=$repo" >> "$GITHUB_OUTPUT"
+        echo "sha=$sha" >> "$GITHUB_OUTPUT"
+    - id: cache
+      if: ${{ inputs.fresh-theme != 'true' && steps.theme.outputs.sha != '' }}
       uses: actions/cache@v6
       with:
         path: /tmp/zer0-theme
-        key: zer0-theme-${{ steps.date.outputs.ymd }}
-        restore-keys: zer0-theme-
+        key: zer0-theme-${{ steps.theme.outputs.sha }}
     - shell: bash
+      env:
+        THEME_SHA: ${{ steps.theme.outputs.sha }}
       run: bash scripts/ci/build.sh build
+    - id: record
+      if: ${{ always() }}
+      shell: bash
+      env:
+        THEME_REPO_URL: ${{ steps.theme.outputs.repo }}
+        RESOLVED: ${{ steps.theme.outputs.sha }}
+        CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+        FRESH: ${{ inputs.fresh-theme }}
+      run: |
+        sha="$(git -C /tmp/zer0-theme rev-parse HEAD 2>/dev/null || true)"
+        if [[ "$FRESH" == "true" ]]; then how="fresh clone (fresh-theme)"
+        elif [[ "$CACHE_HIT" == "true" ]]; then how="cache hit, keyed to this SHA"
+        elif [[ -n "$RESOLVED" ]]; then how="fresh clone (cache miss for this SHA)"
+        else how="fresh clone (SHA not resolved, cache skipped)"; fi
+        echo "sha=$sha" >> "$GITHUB_OUTPUT"
+        repo="${THEME_REPO_URL%.git}"; repo="${repo#https://github.com/}"
+        {
+          echo "### Theme"
+          echo
+          if [[ -n "$sha" ]]; then
+            echo "Built against \`${repo}@${sha:0:12}\` ([commit](https://github.com/${repo}/commit/${sha})): ${how}."
+          else
+            echo "No theme checkout at /tmp/zer0-theme (the build failed before the clone)."
+          fi
+        } >> "$GITHUB_STEP_SUMMARY"
