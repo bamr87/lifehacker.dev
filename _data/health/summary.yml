@@ -1,16 +1,29 @@
-generated_at: '2026-09-18T07:54:07Z'
-queue_size: 17
+generated_at: '2026-10-04T09:56:02Z'
+queue_size: 18
 by_severity:
-  sev3: 14
-  sev4: 3
+  sev2: 2
+  sev3: 12
+  sev4: 4
 by_type:
-  type/ci-bug: 14
+  type/content-bug: 2
+  type/ci-bug: 12
+  type/content-polish: 1
   type/other: 2
   type/link-rot: 1
 by_route:
-  local: 16
+  local: 17
   upstream: 1
 top:
+- severity: sev2
+  type: type/content-bug
+  title: "[sev2] content-bug: missing-preview (/posts/2026/09/26/git-with-the-program-d2d996115f18/)"
+  score: 3.5
+  repo: bamr87/lifehacker.dev
+- severity: sev2
+  type: type/content-bug
+  title: "[sev2] content-bug: missing-preview (/tools/grok-bot-honest-review/)"
+  score: 3.5
+  repo: bamr87/lifehacker.dev
 - severity: sev3
   type: type/ci-bug
   title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/agent-review.yml)"
@@ -49,16 +62,6 @@ top:
 - severity: sev3
   type: type/ci-bug
   title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/loop-tuner.yml)"
-  score: 1.4
-  repo: bamr87/lifehacker.dev
-- severity: sev3
-  type: type/ci-bug
-  title: "[sev3] ci-bug: checkout-token-presence-fallback (.github/workflows/loop-tuner.yml)"
-  score: 1.4
-  repo: bamr87/lifehacker.dev
-- severity: sev3
-  type: type/ci-bug
-  title: "[sev3] ci-bug: checkout-token-presence-fallback (.github/workflows/pipeline.yml)"
   score: 1.4
   repo: bamr87/lifehacker.dev
 analytics_stale: true

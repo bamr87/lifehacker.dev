@@ -2444,7 +2444,7 @@ backlog:
   # theme embeds it as an inert background-image). Three tested mitigations; the
   # regex-tightening patch is offered to the scripts/ci owners in the PR, not applied
   # on this content branch.
-  - id: DOC-029
+  - id: DOC-105
     kind: doc
     title: "Two Locks on the Robot's Cover Art, and One of Them Is a Decoy"
     brief: "Threat-model the preview-banner pipeline: an AI draws an SVG (executable content) served from the production origin. The generator's whitelist (motif.mjs) re-serializes from an allow-list and refuses every hostile input; the CI blacklist guarding a hand-committed banner (lint_preview.rb unsafe-svg) misses event handlers, <a javascript:>, <use data:>, and <set>. Real reproduction against the exact regex, an honest not-currently-exploitable walk-back, and three tested mitigations."
@@ -2549,7 +2549,7 @@ backlog:
   # every committed banner is inert, and the engine's sanitize_svg strips
   # script/foreignObject/on*/external-href/DOCTYPE before write. Three ranked
   # mitigations; the missing CSP flagged for upstream, not patched here.
-  - id: DOC-105
+  - id: DOC-029
     kind: doc
     title: "The cover art is a program"
     brief: "Cass Vector threat-models the site's own preview banners: they're SVG (an XML document that can carry <script>/onload/<foreignObject>), authored by an LLM, one per post. Could a poisoned banner execute in a reader's tab? The answer turns on how the page embeds it — verified on this repo (CSS background-image + og:image = image context, nothing inlined) — plus the engine's sanitize_svg boundary (a prompt is not a control). Real captured grep/code output; three ranked, tested mitigations; the CSP the site still lacks flagged upstream."

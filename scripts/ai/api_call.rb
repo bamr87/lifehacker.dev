@@ -40,8 +40,8 @@ MAXTOK  = (ENV['AI_MAX_TOKENS'] || cfg['max_tokens'] || 8000).to_i
 VERSION = cfg['api_version'] || '2023-06-01'
 BASE    = cfg['api_base'] || 'https://api.anthropic.com'
 
-key = ENV['ANTHROPIC_API_KEY'].to_s
-abort '[api_call] ANTHROPIC_API_KEY not set — cannot use the Claude API fallback' if key.empty?
+PROVIDER = ENV['AI_PROVIDER'].to_s.empty? ? 'anthropic' : ENV['AI_PROVIDER']
+abort '[api_call] AI_PROVIDER must be anthropic or openai' unless %w[anthropic openai].include?(PROVIDER)
 
 # --- parse args: --prompt/-p, --system, else stdin -------------------------
 args = ARGV.dup
@@ -56,6 +56,55 @@ prompt =
   else $stdin.read
   end
 abort '[api_call] empty prompt' if prompt.to_s.strip.empty?
+
+if PROVIDER == 'openai'
+  model = ENV['AI_MODEL'] || ENV['OPENAI_MODEL'] || 'gpt-4.1'
+  body = { 'model' => model, 'max_completion_tokens' => MAXTOK,
+           'response_format' => { 'type' => 'json_object' },
+           'messages' => [{ 'role' => 'user', 'content' => prompt }] }
+  body['messages'].unshift('role' => 'system', 'content' => system_prompt) if system_prompt
+  if ENV['AI_DRY_RUN'] == '1'
+    puts JSON.pretty_generate('provider' => 'openai', 'endpoint' => 'https://api.openai.com/v1/chat/completions',
+                              'model' => model, 'max_completion_tokens' => MAXTOK, 'tools' => false)
+    exit 0
+  end
+  key = ENV['OPENAI_API_KEY'].to_s
+  abort '[api_call] OPENAI_API_KEY not set — cannot use the OpenAI API' if key.empty?
+  uri = URI('https://api.openai.com/v1/chat/completions')
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.read_timeout = 180
+  http.open_timeout = 20
+  req = Net::HTTP::Post.new(uri)
+  req['authorization'] = "Bearer #{key}"
+  req['content-type'] = 'application/json'
+  req.body = JSON.generate(body)
+  res = (http.request(req) rescue nil)
+  code = res ? res.code.to_i : 0
+  unless code == 200
+    warn "[api_call] OpenAI HTTP #{code}"
+    exit 1
+  end
+  data = JSON.parse(res.body)
+  text = data.dig('choices', 0, 'message', 'content').to_s
+  abort '[api_call] OpenAI returned no text' if text.strip.empty?
+  begin
+    require_relative 'usage'
+    usage = data['usage'] || {}
+    AIUsage.append(AIUsage.from_api_response({
+      'id' => data['id'], 'model' => data['model'],
+      'usage' => { 'input_tokens' => usage['prompt_tokens'], 'output_tokens' => usage['completion_tokens'] }
+    }, agent: ENV['AI_ROLE'].to_s))
+  rescue StandardError => e
+    warn "[api_call] usage record failed (non-fatal): #{e.class}"
+  end
+  warn "[api_call] OpenAI API ok (model=#{data['model']})"
+  puts text
+  exit 0
+end
+
+key = ENV['ANTHROPIC_API_KEY'].to_s
+abort '[api_call] ANTHROPIC_API_KEY not set — cannot use the Claude API fallback' if key.empty?
 
 body = { 'model' => MODEL, 'max_tokens' => MAXTOK,
          'messages' => [{ 'role' => 'user', 'content' => prompt }] }
