@@ -95,7 +95,7 @@ improvements:
     metric: backlog.todo_by_kind.post
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Post lane starved (todo_by_kind.post = 0). Promoted harvested POST-019
       (field-note meta-confession, reflection-only/offline) as todo.
@@ -108,6 +108,9 @@ improvements:
       2026-08-10 verdict — still pending: measured 0 again at window start (the
       refill was consumed and shipped), so consumed-vs-never-moved stays
       indistinguishable. Re-fed this run — see 2026-08-10-destarve-post.
+      2026-10-05 verdict — VERIFIED: verify_improvements measured
+      backlog.todo_by_kind.post 0 -> 2 (up is better); the post lane carries a
+      standing refill and no longer starves. Settled.
 
   - id: 2026-07-13-destarve-doc
     date: 2026-07-13
@@ -115,7 +118,7 @@ improvements:
     metric: backlog.todo_by_kind.doc
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Doc lane starved (todo_by_kind.doc = 0). Promoted harvested DOC-021
       (record_build.rb single-source-of-truth deep-dive, offline) as todo.
@@ -139,7 +142,7 @@ improvements:
     metric: backlog.todo_by_kind.post
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Post lane starved again (todo_by_kind.post = 0; starved_kinds included
       `post`). Harvested 12 candidates from merged PRs; promoted POST-025
@@ -157,7 +160,7 @@ improvements:
     metric: backlog.todo_by_kind.doc
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Doc lane starved again (todo_by_kind.doc = 0; starved_kinds included `doc`).
       Promoted harvested DOC-024 (aggregate.rb deep-dive: JSON -> findings.jsonl ->
@@ -216,7 +219,7 @@ improvements:
     metric: backlog.todo_by_kind.post
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Post lane starved again (todo_by_kind.post = 0; starved_kinds included
       `post`). Harvested 17 candidates from merged PRs; promoted POST-033 (field
@@ -238,7 +241,7 @@ improvements:
     metric: backlog.todo_by_kind.doc
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Doc lane starved again (todo_by_kind.doc = 0; starved_kinds included `doc`).
       Promoted harvested DOC-033 (plan.rb deep-dive: how the picker chooses WHAT
@@ -265,7 +268,7 @@ improvements:
     metric: backlog.todo_by_kind.tool
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Tool lane starved (todo_by_kind.tool = 0; starved_kinds included `tool`).
       Promoted harvested TOOL-099 (cheat vs navi vs tldr, honest review, offline)
@@ -277,7 +280,7 @@ improvements:
     metric: backlog.todo_by_kind.post
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Post lane starved again (todo_by_kind.post = 0; starved_kinds included
       `post`). Promoted harvested POST-046 (Ed's field note on illustrate.mjs's
@@ -296,7 +299,7 @@ improvements:
     metric: backlog.todo_by_kind.doc
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Doc lane starved again (todo_by_kind.doc = 0; starved_kinds included `doc`).
       Promoted harvested DOC-044 (Cass deep-dive on scripts/sim/simulate.rb: what
@@ -322,7 +325,7 @@ improvements:
     metric: backlog.todo_by_kind.post
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Post lane starved (todo_by_kind.post = 0; starved_kinds included `post`).
       Promoted harvested POST-123 (field note: CLI tools that fail with exit 0,
@@ -335,7 +338,7 @@ improvements:
     metric: backlog.todo_by_kind.doc
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Doc lane starved (todo_by_kind.doc = 0; starved_kinds included `doc`).
       Promoted harvested DOC-104 (deep-dive follow-on to DOC-050: where else the
@@ -357,7 +360,7 @@ improvements:
     metric: backlog.todo_by_kind.tool
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Tool lane starved (todo_by_kind.tool = 0; starved_kinds included `tool`).
       Promoted harvested TOOL-035 (honest review of actions/create-github-app-token
@@ -371,7 +374,7 @@ improvements:
     metric: backlog.todo_by_kind.post
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Post lane starved (todo_by_kind.post = 0; starved_kinds included `post`).
       Promoted harvested POST-055 (field note on the OAuth-first invariant in
@@ -384,10 +387,26 @@ improvements:
     metric: backlog.todo_by_kind.doc
     baseline: 0
     direction: up
-    status: pending
+    status: verified
     note: >-
       Doc lane starved (todo_by_kind.doc = 0; starved_kinds included `doc`).
       Promoted harvested DOC-053 (deep-dive on illustrate.mjs's --check gate:
       reproduce stale-motif/orphan-motif offline and show the exact generate.mjs
       self-heal command each prints) as todo. todo_by_kind.doc 0->1; starved_kinds
       shed `doc`. Metadata only — the factory writes the prose.
+
+  # --- loop-tuner 2026-10-05: settled the backlog-destarve ledger -------------
+  # verify_improvements (--metrics this window) measured the tool/post/doc lanes
+  # at todo_by_kind = 2 each (baseline 0, up is better) with starved_kinds now
+  # EMPTY, so all 14 outstanding destarve entries above flipped pending ->
+  # verified in this PR. The per-kind refills held: every growable lane now
+  # carries a standing todo and none starves this window (hack 91, tool 2,
+  # post 2, doc 2). No new destarve was needed — the backlog is healthy.
+  # No new generator/skill fix landed this run: the strongest NEW signal,
+  # recurring `description-too-long` (4 content PRs this window; standing across
+  # the whole history.jsonl), roots in the grow-lifehacker SKILL.md front-matter
+  # templates, which target the exact lint cap (`<=160 chars`) with no margin so
+  # drafts land at/over it (~170). That file is write-protected in this run's
+  # environment, so the source fix (give the generator a sub-cap target) is
+  # flagged for a human / the next window rather than applied here — recording a
+  # pending entry for a change not made would violate the no-invented-metric rule.
