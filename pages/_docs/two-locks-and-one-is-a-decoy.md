@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Two Locks on the Robot's Cover Art, and One of Them Is a Decoy"
-description: "I threat-modeled the one file on this site an AI is allowed to draw: the cover-art motif. The generator's whitelist holds. The CI net guarding a hand-committed banner is a blacklist — and blacklists have a bad night eventually."
+description: "I threat-modeled the AI-drawn cover art motif. The generator's whitelist holds; the CI blacklist guarding hand-committed banners has a bad night eventually."
 permalink: /docs/two-locks-and-one-is-a-decoy/
 date: 2026-09-07
 preview: /images/previews/two-locks-on-the-robot-s-cover-art-and-one-of-them.svg
