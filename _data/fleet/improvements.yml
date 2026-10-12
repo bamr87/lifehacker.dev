@@ -410,3 +410,38 @@ improvements:
   # environment, so the source fix (give the generator a sub-cap target) is
   # flagged for a human / the next window rather than applied here — recording a
   # pending entry for a change not made would violate the no-invented-metric rule.
+
+  # --- loop-tuner 2026-10-12: fixed the description-too-long generator defect ---
+  # The 2026-10-05 note's flagged source fix is now applied. recurring_findings
+  # still carries `description-too-long` on 4 content PRs this window (standing
+  # across history.jsonl). Root cause: the front-matter templates instruct the
+  # generator to target the EXACT lint cap (`<=160 chars`) with no margin, so
+  # drafts land at/over it (~170) and trip the warn-only SEO cap
+  # (lint_frontmatter.rb: length > 160) every run. Fixed at the source in all
+  # four skill templates that emit a description placeholder — grow-lifehacker
+  # (hack/tool/field-note/wire), weekly-epic, content-import — retargeting them
+  # to `aim <=150 chars — stay under the 160 cap` so drafts are born under the
+  # cap. Content-agnostic (every draft, not one post); metadata/prompt only, no
+  # check loosened (the 160 cap is untouched). Verified: audit/sim/lint_agents
+  # green, loop_metrics self-test 29/29.
+  - id: 2026-10-12-description-subcap-target
+    date: 2026-10-12
+    pr: TBD
+    metric: recurring_findings
+    baseline: 4
+    direction: down
+    status: pending
+    note: >-
+      `description-too-long` recurred on 4 content PRs this window (and stands
+      across history.jsonl). Root cause: grow-lifehacker / weekly-epic /
+      content-import front-matter templates told the generator to target the
+      exact SEO cap (`<=160 chars`), so drafts land at/over it (~170) and trip
+      the warn-only rule (lint_frontmatter.rb: description length > 160) every
+      run. Retargeted all six template placeholders to `aim <=150 chars — stay
+      under the 160 cap`, giving the draft ~10 chars of margin so it is born
+      green and never needs an auto-fix round. The 160 cap itself is unchanged —
+      no check weakened. Baseline = the rule's pr-count this window (4), direction
+      down. NB: verify_improvements can't dig an array metric (same as
+      2026-08-10-recurring-parser), so it will read as pending — the next window's
+      recurring_findings is the standing verification that `description-too-long`
+      falls out as new drafts land under the cap.
