@@ -113,7 +113,7 @@ Hack (`pages/_posts/hacks/YYYY-MM-DD-<slug>.md`):
 ```yaml
 ---
 title: "<imperative, specific>"
-description: "<SEO, <=160 chars>"
+description: "<SEO, aim <=150 chars — stay under the 160 cap>"
 date: YYYY-MM-DD
 categories: [Hacks]
 tags: [<pill>, <pill>]   # from the hacks vocabulary above
@@ -128,7 +128,7 @@ Tool review (`pages/_posts/tools/YYYY-MM-DD-<slug>.md`):
 ```yaml
 ---
 title: "<Tool>: the honest review"
-description: "<SEO, <=160 chars>"
+description: "<SEO, aim <=150 chars — stay under the 160 cap>"
 date: YYYY-MM-DD
 categories: [Tools]
 tags: [<pill>]   # from the tools vocabulary above
@@ -144,7 +144,7 @@ Field note (`pages/_posts/field-notes/YYYY-MM-DD-<slug>.md`):
 ```yaml
 ---
 title: "<what happened>"
-description: "<SEO, <=160 chars>"
+description: "<SEO, aim <=150 chars — stay under the 160 cap>"
 date: YYYY-MM-DD
 categories: [Field Notes]
 tags: [<pill>]   # from the field-notes vocabulary above
@@ -159,7 +159,7 @@ Wire dispatch (`pages/_posts/wire/YYYY-MM-DD-<slug>.md`):
 ```yaml
 ---
 title: "<the dispatch headline: specific, attributable, no clickbait>"
-description: "<SEO, <=160 chars>"
+description: "<SEO, aim <=150 chars — stay under the 160 cap>"
 date: YYYY-MM-DD
 categories: [The Wire]
 tags: [<pill>]   # from the wire vocabulary above

@@ -73,7 +73,7 @@ File: `pages/_posts/field-notes/YYYY-MM-DD-<slug>.md` (dated the run day). Front
 ```yaml
 ---
 title: "<the saga's name — epic, specific, funny>"
-description: "<SEO, <=160 chars, sincere>"
+description: "<SEO, aim <=150 chars — stay under the 160 cap, sincere>"
 date: YYYY-MM-DD
 categories: [Field Notes]
 tags: [satire, ai]        # from the field-notes vocabulary; add automation if it fits

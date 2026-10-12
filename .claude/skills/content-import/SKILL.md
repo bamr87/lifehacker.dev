@@ -128,7 +128,7 @@ Field Note (`pages/_posts/field-notes/YYYY-MM-DD-<slug>.md`):
 ```yaml
 ---
 title: "<what happened, specific>"
-description: "<SEO, <=160 chars>"
+description: "<SEO, aim <=150 chars — stay under the 160 cap>"
 date: YYYY-MM-DD            # MUST equal the filename date
 categories: [Field Notes]  # required — the gate checks for it
 tags: [<pill>, <pill>]     # from the field-notes vocabulary; non-empty, no singletons
