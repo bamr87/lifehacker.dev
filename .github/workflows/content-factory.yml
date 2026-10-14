@@ -16,7 +16,7 @@ name: content-factory
 
 on:
   schedule:
-    - cron: '0 9 * * *'   # 09:00 UTC daily
+    - cron: '5 18 * * *'  # staggered AI cron (bamr87/bamr87#348); was 0 9 * * *
   workflow_dispatch:
 
 permissions:

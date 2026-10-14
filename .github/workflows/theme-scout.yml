@@ -34,7 +34,7 @@ on:
         type: string
         default: "5"
   schedule:
-    - cron: '41 6 * * 1'            # weekly, Monday 06:41 UTC — gated by
+    - cron: '12 10 * * 1'  # staggered AI cron (bamr87/bamr87#348); was 41 6 * * 1
                                     # THEME_SCOUT_ENABLED (the var is the consent;
                                     # scheduled runs apply, manual keeps dry-run default)
 

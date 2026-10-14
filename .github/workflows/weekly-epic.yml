@@ -28,7 +28,7 @@ name: weekly-epic
 
 on:
   schedule:
-    - cron: '45 7 * * 1'   # Mondays 07:45 UTC — the epic leads the week, ahead of content-scout (08:07) and the factory (09:00)
+    - cron: '47 13 * * 1'  # staggered AI cron (bamr87/bamr87#348); was 45 7 * * 1
   workflow_dispatch:
 
 permissions:
