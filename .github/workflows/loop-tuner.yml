@@ -38,7 +38,7 @@ on:
         type: boolean
         default: true
   schedule:
-    - cron: '29 9 * * 1'  # staggered AI cron (bamr87/bamr87#348); was 23 6 * * 1
+    - cron: '10 17 * * 1'  # staggered AI cron (bamr87/bamr87#348); was 23 6 * * 1
 
 permissions:
   contents: write

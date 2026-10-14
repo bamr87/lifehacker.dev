@@ -43,7 +43,7 @@ on:
         type: string
         default: "3"
   schedule:
-    - cron: '39 16 * * *'  # staggered AI cron (bamr87/bamr87#348); was 27 8 * * *
+    - cron: '40 21 * * *'  # staggered AI cron (bamr87/bamr87#348); was 27 8 * * *
 
 permissions:
   contents: write

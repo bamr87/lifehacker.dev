@@ -9,7 +9,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: '3 8 * * 1-5'  # staggered AI cron (bamr87/bamr87#348); was 0 6 * * 1-5
+    - cron: '10 16 * * 1-5'  # staggered AI cron (bamr87/bamr87#348); was 0 6 * * 1-5
 concurrency:
   group: factory--issue-factory-1-${{ github.event.issue.number || github.event.pull_request.number || github.event.workflow_run.pull_requests[0].number || github.run_id }}
   cancel-in-progress: false

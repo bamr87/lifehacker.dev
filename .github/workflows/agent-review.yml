@@ -17,7 +17,7 @@ name: agent-review
 on:
   workflow_dispatch:
   schedule:
-    - cron: '28 4 1 * *'  # staggered AI cron (bamr87/bamr87#348); was 17 5 1 * *
+    - cron: '10 14 1 * *'  # staggered AI cron (bamr87/bamr87#348); was 17 5 1 * *
                                     # AGENT_REVIEW_ENABLED (unset = idle)
 
 permissions:

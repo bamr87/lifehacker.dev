@@ -28,7 +28,7 @@ name: weekly-epic
 
 on:
   schedule:
-    - cron: '47 13 * * 1'  # staggered AI cron (bamr87/bamr87#348); was 45 7 * * 1
+    - cron: '40 19 * * 1'  # staggered AI cron (bamr87/bamr87#348); was 45 7 * * 1
   workflow_dispatch:
 
 permissions:
