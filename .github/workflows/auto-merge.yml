@@ -27,7 +27,7 @@ on:
     # Backstop sweep only. The workflow_run trigger above already fires at every
     # moment a PR can newly turn green (pipeline completion), so a */30 cron was
     # ≥85% no-op (~250 runs/5 days for ~6 bot PRs/day). 6/day catches stragglers.
-    - cron: '13 */4 * * *'
+    - cron: '13 6 * * *'  # daily backstop (was every 4h); workflow_run covers real events
   workflow_dispatch:
 
 permissions:

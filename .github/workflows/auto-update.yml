@@ -54,7 +54,7 @@ on:
     # sync is only needed when main advances, and every main advance runs the
     # pipeline — whose completion already triggers this via workflow_run. The
     # old */30 cron mostly found "branch already up to date" (~251 runs/5 days).
-    - cron: '43 */4 * * *'
+    - cron: '43 6 * * *'  # daily backstop (was every 4h); workflow_run covers real events
   workflow_dispatch:
 
 permissions:
