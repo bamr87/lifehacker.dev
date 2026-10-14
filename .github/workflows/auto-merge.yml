@@ -74,9 +74,10 @@ jobs:
           # source/triage-bot (queue + dashboard refreshes), or
           # source/ai-usage-bot (AI cost ledger sweeps), NOT needs-human. Both
           # bot-data flavors are held to the same pure-data bar below.
+          # Draft PRs are never candidates (a draft is by definition not ready).
           prs=$(gh pr list --state open \
-                 --json number,labels \
-                 --jq '.[] | [.labels[].name] as $l
+                 --json number,labels,isDraft \
+                 --jq '.[] | select(.isDraft | not) | [.labels[].name] as $l
                        | select(($l | index("needs-human") | not)
                                 and ($l | any(. == "auto:content" or . == "source/triage-bot" or . == "source/ai-usage-bot")))
                        | "\(.number) \(if $l | index("source/triage-bot") then "triage" elif $l | index("source/ai-usage-bot") then "ai-usage" else "content" end)"')
@@ -103,9 +104,18 @@ jobs:
               declined=$((declined+1)); echo "::endgroup::"; continue
             fi
 
-            # 2. All required checks green? (gh pr checks exits 0 only when all pass)
+            # 2. All checks green? gh pr checks exits 0 only when EVERY check
+            # passes, a superset of the required ones. (Not `--required`: it
+            # exits non-zero when a branch has no required checks configured.)
             if ! gh pr checks "$pr" >/dev/null 2>&1; then
               echo "SKIP #$pr: checks not all green yet."
+              skipped=$((skipped+1)); echo "::endgroup::"; continue
+            fi
+
+            # 2b. Re-check draft state right before merging: the list above can be
+            # minutes old, and a PR may have been converted back to draft since.
+            if [ "$(gh pr view "$pr" --json isDraft --jq .isDraft)" = "true" ]; then
+              echo "SKIP #$pr: draft PR."
               skipped=$((skipped+1)); echo "::endgroup::"; continue
             fi
 
