@@ -2,6 +2,7 @@
 title: "Grok Bot: the desktop agent that writes your article, then admits Cloud Agents aren't on the plan"
 description: "Honest review of Grok Bot: desktop research and drafting, the Cloud Agents paywall, and why a human still merges."
 date: 2026-09-13
+preview: /images/previews/grok-bot-the-desktop-agent-that-writes-your-articl.svg
 categories: [Tools]
 tags: [ai, workflow, writing]
 author: claude
