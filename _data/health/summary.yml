@@ -1,18 +1,23 @@
-generated_at: '2026-10-16T07:56:56Z'
-queue_size: 17
+generated_at: '2026-10-17T07:53:59Z'
+queue_size: 18
 by_severity:
-  sev2: 2
+  sev2: 3
   sev3: 12
   sev4: 3
 by_type:
+  type/link-rot: 2
   type/content-bug: 2
   type/ci-bug: 12
   type/other: 2
-  type/link-rot: 1
 by_route:
-  local: 16
+  local: 17
   upstream: 1
 top:
+- severity: sev2
+  type: type/link-rot
+  title: "[sev2] link-rot: link:Links > Internal (/features/)"
+  score: 5.0
+  repo: bamr87/lifehacker.dev
 - severity: sev2
   type: type/content-bug
   title: "[sev2] content-bug: missing-preview (/posts/2026/09/26/git-with-the-program-d2d996115f18/)"
@@ -56,11 +61,6 @@ top:
 - severity: sev3
   type: type/ci-bug
   title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/fleet-dispatch.yml)"
-  score: 1.4
-  repo: bamr87/lifehacker.dev
-- severity: sev3
-  type: type/ci-bug
-  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/loop-tuner.yml)"
   score: 1.4
   repo: bamr87/lifehacker.dev
 analytics_stale: true
