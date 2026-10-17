@@ -1,5 +1,26 @@
 [
   {
+    "fingerprint": "c8e02399cc98",
+    "check_id": "htmlproofer",
+    "rule": "link:Links > Internal",
+    "file": "_site/features/index.html",
+    "line": 2464,
+    "evidence": "internally linking to ../_data/features.yml, which does not exist",
+    "type": "type/link-rot",
+    "area": "area/content",
+    "severity": "sev2",
+    "route": "local",
+    "repo": "bamr87/lifehacker.dev",
+    "url_path": "/features/",
+    "reach_views": 0,
+    "occurrences": 1,
+    "prime_directive_candidate": false,
+    "score": 5.0,
+    "issue_number": null,
+    "blocked_on": null,
+    "title": "[sev2] link-rot: link:Links > Internal (/features/)"
+  },
+  {
     "fingerprint": "4456300e0a26",
     "check_id": "frontmatter",
     "rule": "missing-preview",
