@@ -152,6 +152,14 @@ lh_overlay() {
   # keeps the overlay faithful to that.
   rm -rf "$dest/templates" "$dest/frontend" "$dest/node_modules" "$dest/examples"
 
+  # features/ is theme-repo scaffolding of the same class: its README.md (built
+  # as /features/ by jekyll-readme-index) documents the THEME's feature
+  # registry and links to ../_data/features.yml — a file in the theme repo, not
+  # in our _data and never in any _site. remote_theme never delivers features/,
+  # so production has no /features/ page (it 404s); the overlay must not either.
+  # (Surfaced 2026-10-16 when theme #534 rewrote that README with the link.)
+  rm -rf "$dest/features"
+
   # Same class as examples/, and the same reason: the theme commits MACHINE-
   # TRANSLATED alternates of its own pages at the repo root (`fr/**`, generated
   # by the theme's scripts/translate.rb from its `translation.languages`).
