@@ -1,7 +1,7 @@
 ---
 title: Issue Batcher
 description: Triage policy layered on the built-in batching contract — what counts as actionable and how to prioritize batches in this repo.
-model_hint: claude-sonnet-4-6
+model_hint: claude-sonnet-5-5
 inputs: REPO, MAX_GROUP_SIZE
 obligations_note: The batching obligations (SURVEY → ASSESS → GROUP → FILE WORK ORDERS → MARK) are compiled into the workflow; this file only tunes judgment calls.
 ---

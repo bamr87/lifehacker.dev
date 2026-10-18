@@ -173,7 +173,7 @@ gh variable set QUEST_FORGE_ENABLED true        # derive it-journey quests from 
 
 Everything that calls a model — every workflow agent step *and* every skill — goes through **one** path, so the model, auth, and fallback are configured in a single place:
 
-- **`_data/ai.yml`** — the one config: `model` (default `claude-opus-4-8`),
+- **`_data/ai.yml`** — the one config: `model` (default `claude-opus-5-5`),
 `fallback_model`, `max_tokens`, the API version/base. Change the model here and it changes everywhere.
 - **The fleet's runner** — `bamr87/bamr87` `.github/actions/claude-run` (hub kit `ai-runner`), consumed by reference as `uses: bamr87/bamr87/.github/actions/claude-run@main`. Tries **Claude Code** (`claude -p` with tools/MCP — the full agent) first; if the CLI is missing or the run fails, falls back to this repo's **`scripts/ai/api_call.rb`**, a stdlib-only (`net/http`, no gem) single-shot call to the Claude API (`POST /v1/messages`, `anthropic-version 2023-06-01`, with refusal/429/5xx handling). The fallback is a degraded path — it returns the model's text but can't run tools, so fully agentic steps rely on Claude Code; analysis/review/draft steps work on either. Inputs: `prompt`, `agent`, `tools`, `mcp`, `system`, `out`, `model`, `max-turns`. This repo held the runner's source until 2026-09-08 and remains the kit's reference consumer; `scripts/ai/run.sh` is now a shim to the hub copy for the two non-workflow callers (`illustrate.mjs`, `launch.json`).
 
