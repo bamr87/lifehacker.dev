@@ -16,20 +16,20 @@ provider: anthropic
 
 # The model Claude Code uses (claude -p --model) AND the default for the API
 # fallback. Default to the most capable model; the owner may set a cheaper one
-# (claude-sonnet-4-6 / claude-haiku-4-5) — that's a cost decision, made here, once.
-model: claude-opus-4-8
+# (claude-sonnet-5-5 / claude-haiku-5-5) — that's a cost decision, made here, once.
+model: claude-opus-5-5
 
 # The model the API fallback uses when it differs from the primary (e.g. a
 # cheaper single-shot fallback). Defaults to `model` when unset.
-fallback_model: claude-opus-4-8
+fallback_model: claude-opus-5-5
 
 # The model that DRAWS preview illustrations (scripts/preview/illustrate.mjs).
 # Deliberately not the default model: a motif is a bounded drawing task with a
 # validator and a retry loop behind it, so the cheapest model that draws well
 # enough is the right one — and it is called at most once per article, ever,
-# because the drawing is committed. Drop it to claude-haiku-4-5 to spend less;
+# because the drawing is committed. Drop it to claude-haiku-5-5 to spend less;
 # raise it to the default model when a section's art is not landing.
-illustrator_model: claude-sonnet-4-6
+illustrator_model: claude-sonnet-5-5
 
 # Opt-in xAI Imagine raster covers (scripts/preview/xai.mjs / --provider xai).
 # Auth is NOT set here: XAI_OAUTH_TOKEN (preferred), Kilo's xAI OAuth store, or

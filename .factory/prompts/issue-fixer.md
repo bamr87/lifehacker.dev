@@ -1,7 +1,7 @@
 ---
 title: Issue Fixer
 description: Consume ONE open work order and turn it into a single pull request that closes every member issue in the batch.
-model_hint: claude-opus-4-8
+model_hint: claude-opus-5-5
 inputs: REPO
 obligations_note: Opens exactly one PR per run; never merges. Consumes work orders labeled factory:work-order filed by the issue batcher.
 ---

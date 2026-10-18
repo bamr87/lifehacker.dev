@@ -85,7 +85,7 @@ jobs:
             4. FILE WORK ORDERS — read the existing open work orders first (`gh issue list --label "factory:work-order"`); if a batch is already covered by one, update that order instead of duplicating. Ensure the factory labels exist (`gh label list`, create missing ones with `gh label create`). Then file exactly ONE work-order issue per new batch with `gh issue create`: title "Work order: <short summary>", label 'factory:work-order', body carrying the member issues as a task list (`- [ ] #N — title`), a root-cause hypothesis, a concrete fix plan, and acceptance criteria.
             5. MARK — label every member issue 'factory:queued' and post ONE comment on it linking its work order (skip members that already have one). You are the sorter, not the fixer: never edit code and never open PRs — the fix line consumes your work orders.
           claude_args: |-
-            --model claude-sonnet-4-6
+            --model claude-sonnet-5-5
             --max-turns 50
             --allowedTools "Read,Glob,Grep,Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh search issues:*),Bash(gh label list:*),Bash(gh label create:*),Bash(gh issue edit:*),Bash(gh issue comment:*),Bash(gh issue create:*)"
       # lh-ai-usage metering — MANUAL ADDITION to this generated file. If the

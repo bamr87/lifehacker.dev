@@ -65,7 +65,7 @@ const warn = (m) => console.error(`[illustrate] WARN: ${m}`);
 // The illustrator's model is a COST decision, made once, in _data/ai.yml
 // (`illustrator_model`) — not here and not per call site. The fallback below is
 // only for a checkout whose ai.yml predates the key.
-const DEFAULT_MODEL = 'claude-sonnet-4-6';
+const DEFAULT_MODEL = 'claude-sonnet-5-5';
 
 function configuredModel() {
   try {
