@@ -464,7 +464,7 @@ improvements:
   # "pending". dig_path now addresses `recurring_findings.<rule>`.
   - id: 2026-10-19-failrate-excludes-cancelled
     date: 2026-10-19
-    pr: TBD
+    pr: 718
     metric: runs.fail_rate
     baseline: 5.4
     direction: down
@@ -481,7 +481,7 @@ improvements:
       full), with 4 new self-test cases (12 -> 16). No guardrail touched.
   - id: 2026-10-19-factory-slowest-median
     date: 2026-10-19
-    pr: TBD
+    pr: 718
     metric: runs.slowest_median_sec
     baseline: 611
     direction: down
