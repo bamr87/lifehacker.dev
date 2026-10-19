@@ -33,8 +33,20 @@ module VerifyImprovements
   STATUSES = %w[pending verified regressed abandoned].freeze
   REQUIRED = %w[id date metric baseline direction status note].freeze
 
+  # Dotted path into loop-metrics.json. A rule-tally list (`recurring_findings`,
+  # [{rule, prs}]) is addressed by rule name — `recurring_findings.<rule>` ->
+  # its PR count, and 0 once the rule is gone from an untruncated list (the
+  # list is capped at RULE_CAP, so absence from a full list stays unknown).
+  RULE_CAP = 15
+
   def dig_path(h, path)
-    path.split('.').reduce(h) { |acc, k| acc.is_a?(Hash) ? acc[k] : nil }
+    path.split('.').reduce(h) do |acc, k|
+      if acc.is_a?(Hash) then acc[k]
+      elsif acc.is_a?(Array) && acc.all? { |x| x.is_a?(Hash) && x.key?('rule') }
+        hit = acc.find { |x| x['rule'] == k }
+        hit ? hit['prs'] : (acc.size < RULE_CAP ? 0 : nil)
+      end
+    end
   end
 
   # Ledger entries carry unquoted YAML dates (the documented schema), so Date
@@ -139,7 +151,15 @@ module VerifyImprovements
       'dup id'        => [validate([entries[0], entries[0]]).any? { |e| e.include?('duplicate') }, true],
       'bad baseline'  => [validate([entries[0].merge('baseline' => 'x')]).any? { |e| e.include?('baseline') }, true],
       'non-map entry' => [validate(['oops', entries[0]]).any? { |e| e.include?('not a map') }, true],
-      'yaml Date ok'  => [validate([entries[0].merge('date' => Date.new(2026, 7, 1))]), []]
+      'yaml Date ok'  => [validate([entries[0].merge('date' => Date.new(2026, 7, 1))]), []],
+      'rule path hit' => [dig_path({ 'recurring_findings' => [{ 'rule' => 'x-y', 'prs' => 4 }] },
+                                   'recurring_findings.x-y'), 4],
+      'rule gone = 0' => [dig_path({ 'recurring_findings' => [{ 'rule' => 'z', 'prs' => 1 }] },
+                                   'recurring_findings.x-y'), 0],
+      'rule capped ?' => [dig_path({ 'recurring_findings' => Array.new(RULE_CAP) { |i| { 'rule' => "r#{i}", 'prs' => 1 } } },
+                                   'recurring_findings.x-y'), nil],
+      'bare array ?'  => [verdict({ 'metric' => 'recurring_findings', 'baseline' => 4, 'direction' => 'down' },
+                                  { 'recurring_findings' => [] })['verdict'], 'pending']
     }
     failed = checks.reject { |_, (g, w)| g == w }
     if failed.empty?

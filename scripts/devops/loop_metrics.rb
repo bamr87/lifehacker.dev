@@ -253,8 +253,17 @@ module LoopMetrics
   end
 
   def gather_runs(limit)
-    rows = sh_json("gh run list --limit #{limit.to_i} --json workflowName,conclusion,status,createdAt,updatedAt", [])
-    rows.select { |r| r['status'] == 'completed' && !r['conclusion'].to_s.empty? }.map do |r|
+    normalize_runs(sh_json("gh run list --limit #{limit.to_i} --json workflowName,conclusion,status,createdAt,updatedAt", []))
+  end
+
+  # Only runs that reached a VERDICT count. `cancelled` is excluded: it is a
+  # run superseded by a `concurrency:` group (cancel-in-progress) or Pages'
+  # own deploy queue — the loop working as designed, not a failure. Counting
+  # it made every added concurrency guard look like a fail-rate regression.
+  def normalize_runs(rows)
+    rows.select do |r|
+      r['status'] == 'completed' && !r['conclusion'].to_s.empty? && r['conclusion'] != 'cancelled'
+    end.map do |r|
       { 'wf' => r['workflowName'],
         'dur' => duration_sec(r['createdAt'], r['updatedAt']),
         'ok' => %w[success skipped neutral].include?(r['conclusion']) }
@@ -442,7 +451,14 @@ module LoopMetrics
         "| count | check | rule | example |\n|---|---|---|---|\n" \
         "| 3 | preview | orphan-preview | `previews/foo.png` |\n"
       ]), []],
-      'conflicts.open_not_mergeable' => [r['conflicts']['open_not_mergeable'], 1]
+      'conflicts.open_not_mergeable' => [r['conflicts']['open_not_mergeable'], 1],
+      # A superseded (cancelled) run reached no verdict: excluded, not a failure.
+      'normalize drops cancelled' => [normalize_runs([
+        { 'workflowName' => 'p', 'status' => 'completed', 'conclusion' => 'cancelled' },
+        { 'workflowName' => 'p', 'status' => 'completed', 'conclusion' => 'failure' },
+        { 'workflowName' => 'p', 'status' => 'completed', 'conclusion' => 'success' },
+        { 'workflowName' => 'p', 'status' => 'in_progress', 'conclusion' => '' }
+      ]).map { |x| x['ok'] }, [false, true]]
     }
     failed = checks.reject { |_, (got, want)| got == want }
     if failed.empty?

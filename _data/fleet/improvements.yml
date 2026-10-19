@@ -427,7 +427,11 @@ improvements:
   - id: 2026-10-12-description-subcap-target
     date: 2026-10-12
     pr: TBD
-    metric: recurring_findings
+    # 2026-10-19: re-pointed from the bare array `recurring_findings` (which the
+    # verifier could never settle) to the per-rule path the verifier now digs.
+    # Still pending: no content PR has merged since 2026-09-25, so the window
+    # holds no post-fix draft yet (now = 4, unchanged).
+    metric: recurring_findings.description-too-long
     baseline: 4
     direction: down
     status: pending
@@ -445,3 +449,48 @@ improvements:
       2026-08-10-recurring-parser), so it will read as pending — the next window's
       recurring_findings is the standing verification that `description-too-long`
       falls out as new drafts land under the cap.
+
+  # --- loop-tuner 2026-10-19: the measure + memory read what actually happened ---
+  # (1) A `runs.fail_rate` trend regression (2.7 -> 5.4) fired. 6 of the 8
+  # "failures" in the window were `cancelled` runs (pipeline x2, Pages deploy x3,
+  # CI x1) — runs superseded by a `concurrency:` group or Pages' own deploy
+  # queue, i.e. the loop working as designed. loop_metrics counted any
+  # non-success conclusion as a failure, so every concurrency guard a past run
+  # added showed up as a fail-rate regression. Fixed in the measure: cancelled
+  # runs reached no verdict and are excluded (normalize_runs). Same window,
+  # corrected: 2 real failures / 143 runs = 1.4%. No check, gate, or workflow
+  # touched. (2) verify_improvements could not dig an array metric, so every
+  # `recurring_findings` claim (2026-08-10, 2026-10-12) could only ever read
+  # "pending". dig_path now addresses `recurring_findings.<rule>`.
+  - id: 2026-10-19-failrate-excludes-cancelled
+    date: 2026-10-19
+    pr: 718
+    metric: runs.fail_rate
+    baseline: 5.4
+    direction: down
+    status: pending
+    note: >-
+      Measurement correction, like 2026-08-10-recurring-parser. Baseline 5.4 =
+      8/149, of which 6 were `cancelled` supersessions; corrected same-window
+      value is 1.4 (2/143, both `pipeline`). The drop from the correction alone
+      is expected, so the standing verification is the new loop_metrics
+      self-test case (`normalize drops cancelled`, 29 -> 30) — and from the next
+      run on, runs.fail_rate only moves when real failures do. Also
+      verify_improvements gains `recurring_findings.<rule>` addressing (0 once
+      the rule leaves an untruncated list; unknown when the 15-rule cap is
+      full), with 4 new self-test cases (12 -> 16). No guardrail touched.
+  - id: 2026-10-19-factory-slowest-median
+    date: 2026-10-19
+    pr: 718
+    metric: runs.slowest_median_sec
+    baseline: 611
+    direction: down
+    status: abandoned
+    note: >-
+      Trend regression 252 -> 611 is one run (n=1) of `Factory: Issue Factory
+      1`: a GitFactory-generated AI line (edit the blueprint, never the
+      workflow) that first ran on its schedule on 2026-10-19. 611s is one agent
+      session, not a CI build, so caching or dedup doesn't apply, and it
+      doesn't gate `verify`. Not a loop defect; not re-tried unless several runs
+      show it starving the PR path. CI's slowest real gate is unchanged
+      (site-quality ~286s, pipeline 181s).
