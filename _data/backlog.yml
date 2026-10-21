@@ -4734,6 +4734,17 @@ backlog:
     published: /wire/opus-5-half-the-price/
     source: manual
     source_url: https://www.anthropic.com/news/claude-opus-5
+  - id: WIRE-021
+    kind: wire
+    title: "PHP's two new RCEs went from AI-assisted report to exploit in days; the first signs were human, in 2024, and the embargo broke on people"
+    brief: "Fresh wire idea (2026-10-21; every WIRE item was done). Model-beat dispatch reported from the PHP Foundation's post-mortem (primary), the php.net advisory (primary) and Wiz Research's PHP2Shell write-up (primary, vendor). PHP 8.5.12/8.4.27/8.3.36/8.2.35 fix CVE-2026-109618 (OOM corruption) and CVE-2026-109619 (stale global state), CVSS 9.2. The Foundation says a contracted core dev found the first signs of the OOM problem in 2024 during the Quarkslab audit fixes; the fix stalled in a consensus process it calls 'a structural failure'. Calif (Aug 11, same day as OpenAI) and Wiz (Aug 24, using Gemini 4 Argon + GPT-5.6 Sol) turned it into working RCE; the Foundation also credits a Claude Mythos scan and OpenAI Daybreak Red. The embargo then broke three human ways: CVE IDs leaked with a wrong CVSS 10.0, Calif mistakenly posted a PoC video, Chainguard shipped fixed images 6+ hours early. Satire target: the credit-scramble theater and Wiz's '70% of the Internet' / 'arguably in software history' superlatives. Facts attributed; Wiz vs Foundation timeline discrepancy (Sept 21 'acknowledges' vs Aug 11 'top priority') reported as such. COI: this desk runs on Claude; Anthropic is a credited tool vendor. Kicker: 15 CVEs and 100+ invalid reports since July 1, triaged by a team the Foundation says is too small."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/php2shell-ai-found-human-delayed/
+    source: manual
+    source_url: https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/
   - id: POST-052
     kind: post
     title: "I let a language model draw on my own website: the whitelist between the motif layer and your browser"
