@@ -4941,3 +4941,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/09/20/the-installer-is-17gb-the-volume-is-named-bamr87/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-145
+    kind: hack
+    title: "docker run -p 3000:3000 published your practice target to the whole LAN: bind it to 127.0.0.1"
+    brief: "You spin up OWASP Juice Shop to practice attacks — `docker run --rm -d -p 3000:3000 bkimminich/juice-shop` — and the deliberately-vulnerable app is now listening on 0.0.0.0, because `-p 3000:3000` binds every interface, not just your machine. Anyone on the coffee-shop Wi-Fi, and any port-scanner that finds you, gets a root-me box on your network with your laptop sitting right behind it. The fix is one prefix: `-p 127.0.0.1:3000:3000` binds the loopback only, so the target is reachable from your own browser and nothing else. The three mitigations that actually matter: bind vulnerable containers to 127.0.0.1 (never the bare `-p PORT:PORT` form), put the lab on an internal-only Docker network with no host publish at all when you can reach it another way, and remember Docker's published ports punch straight THROUGH the host firewall via its own iptables/nftables chain — a `ufw` rule you added does not cover a `-p` publish, so 'my firewall is on' is not 'the port is closed.' Reproducible by publishing the port and curling it from a second machine on the same network; the 'it was just for local testing' failure stays in."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1011/security-fundamentals/
+    source_title: "Security Fundamentals: The CIA Triad, OWASP, and Least Privilege"
+    fingerprint: 0e7985f123e0
+  - id: SRC-146
+    kind: hack
+    title: "Your K-Means just clustered by whichever column had the biggest numbers: scale before you cluster, and the elbow that never bends"
+    brief: "Run `KMeans(n_clusters=3).fit_predict(X)` on raw data where one column is salary (tens of thousands) and another is age (tens), and the clusters are really just salary bins — because K-Means groups by Euclidean distance, and an unscaled big-unit feature dominates that distance so completely that every other column is noise. Standardize first (`StandardScaler().fit_transform(X)`) so each feature contributes on equal footing. The failures that stay in: you have to pick `k` BEFORE you cluster, and the elbow method people reach for to choose it plots inertia (within-cluster distance) against k — but inertia only ever DECREASES as k grows (at k = n_samples it's zero), so there isn't always a clean bend, and reading a corner that isn't there is how you talk yourself into a cluster count the data never supported (silhouette score is the tie-breaker when the elbow is ambiguous); and K-Means assumes round, similar-size blobs, so it will happily carve two crescents or one big + one tiny group into three wrong pieces and report a tidy shrinking inertia the whole time — the number going down is not the grouping making sense. Reproducible on a synthetic two-feature dataset where you scale one run and don't the other and watch the labels flip."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/ml-fundamentals/
+    source_title: "Machine Learning Fundamentals with Scikit-Learn"
+    fingerprint: cba21e4bd1a8
+  - id: SRC-147
+    kind: hack
+    title: "'Expected all tensors to be on the same device': your model moved to the GPU and your batch stayed home"
+    brief: "You call `model.to(device)`, training starts, and the first real batch throws `RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu` — because moving the MODEL does not move your DATA, and a tensor built on the CPU has to be sent to the same device explicitly. The fix is to `.to(device)` BOTH the model and every input/target batch inside the loop, resolving `device` once (`\"cuda\" if torch.cuda.is_available() else \"cpu\"`) and reusing it everywhere. The failures that stay in: `.to(device)` on a TENSOR returns a moved copy and does not mutate in place (unlike on a Module, which moves itself), so `x.to(device)` on a line by itself does nothing — you must reassign `x = x.to(device)`; on Apple Silicon the device is `mps`, not `cuda`, and some ops still aren't implemented there, so a model that trains on CPU dies on MPS with 'not currently implemented for the MPS device' unless you set `PYTORCH_ENABLE_MPS_FALLBACK=1` to fall those ops back to CPU (slower, but it runs); and pulling `.item()` or `.cpu()` off a GPU tensor every step to log a metric silently forces a GPU sync each call and can quietly dominate your step time. Reproducible in ten lines: build a tensor, move the model, forget to move the tensor."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/deep-learning-frameworks/
+    source_title: "Deep Learning Frameworks: PyTorch vs TensorFlow"
+    fingerprint: 4f2936e87be2
