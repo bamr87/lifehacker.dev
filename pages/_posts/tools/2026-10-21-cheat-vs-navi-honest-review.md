@@ -23,7 +23,7 @@ tldr pages are read-only examples that someone else curated. These two tools add
 - **cheat** adds *your own* layer. It's a set of plain-text sheets, sorted into "cheatpaths" (personal, work, community), with tags, regex search, and an editor shortcut. It prints the sheet and that's all it does. `cheat tar` took 0.016 s on the box I tested on.
 - **navi** adds an *execution* layer. Snippets have `<placeholders>`. navi fills each one from a list it builds by running a shell command, lets you pick from that list in fzf, and then runs the finished command.
 
-That second sentence is the entire review in miniature. Keep it in mind.
+That second bullet is the entire review in miniature. Keep it in mind.
 
 ## cheat: the good part
 
@@ -89,7 +89,7 @@ $ grep -E '^\s*- name:' ~/.config/cheat/conf.yml
 Community comes last, so community is treated as the most "local" path, so community wins. I checked the previous major version to see if this was always the case, and it wasn't. Here's the template from the `cheat` 4.4.2 binary next to the 5.1.0 one:
 
 ```console
-$ cheat-4.4.2 --init   # the 4.4.2 release binary, renamed so both versions fit on one box | sed -n '/^cheatpaths/,$p' | grep -E 'name:'
+$ cheat-4.4.2 --init | sed -n '/^cheatpaths/,$p' | grep -E 'name:'   # the 4.4.2 release binary, renamed so both versions fit on one box
   - name: community
   - name: personal
 ```
