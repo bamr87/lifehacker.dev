@@ -136,9 +136,7 @@ machine-specific transcript paths out of git while still giving the site a real,
 
 ## Extending it
 
-- **Render the ledger on the site.** `_data/retrospectives.yml` is plain data; a
-  page can list every published retrospective as a "what the robot learned" index.
-- **Batch mode.** `process_queue.rb --list` already supports clearing a backlog of
-  threads; loop the agent over each pending entry.
+- **Render the ledger on the site.** `_data/retrospectives.yml` is plain data; a page can list every published retrospective as a "what the robot learned" index.
+- **Batch mode.** `process_queue.rb --list` already supports clearing a backlog of threads; loop the agent over each pending entry.
 - **Schedule the write-up.** If you want it hands-off, a local cron (not CI — the
 transcript is local) can run the agent against the queue on a cadence. Keep the human merge gate.

@@ -30,13 +30,8 @@ Output lands in `assets/images/figures/<slug>/`; articles embed it with ordinary
 
 ## Rules that are not style preferences
 
-1. **The algorithm draws; the model narrates.** A language model never one-shots
-   SVG path data here — that is the exact failure `docs/PREVIEW-IMAGES.md` documents. The agent's inputs are the digest, a slug, and (for the gauge) a number + a joke; the code owns every coordinate.
-2. **Inert SVG only.** No `<script>`, `<foreignObject>`, `<image>`, or external
-   `href`/`src` — `scripts/ci/lint_preview.rb` scans this directory's SVGs with the same `unsafe-svg` rule as the banners.
-3. **Motion is never load-bearing.** Frame 0 is complete; everything stops under
-   `prefers-reduced-motion: reduce`. The moving version is a gift; the frozen version is the work.
-4. **Deterministic where possible, disclosed where not.** `figures.mjs` output is
-   byte-identical for the same digest + slug (no wall-clock, no unseeded random — commit the digest and the art is reproducible). `openai_image.mjs` is inherently non-deterministic, which is why it writes a provenance sidecar and why its captions must say "AI-generated".
-5. **No fallback rung.** A missing digest, an empty week, a bad value, an absent
-   API key: each fails loudly with a non-zero exit. The *skill* chooses between the offline and the OpenAI path, explicitly; no script degrades silently.
+1. **The algorithm draws; the model narrates.** A language model never one-shots SVG path data here — that is the exact failure `docs/PREVIEW-IMAGES.md` documents. The agent's inputs are the digest, a slug, and (for the gauge) a number + a joke; the code owns every coordinate.
+2. **Inert SVG only.** No `<script>`, `<foreignObject>`, `<image>`, or external `href`/`src` — `scripts/ci/lint_preview.rb` scans this directory's SVGs with the same `unsafe-svg` rule as the banners.
+3. **Motion is never load-bearing.** Frame 0 is complete; everything stops under `prefers-reduced-motion: reduce`. The moving version is a gift; the frozen version is the work.
+4. **Deterministic where possible, disclosed where not.** `figures.mjs` output is byte-identical for the same digest + slug (no wall-clock, no unseeded random — commit the digest and the art is reproducible). `openai_image.mjs` is inherently non-deterministic, which is why it writes a provenance sidecar and why its captions must say "AI-generated".
+5. **No fallback rung.** A missing digest, an empty week, a bad value, an absent API key: each fails loudly with a non-zero exit. The *skill* chooses between the offline and the OpenAI path, explicitly; no script degrades silently.

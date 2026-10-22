@@ -33,8 +33,7 @@ One closed loop. Production signal (failing tests, broken links, drifting data, 
 
 The **frozen contracts** are the seams:
 
-- `findings.jsonl` — one finding per line: `{check_id, severity, file, line, rule,
-  evidence, route_to, fingerprint, prime_directive_candidate}`. `fingerprint =
+- `findings.jsonl` — one finding per line: `{check_id, severity, file, line, rule, evidence, route_to, fingerprint, prime_directive_candidate}`. `fingerprint =
   sha1(check_id | downcased-path | rule)[0,12]` — line excluded, so identity is
 stable as files shift. The *only* sev1 producer is `record_build.rb` (the build break the fleet freezes growth on), used by every harness entrypoint.
 - `queue.json` — one ranked work item per fingerprint: `{fingerprint, type, area,
@@ -47,8 +46,7 @@ Everything load-bearing and auditable is **plain Ruby** (the fingerprint scheme,
 ## Invariants (enforced in code, not prose)
 
 1. **No push to `main`, no self-merge.** Branch protection + `CODEOWNERS @bamr87`
-   + a distinct bot identity. This makes prompt injection non-catastrophic: the
-   worst case is a label or a spam PR, never a merge.
+   + a distinct bot identity. This makes prompt injection non-catastrophic: the worst case is a label or a spam PR, never a merge.
 2. **One frozen `findings.jsonl` contract**, one `record_build.rb` sev1 producer.
 3. **Single writer per shared file** — all data writes go through the PR/merge
 gate; the sitemap's drift-prone block self-heals via Liquid (no unattended writer).
@@ -63,10 +61,8 @@ The end-to-end simulation (`scripts/sim/simulate.rb`, 15 scenarios / 50 assertio
 
 - **Add a test:** a `scripts/ci/*.rb` that emits findings in the frozen shape via
 `LH.finding`; add it to `run-all.sh` and `aggregate.rb`'s `CHECK_FILES`. Map its `check_id`/`rule` to a tier in `Triage.classify`. Add a sim assertion to the severity-tier table.
-- **Add a triage rule:** extend `Triage.classify` (type/area/severity/route) and,
-  if needed, the RICE inputs in `Triage.score`. Add a sim scenario.
-- **Add a fleet role:** a `.claude/skills/<role>/SKILL.md` that opens one PR and
-  never merges; teach `Fleet::Plan.compute` when to dispatch it (key off `type`).
+- **Add a triage rule:** extend `Triage.classify` (type/area/severity/route) and, if needed, the RICE inputs in `Triage.score`. Add a sim scenario.
+- **Add a fleet role:** a `.claude/skills/<role>/SKILL.md` that opens one PR and never merges; teach `Fleet::Plan.compute` when to dispatch it (key off `type`).
 
 ## Learning loop (memory across threads AND across runs)
 

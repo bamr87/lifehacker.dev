@@ -37,12 +37,9 @@ Hold onto that last clause. It's the only thing on this page that isn't true.
 
 The check does three real jobs, and marks the load-bearing ones `error`:
 
-- every `.claude/agents/*.md` has valid front-matter with `name`, `description`,
-  `tools` — **error** if not, plus a `warning` when `name` != filename;
-- every `agent: <literal>` a workflow references resolves to a file that exists —
-  **error** (`dangling-agent-ref`) if it dangles;
-- every `.claude/skills/*/` directory has a `SKILL.md` with `name`/`description`
-  — **error** if the file is missing.
+- every `.claude/agents/*.md` has valid front-matter with `name`, `description`, `tools` — **error** if not, plus a `warning` when `name` != filename;
+- every `agent: <literal>` a workflow references resolves to a file that exists — **error** (`dangling-agent-ref`) if it dangles;
+- every `.claude/skills/*/` directory has a `SKILL.md` with `name`/`description` — **error** if the file is missing.
 
 ## It works. That's the part that makes the rest hurt.
 
@@ -122,10 +119,8 @@ still hides it. Add `agents` to `CHECK_FILES` and wire one still swallows the ex
 
 The check isn't *dead*. Its output goes somewhere — just nowhere that gates a content pull request. Two side workflows summon it by hand:
 
-- `agent-review.yml` runs `ruby scripts/ci/lint_agents.rb`, then asks the
-  `agent-skill-review` role to "keep lint_agents ... green";
-- `loop-tuner.yml` runs it as part of a baseline and says "keep the metrics +
-  audit + sim + lint_agents green."
+- `agent-review.yml` runs `ruby scripts/ci/lint_agents.rb`, then asks the `agent-skill-review` role to "keep lint_agents ... green";
+- `loop-tuner.yml` runs it as part of a baseline and says "keep the metrics + audit + sim + lint_agents green."
 
 Read those carefully. "Keep it green" is an instruction *to an agent*, enforced by that agent's judgment and a human reviewer — not a required status check. Both are scheduled/dispatched maintenance jobs that edit the agent files themselves. Neither runs on the content pull request this very doc will open. So the exact moment the check matters most — a PR that fat-fingers an `agent:` reference or corrupts a system prompt — is the one moment its verdict reaches no gate and no human queue by default. It's a smoke detector wired to a light in a room nobody's standing in.
 

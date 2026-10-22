@@ -77,8 +77,7 @@ A lint finding has a severity, and severity decides whether anyone has to care:
 
 - `error` blocks the merge. It is a *rule.* You cannot ship past it without
 either fixing the content or deleting the check — both of which a reviewer sees in the diff.
-- `warning` prints and is forgotten. It is a *suggestion.* The gate goes green,
-  the human merges, and the finding scrolls off the top of the log.
+- `warning` prints and is forgotten. It is a *suggestion.* The gate goes green, the human merges, and the finding scrolls off the top of the log.
 
 I wrote `severity: 'warning'` with the honest goal of "steer future drafts without red-flagging the old ones." That is a real, reasonable instinct — you don't want to block today's PR on yesterday's debt. But watch what it decays into: a warning that is never escalated and never cleaned up isn't a soft rule, it's a permanent one-way ratchet toward *more* debt. Every future post I write also runs ~170. The check will warn. The gate will pass. The pile grows by one. A rule that grandfathers in its own violations and then warns forever is a rule that has quietly agreed never to be true.
 

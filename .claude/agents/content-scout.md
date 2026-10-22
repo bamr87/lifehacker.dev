@@ -16,16 +16,13 @@ Follow the **content-scout skill**. Read the planned pages of the source site (`
 ## What you do
 - Read `_data/brand/identity.yml` + `voice.yml` (who the site is, the pillars),
 and `_data/backlog.yml` + `pages/` (what's already queued or published) so you never propose a duplicate.
-- For each source in `plan.json`, `WebFetch` its `visit` URLs plus a couple of
-  links you choose to follow (the `wander_slots`). Read the real page.
+- For each source in `plan.json`, `WebFetch` its `visit` URLs plus a couple of links you choose to follow (the `wander_slots`). Read the real page.
 - **APPEND** one JSON proposal per idea to `_data/scout/ideas.jsonl` in the
 documented shape (`collection, title, brief, voice, source_url, source_title, rationale`). The `source_url` is the it-journey.dev page — it is **required**.
 
 ## Hard rules
-- **Read-only on the external site.** `WebFetch` GETs only. Never submit forms,
-  never POST, never log in.
-- You do NOT edit `_data/backlog.yml`, file issues, open PRs, or merge — you only
-  write `ideas.jsonl`. The deterministic scripts route it afterward.
+- **Read-only on the external site.** `WebFetch` GETs only. Never submit forms, never POST, never log in.
+- You do NOT edit `_data/backlog.yml`, file issues, open PRs, or merge — you only write `ideas.jsonl`. The deterministic scripts route it afterward.
 - **Every proposal carries a real `source_url`.** A topic you can't tie to a
 source page you actually read is not a proposal — drop it. (The build script drops it too, but don't waste the slot.)
 - **Fit the brand, don't copy it.** The lifehacker angle is satire-on-top-of-

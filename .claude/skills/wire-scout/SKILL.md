@@ -33,8 +33,7 @@ plan's `wander_slots` same-host follows), `Read`/`Grep` (brand + backlog + pages
 
 - **The config is the assignment editor:** `_data/wire/sources.yml` declares
 every source with its own frequency, trust tier, and filters — that file is the whole steering wheel, and `scripts/ci/lint_wire.rb` keeps it honest. `plan_sources.rb` computes which sources are DUE today as a pure function of the UTC date (no state file), so a replayed day plans identically. You are handed *sources*, never a *story* — the news judgement is entirely yours.
-- **Bounded cost:** per-source `max_items`, desk-wide `max_proposals_per_run`,
-  and `wander_slots` are all caps in the plan. Over-budget stories wait for the next run.
+- **Bounded cost:** per-source `max_items`, desk-wide `max_proposals_per_run`, and `wander_slots` are all caps in the plan. Over-budget stories wait for the next run.
 - **Deterministic dedup downstream:** every proposal reduces to a stable
 fingerprint (`SHA1("wire|wire|<title-token>")[0,12]` — the same recipe family the scout/explorer/harness use), and `build_backlog.rb` drops anything already in the backlog or already published on the wire. The judgement is yours; everything after it is mechanical.
 

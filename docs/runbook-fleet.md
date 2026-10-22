@@ -14,10 +14,8 @@ Operator notes for the testing harness shipped in PR1, and the human-gate machin
 The no-self-merge guarantee depends on the autopilot running as a GitHub identity that is **not** `@bamr87`. Otherwise its approval could satisfy CODEOWNERS.
 
 1. Create a dedicated machine account, e.g. `lifehacker-bot`.
-2. Invite it to `bamr87/lifehacker.dev` as a **collaborator with Write** (not
-   Admin — it must never be able to edit branch protection or workflows).
-3. For upstream bug filing, give it **Triage/Write on issues** for
-   `bamr87/zer0-mistakes` only.
+2. Invite it to `bamr87/lifehacker.dev` as a **collaborator with Write** (not Admin — it must never be able to edit branch protection or workflows).
+3. For upstream bug filing, give it **Triage/Write on issues** for `bamr87/zer0-mistakes` only.
 4. When PR3 lands, the fleet authenticates as this account with a fine-grained
 PAT scoped to `contents`, `issues`, `pull_requests` (write) — **no `administration`, no `workflows`** scope. A compromised agent then can't touch the gates. PR1 itself needs no bot token: CI uses the default `GITHUB_TOKEN` to post comments, and that token cannot approve PRs.
 
@@ -66,27 +64,22 @@ git add Gemfile.lock && git commit -m "ci: pin github-pages + html-proofer"
 
 ## 5. Running the harness
 
-- **Locally / in Claude Code:** `scripts/ci/run-all.sh`, or the `/test-lifehacker`
-  skill. Same scripts CI runs.
-- **In CI:** automatic on every PR (`.github/workflows/test.yml`). Posts a sticky
-  comment and uploads `findings.jsonl`.
-- **Nightly sweep:** `.github/workflows/nightly.yml` (external links, fresh-theme
-  drift, full Prime Directive). Files one coarse issue on failure.
+- **Locally / in Claude Code:** `scripts/ci/run-all.sh`, or the `/test-lifehacker` skill. Same scripts CI runs.
+- **In CI:** automatic on every PR (`.github/workflows/test.yml`). Posts a sticky comment and uploads `findings.jsonl`.
+- **Nightly sweep:** `.github/workflows/nightly.yml` (external links, fresh-theme drift, full Prime Directive). Files one coarse issue on failure.
 
 ### What blocks a merge (severity: error)
 
 - the safe-mode `jekyll build --strict` fails;
 - a required front-matter key is missing / a post's filename date mismatches;
-- a backlog `done` item points at a non-existent page, or a hand-authored sitemap
-  link is dead;
+- a backlog `done` item points at a non-existent page, or a hand-authored sitemap link is dead;
 - a broken internal link/image/anchor (html-proofer);
 - a glossary `avoid_phrase` (weasel phrase) used anywhere.
 
 ### What only reports (warning / info — never blocks)
 
 - over-length SEO descriptions;
-- `banned_when_sincere` word candidates (the tier-2 reviewer comments on the
-  ambiguous ones);
+- `banned_when_sincere` word candidates (the tier-2 reviewer comments on the ambiguous ones);
 - Prime Directive command failures → flagged as Field Note candidates.
 
 ## 5b. Triage & reporting (PR2)
@@ -98,13 +91,9 @@ Turns the harness's findings into a ranked queue and deduplicated GitHub issues.
     + `summary.yml` (+ committed `findings.jsonl` snapshot). Classifies, RICE-scores,
     and dedups by the PR1 fingerprint. Severity dominates the score; reach (from
     `_data/analytics/summary.json`) is a tiebreaker that defaults to 1.0.
-  - `scripts/triage/file_issues.rb [--apply] [--max-new N]` — finds-or-files an
-    issue per item, deduped by the `triage-fp:` body marker. **Dry-run by default.**
-    Never closes an issue; only ever touches issues carrying its own marker.
-  - `scripts/triage/bootstrap-labels.sh [repo]` — idempotent label taxonomy
-    (`type/* area/* severity/* source/*`).
-  - `scripts/triage/gen_dashboard.rb` — writes `SITE_HEALTH.md`; the live page is
-    `/docs/health/`, rendered from `_data/health/` with plain Liquid (no plugin).
+  - `scripts/triage/file_issues.rb [--apply] [--max-new N]` — finds-or-files an issue per item, deduped by the `triage-fp:` body marker. **Dry-run by default.** Never closes an issue; only ever touches issues carrying its own marker.
+  - `scripts/triage/bootstrap-labels.sh [repo]` — idempotent label taxonomy (`type/* area/* severity/* source/*`).
+  - `scripts/triage/gen_dashboard.rb` — writes `SITE_HEALTH.md`; the live page is `/docs/health/`, rendered from `_data/health/` with plain Liquid (no plugin).
 - **Skill / workflow:** `/triage-lifehacker` (or `.github/workflows/triage.yml`,
 `workflow_dispatch`). The workflow files **local** issues with `GITHUB_TOKEN`; **upstream** filing on `bamr87/zer0-mistakes` needs the bot PAT (set secret `FLEET_TOKEN`) — until then upstream items are reported and deferred.
 - **Reach via analytics:** if the Google Analytics MCP is connected, the skill
@@ -129,19 +118,15 @@ fix per PR), `triage-lifehacker` (reporting), `brand-reviewer` (comment-only). E
 
 ### Turning the fleet ON (deliberate, reversible)
 
-1. Set the kill switch: `gh variable set FLEET_ENABLED true` (a repo **variable** —
-   instant, no merge; the bot token can't set it back, having no admin scope).
-2. Run it manually first: Actions → fleet-dispatch → Run (leave `apply` off to see
-   the plan; check `apply` to lease + spawn).
+1. Set the kill switch: `gh variable set FLEET_ENABLED true` (a repo **variable** — instant, no merge; the bot token can't set it back, having no admin scope).
+2. Run it manually first: Actions → fleet-dispatch → Run (leave `apply` off to see the plan; check `apply` to lease + spawn).
 3. To go hands-off: uncomment the `schedule:` in `fleet-dispatch.yml`, wire the
 spawn step, and **add a dated bold line to `/about/colophon/`** (per [AUTOPILOT.md](AUTOPILOT.md) — enabling scheduled autonomy is the guardrail change that requires it).
 
 ## 6. Kill / disable
 
-- **Instant soft kill:** `gh variable set FLEET_ENABLED false` (or delete it). Every
-  dispatch idles on the next run; no merge needed, and the bot can't undo it.
-- Disable a workflow entirely: `gh workflow disable fleet-dispatch.yml` (also
-  `triage.yml`, `nightly.yml`, `test.yml`).
+- **Instant soft kill:** `gh variable set FLEET_ENABLED false` (or delete it). Every dispatch idles on the next run; no merge needed, and the bot can't undo it.
+- Disable a workflow entirely: `gh workflow disable fleet-dispatch.yml` (also `triage.yml`, `nightly.yml`, `test.yml`).
 - **Hard kill:** revoke the bot PAT — stops all fleet writes everywhere at once.
 
 ## 7. The contract (for PR2 / PR3)

@@ -31,8 +31,7 @@ Claude-Code-driven content engine: the loop, the guardrails, the data files, and
 — step 1, the gate the rest stands on: how the overlay build clones the theme and strips the seven plugins GitHub Pages never runs, so local and CI can't drift.
 - **[The Notebook the Robot Won't Commit](/docs/the-notebook-the-robot-wont-commit/)**
 — the retrospective loop: a SessionEnd hook that records every finished thread and reads none of them, the gitignored queue vs. the committed ledger, and the one machine where the loop can actually run.
-- **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
-  robot itself.
+- **[Colophon](/about/colophon/)** — the short, honest version, narrated by the robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible
 walkthrough of deploying a zer0-mistakes site to GitHub Pages on a custom domain (including the build failure we hit and the one-line fix). It lives in [`docs/github-pages-custom-domain.md`](https://github.com/bamr87/lifehacker.dev/blob/main/docs/github-pages-custom-domain.md) in the repo.
 

@@ -51,8 +51,7 @@ The end-to-end simulation grew from 8 to **15 scenarios / 50 assertions** as the
 
 ## Deliberate deviations from the design
 
-- **Ruby, not Node**, for the fleet — consistent with the rest of the stack, no
-  new toolchain.
+- **Ruby, not Node**, for the fleet — consistent with the rest of the stack, no new toolchain.
 - **The Prime Directive runner is opt-in (`lh:run`)**, not run-everything —
 auto-executing every fenced snippet from prose produces false failures that erode trust in the gate.
 - **A self-healing Liquid sitemap, not a post-merge reindex writer** — a
@@ -64,23 +63,17 @@ The contracts. Freezing `findings.jsonl` and `queue.json` early meant the three 
 
 ## What's still manual / deferred
 
-- The bot account, branch protection, and committed `Gemfile.lock` (one-time
-  human setup — `docs/runbook-fleet.md`).
+- The bot account, branch protection, and committed `Gemfile.lock` (one-time human setup — `docs/runbook-fleet.md`).
 - `FLEET_TOKEN` (upstream issues) and Google Analytics (traffic-weighted ranking).
-- **Scheduled autonomy stays off** behind `FLEET_ENABLED` until trusted; turning
-  it on is a dated colophon line.
+- **Scheduled autonomy stays off** behind `FLEET_ENABLED` until trusted; turning it on is a dated colophon line.
 - Real agent spawning in `fleet-dispatch.yml` (the dispatcher currently prints the
 `run.sh` spawn commands it would run); wiring live execution needs Claude auth (`CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY`).
 
 ## Lessons for the next site that copies this
 
-1. **Build the test harness first and let it embarrass you.** The bugs it finds on
-   day one are the ones already in production.
-2. **Freeze the contracts between stages before building the stages.** It's the
-   difference between three tools and one system.
-3. **Make "can't run" fail loudly.** The dangerous failure isn't red — it's a
-   green that means nothing.
-4. **Keep the human gate in code, not prose.** Branch protection + a distinct bot
-   identity is what makes "a robot can't merge itself" true instead of aspirational.
+1. **Build the test harness first and let it embarrass you.** The bugs it finds on day one are the ones already in production.
+2. **Freeze the contracts between stages before building the stages.** It's the difference between three tools and one system.
+3. **Make "can't run" fail loudly.** The dangerous failure isn't red — it's a green that means nothing.
+4. **Keep the human gate in code, not prose.** Branch protection + a distinct bot identity is what makes "a robot can't merge itself" true instead of aspirational.
 
 *— Claude, the resident robot, reporting on its own labor as required by the Colophon.*

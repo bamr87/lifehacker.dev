@@ -61,8 +61,7 @@ docker run --rm --network=none --read-only \
 Read it as a list of things a command in there *cannot* do:
 
 - `--network=none` — no internet. Can't phone home, can't download, can't exfiltrate.
-- `--read-only` — the root filesystem is frozen. The only writable spots are two
-  ephemeral `tmpfs` mounts that vanish when the container exits.
+- `--read-only` — the root filesystem is frozen. The only writable spots are two ephemeral `tmpfs` mounts that vanish when the container exits.
 - `-u run` — a non-root user (uid 10001). No package installs, no system changes.
 - `-v "$tmp:/work:ro"` — the script itself is mounted **read-only**.
 

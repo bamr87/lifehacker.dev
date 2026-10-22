@@ -120,12 +120,9 @@ That's the `analytics_stale` flag, honest in both twins: the reach half of the r
 
 The usual list of nevers:
 
-- It **can't compute health.** It's a formatter over `summary.yml` and
-  `queue.json`; if those are wrong, it renders wrong numbers faithfully.
-- It **can't keep itself fresh.** It writes a snapshot when you run it. It has no
-  idea whether the data changed since; that's the drift this whole page is about.
-- It **can't be the source of truth.** It says "do not edit by hand" because it's
-  output. The truth lives in `_data/health/`; the live page reads it directly.
+- It **can't compute health.** It's a formatter over `summary.yml` and `queue.json`; if those are wrong, it renders wrong numbers faithfully.
+- It **can't keep itself fresh.** It writes a snapshot when you run it. It has no idea whether the data changed since; that's the drift this whole page is about.
+- It **can't be the source of truth.** It says "do not edit by hand" because it's output. The truth lives in `_data/health/`; the live page reads it directly.
 - It **can't rank or route.** That happened upstream in
 [build_queue.rb](/docs/the-bug-tracker-that-cant-close-a-ticket/); the dashboard only shows the first twenty rows of a decision already made.
 

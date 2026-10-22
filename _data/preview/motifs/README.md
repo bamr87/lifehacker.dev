@@ -7,8 +7,7 @@ One file per illustrated article: `<slug>.svg`, the drawing of what that article
 - **How it gets here:** `node scripts/preview/illustrate.mjs -f <article.md>`
 - **What it is:** [`docs/PREVIEW-IMAGES.md`](../../../docs/PREVIEW-IMAGES.md#the-illustration-layer)
 - **The contract it must satisfy:** [`scripts/preview/lib/motif.mjs`](../../../scripts/preview/lib/motif.mjs)
-- **The gate:** `ruby scripts/ci/lint_preview.rb` (rules `invalid-motif`,
-  `stale-motif`, `orphan-motif`, `motif-selftest`)
+- **The gate:** `ruby scripts/ci/lint_preview.rb` (rules `invalid-motif`, `stale-motif`, `orphan-motif`, `motif-selftest`)
 
 ## Why the files live here and not in `assets/`
 

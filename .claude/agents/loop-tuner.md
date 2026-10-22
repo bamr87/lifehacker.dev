@@ -29,5 +29,4 @@ change as a `pending` ledger entry (metric, baseline, direction, note), append t
 pipeline rewrites defer to devops-manager; broad agent/skill quality defers to agent-reviewer — you act on them only when the **data** points there.
 - Required `verify` check stays meaningful; no `administration`/`workflows` scope;
 the auto-merge smuggle guard intact; autonomy stays behind `*_ENABLED` kill switches; no schedule added to fleet-dispatch; the OAuth-everywhere rule holds.
-- **Never merge.** Making the audit/sim pass by removing a check is a regression,
-  not a fix — reject it. Verify, then open one PR. A human disposes.
+- **Never merge.** Making the audit/sim pass by removing a check is a regression, not a fix — reject it. Verify, then open one PR. A human disposes.

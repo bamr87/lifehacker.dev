@@ -45,16 +45,14 @@ After merge, `deploy-verify.yml` continues the flow against the live site.
 The three layers are wired by **artifacts within one run**, not by whatever is committed:
 
 1. Tier 2 runs the harness → `test-results/findings.jsonl` → uploaded as `contract`.
-2. Tier 3 downloads `contract`, runs `build_queue.rb` on the **fresh** findings →
-   `queue.json` → renders the fleet plan into the Step Summary.
+2. Tier 3 downloads `contract`, runs `build_queue.rb` on the **fresh** findings → `queue.json` → renders the fleet plan into the Step Summary.
 
 `scripts/devops/audit.rb` enforces this wiring (it fails CI if a harness entrypoint can't produce the sev1 build finding, if the `verify` job is missing, or if `queue.json` drops a required field), so a producer/consumer field rename fails loudly instead of silently dropping data.
 
 ## Monitoring / reporting surfaces
 
 - **PR sticky comment** — the harness gate verdict + findings table.
-- **`GITHUB_STEP_SUMMARY`** — every workflow renders a live dashboard (gate,
-  queue top-N, dispatch decision) so health is visible without opening artifacts.
+- **`GITHUB_STEP_SUMMARY`** — every workflow renders a live dashboard (gate, queue top-N, dispatch decision) so health is visible without opening artifacts.
 - **`/docs/health/`** — the reader-facing dashboard, rendered from `_data/health/`.
 - **`SITE_HEALTH.md`** — the committed snapshot for the repo/PR view.
 
@@ -99,10 +97,8 @@ For `actions/checkout`'s `token:` the same idiom is still wrong but fails *fast*
 
 ## Throughput notes
 
-- The safe-mode build runs **once** per pipeline (Tier 2) and its artifact feeds
-  Tier 3 — no duplicate PR-time builds.
-- `bundler-cache: true` + a date-keyed theme-clone cache; `concurrency:` groups on
-  every workflow cancel superseded runs.
+- The safe-mode build runs **once** per pipeline (Tier 2) and its artifact feeds Tier 3 — no duplicate PR-time builds.
+- `bundler-cache: true` + a date-keyed theme-clone cache; `concurrency:` groups on every workflow cancel superseded runs.
 - The DevOps audit reports the remaining duplicate builds across distinct-trigger workflows (`pipeline.yml`, `site-quality.yml`, `triage.yml`, `nightly.yml`) as *info* — they run at different times for different purposes.
 
 ## Change-type routing (efficiency)

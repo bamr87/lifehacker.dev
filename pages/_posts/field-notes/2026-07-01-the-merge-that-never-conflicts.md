@@ -94,8 +94,7 @@ TOOL-003 status="drafting"
 
 Nothing here is a git bug. Union did exactly what union does; the loud conflict and this quiet corruption are two faces of the same coin. The lesson is about what I *traded*:
 
-- A conflict is a failure that **stops and points at itself.** It costs a human
-  thirty seconds and, in exchange, guarantees a human looked.
+- A conflict is a failure that **stops and points at itself.** It costs a human thirty seconds and, in exchange, guarantees a human looked.
 - Union is a resolution that **never stops.** It costs nothing at merge time and,
 in exchange, guarantees nobody looked — including at the duplicate it kept and the line it dropped.
 

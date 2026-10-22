@@ -14,18 +14,9 @@ This document is the plan. It was produced by exploring every subsystem, then de
 
 ## 1. TL;DR
 
-- **Two MCP servers, split on the security boundary** (which is also the
-  deployment boundary):
-  - **`lifehacker-read`** — zero secrets, no network, no `gh`, no Docker. Points
-    at a local checkout (`LH_REPO_ROOT`). Serves the site as a navigable
-    **resource tree** (git *is* the database) plus read/query/analyze/validate
-    **tools** that shell the existing stdlib-Ruby scripts. Safe to hand to any
-    external AI; hostable later once a path-allowlist + secret-scan exists.
-  - **`lifehacker-act`** — opt-in, off by default, installed only on a trusted
-    host with credentials injected out-of-band. Carries the Docker-backed
-    **verify** tools and the thin, heavily-guarded **mutation** and **dispatch**
-    tools. Every mutating path terminates at *open one PR* / *file one issue* /
-    *dispatch one gated workflow* — **never** at a merge.
+- **Two MCP servers, split on the security boundary** (which is also the deployment boundary):
+  - **`lifehacker-read`** — zero secrets, no network, no `gh`, no Docker. Points at a local checkout (`LH_REPO_ROOT`). Serves the site as a navigable **resource tree** (git *is* the database) plus read/query/analyze/validate **tools** that shell the existing stdlib-Ruby scripts. Safe to hand to any external AI; hostable later once a path-allowlist + secret-scan exists.
+  - **`lifehacker-act`** — opt-in, off by default, installed only on a trusted host with credentials injected out-of-band. Carries the Docker-backed **verify** tools and the thin, heavily-guarded **mutation** and **dispatch** tools. Every mutating path terminates at *open one PR* / *file one issue* / *dispatch one gated workflow* — **never** at a merge.
 - **Guardrails by absence, enforced at the surface.** There is no
 `merge_pr` / `approve_pr` / `close_human_issue` / `set_switch` tool anywhere in the API. This is the strongest available backstop because `main` is **not** branch-protected (per repo memory) — "the capability isn't in the protocol" beats "the capability is gated."
 - **One source of truth.** Every query/validate/verify tool shells the *same*
@@ -290,14 +281,10 @@ boundary travels with the prompt.
 
 1. **Compromised drive host = merge access** (§5.1). Residual and unchanged from
 today. Mitigation is the `gh` allowlist + not pretending otherwise. *Should we push to enable branch protection on `main` so the token literally cannot merge? (Owner previously declined — worth revisiting given this integration.)*
-2. **Dup-id gate**: is the disconnect (§6.4) intentional or a latent bug? Decide
-   before wiring `check_backlog_ids`.
-3. **Live-site exploration** requires the Playwright MCP + a browser on the drive
-   host; `explore_live_site` is a *prompt* that composes it, not a native tool.
-4. **Ratchet/metrics are thin** (~2 snapshots). The "watch the ratchet flip"
-   feature is mostly inert until history deepens — ship it labeled, don't oversell.
-5. **Hosted read exfil surface** (§8-P7): a mis-committed secret in the checkout
-   becomes world-readable. Gate hosting behind path-allowlist + secret-scan.
+2. **Dup-id gate**: is the disconnect (§6.4) intentional or a latent bug? Decide before wiring `check_backlog_ids`.
+3. **Live-site exploration** requires the Playwright MCP + a browser on the drive host; `explore_live_site` is a *prompt* that composes it, not a native tool.
+4. **Ratchet/metrics are thin** (~2 snapshots). The "watch the ratchet flip" feature is mostly inert until history deepens — ship it labeled, don't oversell.
+5. **Hosted read exfil surface** (§8-P7): a mis-committed secret in the checkout becomes world-readable. Gate hosting behind path-allowlist + secret-scan.
 6. **Non-content maintenance gap**: the mutation lane is content-only; drift /
 local-infra findings are actionable only via dispatch or a human. That's a deliberate scope boundary, not an oversight — name it.
 

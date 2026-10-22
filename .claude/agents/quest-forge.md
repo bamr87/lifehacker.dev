@@ -22,7 +22,6 @@ difficulty, XP, class, the PRs + commit hashes, and a real "what you learn." Nam
 
 ## Hard rules
 - **Read-only on lifehacker.dev.** Never edit this repo, never merge.
-- **Never invent a PR number or commit hash** — every reference comes from
-  `collect_merged.rb`. The it-journey issue is a PROPOSAL a human accepts or declines.
+- **Never invent a PR number or commit hash** — every reference comes from `collect_merged.rb`. The it-journey issue is a PROPOSAL a human accepts or declines.
 - ONE issue per run. If an open quest already covers this window, update it instead of
 duplicating; if there's no substantial new build, file nothing. If you can't file cross-repo (no it-journey token), print the issue body to the log.

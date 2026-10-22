@@ -184,24 +184,20 @@ A  "weekly report.md"
 
 `fzf -m` returns many lines, and the `act` on the end takes many arguments. How you bridge the two depends on one question — *can an item contain a space?*
 
-- **No** (PIDs, branch names): leave the result **unquoted** and let
-  word-splitting do the work. `kill $pids`, `git branch -D $branches`.
+- **No** (PIDs, branch names): leave the result **unquoted** and let word-splitting do the work. `kill $pids`, `git branch -D $branches`.
 - **Yes** (filenames, anything user-named): word-splitting is a bug. Use a
 **NUL-clean array** — `ls-files -z` → `fzf --read0 --print0` → `readarray -d ''` → `"${arr[@]}"`.
 
 ## When this goes wrong
 
-- **`fkill -m` kills nothing / errors on a name.** You quoted `$pids`, so `kill`
-  got one newline-stuffed argument. Drop the quotes: `kill $pids`.
+- **`fkill -m` kills nothing / errors on a name.** You quoted `$pids`, so `kill` got one newline-stuffed argument. Drop the quotes: `kill $pids`.
 - **`fbrd` says `branch ... not found`.** The `sed` didn't strip the `* `
 marker, so a `* master` with the star slipped through. Confirm the `sed 's/^[* ] //'` is there.
-- **`fadd` throws `pathspec 'weekly' did not match`.** You unquoted a file list
-  and a filename had a space. Switch to the array form above.
+- **`fadd` throws `pathspec 'weekly' did not match`.** You unquoted a file list and a filename had a space. Switch to the array form above.
 - **`fadd` throws `pathspec '"weekly report.md"' did not match` (with quotes in
 the error).** You sourced the list from `git status --porcelain`, which quotes spaced paths. Use `git ls-files ... -z` instead.
 - **`fadd` errors with `readarray: -d: invalid option`.** Your bash predates
 4.4 (macOS still ships 3.2, where `readarray -d` doesn't exist). `fkill` and `fbrd` need nothing newer and still work; for `fadd`, install a current bash (`brew install bash`) and run the function under that.
-- **Nothing happens at all.** Empty pick, guard did its job. That's the guard
-  working, not failing.
+- **Nothing happens at all.** Empty pick, guard did its job. That's the guard working, not failing.
 
 Three functions, one decision per function. Paste them in, open a new shell, and the next time you're about to `kill` four PIDs by hand or `git branch -D` a week's worth of spikes, you'll `TAB`, `TAB`, `TAB`, `Enter` instead.

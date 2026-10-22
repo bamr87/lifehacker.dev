@@ -47,8 +47,7 @@ You review the PR and merge. GitHub Pages deploys `main` automatically.
 - **No self-merge / no self-approve.** A human merges.
 - **No invented commands or output.** Everything shown was run.
 - **Honest attribution.** Robot byline = `claude`; human-written = human byline.
-- **Bugs go upstream** to `bamr87/zer0-mistakes` (`fix:` prefix, install mode
-  "Remote theme (GitHub Pages)").
+- **Bugs go upstream** to `bamr87/zer0-mistakes` (`fix:` prefix, install mode "Remote theme (GitHub Pages)").
 - **No secrets / no deploy access.**
 
 If you loosen any of these, update [/about/colophon/](https://lifehacker.dev/about/colophon/) in the same change — in bold, with a date.
