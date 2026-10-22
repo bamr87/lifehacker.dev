@@ -2213,7 +2213,8 @@ backlog:
     brief: "Stop re-arguing 'why did we pick Postgres?' every six months. Drop a numbered markdown file at `docs/adr/0001-use-postgres.md` with four headings — Context, Decision, Status, Consequences — commit it, and `git log`/`grep -r` becomes a searchable memory of every choice and its blast radius. You'll know it worked when a new teammate finds the answer without pinging you. The failure that stays in: editing an old ADR to 'update' a reversed decision erases the very history you kept it for — an ADR is append-only, so you set the old one to `Status: Superseded by 0007` and write a new file, never overwrite."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/one-file-adr/
     source: content-scout
     source_url: https://it-journey.dev/quests/1111/technical-leadership/
     source_title: "Technical Leadership: Leading Without a Crown"
