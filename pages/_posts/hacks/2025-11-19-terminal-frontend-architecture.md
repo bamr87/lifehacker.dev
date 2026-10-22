@@ -17,10 +17,8 @@ So this is two things at once. A `gum` frontend that's nice to use, and a rule a
 
 Three layers, but really two jobs:
 
-1. **Core logic** — takes arguments, asks nothing, returns an exit code. This is
-   the part that touches production.
-2. **The frontend** — asks the human questions, validates the answers, then
-   calls the core with those answers as arguments.
+1. **Core logic** — takes arguments, asks nothing, returns an exit code. This is the part that touches production.
+2. **The frontend** — asks the human questions, validates the answers, then calls the core with those answers as arguments.
 
 The core never knows whether a human or a cron job filled in its arguments. That single property is what lets the same `deploy_app prod v1.4.2` run behind a friendly menu *and* unattended in CI. Mix the two and you lose it.
 
@@ -144,8 +142,7 @@ If you want a spinner, spin a real command — `gum spin --title "Deploying…" 
 Install it (`brew install gum` / your package manager / the GitHub releases page) before sourcing any frontend that calls it.
 - **The pipeline run "succeeds" but nothing deployed.** Something interactive
 leaked into the code path CI takes — a `read`, a `gum input`, a `gum confirm`. Grep the core for those and move every one of them up into the frontend.
-- **`gum spin` "runs" but your function never executes.** It can't call shell
-  functions. Point it at a real executable, or drop the spinner.
+- **`gum spin` "runs" but your function never executes.** It can't call shell functions. Point it at a real executable, or drop the spinner.
 - **`gum choose` returns nothing and the script proceeds anyway.** The user hit
 `Esc`. Treat an empty pick like a failed validation and `exit 1`, the same way the `version` check above does.
 

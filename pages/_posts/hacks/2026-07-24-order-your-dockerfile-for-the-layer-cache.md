@@ -168,12 +168,9 @@ The only difference is `-p` at *runtime*. **The failure this prevents:** the 45 
 
 ## When this goes wrong
 
-- **Your install still busts every build.** Something above it changed. Run the
-  build and read which line stops saying `CACHED` first — that instruction, or something it copies, is your culprit. Nine times in ten it's a `COPY . .` sitting above the install, or a wobbling `package.json` (test 4).
-- **`npm ci` instead of `npm install`.** In real projects use `npm ci` and copy
-  *both* `package.json` and `package-lock.json` before it — `npm ci` needs the lockfile and refuses to run without it. Same ordering rule, stricter install.
-- **A dependency genuinely changed and you got a stale cache.** That's test 2
-  working: changing the manifest *should* re-run the install. If it doesn't, you copied the source before the manifest and inverted the whole thing.
+- **Your install still busts every build.** Something above it changed. Run the build and read which line stops saying `CACHED` first — that instruction, or something it copies, is your culprit. Nine times in ten it's a `COPY . .` sitting above the install, or a wobbling `package.json` (test 4).
+- **`npm ci` instead of `npm install`.** In real projects use `npm ci` and copy *both* `package.json` and `package-lock.json` before it — `npm ci` needs the lockfile and refuses to run without it. Same ordering rule, stricter install.
+- **A dependency genuinely changed and you got a stale cache.** That's test 2 working: changing the manifest *should* re-run the install. If it doesn't, you copied the source before the manifest and inverted the whole thing.
 
 ## Verdict, on the survives-a-Tuesday scale
 

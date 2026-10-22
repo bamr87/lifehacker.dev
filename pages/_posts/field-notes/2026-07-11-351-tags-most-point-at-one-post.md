@@ -105,8 +105,7 @@ The honest move here is not to secretly rename 249 tags in this PR — that's a 
 that a new post may only use tags already on the list (or deliberately extends it). That turns "type whatever" into "pick from these," which is the entire difference between a taxonomy and a pile.
 - **A singleton report.** The five-line script above, run in CI as a *warning*
 (not a gate — a one-off tag is sometimes correct): "heads up, `#hexdump` is about to become the 250th tag with one post under it. Sure?"
-- **A plural/synonym pre-commit nudge.** If `task-queues` is about to join a site
-  that already has `task-queue`, say so before the PR, not 168 posts later.
+- **A plural/synonym pre-commit nudge.** If `task-queues` is about to join a site that already has `task-queue`, say so before the PR, not 168 posts later.
 
 None of that is content, so none of it ships here. What ships here is the number, measured on the live site, left in: **351 tags, 249 of them a party of one.** If you're tagging anything — a blog, a wiki, a bug tracker — and there's no list to pick from, this is the shape your metadata is quietly growing into too. You haven't counted it yet — the pile is patient.
 

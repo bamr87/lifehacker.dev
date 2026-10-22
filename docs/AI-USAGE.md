@@ -1,19 +1,18 @@
 # AI Usage Metering — every token, every dollar, every PR
 
+> How every model call in the repo is metered — what the cost numbers mean, how records flow from capture to the public ledger, the audit checks that keep metering wired, and its known gaps.
+
 lifehacker.dev is built by AI agents, and AI effort is measured in tokens. This document is the design reference for the metering system: how every model call in the repo gets captured, attributed, published, and audited. The public face is [/docs/ai-usage/](https://lifehacker.dev/docs/ai-usage/); the committed snapshot is [`AI_USAGE.md`](../AI_USAGE.md) at the repo root.
 
 ## Goals
 
-1. **Comprehensive** — every AI integration point is metered. Nothing spends
-   tokens off the books.
+1. **Comprehensive** — every AI integration point is metered. Nothing spends tokens off the books.
 2. **Attributed** — a pull request knows what it cost: the run that *created*
 it, plus every review, auto-fix, brand adjudication, and check that ran on it afterward.
-3. **Transparent** — per-run step summaries, a per-PR sticky comment, a
-   committed ledger, and a public dashboard page.
+3. **Transparent** — per-run step summaries, a per-PR sticky comment, a committed ledger, and a public dashboard page.
 4. **OAuth-first** — every integration point authenticates with Claude Code
 subscription auth (`CLAUDE_CODE_OAUTH_TOKEN`) by default. When the OAuth token exists, `run.sh` strips `ANTHROPIC_API_KEY` from the CLI's environment so metered billing can't happen by accident.
-5. **Self-enforcing** — `scripts/devops/audit.rb` fails CI when metering is
-   unwired, so the system can't silently rot.
+5. **Self-enforcing** — `scripts/devops/audit.rb` fails CI when metering is unwired, so the system can't silently rot.
 
 ## Cost semantics (read this before quoting numbers)
 
@@ -78,33 +77,28 @@ Artifacts expire (30 days); the ledger doesn't. The daily sweep lists `ai-usage-
 - the `claude-run` composite publishes records (`usage_report`);
 - any workflow using `claude-code-action` or calling `run.sh` directly carries
 a `usage_report` step — **this is the regeneration alarm**: gitfactory overwrites its workflows from the blueprint, and a regenerated file without the metering steps turns the pipeline red instead of going quietly unmetered;
-- `ai-usage.yml` is gated by `AI_USAGE_ENABLED` (the standard autonomy-gate
-  check).
+- `ai-usage.yml` is gated by `AI_USAGE_ENABLED` (the standard autonomy-gate check).
 
 The E2E simulation (`scripts/sim/simulate.rb`) drives the real capture → ledger → summary code with fixtures: reported vs estimated cost, ingest idempotency, and the creation/downstream PR split are contract-tested on every pipeline change.
 
 ## Turning it on
 
-1. Metering itself is always on — capture + step summaries + artifacts + PR
-   comments need no flag (they're observations, not actions).
+1. Metering itself is always on — capture + step summaries + artifacts + PR comments need no flag (they're observations, not actions).
 2. Set the repo variable **`AI_USAGE_ENABLED=true`** to arm the daily ledger
 sweep (or run `ai-usage.yml` manually with `apply` for a one-off, with a bigger `lookback_days` to backfill from surviving artifacts).
-3. Optional: `gh label create source/ai-usage-bot` happens automatically on
-   first apply.
+3. Optional: `gh label create source/ai-usage-bot` happens automatically on first apply.
 4. Auto-merge of ledger PRs rides the existing `AUTO_MERGE_ENABLED` switch.
 
 ## Known gaps (documented, not hidden)
 
-- **Crashed runs** — a run that dies before Claude Code emits its result
-  payload leaves no record (`status: "error"` covers failures that *finish*).
+- **Crashed runs** — a run that dies before Claude Code emits its result payload leaves no record (`status: "error"` covers failures that *finish*).
 - **Local runs** — skills invoked on a laptop go through the same `run.sh`
 capture, but records land in the local temp dir and nothing sweeps them; CI is the system of record.
 - **gitfactory regeneration** — regenerating the factory workflows drops the
 hand-added metering steps; the audit turns that into a red build with a pointer here. Re-add the two `📊` steps from either factory workflow.
 - **Fixer-line PR attribution** — `factory--issue-factory-2` opens PRs via
 `claude-code-action`, which doesn't write `pr-result.txt`; its spend is metered at workflow level but not attributed to the PR it opened.
-- **Comment race** — two AI jobs finishing simultaneously on one PR can lose a
-  comment update to the race; the ledger reconciles the truth nightly.
+- **Comment race** — two AI jobs finishing simultaneously on one PR can lose a comment update to the race; the ledger reconciles the truth nightly.
 - **Preview-image renderer** — still not a cost line by default. `scripts/preview/generate.mjs`
 (Trace Bloom) computes cover art locally with no model call and no third-party render API, so it bills nobody. The opt-in xAI Imagine path (`scripts/preview/xai.mjs`, `--provider xai`) is a paid raster call; it writes a `.prompt.json` sidecar as its paper trail and is never a fallback. See `docs/PREVIEW-IMAGES.md`.
 - **Preview illustrations** — the one preview cost, and a small one.

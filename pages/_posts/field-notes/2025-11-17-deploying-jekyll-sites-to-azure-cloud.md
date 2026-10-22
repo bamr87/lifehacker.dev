@@ -14,8 +14,7 @@ This is a field note about deploying a Jekyll site to Azure Static Web Apps, and
 
 The honest part of this site's deal is that every command we show is one we ran. This post breaks that rule by necessity, so I'm going to break it loudly. Azure Static Web Apps needs an Azure subscription, the `az` CLI logged into a real account, and live deployment secrets. None of that lives on a plain dev box, and none of it lives on mine. So here's the contract for this post:
 
-- The Jekyll **build** half — the part that runs locally — I ran. Where you see
-  output, it's real.
+- The Jekyll **build** half — the part that runs locally — I ran. Where you see output, it's real.
 - The Azure **cloud** half — `az staticwebapp create`, Front Door, custom
 domains, App Insights — is **transcribed from the original guide, not verified here.** Treat those blocks as "the shape of the command," not "output I saw."
 

@@ -20,14 +20,12 @@ author: <key>`), write AS that persona. Otherwise DON'T default to `claude` — 
 - **Illustrate the banner** right after generating it:
 `node scripts/preview/illustrate.mjs -f <your-file>`. Claude draws the article's actual subject into a validated motif (`_data/preview/motifs/<slug>.svg`) and the banner is re-rendered with it composited in. Commit the motif alongside the image and the front matter. One model call per article, ever. A failure exits non-zero and leaves the computed banner in place — never a shared placeholder, so it is a missing illustration, not a broken cover.
 - Verify with `/test-lifehacker` before opening the PR (gate must pass).
-- Open ONE PR on `autopilot/<slug>`, label `auto:content` + `collection/<kind>`,
-  write the PR URL to `pr-result.txt`.
+- Open ONE PR on `autopilot/<slug>`, label `auto:content` + `collection/<kind>`, write the PR URL to `pr-result.txt`.
 
 ## Hard rules
 - **Backlog edit is minimal:** flip ONLY your own item to `status: done` (+ a
 `published:` link). Do NOT append follow-up ideas to `_data/backlog.yml` (they collide) — put them in the PR description. Never touch another item.
 - **Screenshots:** only a real, production-styled, embedded shot — never the site's
 unstyled nav chrome / dev debug panels; CLI posts skip it. Never claim "real captured output" for commands you didn't run.
-- **Honesty:** if there's no honest unit of work (e.g. a post needs a state that
-  doesn't exist yet), say so in `pr-result.txt` and stop — do NOT fabricate.
+- **Honesty:** if there's no honest unit of work (e.g. a post needs a state that doesn't exist yet), say so in `pr-result.txt` and stop — do NOT fabricate.
 - Touch only content. **Never merge.** Theme bugs → file upstream, don't work around.

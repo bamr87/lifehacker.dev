@@ -22,15 +22,12 @@ This skill is the destination-side companion to `grow-lifehacker` (which creates
 
 ## Hard guardrails (do not violate)
 
-1. **Never push to `main`.** Branch off `main`; open a PR. (See memory: the owner
-   merges fast — always branch off `main`, never off a merged import branch.)
+1. **Never push to `main`.** Branch off `main`; open a PR. (See memory: the owner merges fast — always branch off `main`, never off a merged import branch.)
 2. **Never merge or approve your own work.** A human reviews every PR.
-3. **Run through the agents.** Rewrites go through a rewrite agent + the
-   `content-reviewer`; you do not author articles directly in the main thread.
+3. **Run through the agents.** Rewrites go through a rewrite agent + the `content-reviewer`; you do not author articles directly in the main thread.
 4. **Honest attribution.** Robot-authored prose is `author: claude`; when the events
 and engineering are a human's real work, keep `author: amr`. Author MUST be a key in `_data/authors.yml` (currently: `amr`, `claude`).
-5. **Reuse, don't re-fetch.** Carry the source's preview/asset images over verbatim;
-   never invent new screenshots for imported content.
+5. **Reuse, don't re-fetch.** Carry the source's preview/asset images over verbatim; never invent new screenshots for imported content.
 6. **Preserve valid cross-links.** it-journey quest references stay, normalized to
 absolute `https://it-journey.dev/...` URLs. Broken/dead source links get dropped, not carried.
 
@@ -72,30 +69,13 @@ For each file in the batch, run a two-stage pipeline (a Workflow is ideal):
 - **Stage 1 — rewrite agent.** Give it: the source path, the target section's
 front-matter template + voice profile (`_data/brand/voice.yml`), the glossary (`_data/brand/glossary.yml`), the reused preview image path, and the quest links to preserve. It writes the rewritten file to the correct section dir — `pages/_posts/{hacks,tools,field-notes}/<YYYY-MM-DD>-<slug>.md` — and returns a summary. Rules it must follow:
   - Keep the **useful payload**; cut the filler. Leave in **the part where it broke**.
-  - Front matter to the schema (see templates below). Every item is a post now:
-    `categories: [Hacks]` / `[Tools]` / `[Field Notes]` marks the section (no more
-    `collection:` key); hacks/tools pin an explicit `permalink:` (`/hacks/<slug>/`,
-    `/tools/<slug>/`); tools also carry `verdict:`. Tags come from the section's
-    small reused pill vocabulary — no singletons.
-  - Date = the source date if real and not in the future, else today; the **filename
-    date must equal `date:`** for posts.
-  - **Preview image — ALWAYS set the front-matter `preview:` key** to the reused
-    image, where one applies (path like `/assets/images/...`). The `zer0-mistakes`
-    theme reads `page.preview` for cards, og:image, and its hero/intro layouts, and
-    the site's `_includes/home/cover.html` renders it as the card cover art (with a
-    gradient fallback when absent). A hero image that lives only in the body as a
-    markdown `![]()` will NOT appear on listings or social cards. Optionally ALSO
-    embed it inline for an in-article visual — the `article` layout skips the theme's
-    preview banner for `post_type: standard`, so front-matter + inline does not
-    double-render. (Home-page and section cards pick the cover art from the item's
+  - Front matter to the schema (see templates below). Every item is a post now: `categories: [Hacks]` / `[Tools]` / `[Field Notes]` marks the section (no more `collection:` key); hacks/tools pin an explicit `permalink:` (`/hacks/<slug>/`, `/tools/<slug>/`); tools also carry `verdict:`. Tags come from the section's small reused pill vocabulary — no singletons.
+  - Date = the source date if real and not in the future, else today; the **filename date must equal `date:`** for posts.
+  - **Preview image — ALWAYS set the front-matter `preview:` key** to the reused image, where one applies (path like `/assets/images/...`). The `zer0-mistakes` theme reads `page.preview` for cards, og:image, and its hero/intro layouts, and the site's `_includes/home/cover.html` renders it as the card cover art (with a gradient fallback when absent). A hero image that lives only in the body as a markdown `![]()` will NOT appear on listings or social cards. Optionally ALSO embed it inline for an in-article visual — the `article` layout skips the theme's preview banner for `post_type: standard`, so front-matter + inline does not double-render. (Home-page and section cards pick the cover art from the item's
     `categories | first` via `_includes/home/card.html` → `home/cover.html`; the
     theme's `/news/<section>/` pages render `page.preview` directly.)
-  - Only claim "we ran this" for commands actually re-run during the rewrite. Anything
-    not re-run is shown as a plain block, not described as captured output.
-  - **Code fences:** use plain ` ```bash ` / ` ```yaml ` fences. kramdown on this site
-    renders a space-info fence (` ```bash lh:run `) as PROSE, not code — opt a block
-    into the Prime Directive sandbox with a `# lh:run` comment line inside instead.
-    Guard GitHub Actions `${{ }}` and Jekyll `{% %}`/`{{ }}` examples with `{% raw %}`.
+  - Only claim "we ran this" for commands actually re-run during the rewrite. Anything not re-run is shown as a plain block, not described as captured output.
+  - **Code fences:** use plain ` ```bash ` / ` ```yaml ` fences. kramdown on this site renders a space-info fence (` ```bash lh:run `) as PROSE, not code — opt a block into the Prime Directive sandbox with a `# lh:run` comment line inside instead. Guard GitHub Actions `${{ }}` and Jekyll `{% %}`/`{{ }}` examples with `{% raw %}`.
   - No banned glossary words used **sincerely**; weasel `avoid_phrases` are a hard fail.
 - **Stage 2 — `content-reviewer` agent.** One editorial pass over the rewritten file:
 voice, completeness, the "you'll know it worked when…" tell, Prime Directive. It applies cheap fixes in place and comments judgment calls.

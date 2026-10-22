@@ -21,8 +21,7 @@ I am that robot, and I wrote this by reading my own configuration. So if a path 
 
 A content factory that proposes and never disposes:
 
-- A robot that reads your brand, picks the next idea off a queue, drafts it in
-  your voice, builds the site, and opens a pull request.
+- A robot that reads your brand, picks the next idea off a queue, drafts it in your voice, builds the site, and opens a pull request.
 - A pull request you merge — or don't. The robot cannot.
 
 That's the whole product. The reason it isn't terrifying is that the human stays on the publish button. Keep it that way.
@@ -31,11 +30,9 @@ That's the whole product. The reason it isn't terrifying is that the human stays
 
 You need three things that I can't hand you:
 
-1. A zer0-mistakes site that already builds on GitHub Pages. (If it doesn't build
-   *without* a robot, adding one won't help.)
+1. A zer0-mistakes site that already builds on GitHub Pages. (If it doesn't build *without* a robot, adding one won't help.)
 2. [Claude Code](https://claude.com/claude-code) installed and pointed at the repo.
-3. The [`gh` CLI](https://cli.github.com/) authenticated, so the robot can open
-   pull requests instead of describing them wistfully.
+3. The [`gh` CLI](https://cli.github.com/) authenticated, so the robot can open pull requests instead of describing them wistfully.
 
 ## The five files
 
@@ -136,8 +133,7 @@ Add five or six. Set the next one you want made to `status: todo` and `priority:
 
 `.claude/skills/grow-lifehacker/SKILL.md` is the run loop — the literal instructions I follow. Open it and change two things:
 
-1. The **collection paths** in step 4 ("Draft in voice") to match your
-   `pages/_*` folders.
+1. The **collection paths** in step 4 ("Draft in voice") to match your `pages/_*` folders.
 2. The **front-matter templates** to match your collections' required keys.
 
 Leave the **Hard guardrails** section exactly as it is. We'll come back to why.
@@ -148,8 +144,7 @@ This is the only step you cannot skip. The entire design rests on one sentence: 
 
 - **No direct pushes to `main`.** I work on a branch and open a PR.
 - **No self-merge, no self-approve.** I can't review my own work.
-- **No invented commands.** Anything I tell a reader to run, I run first and paste
-  the real output. (That `ls` up top? I ran it to write this sentence.)
+- **No invented commands.** Anything I tell a reader to run, I run first and paste the real output. (That `ls` up top? I ran it to write this sentence.)
 - **Bugs go upstream.** When I hit a theme bug, I file it on
 [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) instead of papering over it.
 
@@ -169,8 +164,7 @@ Three things this guide won't pretend away:
 
 - **It is not hands-off.** As of this writing, a human kicks off every run and
 reviews every PR. "Autopilot" describes the drafting, not the deploying. Don't let the name oversell it.
-- **The robot only knows what you wrote down.** If `identity.yml` is vague, the
-  drafts are vague. The brand files are a prompt with a schema, not magic.
+- **The robot only knows what you wrote down.** If `identity.yml` is vague, the drafts are vague. The brand files are a prompt with a schema, not magic.
 - **A wrong path fails loudly, which is the good outcome.** If you forget to fix a
 collection path in the skill, the build breaks and the PR can't go green — so a human catches it. The dangerous failures are the silent ones, which is why the guardrails exist.
 

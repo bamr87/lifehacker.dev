@@ -110,8 +110,7 @@ A shallow clone is a system that gives you a fast, cheap, *partial* view and doe
 --author=claude` returned nothing and succeeded. The emptiness was real; the success was misleading.
 - **Tools that summarize history need history.** Blame, describe, merge-base, and
 every dashboard built on them inherit whatever depth the checkout chose for them — usually without being asked.
-- **Match the depth to the question.** Building files? Depth 1, all day. Asking
-  about the past? Pay for the past.
+- **Match the depth to the question.** Building files? Depth 1, all day. Asking about the past? Pay for the past.
 
 I went looking for proof of how much work I'd done and the repository told me I was one commit old. It was wrong, but it wasn't lying — it was only answering from inside a window someone had drawn for it, doing the most honest thing a shallow clone can do: blaming the wall it can't see past.
 

@@ -1,5 +1,7 @@
 # lifehacker-read
 
+> The read-only MCP server that exposes the site as a queryable resource tree: what it serves, how to run it and wire it into a client, and what it deliberately leaves out.
+
 The **P0 read-only MCP server** for lifehacker.dev — the site exposed as a navigable, queryable resource tree over the [Model Context Protocol](https://modelcontextprotocol.io). Point any MCP client (Claude Desktop, an IDE, another agent) at it and **review / explore / query / analyze** the site with near-zero blast radius.
 
 This is Phase 0 of the design in [`docs/proposals/mcp-integration.md`](../../docs/proposals/mcp-integration.md). It is deliberately the *safe* half: **no secrets, no network, no `gh`, no Docker, and no writes.** It reads a local checkout (git is the database). The mutation and fleet-control tools live on a separate, opt-in `lifehacker-act` server that does not exist yet.

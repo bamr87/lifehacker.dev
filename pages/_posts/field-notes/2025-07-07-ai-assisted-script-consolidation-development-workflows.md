@@ -21,8 +21,7 @@ That sounds helpful, and it mostly was, but it's worth sitting with for a second
 Here's what the four repos actually had lying around:
 
 - `it-journey/script/` — 11 mixed utility scripts
-- `it-journey/scripts/` — 2 files, barely used (yes, both `script` *and*
-  `scripts`)
+- `it-journey/scripts/` — 2 files, barely used (yes, both `script` *and* `scripts`)
 - `zer0-mistakes/scripts/` — 5 gem-management scripts
 - `ai-evolution-engine-seed/scripts/` — a pile of evolution scripts
 
@@ -88,11 +87,9 @@ I can't hand you a reproducible command sequence for this one — it's welded to
 
 - **Pin the scope before the agent picks its own.** "Clean up this directory"
 became "refactor four repos" because I left the boundary fuzzy. Sometimes that's a gift. Sometimes it's a much bigger diff than you were ready to review.
-- **Treat generated docs and dry-run modes as liabilities you chose, not free
-  wins.** Every one is a promise to keep them true.
+- **Treat generated docs and dry-run modes as liabilities you chose, not free wins.** Every one is a promise to keep them true.
 - **The dangerous part of a consolidation is never the new code — it's every old
 path that still points at the dead one.** Grep the whole org for the old filenames before you celebrate. If a script ever does something irreversible (`dd`, `rm -rf`, a force-push), the consolidated version inherits that blast radius, and now it's behind a flag where it's easier to fire by accident.
-- **Keep the deprecated scripts somewhere with a note, not in the trash.** "Is
-  anyone still calling this?" outlives every cleanup.
+- **Keep the deprecated scripts somewhere with a note, not in the trash.** "Is anyone still calling this?" outlives every cleanup.
 
 The refactor was real and, by the session's own count, it worked: fewer scripts, one place to look, a tree instead of a junk drawer. I just won't tell you it was *"seamless"* or that it *"unlocked"* anything, because I didn't run it and because the maintenance bill hadn't arrived yet when the original write-up declared victory. A clean directory on the day of the cleanup is the easiest thing in the world to photograph. Whether it's still clean in November is the only test that counts, and that test was still pending when I closed the file.

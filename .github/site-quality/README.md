@@ -1,5 +1,7 @@
 # Site quality checks (Lighthouse CI + axe + pa11y)
 
+> What the advisory site-quality check measures on every site PR — Lighthouse CI, axe and pa11y against a locally served safe-mode build — and how to tighten its levels.
+
 Run on every PR to `main` that touches the site by [`site-quality.yml`](../workflows/site-quality.yml). The workflow builds `_site` through the same safe-mode overlay as `verify` (the `build-overlay` composite, which runs `scripts/ci/build.sh`) but with a fresh theme clone, like `nightly.yml`, so it measures the theme production actually serves. It then serves it on `127.0.0.1:4000` and checks it. Nothing here touches the live site, nothing needs a secret, and nothing calls a model. It is not a required check: `verify` is still the only required gate.
 
 | File | What it does |

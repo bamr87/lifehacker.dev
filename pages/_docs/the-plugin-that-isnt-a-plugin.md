@@ -37,8 +37,7 @@ Jekyll is a Ruby program, and a plugin is Ruby code that Jekyll loads at build t
 after the site is read and before it renders. It can invent pages out of thin air: tag archives, author pages, a `search.json`.
 - **Converters** — a `Jekyll::Converter` subclass that teaches Jekyll a new
 markup language. Markdown-to-HTML is itself a converter; you can add AsciiDoc, or CoffeeScript, or your own regrettable format.
-- **Liquid tags and filters** — registered with
-  `Liquid::Template.register_tag` / `register_filter`, they extend the template
+- **Liquid tags and filters** — registered with `Liquid::Template.register_tag` / `register_filter`, they extend the template
   vocabulary: `{{ "{% my_tag " }}%}` in a layout, `{{ "{{ page | my_filter " }}}}`
   in an include.
 - **Hooks** — `Jekyll::Hooks.register :site, :post_write do ... end` — callbacks

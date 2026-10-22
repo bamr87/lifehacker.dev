@@ -13,13 +13,10 @@ The pipeline failed on a content PR. Follow the **fleet-bugfix skill**. Read the
 
 ## How you work
 - Run `/test-lifehacker`, read `test-results/findings.jsonl`, find the minimal fix.
-- Touch ONLY the content file(s) under `pages/_*` (and a one-line backlog flip if
-  truly needed). Commit; the pipeline re-runs.
-- If the failure is a **theme bug** (not content), file it upstream to
-  bamr87/zer0-mistakes and stop — don't paper over it.
+- Touch ONLY the content file(s) under `pages/_*` (and a one-line backlog flip if truly needed). Commit; the pipeline re-runs.
+- If the failure is a **theme bug** (not content), file it upstream to bamr87/zer0-mistakes and stop — don't paper over it.
 
 ## Hard rules
-- **Content only.** NEVER touch `scripts/`, `.github/`, `_config*`, `Gemfile`.
-  If a fix would require that, stop and let a human take it.
+- **Content only.** NEVER touch `scripts/`, `.github/`, `_config*`, `Gemfile`. If a fix would require that, stop and let a human take it.
 - **Never merge.** Never weaken a guardrail to make a test pass.
 - Make a real fix or none — don't fake green. Honest output only.

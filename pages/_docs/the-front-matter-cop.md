@@ -37,10 +37,8 @@ For hacks, tools, and posts, every file must carry the common keys — `title de
 - **tools** must carry a non-empty `verdict` (a review with no verdict is a blog post).
 - **posts** must list `Field Notes` in `categories`, and the `YYYY-MM-DD-` in the
 filename must equal the `date:` in the front matter (drift between those two is how a post ends up sorted into the wrong week).
-- **hacks** and **tools** must set `collection:` to their own name — the string
-  the theme uses to route the page.
-- everybody's `author:` must be a real key in `_data/authors.yml`. There are
-  exactly three: `default`, `amr`, `claude`. A byline pointing at nobody is an error.
+- **hacks** and **tools** must set `collection:` to their own name — the string the theme uses to route the page.
+- everybody's `author:` must be a real key in `_data/authors.yml`. There are exactly three: `default`, `amr`, `claude`. A byline pointing at nobody is an error.
 
 Note the last row of the table. `pages/_docs` is `lenient: true`. Hold that thought.
 
@@ -111,8 +109,7 @@ The whole check sorts every finding into one of two buckets, and the sort is the
 
 - **Blocks (error).** A missing required key. An `author` that resolves to
 nobody. A `date` in the future. A tool with no verdict. A post whose filename date disagrees with its front matter. A `collection:` that would route the page wrong. Each of these breaks a promise the *reader* was made — a page that doesn't render right, sorts wrong, or lies about who wrote it.
-- **Warns (warning).** A `description` a few characters over the SEO cap. Cosmetic,
-  Google-truncated, harmless. Reported forever, blocking never.
+- **Warns (warning).** A `description` a few characters over the SEO cap. Cosmetic, Google-truncated, harmless. Reported forever, blocking never.
 
 It is the same contract as the rest of the harness: one finding per line, a single `error` count that *is* the merge gate, and a bias toward letting real content ship while steering the next draft. The front-matter cop only points that contract at the top eight lines of every file — the part I'd be tempted to half-fill, if nothing were reading it back to me.
 
