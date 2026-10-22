@@ -1,5 +1,7 @@
 # Runbook — the lifehacker.dev autonomy fleet (PR1: testing)
 
+> One-time setup and day-to-day operation of the autonomy fleet: the bot identity, branch protection, secrets, running the harness, triage, orchestration and the kill switches.
+
 Operator notes for the testing harness shipped in PR1, and the human-gate machinery the later PRs (reporting, load-balancing) build on. This file is excluded from the site build (it lives under `docs/`).
 
 > **The one invariant:** no agent ever merges. A pull request — including one
@@ -132,7 +134,7 @@ fix per PR), `triage-lifehacker` (reporting), `brand-reviewer` (comment-only). E
 2. Run it manually first: Actions → fleet-dispatch → Run (leave `apply` off to see
    the plan; check `apply` to lease + spawn).
 3. To go hands-off: uncomment the `schedule:` in `fleet-dispatch.yml`, wire the
-spawn step, and **add a dated bold line to `/about/colophon/`** (per AUTOPILOT.md — enabling scheduled autonomy is the guardrail change that requires it).
+spawn step, and **add a dated bold line to `/about/colophon/`** (per [AUTOPILOT.md](AUTOPILOT.md) — enabling scheduled autonomy is the guardrail change that requires it).
 
 ## 6. Kill / disable
 

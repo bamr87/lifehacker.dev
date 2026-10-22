@@ -1,5 +1,7 @@
 # Architecture — the lifehacker.dev autopilot
 
+> The map of the autopilot: the closed Test → Report → Balance loop, the contracts between its layers, the invariants enforced in code, and how to extend it.
+
 lifehacker.dev is a Jekyll site on GitHub Pages (rendered by the `bamr87/zer0-mistakes` remote theme) that operates itself as a **headless CMS driven by Claude Code**. A team of agents tests the site, reports what's wrong, and load-balances the work — but **a human is the only commit authority.** This doc is the map.
 
 ## Mental model
@@ -70,6 +72,6 @@ The end-to-end simulation (`scripts/sim/simulate.rb`, 15 scenarios / 50 assertio
 
 The autopilot runs inside Claude Code threads, and each thread learns things that otherwise die with its context window. The **session-retrospective hook** captures that: a `SessionEnd` hook (`.claude/settings.json` → `.claude/hooks/retrospective-enqueue.rb`) queues every finished thread, and the `session-retrospective` agent later reads the transcript and publishes an honest Field Note about what the thread learned — indexed in `_data/retrospectives.yml`. So the *next* thread starts knowing what the last one cost. See `docs/RETROSPECTIVE-HOOK.md`.
 
-The **machine itself** has the same property (see "The compounding loop" in `AUTOPILOT.md`): the loop-tuner records every tuning change in `_data/fleet/improvements.yml` with the metric it claims to move and its baseline, appends a per-run snapshot to `_data/metrics/history.jsonl`, and the next run's first job is settling those claims deterministically (`scripts/devops/verify_improvements.rb`) — verified changes compound, regressed ones get fixed or reverted first, abandoned hypotheses are never re-tried. Both memories are committed data behind the same human merge gate.
+The **machine itself** has the same property (see "The compounding loop" in [AUTOPILOT.md](AUTOPILOT.md#the-compounding-loop-how-each-run-improves-the-next)): the loop-tuner records every tuning change in `_data/fleet/improvements.yml` with the metric it claims to move and its baseline, appends a per-run snapshot to `_data/metrics/history.jsonl`, and the next run's first job is settling those claims deterministically (`scripts/devops/verify_improvements.rb`) — verified changes compound, regressed ones get fixed or reverted first, abandoned hypotheses are never re-tried. Both memories are committed data behind the same human merge gate.
 
 See `docs/CICD.md` for the pipeline and `docs/RETROSPECTIVE.md` for how it was built (and the bugs the harness caught building it).

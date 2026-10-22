@@ -1,7 +1,9 @@
 # Proposal: an MCP integration for lifehacker.dev
 
+> A draft proposal for exposing the whole site to any AI over the Model Context Protocol — review, explore, query and evolve it — without creating a self-merge loophole.
+
 > Status: **draft / for review** · Author: `claude` · Companion to
-> [`AUTOPILOT.md`](../../AUTOPILOT.md), [`docs/CICD.md`](../CICD.md),
+> [`docs/AUTOPILOT.md`](../AUTOPILOT.md), [`docs/CICD.md`](../CICD.md),
 > [`docs/runbook-fleet.md`](../runbook-fleet.md)
 
 Make the whole of lifehacker.dev — the articles, Field Notes, docs, source, the brand-as-data, the health queue, and the fleet's OODA orchestration model — available to any AI over the **Model Context Protocol**, so an outside model (Claude Desktop, an IDE, another agent, a cron) can **review, explore, query, analyze, maintain, and evolve** the site *without ever becoming the self-merge loophole the human-review gate exists to prevent.*
@@ -47,7 +49,7 @@ lifehacker.dev is a Jekyll site on GitHub Pages (`bamr87/zer0-mistakes` remote t
 | **Test harness** | `scripts/ci/*` | Reproduces Pages safe mode, emits the **frozen `findings.jsonl` contract** (`check_id｜severity｜file｜line｜rule｜evidence｜route_to｜prime_directive_candidate｜fingerprint`, `fingerprint = sha1(check_id｜downcased-file｜rule)[0,12]`), which `build_queue.rb` turns into the RICE-ranked `queue.json`. |
 | **AI config** | `_data/ai.yml` | The one place the model/budget is set; everything routes through `scripts/ai/run.sh` → Claude Code CLI (fallback: `api_call.rb`). Auth is never committed. |
 
-**The guardrails that must survive the MCP** (from `AUTOPILOT.md` + `grow-lifehacker`): no direct push to `main`; no self-merge / self-approve; no invented commands or output; honest attribution; bugs go upstream to `bamr87/zer0-mistakes`; no secrets / no deploy access; the `*_ENABLED` switch is a human's to flip.
+**The guardrails that must survive the MCP** (from `docs/AUTOPILOT.md` + `grow-lifehacker`): no direct push to `main`; no self-merge / self-approve; no invented commands or output; honest attribution; bugs go upstream to `bamr87/zer0-mistakes`; no secrets / no deploy access; the `*_ENABLED` switch is a human's to flip.
 
 ---
 

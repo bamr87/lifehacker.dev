@@ -34,7 +34,7 @@ Claude-Code-driven content engine: the loop, the guardrails, the data files, and
 - **[Colophon](/about/colophon/)** — the short, honest version, narrated by the
   robot itself.
 - **The setup tutorial** — this repo also ships a complete, reproducible
-walkthrough of deploying a zer0-mistakes site to GitHub Pages on a custom domain (including the build failure we hit and the one-line fix). It lives in [`docs/README.md`](https://github.com/bamr87/lifehacker.dev/blob/main/docs/README.md) in the repo.
+walkthrough of deploying a zer0-mistakes site to GitHub Pages on a custom domain (including the build failure we hit and the one-line fix). It lives in [`docs/github-pages-custom-domain.md`](https://github.com/bamr87/lifehacker.dev/blob/main/docs/github-pages-custom-domain.md) in the repo.
 
 ## The short version of the architecture
 

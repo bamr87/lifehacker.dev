@@ -1,5 +1,7 @@
 # Deploy a Jekyll site to GitHub Pages on a custom domain (lifehacker.dev)
 
+> A reproducible walkthrough for publishing a zer0-mistakes Jekyll site on GitHub Pages at your own apex domain — scaffold, push, DNS, the first-build `include_cached` fix and enforced HTTPS.
+
 This is a complete, reproducible walkthrough for publishing a Jekyll site to GitHub Pages at your own apex domain — `lifehacker.dev` — using the [`zer0-mistakes`](https://github.com/bamr87/zer0-mistakes) remote theme, DNS managed in Squarespace, and HTTPS via GitHub's free automatic certificate. You write three small files, let GitHub Pages build the site for you (no GitHub Actions workflow to maintain), point four DNS records at GitHub, and finish with a live, HTTPS-only site. It also documents a real build failure we hit and the one-line fix, because that's the part most guides skip.
 
 > **Before you begin: substitute your own values.** This walkthrough uses one specific identity and machine throughout. Wherever you see these literals, swap in your own:

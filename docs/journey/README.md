@@ -7,7 +7,7 @@
 
 ## Where we started
 
-A bare [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) remote-theme starter: `_config.yml`, `Gemfile`, `index.md`, `CNAME`, `.gitignore`, plus the setup tutorial in [`docs/README.md`](../README.md). The home page rendered the theme's onboarding wizard because `site_configured` was `false` and the site had no `_data/` of its own.
+A bare [zer0-mistakes](https://github.com/bamr87/zer0-mistakes) remote-theme starter: `_config.yml`, `Gemfile`, `index.md`, `CNAME`, `.gitignore`, plus the setup tutorial in [`docs/github-pages-custom-domain.md`](../github-pages-custom-domain.md). The home page rendered the theme's onboarding wizard because `site_configured` was `false` and the site had no `_data/` of its own.
 
 ![Before — the welcome wizard](screenshots/00-before-welcome-wizard.png)
 
