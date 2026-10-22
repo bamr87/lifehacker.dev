@@ -1,54 +1,82 @@
 # =============================================================================
-# features/features.yml — THE FEATURE INDEX for lifehacker.dev
+# features/features.yml — THE FEATURE INDEX for bamr87/lifehacker.dev
 # =============================================================================
-# kit: verify v0.1.0 (seeded from bamr87/bamr87 templates/verify/)
+# kit: verify v0.1.0 · governance v0.1.0 (bamr87/bamr87 templates/verify/, templates/governance/)
 #
-# One entry per user-facing capability. This file is what an AI agent reads to
-# know what the product DOES, where it lives, how it is documented, which tests
-# and user scenarios prove it, and what evidence exists that it works. The hub
-# aggregates every repo's copy into its fleet features index
-# (bamr87/bamr87 _data/features_index.yml → /features/) and grades coverage:
-#
-#   covered    ≥1 of `tests` / `scenarios` exists on disk
-#   evidenced  ≥1 `evidence` bundle exists (README + screenshots + report)
-#   verified   `verified.date` is set (by an agent, a human, or CI)
-#
-# Schema: features/v1 — a strict SUPERSET of the shape zer0-mistakes,
-# it-journey, and barodybroject already use, so legacy files validate as-is.
-# Validate: python3 <hub>/tools/features_index.py check .
-#
-# Per feature:
-#   id            required  STABLE id, `^[A-Z0-9]+-[0-9]+$` (prefix per repo, e.g. ZER0-001)
-#   title         required  short name
-#   description   required  one or two sentences — what the user can do
-#   implemented   required  true|false (planned features are welcome — they show as gaps)
-#   surface       optional  ui | api | cli | docs | content | infra (default: ui when `link`
-#                           is a route starting with `/`, else infra)
-#   link          optional  the route (`/settings/`) or file that IS the feature
-#   docs          optional  where it is explained (path or URL)
-#   tags          optional  list
-#   date          optional  YYYY-MM-DD introduced
-#   provenance    optional  { introduced_in, pr, commit, issue }
-#   tests         optional  automated test files that pin it (paths)
-#   scenarios     optional  declarative user scenarios (verify/scenarios/*.yml)
-#   evidence      optional  evidence bundle dirs (test/evidence/<slug>/)
-#   screenshots   optional  direct image paths, when a bundle is overkill
-#   verified      optional  { date, by: agent|human|ci, run: <url> } — last verification
-#   deviations    optional  free text: why a MUST row is waived for this feature
+# One entry per user-facing capability, grounded in this repo's PRD, README and
+# code: what it does, where it lives (`link`), where it is explained (`docs`),
+# its `status` (shipped | partial | planned | deprecated | tbd) and the PRD
+# requirements it serves (`prd:`; TBD = not yet traced). Ids are STABLE: never
+# renumber or reuse one. The PRD's "Feature catalog" block is generated from
+# this file — edit here, then run:
+#   python3 <bamr87/bamr87>/tools/governance_lint.py prd-sync . --write
+# Validate: python3 <hub>/tools/governance_lint.py check .  ·  <hub>/tools/features_index.py check .
+# Schema: features/v1 (field reference: bamr87/bamr87 templates/verify/features.template.yml)
 # =============================================================================
 schema: features/v1
 repo: bamr87/lifehacker.dev
 
 features:
-  - id: TODO-001
-    title: "TODO: the first thing a user does here"
-    description: "TODO: replace with the primary user-facing capability of lifehacker.dev."
+  - id: LHD-001
+    title: "News sections Hacks / Tools / Field notes / Wire under pages/_posts/"
+    description: "News sections Hacks / Tools / Field notes / Wire under `pages/_posts/`, with pinned `/hacks|tools|wire/:slug/` permalinks"
     implemented: true
+    status: shipped
+    prd: [FR1, NFR1]
+    surface: content
+    link: "pages/_posts"
+    docs: "README.md"
+  - id: LHD-002
+    title: "Machine-readable brand in _data/brand/"
+    description: "Machine-readable brand in `_data/brand/` (identity, voice, glossary) read by the autopilot"
+    implemented: true
+    status: shipped
+    prd: [TBD]
     surface: ui
-    link: /
-    docs: README.md
-    tags: [todo]
-    tests: []
-    scenarios:
-      - verify/scenarios/smoke-home.yml
-    evidence: []
+    link: "_data/brand"
+    docs: "README.md"
+  - id: LHD-003
+    title: "Content backlog _data/backlog.yml with a custom merge driver"
+    description: "Content backlog `_data/backlog.yml` with a custom merge driver"
+    implemented: true
+    status: shipped
+    prd: [FR3]
+    surface: infra
+    link: "_data/backlog.yml"
+    docs: "README.md"
+  - id: LHD-004
+    title: "Wire assignment editor _data/wire/sources.yml"
+    description: "Wire assignment editor `_data/wire/sources.yml` (sources, trust tiers, filters)"
+    implemented: true
+    status: shipped
+    prd: [FR3, FR1]
+    surface: ui
+    link: "_data/wire/sources.yml"
+    docs: "README.md"
+  - id: LHD-005
+    title: "Offline-generated cover art"
+    description: "Offline-generated cover art (`scripts/preview/`)"
+    implemented: true
+    status: shipped
+    prd: [NFR3]
+    surface: cli
+    link: "scripts/preview"
+    docs: "README.md"
+  - id: LHD-006
+    title: "CI harness: Pages safe-mode build plus front-matter,…"
+    description: "CI harness: Pages safe-mode build plus front-matter, brand, drift and link lints"
+    implemented: true
+    status: shipped
+    prd: [NFR1, FR2]
+    surface: infra
+    link: ".github/workflows/ci.yml"
+    docs: "README.md"
+  - id: LHD-007
+    title: "Author personas in _data/authors.yml"
+    description: "Author personas in `_data/authors.yml`"
+    implemented: true
+    status: shipped
+    prd: [FR3]
+    surface: ui
+    link: "_data/authors.yml"
+    docs: "README.md"
