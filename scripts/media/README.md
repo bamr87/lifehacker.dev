@@ -1,5 +1,7 @@
 # scripts/media
 
+> The weekly epic's in-body media: deterministic figures computed from the week's publications, and the opt-in AI-painted hero image.
+
 In-body media for the weekly epic (the Top Story). Where `scripts/preview/` makes an article's **cover**, this directory makes the **exhibits inside** it: figures computed from the week's real publications, plus an opt-in AI-painted illustration.
 
 - **The routine that uses these:** [`.claude/skills/weekly-epic/SKILL.md`](../../.claude/skills/weekly-epic/SKILL.md)

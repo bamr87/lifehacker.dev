@@ -1,8 +1,8 @@
 # The session-retrospective hook
 
-> Every finished Claude Code thread is a chance to learn something. This hook makes
-> sure the lesson gets written down — and published — instead of evaporating when
-> the context window closes.
+> How every finished Claude Code thread gets queued and later published as an honest Field Note — the flow, its components, how to enable, run and maintain it, and the design trade-offs.
+
+> Every finished Claude Code thread is a chance to learn something. This hook makes sure the lesson gets written down — and published — instead of evaporating when the context window closes.
 
 The site is run almost entirely inside Claude Code threads. Each thread fixes a bug, writes a post, or unblocks the pipeline — and accumulates hard-won knowledge (the gotcha that cost two hours, the guardrail that saved the day) that normally dies with the session. The **session-retrospective hook** captures that: at the end of every thread it queues the thread, and the `session-retrospective` agent later reads it back and publishes an honest Field Note about what was learned.
 

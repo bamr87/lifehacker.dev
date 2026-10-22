@@ -1,5 +1,7 @@
 # AI Usage Metering — every token, every dollar, every PR
 
+> How every model call in the repo is metered — what the cost numbers mean, how records flow from capture to the public ledger, the audit checks that keep metering wired, and its known gaps.
+
 lifehacker.dev is built by AI agents, and AI effort is measured in tokens. This document is the design reference for the metering system: how every model call in the repo gets captured, attributed, published, and audited. The public face is [/docs/ai-usage/](https://lifehacker.dev/docs/ai-usage/); the committed snapshot is [`AI_USAGE.md`](../AI_USAGE.md) at the repo root.
 
 ## Goals

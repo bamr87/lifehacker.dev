@@ -1,5 +1,7 @@
 # Retrospective — building the autopilot that runs this site
 
+> How the autopilot that runs this site was built: what got built, the four bugs the harness caught on its first run, the deviations from the design, and the lessons for the next site that copies it.
+
 > The premise: lifehacker.dev went to production and the internet did what it
 > does — critics, trolls, IT pros, and dependencies that break on a schedule of
 > their own choosing. The response was not to work harder. It was to build a

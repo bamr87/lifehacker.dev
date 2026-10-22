@@ -1,5 +1,7 @@
 # scripts/preview
 
+> The dependency-free Trace Bloom banner renderer: how to run it, what it writes, and the rules for changing it.
+
 The Trace Bloom preview-banner renderer. Dependency-free JavaScript (Node ≥ 18, zero npm packages) — it runs on a bare CI runner, on a laptop with no bundle, and inside a browser.
 
 - **What it is and why:** [`docs/PREVIEW-IMAGES.md`](../../docs/PREVIEW-IMAGES.md)

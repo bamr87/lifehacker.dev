@@ -1,5 +1,7 @@
 # _data/preview/motifs
 
+> One Claude-drawn SVG per illustrated article, composited into that article's banner on every render.
+
 One file per illustrated article: `<slug>.svg`, the drawing of what that article is **about**. Claude authors it once; the renderer composites it into the article's banner every time thereafter.
 
 - **How it gets here:** `node scripts/preview/illustrate.mjs -f <article.md>`

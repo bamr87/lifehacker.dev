@@ -1,5 +1,7 @@
 # One framework for content sites and AI harnesses
 
+> A cross-repo proposal (2026-09-08): what six surveys of eleven fleet repos found, one canonical home per layer, the shared conventions and kits, and the pull-request series that moves the fleet there.
+
 **Status:** proposal + first implementation round (2026-09-08). **Scope:** the eleven repos in the fleet workspace — lifehacker.dev, it-journey, zer0-mistakes, bash-365.com, ai-world-view.github.io, irony-works, gitorio, zer0-CMS, zer0-image-generator, aieo, SCHEMA — reviewed on 2026-09-06 by six parallel surveys (AI runner, content verification, agent guidance, CI workflows, preview images, repo baseline). This document records what the surveys found, names one canonical home per layer, writes down the conventions, and lists the pull-request series that moves the fleet there. It is a plan the owner can accept in pieces; every step leaves its repo better on its own.
 
 ## The short version
