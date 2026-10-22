@@ -1,23 +1,14 @@
 # CI/CD — the tiered, continuous pipeline
 
+> How the workflows gate, test and ship this site: the tiered `verify` pipeline, change-type routing, the autonomous content factory and its switches, token hygiene, and the one AI runner every lane shares.
+
 Every workflow lives in `.github/workflows/`. The design goal: **tiered** (fast feedback first), **automatic** (the contract is exercised across stages on every change), and **continuous** (PR → merge → live-site verification), with one human merge gate no agent can bypass.
 
 ## Workflows at a glance
 
-| Workflow | Trigger | Gates a merge? | What it does / writes |
-|---|---|---|---|
-| `pipeline.yml` | PR, push to main, manual | **Yes — job `verify`** | The tiered pipeline (below). Writes `findings.jsonl`, `queue.json`, step summaries, sticky PR comment. |
-| `site-quality.yml` | PR to main touching site inputs (`pages/**`, `_includes/**`, `_data/**`, `assets/**`, `_config*.yml`, `Gemfile*`, `scripts/ci/build.sh`, the build-overlay composite, `.github/site-quality/**`), manual | No (own check, advisory) | Builds through the same `build-overlay` composite as `verify` but with `fresh-theme: 'true'` (like nightly), so it measures the theme production serves rather than the long-lived `zer0-theme-*` cache, then serves `_site` locally (`.github/site-quality/serve-site.mjs`, gzip + Pages-style URLs), and runs Lighthouse CI on `/`, `/news/` and one post (mobile, 3 runs; a11y/best-practices/SEO + must-pass audits are `error` where they already pass, perf/Web Vitals/size budgets are `warn`, cache-policy audits off), axe-core via Playwright on 7 key pages at 390 px + 1366 px (fails on critical/serious WCAG 2.0/2.1 A/AA; WCAG 2.2 `target-size` and the listed pre-existing theme issues warn), and a pa11y WCAG 1.4.3 contrast check. Writes the job summary, annotations, the `site-quality-reports` artifact and LHCI temporary-public-storage links. No model calls, no secrets. See `.github/site-quality/README.md`. |
-| `deploy-verify.yml` | push to main, manual | No (monitors) | After Pages deploys, smoke-checks the **live** site; files one sev1 issue if production is non-200. |
-| `triage.yml` | daily cron (gated by `TRIAGE_ENABLED`), manual | No | Runs the harness, closes stale bot issues (`close_stale.rb`: a `triage-fp:` finding that stopped reproducing, or a work order whose members are all closed — regressions auto-reopen; human issues untouched), files deduped issues, harvests `## Backlog ideas` from merged PRs, opens a queue/dashboard PR. Build is fail-safe (a break → sev1 issue; a degraded run refuses to sweep). Scheduled runs apply; manual runs default to dry-run. |
-| `nightly.yml` | cron, manual | No | External-link sweep + fresh-theme drift detection + full Prime-Directive run. Files one issue on failure. |
-| `fleet-dispatch.yml` | manual | No | The dispatcher (plan-only unless `--apply`). Gated by `FLEET_ENABLED`; **no schedule**, **no `administration` scope**. |
-| `devops-audit.yml` | manual | No | Deterministic CI/CD audit + (opt-in) the `devops-manager` agent to propose pipeline improvements. |
-| `mcp-tests.yml` | PR + push to main touching `mcp/lifehacker-read/**`, manual | No (own check) | Typechecks, builds, and runs the Node MCP server's 50-test suite + stdio smoke. The Ruby `verify` gate lints the site, not the MCP server; this covers that gap. Read-only. |
-| `loop-tuner.yml` | weekly cron (agent gated by `LOOP_TUNER_ENABLED`), manual | No | Always measures the loop's *observed* behaviour (`scripts/devops/loop_metrics.rb` — run times, failure/escalation rates, auto-fix attempts, recurring lint rules, conflicts, backlog starvation, trends vs `_data/metrics/history.jsonl`) and verifies the improvements ledger (`_data/fleet/improvements.yml`); when `LOOP_TUNER_ENABLED` + key, the `loop-tuner` agent settles ledger verdicts, fixes the upstream cause, records new ledger entries + a history snapshot, and opens ONE PR. Content-agnostic. |
-| `ai-usage.yml` | daily cron (gated by `AI_USAGE_ENABLED`), manual | No | The AI cost ledger. Sweeps the `ai-usage-*` artifacts every AI job uploads, folds them into `_data/ai_usage/ledger.jsonl` (dedup by record id), regenerates `summary.yml` + `AI_USAGE.md` + the `/docs/ai-usage/` page data, and opens ONE data-only PR (label `source/ai-usage-bot`; auto-merge holds it to the same pure-data bar as triage). Makes zero model calls. See `docs/AI-USAGE.md`. |
-| `zer0-doctor.yml` | weekly cron Tue 05:37 UTC, manual | No (report-only) | Thin caller of zer0-CMS's reusable `zer0-doctor.yml@main` with `fail-on-error: false`: the zer0 stack consumer contract check (theme, image-generator gem + `preview_images:`, `zer0.json`, strict `fleet.manifest.yml`, front matter). Never runs on a PR. Makes zero model calls, so no `*_ENABLED` switch and no manifest lane. Idle until zer0-CMS ships the reusable workflow. |
-| `weekly-epic.yml` | weekly cron Mon 07:45 UTC (gated by `WEEKLY_EPIC_ENABLED`), manual | No | The Top Story. The `weekly-epic` agent (the `fable` persona, on the Fable 5 model by default — `WEEKLY_EPIC_MODEL` overrides) digests the prior 7 days (`scripts/content/weekly_digest.rb`), writes ONE illustrated epic recap covering every published article, generates deterministic figures (`scripts/media/figures.mjs`) + an *optional* OpenAI hero image (double-gated: `OPENAI_IMAGES_ENABLED` var **and** `OPENAI_API_KEY` secret), repoints `_data/top_story.yml`, and opens ONE `auto:content` + `weekly-epic` PR. A quiet week (<3 articles) is a recorded no-op. |
+Every workflow — its triggers, `*_ENABLED` switch, repository variables and secrets, and the one-line summary from its header comment — is listed in [reference/workflows.md](reference/workflows.md), generated from the files by `ruby scripts/devops/workflow_reference.rb --write` (`check_drift.rb` fails the harness when it is stale). Each workflow's header comment is the full description of what it does and writes.
+
+Only one of them gates a merge: the `verify` job of `pipeline.yml` (below). `mcp-tests.yml`, `site-quality.yml`, `ci.yml`, `conformance.yml`, `verify.yml` and `markdown-oneline.yml` report their own checks on a PR; everything else monitors (`deploy-verify.yml`, `nightly.yml`, `zer0-doctor.yml`) or is a loop behind its switch.
 
 ## The tiered pipeline (`pipeline.yml`)
 
@@ -112,8 +103,7 @@ For `actions/checkout`'s `token:` the same idiom is still wrong but fails *fast*
   Tier 3 — no duplicate PR-time builds.
 - `bundler-cache: true` + a date-keyed theme-clone cache; `concurrency:` groups on
   every workflow cancel superseded runs.
-- The DevOps audit reports remaining duplicate builds across distinct-trigger
-workflows (currently 3: pipeline, triage, nightly) as *info* — they run at different times for different purposes.
+- The DevOps audit reports the remaining duplicate builds across distinct-trigger workflows (`pipeline.yml`, `site-quality.yml`, `triage.yml`, `nightly.yml`) as *info* — they run at different times for different purposes.
 
 ## Change-type routing (efficiency)
 
@@ -134,8 +124,8 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 
 | Workflow | Trigger | Gate | What it does |
 |---|---|---|---|
-| `content-scout.yml` | daily cron (08:07, before the factory), manual | `CONTENT_SCOUT_ENABLED` + key | Crawls a sister site (it-journey.dev by default; `SCOUT_SOURCES`) via WebFetch, proposes on-brand topics, and opens one `auto:content` PR appending `status: todo` backlog items — **each pinned to its source it-journey.dev page**. Scheduled runs apply; manual runs default to dry-run. |
-| `wire-scout.yml` | daily cron (08:27, after content-scout, before the factory), manual | `WIRE_SCOUT_ENABLED` + key | Crawls the model-beat news sources configured in `_data/wire/sources.yml` (per-source frequency / trust tier / filters, validated by the harness's `wire` check) via WebFetch under the press charter + quarantine, and opens one `auto:content` PR appending `kind: wire` backlog items — **each pinned to the story URL it was reported from**, bylined `author: rhea`. Scheduled runs apply; manual runs default to dry-run. |
+| `content-scout.yml` | daily cron (before the factory), manual | `CONTENT_SCOUT_ENABLED` + key | Crawls a sister site (it-journey.dev by default; `SCOUT_SOURCES`) via WebFetch, proposes on-brand topics, and opens one `auto:content` PR appending `status: todo` backlog items — **each pinned to its source it-journey.dev page**. Scheduled runs apply; manual runs default to dry-run. |
+| `wire-scout.yml` | daily cron (after content-scout, before the factory), manual | `WIRE_SCOUT_ENABLED` + key | Crawls the model-beat news sources configured in `_data/wire/sources.yml` (per-source frequency / trust tier / filters, validated by the harness's `wire` check) via WebFetch under the press charter + quarantine, and opens one `auto:content` PR appending `kind: wire` backlog items — **each pinned to the story URL it was reported from**, bylined `author: rhea`. Scheduled runs apply; manual runs default to dry-run. |
 | `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
 | `weekly-epic.yml` | weekly cron (Mon, before the factory), manual | `WEEKLY_EPIC_ENABLED` + key | One `weekly-epic` run → the illustrated recap of the prior week's publications, `_data/top_story.yml` repointed → one `auto:content` + `weekly-epic` PR that becomes the homepage hero on merge. |
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
@@ -148,24 +138,18 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 
 ## Turning on continuous autonomy (deliberate)
 
-Each capability is its own switch, off by default. Turn on only what you trust:
+Each capability is its own switch, off by default. Turn on only what you trust — every switch, and the workflow that reads it, is in [reference/workflows.md](reference/workflows.md#repository-variables):
 
 ```
-gh variable set FLEET_ENABLED true              # the fix/grow fleet
-gh variable set CONTENT_FACTORY_ENABLED true    # daily content generation
-gh variable set WEEKLY_EPIC_ENABLED true        # Monday Top Story: the fable persona's illustrated recap of the prior week (WEEKLY_EPIC_MODEL to override its model; add OPENAI_IMAGES_ENABLED=true + the OPENAI_API_KEY secret to also paint one hero image per epic via the OpenAI API)
-gh variable set CONTENT_SCOUT_ENABLED true      # daily sister-site crawl → backlog ideas, before the factory (SCOUT_SOURCES to retarget; needs FLEET_TOKEN to auto-merge)
-gh variable set WIRE_SCOUT_ENABLED true         # daily model-beat news crawl → wire backlog items for The Wire (sources/frequencies/filters in _data/wire/sources.yml; needs FLEET_TOKEN to auto-merge)
-gh variable set EXPLORER_ENABLED true           # live-site persona QA
-gh variable set AUTO_FIX_ENABLED true           # auto-fix failing content PRs
-gh variable set AUTO_UPDATE_ENABLED true        # keep colliding content PRs mergeable (item-merges main in; needs FLEET_TOKEN)
-gh variable set AUTO_MERGE_ENABLED true         # auto-merge green content PRs (retires human content review)
-gh variable set LOOP_TUNER_ENABLED true         # let the loop-tuner agent open improvement PRs from the metrics (measure runs regardless)
-gh variable set TRIAGE_ENABLED true             # daily scheduled triage (queue + dashboard + deduped issues + idea harvest)
-gh variable set THEME_SCOUT_ENABLED true        # weekly upstream theme scouting (also needs FLEET_TOKEN)
-gh variable set AGENT_REVIEW_ENABLED true       # monthly agent/skill review PR
-gh variable set QUEST_FORGE_ENABLED true        # derive it-journey quests from retrospectives
+gh variable set CONTENT_FACTORY_ENABLED true    # e.g. daily content generation
 ```
+
+What the generated list cannot show:
+
+- `AUTO_MERGE_ENABLED` retires human content review for green, content-only `auto:content` PRs.
+- `CONTENT_SCOUT_ENABLED`, `WIRE_SCOUT_ENABLED` and `AUTO_UPDATE_ENABLED` need a working `FLEET_TOKEN` (the scouts need it to auto-merge; auto-update cannot push without it); `THEME_SCOUT_ENABLED` needs it to file upstream.
+- The weekly epic's painted hero image is double-gated: `OPENAI_IMAGES_ENABLED` **and** the `OPENAI_API_KEY` secret. `WEEKLY_EPIC_MODEL` overrides that loop's model; `SCOUT_SOURCES` retargets the content scout.
+- `LOOP_TUNER_ENABLED` only lets the agent open PRs — the loop-tuner's measure runs regardless.
 
 **The variable IS the switch** (colophon, 2026-07-01): every autonomy loop's cron is wired and idles behind its `*_ENABLED` variable, so turning a variable on is the single deliberate act that starts that loop — no workflow edit needed. The one exception is `fleet-dispatch.yml`, which stays schedule-free by guardrail (the audit and the simulation both fail if a schedule appears there). Enabling `AUTO_MERGE_ENABLED` (or any `*_ENABLED` variable) is a guardrail change — add a dated line to `/about/colophon/` when you flip one. The agent steps need Claude auth — set **either** `CLAUDE_CODE_OAUTH_TOKEN` (run `claude setup-token`, then `gh secret set CLAUDE_CODE_OAUTH_TOKEN`) **or** `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
 
