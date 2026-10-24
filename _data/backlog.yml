@@ -2213,7 +2213,8 @@ backlog:
     brief: "Stop re-arguing 'why did we pick Postgres?' every six months. Drop a numbered markdown file at `docs/adr/0001-use-postgres.md` with four headings — Context, Decision, Status, Consequences — commit it, and `git log`/`grep -r` becomes a searchable memory of every choice and its blast radius. You'll know it worked when a new teammate finds the answer without pinging you. The failure that stays in: editing an old ADR to 'update' a reversed decision erases the very history you kept it for — an ADR is append-only, so you set the old one to `Status: Superseded by 0007` and write a new file, never overwrite."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/one-file-adr/
     source: content-scout
     source_url: https://it-journey.dev/quests/1111/technical-leadership/
     source_title: "Technical Leadership: Leading Without a Crown"
@@ -4991,3 +4992,77 @@ backlog:
     published: /wire/php2shell-ai-found-human-delayed/
     source: manual
     source_url: https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-148
+    kind: hack
+    title: "raise HTTPException in your auth middleware returns 500, not 401: BaseHTTPMiddleware doesn't convert it"
+    brief: "You put token checking in a FastAPI `@app.middleware(\"http\")` function and `raise HTTPException(status_code=401)` on a bad token — then every rejected request comes back as a 500 Internal Server Error, so your login wall looks like a crash and clients that retry on 5xx hammer you instead of re-authenticating. The reason: Starlette's `BaseHTTPMiddleware` runs OUTSIDE the exception-handling layer that turns an `HTTPException` into a real HTTP response, so the exception propagates uncaught and collapses into a generic 500. Two fixes with their trade-offs: return the response yourself from the middleware (`return JSONResponse({\"detail\": \"invalid token\"}, status_code=401)` instead of raising), or — better for auth — move the check OUT of middleware into a dependency (`Depends(verify_token)`), where a raised `HTTPException` IS converted correctly and you also get it documented in the OpenAPI schema. The failures that stay in: a bare `except` wrapped around your middleware body swallows the framework's real errors too, so catch narrowly; and 'it returned an error' and 'it returned the RIGHT status' are two different claims — a client keying off 401-vs-500 to decide re-auth-vs-retry does the wrong thing on your mislabeled crash, so assert on the status code in a test, don't eyeball 'it failed.' Reproducible with a ten-line FastAPI app and one curl at a protected route with a bad token."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-14-security-specialist-1110/
+    source_title: "Quest Report: Security Specialist Level 1110"
+    fingerprint: eaa201de5982
+  - id: SRC-149
+    kind: hack
+    title: "Your 'required' status check is blocking a PR that changed nothing it cares about: the path-filtered job that never reports"
+    brief: "You mark a CI job 'Required' in branch protection, add a `paths:` filter so it only runs when `src/**` changes, and ship it — then a docs-only PR sits forever on 'Expected — Waiting for status to be reported' and the Merge button never lights up, because a workflow skipped by a path filter never CREATES the check context, and branch protection can't tell 'skipped' from 'not done yet.' The fix that actually holds: don't let a required check be skippable — add a final `gate` job that always runs (`if: always()`), `needs:` every conditional job, and passes only when each dependency's `result` is `success` OR `skipped` (a skipped `needs` makes the gate itself skip unless you guard it), then require the GATE, not the flaky path-filtered job. The failures that stay in: 'require branches to be up to date before merging' re-runs CI on every PR after each merge to main, silently serializing your merge queue into a single-file line that thrashes on a busy repo; and a required check whose NAME you renamed in the workflow leaves the old name required-but-orphaned, so every PR waits on a context that will never report again — update the branch-protection rule the same commit you rename the job."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0100/source-control-sorcery/
+    source_title: "Source Control Sorcery"
+    fingerprint: ac15b929ddff
+  - id: SRC-150
+    kind: hack
+    title: "Why your script's cd and export vanish the second it exits: run in a child shell vs source in this one"
+    brief: "You write `setup.sh` that does `export API_URL=…` and `cd ~/project`, run it with `./setup.sh`, and back at the prompt your variable is unset and you're in the same directory you started — because `./setup.sh` runs in a CHILD shell that gets a COPY of your environment, and everything it changes dies with that child the instant it exits. `export` only propagates DOWN to processes the script itself launches; nothing a script does can reach UP into the shell that started it (which is exactly why `nvm`, `conda activate`, and `ssh-agent` tell you to `source`/`eval` them, never run them). To change your CURRENT shell, `source setup.sh` (or `. setup.sh`) runs the lines in-place. The failures that stay in: a sourced script is now part of your interactive session, so an `exit 1` in it CLOSES your terminal and a `set -e` can kill your shell on the first non-zero command — use `return` in anything meant to be sourced, and don't `set -e` a sourced file; and a script with no execute bit or shebang won't run with `./` at all, which sends people copy-pasting `sh script.sh` and quietly switching interpreters. Reproducible in four lines: put `export X=1; cd /tmp` in a file, run it (`echo $X; pwd` unchanged), then source it (both changed)."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/bash-run/
+    source_title: "bashcrawl and Beyond"
+    fingerprint: 9d0814b4716f
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-151
+    kind: hack
+    title: "Your agent's 'approval gate' is a checkbox it can tick itself: use a GitHub Environment with required reviewers, not an if:"
+    brief: "The tidy way to bound an autonomous workflow looks safe and isn't: an `if: vars.AGENT_ENABLED == 'true'` kill switch is a toggle anyone with repo-variable write can flip, and it never PAUSES for a person — it runs or it doesn't. Worse is 'gating' a sensitive job behind a label or a comment the run's own `GITHUB_TOKEN` can add, which is a confused deputy approving itself. The only native 'stop here until a human clicks' primitive in Actions is a GitHub Environment with required reviewers: a job that declares `environment: production` halts on 'Waiting for review' until a named human approves in the UI, and the workflow cannot self-approve. The failures that stay in: protection rules apply ONLY to the job that names the environment, so a second job without `environment:` skips the gate entirely — the dangerous step (and its environment secrets, which are also scoped to that job) must live INSIDE the gated job, not a neighbor; turn ON 'prevent self-review' or the same operator who launched the agent rubber-stamps its own PR; and 'the job paused' is not 'a human read the diff' — put the resolved action and its arguments in the run summary the reviewer sees, because an approval click on an opaque job is theater. Reproducible: add an environment with one required reviewer, reference it from a job, and watch the run block."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/codex/agentic-codex/
+    source_title: "The Agentic Codex (GH-600)"
+    fingerprint: 9142bce8be41
+  - id: SRC-152
+    kind: hack
+    title: "Your copy-to-clipboard button does nothing over http and throws no dialog: navigator.clipboard needs a secure context"
+    brief: "You wire a copy button with `navigator.clipboard.writeText(code)`, it works perfectly on `localhost`, you serve the same site to a colleague at `http://192.168.1.5:4000`, and now the button is dead — no copy, no error dialog, just a console `TypeError: Cannot read properties of undefined` nobody opens. The reason: `navigator.clipboard` only EXISTS in a secure context — HTTPS, or the special-cased `http://localhost`/`127.0.0.1` — so on any plain-http LAN address it's `undefined`, and 'works on my machine' is literally true because your machine is localhost. Fix by feature-detecting both (`if (navigator.clipboard && window.isSecureContext)`) and falling back to the legacy hidden-`<textarea>` + `document.execCommand('copy')` path (deprecated, but it fires on http), and ALWAYS `.catch()` the write. The failures that stay in: even in a secure context `writeText` returns a Promise that rejects on a permissions or document-not-focused error, so a fire-and-forget call with no `.catch()` fails silently exactly the same way — surface a 'copy failed' state, don't assume success; and `document.execCommand` needs a real user gesture and a visible-enough element, so calling it from a `setTimeout` or on a `display:none` node no-ops too. Testable by serving over http on any non-localhost address and clicking."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/about/features/
+    source_title: "IT-Journey — Features"
+    fingerprint: 94a32dbb5f54
+  - id: SRC-153
+    kind: hack
+    title: "Your remote theme build dies on Unknown tag 'include_cached': remote_theme doesn't install the theme's gems"
+    brief: "You set `remote_theme: owner/some-theme`, run `bundle exec jekyll serve`, and the build explodes with `Liquid Exception: Unknown tag 'include_cached'` — a tag you never wrote, in an include you never opened. The reason: `remote_theme` copies the theme's `_layouts`, `_includes`, and assets, but it does NOT install the theme's gem dependencies, and this theme's includes call `{% include_cached %}` from the `jekyll-include-cache` plugin — so the tag is unregistered and the parser fails on markup that shipped with the theme. The fix is two edits, both required: add `gem \"jekyll-include-cache\"` to the Gemfile AND list `jekyll-include-cache` under `plugins:` in `_config.yml` — the Gemfile makes it available, the config line makes Jekyll actually load it, and doing only the first leaves the identical error in place. The failures that stay in: the error names the TAG, never the missing gem, so the message points at the theme's code instead of your Gemfile; and this only works on GitHub Pages because `jekyll-include-cache` happens to be on the Pages plugin allowlist — a remote theme that leans on a non-allowlisted plugin builds locally and dies on Pages, so check the allowlist before you trust a theme's includes. Reproducible with a throwaway site pinned to any include-cache-using remote theme."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-17-digital-artist-0001/
+    source_title: "Quest Report: Digital Artist Level 0001"
+    fingerprint: 68f659d181e8
