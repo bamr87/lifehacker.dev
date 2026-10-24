@@ -5029,3 +5029,40 @@ backlog:
     source_url: https://it-journey.dev/quests/0000/bash-run/
     source_title: "bashcrawl and Beyond"
     fingerprint: 9d0814b4716f
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-151
+    kind: hack
+    title: "Your agent's 'approval gate' is a checkbox it can tick itself: use a GitHub Environment with required reviewers, not an if:"
+    brief: "The tidy way to bound an autonomous workflow looks safe and isn't: an `if: vars.AGENT_ENABLED == 'true'` kill switch is a toggle anyone with repo-variable write can flip, and it never PAUSES for a person — it runs or it doesn't. Worse is 'gating' a sensitive job behind a label or a comment the run's own `GITHUB_TOKEN` can add, which is a confused deputy approving itself. The only native 'stop here until a human clicks' primitive in Actions is a GitHub Environment with required reviewers: a job that declares `environment: production` halts on 'Waiting for review' until a named human approves in the UI, and the workflow cannot self-approve. The failures that stay in: protection rules apply ONLY to the job that names the environment, so a second job without `environment:` skips the gate entirely — the dangerous step (and its environment secrets, which are also scoped to that job) must live INSIDE the gated job, not a neighbor; turn ON 'prevent self-review' or the same operator who launched the agent rubber-stamps its own PR; and 'the job paused' is not 'a human read the diff' — put the resolved action and its arguments in the run summary the reviewer sees, because an approval click on an opaque job is theater. Reproducible: add an environment with one required reviewer, reference it from a job, and watch the run block."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/codex/agentic-codex/
+    source_title: "The Agentic Codex (GH-600)"
+    fingerprint: 9142bce8be41
+  - id: SRC-152
+    kind: hack
+    title: "Your copy-to-clipboard button does nothing over http and throws no dialog: navigator.clipboard needs a secure context"
+    brief: "You wire a copy button with `navigator.clipboard.writeText(code)`, it works perfectly on `localhost`, you serve the same site to a colleague at `http://192.168.1.5:4000`, and now the button is dead — no copy, no error dialog, just a console `TypeError: Cannot read properties of undefined` nobody opens. The reason: `navigator.clipboard` only EXISTS in a secure context — HTTPS, or the special-cased `http://localhost`/`127.0.0.1` — so on any plain-http LAN address it's `undefined`, and 'works on my machine' is literally true because your machine is localhost. Fix by feature-detecting both (`if (navigator.clipboard && window.isSecureContext)`) and falling back to the legacy hidden-`<textarea>` + `document.execCommand('copy')` path (deprecated, but it fires on http), and ALWAYS `.catch()` the write. The failures that stay in: even in a secure context `writeText` returns a Promise that rejects on a permissions or document-not-focused error, so a fire-and-forget call with no `.catch()` fails silently exactly the same way — surface a 'copy failed' state, don't assume success; and `document.execCommand` needs a real user gesture and a visible-enough element, so calling it from a `setTimeout` or on a `display:none` node no-ops too. Testable by serving over http on any non-localhost address and clicking."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/about/features/
+    source_title: "IT-Journey — Features"
+    fingerprint: 94a32dbb5f54
+  - id: SRC-153
+    kind: hack
+    title: "Your remote theme build dies on Unknown tag 'include_cached': remote_theme doesn't install the theme's gems"
+    brief: "You set `remote_theme: owner/some-theme`, run `bundle exec jekyll serve`, and the build explodes with `Liquid Exception: Unknown tag 'include_cached'` — a tag you never wrote, in an include you never opened. The reason: `remote_theme` copies the theme's `_layouts`, `_includes`, and assets, but it does NOT install the theme's gem dependencies, and this theme's includes call `{% include_cached %}` from the `jekyll-include-cache` plugin — so the tag is unregistered and the parser fails on markup that shipped with the theme. The fix is two edits, both required: add `gem \"jekyll-include-cache\"` to the Gemfile AND list `jekyll-include-cache` under `plugins:` in `_config.yml` — the Gemfile makes it available, the config line makes Jekyll actually load it, and doing only the first leaves the identical error in place. The failures that stay in: the error names the TAG, never the missing gem, so the message points at the theme's code instead of your Gemfile; and this only works on GitHub Pages because `jekyll-include-cache` happens to be on the Pages plugin allowlist — a remote theme that leans on a non-allowlisted plugin builds locally and dies on Pages, so check the allowlist before you trust a theme's includes. Reproducible with a throwaway site pinned to any include-cache-using remote theme."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-17-digital-artist-0001/
+    source_title: "Quest Report: Digital Artist Level 0001"
+    fingerprint: 68f659d181e8
