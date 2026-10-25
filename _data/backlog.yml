@@ -5103,3 +5103,40 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-17-system-engineer-1001/
     source_title: "Quest Report: System Engineer Level 1001"
     fingerprint: a51efb8ec266
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-157
+    kind: hack
+    title: "Your kind pod is stuck in ImagePullBackOff for an image you already built: kind can't see your Docker daemon"
+    brief: "You `docker build -t myapp:dev .`, apply a Deployment that references `myapp:dev`, and the pod sits in `ErrImagePull` / `ImagePullBackOff` forever trying to pull from Docker Hub — because a `kind` cluster runs its own containerd inside the node container and cannot see images in your host's Docker daemon, so an unqualified name like `myapp:dev` is treated as a registry image that doesn't exist. The fix is to hand the image to the cluster explicitly: `kind load docker-image myapp:dev`, then set `imagePullPolicy: IfNotPresent` so Kubernetes uses the loaded copy instead of trying to re-pull it. The failures that stay in: the DEFAULT pull policy for an image tagged `:latest` (or with no tag) is `Always`, so even after `kind load` a `:latest` image still tries to pull and still fails offline — use a real tag, not `latest`, for locally-loaded images; `kubectl get pod` shows `Pending`/`Running` but the real story is in `kubectl describe pod` under Events (the actual pull error) and there is no substitute for reading it; and a genuinely private registry needs an `imagePullSecret` on the pod's ServiceAccount — 'the image exists' and 'this pod is allowed to pull it' are two different failures that both surface as the same backoff. Reproducible with `kind create cluster`, a local build, and a Deployment that references it without loading it first."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-17-system-engineer-1001/
+    source_title: "Quest Report: System Engineer Level 1001"
+    fingerprint: 6e3c77ec1afd
+  - id: SRC-158
+    kind: hack
+    title: "Reconcile the parallel run before you cut over: diff old vs new system on line items, not just the bottom line"
+    brief: "Everyone migrating an accounting or records system is told to run the old and new systems in parallel for a cycle before cutover — the part nobody tells you is how to actually COMPARE them without drowning in false alarms. Export the same report from both to CSV and diff, but normalize first or every row is a 'difference': the two systems format numbers, round cents, order rows, and stamp dates differently, so canonicalize (sort by a stable key, fix decimal places, ISO the dates) and compare VALUES, not their string spellings, or a raw `diff` reports a hundred mismatches that are all formatting. The failure that stays in and is the whole reason to do this at line level: reconciling only the TOTALS hides offsetting errors — two rows wrong in opposite directions net to a bottom line that matches perfectly while both numbers are wrong — so tie out at the transaction/line grain, not the summary; and a difference you can EXPLAIN (a known timing cutoff, an intentional chart-of-accounts remap) is a documented exception, while a difference you can't is a migration bug you just caught before it went live. Reproducible on two exported CSVs with a short Python/pandas merge-on-key that lists only the rows that disagree after normalization."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://bash-365.com/posts/2026/07/08/when-the-numbers-say-its-time-to-leave-quickbooks/
+    source_title: "When the Numbers Say It's Time to Leave QuickBooks"
+    fingerprint: 653cf0803eeb
+  - id: SRC-159
+    kind: hack
+    title: "gh pr create --body \"line one\\nline two\" posts a literal backslash-n: double quotes don't make newlines, --body-file does"
+    brief: "Your bot opens a PR with `gh pr create --title \"…\" --body \"Summary\\n\\nChanges:\\n- …\"` and the description lands as one long line studded with literal `\\n`s, because bash double quotes do not interpret `\\n` — gh receives the two characters backslash and n and Markdown renders them faithfully. The fix that holds: feed the body on stdin with a heredoc, `gh pr create --title \"…\" --body-file - <<'EOF'` … `EOF`, or write it to a file and pass `--body-file body.md`; ANSI-C quoting (`--body $'line one\\nline two'`) also works for a short body. The failures that stay in: the bug is shell-dependent, because zsh's and dash's built-in `echo` interpret `\\n` while bash's doesn't without `-e`, so a body built with `echo` looks right on your Mac and ships backslashes from a bash CI runner — use `printf` or the heredoc and stop guessing; and the same automation usually adds reviewers next, where `gh pr edit --add-reviewer` wants a team as `ORG/TEAM-SLUG`, not the `@team-name` you'd type in a comment. You'll know it worked when `gh pr view --json body --jq .body` prints real line breaks. Reproducible against any throwaway repo in two commands."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1100/agentic-autonomy-levels-matrix/
+    source_title: "The Autonomy Scales: Mapping Agent Autonomy Levels"
+    fingerprint: bb977fda9606
