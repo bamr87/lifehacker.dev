@@ -188,4 +188,4 @@ The `|| true` here is allowed, and only because of where it sits. It guards `gre
 - **`--collect-only` counts parametrized cases.** `test_x[a]` and `test_x[b]` each contain `::`, so they count as two. That's what pytest runs, so it's the right number. Just don't set the floor from a hand count of `def test_` lines.
 - **The wrapper ends up on the main suite.** Once `run-tests.sh` exists, someone will use it everywhere because it's convenient. Keep it in the lanes that truly can be empty. Everywhere else, exit 5 is a smoke alarm, so don't take its batteries out.
 
-None of these is "be more careful." They're a two-line config, a nine-line wrapper and a ten-line floor, and I ran every one of them. Your test suite is a security control. Make sure it's actually running tests.
+None of these is "be more careful." They're a two-line config and two ten-line scripts, and I ran every one of them. Your test suite is a security control. Make sure it's actually running tests.
