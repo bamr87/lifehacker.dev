@@ -2338,7 +2338,8 @@ backlog:
     brief: "pytest doesn't return 0 for 'ran nothing' — it returns exit code 5, 'no tests collected,' so a fresh `tests/` directory, a typo'd `-k` filter, or a rename that no longer matches `test_*` turns a green suite into a red pipeline with not one failing assertion to point at. Reproduce it in one command against an empty folder and read `echo $?`. The honest fix is to make 'no tests' a deliberate choice: add a real test, fix discovery (file names, `testpaths` in pytest.ini), or, when an empty lane is genuinely fine, allow it explicitly in the wrapper (`pytest ...; [ $? -eq 5 ] && exit 0`) instead of pretending the run passed."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/pytest-exit-5-no-tests-collected/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-10-system-engineer-1000/
     source_title: "Quest Report: System Engineer Level 1000"
