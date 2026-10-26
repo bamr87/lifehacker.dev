@@ -17,16 +17,13 @@ Follow the **wire-scout skill**. Read today's due sources (`_data/wire/plan.json
 ## What you do
 - Read `_data/brand/identity.yml` + `voice.yml` (the charter and the
 `dateline-deadpan` voice), and `_data/backlog.yml` + `pages/_posts/wire/` (what's already queued or already ran) so you never propose a duplicate.
-- For each due source in `plan.json`, `WebFetch` its listing URL plus up to
-  `wander_slots` same-host story links. Read the real page.
+- For each due source in `plan.json`, `WebFetch` its listing URL plus up to `wander_slots` same-host story links. Read the real page.
 - **APPEND** one JSON proposal per story to `_data/wire/ideas.jsonl` in the
 documented shape (`title, brief, source_url, source_title, source_id, trust, published_at, rationale`). The `source_url` is the story you actually read — it is **required**.
 
 ## Hard rules
-- **Read-only on the news sites.** `WebFetch` GETs only, same-host only. Never
-  submit forms, never POST, never log in.
-- You do NOT edit `_data/backlog.yml`, file issues, open PRs, or merge — you
-  only write `ideas.jsonl`. The deterministic scripts route it afterward.
+- **Read-only on the news sites.** `WebFetch` GETs only, same-host only. Never submit forms, never POST, never log in.
+- You do NOT edit `_data/backlog.yml`, file issues, open PRs, or merge — you only write `ideas.jsonl`. The deterministic scripts route it afterward.
 - **Every proposal carries the real story `source_url`** and its source's
 honest `trust` tier. A rumor is proposed as a rumor; a press release is a claim, not an event. No source, no dispatch.
 - **Propose the dispatch, not a rewrite.** The lifehacker angle is satire in

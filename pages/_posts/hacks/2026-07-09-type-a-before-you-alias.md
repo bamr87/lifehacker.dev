@@ -99,8 +99,7 @@ Read the output top to bottom: `type -a` lists the alias above the function, pla
 Sometimes the shadow is deliberate (you wrapped `cd` to also print the directory) but you need the real thing for one call. Three ways down the ladder:
 
 - `command <name>` skips aliases *and* functions and runs the binary on `PATH`.
-- `builtin <name>` runs the shell builtin, skipping a function that shadows it
-  (that's the `builtin cd` in the script above).
+- `builtin <name>` runs the shell builtin, skipping a function that shadows it (that's the `builtin cd` in the script above).
 - A leading backslash — `\ls` — suppresses **alias** expansion only.
 
 That last one has a sharp edge worth seeing. Backslash turns off the alias but *not* the function:

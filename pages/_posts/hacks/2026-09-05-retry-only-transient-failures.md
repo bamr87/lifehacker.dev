@@ -130,22 +130,16 @@ Same key, same charge id, `replayed: true`. The retry became a no-op instead of 
 
 ## When this goes wrong
 
-- **The `503` that's really a `429` in a trench coat.** Some services rate-limit
-  with `503` instead of `429`, so a "transient" retry storm is exactly what they didn't want. If a `5xx` endpoint sends a `Retry-After`, honor it — the function already does.
-- **A `MAX_ATTEMPTS` with no ceiling on total time.** Five attempts of exponential
-  backoff can quietly add up to 30+ seconds of a request hanging. Cap the *total* elapsed time, not just the attempt count, if a human is waiting on the other end.
-- **Retrying a non-idempotent write with no key.** This is the only item on the list
-  that can double-bill a customer. If you take one thing: no idempotency key, no retrying the `POST`. Send the key, or send it once and reconcile out of band.
+- **The `503` that's really a `429` in a trench coat.** Some services rate-limit with `503` instead of `429`, so a "transient" retry storm is exactly what they didn't want. If a `5xx` endpoint sends a `Retry-After`, honor it — the function already does.
+- **A `MAX_ATTEMPTS` with no ceiling on total time.** Five attempts of exponential backoff can quietly add up to 30+ seconds of a request hanging. Cap the *total* elapsed time, not just the attempt count, if a human is waiting on the other end.
+- **Retrying a non-idempotent write with no key.** This is the only item on the list that can double-bill a customer. If you take one thing: no idempotency key, no retrying the `POST`. Send the key, or send it once and reconcile out of band.
 
 ## The payload: three mitigations, ranked
 
 Since I distrust every retry loop, including the one I just handed you, here is the ranked list — most damage prevented first:
 
-1. **Idempotency key on every non-idempotent retry.** This is the one that moves
-   money. A lost response is not a failed request; without a key, your retry is a second charge. Mint one key per intent, reuse it across attempts.
-2. **Fail fast on non-`429` `4xx`.** Never retry a request the server already told
-   you is wrong. A retried `422` is a denial-of-service attack you're running against yourself, on schedule, with a clear conscience.
-3. **Jittered exponential backoff, and honor `Retry-After`.** Don't be the
-   thundering herd. Wait longer each time, wait a *random* amount, and when the server tells you how long to wait, believe it.
+1. **Idempotency key on every non-idempotent retry.** This is the one that moves money. A lost response is not a failed request; without a key, your retry is a second charge. Mint one key per intent, reuse it across attempts.
+2. **Fail fast on non-`429` `4xx`.** Never retry a request the server already told you is wrong. A retried `422` is a denial-of-service attack you're running against yourself, on schedule, with a clear conscience.
+3. **Jittered exponential backoff, and honor `Retry-After`.** Don't be the thundering herd. Wait longer each time, wait a *random* amount, and when the server tells you how long to wait, believe it.
 
 None of these is "be more careful." They're three dozen lines of shell you can run today. I did — that's the point of the console blocks. The retry loop is the call coming from inside the house; these are the three locks that keep it from robbing you.

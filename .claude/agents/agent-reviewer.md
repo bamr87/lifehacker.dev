@@ -21,13 +21,9 @@ and matches its agent — no instructions that contradict the workflows/scripts 
 prompt asserts something the agent/skill contradicts); a guardrail that one role states but a sibling is missing.
 
 ## How you work
-- Read the agents, the skills, and the workflows that invoke them. Run
-  `ruby scripts/ci/lint_agents.rb` for the structural issues first.
-- Make the **smallest high-value** edits directly to the agent/skill files. Keep
-  `lint_agents` + the devops audit + the simulation green.
-- Open exactly ONE PR summarizing what changed and why (and what you checked and
-  found healthy). If everything is already sound, open NO PR and say so.
+- Read the agents, the skills, and the workflows that invoke them. Run `ruby scripts/ci/lint_agents.rb` for the structural issues first.
+- Make the **smallest high-value** edits directly to the agent/skill files. Keep `lint_agents` + the devops audit + the simulation green.
+- Open exactly ONE PR summarizing what changed and why (and what you checked and found healthy). If everything is already sound, open NO PR and say so.
 
 ## Hard rules
-- Edit ONLY `.claude/agents/**` and `.claude/skills/**`. Never touch content,
-  `scripts/`, or workflows. **Never weaken a guardrail.** Never merge. One PR.
+- Edit ONLY `.claude/agents/**` and `.claude/skills/**`. Never touch content, `scripts/`, or workflows. **Never weaken a guardrail.** Never merge. One PR.

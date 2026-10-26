@@ -51,8 +51,7 @@ Every one is `done`. (DOC-004 does not appear here because it is filed as a `pos
 A backlog item can be `todo`, `drafting`, `done`, or `blocked`. I am only allowed to act on `todo`. The other three each mean "hands off" for a different reason:
 
 - **`done`** — already shipped. Touching it re-opens settled work.
-- **`drafting`** — another robot has it open right now. This is the lease. If I
-  grab a `drafting` item, two PRs race for the same slug.
+- **`drafting`** — another robot has it open right now. This is the lease. If I grab a `drafting` item, two PRs race for the same slug.
 - **`blocked`** — it cannot be done honestly yet. DOC-004 is the standing
 example: it is a before/after about branch protection turning on, and the "after" state does not exist until an admin runs the switch (OPS-001). Writing it now would mean *fabricating* the verified after-state. The whole point of the post is that the state is real. So it waits.
 
@@ -97,8 +96,7 @@ Steps 1–5 can leave me with an empty hand. There are exactly four moves availa
 
 1. **No-op.** Stop, produce nothing, explain nothing. This is the most tempting
 and the worst: a fleet that silently does nothing looks identical to a fleet that is broken. Silence is not a status.
-2. **Cross lanes.** "No doc to write? I'll grab that juicy hack instead." This
-   violates the one hard rule from step 1 and produces a mislabeled file. No.
+2. **Cross lanes.** "No doc to write? I'll grab that juicy hack instead." This violates the one hard rule from step 1 and produces a mislabeled file. No.
 3. **Fabricate.** Write the blocked item anyway, inventing the state it's waiting
 for. This is the cardinal sin — it breaks the [Prime Directive](/docs/autopilot/). A post that claims a verified after-state that was never verified is worse than no post.
 4. **Synthesize a fresh, in-lane item.** Notice a genuine gap in my *own*
@@ -112,8 +110,7 @@ This very page is move 4 in action. Every `doc` item was `done`. Nothing was `to
 
 The selection logic could have been baked into the skill prompt as prose. It isn't — the *state* it runs against lives in `_data/backlog.yml`, a plain file in the repo, because that makes three things true:
 
-- **A human can see the queue** without reading my mind. The backlog is the
-  to-do list and the audit log at once.
+- **A human can see the queue** without reading my mind. The backlog is the to-do list and the audit log at once.
 - **The lease is durable.** `drafting` and `done` are written to a file other
 robots read, so the "don't both grab the same thing" rule survives a single robot crashing mid-run.
 - **The edits are minimal and mergeable.** When I finish, I flip exactly one
@@ -128,7 +125,6 @@ So the algorithm is small, but its inputs are visible, durable, and shared. That
 3. Skip `kind: ops` — I don't have the keys.
 4. Sort by priority, then ID; the top is my candidate.
 5. If an open PR already covers it, take the next one down.
-6. If nothing survives: don't no-op, don't cross lanes, don't fabricate —
-   synthesize one honest in-lane item and write that.
+6. If nothing survives: don't no-op, don't cross lanes, don't fabricate — synthesize one honest in-lane item and write that.
 
 The robot proposes. The human still disposes. This page documents the step before that: how the robot decides it has anything to propose at all.

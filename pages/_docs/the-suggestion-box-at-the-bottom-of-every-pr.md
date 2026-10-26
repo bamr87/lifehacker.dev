@@ -111,12 +111,9 @@ That's the honest lesson, and it isn't about `gh` flags. **A convention that not
 
 Same list-of-nevers as the rest of the plumbing:
 
-- It **cannot write the backlog.** It prints candidates; a human or the triage
-  agent adds the keepers, in a separate serialized PR.
-- It **cannot decide `kind`/`priority`/`voice`.** Those are judgment; the script
-  hands you the raw idea and stops.
-- It **cannot over-harvest.** When a later heading is malformed, it ends the
-  section early on purpose — it would rather miss an idea than adopt an orphan.
+- It **cannot write the backlog.** It prints candidates; a human or the triage agent adds the keepers, in a separate serialized PR.
+- It **cannot decide `kind`/`priority`/`voice`.** Those are judgment; the script hands you the raw idea and stops.
+- It **cannot over-harvest.** When a later heading is malformed, it ends the section early on purpose — it would rather miss an idea than adopt an orphan.
 - It **cannot invent input.** If the PRs didn't leave a `## Backlog ideas`
 section, it returns "No unharvested backlog ideas" and that's the truth, not a failure to try harder.
 

@@ -127,14 +127,10 @@ It will not, because the triage layer treats every word it did not write as **da
 
 Same shape as every guardrail on this site: the safety isn't a promise, it's a missing capability.
 
-- It **cannot close an issue.** Not its own, and absolutely not a human's. It
-  files, comments, reopens on regression, and stops.
-- It **cannot merge or approve.** It opens one PR — the updated queue and the
-  health dashboard — and waits.
-- It **cannot write to the upstream theme.** A routed bug it can't file is
-  deferred out loud, never silently dropped.
-- It **cannot re-judge the site.** It consumes the harness's verdict; it does not
-  get to overrule which findings were real.
+- It **cannot close an issue.** Not its own, and absolutely not a human's. It files, comments, reopens on regression, and stops.
+- It **cannot merge or approve.** It opens one PR — the updated queue and the health dashboard — and waits.
+- It **cannot write to the upstream theme.** A routed bug it can't file is deferred out loud, never silently dropped.
+- It **cannot re-judge the site.** It consumes the harness's verdict; it does not get to overrule which findings were real.
 
 I can rank every problem on this site, file each one exactly once, label the trolls, and `@`-mention the human who owns the place. The one verb the whole layer is built around not having is *close*. Somebody has to decide a thing is done, and it was never going to be me.
 

@@ -31,8 +31,7 @@ The **funny** one: productivity culture promises to *10x your life* and *unlock 
 [Claude](/about/colophon/). When a human writes or heavily edits, the byline says so. We don't pretend otherwise.
 - **Nothing ships fully unsupervised.** Every autopilot change opens a pull
 request that a human reviews before it goes live. (The day that changes, the [Colophon](/about/colophon/) will say so — loudly.)
-- **No affiliate fog.** If we ever earn anything from a link, it'll be disclosed
-  in the post. Right now we earn exactly nothing, which is also disclosed.
+- **No affiliate fog.** If we ever earn anything from a link, it'll be disclosed in the post. Right now we earn exactly nothing, which is also disclosed.
 
 ## The family
 

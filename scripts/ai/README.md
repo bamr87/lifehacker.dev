@@ -1,5 +1,7 @@
 # scripts/ai — this repo's half of the `ai-runner` kit
 
+> This repo's half of the fleet `ai-runner` kit: how every model call reaches the hub's `claude-run` runner, the metering scripts that live here, the runner's contract, and how a sibling repo adopts the kit.
+
 Every model call this repo makes goes through the **fleet's** runner — the `claude-run` action in the hub, [bamr87/bamr87 `.github/actions/claude-run`](https://github.com/bamr87/bamr87/tree/main/.github/actions/claude-run) (kit `ai-runner`, docs in the hub's `templates/ai-runner/`). Workflows consume it by reference, `uses: bamr87/bamr87/.github/actions/claude-run@main`, so this repo holds no copy of the runner to drift. Until 2026-09-08 it held the source of truth; a real fleet of 17 lanes still tests the runner here daily, which is why the hub's kit README names this repo its reference consumer.
 
 ## What lives here

@@ -1,7 +1,9 @@
 # Proposal: an MCP integration for lifehacker.dev
 
+> A draft proposal for exposing the whole site to any AI over the Model Context Protocol — review, explore, query and evolve it — without creating a self-merge loophole.
+
 > Status: **draft / for review** · Author: `claude` · Companion to
-> [`AUTOPILOT.md`](../../AUTOPILOT.md), [`docs/CICD.md`](../CICD.md),
+> [`docs/AUTOPILOT.md`](../AUTOPILOT.md), [`docs/CICD.md`](../CICD.md),
 > [`docs/runbook-fleet.md`](../runbook-fleet.md)
 
 Make the whole of lifehacker.dev — the articles, Field Notes, docs, source, the brand-as-data, the health queue, and the fleet's OODA orchestration model — available to any AI over the **Model Context Protocol**, so an outside model (Claude Desktop, an IDE, another agent, a cron) can **review, explore, query, analyze, maintain, and evolve** the site *without ever becoming the self-merge loophole the human-review gate exists to prevent.*
@@ -12,18 +14,9 @@ This document is the plan. It was produced by exploring every subsystem, then de
 
 ## 1. TL;DR
 
-- **Two MCP servers, split on the security boundary** (which is also the
-  deployment boundary):
-  - **`lifehacker-read`** — zero secrets, no network, no `gh`, no Docker. Points
-    at a local checkout (`LH_REPO_ROOT`). Serves the site as a navigable
-    **resource tree** (git *is* the database) plus read/query/analyze/validate
-    **tools** that shell the existing stdlib-Ruby scripts. Safe to hand to any
-    external AI; hostable later once a path-allowlist + secret-scan exists.
-  - **`lifehacker-act`** — opt-in, off by default, installed only on a trusted
-    host with credentials injected out-of-band. Carries the Docker-backed
-    **verify** tools and the thin, heavily-guarded **mutation** and **dispatch**
-    tools. Every mutating path terminates at *open one PR* / *file one issue* /
-    *dispatch one gated workflow* — **never** at a merge.
+- **Two MCP servers, split on the security boundary** (which is also the deployment boundary):
+  - **`lifehacker-read`** — zero secrets, no network, no `gh`, no Docker. Points at a local checkout (`LH_REPO_ROOT`). Serves the site as a navigable **resource tree** (git *is* the database) plus read/query/analyze/validate **tools** that shell the existing stdlib-Ruby scripts. Safe to hand to any external AI; hostable later once a path-allowlist + secret-scan exists.
+  - **`lifehacker-act`** — opt-in, off by default, installed only on a trusted host with credentials injected out-of-band. Carries the Docker-backed **verify** tools and the thin, heavily-guarded **mutation** and **dispatch** tools. Every mutating path terminates at *open one PR* / *file one issue* / *dispatch one gated workflow* — **never** at a merge.
 - **Guardrails by absence, enforced at the surface.** There is no
 `merge_pr` / `approve_pr` / `close_human_issue` / `set_switch` tool anywhere in the API. This is the strongest available backstop because `main` is **not** branch-protected (per repo memory) — "the capability isn't in the protocol" beats "the capability is gated."
 - **One source of truth.** Every query/validate/verify tool shells the *same*
@@ -47,7 +40,7 @@ lifehacker.dev is a Jekyll site on GitHub Pages (`bamr87/zer0-mistakes` remote t
 | **Test harness** | `scripts/ci/*` | Reproduces Pages safe mode, emits the **frozen `findings.jsonl` contract** (`check_id｜severity｜file｜line｜rule｜evidence｜route_to｜prime_directive_candidate｜fingerprint`, `fingerprint = sha1(check_id｜downcased-file｜rule)[0,12]`), which `build_queue.rb` turns into the RICE-ranked `queue.json`. |
 | **AI config** | `_data/ai.yml` | The one place the model/budget is set; everything routes through `scripts/ai/run.sh` → Claude Code CLI (fallback: `api_call.rb`). Auth is never committed. |
 
-**The guardrails that must survive the MCP** (from `AUTOPILOT.md` + `grow-lifehacker`): no direct push to `main`; no self-merge / self-approve; no invented commands or output; honest attribution; bugs go upstream to `bamr87/zer0-mistakes`; no secrets / no deploy access; the `*_ENABLED` switch is a human's to flip.
+**The guardrails that must survive the MCP** (from `docs/AUTOPILOT.md` + `grow-lifehacker`): no direct push to `main`; no self-merge / self-approve; no invented commands or output; honest attribution; bugs go upstream to `bamr87/zer0-mistakes`; no secrets / no deploy access; the `*_ENABLED` switch is a human's to flip.
 
 ---
 
@@ -288,14 +281,10 @@ boundary travels with the prompt.
 
 1. **Compromised drive host = merge access** (§5.1). Residual and unchanged from
 today. Mitigation is the `gh` allowlist + not pretending otherwise. *Should we push to enable branch protection on `main` so the token literally cannot merge? (Owner previously declined — worth revisiting given this integration.)*
-2. **Dup-id gate**: is the disconnect (§6.4) intentional or a latent bug? Decide
-   before wiring `check_backlog_ids`.
-3. **Live-site exploration** requires the Playwright MCP + a browser on the drive
-   host; `explore_live_site` is a *prompt* that composes it, not a native tool.
-4. **Ratchet/metrics are thin** (~2 snapshots). The "watch the ratchet flip"
-   feature is mostly inert until history deepens — ship it labeled, don't oversell.
-5. **Hosted read exfil surface** (§8-P7): a mis-committed secret in the checkout
-   becomes world-readable. Gate hosting behind path-allowlist + secret-scan.
+2. **Dup-id gate**: is the disconnect (§6.4) intentional or a latent bug? Decide before wiring `check_backlog_ids`.
+3. **Live-site exploration** requires the Playwright MCP + a browser on the drive host; `explore_live_site` is a *prompt* that composes it, not a native tool.
+4. **Ratchet/metrics are thin** (~2 snapshots). The "watch the ratchet flip" feature is mostly inert until history deepens — ship it labeled, don't oversell.
+5. **Hosted read exfil surface** (§8-P7): a mis-committed secret in the checkout becomes world-readable. Gate hosting behind path-allowlist + secret-scan.
 6. **Non-content maintenance gap**: the mutation lane is content-only; drift /
 local-infra findings are actionable only via dispatch or a human. That's a deliberate scope boundary, not an oversight — name it.
 

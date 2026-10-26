@@ -163,14 +163,10 @@ That `fetch-depth: 0` is not optional. `actions/checkout` defaults to a depth-1 
 
 ## When this goes wrong
 
-- **Renames trip the allowlist.** `git diff --name-only` on a rename lists the new
-  path (and, depending on config, the old one). A post moved *out* of `pages/_posts/` shows up as a blocked path — which is arguably correct: the bot shouldn't be relocating files out of the editorial tree. If you need moves, widen the allowlist deliberately, not reflexively.
-- **The bot legitimately needs a new directory.** Say you add a `pages/_drafts/`.
-  The guard blocks it until you add it to `ALLOW`. Good. That edit to the allowlist is a human decision in a reviewed PR — which is the entire posture: humans widen the door, the bot walks through it.
-- **Someone runs it locally with an unpushed base.** `origin/main` on a stale
-  local clone lags the real base and the diff includes commits already merged. In CI with `fetch-depth: 0` this is a non-issue; locally, `git fetch origin` first.
-- **It blocks a human's PR too.** By design — the guard doesn't know or care who
-  authored the branch. If your humans need to touch `.github/`, run the guard only on the bot's branches (`if: startsWith(github.head_ref, 'autopilot/')`) or, better, give the bot's token a narrower scope and let branch protection carry the humans.
+- **Renames trip the allowlist.** `git diff --name-only` on a rename lists the new path (and, depending on config, the old one). A post moved *out* of `pages/_posts/` shows up as a blocked path — which is arguably correct: the bot shouldn't be relocating files out of the editorial tree. If you need moves, widen the allowlist deliberately, not reflexively.
+- **The bot legitimately needs a new directory.** Say you add a `pages/_drafts/`. The guard blocks it until you add it to `ALLOW`. Good. That edit to the allowlist is a human decision in a reviewed PR — which is the entire posture: humans widen the door, the bot walks through it.
+- **Someone runs it locally with an unpushed base.** `origin/main` on a stale local clone lags the real base and the diff includes commits already merged. In CI with `fetch-depth: 0` this is a non-issue; locally, `git fetch origin` first.
+- **It blocks a human's PR too.** By design — the guard doesn't know or care who authored the branch. If your humans need to touch `.github/`, run the guard only on the bot's branches (`if: startsWith(github.head_ref, 'autopilot/')`) or, better, give the bot's token a narrower scope and let branch protection carry the humans.
 
 ## The walk-back
 

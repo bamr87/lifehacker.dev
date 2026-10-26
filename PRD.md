@@ -1,8 +1,8 @@
 # PRD — lifehacker.dev
 
-> Product requirements for [`bamr87/lifehacker.dev`](https://github.com/bamr87/lifehacker.dev).
-> Derived from the README, agent docs, config and code in this repo. Anything not
-> stated in those sources is marked **TBD**; success metrics are proposals.
+> The product requirements for lifehacker.dev — problem, users, goals and non-goals, current features, requirements and proposed success metrics.
+
+Derived from the README, agent docs, config and code in [`bamr87/lifehacker.dev`](https://github.com/bamr87/lifehacker.dev). Anything not stated in those sources is marked **TBD**; success metrics are proposals.
 
 ## 1. Overview / problem
 
@@ -95,4 +95,5 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 
 ## 8. Links
 
-- [README.md](README.md) · [AGENTS.md](AGENTS.md) · [AUTOPILOT.md](AUTOPILOT.md) · [CHANGELOG.md](CHANGELOG.md) · [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- [README.md](README.md) · [AGENTS.md](AGENTS.md) · [docs/AUTOPILOT.md](docs/AUTOPILOT.md) · [CHANGELOG.md](CHANGELOG.md) · [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- Backlog of record: [GitHub Issues](https://github.com/bamr87/lifehacker.dev/issues) (the content queue the autopilot drafts from is `_data/backlog.yml`)

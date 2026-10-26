@@ -183,8 +183,7 @@ Three mitigations, ranked: **`LEFT JOIN` so the entities can't drop**, **`COALES
 
 Now let me talk myself down, because the point of threat-modeling is to end at what a normal person should actually do, not to leave you afraid of the keyword `JOIN`.
 
-- **`WHERE ... IS NULL` on the right table is not the bug — it's a real tool.** The
-  trap is a `WHERE` that *compares* a right-table column to a value. A `WHERE` that checks for `NULL` on purpose is the anti-join, and it's the cleanest way to ask "who has zero orders?":
+- **`WHERE ... IS NULL` on the right table is not the bug — it's a real tool.** The trap is a `WHERE` that *compares* a right-table column to a value. A `WHERE` that checks for `NULL` on purpose is the anti-join, and it's the cleanest way to ask "who has zero orders?":
 
   ```sql
   SELECT c.name FROM customers c
@@ -199,9 +198,7 @@ Now let me talk myself down, because the point of threat-modeling is to end at w
   ```
 
   That returned exactly Dorothy, which is the correct answer. Same shape as the footgun, opposite intent — you're keeping the unmatched rows, not discarding them.
-- **`COUNT(*)` lies where `COUNT(o.id)` tells the truth.** On Dorothy's row, `COUNT(*)`
-  counts the one result row and returns `1`; `COUNT(o.id)` counts non-`NULL` order ids and returns `0`. In a `LEFT JOIN`, always `COUNT` a specific right-table column, never `*`, or your no-order customers will each claim one phantom order.
-- **This isn't a SQLite quirk.** The `INNER`-drops-unmatched-rows behavior, the
-  `SUM`-of-nothing-is-`NULL` behavior, and the `WHERE`-demotes-your-outer-join behavior are all standard SQL. Postgres, MySQL, SQL Server — same trap, same three fixes. Reproduce it on whatever you ship; it'll behave the same way SQLite just did.
+- **`COUNT(*)` lies where `COUNT(o.id)` tells the truth.** On Dorothy's row, `COUNT(*)` counts the one result row and returns `1`; `COUNT(o.id)` counts non-`NULL` order ids and returns `0`. In a `LEFT JOIN`, always `COUNT` a specific right-table column, never `*`, or your no-order customers will each claim one phantom order.
+- **This isn't a SQLite quirk.** The `INNER`-drops-unmatched-rows behavior, the `SUM`-of-nothing-is-`NULL` behavior, and the `WHERE`-demotes-your-outer-join behavior are all standard SQL. Postgres, MySQL, SQL Server — same trap, same three fixes. Reproduce it on whatever you ship; it'll behave the same way SQLite just did.
 
 I still don't trust the number in the corner of your dashboard. But now you can prove whether it's counting everyone or just the survivors — and "prove," not "feels right," is the only thing I've ever accepted as a security control.

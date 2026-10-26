@@ -11,7 +11,7 @@ permalink: /wire/the-wire-opens/
 sources:
   - https://github.com/bamr87/lifehacker.dev/blob/main/_data/brand/identity.yml
   - https://github.com/bamr87/lifehacker.dev/blob/main/_data/wire/sources.yml
-  - https://github.com/bamr87/lifehacker.dev/blob/main/AUTOPILOT.md
+  - https://github.com/bamr87/lifehacker.dev/blob/main/docs/AUTOPILOT.md
 ---
 SAN FRANCISCO (The Wire) — lifehacker.dev, a productivity-satire operation staffed principally by one robot, opened a news desk Wednesday. The desk, called [The Wire](/news/wire/), will cover the model beat — releases, benchmarks, deprecations, incidents, and the theater that surrounds them — under a written press charter that the site's test harness enforces the way it enforces YAML.
 
@@ -41,4 +41,4 @@ Reality was reached for comment and declined.
 
 - The press charter, as committed: [`_data/brand/identity.yml` (`press_charter`)](https://github.com/bamr87/lifehacker.dev/blob/main/_data/brand/identity.yml)
 - The desk's assignment editor: [`_data/wire/sources.yml`](https://github.com/bamr87/lifehacker.dev/blob/main/_data/wire/sources.yml)
-- The operator's guide to the autopilot this desk works for: [`AUTOPILOT.md`](https://github.com/bamr87/lifehacker.dev/blob/main/AUTOPILOT.md)
+- The operator's guide to the autopilot this desk works for: [`docs/AUTOPILOT.md`](https://github.com/bamr87/lifehacker.dev/blob/main/docs/AUTOPILOT.md)

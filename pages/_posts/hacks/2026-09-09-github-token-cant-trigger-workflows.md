@@ -48,10 +48,8 @@ Before you worry about loops, worry about the thing you just created: a long-liv
 
 Mint the narrowest thing that works, in this order:
 
-- **A GitHub App installation token** — scoped to specific repos and permissions,
-  short-lived (it expires in an hour), and auditable as its own identity instead of impersonating a human. This is the one I actually want you to use.
-- **A fine-grained PAT** — if an App is too much ceremony, scope the PAT to *one*
-  repository with only `Contents: write` (add `Workflows: write` only if you push workflow files). Not "all repositories." Not classic. One repo, two permissions.
+- **A GitHub App installation token** — scoped to specific repos and permissions, short-lived (it expires in an hour), and auditable as its own identity instead of impersonating a human. This is the one I actually want you to use.
+- **A fine-grained PAT** — if an App is too much ceremony, scope the PAT to *one* repository with only `Contents: write` (add `Workflows: write` only if you push workflow files). Not "all repositories." Not classic. One repo, two permissions.
 
 `SEVERITY: org-wide CI compromise. ATTACK VECTOR: the words "all repositories" on the token-creation screen.` The blast radius of a leaked token is exactly the scope you gave it and not one repo smaller, so give it almost nothing.
 
@@ -113,22 +111,16 @@ A trigger scoped to `main` and two paths cannot be set off by a bot pushing a do
 
 ## When this goes wrong
 
-- **The PAT owner leaves the company.** A PAT is tied to a human account. When
-  they offboard, your production deploy cascade dies with their access, silently, exactly like the original bug. This is the whole reason Mitigation 1 ranks a GitHub App above a personal PAT — the App has no résumé to update.
-- **`github.actor` isn't what you think under a PAT.** When you push with a PAT
-  owned by a machine user called `release-bot`, the actor is `release-bot`, *not* `github-actions[bot]`. Guard on your bot's actual username (or a sentinel), or the check waves the loop right through.
-- **Loop protection was the only thing saving you.** If removing the default token
-  gives you a runaway pipeline within minutes, that is not the PAT misbehaving — that is proof your cascade always wanted to loop and the platform was the only adult in the room. Add the guard *before* you add the PAT, not after the runner-minute bill.
+- **The PAT owner leaves the company.** A PAT is tied to a human account. When they offboard, your production deploy cascade dies with their access, silently, exactly like the original bug. This is the whole reason Mitigation 1 ranks a GitHub App above a personal PAT — the App has no résumé to update.
+- **`github.actor` isn't what you think under a PAT.** When you push with a PAT owned by a machine user called `release-bot`, the actor is `release-bot`, *not* `github-actions[bot]`. Guard on your bot's actual username (or a sentinel), or the check waves the loop right through.
+- **Loop protection was the only thing saving you.** If removing the default token gives you a runaway pipeline within minutes, that is not the PAT misbehaving — that is proof your cascade always wanted to loop and the platform was the only adult in the room. Add the guard *before* you add the PAT, not after the runner-minute bill.
 
 ## The payload: three mitigations, ranked
 
 Since the fix for one problem is the cause of the next, here is the ranked list — most damage prevented first:
 
-1. **Least-privilege the token (App over PAT, one repo, two permissions).** This is
-   the one that turns a leaked secret from "org-wide CI compromise" into "one repo, contents only." Never a classic `repo`-scoped PAT in a workflow secret.
-2. **Put the loop guard back, failing closed.** The default token was holding the
-   infinite-loop door shut; the moment you swap it out, *you* are the doorstop. Skip your own bot, honor an opt-out, and treat an unknown actor as the bot.
-3. **Scope the trigger to the branch and paths you meant.** Defense in depth: a
-   narrow `on:` can't be tripped from a feature branch, so a bypassed guard still has almost nothing to detonate.
+1. **Least-privilege the token (App over PAT, one repo, two permissions).** This is the one that turns a leaked secret from "org-wide CI compromise" into "one repo, contents only." Never a classic `repo`-scoped PAT in a workflow secret.
+2. **Put the loop guard back, failing closed.** The default token was holding the infinite-loop door shut; the moment you swap it out, *you* are the doorstop. Skip your own bot, honor an opt-out, and treat an unknown actor as the bot.
+3. **Scope the trigger to the branch and paths you meant.** Defense in depth: a narrow `on:` can't be tripped from a feature branch, so a bypassed guard still has almost nothing to detonate.
 
 None of these is "be more careful." Two are a few lines of YAML and one is a shell function I ran in front of you. The bot that pushed and expected the next job to run is the quietest failure on your pipeline — and the fix that wakes it up is the loudest one, unless these three locks are on the door before you hand it the key.

@@ -18,24 +18,18 @@ the ARC, not every token: what the human asked, what you actually did, the turni
 an outcome.** If you can't verify it from the transcript, it does not go in — the same honesty rule the content factory runs on.
 
 ## 3. Draft the Field Note
-- One file: `pages/_posts/field-notes/<YYYY-MM-DD>-<slug>.md` (date = today, the
-  publish date). Field notes are the `field-notes` news section now (issue #337).
+- One file: `pages/_posts/field-notes/<YYYY-MM-DD>-<slug>.md` (date = today, the publish date). Field notes are the `field-notes` news section now (issue #337).
 - Frontmatter like the other field notes: `title`, `description`, `date`,
 `categories: [Field Notes]`, `tags`, `author: claude`, `excerpt`. Tag from the field-notes pill vocabulary (`automation ai jekyll ci-cd satire business engineering career`) — a retrospective is usually `career`; no one-off tags.
 - Voice: first person, honest, specific, a little self-aware — mirror
 `pages/_posts/field-notes/2026-06-22-i-hired-a-robot-to-write-this-website.md`. Read the brand files first (`_data/brand/voice.yml`, `glossary.yml`) and run `ruby scripts/ci/lint_brand.rb` before you open the PR.
-- A structure that works: what the shift was → the part that surprised you → the
-  concrete lessons (name the real gotcha) → what you want the next thread to know.
-- **Redaction (hard):** never quote a secret, token, key, or full credential, even
-  if it appears in the transcript. Refer to it by name (`FLEET_TOKEN`), never value.
+- A structure that works: what the shift was → the part that surprised you → the concrete lessons (name the real gotcha) → what you want the next thread to know.
+- **Redaction (hard):** never quote a secret, token, key, or full credential, even if it appears in the transcript. Refer to it by name (`FLEET_TOKEN`), never value.
 
 ## 4. Record + open the PR
-- `ruby scripts/retro/process_queue.rb --mark <session_id> <post-slug> "<title>"`
-  appends to `_data/retrospectives.yml` so the thread is not re-proposed.
-- Verify the build (`bundle exec jekyll build`, or the safe-mode build) and that
-  `lint_brand` is clean.
-- Open ONE PR (branch `retro/<date>-<slug>`): the post + the ledger line. Title it
-  `retro: <thread, in a phrase>`. Then stop.
+- `ruby scripts/retro/process_queue.rb --mark <session_id> <post-slug> "<title>"` appends to `_data/retrospectives.yml` so the thread is not re-proposed.
+- Verify the build (`bundle exec jekyll build`, or the safe-mode build) and that `lint_brand` is clean.
+- Open ONE PR (branch `retro/<date>-<slug>`): the post + the ledger line. Title it `retro: <thread, in a phrase>`. Then stop.
 
 ## Hard rules
 - Content + ledger only: `pages/_posts/field-notes/**` and `_data/retrospectives.yml`. Never

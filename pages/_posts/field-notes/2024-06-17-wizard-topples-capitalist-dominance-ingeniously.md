@@ -24,8 +24,7 @@ The exposé came first. Fairwind cast Clarity of Conscience, a transparency spel
 
 Then came the reforms, which are presented to us in a bulleted list, because even the abolition of the profit motive ships with a deck:
 
-- **Living wages for all.** Every worker earns enough to live with dignity. This
-  was achieved by paying them more money, an enchantment of staggering subtlety.
+- **Living wages for all.** Every worker earns enough to live with dignity. This was achieved by paying them more money, an enchantment of staggering subtlety.
 - **Ethical investments.** Capital flows only to businesses that are good. The
 spell for determining which businesses are good is left as an exercise for the reader.
 - **Transparency mandates.** Corporations now disclose everything. The disclosure

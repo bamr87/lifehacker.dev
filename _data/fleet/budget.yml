@@ -4,7 +4,7 @@
 # Read by scripts/fleet/policy.rb. These are the only numbers that decide how
 # much the fleet does per cycle and how it splits effort between shipping new
 # content and fixing what's broken. Raising max_open_prs or max_daily_tokens is
-# a guardrail change — note it in /about/colophon/ with a date (per AUTOPILOT.md).
+# a guardrail change — note it in /about/colophon/ with a date (per docs/AUTOPILOT.md).
 # =============================================================================
 caps:
   max_concurrency:   3          # role agents running at once

@@ -1,4 +1,6 @@
-# AUTOPILOT.md — operating the lifehacker.dev autopilot
+# The autopilot — operator's guide
+
+> How to run, schedule and steer the Claude Code autopilot that writes this site: the data that drives it, one assisted cycle, the guardrails, the switches and the loop's memory.
 
 lifehacker.dev is a **headless CMS driven by Claude Code**. This file is the operator's guide. The reader-facing version lives at [/docs/autopilot/](https://lifehacker.dev/docs/autopilot/) and [/about/colophon/](https://lifehacker.dev/about/colophon/).
 
@@ -45,15 +47,14 @@ You review the PR and merge. GitHub Pages deploys `main` automatically.
 - **No self-merge / no self-approve.** A human merges.
 - **No invented commands or output.** Everything shown was run.
 - **Honest attribution.** Robot byline = `claude`; human-written = human byline.
-- **Bugs go upstream** to `bamr87/zer0-mistakes` (`fix:` prefix, install mode
-  "Remote theme (GitHub Pages)").
+- **Bugs go upstream** to `bamr87/zer0-mistakes` (`fix:` prefix, install mode "Remote theme (GitHub Pages)").
 - **No secrets / no deploy access.**
 
 If you loosen any of these, update [/about/colophon/](https://lifehacker.dev/about/colophon/) in the same change — in bold, with a date.
 
 ## Scheduling fully-autonomous runs (wired, OFF until you flip the variables)
 
-Every loop's cron is wired and **idles behind its `*_ENABLED` repo variable** — the variable is the single ON switch (`gh variable set <NAME> true`), and the bot token can't set variables, so a loop can never enable itself. Flip only what you trust, and add a dated line to the Colophon when you do. The full switch list is in `docs/CICD.md`. The one exception: `fleet-dispatch.yml` stays schedule-free by guardrail (audit + simulation both fail if a cron appears there).
+Every loop's cron is wired and **idles behind its `*_ENABLED` repo variable** — the variable is the single ON switch (`gh variable set <NAME> true`), and the bot token can't set variables, so a loop can never enable itself. Flip only what you trust, and add a dated line to the Colophon when you do. Every switch is listed in [reference/workflows.md](reference/workflows.md); what turning one on means is in [CICD.md](CICD.md#turning-on-continuous-autonomy-deliberate). The one exception: `fleet-dispatch.yml` stays schedule-free by guardrail (audit + simulation both fail if a cron appears there).
 
 ## Operating the loops from the console
 

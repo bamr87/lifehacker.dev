@@ -1,5 +1,7 @@
 # scripts/preview
 
+> The dependency-free Trace Bloom banner renderer: how to run it, what it writes, and the rules for changing it.
+
 The Trace Bloom preview-banner renderer. Dependency-free JavaScript (Node ≥ 18, zero npm packages) — it runs on a bare CI runner, on a laptop with no bundle, and inside a browser.
 
 - **What it is and why:** [`docs/PREVIEW-IMAGES.md`](../../docs/PREVIEW-IMAGES.md)
@@ -49,13 +51,9 @@ The generator is offline and free. The **illustrator** is the one part that call
 
 1. **Seed order is a contract.** `deriveParams` samples the parameter space in a
 fixed order; inserting a `pick()` above an existing one re-rolls every banner on the site. Append, never insert.
-2. **Bump `GENERATOR` in `lib/svg.mjs`** whenever the visual contract changes.
-   That version is what makes `--all` refresh existing art instead of skipping it.
-3. **Never use a string replacement on front matter.** `$1`/`$&` expand. See the
-   gotcha section in `docs/PREVIEW-IMAGES.md` — it corrupted a real article once.
-4. **Motion is never load-bearing.** Frame 0 must be a complete image, because
-   that is the frame every social scraper captures.
-5. **No fallback rung.** If art cannot be made, fail loudly. A pipeline that
-   silently degrades to a generic gradient is exactly what this replaced.
+2. **Bump `GENERATOR` in `lib/svg.mjs`** whenever the visual contract changes. That version is what makes `--all` refresh existing art instead of skipping it.
+3. **Never use a string replacement on front matter.** `$1`/`$&` expand. See the gotcha section in `docs/PREVIEW-IMAGES.md` — it corrupted a real article once.
+4. **Motion is never load-bearing.** Frame 0 must be a complete image, because that is the frame every social scraper captures.
+5. **No fallback rung.** If art cannot be made, fail loudly. A pipeline that silently degrades to a generic gradient is exactly what this replaced.
 
 After changing `lib/` or `design.json`: re-run `build-lab.mjs`, regenerate with `--all --force` **and `sections.mjs`** (the fallbacks share the tokens), and eyeball a contact sheet before committing.

@@ -170,9 +170,6 @@ Whichever fix you reach for: don't trust "felt faster." Wrap the block in `reset
 
 ## When this goes wrong
 
-- **Count is 0 and you swear the loop ran.** `DEBUG` is off. `connection.queries` is
-  only populated when `DEBUG=True`; in production it's empty on purpose (it would leak memory logging every query). Measure in a shell or a test, not on the live site.
-- **`select_related` didn't help.** You named a reverse relation or a many-to-many —
-  it only follows forward FK / one-to-one. Reverse and M2M are `prefetch_related`'s job.
-- **Still N+1 after `.only()` / `.defer()`.** You touched a deferred field. Add it to
-  `.only(...)` or stop deferring it. The counter doesn't lie; the intent did.
+- **Count is 0 and you swear the loop ran.** `DEBUG` is off. `connection.queries` is only populated when `DEBUG=True`; in production it's empty on purpose (it would leak memory logging every query). Measure in a shell or a test, not on the live site.
+- **`select_related` didn't help.** You named a reverse relation or a many-to-many — it only follows forward FK / one-to-one. Reverse and M2M are `prefetch_related`'s job.
+- **Still N+1 after `.only()` / `.defer()`.** You touched a deferred field. Add it to `.only(...)` or stop deferring it. The counter doesn't lie; the intent did.

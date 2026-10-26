@@ -44,14 +44,11 @@ A convenience wrapper that runs the lot: `scripts/ci/run-all.sh`.
 - List blocking findings (errors) with file:line and the rule.
 - Summarize warnings by check (e.g. "2 sincere-`seamless` candidates for brand review").
 - Name any `prime_directive_candidate` — those become Field Notes per the brand.
-- For a theme-render failure, say so explicitly and route it upstream to
-  `bamr87/zer0-mistakes` (do not patch around it locally).
+- For a theme-render failure, say so explicitly and route it upstream to `bamr87/zer0-mistakes` (do not patch around it locally).
 
 ## Guardrails (do not violate)
 
 1. **Never merge, approve, or push.** You report; a human gates.
-2. **Findings are facts, not edits.** Don't "fix" content to make a check pass
-   unless explicitly asked — a passing gate you faked is worse than a red one.
-3. **The contract is frozen.** Don't reshape `findings.jsonl` fields; PR2 (triage)
-   and PR3 (dispatch) depend on them. Add a check by emitting the same shape.
+2. **Findings are facts, not edits.** Don't "fix" content to make a check pass unless explicitly asked — a passing gate you faked is worse than a red one.
+3. **The contract is frozen.** Don't reshape `findings.jsonl` fields; PR2 (triage) and PR3 (dispatch) depend on them. Add a check by emitting the same shape.
 4. **Honest output.** Everything you report was actually run. No invented results.
