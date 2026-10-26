@@ -4930,7 +4930,8 @@ backlog:
     brief: "Deep-dive on illustrate.mjs's `--check` gate: reproduce each finding offline — a `stale-motif` (a committed drawing whose source article changed underneath it) and an `orphan-motif` (a drawing with no article left to render it) — and show the exact `generate.mjs` command the checker prints for each one so the fix is copy-paste, not guesswork. The angle: a validator that hands you the repair command is a different animal from one that just says no."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
+    published: /docs/the-check-that-hands-you-the-repair-command/
 
   # Named topic (2026-09-20): write a tutorial on Apple's bootable macOS
   # installer (support.apple.com/en-us/101578). Prime Directive: the erase
