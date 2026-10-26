@@ -4922,7 +4922,8 @@ backlog:
     brief: "Field note on the OAuth-first invariant baked into the shared run.sh (`env -u ANTHROPIC_API_KEY claude ...`): why a metered pay-per-call API key sitting in the environment next to a flat-rate subscription token is a silent-billing footgun — the runner will happily reach for whichever one the SDK finds first, and the bill arrives a month later. Reproduced offline by tracing which credential the runner actually selects when both are present, and why the fix is to unset, not to trust ordering."
     voice: meta-confession
     priority: P2
-    status: todo
+    status: done
+    published: /posts/2026/10/26/the-metered-key-next-to-my-subscription-token/
 
   - id: DOC-053
     kind: doc
