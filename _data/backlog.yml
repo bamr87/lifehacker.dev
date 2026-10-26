@@ -4914,7 +4914,8 @@ backlog:
     brief: "The honest review of the GitHub Action that mints a scoped, hour-long installation token per run: what it buys over a long-lived PAT — a token that expires in an hour instead of never, a blast radius bounded to the App's installation permissions instead of the whole account, and no human's credentials on the line — and the one footgun that eats an afternoon (the installation must already have been GRANTED each permission you request, or the mint succeeds and the later call 403s with a message that blames the wrong thing). Reviewed against the repo's own FLEET_TOKEN wiring; the permission table is inspectable offline from the workflow YAML."
     voice: tool-review-honest
     priority: P2
-    status: todo
+    status: done
+    published: /tools/create-github-app-token-honest-review/
 
   - id: POST-055
     kind: post
