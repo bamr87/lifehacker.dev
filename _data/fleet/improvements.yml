@@ -524,7 +524,7 @@ improvements:
   # for any edit). Words unchanged, no check touched.
   - id: 2026-10-26-constitution-oneline
     date: 2026-10-26
-    pr: TBD
+    pr: 743
     metric: runs.by_workflow.markdown-oneline.fail_rate
     baseline: 25.0
     direction: down
