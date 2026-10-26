@@ -5066,3 +5066,40 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-17-digital-artist-0001/
     source_title: "Quest Report: Digital Artist Level 0001"
     fingerprint: 68f659d181e8
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-154
+    kind: hack
+    title: "Your 10-layer net is secretly a 1-layer net: stacked Linear layers with no activation collapse to a single matrix"
+    brief: "Stack `nn.Linear(64,64)` three deep, forget to put an activation between them, and you haven't built a deep network — you've built one linear transform wearing a costume, because W3(W2(W1·x)) is just (W3·W2·W1)·x, a single matrix your model could have learned in one layer. It still runs, the loss still goes down, and nothing errors — it just plateaus at the accuracy of a one-layer linear model and can never solve anything non-linear (train it on XOR and watch it stall forever, because XOR isn't linearly separable and no amount of linear depth fixes that). The fix is a non-linearity between every hidden layer (`ReLU`, `Tanh`, …); depth only buys you power once there's a bend between the matrices. The failures that stay in: you WANT no activation on the final layer feeding `CrossEntropyLoss` (it expects raw logits and applies log-softmax itself), so 'no activation' is correct in exactly one place and quietly catastrophic everywhere else — don't 'fix' the collapse by slapping an activation on the output too; and `nn.ReLU` is a MODULE you must instantiate and actually place (in the `Sequential` or called in `forward`), so a bare `nn.ReLU` you defined but never applied silently does nothing and leaves you collapsed anyway. Reproducible in ten lines: compose three Linears, and print the product of their weight matrices next to a single equivalent Linear."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1101/neural-networks/
+    source_title: "Neural Networks: From Neurons to Backpropagation"
+    fingerprint: 5efe72e83474
+  - id: SRC-155
+    kind: hack
+    title: "A pg_dump you never restored is not a backup: rehearse pg_restore, and the roles pg_dump leaves behind"
+    brief: "The cron ran green every night, the `.dump` files are all there, and the day the database is gone you discover the backup and the RESTORE are two different claims — because nobody ran the restore until it was an emergency. Rehearse it on a throwaway container instead: `pg_dump -Fc mydb > db.dump` then `pg_restore -d mydb_restored db.dump` into a fresh Postgres, on a schedule, and diff a row count or two. The failures that stay in: `pg_dump` backs up ONE database's contents and NOT the cluster-global objects — roles/users and their passwords, tablespaces, and the GRANTs that depend on them — so a restore into a clean cluster dies with `role \"app\" does not exist` until you also capture `pg_dumpall --globals-only` and load it first; plain-format (`-Fp`) dumps restore by piping SQL through `psql` and, without `ON_ERROR_STOP=1`, will happily log errors and 'succeed' with a half-restored database, while custom-format (`-Fc`) restores with `pg_restore` and lets you `--clean --if-exists` and parallelize with `-j`; and a dump taken on PG16 does not reliably restore into PG14 (pg_restore is forward-compatible, not backward), so pin the versions or the rehearsal you skipped becomes the outage you didn't need. Reproducible with two Postgres containers and one deliberately-dropped role."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-08-data-scientist-0110/
+    source_title: "Quest Report: Data Scientist Level 0110"
+    fingerprint: 8174c21559ec
+  - id: SRC-156
+    kind: hack
+    title: "Your heredoc stored $(date) literally: << 'EOF' quotes the whole body, << EOF expands it"
+    brief: "You build a config or a timestamped log line with a heredoc, wrap it in `cat << 'EOF' … EOF`, and the file comes out with a literal `$(date -u +%Y-%m-%dT%H:%M:%SZ)` in it instead of a timestamp — because QUOTING the delimiter (`'EOF'`) tells the shell to treat the entire body as literal text: no `$VAR`, no `$(...)`, no backticks. Unquoted `<< EOF` expands all of them. The rule is one you choose on purpose: quote the delimiter when you're embedding a script, JSON, or anything with `$` you want verbatim; leave it unquoted when you actually want the values filled in. The failures that stay in: the CLOSING delimiter must sit alone at the start of its line with nothing after it, so a trailing space after `EOF` (or indenting it) means the heredoc never closes and the shell swallows the rest of your script as input — a baffling hang or 'unexpected end of file'; `<<-EOF` lets you indent the body and closing marker, but it strips leading TABS only, so an editor that indented with SPACES leaves the delimiter unmatched exactly the same way; and inside an unquoted heredoc every bare `$` is fair game, so a literal price like `$5` or a Perl `$_` expands to nothing unless you escape it (`\\$`) or quote the delimiter. Reproducible in four lines: the same body once with `'EOF'` and once with `EOF`, diffed."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-17-system-engineer-1001/
+    source_title: "Quest Report: System Engineer Level 1001"
+    fingerprint: a51efb8ec266
