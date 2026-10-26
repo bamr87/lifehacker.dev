@@ -434,7 +434,7 @@ improvements:
     metric: recurring_findings.description-too-long
     baseline: 4
     direction: down
-    status: pending
+    status: verified
     note: >-
       `description-too-long` recurred on 4 content PRs this window (and stands
       across history.jsonl). Root cause: grow-lifehacker / weekly-epic /
@@ -449,6 +449,11 @@ improvements:
       2026-08-10-recurring-parser), so it will read as pending — the next window's
       recurring_findings is the standing verification that `description-too-long`
       falls out as new drafts land under the cap.
+      2026-10-26 verdict — VERIFIED: verify_improvements measured
+      recurring_findings.description-too-long 4 -> 3 (down is better) across a
+      window of 40 merged content PRs. The rule is still present, so the margin
+      helps without fully eliminating it. If it stays at >=3 next window, check
+      which generator still emits it before adding another fix.
 
   # --- loop-tuner 2026-10-19: the measure + memory read what actually happened ---
   # (1) A `runs.fail_rate` trend regression (2.7 -> 5.4) fired. 6 of the 8
@@ -468,7 +473,7 @@ improvements:
     metric: runs.fail_rate
     baseline: 5.4
     direction: down
-    status: pending
+    status: regressed
     note: >-
       Measurement correction, like 2026-08-10-recurring-parser. Baseline 5.4 =
       8/149, of which 6 were `cancelled` supersessions; corrected same-window
@@ -479,6 +484,20 @@ improvements:
       verify_improvements gains `recurring_findings.<rule>` addressing (0 once
       the rule leaves an untruncated list; unknown when the 15-rule cap is
       full), with 4 new self-test cases (12 -> 16). No guardrail touched.
+      2026-10-26 verdict — REGRESSED (honest flip): runs.fail_rate measured
+      5.4 -> 5.9 (8/136). Cancelled runs are already excluded, so all 8 are real
+      failures, and none comes from this change. The measurement fix is correct
+      and stays: self-test is 30/30 and no cancelled run is counted. The causes:
+      (a) #733 merged a soft-wrapped docs/constitution.md, which made
+      lint_oneline fail. That turned pipeline x2 + markdown-oneline x2 red on
+      the PR and on main. Fixed this run, see
+      2026-10-26-constitution-oneline. (b) Scheduled content-factory failed x2
+      in the window (daily since 2026-10-22, ~111s, so the legs die early) and
+      Release failed x2. Neither run log was readable from this run. Both are
+      left for a human. One candidate for (b): content-factory.yml:71 still uses
+      the `secrets.FLEET_TOKEN || github.token` fallback that lint_tokens
+      tracks. Migrating it needs a workflows-scope push, which this lane must
+      not make.
   - id: 2026-10-19-factory-slowest-median
     date: 2026-10-19
     pr: 718
@@ -494,3 +513,30 @@ improvements:
       doesn't gate `verify`. Not a loop defect; not re-tried unless several runs
       show it starving the PR path. CI's slowest real gate is unchanged
       (site-quality ~286s, pipeline 181s).
+
+  # --- loop-tuner 2026-10-26: main went red on a seeded, soft-wrapped doc -------
+  # runs.fail_rate regressed 1.4 -> 5.9. 4 of the 8 real failures (pipeline x2,
+  # markdown-oneline x2, PR + main push of #733) came from one cause:
+  # docs/constitution.md, seeded from the hub's governance kit, soft-wraps its
+  # preamble blockquote and two § 8 list items. That fails lint_oneline inside
+  # the required `verify` check, and every PR cut from main inherits it.
+  # Reflowed under amendment 0002 (proposed; constitution § 8 requires a record
+  # for any edit). Words unchanged, no check touched.
+  - id: 2026-10-26-constitution-oneline
+    date: 2026-10-26
+    pr: TBD
+    metric: runs.by_workflow.markdown-oneline.fail_rate
+    baseline: 25.0
+    direction: down
+    status: pending
+    note: >-
+      markdown-oneline failed 2/8 (25.0%) and pipeline failed 2/12 (16.7%),
+      all on #733's PR and its push to main. Root cause: the governance kit
+      seeded a soft-wrapped docs/constitution.md (preamble + § 8 items 1 and
+      3), so lint_oneline reported `wrapped-prose`. Fix: join those paragraphs
+      onto single lines, with amendment record docs/amendments/0002 as § 8
+      requires. Verified: lint_oneline 1 error -> 0 findings; audit, sim and
+      lint_agents green. The 160-char, oneline and every other gate are
+      unchanged. Upstream follow-up: bamr87/bamr87 templates/governance/
+      seeds the same wrapped text fleet-wide. Secondary metric to watch:
+      runs.fail_rate (5.9).
