@@ -2338,7 +2338,8 @@ backlog:
     brief: "pytest doesn't return 0 for 'ran nothing' — it returns exit code 5, 'no tests collected,' so a fresh `tests/` directory, a typo'd `-k` filter, or a rename that no longer matches `test_*` turns a green suite into a red pipeline with not one failing assertion to point at. Reproduce it in one command against an empty folder and read `echo $?`. The honest fix is to make 'no tests' a deliberate choice: add a real test, fix discovery (file names, `testpaths` in pytest.ini), or, when an empty lane is genuinely fine, allow it explicitly in the wrapper (`pytest ...; [ $? -eq 5 ] && exit 0`) instead of pretending the run passed."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/pytest-exit-5-no-tests-collected/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-10-system-engineer-1000/
     source_title: "Quest Report: System Engineer Level 1000"
@@ -4914,7 +4915,8 @@ backlog:
     brief: "The honest review of the GitHub Action that mints a scoped, hour-long installation token per run: what it buys over a long-lived PAT — a token that expires in an hour instead of never, a blast radius bounded to the App's installation permissions instead of the whole account, and no human's credentials on the line — and the one footgun that eats an afternoon (the installation must already have been GRANTED each permission you request, or the mint succeeds and the later call 403s with a message that blames the wrong thing). Reviewed against the repo's own FLEET_TOKEN wiring; the permission table is inspectable offline from the workflow YAML."
     voice: tool-review-honest
     priority: P2
-    status: todo
+    status: done
+    published: /tools/create-github-app-token-honest-review/
 
   - id: POST-055
     kind: post
@@ -4992,18 +4994,6 @@ backlog:
     published: /wire/php2shell-ai-found-human-delayed/
     source: manual
     source_url: https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/
-  - id: WIRE-022
-    kind: wire
-    title: "Moonshot's Kimi K3.1 Pro launches as an 'open-weight model' whose weights are a date; the leaderboard files it under Proprietary until Nov. 4"
-    brief: "Fresh wire idea (2026-10-26; every WIRE item was done). Model-beat dispatch reported from Moonshot's K3.1 Pro launch post (primary), Simon Willison's link-blog write-up (reputable), and Artificial Analysis's model page. Moonshot calls K3.1 Pro 'our most capable 3T-class open-weight model to date' and says 'Full model weights will be released by Nov 4, 2026'; Artificial Analysis lists it as 'Proprietary' meanwhile (index 55, #4 of 221, behind only Opus 5.5 at 58; 'notably slow and very verbose', 150M output tokens vs an 81M median). Pricing $2/$10 per MTok, which Willison calls half of Opus 5.5. Footnotes: max reasoning effort, competitor scores taken as their max reported value, several scores run on the Claude-Code harness. Cyber section describes data removal 'for the open-weight release' (xdev-bench-hard 90.5% -> 81.0%). Desk check: Hugging Face API shows the newest moonshotai repo is Kimi-K3 (June 13). Small print: K2 series closed to new users Oct 31, retired by end of December. COI: this desk runs on Claude; Anthropic is the benchmark target and harness vendor. Kicker: everyone has plenty of words; the weights are due by Nov 4."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P1
-    status: done
-    published: /wire/kimi-k3-1-pro-open-weights-by-nov-4/
-    source: manual
-    source_url: https://www.kimi.ai/blog/kimi-k3-1-pro
-    fingerprint: 5d564afd6c85
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
@@ -5152,3 +5142,53 @@ backlog:
     source_url: https://it-journey.dev/quests/1100/agentic-autonomy-levels-matrix/
     source_title: "The Autonomy Scales: Mapping Agent Autonomy Levels"
     fingerprint: bb977fda9606
+
+  - id: WIRE-022
+    kind: wire
+    title: "Moonshot's Kimi K3.1 Pro launches as an 'open-weight model' whose weights are a date; the leaderboard files it under Proprietary until Nov. 4"
+    brief: "Fresh wire idea (2026-10-26; every WIRE item was done). Model-beat dispatch reported from Moonshot's K3.1 Pro launch post (primary), Simon Willison's link-blog write-up (reputable), and Artificial Analysis's model page. Moonshot calls K3.1 Pro 'our most capable 3T-class open-weight model to date' and says 'Full model weights will be released by Nov 4, 2026'; Artificial Analysis lists it as 'Proprietary' meanwhile (index 55, #4 of 221, behind only Opus 5.5 at 58; 'notably slow and very verbose', 150M output tokens vs an 81M median). Pricing $2/$10 per MTok, which Willison calls half of Opus 5.5. Footnotes: max reasoning effort, competitor scores taken as their max reported value, several scores run on the Claude-Code harness. Cyber section describes data removal 'for the open-weight release' (xdev-bench-hard 90.5% -> 81.0%). Desk check: Hugging Face API shows the newest moonshotai repo is Kimi-K3 (June 13). Small print: K2 series closed to new users Oct 31, retired by end of December. COI: this desk runs on Claude; Anthropic is the benchmark target and harness vendor. Kicker: everyone has plenty of words; the weights are due by Nov 4."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/kimi-k3-1-pro-open-weights-by-nov-4/
+    source: manual
+    source_url: https://www.kimi.ai/blog/kimi-k3-1-pro
+    fingerprint: 5d564afd6c85
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-160
+    kind: hack
+    title: "Python has no tail-call optimization: RecursionError at depth 1000, and the setrecursionlimit that trades it for a crash"
+    brief: "The quest's recursive factorial and nested-list flatten pass every test you wrote, then die on real input with `RecursionError: maximum recursion depth exceeded`, because CPython caps the stack at `sys.getrecursionlimit()` (1000 by default) and does NOT eliminate tail calls, so rewriting it 'tail-recursively' buys you exactly nothing. The tempting fix, `sys.setrecursionlimit(100000)`, only raises Python's counter; whether the underlying stack survives depends on your interpreter version and platform, and when it doesn't you get a hard crash with no traceback instead of a catchable exception, which is strictly worse. The fix that holds is to convert the recursion to a loop with an explicit stack (a list you push and pop), which flattens a 100,000-deep nest without breaking a sweat. The failures that stay in: `functools.lru_cache` makes recursive Fibonacci fast but not shallow, so a cold `fib(5000)` still blows the limit unless you warm it bottom-up; and a `max_depth` argument is a budget, not a base case, so a recursive 'refine this prompt' loop still needs a real stopping condition or it spends all its depth producing nothing. Add a test that feeds 10,000 levels of nesting, because the tests in the quest only ever go three deep."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0010/recursive-realms-testing/
+    source_title: "Recursive Realms: Testing Infinite Loops with AI"
+    fingerprint: e47e94b72534
+  - id: SRC-161
+    kind: hack
+    title: "Your Jekyll container forgot its gems: Bundler::GemNotFound because compose ran the stock image, not your Dockerfile"
+    brief: "You write a Dockerfile that runs `bundle install`, then a compose file with `image: jekyll/jekyll:latest`, run `docker compose up`, and the site never serves: `Bundler::GemNotFound`. Compose did what it was told. With `image:` and no `build: .`, it never touched your Dockerfile, and the gems you installed in an earlier one-off `docker run` container died with that container. The fix: `build: .` in the service, plus a Dockerfile that copies `Gemfile` and `Gemfile.lock` and runs `bundle install` BEFORE copying the site, so the layer caches. Or mount a named volume at `/usr/local/bundle` so installed gems outlive the container. The failures that stay in: bind-mounting your project over the container's working directory hides anything the image put at that path, so gems vendored into `./vendor/bundle` inside the image vanish under the mount. Old tutorials also say `docker-compose` with a hyphen, which is `command not found` (exit 127) on a current Docker that ships Compose v2 as `docker compose`. And their top-level `version: '3'` key is obsolete: v2 ignores it with a warning, so delete it rather than debug it. Check when your base image was last updated before you build on it. You'll know it worked when `docker compose up` logs `Server address: http://0.0.0.0:4000`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-11-developer-0100/
+    source_title: "Quest Report: Software Developer Level 0100"
+    fingerprint: a74a08ba0c19
+  - id: SRC-162
+    kind: hack
+    title: "curl | bash runs a stranger's script you never read: download it, read it, then run it (and the truncated download that runs half a line)"
+    brief: "SEVERITY: your whole home directory. ATTACK VECTOR: the one-liner on the install page. `curl -fsSL https://… | bash` executes whatever bytes that server sends at that moment, as you, and you never saw them. The server can tell curl from a browser by User-Agent, so the script you inspected in a tab isn't guaranteed to be the one you piped. And bash runs a pipe line by line as it arrives, so a connection that drops mid-download can execute a truncated last line. The installers worth trusting wrap everything in a function and call it on the final line for exactly this reason. Three mitigations that matter, ranked: (1) download to a file, read it, then run it: `curl -fsSL -o install.sh URL && less install.sh && bash install.sh`. (2) Prefer the signed package manager route (brew, apt, winget) or verify a published checksum or signature before running. (3) Never pipe into `sudo bash`: run unprivileged and let the script ask for elevation where it actually needs it. Keep `-f` either way, or a 404 page's HTML gets fed to bash as code. The 'everyone does it, it's the official instructions' failure stays in."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0000/os-selection/
+    source_title: "OS Selection: Choose Your Realm of Power"
+    fingerprint: 3e1de83e217b
