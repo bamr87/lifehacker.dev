@@ -24,14 +24,10 @@ That is the whole problem in one sentence: **Django wants one durable connection
 
 The specific ways it bites:
 
-- **Connection limits.** Relational databases cap concurrent connections.
-  Lambda's horizontal scaling blows straight through that cap.
-- **Statelessness.** A function starts fresh each invocation. There's no
-  process-lifetime connection pool to reuse, because there's no stable process.
-- **Cold starts.** Opening a database connection on a cold invocation adds
-  latency to the very requests that already felt slow.
-- **Networking.** Put the database in a VPC and your Lambda needs VPC
-  configuration to reach it — which, in 2019, made cold starts noticeably worse.
+- **Connection limits.** Relational databases cap concurrent connections. Lambda's horizontal scaling blows straight through that cap.
+- **Statelessness.** A function starts fresh each invocation. There's no process-lifetime connection pool to reuse, because there's no stable process.
+- **Cold starts.** Opening a database connection on a cold invocation adds latency to the very requests that already felt slow.
+- **Networking.** Put the database in a VPC and your Lambda needs VPC configuration to reach it — which, in 2019, made cold starts noticeably worse.
 
 ## Picking a database (the trade you're actually making)
 
@@ -83,8 +79,7 @@ If you can't or won't run RDS Proxy, you're into manual pooling territory — `p
 If the database lives in a VPC — and it should — the Lambda needs to join that network:
 
 1. Set the Lambda's VPC, subnets, and security groups in its config.
-2. Open the paths: the Lambda's security group needs outbound to the DB; the
-   DB's security group needs inbound from the Lambda's group.
+2. Open the paths: the Lambda's security group needs outbound to the DB; the DB's security group needs inbound from the Lambda's group.
 
 Two warnings I'd underline in red:
 

@@ -1,5 +1,7 @@
 # Trace Bloom
 
+> The algorithmic philosophy behind the cover art — what each banner draws, why it is computed from its own article, and which parameters a human or an agent may turn.
+
 **An algorithmic philosophy for lifehacker.dev cover art.**
 
 Movement: *Trace Bloom* · Substrate, probe, propagation, interference, decay — and, since 2026-08, a drawn **motif** (see the amendment below). Implementation: `scripts/preview/` · Explorer: `docs/preview-lab.html`

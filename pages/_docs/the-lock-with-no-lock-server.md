@@ -117,8 +117,7 @@ end
 
 Why the asymmetry? Because the two stores have different failure temperaments, and the code leans into it. A stale **YAML** entry is harmless: the TTL sweep will drop it within the hour. A stale **ref** is poison: it's the actual lock, so an unrecorded, un-released ref blocks that id *forever*. The rule the code follows is **always leave the failure in the self-healing store, never in the permanent one.**
 
-- On **release**, delete the ref first. If the process dies before the YAML write,
-  you're left with a leftover YAML entry — which the TTL reclaims. Safe.
+- On **release**, delete the ref first. If the process dies before the YAML write, you're left with a leftover YAML entry — which the TTL reclaims. Safe.
 - On **claim**, if the CAS wins but the YAML write throws, roll the ref back. If
 you didn't, you'd have a ref with no YAML record — and here's the trap — the TTL sweep *only reads the YAML*. A ref it has no record of is invisible to it. It would block that id until a human went spelunking in `refs/lease/`.
 

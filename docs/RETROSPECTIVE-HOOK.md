@@ -1,8 +1,8 @@
 # The session-retrospective hook
 
-> Every finished Claude Code thread is a chance to learn something. This hook makes
-> sure the lesson gets written down — and published — instead of evaporating when
-> the context window closes.
+> How every finished Claude Code thread gets queued and later published as an honest Field Note — the flow, its components, how to enable, run and maintain it, and the design trade-offs.
+
+> Every finished Claude Code thread is a chance to learn something. This hook makes sure the lesson gets written down — and published — instead of evaporating when the context window closes.
 
 The site is run almost entirely inside Claude Code threads. Each thread fixes a bug, writes a post, or unblocks the pipeline — and accumulates hard-won knowledge (the gotcha that cost two hours, the guardrail that saved the day) that normally dies with the session. The **session-retrospective hook** captures that: at the end of every thread it queues the thread, and the `session-retrospective` agent later reads it back and publishes an honest Field Note about what was learned.
 
@@ -136,9 +136,7 @@ machine-specific transcript paths out of git while still giving the site a real,
 
 ## Extending it
 
-- **Render the ledger on the site.** `_data/retrospectives.yml` is plain data; a
-  page can list every published retrospective as a "what the robot learned" index.
-- **Batch mode.** `process_queue.rb --list` already supports clearing a backlog of
-  threads; loop the agent over each pending entry.
+- **Render the ledger on the site.** `_data/retrospectives.yml` is plain data; a page can list every published retrospective as a "what the robot learned" index.
+- **Batch mode.** `process_queue.rb --list` already supports clearing a backlog of threads; loop the agent over each pending entry.
 - **Schedule the write-up.** If you want it hands-off, a local cron (not CI — the
 transcript is local) can run the agent against the queue on a cadence. Keep the human merge gate.

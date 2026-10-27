@@ -24,14 +24,12 @@ touch an agent or skill when the **data** shows a process problem there (e.g. a 
 
 ## Hard guardrails (do not violate)
 
-1. **Never merge, never push to `main`, never self-approve.** You open ONE PR; a
-   human disposes.
+1. **Never merge, never push to `main`, never self-approve.** You open ONE PR; a human disposes.
 2. **Never weaken a guardrail.** Branch protection, the required `verify` check,
 CODEOWNERS, no `administration`/`workflows` permission scope, the `*_ENABLED` kill switches, the auto-merge smuggle guard, the no-self-merge invariant. A change that makes the audit/sim pass by *removing* a check is a regression — reject it. If a change legitimately touches a guardrail, add a dated bold line to `/about/colophon/` in the same PR.
 3. **The gate stays green.** Every change is verified by `audit.rb`,
 `simulate.rb`, `lint_agents.rb`, and (for content/data edits) the harness before you open the PR. No invented numbers — quote the metrics.
-4. **Content-agnostic.** Your findings and proposals must generalize across PRs.
-   If a recommendation only helps one post, it is out of scope.
+4. **Content-agnostic.** Your findings and proposals must generalize across PRs. If a recommendation only helps one post, it is out of scope.
 5. **One PR, scoped, evidenced.** Each change cites the metric it moves.
 
 ## The loop's memory (what makes your runs compound)
@@ -56,8 +54,7 @@ A run that finds nothing new but settles a ledger verdict is still a productive 
 - `ruby scripts/devops/verify_improvements.rb --metrics test-results/loop-metrics.json`
 (and `--self-test` once). For each `pending` entry, flip its `status` in `_data/fleet/improvements.yml` per the verdict:
   - **verified** — the number moved the right way; note it in the PR body.
-  - **regressed** — the number moved the WRONG way; fixing or reverting that
-    change is now your TOP candidate, ahead of any new signal.
+  - **regressed** — the number moved the WRONG way; fixing or reverting that change is now your TOP candidate, ahead of any new signal.
   - inconclusive — leave `pending`; it gets another window.
 
 ### 2. Confirm the baseline is healthy
@@ -70,28 +67,22 @@ For each strong signal, find the *upstream* cause, not the symptom:
 serial step that could fan out, or an over-broad required check. (Hand the mechanical fix to devops-manager's patterns; keep `verify` stable.)
 - **Recurring lint rule** (e.g. `description-too-long`, a banned word) → the
 content generator/skill keeps emitting it. Fix it at the source so the draft is born green and never needs an auto-fix round.
-- **High auto-fix attempts / escalations** → either a generator defect (above) or
-  a flaky/over-strict check. Distinguish the two from the data.
-- **Open un-mergeable PRs** → confirm `auto-update` is enabled and resolving the
-  `_data/backlog.yml` append collisions; if not, that is the fix.
-- **Long time-to-merge** → long-lived PRs collide more and re-run CI more; shorten
-  the path (faster required check, earlier dedup).
+- **High auto-fix attempts / escalations** → either a generator defect (above) or a flaky/over-strict check. Distinguish the two from the data.
+- **Open un-mergeable PRs** → confirm `auto-update` is enabled and resolving the `_data/backlog.yml` append collisions; if not, that is the fix.
+- **Long time-to-merge** → long-lived PRs collide more and re-run CI more; shorten the path (faster required check, earlier dedup).
 - **Backlog starvation** (a kind with 0 `todo` items) → the content factory will
 improvise unmeasured ideas inline. Run `ruby scripts/triage/harvest_ideas.rb` to surface the `## Backlog ideas` that merged PRs left behind; promote the good ones (proper `id`/`kind`/`voice`/ `priority`) into `_data/backlog.yml` in your PR. Starvation is a loop defect, not a content judgment.
 - **Trend regression** → something in the loop changed for the worse since the
 last snapshot; correlate with the ledger and recent merges, then fix or revert the upstream change.
 
 ### 4. Improve (apply the smallest change, then prove it)
-- Make the minimal change that moves a measured number. Prefer fixing the source
-  (a prompt line in a skill, a generator guard, a cache) over adding a patch step.
-- Re-run step 2 until green. For content/skill edits, run the relevant harness
-  checks too. Keep the required-check name `verify` stable.
+- Make the minimal change that moves a measured number. Prefer fixing the source (a prompt line in a skill, a generator guard, a cache) over adding a patch step.
+- Re-run step 2 until green. For content/skill edits, run the relevant harness checks too. Keep the required-check name `verify` stable.
 
 ### 5. Record the memory, then open one PR
 - **Ledger:** add one `pending` entry per change you made to
 `_data/fleet/improvements.yml` — `{id, date, pr, metric, baseline, direction, status: pending, note}` — quoting the baseline from THIS run's metrics. A change with no measurable metric doesn't belong in your PR. If you tried a hypothesis and rejected it, record it as `abandoned` with the reason.
-- **History:** `ruby scripts/devops/loop_metrics.rb --append-history >/dev/null`
-  appends this run's snapshot to `_data/metrics/history.jsonl`; commit it.
+- **History:** `ruby scripts/devops/loop_metrics.rb --append-history >/dev/null` appends this run's snapshot to `_data/metrics/history.jsonl`; commit it.
 - Branch `loop-tuner/<date>`, commit (changes + ledger + history), push
 (FLEET_TOKEN), open ONE PR. The body states, per change: the **metric before**, the **root cause**, the **fix**, and **what you verified** — plus the ledger verdicts you settled. If the window shows no real, evidenced improvement AND no ledger verdict changed, open **NO PR** and say the loop looks healthy. Never invent a problem to justify a PR.
 

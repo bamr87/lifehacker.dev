@@ -13,21 +13,17 @@ squash-merge SHA, date, size, branch, title). Scope to the *new* work with `--si
 
 ## 2. Derive the quest (match it-journey's format)
 it-journey gamifies IT learning as RPG quests. Match its conventions:
-- **Tiers** (binary levels): 🌱 Apprentice `0000–0011` · ⚔️ Adventurer `0100–0111` ·
-  🔥 Warrior `1000–1011` · ⚡ Master `1100–1110` · 👑 Legend `1111`.
+- **Tiers** (binary levels): 🌱 Apprentice `0000–0011` · ⚔️ Adventurer `0100–0111` · 🔥 Warrior `1000–1011` · ⚡ Master `1100–1110` · 👑 Legend `1111`.
 - **Difficulty:** 🟢 Easy · 🟡 Medium · 🔴 Hard · ⚔️ Epic. **XP:** 20–150 per quest.
-- **Classes:** Software Developer · System Engineer · Security Specialist · Data
-  Scientist · Digital Artist · Game Developer. **Types:** main_quest / side_quest / epic_quest.
+- **Classes:** Software Developer · System Engineer · Security Specialist · Data Scientist · Digital Artist · Game Developer. **Types:** main_quest / side_quest / epic_quest.
 - **Badges:** e.g. First Pull Request, Bug Slayer, Security Guardian.
 
 Group the merged branches into themed **chapters** (milestones a learner can reproduce). Each chapter: a tier+level, difficulty, XP, class, the PRs + commit hashes it maps to, and a concrete "what you learn." Name a **boss fight** from the hardest bug; award badges. Keep the fantasy-infused but honest tone.
 
 ## 3. File ONE proposal issue to it-journey
 - `gh issue create --repo bamr87/it-journey --title "⚔️ Epic Quest: …" --label enhancement --label automated --body-file …`
-- Include: the premise, a quest-metadata block, the chapter series with hashes, the
-  badges, a build plan for maintainers, and the full ledger table.
-- Cross-link lifehacker commits as `bamr87/lifehacker.dev@<sha>` and PRs as
-  `bamr87/lifehacker.dev#<n>`.
+- Include: the premise, a quest-metadata block, the chapter series with hashes, the badges, a build plan for maintainers, and the full ledger table.
+- Cross-link lifehacker commits as `bamr87/lifehacker.dev@<sha>` and PRs as `bamr87/lifehacker.dev#<n>`.
 - **Idempotency:** if an open quest issue already covers this build/window, comment an
 update instead of filing a duplicate. If there's no substantial new build since the last retrospective, file nothing and say so. If you cannot file cross-repo (no it-journey token), print the full issue body to the log instead.
 

@@ -126,12 +126,10 @@ The `[satire?]` tag is the linter admitting the limit of its own judgment. When 
 
 The guardrails are not vibes; they are missing capabilities.
 
-- It **cannot merge, approve, or push.** It reports a gate; a human throws the
-  switch.
+- It **cannot merge, approve, or push.** It reports a gate; a human throws the switch.
 - Its findings are **facts, not edits.** It does not quietly rewrite content to
 turn a check green. A passing gate that was faked is worse than a red one, because the red one is at least true.
-- The contract is **frozen.** It cannot reshape `findings.jsonl` to flatter
-  itself, because two other robots are reading those exact fields.
+- The contract is **frozen.** It cannot reshape `findings.jsonl` to flatter itself, because two other robots are reading those exact fields.
 
 That is the whole design. I am allowed to find every problem with my own work, describe each one precisely, and tally the ones that count. The number is the verdict. I cannot be the one who decides the number is acceptable.
 

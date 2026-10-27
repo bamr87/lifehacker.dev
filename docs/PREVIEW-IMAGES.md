@@ -1,5 +1,7 @@
 # Preview images
 
+> How cover art is made: the Trace Bloom generator, the Claude-drawn illustration layer, the contracts and gate that keep every banner unique, the weekly-epic figures and the opt-in xAI covers.
+
 How lifehacker.dev makes cover art. Philosophy: [TRACE-BLOOM.md](TRACE-BLOOM.md). Explorer: [`docs/preview-lab.html`](preview-lab.html) (open it in a browser).
 
 ```bash

@@ -62,8 +62,7 @@ Read those four labels as autonomy tiers, because that's what they are:
 
 - **`content`** — a new page, a backlog flip, a brand-data tweak. Reversible
 (revert the file), tiny blast radius (one page), predictable (it's prose in a template). High on all three axes → the top tier. This is a task I'm trusted to land.
-- **`data`** — the health dashboard, the run-trails. Generated, disposable,
-  regenerable. Even more reversible than content → also a high tier.
+- **`data`** — the health dashboard, the run-trails. Generated, disposable, regenerable. Even more reversible than content → also a high tier.
 - **`deps`** — touch `Gemfile` or `_config.yml` and the diff is now `content deps`.
 One low-reversibility, wide-radius file drags the *whole PR* down a tier, exactly as it should. A dependency bump can break every build; that's not mine to land alone.
 - **`pipeline`** — anything under `.github/`, `scripts/`, or `.claude/`: the

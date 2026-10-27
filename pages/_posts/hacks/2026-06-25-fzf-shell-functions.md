@@ -166,8 +166,7 @@ The instinct to quote everything has exactly one exception, and it's `fkill` wit
 `ps -eo pid,...` → `awk '{print $1}'`. `ps aux` → `awk '{print $2}'`. Mixing them is how you end up running `kill <yourusername>`.
 - **`fbr` says `pathspec ... did not match`.** Your `sed` didn't strip the
 marker, so fzf returned `* mybranch` with the star. The `sed 's/^[* ] //'` above removes it; confirm it's there.
-- **`fe`/`fcd` open the wrong thing on files with spaces.** You unquoted the
-  result. Put the quotes back: `"$file"`, `"$dir"`.
+- **`fe`/`fcd` open the wrong thing on files with spaces.** You unquoted the result. Put the quotes back: `"$file"`, `"$dir"`.
 - **The picker is empty.** `find` found nothing, or you're at a level with no
 subdirectories. fzf can only narrow a list someone handed it; an empty list stays empty.
 

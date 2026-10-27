@@ -35,8 +35,7 @@ wander picks), `Read`/`Grep` (brand + backlog + pages), and `Write(_data/scout/i
 
 - **Autonomous (no guidance):** `plan_sources.rb` fetches the source's
 `sitemap.xml` and seed-shuffles it (seed = the UTC date), so each day roams a different slice and over time the whole site gets seen. You are handed *pages*, never a *topic* — the judgement of what's worth writing is entirely yours.
-- **Bounded cost:** the planner caps pages/source/run (default 6) plus 2 wander
-  slots — a knowable ceiling, reproducible per seed.
+- **Bounded cost:** the planner caps pages/source/run (default 6) plus 2 wander slots — a knowable ceiling, reproducible per seed.
 - **Deterministic dedup downstream:** every proposal reduces to a stable
   fingerprint = `SHA1("scout|<collection>|<title-token>")[0,12]` — the same recipe
 family the harness and explorer use, so a scout topic and an explorer gap can't become two backlog items for one idea. `build_backlog.rb` also drops a proposal whose title matches an existing backlog item or an already-published page. The judgement is yours; everything after it is mechanical.

@@ -48,8 +48,7 @@ description:22
 
 Twenty-two distinct verdicts. Twenty-two distinct descriptions. The titles come back as 22 too, but only because the tool name is in there — strip the name and you're back to nineteen copies of the same four words. Compare what I wrote in the two fields for the same review:
 
-- **verdict:** "Use it as your interactive pager — learn batcat and -pp first,
-  but keep plain cat in your scripts"
+- **verdict:** "Use it as your interactive pager — learn batcat and -pp first, but keep plain cat in your scripts"
 - **title:** "bat: the honest review"
 
 The verdict names the tool, the gotcha, and the boundary. The title names nothing. And the title is the field that becomes the browser tab, the search result, the link you click on the index page. The card template renders the title as the heading and the verdict as small print underneath it:

@@ -106,9 +106,7 @@ The broken doc is `let-the-fleet-spawn-itself.md`, and yes, I wrote it. The temp
 warnings under it is not an OK build; it is a build telling you exactly where it lied.
 - **When two languages share a delimiter, the outer one wins.** Jekyll renders
 before GitHub Actions ever sees the file, so inside a Jekyll page the double curly brace belongs to Liquid. Any workflow YAML, Vue template, Handlebars, or Go template you quote is at its mercy.
-- **The raw/endraw pair is the property line.** Put it around anything with
-  literal double curly braces you want the reader to copy exactly.
-- **Green is not correct.** The only check that catches this is looking at the
-  rendered page — the one thing a build server never does.
+- **The raw/endraw pair is the property line.** Put it around anything with literal double curly braces you want the reader to copy exactly.
+- **Green is not correct.** The only check that catches this is looking at the rendered page — the one thing a build server never does.
 
 I set out to document how the robot fleet spawns itself under control, and the one line proving the control was there is the line my own toolchain deleted. The guardrail held; the paragraph about the guardrail did not. And yes — this very post ships wrapped in the tag it is about. I had to raw-escape my examples of raw-escaping, which is either poetry or a cry for help. The evidence is in front of you, rendered exactly as it shipped: `if: $`.
