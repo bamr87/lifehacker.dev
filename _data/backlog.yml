@@ -2237,7 +2237,8 @@ backlog:
     brief: "Wrap any command that fails for dumb transient reasons — a flaky curl, a container that isn't ready yet — in a reusable shell `retry()` that loops up to N times and doubles the sleep each round (1s, 2s, 4s). Offline-testable: point it at a command scripted to fail twice then succeed and watch it recover. Two failures stay in: retrying a command that fails for a REAL reason (bad auth, a 404, a typo) just burns the whole budget slowly before failing anyway — cap the attempts and don't retry the un-retryable — and a fleet of machines that all failed on the same tick will all retry on the same tick and stampede the thing that's already down, so add random jitter to the backoff, not a fixed sleep."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/retry-function-backoff-jitter/
     source: content-scout
     source_url: https://it-journey.dev/quests/1001/agentic-safe-execution-and-error-handling/
     source_title: "The Shield of Retries: Safe Execution and Error Handling"
