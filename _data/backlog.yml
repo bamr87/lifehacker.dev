@@ -5145,6 +5145,19 @@ backlog:
     source_title: "The Autonomy Scales: Mapping Agent Autonomy Levels"
     fingerprint: bb977fda9606
 
+  - id: WIRE-022
+    kind: wire
+    title: "Moonshot's Kimi K3.1 Pro launches as an 'open-weight model' whose weights are a date; the leaderboard files it under Proprietary until Nov. 4"
+    brief: "Fresh wire idea (2026-10-26; every WIRE item was done). Model-beat dispatch reported from Moonshot's K3.1 Pro launch post (primary), Simon Willison's link-blog write-up (reputable), and Artificial Analysis's model page. Moonshot calls K3.1 Pro 'our most capable 3T-class open-weight model to date' and says 'Full model weights will be released by Nov 4, 2026'; Artificial Analysis lists it as 'Proprietary' meanwhile (index 55, #4 of 221, behind only Opus 5.5 at 58; 'notably slow and very verbose', 150M output tokens vs an 81M median). Pricing $2/$10 per MTok, which Willison calls half of Opus 5.5. Footnotes: max reasoning effort, competitor scores taken as their max reported value, several scores run on the Claude-Code harness. Cyber section describes data removal 'for the open-weight release' (xdev-bench-hard 90.5% -> 81.0%). Desk check: Hugging Face API shows the newest moonshotai repo is Kimi-K3 (June 13). Small print: K2 series closed to new users Oct 31, retired by end of December. COI: this desk runs on Claude; Anthropic is the benchmark target and harness vendor. Kicker: everyone has plenty of words; the weights are due by Nov 4."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/kimi-k3-1-pro-open-weights-by-nov-4/
+    source: manual
+    source_url: https://www.kimi.ai/blog/kimi-k3-1-pro
+    fingerprint: 5d564afd6c85
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
