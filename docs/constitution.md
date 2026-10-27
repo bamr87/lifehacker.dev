@@ -2,9 +2,7 @@
      change it ONLY through an amendment record in docs/amendments/ (see § 8). Validate: python3 <hub>/tools/governance_lint.py check . -->
 # lifehacker.dev — Constitution
 
-> The rules every change to this repo must satisfy, whoever makes it — a human or an AI agent.
-> Agents read this before [AGENTS.md](../AGENTS.md) conventions, the [PRD](../PRD.md), or the
-> [feature catalog](../features/features.yml). Ratified by merged PR; amended only per § 8.
+> The rules every change to this repo must satisfy, whoever makes it — a human or an AI agent. Agents read this before [AGENTS.md](../AGENTS.md) conventions, the [PRD](../PRD.md), or the [feature catalog](../features/features.yml). Ratified by merged PR; amended only per § 8.
 
 ## 1. Mission
 
