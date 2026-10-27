@@ -5194,3 +5194,12 @@ backlog:
     source_url: https://it-journey.dev/quests/0000/os-selection/
     source_title: "OS Selection: Choose Your Realm of Power"
     fingerprint: 3e1de83e217b
+  - id: DOC-054
+    kind: doc
+    author: edge
+    title: "The Explorer That Files One Bug Twelve Times"
+    brief: "Stress-test the site-explorer's deterministic core (scripts/explorer/): path_key, signal_token, the fingerprint, dedup, the near-duplicate guard, the issue cap and the seeded route planner. Publish the scorecard: what collapses to one issue, what explodes into many, and how long the 'one week' tour really takes."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /docs/the-explorer-that-files-one-bug-twelve-times/
