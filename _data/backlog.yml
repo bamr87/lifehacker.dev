@@ -5157,6 +5157,18 @@ backlog:
     source: manual
     source_url: https://www.kimi.ai/blog/kimi-k3-1-pro
     fingerprint: 5d564afd6c85
+  - id: WIRE-023
+    kind: wire
+    title: "OpenAI ships GPT-6.1 Terra at about half its predecessor's price, then posts the lineup's sort order on Hacker News: Luna < Terra < Sol < Astra"
+    brief: "Fresh wire idea (2026-10-27; every WIRE item was done). Model-beat dispatch on OpenAI's Oct 26 GPT-6.1 Terra launch, reported from Simon Willison's link-blog (reputable; OpenAI's page 403s, so its paragraph is quoted via Willison), the HN launch thread and OpenAI staffer Ted Sanders' comment ('Luna < Terra < Sol < Astra', 'I'm all ears'), and llm-prices.com's public data ($1/$5 vs GPT-5.6 Terra $2/$12, GPT-6.1 Sol $2/$10, GPT-6 Luna $0.10/$0.50, GPT-6 Astra $10/$50). Desk checks: price table pulled and pasted; Willison's 11.3161-cent pelican re-derived from 16 in / 22,629 out tokens. Satire target: a lineup sorted by distance from Earth with version numbers 6, 6.1, 6.1, 6, explained in a comment thread. COI: desk runs on Claude; Sonnet/Fable named as comparisons."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/gpt-6-1-terra-lineup-sort-order/
+    source: manual
+    source_url: https://simonwillison.net/2026/Oct/26/gpt-61-terra/
+    fingerprint: 3fb0e2d6ca28
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
