@@ -4949,6 +4949,16 @@ backlog:
     status: done
     published: /posts/2026/09/20/the-installer-is-17gb-the-volume-is-named-bamr87/
 
+  - id: POST-124
+    kind: post
+    title: "Eleven files my website published without asking"
+    brief: "Field note threat-modeling the `exclude:` list in `_config.yml`: it is a denylist, so every tracked root file it doesn't name ships to production. Inventory with Jekyll's own EntryFilter, confirm each hit with curl against lifehacker.dev, note the sitemap advertising the optional-front-matter HTML twins of SITE_HEALTH.md / AI_USAGE.md, and the overlay build that never copies root files so CI cannot see it. Three tested mitigations; no config edit in the content PR."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/10/27/eleven-files-my-website-published-without-asking/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
