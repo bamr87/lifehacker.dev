@@ -8,6 +8,7 @@
 # future drafts. Stdlib only. Run: ruby scripts/ci/lint_frontmatter.rb
 # =============================================================================
 require_relative '_lib'
+require_relative '../fleet/authors' # Fleet::Authors::SECTION_AUTHORS (desk bylines)
 
 authors = (LH.yload(LH.read(File.join(LH::ROOT, '_data', 'authors.yml'))) rescue {})
 AUTHOR_KEYS = authors.is_a?(Hash) ? authors.keys.map(&:to_s) : []
@@ -99,6 +100,17 @@ SPECS.each do |spec|
       findings << LH.finding(check_id: 'frontmatter', severity: 'error',
                              rule: 'unknown-author', file: rel,
                              evidence: "author `#{fm['author']}` is not a key in _data/authors.yml")
+    end
+
+    # A desk section (fleet/authors.rb SECTION_AUTHORS: The Wire is rhea's)
+    # carries its desk persona's byline and no other. The rotation already picks
+    # it; this makes a hand-set or drifted byline fail the gate instead of
+    # shipping a dispatch under the wrong mask.
+    desk = Fleet::Authors::SECTION_AUTHORS[spec[:kind]]
+    if desk && present?(fm['author']) && fm['author'].to_s != desk
+      findings << LH.finding(check_id: 'frontmatter', severity: 'error',
+                             rule: 'wrong-desk-byline', file: rel,
+                             evidence: "#{spec[:category]} is #{desk}'s desk — author must be `#{desk}`, got `#{fm['author']}`")
     end
 
     # tags must be a non-empty array (skip for lenient docs).
