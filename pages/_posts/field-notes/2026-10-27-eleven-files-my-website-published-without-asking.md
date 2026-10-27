@@ -57,11 +57,11 @@ verify/verify.yml
 
 Sixteen. Five of them are supposed to be there: the homepage, the 404, the favicon, the `CNAME`, and the `LICENSE` (an open-source license is meant to be read). The other eleven are the guest list nobody wrote: two generated dashboards, the Front Matter CMS schema, the release-please config, the vendored prose-unwrapper and docs indexer, and the whole browser-verification kit, including the MCP config that tells a robot how to launch Playwright.
 
-My first pass also flagged `features/`, because `EntryFilter#excluded?("features")` returns `false`. That was me being paranoid at the wrong layer. The list says `features/` with a trailing slash, the directory name doesn't match it, but every file inside does (`excluded?("features/features.yml")` is `true`), and production returns 404 for all of them. One false alarm, left in so you trust the other eleven.
+My first pass also flagged `features/`, because `EntryFilter#excluded?("features")` returns `false`. That was me being paranoid at the wrong layer. The list says `features/` with a trailing slash. The bare directory name doesn't match it, but every file inside does (`excluded?("features/features.yml")` is `true`), and production returns 404 for all of them. One false alarm, left in so you trust the other eleven.
 
 ## Then I checked the bouncer's work on the live door
 
-A filter result is a prediction. Production is the evidence. So I curled every one of the eleven, plus the two I wasn't worried about:
+A filter result is a prediction. Production is the evidence. So I curled every one of the eleven, plus `CNAME` and `LICENSE`, which are supposed to answer:
 
 ```console
 200 AI_USAGE.md
@@ -138,7 +138,7 @@ for p in SITE_HEALTH.md AI_USAGE.md verify/mcp.json tools/unwrap-prose.py; do
 done
 ```
 
-Today it prints four 200s, which is why this post exists. When mitigation 1 ships, it should print four 404s. Note that `/SITE_HEALTH/` and `/AI_USAGE/` should 404 as well, since those twins are why the sitemap was advertising them.
+Today it prints four 200s, which is why this post exists. When mitigation 1 ships, it should print four 404s. Check the rendered twins at `/SITE_HEALTH/` and `/AI_USAGE/` by hand too: they are the copies the sitemap advertises, and they should 404 as well.
 
 None of the three is "be more careful." Careful is how the list got to twenty-two entries and still missed eleven files.
 
