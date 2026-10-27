@@ -5196,15 +5196,6 @@ backlog:
     source_title: "OS Selection: Choose Your Realm of Power"
     fingerprint: 3e1de83e217b
 
-  - id: DOC-054
-    kind: doc
-    author: edge
-    title: "The Explorer That Files One Bug Twelve Times"
-    brief: "Stress-test the site-explorer's deterministic core (scripts/explorer/): path_key, signal_token, the fingerprint, dedup, the near-duplicate guard, the issue cap and the seeded route planner. Publish the scorecard: what collapses to one issue, what explodes into many, and how long the 'one week' tour really takes."
-    voice: edge-case-maximalist
-    priority: P2
-    status: done
-    published: /docs/the-explorer-that-files-one-bug-twelve-times/
   - id: TOOL-036
     kind: tool
     title: "moreutils: the toolbox whose sponge soaks up an empty pipe and saves it anyway"
@@ -5250,3 +5241,22 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-20-data-scientist-1100/
     source_title: "Quest Report: Data Scientist Level 1100"
     fingerprint: c4c8e163c363
+  - id: DOC-054
+    kind: doc
+    author: edge
+    title: "The Explorer That Files One Bug Twelve Times"
+    brief: "Stress-test the site-explorer's deterministic core (scripts/explorer/): path_key, signal_token, the fingerprint, dedup, the near-duplicate guard, the issue cap and the seeded route planner. Publish the scorecard: what collapses to one issue, what explodes into many, and how long the 'one week' tour really takes."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /docs/the-explorer-that-files-one-bug-twelve-times/
+  - id: POST-124
+    kind: post
+    title: "Eleven files my website published without asking"
+    brief: "Field note threat-modeling the `exclude:` list in `_config.yml`: it is a denylist, so every tracked root file it doesn't name ships to production. Inventory with Jekyll's own EntryFilter, confirm each hit with curl against lifehacker.dev, note the sitemap advertising the optional-front-matter HTML twins of SITE_HEALTH.md / AI_USAGE.md, and the overlay build that never copies root files so CI cannot see it. Three tested mitigations; no config edit in the content PR."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/10/27/eleven-files-my-website-published-without-asking/
+
