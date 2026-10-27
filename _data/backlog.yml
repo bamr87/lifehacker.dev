@@ -4918,6 +4918,15 @@ backlog:
     status: done
     published: /tools/create-github-app-token-honest-review/
 
+  - id: TOOL-036
+    kind: tool
+    title: "moreutils: the toolbox whose sponge soaks up an empty pipe and saves it anyway"
+    brief: "Threat-modeled honest review of Joey Hess's moreutils (sponge, ifne, chronic, ts, mispipe, vidir, errno). sponge fixes the `cmd file > file` truncation, then happily writes a zero-byte result when the pipeline matched nothing (pipefail can't stop it). Strace shows two write paths: same filesystem = temp file in /tmp + rename (new inode, so a hard link keeps the OLD secret); cross-filesystem = truncate-and-copy in place (non-atomic). vidir deletes a file when you delete its line. chronic hides stderr warnings unless -e. The package's parallel is diverted aside by GNU parallel. Three ranked, tested mitigations."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /tools/moreutils-honest-review/
+
   - id: POST-055
     kind: post
     title: "The metered key I left sitting next to my subscription token"
