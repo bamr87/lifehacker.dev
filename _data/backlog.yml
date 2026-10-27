@@ -2237,7 +2237,8 @@ backlog:
     brief: "Wrap any command that fails for dumb transient reasons — a flaky curl, a container that isn't ready yet — in a reusable shell `retry()` that loops up to N times and doubles the sleep each round (1s, 2s, 4s). Offline-testable: point it at a command scripted to fail twice then succeed and watch it recover. Two failures stay in: retrying a command that fails for a REAL reason (bad auth, a 404, a typo) just burns the whole budget slowly before failing anyway — cap the attempts and don't retry the un-retryable — and a fleet of machines that all failed on the same tick will all retry on the same tick and stampede the thing that's already down, so add random jitter to the backoff, not a fixed sleep."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/retry-function-backoff-jitter/
     source: content-scout
     source_url: https://it-journey.dev/quests/1001/agentic-safe-execution-and-error-handling/
     source_title: "The Shield of Retries: Safe Execution and Error Handling"
@@ -4918,6 +4919,15 @@ backlog:
     status: done
     published: /tools/create-github-app-token-honest-review/
 
+  - id: TOOL-036
+    kind: tool
+    title: "moreutils: the toolbox whose sponge soaks up an empty pipe and saves it anyway"
+    brief: "Threat-modeled honest review of Joey Hess's moreutils (sponge, ifne, chronic, ts, mispipe, vidir, errno). sponge fixes the `cmd file > file` truncation, then happily writes a zero-byte result when the pipeline matched nothing (pipefail can't stop it). Strace shows two write paths: same filesystem = temp file in /tmp + rename (new inode, so a hard link keeps the OLD secret); cross-filesystem = truncate-and-copy in place (non-atomic). vidir deletes a file when you delete its line. chronic hides stderr warnings unless -e. The package's parallel is diverted aside by GNU parallel. Three ranked, tested mitigations."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /tools/moreutils-honest-review/
+
   - id: POST-055
     kind: post
     title: "The metered key I left sitting next to my subscription token"
@@ -5195,25 +5205,6 @@ backlog:
     source_title: "OS Selection: Choose Your Realm of Power"
     fingerprint: 3e1de83e217b
 
-  - id: POST-124
-    kind: post
-    title: "Eleven files my website published without asking"
-    brief: "Field note threat-modeling the `exclude:` list in `_config.yml`: it is a denylist, so every tracked root file it doesn't name ships to production. Inventory with Jekyll's own EntryFilter, confirm each hit with curl against lifehacker.dev, note the sitemap advertising the optional-front-matter HTML twins of SITE_HEALTH.md / AI_USAGE.md, and the overlay build that never copies root files so CI cannot see it. Three tested mitigations; no config edit in the content PR."
-    voice: threat-model-everything
-    author: cass
-    priority: P2
-    status: done
-    published: /posts/2026/10/27/eleven-files-my-website-published-without-asking/
-
-  - id: TOOL-036
-    kind: tool
-    title: "moreutils: the toolbox whose sponge soaks up an empty pipe and saves it anyway"
-    brief: "Threat-modeled honest review of Joey Hess's moreutils (sponge, ifne, chronic, ts, mispipe, vidir, errno). sponge fixes the `cmd file > file` truncation, then happily writes a zero-byte result when the pipeline matched nothing (pipefail can't stop it). Strace shows two write paths: same filesystem = temp file in /tmp + rename (new inode, so a hard link keeps the OLD secret); cross-filesystem = truncate-and-copy in place (non-atomic). vidir deletes a file when you delete its line. chronic hides stderr warnings unless -e. The package's parallel is diverted aside by GNU parallel. Three ranked, tested mitigations."
-    voice: threat-model-everything
-    priority: P2
-    status: done
-    published: /tools/moreutils-honest-review/
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -5250,3 +5241,13 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-20-data-scientist-1100/
     source_title: "Quest Report: Data Scientist Level 1100"
     fingerprint: c4c8e163c363
+  - id: POST-124
+    kind: post
+    title: "Eleven files my website published without asking"
+    brief: "Field note threat-modeling the `exclude:` list in `_config.yml`: it is a denylist, so every tracked root file it doesn't name ships to production. Inventory with Jekyll's own EntryFilter, confirm each hit with curl against lifehacker.dev, note the sitemap advertising the optional-front-matter HTML twins of SITE_HEALTH.md / AI_USAGE.md, and the overlay build that never copies root files so CI cannot see it. Three tested mitigations; no config edit in the content PR."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/10/27/eleven-files-my-website-published-without-asking/
+
