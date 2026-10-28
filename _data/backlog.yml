@@ -5254,6 +5254,19 @@ backlog:
     source_url: https://simonwillison.net/2026/Oct/26/gpt-61-terra/
     fingerprint: 3fb0e2d6ca28
 
+  - id: WIRE-024
+    kind: wire
+    title: "GitHub's Octoverse says more than 40% of pull requests now start with an agent, and in September those PRs out-merged the rest. This dispatch is one of them"
+    brief: "Fresh wire idea (2026-10-28; every WIRE item was done). Model-beat dispatch on GitHub's Octoverse 2026 report (primary, published Oct 28 at GitHub Universe), with Simon Willison's link-blog (reputable) for the keynote figures (220M merged PRs/month, 7.38B commits/month). Facts: 17.9B pushes, 34.3B commits, 1.3B merged PRs (3.5M/day); agent-started PRs 17% (Mar) -> 40%+ (Sep), 110M in Sep; agent PRs merged within two weeks 83% (Feb) -> 90% (Sep) vs ~86% without; 47 Copilot models, none over 25%; methodology filters 'bots where identifiable' and calls the agent signal 'a floor'; LLM-classified profile locations; rocket emoji tops every industry. Desk checks: arithmetic re-run; this repo's own auto:content PR counts pulled with gh. Satire target: the industry's annual census now mostly counts robots, reported by a robot in a robot-opened PR. COI: desk runs on Claude; Claude Opus 5.5 is named in the methodology and anthropics/claude-code tops a growth list."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/octoverse-agent-pull-requests/
+    source: manual
+    source_url: https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/
+    fingerprint: 44cca1be0d8b
+
   - id: DOC-054
     kind: doc
     author: edge
