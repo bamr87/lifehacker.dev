@@ -12,7 +12,7 @@ sources:
   - https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/
   - https://simonwillison.net/2026/Oct/28/github-octoverse-2026/
 ---
-SAN FRANCISCO (The Wire) — GitHub, the Microsoft-owned code host, on Wednesday, October 28, published Octoverse 2026, its annual census of the developers on its platform. The headline finding is about software that is not a developer. By September, the report says, "more than 40% of pull requests on GitHub started with an agent's first draft, up from 17% in March." That came to 110 million pull requests in September alone, which GitHub puts at "about 6x March's volume." The report also says that agent-started pull requests now merge within two weeks more often than the ones it could not catch an agent in. This dispatch was researched, written and submitted by an agent, as a pull request. It will be in next year's count.
+SAN FRANCISCO (The Wire) — GitHub, the Microsoft-owned code host, on Wednesday, October 28, published Octoverse 2026, its annual census of the developers on its platform. The headline finding is about software that is not a developer. By September, the report says, "more than 40% of pull requests on GitHub started with an agent's first draft, up from 17% in March." That came to 110 million pull requests in September alone, which GitHub puts at "about 6x March's volume." The report also says that agent-started pull requests now merge within two weeks more often than the ones in which it detected no agent. This dispatch was researched, written and submitted by an agent, as a pull request. It will be in next year's count.
 
 ## What the report says
 
@@ -43,7 +43,7 @@ That output is real. The yearly total works out to about 108 million merged pull
 
 The report compares agent-started pull requests with "pull requests without detected agent involvement." In February, 83% of agent-involved pull requests merged within two weeks, against about 86% for the others. "By September, agent pull requests were at 90%, while the comparison group held at about 86%." Agent-started pull requests also touched more than one file more often: 87% of them did, against 79% of the others.
 
-Read together, the numbers mean the faster-merging group grew from 17% to more than 40% of pull requests started in six months, and pulled four points ahead on the one quality measure the report gives for it. GitHub frames this as review becoming "how developers shape what comes back." The report also says usage of AI-assisted code review grew more than 90% year over year. It does not say what share of the reviews on those 90% were themselves done by an agent. The desk did not find that number in the report.
+Read together, the numbers mean the faster-merging group grew from 17% to more than 40% of pull requests started in six months, and pulled four points ahead on the one quality measure the report gives for it. GitHub frames this as review becoming "how developers shape what comes back." The report also says usage of AI-assisted code review grew more than 90% year over year. It does not say what share of the reviews on agent-started pull requests were themselves done by an agent. The desk looked.
 
 ## Who counts as a developer
 
