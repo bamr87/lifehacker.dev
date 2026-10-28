@@ -13,7 +13,7 @@ Here's the threat nobody models: a file called `terraform.tfstate` on your lapto
 
 `SEVERITY: your coworker's laptop. ATTACK VECTOR: the lid closing at 5:01pm.`
 
-When a laptop has to die and the person holding it goes on vacation in the same week, an entire production environment ends up with nothing tracking it. It's a Kubernetes cluster nobody can describe. It sits in a VPC forever, like a lighthouse with no keeper, billing quietly to a credit card that belongs to someone who left in 2023. Scale that up and nation-states would need to send spies to find out what you're running. You don't know either.
+If that laptop dies the same week its owner goes on vacation, an entire production environment ends up with nothing tracking it: a Kubernetes cluster nobody can describe, sitting in a VPC forever like a lighthouse with no keeper, billing quietly to a credit card that belongs to someone who left in 2023. A foreign intelligence service would need a spy to find out what you're running. So would you.
 
 Back to Earth: the fix is moving state into a shared, locked, versioned S3 bucket, a *remote backend*. The it-journey.dev [System Engineer quest report](https://it-journey.dev/quest-reports/2026-07-10-system-engineer-1000/) is where this one came up. There's a catch that every tutorial covers in one sentence and every engineer discovers in forty minutes: **the backend cannot create the bucket it lives in.** Below is the bootstrap that gets around it, then the two ways the "finished" setup still loses your state, then my three mitigations, ranked.
 
@@ -214,7 +214,7 @@ $ aws s3api get-bucket-versioning --bucket acme-tfstate
 }
 ```
 
-S3 refused to delete a non-empty bucket, so the "failed" destroy looks harmless. It wasn't. It had already removed the two child resources, which means versioning is now **suspended** and the public-access block is **gone**. The bucket survived, but its seatbelt and its locks didn't. Run `terraform plan` on the bootstrap after any aborted destroy.
+S3 refused to delete a non-empty bucket, so the "failed" destroy looks harmless. It wasn't. It had already removed the two child resources, which means versioning is now **suspended** and the public-access block is **gone**. The bucket survived, but its seatbelt and its locks didn't. After any aborted destroy, run `terraform plan` on the bootstrap, then `apply` to restore what it took.
 
 Finally I added `force_destroy = true`, the setting people add specifically to make that BucketNotEmpty error stop:
 
@@ -233,7 +233,7 @@ Three resources destroyed, and every state file in the bucket went with them, ev
 ## The three mitigations, ranked
 
 1. **Turn the lock on: `use_lockfile = true` in the backend block.** It's the cheapest of the three, and without it two simultaneous applies silently lose a resource while both report success (tested above). Never pass `-lock=false`. If a lock really is stale because a run died, find who holds it from the `Lock Info` block and use `terraform force-unlock <ID>` once you've confirmed that run is dead. Don't just disable locking. (I didn't need `force-unlock` in this lab, so that part is from the docs, not from a run.)
-2. **Make the bucket hard to delete: `prevent_destroy = true` on the bucket, and never `force_destroy`.** I tested this above: `prevent_destroy` stopped the destroy cold, and `force_destroy` erased every state version in one command. Keep the bootstrap in its own directory, out of any wrapper script that loops `terraform destroy` over folders. After a destroy aborts halfway, run `terraform plan` there to put back the versioning and access block it already removed.
+2. **Make the bucket hard to delete: `prevent_destroy = true` on the bucket, and never `force_destroy`.** I tested this above: `prevent_destroy` stopped the destroy cold, and `force_destroy` erased every state version in one command. Keep the bootstrap in its own directory, out of any wrapper script that loops `terraform destroy` over folders. After a destroy aborts halfway, run `terraform plan` there to see what it already removed, then `terraform apply` to put the versioning and access block back.
 3. **Version the bucket and block public access.** State is plaintext. My test value turned up verbatim in the state object (`"value": "pretend-this-is-a-database"`), and so would your database passwords. Versioning means a bad write is recoverable: after two applies, `aws s3api list-object-versions --bucket acme-tfstate --prefix app/terraform.tfstate` listed four versions (the latest at 920 bytes, the one before at 906). The public-access block means the file stays off the open internet. I confirmed both with `aws s3api get-bucket-versioning` (`"Status": "Enabled"`) and `get-public-access-block` (all four flags `true`).
 
 Not on the list, but true: whoever can read this bucket can read every secret Terraform touches. Grant bucket access like it's the production database password, because some of what's in there is exactly that.
