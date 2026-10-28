@@ -2328,7 +2328,8 @@ backlog:
     brief: "Move state off your laptop into an S3 backend so two people don't overwrite each other's infrastructure — but the backend can't create the very bucket it stores state in, so `terraform init` fails until the bucket (and, pre-Terraform-1.10, the DynamoDB lock table) already exist. Make them by hand or in a tiny separate bootstrap config with local state, THEN point the backend at them. The failures that stay in: skip the lock and two concurrent `terraform apply`s race and corrupt the state file; and once real state lives in that bucket, a `terraform destroy` of the bootstrap config deletes the bucket out from under everything. Reproducible against LocalStack, no real AWS bill."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/terraform-remote-state-bootstrap/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-10-system-engineer-1000/
     source_title: "Quest Report: System Engineer Level 1000"
