@@ -5205,15 +5205,6 @@ backlog:
     status: done
     published: /tools/moreutils-honest-review/
 
-  - id: TOOL-037
-    kind: tool
-    title: "GNU parallel: the job runner that quotes your filenames for you, until you quote them too"
-    brief: "Fresh tool idea (2026-10-28; every TOOL item was done). Stress-tested review of GNU parallel 20231122: wrapping {} in double quotes defeats its auto-quoting and a filename named $(touch PWNED).txt executes; no {} appends the arg to the last command in a pipe; a newline arg becomes two jobs without -0; exit status = failed-job count capped at 101 (own codes lost); kill -9 + --resume re-runs the in-flight jobs (2 of 2, 10 of 10 trials) while TERM/INT leave 0 dups; 10,000 empty jobs 30.3 s vs xargs -P 4.8 s vs -X 0.38 s; output grouping, full-TMPDIR loud failure and Debian's commented-out citation notice."
-    voice: edge-case-maximalist
-    priority: P2
-    status: done
-    published: /tools/gnu-parallel-honest-review/
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -5282,3 +5273,49 @@ backlog:
     status: done
     published: /posts/2026/10/27/eleven-files-my-website-published-without-asking/
 
+
+  - id: TOOL-037
+    kind: tool
+    title: "GNU parallel: the job runner that quotes your filenames for you, until you quote them too"
+    brief: "Fresh tool idea (2026-10-28; every TOOL item was done). Stress-tested review of GNU parallel 20231122: wrapping {} in double quotes defeats its auto-quoting and a filename named $(touch PWNED).txt executes; no {} appends the arg to the last command in a pipe; a newline arg becomes two jobs without -0; exit status = failed-job count capped at 101 (own codes lost); kill -9 + --resume re-runs the in-flight jobs (2 of 2, 10 of 10 trials) while TERM/INT leave 0 dups; 10,000 empty jobs 30.3 s vs xargs -P 4.8 s vs -X 0.38 s; output grouping, full-TMPDIR loud failure and Debian's commented-out citation notice."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /tools/gnu-parallel-honest-review/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-166
+    kind: hack
+    title: "Set an AWS budget alarm before the tutorial, not after the bill: aws budgets create-budget, and the NAT gateway the teardown forgot"
+    brief: "Every AWS tutorial ends with 'terminate your instance' and then you get an invoice anyway, because the things that bill by the hour aren't instances. A NAT gateway charges per hour whether or not a byte flows through it, a public IPv4 address now bills hourly too, and an unattached EBS volume or a snapshot keeps billing until you delete it. The payload, in order: before you create anything, `aws budgets create-budget` a monthly cost budget with an email notification at 80% (one JSON file, two minutes). After the tutorial, sweep every region you touched with `aws ec2 describe-nat-gateways --filter Name=state,Values=available`, `aws ec2 describe-addresses`, and `aws ec2 describe-volumes --filters Name=status,Values=available`. Tear down in dependency order: NAT gateway, then release the Elastic IP, then the VPC, or `delete-vpc` fails with `DependencyViolation` and leaves the expensive parts standing. The failures that stay in: a budget is an alarm, not a cap. AWS emails you and keeps billing, and cost data lags by hours, so the alert lands after the money is spent; and the sweep is per region, so the NAT gateway you made in us-east-1 doesn't show up while your CLI defaults to us-west-2."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1000/aws-essentials/
+    source_title: "AWS Essentials: Core Services and Architecture"
+    fingerprint: 152a0f99c72e
+  - id: SRC-167
+    kind: hack
+    title: "Terraform's -/+ means your database is about to be deleted: read 'forces replacement' in the plan, and the prevent_destroy that only guards the code"
+    brief: "You rename one attribute, say an RDS `identifier` or an S3 `bucket` name, run `terraform plan`, skim the green, and apply. Tucked in the output was `-/+ … # forces replacement`: Terraform can't change that attribute in place, so it destroys the resource and creates a new, empty one. Your data went with the old one. The payload: save the plan (`terraform plan -out=tfplan`) and gate it in CI with `terraform show -json tfplan | jq -r '.resource_changes[] | select(.change.actions | index(\"delete\")) | .address'`, failing the job if anything prints. Put `lifecycle { prevent_destroy = true }` on every stateful resource, and use a `moved {}` block when you rename a resource address, so a refactor isn't treated as destroy-plus-create. The failures that stay in: `prevent_destroy` lives in the config, so deleting the resource block deletes the guard with it and the next apply destroys the resource without complaint; `create_before_destroy` fixes downtime only for resources that can exist twice at once, and two buckets can't share one globally unique name; and `-/+` in a 300-line plan is two characters, which is why the check has to be a script, not your eyes. Reproducible offline with a `terraform_data` resource and `triggers_replace`, no cloud account needed."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1000/infrastructure-as-code/
+    source_title: "Infrastructure as Code (Terraform)"
+    fingerprint: 423124215151
+  - id: SRC-168
+    kind: hack
+    title: "Postgres point-in-time recovery: the archive_command that exits 0 without archiving, and the recovery.signal the tutorial forgot"
+    brief: "The pitch for PITR is irresistible: a base backup (`pg_basebackup`) plus a continuous archive of WAL lets you rewind the database to 14:02:59, one second before somebody ran `DROP TABLE orders`. To get there you set `wal_level = replica`, `archive_mode = on`, and an `archive_command`. To come back you set `restore_command` plus `recovery_target_time` and replay. Three failures stay in. First, on PostgreSQL 12 and later `recovery.conf` no longer exists: the recovery settings live in `postgresql.conf`, and the server only enters targeted recovery if an empty `recovery.signal` file is sitting in the data directory. Leave it out and the cluster starts as a normal primary and never replays your archive, so the drill 'passes' while restoring nothing past the base backup. Second, `archive_command` must exit non-zero when it fails and must refuse to overwrite: the docs' `test ! -f /archive/%f && cp %p /archive/%f` pattern does both. A command wrapped in `|| true`, or a script that swallows errors, leaves silent holes in the WAL chain. A command that fails honestly instead makes WAL pile up in `pg_wal` until the disk fills, so watch `failed_count` in `pg_stat_archiver`. Third, with the default `recovery_target_action = pause`, the server stops at the target, read-only and waiting. Check the data, then call `pg_wal_replay_resume()` (or `pg_promote()`). Give `recovery_target_time` an explicit time zone or you'll rewind to the wrong 14:02. Reproducible with two `postgres:16` containers, one dropped table, and a stopwatch."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/backup-recovery/
+    source_title: "Backup & Recovery (Level 0110 Database Mastery)"
+    fingerprint: ce7bacba48c2
