@@ -4919,15 +4919,6 @@ backlog:
     status: done
     published: /tools/create-github-app-token-honest-review/
 
-  - id: TOOL-036
-    kind: tool
-    title: "moreutils: the toolbox whose sponge soaks up an empty pipe and saves it anyway"
-    brief: "Threat-modeled honest review of Joey Hess's moreutils (sponge, ifne, chronic, ts, mispipe, vidir, errno). sponge fixes the `cmd file > file` truncation, then happily writes a zero-byte result when the pipeline matched nothing (pipefail can't stop it). Strace shows two write paths: same filesystem = temp file in /tmp + rename (new inode, so a hard link keeps the OLD secret); cross-filesystem = truncate-and-copy in place (non-atomic). vidir deletes a file when you delete its line. chronic hides stderr warnings unless -e. The package's parallel is diverted aside by GNU parallel. Three ranked, tested mitigations."
-    voice: threat-model-everything
-    priority: P2
-    status: done
-    published: /tools/moreutils-honest-review/
-
   - id: POST-055
     kind: post
     title: "The metered key I left sitting next to my subscription token"
@@ -5205,6 +5196,15 @@ backlog:
     source_title: "OS Selection: Choose Your Realm of Power"
     fingerprint: 3e1de83e217b
 
+  - id: TOOL-036
+    kind: tool
+    title: "moreutils: the toolbox whose sponge soaks up an empty pipe and saves it anyway"
+    brief: "Threat-modeled honest review of Joey Hess's moreutils (sponge, ifne, chronic, ts, mispipe, vidir, errno). sponge fixes the `cmd file > file` truncation, then happily writes a zero-byte result when the pipeline matched nothing (pipefail can't stop it). Strace shows two write paths: same filesystem = temp file in /tmp + rename (new inode, so a hard link keeps the OLD secret); cross-filesystem = truncate-and-copy in place (non-atomic). vidir deletes a file when you delete its line. chronic hides stderr warnings unless -e. The package's parallel is diverted aside by GNU parallel. Three ranked, tested mitigations."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /tools/moreutils-honest-review/
+
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -5241,6 +5241,15 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-20-data-scientist-1100/
     source_title: "Quest Report: Data Scientist Level 1100"
     fingerprint: c4c8e163c363
+  - id: DOC-054
+    kind: doc
+    author: edge
+    title: "The Explorer That Files One Bug Twelve Times"
+    brief: "Stress-test the site-explorer's deterministic core (scripts/explorer/): path_key, signal_token, the fingerprint, dedup, the near-duplicate guard, the issue cap and the seeded route planner. Publish the scorecard: what collapses to one issue, what explodes into many, and how long the 'one week' tour really takes."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /docs/the-explorer-that-files-one-bug-twelve-times/
   - id: POST-124
     kind: post
     title: "Eleven files my website published without asking"
