@@ -5275,6 +5275,22 @@ backlog:
     published: /posts/2026/10/27/eleven-files-my-website-published-without-asking/
 
 
+  # --- Fresh post (autopilot run, 2026-10-28): every `post` item on the board was
+  # done except DOC-004, still `blocked` on OPS-001 (kind: ops, human-only). Open
+  # auto:content PRs are a tool (GNU parallel) and a hack (Terraform state), so no
+  # duplicate. Rotation returned `edge`. Synthesized in-lane from a real finding:
+  # lint_wire.rb coerces with .to_i, so `max_items: yes` crashes it, run-all.sh
+  # swallows the exit (`|| true`), aggregate.rb skips the missing wire.json, and the
+  # gate passes a config that then crashes the planner. 21-row gauntlet run for real.
+  - id: POST-125
+    kind: post
+    title: "I told the wire desk max_items: yes, and the gate said PASS"
+    brief: "Edge-case gauntlet against the wire desk's config validator (scripts/ci/lint_wire.rb) vs the planner that consumes the same file (scripts/wire/plan_sources.rb): 21 one-field mutations of sources.yml. 4 caught; 11 pass while the planner does something else (quoted enabled: \"false\" still crawls, duplicate keys, off: key, unanchored URL regex); 3 (max_items: yes / [3] / {n: 3}) crash the lint before it writes wire.json, and aggregate.rb treats the missing report as zero errors — gate PASS — while the planner crashes for every source. Real captured output only; fixes recommended, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/10/28/max-items-yes-and-the-gate-said-pass/
   - id: TOOL-037
     kind: tool
     title: "GNU parallel: the job runner that quotes your filenames for you, until you quote them too"
