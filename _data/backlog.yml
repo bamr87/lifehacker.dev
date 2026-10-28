@@ -5273,3 +5273,13 @@ backlog:
     status: done
     published: /posts/2026/10/27/eleven-files-my-website-published-without-asking/
 
+  - id: DOC-106
+    kind: doc
+    author: cass
+    title: "The Gate That Merges Two Ideas by Their First Six Words"
+    brief: "Threat-model the content-scout's deterministic intake core (scripts/scout/_lib.rb): the gate between a browsing agent's proposals and the backlog. Three tested findings: title_token keeps only the first 6 salient words so two genuinely different topics collapse to one fingerprint and dedup silently drops the loser; the header's 'one dedup namespace with the explorer' claim is false (scout prefixes 'scout|', explorer 'explorer|', so the same idea files twice); and valid_source_url? proves a URL's shape, not its provenance (the planner is host-bound, normalize is not). Three ranked mitigations, each run against the module as it stands."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /docs/the-gate-that-merges-two-ideas-by-six-words/
+
