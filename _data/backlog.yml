@@ -5359,3 +5359,13 @@ backlog:
     source_url: https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/
     fingerprint: 44cca1be0d8b
 
+
+  - id: DOC-107
+    kind: doc
+    author: edge
+    title: "The Reference That Blames the Wrong File"
+    brief: "Fresh doc idea (2026-10-29; every doc item was done). Stress-test scripts/devops/workflow_reference.rb, the generator behind docs/reference/workflows.md that check_drift.rb gates. Hostile workflow fixtures, run in a scratch copy: a bracket-notation vars['X_ENABLED'] switch it can't see; a trailing YAML comment that invents a phantom switch; a secret expanded inside a bash comment it strips; an em dash that decides error vs warning; 10,000 renders for determinism. The headline: a hand-edit of the generated file is blamed on a workflow the PR never touched, so a content PR carrying it is scoped clean, classifies as content, and is eligible for auto-merge."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /docs/the-reference-that-blames-the-wrong-file/
