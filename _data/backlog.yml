@@ -2352,7 +2352,8 @@ backlog:
     brief: "Paste a snippet containing `{{ page.title }}` or `{% if %}` into a Jekyll post and the build runs it as Liquid instead of printing it, so your example renders blank — or the build dies on a tag Liquid can't parse. Wrap the block in a raw/endraw pair so the braces survive to the page. The failures that stay in: forget it and the page can build green while the example is simply gone (verify by rendering, not eyeballing the source), raw doesn't nest so a sample that itself shows an endraw tag closes yours early, and the tags leave stray blank lines unless you trim them. Every case reproducible with a local `bundle exec jekyll build`."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/jekyll-liquid-raw-endraw-code-samples/
     source: content-scout
     source_url: https://it-journey.dev/quests/0001/advanced-markdown/
     source_title: "Advanced Markdown"
