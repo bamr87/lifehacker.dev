@@ -132,7 +132,7 @@ trim opener only: OK "\n{% raw %}{{ page.title }}{% endraw %}\n"
 nested endraw: ERROR Liquid syntax error: Unknown tag 'endraw'
 ```
 
-So `{{ '{%' }}- endraw -%}` works on a modern Jekyll 4 laptop and dies on GitHub Pages. **The failure this prevents:** "works locally, red on Pages", which costs the rest of your afternoon. Notice the output on 5.14 too: the trimmed version still kept the newlines, because the hyphens trim around the tag and not inside the raw body. Trimming doesn't buy you anything here. Put the tags on the code lines (scenario 5) and there's nothing to trim.
+So `{{ '{%' }}- endraw -%}` works on Liquid 5 and dies on the Liquid 4.0.4 that GitHub Pages pins. **The failure this prevents:** "works locally, red on Pages", which costs the rest of your afternoon. Notice the output on 5.14 too: the trimmed version still kept the newlines, because the hyphens trim around the tag and not inside the raw body. Trimming doesn't buy you anything here. Put the tags on the code lines (scenario 5) and there's nothing to trim.
 
 ## Failure 3: raw doesn't nest
 
