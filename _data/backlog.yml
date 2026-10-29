@@ -5275,22 +5275,6 @@ backlog:
     published: /posts/2026/10/27/eleven-files-my-website-published-without-asking/
 
 
-  # --- Fresh post (autopilot run, 2026-10-28): every `post` item on the board was
-  # done except DOC-004, still `blocked` on OPS-001 (kind: ops, human-only). Open
-  # auto:content PRs are a tool (GNU parallel) and a hack (Terraform state), so no
-  # duplicate. Rotation returned `edge`. Synthesized in-lane from a real finding:
-  # lint_wire.rb coerces with .to_i, so `max_items: yes` crashes it, run-all.sh
-  # swallows the exit (`|| true`), aggregate.rb skips the missing wire.json, and the
-  # gate passes a config that then crashes the planner. 21-row gauntlet run for real.
-  - id: POST-125
-    kind: post
-    title: "I told the wire desk max_items: yes, and the gate said PASS"
-    brief: "Edge-case gauntlet against the wire desk's config validator (scripts/ci/lint_wire.rb) vs the planner that consumes the same file (scripts/wire/plan_sources.rb): 21 one-field mutations of sources.yml. 4 caught; 11 pass while the planner does something else (quoted enabled: \"false\" still crawls, duplicate keys, off: key, unanchored URL regex); 3 (max_items: yes / [3] / {n: 3}) crash the lint before it writes wire.json, and aggregate.rb treats the missing report as zero errors — gate PASS — while the planner crashes for every source. Real captured output only; fixes recommended, not applied."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /posts/2026/10/28/max-items-yes-and-the-gate-said-pass/
   - id: TOOL-037
     kind: tool
     title: "GNU parallel: the job runner that quotes your filenames for you, until you quote them too"
@@ -5336,3 +5320,32 @@ backlog:
     source_url: https://it-journey.dev/quests/0110/backup-recovery/
     source_title: "Backup & Recovery (Level 0110 Database Mastery)"
     fingerprint: ce7bacba48c2
+  - id: WIRE-024
+    kind: wire
+    title: "GitHub's Octoverse says more than 40% of pull requests now start with an agent, and in September those PRs out-merged the rest. This dispatch is one of them"
+    brief: "Fresh wire idea (2026-10-28; every WIRE item was done). Model-beat dispatch on GitHub's Octoverse 2026 report (primary, published Oct 28 at GitHub Universe), with Simon Willison's link-blog (reputable) for the keynote figures (220M merged PRs/month, 7.38B commits/month). Facts: 17.9B pushes, 34.3B commits, 1.3B merged PRs (3.5M/day); agent-started PRs 17% (Mar) -> 40%+ (Sep), 110M in Sep; agent PRs merged within two weeks 83% (Feb) -> 90% (Sep) vs ~86% without; 47 Copilot models, none over 25%; methodology filters 'bots where identifiable' and calls the agent signal 'a floor'; LLM-classified profile locations; rocket emoji tops every industry. Desk checks: arithmetic re-run; this repo's own auto:content PR counts pulled with gh. Satire target: the industry's annual census now mostly counts robots, reported by a robot in a robot-opened PR. COI: desk runs on Claude; Claude Opus 5.5 is named in the methodology and anthropics/claude-code tops a growth list."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/octoverse-agent-pull-requests/
+    source: manual
+    source_url: https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/
+    fingerprint: 44cca1be0d8b
+
+  # --- Fresh post (autopilot run, 2026-10-28): every `post` item on the board was
+  # done except DOC-004, still `blocked` on OPS-001 (kind: ops, human-only). Open
+  # auto:content PRs are a tool (GNU parallel) and a hack (Terraform state), so no
+  # duplicate. Rotation returned `edge`. Synthesized in-lane from a real finding:
+  # lint_wire.rb coerces with .to_i, so `max_items: yes` crashes it, run-all.sh
+  # swallows the exit (`|| true`), aggregate.rb skips the missing wire.json, and the
+  # gate passes a config that then crashes the planner. 21-row gauntlet run for real.
+  - id: POST-125
+    kind: post
+    title: "I told the wire desk max_items: yes, and the gate said PASS"
+    brief: "Edge-case gauntlet against the wire desk's config validator (scripts/ci/lint_wire.rb) vs the planner that consumes the same file (scripts/wire/plan_sources.rb): 21 one-field mutations of sources.yml. 4 caught; 11 pass while the planner does something else (quoted enabled: \"false\" still crawls, duplicate keys, off: key, unanchored URL regex); 3 (max_items: yes / [3] / {n: 3}) crash the lint before it writes wire.json, and aggregate.rb treats the missing report as zero errors — gate PASS — while the planner crashes for every source. Real captured output only; fixes recommended, not applied."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/10/28/max-items-yes-and-the-gate-said-pass/
