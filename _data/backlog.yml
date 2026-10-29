@@ -5360,3 +5360,40 @@ backlog:
     source_url: https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/
     fingerprint: 44cca1be0d8b
 
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-169
+    kind: hack
+    title: "Your pgcrypto key is in the Postgres log: pgp_sym_encrypt(data, 'the-key') meets the audit logging you turned on for security"
+    brief: "SEVERITY: the one secret the whole scheme depends on. ATTACK VECTOR: the audit log you enabled to be responsible. Column encryption with `pgp_sym_encrypt(card_number, 'encryption-key')` puts the key in the SQL text, and `log_statement = 'mod'`, the setting the same tutorial recommends for auditing, writes every INSERT and UPDATE to the server log verbatim, key included. From there the log goes to an aggregator that more people can read than can read the database. Binding the key as a query parameter is not the clean escape it looks like. With statement logging on, extended-protocol statements can be logged with a `DETAIL: parameters: $1 = '…'` line, and a failed statement is echoed to the log by `log_min_error_statement` whatever `log_statement` says (writer: verify the exact parameter-logging defaults on PG16 and pin them in the piece). The three mitigations that actually matter, ranked: (1) encrypt and decrypt in the application, so the key never reaches the database or its logs at all; (2) if it has to be pgcrypto, bind the key as a parameter, set `log_parameter_max_length = 0` and `log_parameter_max_length_on_error = 0`, and audit with pgaudit with `pgaudit.log_parameter` left off instead of `log_statement`; (3) treat the logs as secret material, then grep them for the key, and if it's in there, rotate it and re-encrypt the column, because deleting a log line doesn't remove the copy the aggregator already shipped. Reproducible: run `postgres:16` with `-c log_statement=mod`, insert one encrypted row, and `docker logs | grep encryption-key`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/database-security/
+    source_title: "Database Security (Level 0110 Database Mastery)"
+    fingerprint: b09dd5834634
+  - id: SRC-170
+    kind: hack
+    title: "Hold the major on purpose: a Dependabot ignore rule with a written exit condition, not a PR you closed and forgot"
+    brief: "Dependabot treats every bump the same unless you tell it otherwise. Then one Tuesday a grouped PR that includes ESLint 10 fails at the lint step, and the twelve harmless patch bumps grouped with it go red too. Fix it in `dependabot.yml` with lanes. First, a `groups:` entry with `update-types: [\"minor\", \"patch\"]`, so the boring bumps travel together and merge on green tests. Second, majors held explicitly: `ignore: - dependency-name: \"eslint\"` with `update-types: [\"version-update:semver-major\"]`, plus a YAML comment above it giving the reason and the exit condition ('drop when eslint-plugin-react supports 10'). The failures that stay in. Closing the PR, or commenting `@dependabot ignore this major version`, stores the decision in GitHub's state and not in your repo, so nobody reading the config can see it and nothing ever expires it. Majors left inside the group mean one incompatible package fails every safe bump in the batch. And a hold must never block a security fix: check whether your ignore rule also suppresses Dependabot security updates for that dependency (writer: verify against current GitHub docs and demonstrate it), and if the CVE is only fixed in the new major, the hold ends that day. Reproducible in a throwaway repo pinned to an old ESLint and a plugin that rejects the new one."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://www.bash-365.com/posts/2026/10/15/hold-the-major-a-software-update-policy-you-can-sign-off-on/
+    source_title: "Hold the major: a software update policy you can sign off on"
+    fingerprint: b452d3159b5d
+  - id: SRC-171
+    kind: hack
+    title: "Your Airflow DAG never shows up: the scheduler can't see a file you didn't mount (and the import error hiding behind the empty list)"
+    brief: "You start Airflow in Docker, the web UI loads, you write `my_dag.py` on your laptop, and the DAG list stays empty. The scheduler only parses the DAGs folder inside the container (`/opt/airflow/dags` in the official image), and nothing you wrote is in there: mount it with `-v \"$PWD/dags:/opt/airflow/dags\"`. Three more ways to stare at an empty list stay in. A new file isn't picked up immediately, because the DAG processor rescans the folder on an interval (`dag_dir_list_interval`, 300 seconds by default in Airflow 2; writer: confirm the setting name and default on the version you test), so lower it in a lab or wait it out. A DAG file that raises on import never appears in the list at all; it shows up only as an import-errors banner, and `airflow dags list-import-errors` is the command that tells you why. And a mounted file the container user (UID 50000 in the official image) can't read is skipped the same way, so check ownership before you check your Python. You'll know it worked when `airflow dags list` inside the container prints your `dag_id`."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-18-data-scientist-1100/
+    source_title: "Quest Report: Data Scientist L1100 (2026-07-18)"
+    fingerprint: 949ff524a91c
