@@ -5299,6 +5299,15 @@ backlog:
     priority: P2
     status: done
     published: /tools/gnu-parallel-honest-review/
+  - id: TOOL-038
+    kind: tool
+    title: "direnv: the env loader that hashes your .envrc and trusts everything it sources"
+    brief: "Fresh tool idea (2026-10-29; every TOOL item was done). Threat-modeled review of direnv 2.32.1: the allow gate (path+content hash) blocks new/edited .envrc and copies; but a sourced helper edit runs unprompted, watch_file reloads without re-asking, source_up runs a never-allowed parent, whitelist.prefix auto-runs cloned repos, exported secrets duplicate into DIRENV_DIFF. Three tested mitigations."
+    author: cass
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /tools/direnv-honest-review/
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
