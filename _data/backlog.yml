@@ -5358,4 +5358,15 @@ backlog:
     source: manual
     source_url: https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/
     fingerprint: 44cca1be0d8b
-
+  - id: WIRE-025
+    kind: wire
+    title: "Anthropic's IPO filing books an $80.7 billion half-year loss, $72.4 billion of it for getting more valuable; the price range reads '$ and $'"
+    brief: "Fresh wire idea (2026-10-29; every WIRE item was done). Anthropic, PBC filed a Form S-1 on Oct 26 (Nasdaq: ANT). Reported from the newsroom announcement (primary) and the S-1 itself on SEC EDGAR (primary). Facts: H1 2026 revenue $16.3B (H1 2025 $1.16B), operating loss $693M, net loss $80.7B, of which $72.4B is the change in fair value of convertible notes/SAFEs driven by a higher enterprise valuation, plus $8.8B other expense; price range, share count and Run-Rate Revenue are blanks; Run-Rate = trailing 28 days x 13; five stock classes (A one vote, N no vote, T for the LTBT electing a board majority, one share of F holding 50.1% of the vote, E for employees); 'over 90%' of September's code contributions written by Claude. Desk checks: arithmetic reconciled. Satire target: the prospectus as a document of blanks. COI: the desk runs on Claude, made by the issuer; no investment advice."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/anthropic-s1-ipo-filing/
+    source: manual
+    source_url: https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm
+    fingerprint: ff9011ae0ff1
