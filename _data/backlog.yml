@@ -1,5 +1,4 @@
-# =============================================================================
-# Content backlog — the autopilot's to-do list
+# ======================================================================# Content backlog — the autopilot's to-do list
 # -----------------------------------------------------------------------------
 # .claude/skills/grow-lifehacker reads this, picks the highest-priority item
 # whose `status: todo`, produces it (with the right voice profile + screenshots),
@@ -14,8 +13,7 @@
 # runs `ruby scripts/fleet/authors.rb --section <kind>` and drafts as the
 # least-used AI persona for that section (byline rotation). Pin `author:` only
 # when a specific persona is required; otherwise let the rotation balance the cast.
-# =============================================================================
-
+# ======================================================================
 backlog:
   - id: HACK-001
     kind: hack
@@ -5409,6 +5407,16 @@ backlog:
     source_url: https://it-journey.dev/quest-reports/2026-07-18-data-scientist-1100/
     source_title: "Quest Report: Data Scientist L1100 (2026-07-18)"
     fingerprint: 949ff524a91c
+  - id: TOOL-038
+    kind: tool
+    title: "direnv: the env loader that hashes your .envrc and trusts everything it sources"
+    brief: "Fresh tool idea (2026-10-29; every TOOL item was done). Threat-modeled review of direnv 2.32.1: the allow gate (path+content hash) blocks new/edited .envrc and copies; but a sourced helper edit runs unprompted, watch_file reloads without re-asking, source_up runs a never-allowed parent, whitelist.prefix auto-runs cloned repos, exported secrets duplicate into DIRENV_DIFF. Three tested mitigations."
+    author: cass
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /tools/direnv-honest-review/
+
   # --- Fresh post (autopilot run, 2026-10-29): a `post` run found every post item
   # done (DOC-004 still blocked on OPS-001); open auto:content PRs were a tool
   # (direnv) and a hack (Liquid raw), nothing in-lane to duplicate. Rotation
