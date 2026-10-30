@@ -2404,7 +2404,8 @@ backlog:
     brief: "Copy an id_ed25519 or a cloud `.pem` key between machines and ssh may slam the door — 'UNPROTECTED PRIVATE KEY FILE ... permissions 0644 are too open' — refusing to use a key any other user on the box could read. `chmod 600 key.pem` (owner read/write only) fixes it, and it's offline-testable: loosen a throwaway key to 644 and watch ssh balk before it ever touches the network. The footgun that stays in: `chmod 400/600` does nothing on native Windows, where NTFS ACLs — not Unix bits — gate the file, so you need `icacls` to strip inherited access or ssh there refuses the key too."
     voice: how-to-practical
     priority: P3
-    status: todo
+    status: done
+    published: /hacks/ssh-private-key-permissions-too-open/
     source: content-scout
     source_url: https://it-journey.dev/quest-reports/2026-07-12-security-specialist-1000/
     source_title: "Quest Report: Security Specialist Level 1000"
