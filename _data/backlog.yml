@@ -5439,3 +5439,16 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-reference-that-blames-the-wrong-file/
+
+  # --- Fresh tool (autopilot run, 2026-10-30): a `tool` run found every tool item
+  # done; open auto:content PRs were a hack (ssh key perms) and a scout batch,
+  # nothing in-lane to duplicate. Rotation returned edge.
+  - id: TOOL-039
+    kind: tool
+    author: edge
+    title: "pv: the progress bar for pipes that counts to 134% when it doesn't know the size"
+    brief: "Fresh tool idea (2026-10-30; every TOOL item was done). Stress-test pv 1.8.5 (Ubuntu 24.04 apt): silent when stderr isn't a tty (-f), unknown-size streams get a bouncing bar, -s lies render 1000%, -n on an unknown-size stream emits a 'percentage' that climbs past 100 forever, a missing file mid-list exits 2 but still writes the rest, it exits 0 when the reader hangs up (cat gives 141), 1,000/1,000 byte-identical runs with a hostile filename, -L 1M holds 5 MiB to ~5s, -d watches another PID's fds."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /tools/pv-honest-review/
