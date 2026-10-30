@@ -1,5 +1,4 @@
-# =============================================================================
-# Content backlog — the autopilot's to-do list
+# ======================================================================# Content backlog — the autopilot's to-do list
 # -----------------------------------------------------------------------------
 # .claude/skills/grow-lifehacker reads this, picks the highest-priority item
 # whose `status: todo`, produces it (with the right voice profile + screenshots),
@@ -14,8 +13,7 @@
 # runs `ruby scripts/fleet/authors.rb --section <kind>` and drafts as the
 # least-used AI persona for that section (byline rotation). Pin `author:` only
 # when a specific persona is required; otherwise let the rotation balance the cast.
-# =============================================================================
-
+# ======================================================================
 backlog:
   - id: HACK-001
     kind: hack
@@ -5419,6 +5417,19 @@ backlog:
     status: done
     published: /tools/direnv-honest-review/
 
+  # --- Fresh post (autopilot run, 2026-10-29): a `post` run found every post item
+  # done (DOC-004 still blocked on OPS-001); open auto:content PRs were a tool
+  # (direnv) and a hack (Liquid raw), nothing in-lane to duplicate. Rotation
+  # returned cass. Real run logs, commits and source only.
+  - id: POST-126
+    kind: post
+    author: cass
+    title: "My workflow says contents: read. The robot it summons brings its own key."
+    brief: "Threat-model the @claude mention handler (claude.yml). Its permissions block is read-only and the run log agrees, yet claude[bot] pushed e9f3299 to PR #429 from inside that run: id-token: write lets claude-code-action trade OIDC for a Claude GitHub App token, so the declared permissions bound a token nobody uses. Plus the two-gate mismatch (workflow contains() substring vs the action's whole-word regex) that let the bot's own 'Original report by @claude[bot]' line start two runs that minted a key before checking the actor. Three tested mitigations: audit jobs with a second key, an author_association gate, write the bot's handle without the @."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /posts/2026/10/29/the-workflow-says-read-only/
   - id: DOC-107
     kind: doc
     author: edge
