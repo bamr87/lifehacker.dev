@@ -49,3 +49,9 @@ accepted:
     key:  b8648abad4db
     note: 'quoted mock headline ("five habits of the 10x grokker") named as the hustle-content reflex the piece refuses — anti-hype, not a claim'
     reviewed: 2026-07-18
+  # "10x" as a literal, attributed price ratio in a wire dispatch, not hype.
+  - file: pages/_posts/wire/2026-10-27-gpt-6-1-terra-lineup-sort-order.md
+    word: 10x
+    key:  3942616fcd11
+    note: 'quoted literal price ratio attributed to Simon Willison ("around 10x the price of GPT-6 Luna"), checked by the desk against llm-prices.com — a figure, not a claim'
+    reviewed: 2026-10-29
