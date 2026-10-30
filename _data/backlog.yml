@@ -5439,3 +5439,15 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-reference-that-blames-the-wrong-file/
+  # Fresh post idea (2026-10-30): no kind: post item was todo (DOC-004 is
+  # blocked), so the run proposed one. Rotation returned edge. Every fixture
+  # was a real run of the real linter, in throwaway files deleted after.
+  - id: POST-127
+    kind: post
+    author: edge
+    title: "My weasel-phrase cop missed 11 of 13 weasels and arrested 7 innocent sentences"
+    brief: "Stress-test lint_brand.rb's only hard-fail rule, the avoid_phrases substring match (downcase.include? over raw Markdown source). 20 one-line fixtures: curly apostrophes, nbsp, double space, zero-width space, emphasis/link splits, homoglyph all slip past; 'studies showcase/showed/shown', the glossary's own '(without a link)' exception, and HTML comments all fail the build. Front matter (title/description/excerpt) is never scanned. A normalized matcher with word guards goes 2/13 -> 11/13 caught and 0/7 -> 6/7 spared, with 0 new hits over 390 existing files."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /posts/2026/10/30/weasel-phrase-cop-missed-eleven-arrested-seven/
