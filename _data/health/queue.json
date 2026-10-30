@@ -273,6 +273,27 @@
     "title": "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/wire-scout.yml)"
   },
   {
+    "fingerprint": "b7dc5a004de5",
+    "check_id": "drift",
+    "rule": "workflow-reference-stale",
+    "file": ".github/workflows/release.yml",
+    "line": null,
+    "evidence": "docs/reference/workflows.md no longer matches .github/workflows/release.yml — run `ruby scripts/devops/workflow_reference.rb --write`",
+    "type": "type/drift",
+    "area": "area/site",
+    "severity": "sev4",
+    "route": "local",
+    "repo": "bamr87/lifehacker.dev",
+    "url_path": null,
+    "reach_views": 0,
+    "occurrences": 1,
+    "prime_directive_candidate": false,
+    "score": 0.7,
+    "issue_number": null,
+    "blocked_on": null,
+    "title": "[sev4] drift: workflow-reference-stale (.github/workflows/release.yml)"
+  },
+  {
     "fingerprint": "8479dd2bcf2c",
     "check_id": "preview",
     "rule": "shared-preview",
