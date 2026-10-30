@@ -5440,3 +5440,40 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-reference-that-blames-the-wrong-file/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-172
+    kind: hack
+    title: "sed -i works on Linux and dies on a Mac (and the reverse): the in-place flag BSD and GNU disagree on, and the -i.bak that runs on both"
+    brief: "`sed -i 's/old/new/' config` is muscle memory on Linux. On macOS, BSD sed requires a backup-suffix argument after `-i`, so it takes your script as the suffix, reads the filename as the script, and fails with a baffling 'invalid command code'. The macOS habit, `sed -i '' 's/old/new/' config`, breaks the other way on GNU sed: the empty string becomes the script, and the real script gets opened as a filename (`can't read s/old/new/: No such file or directory`). The portable form attaches the suffix with no space, `sed -i.bak 's/old/new/' config && rm config.bak`, and both seds accept it. The failures that stay in: on BSD, `sed -i -e 's/…/' config` 'works' and leaves a backup called `config-e` in your repo, because `-e` was taken as the suffix; in-place editing writes a new file and renames it over the old one, so it breaks hard links and, on GNU sed, replaces a symlink with a regular file unless you pass `--follow-symlinks`; and a pattern that matches nothing still exits 0, so check the effect with `grep`, not the exit code. If a script has to run on both, `perl -pi -e` behaves the same everywhere. Reproducible with a `debian` container next to a Mac terminal."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quest-reports/2026-07-18-data-scientist-1100/
+    source_title: "Quest Report: Data Scientist L1100 (2026-07-18)"
+    fingerprint: 41e9a1fab451
+  - id: SRC-173
+    kind: hack
+    title: "Your GA4 top-pages report is counting your own localhost: group by hostName before you trust a single number"
+    brief: "The analytics tag fires wherever the page loads: your `jekyll serve` on localhost:4000, the Docker preview, a staging host, someone's scraped mirror. All of it lands in the same GA4 property, and an AI agent asked 'what were my top pages this week?' will report your dev reloads with total confidence. Before you read any headline number, run `runReport` with `hostName` as the only dimension and `screenPageViews` as the metric, and look at what's actually in there. Then add a `dimensionFilter` with a `stringFilter` of `matchType: EXACT` on your live domain to every report you keep. The failures that stay in. A query-time filter hides the pollution but doesn't remove it from the property, so the real fix is upstream: only render the tag when `jekyll.environment == \"production\"` (writer: test that the tag really is absent from a local build). A date range that ends 'today' includes a partial day, so a week-over-week comparison shows a fake Monday traffic crash; end on 'yesterday'. And `EXACT` means `www.example.com` and `example.com` are different hosts, so check which one your site actually serves before you filter half your traffic away. You'll know it worked when the hostName breakdown returns one row."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/query-traffic-with-mcp/
+    source_title: "Query Your Traffic with MCP (Level 1010)"
+    fingerprint: 36a417b9a9ef
+  - id: SRC-174
+    kind: hack
+    title: "Your cron job works in your terminal and fails at 9 a.m. Monday: cron and launchd don't inherit your shell's PATH"
+    brief: "The weekly report script runs perfectly when you type it, then the scheduled run does nothing, because cron and launchd start jobs with a minimal environment. Your profile isn't sourced, PATH is roughly `/usr/bin:/bin`, and the `node` and `gh` you installed with Homebrew or nvm are `command not found`. Reproduce the job's world before you schedule it: `env -i HOME=\"$HOME\" PATH=/usr/bin:/bin /bin/sh -c '/full/path/report.sh'`. If that fails, the scheduled run will too. Fixes: use absolute paths (`command -v node` tells you where it lives), set `PATH=` at the top of the crontab or under `EnvironmentVariables` in the launchd plist, and pass the job's own variables (`GA_PROPERTY_ID`) the same way. The failures that stay in. Cron output disappears unless you redirect it (`>> \"$HOME/ga-reports/cron.log\" 2>&1`) or it goes to local mail nobody reads; on launchd, set `StandardOutPath` and `StandardErrorPath`. A bare `%` in a crontab line is turned into a newline, so `date +%F` silently breaks the command unless you escape it as `\\%`. And a hard-coded `/opt/homebrew/bin/gh` is the Apple Silicon path (Intel Homebrew uses `/usr/local/bin`), so the absolute path that fixed your machine breaks on the next one. You'll know it worked when the log file gets a fresh line and `launchctl print gui/$(id -u)/<label>` shows last exit code 0."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1010/automate-traffic-report/
+    source_title: "Automate a Weekly Traffic Report (Level 1010)"
+    fingerprint: 7b843fb9c80a
