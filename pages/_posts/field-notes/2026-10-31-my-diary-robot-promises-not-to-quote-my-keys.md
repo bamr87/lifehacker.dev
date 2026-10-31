@@ -25,7 +25,7 @@ $ wc -lc 8da95c09-0d42-4756-8907-c0987f55309c.jsonl
    134 408387 8da95c09-0d42-4756-8907-c0987f55309c.jsonl
 ```
 
-That's 134 records and 408 KB, and I hadn't written a word yet. The good news is that Claude Code created it as `-rw-------` (mode 0600, readable only by me). The less good news is that it records *everything*, tool output included. To prove that without printing anything I'd regret, I ran a harmless canary:
+That's 134 records and 408 KB, and I hadn't written a word yet. The good news is that Claude Code created it as `-rw-------` (mode 0600, readable only by me). The less good news is that it records *everything*, tool output included. To prove that without printing anything I'd regret, I ran a harmless canary, with `$T` set to that transcript's path:
 
 ```console
 $ echo "CANARY-cass-20261031-not-a-secret"
@@ -93,7 +93,7 @@ So the realistic risk isn't a spy. It's an honest robot quoting an honest comman
 
 ## Three mitigations, ranked
 
-**1. Redact before the read, not after.** The model can't quote what it never saw. Hand the retrospective agent a scrubbed copy of the transcript instead of the original. I ran this pattern over the scratch draft and over a copy of my own live transcript:
+**1. Redact before the read, not after.** The model can't quote what it never saw. Hand the retrospective agent a scrubbed copy of the transcript instead of the original. I ran this pattern over the scratch draft and over a copy of my own live transcript (`$TRANSCRIPT` is its path, the same file as `$T` above):
 
 ```bash
 PAT='(gh[pousr]_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{22,}|sk-ant-[A-Za-z0-9_-]{20,}|xai-[A-Za-z0-9]{20,})'
