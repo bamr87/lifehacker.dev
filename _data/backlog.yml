@@ -5440,6 +5440,31 @@ backlog:
     status: done
     published: /docs/the-reference-that-blames-the-wrong-file/
 
+  - id: WIRE-026
+    kind: wire
+    title: "Anthropic and OpenAI now pay subscribers back in API credits, dollar for dollar; Anthropic's list of what the credit won't buy starts with Claude Code"
+    brief: "Fresh wire idea (2026-10-30; every WIRE item was done). Simon Willison reports (Oct 29) that OpenAI now gives $100/$200/$500 ChatGPT subscribers the same amount in monthly API credits, matching the scheme Anthropic announced Oct 7 alongside Claude Haiku 5.5. Reported from Anthropic's Haiku 5.5 announcement and its help-center article (primary) and Willison's two posts (reputable); OpenAI's help article returned HTTP 403 to the desk, so OpenAI's terms run through Willison. Facts: Max $100, Ultra $200, Team $20/Standard seat and $100/Premium seat pooled and capped at $500; credits expire monthly; one Console org, can't be changed without support; excluded: interactive Claude Code, extra usage, Bedrock/Vertex/Foundry; signed-in `claude -p` draws plan limits, not credits. Willison's Oct 7 quote said 'Max 5x'/'Max 20x'; the page now says 'Max'/'Ultra'. Desk checks: pool arithmetic, Willison's 3.3826-cent pelican. COI: the desk runs on Claude via a subscription token."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/subscription-api-credits/
+    source: manual
+    source_url: https://simonwillison.net/2026/Oct/29/api-credits/
+    fingerprint: a0fac1c3da3c
+
+  # Fresh post idea (2026-10-30): no kind: post item was todo (DOC-004 is
+  # blocked), so the run proposed one. Rotation returned edge. Every fixture
+  # was a real run of the real linter, in throwaway files deleted after.
+  - id: POST-127
+    kind: post
+    author: edge
+    title: "My weasel-phrase cop missed 11 of 13 weasels and arrested 7 innocent sentences"
+    brief: "Stress-test lint_brand.rb's only hard-fail rule, the avoid_phrases substring match (downcase.include? over raw Markdown source). 20 one-line fixtures: curly apostrophes, nbsp, double space, zero-width space, emphasis/link splits, homoglyph all slip past; 'studies showcase/showed/shown', the glossary's own '(without a link)' exception, and HTML comments all fail the build. Front matter (title/description/excerpt) is never scanned. A normalized matcher with word guards goes 2/13 -> 11/13 caught and 0/7 -> 6/7 spared, with 0 new hits over 390 existing files."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /posts/2026/10/30/weasel-phrase-cop-missed-eleven-arrested-seven/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -5488,15 +5513,3 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-receipt-that-says-openai-about-localhost/
-  # Fresh post idea (2026-10-30): no kind: post item was todo (DOC-004 is
-  # blocked), so the run proposed one. Rotation returned edge. Every fixture
-  # was a real run of the real linter, in throwaway files deleted after.
-  - id: POST-127
-    kind: post
-    author: edge
-    title: "My weasel-phrase cop missed 11 of 13 weasels and arrested 7 innocent sentences"
-    brief: "Stress-test lint_brand.rb's only hard-fail rule, the avoid_phrases substring match (downcase.include? over raw Markdown source). 20 one-line fixtures: curly apostrophes, nbsp, double space, zero-width space, emphasis/link splits, homoglyph all slip past; 'studies showcase/showed/shown', the glossary's own '(without a link)' exception, and HTML comments all fail the build. Front matter (title/description/excerpt) is never scanned. A normalized matcher with word guards goes 2/13 -> 11/13 caught and 0/7 -> 6/7 spared, with 0 new hits over 390 existing files."
-    voice: edge-case-maximalist
-    priority: P2
-    status: done
-    published: /posts/2026/10/30/weasel-phrase-cop-missed-eleven-arrested-seven/
