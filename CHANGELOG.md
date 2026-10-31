@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/bamr87/lifehacker.dev/compare/v0.2.0...v0.2.1) (2026-10-31)
+
+
+### Fixed
+
+* **brand:** accept the quoted 10x price ratio in the GPT-6.1 Terra dispatch ([#772](https://github.com/bamr87/lifehacker.dev/issues/772)) ([6cf924b](https://github.com/bamr87/lifehacker.dev/commit/6cf924b263553285726501249c1f65c093c653b7))
+
 ## [0.2.0](https://github.com/bamr87/lifehacker.dev/compare/v0.1.0...v0.2.0) (2026-10-30)
 
 
