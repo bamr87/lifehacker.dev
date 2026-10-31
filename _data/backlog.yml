@@ -5526,18 +5526,6 @@ backlog:
     priority: P2
     status: done
     published: /tools/pv-honest-review/
-  # --- Fresh doc (autopilot run, 2026-10-31): a `doc` run found every doc item
-  # done; open auto:content PRs were a field note, a tool and a scout batch,
-  # nothing in-lane to duplicate. Rotation returned edge.
-  - id: DOC-109
-    kind: doc
-    author: edge
-    title: "The Deterministic Scanner That Moves Your Post to Tomorrow in Tokyo"
-    brief: "Fresh doc idea (2026-10-31; every doc item was done). Stress-test scripts/content/triage_import.rb, step one of the content-import flow, against its 'same source always yields the same skeleton' promise. Passes: 10,000 files x3 runs byte-identical in ~1.2s; CRLF fine. Fails: zone-less timestamps print in local TZ (Tokyo moves the post a day); fence counting misses ~~~ and indented blocks, overcounts unclosed/nested ones; substring routing (happy->tools, ripgrep review->field-notes); quest/it-journey link regexes accept any domain; manifest indexed by basename hands one post's cover to another; YAML.unsafe_load instantiates named classes, rescue nil silently drops front matter, and a 455-byte alias bomb in tags: OOMs the whole scan. Tested safe_load + UTC patch in /tmp only."
-    voice: edge-case-maximalist
-    priority: P2
-    status: done
-    published: /docs/the-scanner-that-moves-your-post-to-tomorrow-in-tokyo/
   # --- Fresh tool (autopilot run, 2026-10-31): a `tool` run found every tool item
   # done; the only open auto:content PR was a scout batch, nothing in-lane to
   # duplicate. Rotation returned cass.
@@ -5550,3 +5538,27 @@ backlog:
     priority: P2
     status: done
     published: /tools/gitleaks-honest-review/
+  # --- Fresh doc (autopilot run, 2026-10-31): a `doc` run found every doc item
+  # done; open auto:content PRs were a field note, a tool and a scout batch,
+  # nothing in-lane to duplicate. Rotation returned edge.
+  - id: DOC-109
+    kind: doc
+    author: edge
+    title: "The Deterministic Scanner That Moves Your Post to Tomorrow in Tokyo"
+    brief: "Fresh doc idea (2026-10-31; every doc item was done). Stress-test scripts/content/triage_import.rb, step one of the content-import flow, against its 'same source always yields the same skeleton' promise. Passes: 10,000 files x3 runs byte-identical in ~1.2s; CRLF fine. Fails: zone-less timestamps print in local TZ (Tokyo moves the post a day); fence counting misses ~~~ and indented blocks, overcounts unclosed/nested ones; substring routing (happy->tools, ripgrep review->field-notes); quest/it-journey link regexes accept any domain; manifest indexed by basename hands one post's cover to another; YAML.unsafe_load instantiates named classes, rescue nil silently drops front matter, and a 455-byte alias bomb in tags: OOMs the whole scan. Tested safe_load + UTC patch in /tmp only."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /docs/the-scanner-that-moves-your-post-to-tomorrow-in-tokyo/
+  # --- Fresh post (autopilot run, 2026-10-31): a `post` run found every POST item
+  # done (DOC-004 blocked); open auto:content PRs were a gitleaks tool review and a
+  # scout batch, nothing in-lane to duplicate. Rotation returned cass.
+  - id: POST-128
+    kind: post
+    author: cass
+    title: "The robot that turns my diary into blog posts promises, in one sentence, not to quote my keys"
+    brief: "Threat-model the session-retrospective loop: Claude Code transcripts (0600, ~400 KB) keep tool output verbatim (canary test), the retrospective agent reads them whole, and the only redaction control is one prose sentence. A scratch draft with fake ghp_/sk-ant- strings passed every content lint (only complaint: no banner). Push protection is on; main is unprotected. Three tested mitigations: scrub a transcript copy before the read, grep the publishable tree before the PR, keep push protection on."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /posts/2026/10/31/my-diary-robot-promises-not-to-quote-my-keys/
