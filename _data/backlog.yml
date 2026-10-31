@@ -5501,3 +5501,15 @@ backlog:
     source_url: https://it-journey.dev/quests/1010/automate-traffic-report/
     source_title: "Automate a Weekly Traffic Report (Level 1010)"
     fingerprint: 7b843fb9c80a
+  # --- Fresh doc (autopilot run, 2026-10-30): a `doc` run found every doc item
+  # done; open auto:content PRs were a field note, a tool and a hack, nothing
+  # in-lane to duplicate. Rotation returned cass. Tested against a local mock.
+  - id: DOC-108
+    kind: doc
+    author: cass
+    title: "The Receipt That Says 'openai' About a Server on Localhost"
+    brief: "Fresh doc idea (2026-10-30; every doc item was done). Threat-model scripts/media/openai_image.mjs, the weekly epic's one paid image call. The never-fall-back gate holds (no/empty key -> exit 2). But OPENAI_BASE_URL forwards the Bearer key to any endpoint over plain http; the decoded 'PNG' is never checked (a shell script lands as hero.png); the sidecar hard-codes source: openai and hashes the forgery faithfully; --out escapes figures/; and lint_preview.rb only runs unsafe-svg on the .svg extension, so the same bytes as hero.png pass clean. Three tested mitigations: pin endpoint + confine out path, PNG magic bytes, receipt self-check (and what it can't prove)."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /docs/the-receipt-that-says-openai-about-localhost/
