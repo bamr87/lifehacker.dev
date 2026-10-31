@@ -5440,18 +5440,6 @@ backlog:
     status: done
     published: /docs/the-reference-that-blames-the-wrong-file/
 
-  # --- Fresh doc (autopilot run, 2026-10-30): a `doc` run found every doc item
-  # done; open auto:content PRs were a field note, a tool and a hack, nothing
-  # in-lane to duplicate. Rotation returned cass. Tested against a local mock.
-  - id: DOC-108
-    kind: doc
-    author: cass
-    title: "The Receipt That Says 'openai' About a Server on Localhost"
-    brief: "Fresh doc idea (2026-10-30; every doc item was done). Threat-model scripts/media/openai_image.mjs, the weekly epic's one paid image call. The never-fall-back gate holds (no/empty key -> exit 2). But OPENAI_BASE_URL forwards the Bearer key to any endpoint over plain http; the decoded 'PNG' is never checked (a shell script lands as hero.png); the sidecar hard-codes source: openai and hashes the forgery faithfully; --out escapes figures/; and lint_preview.rb only runs unsafe-svg on the .svg extension, so the same bytes as hero.png pass clean. Three tested mitigations: pin endpoint + confine out path, PNG magic bytes, receipt self-check (and what it can't prove)."
-    voice: threat-model-everything
-    priority: P2
-    status: done
-    published: /docs/the-receipt-that-says-openai-about-localhost/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -5488,3 +5476,27 @@ backlog:
     source_url: https://it-journey.dev/quests/1010/automate-traffic-report/
     source_title: "Automate a Weekly Traffic Report (Level 1010)"
     fingerprint: 7b843fb9c80a
+  # --- Fresh doc (autopilot run, 2026-10-30): a `doc` run found every doc item
+  # done; open auto:content PRs were a field note, a tool and a hack, nothing
+  # in-lane to duplicate. Rotation returned cass. Tested against a local mock.
+  - id: DOC-108
+    kind: doc
+    author: cass
+    title: "The Receipt That Says 'openai' About a Server on Localhost"
+    brief: "Fresh doc idea (2026-10-30; every doc item was done). Threat-model scripts/media/openai_image.mjs, the weekly epic's one paid image call. The never-fall-back gate holds (no/empty key -> exit 2). But OPENAI_BASE_URL forwards the Bearer key to any endpoint over plain http; the decoded 'PNG' is never checked (a shell script lands as hero.png); the sidecar hard-codes source: openai and hashes the forgery faithfully; --out escapes figures/; and lint_preview.rb only runs unsafe-svg on the .svg extension, so the same bytes as hero.png pass clean. Three tested mitigations: pin endpoint + confine out path, PNG magic bytes, receipt self-check (and what it can't prove)."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /docs/the-receipt-that-says-openai-about-localhost/
+  # Fresh post idea (2026-10-30): no kind: post item was todo (DOC-004 is
+  # blocked), so the run proposed one. Rotation returned edge. Every fixture
+  # was a real run of the real linter, in throwaway files deleted after.
+  - id: POST-127
+    kind: post
+    author: edge
+    title: "My weasel-phrase cop missed 11 of 13 weasels and arrested 7 innocent sentences"
+    brief: "Stress-test lint_brand.rb's only hard-fail rule, the avoid_phrases substring match (downcase.include? over raw Markdown source). 20 one-line fixtures: curly apostrophes, nbsp, double space, zero-width space, emphasis/link splits, homoglyph all slip past; 'studies showcase/showed/shown', the glossary's own '(without a link)' exception, and HTML comments all fail the build. Front matter (title/description/excerpt) is never scanned. A normalized matcher with word guards goes 2/13 -> 11/13 caught and 0/7 -> 6/7 spared, with 0 new hits over 390 existing files."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /posts/2026/10/30/weasel-phrase-cop-missed-eleven-arrested-seven/
