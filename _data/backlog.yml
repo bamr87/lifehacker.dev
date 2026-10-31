@@ -5526,3 +5526,40 @@ backlog:
     priority: P2
     status: done
     published: /tools/pv-honest-review/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-175
+    kind: tool
+    title: "Syft and Grype: the SBOM pair that lists everything in your image, then hands you 200 CVEs you mostly didn't write"
+    brief: "Anchore's two free, single-binary CLIs split the job: `syft myapp:1.4.2 -o spdx-json > sbom.spdx.json` writes down what's inside the image, and `grype sbom:sbom.spdx.json` matches that list against vulnerability databases. Verdict to test, not assume: worth it for answering 'what is actually in prod', and noisy the first time you run it. Measure how many findings come from the base image's OS packages compared with your own dependencies. Cut to what you can act on with `--only-fixed`, and gate CI with `--fail-on high`. The honest parts that stay in. The vulnerability database updates constantly, so the same SBOM scanned next week returns different results, which makes a scan a dated claim, not a property of the image. An SBOM lists what package managers recorded, so check whether a binary you `curl`ed into `/usr/local/bin` shows up at all (writer: run it and report what Syft actually catches). And a clean scan of the app layer says nothing about the base image you didn't rebuild. Name the free alternative: Trivy does both jobs in one tool, so compare the two on the same image."
+    voice: tool-review-honest
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/artifact-management/
+    source_title: "Artifact Management: Versioned, Signed Build Output"
+    fingerprint: a8b25e254ba7
+  - id: SRC-176
+    kind: doc
+    title: "Five ways an agent fails, graded against the robot that runs this site: it-journey's anti-pattern list, applied to myself"
+    brief: "it-journey names five agent failure modes: the Infinite Reasoner (loops without output), the Scope Creep Sorcerer (edits outside its lane), the Silent Destroyer (irreversible actions, no trail), the Hallucinating Herald (reports success that didn't happen), and the Context Amnesiac (repeats work with no memory). The robot grades lifehacker's own fleet against each one, and every grade has to cite the actual guardrail by file: the `classify_changes.rb` smuggle guard for scope creep, CODEOWNERS plus the human merge for the Silent Destroyer, the required `verify` check instead of the agent's own report for the Herald, the in-tree ledgers under `_data/` for the Amnesiac, and the published breaker doc for the Infinite Reasoner. The honest parts that stay in. Any mode with no guardrail gets a failing grade in public rather than a generous one. A guardrail that exists only as an idle `*_ENABLED` switch is graded as 'not tested in production'. And the robot is grading its own homework, so the piece shows the grep behind each grade. Writer: verify every file and claim against the repo before publishing, and drop any grade you can't back with a path."
+    voice: meta-confession
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0111/agentic-sdlc-integration/
+    source_title: "Initiation Rites: Embedding Agents in the SDLC"
+    fingerprint: ad5dfbbd7220
+  - id: SRC-177
+    kind: hack
+    title: "os.environ.get('DB_HOST', 'localhost') connects to the wrong database: fail fast on a missing env var instead of guessing"
+    brief: "A Django settings file that reads `os.environ.get('DB_HOST', 'localhost')` looks defensive and does the opposite. When the variable is missing, it doesn't fail; it quietly connects to whatever answers on localhost. That's either a `django.db.utils.OperationalError: connection refused` that doesn't mention the missing variable, or, worse, a real local database you didn't mean to migrate. Make required settings required: `os.environ['DB_HOST']` raises `KeyError: 'DB_HOST'` at startup, naming exactly what's missing. Better, collect every required name and raise one error listing all the missing ones, so you don't fix them one restart at a time. Keep defaults only for things that are safe to guess (a port, a log level). The failures that stay in. A blank variable (`DB_HOST=`) passes a presence check and still fails, so treat empty as missing. A `.env` file that compose reads via `env_file:` is not loaded when you run `python manage.py migrate` on the host, so the same command works in the container and fails outside it. And a default that's right in dev (`DEBUG=True`) is exactly the default you must never have in prod. You'll know it worked when starting with one variable unset fails in under a second with that variable's name in the error."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0001/barodybroject-stack-analysis/
+    source_title: "Technology Stack Analysis of Barodybroject"
+    fingerprint: 74da40c40d1e
