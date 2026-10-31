@@ -1,18 +1,17 @@
-generated_at: '2026-10-30T07:53:34Z'
-queue_size: 18
+generated_at: '2026-10-31T07:54:43Z'
+queue_size: 17
 by_severity:
   sev2: 1
   sev3: 12
-  sev4: 5
+  sev4: 4
 by_type:
   type/content-bug: 1
   type/ci-bug: 12
   type/drift: 1
   type/other: 2
-  type/brand-lint: 1
   type/link-rot: 1
 by_route:
-  local: 17
+  local: 16
   upstream: 1
 top:
 - severity: sev2

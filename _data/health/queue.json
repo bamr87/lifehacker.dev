@@ -336,27 +336,6 @@
     "title": "[sev4] other: shared-preview (/hacks/excel-to-grep-awk-month-end-close/)"
   },
   {
-    "fingerprint": "eee390b8684c",
-    "check_id": "brand",
-    "rule": "banned-when-sincere:10x",
-    "file": "pages/_posts/wire/2026-10-27-gpt-6-1-terra-lineup-sort-order.md",
-    "line": 13,
-    "evidence": "Willison gives the price as $1/$5 and calls it \"almost half the price of GPT-5.6 Terra and GPT-6.1 Sol, and around 10x the price of GPT-6 Lu",
-    "type": "type/brand-lint",
-    "area": "area/voice",
-    "severity": "sev4",
-    "route": "local",
-    "repo": "bamr87/lifehacker.dev",
-    "url_path": "/wire/gpt-6-1-terra-lineup-sort-order/",
-    "reach_views": 0,
-    "occurrences": 1,
-    "prime_directive_candidate": false,
-    "score": 0.7,
-    "issue_number": null,
-    "blocked_on": null,
-    "title": "[sev4] brand-lint: banned-when-sincere:10x (/wire/gpt-6-1-terra-lineup-sort-order/)"
-  },
-  {
     "fingerprint": "a7300520c08f",
     "check_id": "htmlproofer",
     "rule": "theme-origin-links-ignored",
