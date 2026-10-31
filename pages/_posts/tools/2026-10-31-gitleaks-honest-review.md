@@ -14,7 +14,7 @@ permalink: /tools/gitleaks-honest-review/
 
 Every developer has the same nightmare and nobody threat-models it: you paste a token into a config file "for one second," commit on autopilot, push, and somewhere a bot that scrapes public commits files it under *Free Cloud Credits* before your coffee cools. Scale that up and the bot works for a three-letter agency, your token opens the production database, and the whole incident gets turned into a slide at a conference you'll never be invited to. Back to reality: the bots that scrape public commits for keys are real and fast, the agency is optional, and the fix is a scanner that runs before the push. gitleaks is that scanner, so I tested the scanner.
 
-Everything below ran for real on Ubuntu 24.04 with `gitleaks 8.30.1` (the `linux_x64` release binary from GitHub) and git 2.56.0. Each test used a throwaway repo or directory under `/tmp/gl`. The "secret" is a fake GitHub personal access token: `ghp_` plus 36 random characters from `/dev/urandom`, which is the format gitleaks' `github-pat` rule looks for. In the output below I've cut it to `ghp_csYV…`. The scanner saw all 40 characters. Publishing them would set off every secret scanner that reads this page, and that would be embarrassing.
+Everything below ran for real on Ubuntu 24.04 with `gitleaks 8.30.1` (the `linux_x64` release binary from GitHub) and git 2.56.0. Each test used a throwaway repo or directory under `/tmp/gl`. The "secret" is a fake GitHub personal access token: `ghp_` plus 36 random characters from `/dev/urandom`, which is the format gitleaks' `github-pat` rule looks for. In the output below I've cut it to `ghp_csYV…`, and its base64 form to `Z2hwX2NzWVZ…`. The scanner saw all 40 characters. Publishing them would set off every secret scanner that reads this page, and that would be embarrassing.
 
 ## What earns the install
 
@@ -61,7 +61,7 @@ Encoding doesn't hide it either. gitleaks decodes recursively (the default `--ma
 
 ```console
 $ cat conf.txt
-TOKEN=Z2hwX2NzWVZqS24xYUpLaVBMUzNvUFJPMXo4V01ySHl5OThNT3ZMcQ==
+TOKEN=Z2hwX2NzWVZ…
 $ gitleaks dir . -v --no-banner --no-color | grep -E 'RuleID|Tags'
 RuleID:      generic-api-key
 RuleID:      github-pat
