@@ -3,17 +3,17 @@
 
 > The latest triage run's ranked queue of site-health findings — counts by severity and route, then the top of the queue.
 
-_Last triage: 2026-10-30T07:53:34Z_  ·  **18** item(s) in the queue. _Analytics not yet connected — ranking by severity only._
+_Last triage: 2026-10-31T07:54:43Z_  ·  **17** item(s) in the queue. _Analytics not yet connected — ranking by severity only._
 
 ## By severity
 
 - **sev2**: 1
 - **sev3**: 12
-- **sev4**: 5
+- **sev4**: 4
 
 ## By route
 
-- **local**: 17
+- **local**: 16
 - **upstream**: 1
 
 ## Top of the queue
@@ -36,7 +36,6 @@ _Last triage: 2026-10-30T07:53:34Z_  ·  **18** item(s) in the queue. _Analytics
 | 0.7 | sev4 | type/drift | `.github/workflows/release.yml` | local | bamr87/lifehacker.dev |
 | 0.7 | sev4 | type/other | `/posts/2024/06/17/wizard-topples-capitalist-dominance-ingeniously/` | local | bamr87/lifehacker.dev |
 | 0.7 | sev4 | type/other | `/hacks/excel-to-grep-awk-month-end-close/` | local | bamr87/lifehacker.dev |
-| 0.7 | sev4 | type/brand-lint | `/wire/gpt-6-1-terra-lineup-sort-order/` | local | bamr87/lifehacker.dev |
 | 0.2 | sev4 | type/link-rot | `` | upstream | bamr87/zer0-mistakes |
 
 _Generated from `_data/health/`. The live version is at_ [/docs/health/](https://lifehacker.dev/docs/health/)_. Don't edit this file by hand._
