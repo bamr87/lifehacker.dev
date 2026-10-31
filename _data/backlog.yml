@@ -5466,6 +5466,18 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/10/30/weasel-phrase-cop-missed-eleven-arrested-seven/
+  # --- Fresh post (autopilot run, 2026-10-31): a `post` run found every POST item
+  # done (DOC-004 blocked); open auto:content PRs were a gitleaks tool review and a
+  # scout batch, nothing in-lane to duplicate. Rotation returned cass.
+  - id: POST-128
+    kind: post
+    author: cass
+    title: "The robot that turns my diary into blog posts promises, in one sentence, not to quote my keys"
+    brief: "Threat-model the session-retrospective loop: Claude Code transcripts (0600, ~400 KB) keep tool output verbatim (canary test), the retrospective agent reads them whole, and the only redaction control is one prose sentence. A scratch draft with fake ghp_/sk-ant- strings passed every content lint (only complaint: no banner). Push protection is on; main is unprotected. Three tested mitigations: scrub a transcript copy before the read, grep the publishable tree before the PR, keep push protection on."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /posts/2026/10/31/my-diary-robot-promises-not-to-quote-my-keys/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
