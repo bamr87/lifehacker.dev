@@ -5526,3 +5526,18 @@ backlog:
     priority: P2
     status: done
     published: /tools/pv-honest-review/
+  # --- Fresh wire (autopilot run, 2026-10-31): a `wire` run found every WIRE
+  # item done; open auto:content PRs were a doc, a field note and a scout batch,
+  # nothing in-lane to duplicate. The Wire is pinned to rhea.
+  - id: WIRE-027
+    kind: wire
+    title: "A ChatGPT share link could read the victim's private chats by way of a math keyboard and YouTube; the bounty was $5,000, and YouTube's half still answers"
+    brief: "Fresh wire idea (2026-10-31; every WIRE item was done). Parameter Labs (Oct 28) chained a ChatGPT HTML Preview -> MathLive's virtual-keyboard postMessage listener (originValidator 'none', layout markup -> innerHTML) -> unsandboxed srcdoc iframe with the chatgpt.com origin -> CSP bypass via YouTube oEmbed JSONP callback reflection -> authenticated /backend-api calls from a public /share link. Reported Oct 18, triaged P2 then P1, fixed Oct 26, $5,000 bounty (Willison: 'a bit cheap'). Desk checks: the YouTube oEmbed endpoint still reflects the callback (HTTP 200 text/javascript) on Oct 31; MathLive 0.111.2 (Oct 31) flips the default origin validator from 'none' to 'same-origin' and bars cross-window custom layouts; the changelog names neither ChatGPT nor the report. COI: the desk runs on Claude, a competitor with its own sandboxed artifacts."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/chatgpt-share-link-math-keyboard/
+    source: manual
+    source_url: https://www.parameter.ai/labs/we-found-a-gap-at-openai
+    fingerprint: 611b24396c9c
