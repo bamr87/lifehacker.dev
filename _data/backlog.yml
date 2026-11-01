@@ -5550,3 +5550,11 @@ backlog:
     priority: P2
     status: done
     published: /tools/gitleaks-honest-review/
+  # --- Human-added idea (2026-11-01, via Amr): AI-citability content series.
+  - id: POST-129
+    kind: post
+    title: "AI-citability content: fresh lifehacker-style articles built to be cited by AI answer engines"
+    brief: "Articles on fresh lifehacker-style topics built with the same E-E-A-T signals, JSON-LD schemas and structured-data patterns that zer0-mistakes (bamr87/zer0-mistakes) uses: _includes/content/seo.html, _includes/components/author-eeat.html (+ author-card/author-bio), _includes/content/jsonld-faq.html (FAQPage), _includes/content/jsonld-software.html (SoftwareApplication, opt-in) and _includes/navigation/breadcrumbs.html. Doubles as a content play and a live demo of AIEO (the hub's AI integration/citability scoring engine, bamr87/bamr87 tools/) as the underlying methodology: score each piece with AIEO before and after, and publish the delta."
+    voice: how-to-practical
+    priority: P2
+    status: todo
