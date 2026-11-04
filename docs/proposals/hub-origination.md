@@ -15,10 +15,10 @@ lifehacker.dev's autonomous loops (`content-factory`, `weekly-epic`, `wire-scout
 
 1. **Source:** reviewed entries in `bamr87/bamr87` `pages/posts/` (daily `YYYY-MM-DD-chronicle.md` and other posts). Unreviewed hub drafts are never eligible (§ 23 rule 4).
 2. **Synthesis:** an intake job reads eligible entries, groups them by activity (commits, pushes, deploys, PRs, agent runs, AI prompting, security, QA) and drafts articles for a general audience. Satire in the framing, never the facts (press charter); secrets and tokens are never carried over.
-3. **Voice:** each article is assigned one character from the new SDLC cast in `_data/hub_intake.yml` by the `assignment` rules (first match on activity type, e.g. deploys → Rollo/DevOps, PR reviews and tests → Tess/QA, CVEs → Vera/security; default Kit); the key goes in `character:`, with `hub_source:` (hub path/URL) and `hub_activity:` also in front matter.
+3. **Voice:** each article is assigned one persona from the shared fleet voice model `voices/v1` (canonical in `bamr87/bamr87` `_data/voices/voices.yml`, schema beside it) by its `assignment` rules — first match on activity type/repo/cadence among *enabled* personas (deploys → Rollo/DevOps, PR reviews and tests → Tess/QA, CVEs → Vera/security; default Kit). The key goes in `character:`, with `hub_source:` and `hub_activity:` also in front matter.
 4. **Review:** output lands as a PR with `draft: true` content; nothing publishes until a human and/or agent has reviewed it and a human merges.
 
-## Characters (new SDLC cast)
+## Characters (new SDLC cast, defined in the hub's `voices/v1`)
 
 | Key | Name | SDLC role | Writes about |
 | --- | --- | --- | --- |
@@ -31,7 +31,15 @@ lifehacker.dev's autonomous loops (`content-factory`, `weekly-epic`, `wire-scout
 | `lux` | Lux Telemetry | Data / observability | metrics, AI usage and cost, incidents, AI prompting |
 | `quill` | Quill Readme | Docs | docs, changelogs, runbooks, weekly roundups |
 
-Existing personas in `_data/authors.yml` (`claude`, `cass`, `edge`, `rhea`, `fable`, human `amr`) are not reused and are left untouched. Follow-up: register the new cast in `_data/authors.yml` (bylines must resolve there per FR3) with voice profiles in `_data/brand/voice.yml`.
+Existing personas in `_data/authors.yml` (`claude`, `cass`, `edge`, `rhea`, `fable`, human `amr`) are not reused and are left untouched. Follow-up: register the new cast's bylines in `_data/authors.yml` (FR3), generated from the hub file rather than hand-copied.
+
+## Configuration (admins)
+
+One model across lifehacker.dev and zer0-CMS: `voices/v1` (fields aligned with zer0-CMS ADR 0010 `VoiceProfile`: summary, audience, guidance, avoid, claims, vocabulary, bans, lifts, limits, examples; plus `voice`, `tone`, `style` {formality, length, humor, reading_level}, `topics` {cover, exclude}). Layers: `defaults` → `sites.lifehacker.dev.profile` → `personas.<key>` (each persona adds `name`, `role`, `perspective`, `enabled`, `beats`, `repos`), so personas inherit and override. `assignment` is an ordered rule list.
+
+- **Canonical:** the hub file. Admins edit it by PR; `python3 tools/voices.py check` (hub) validates it.
+- **Console:** the hub console's Voices editor (hub follow-up, `HUB-NEW`) reads that file and writes edits back to it as a PR — never a separate database copy — validating against the same schema before it writes.
+- **Drift:** this repo keeps no copy; if one is ever vendored, `voices.py check --against` in CI flags any mismatch.
 
 ## Re-enabling
 

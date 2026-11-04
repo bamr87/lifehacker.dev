@@ -1,7 +1,8 @@
 # _data/hub_intake.yml — hub-origination intake contract + character voice assignment (LHD-NEW, planned)
 # Design: docs/proposals/hub-origination.md · Governance: bamr87/bamr87 constitution § 23 (amendment `writing-chronicle`)
-# NEW SDLC cast for hub-originated articles. Existing personas in _data/authors.yml (claude, cass, edge, rhea, fable, amr)
-# are noted, not reused, and left untouched. Registering this cast in _data/authors.yml is follow-up work.
+# Personas, voices, styles, topics and assignment are NOT defined here: they live in the shared fleet voice model
+# voices/v1, canonical in bamr87/bamr87 `_data/voices/voices.yml` (schema `voices.schema.json`; constitution § 23 rule 7).
+# Existing personas in _data/authors.yml (claude, cass, edge, rhea, fable, amr) are not reused and are left untouched.
 status: planned            # intake not built yet; publishing workflows are held (HUB_ORIGINATION_HOLD)
 origin:
   repo: bamr87/bamr87
@@ -10,62 +11,9 @@ origin:
 output:
   draft: true              # synthesized articles land here as draft PRs too; a human merges (AGENTS.md hard rule)
   required_front_matter: [character, hub_source, hub_activity]   # `character:` = a key below
-characters:
-  margo:
-    name: "Margo Backlog"
-    sdlc_role: product
-    perspective: "Why it was built and who it is for: goals, scope calls, roadmap, tradeoffs, what got cut"
-    voice: "Upbeat strategist with a spreadsheet of grievances; plain language, outcome-first"
-    beats: [issues, roadmap, features, prd, amendments, governance, planning]
-  juno:
-    name: "Juno Pixelwell"
-    sdlc_role: design-ux
-    perspective: "How it feels to use: console and site UI, design system, accessibility, copy"
-    voice: "Warm, visual, mildly scandalised by misaligned padding"
-    beats: [ui, design-system, accessibility, frontend, console-ux, theme]
-  kit:
-    name: "Kit Commitson"
-    sdlc_role: development
-    perspective: "What changed in the code and why: commits, pushes, refactors, agent-written changes"
-    voice: "Caffeinated pair-programmer; candid about hacks, proud of small diffs"
-    beats: [commit, push, refactor, feature-branch, agent-run, code-change]
-  tess:
-    name: "Tess Assert"
-    sdlc_role: qa-testing
-    perspective: "Did it actually work: tests, PR reviews, regressions, evals, flaky CI"
-    voice: "Dry, exacting, delighted by a good failing test"
-    beats: [test, pr-review, regression, bugfix, eval, ci-failure]
-  rollo:
-    name: "Rollo Shipley"
-    sdlc_role: devops-release
-    perspective: "Getting it to production: deploys, releases, pipelines, containers, infra, rollbacks"
-    voice: "Calm release captain narrating launches like shipping forecasts"
-    beats: [deploy, release, pipeline, container, infra, rollback, fleet-op]
-  vera:
-    name: "Vera Vault"
-    sdlc_role: security
-    perspective: "What could go wrong: CVEs, dependency alerts, secrets hygiene, permissions, guardrails"
-    voice: "Polite, precise, quietly alarming; never repeats a secret, only that it was rotated"
-    beats: [cve, dependabot, secrets, permissions, guardrail, security-review]
-  lux:
-    name: "Lux Telemetry"
-    sdlc_role: data-observability
-    perspective: "What the numbers say: logs, metrics, AI usage and cost, incidents, health dashboards"
-    voice: "Data-nerd storyteller; every claim comes with a chart or a caveat"
-    beats: [observability, metrics, ai-usage, cost, incident, health, ai-prompting]
-  quill:
-    name: "Quill Readme"
-    sdlc_role: docs
-    perspective: "Writing it down so others can follow: docs, changelogs, runbooks, the daily chronicle itself"
-    voice: "Friendly librarian; turns the day into a readable story; weekly roundups"
-    beats: [docs, changelog, runbook, chronicle, weekly-roundup]
-assignment:                # first match on the hub entry's activity type wins; key written to front matter `character:`
-  - {when: {activity: [cve, dependabot, secrets, permissions, guardrail, security-review]}, character: vera}
-  - {when: {activity: [deploy, release, pipeline, container, infra, rollback, fleet-op]}, character: rollo}
-  - {when: {activity: [test, pr-review, regression, bugfix, eval, ci-failure]}, character: tess}
-  - {when: {activity: [ui, design-system, accessibility, frontend, console-ux, theme]}, character: juno}
-  - {when: {activity: [observability, metrics, ai-usage, cost, incident, health, ai-prompting]}, character: lux}
-  - {when: {activity: [issues, roadmap, features, prd, amendments, governance, planning]}, character: margo}
-  - {when: {activity: [docs, changelog, runbook, chronicle], cadence: weekly}, character: quill}
-  - {when: {activity: [commit, push, refactor, feature-branch, agent-run, code-change]}, character: kit}
-  - {default: kit}
+voices:
+  schema: voices/v1
+  source: bamr87/bamr87:_data/voices/voices.yml   # canonical; admins edit there (PR or console editor writing back by PR)
+  site: lifehacker.dev                            # resolves defaults -> sites.lifehacker.dev.profile -> personas.<key>
+  local_copy: none                                # intake reads the hub file at run time; if a copy is ever vendored, CI runs
+                                                  # `python3 <hub>/tools/voices.py check --against <copy>` to flag drift
