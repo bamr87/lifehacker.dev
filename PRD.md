@@ -75,7 +75,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 - FR2: Filename date must match front-matter `date:`; no future dates
 - FR3: Authors must exist in `_data/authors.yml`
 - FR4: All model calls go through the fleet runner `bamr87/bamr87/.github/actions/claude-run`
-- FR5 (planned): Articles originate as reviewed drafts in the hub (`bamr87/bamr87` `pages/posts/`, constitution § 23) and are written here in the voice of a new SDLC-role character assigned by `_data/hub_intake.yml`; nothing publishes without review
+- FR5 (planned): Articles originate as reviewed drafts in the hub (`bamr87/bamr87` `pages/posts/`, constitution § 23) and are written here in the voice of an SDLC-role persona from the shared fleet voice model `voices/v1` (canonical in the hub `_data/voices/voices.yml`, console edits write back by PR, schema-validated, drift-checked); nothing publishes without review
 
 **Non-functional**
 
