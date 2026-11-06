@@ -36,9 +36,16 @@ jobs:
       - id: check
         env:
           ENABLED: ${{ vars.CONTENT_FACTORY_ENABLED }}
+          # Hub-origination hold (bamr87/bamr87 constitution § 23): autonomous publishing is OFF
+          # in code until hub-originated intake lands; flipping the repo var alone does nothing.
+          HUB_ORIGINATION_HOLD: "true"
           OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          if [ "$HUB_ORIGINATION_HOLD" = "true" ]; then
+            echo "HUB_ORIGINATION_HOLD — autonomous publishing is held until hub-originated intake lands (docs/proposals/hub-origination.md). Idle."
+            echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           if [ "$ENABLED" = "true" ] && { [ -n "$OAUTH" ] || [ -n "$KEY" ]; }; then
             echo "go=true" >> "$GITHUB_OUTPUT"
           else

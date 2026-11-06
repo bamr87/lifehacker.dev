@@ -52,6 +52,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | [LHD-005](features/features.yml) | Offline-generated cover art | shipped | [`scripts/preview`](scripts/preview) · [`README.md`](README.md) | NFR3 |
 | [LHD-006](features/features.yml) | CI harness: Pages safe-mode build plus front-matter,… | shipped | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) · [`README.md`](README.md) | NFR1, FR2 |
 | [LHD-007](features/features.yml) | Author personas in _data/authors.yml | shipped | [`_data/authors.yml`](_data/authors.yml) · [`README.md`](README.md) | FR3 |
+| [LHD-NEW](features/features.yml) | Hub-originated publishing in character voice | planned | [`_data/hub_intake.yml`](_data/hub_intake.yml) · [`docs/proposals/hub-origination.md`](docs/proposals/hub-origination.md) | FR5 |
 
 **Requirement → feature trace**
 
@@ -63,6 +64,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | FR3 | LHD-003, LHD-004, LHD-007 |
 | NFR3 | LHD-005 |
 | FR2 | LHD-006 |
+| FR5 | LHD-NEW |
 <!-- features:end -->
 
 ## 5. Requirements
@@ -73,6 +75,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 - FR2: Filename date must match front-matter `date:`; no future dates
 - FR3: Authors must exist in `_data/authors.yml`
 - FR4: All model calls go through the fleet runner `bamr87/bamr87/.github/actions/claude-run`
+- FR5 (planned): Articles originate as reviewed drafts in the hub (`bamr87/bamr87` `pages/posts/`, constitution § 23) and are written here in the voice of an SDLC-role persona from the shared fleet voice model `voices/v1` (canonical in the hub `_data/voices/voices.yml`, console edits write back by PR, schema-validated, drift-checked); nothing publishes without review
 
 **Non-functional**
 
