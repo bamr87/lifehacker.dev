@@ -32,4 +32,5 @@ release:
   type: simple            # release-please release-type: simple | node | python | ruby (decision D5)
 
 # Waived requirements, each also listed in AGENTS.md § Standard deviations.
-deviations: []            # - { id: UPS-WORK-07, reason: "…", until: "2027-01-01" }   # quote the date
+deviations:               # - { id: UPS-WORK-07, reason: "…", until: "2027-01-01" }   # quote the date
+  - { id: UPS-AGENT-06, reason: "Automation moved to the central zer0-CMS system, so this repo has no @claude handler", until: "2027-11-01" }

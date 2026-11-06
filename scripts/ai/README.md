@@ -12,7 +12,7 @@ Every model call this repo makes goes through the **fleet's** runner — the `cl
 | `usage.rb` | Metering companion the runner probes for: one JSONL record per call (tokens, API-equivalent cost, model, status, CI context) into `$AI_USAGE_DIR/records.jsonl` (default `$RUNNER_TEMP/ai-usage`, outside the checkout). Without it the runner still enforces "is_error is a failure" but records nothing — `scripts/devops/audit.rb` fails CI if it goes missing. |
 | `usage_report.rb` | End-of-job publisher the action's post-step runs when present: step summary, `ai-usage-*` artifact, sticky PR comment (marker `<!-- lh-ai-usage -->`). |
 | `api_call.rb` | The single-shot Messages API fallback the runner uses when Claude Code is unavailable or fails. Stdlib only, self-contained; reads `_data/ai.yml`. |
-| `usage_ledger.rb` | lifehacker.dev only: sweeps the artifacts into `_data/ai_usage/` + `AI_USAGE.md` (the `ai-usage.yml` workflow). |
+| `usage_ledger.rb` | lifehacker.dev only: sweeps the artifacts into `_data/ai_usage/` + `AI_USAGE.md` (its `ai-usage.yml` workflow is retired). |
 
 Configuration lives in `_data/ai.yml` (`model`, `fallback_model`, `max_tokens`, API wire details). Auth never lives in a file. Extra excludes for the runner's post-run one-paragraph-per-line normalizer go in the repo-root `.prose-excludes`, one extended regex per line.
 

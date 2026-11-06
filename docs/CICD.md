@@ -8,7 +8,7 @@ Every workflow lives in `.github/workflows/`. The design goal: **tiered** (fast 
 
 Every workflow — its triggers, `*_ENABLED` switch, repository variables and secrets, and the one-line summary from its header comment — is listed in [reference/workflows.md](reference/workflows.md), generated from the files by `ruby scripts/devops/workflow_reference.rb --write` (`check_drift.rb` fails the harness when it is stale). Each workflow's header comment is the full description of what it does and writes.
 
-Only one of them gates a merge: the `verify` job of `pipeline.yml` (below). `mcp-tests.yml`, `site-quality.yml`, `ci.yml`, `conformance.yml`, `verify.yml` and `markdown-oneline.yml` report their own checks on a PR; everything else monitors (`deploy-verify.yml`, `nightly.yml`, `zer0-doctor.yml`) or is a loop behind its switch.
+Only one of them gates a merge: the `verify` job of `pipeline.yml` (below). `mcp-tests.yml`, `site-quality.yml`, `ci.yml`, `conformance.yml`, `verify.yml` and `markdown-oneline.yml` report their own checks on a PR; everything else monitors (`deploy-verify.yml`) or is a loop behind its switch.
 
 ## The tiered pipeline (`pipeline.yml`)
 
@@ -63,7 +63,6 @@ The three layers are wired by **artifacts within one run**, not by whatever is c
 | `CLAUDE_CODE_OAUTH_TOKEN` *or* `ANTHROPIC_API_KEY` | every AI step (brand-review, content-factory, explore, auto-fix, devops-manager) | Claude auth. The OAuth token (`claude setup-token`, subscription auth) is the preferred CI credential and drives the Claude Code path; an API key works too and is the **only** credential the Claude API fallback can use. **Optional** — the deterministic gate runs without either. |
 | `XAI_OAUTH_TOKEN` *or* `XAI_API_KEY` | local/operator `scripts/preview/xai.mjs` (`--provider xai`) | Optional xAI Imagine covers. OAuth first (Kilo's xAI login also works on a laptop); the API key is last-resort and is never sent when OAuth is present. Not wired into any fleet cron. |
 | `FLEET_TOKEN` (bot PAT) | upstream issue filing | The bot identity; scoped to contents/issues/PRs, **no** `administration`/`workflows`. |
-| `FLEET_ENABLED` (repo **variable**) | `fleet-dispatch.yml` | The kill switch — instant, no merge; the bot can't set it. |
 
 Workflows run on `pull_request` (not `pull_request_target`), so secrets are never exposed to fork PRs. No workflow grants `administration` or `workflows` scope.
 
@@ -99,7 +98,7 @@ For `actions/checkout`'s `token:` the same idiom is still wrong but fails *fast*
 
 - The safe-mode build runs **once** per pipeline (Tier 2) and its artifact feeds Tier 3 — no duplicate PR-time builds.
 - `bundler-cache: true` + a date-keyed theme-clone cache; `concurrency:` groups on every workflow cancel superseded runs.
-- The DevOps audit reports the remaining duplicate builds across distinct-trigger workflows (`pipeline.yml`, `site-quality.yml`, `triage.yml`, `nightly.yml`) as *info* — they run at different times for different purposes.
+- The DevOps audit reports the remaining duplicate builds across distinct-trigger workflows (`pipeline.yml`, `site-quality.yml`, `triage.yml`) as *info* — they run at different times for different purposes.
 
 ## Change-type routing (efficiency)
 
@@ -125,7 +124,6 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 | `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
 | `weekly-epic.yml` | weekly cron (Mon, before the factory), manual | `WEEKLY_EPIC_ENABLED` + key | One `weekly-epic` run → the illustrated recap of the prior week's publications, `_data/top_story.yml` repointed → one `auto:content` + `weekly-epic` PR that becomes the homepage hero on merge. |
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
-| `explore.yml` | daily cron, manual | `EXPLORER_ENABLED` + key | The `site-explorer` browses the live site as beginner/intermediate/expert and files deduped issues + backlog ideas. Scheduled runs apply; manual runs default to dry-run. |
 | `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
 | `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=backlog` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts, duplicate backlog ids, and any merge that fails `lint_artifacts.rb` → `needs-human`, never pushed. Its `Gate` tests the token's **validity**, not merely its presence: a `FLEET_TOKEN` that is set but rejected fails the run with an `::error::` naming expiry, instead of passing the gate and dying in `Checkout` with `could not read Username`. `scripts/ci/test_auto_update_gate.rb` executes that Gate through all four token states in Tier 1. |
 | `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
@@ -147,7 +145,7 @@ What the generated list cannot show:
 - The weekly epic's painted hero image is double-gated: `OPENAI_IMAGES_ENABLED` **and** the `OPENAI_API_KEY` secret. `WEEKLY_EPIC_MODEL` overrides that loop's model; `SCOUT_SOURCES` retargets the content scout.
 - `LOOP_TUNER_ENABLED` only lets the agent open PRs — the loop-tuner's measure runs regardless.
 
-**The variable IS the switch** (colophon, 2026-07-01): every autonomy loop's cron is wired and idles behind its `*_ENABLED` variable, so turning a variable on is the single deliberate act that starts that loop — no workflow edit needed. The one exception is `fleet-dispatch.yml`, which stays schedule-free by guardrail (the audit and the simulation both fail if a schedule appears there). Enabling `AUTO_MERGE_ENABLED` (or any `*_ENABLED` variable) is a guardrail change — add a dated line to `/about/colophon/` when you flip one. The agent steps need Claude auth — set **either** `CLAUDE_CODE_OAUTH_TOKEN` (run `claude setup-token`, then `gh secret set CLAUDE_CODE_OAUTH_TOKEN`) **or** `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
+**The variable IS the switch** (colophon, 2026-07-01): every autonomy loop's cron is wired and idles behind its `*_ENABLED` variable, so turning a variable on is the single deliberate act that starts that loop — no workflow edit needed. Enabling `AUTO_MERGE_ENABLED` (or any `*_ENABLED` variable) is a guardrail change — add a dated line to `/about/colophon/` when you flip one. The agent steps need Claude auth — set **either** `CLAUDE_CODE_OAUTH_TOKEN` (run `claude setup-token`, then `gh secret set CLAUDE_CODE_OAUTH_TOKEN`) **or** `ANTHROPIC_API_KEY`; upstream issue filing needs `FLEET_TOKEN`.
 
 ## Universal AI wiring (Claude Code → Claude API fallback)
 
@@ -167,4 +165,4 @@ Every AI step (brand-review, content-review, content-factory, explore, auto-fix,
 
 ## AI metering (tokens + cost, per call, per PR)
 
-Because every model call already flows through `run.sh`, metering rides the same choke point: `run.sh` asks Claude Code for a JSON result and `scripts/ai/usage.rb` records one JSONL record per call (tokens in/out/cache, per-model split, `total_cost_usd` as reported by the CLI, auth mode, workflow/job/run context). At the end of each AI job, `scripts/ai/usage_report.rb` (wired into the `claude-run` composite — consumers get it for free) publishes the records three ways: the run's step summary, an `ai-usage-*` artifact, and a sticky **AI usage & cost** comment on the PR the job worked on — resolved from the event, or from the `pr-result.txt` the factory/fleet agents write, so a PR's comment shows its *creation* cost and every downstream review/fix separately. `ai-usage.yml` makes it durable and public (see the workflows table; dashboard at `/docs/ai-usage/`). Dollars are **API-equivalent** (list prices) — OAuth subscription runs have zero marginal cost and are labeled as such; API-fallback records are estimated from `_data/ai_pricing.yml`. `scripts/devops/audit.rb` fails CI if the metering is ever unwired (run.sh without usage.rb, a claude-code-action workflow without a usage_report step, etc.). Full design: `docs/AI-USAGE.md`.
+Because every model call already flows through `run.sh`, metering rides the same choke point: `run.sh` asks Claude Code for a JSON result and `scripts/ai/usage.rb` records one JSONL record per call (tokens in/out/cache, per-model split, `total_cost_usd` as reported by the CLI, auth mode, workflow/job/run context). At the end of each AI job, `scripts/ai/usage_report.rb` (wired into the `claude-run` composite — consumers get it for free) publishes the records three ways: the run's step summary, an `ai-usage-*` artifact, and a sticky **AI usage & cost** comment on the PR the job worked on — resolved from the event, or from the `pr-result.txt` the factory/fleet agents write, so a PR's comment shows its *creation* cost and every downstream review/fix separately. The ledger sweep that made this durable is retired, so the dashboard at `/docs/ai-usage/` stops at its last run. Dollars are **API-equivalent** (list prices) — OAuth subscription runs have zero marginal cost and are labeled as such; API-fallback records are estimated from `_data/ai_pricing.yml`. `scripts/devops/audit.rb` fails CI if the metering is ever unwired (run.sh without usage.rb, a claude-code-action workflow without a usage_report step, etc.). Full design: `docs/AI-USAGE.md`.

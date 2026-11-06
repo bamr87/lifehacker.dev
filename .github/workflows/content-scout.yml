@@ -9,7 +9,7 @@
 # ONE PR labeled `auto:content` so the gated auto-merge can ship it into main.
 # It NEVER merges.
 #
-# FOUR THINGS KEEP THIS SAFE (same posture as explore.yml / the other loops):
+# FOUR THINGS KEEP THIS SAFE (same posture as the other loops):
 #   1. The daily cron is ON, but scheduled runs idle unless CONTENT_SCOUT_ENABLED
 #      == "true" — the repo variable is the consent, and the bot token cannot set
 #      it (no administration scope).

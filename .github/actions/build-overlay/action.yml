@@ -2,7 +2,7 @@
 # build-overlay — build lifehacker.dev under GitHub Pages safe mode
 # -----------------------------------------------------------------------------
 # Reusable composite step shared by pipeline.yml (verify, via build-and-harness),
-# triage.yml, nightly.yml and site-quality.yml. It resolves the zer0-mistakes
+# triage.yml and site-quality.yml. It resolves the zer0-mistakes
 # theme's current commit (git ls-remote), builds against EXACTLY that commit,
 # and runs scripts/ci/build.sh, which overlays this repo's content, strips
 # _plugins, and runs `jekyll build --strict_front_matter` -> ./_site.

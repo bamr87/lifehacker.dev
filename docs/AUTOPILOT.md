@@ -54,7 +54,7 @@ If you loosen any of these, update [/about/colophon/](https://lifehacker.dev/abo
 
 ## Scheduling fully-autonomous runs (wired, OFF until you flip the variables)
 
-Every loop's cron is wired and **idles behind its `*_ENABLED` repo variable** — the variable is the single ON switch (`gh variable set <NAME> true`), and the bot token can't set variables, so a loop can never enable itself. Flip only what you trust, and add a dated line to the Colophon when you do. Every switch is listed in [reference/workflows.md](reference/workflows.md); what turning one on means is in [CICD.md](CICD.md#turning-on-continuous-autonomy-deliberate). The one exception: `fleet-dispatch.yml` stays schedule-free by guardrail (audit + simulation both fail if a cron appears there).
+Every loop's cron is wired and **idles behind its `*_ENABLED` repo variable** — the variable is the single ON switch (`gh variable set <NAME> true`), and the bot token can't set variables, so a loop can never enable itself. Flip only what you trust, and add a dated line to the Colophon when you do. Every switch is listed in [reference/workflows.md](reference/workflows.md); what turning one on means is in [CICD.md](CICD.md#turning-on-continuous-autonomy-deliberate).
 
 ## Operating the loops from the console
 
