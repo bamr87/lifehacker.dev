@@ -41,25 +41,6 @@ lanes:
   guardrails:
     never_merges: true
     opens_pull_requests: false
-- id: claude
-  kind: mention
-  harness: claude-code-action
-  implementation: .github/workflows/claude.yml
-  description: Claude
-  triggers:
-  - kind: event
-    events:
-    - issue_comment
-    - issues
-    - pull_request_review
-    - pull_request_review_comment
-  switch: null
-  uses_tokens:
-  - ANTHROPIC_API_KEY
-  - CLAUDE_CODE_OAUTH_TOKEN
-  guardrails:
-    never_merges: true
-    opens_pull_requests: false
 - id: content-factory
   kind: content
   harness: claude-cli
@@ -233,7 +214,6 @@ tokens:
   used_by:
   - agent-review
   - auto-fix
-  - claude
   - content-factory
   - content-scout
   - factory--issue-factory-1
@@ -251,7 +231,6 @@ tokens:
   used_by:
   - agent-review
   - auto-fix
-  - claude
   - content-factory
   - content-scout
   - factory--issue-factory-1

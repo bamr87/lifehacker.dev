@@ -14,7 +14,6 @@ How the workflows fit together (the tiers, the one required check, the autonomy 
 | [`auto-merge.yml`](../../.github/workflows/auto-merge.yml) | auto-merge | after `pipeline` · cron `13 6 * * *` · manual | `AUTO_MERGE_ENABLED` | merge green BOT PRs automatically (gated, narrowly scoped) |
 | [`auto-update.yml`](../../.github/workflows/auto-update.yml) | auto-update | after `pipeline` · cron `43 6 * * *` · manual | `AUTO_UPDATE_ENABLED` | keep open content PRs mergeable with main (conflict killer) |
 | [`ci.yml`](../../.github/workflows/ci.yml) | CI | `pull_request` · `push` | — | Adopted from bamr87/bamr87 via standardize-fanout.yml. |
-| [`claude.yml`](../../.github/workflows/claude.yml) | Claude | `issue_comment` · `pull_request_review_comment` · `pull_request_review` · `issues` | — | @claude mention handler, seeded from bamr87/bamr87 templates/agent-context/. |
 | [`conformance.yml`](../../.github/workflows/conformance.yml) | Conformance | `pull_request` · `push` | — | Adopted from bamr87/bamr87 via standardize-fanout (artifact `conformance`). |
 | [`content-factory.yml`](../../.github/workflows/content-factory.yml) | content-factory | cron `40 22 * * *` · manual | `CONTENT_FACTORY_ENABLED` | the daily autonomous content generator |
 | [`content-scout.yml`](../../.github/workflows/content-scout.yml) | content-scout | manual · cron `10 21 * * *` | `CONTENT_SCOUT_ENABLED` | crawl a sister site for backlog ideas (gated, OFF by default) |
@@ -59,8 +58,8 @@ How the workflows fit together (the tiers, the one required check, the autonomy 
 
 | Secret | Read by |
 | --- | --- |
-| `ANTHROPIC_API_KEY` | `agent-review.yml`, `auto-fix.yml`, `claude.yml`, `content-factory.yml`, `content-scout.yml`, `factory--issue-factory-1.yml`, `factory--issue-factory-2.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `weekly-epic.yml`, `wire-scout.yml` |
-| `CLAUDE_CODE_OAUTH_TOKEN` | `agent-review.yml`, `auto-fix.yml`, `claude.yml`, `content-factory.yml`, `content-scout.yml`, `factory--issue-factory-1.yml`, `factory--issue-factory-2.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `weekly-epic.yml`, `wire-scout.yml` |
+| `ANTHROPIC_API_KEY` | `agent-review.yml`, `auto-fix.yml`, `content-factory.yml`, `content-scout.yml`, `factory--issue-factory-1.yml`, `factory--issue-factory-2.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `weekly-epic.yml`, `wire-scout.yml` |
+| `CLAUDE_CODE_OAUTH_TOKEN` | `agent-review.yml`, `auto-fix.yml`, `content-factory.yml`, `content-scout.yml`, `factory--issue-factory-1.yml`, `factory--issue-factory-2.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `weekly-epic.yml`, `wire-scout.yml` |
 | `FLEET_TOKEN` | `agent-review.yml`, `auto-fix.yml`, `auto-update.yml`, `content-factory.yml`, `content-scout.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `triage.yml`, `weekly-epic.yml`, `wire-scout.yml` |
 | `IT_JOURNEY_TOKEN` | `quest-forge.yml` |
 | `OPENAI_API_KEY` | `weekly-epic.yml` |
