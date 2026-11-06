@@ -29,7 +29,7 @@ for paths that report tokens but not dollars (the raw-API fallback). The estimat
 ```
  every AI call                end of each AI job              daily sweep
 ┌─────────────────┐   ┌────────────────────────────┐   ┌──────────────────────┐
-│ scripts/ai/     │   │ scripts/ai/usage_report.rb │   │ ai-usage.yml +       │
+│ scripts/ai/     │   │ scripts/ai/usage_report.rb │   │ retired sweep +      │
 │ run.sh          │──▶│  • $GITHUB_STEP_SUMMARY    │──▶│ usage_ledger.rb      │
 │  + usage.rb     │   │  • ai-usage-* artifact     │   │  • ledger.jsonl      │
 │ (one JSONL      │   │  • sticky PR cost comment  │   │  • summary.yml       │
@@ -58,7 +58,9 @@ PR attribution, in priority order: an explicit `--pr N` (auto-fix knows its PR),
 
 The sticky comment (marker `<!-- lh-ai-usage -->`) embeds its own base64 data blob and merges new records by id, so it's cumulative across runs and safe to re-run. Concurrent jobs can race the read-merge-write — last writer wins for the *view*; the artifacts and ledger stay authoritative. The pipeline's harness comment was switched from `gh pr comment --edit-last` to a marker-based upsert for the same reason: two bot-authored sticky comments can't share `--edit-last`.
 
-### 3. Ledger (`.github/workflows/ai-usage.yml` + `scripts/ai/usage_ledger.rb`)
+### 3. Ledger (`scripts/ai/usage_ledger.rb`)
+
+**Retired:** the `ai-usage.yml` sweep was removed when this repo's automation moved to the central zer0-CMS system, so the ledger no longer updates. The rest of this section records how it worked.
 
 Artifacts expire (30 days); the ledger doesn't. The daily sweep lists `ai-usage-*` artifacts, downloads the recent window (`lookback_days`, default 3 — dedup makes overlap harmless and backfills safe), folds them into `_data/ai_usage/ledger.jsonl`, regenerates `summary.yml` (the dashboard's data) and root `AI_USAGE.md`, and opens **one** PR labeled `source/ai-usage-bot`, superseding any older open sweep PR. Scheduled runs idle unless `AI_USAGE_ENABLED=true`; manual runs default to dry-run. The workflow makes zero model calls.
 
@@ -77,17 +79,13 @@ Artifacts expire (30 days); the ledger doesn't. The daily sweep lists `ai-usage-
 - the `claude-run` composite publishes records (`usage_report`);
 - any workflow using `claude-code-action` or calling `run.sh` directly carries
 a `usage_report` step — **this is the regeneration alarm**: gitfactory overwrites its workflows from the blueprint, and a regenerated file without the metering steps turns the pipeline red instead of going quietly unmetered;
-- `ai-usage.yml` is gated by `AI_USAGE_ENABLED` (the standard autonomy-gate check).
 
 The E2E simulation (`scripts/sim/simulate.rb`) drives the real capture → ledger → summary code with fixtures: reported vs estimated cost, ingest idempotency, and the creation/downstream PR split are contract-tested on every pipeline change.
 
 ## Turning it on
 
 1. Metering itself is always on — capture + step summaries + artifacts + PR comments need no flag (they're observations, not actions).
-2. Set the repo variable **`AI_USAGE_ENABLED=true`** to arm the daily ledger
-sweep (or run `ai-usage.yml` manually with `apply` for a one-off, with a bigger `lookback_days` to backfill from surviving artifacts).
-3. Optional: `gh label create source/ai-usage-bot` happens automatically on first apply.
-4. Auto-merge of ledger PRs rides the existing `AUTO_MERGE_ENABLED` switch.
+2. The daily ledger sweep is retired, so `ai-usage-*` artifacts now expire after 30 days.
 
 ## Known gaps (documented, not hidden)
 

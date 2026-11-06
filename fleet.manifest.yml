@@ -41,22 +41,6 @@ lanes:
   guardrails:
     never_merges: true
     opens_pull_requests: false
-- id: brand-sweep
-  kind: other
-  harness: claude-cli
-  implementation: .github/workflows/brand-sweep.yml
-  description: brand-sweep
-  triggers:
-  - kind: schedule
-    cron: 23 8 * * 1
-  - kind: dispatch
-  switch: BRAND_SWEEP_ENABLED
-  uses_tokens:
-  - ANTHROPIC_API_KEY
-  - CLAUDE_CODE_OAUTH_TOKEN
-  - FLEET_TOKEN
-  guardrails:
-    never_merges: true
 - id: claude
   kind: mention
   harness: claude-code-action
@@ -109,35 +93,6 @@ lanes:
   - FLEET_TOKEN
   guardrails:
     never_merges: true
-- id: devops-audit
-  kind: analysis
-  harness: claude-cli
-  implementation: .github/workflows/devops-audit.yml
-  description: devops-audit
-  triggers:
-  - kind: dispatch
-  switch: null
-  uses_tokens:
-  - ANTHROPIC_API_KEY
-  - CLAUDE_CODE_OAUTH_TOKEN
-  guardrails:
-    never_merges: true
-    opens_pull_requests: false
-- id: explore
-  kind: analysis
-  harness: claude-cli
-  implementation: .github/workflows/explore.yml
-  description: explore
-  triggers:
-  - kind: schedule
-    cron: 23 6 * * *
-  - kind: dispatch
-  switch: EXPLORER_ENABLED
-  uses_tokens:
-  - ANTHROPIC_API_KEY
-  - CLAUDE_CODE_OAUTH_TOKEN
-  guardrails:
-    never_merges: true
 - id: factory--issue-factory-1
   kind: triage
   harness: claude-code-action
@@ -165,23 +120,6 @@ lanes:
   - CLAUDE_CODE_OAUTH_TOKEN
   guardrails:
     never_merges: true
-- id: fleet-dispatch
-  kind: other
-  harness: claude-cli
-  implementation: .github/workflows/fleet-dispatch.yml
-  description: fleet-dispatch
-  triggers:
-  - kind: schedule
-    cron: 0 8 * * *
-  - kind: dispatch
-  switch: FLEET_ENABLED
-  uses_tokens:
-  - ANTHROPIC_API_KEY
-  - CLAUDE_CODE_OAUTH_TOKEN
-  - FLEET_TOKEN
-  guardrails:
-    never_merges: true
-    opens_pull_requests: false
 - id: loop-tuner
   kind: other
   harness: claude-cli
@@ -295,15 +233,11 @@ tokens:
   used_by:
   - agent-review
   - auto-fix
-  - brand-sweep
   - claude
   - content-factory
   - content-scout
-  - devops-audit
-  - explore
   - factory--issue-factory-1
   - factory--issue-factory-2
-  - fleet-dispatch
   - loop-tuner
   - pipeline
   - quest-forge
@@ -317,15 +251,11 @@ tokens:
   used_by:
   - agent-review
   - auto-fix
-  - brand-sweep
   - claude
   - content-factory
   - content-scout
-  - devops-audit
-  - explore
   - factory--issue-factory-1
   - factory--issue-factory-2
-  - fleet-dispatch
   - loop-tuner
   - pipeline
   - quest-forge
@@ -339,10 +269,8 @@ tokens:
   used_by:
   - agent-review
   - auto-fix
-  - brand-sweep
   - content-factory
   - content-scout
-  - fleet-dispatch
   - loop-tuner
   - pipeline
   - quest-forge

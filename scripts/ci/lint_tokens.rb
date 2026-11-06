@@ -55,9 +55,7 @@ MIGRATING = %w[
   agent-review.yml
   auto-fix.yml
   auto-update.yml
-  brand-sweep.yml
   content-factory.yml
-  fleet-dispatch.yml
   loop-tuner.yml
   quest-forge.yml
   weekly-epic.yml
