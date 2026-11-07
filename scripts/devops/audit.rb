@@ -27,19 +27,14 @@ wf_read.each do |name, c|
   add(findings, 'error', 'least-privilege', "#{name} grants `administration` scope") if c =~ /administration:\s*(write|read)/
   add(findings, 'error', 'least-privilege', "#{name} grants `workflows` write scope") if c =~ /^\s*workflows:\s*write/
 end
-fleet = wf_read['fleet-dispatch.yml'].to_s
-add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml has an ACTIVE schedule (autonomy must stay opt-in)') if fleet =~ /^[^#\n]*\bschedule:/
-add(findings, 'error', 'autonomy-gate', 'fleet-dispatch.yml does not read FLEET_ENABLED') unless fleet.include?('FLEET_ENABLED')
 
 # Every autonomy workflow (one that takes an outward action automatically) must be
 # gated by its ENABLED kill-switch variable, so nothing runs unattended by default.
-{ 'content-factory.yml' => 'CONTENT_FACTORY_ENABLED', 'explore.yml' => 'EXPLORER_ENABLED',
+{ 'content-factory.yml' => 'CONTENT_FACTORY_ENABLED',
   'auto-merge.yml' => 'AUTO_MERGE_ENABLED', 'auto-fix.yml' => 'AUTO_FIX_ENABLED',
   'auto-update.yml' => 'AUTO_UPDATE_ENABLED', 'loop-tuner.yml' => 'LOOP_TUNER_ENABLED',
-  'brand-sweep.yml' => 'BRAND_SWEEP_ENABLED',
   'theme-scout.yml' => 'THEME_SCOUT_ENABLED', 'agent-review.yml' => 'AGENT_REVIEW_ENABLED',
   'quest-forge.yml' => 'QUEST_FORGE_ENABLED', 'triage.yml' => 'TRIAGE_ENABLED',
-  'ai-usage.yml' => 'AI_USAGE_ENABLED',
   'weekly-epic.yml' => 'WEEKLY_EPIC_ENABLED',
   'content-scout.yml' => 'CONTENT_SCOUT_ENABLED',
   'wire-scout.yml' => 'WIRE_SCOUT_ENABLED' }.each do |wf, gate|
@@ -209,7 +204,7 @@ wf_read.each do |name, c|
   add(findings, 'warn', 'cache', "#{name} bundles gems without bundler-cache") if c.include?('setup-ruby') && bundles && !c.include?('bundler-cache')
 end
 build_runs = wf_read.count { |_, c| c.include?('build-overlay') || c.include?('build.sh build') || c.include?('build-and-harness') }
-add(findings, 'info', 'throughput', "#{build_runs} workflow(s) run the safe-mode build (distinct triggers — PR gate / triage / nightly); the build+harness LOGIC is shared via the build-and-harness composite")
+add(findings, 'info', 'throughput', "#{build_runs} workflow(s) run the safe-mode build (distinct triggers — PR gate / triage); the build+harness LOGIC is shared via the build-and-harness composite")
 
 # --- 5. Script health (errors) ----------------------------------------------
 Dir[File.join(LH::ROOT, 'scripts/**/*.rb')].sort.each do |f|

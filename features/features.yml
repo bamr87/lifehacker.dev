@@ -80,3 +80,12 @@ features:
     surface: ui
     link: "_data/authors.yml"
     docs: "README.md"
+  - id: LHD-NEW
+    title: "Hub-originated publishing in character voice"
+    description: "Articles originate as reviewed drafts in bamr87/bamr87 `pages/posts/` and are synthesized here in the voice of a new SDLC-role character (`_data/hub_intake.yml`); autonomous publishing held until built"
+    implemented: false
+    status: planned
+    prd: [FR5]
+    surface: content
+    link: "_data/hub_intake.yml"
+    docs: "docs/proposals/hub-origination.md"

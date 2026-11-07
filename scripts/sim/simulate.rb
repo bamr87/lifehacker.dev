@@ -307,9 +307,6 @@ check('sweeper honors the degraded-findings fail-safe', sweeper.include?('sweep_
 check('sweeper never merges or edits PRs', !sweeper.match?(/gh\s+pr\s+(merge|close|create)/))
 disp = LH.read(File.join(LH::ROOT, 'scripts/fleet/dispatch.rb'))
 check('dispatcher honors FLEET_ENABLED kill switch', disp.include?('FLEET_ENABLED'))
-fw = LH.read(File.join(LH::ROOT, '.github/workflows/fleet-dispatch.yml'))
-check('fleet workflow has NO active schedule', !fw.match?(/^[^#\n]*\bschedule:/))
-check('fleet workflow grants NO administration scope', !fw.match?(/administration:\s*(write|read)/))
 check('untrusted-input quarantine doc present', File.exist?(File.join(LH::ROOT, '.claude/skills/_shared/quarantine.md')))
 
 # ---------------------------------------------------------------------------

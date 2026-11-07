@@ -66,7 +66,6 @@ git add Gemfile.lock && git commit -m "ci: pin github-pages + html-proofer"
 
 - **Locally / in Claude Code:** `scripts/ci/run-all.sh`, or the `/test-lifehacker` skill. Same scripts CI runs.
 - **In CI:** automatic on every PR (`.github/workflows/test.yml`). Posts a sticky comment and uploads `findings.jsonl`.
-- **Nightly sweep:** `.github/workflows/nightly.yml` (external links, fresh-theme drift, full Prime Directive). Files one coarse issue on failure.
 
 ### What blocks a merge (severity: error)
 
@@ -111,22 +110,17 @@ The dispatcher distributes work across role agents without collisions, runaway c
 (`refs/lease/<id>`, compare-and-swap with no server) + a committed `_data/fleet/leases.yml` record with a TTL so a crashed agent's lease is reclaimed. Two agents can never grab the same item.
 - **`scripts/fleet/dispatch.rb`** — the OODA loop: observe (queue + backlog +
 open-PR count) → decide (policy) → act (lease + spawn). **Plan-only by default**; `--apply` leases and spawns. Opens zero PRs itself.
-- **`.github/workflows/fleet-dispatch.yml`** — `workflow_dispatch` only (no
-schedule). Honors the kill switch; the `run.sh --prompt "/<role> <target>"` spawn commands it prints are the final wiring step (needs `CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY` + a worktree each).
 - **Role agents:** `grow-lifehacker` (growth), `fleet-bugfix` (one content/infra
 fix per PR), `triage-lifehacker` (reporting), `brand-reviewer` (comment-only). Each opens one PR and stops; none merges.
 
-### Turning the fleet ON (deliberate, reversible)
+### Retired workflow
 
-1. Set the kill switch: `gh variable set FLEET_ENABLED true` (a repo **variable** — instant, no merge; the bot token can't set it back, having no admin scope).
-2. Run it manually first: Actions → fleet-dispatch → Run (leave `apply` off to see the plan; check `apply` to lease + spawn).
-3. To go hands-off: uncomment the `schedule:` in `fleet-dispatch.yml`, wire the
-spawn step, and **add a dated bold line to `/about/colophon/`** (per [AUTOPILOT.md](AUTOPILOT.md) — enabling scheduled autonomy is the guardrail change that requires it).
+`fleet-dispatch.yml` was removed when this repo's automation moved to the central zer0-CMS system. `scripts/fleet/dispatch.rb` stays in the tree and is plan-only by default.
 
 ## 6. Kill / disable
 
 - **Instant soft kill:** `gh variable set FLEET_ENABLED false` (or delete it). Every dispatch idles on the next run; no merge needed, and the bot can't undo it.
-- Disable a workflow entirely: `gh workflow disable fleet-dispatch.yml` (also `triage.yml`, `nightly.yml`, `test.yml`).
+- Disable a workflow entirely: `gh workflow disable triage.yml`.
 - **Hard kill:** revoke the bot PAT — stops all fleet writes everywhere at once.
 
 ## 7. The contract (for PR2 / PR3)
