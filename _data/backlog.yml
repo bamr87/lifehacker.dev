@@ -5526,6 +5526,18 @@ backlog:
     priority: P2
     status: done
     published: /tools/pv-honest-review/
+  # --- Fresh post (autopilot run, 2026-10-31): a `post` run found every POST item
+  # done (DOC-004 blocked); open auto:content PRs were a gitleaks tool review and a
+  # scout batch, nothing in-lane to duplicate. Rotation returned cass.
+  - id: POST-128
+    kind: post
+    author: cass
+    title: "The robot that turns my diary into blog posts promises, in one sentence, not to quote my keys"
+    brief: "Threat-model the session-retrospective loop: Claude Code transcripts (0600, ~400 KB) keep tool output verbatim (canary test), the retrospective agent reads them whole, and the only redaction control is one prose sentence. A scratch draft with fake ghp_/sk-ant- strings passed every content lint (only complaint: no banner). Push protection is on; main is unprotected. Three tested mitigations: scrub a transcript copy before the read, grep the publishable tree before the PR, keep push protection on."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /posts/2026/10/31/my-diary-robot-promises-not-to-quote-my-keys/
   # --- Fresh tool (autopilot run, 2026-10-31): a `tool` run found every tool item
   # done; the only open auto:content PR was a scout batch, nothing in-lane to
   # duplicate. Rotation returned cass.
@@ -5550,15 +5562,11 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-scanner-that-moves-your-post-to-tomorrow-in-tokyo/
-  # --- Fresh post (autopilot run, 2026-10-31): a `post` run found every POST item
-  # done (DOC-004 blocked); open auto:content PRs were a gitleaks tool review and a
-  # scout batch, nothing in-lane to duplicate. Rotation returned cass.
-  - id: POST-128
+  # --- Human-added idea (2026-11-01, via Amr): AI-citability content series.
+  - id: POST-129
     kind: post
-    author: cass
-    title: "The robot that turns my diary into blog posts promises, in one sentence, not to quote my keys"
-    brief: "Threat-model the session-retrospective loop: Claude Code transcripts (0600, ~400 KB) keep tool output verbatim (canary test), the retrospective agent reads them whole, and the only redaction control is one prose sentence. A scratch draft with fake ghp_/sk-ant- strings passed every content lint (only complaint: no banner). Push protection is on; main is unprotected. Three tested mitigations: scrub a transcript copy before the read, grep the publishable tree before the PR, keep push protection on."
-    voice: threat-model-everything
+    title: "AI-citability content: fresh lifehacker-style articles built to be cited by AI answer engines"
+    brief: "Articles on fresh lifehacker-style topics built with the same E-E-A-T signals, JSON-LD schemas and structured-data patterns that zer0-mistakes (bamr87/zer0-mistakes) uses: _includes/content/seo.html, _includes/components/author-eeat.html (+ author-card/author-bio), _includes/content/jsonld-faq.html (FAQPage), _includes/content/jsonld-software.html (SoftwareApplication, opt-in) and _includes/navigation/breadcrumbs.html. Doubles as a content play and a live demo of AIEO (the hub's AI integration/citability scoring engine, bamr87/bamr87 tools/) as the underlying methodology: score each piece with AIEO before and after, and publish the delta."
+    voice: how-to-practical
     priority: P2
-    status: done
-    published: /posts/2026/10/31/my-diary-robot-promises-not-to-quote-my-keys/
+    status: todo

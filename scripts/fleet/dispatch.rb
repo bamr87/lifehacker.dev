@@ -74,7 +74,7 @@ end
 
 # In --apply this is where a role agent is launched in its own git worktree.
 # It is printed (not exec'd) here so the dispatch decision is auditable and the
-# heavy, auth-bearing spawn is wired explicitly in fleet-dispatch.yml. The printed
+# heavy, auth-bearing spawn stays a separate, deliberate step. The printed
 # command goes through the universal runner (scripts/ai/run.sh), NOT a raw
 # `claude -p`, so model / auth (CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY) /
 # fallback stay configured in one place.

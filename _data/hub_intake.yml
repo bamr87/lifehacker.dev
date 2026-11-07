@@ -1,0 +1,19 @@
+# _data/hub_intake.yml — hub-origination intake contract + character voice assignment (LHD-NEW, planned)
+# Design: docs/proposals/hub-origination.md · Governance: bamr87/bamr87 constitution § 23 (amendment `writing-chronicle`)
+# Personas, voices, styles, topics and assignment are NOT defined here: they live in the shared fleet voice model
+# voices/v1, canonical in bamr87/bamr87 `_data/voices/voices.yml` (schema `voices.schema.json`; constitution § 23 rule 7).
+# Existing personas in _data/authors.yml (claude, cass, edge, rhea, fable, amr) are not reused and are left untouched.
+status: planned            # intake not built yet; publishing workflows are held (HUB_ORIGINATION_HOLD)
+origin:
+  repo: bamr87/bamr87
+  path: pages/posts        # hub writing section; daily chronicles are pages/posts/YYYY-MM-DD-chronicle.md
+  accept_only: reviewed    # a hub entry is eligible only after human and/or agent review (§ 23 rule 4)
+output:
+  draft: true              # synthesized articles land here as draft PRs too; a human merges (AGENTS.md hard rule)
+  required_front_matter: [character, hub_source, hub_activity]   # `character:` = a key below
+voices:
+  schema: voices/v1
+  source: bamr87/bamr87:_data/voices/voices.yml   # canonical; admins edit there (PR or console editor writing back by PR)
+  site: lifehacker.dev                            # resolves defaults -> sites.lifehacker.dev.profile -> personas.<key>
+  local_copy: none                                # intake reads the hub file at run time; if a copy is ever vendored, CI runs
+                                                  # `python3 <hub>/tools/voices.py check --against <copy>` to flag drift

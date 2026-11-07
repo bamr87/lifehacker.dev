@@ -10,7 +10,7 @@
 # scoped to that repo). It NEVER edits content, NEVER merges, NEVER closes a
 # human's issue.
 #
-# SAFE BY DEFAULT, same posture as explore.yml:
+# SAFE BY DEFAULT, same posture as the other loops:
 #   1. The weekly cron is ON (colophon, 2026-07-01) but scheduled runs idle
 #      unless THEME_SCOUT_ENABLED == "true" — the variable is the consent.
 #   2. `gate` requires THEME_SCOUT_ENABLED == "true" (kill-switch repo variable) +
