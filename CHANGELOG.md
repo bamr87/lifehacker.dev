@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.2](https://github.com/bamr87/lifehacker.dev/compare/v0.2.1...v0.2.2) (2026-11-07)
+
+
+### Documentation
+
+* **backlog:** add POST-129 AI-citability content idea ([f00a526](https://github.com/bamr87/lifehacker.dev/commit/f00a5266d08124c18b2372faa8e9742a19fe4b80))
+* **backlog:** add POST-129 AI-citability content idea ([3401453](https://github.com/bamr87/lifehacker.dev/commit/34014536f9dcc995233a560c63a035ebd0889c68))
+
 ## [0.2.1](https://github.com/bamr87/lifehacker.dev/compare/v0.2.0...v0.2.1) (2026-10-31)
 
 
