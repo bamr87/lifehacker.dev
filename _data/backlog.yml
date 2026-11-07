@@ -5550,6 +5550,14 @@ backlog:
     priority: P2
     status: done
     published: /tools/gitleaks-honest-review/
+  # --- Human-added idea (2026-11-01, via Amr): AI-citability content series.
+  - id: POST-129
+    kind: post
+    title: "AI-citability content: fresh lifehacker-style articles built to be cited by AI answer engines"
+    brief: "Articles on fresh lifehacker-style topics built with the same E-E-A-T signals, JSON-LD schemas and structured-data patterns that zer0-mistakes (bamr87/zer0-mistakes) uses: _includes/content/seo.html, _includes/components/author-eeat.html (+ author-card/author-bio), _includes/content/jsonld-faq.html (FAQPage), _includes/content/jsonld-software.html (SoftwareApplication, opt-in) and _includes/navigation/breadcrumbs.html. Doubles as a content play and a live demo of AIEO (the hub's AI integration/citability scoring engine, bamr87/bamr87 tools/) as the underlying methodology: score each piece with AIEO before and after, and publish the delta."
+    voice: how-to-practical
+    priority: P2
+    status: todo
   # --- Fresh doc (autopilot run, 2026-10-31): a `doc` run found every doc item
   # done; open auto:content PRs were a field note, a tool and a scout batch,
   # nothing in-lane to duplicate. Rotation returned edge.
@@ -5562,11 +5570,18 @@ backlog:
     priority: P2
     status: done
     published: /docs/the-scanner-that-moves-your-post-to-tomorrow-in-tokyo/
-  # --- Human-added idea (2026-11-01, via Amr): AI-citability content series.
-  - id: POST-129
-    kind: post
-    title: "AI-citability content: fresh lifehacker-style articles built to be cited by AI answer engines"
-    brief: "Articles on fresh lifehacker-style topics built with the same E-E-A-T signals, JSON-LD schemas and structured-data patterns that zer0-mistakes (bamr87/zer0-mistakes) uses: _includes/content/seo.html, _includes/components/author-eeat.html (+ author-card/author-bio), _includes/content/jsonld-faq.html (FAQPage), _includes/content/jsonld-software.html (SoftwareApplication, opt-in) and _includes/navigation/breadcrumbs.html. Doubles as a content play and a live demo of AIEO (the hub's AI integration/citability scoring engine, bamr87/bamr87 tools/) as the underlying methodology: score each piece with AIEO before and after, and publish the delta."
-    voice: how-to-practical
-    priority: P2
-    status: todo
+  # --- Fresh wire (autopilot run, 2026-10-31): a `wire` run found every WIRE
+  # item done; open auto:content PRs were a doc, a field note and a scout batch,
+  # nothing in-lane to duplicate. The Wire is pinned to rhea.
+  - id: WIRE-027
+    kind: wire
+    title: "A ChatGPT share link could read the victim's private chats by way of a math keyboard and YouTube; the bounty was $5,000, and YouTube's half still answers"
+    brief: "Fresh wire idea (2026-10-31; every WIRE item was done). Parameter Labs (Oct 28) chained a ChatGPT HTML Preview -> MathLive's virtual-keyboard postMessage listener (originValidator 'none', layout markup -> innerHTML) -> unsandboxed srcdoc iframe with the chatgpt.com origin -> CSP bypass via YouTube oEmbed JSONP callback reflection -> authenticated /backend-api calls from a public /share link. Reported Oct 18, triaged P2 then P1, fixed Oct 26, $5,000 bounty (Willison: 'a bit cheap'). Desk checks: the YouTube oEmbed endpoint still reflects the callback (HTTP 200 text/javascript) on Oct 31; MathLive 0.111.2 (Oct 31) flips the default origin validator from 'none' to 'same-origin' and bars cross-window custom layouts; the changelog names neither ChatGPT nor the report. COI: the desk runs on Claude, a competitor with its own sandboxed artifacts."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/chatgpt-share-link-math-keyboard/
+    source: manual
+    source_url: https://www.parameter.ai/labs/we-found-a-gap-at-openai
+    fingerprint: 611b24396c9c
