@@ -29,6 +29,11 @@ concurrency:
 
 jobs:
   gate:
+    # A scheduled run with the kill switch off would only boot a runner to print
+    # "idle" (billed as a full runner-minute every day). Skip the job instead —
+    # a skipped job costs nothing, and `generate` skips with it. A manual
+    # dispatch still reaches the gate, which keeps the final say.
+    if: ${{ github.event_name != 'schedule' || vars.CONTENT_FACTORY_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     outputs:
       go: ${{ steps.check.outputs.go }}
