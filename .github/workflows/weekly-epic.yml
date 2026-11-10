@@ -41,6 +41,10 @@ concurrency:
 
 jobs:
   gate:
+    # Kill switch at the job level: with WEEKLY_EPIC_ENABLED off, a scheduled run skips
+    # this job (no runner, no billed minute) and every job that needs it skips
+    # too. A manual dispatch still reaches the gate, whose checks keep the final say.
+    if: ${{ github.event_name != 'schedule' || vars.WEEKLY_EPIC_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     outputs:
       go: ${{ steps.check.outputs.go }}

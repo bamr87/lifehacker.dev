@@ -67,6 +67,10 @@ concurrency:
 
 jobs:
   sync:
+    # Kill switch at the job level: with AUTO_UPDATE_ENABLED off, the pipeline-completion
+    # and backstop-cron runs skip this job (no runner, no billed minute). A manual
+    # dispatch still reaches the Gate step below, which keeps the final say.
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.AUTO_UPDATE_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:

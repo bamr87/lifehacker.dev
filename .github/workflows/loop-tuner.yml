@@ -50,6 +50,11 @@ concurrency:
 
 jobs:
   measure:
+    # Kill switch at the job level: with LOOP_TUNER_ENABLED off, a scheduled run skips
+    # this job (no runner, no billed minute) and `improve`, which needs it, skips
+    # too. A manual dispatch still measures, and the gate step below keeps the
+    # final say on the agent.
+    if: ${{ github.event_name != 'schedule' || vars.LOOP_TUNER_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     outputs:
       go: ${{ steps.gate.outputs.go }}

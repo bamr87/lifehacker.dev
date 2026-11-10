@@ -62,6 +62,10 @@ jobs:
   # The kill switch + key check. Outward actions never run unless this says go.
   # Scheduled runs apply with the documented defaults; manual runs use inputs.
   gate:
+    # Kill switch at the job level: with CONTENT_SCOUT_ENABLED off, a scheduled run skips
+    # this job (no runner, no billed minute) and every job that needs it skips
+    # too. A manual dispatch still reaches the gate, whose checks keep the final say.
+    if: ${{ github.event_name != 'schedule' || vars.CONTENT_SCOUT_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
