@@ -51,6 +51,10 @@ jobs:
   # Kill switch for the SCHEDULED path: a cron run without TRIAGE_ENABLED=true
   # idles. Manual runs always go (a human clicked; `apply` still defaults off).
   gate:
+    # Kill switch at the job level: with TRIAGE_ENABLED off, a scheduled run skips
+    # this job (no runner, no billed minute) and every job that needs it skips
+    # too. A manual dispatch still reaches the gate, whose checks keep the final say.
+    if: ${{ github.event_name != 'schedule' || vars.TRIAGE_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     outputs:
       go: ${{ steps.check.outputs.go }}

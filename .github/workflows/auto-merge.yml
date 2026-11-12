@@ -40,6 +40,10 @@ concurrency:
 
 jobs:
   sweep:
+    # Kill switch at the job level: with AUTO_MERGE_ENABLED off, the pipeline-completion
+    # and backstop-cron runs skip this job (no runner, no billed minute). A manual
+    # dispatch still reaches the Gate step below, which keeps the final say.
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.AUTO_MERGE_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
