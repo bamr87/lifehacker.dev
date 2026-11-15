@@ -63,10 +63,10 @@ jobs:
         env:
           ENABLED: ${{ vars.THEME_SCOUT_ENABLED }}
           OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
           PAT: ${{ secrets.FLEET_TOKEN }}
         run: |
-          if [ "$ENABLED" = "true" ] && { [ -n "$OAUTH" ] || [ -n "$KEY" ]; } && [ -n "$PAT" ]; then
+          if [ "$ENABLED" = "true" ] && [ -n "$OAUTH" ] && [ -n "$PAT" ]; then
             echo "go=true" >> "$GITHUB_OUTPUT"
           else
             echo "theme-scout off (THEME_SCOUT_ENABLED != true, no Claude auth, or no FLEET_TOKEN for upstream) — idle."
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
       # FLEET_TOKEN: the bot PAT scoped to bamr87/zer0-mistakes (issues:write). The
       # repo github.token cannot write to the upstream theme repo.
       GH_TOKEN: ${{ secrets.FLEET_TOKEN }}
