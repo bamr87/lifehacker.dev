@@ -58,7 +58,6 @@ How the workflows fit together (the tiers, the one required check, the autonomy 
 
 | Secret | Read by |
 | --- | --- |
-| `ANTHROPIC_API_KEY` | `agent-review.yml`, `auto-fix.yml`, `content-factory.yml`, `content-scout.yml`, `factory--issue-factory-1.yml`, `factory--issue-factory-2.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `weekly-epic.yml`, `wire-scout.yml` |
 | `CLAUDE_CODE_OAUTH_TOKEN` | `agent-review.yml`, `auto-fix.yml`, `content-factory.yml`, `content-scout.yml`, `factory--issue-factory-1.yml`, `factory--issue-factory-2.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `weekly-epic.yml`, `wire-scout.yml` |
 | `FLEET_TOKEN` | `agent-review.yml`, `auto-fix.yml`, `auto-update.yml`, `content-factory.yml`, `content-scout.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `triage.yml`, `weekly-epic.yml`, `wire-scout.yml` |
 | `IT_JOURNEY_TOKEN` | `quest-forge.yml` |
