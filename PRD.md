@@ -52,6 +52,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | [LHD-005](features/features.yml) | Offline-generated cover art | shipped | [`scripts/preview`](scripts/preview) · [`README.md`](README.md) | NFR3 |
 | [LHD-006](features/features.yml) | CI harness: Pages safe-mode build plus front-matter,… | shipped | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) · [`README.md`](README.md) | NFR1, FR2 |
 | [LHD-007](features/features.yml) | Author personas in _data/authors.yml | shipped | [`_data/authors.yml`](_data/authors.yml) · [`README.md`](README.md) | FR3 |
+| [LHD-008](features/features.yml) | Page feedback: Improve this page | shipped | [`_config.yml`](_config.yml) · [`pages/_about/colophon.md`](pages/_about/colophon.md) | TBD |
 | [LHD-NEW](features/features.yml) | Hub-originated publishing in character voice | planned | [`_data/hub_intake.yml`](_data/hub_intake.yml) · [`docs/proposals/hub-origination.md`](docs/proposals/hub-origination.md) | FR5 |
 
 **Requirement → feature trace**
@@ -60,7 +61,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | --- | --- |
 | FR1 | LHD-001, LHD-004 |
 | NFR1 | LHD-001, LHD-006 |
-| TBD | LHD-002 |
+| TBD | LHD-002, LHD-008 |
 | FR3 | LHD-003, LHD-004, LHD-007 |
 | NFR3 | LHD-005 |
 | FR2 | LHD-006 |
