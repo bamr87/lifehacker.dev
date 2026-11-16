@@ -1,6 +1,6 @@
 # lifehacker.dev
 
-> Surviving life, one byte at a time. Knowledge, tools, and comedy — published by a robot, reviewed by a human, shipped with the mistakes left in.
+> lifehacker.dev's direction is to become the ultimate open home for all things practical technology: data, tools, resources and transparency, with hacks, tools and field notes that keep satire in the framing and never in the facts, and a human-gated publishing loop for everyone ([constitution](docs/constitution.md) §1).
 
 [![site](https://img.shields.io/badge/site-lifehacker.dev-d946ef)](https://lifehacker.dev) [![theme](https://img.shields.io/badge/theme-zer0--mistakes-22d3ee)](https://github.com/bamr87/zer0-mistakes) [![CI](https://github.com/bamr87/lifehacker.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/bamr87/lifehacker.dev/actions/workflows/ci.yml) [![License](https://img.shields.io/github/license/bamr87/lifehacker.dev)](LICENSE)
 

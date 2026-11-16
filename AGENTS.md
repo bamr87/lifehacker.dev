@@ -2,7 +2,7 @@
 
 # lifehacker.dev
 
-> How to work in lifehacker.dev, the self-publishing Jekyll site whose repository is its CMS: the commands, the layout, the content gates and the rules an agent must not break.
+> lifehacker.dev's direction is to become the ultimate open home for all things practical technology: data, tools, resources and transparency, with hacks, tools and field notes that keep satire in the framing and never in the facts, and a human-gated publishing loop for everyone ([constitution](docs/constitution.md) §1).
 
 ## What this repo is
 

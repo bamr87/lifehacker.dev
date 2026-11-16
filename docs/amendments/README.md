@@ -11,3 +11,4 @@ The append-only log of changes to [the constitution](../constitution.md). Proces
 | --- | --- | --- | --- |
 | [0001](0001-ratify-constitution.md) | Ratify the constitution | ratified on merge | whole constitution |
 | [0002](0002-reflow-to-one-paragraph-per-line.md) | Reflow the constitution to one paragraph per line (editorial) | proposed | preamble, § 8 (formatting only) |
+| [0003](0003-mission-statement.md) | Missions | proposed | constitution §1; PRD §1.1; feature LHD-008 |
