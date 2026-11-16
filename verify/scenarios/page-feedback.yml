@@ -1,0 +1,32 @@
+# =============================================================================
+# verify/scenarios/page-feedback.yml — a USER SCENARIO (scenario/v1)
+# =============================================================================
+# A reader wants to report a problem with the page they are on: they find the
+# "Improve this page" button and open the feedback dialog. The step grammar is
+# documented in verify/scenarios/smoke-home.yml. Nothing is submitted: the
+# dialog only opens a pre-filled github.com form, and only on the reader's say.
+#
+# Posts use the theme's `article` layout, which has no intro action bar, so an
+# article carries the floating button only; pages on the `default` layout (the
+# about collection, docs, the 404) also get the intro bar's "Improve" link.
+# =============================================================================
+id: page-feedback
+feature: LHD-008
+title: "A reader opens the Improve this page dialog"
+description: "An article shows the floating megaphone button, which opens the feedback dialog; an about page also shows the intro bar's Improve link."
+viewports: [desktop, mobile]
+steps:
+  - goto: /tools/grok-bot-honest-review/
+  - expect: { status: 200 }
+  - expect: { visible: "#pageFeedbackFab" }
+  - expect: { no_horizontal_scroll: true }
+  - screenshot: article-with-fab
+  - click: "#pageFeedbackFab"
+  - expect: { visible: "#pageFeedbackModal" }
+  - expect: { text: "Share feedback" }
+  - screenshot: feedback-dialog
+  - goto: /about/colophon/
+  - expect: { status: 200 }
+  - expect: { visible: ".bd-intro-action-link[data-pf-open]" }
+  - expect: { count: { selector: "[data-pf-open]", min: 2 } }
+  - screenshot: page-with-improve-link
