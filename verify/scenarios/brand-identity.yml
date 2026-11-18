@@ -1,0 +1,24 @@
+# =============================================================================
+# verify/scenarios/brand-identity.yml — a USER SCENARIO (scenario/v1)
+# =============================================================================
+# A reader wants to know what rules this site writes under. The machine-readable
+# brand (`_data/brand/`) reaches them as the press charter, whose source is
+# `_data/brand/identity.yml` (`press_charter`), and as the colophon's account of
+# how the robot reads the brand files. The step grammar is documented in
+# verify/scenarios/smoke-home.yml.
+# =============================================================================
+id: brand-identity
+feature: LHD-002
+title: "A reader finds the brand rules the site writes under"
+description: "The press charter and the colophon, both rendered from or about the brand files, load and read as pages."
+viewports: [desktop, mobile]
+steps:
+  - goto: /docs/press-charter/
+  - expect: { status: 200 }
+  - expect: { text: "Press Charter" }
+  - expect: { no_horizontal_scroll: true }
+  - screenshot: press-charter
+  - goto: /about/colophon/
+  - expect: { status: 200 }
+  - expect: { text: "brand files" }
+  - screenshot: colophon
