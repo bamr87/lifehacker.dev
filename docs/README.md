@@ -35,6 +35,7 @@ Start with [AUTOPILOT.md](AUTOPILOT.md) to operate the robot, [ARCHITECTURE.md](
 | [`docs/ARCHITECTURE.md`](ARCHITECTURE.md) | The map of the autopilot: the closed Test → Report → Balance loop, the contracts between its layers, the invariants enforced in code, and how to extend it. |
 | [`docs/AUTOPILOT.md`](AUTOPILOT.md) | How to run, schedule and steer the Claude Code autopilot that writes this site: the data that drives it, one assisted cycle, the guardrails, the switches and the loop's memory. |
 | [`docs/CICD.md`](CICD.md) | How the workflows gate, test and ship this site: the tiered `verify` pipeline, change-type routing, the autonomous content factory and its switches, token hygiene, and the one AI runner every lane shares. |
+| [`docs/constitution.md`](constitution.md) | The rules every change to this repo must satisfy, whoever makes it — a human or an AI agent. Agents read this before [AGENTS.md](../AGENTS.md) conventions, the [PRD](../PRD.md), or the [feature catalog](../features/features.yml). Ratified… |
 | [`docs/CONTENT_IMPORT.md`](CONTENT_IMPORT.md) | The record of the it-journey → lifehacker.dev content import (PR #55): which of the 110 imported files are rewritten, in which batches, and why the rest were skipped. |
 | [`docs/GIT-WITH-THE-PROGRAM.md`](GIT-WITH-THE-PROGRAM.md) | How to draft a Git With the Program Field Note — a repository's real history told as comedy — from an evidence bundle, and what a draft must carry before a human may publish it. |
 | [`docs/github-pages-custom-domain.md`](github-pages-custom-domain.md) | A reproducible walkthrough for publishing a zer0-mistakes Jekyll site on GitHub Pages at your own apex domain — scaffold, push, DNS, the first-build `include_cached` fix and enforced HTTPS. |
@@ -44,6 +45,7 @@ Start with [AUTOPILOT.md](AUTOPILOT.md) to operate the robot, [ARCHITECTURE.md](
 | [`docs/runbook-fleet.md`](runbook-fleet.md) | One-time setup and day-to-day operation of the autonomy fleet: the bot identity, branch protection, secrets, running the harness, triage, orchestration and the kill switches. |
 | [`docs/TRACE-BLOOM.md`](TRACE-BLOOM.md) | The algorithmic philosophy behind the cover art — what each banner draws, why it is computed from its own article, and which parameters a human or an agent may turn. |
 | [`docs/adr/`](adr/README.md) | Where the hard-to-reverse decisions for lifehacker.dev are recorded, the ADR format, and the index of every record. |
+| [`docs/amendments/`](amendments/README.md) | The append-only log of changes to [the constitution](constitution.md), one numbered record per amendment. |
 | [`docs/journey/`](journey/README.md) | The honest, behind-the-scenes log of turning a five-file remote-theme starter into a real site run by a robot. The *published*, funnier versions of these stories live in the [Field Notes](https://lifehacker.dev/news/field-notes/); this… |
 
 ### `mcp/`
@@ -65,6 +67,7 @@ Start with [AUTOPILOT.md](AUTOPILOT.md) to operate the robot, [ARCHITECTURE.md](
 | Document | What it covers |
 | --- | --- |
 | [`docs/proposals/common-framework.md`](proposals/common-framework.md) | A cross-repo proposal (2026-09-08): what six surveys of eleven fleet repos found, one canonical home per layer, the shared conventions and kits, and the pull-request series that moves the fleet there. |
+| [`docs/proposals/hub-origination.md`](proposals/hub-origination.md) | Proposal: originate lifehacker.dev articles from reviewed entries in the hub's writing section instead of this repo's own backlog; autonomous publishing is held until that intake is built. |
 | [`docs/proposals/mcp-integration.md`](proposals/mcp-integration.md) | A draft proposal for exposing the whole site to any AI over the Model Context Protocol — review, explore, query and evolve it — without creating a self-merge loophole. |
 
 ### `docs/reference/`

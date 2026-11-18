@@ -6,7 +6,7 @@
 
 ## What this repo is
 
-lifehacker.dev ("Surviving life, one byte at a time") is a satirical-but-actually-working Jekyll site served by GitHub Pages and rendered by the floating remote theme `bamr87/zer0-mistakes`. Its four news sections — Hacks, Tools, Field Notes and The Wire — live under `pages/_posts/<section>/`, beside a docs collection in `pages/_docs/`. An autonomous Claude Code fleet drafts, reviews and ships the content; a human merges every pull request. The repo **is** the CMS: brand, content queue, ledgers and health all live in-tree as data files. The Wire is the news desk, bound by the press charter in `_data/brand/identity.yml` (`press_charter`): satire in the framing, never the facts. Sister sites: it-journey.dev and bash-365.com. **Done** means the harness is green, the content is on-voice per `_data/brand/`, and a human has merged the PR.
+lifehacker.dev ("Surviving life, one byte at a time") is a satirical-but-actually-working Jekyll site served by GitHub Pages and rendered by the floating remote theme `bamr87/zer0-mistakes`. Its four news sections — Hacks, Tools, Field Notes and The Wire — live under `pages/_posts/<section>/`, beside a docs collection in `pages/_docs/`. An autonomous Claude Code fleet drafted, reviewed and shipped the content until the November 2026 [shutdown](#fleet-and-ci); a human merges every pull request. The repo **is** the CMS: brand, content queue, ledgers and health all live in-tree as data files. The Wire is the news desk, bound by the press charter in `_data/brand/identity.yml` (`press_charter`): satire in the framing, never the facts. Sister sites: it-journey.dev and bash-365.com. **Done** means the harness is green, the content is on-voice per `_data/brand/`, and a human has merged the PR.
 
 ## Hard rules
 
@@ -37,8 +37,8 @@ node scripts/preview/generate.mjs -f <article.md>      # cover art (Trace Bloom;
 node scripts/preview/generate.mjs --provider xai -f <article.md>  # opt-in xAI Imagine raster; OAuth first
 node scripts/preview/illustrate.mjs -f <article.md>    # Claude draws the article's subject into its cover (one call)
 ruby scripts/fleet/authors.rb --section <kind>         # the section's least-used AI persona, for the byline
-ruby scripts/content/weekly_digest.rb --days 7         # the prior week's publications as JSON (weekly epic)
-node scripts/media/figures.mjs <type> …                # weekly-epic figures: constellation, timeline, gauge
+ruby scripts/content/weekly_digest.rb --days 7         # the prior week's publications as JSON (weekly-epic lane: held, #801)
+node scripts/media/figures.mjs <type> …                # weekly-epic figures: constellation, timeline, gauge (held lane, #801)
 ```
 
 - This checkout has **no local layouts**: never `bundle exec jekyll serve` here. Preview and CI both overlay onto a theme clone and strip `_plugins` (`scripts/ci/build.sh`). `scripts/generate-preview-images.sh` is a deprecated shim — call `generate.mjs`.
@@ -73,7 +73,7 @@ What agents get wrong:
 - **Backlog of record:** GitHub Issues (`.github/sdlc.yml` `backlog.mode: issues`). `_data/backlog.yml` is the autopilot's *content* queue, not the engineering backlog.
 - **Definition of Done:** `scripts/ci/run-all.sh` green, content on-voice per `_data/brand/`, and a human merge. There is no `.github/pull_request_template.md`, so the owner's fleet default checklist applies.
 - **Decisions:** ADRs in `docs/adr/NNNN-slug.md`, indexed in `docs/adr/README.md`. Add one for anything hard to reverse.
-- **Commits:** Conventional Commits, `type(scope): description` — in practice `feat fix chore docs build ci style`, plus `content(<section>): …` for the content lanes and `build(deps): …` for Dependabot. Bot lanes use a lane prefix hard-coded in their workflow instead: `scout:`, `triage:`, `wire:`, `explore:`, `ai-usage:`. Nothing lints commit messages; keep this list true when you add a lane.
+- **Commits:** Conventional Commits, `type(scope): description` — in practice `feat fix chore docs build ci style`, plus `content(<section>): …` for the content lanes and `build(deps): …` for Dependabot. Bot lanes use a lane prefix hard-coded in their workflow instead: `scout:`, `triage:`, `wire:`. Nothing lints commit messages; keep this list true when you add a lane.
 - **Branches:** `feature/`, `fix/`, `docs/`, `refactor/`, `test/` or `chore/` off `main`; bot lanes push `<lane>/<timestamp>`.
 - **Changelog:** `CHANGELOG.md` is maintained by release-please (`release.yml`); never edit it, or a version number, by hand.
 - **README-First, README-Last:** read the nearest `README.md` before changing a directory, and update it after.
@@ -101,25 +101,28 @@ What agents get wrong:
 
 ## Fleet and CI
 
-- AI loops are wired and **idle** until their `*_ENABLED` repository variable is set; [docs/reference/workflows.md](docs/reference/workflows.md) lists every switch. This repo's automation was shut down permanently in November 2026 and replaced by the central zer0-CMS system, so its retired workflows are gone rather than idle.
+- This repo's automation was shut down permanently on 2026-11-05 and replaced by the central zer0-CMS system ([#802](https://github.com/bamr87/lifehacker.dev/pull/802)); every `*_ENABLED` repository variable has been `false` since 2026-11-01, and an off switch here is not a pause. [docs/reference/workflows.md](docs/reference/workflows.md) is the generated inventory of every workflow, trigger and switch.
+- **Deleted:** `8a7c6af` removed `ai-usage`, `brand-sweep`, `devops-audit`, `explore`, `fleet-dispatch`, `nightly` and `zer0-doctor`; `3d0aab5` removed `claude` (see [Standard deviations](#standard-deviations)).
+- **Held:** every workflow with a switch is still on disk but off. `content-factory.yml`, `weekly-epic.yml`, `wire-scout.yml` and `auto-merge.yml` are also held in code by `HUB_ORIGINATION_HOLD: "true"`, which idles them even with the switch on ([#800](https://github.com/bamr87/lifehacker.dev/pull/800), [hub constitution § 23.6](https://github.com/bamr87/bamr87/blob/main/docs/constitution.md#23-writing-section-chronicles-fleet-activity)); the open [#801](https://github.com/bamr87/lifehacker.dev/issues/801) tracks rebuilding publishing on hub-originated intake before lifting it.
+- **Active:** the workflows without a switch — the required `verify` gate (`pipeline.yml`), the hub's thin callers ([Fleet context](#fleet-context)) and the PR and post-deploy checks.
 - Never write `GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}` — an expired PAT is non-empty and wins. Use `.github/actions/resolve-gh-token` and delete the job-level `env: GH_TOKEN` it replaces (`scripts/ci/lint_tokens.rb` enforces this).
 - Every model call goes through the fleet runner, `uses: bamr87/bamr87/.github/actions/claude-run@main` (hub kit `ai-runner`; `scripts/ai/run.sh` here is a shim to it). The default model is in `_data/ai.yml`. Never call `claude -p` from a workflow and never re-vendor the action (`audit.rb` fails CI if you do).
 - `_data/backlog.yml` uses the custom `merge=backlog` driver (`scripts/ci/merge_backlog.rb`). GitHub's merge button does **not** run it; never `merge=union` that file.
-- Auto-merge ships only content-only diffs: `auto-merge.yml` re-classifies every candidate with `scripts/ci/classify_changes.rb` (the smuggle guard), so dependency, pipeline and workflow changes are always human-gated.
+- Nothing auto-merges today: `auto-merge.yml` is held. It ships only content-only diffs: it re-classifies every candidate with `scripts/ci/classify_changes.rb` (the smuggle guard), so dependency, pipeline and workflow changes are always human-gated.
 
 ## Read by task
 
 | Task | Read first |
 | --- | --- |
-| Operating the autopilot and its guardrails | [docs/AUTOPILOT.md](docs/AUTOPILOT.md) |
+| Operating the autopilot and its guardrails (held: [Fleet and CI](#fleet-and-ci)) | [docs/AUTOPILOT.md](docs/AUTOPILOT.md) |
 | System design; the `findings.jsonl` / `queue.json` contracts | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | Workflows, tiers and switches | [docs/CICD.md](docs/CICD.md), [docs/reference/workflows.md](docs/reference/workflows.md) |
 | Brand, voice, satire rules | `_data/brand/{identity,voice,glossary,accepted}.yml` |
 | Cover art | [docs/PREVIEW-IMAGES.md](docs/PREVIEW-IMAGES.md), [docs/TRACE-BLOOM.md](docs/TRACE-BLOOM.md) |
-| Weekly Top Story and in-body figures | `.claude/skills/weekly-epic/SKILL.md`, `scripts/media/README.md`; hero pointer `_data/top_story.yml` |
-| The Wire | `_data/wire/sources.yml` (validated by `lint_wire.rb`), `.claude/skills/wire-scout/SKILL.md`, `scripts/wire/` |
-| Theme UI/UX and accessibility | `.claude/skills/theme-scout/SKILL.md` — files upstream to zer0-mistakes, never edits content here |
-| An agent or skill | `.claude/agents/*.md`, `.claude/skills/*/SKILL.md`; entry points `grow-lifehacker`, `weekly-epic`, `wire-scout`, `theme-scout`, `test-lifehacker`, `triage-lifehacker` |
+| Weekly Top Story and in-body figures | `.claude/skills/weekly-epic/SKILL.md`, `scripts/media/README.md`; hero pointer `_data/top_story.yml`; held lane ([#801](https://github.com/bamr87/lifehacker.dev/issues/801)) |
+| The Wire | `_data/wire/sources.yml` (validated by `lint_wire.rb`), `.claude/skills/wire-scout/SKILL.md`, `scripts/wire/`; `wire-scout` lane held ([#801](https://github.com/bamr87/lifehacker.dev/issues/801)) |
+| Theme UI/UX and accessibility | `.claude/skills/theme-scout/SKILL.md` — files upstream to zer0-mistakes, never edits content here; held lane |
+| An agent or skill | `.claude/agents/*.md`, `.claude/skills/*/SKILL.md`; entry points `grow-lifehacker`, `weekly-epic`, `wire-scout`, `theme-scout`, `test-lifehacker`, `triage-lifehacker`; the lanes behind the first four are held ([Fleet and CI](#fleet-and-ci)) |
 | The AI runner and metering | `scripts/ai/README.md`, [docs/AI-USAGE.md](docs/AI-USAGE.md) |
 | The Git With the Program campaign | [docs/GIT-WITH-THE-PROGRAM.md](docs/GIT-WITH-THE-PROGRAM.md) |
 | The cross-repo framework | [docs/proposals/common-framework.md](docs/proposals/common-framework.md) |
@@ -131,9 +134,8 @@ This repo is one of ~40 managed by the [bamr87/bamr87 hub](https://github.com/ba
 
 ## Standard deviations
 
-- UPS-AGENT-06: no `.github/workflows/claude.yml`. This repo's automation moved to the central zer0-CMS system, so it has no `@claude` mention handler.
+- UPS-AGENT-06: no `.github/workflows/claude.yml` (`3d0aab5` deleted it). This repo's automation was shut down permanently and replaced by the central zer0-CMS system, so it has no `@claude` mention handler.
 - UPS-REPO-07 / UPS-QA-40: lockfiles are committed on purpose. `Gemfile.lock` pins `github-pages` and `html-proofer` so the Pages-parity build is reproducible (see `.gitignore`); `.github/site-quality/package-lock.json` and `mcp/lifehacker-read/package-lock.json` feed the `npm ci` steps in `site-quality.yml` and `mcp-tests.yml`.
-This repo is one of ~40 managed by the [bamr87/bamr87 dash](https://github.com/bamr87/bamr87) (registry: `_data/projects.yml`; tiered baseline: `docs/STANDARDS.md`). It is vendored there as a git submodule: commit and push changes **here** first — the hub only bumps its pointer afterwards. Shared CI, release, schema, and agent kits are seeded from the hub's `templates/`; prefer adopting those over hand-rolling equivalents.
 
 ## Governance
 
