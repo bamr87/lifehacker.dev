@@ -1,5 +1,7 @@
 # Hub-originated publishing (LHD-NEW, planned)
 
+> Proposal: originate lifehacker.dev articles from reviewed entries in the hub's writing section instead of this repo's own backlog; autonomous publishing is held until that intake is built.
+
 **Status:** proposed · **Governance:** bamr87/bamr87 constitution § 23 (amendment `writing-chronicle`, bamr87/bamr87#663) · **Related:** bamr87/bamr87#662
 
 ## Why
