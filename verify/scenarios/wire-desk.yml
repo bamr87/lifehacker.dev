@@ -1,0 +1,25 @@
+# =============================================================================
+# verify/scenarios/wire-desk.yml — a USER SCENARIO (scenario/v1)
+# =============================================================================
+# A reader opens The Wire, the news desk whose coverage is steered by
+# `_data/wire/sources.yml`, and reads a dispatch. The editor file itself is not
+# a page; what a reader sees is the desk's section index and its dispatches.
+# The step grammar is documented in verify/scenarios/smoke-home.yml.
+# =============================================================================
+id: wire-desk
+feature: LHD-004
+title: "A reader opens The Wire and reads a dispatch"
+description: "The Wire section page lists dispatches under /wire/, and a dispatch opens with its content."
+viewports: [desktop, mobile]
+steps:
+  - goto: /news/wire/
+  - expect: { status: 200 }
+  - expect: { text: "The Wire" }
+  - expect: { count: { selector: "a[href*='/wire/']", min: 1 } }
+  - expect: { no_horizontal_scroll: true }
+  - screenshot: wire-index
+  - goto: /wire/the-wire-opens/
+  - expect: { status: 200 }
+  - expect: { text: "newsroom" }
+  - expect: { no_console_errors: true }
+  - screenshot: wire-dispatch

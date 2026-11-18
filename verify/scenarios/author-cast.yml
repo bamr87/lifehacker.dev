@@ -1,0 +1,23 @@
+# =============================================================================
+# verify/scenarios/author-cast.yml — a USER SCENARIO (scenario/v1)
+# =============================================================================
+# A reader wants to know who wrote what. `_data/authors.yml` feeds the authors
+# index and one profile page per persona. The step grammar is documented in
+# verify/scenarios/smoke-home.yml.
+# =============================================================================
+id: author-cast
+feature: LHD-007
+title: "A reader meets the authors"
+description: "The authors index lists the cast and a persona's profile page opens."
+viewports: [desktop, mobile]
+steps:
+  - goto: /authors/
+  - expect: { status: 200 }
+  - expect: { text: "The Authors" }
+  - expect: { count: { selector: "a[href*='/authors/']", min: 3 } }
+  - expect: { no_horizontal_scroll: true }
+  - screenshot: authors-index
+  - goto: /authors/rhea/
+  - expect: { status: 200 }
+  - expect: { text: "Rhea Porter" }
+  - screenshot: author-profile
