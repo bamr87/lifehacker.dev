@@ -80,6 +80,15 @@ features:
     surface: ui
     link: "_data/authors.yml"
     docs: "README.md"
+  - id: LHD-008
+    title: "Page feedback: Improve this page"
+    description: "The theme's \"Improve this page\" widget, enabled in `_config.yml` `page_feedback:`: a floating button on every page (plus an \"Improve\" link in the intro action bar of default-layout pages: about, docs, 404) opens a dialog that turns the page context and opt-in console logs into a pre-filled GitHub issue form (`url` mode, no token); without JavaScript the triggers are plain links to the issue form"
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: ui
+    link: "_config.yml"
+    docs: "pages/_about/colophon.md"
   - id: LHD-NEW
     title: "Hub-originated publishing in character voice"
     description: "Articles originate as reviewed drafts in bamr87/bamr87 `pages/posts/` and are synthesized here in the voice of a new SDLC-role character (`_data/hub_intake.yml`); autonomous publishing held until built"
