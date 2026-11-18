@@ -45,7 +45,7 @@ Start with [AUTOPILOT.md](AUTOPILOT.md) to operate the robot, [ARCHITECTURE.md](
 | [`docs/runbook-fleet.md`](runbook-fleet.md) | One-time setup and day-to-day operation of the autonomy fleet: the bot identity, branch protection, secrets, running the harness, triage, orchestration and the kill switches. |
 | [`docs/TRACE-BLOOM.md`](TRACE-BLOOM.md) | The algorithmic philosophy behind the cover art — what each banner draws, why it is computed from its own article, and which parameters a human or an agent may turn. |
 | [`docs/adr/`](adr/README.md) | Where the hard-to-reverse decisions for lifehacker.dev are recorded, the ADR format, and the index of every record. |
-| [`docs/amendments/`](amendments/README.md) | The append-only log of changes to [the constitution](constitution.md). |
+| [`docs/amendments/`](amendments/README.md) | The append-only log of changes to [the constitution](constitution.md), one numbered record per amendment. |
 | [`docs/journey/`](journey/README.md) | The honest, behind-the-scenes log of turning a five-file remote-theme starter into a real site run by a robot. The *published*, funnier versions of these stories live in the [Field Notes](https://lifehacker.dev/news/field-notes/); this… |
 
 ### `mcp/`
@@ -67,7 +67,7 @@ Start with [AUTOPILOT.md](AUTOPILOT.md) to operate the robot, [ARCHITECTURE.md](
 | Document | What it covers |
 | --- | --- |
 | [`docs/proposals/common-framework.md`](proposals/common-framework.md) | A cross-repo proposal (2026-09-08): what six surveys of eleven fleet repos found, one canonical home per layer, the shared conventions and kits, and the pull-request series that moves the fleet there. |
-| [`docs/proposals/hub-origination.md`](proposals/hub-origination.md) | **Status:** proposed · **Governance:** bamr87/bamr87 constitution § 23 (amendment `writing-chronicle`, bamr87/bamr87#663) · **Related:** bamr87/bamr87#662 |
+| [`docs/proposals/hub-origination.md`](proposals/hub-origination.md) | Proposal: originate lifehacker.dev articles from reviewed entries in the hub's writing section instead of this repo's own backlog; autonomous publishing is held until that intake is built. |
 | [`docs/proposals/mcp-integration.md`](proposals/mcp-integration.md) | A draft proposal for exposing the whole site to any AI over the Model Context Protocol — review, explore, query and evolve it — without creating a self-merge loophole. |
 
 ### `docs/reference/`

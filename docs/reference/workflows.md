@@ -29,7 +29,7 @@ How the workflows fit together (the tiers, the one required check, the autonomy 
 | [`site-quality.yml`](../../.github/workflows/site-quality.yml) | site-quality | `pull_request` · manual | — | Lighthouse CI + accessibility (axe, pa11y) on every PR |
 | [`theme-scout.yml`](../../.github/workflows/theme-scout.yml) | theme-scout | manual · cron `40 17 * * 1` | `THEME_SCOUT_ENABLED` | contribute theme improvements UPSTREAM (gated, OFF by default) |
 | [`triage.yml`](../../.github/workflows/triage.yml) | triage | manual · cron `47 7 * * *` | `TRIAGE_ENABLED` | reporting & triage (manual / on-demand) |
-| [`verify.yml`](../../.github/workflows/verify.yml) | Verify | `pull_request` · `push` · manual | — | Adopted from bamr87/bamr87 via verify-fanout (tools/fanout.sh --kit verify). |
+| [`verify.yml`](../../.github/workflows/verify.yml) | Verify | `pull_request` · manual | — | Adopted from bamr87/bamr87 via verify-fanout (tools/fanout.sh --kit verify). |
 | [`weekly-epic.yml`](../../.github/workflows/weekly-epic.yml) | weekly-epic | cron `40 19 * * 1` · manual | `OPENAI_IMAGES_ENABLED`, `WEEKLY_EPIC_ENABLED` | the weekly Top Story (one epic recap of the prior week) |
 | [`wire-scout.yml`](../../.github/workflows/wire-scout.yml) | wire-scout | manual · cron `40 21 * * *` | `WIRE_SCOUT_ENABLED` | crawl the model-beat news sources (gated, OFF by default) |
 
@@ -58,7 +58,6 @@ How the workflows fit together (the tiers, the one required check, the autonomy 
 
 | Secret | Read by |
 | --- | --- |
-| `ANTHROPIC_API_KEY` | `agent-review.yml`, `auto-fix.yml`, `content-factory.yml`, `content-scout.yml`, `factory--issue-factory-1.yml`, `factory--issue-factory-2.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `weekly-epic.yml`, `wire-scout.yml` |
 | `CLAUDE_CODE_OAUTH_TOKEN` | `agent-review.yml`, `auto-fix.yml`, `content-factory.yml`, `content-scout.yml`, `factory--issue-factory-1.yml`, `factory--issue-factory-2.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `weekly-epic.yml`, `wire-scout.yml` |
 | `FLEET_TOKEN` | `agent-review.yml`, `auto-fix.yml`, `auto-update.yml`, `content-factory.yml`, `content-scout.yml`, `loop-tuner.yml`, `pipeline.yml`, `quest-forge.yml`, `theme-scout.yml`, `triage.yml`, `weekly-epic.yml`, `wire-scout.yml` |
 | `IT_JOURNEY_TOKEN` | `quest-forge.yml` |

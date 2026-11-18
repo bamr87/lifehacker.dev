@@ -143,6 +143,25 @@ ai_chat:
 giscus:
   enabled                : false
 
+# ── Page feedback — the "Improve this page" widget (UPS-FB-01, UPS-FE-13) ─────
+# The theme's floating button, the intro-bar "Improve" link and the 404 report
+# link, all gated on `enabled`. A remote theme's _config is never inherited, so
+# every key the widget reads is restated here. `url` mode opens a pre-filled
+# github.com issue form: no token, no proxy, nothing sent until the reader
+# submits. Copilot assignment and the AI triage step stay off (the repo's
+# automation is shut down; ai_chat has no proxy). The no-JS links name the
+# theme's own template file; .github/ISSUE_TEMPLATE/page_feedback.yml is ours.
+page_feedback:
+  enabled                : true
+  fab                    : true
+  fab_label              : "Improve this page"
+  capture_logs           : true
+  mode                   : "url"
+  default_labels         : ["page-feedback"]
+  assignee               : ""
+  ai:
+    enabled              : false
+
 # Search-engine verification (add when you have them).
 google_site_verification : null
 bing_site_verification   : null
