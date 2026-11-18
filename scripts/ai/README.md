@@ -2,7 +2,7 @@
 
 > This repo's half of the fleet `ai-runner` kit: how every model call reaches the hub's `claude-run` runner, the metering scripts that live here, the runner's contract, and how a sibling repo adopts the kit.
 
-Every model call this repo makes goes through the **fleet's** runner — the `claude-run` action in the hub, [bamr87/bamr87 `.github/actions/claude-run`](https://github.com/bamr87/bamr87/tree/main/.github/actions/claude-run) (kit `ai-runner`, docs in the hub's `templates/ai-runner/`). Workflows consume it by reference, `uses: bamr87/bamr87/.github/actions/claude-run@main`, so this repo holds no copy of the runner to drift. Until 2026-09-08 it held the source of truth; a real fleet of 17 lanes still tests the runner here daily, which is why the hub's kit README names this repo its reference consumer.
+Every model call this repo makes goes through the **fleet's** runner — the `claude-run` action in the hub, [bamr87/bamr87 `.github/actions/claude-run`](https://github.com/bamr87/bamr87/tree/main/.github/actions/claude-run) (kit `ai-runner`, docs in the hub's `templates/ai-runner/`). Workflows consume it by reference, `uses: bamr87/bamr87/.github/actions/claude-run@v2`, so this repo holds no copy of the runner to drift. Until 2026-09-08 it held the source of truth; a real fleet of 17 lanes still tests the runner here daily, which is why the hub's kit README names this repo its reference consumer.
 
 ## What lives here
 
@@ -43,7 +43,7 @@ The exit contract is pinned by the hub's `templates/ai-runner/tests/contract.sh`
 
 ## Adopting the kit in a sibling repo
 
-1. In every workflow: `uses: bamr87/bamr87/.github/actions/claude-run@main` with the job env carrying the auth secret, behind a `<LANE>_ENABLED` repository variable — or take the whole lane from the hub's reusable `ai-lane.yml` (see its `templates/ai-runner/ai-lane.template.yml`).
+1. In every workflow: `uses: bamr87/bamr87/.github/actions/claude-run@v2` with the job env carrying the auth secret, behind a `<LANE>_ENABLED` repository variable — or take the whole lane from the hub's reusable `ai-lane.yml` (see its `templates/ai-runner/ai-lane.template.yml`).
 2. Provide `_data/ai.yml` with at least `model:`.
 3. Copy `usage.rb` + `usage_report.rb` for metering and `api_call.rb` for the fallback, or leave them out — the runner adapts.
 4. Do **not** copy `run.sh` unless something outside a workflow step needs to call the runner; if so, copy this shim, not a runner.

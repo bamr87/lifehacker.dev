@@ -69,7 +69,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
       - name: Review the agents + skills (agent-reviewer, universal AI runner)
-        uses: bamr87/bamr87/.github/actions/claude-run@main
+        uses: bamr87/bamr87/.github/actions/claude-run@v2
         continue-on-error: true
         with:
           agent: agent-reviewer

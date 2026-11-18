@@ -131,7 +131,7 @@ jobs:
       #    identical in CI and locally. Tools are SCOPED: WebFetch + read +
       #    write ideas.jsonl only. No `gh`, no backlog edit, no merge.
       - name: Read the news sources (wire-scout skill, universal AI runner)
-        uses: bamr87/bamr87/.github/actions/claude-run@main
+        uses: bamr87/bamr87/.github/actions/claude-run@v2
         continue-on-error: true
         with:
           agent: wire-scout
