@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.3.0](https://github.com/bamr87/lifehacker.dev/compare/v0.2.2...v0.3.0) (2026-11-18)
+
+
+### Added
+
+* **site:** enable the page feedback widget (UPS-FB-01, UPS-FE-13) ([0f4686a](https://github.com/bamr87/lifehacker.dev/commit/0f4686acc3b5042ca4cbbe636f864cb81a743519))
+* **site:** enable the page feedback widget (UPS-FB-01, UPS-FE-13) ([321c4a6](https://github.com/bamr87/lifehacker.dev/commit/321c4a6a3e6941c2472a8a7baf595dc6169bb015)), closes [#803](https://github.com/bamr87/lifehacker.dev/issues/803)
+
+
+### Documentation
+
+* add summary lines and regenerate the docs index (UPS-DOC-02/03) ([4b8b503](https://github.com/bamr87/lifehacker.dev/commit/4b8b503f0916d0cc78578e6e3cc9bdd865facfb7))
+* add summary lines and regenerate the docs index (UPS-DOC-02/03) ([bad8db9](https://github.com/bamr87/lifehacker.dev/commit/bad8db9a419a401f8456fbbb60fb8fe8d33f71be)), closes [#808](https://github.com/bamr87/lifehacker.dev/issues/808)
+* **agents:** describe deleted vs held workflows truthfully ([bb5de60](https://github.com/bamr87/lifehacker.dev/commit/bb5de60a297908b9a6467daf01665c07cb301c0f))
+* **agents:** describe deleted vs held workflows truthfully ([86a2aa5](https://github.com/bamr87/lifehacker.dev/commit/86a2aa5ba36f3b1f72e291b91ba58bb6bf364011)), closes [#804](https://github.com/bamr87/lifehacker.dev/issues/804)
+* **constitution:** state the missions in §1 (amendment 0003) ([094789b](https://github.com/bamr87/lifehacker.dev/commit/094789b22981eae2e84d70cf7a3800e1b6818ed6))
+* **constitution:** state the missions in §1 (amendment 0003) ([f2bd1b2](https://github.com/bamr87/lifehacker.dev/commit/f2bd1b2cd0791f0027946bf57c141067ab4335ac))
+* **prd:** cycle 1 deep dive — trace LHD-002 to NFR2, link findings ([8d663dc](https://github.com/bamr87/lifehacker.dev/commit/8d663dced96402c7219fa8ad71de5ca585224447))
+* **prd:** trace LHD-002 (machine-readable brand) to NFR2 ([5ce833f](https://github.com/bamr87/lifehacker.dev/commit/5ce833fa3e9d682f8553b4b9411c94f6a79df686))
+* **reference:** regenerate the workflow reference for OAuth-only ([5256c5e](https://github.com/bamr87/lifehacker.dev/commit/5256c5ecef2aab1bd71f010463732d5c4763b540))
+* **reference:** regenerate the workflow reference for verify kit 0.2.0 ([5a5add6](https://github.com/bamr87/lifehacker.dev/commit/5a5add6f38fb26dd501b7ede2517730601bdb10f))
+
 ## [0.2.2](https://github.com/bamr87/lifehacker.dev/compare/v0.2.1...v0.2.2) (2026-11-07)
 
 
