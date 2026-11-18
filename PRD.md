@@ -46,7 +46,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | ID | Feature | Status | Where | Requirements |
 | --- | --- | --- | --- | --- |
 | [LHD-001](features/features.yml) | News sections Hacks / Tools / Field notes / Wire under pages/_posts/ | shipped | [`pages/_posts`](pages/_posts) · [`README.md`](README.md) | FR1, NFR1 |
-| [LHD-002](features/features.yml) | Machine-readable brand in _data/brand/ | shipped | [`_data/brand`](_data/brand) · [`README.md`](README.md) | TBD |
+| [LHD-002](features/features.yml) | Machine-readable brand in _data/brand/ | shipped | [`_data/brand`](_data/brand) · [`README.md`](README.md) | NFR2 |
 | [LHD-003](features/features.yml) | Content backlog _data/backlog.yml with a custom merge driver | shipped | [`_data/backlog.yml`](_data/backlog.yml) · [`README.md`](README.md) | FR3 |
 | [LHD-004](features/features.yml) | Wire assignment editor _data/wire/sources.yml | shipped | [`_data/wire/sources.yml`](_data/wire/sources.yml) · [`README.md`](README.md) | FR3, FR1 |
 | [LHD-005](features/features.yml) | Offline-generated cover art | shipped | [`scripts/preview`](scripts/preview) · [`README.md`](README.md) | NFR3 |
@@ -60,7 +60,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | --- | --- |
 | FR1 | LHD-001, LHD-004 |
 | NFR1 | LHD-001, LHD-006 |
-| TBD | LHD-002 |
+| NFR2 | LHD-002 |
 | FR3 | LHD-003, LHD-004, LHD-007 |
 | NFR3 | LHD-005 |
 | FR2 | LHD-006 |
