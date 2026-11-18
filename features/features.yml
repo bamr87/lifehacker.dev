@@ -98,3 +98,12 @@ features:
     surface: content
     link: "_data/hub_intake.yml"
     docs: "docs/proposals/hub-origination.md"
+  - id: LHD-008
+    title: "Constitution missions"
+    description: "One direction statement and exactly three numbered missions in constitution §1, with matching README and AGENTS.md taglines linked to that section."
+    implemented: true
+    status: planned
+    prd: [MR1]
+    surface: docs
+    link: "docs/constitution.md"
+    docs: "PRD.md"

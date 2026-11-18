@@ -14,7 +14,7 @@ Start with [AUTOPILOT.md](AUTOPILOT.md) to operate the robot, [ARCHITECTURE.md](
 
 | Document | What it covers |
 | --- | --- |
-| [`AGENTS.md`](../AGENTS.md) | How to work in lifehacker.dev, the self-publishing Jekyll site whose repository is its CMS: the commands, the layout, the content gates and the rules an agent must not break. |
+| [`AGENTS.md`](../AGENTS.md) | lifehacker.dev's direction is to become the ultimate open home for all things practical technology: data, tools, resources and transparency, with hacks, tools and field notes that keep satire in the framing and never in the facts, and a… |
 | [`CHANGELOG.md`](../CHANGELOG.md) | Release history: the notable changes in each version, newest first. |
 | [`PRD.md`](../PRD.md) | The product requirements for lifehacker.dev — problem, users, goals and non-goals, current features, requirements and proposed success metrics. |
 | [`AI_USAGE.md`](../AI_USAGE.md) | What the AI fleet has spent: model calls, output tokens and API-equivalent cost by time window, workflow and pull request. |

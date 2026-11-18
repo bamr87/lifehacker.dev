@@ -8,6 +8,22 @@ Derived from the README, agent docs, config and code in [`bamr87/lifehacker.dev`
 
 A satirical-but-working Jekyll site ("Surviving life, one byte at a time") served by GitHub Pages at the apex domain lifehacker.dev, rendered by the `bamr87/zer0-mistakes` remote theme. It doubles as a headless CMS driven by a Claude Code autopilot that drafts, reviews and ships content, with a human (CODEOWNERS) as the only merge gate.
 
+## 1.1 Missions
+
+lifehacker.dev's direction is to become the ultimate open home for all things practical technology — data, tools, resources and transparency, gathered in one place that anyone can inspect and reuse.
+
+1. **Provide data, tools, resources and transparency for all stakeholders, technology practitioners and the general public.** Readers, writers, operators and anyone trying to survive modern tech are first-class audiences. The aim is a shared, inspectable commons: the same hacks, the same tools, and the same trail from draft to published page for everyone.
+2. **Publish hacks, tools, field notes and wire posts on a steady cadence, with satire in the framing and never in the facts.** The site stays funny without misleading: comedy is welcome in the voice, and accuracy is required in the content, especially on the wire.
+3. **Run as an open, human-gated headless CMS: an autopilot drafts, reviews and ships content, CI enforces quality, and a human remains the only merge gate.** Brand, queues, ledgers and site health live in the repository as data; no change reaches the apex domain lifehacker.dev without a human merge.
+
+These missions set the course; they do not claim the work is finished. They serve the PRD goals: a steady publishing cadence, facts that stay accurate, and quality gates with a human-only merge to main.
+
+**Requirement**
+
+- MR1: Constitution §1 states one direction statement and exactly three numbered missions, and the README and AGENTS.md taglines match that direction and link to constitution §1.
+
+Feature [LHD-008](features/features.yml) traces to requirement MR1.
+
 ## 2. Target users
 
 - Readers looking for practical tech hacks, tool reviews and news ("Wire") with a comedic voice
@@ -54,6 +70,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | [LHD-007](features/features.yml) | Author personas in _data/authors.yml | shipped | [`_data/authors.yml`](_data/authors.yml) · [`README.md`](README.md) | FR3 |
 | [LHD-008](features/features.yml) | Page feedback: Improve this page | shipped | [`_config.yml`](_config.yml) · [`pages/_about/colophon.md`](pages/_about/colophon.md) | TBD |
 | [LHD-NEW](features/features.yml) | Hub-originated publishing in character voice | planned | [`_data/hub_intake.yml`](_data/hub_intake.yml) · [`docs/proposals/hub-origination.md`](docs/proposals/hub-origination.md) | FR5 |
+| [LHD-008](features/features.yml) | Constitution missions | planned | [`docs/constitution.md`](docs/constitution.md) · [`PRD.md`](PRD.md) | MR1 |
 
 **Requirement → feature trace**
 
@@ -67,6 +84,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | NFR3 | LHD-005 |
 | FR2 | LHD-006 |
 | FR5 | LHD-NEW |
+| MR1 | LHD-008 |
 <!-- features:end -->
 
 ## 5. Requirements
