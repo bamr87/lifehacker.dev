@@ -78,7 +78,7 @@ jobs:
       # fails THIS step, which is the "not counting this as an attempt" path.
       - name: Attempt a content fix
         if: ${{ steps.clone.outcome == 'success' }}
-        uses: bamr87/bamr87/.github/actions/claude-run@main
+        uses: bamr87/bamr87/.github/actions/claude-run@v2
         env:
           AI_REPO_ROOT: repo
         with:

@@ -4,7 +4,7 @@
 # -----------------------------------------------------------------------------
 # The runner (hub kit `ai-runner`) lives in bamr87/bamr87 at
 # .github/actions/claude-run/run.sh and is consumed by reference: workflows use
-# `uses: bamr87/bamr87/.github/actions/claude-run@main`. This shim exists for the
+# `uses: bamr87/bamr87/.github/actions/claude-run@v2`. This shim exists for the
 # two callers that are not a workflow step — a human running a fleet agent
 # locally (.vscode/tasks.json) and a skill the agent runs from inside its own
 # session (scripts/preview/illustrate.mjs). It finds the runner, in order:

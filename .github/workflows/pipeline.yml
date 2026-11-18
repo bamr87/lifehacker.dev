@@ -234,7 +234,7 @@ jobs:
           echo "PR-scoped sincere candidates: $n"
       - name: Run brand-reviewer (universal AI runner)
         if: ${{ steps.gate.outputs.candidates != '0' }}
-        uses: bamr87/bamr87/.github/actions/claude-run@main
+        uses: bamr87/bamr87/.github/actions/claude-run@v2
         continue-on-error: true
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -339,7 +339,7 @@ jobs:
           name: contract
         continue-on-error: true
       - name: Review + improve the content (universal AI runner)
-        uses: bamr87/bamr87/.github/actions/claude-run@main
+        uses: bamr87/bamr87/.github/actions/claude-run@v2
         continue-on-error: true
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
