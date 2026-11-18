@@ -56,16 +56,16 @@ jobs:
           # in code until hub-originated intake lands; flipping the repo var alone does nothing.
           HUB_ORIGINATION_HOLD: "true"
           OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
         run: |
           if [ "$HUB_ORIGINATION_HOLD" = "true" ]; then
             echo "HUB_ORIGINATION_HOLD — autonomous publishing is held until hub-originated intake lands (docs/proposals/hub-origination.md). Idle."
             echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          if [ "$ENABLED" = "true" ] && { [ -n "$OAUTH" ] || [ -n "$KEY" ]; }; then
+          if [ "$ENABLED" = "true" ] && [ -n "$OAUTH" ]; then
             echo "go=true" >> "$GITHUB_OUTPUT"
           else
-            echo "weekly epic is off (WEEKLY_EPIC_ENABLED != true, or no CLAUDE_CODE_OAUTH_TOKEN / ANTHROPIC_API_KEY) — idle."
+            echo "weekly epic is off (WEEKLY_EPIC_ENABLED != true, or no CLAUDE_CODE_OAUTH_TOKEN; OAuth only) — idle."
             echo "go=false" >> "$GITHUB_OUTPUT"
           fi
 
@@ -78,7 +78,7 @@ jobs:
     timeout-minutes: 30
     env:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
       # The bard runs on the big model by default; WEEKLY_EPIC_MODEL overrides
       # for this loop only (the universal runner reads AI_MODEL; _data/ai.yml
       # stays the fleet-wide default for every other loop).
