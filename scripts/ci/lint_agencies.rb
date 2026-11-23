@@ -125,8 +125,37 @@ if Dir.exist?(AGENCIES_DIR)
   end
 end
 
-# The reader-facing guard: nothing under agencies/ reaches the apex site.
 config = (LH.yload(LH.read(File.join(LH::ROOT, '_config.yml'))) rescue {}) || {}
+
+# A published site (scripts/agencies/promote.rb writes the `published:` block)
+# has its pages in a collection this site's config declares, at the path the
+# registry says, and is written here: a mirror is never published.
+collections = config['collections'].is_a?(Hash) ? config['collections'] : {}
+published_as = {}
+agencies.each do |agency|
+  (agency['sites'].is_a?(Array) ? agency['sites'] : []).each do |site|
+    pub = site['published'] or next
+    where = "#{agency['key']}/#{site['key']}"
+    unless pub.is_a?(Hash) && %w[collection url date pages].all? { |k| !pub[k].to_s.strip.empty? }
+      add.call('error', 'published-block', "#{where}: published lacks one of collection, url, date, pages — scripts/agencies/promote.rb writes them")
+      next
+    end
+    name = pub['collection'].to_s
+    add.call('error', 'published-mirror', "#{where}: published while custody is #{site['custody'].inspect} — only a site written here (home) is published here") unless site['custody'] == 'home'
+    add.call('error', 'published-collection', "#{where}: the #{name} collection is published under #{published_as[name]} already") if published_as[name]
+    published_as[name] = where
+    add.call('error', 'published-url', "#{where}: published.url #{pub['url'].inspect} must start and end with /") unless pub['url'].to_s =~ %r{\A/.+/\z}
+    dir = File.join(LH::ROOT, 'pages', "_#{name}")
+    if !Dir.exist?(dir) || Dir.glob(File.join(dir, '**', '*.md')).empty?
+      add.call('error', 'published-collection', "#{where}: pages/_#{name}/ holds no pages", "pages/_#{name}")
+    end
+    unless collections[name].is_a?(Hash) && collections[name]['output']
+      add.call('error', 'published-collection', "#{where}: the #{name} collection is not declared with `output: true` under `collections:` in _config.yml, so none of its pages is built", '_config.yml')
+    end
+  end
+end
+
+# The reader-facing guard: nothing under agencies/ reaches the apex site.
 excluded = Array(config['exclude']).map { |e| e.to_s.sub(%r{/+\z}, '') }
 unless excluded.include?('agencies') || child_dirs(AGENCIES_DIR).empty?
   add.call('error', 'agencies-built-into-apex',

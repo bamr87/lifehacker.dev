@@ -58,7 +58,7 @@ Start with [AUTOPILOT.md](AUTOPILOT.md) to operate the robot, [ARCHITECTURE.md](
 
 | Document | What it covers |
 | --- | --- |
-| [`scripts/agencies/`](../scripts/agencies/README.md) | The one tool that brings a sub-agency's site tree into `agencies/`, and what it records. |
+| [`scripts/agencies/`](../scripts/agencies/README.md) | The two tools of an agency's life here: `import.rb` brings its site tree into `agencies/`, and `promote.rb` publishes it as a collection of this site. |
 | [`scripts/ai/`](../scripts/ai/README.md) | This repo's half of the fleet `ai-runner` kit: how every model call reaches the hub's `claude-run` runner, the metering scripts that live here, the runner's contract, and how a sibling repo adopts the kit. |
 | [`scripts/media/`](../scripts/media/README.md) | The weekly epic's in-body media: deterministic figures computed from the week's publications, and the opt-in AI-painted hero image. |
 | [`scripts/preview/`](../scripts/preview/README.md) | The dependency-free Trace Bloom banner renderer: how to run it, what it writes, and the rules for changing it. |

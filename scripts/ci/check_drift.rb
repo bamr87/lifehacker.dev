@@ -55,6 +55,18 @@ urls = {} # normalized url => repo-relative source file
     urls[norm(u)] = LH.rel(f) if u
   end
 end
+# An agency published as a collection (_data/agencies.yml `published:`): a
+# pinned permalink wins, else the collection's /<url>/:path/ pattern.
+agency_registry = (LH.yload(LH.read(File.join(LH::ROOT, '_data', 'agencies.yml'))) rescue nil)
+((agency_registry || {})['agencies'] || []).flat_map { |a| a['sites'] || [] }.each do |site|
+  pub = site['published'] or next
+  dir = File.join(LH::ROOT, 'pages', "_#{pub['collection']}")
+  Dir.glob(File.join(dir, '**', '*.md')).each do |f|
+    fm, = LH.parse(f)
+    u = fm && fm['permalink'] ? fm['permalink'] : "#{pub['url']}#{f.sub(dir + '/', '').sub(/\.md\z/, '')}/"
+    urls[norm(u)] = LH.rel(f)
+  end
+end
 # The loose site pages that declare an explicit permalink: the root spine
 # (index.md, 404.html), the utility pages under pages/ (search.md, sitemap.md,
 # tags.md, ...) and the pages/news/ section landings.
