@@ -35,4 +35,24 @@
 # LH.ywrite, which keeps this header). Put commentary here, not between rows.
 # =============================================================================
 schema: agencies/v1
-agencies: []
+agencies:
+- key: '1987'
+  name: '1987'
+  beat: A self-growing knowledge base about the year 1987 — history and politics,
+    science and technology, arts and culture, society and economics, and people.
+  kind: single
+  sites:
+  - key: '1987'
+    path: agencies/1987
+    custody: home
+    upstream: bamr87/1987
+    note: Plain Markdown with no Jekyll configuration. The original repository was
+      deleted, so this tree is the only copy.
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/1987
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 73
+      tree_sha256: c1a09a6ed4314e3ce45e1ee764ea324bc47d0f0a77e077f0afb7f41d7a079452
+      reflowed: 11
