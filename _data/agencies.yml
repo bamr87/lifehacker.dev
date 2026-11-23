@@ -92,3 +92,21 @@ agencies:
       files: 140
       tree_sha256: 9150614d4df7ff7768470cca474ca8fb0111a0aeb7a5a61d6b1c1d42a4af2d28
       reflowed: 2
+- key: wargames
+  name: Wargames
+  beat: OverTheWire security wargames mirrored as a study site, with hint-level study
+    guides and no solutions.
+  kind: single
+  sites:
+  - key: wargames
+    path: agencies/wargames
+    custody: home
+    upstream: bamr87/wargames
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/wargames
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 269
+      tree_sha256: 87af24401a6341b86ffbe6b8f5152a460be9cf6492389089223a061b9031c141
+      reflowed: 5

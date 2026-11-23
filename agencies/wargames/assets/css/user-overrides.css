@@ -1,0 +1,466 @@
+/*
+ * Wargames — site styles.
+ *
+ * Loaded last by the zer0-mistakes theme (`user_overrides: true` in _config.yml), so these rules win
+ * over main.css. This is the theme's documented customisation layer (docs/ui/customization.md,
+ * "Layer 3"); the repo deliberately has no _layouts/, _includes/, _sass/ or _plugins/.
+ *
+ * Everything keys off Bootstrap/skin custom properties (--bs-primary, --bs-border-color, …), so it
+ * follows the active skin and light/dark mode. Sections:
+ *   1. Theme chrome that does not apply to this site
+ *   2. Page header and attribution
+ *   3. Study guide (the section this site adds to every challenge page)
+ *   4. Homepage
+ */
+
+/* ───────────────────────── 1. Theme chrome that does not apply here ───────────────────────── */
+
+/* The site sets no cookies and loads no analytics, so the theme's consent banner ("we use cookies to
+   analyze traffic") would be false, and it covers the bottom of every page. */
+#cookieConsent,
+#cookieSettingsModal,
+.footer-inline-button[data-bs-target="#cookieSettingsModal"] {
+  display: none !important;
+}
+
+/* The footer newsletter form is a permanently disabled placeholder ("until you connect a provider"). */
+.footer-subscribe-row {
+  display: none;
+}
+
+/* Category and tag badges link to /tags/, which this site does not have. They are also identical on
+   every page (wargames · security · linux · ctf · cybersecurity), so they carry no information. The
+   difficulty badge (set per game in _config.yml defaults) is kept. */
+.bd-intro-meta-item--tags,
+.bd-intro-meta-item:has(> a.bd-intro-badge) {
+  display: none;
+}
+
+/* ───────────────────────── 2. Page header and attribution ───────────────────────── */
+
+/* Every vendored page opens with a one-line "Source: … MIT" attribution. Keep it (the licence asks for
+   it) but make it read as a footnote rather than as the first sentence of the page. */
+.bd-content > blockquote:first-child {
+  margin: 0 0 1.25rem;
+  padding: 0.35rem 0.85rem;
+  border-left: 3px solid var(--bs-border-color);
+  background: transparent;
+  color: var(--bs-secondary-color);
+  font-size: 0.85rem;
+}
+.bd-content > blockquote:first-child p {
+  margin: 0;
+}
+
+/* ───────────────────────── 3. Study guide ───────────────────────── */
+
+/* The site-authored section at the end of every challenge page. It is wrapped in <section
+   class="study-guide"> so it reads as clearly separate from the vendored upstream text above it. */
+.study-guide {
+  margin: 3rem 0 1rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  border: 1px solid var(--bs-border-color);
+  border-left: 0.3rem solid var(--bs-primary);
+  border-radius: 0.75rem;
+  background: var(--bs-tertiary-bg);
+}
+.study-guide > h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.study-guide > h2::before {
+  font-family: bootstrap-icons !important;
+  content: "\f6fe"; /* bi-mortarboard */
+  font-size: 1.35em;
+  line-height: 1;
+  color: var(--bs-primary);
+}
+.study-guide h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.study-guide p,
+.study-guide li {
+  line-height: 1.65;
+}
+.study-guide ul,
+.study-guide ol {
+  padding-left: 1.4rem;
+}
+.study-guide li + li {
+  margin-top: 0.35rem;
+}
+.study-guide table {
+  margin-bottom: 1rem;
+}
+
+/* "Level map": which account you are logged in as and which password you are after. The numbering
+   differs between games, so this is the line readers most need to see first. */
+.sg-map {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(var(--bs-primary-rgb), 0.4);
+  border-radius: 0.5rem;
+  background: rgba(var(--bs-primary-rgb), 0.1);
+}
+.sg-map::before {
+  font-family: bootstrap-icons !important;
+  content: "\f549"; /* bi-signpost-split */
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--bs-primary);
+}
+.sg-map p {
+  margin: 0;
+}
+
+/* Previous / next level, so a reader can keep going without the sidebar. */
+.sg-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin: 1.75rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bs-border-color);
+}
+.sg-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.95rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 2rem;
+  background: var(--bs-body-bg);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.sg-nav a:hover,
+.sg-nav a:focus-visible {
+  border-color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb), 0.12);
+}
+.sg-nav .sg-prev::before,
+.sg-nav .sg-next::after {
+  font-family: bootstrap-icons !important;
+  font-size: 0.85em;
+}
+.sg-nav .sg-prev::before {
+  content: "\f12f"; /* bi-arrow-left */
+}
+.sg-nav .sg-next::after {
+  content: "\f138"; /* bi-arrow-right */
+}
+.sg-nav .sg-next {
+  margin-left: auto;
+}
+
+@media (max-width: 575.98px) {
+  .study-guide {
+    margin-inline: -0.25rem;
+    padding: 1rem 1rem 1.25rem;
+  }
+}
+
+/* ───────────────────────── 4. Homepage ───────────────────────── */
+
+/* Hero: always dark (it sits on the generated banner), whatever the colour mode. */
+.wg-hero {
+  position: relative;
+  overflow: hidden;
+  margin-top: -0.25rem;
+  color: #f3f7f5;
+  background: #0b1f17 url("../images/wargames/banner.svg") center / cover no-repeat;
+}
+.wg-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 12, 9, 0.35) 0%, rgba(5, 12, 9, 0.7) 100%);
+  pointer-events: none;
+}
+.wg-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(2.5rem, 7vw, 5rem) 1.5rem clamp(2rem, 5vw, 3.5rem);
+}
+.wg-eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #95d5b2;
+}
+.wg-title {
+  max-width: 18ch;
+  margin: 0 0 1rem;
+  font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+.wg-lead {
+  max-width: 46rem;
+  margin: 0 0 1.75rem;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.55;
+  color: #dbe7e1;
+}
+.wg-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+.wg-terminal {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 0 2rem;
+  padding: 0.7rem 1rem;
+  overflow-x: auto;
+  border: 1px solid rgba(149, 213, 178, 0.35);
+  border-radius: 0.5rem;
+  background: rgba(2, 8, 5, 0.75);
+  color: #b7f0cf;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.wg-terminal .wg-prompt {
+  margin-right: 0.5rem;
+  color: #52b788;
+  user-select: none;
+}
+@media (max-width: 575.98px) {
+  .wg-terminal {
+    white-space: normal;
+    word-break: break-all;
+  }
+}
+.wg-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.wg-stats li {
+  color: #cfe0d7;
+  font-size: 0.95rem;
+}
+.wg-stats strong {
+  display: block;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.wg-section {
+  padding: 2.5rem 1.5rem 0;
+}
+.wg-section > h2 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+.wg-section > .wg-sub {
+  max-width: 46rem;
+  margin: 0 0 1.5rem;
+  color: var(--bs-secondary-color);
+}
+
+/* "How it works" tiles */
+.wg-tile {
+  height: 100%;
+  padding: 1.25rem 1.25rem 1.1rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.75rem;
+  background: var(--bs-tertiary-bg);
+}
+.wg-tile i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: rgba(var(--bs-primary-rgb), 0.18);
+  color: var(--bs-primary);
+  font-size: 1.25rem;
+}
+.wg-tile h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+.wg-tile p {
+  margin: 0;
+  color: var(--bs-secondary-color);
+}
+
+/* Learning path: numbered steps */
+.wg-path {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: wg-step;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+}
+.wg-path li {
+  position: relative;
+  padding: 1rem 1rem 1rem 3.1rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.75rem;
+  background: var(--bs-body-bg);
+  counter-increment: wg-step;
+}
+.wg-path li::before {
+  content: counter(wg-step);
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--bs-primary);
+  color: #04130c;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.wg-path strong {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+.wg-path span {
+  color: var(--bs-secondary-color);
+  font-size: 0.92rem;
+}
+
+/* Tier headings above each game grid */
+.wg-tier {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 2rem 0 0.9rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+.wg-tier h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.wg-tier small {
+  color: var(--bs-secondary-color);
+}
+
+/* Game cards (the theme's data-card, fed by _data/games.yml): short banner on top, lift on hover. */
+.wg-section .zer0-data-card {
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.wg-section .zer0-data-card:hover,
+.wg-section .zer0-data-card:focus-within {
+  transform: translateY(-2px);
+  border-color: var(--bs-primary);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.12);
+}
+.wg-section .zer0-data-card .card-img-top {
+  height: 84px !important;
+  object-fit: cover;
+}
+.wg-section .zer0-data-card .card-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.wg-section .zer0-data-card {
+  position: relative;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wg-section .zer0-data-card {
+    transition: none;
+  }
+  .wg-section .zer0-data-card:hover {
+    transform: none;
+  }
+}
+
+.wg-about {
+  margin-top: 2.5rem;
+  padding-bottom: 2rem;
+  color: var(--bs-secondary-color);
+  font-size: 0.92rem;
+}
+
+/* ───────────────────────── 5. "All levels" index (tags.md, served at /tags/) ───────────────────────── */
+
+/* The theme's category and tag badges link to /tags/. That URL now holds a one-page index of every
+   level, so those links resolve instead of 404ing. */
+.wg-all .wg-tier {
+  margin-top: 2rem;
+}
+.wg-all .wg-tier h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+.wg-all-game {
+  margin: 1rem 0 1.25rem;
+}
+.wg-all-game h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.6rem;
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+.wg-all-game h3 small {
+  flex-basis: 100%;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--bs-secondary-color);
+}
+.wg-all-game h3 i {
+  color: var(--bs-primary);
+}
+.wg-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bd-content .wg-pills a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.5rem;
+  background: var(--bs-body-bg);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+.bd-content .wg-pills a:hover,
+.bd-content .wg-pills a:focus-visible {
+  border-color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb), 0.14);
+}

@@ -1,0 +1,39 @@
+# =============================================================================
+# zer0.install.yml — how this site is built with the zer0-mistakes theme
+# =============================================================================
+# Consumed by the zer0-mistakes installer (scripts/bin/install). Re-scaffold or
+# upgrade the framework with:
+#
+#   /path/to/zer0-mistakes/scripts/bin/install init . \
+#       --config zer0.install.yml --non-interactive --force
+#
+# Wargames is a content-only repo that publishes on GitHub Pages via the
+# theme's remote_theme directive — no theme files are vendored here.
+# =============================================================================
+
+profile: github-pages
+
+site:
+  title: "Wargames"
+  description: "Curated OverTheWire security wargames — learn Linux, CTF, and cybersecurity through hands-on challenges."
+  author: "bamr87"
+
+github:
+  user: bamr87
+  repo: wargames
+
+theme:
+  source: remote                 # remote_theme: bamr87/zer0-mistakes
+
+deploy:
+  - github-pages
+
+# Agent guidance files to drop in (CLAUDE.md is maintained by hand — omitted).
+agents: [copilot, generic]
+
+# Framework tasks only — content (index.md, overthewire/**) and the curated
+# README.md are maintained in this repo, so `pages` and `readme` are skipped.
+tasks: [config, gemfile, nav, data, devcontainer, gitignore, marker, agents]
+
+ai:
+  provider: auto                 # prefer the logged-in Claude Code CLI (OAuth)

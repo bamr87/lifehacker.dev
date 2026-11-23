@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "target_dir": ".",
+  "profile": "github-pages",
+  "site": {
+    "title": "Wargames",
+    "description": "Curated OverTheWire security wargames — learn Linux, CTF, and cybersecurity through hands-on challenges.",
+    "url": "",
+    "author": "bamr87",
+    "email": "",
+    "timezone": "UTC",
+    "locale": "en"
+  },
+  "github": {
+    "user": "bamr87",
+    "repo": "wargames",
+    "pages_branch": "gh-pages",
+    "enable_pages": false
+  },
+  "theme": {
+    "source": "remote",
+    "version": ""
+  },
+  "tasks": [
+    "config",
+    "gemfile",
+    "nav",
+    "data",
+    "devcontainer",
+    "gitignore",
+    "marker",
+    "agents"
+  ],
+  "deploy": [
+    "github-pages"
+  ],
+  "agents": [
+    "copilot",
+    "generic"
+  ],
+  "options": {
+    "dry_run": false,
+    "force": false,
+    "backup": true,
+    "non_interactive": false,
+    "output": "human",
+    "auto_accept": false,
+    "skip_doctor": false,
+    "verbose": false
+  },
+  "ai": {
+    "used": false,
+    "provider": "auto",
+    "model": "",
+    "tokens_estimated": 0,
+    "spec_hash": ""
+  },
+  "scrape": {
+    "source_url": "",
+    "depth": 2,
+    "max_pages": 25,
+    "out_dir": "",
+    "include_nav": true
+  }
+}
