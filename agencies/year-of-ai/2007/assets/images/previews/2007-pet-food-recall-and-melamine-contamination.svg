@@ -1,0 +1,341 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>2007 Pet Food Recall and Melamine Contamination – Retro Pixel Art Banner</title>
+
+  <defs>
+    <radialGradient id="crtGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a0a2e" />
+      <stop offset="100%" stop-color="#050010" />
+    </radialGradient>
+    <filter id="scanlines" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0 0.5" numOctaves="1" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray" />
+      <feBlend in="SourceGraphic" in2="gray" mode="multiply" />
+    </filter>
+    <radialGradient id="glowOrange" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6600" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ff6600" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff0044" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#ff0044" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#crtGlow)" />
+
+  
+  <ellipse cx="768" cy="512" rx="900" ry="600" fill="url(#glowOrange)" opacity="0.3" />
+
+  
+  <rect width="1536" height="1024" fill="none" stroke="#00ff88" stroke-opacity="0.03" stroke-width="2" />
+
+  
+  
+  <rect x="0" y="820" width="1536" height="16" fill="#1a0050" />
+  <rect x="0" y="836" width="1536" height="16" fill="#220066" />
+  <rect x="0" y="852" width="1536" height="172" fill="#0d0030" />
+
+  
+  <g fill="#2a0080" opacity="0.6">
+    <rect x="0" y="820" width="64" height="16" />
+    <rect x="128" y="820" width="64" height="16" />
+    <rect x="256" y="820" width="64" height="16" />
+    <rect x="384" y="820" width="64" height="16" />
+    <rect x="512" y="820" width="64" height="16" />
+    <rect x="640" y="820" width="64" height="16" />
+    <rect x="768" y="820" width="64" height="16" />
+    <rect x="896" y="820" width="64" height="16" />
+    <rect x="1024" y="820" width="64" height="16" />
+    <rect x="1152" y="820" width="64" height="16" />
+    <rect x="1280" y="820" width="64" height="16" />
+    <rect x="1408" y="820" width="64" height="16" />
+  </g>
+
+  
+  <g fill="#ffffff" opacity="0.6">
+    <rect x="80" y="40" width="4" height="4" />
+    <rect x="200" y="100" width="4" height="4" />
+    <rect x="350" y="60" width="4" height="4" />
+    <rect x="450" y="130" width="4" height="4" />
+    <rect x="600" y="50" width="4" height="4" />
+    <rect x="700" y="120" width="4" height="4" />
+    <rect x="900" y="70" width="4" height="4" />
+    <rect x="1050" y="40" width="4" height="4" />
+    <rect x="1200" y="90" width="4" height="4" />
+    <rect x="1380" y="55" width="4" height="4" />
+    <rect x="130" y="200" width="4" height="4" />
+    <rect x="320" y="250" width="4" height="4" />
+    <rect x="1100" y="180" width="4" height="4" />
+    <rect x="1450" y="210" width="4" height="4" />
+    <rect x="500" y="300" width="4" height="4" />
+    <rect x="1300" y="320" width="4" height="4" />
+    <rect x="60" y="400" width="4" height="4" />
+    <rect x="1500" y="380" width="4" height="4" />
+  </g>
+
+  
+  
+  <g transform="translate(80, 560)">
+    
+    <rect x="16" y="0" width="32" height="32" fill="#8B4513" />
+    <rect x="112" y="0" width="32" height="32" fill="#8B4513" />
+    
+    <rect x="16" y="16" width="128" height="96" fill="#D2691E" />
+    
+    <rect x="40" y="40" width="16" height="16" fill="#ff0044" />
+    <rect x="40" y="40" width="8" height="8" fill="#000000" />
+    <rect x="48" y="48" width="8" height="8" fill="#000000" />
+    <rect x="104" y="40" width="16" height="16" fill="#ff0044" />
+    <rect x="104" y="40" width="8" height="8" fill="#000000" />
+    <rect x="112" y="48" width="8" height="8" fill="#000000" />
+    
+    <rect x="72" y="64" width="16" height="16" fill="#4a0000" />
+    
+    <rect x="56" y="88" width="16" height="8" fill="#8B2500" />
+    <rect x="48" y="80" width="8" height="8" fill="#8B2500" />
+    <rect x="88" y="80" width="8" height="8" fill="#8B2500" />
+    
+    <rect x="0" y="112" width="160" height="112" fill="#D2691E" />
+    <rect x="0" y="112" width="16" height="112" fill="#8B4513" />
+    <rect x="144" y="112" width="16" height="112" fill="#8B4513" />
+    
+    <rect x="16" y="208" width="32" height="48" fill="#D2691E" />
+    <rect x="112" y="208" width="32" height="48" fill="#D2691E" />
+    
+    <rect x="8" y="240" width="48" height="16" fill="#8B4513" />
+    <rect x="104" y="240" width="48" height="16" fill="#8B4513" />
+    
+    <rect x="160" y="128" width="16" height="48" fill="#D2691E" />
+    <rect x="176" y="112" width="16" height="32" fill="#D2691E" />
+  </g>
+
+  
+  <g transform="translate(1230, 560)">
+    
+    <rect x="0" y="0" width="32" height="48" fill="#888888" />
+    <rect x="16" y="8" width="16" height="32" fill="#ffaabb" />
+    <rect x="128" y="0" width="32" height="48" fill="#888888" />
+    <rect x="128" y="8" width="16" height="32" fill="#ffaabb" />
+    
+    <rect x="0" y="32" width="160" height="96" fill="#aaaaaa" />
+    
+    <rect x="24" y="48" width="32" height="32" fill="#ff0044" />
+    <rect x="24" y="48" width="16" height="16" fill="#1a0020" />
+    <rect x="40" y="64" width="16" height="16" fill="#1a0020" />
+    <rect x="104" y="48" width="32" height="32" fill="#ff0044" />
+    <rect x="104" y="48" width="16" height="16" fill="#1a0020" />
+    <rect x="120" y="64" width="16" height="16" fill="#1a0020" />
+    
+    <rect x="72" y="80" width="16" height="16" fill="#ff88aa" />
+    
+    <rect x="0" y="88" width="56" height="4" fill="#ffffff" />
+    <rect x="0" y="96" width="56" height="4" fill="#ffffff" />
+    <rect x="104" y="88" width="56" height="4" fill="#ffffff" />
+    <rect x="104" y="96" width="56" height="4" fill="#ffffff" />
+    
+    <rect x="16" y="128" width="128" height="112" fill="#aaaaaa" />
+    
+    <rect x="16" y="224" width="32" height="48" fill="#aaaaaa" />
+    <rect x="112" y="224" width="32" height="48" fill="#aaaaaa" />
+    
+    <rect x="8" y="256" width="48" height="16" fill="#888888" />
+    <rect x="104" y="256" width="48" height="16" fill="#888888" />
+    
+    <rect x="144" y="144" width="16" height="64" fill="#aaaaaa" />
+    <rect x="160" y="112" width="16" height="48" fill="#aaaaaa" />
+    <rect x="176" y="96" width="16" height="32" fill="#aaaaaa" />
+  </g>
+
+  
+  <g transform="translate(600, 500)">
+    
+    <rect x="0" y="32" width="336" height="288" fill="#cc2200" />
+    
+    <rect x="0" y="16" width="336" height="16" fill="#888888" />
+    <rect x="8" y="0" width="320" height="16" fill="#aaaaaa" />
+    
+    <rect x="0" y="320" width="336" height="16" fill="#888888" />
+    <rect x="8" y="336" width="320" height="16" fill="#aaaaaa" />
+    
+    <rect x="0" y="32" width="48" height="288" fill="#ff4400" />
+    <rect x="288" y="32" width="48" height="288" fill="#ff4400" />
+    
+    <rect x="48" y="64" width="240" height="224" fill="#ffeecc" />
+    
+    <rect x="64" y="80" width="208" height="40" fill="#ff0000" />
+    <text x="168" y="110" font-family="monospace" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="4">RECALL</text>
+    
+    
+    <rect x="128" y="136" width="80" height="64" fill="#1a0020" />
+    
+    <rect x="136" y="148" width="24" height="24" fill="#ffeecc" />
+    <rect x="176" y="148" width="24" height="24" fill="#ffeecc" />
+    
+    <rect x="156" y="172" width="24" height="12" fill="#1a0020" />
+    
+    <rect x="128" y="200" width="16" height="20" fill="#ffeecc" />
+    <rect x="144" y="200" width="16" height="20" fill="#1a0020" />
+    <rect x="160" y="200" width="16" height="20" fill="#ffeecc" />
+    <rect x="176" y="200" width="16" height="20" fill="#1a0020" />
+    <rect x="192" y="200" width="16" height="20" fill="#ffeecc" />
+    
+    <rect x="96" y="224" width="144" height="16" fill="#1a0020" transform="rotate(-30 168 232)" />
+    <rect x="96" y="224" width="144" height="16" fill="#1a0020" transform="rotate(30 168 232)" />
+    
+    <text x="168" y="290" font-family="monospace" font-size="14" fill="#cc0000" text-anchor="middle" letter-spacing="2">CONTAMINATED</text>
+    
+    <rect x="16" y="48" width="8" height="256" fill="#ffffff" opacity="0.15" />
+  </g>
+
+  
+  <g transform="translate(330, 380)">
+    
+    <rect x="0" y="0" width="240" height="120" fill="#000033" />
+    <rect x="4" y="4" width="232" height="112" fill="#000066" stroke="#00ffcc" stroke-width="4" />
+    <text x="120" y="35" font-family="monospace" font-size="16" fill="#00ffcc" text-anchor="middle" letter-spacing="2">MELAMINE</text>
+    <text x="120" y="65" font-family="monospace" font-size="28" fill="#ffff00" text-anchor="middle" font-weight="bold">C₃H₆N₆</text>
+    <text x="120" y="95" font-family="monospace" font-size="12" fill="#ff6666" text-anchor="middle">INDUSTRIAL CHEMICAL</text>
+    
+    <rect x="0" y="0" width="8" height="8" fill="#00ffcc" />
+    <rect x="232" y="0" width="8" height="8" fill="#00ffcc" />
+    <rect x="0" y="112" width="8" height="8" fill="#00ffcc" />
+    <rect x="232" y="112" width="8" height="8" fill="#00ffcc" />
+  </g>
+
+  
+  <g transform="translate(100, 350)">
+    
+    <polygon points="100,0 200,160 0,160" fill="#ffcc00" />
+    <polygon points="100,16 184,152 16,152" fill="#1a0020" />
+    
+    <rect x="92" y="48" width="16" height="64" fill="#ffcc00" />
+    <rect x="92" y="128" width="16" height="16" fill="#ffcc00" />
+  </g>
+
+  
+  <g transform="translate(1280, 350)">
+    <polygon points="100,0 200,160 0,160" fill="#ffcc00" />
+    <polygon points="100,16 184,152 16,152" fill="#1a0020" />
+    <rect x="92" y="48" width="16" height="64" fill="#ffcc00" />
+    <rect x="92" y="128" width="16" height="16" fill="#ffcc00" />
+  </g>
+
+  
+  <g transform="translate(1060, 380)">
+    <rect x="0" y="0" width="220" height="120" fill="#000033" />
+    <rect x="4" y="4" width="212" height="112" fill="#330000" stroke="#ff0044" stroke-width="4" />
+    <text x="110" y="35" font-family="monospace" font-size="14" fill="#ff6666" text-anchor="middle" letter-spacing="1">AFFECTED</text>
+    <text x="110" y="75" font-family="monospace" font-size="32" fill="#ff0044" text-anchor="middle" font-weight="bold">5,300+</text>
+    <text x="110" y="100" font-family="monospace" font-size="12" fill="#ff6666" text-anchor="middle">PRODUCTS RECALLED</text>
+    <rect x="0" y="0" width="8" height="8" fill="#ff0044" />
+    <rect x="212" y="0" width="8" height="8" fill="#ff0044" />
+    <rect x="0" y="112" width="8" height="8" fill="#ff0044" />
+    <rect x="212" y="112" width="8" height="8" fill="#ff0044" />
+  </g>
+
+  
+  <g transform="translate(620, 380)">
+    <rect x="0" y="0" width="200" height="88" fill="#000033" />
+    <rect x="4" y="4" width="192" height="80" fill="#001a33" stroke="#00aaff" stroke-width="4" />
+    <text x="100" y="32" font-family="monospace" font-size="13" fill="#00aaff" text-anchor="middle">MARCH 16, 2007</text>
+    <text x="100" y="58" font-family="monospace" font-size="13" fill="#ffffff" text-anchor="middle">RECALL BEGINS</text>
+    <text x="100" y="76" font-family="monospace" font-size="11" fill="#888888" text-anchor="middle">MENU FOODS</text>
+    <rect x="0" y="0" width="8" height="8" fill="#00aaff" />
+    <rect x="192" y="0" width="8" height="8" fill="#00aaff" />
+    <rect x="0" y="80" width="8" height="8" fill="#00aaff" />
+    <rect x="192" y="80" width="8" height="8" fill="#00aaff" />
+  </g>
+
+  
+  
+  <text x="772" y="248" font-family="monospace" font-size="72" font-weight="bold" fill="#ff6600" text-anchor="middle" opacity="0.3" letter-spacing="-1">2007 PET FOOD RECALL</text>
+  <text x="772" y="332" font-family="monospace" font-size="50" font-weight="bold" fill="#ff0044" text-anchor="middle" opacity="0.3" letter-spacing="2">MELAMINE CONTAMINATION</text>
+
+  
+  <text x="768" y="244" font-family="monospace" font-size="72" font-weight="bold" fill="#ff8800" text-anchor="middle" letter-spacing="-1">2007 PET FOOD RECALL</text>
+  
+  <rect x="240" y="256" width="1056" height="8" fill="#ff8800" />
+  <rect x="240" y="264" width="1056" height="4" fill="#ff4400" />
+
+  <text x="768" y="328" font-family="monospace" font-size="50" font-weight="bold" fill="#ff3366" text-anchor="middle" letter-spacing="2">MELAMINE CONTAMINATION</text>
+
+  
+  <g transform="translate(740, 840)" opacity="0.4">
+    <circle cx="28" cy="28" r="28" fill="none" stroke="#ff8800" stroke-width="8" />
+    <circle cx="28" cy="28" r="8" fill="#ff8800" />
+    
+    <rect x="22" y="0" width="12" height="16" fill="#ff8800" />
+    <rect x="0" y="32" width="16" height="12" fill="#ff8800" />
+    <rect x="40" y="32" width="16" height="12" fill="#ff8800" />
+  </g>
+
+  
+  <g fill="#ff6600" opacity="0.2">
+    <rect x="0" y="0" width="8" height="8" />
+    <rect x="16" y="0" width="8" height="8" />
+    <rect x="0" y="16" width="8" height="8" />
+    <rect x="1520" y="0" width="16" height="8" />
+    <rect x="1512" y="8" width="24" height="8" />
+    <rect x="1520" y="16" width="16" height="8" />
+    <rect x="0" y="1008" width="16" height="16" />
+    <rect x="1520" y="1008" width="16" height="16" />
+  </g>
+
+  
+  <g transform="translate(650, 860)">
+    <rect x="0" y="0" width="236" height="48" fill="#1a0020" />
+    <rect x="4" y="4" width="228" height="40" fill="#220033" stroke="#aa00ff" stroke-width="2" />
+    <text x="118" y="30" font-family="monospace" font-size="14" fill="#cc88ff" text-anchor="middle" letter-spacing="1">⚠ SOURCE: CHINA ⚠</text>
+  </g>
+
+  
+  <g transform="translate(240, 720)">
+    
+    <rect x="0" y="16" width="144" height="16" fill="#666666" />
+    
+    <rect x="8" y="32" width="128" height="64" fill="#444444" />
+    <rect x="16" y="96" width="112" height="16" fill="#555555" />
+    <rect x="24" y="112" width="96" height="8" fill="#444444" />
+    
+    <rect x="16" y="40" width="112" height="48" fill="#8B0000" />
+    <rect x="24" y="40" width="16" height="16" fill="#aa1100" />
+    <rect x="56" y="44" width="24" height="20" fill="#aa1100" />
+    <rect x="88" y="40" width="20" height="16" fill="#aa1100" />
+    
+    <rect x="56" y="56" width="32" height="8" fill="#ffff00" transform="rotate(45 72 60)" />
+    <rect x="56" y="56" width="32" height="8" fill="#ffff00" transform="rotate(-45 72 60)" />
+  </g>
+
+  
+  <g transform="translate(1152, 720)">
+    <rect x="0" y="16" width="144" height="16" fill="#666666" />
+    <rect x="8" y="32" width="128" height="64" fill="#444444" />
+    <rect x="16" y="96" width="112" height="16" fill="#555555" />
+    <rect x="24" y="112" width="96" height="8" fill="#444444" />
+    <rect x="16" y="40" width="112" height="48" fill="#8B0000" />
+    <rect x="24" y="40" width="16" height="16" fill="#aa1100" />
+    <rect x="56" y="44" width="24" height="20" fill="#aa1100" />
+    <rect x="88" y="40" width="20" height="16" fill="#aa1100" />
+    <rect x="56" y="56" width="32" height="8" fill="#ffff00" transform="rotate(45 72 60)" />
+    <rect x="56" y="56" width="32" height="8" fill="#ffff00" transform="rotate(-45 72 60)" />
+  </g>
+
+  
+  <g transform="translate(1060, 860)">
+    <rect x="0" y="0" width="200" height="48" fill="#1a0020" />
+    <rect x="4" y="4" width="192" height="40" fill="#001133" stroke="#0088ff" stroke-width="2" />
+    <text x="100" y="30" font-family="monospace" font-size="14" fill="#44aaff" text-anchor="middle" letter-spacing="2">FDA INVESTIGATION</text>
+  </g>
+
+  
+  <rect width="1536" height="1024" fill="url(#scanlines)" opacity="0.04" />
+
+  
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="transparent" />
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.6" />
+  </radialGradient>
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+</svg>

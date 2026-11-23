@@ -1,0 +1,223 @@
+# =============================================================================
+# genome/manifest.yml — the machine-readable transplant inventory.
+# =============================================================================
+# The authoritative classification of EVERY concept-bearing asset of the org
+# model, and the literal→token map that abstracts the concept-specific ones.
+# Consumed by genome/bin/verify.rb (the routine-sync gate) and, later, by the
+# render/plant engines. Keeping this in sync with the live repo IS the genome's
+# "routinely updated" guarantee: bin/verify.rb --check fails CI if a
+# concept-bearing file exists in the repo that is not classified here.
+#
+# Tiers:
+#   transplant  — concept-AGNOSTIC, copied byte-for-byte; must contain NO concept literal.
+#   template    — carries concept literals; tokenized via `tokens:` (literal→{{TOKEN}}) at plant time.
+#   override    — a templated copy that overlays an otherwise-agnostic path.
+#   regenerate  — concept-specific NARRATIVE; re-authored for the new concept by a genesis agent (not gsub'd).
+#   ignore      — never travels in the genome (instance content, generated data, build output, binaries).
+# =============================================================================
+
+genome_version: "0.1.0"
+
+# ---- literal → token map (the concept-delta the manifest fills) -------------
+# Order matters at render time: longer/more-specific literals first. The verify
+# gate uses these literals to leak-scan transplant files and to confirm template
+# files still contain what they should.
+tokens:
+  - { token: HUB_REPO,        literal: "year-of-ai.github.io",                example: "world-atlas.github.io",        from: "_config.yml github_repository; grow-lineage.yml clone/dispatch target" }
+  - { token: ORG,             literal: "year-of-ai",                          example: "world-atlas",                  from: "_config.yml github_user; orchestrate.yml:113; grow-lineage.yml:38" }
+  - { token: SITE_TITLE,      literal: "Year of AI",                          example: "World Atlas",                  from: "_config.yml title; home H1" }
+  - { token: THEME_REPO,      literal: "bamr87/zer0-mistakes",                example: "bamr87/zer0-mistakes",         from: "_config.yml remote_theme; _data/hub.yml pages.theme_repo" }
+  - { token: FOUNDER_NAME,    literal: "Amr Abdel-Motaleb",                   example: "Jane Cartographer",            from: "_config.yml founder/&name" }
+  - { token: FOUNDER_EMAIL,   literal: "amr.abdel@gmail.com",                 example: "jane@world-atlas.org",         from: "_config.yml email" }
+  - { token: GIT_AUTHOR_EMAIL, literal: "noreply@anthropic.com",             example: "bot@world-atlas.org",          from: "grow-lineage.yml publish author; plant-lineage.rb:109" }
+  # Lexicon (the most pervasive PROSE token). NEVER bare-gsub'd — a bare "year"
+  # would corrupt Jekyll date config (:year, year-month-day) and the member list.
+  # Applied ONLY via the curated exact phrases below; narrative pages are `regenerate`.
+  - { token: UNIT_NOUN,        literal: "year",                               example: "country",                      from: "lexicon; via phrase_tokens only" }
+  - { token: UNIT_NOUN_PLURAL, literal: "years",                             example: "countries",                    from: "lexicon; via phrase_tokens only" }
+
+# Curated concept-prose phrases (unit-parameterized: {unit}/{units}). plant.rb
+# instantiates each for the source + target unit, applies lowercase + Title-first
+# variants as EXACT strings. Exact phrases only — never a bare "{unit}" — so Jekyll
+# date placeholders and member ids are never touched.
+phrase_tokens:
+  - "{unit} repo"          # "year repo(s)" -> "country repo(s)"
+  - "{unit} repositories"
+  - "{unit} site"          # "year site(s)"
+  - "each {unit}"          # "each year('s)"
+  - "every {unit}"         # "every year" (repo-template README: "every year in the network")
+  - "per {unit}"
+  - "{unit}-by-{unit}"     # "year-by-year"
+  - "{unit}-repo"          # "year-repo" (hyphenated, e.g. the concurrency-group comment)
+  - "{unit}'s"             # bare possessive, e.g. "the year's Evolution Log"
+  - "<{unit}>"             # bracket placeholder in comments/paths, e.g. "<year>.md", "repo=<year>"
+  - "{units} of the org"   # "the org's year sites" phrasing safety
+
+# ---- transplant: agnostic, byte-for-byte (verify leak-scans these) ----------
+transplant:
+  - "lineage/framework/**"                 # the concept-agnostic agent toolkit (skills/prompts/agents/instructions/scripts/workflows)
+  - "scripts/lib/hub.rb"                    # org read from cfg['org'] — agnostic
+  - "scripts/content-review.rb"
+  - "scripts/sync-hub-metadata.rb"
+  - "scripts/sync-lineage-state.rb"
+  - "lineage/repo-template/.claude/**"      # thin adapters — agnostic
+  - "lineage/repo-template/.gitignore"
+  - "lineage/repo-template/telemetry/.gitkeep"
+  - "pages/contact.md"
+  - "pages/privacy-policy.md"
+  - "pages/terms-of-service.md"
+  - "_data/theme_skins.yml"
+  - "_data/theme_backgrounds.yml"
+  - "_data/ui-text.yml"
+  - "_data/landing.yml"                     # 3 cards describe the THEME, not the concept (verified) — agnostic
+  - "_data/fleet_pause.yml"                 # global growth kill-switch — agnostic infra
+  - "templates/deploy/chat-proxy/worker.js"
+  - "templates/deploy/chat-proxy/page-store.mjs"
+  - "templates/deploy/chat-proxy/dev-proxy.mjs"
+  - ".github/dependabot.yml"
+  - ".github/workflows/genome-sync.yml"     # the routine-sync gate — agnostic, travels with the genome
+  - ".github/workflows/codeql.yml"          # security scanning — agnostic
+  - ".github/workflows/telemetry-ledger.yml" # the evolution-ledger collector — agnostic
+  - ".github/workflows/framework-pr-reviewer.yml" # self-modification safety gate — agnostic
+  - ".github/workflows/docs-warden.yml"     # doc-coverage agent — agnostic
+  - ".github/workflows/pages-deploy-sentinel.yml" # member-site liveness monitor — agnostic
+  - ".github/workflows/secret-expiry-watch.yml" # auth-credential probe — agnostic
+  - ".github/workflows/fleet-health-watch.yml" # daily ledger health digest — agnostic
+  - ".github/workflows/build-validation.yml" # pre-merge Jekyll build gate — agnostic, every plant wants it
+  - ".github/workflows/site-quality-scan.yml" # weekly live-site quality scan (bamr87/bamr87 site-quality@v2, mode: url) — agnostic
+  - ".github/site-quality.yml"              # its report-only scan config — agnostic
+  - ".github/config/docs_warden.yml"        # doc-coverage map — agnostic
+  - ".github/instructions/docs-warden.instructions.md" # doc-warden contract — agnostic
+  - "scripts/docs-warden.rb"                # doc-coverage engine — agnostic
+  - "scripts/normalize-front-matter-dates.rb" # grow publish gate + member repair tool — agnostic
+  - "scripts/generate-preview-images.sh"    # 10-line locator that runs the preview engine on the hub's own pages — agnostic
+  - "scripts/lib/banners.rb"                # ADR-0008: policy→engine flags, era palettes, banner/v1 telemetry stats — agnostic
+  - "scripts/reillustrate.rb"               # ADR-0008 backfill planner/runner (worst banners first) — agnostic (org from cfg)
+  - "scripts/banner-quality.rb"             # ADR-0008 weekly banner watcher (telemetry window → digest + flag) — agnostic
+  - ".github/workflows/reillustrate.yml"    # ADR-0008 backfill worker (one member per run, repo-write serialized) — agnostic
+  - "scripts/sync-member-metadata.rb"       # registry→GitHub metadata sync — agnostic (org from cfg)
+  - "scripts/migrate-to-news-structure.rb"  # one-time flat→news-layout converter — agnostic
+  - "scripts/generate-favicon.rb"           # mints a member's favicon.ico + favicon.svg — agnostic (label is an arg)
+  - "scripts/audit-banners.rb"              # ADR-0008 banner-quality baseline (lint + renders + critic sample) — agnostic (org from cfg)
+  - "telemetry/README.md"                   # ledger schema doc — agnostic
+  - "404.html"
+  - "search.json"                           # Jekyll search-index page config — agnostic
+  - ".gitignore"                            # repo hygiene — agnostic
+
+# ---- template: tokenized via tokens[] above ---------------------------------
+template:
+  - "_config.yml"
+  - "_config_dev.yml"
+  - "_data/hub.yml"
+  - "_data/authors.yml"
+  - "_data/navigation/main.yml"
+  - "lineage/policy.yml"
+  - ".github/workflows/orchestrate.yml"
+  - ".github/workflows/grow-lineage.yml"
+  - ".github/workflows/hub-sync.yml"
+  - ".github/workflows/plant-lineage.yml"
+  - ".github/workflows/ai-content-review.yml"
+  - ".github/workflows/deploy-chat-proxy.yml"
+  - "scripts/provision-org-sites.rb"
+  - "scripts/plant-lineage.rb"
+  - "templates/org-site/_config.yml.template"
+  - "templates/org-site/navigation-main.yml.template"
+  - "templates/deploy/chat-proxy/wrangler.toml.template"
+  - "Gemfile"                                # carries a year-of-ai reference
+  - "docker-compose.yml"                     # carries a year-of-ai reference
+
+# ---- override: templated copy of an otherwise-agnostic skeleton file --------
+override:
+  - "LICENSE"                                # same MIT terms/holder; only the copyright year differs per org
+  - "lineage/repo-template/CLAUDE.md"       # org links + 'year repo' → {{ORG}}/{{HUB_DOMAIN}}/{{UNIT_NOUN}}
+  - "lineage/repo-template/README.md"       # org + hub URLs + 'every year'; KEEPS __SUBJECT__ for plant-lineage
+  - "lineage/seed-package/seed.template.md"  # {{SUBJECT}}/{{Items}} placeholders + 'the year' comment examples
+  - "lineage/seed-package/lifecycle.template.yml"
+  - "lineage/seed-package/MANIFEST.md"
+  - "lineage/seed-package/README.md"
+  # Framework files that are otherwise agnostic but carry the bot email or hub name
+  # (verify flagged these as leaks in the transplant tier — they overlay framework/**):
+  - "lineage/framework/workflows/grow.yml"        # header comment names the hub → {{ORG}}/{{HUB_REPO}}
+  - "lineage/framework/workflows/learn.yml"        # git author noreply@anthropic.com → {{GIT_AUTHOR_EMAIL}}
+  - "lineage/framework/workflows/telemetry.yml"    # git author → {{GIT_AUTHOR_EMAIL}}
+  - "lineage/framework/scripts/lineage.sh"         # git author → {{GIT_AUTHOR_EMAIL}}
+
+# ---- regenerate: concept narrative, re-authored by a genesis agent ----------
+# (a global gsub would mangle SVG ARIA labels, taxonomy prose, the "2005-2011
+# lineage" framing, etc. — these are authored fresh from the manifest + model spec.)
+regenerate:
+  - "pages/home.md"
+  - "pages/hub.md"
+  - "pages/orchestration.md"
+  - "pages/self-improvement.md"
+  - "pages/lineage.md"
+  - "lineage/seeds/*.md"                     # per-member concept DNA; the first is written by plant from the manifest
+  - "templates/org-profile/README.md"        # org profile narrative — re-authored per concept
+
+# ---- defaulted: not in the manifest, owned elsewhere, transplant with a default
+defaulted:
+  - { what: "model-tier IDs", where: "lineage/policy.yml models block", owner: "policy.yml + ADR-0003 model-id-drift-checker" }
+  - { what: "claude-code-action ref", where: "grow-lineage.yml / ai-content-review.yml", default: "anthropics/claude-code-action@v1" }
+  - { what: "auth secret names", where: "all workflows", default: "CLAUDE_CODE_OAUTH_TOKEN / ANTHROPIC_API_KEY / LIFECYCLE_PAT" }
+
+# ---- default_plant_exclude: classified, but NOT planted into a fresh org ------
+# These are the mature self-improvement / hub-tooling workflows. They are real
+# genome assets (classified above so genome-sync gates them), but a FRESH plant
+# excludes them — they depend on context a new org lacks (genome-sync needs
+# genome/; the monitors need a populated ledger + members; the reviewers need PRs;
+# the chat-proxy needs its secrets). A default plant lands a clean, growing org
+# (orchestrate + grow-lineage + hub-sync); `plant.rb --with-fleet` adds these once
+# the org has matured. (Lesson from the ai-world-view plant, which had to prune them.)
+default_plant_exclude:
+  - ".github/workflows/genome-sync.yml"
+  - ".github/workflows/codeql.yml"
+  - ".github/workflows/telemetry-ledger.yml"
+  - ".github/workflows/framework-pr-reviewer.yml"
+  - ".github/workflows/docs-warden.yml"
+  - ".github/workflows/pages-deploy-sentinel.yml"
+  - ".github/workflows/secret-expiry-watch.yml"
+  - ".github/workflows/fleet-health-watch.yml"
+  - ".github/workflows/ai-content-review.yml"
+  - ".github/workflows/deploy-chat-proxy.yml"
+  - ".github/workflows/site-quality-scan.yml"
+  - ".github/workflows/reillustrate.yml"     # the backfill needs a baseline audit + a populated banner ledger
+
+# ---- ignore: never travels in the genome (verify skips these) ---------------
+ignore:
+  - "_site/**"
+  - ".git/**"
+  - ".jekyll-*/**"
+  - "vendor/**"
+  - "node_modules/**"
+  - ".claude/**"
+  - ".vscode/**"                             # editor tasks/launch/settings stamped per repo by the bamr87 fleet-vscode/v1 fan-out (owned there, not genome DNA)
+  - "genome/**"                              # the genome doesn't transplant itself
+  - "_data/hub_index.yml"                    # generated
+  - "_data/lineage.yml"                      # generated
+  - "telemetry/*.jsonl"                      # the evolution ledger — instance growth data
+  - "_data/navigation/hub.yml"               # generated
+  - "lineage/decisions/**"                   # universal ADRs; worked-example prose is whitelisted, not transplanted as concept
+  - "lineage/news-migration/*.yml"           # one-time per-member news-layout migration inputs (tags/sections) — not DNA
+  - "_reports/**"                            # generated audit reports (banners-baseline.md/.json) — instance measurements
+  - "assets/**"                              # images/binaries + site-owned data
+  - "README.md"                              # repo readme, not site content
+  - "PRD.md"                                 # product requirements doc (repo doc, not site content)
+  - "features/**"                            # the hub's own feature catalog (instance inventory; linked from PRD.md)
+  - "docs/constitution.md"                   # the hub's own constitution (governance kit; instance rules, not DNA)
+  - "docs/amendments/**"                     # the hub's constitution amendment log (instance history)
+  - "CLAUDE.md"                              # hub's own dev guide (regenerated narrative; not member-facing)
+  - "ARCHITECTURE.md"                        # hub's own architecture reference (regenerated narrative)
+  - "CHANGELOG.md"                           # hub's own changelog (instance history)
+  - "lineage/README.md"                      # lineage-dir dev doc (regenerated narrative)
+  - "AGENTS.md"                              # hub's own agent guide (fleet agent-context kit; instance narrative)
+  - "CODE_OF_CONDUCT.md"                     # repo community-health file (fleet standard kit), not site content
+  - "SECURITY.md"                            # repo security policy (fleet standard kit), not site content
+  - "docs/README.md"                         # repo docs index (fleet standard kit), not site content
+  - "docs/adr/**"                            # the hub's own ADR log (instance history)
+  - "features/**"                            # the hub's own feature catalog (instance inventory)
+  - "verify/**"                              # the hub's own verify kit config + scenarios (fleet verify kit)
+  - "Gemfile.lock"
+  - "**/*.png"
+  - "**/*.jpg"
+  - "**/*.ico"
+  - "**/*.csv"

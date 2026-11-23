@@ -1,0 +1,30 @@
+# =============================================================================
+# News sections — maintained by build-structure; do not edit by hand.
+# Drives the section nav, the /news/ landing counts, and "explore other
+# sections". One entry per concept.taxonomy section in seed.md.
+# =============================================================================
+
+- title: History & Politics
+  icon: bi-bank
+  url: /news/history-politics/
+  description: "Geopolitics, governance, conflict, and diplomacy of the year 2014."
+
+- title: Science & Technology
+  icon: bi-rocket-takeoff
+  url: /news/science-technology/
+  description: "Discoveries, missions, and technological milestones of the year 2014."
+
+- title: Arts & Culture
+  icon: bi-palette
+  url: /news/arts-culture/
+  description: "Film, music, literature, and the visual arts of the year 2014."
+
+- title: Society & Economics
+  icon: bi-cash-coin
+  url: /news/society-economics/
+  description: "Economy, business, disasters, sport, and society of the year 2014."
+
+- title: People
+  icon: bi-person-badge
+  url: /news/people/
+  description: "People whose 2014 actions, works, or passing defined the year."

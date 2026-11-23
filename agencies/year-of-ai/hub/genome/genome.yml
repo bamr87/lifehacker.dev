@@ -1,0 +1,79 @@
+# =============================================================================
+# genome.yml — THE CONCEPT MANIFEST (this org's filled instance).
+# =============================================================================
+# The ONE human-filled file. Every concept-specific value the model needs derives
+# from here; everything else transplants (see genome/manifest.yml + GENOME.md).
+# To plant the whole model in a NEW org for a NEW concept, copy this file, change
+# the ~9 required fields (marked *), and run the planter. See
+# genome.example.countries.yml for a worked "countries" fill.
+#
+# Validated by genome/schema.json. Fields not set here fall back to
+# genome.defaults.GENERATED.yml (extracted from the live hub).
+
+genome_version: "0.1.0"          # * must match genome/CHANGELOG.md head
+
+identity:
+  org: "year-of-ai"              # * GitHub org/user that owns the hub + all member repos
+  hub_repo: "year-of-ai.github.io"   # * the hub repo (= <org>.github.io)
+  hub_domain: "year-of-ai.github.io" # * Pages domain (= <org>.github.io)
+  git_author_email: "noreply@anthropic.com"  # commit author for the growth bot
+  theme_repo: "bamr87/zer0-mistakes"          # * the remote_theme (load-bearing build input)
+
+branding:
+  site_title: "Year of AI"       # * network display name (site title, home H1)
+  site_tagline: "A federated network of self-growing, year-by-year knowledge bases."  # *
+  founder_name: "Amr Abdel-Motaleb"
+  founder_email: "amr.abdel@gmail.com"
+  author_bio: "IT nerd trying to be an IT hero"
+  author_location: "Denver, CO"
+  copyright_year: 2024
+  preview_image_style: "retro pixel art, 8-bit"   # OG/banner/logo image generation
+  preview_provider: "openai"
+  preview_model: "gpt-image-2"
+  chat_assistant_name: "Zer0"
+  chat_system_prompt: ""         # default derived from site_title/site_tagline
+
+# Owner-specific identity/tracking. DEFAULT EMPTY for a new org — NEVER inherit
+# the source org's analytics/social ids (that would leak/misattribute traffic).
+analytics:
+  google_analytics: ""
+  posthog_api_key: ""
+  posthog_host: ""
+social:
+  twitter: ""
+  instagram: ""
+  youtube_url: ""
+comments:
+  giscus_repo_id: ""
+  giscus_category_id: ""
+
+# The lexicon — what one "member" of the network is called. The most pervasive
+# prose token; applied only where phrase-safe (narrative pages are regenerated).
+lexicon:
+  unit_noun: "year"              # * one member
+  unit_noun_plural: "years"
+  unit_icon: "bi-calendar3"      # Bootstrap icon for member tiles
+  subject_singular: "the year"   # member subject with article, for prose
+  member_subject_template: "the year {member}"  # * how a member id becomes its concept subject
+  knowledge_table_heading: "Notable Events of {{SUBJECT}}"
+
+taxonomy:
+  taxonomy_strategy: "temporal"  # * temporal | enumerable | hierarchical (drives tile sort + seed §1)
+  default_taxonomy:              # * 4-8 categories seeded into every new member
+    - { name: "History & Politics",     slug: "history-politics" }
+    - { name: "Science & Technology",   slug: "science-technology" }
+    - { name: "Arts & Culture",         slug: "arts-culture" }
+    - { name: "Society & Economics",    slug: "society-economics" }
+    - { name: "People",                 slug: "people" }
+
+lifecycle:
+  first_member: "1776"           # * the first member repo the planter creates + grows
+  member_slug_rule: "Use the 4-digit year as the repo slug."
+  succession_rule: "The next member is the following calendar year (or a tangential era chosen by the hub)."  # * free text
+  consolidation_naming_rule: "Hyphenate the range (e.g. 2005-2011)."
+  deepen_granularity: "month, then event"
+
+cadence:
+  cron: "30 5 * * *"             # daily growth window (UTC)
+  replant_after_ticks: 3
+  consolidate_at_members: 7

@@ -1,0 +1,33 @@
+# Dependabot — keep the hub's CI dependencies current and surface advisories.
+# Addresses ADR-0003 defect #3 (no supply-chain monitoring). Dependabot only ever
+# opens PRs (a human reviews/merges), so it is safe to run unattended.
+version: 2
+updates:
+  # The action refs across all workflows (orchestrate, grow-lineage, hub-sync,
+  # ai-content-review, deploy-chat-proxy) — today pinned to floating tags like
+  # actions/checkout@v4 on secret-bearing jobs. Dependabot tracks updates and (with
+  # the GitHub setting enabled) can pin to SHAs.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci(deps)"
+    labels:
+      - dependencies
+      - github-actions
+
+  # The Ruby toolchain (Gemfile / Gemfile.lock) used for local builds + scripts.
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - dependencies
+      - ruby

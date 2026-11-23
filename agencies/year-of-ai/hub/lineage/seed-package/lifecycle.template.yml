@@ -1,0 +1,47 @@
+# lifecycle.template.yml — policy + virgin state for a NEW lineage's first repo.
+#
+# Copy to `lifecycle.yml` in the first repo, fill the {{PLACEHOLDERS}}, and leave the `state`
+# block exactly as below. After germination the framework maintains `state`; hand-edit only `policy`.
+
+lifecycle:
+  policy:
+    # --- Generation length ---
+    replant_after_ticks: 3          # growth ticks before this repo matures and spawns a successor
+    consolidate_at_members: 7       # lineage size that triggers /consolidate (after the last member grows)
+
+    succession:
+      # How the NEXT member's subject is derived from the newest one. Concept-agnostic — phrase it
+      # so a model can apply it mechanically. Examples:
+      #   year lineage:   "Increment the calendar year of the newest member by one."
+      #   org lineage:    "Advance to the next fiscal year of the organization."
+      rule: "{{SUCCESSION RULE — how to derive the next subject from the newest member}}"
+      # After this lineage consolidates, its /expand phase plants the next era's lineage from this
+      # concept. Leave blank to stop the recursion; name the next era to keep expanding.
+      next_lineage: ""
+
+    consolidation:
+      naming_rule: "{{How to name the merged repo, e.g. hyphenated range of the members' subjects}}"
+      layout: "One top-level directory per lineage member, named by its subject slug."
+      deepen_granularity: "{{finer unit /expand deepens to, e.g. month}}"
+
+    models:
+      tick: "claude-sonnet-5-5"     # per-tick growth (plan/curate/structure)
+      learn: "claude-sonnet-5-5"    # per-generation telemetry → prompt-edit flywheel
+      expand: "claude-sonnet-5-5"   # post-consolidation deepening
+      distill: "claude-opus-5-5"    # once-per-lineage meta-review (frontier model)
+
+    distill_at_members: 3           # lineage size that triggers the one-time /distill meta-review
+
+  # ---- VIRGIN STATE — leave exactly as-is; the framework owns this block after germination ----
+  state:
+    status: growing
+    distilled_at: null
+    granularity: "{{coarsest unit, e.g. year}}"
+    next_lineage_planted: null
+    generation_ticks: 0
+    origin: null                    # consolidated repo that planted this lineage (null for a fresh lineage)
+    lineage:
+      - subject: "{{SUBJECT of the first repo}}"
+        repo: "{{owner}}/{{first-repo-slug}}"
+        status: growing
+        spawned_from: null

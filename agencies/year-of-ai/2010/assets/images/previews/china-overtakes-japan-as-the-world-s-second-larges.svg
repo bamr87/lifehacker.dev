@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>China Overtakes Japan as the World's Second-Largest Economy – Retro Pixel Art Banner</title>
+  <defs>
+    <radialGradient id="crt" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a0a2e" />
+      <stop offset="100%" stop-color="#000005" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    
+    <pattern id="scanlines" x="0" y="0" width="2" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="2" height="2" fill="rgba(0,0,0,0.18)" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#crt)" />
+  
+  <rect width="1536" height="1024" fill="url(#scanlines)" />
+
+  
+  
+  <rect x="0" y="0" width="16" height="16" fill="#ff0044" />
+  <rect x="16" y="0" width="16" height="16" fill="#ffcc00" />
+  <rect x="32" y="0" width="16" height="16" fill="#ff0044" />
+  <rect x="48" y="0" width="16" height="16" fill="#ffcc00" />
+  <rect x="64" y="0" width="16" height="16" fill="#ff0044" />
+  <rect x="80" y="0" width="16" height="16" fill="#ffcc00" />
+  
+  <g id="topborder">
+    <rect x="0" y="0" width="1536" height="8" fill="#ff0044" opacity="0.7" />
+    <rect x="0" y="8" width="1536" height="8" fill="#ffcc00" opacity="0.7" />
+  </g>
+  <rect x="0" y="1008" width="1536" height="8" fill="#ff0044" opacity="0.7" />
+  <rect x="0" y="1016" width="1536" height="8" fill="#ffcc00" opacity="0.7" />
+  <rect x="0" y="0" width="8" height="1024" fill="#ff0044" opacity="0.7" />
+  <rect x="8" y="0" width="8" height="1024" fill="#ffcc00" opacity="0.7" />
+  <rect x="1520" y="0" width="8" height="1024" fill="#ff0044" opacity="0.7" />
+  <rect x="1528" y="0" width="8" height="1024" fill="#ffcc00" opacity="0.7" />
+
+  
+  
+  <rect x="80" y="820" width="700" height="8" fill="#44ff88" filter="url(#glow)" />
+
+  
+  <rect x="120" y="340" width="120" height="480" fill="#3355ff" filter="url(#glow)" />
+  
+  <rect x="120" y="340" width="16" height="480" fill="#6688ff" opacity="0.5" />
+  <rect x="236" y="340" width="4" height="480" fill="#1122aa" />
+  
+  <text x="180" y="310" font-family="monospace" font-size="28" fill="#6688ff" text-anchor="middle" filter="url(#glow)" font-weight="bold">USA</text>
+  <text x="180" y="280" font-family="monospace" font-size="20" fill="#4466cc" text-anchor="middle">#1</text>
+
+  
+  <rect x="300" y="530" width="120" height="290" fill="#ff2244" filter="url(#glow)" />
+  <rect x="300" y="530" width="16" height="290" fill="#ff6677" opacity="0.5" />
+  <rect x="416" y="530" width="4" height="290" fill="#aa0022" />
+  
+  <text x="360" y="500" font-family="monospace" font-size="28" fill="#ff4466" text-anchor="middle" filter="url(#glow)" font-weight="bold">CHN</text>
+  <text x="360" y="470" font-family="monospace" font-size="20" fill="#cc2244" text-anchor="middle">#2</text>
+  
+  <rect x="344" y="570" width="8" height="8" fill="#ffcc00" />
+  <rect x="336" y="562" width="8" height="8" fill="#ffcc00" />
+  <rect x="352" y="562" width="8" height="8" fill="#ffcc00" />
+  <rect x="328" y="570" width="8" height="8" fill="#ffcc00" />
+  <rect x="360" y="570" width="8" height="8" fill="#ffcc00" />
+  <rect x="344" y="578" width="8" height="8" fill="#ffcc00" />
+
+  
+  <rect x="480" y="545" width="120" height="275" fill="#cccccc" filter="url(#glow)" />
+  <rect x="480" y="545" width="16" height="275" fill="#eeeeee" opacity="0.5" />
+  <rect x="596" y="545" width="4" height="275" fill="#888888" />
+  
+  <circle cx="540" cy="600" r="28" fill="#cc0022" />
+  <circle cx="540" cy="600" r="20" fill="#ff2244" />
+  
+  <text x="540" y="515" font-family="monospace" font-size="28" fill="#cccccc" text-anchor="middle" filter="url(#glow)" font-weight="bold">JPN</text>
+  <text x="540" y="485" font-family="monospace" font-size="20" fill="#888888" text-anchor="middle">#3</text>
+
+  
+  
+  <rect x="420" y="640" width="60" height="8" fill="#ffcc00" filter="url(#glow2)" />
+  <rect x="468" y="624" width="8" height="8" fill="#ffcc00" filter="url(#glow2)" />
+  <rect x="476" y="632" width="8" height="8" fill="#ffcc00" filter="url(#glow2)" />
+  <rect x="460" y="624" width="8" height="8" fill="#ffcc00" filter="url(#glow2)" />
+  <rect x="452" y="632" width="8" height="8" fill="#ffcc00" filter="url(#glow2)" />
+
+  
+  <text x="360" y="845" font-family="monospace" font-size="18" fill="#ff6677" text-anchor="middle">$5.88T</text>
+  <text x="540" y="845" font-family="monospace" font-size="18" fill="#aaaaaa" text-anchor="middle">$5.47T</text>
+  <text x="180" y="845" font-family="monospace" font-size="18" fill="#6688ff" text-anchor="middle">$14.96T</text>
+
+  
+  
+  <rect x="900" y="120" width="280" height="186" fill="#de2910" />
+  
+  <rect x="924" y="140" width="8" height="8" fill="#ffde00" />
+  <rect x="916" y="148" width="8" height="8" fill="#ffde00" />
+  <rect x="932" y="148" width="8" height="8" fill="#ffde00" />
+  <rect x="908" y="156" width="8" height="8" fill="#ffde00" />
+  <rect x="940" y="156" width="8" height="8" fill="#ffde00" />
+  <rect x="916" y="164" width="8" height="8" fill="#ffde00" />
+  <rect x="932" y="164" width="8" height="8" fill="#ffde00" />
+  <rect x="924" y="172" width="8" height="8" fill="#ffde00" />
+  
+  <rect x="968" y="140" width="6" height="6" fill="#ffde00" />
+  <rect x="984" y="152" width="6" height="6" fill="#ffde00" />
+  <rect x="984" y="168" width="6" height="6" fill="#ffde00" />
+  <rect x="968" y="180" width="6" height="6" fill="#ffde00" />
+
+  
+  <rect x="1220" y="120" width="280" height="186" fill="#ffffff" />
+  <rect x="1220" y="120" width="280" height="186" fill="none" stroke="#cccccc" stroke-width="2" />
+  
+  <rect x="1332" y="156" width="8" height="8" fill="#bc002d" />
+  <rect x="1324" y="164" width="8" height="8" fill="#bc002d" />
+  <rect x="1340" y="164" width="8" height="8" fill="#bc002d" />
+  <rect x="1316" y="172" width="8" height="8" fill="#bc002d" />
+  <rect x="1332" y="172" width="8" height="8" fill="#bc002d" />
+  <rect x="1348" y="172" width="8" height="8" fill="#bc002d" />
+  <rect x="1324" y="180" width="8" height="8" fill="#bc002d" />
+  <rect x="1340" y="180" width="8" height="8" fill="#bc002d" />
+  <rect x="1332" y="188" width="8" height="8" fill="#bc002d" />
+  <rect x="1316" y="196" width="8" height="8" fill="#bc002d" />
+  <rect x="1332" y="196" width="8" height="8" fill="#bc002d" />
+  <rect x="1348" y="196" width="8" height="8" fill="#bc002d" />
+  <rect x="1324" y="204" width="8" height="8" fill="#bc002d" />
+  <rect x="1340" y="204" width="8" height="8" fill="#bc002d" />
+  <rect x="1332" y="212" width="8" height="8" fill="#bc002d" />
+  <rect x="1324" y="220" width="8" height="8" fill="#bc002d" />
+  <rect x="1340" y="220" width="8" height="8" fill="#bc002d" />
+  <rect x="1332" y="228" width="8" height="8" fill="#bc002d" />
+
+  
+  <rect x="896" y="100" width="8" height="220" fill="#888844" />
+  <rect x="1216" y="100" width="8" height="220" fill="#888844" />
+
+  
+  
+  <rect x="840" y="480" width="48" height="48" fill="#ffcc00" filter="url(#glow2)" />
+  <rect x="848" y="488" width="32" height="32" fill="#ffaa00" />
+  <rect x="856" y="496" width="16" height="16" fill="#ffee44" />
+  <text x="864" y="520" font-family="monospace" font-size="20" fill="#1a0a2e" text-anchor="middle" font-weight="bold">$</text>
+
+  
+  <rect x="820" y="560" width="460" height="60" fill="#000022" opacity="0.85" />
+  <rect x="820" y="560" width="460" height="60" fill="none" stroke="#44ff88" stroke-width="4" />
+  <text x="1050" y="601" font-family="monospace" font-size="26" fill="#44ff88" text-anchor="middle" filter="url(#glow)" font-weight="bold">▶ PLAYER 2 HAS ENTERED</text>
+
+  
+  <rect x="820" y="650" width="460" height="56" fill="#000022" opacity="0.85" />
+  <rect x="820" y="650" width="460" height="56" fill="none" stroke="#ffcc00" stroke-width="4" />
+  <text x="1050" y="689" font-family="monospace" font-size="30" fill="#ffcc00" text-anchor="middle" filter="url(#glow2)" font-weight="bold">YEAR: 2010</text>
+
+  
+  <rect x="820" y="740" width="460" height="50" fill="#000022" opacity="0.85" />
+  <rect x="820" y="740" width="460" height="50" fill="none" stroke="#ff6677" stroke-width="3" />
+  <text x="835" y="772" font-family="monospace" font-size="20" fill="#ff6677" filter="url(#glow)">CHN GDP: $5.8786T  ★ NEW HIGH</text>
+
+  
+  
+  <rect x="60" y="870" width="1416" height="130" fill="#000022" opacity="0.9" />
+  <rect x="60" y="870" width="1416" height="130" fill="none" stroke="#44ff88" stroke-width="6" />
+
+  
+  <text x="768" y="920" font-family="monospace" font-size="52" fill="#ffffff" text-anchor="middle" font-weight="bold" filter="url(#glow)" letter-spacing="2">CHINA OVERTAKES JAPAN</text>
+  
+  <text x="768" y="978" font-family="monospace" font-size="38" fill="#44ff88" text-anchor="middle" font-weight="bold" filter="url(#glow)" letter-spacing="1">AS WORLD'S 2ND-LARGEST ECONOMY</text>
+
+  
+  
+  <rect x="740" y="340" width="24" height="24" fill="#ffcc00" opacity="0.6" filter="url(#glow)" />
+  <rect x="748" y="348" width="8" height="8" fill="#ffee88" opacity="0.8" />
+  <rect x="700" y="420" width="16" height="16" fill="#ffcc00" opacity="0.4" />
+  <rect x="780" y="500" width="16" height="16" fill="#ffcc00" opacity="0.4" />
+
+  
+  <rect x="660" y="310" width="8" height="8" fill="#ffffff" opacity="0.8" filter="url(#glow)" />
+  <rect x="668" y="302" width="8" height="8" fill="#ffffff" opacity="0.5" />
+  <rect x="652" y="302" width="8" height="8" fill="#ffffff" opacity="0.5" />
+
+  <rect x="1490" y="400" width="8" height="8" fill="#44ff88" opacity="0.8" filter="url(#glow)" />
+  <rect x="1498" y="392" width="8" height="8" fill="#44ff88" opacity="0.5" />
+
+  
+  <rect width="1536" height="1024" fill="url(#scanlines)" opacity="0.5" />
+  <rect width="1536" height="1024" fill="none" stroke="#000000" stroke-width="60" opacity="0.6" />
+
+  
+  <rect x="24" y="24" width="32" height="32" fill="#ffcc00" opacity="0.8" />
+  <rect x="1480" y="24" width="32" height="32" fill="#ffcc00" opacity="0.8" />
+  <rect x="24" y="968" width="32" height="32" fill="#ffcc00" opacity="0.8" />
+  <rect x="1480" y="968" width="32" height="32" fill="#ffcc00" opacity="0.8" />
+</svg>

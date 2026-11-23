@@ -1,0 +1,59 @@
+// year-of-ai.github.io · .vscode/settings.json — fleet-vscode/v1 · 2026-09-09. Convention + vocabulary: .vscode/README.md.
+// Repo-scoped settings only. Personal editor preferences belong in the fleet workspace file.
+{
+  "files.associations": {
+    "*.html": "liquid"
+  },
+  "files.exclude": {
+    "**/_site": true,
+    "**/.jekyll-cache": true,
+    "**/.sass-cache": true,
+    "**/.jekyll-metadata": true
+  },
+  "search.exclude": {
+    "**/_site": true,
+    "**/.jekyll-cache": true,
+    "**/vendor/bundle": true,
+    "**/node_modules": true
+  },
+  "files.watcherExclude": {
+    "**/_site/**": true,
+    "**/.jekyll-cache/**": true,
+    "**/vendor/**": true,
+    "**/node_modules/**": true
+  },
+  "emmet.includeLanguages": {
+    "liquid": "html"
+  },
+  "[liquid]": {
+    "editor.tabSize": 2
+  },
+  "[yaml]": {
+    "editor.tabSize": 2
+  },
+  "[ruby]": {
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on"
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml"
+  },
+  "cSpell.words": [
+    "bamr",
+    "zer0",
+    "endcapture",
+    "endraw",
+    "frontmatter",
+    "Jamstack",
+    "lastmod",
+    "livereload",
+    "markdownify",
+    "wikilinks",
+    "rubygems",
+    "gemspec",
+    "webrick",
+    "posthog"
+  ]
+}

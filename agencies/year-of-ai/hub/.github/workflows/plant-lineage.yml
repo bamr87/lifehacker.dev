@@ -1,0 +1,372 @@
+---
+name: Plant Lineage
+
+# Tangential era spawning (ADR-0002) with maturity-gated automation (ADR-0007).
+# Spawns AT MOST ONE new member repo per run, in two parts:
+#
+#   DECIDE — a frontier-model pass reads every seed in lineage/seeds/ and
+#            AUTHORS a new TANGENTIAL concept seed at lineage/seeds/<id>.md
+#            (vessel concept only — §1 filled, §8 Evolution Log empty).
+#   PLANT  — scripts/plant-lineage.rb deterministically creates the public
+#            repo year-of-ai/<id>, drops lineage/repo-template/, provisions
+#            _config.yml + GitHub Pages, then this workflow commits the seed
+#            to hub main. Auto-discovery registers the member and the next
+#            orchestrate run grows it like any other repo.
+#
+# Modes:
+#   auto   — dispatched by orchestrate.yml when the maturity gate passes
+#            (spawn.enabled, EVERY member >= spawn.frontier_ticks growth
+#            cycles, roster < spawn.max_members — lineage/policy.yml). The
+#            gate is RE-VERIFIED here from a fresh checkout; a not-due auto
+#            run is a clean no-op, never a spawn.
+#   manual — workflow_dispatch with a PRE-AUTHORED seed id and the ADR-0002
+#            two-key confirm; dry-run by default.
+#
+# Safety (ADR-0002 §E + ADR-0007): fleet kill-switch honored; one repo per
+# run; the planter is idempotent — it RESUMES an interrupted plant vessel
+# and refuses any repo with real content; the seed is
+# committed only AFTER the repo exists (an orphan seed would make every
+# subsequent grow dispatch fail on checkout); concurrency-serialized.
+#
+# Secrets: CLAUDE_CODE_OAUTH_TOKEN (DECIDE pass — Claude auth is OAuth only;
+# the ANTHROPIC_API_KEY fallback is disabled for now, 2026-11-15),
+# LIFECYCLE_PAT (repo creation + Pages + hub seed commit).
+#
+# Fleet harness standard (2026-11-13; bamr87/bamr87 _data/fleet.yml
+# `harnesses.standard`): the DECIDE pass takes its credential in the order of
+# this repo's CLAUDE_AUTH_ORDER variable (unset = oauth, then api_key, the
+# order the Secrets line above describes), carries a dollar cap
+# (--max-budget-usd) beside its turn cap, and the job has a timeout.
+
+on:
+  workflow_dispatch:
+    inputs:
+      auto:
+        description: "Maturity-gated auto-spawn (orchestrate dispatches this; gate re-verified here)"
+        type: boolean
+        default: false
+      id:
+        description: "Manual mode: id of a PRE-AUTHORED lineage/seeds/<id>.md"
+        required: false
+        default: ""
+      confirm:
+        description: "Manual mode: must equal id to actually plant (two-key guard)"
+        required: false
+        default: ""
+      dry_run:
+        description: "Manual mode: plan only, create nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: plant-lineage
+  cancel-in-progress: false
+
+jobs:
+  spawn:
+    runs-on: ubuntu-latest
+    # Wall-clock bound for one DECIDE pass (30 turns) plus the planter. No run
+    # so far has taken 3 minutes, but none of them carried a full DECIDE and
+    # plant, so this is sized by rule (the fleet lane default), not by data.
+    timeout-minutes: 30
+    steps:
+      - name: Checkout the hub
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          # The DECIDE model pass runs with Bash in this checkout — never
+          # leave a credential in .git/config; the seed commit re-authenticates.
+          persist-credentials: false
+
+      - name: Honor the fleet kill-switch (_data/fleet_pause.yml)
+        run: |
+          set -euo pipefail
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            reason="$(ruby -ryaml -e 'puts YAML.load_file("_data/fleet_pause.yml")["reason"].to_s' 2>/dev/null)"
+            echo "::error::Fleet is PAUSED via _data/fleet_pause.yml — refusing to plant. ${reason:+Reason: $reason}"
+            exit 1
+          fi
+
+      # Never trust the dispatcher: recompute the maturity gate from THIS
+      # checkout. A not-due auto run (double dispatch, stale ledger) is a
+      # clean no-op. Manual runs skip this — their gate is the two-key confirm.
+      - name: Re-verify the maturity gate (auto mode)
+        id: gate
+        env:
+          AUTO: ${{ inputs.auto }}
+        run: |
+          set -euo pipefail
+          if [ "$AUTO" != "true" ]; then
+            echo "due=manual" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          due="$(ruby -ryaml -e '
+            sp      = (YAML.load_file("lineage/policy.yml")["spawn"] rescue nil) || {}
+            members = (YAML.load_file("_data/lineage.yml")["members"] rescue nil) || []
+            ok = sp["enabled"] == true &&
+                 !members.empty? &&
+                 members.size < sp.fetch("max_members", 0).to_i &&
+                 members.all? { |m| m["ticks_logged"].to_i >= sp.fetch("frontier_ticks", 1 << 30).to_i }
+            puts ok ? "true" : "false"
+          ')"
+          echo "due=$due" >> "$GITHUB_OUTPUT"
+          if [ "$due" != "true" ]; then
+            echo "::notice::Auto-spawn dispatched but the maturity gate is not (or no longer) satisfied — clean no-op."
+          fi
+
+      - name: Validate manual inputs
+        if: inputs.auto != true
+        env:
+          ID: ${{ inputs.id }}
+        run: |
+          set -euo pipefail
+          if [ -z "$ID" ]; then
+            echo "::error::Manual mode needs -f id=<seed id> (a pre-authored lineage/seeds/<id>.md). For automated DECIDE+PLANT, dispatch with -f auto=true."
+            exit 1
+          fi
+          if ! printf '%s' "$ID" | LC_ALL=C grep -qE '^[a-z0-9][a-z0-9-]*$'; then
+            echo "::error::id must be lowercase letters/digits/hyphens."
+            exit 1
+          fi
+          if [ ! -f "lineage/seeds/${ID}.md" ]; then
+            echo "::error::lineage/seeds/${ID}.md not found — the DECIDE step (or a human) must author it first."
+            exit 1
+          fi
+
+      # A previously interrupted plant leaves an EMPTY org repo with no seed
+      # (repo created, later step failed, seed lost with the runner). Detect
+      # it so DECIDE re-authors the seed for exactly that id and the planter
+      # resumes into the empty vessel — instead of proposing a different
+      # tangent and stranding the orphan forever.
+      - name: Detect an interrupted plant (empty org repo without a seed)
+        if: steps.gate.outputs.due == 'true'
+        id: resume
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rid=""
+          # The plant surface: repo-template skeleton + the provisioner's
+          # rendered scaffold. A seedless repo whose every file is within it
+          # is an interrupted plant at ANY stage (empty, skeleton-only, or
+          # provisioned-but-seedless) — resumable.
+          ( cd lineage/repo-template && find . -type f | sed 's|^\./||' ) > /tmp/plant-surface
+          printf '%s\n' _config.yml _data/navigation/main.yml >> /tmp/plant-surface
+          while IFS=$'\t' read -r name empty; do
+            case "$name" in *.github.io|.github) continue ;; esac
+            printf '%s' "$name" | LC_ALL=C grep -qE '^[a-z0-9][a-z0-9-]*$' || continue
+            [ -f "lineage/seeds/${name}.md" ] && continue
+            if [ "$empty" = "true" ]; then rid="$name"; break; fi
+            if gh api "repos/year-of-ai/${name}/git/trees/HEAD?recursive=1" \
+                 --jq '.tree[] | select(.type=="blob") | .path' > /tmp/have 2>/dev/null \
+               && [ -s /tmp/have ] \
+               && [ -z "$(grep -Fxv -f /tmp/plant-surface /tmp/have)" ]; then
+              rid="$name"; break
+            fi
+          done < <(gh repo list year-of-ai --limit 100 --json name,isEmpty \
+                     --jq '.[] | [.name, (.isEmpty|tostring)] | @tsv' 2>/dev/null || true)
+          echo "id=$rid" >> "$GITHUB_OUTPUT"
+          if [ -n "$rid" ]; then
+            echo "::notice::interrupted plant detected: $rid — DECIDE will re-author its seed and the planter will resume into the empty repo."
+          fi
+
+      - name: Resolve the DECIDE model from lineage/policy.yml
+        if: steps.gate.outputs.due == 'true'
+        id: model
+        run: |
+          set -euo pipefail
+          m() { grep -E "^[[:space:]]*$1:" lineage/policy.yml | head -1 | sed -E "s/.*$1:[[:space:]]*\"?([^\"#]+)\"?.*/\1/" | xargs; }
+          v="$(m distill)"; [ -n "$v" ] || v="$(m enhance)"
+          case "$v" in
+            claude-*) echo "decide=$v" >> "$GITHUB_OUTPUT"; echo "decide model: $v" ;;
+            *) echo "::error::could not resolve a DECIDE model from lineage/policy.yml"; exit 1 ;;
+          esac
+
+      # The credential comes from this repo's CLAUDE_AUTH_ORDER (ai_auth: in
+      # bamr87/bamr87 _data/fleet.yml; unset = oauth, then api_key). The step
+      # outputs a method NAME, never a secret; DECIDE gates each secret on it.
+      - name: Choose the Claude credential (ai_auth order)
+        if: steps.gate.outputs.due == 'true'
+        id: claude-auth
+        uses: bamr87/bamr87/.github/actions/claude-auth@main
+        with:
+          order: oauth
+          has-oauth: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+
+      # ---- DECIDE: author ONE tangential seed (auto mode only) --------------
+      - name: DECIDE — author a tangential era seed
+        if: steps.gate.outputs.due == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ steps.claude-auth.outputs.method == 'oauth' && secrets.CLAUDE_CODE_OAUTH_TOKEN || '' }}
+          github_token: ${{ github.token }}
+          prompt: |
+            You are the DECIDE pass of tangential era spawning (ADR-0002).
+            Read every seed's §1 Concept Definition in lineage/seeds/ (the ids
+            are the filenames) to survey the lineage, then propose ONE new era
+            that is TANGENTIAL to the frontier: related to the newest members
+            in theme or time — an adjacent year, or a kebab-slug thematic
+            tangent — never a duplicate of an existing seed and never an
+            off-mission subject.
+
+            Then AUTHOR the new seed at lineage/seeds/<id>.md, following the
+            structure of lineage/seed-package/seed.template.md exactly:
+            complete Section 1 (subject, scope, granularity, taxonomy,
+            source_strategy, conventions) with a concrete, growable concept;
+            keep sections 2–7 as minimal scaffolds; end with
+            "## Section 8 — Evolution Log" containing NO entries —
+            that heading EXACTLY (h2, spaces, em-dash), it is machine-parsed.
+
+            Constraints: the id must be lowercase [a-z0-9-] and must not match
+            any existing lineage/seeds/*.md. Write ONLY that one new file —
+            change nothing else, do not commit, do not push. Finish by
+            printing the single line: PROPOSED_ID=<id>
+
+            RESUME_ID='${{ steps.resume.outputs.id }}' — if RESUME_ID is
+            non-empty, do NOT choose a subject yourself: a previous plant of
+            exactly that id was interrupted (its empty repo already exists),
+            so author the seed FOR THAT id.
+
+            Do NOT run sync-lineage-state, sync-hub-metadata, or touch
+            anything under _data/ — the workflow and the daily orchestrate
+            handle all bookkeeping; any change you make outside the one new
+            seed file will be discarded.
+          # --max-budget-usd: the fleet floor (10 USD); 30 turns at 0.15 USD a
+          # turn would size it lower.
+          claude_args: >-
+            --model ${{ steps.model.outputs.decide }}
+            --max-turns 30
+            --max-budget-usd 10
+            --allowedTools "Bash,Edit,Write,Read,Glob,Grep"
+          show_full_output: true
+
+      # The model pass is untrusted output — accept exactly one new seed file
+      # and nothing else, or plant nothing.
+      - name: Validate the proposed seed
+        if: steps.gate.outputs.due == 'true'
+        id: proposed
+        run: |
+          set -euo pipefail
+          # DECIDE sometimes incidentally refreshes GENERATED files while
+          # exploring (run 4 refused over a regenerated _data/lineage.yml).
+          # Only the new seed is the intended output: restore every other
+          # TRACKED file first, then judge what remains — an untracked
+          # non-seed file still refuses the plant.
+          git checkout -q -- . 2>/dev/null || true
+          mapfile -t new_seeds < <(git status --porcelain -uall -- lineage/seeds | grep '^??' | sed -E 's/^.{3}//')
+          other="$(git status --porcelain -uall | grep -v ' lineage/seeds/' | grep -c . || true)"
+          if [ "${#new_seeds[@]}" -ne 1 ] || [ "${other:-0}" -ne 0 ]; then
+            echo "::error::DECIDE must produce exactly ONE new file under lineage/seeds/ and touch nothing else (got ${#new_seeds[@]} new seeds, ${other} other changes)."
+            git status --porcelain -uall
+            exit 1
+          fi
+          id="$(basename "${new_seeds[0]}" .md)"
+          printf '%s' "$id" | LC_ALL=C grep -qE '^[a-z0-9][a-z0-9-]*$' || { echo "::error::proposed id '$id' is not a valid slug"; exit 1; }
+          # Model output varies the §8 heading's level/dash — normalize the
+          # first "Section 8" heading to the canonical form every downstream
+          # tool keys on, THEN validate (run 3 failed only on an en-dash).
+          sed -i -E '0,/^#{1,4} *Section 8\b.*/s//## Section 8 — Evolution Log/' "lineage/seeds/${id}.md"
+          grep -q '^## Section 8' "lineage/seeds/${id}.md" || { echo "::error::proposed seed lacks the '## Section 8 — Evolution Log' heading"; exit 1; }
+          grep -qE '^\s*subject:' "lineage/seeds/${id}.md" || { echo "::error::proposed seed lacks a subject: line"; exit 1; }
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          echo "Proposed tangential era: $id"
+          { echo "## Plant Lineage — proposal"; echo; echo "**id:** \`$id\`"; echo; sed -n '1,40p' "lineage/seeds/${id}.md"; } >> "$GITHUB_STEP_SUMMARY"
+
+      # ---- PLANT: create the vessel (deterministic; ADR-0002 §E) ------------
+      - name: Set up Ruby
+        if: steps.gate.outputs.due == 'true' || steps.gate.outputs.due == 'manual'
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      # The planter and the provisioner push over plain https — GH_TOKEN only
+      # authenticates `gh` API calls, so without this step `git push` has no
+      # credential and dies with "could not read Username" (the first
+      # auto-spawn's failure mode). gh's credential helper resolves GH_TOKEN
+      # at push time.
+      - name: Wire git auth for the planter (gh credential helper)
+        if: steps.gate.outputs.due == 'true' || steps.gate.outputs.due == 'manual'
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+        run: |
+          gh auth setup-git
+          # The plant chain commits in temp clones (skeleton push, provisioner
+          # scaffold) — the runner needs a git identity too, or those commits
+          # die on 'empty ident name' (the second auto-spawn's failure mode).
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Plant the new member repo
+        if: steps.gate.outputs.due == 'true' || steps.gate.outputs.due == 'manual'
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+          AUTO: ${{ inputs.auto }}
+          MANUAL_ID: ${{ inputs.id }}
+          MANUAL_CONFIRM: ${{ inputs.confirm }}
+          MANUAL_DRY_RUN: ${{ inputs.dry_run }}
+          DECIDED_ID: ${{ steps.proposed.outputs.id }}
+        run: |
+          set -euo pipefail
+          if [ "$AUTO" = "true" ]; then
+            ID="$DECIDED_ID"
+            # ADR-0007: in auto mode the two keys are the policy gate
+            # (re-verified above) + this workflow's validation of the DECIDE
+            # output — the planter's confirm is satisfied programmatically.
+            ruby scripts/plant-lineage.rb --id "$ID" --apply --confirm "$ID"
+          else
+            ID="$MANUAL_ID"
+            if [ "$MANUAL_DRY_RUN" = "true" ]; then
+              ruby scripts/plant-lineage.rb --id "$ID"
+              echo "::notice::dry run — nothing created. Re-dispatch with dry_run=false and confirm=$ID to plant."
+              exit 0
+            fi
+            if [ "$MANUAL_CONFIRM" != "$ID" ]; then
+              echo "::error::confirm ('$MANUAL_CONFIRM') must equal id ('$ID') — two-key guard (ADR-0002 §E)."
+              exit 1
+            fi
+            ruby scripts/plant-lineage.rb --id "$ID" --apply --confirm "$ID"
+          fi
+          echo "PLANTED_ID=$ID" >> "$GITHUB_ENV"
+
+      # Commit the seed only AFTER the repo exists — an orphan seed would make
+      # every subsequent grow dispatch fail at checkout.
+      - name: Commit the seed to hub main
+        if: env.PLANTED_ID != ''
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+        run: |
+          set -uo pipefail
+          [ -f "lineage/seeds/${PLANTED_ID}.md" ] || { echo "::error::seed vanished"; exit 1; }
+          if git ls-files --error-unmatch "lineage/seeds/${PLANTED_ID}.md" >/dev/null 2>&1; then
+            echo "Seed already committed (manual pre-authored path) — nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # claude-code-action can leave a stale http.extraheader that overrides auth.
+          { git config --local --get-regexp 'http\..*\.extraheader' 2>/dev/null || true; } \
+            | awk '{print $1}' | while read -r k; do git config --local --unset-all "$k" || true; done
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/year-of-ai/year-of-ai.github.io.git"
+          git add "lineage/seeds/${PLANTED_ID}.md"
+          git commit -q -m "feat(lineage): spawn tangential era ${PLANTED_ID} — plant seed (ADR-0007 auto-spawn)"
+          for _ in 1 2 3 4 5; do
+            git push origin HEAD:main && exit 0
+            git pull --rebase origin main || true
+          done
+          echo "::error::could not push the new seed after retries — the repo exists but the hub does not know it; commit lineage/seeds/${PLANTED_ID}.md manually."
+          exit 1
+
+      - name: Summary
+        if: env.PLANTED_ID != ''
+        run: |
+          {
+            echo "## 🌱 Planted year-of-ai/${PLANTED_ID}"
+            echo
+            echo "- repo: https://github.com/year-of-ai/${PLANTED_ID}"
+            echo "- site: https://year-of-ai.github.io/${PLANTED_ID}/ (after first Pages build)"
+            echo "- seed: lineage/seeds/${PLANTED_ID}.md (committed to hub main)"
+            echo "- next: auto-discovery registers it; the next orchestrate run grows its first content"
+          } >> "$GITHUB_STEP_SUMMARY"

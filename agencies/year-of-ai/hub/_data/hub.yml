@@ -1,0 +1,81 @@
+# =============================================================================
+# Content Hub registry — _data/hub.yml
+# =============================================================================
+#
+# Source of truth for the org content hub. Content NEVER leaves the source
+# repos: each org repo publishes its own GitHub Pages project site at
+# https://<org>.github.io/<repo>/ using this theme via `remote_theme`, and
+# this site is the dashboard that presents and monitors them.
+#
+# Consumers of this registry:
+#   scripts/provision-org-sites.sh   rolls the Pages scaffold out to org repos
+#                                    (templates/org-site/*) and enables Pages
+#   scripts/sync-hub-metadata.sh     refreshes the generated dashboard data:
+#                                      _data/hub_index.yml      (repo stats)
+#                                      _data/navigation/hub.yml (sidebar tree)
+#
+# Validated by `./scripts/sync-hub-metadata.sh --check` (CI gate).
+# =============================================================================
+
+# GitHub organization (or user) whose repositories make up the hub.
+org: year-of-ai
+
+# When true, every non-archived repo in the org is included unless listed in
+# `exclude_repos`. When false, only repos listed under `repos:` are included.
+auto_discover: true
+
+# Repos that are never treated as content sites.
+exclude_repos:
+  - year-of-ai.github.io # this org root site / dashboard (also a theme consumer)
+  - zer0-mistakes # upstream theme, in case it is ever mirrored into the org
+  - .github # org meta repo, if one appears
+
+# Settings applied when provisioning org repos as Pages sites.
+pages:
+  # Value for `remote_theme:` in the generated _config.yml of each org repo.
+  # Every org site — including this root site — consumes the shared zer0-mistakes
+  # theme directly from upstream; no repo vendors theme files. PINNED to a tagged
+  # release: 12 sites build against this theme, so a floating HEAD lets any
+  # upstream push change/break them all at once. Bump the tag here and in the
+  # hub's _config.yml together, then re-roll member configs with
+  # scripts/provision-org-sites.rb.
+  theme_repo: bamr87/zer0-mistakes
+  # Git ref to scaffold against / publish from. Empty = repo default branch.
+  branch: ""
+
+# Rules applied to every repo unless overridden per-repo below.
+defaults:
+  # Paths that are repo/agent plumbing rather than content. Used both for the
+  # generated Pages `exclude:` list and for the dashboard page counts.
+  exclude:
+    - "README.md" # rendered as the site homepage, not counted as content
+    - "CLAUDE.md"
+    - "AGENTS.md"
+    - "LIFECYCLE.md"
+    - "ROADMAP.md"
+    - "lifecycle.yml"
+    - "seed.md"
+    - "seed-package/**"
+    - "telemetry/**"
+    - ".github/**"
+    - ".claude/**"
+
+# Optional per-repo overrides, merged onto discovered repos by `name`. Every
+# non-archived org repo is auto-discovered; these just set display titles. The
+# year repos are thin remote_theme consumers (content + _config.yml + .claude +
+# telemetry); their seeds live in this hub under lineage/seeds/.
+#
+# Supported keys: name (required), title, description, branch. An empty/omitted
+# value falls back to what GitHub reports for the repo.
+repos:
+  - { name: "1776", title: "The Year 1776" }
+  - { name: "1777", title: "The Year 1777" }
+  - { name: "1778", title: "The Year 1778" }
+  - { name: "2005", title: "The Year 2005" }
+  - { name: "2006", title: "The Year 2006" }
+  - { name: "2007", title: "The Year 2007" }
+  - { name: "2008", title: "The Year 2008" }
+  - { name: "2009", title: "The Year 2009" }
+  - { name: "2010", title: "The Year 2010" }
+  - { name: "2011", title: "The Year 2011" }
+  - { name: "2012", title: "The Year 2012" }

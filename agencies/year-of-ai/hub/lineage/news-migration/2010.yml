@@ -1,0 +1,85 @@
+site:
+  title: "The Year 2010"
+  tagline: "Front-page dispatches from 2010 — earthquakes and oil spills, iPads and uprisings, the year the 2010s began."
+sections:
+  history-politics:
+    name: "History & Politics"
+    icon: "bi-bank"
+    description: "Earthquakes, floods, and the Deepwater Horizon oil spill shared 2010's front pages with hung parliaments, the first stirrings of the Arab Spring, and a World Cup on African soil."
+    featured: "deepwater-horizon-oil-spill"
+  science-technology:
+    name: "Science & Technology"
+    icon: "bi-cpu"
+    description: "A landmark year for discovery: the first self-replicating synthetic cell, graphene's Nobel, the LHC's first 7 TeV collisions, the world's tallest building, and the launch of the iPad, iPhone 4, Kinect, and Instagram."
+    featured: "ipad-launch"
+  arts-culture:
+    name: "Arts & Culture"
+    icon: "bi-palette"
+    description: "A box-office and 3D boom led by Avatar, Inception, and Toy Story 3, alongside prestige dramas like The King's Speech and The Social Network and a late-night television upheaval."
+    featured: "inception"
+  society-economics:
+    name: "Society & Economics"
+    icon: "bi-globe2"
+    description: "Sweeping US legislation in the Affordable Care Act and Dodd-Frank met the eurozone's first bailout, a jobless global recovery, the decennial census, Shanghai's record Expo, and Twitter's rise."
+    featured: "affordable-care-act"
+  people:
+    name: "People"
+    icon: "bi-person-badge"
+    description: "The figures who defined 2010, from dissidents and Nobel laureates like Liu Xiaobo and Aung San Suu Kyi to WikiLeaks' Julian Assange, Arab Spring catalyst Mohamed Bouazizi, and sporting icons LeBron James and Lionel Messi."
+    featured: "julian-assange"
+tags:
+  history-politics/2010-chile-earthquake: ["natural disaster", "earthquake"]
+  history-politics/2010-thai-political-crisis: ["protest & uprising", "politics"]
+  history-politics/2010-uk-general-election: ["elections", "politics"]
+  history-politics/2010-us-midterm-elections: ["elections", "politics"]
+  history-politics/2010-winter-olympics-vancouver: ["sport", "host nation"]
+  history-politics/arab-spring-tunisia: ["protest & uprising", "politics"]
+  history-politics/chilean-mining-rescue: ["natural disaster", "rescue"]
+  history-politics/deepwater-horizon-macondo-well-capped: ["oil spill", "environment"]
+  history-politics/deepwater-horizon-oil-spill: ["oil spill", "environment"]
+  history-politics/eyjafjallajokull-eruption: ["natural disaster", "aviation"]
+  history-politics/fifa-world-cup-2010: ["sport", "host nation"]
+  history-politics/haiti-earthquake: ["natural disaster", "earthquake"]
+  history-politics/mavi-marmara-incident: ["conflict & security", "protest & uprising"]
+  history-politics/pakistan-floods: ["natural disaster", "environment"]
+  history-politics/roks-cheonan-sinking: ["conflict & security", "rescue"]
+  history-politics/russia-heatwave-wildfires-2010: ["natural disaster", "environment"]
+  history-politics/smolensk-air-disaster: ["aviation", "conflict & security"]
+  history-politics/wikileaks-cables: ["politics", "conflict & security"]
+  science-technology/burj-khalifa: ["engineering", "record-breaking"]
+  science-technology/craig-venter-synthetic-biology: ["synthetic biology", "discovery"]
+  science-technology/gliese-581g-exoplanet: ["space", "discovery"]
+  science-technology/google-china-withdrawal: ["cybersecurity", "geopolitics"]
+  science-technology/graphene-nobel-prize-physics-2010: ["physics", "discovery"]
+  science-technology/instagram-launch: ["consumer tech", "record-breaking"]
+  science-technology/ipad-launch: ["consumer tech", "apple"]
+  science-technology/iphone-4-launch: ["consumer tech", "apple"]
+  science-technology/kepler-9-exoplanet-discovery: ["space", "discovery"]
+  science-technology/kinect-launch: ["consumer tech", "record-breaking"]
+  science-technology/large-hadron-collider-7-tev-collisions: ["physics", "engineering"]
+  science-technology/stuxnet: ["cybersecurity", "geopolitics"]
+  science-technology/synthetic-cell-jcvi-syn1: ["synthetic biology", "discovery"]
+  arts-culture/3d-cinema-revolution: ["3d cinema", "blockbuster"]
+  arts-culture/avatar: ["3d cinema", "blockbuster", "cultural phenomenon"]
+  arts-culture/biutiful: ["awards season", "drama"]
+  arts-culture/conan-obrien-tonight-show-transition: ["cultural phenomenon", "media & industry"]
+  arts-culture/inception: ["blockbuster", "awards season"]
+  arts-culture/the-kings-speech: ["awards season", "drama"]
+  arts-culture/the-social-network: ["awards season", "cultural phenomenon", "media & industry"]
+  arts-culture/toy-story-3: ["blockbuster", "3d cinema"]
+  society-economics/2010-us-census: ["us policy", "society & culture"]
+  society-economics/affordable-care-act: ["us policy", "society & culture"]
+  society-economics/dodd-frank-act: ["us policy", "financial crisis"]
+  society-economics/european-sovereign-debt-crisis: ["financial crisis", "economy"]
+  society-economics/global-unemployment-and-economic-recovery-2010: ["financial crisis", "economy"]
+  society-economics/shanghai-expo-2010: ["globalization", "economy"]
+  society-economics/twitter-social-media-growth-2010: ["globalization", "society & culture"]
+  people/aung-san-suu-kyi: ["human rights", "dissident", "nobel laureate"]
+  people/corazon-aquino: ["democracy", "legacy", "passing"]
+  people/jd-salinger: ["legacy", "passing"]
+  people/julian-assange: ["dissident", "activism"]
+  people/lebron-james-the-decision: ["sport", "icon"]
+  people/lionel-messi-ballon-dor-2010: ["sport", "icon"]
+  people/liu-xiaobo: ["human rights", "dissident", "nobel laureate"]
+  people/mohamed-bouazizi: ["human rights", "activism", "democracy"]
+  people/nelson-mandela-92nd-birthday: ["human rights", "legacy", "icon"]

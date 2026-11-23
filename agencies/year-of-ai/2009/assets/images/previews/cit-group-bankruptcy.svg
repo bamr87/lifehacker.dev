@@ -1,0 +1,384 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>CIT Group Bankruptcy — Retro Pixel Art Banner</title>
+  <defs>
+    <radialGradient id="crt" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a0a2e" />
+      <stop offset="100%" stop-color="#050008" />
+    </radialGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3300" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ff3300" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0" />
+    </radialGradient>
+    <filter id="scanlines" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0 0.5" numOctaves="1" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray" />
+      <feBlend in="SourceGraphic" in2="gray" mode="multiply" />
+    </filter>
+    <pattern id="scanpat" x="0" y="0" width="1536" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="1536" height="2" fill="#000000" fill-opacity="0.18" />
+      <rect x="0" y="2" width="1536" height="2" fill="transparent" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#crt)" />
+  
+  
+  <ellipse cx="400" cy="600" rx="500" ry="400" fill="url(#glow1)" />
+  <ellipse cx="1100" cy="400" rx="450" ry="350" fill="url(#glow2)" />
+
+  
+  
+  <g stroke="#1a003a" stroke-width="2" opacity="0.7">
+    <line x1="0" y1="750" x2="1536" y2="750" />
+    <line x1="0" y1="780" x2="1536" y2="780" />
+    <line x1="0" y1="815" x2="1536" y2="815" />
+    <line x1="0" y1="855" x2="1536" y2="855" />
+    <line x1="0" y1="900" x2="1536" y2="900" />
+    <line x1="0" y1="952" x2="1536" y2="952" />
+    <line x1="0" y1="1010" x2="1536" y2="1010" />
+    
+    <line x1="768" y1="740" x2="0" y2="1024" />
+    <line x1="768" y1="740" x2="200" y2="1024" />
+    <line x1="768" y1="740" x2="450" y2="1024" />
+    <line x1="768" y1="740" x2="650" y2="1024" />
+    <line x1="768" y1="740" x2="768" y2="1024" />
+    <line x1="768" y1="740" x2="900" y2="1024" />
+    <line x1="768" y1="740" x2="1100" y2="1024" />
+    <line x1="768" y1="740" x2="1350" y2="1024" />
+    <line x1="768" y1="740" x2="1536" y2="1024" />
+  </g>
+
+  
+  
+  <g fill="#2a1060">
+    <rect x="60" y="480" width="100" height="260" />
+    
+    <rect x="72" y="496" width="16" height="16" fill="#ffe100" />
+    <rect x="100" y="496" width="16" height="16" fill="#ffe100" />
+    <rect x="128" y="496" width="16" height="16" fill="#ffe100" />
+    <rect x="72" y="528" width="16" height="16" fill="#ffe100" />
+    <rect x="100" y="528" width="16" height="16" fill="#1a0a2e" />
+    <rect x="128" y="528" width="16" height="16" fill="#ffe100" />
+    <rect x="72" y="560" width="16" height="16" fill="#ffe100" />
+    <rect x="100" y="560" width="16" height="16" fill="#ffe100" />
+    <rect x="128" y="560" width="16" height="16" fill="#1a0a2e" />
+    <rect x="72" y="592" width="16" height="16" fill="#1a0a2e" />
+    <rect x="100" y="592" width="16" height="16" fill="#ffe100" />
+    <rect x="128" y="592" width="16" height="16" fill="#ffe100" />
+    <rect x="72" y="624" width="16" height="16" fill="#ffe100" />
+    <rect x="100" y="624" width="16" height="16" fill="#1a0a2e" />
+    <rect x="128" y="624" width="16" height="16" fill="#ffe100" />
+    <rect x="72" y="656" width="16" height="16" fill="#ffe100" />
+    <rect x="100" y="656" width="16" height="16" fill="#ffe100" />
+    <rect x="128" y="656" width="16" height="16" fill="#ffe100" />
+    
+    <rect x="90" y="712" width="40" height="28" fill="#1a0a2e" />
+  </g>
+
+  
+  <g fill="#3a0070">
+    <rect x="190" y="520" width="110" height="220" />
+    
+    <rect x="200" y="500" width="90" height="24" fill="#4a0088" />
+    <rect x="208" y="480" width="76" height="24" fill="#3a0070" />
+    
+    <rect x="240" y="520" width="4" height="80" fill="#1a0a2e" />
+    <rect x="244" y="560" width="4" height="40" fill="#1a0a2e" />
+    
+    <rect x="202" y="536" width="14" height="14" fill="#ff6600" />
+    <rect x="228" y="536" width="14" height="14" fill="#ff6600" />
+    <rect x="256" y="536" width="14" height="14" fill="#ff6600" />
+    <rect x="282" y="536" width="14" height="14" fill="#ff6600" />
+    <rect x="202" y="566" width="14" height="14" fill="#ff6600" />
+    <rect x="228" y="566" width="14" height="14" fill="#1a0a2e" />
+    <rect x="256" y="566" width="14" height="14" fill="#ff6600" />
+    <rect x="282" y="566" width="14" height="14" fill="#ff6600" />
+    <rect x="202" y="596" width="14" height="14" fill="#1a0a2e" />
+    <rect x="228" y="596" width="14" height="14" fill="#ff6600" />
+    <rect x="256" y="596" width="14" height="14" fill="#ff6600" />
+    <rect x="282" y="596" width="14" height="14" fill="#1a0a2e" />
+    <rect x="202" y="626" width="14" height="14" fill="#ff6600" />
+    <rect x="228" y="626" width="14" height="14" fill="#ff6600" />
+    <rect x="256" y="626" width="14" height="14" fill="#1a0a2e" />
+    <rect x="282" y="626" width="14" height="14" fill="#ff6600" />
+  </g>
+
+  
+  <g fill="#ff3300">
+    <rect x="190" y="460" width="12" height="12" />
+    <rect x="210" y="442" width="8" height="8" />
+    <rect x="240" y="450" width="10" height="10" />
+    <rect x="270" y="438" width="14" height="14" />
+    <rect x="295" y="455" width="8" height="8" />
+  </g>
+  <g fill="#ff8800">
+    <rect x="200" y="448" width="6" height="6" />
+    <rect x="255" y="430" width="10" height="10" />
+    <rect x="285" y="442" width="6" height="6" />
+    <rect x="230" y="436" width="8" height="8" />
+  </g>
+
+  
+  
+  <rect x="820" y="120" width="580" height="380" fill="#0d001a" rx="0" />
+  <rect x="820" y="120" width="580" height="380" fill="none" stroke="#00ff88" stroke-width="4" />
+  
+  
+  <text x="830" y="148" font-family="monospace" font-size="18" fill="#00ff88" letter-spacing="2">CIT GROUP (CIT) STOCK</text>
+  <line x1="820" y1="155" x2="1400" y2="155" stroke="#00ff88" stroke-width="2" />
+
+  
+  <g stroke="#1a3a2a" stroke-width="1">
+    <line x1="850" y1="170" x2="1390" y2="170" />
+    <line x1="850" y1="230" x2="1390" y2="230" />
+    <line x1="850" y1="290" x2="1390" y2="290" />
+    <line x1="850" y1="350" x2="1390" y2="350" />
+    <line x1="850" y1="410" x2="1390" y2="410" />
+    <line x1="850" y1="470" x2="1390" y2="470" />
+  </g>
+
+  
+  <text x="822" y="174" font-family="monospace" font-size="14" fill="#00aa55">60</text>
+  <text x="822" y="234" font-family="monospace" font-size="14" fill="#00aa55">48</text>
+  <text x="822" y="294" font-family="monospace" font-size="14" fill="#00aa55">36</text>
+  <text x="822" y="354" font-family="monospace" font-size="14" fill="#00aa55">24</text>
+  <text x="822" y="414" font-family="monospace" font-size="14" fill="#00aa55">12</text>
+  <text x="830" y="474" font-family="monospace" font-size="14" fill="#00aa55">0</text>
+
+  
+  
+  
+  
+  <g fill="#00ff88">
+    
+    <rect x="858" y="182" width="8" height="292" />
+    <rect x="870" y="175" width="8" height="299" />
+    <rect x="882" y="180" width="8" height="294" />
+    <rect x="894" y="172" width="8" height="302" />
+    <rect x="906" y="178" width="8" height="296" />
+    <rect x="918" y="185" width="8" height="289" />
+    <rect x="930" y="176" width="8" height="298" />
+    <rect x="942" y="183" width="8" height="291" />
+    <rect x="954" y="180" width="8" height="294" />
+    <rect x="966" y="174" width="8" height="300" />
+    <rect x="978" y="177" width="8" height="297" />
+    <rect x="990" y="182" width="8" height="292" />
+  </g>
+  
+  <g fill="#ffaa00">
+    <rect x="1002" y="200" width="8" height="274" />
+    <rect x="1014" y="222" width="8" height="252" />
+    <rect x="1026" y="255" width="8" height="219" />
+    <rect x="1038" y="290" width="8" height="184" />
+    <rect x="1050" y="330" width="8" height="144" />
+  </g>
+  
+  <g fill="#ff3300">
+    <rect x="1062" y="365" width="8" height="109" />
+    <rect x="1074" y="398" width="8" height="76" />
+    <rect x="1086" y="420" width="8" height="54" />
+    <rect x="1098" y="440" width="8" height="34" />
+    <rect x="1110" y="455" width="8" height="19" />
+    <rect x="1122" y="462" width="8" height="12" />
+    <rect x="1134" y="466" width="8" height="8" />
+    <rect x="1146" y="468" width="8" height="6" />
+    
+    <rect x="1158" y="469" width="8" height="5" />
+    <rect x="1170" y="470" width="8" height="4" />
+    <rect x="1182" y="470" width="8" height="4" />
+    <rect x="1194" y="470" width="8" height="4" />
+    <rect x="1206" y="470" width="8" height="4" />
+    <rect x="1218" y="470" width="8" height="4" />
+    <rect x="1230" y="470" width="8" height="4" />
+    <rect x="1242" y="470" width="8" height="4" />
+    <rect x="1254" y="470" width="8" height="4" />
+    <rect x="1266" y="470" width="8" height="4" />
+    <rect x="1278" y="470" width="8" height="4" />
+    <rect x="1290" y="470" width="8" height="4" />
+    <rect x="1302" y="470" width="8" height="4" />
+    <rect x="1314" y="470" width="8" height="4" />
+    <rect x="1326" y="470" width="8" height="4" />
+    <rect x="1338" y="470" width="8" height="4" />
+    <rect x="1350" y="470" width="8" height="4" />
+    <rect x="1362" y="470" width="8" height="4" />
+    <rect x="1374" y="470" width="8" height="4" />
+  </g>
+
+  
+  <text x="858" y="498" font-family="monospace" font-size="13" fill="#006633">2007</text>
+  <text x="1002" y="498" font-family="monospace" font-size="13" fill="#886600">2008</text>
+  <text x="1134" y="498" font-family="monospace" font-size="13" fill="#cc2200">NOV 2009</text>
+
+  
+  
+  <rect x="1150" y="180" width="3" height="290" fill="#ff3300" stroke="none" stroke-dasharray="8,4" />
+  <polygon points="1145,180 1158,180 1151,168" fill="#ff3300" />
+  <rect x="1080" y="160" width="148" height="22" fill="#ff3300" />
+  <text x="1086" y="176" font-family="monospace" font-size="14" fill="#ffffff" font-weight="bold">CHAPTER 11 FILED</text>
+
+  
+  <g font-family="monospace" font-size="28" font-weight="bold">
+    <text x="380" y="420" fill="#ffe100" opacity="0.9">$</text>
+    <text x="420" y="490" fill="#ffe100" opacity="0.7">$</text>
+    <text x="360" y="540" fill="#ffaa00" opacity="0.6">$</text>
+    <text x="440" y="380" fill="#ff8800" opacity="0.5">$</text>
+    <text x="340" y="460" fill="#ffe100" opacity="0.4">$</text>
+    <text x="470" y="550" fill="#ffcc00" opacity="0.7">$</text>
+  </g>
+
+  
+  
+  <g transform="translate(1380, 580)">
+    
+    <ellipse cx="40" cy="120" rx="40" ry="10" fill="#886600" />
+    <rect x="0" y="108" width="80" height="12" fill="#ffe100" />
+    <ellipse cx="40" cy="108" rx="40" ry="10" fill="#ffd700" />
+    <rect x="0" y="96" width="80" height="12" fill="#ffe100" />
+    <ellipse cx="40" cy="96" rx="40" ry="10" fill="#ffd700" />
+    <rect x="0" y="84" width="80" height="12" fill="#ffe100" />
+    <ellipse cx="40" cy="84" rx="40" ry="10" fill="#ffcc00" />
+    
+    <rect x="35" y="90" width="4" height="30" fill="#1a0a2e" />
+    
+    <ellipse cx="10" cy="60" rx="12" ry="5" fill="#ffd700" opacity="0.8" />
+    <ellipse cx="75" cy="45" rx="12" ry="5" fill="#ffd700" opacity="0.6" />
+    <ellipse cx="90" cy="70" rx="10" ry="4" fill="#ffcc00" opacity="0.7" />
+    <ellipse cx="-5" cy="40" rx="10" ry="4" fill="#ffd700" opacity="0.5" />
+  </g>
+
+  
+  
+  <rect x="0" y="0" width="1536" height="16" fill="#ff3300" />
+  <rect x="0" y="16" width="1536" height="8" fill="#ff8800" />
+  <rect x="0" y="24" width="1536" height="4" fill="#ffcc00" />
+  
+  <rect x="0" y="1008" width="1536" height="16" fill="#ff3300" />
+  <rect x="0" y="1000" width="1536" height="8" fill="#ff8800" />
+  <rect x="0" y="992" width="1536" height="4" fill="#ffcc00" />
+  
+  <rect x="0" y="0" width="16" height="1024" fill="#ff3300" />
+  <rect x="16" y="0" width="8" height="1024" fill="#ff8800" />
+  
+  <rect x="1520" y="0" width="16" height="1024" fill="#ff3300" />
+  <rect x="1512" y="0" width="8" height="1024" fill="#ff8800" />
+
+  
+  
+  <rect x="558" y="32" width="420" height="60" fill="#0d001a" rx="0" />
+  <rect x="558" y="32" width="420" height="60" fill="none" stroke="#ff3300" stroke-width="4" />
+  <text x="768" y="72" font-family="monospace" font-size="30" font-weight="bold" fill="#ff3300" text-anchor="middle" letter-spacing="6">GAME OVER</text>
+
+  
+  
+  <rect x="36" y="790" width="750" height="180" fill="#0d001a" />
+  <rect x="36" y="790" width="750" height="180" fill="none" stroke="#00ff88" stroke-width="4" />
+  
+  
+  <text x="56" y="848" font-family="monospace" font-size="52" font-weight="bold" fill="#ffffff" letter-spacing="2">CIT GROUP</text>
+  <text x="56" y="908" font-family="monospace" font-size="52" font-weight="bold" fill="#ff3300" letter-spacing="2">BANKRUPTCY</text>
+
+  
+  <rect x="56" y="926" width="200" height="32" fill="#ff3300" />
+  <text x="156" y="948" font-family="monospace" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="3">NOV 1, 2009</text>
+
+  
+  <rect x="268" y="926" width="200" height="32" fill="#ffe100" />
+  <text x="368" y="948" font-family="monospace" font-size="20" font-weight="bold" fill="#0d001a" text-anchor="middle" letter-spacing="2">CHAPTER 11</text>
+
+  
+  <rect x="480" y="926" width="290" height="32" fill="#2a1060" />
+  <rect x="480" y="926" width="290" height="32" fill="none" stroke="#00ff88" stroke-width="2" />
+  <text x="625" y="948" font-family="monospace" font-size="18" fill="#00ff88" text-anchor="middle" letter-spacing="1">~$60-65B ASSETS</text>
+
+  
+  
+  <rect x="820" y="535" width="580" height="200" fill="#0d001a" />
+  <rect x="820" y="535" width="580" height="200" fill="none" stroke="#2a1060" stroke-width="3" />
+
+  
+  <rect x="832" y="548" width="170" height="50" fill="#1a003a" />
+  <text x="917" y="568" font-family="monospace" font-size="13" fill="#888888" text-anchor="middle">FOUNDED</text>
+  <text x="917" y="588" font-family="monospace" font-size="22" font-weight="bold" fill="#00ff88" text-anchor="middle">1908</text>
+  
+  
+  <rect x="1010" y="548" width="180" height="50" fill="#1a003a" />
+  <text x="1100" y="568" font-family="monospace" font-size="13" fill="#888888" text-anchor="middle">ASSETS (2009)</text>
+  <text x="1100" y="588" font-family="monospace" font-size="22" font-weight="bold" fill="#ffcc00" text-anchor="middle">$60B+</text>
+
+  
+  <rect x="1198" y="548" width="190" height="50" fill="#1a003a" />
+  <text x="1293" y="568" font-family="monospace" font-size="13" fill="#888888" text-anchor="middle">BUSINESSES</text>
+  <text x="1293" y="588" font-family="monospace" font-size="22" font-weight="bold" fill="#ff8800" text-anchor="middle">~1 MILLION</text>
+
+  
+  <text x="832" y="628" font-family="monospace" font-size="14" fill="#555555">KEY FIGURES:</text>
+  
+  <rect x="832" y="636" width="130" height="38" fill="#200040" />
+  <text x="897" y="651" font-family="monospace" font-size="11" fill="#aa88ff" text-anchor="middle">CEO (resigned)</text>
+  <text x="897" y="668" font-family="monospace" font-size="13" font-weight="bold" fill="#cc99ff" text-anchor="middle">J. PEEK</text>
+
+  <rect x="972" y="636" width="130" height="38" fill="#200040" />
+  <text x="1037" y="651" font-family="monospace" font-size="11" fill="#aa88ff" text-anchor="middle">SUCCESSOR CEO</text>
+  <text x="1037" y="668" font-family="monospace" font-size="13" font-weight="bold" fill="#cc99ff" text-anchor="middle">J. THAIN</text>
+
+  <rect x="1112" y="636" width="130" height="38" fill="#200040" />
+  <text x="1177" y="651" font-family="monospace" font-size="11" fill="#aa88ff" text-anchor="middle">MAJOR CREDITOR</text>
+  <text x="1177" y="668" font-family="monospace" font-size="13" font-weight="bold" fill="#cc99ff" text-anchor="middle">C. ICAHN</text>
+
+  <rect x="1252" y="636" width="130" height="38" fill="#200040" />
+  <text x="1317" y="651" font-family="monospace" font-size="11" fill="#aa88ff" text-anchor="middle">FDIC CHAIR</text>
+  <text x="1317" y="668" font-family="monospace" font-size="13" font-weight="bold" fill="#cc99ff" text-anchor="middle">S. BAIR</text>
+
+  
+  <rect x="832" y="690" width="550" height="32" fill="#3a0000" />
+  <rect x="832" y="690" width="550" height="32" fill="none" stroke="#ff3300" stroke-width="2" />
+  <text x="1107" y="711" font-family="monospace" font-size="16" fill="#ff6666" text-anchor="middle" letter-spacing="1">★ TOP 5 LARGEST U.S. CORPORATE BANKRUPTCIES BY ASSETS ★</text>
+
+  
+  
+  <g transform="translate(500, 650)" fill="#ff8800">
+    
+    <rect x="0" y="0" width="16" height="16" fill="#ffcc88" />
+    
+    <rect x="0" y="16" width="16" height="20" fill="#0044cc" />
+    
+    <rect x="-8" y="18" width="8" height="8" fill="#0044cc" />
+    <rect x="16" y="22" width="8" height="8" fill="#0044cc" />
+    
+    <rect x="0" y="36" width="6" height="14" fill="#222266" />
+    <rect x="10" y="40" width="6" height="10" fill="#222266" />
+    
+    <rect x="18" y="26" width="12" height="10" fill="#884400" />
+    <rect x="19" y="24" width="10" height="4" fill="#884400" />
+    
+    <text x="19" y="35" font-family="monospace" font-size="9" fill="#ffe100">$</text>
+  </g>
+
+  
+  <g transform="translate(550, 660)" fill="#ff8800">
+    <rect x="0" y="0" width="14" height="14" fill="#ffcc88" />
+    <rect x="0" y="14" width="14" height="18" fill="#cc0000" />
+    <rect x="-6" y="16" width="6" height="7" fill="#cc0000" />
+    <rect x="14" y="19" width="6" height="7" fill="#cc0000" />
+    <rect x="0" y="32" width="5" height="12" fill="#440000" />
+    <rect x="9" y="36" width="5" height="8" fill="#440000" />
+  </g>
+
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#scanpat)" opacity="0.6" />
+  
+  
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="0%" stop-color="transparent" />
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.6" />
+  </radialGradient>
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <text x="768" y="985" font-family="monospace" font-size="16" fill="#333366" text-anchor="middle" letter-spacing="4">INSERT COIN TO RESTRUCTURE · 2009 · CHAPTER 11 · U.S. BANKRUPTCY COURT SDNY</text>
+</svg>

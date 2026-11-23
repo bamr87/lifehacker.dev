@@ -1,0 +1,68 @@
+# =============================================================================
+# genome.example.countries.yml — a WORKED FILL of the concept manifest.
+# =============================================================================
+# Demonstrates replanting the ENTIRE model for a different concept — "countries"
+# instead of "years of AI" — by changing only this file. Everything structural
+# (the hub, the 3-tier growth engine, plant-lineage spawning, the self-improvement
+# fleet, the policy, the framework) transplants unchanged. This is the proof that
+# the genome carries the org model's DNA, not its instance.
+#
+# To use: create a fresh org, copy this to genome.yml in the planted hub, set the
+# 3 secrets, run the planter. See GENOME.md §Plant runbook.
+
+genome_version: "0.1.0"
+
+identity:
+  org: "world-atlas"
+  hub_repo: "world-atlas.github.io"
+  hub_domain: "world-atlas.github.io"
+  git_author_email: "bot@world-atlas.org"
+  theme_repo: "bamr87/zer0-mistakes"
+
+branding:
+  site_title: "World Atlas"
+  site_tagline: "A federated, self-growing knowledge base — one country at a time."
+  founder_name: "Jane Cartographer"
+  founder_email: "jane@world-atlas.org"
+  author_bio: "Mapping the world, one repo at a time"
+  author_location: "Geneva, CH"
+  copyright_year: 2026
+  preview_image_style: "flat vector world-map cartography, muted earth tones"
+  preview_provider: "openai"
+  preview_model: "gpt-image-2"
+  chat_assistant_name: "Atlas"
+  chat_system_prompt: "You are Atlas, a helpful assistant for the World Atlas knowledge base."
+
+analytics: { google_analytics: "", posthog_api_key: "", posthog_host: "" }
+social:    { twitter: "", instagram: "", youtube_url: "" }
+comments:  { giscus_repo_id: "", giscus_category_id: "" }
+
+lexicon:
+  unit_noun: "country"
+  unit_noun_plural: "countries"
+  unit_icon: "bi-globe"
+  subject_singular: "the country"
+  member_subject_template: "the country {member}"
+  knowledge_table_heading: "Notable Facts about {{SUBJECT}}"
+
+taxonomy:
+  taxonomy_strategy: "enumerable"     # countries are an enumerable set, not a timeline
+  default_taxonomy:
+    - { name: "Geography",            slug: "geography" }
+    - { name: "History",              slug: "history" }
+    - { name: "Government & Politics", slug: "government-politics" }
+    - { name: "Economy",              slug: "economy" }
+    - { name: "Culture & Society",    slug: "culture-society" }
+    - { name: "People",               slug: "people" }
+
+lifecycle:
+  first_member: "japan"
+  member_slug_rule: "Lowercase the country's common English name; hyphenate spaces (e.g. 'south-korea')."
+  succession_rule: "Pick the next country tangential to the frontier (shared region, trade bloc, or history) — no linear order; the hub chooses."
+  consolidation_naming_rule: "Hyphenate the region (e.g. 'east-asia')."
+  deepen_granularity: "administrative region, then city"
+
+cadence:
+  cron: "30 5 * * *"
+  replant_after_ticks: 3
+  consolidate_at_members: 7

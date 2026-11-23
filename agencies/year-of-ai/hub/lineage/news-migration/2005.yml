@@ -1,0 +1,84 @@
+# Enrichment map for the 2005 news-structure migration (pilot input).
+# Hand-authored: coherent per-section topic (tag) vocabularies + a marquee
+# "featured" article per section. Excerpts are derived mechanically by the
+# migration script from each article's ## Summary paragraph.
+#
+# `sections` order here is the order used in the News nav + /news/ landing.
+
+site:
+  title: "The Year 2005"
+  tagline: "A self-growing newsroom for the year 2005 — history, science, culture, society, and people."
+
+sections:
+  history-politics:
+    name: "History & Politics"
+    icon: "bi-bank"
+    description: "Elections, conflicts, diplomacy, and the political turning points of 2005."
+    featured: "77-london-bombings"
+  science-technology:
+    name: "Science & Technology"
+    icon: "bi-cpu"
+    description: "Space missions, medical firsts, new hardware, and the founding of YouTube."
+    featured: "youtube-founded"
+  arts-culture:
+    name: "Arts & Culture"
+    icon: "bi-palette"
+    description: "The films, music, and television that defined 2005's cultural landscape."
+    featured: "star-wars-episode-iii"
+  society-economics:
+    name: "Society & Economics"
+    icon: "bi-globe2"
+    description: "Disasters, public health, law, and the social and economic forces of 2005."
+    featured: "hurricane-katrina"
+  people:
+    name: "People"
+    icon: "bi-person-badge"
+    description: "The individuals whose lives and milestones shaped 2005."
+    featured: "rosa-parks-dies"
+
+# Per-article topic tags. Key = "<section-slug>/<article-slug>".
+# Tags are lowercase, human-readable, and deliberately REUSED across a section
+# so each becomes a real sub-grouping (the collapsible sidebar / filter pills).
+tags:
+  history-politics/iraqi-elections-2005: ["elections", "middle east"]
+  history-politics/angela-merkel-chancellor: ["elections", "europe"]
+  history-politics/tulip-revolution-kyrgyzstan: ["elections", "protest"]
+  history-politics/77-london-bombings: ["terrorism", "europe"]
+  history-politics/gaza-disengagement-2005: ["middle east", "conflict"]
+  history-politics/hariri-assassination-cedar-revolution: ["middle east", "protest"]
+  history-politics/saddam-hussein-trial-begins: ["middle east", "justice"]
+  history-politics/ira-ends-armed-campaign: ["europe", "conflict"]
+  history-politics/pope-john-paul-ii-death: ["religion", "europe"]
+  history-politics/pope-benedict-xvi-2005: ["religion", "europe"]
+  history-politics/george-w-bush-2005-agenda: ["united states", "government"]
+
+  science-technology/youtube-founded: ["internet", "startups"]
+  science-technology/deep-impact-mission: ["space", "exploration"]
+  science-technology/huygens-titan-landing: ["space", "exploration"]
+  science-technology/eris-discovery: ["space", "astronomy"]
+  science-technology/first-face-transplant: ["medicine", "surgery"]
+  science-technology/kyoto-protocol-enters-force: ["climate", "policy"]
+  science-technology/airbus-a380-first-flight: ["aviation", "engineering"]
+  science-technology/guitar-hero-launch: ["gaming", "entertainment"]
+  science-technology/xbox-360-launch: ["gaming", "hardware"]
+
+  arts-culture/star-wars-episode-iii: ["film", "blockbuster"]
+  arts-culture/narnia-lion-witch-wardrobe: ["film", "fantasy"]
+  arts-culture/brokeback-mountain: ["film", "awards"]
+  arts-culture/live-8-concerts: ["music", "activism"]
+  arts-culture/colbert-report-premiere: ["television", "satire"]
+
+  society-economics/hurricane-katrina: ["disasters", "united states"]
+  society-economics/kashmir-earthquake-2005: ["disasters", "south asia"]
+  society-economics/avian-flu-h5n1-2005: ["public health", "pandemics"]
+  society-economics/2005-french-riots: ["civil unrest", "europe"]
+  society-economics/same-sex-marriage-2005: ["law", "human rights"]
+  society-economics/terri-schiavo-case: ["law", "bioethics"]
+  society-economics/digital-music-revolution: ["technology", "economy"]
+  society-economics/london-wins-2012-olympic-bid: ["sports", "cities"]
+
+  people/rosa-parks-dies: ["civil rights", "united states"]
+  people/condoleezza-rice-secretary-of-state: ["politics", "united states"]
+  people/ellen-johnson-sirleaf-elected: ["politics", "africa"]
+  people/lance-armstrong-tour-de-france: ["sports", "cycling"]
+  people/michael-jackson-trial-verdict: ["celebrity", "justice"]

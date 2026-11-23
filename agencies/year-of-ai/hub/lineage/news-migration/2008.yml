@@ -1,0 +1,61 @@
+site:
+  title: "The Year 2008"
+  tagline: "The year the economy cracked, a nation elected change, and Beijing broke the records."
+sections:
+  history-politics:
+    name: "History & Politics"
+    icon: "bi-bank"
+    description: "Elections, wars, and declarations of sovereignty that reordered domestic and global politics in 2008."
+    featured: "barack-obama-election"
+  science-technology:
+    name: "Science & Technology"
+    icon: "bi-cpu"
+    description: "Launches and breakthroughs across mobile, the web, cryptocurrency, and big science that defined the technology of 2008."
+    featured: "bitcoin-whitepaper"
+  arts-culture:
+    name: "Arts & Culture"
+    icon: "bi-palette"
+    description: "The films, music, and literature — plus the writers' strike — that shaped popular culture in 2008."
+    featured: "the-dark-knight"
+  society-economics:
+    name: "Society & Economics"
+    icon: "bi-globe2"
+    description: "The global financial crisis, its bailouts and frauds, and the natural disasters that defined society and the economy in 2008."
+    featured: "2008-financial-crisis"
+  people:
+    name: "People"
+    icon: "bi-person-badge"
+    description: "The athletes whose 2008 performances, most of them at the Beijing Olympics, became defining feats of the year."
+    featured: "michael-phelps"
+tags:
+  "history-politics/2008-presidential-debates": ["us election", "campaign trail"]
+  "history-politics/barack-obama-election": ["us election", "campaign trail", "civil rights"]
+  "history-politics/california-proposition-8-2008": ["us election", "civil rights"]
+  "history-politics/beijing-summer-olympics": ["world stage", "asia"]
+  "history-politics/kosovo-declaration-of-independence": ["sovereignty", "world stage"]
+  "history-politics/mumbai-terrorist-attacks": ["armed conflict", "world stage", "asia"]
+  "history-politics/russo-georgian-war": ["armed conflict", "sovereignty"]
+  "science-technology/apple-app-store-launch": ["consumer tech", "mobile"]
+  "science-technology/bitcoin-whitepaper": ["frontier tech", "internet"]
+  "science-technology/google-chrome-launch": ["consumer tech", "web", "internet"]
+  "science-technology/htc-dream-android-launch": ["consumer tech", "mobile"]
+  "science-technology/large-hadron-collider-first-beam": ["big science", "frontier tech"]
+  "science-technology/netflix-streaming-video": ["consumer tech", "web", "internet"]
+  "science-technology/spacex-falcon-1-orbital-launch": ["big science", "frontier tech"]
+  "arts-culture/coldplay-viva-la-vida": ["award winner", "entertainment industry"]
+  "arts-culture/slumdog-millionaire": ["film", "adaptation", "award winner"]
+  "arts-culture/the-dark-knight": ["film", "adaptation", "cultural phenomenon"]
+  "arts-culture/the-hunger-games-novel": ["young adult", "cultural phenomenon"]
+  "arts-culture/twilight-film-2008": ["film", "young adult", "adaptation"]
+  "arts-culture/wall-e": ["film", "award winner", "hollywood"]
+  "arts-culture/writers-guild-strike-2008": ["hollywood", "entertainment industry"]
+  "society-economics/2008-financial-crisis": ["financial crisis", "wall street"]
+  "society-economics/bernie-madoff-ponzi-scheme": ["wall street", "collapse"]
+  "society-economics/cyclone-nargis": ["natural disaster", "humanitarian crisis"]
+  "society-economics/lehman-brothers-collapse": ["financial crisis", "wall street", "collapse"]
+  "society-economics/sichuan-earthquake": ["natural disaster", "humanitarian crisis"]
+  "society-economics/tarp-bailout": ["financial crisis", "wall street"]
+  "people/michael-phelps": ["olympics", "world record", "american"]
+  "people/nastia-liukin": ["olympics", "american", "gold medal"]
+  "people/rafael-nadal": ["olympics", "gold medal"]
+  "people/usain-bolt": ["olympics", "world record"]

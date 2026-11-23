@@ -1,0 +1,234 @@
+---
+name: Lineage Orchestrator
+
+# The hub is the central orchestrator for the org's self-growing knowledge bases.
+# Once a day it:
+#   1. READS each year's centralized seed (lineage/seeds/<year>.md) into
+#      _data/lineage.yml via sync-lineage-state.rb, and commits any change
+#      (which rebuilds the /lineage/ + /hub/ dashboards).
+#   2. SELECTS which members to grow this run from lineage/policy.yml
+#      (cadence.repos_per_run, stalest-first rotation; 0/absent = everyone),
+#      then TRIGGERS one central growth tick per selected repo by dispatching
+#      the hub's grow-lineage.yml (-f repo=<year>) — which stages the framework
+#      + seed and runs the 3-tier Haiku->Sonnet->Opus escalation.
+#
+#   3. BACKFILLS banners (ADR-0008 Phase 4, the `backfill` job): plans the next
+#      worst-first batch with scripts/reillustrate.rb and dispatches ONE
+#      reillustrate.yml run per member — a separate job and workflow, so it never
+#      competes with growth for the tick's budget. Off until the repo variable
+#      REILLUSTRATE_ENABLED is 'true' (a dispatch with backfill=true bypasses it).
+#
+# Each repo grows perpetually and is never consolidated, archived, or deleted.
+#
+# Secrets (org- or repo-level):
+#   LIFECYCLE_PAT  — a PAT with `actions: write` on this hub, used to dispatch
+#                    grow-lineage.yml. grow-lineage itself uses it to push content
+#                    into each year repo. If unset, the ledger still refreshes
+#                    (tracking-only).
+#
+# Deterministic: when no repo's state changed, the ledger is unchanged and no
+# commit is made.
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    - cron: '30 5 * * *' # daily, ahead of any residual per-repo automation
+  workflow_dispatch:
+    inputs:
+      trigger_growth:
+        description: 'Dispatch a grow tick to every repo (needs LIFECYCLE_PAT)'
+        type: boolean
+        default: true
+      targets:
+        description: 'Optional space-separated repo list (owner/name); blank = all in the ledger'
+        required: false
+        default: ''
+      backfill:
+        description: 'Dispatch the banner backfill now (bypasses REILLUSTRATE_ENABLED)'
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync-lineage-state.rb'
+      - 'scripts/lib/hub.rb'
+      - '.github/workflows/orchestrate.yml'
+  pull_request:
+    paths:
+      - 'scripts/sync-lineage-state.rb'
+      - '.github/workflows/orchestrate.yml'
+
+concurrency:
+  group: lineage-orchestrate
+  cancel-in-progress: false
+
+jobs:
+  orchestrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Validate ledger (PRs)
+        if: github.event_name == 'pull_request'
+        run: ruby scripts/sync-lineage-state.rb --check
+
+      - name: Refresh lineage ledger
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ruby scripts/sync-lineage-state.rb
+
+      - name: Commit refreshed ledger
+        if: github.event_name != 'pull_request'
+        run: |
+          if [ -z "$(git status --porcelain -- _data/lineage.yml)" ]; then
+            echo "Lineage state unchanged — nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/lineage.yml
+          git commit -m "chore(lineage): refresh state ledger"
+          # Hub main advances often (seed persists, telemetry ledger). Retry
+          # with rebase so this commit is never lost to a non-fast-forward.
+          for _ in 1 2 3; do
+            git push && exit 0
+            git pull --rebase origin main || true
+          done
+          git push
+
+      - name: Trigger growth ticks
+        # Schedule and manual dispatch (when trigger_growth is true) fan out a
+        # grow tick to every repo in the ledger. Skipped gracefully if the PAT
+        # is absent — the ledger refresh above still ran (tracking-only).
+        if: >-
+          github.event_name == 'schedule' ||
+          (github.event_name == 'workflow_dispatch' && inputs.trigger_growth)
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+          TARGETS: ${{ inputs.targets }}
+          # Paused Oct 14 (Actions waste reduction): grow-lineage.yml failed 116
+          # runs in a row at "Fail loudly if the growth tick produced no content"
+          # (grow-lineage.yml:480). Scheduled grow dispatch now runs only when the
+          # repo variable GROW_LINEAGE_ENABLED is 'true' (unset = off). A manual
+          # dispatch with trigger_growth=true still grows, so a fix can be tested.
+          GROW_ENABLED: ${{ github.event_name == 'workflow_dispatch' || vars.GROW_LINEAGE_ENABLED == 'true' }}
+        run: |
+          # Global kill-switch (ADR-0003): halt all growth dispatch when paused.
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            reason="$(ruby -ryaml -e 'puts YAML.load_file("_data/fleet_pause.yml")["reason"].to_s' 2>/dev/null)"
+            echo "::notice::Fleet is PAUSED via _data/fleet_pause.yml — skipping all growth dispatch. ${reason:+Reason: $reason}"
+            exit 0
+          fi
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::LIFECYCLE_PAT not set — refreshed the ledger but did not trigger growth (tracking-only)."
+            exit 0
+          fi
+          if [ -n "$TARGETS" ]; then
+            repos="$TARGETS"
+          else
+            # Cadence (lineage/policy.yml): grow only cadence.repos_per_run
+            # members per run, picking the stalest first (never-grown members
+            # sort to the front). 0 or absent = grow every member every run.
+            repos="$(ruby -ryaml -e '
+              policy = YAML.load_file("lineage/policy.yml") rescue {}
+              per = (policy.dig("cadence", "repos_per_run") || 0).to_i
+              members = (YAML.load_file("_data/lineage.yml")["members"] || [])
+              members = members.sort_by { |m| m["last_activity"].to_s }
+              members = members.first(per) if per.positive? && per < members.size
+              puts members.map { |m| m["repo"] }.join(" ")
+            ')"
+          fi
+          if [ "$GROW_ENABLED" != "true" ]; then
+            echo "::notice::grow-lineage dispatch paused (GROW_LINEAGE_ENABLED is not 'true'); would have grown: $repos"
+            repos=""
+          fi
+          echo "Dispatching central grow ticks (grow-lineage.yml) for: ${repos:-<none>}"
+          for r in $repos; do
+            name="${r##*/}"   # year-of-ai/1776 -> 1776
+            if gh workflow run grow-lineage.yml -R year-of-ai/year-of-ai.github.io -f repo="$name" >/dev/null 2>&1; then
+              echo "  ✓ $name"
+            else
+              echo "  ✗ $name (could not dispatch grow-lineage.yml; PAT needs actions:write on the hub)"
+            fi
+          done
+
+          # Maturity-gated tangential spawning (ADR-0002 automation, ADR-0007):
+          # when EVERY member has logged >= spawn.frontier_ticks growth cycles
+          # (the newest member has itself matured) and the roster is below
+          # spawn.max_members, dispatch ONE plant-lineage run — its DECIDE
+          # pass authors a tangential seed and the planter creates the repo.
+          # plant-lineage.yml RE-VERIFIES this gate from a fresh checkout, so
+          # a stale ledger or double dispatch is a clean no-op there.
+          spawn_due="$(ruby -ryaml -e '
+            sp      = (YAML.load_file("lineage/policy.yml")["spawn"] rescue nil) || {}
+            members = (YAML.load_file("_data/lineage.yml")["members"] rescue nil) || []
+            ok = sp["enabled"] == true &&
+                 !members.empty? &&
+                 members.size < sp.fetch("max_members", 0).to_i &&
+                 members.all? { |m| m["ticks_logged"].to_i >= sp.fetch("frontier_ticks", 1 << 30).to_i }
+            puts ok ? "true" : "false"
+          ')"
+          if [ "$spawn_due" = "true" ]; then
+            if gh workflow run plant-lineage.yml -R year-of-ai/year-of-ai.github.io -f auto=true >/dev/null 2>&1; then
+              echo "  🌱 lineage mature — dispatched plant-lineage (auto-spawn)"
+            else
+              echo "  ✗ could not dispatch plant-lineage.yml (PAT needs actions:write on the hub)"
+            fi
+          else
+            echo "  spawn gate: not due (spawn.enabled + every member >= frontier_ticks + roster < max_members)"
+          fi
+
+  # ---- Banner backfill (ADR-0008 Phase 4) ------------------------------------
+  backfill:
+    needs: orchestrate
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Plan and dispatch the next batch
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+          # New agent loop → default OFF (fleet rule: a kill switch a manual
+          # dispatch bypasses). Turn on once zer0-image-generator >= 0.10 is
+          # published; scripts/reillustrate.rb says when the backlog is empty.
+          ENABLED: ${{ vars.REILLUSTRATE_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && inputs.backfill) }}
+        run: |
+          set -uo pipefail
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            echo "::notice::Fleet is PAUSED — no banner backfill."; exit 0
+          fi
+          if [ "$ENABLED" != "true" ]; then
+            echo "::notice::banner backfill off (REILLUSTRATE_ENABLED is not 'true')."
+            ruby scripts/reillustrate.rb --plan >/dev/null || true   # still log the backlog size
+            exit 0
+          fi
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::LIFECYCLE_PAT not set — cannot dispatch the backfill."; exit 0
+          fi
+          plan="$(ruby scripts/reillustrate.rb --plan)"
+          echo "plan: ${plan}"
+          jq -c '.[]' <<< "$plan" | while IFS= read -r row; do
+            repo="$(jq -r '.repo' <<< "$row")"
+            articles="$(jq -r '.articles | join(",")' <<< "$row")"
+            if gh workflow run reillustrate.yml -R "$GITHUB_REPOSITORY" -f repo="$repo" -f articles="$articles" >/dev/null 2>&1; then
+              echo "  ✓ ${repo}: ${articles}"
+            else
+              echo "  ✗ ${repo} (could not dispatch reillustrate.yml; PAT needs actions:write on the hub)"
+            fi
+          done

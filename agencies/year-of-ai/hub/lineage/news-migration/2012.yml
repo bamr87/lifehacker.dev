@@ -1,0 +1,109 @@
+# News-layout enrichment for year-of-ai/2012
+# Sections in canonical order; tags are section-scoped filter pills.
+
+site:
+  title: "The Year 2012"
+  tagline: "The year the world watched London's Games, confirmed the Higgs boson, and rode a viral wave."
+
+sections:
+  history-politics:
+    name: "History & Politics"
+    icon: "bi-bank"
+    description: "London staged a record Summer Olympics and Paralympics while a US presidential election, the Diamond Jubilee, and East Asian and Middle Eastern flashpoints defined the political year."
+    featured: "london-2012-olympics"
+  science-technology:
+    name: "Science & Technology"
+    icon: "bi-cpu"
+    description: "Physicists confirmed the Higgs boson and Curiosity reached Mars in a year that also brought the iPhone 5, Windows 8, record Arctic ice loss, and the SOPA/PIPA internet revolt."
+    featured: "higgs-boson-discovery"
+  arts-culture:
+    name: "Arts & Culture"
+    icon: "bi-palette"
+    description: "Gangnam Style became the first video to pass a billion YouTube views alongside blockbuster franchises Skyfall, The Avengers, and The Dark Knight Rises, Adele's chart reign, and the Pussy Riot trial."
+    featured: "gangnam-style-viral-phenomenon"
+  society-economics:
+    name: "Society & Economics"
+    icon: "bi-globe2"
+    description: "Hurricane Sandy and the Sandy Hook shooting shook the United States while the eurozone debt crisis, Facebook's IPO, Occupy Wall Street, and the KONY 2012 campaign dominated headlines."
+    featured: "hurricane-sandy-2012"
+  people:
+    name: "People"
+    icon: "bi-person-badge"
+    description: "Leaders took office or won re-election across the US, Russia, China, Egypt, and North Korea as Malala Yousafzai's shooting turned a Pakistani schoolgirl into a global icon for education."
+    featured: "malala-yousafzai-2012-shooting"
+
+tags:
+  # history-politics vocabulary: olympics, ceremonies, athletes, elections,
+  # us politics, geopolitics, diplomacy, british monarchy
+  history-politics/2012-olympics-mens-basketball: ["olympics", "athletes"]
+  history-politics/2012-us-presidential-election: ["elections", "us politics"]
+  history-politics/julian-assange-ecuador-asylum-2012: ["geopolitics", "diplomacy"]
+  history-politics/london-2012-closing-ceremony: ["olympics", "ceremonies"]
+  history-politics/london-2012-equestrian-events: ["olympics", "athletes"]
+  history-politics/london-2012-olympics: ["olympics", "ceremonies"]
+  history-politics/london-2012-opening-ceremony: ["olympics", "ceremonies", "british monarchy"]
+  history-politics/london-2012-paralympics: ["olympics", "athletes"]
+  history-politics/london-2012-torch-relay: ["olympics", "ceremonies"]
+  history-politics/michael-phelps-2012-olympics: ["olympics", "athletes"]
+  history-politics/mitt-romney-2012-campaign: ["elections", "us politics"]
+  history-politics/queen-elizabeth-diamond-jubilee-2012: ["ceremonies", "british monarchy"]
+  history-politics/rio-2016-olympic-bid: ["olympics", "diplomacy"]
+  history-politics/senkaku-diaoyu-dispute-2012: ["geopolitics", "diplomacy"]
+  history-politics/south-korea-2012-presidential-election: ["elections", "geopolitics"]
+  history-politics/syrian-civil-war-escalation-2012: ["geopolitics", "diplomacy"]
+  history-politics/us-fiscal-cliff-2012: ["us politics", "elections"]
+  history-politics/usain-bolt-100m-olympic-gold-2012: ["olympics", "athletes"]
+
+  # science-technology vocabulary: physics, discoveries, space,
+  # natural phenomena, big tech, internet, gadgets
+  science-technology/apple-iphone-5-launch: ["big tech", "gadgets"]
+  science-technology/arctic-sea-ice-minimum-2012: ["natural phenomena", "discoveries"]
+  science-technology/curiosity-rover-mars-landing: ["space", "discoveries"]
+  science-technology/higgs-boson-discovery: ["physics", "discoveries"]
+  science-technology/instagram-facebook-acquisition-2012: ["big tech", "internet"]
+  science-technology/quantum-computing-advances-2012: ["physics", "discoveries"]
+  science-technology/red-bull-stratos-2012: ["space", "discoveries"]
+  science-technology/sopa-pipa-2012-activism: ["big tech", "internet"]
+  science-technology/venus-transit-june-2012: ["space", "natural phenomena"]
+  science-technology/windows-8-release: ["big tech", "gadgets"]
+
+  # arts-culture vocabulary: screen, franchises, music, viral,
+  # football, chart-toppers
+  arts-culture/adeles-21-album: ["music", "chart-toppers"]
+  arts-culture/euro-2012-football-championship: ["football", "franchises"]
+  arts-culture/gangnam-style-viral-phenomenon: ["music", "viral", "chart-toppers"]
+  arts-culture/pro-evolution-soccer-2013: ["football", "franchises"]
+  arts-culture/pussy-riot-2012-trial: ["music", "viral"]
+  arts-culture/skyfall-2012-film: ["screen", "franchises"]
+  arts-culture/the-avengers-2012-film: ["screen", "franchises"]
+  arts-culture/the-dark-knight-rises: ["screen", "franchises"]
+  arts-culture/the-hobbit-unexpected-journey: ["screen", "franchises"]
+  arts-culture/the-newsroom-hbo-2012: ["screen", "viral"]
+
+  # society-economics vocabulary: tragedies, gun violence, climate, economy,
+  # crisis, activism, viral, sports, scandal
+  society-economics/amazon-flood-2012: ["tragedies", "climate"]
+  society-economics/aurora-theater-shooting-2012: ["tragedies", "gun violence"]
+  society-economics/clint-eastwood-rnc-speech-2012: ["viral", "scandal"]
+  society-economics/european-debt-crisis-2012: ["economy", "crisis"]
+  society-economics/facebook-ipo-2012: ["economy", "scandal"]
+  society-economics/hurricane-sandy-2012: ["tragedies", "climate"]
+  society-economics/kodak-bankruptcy-2012: ["economy", "crisis"]
+  society-economics/kony-2012-campaign: ["activism", "viral"]
+  society-economics/lance-armstrong-usada-investigation-2012: ["sports", "scandal"]
+  society-economics/occupy-wall-street-2012: ["economy", "activism"]
+  society-economics/sandy-hook-elementary-shooting-2012: ["tragedies", "gun violence"]
+  society-economics/tebowing-phenomenon-2012: ["viral", "sports"]
+
+  # people vocabulary: world leaders, elections, power transition, peace,
+  # trailblazers, innovators, culture
+  people/barack-obama-2012-reelection: ["world leaders", "elections"]
+  people/juan-manuel-santos-peace-process: ["world leaders", "peace"]
+  people/kim-jong-un-2012-succession: ["world leaders", "power transition"]
+  people/malala-yousafzai-2012-shooting: ["peace", "trailblazers"]
+  people/marissa-mayer-yahoo-ceo-2012: ["trailblazers", "innovators"]
+  people/mohamed-morsi-2012-presidency: ["world leaders", "elections"]
+  people/nobel-prize-2012: ["trailblazers", "culture"]
+  people/peter-jackson-filmmaker: ["culture", "innovators"]
+  people/vladimir-putin-2012-presidency: ["world leaders", "elections"]
+  people/xi-jinping-2012-elevation: ["world leaders", "power transition"]

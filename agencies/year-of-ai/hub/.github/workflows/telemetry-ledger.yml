@@ -1,0 +1,165 @@
+---
+name: Telemetry Ledger
+
+# The keystone of the self-improvement fleet (ADR-0003 telemetry-ledger-collector)
+# and the fix for the "no evolution ledger" defect: grow-lineage uploads a 14-day
+# per-run telemetry artifact that is otherwise discarded. This collector runs after
+# every Grow Lineage run, reads that artifact, and APPENDS one evolution-telemetry/v1
+# record to the hub's telemetry/evolution.jsonl — the single append-only ledger every
+# learn/cost/monitor agent will read.
+#
+# Append-only + idempotent on run_id. Records ALSO the framework SHA the tick ran
+# under (workflow_run.head_sha) so a future learn agent can quarantine windows by
+# framework version.
+#
+# Banner ledger (ADR-0008): the Illustrate step (and the re-illustrate backfill)
+# upload the run's banner/v1 records as `*-banners-<repo>-<run_id>`; this job
+# appends them, tagged with repo + run_id, to telemetry/banners.jsonl — the
+# source of _data/lineage.yml `banner_quality` and the weekly banner watcher.
+# A backfill run is not a growth tick: it gets banner records, no evolution
+# record. The CORRECTED trigger ("Grow Lineage") + artifact pattern
+# (grow-lineage-telemetry-*) — the dormant lineage/framework/workflows/telemetry.yml
+# had both wrong.
+
+on:
+  workflow_run:
+    workflows: ["Grow Lineage", "Re-illustrate Banners"]
+    types: [completed]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # commit the ledger
+  actions: read     # download the triggering run's artifact
+
+concurrency:
+  group: telemetry-ledger-append   # serialize appends so the ledger never races
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    # Only for real Grow Lineage runs (workflow_dispatch has no workflow_run).
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.name == 'Grow Lineage' || github.event.workflow_run.name == 'Re-illustrate Banners' }}
+    steps:
+      - name: Checkout the hub
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.LIFECYCLE_PAT || github.token }}
+
+      - name: Download the triggering run's telemetry artifact
+        if: github.event_name == 'workflow_run' && github.event.workflow_run.name == 'Grow Lineage'
+        continue-on-error: true   # a tick that produced no output uploads no artifact
+        uses: actions/download-artifact@v8
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: grow-lineage-telemetry-*
+          path: /tmp/tel
+
+      - name: Download the triggering run's banner records
+        if: github.event_name == 'workflow_run'
+        continue-on-error: true   # a tick that illustrated nothing uploads nothing
+        uses: actions/download-artifact@v8
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: '*-banners-*'
+          path: /tmp/banners
+
+      - name: Append the banner records
+        if: github.event_name == 'workflow_run'
+        env:
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          set -uo pipefail
+          mkdir -p telemetry
+          touch telemetry/banners.jsonl
+          if grep -q "\"run_id\":\"${RUN_ID}\"" telemetry/banners.jsonl; then
+            echo "run ${RUN_ID} banners already in the ledger."
+            exit 0
+          fi
+          added=0
+          # <prefix>-banners-<repo>-<run_id>/banners-tick.jsonl
+          for dir in /tmp/banners/*-banners-*; do
+            [ -d "$dir" ] || continue
+            base="$(basename "$dir")"; name="${base#*-banners-}"; repo="${name%-*}"
+            for f in "$dir"/*.jsonl; do
+              [ -s "$f" ] || continue
+              jq -c --arg run "$RUN_ID" --arg repo "$repo" '. + {run_id: $run, repo: $repo}' "$f" >> telemetry/banners.jsonl
+              added=$((added + $(wc -l < "$f")))
+            done
+          done
+          echo "appended ${added} banner record(s) from run ${RUN_ID}"
+
+      - name: Append the evolution record
+        if: github.event_name == 'workflow_run' && github.event.workflow_run.name == 'Grow Lineage'
+        env:
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          STARTED: ${{ github.event.workflow_run.created_at }}
+          ENDED: ${{ github.event.workflow_run.updated_at }}
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT || github.token }}
+        run: |
+          set -uo pipefail
+          mkdir -p telemetry
+          touch telemetry/evolution.jsonl
+
+          # Idempotent: never double-record a run.
+          if grep -q "\"run_id\":\"${RUN_ID}\"" telemetry/evolution.jsonl; then
+            echo "run ${RUN_ID} already in the ledger — nothing to do."
+            exit 0
+          fi
+
+          # The artifact (if any) unzips to /tmp/tel/grow-lineage-telemetry-<repo>-<run_id>/.
+          dir="$(find /tmp/tel -maxdepth 1 -type d -name 'grow-lineage-telemetry-*' 2>/dev/null | head -1)"
+          repo="" json="" is_error="null" turns="0" in_tok="0" out_tok="0" cost="0"
+          if [ -n "$dir" ]; then
+            base="$(basename "$dir")"; name="${base#grow-lineage-telemetry-}"
+            repo="${name%-*}"                      # strip the trailing -<run_id>
+            json="$dir/claude-execution-output.json"
+          fi
+          if [ -n "$json" ] && [ -f "$json" ]; then
+            r() { jq -r "[.[]|select(.type==\"result\")]|last|$1 // \"\"" "$json" 2>/dev/null; }
+            is_error="$(r '.is_error')"; [ -z "$is_error" ] && is_error="null"
+            turns="$(r '.num_turns')";   [ -z "$turns" ] && turns="0"
+            in_tok="$(r '.usage.input_tokens')";  [ -z "$in_tok" ] && in_tok="0"
+            out_tok="$(r '.usage.output_tokens')"; [ -z "$out_tok" ] && out_tok="0"
+            cost="$(r '.total_cost_usd')"; [ -z "$cost" ] && cost="0"
+          fi
+
+          rec="$(jq -nc \
+            --arg run "$RUN_ID" --arg repo "$repo" --arg conc "$CONCLUSION" \
+            --arg sha "$HEAD_SHA" --arg started "$STARTED" --arg ended "$ENDED" \
+            --argjson err "${is_error:-null}" --argjson turns "${turns:-0}" \
+            --argjson it "${in_tok:-0}" --argjson ot "${out_tok:-0}" --argjson cost "${cost:-0}" \
+            '{schema:"evolution-telemetry/v1", run_id:$run, repo:$repo, conclusion:$conc,
+              is_error:$err, num_turns:$turns, input_tokens:$it, output_tokens:$ot,
+              cost_usd:$cost, framework_sha:$sha, started:$started, ended:$ended}')"
+          if [ -z "$rec" ]; then echo "::warning::could not build telemetry record"; exit 0; fi
+          printf '%s\n' "$rec" >> telemetry/evolution.jsonl
+          echo "appended: $rec"
+          echo "SUBJECT=chore(telemetry): record grow run ${RUN_ID} (${repo:-?}, ${CONCLUSION})" >> "$GITHUB_ENV"
+
+      - name: Commit the ledgers
+        if: github.event_name == 'workflow_run'
+        env:
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT || github.token }}
+        run: |
+          set -uo pipefail
+          if [ -z "$(git status --porcelain -- telemetry/evolution.jsonl telemetry/banners.jsonl)" ]; then
+            echo "ledgers unchanged — nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git add telemetry/evolution.jsonl telemetry/banners.jsonl
+          git commit -q -m "${SUBJECT:-chore(telemetry): record grow run ${RUN_ID}}"
+          for _ in 1 2 3 4 5; do
+            git push origin HEAD:main && exit 0
+            git pull --rebase origin main || true
+          done
+          echo "::warning::could not push the telemetry ledger update after retries"

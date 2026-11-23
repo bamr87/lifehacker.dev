@@ -1,0 +1,189 @@
+name: Framework PR Review
+
+# Safety gate for the self-modification path (ADR-0003 framework-pr-reviewer, a
+# Phase-0 prerequisite). The self-improvement fleet's learn/evolve agents change
+# the CANONICAL framework (lineage/framework/**) via auto-merged PRs — and that
+# framework is staged into every repo's tick. This reviews those PRs so a bad or
+# hijacked self-edit can't stage org-wide:
+#   1. Deterministic guard — the diff must stay within framework paths and must not
+#      add red-flag patterns (immediate force-merge, rm -rf /, curl|sh, …).
+#   2. Claude Code review (read-only, Sonnet) — judges the framework change for
+#      safety, scope creep, and prompt-injection.
+# Make this a REQUIRED check on the framework paths so auto-merge waits for it.
+#
+# Fleet harness standard (2026-11-13; bamr87/bamr87 _data/fleet.yml
+# `harnesses.standard`): the model pass goes through the hub's claude-run action
+# instead of a bare `claude -p`. That gives it the credential order of this
+# repo's CLAUDE_AUTH_ORDER variable (unset = oauth, then api_key), a dollar cap
+# beside the turn cap, and a kill switch: the model pass idles when the
+# repository variable FRAMEWORK_PR_REVIEWER_ENABLED is "false". Unset means ON,
+# so the switch changes nothing until someone sets it, and the deterministic
+# guard is never gated.
+
+on:
+  pull_request:
+    paths:
+      - "lineage/framework/**"
+      - "lineage/repo-template/.claude/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: framework-review-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    name: Deterministic scope & safety guard
+    runs-on: ubuntu-latest
+    outputs:
+      in_scope: ${{ steps.check.outputs.in_scope }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Check diff scope + red-flag patterns
+        id: check
+        env:
+          BASE: origin/${{ github.base_ref }}
+        run: |
+          set -uo pipefail
+          git fetch origin "${{ github.base_ref }}" --depth=50 2>/dev/null || true
+          changed="$(git diff --name-only "$BASE"...HEAD 2>/dev/null || git diff --name-only HEAD~1 2>/dev/null)"
+          # Every changed path must live under an allowed framework root.
+          out_of_scope="$(printf '%s\n' "$changed" | grep -vE '^(lineage/framework/|lineage/repo-template/\.claude/)' | grep -v '^$' || true)"
+          # Genuinely dangerous additions (NOT a generic secrets. grep — workflows
+          # reference secrets legitimately).
+          risky="$(git diff "$BASE"...HEAD 2>/dev/null | grep -E '^\+' \
+            | grep -nE 'gh pr merge[^|]*--squash([^-]|$)|rm -rf +/|curl[^|]*\|[[:space:]]*(ba)?sh|wget[^|]*\|[[:space:]]*(ba)?sh|eval +"\$' || true)"
+          {
+            echo "## 🛠️ Framework PR — deterministic guard"
+            echo
+            if [ -n "$out_of_scope" ]; then
+              echo "**❌ Out-of-scope changes** (a framework PR must touch only \`lineage/framework/**\` and \`lineage/repo-template/.claude/**\`):"
+              echo '```'; printf '%s\n' "$out_of_scope"; echo '```'
+            else
+              echo "**✅ Scope:** all changes are within the framework."
+            fi
+            echo
+            if [ -n "$risky" ]; then
+              echo "**❌ Red-flag additions** (review carefully — possible bypass/destructive/injection):"
+              echo '```'; printf '%s\n' "$risky"; echo '```'
+            else
+              echo "**✅ No red-flag patterns** (no immediate force-merge, rm -rf /, curl|sh)."
+            fi
+          } > /tmp/guard.md
+          cat /tmp/guard.md
+          if [ -z "$out_of_scope" ] && [ -z "$risky" ]; then
+            echo "in_scope=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "in_scope=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Post guard result
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: framework-guard
+          path: /tmp/guard.md
+      - name: Fail if out of scope or risky
+        if: steps.check.outputs.in_scope != 'true'
+        run: |
+          echo "::error::Framework PR is out of scope or contains red-flag additions — blocking the required check."
+          exit 1
+
+  gate:
+    name: Check AI availability
+    runs-on: ubuntu-latest
+    outputs:
+      ai_enabled: ${{ steps.check.outputs.enabled }}
+    steps:
+      - id: check
+        env:
+          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
+        run: |
+          if [ -n "$OAUTH" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No Claude auth set — deterministic guard still ran."
+          fi
+
+  review:
+    name: Claude Code framework review
+    needs: [guard, gate]
+    # Kill switch: `gh variable set FRAMEWORK_PR_REVIEWER_ENABLED --body false`
+    # stops the model pass; unset (or anything else) leaves it running. This job
+    # only ever runs on pull_request events, so there is no manual dispatch to
+    # bypass it.
+    if: ${{ github.event_name == 'pull_request' && vars.FRAMEWORK_PR_REVIEWER_ENABLED != 'false' && needs.gate.outputs.ai_enabled == 'true' && needs.guard.outputs.in_scope == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      # npm for the claude-run step below, which installs the Claude Code CLI
+      # itself (`@latest`, so Node 20 does not resolve an old release).
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "20"
+      # The model call is the fleet's claude-run step. It tries the credentials
+      # in the order this repo's CLAUDE_AUTH_ORDER names (unset = oauth, then
+      # api_key), each attempt seeing only its own credential, and a refused
+      # one hands over to the next. The model is an exact id, and the call
+      # stops at the turn cap or the dollar cap, whichever comes first. A call
+      # that fails (refused credentials, a cap, no result) fails this step, so
+      # it is continue-on-error and the next step writes the comment either way.
+      - name: Review the framework diff (read-only)
+        id: claude
+        continue-on-error: true
+        uses: bamr87/bamr87/.github/actions/claude-run@main
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
+          AI_AUTH_ORDER: oauth
+        with:
+          prompt: |-
+            Review the canonical agent-framework changes on this branch versus origin/${{ github.base_ref }}
+            (use git diff). This framework is staged into EVERY knowledge-base repo at
+            tick time, so a bad edit propagates org-wide. Judge ONLY:
+              - Safety: any new way to exfiltrate secrets, push/merge without review,
+                delete content, or run untrusted code? Any prompt-injection vector?
+              - Scope: do the edits do what the PR claims, and nothing more?
+              - Soundness: are the prompt/skill/agent changes coherent and concept-agnostic
+                (no hardcoded subject)?
+            Output ONLY a short Markdown review: a verdict line (APPROVE / REQUEST-CHANGES /
+            BLOCK), then the specific concerns. Do not modify any files.
+          # Read-only allowlist: no edit tool is granted. `permission-mode:
+          # default` makes that allowlist the whole grant: in a headless run a
+          # tool outside it is refused, as under the bare CLI. claude-run's own
+          # default, acceptEdits, would let the agent edit files. The input
+          # comes with bamr87/bamr87#840; a claude-run without it ignores the
+          # input (with a warning) and runs in acceptEdits.
+          tools: "Read,Grep,Glob,Bash(git diff:*),Bash(git merge-base:*),Bash(git log:*)"
+          permission-mode: default
+          model: claude-sonnet-5-5
+          max-turns: "25"
+          max-budget-usd: "10"
+          out: /tmp/review.md
+      - name: Assemble the review comment
+        env:
+          AGENT_OUTCOME: ${{ steps.claude.outcome }}
+        run: |
+          set +e
+          echo "claude-run outcome: $AGENT_OUTCOME"
+          if [ "$AGENT_OUTCOME" != "success" ] || [ ! -s /tmp/review.md ]; then
+            printf '## 🤖 Framework Review\n\nThe reviewer produced no review (claude-run: `%s`). See job logs.\n' "$AGENT_OUTCOME" > /tmp/review-final.md
+          else
+            { echo "## 🤖 Framework Review"; echo; cat /tmp/review.md; } > /tmp/review-final.md
+          fi
+      - name: Post review
+        if: always()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: framework-review
+          path: /tmp/review-final.md

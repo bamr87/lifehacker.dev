@@ -1,0 +1,178 @@
+name: Pages Deploy Sentinel
+
+# Read-only post-publish liveness detector (ADR-0003 pages-deploy-sentinel, a P0
+# monitor). The grow tick pushes content; this verifies the DOWNSTREAM result —
+# that each member repo's GitHub Pages build succeeded AND its live site responds.
+# It is the sole liveness signal a future rollback agent keys off. Read-only: it
+# only edits ONE sticky tracking issue, never auto-remediates.
+#
+# A member serving HTTP 200 can still be STALE: if its latest Pages build
+# errored (or has been stuck "building"), the site keeps serving the last good
+# deploy — exactly what happened to 1777 (down 6 days behind a green sentinel)
+# and 2008/2012 (platform-side deploy failures). So the build status check is
+# authoritative, and an unreadable status is reported, never assumed healthy.
+# Reading another repo's Pages builds needs a PAT — pass LIFECYCLE_PAT.
+#
+# The scan covers the HUB'S OWN SITE as well as the lineage members. The hub is
+# not a lineage member (it has no seed), so for a long time the one workflow
+# whose job is "did the Pages build succeed and is the site live" was blind to
+# the site it runs in. It is derived from the runtime repo + _config.yml, not
+# hard-coded, so a replanted org inherits the same self-check.
+
+on:
+  schedule:
+    - cron: "13 */6 * * *"  # every 6h (was hourly; 299 all-green runs in 30d)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+  pages: read # the hub's own Pages build, readable by github.token without the PAT
+
+concurrency:
+  group: pages-deploy-sentinel
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Kill-switch
+        id: pause
+        run: |
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            echo "::notice::Fleet paused — skipping pages-deploy-sentinel."; echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Check each member's Pages build + live site
+        id: scan
+        if: steps.pause.outputs.skip != 'true'
+        env:
+          # github.token cannot read other repos' Pages builds — that made the
+          # build check silently inert. Fall back to it only if the PAT is absent
+          # (the "unreadable" state below then reports the blindness honestly).
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT || github.token }}
+        run: |
+          set -uo pipefail
+          # repo<TAB>site_url for every member in the lineage ledger.
+          members="$(ruby -ryaml -e '
+            d = YAML.load_file("_data/lineage.yml")
+            org = d["org"]
+            (d["members"] || []).each do |m|
+              repo = m["repo"] || "#{org}/#{m["name"]}"
+              site = m["site_url"] || "https://#{org.split("/").first}.github.io/#{m["name"]}/"
+              puts "#{repo}\t#{site}"
+            end' 2>/dev/null)"
+          # …plus the hub's own site, which is NOT a lineage member and was the
+          # one site this monitor never watched. Derived, never hard-coded:
+          # $GITHUB_REPOSITORY for the repo, _config.yml url+baseurl for the URL.
+          # `aliases: true` is required: _config.yml is full of YAML anchors
+          # (&github_user, &url, …) and Psych 4 refuses aliases by default.
+          hub_site="$(ruby -ryaml -e '
+            c = YAML.load_file("_config.yml", aliases: true)
+            u = "#{c["url"]}#{c["baseurl"]}"
+            puts(u.end_with?("/") ? u : "#{u}/")' 2>/dev/null)"
+          if [ -n "$hub_site" ]; then
+            members="${GITHUB_REPOSITORY}"$'\t'"${hub_site}"$'\n'"${members}"
+          else
+            echo "::warning::Could not derive the hub site URL from _config.yml — hub not checked."
+          fi
+          fails=""
+          total=0; bad=0
+          now_epoch=$(date -u +%s)
+          while IFS=$'\t' read -r repo site; do
+            [ -n "$repo" ] || continue
+            total=$((total+1))
+            build="$(gh api "repos/${repo}/pages/builds/latest" --jq '[.status, .created_at] | @tsv' 2>/dev/null || printf 'unreadable\t')"
+            st="${build%%$'\t'*}"; created="${build#*$'\t'}"
+            # A build stuck in "building" for over 90 minutes is a failed deploy
+            # in practice (observed on 2012: stuck for hours after
+            # "Deployment failed, try again later").
+            if [ "$st" = "building" ] && [ -n "$created" ]; then
+              created_epoch=$(date -u -d "$created" +%s 2>/dev/null || echo "$now_epoch")
+              [ $((now_epoch - created_epoch)) -gt 5400 ] && st="stuck-building"
+            fi
+            code="$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 25 "$site" 2>/dev/null || echo '000')"
+            unhealthy=false
+            case "$st" in
+              errored|stuck-building|unreadable) unhealthy=true ;;
+            esac
+            if [ "$code" != "200" ] && [ "$code" != "304" ]; then unhealthy=true; fi
+            if [ "$unhealthy" = "true" ]; then
+              bad=$((bad+1))
+              fails="${fails}| \`${repo##*/}\` | ${st} | ${code} | ${site} |"$'\n'
+            fi
+          done <<< "$members"
+          echo "checked ${total} site(s) (hub + members), ${bad} unhealthy."
+          {
+            echo "## 🌐 Pages Deploy Sentinel"
+            echo
+            echo "_$(date -u '+%Y-%m-%d %H:%M UTC') · checked ${total} site(s) — the hub and every member._"
+            echo
+            if [ "$bad" -eq 0 ]; then
+              echo "✅ The hub and all member Pages sites are built and live."
+            else
+              echo "**${bad} unhealthy site(s):**"
+              echo
+              echo "| Repo | Pages build | HTTP | URL |"
+              echo "|---|---|---|---|"
+              printf '%s' "$fails"
+              echo
+              echo "_Build states: \`errored\` = last build failed (site serves stale content);"
+              echo "\`stuck-building\` = deploy hung >90 min (retry with \`gh api -X POST repos/<repo>/pages/builds\`);"
+              echo "\`unreadable\` = the sentinel's token cannot read this repo's Pages builds (set LIFECYCLE_PAT)._"
+            fi
+          } > /tmp/sentinel.md
+          cat /tmp/sentinel.md
+          echo "bad=${bad}" >> "$GITHUB_OUTPUT"
+      - name: File / update the liveness issue (only when unhealthy)
+        if: steps.pause.outputs.skip != 'true' && steps.scan.outputs.bad != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="Pages Deploy Sentinel — unhealthy member site(s)"
+          marker="<!-- pages-deploy-sentinel -->"
+          body="$(cat /tmp/sentinel.md)"$'\n\n'"${marker}"
+          # Find the sticky issue by listing open issues and matching the exact
+          # title or the hidden marker in jq. The old lookup used
+          # `gh issue list --search "$title in:title" 2>/dev/null`, which came
+          # back empty on nearly every run (stderr was silenced, so the cause
+          # was never visible) and the step then filed a new copy: ~100
+          # duplicates by 2026-10. Listing open issues does not depend on the
+          # search index, and a failed lookup now fails the step (set -e)
+          # instead of falling through to `gh issue create`.
+          num="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 500 \
+                   --json number,title,body \
+                   --jq "[.[] | select(.title == \"${title}\" or (.body | contains(\"${marker}\")))] | sort_by(.number) | .[0].number // empty")"
+          if [ -n "$num" ]; then
+            gh issue edit "$num" --repo "$GITHUB_REPOSITORY" --body "$body"
+            echo "Updated sticky issue #${num}."
+          else
+            # The `monitoring` label never existed, so `--label monitoring` always
+            # failed and the fallback filed the issue unlabeled. Ensure it exists
+            # (idempotent); if that is not permitted, file without it.
+            label_args=()
+            if gh label create monitoring --repo "$GITHUB_REPOSITORY" --force \
+                 --color "BFD4F2" --description "Automated liveness / health monitors"; then
+              label_args=(--label monitoring)
+            else
+              echo "::warning::Could not ensure the 'monitoring' label; filing without it."
+            fi
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body" "${label_args[@]}"
+          fi
+      - name: Auto-close the liveness issue on recovery
+        if: steps.pause.outputs.skip != 'true' && steps.scan.outputs.bad == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="Pages Deploy Sentinel — unhealthy member site(s)"
+          marker="<!-- pages-deploy-sentinel -->"
+          nums="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 500 \
+                    --json number,title,body \
+                    --jq ".[] | select(.title == \"${title}\" or (.body | contains(\"${marker}\"))) | .number")"
+          for num in $nums; do
+            gh issue close "$num" --repo "$GITHUB_REPOSITORY" \
+              --comment "$(cat /tmp/sentinel.md)"$'\n\n'"All member sites are healthy again — auto-closing."
+          done

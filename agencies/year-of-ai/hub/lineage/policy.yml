@@ -1,0 +1,120 @@
+# =============================================================================
+# Canonical growth policy for the year-of-ai lineage.
+# =============================================================================
+# The hub (year-of-ai/year-of-ai.github.io) orchestrates growth CENTRALLY: it
+# pulls each year's seed from lineage/seeds/<year>.md, clones the year repo,
+# runs the 3-tier content escalation, and pushes the new content back. Each
+# year repo holds only content + a GitHub Pages _config.yml + .claude/ +
+# telemetry/.
+#
+# Read by: .github/workflows/orchestrate.yml (cadence) and
+# .github/workflows/grow-lineage.yml (model tiers).
+
+# 3-tier content escalation — the model used for each pass of a growth tick.
+models:
+  generate: "claude-haiku-5-5"    # tier 1: plan + research + draft new topic files
+  expand:   "claude-sonnet-5-5"   # tier 2: deepen each draft (detail, sources, links)
+  enhance:  "claude-opus-5-5"     # tier 3: polish, build indices, sync seed, publish
+  distill:  "claude-opus-5-5"     # rare: lineage meta-review on the frontier model
+
+# Perpetual growth — every repo grows forever and is never consolidated,
+# archived, or deleted. New eras spawn tangentially from the frontier; the hub
+# decides when and what.
+lifecycle:
+  perpetual: true
+  consolidate: false
+  archive: false
+  delete: false
+
+# Cadence (UTC). The hub's orchestrate workflow runs daily; repos_per_run
+# bounds how many members it grows per run (stalest-first rotation, so every
+# member still grows perpetually — just not all 11 every day). Telemetry showed
+# ~$3.4–4.8 recorded per tick's final pass alone; at repos_per_run: 4 each
+# member grows roughly every 3 days at ~1/3 of the daily cost. Set 0 to grow
+# every member every run (the pre-2026-07 behavior).
+cadence:
+  cron: "30 5 * * *"
+  ticks_per_run: 1
+  repos_per_run: 4
+  selection: stalest-first
+
+# Tangential spawning (ADR-0002; automation: ADR-0007). The lineage WIDENS on
+# its own: when every member's Evolution Log shows at least frontier_ticks
+# growth cycles (so the newest member has itself matured) and the roster is
+# below max_members, the daily orchestrate run dispatches plant-lineage.yml —
+# a DECIDE pass authors a new tangential seed and the deterministic planter
+# (scripts/plant-lineage.rb) creates the member repo. Stateless and
+# self-regulating: each spawn adds a 0-tick member that must mature before
+# the next spawn can fire. Set enabled: false to stop all automatic spawning
+# (the manual two-key path stays available).
+spawn:
+  enabled: true
+  frontier_ticks: 12     # growth cycles EVERY member (incl. the newest) must log
+  max_members: 16        # hard roster cap — auto-spawn never exceeds it
+
+# Preview banners — the grow tick's "Illustrate" step (grow-lineage.yml). Since
+# ADR-0008 it is ONE zer0-image-generator engine call over the tick's new
+# content (`--changed --provider auto`): with a Claude credential the engine's
+# `claude` provider runs its illustration LOOP — plan a scene graph, author the
+# SVG from the style card (headline as <text>), shape it (text→paths with a
+# bundled font, sanitize, strict lint), LOOK at it at 1536px and 120px, and let
+# a vision critic drive up to `rounds` targeted edits before committing the
+# best draft. A banner that cannot be made strict-clean ships the engine's
+# deterministic `local` art instead; nothing here ever blocks a publish. Every
+# banner appends one banner/v1 record to the member's telemetry/banners.jsonl.
+# Org-wide art direction lives HERE (not in the workflow) — the same
+# policy-over-workflow rule as the model tiers. scripts/lib/banners.rb maps
+# these keys onto engine flags.
+#
+# ROLLBACK: `rounds: 0` returns to one-shot (no render, no review) without a
+# code change; `enabled: false` turns banners off.
+preview:
+  enabled: true
+  model: "claude-sonnet-5-5"      # plan/author/critique model for the loop
+  # Prose direction — the fallback when no card resolves, and free-text
+  # modifiers on top of the card.
+  style: "retro pixel art, 8-bit video game aesthetic, vibrant colors, nostalgic, clean pixel graphics"
+  style_modifiers: "pixelated, retro gaming style, CRT screen glow effect, limited color palette"
+  output_dir: "assets/images/previews"
+  # ---- the illustration loop (zer0-image-generator >= 0.10) ----
+  style_card: retro-pixel        # tools/svg/library/styles/<card>.md in the gem
+  rounds: 1                      # critique-driven edit rounds per banner
+  min_score: 7                   # critic `overall` (0-10) that ends the loop
+  require_thumbnail: true        # ...and only if it also reads at 120px
+  text: paths                    # headline <text> → outlines with a bundled font
+  look_rasterizer: resvg         # what the loop LOOKS through (the runner installs
+                                 # @resvg/resvg-js-cli); output stays SVG-only
+  cost_cap_usd_per_tick: 1.50    # list-price cap on the loop per tick
+  # Era palettes (ADR-0008 D4): six tokens [bg, shadow, low-mid, mid, accent,
+  # highlight] per year range (or explicit `members:`). The highlight belongs
+  # to the protagonist only (retro-pixel card); unmatched members fall back to
+  # the card's own palette guidance.
+  palettes:
+    - name: parchment            # the founding era: parchment, iron-gall ink, vermilion
+      years: "1776-1778"
+      tokens: ["#f2e6c9", "#d8c39a", "#a68a5b", "#5b4636", "#c0392b", "#1f1a17"]
+    - name: crt-neon             # the early-web era: the banners' existing CRT neon
+      years: "2005-2014"
+      tokens: ["#1a1a2e", "#16213e", "#0f3460", "#533483", "#e94560", "#f9ed69"]
+  # Weekly watcher (site-quality-scan.yml `banners` job): one fingerprinted
+  # "Banner quality" issue while the trailing window is below either floor.
+  watch:
+    window_days: 7
+    min_mean_overall: 6.5
+    min_committed_clean_pct: 95
+  # Backfill (scripts/reillustrate.rb via orchestrate.yml → reillustrate.yml,
+  # gated by the repo variable REILLUSTRATE_ENABLED): re-run the loop on the
+  # worst banners from _reports/banners-baseline.json + the ledger, a few per
+  # day, never in the grow tick's budget. Stops itself when the backlog is empty.
+  backfill:
+    per_run: 6
+    max_score: 6                 # critic score at or below which a banner is redone
+
+# Auth (org secrets the hub grow workflow needs):
+#   CLAUDE_CODE_OAUTH_TOKEN  — primary auth for every model pass (subscription)
+#   ANTHROPIC_API_KEY        — fallback auth
+#   LIFECYCLE_PAT            — push content/telemetry back into each year repo
+auth:
+  primary: CLAUDE_CODE_OAUTH_TOKEN
+  fallback: ANTHROPIC_API_KEY
+  cross_repo: LIFECYCLE_PAT

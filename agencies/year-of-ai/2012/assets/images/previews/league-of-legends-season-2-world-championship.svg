@@ -1,0 +1,437 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>League of Legends Season 2 World Championship – Retro Pixel Art Banner</title>
+  <defs>
+    <radialGradient id="crt" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a0a2e" />
+      <stop offset="100%" stop-color="#050010" />
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c8a000" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#c8a000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="crtglow">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#crt)" />
+
+  
+  <rect width="1536" height="1024" fill="none" stroke="#000" stroke-width="2" opacity="0.15" style="background: repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px)" />
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#scanlines)" opacity="0.08" />
+
+  
+  <g opacity="0.07">
+    <rect x="0" y="0" width="1536" height="2" fill="#000" />
+    <rect x="0" y="4" width="1536" height="2" fill="#000" />
+    <rect x="0" y="8" width="1536" height="2" fill="#000" />
+    <rect x="0" y="12" width="1536" height="2" fill="#000" />
+    <rect x="0" y="16" width="1536" height="2" fill="#000" />
+    <rect x="0" y="20" width="1536" height="2" fill="#000" />
+    <rect x="0" y="24" width="1536" height="2" fill="#000" />
+    <rect x="0" y="28" width="1536" height="2" fill="#000" />
+    <rect x="0" y="32" width="1536" height="2" fill="#000" />
+    <rect x="0" y="36" width="1536" height="2" fill="#000" />
+    <rect x="0" y="40" width="1536" height="2" fill="#000" />
+    <rect x="0" y="44" width="1536" height="2" fill="#000" />
+    <rect x="0" y="48" width="1536" height="2" fill="#000" />
+    <rect x="0" y="52" width="1536" height="2" fill="#000" />
+    <rect x="0" y="56" width="1536" height="2" fill="#000" />
+    <rect x="0" y="60" width="1536" height="2" fill="#000" />
+    <rect x="0" y="64" width="1536" height="2" fill="#000" />
+    <rect x="0" y="68" width="1536" height="2" fill="#000" />
+    <rect x="0" y="72" width="1536" height="2" fill="#000" />
+    <rect x="0" y="76" width="1536" height="2" fill="#000" />
+    <rect x="0" y="80" width="1536" height="2" fill="#000" />
+    <rect x="0" y="84" width="1536" height="2" fill="#000" />
+    <rect x="0" y="88" width="1536" height="2" fill="#000" />
+    <rect x="0" y="92" width="1536" height="2" fill="#000" />
+    <rect x="0" y="96" width="1536" height="2" fill="#000" />
+    <rect x="0" y="100" width="1536" height="2" fill="#000" />
+  </g>
+
+  
+  <g fill="#ffffff" opacity="0.6">
+    <rect x="100" y="50" width="4" height="4" />
+    <rect x="250" y="120" width="4" height="4" />
+    <rect x="400" y="30" width="4" height="4" />
+    <rect x="600" y="80" width="4" height="4" />
+    <rect x="800" y="40" width="4" height="4" />
+    <rect x="1000" y="90" width="4" height="4" />
+    <rect x="1200" y="55" width="4" height="4" />
+    <rect x="1400" y="100" width="4" height="4" />
+    <rect x="150" y="900" width="4" height="4" />
+    <rect x="350" y="950" width="4" height="4" />
+    <rect x="550" y="920" width="4" height="4" />
+    <rect x="750" y="970" width="4" height="4" />
+    <rect x="950" y="930" width="4" height="4" />
+    <rect x="1150" y="960" width="4" height="4" />
+    <rect x="1350" y="910" width="4" height="4" />
+    <rect x="60" y="500" width="4" height="4" />
+    <rect x="1480" y="450" width="4" height="4" />
+    <rect x="200" y="700" width="4" height="4" />
+    <rect x="1300" y="750" width="4" height="4" />
+  </g>
+
+  
+  
+  <circle cx="768" cy="512" r="320" fill="none" stroke="#1e4d8c" stroke-width="8" opacity="0.5" />
+  <circle cx="768" cy="512" r="280" fill="none" stroke="#1e4d8c" stroke-width="4" opacity="0.3" />
+
+  
+  
+  <g fill="#2a6e3f" opacity="0.6">
+    
+    <rect x="820" y="380" width="80" height="16" />
+    <rect x="804" y="396" width="112" height="16" />
+    <rect x="820" y="412" width="96" height="16" />
+    <rect x="836" y="428" width="80" height="16" />
+    <rect x="852" y="444" width="48" height="16" />
+  </g>
+  
+  <g fill="#2a4a8c" opacity="0.6">
+    <rect x="660" y="370" width="48" height="16" />
+    <rect x="644" y="386" width="64" height="16" />
+    <rect x="660" y="402" width="48" height="16" />
+    <rect x="676" y="418" width="32" height="16" />
+  </g>
+  
+  <g fill="#8c3a2a" opacity="0.6">
+    <rect x="540" y="390" width="80" height="16" />
+    <rect x="524" y="406" width="96" height="16" />
+    <rect x="540" y="422" width="80" height="16" />
+    <rect x="556" y="438" width="48" height="16" />
+  </g>
+
+  
+  <circle cx="768" cy="512" r="320" fill="url(#glow)" />
+
+  
+  
+  <g filter="url(#crtglow)">
+    
+    <g fill="#ffd700">
+      
+      <rect x="718" y="340" width="100" height="16" />
+      
+      <rect x="710" y="356" width="116" height="16" />
+      <rect x="702" y="372" width="132" height="16" />
+      <rect x="702" y="388" width="132" height="16" />
+      <rect x="710" y="404" width="116" height="16" />
+      <rect x="718" y="420" width="100" height="16" />
+      
+      <rect x="750" y="436" width="36" height="16" />
+      <rect x="750" y="452" width="36" height="16" />
+      
+      <rect x="726" y="468" width="84" height="16" />
+      <rect x="718" y="484" width="100" height="12" />
+    </g>
+    
+    <g fill="#e6b800">
+      
+      <rect x="686" y="360" width="16" height="8" />
+      <rect x="678" y="368" width="16" height="16" />
+      <rect x="686" y="384" width="16" height="8" />
+      
+      <rect x="834" y="360" width="16" height="8" />
+      <rect x="836" y="368" width="16" height="16" />
+      <rect x="834" y="384" width="16" height="8" />
+    </g>
+    
+    <g fill="#fff8a0" opacity="0.7">
+      <rect x="726" y="364" width="8" height="8" />
+      <rect x="734" y="356" width="8" height="8" />
+    </g>
+    
+    <g fill="#b08800" opacity="0.6">
+      <rect x="798" y="372" width="32" height="60" />
+    </g>
+  </g>
+
+  
+  
+  <g>
+    
+    <g fill="#e04040">
+      <rect x="548" y="610" width="16" height="16" />
+      <rect x="540" y="626" width="32" height="24" />
+      <rect x="532" y="650" width="16" height="16" />
+      <rect x="556" y="650" width="16" height="16" />
+      <rect x="524" y="630" width="16" height="12" />
+      <rect x="572" y="630" width="16" height="12" />
+    </g>
+    
+    <g fill="#40a040">
+      <rect x="628" y="610" width="16" height="16" />
+      <rect x="620" y="626" width="32" height="24" />
+      <rect x="612" y="650" width="16" height="16" />
+      <rect x="636" y="650" width="16" height="16" />
+      <rect x="604" y="630" width="16" height="12" />
+      <rect x="652" y="630" width="16" height="12" />
+    </g>
+    
+    <g fill="#c080ff">
+      <rect x="752" y="605" width="20" height="20" />
+      <rect x="744" y="625" width="36" height="24" />
+      <rect x="736" y="649" width="16" height="16" />
+      <rect x="760" y="649" width="16" height="16" />
+      <rect x="728" y="629" width="16" height="12" />
+      <rect x="776" y="629" width="16" height="12" />
+    </g>
+    
+    <g fill="#40c0ff">
+      <rect x="868" y="610" width="16" height="16" />
+      <rect x="860" y="626" width="32" height="24" />
+      <rect x="852" y="650" width="16" height="16" />
+      <rect x="876" y="650" width="16" height="16" />
+      <rect x="844" y="630" width="16" height="12" />
+      <rect x="892" y="630" width="16" height="12" />
+    </g>
+    
+    <g fill="#ff8040">
+      <rect x="948" y="610" width="16" height="16" />
+      <rect x="940" y="626" width="32" height="24" />
+      <rect x="932" y="650" width="16" height="16" />
+      <rect x="956" y="650" width="16" height="16" />
+      <rect x="924" y="630" width="16" height="12" />
+      <rect x="972" y="630" width="16" height="12" />
+    </g>
+  </g>
+
+  
+  <g fill="#ffffff">
+    <rect x="550" y="614" width="4" height="4" />
+    <rect x="558" y="614" width="4" height="4" />
+    <rect x="630" y="614" width="4" height="4" />
+    <rect x="638" y="614" width="4" height="4" />
+    <rect x="756" y="609" width="4" height="4" />
+    <rect x="764" y="609" width="4" height="4" />
+    <rect x="870" y="614" width="4" height="4" />
+    <rect x="878" y="614" width="4" height="4" />
+    <rect x="950" y="614" width="4" height="4" />
+    <rect x="958" y="614" width="4" height="4" />
+  </g>
+
+  
+  <rect x="700" y="570" width="136" height="32" fill="#ffd700" />
+  <rect x="704" y="574" width="128" height="24" fill="#1a0a2e" />
+  <text x="768" y="592" text-anchor="middle" font-family="'Courier New', monospace" font-size="18" font-weight="bold" fill="#ffd700" letter-spacing="4">TPA</text>
+
+  
+  <g fill="#ffd700" opacity="0.9">
+    
+    <rect x="600" y="420" width="8" height="8" />
+    <rect x="596" y="424" width="16" height="4" />
+    <rect x="604" y="416" width="4" height="16" />
+    
+    <rect x="928" y="420" width="8" height="8" />
+    <rect x="924" y="424" width="16" height="4" />
+    <rect x="932" y="416" width="4" height="16" />
+    
+    <rect x="764" y="280" width="8" height="8" />
+    <rect x="760" y="284" width="16" height="4" />
+    <rect x="768" y="276" width="4" height="16" />
+  </g>
+
+  
+  <rect x="80" y="80" width="260" height="64" fill="#1e4d8c" />
+  <rect x="88" y="88" width="244" height="48" fill="#0a1a3e" />
+  <text x="210" y="122" text-anchor="middle" font-family="'Courier New', monospace" font-size="22" font-weight="bold" fill="#40c0ff" letter-spacing="2">SEASON 2</text>
+
+  
+  <rect x="1196" y="80" width="260" height="64" fill="#8c1e1e" />
+  <rect x="1204" y="88" width="244" height="48" fill="#3e0a0a" />
+  <text x="1326" y="122" text-anchor="middle" font-family="'Courier New', monospace" font-size="22" font-weight="bold" fill="#ff6040" letter-spacing="2">WORLDS 2012</text>
+
+  
+  
+  <g transform="translate(80, 200)">
+    <rect x="0" y="0" width="80" height="56" fill="#ffffff" />
+    <rect x="0" y="0" width="80" height="4" fill="#e0e0e0" />
+    <rect x="0" y="52" width="80" height="4" fill="#e0e0e0" />
+    
+    <rect x="28" y="20" width="24" height="16" fill="#c00020" />
+    <rect x="32" y="24" width="16" height="8" fill="#0030a0" />
+    <text x="40" y="74" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" fill="#40c0ff">KR</text>
+  </g>
+
+  
+  <g transform="translate(80, 300)">
+    <rect x="0" y="0" width="80" height="56" fill="#c00020" />
+    <rect x="0" y="0" width="40" height="28" fill="#0030a0" />
+    <rect x="12" y="8" width="16" height="12" fill="#ffffff" />
+    <text x="40" y="74" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" fill="#ffd700">TW</text>
+  </g>
+
+  
+  <g transform="translate(80, 400)">
+    <rect x="0" y="0" width="80" height="56" fill="#003399" />
+    <g fill="#ffcc00">
+      <rect x="36" y="6" width="8" height="8" />
+      <rect x="36" y="42" width="8" height="8" />
+      <rect x="10" y="24" width="8" height="8" />
+      <rect x="62" y="24" width="8" height="8" />
+      <rect x="20" y="12" width="8" height="8" />
+      <rect x="52" y="12" width="8" height="8" />
+      <rect x="20" y="36" width="8" height="8" />
+      <rect x="52" y="36" width="8" height="8" />
+    </g>
+    <text x="40" y="74" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" fill="#40c0ff">EU</text>
+  </g>
+
+  
+  <g transform="translate(80, 500)">
+    <rect x="0" y="0" width="80" height="56" fill="#c00020" />
+    <rect x="0" y="8" width="80" height="8" fill="#ffffff" />
+    <rect x="0" y="24" width="80" height="8" fill="#ffffff" />
+    <rect x="0" y="40" width="80" height="8" fill="#ffffff" />
+    <rect x="0" y="0" width="32" height="28" fill="#0030a0" />
+    <text x="40" y="74" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" fill="#ff6040">NA</text>
+  </g>
+
+  
+  
+  <rect x="0" y="0" width="1536" height="12" fill="#ffd700" />
+  <rect x="0" y="12" width="1536" height="8" fill="#b08800" />
+  
+  <rect x="0" y="1004" width="1536" height="12" fill="#ffd700" />
+  <rect x="0" y="996" width="1536" height="8" fill="#b08800" />
+  
+  <rect x="0" y="0" width="12" height="1024" fill="#ffd700" />
+  <rect x="12" y="0" width="8" height="1024" fill="#b08800" />
+  
+  <rect x="1524" y="0" width="12" height="1024" fill="#ffd700" />
+  <rect x="1516" y="0" width="8" height="1024" fill="#b08800" />
+
+  
+  <rect x="0" y="0" width="40" height="40" fill="#ffd700" />
+  <rect x="1496" y="0" width="40" height="40" fill="#ffd700" />
+  <rect x="0" y="984" width="40" height="40" fill="#ffd700" />
+  <rect x="1496" y="984" width="40" height="40" fill="#ffd700" />
+
+  
+  <g fill="#ffd700" opacity="0.4">
+    <rect x="100" y="30" width="12" height="12" />
+    <rect x="124" y="30" width="12" height="12" />
+    <rect x="148" y="30" width="12" height="12" />
+    <rect x="172" y="30" width="12" height="12" />
+    <rect x="1252" y="30" width="12" height="12" />
+    <rect x="1276" y="30" width="12" height="12" />
+    <rect x="1300" y="30" width="12" height="12" />
+    <rect x="1324" y="30" width="12" height="12" />
+  </g>
+
+  
+  <g fill="#ffd700" opacity="0.4">
+    <rect x="100" y="982" width="12" height="12" />
+    <rect x="124" y="982" width="12" height="12" />
+    <rect x="148" y="982" width="12" height="12" />
+    <rect x="172" y="982" width="12" height="12" />
+    <rect x="1252" y="982" width="12" height="12" />
+    <rect x="1276" y="982" width="12" height="12" />
+    <rect x="1300" y="982" width="12" height="12" />
+    <rect x="1324" y="982" width="12" height="12" />
+  </g>
+
+  
+  <g filter="url(#crtglow)">
+    
+    <text x="774" y="178" text-anchor="middle" font-family="'Courier New', monospace" font-size="72" font-weight="bold" fill="#7a5500" letter-spacing="4">LEAGUE OF LEGENDS</text>
+    
+    <text x="768" y="172" text-anchor="middle" font-family="'Courier New', monospace" font-size="72" font-weight="bold" fill="#ffd700" letter-spacing="4">LEAGUE OF LEGENDS</text>
+  </g>
+
+  <g filter="url(#crtglow)">
+    <text x="774" y="262" text-anchor="middle" font-family="'Courier New', monospace" font-size="56" font-weight="bold" fill="#5a1000" letter-spacing="6">SEASON 2 WORLD CHAMPIONSHIP</text>
+    <text x="768" y="256" text-anchor="middle" font-family="'Courier New', monospace" font-size="56" font-weight="bold" fill="#ff6040" letter-spacing="6">SEASON 2 WORLD CHAMPIONSHIP</text>
+  </g>
+
+  
+  <rect x="240" y="274" width="1056" height="8" fill="#ffd700" opacity="0.7" />
+  <rect x="320" y="286" width="896" height="4" fill="#ff6040" opacity="0.5" />
+
+  
+  <rect x="240" y="750" width="1056" height="4" fill="#1e4d8c" opacity="0.8" />
+
+  
+  <text x="768" y="730" text-anchor="middle" font-family="'Courier New', monospace" font-size="24" fill="#40c0ff" letter-spacing="2">CHAMPIONS: TAIPEI ASSASSINS</text>
+
+  
+  <g font-family="'Courier New', monospace" font-size="14" fill="#ffffff" text-anchor="middle">
+    <text x="556" y="690">STANLEY</text>
+    <text x="556" y="706">TOP</text>
+    <text x="636" y="690">LILBALLZ</text>
+    <text x="636" y="706">JGL</text>
+    <text x="762" y="690">TOYZ</text>
+    <text x="762" y="706">MID</text>
+    <text x="876" y="690">BEBE</text>
+    <text x="876" y="706">ADC</text>
+    <text x="956" y="690">MiSTakE</text>
+    <text x="956" y="706">SUP</text>
+  </g>
+
+  
+  <g transform="translate(540, 790)">
+    <rect x="0" y="0" width="456" height="60" fill="#1a0a2e" rx="0" />
+    <rect x="4" y="4" width="448" height="52" fill="#0d051a" rx="0" />
+    <text x="228" y="38" text-anchor="middle" font-family="'Courier New', monospace" font-size="20" font-weight="bold" fill="#c8a000" letter-spacing="3">RIOT GAMES · 2012</text>
+  </g>
+
+  
+  
+  <g transform="translate(1200, 200)">
+    <rect x="0" y="0" width="240" height="48" fill="#1e3a6e" />
+    <rect x="4" y="4" width="232" height="40" fill="#0a1a3e" />
+    <text x="120" y="30" text-anchor="middle" font-family="'Courier New', monospace" font-size="16" font-weight="bold" fill="#80b0ff" letter-spacing="2">AZUBU FROST</text>
+    <text x="120" y="46" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#6090cc" letter-spacing="1">RUNNERS-UP</text>
+  </g>
+
+  
+  <g transform="translate(1200, 280)">
+    <rect x="0" y="0" width="240" height="40" fill="#1e3a1e" />
+    <rect x="4" y="4" width="232" height="32" fill="#0a1a0a" />
+    <text x="120" y="26" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" fill="#60c060" letter-spacing="1">CLG EUROPE</text>
+  </g>
+
+  
+  <g transform="translate(1200, 350)">
+    <rect x="0" y="0" width="240" height="40" fill="#3a1e1e" />
+    <rect x="4" y="4" width="232" height="32" fill="#1a0a0a" />
+    <text x="120" y="26" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" fill="#ff6060" letter-spacing="1">MOSCOW FIVE</text>
+  </g>
+
+  
+  <g transform="translate(1200, 430)">
+    <rect x="0" y="0" width="240" height="60" fill="#2a2a0a" />
+    <rect x="4" y="4" width="232" height="52" fill="#1a1a00" />
+    <text x="120" y="28" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#ffd700">12 TEAMS</text>
+    <text x="120" y="46" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" fill="#c8a000">5 REGIONS</text>
+  </g>
+
+  
+  <g transform="translate(100, 870)">
+    <rect x="0" y="0" width="200" height="16" fill="#333" />
+    <rect x="2" y="2" width="186" height="12" fill="#40c0ff" />
+    <text x="100" y="30" text-anchor="middle" font-family="'Courier New', monospace" font-size="12" fill="#40c0ff">HP</text>
+  </g>
+  <g transform="translate(100, 910)">
+    <rect x="0" y="0" width="200" height="16" fill="#333" />
+    <rect x="2" y="2" width="160" height="12" fill="#c080ff" />
+    <text x="100" y="30" text-anchor="middle" font-family="'Courier New', monospace" font-size="12" fill="#c080ff">MP</text>
+  </g>
+
+  
+  <g transform="translate(1200, 870)">
+    <rect x="0" y="0" width="240" height="60" fill="#4a004a" />
+    <rect x="4" y="4" width="232" height="52" fill="#2a0030" />
+    <text x="120" y="24" text-anchor="middle" font-family="'Courier New', monospace" font-size="12" fill="#c080ff">LIVE ON TWITCH.TV</text>
+    <text x="120" y="44" text-anchor="middle" font-family="'Courier New', monospace" font-size="10" fill="#8040aa">32M+ PLAYERS WORLDWIDE</text>
+  </g>
+
+  
+  <text x="768" y="960" text-anchor="middle" font-family="'Courier New', monospace" font-size="24" font-weight="bold" fill="#ffffff" opacity="0.7" letter-spacing="6">▶ PRESS START ◀</text>
+
+</svg>

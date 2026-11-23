@@ -1,0 +1,88 @@
+# GitHub Pages configuration — year-of-ai/2005
+# A thin remote_theme consumer: this repo holds only content; the shared
+# zer0-mistakes theme is pulled in at build time (no theme files vendored).
+# The seed + growth orchestration live in the hub (year-of-ai/year-of-ai.github.io).
+site_configured: true
+title: "The Year 2005"
+description: "A self-growing knowledge base about the year 2005 — history, science, arts, society, and people."
+github_user: "year-of-ai"
+repository_name: "2005"
+repository: "year-of-ai/2005"
+url: "https://year-of-ai.github.io"
+baseurl: "/2005"
+remote_theme: "bamr87/zer0-mistakes"
+markdown: kramdown
+kramdown:
+  input: GFM
+permalink: pretty
+teaser: /images/previews/default.svg
+og_image: /images/previews/default.svg
+
+# Masthead brand mark. Unset, the theme's header renders an <img> with an
+# empty src, which relative_url resolves to the baseurl itself — a broken
+# image on every page.
+logo: /assets/images/favicon.svg
+
+# Browser identity. The theme's core/favicon.html always emits the `ico`
+# link and assumes the site carries a favicon at its root; remote_theme
+# ships only _layouts/_includes/_sass/assets, so the theme's own never
+# arrives. Assets minted by the hub's scripts/generate-favicon.rb.
+favicon:
+  ico: /favicon.ico
+  svg: /assets/images/favicon.svg
+
+# README.md becomes the site homepage via jekyll-readme-index.
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+optional_front_matter:
+  remove_originals: true
+relative_links:
+  enabled: true
+titles_from_headings:
+  enabled: true
+  strip_title: false
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: article
+      # The article layout renders the top-of-page hero from page.preview
+      # only for featured/breaking posts unless a post opts in. Every
+      # article here carries a preview, so opt the collection in; the
+      # layout still guards on page.preview.
+      show_hero: true
+      author_profile: false
+      read_time: true
+      share: true
+      comments: false
+      related: true
+  - scope:
+      path: ""
+    values:
+      layout: default
+      hide_intro: true
+      author_profile: false
+      read_time: true
+      share: true
+# Kept in the repo but NOT published as site pages.
+exclude:
+  - CLAUDE.md
+  - .claude/
+  - telemetry/
+  # A custom exclude list replaces Jekyll's defaults, so restate them: CI's
+  # bundler-cache installs gems into vendor/bundle, which Jekyll would otherwise
+  # read (its site_template .erb posts fail the build).
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - node_modules/

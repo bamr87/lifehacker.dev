@@ -1,0 +1,40 @@
+# =============================================================================
+# .github/site-quality.yml: config for the weekly Site Quality Scan
+# =============================================================================
+# Read by bamr87/bamr87/.github/workflows/site-quality.yml (@v2), which
+# .github/workflows/site-quality-scan.yml calls once per site in `mode: url`
+# with that site's live URL as the base. Validated against the fleet schema
+# (bamr87/bamr87 templates/site-quality/site-quality.schema.json) before
+# every scan.
+#
+# REPORT-ONLY on purpose: no budgets, no axe fail_on, no contrast max, so no
+# finding fails a scan (an invalid config or a site that can't be scanned
+# still shows up as a failed job); it publishes Lighthouse scores, axe findings
+# and contrast counts, and the workflow keeps one issue per site up to date.
+# Tighten a gate (level: error, fail_on, max) only once every site passes it.
+# Known issues go in the allowlist: rule, selector and/or page, reason, issue
+# link and a QUOTED until date ("YYYY-MM-DD").
+# =============================================================================
+schema: site-quality/v1
+
+# Relative to each site's base URL.
+pages:
+  - /
+
+load_errors: warn
+
+lighthouse:
+  enabled: true
+  runs: 1
+
+axe:
+  enabled: true
+
+contrast:
+  enabled: true
+  pages:
+    - { path: / }
+
+allowlist:
+  on_expired: warn
+  entries: []

@@ -1,0 +1,96 @@
+# Enrichment map for the 1778 news-structure migration.
+# Hand-authored: coherent per-section topic (tag) vocabularies + a marquee
+# "featured" article per section. Excerpts are derived mechanically by the
+# migration script from each article's ## Summary paragraph.
+#
+# `sections` order here is the order used in the News nav + /news/ landing.
+
+site:
+  title: "The Year 1778"
+  tagline: "Dispatches from the year the American Revolution became a global war."
+
+sections:
+  politics:
+    name: "Political Events"
+    icon: "bi-bank"
+    description: "How the Franco-American alliance of February 6, 1778 turned a colonial rebellion into a global war and reshaped diplomacy across Europe and America."
+    featured: "franco-american-alliance"
+  military:
+    name: "Military Events"
+    icon: "bi-shield"
+    description: "The land and naval campaigns of 1778, from Valley Forge and Monmouth to the first Franco-British fleet actions at Ushant and St. Lucia."
+    featured: "valley-forge-encampment"
+  science:
+    name: "Science & Discovery"
+    icon: "bi-lightbulb"
+    description: "The discoveries and expeditions of 1778, spanning Cook's Pacific voyage, the death of Linnaeus, and advances in astronomy and precision instruments."
+    featured: "captain-cook-hawaii"
+  arts:
+    name: "Arts & Culture"
+    icon: "bi-palette"
+    description: "The cultural year of 1778, from the deaths of Voltaire and Rousseau to the opera rivalries of Paris and the opening of La Scala."
+    featured: "enlightenment-transition-1778"
+  economics:
+    name: "Economics & Trade"
+    icon: "bi-coin"
+    description: "The wartime economy of 1778, marked by the collapse of the Continental dollar, French war financing, privateering, and early industrialization."
+    featured: "continental-dollar-crisis"
+  people:
+    name: "Key Figures"
+    icon: "bi-person-badge"
+    description: "The key figures of 1778 — revolutionary leaders, French allies, Enlightenment philosophers, and the statesmen who died that year."
+    featured: "george-washington"
+
+# Per-article topic tags. Key = "<section-slug>/<article-slug>".
+# Tags are lowercase, human-readable, and deliberately REUSED across a section
+# so each becomes a real sub-grouping (the collapsible sidebar / filter pills).
+tags:
+  politics/articles-of-confederation-1778: ["american independence", "franco-american alliance"]
+  politics/britain-declares-war-france: ["global war", "franco-american alliance"]
+  politics/carlisle-peace-commission: ["peace negotiations", "diplomacy"]
+  politics/diplomatic-intelligence-1778: ["intelligence", "diplomacy", "franco-american alliance"]
+  politics/franco-american-alliance-nexus: ["franco-american alliance", "american independence", "global war"]
+  politics/franco-american-alliance: ["franco-american alliance", "global war", "diplomacy"]
+  politics/treaty-of-paris-1778-roots: ["peace negotiations", "intelligence", "franco-american alliance"]
+
+  military/battle-of-monmouth: ["land battle", "continental army", "franco-american alliance"]
+  military/battle-of-ushant: ["naval warfare", "european theater", "great power rivalry"]
+  military/clark-illinois-campaign: ["land battle", "continental army"]
+  military/st-lucia-campaign: ["naval warfare", "franco-american alliance"]
+  military/valley-forge-encampment: ["continental army", "franco-american alliance"]
+  military/war-bavarian-succession: ["european theater", "great power rivalry"]
+
+  science/captain-cook-hawaii: ["pacific exploration", "natural history"]
+  science/cook-northwest-passage: ["pacific exploration", "natural history", "taxonomy"]
+  science/euler-celestial-mechanics: ["astronomy", "mathematics"]
+  science/linnaeus-death: ["natural history", "taxonomy"]
+  science/scientific-instruments-1778: ["precision instruments", "mathematics", "astronomy"]
+  science/solar-eclipse-1778: ["astronomy", "precision instruments"]
+
+  arts/enlightenment-transition-1778: ["enlightenment", "literature"]
+  arts/evelina-burney: ["literature", "women in the arts"]
+  arts/gluck-piccinni-querelle-1778: ["opera", "french theater", "classical music"]
+  arts/irene-voltaire: ["french theater", "literature", "enlightenment"]
+  arts/la-scala: ["opera", "classical music"]
+  arts/mozart-paris-symphony: ["classical music", "concert culture"]
+  arts/sophie-arnould: ["opera", "french theater", "women in the arts"]
+  arts/tonkunstler-societat: ["classical music", "concert culture"]
+
+  economics/continental-dollar-crisis: ["currency crisis", "war financing"]
+  economics/industrialization-1778: ["manufacturing", "global commerce"]
+  economics/revolutionary-war-financing-1778: ["war financing", "currency crisis", "privateering"]
+  economics/trade-1778: ["global commerce", "privateering", "manufacturing"]
+
+  people/abigail-adams: ["revolutionary women", "american revolution"]
+  people/baron-von-steuben: ["military leaders", "american revolution"]
+  people/benjamin-franklin: ["american revolution", "french alliance"]
+  people/comte-destaing: ["military leaders", "french alliance"]
+  people/george-washington: ["military leaders", "american revolution"]
+  people/joseph-banks: ["enlightenment", "british establishment"]
+  people/mercy-otis-warren: ["revolutionary women", "american revolution"]
+  people/rousseau: ["enlightenment", "deaths of 1778"]
+  people/voltaire: ["enlightenment", "deaths of 1778"]
+  people/william-pitt-chatham: ["deaths of 1778", "british establishment"]
+  economics/european-agriculture-1778: ["agriculture", "global commerce"]
+  economics/sartine-naval-reforms: ["war financing", "manufacturing"]
+  people/robert-morris: ["american revolution"]
