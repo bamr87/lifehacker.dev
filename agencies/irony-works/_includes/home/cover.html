@@ -1,0 +1,32 @@
+{%- comment -%}
+  home/cover.html — cover art for a magazine card.
+
+  Every transplanted entry carries a generative `preview:` plate (rendered by
+  engine/scripts/preview.mjs), so the image branch is the normal path. The
+  gradient fallback is keyed to the branch colour so a missing plate still
+  reads as an intentional design rather than a hole.
+
+  Params:
+    preview : the entry's front-matter `preview:` value (optional)
+    section : branch key, for the fallback colour
+    alt     : alt text (optional)
+    height  : CSS min-height (default 160px)
+    class   : extra classes
+{%- endcomment -%}
+{%- assign _h = include.height | default: '160px' -%}
+{%- assign _pv = include.preview -%}
+{%- assign _meta = site.data.sections[include.section] -%}
+{%- assign _color = _meta.color | default: '#6b7280' -%}
+{%- if _pv and _pv != '' -%}
+  {%- assign _src = _pv -%}
+  {%- unless _pv contains '://' or _pv contains '/assets' -%}{%- assign _src = '/assets' | append: _pv -%}{%- endunless -%}
+  <div class="news-cover {{ include.class }}"
+       style="background-image: url('{{ _src | relative_url }}'); background-size: cover; background-position: center; min-height: {{ _h }};"
+       role="img" aria-label="{{ include.alt | default: 'Entry artwork' | escape }}"></div>
+{%- else -%}
+  <div class="news-cover sec-wash sec-{{ include.section }} d-flex align-items-center justify-content-center {{ include.class }}"
+       style="min-height: {{ _h }};"
+       role="img" aria-label="{{ include.alt | default: 'Entry artwork' | escape }}">
+    <i class="bi {{ _meta.icon | default: 'bi-dot' }} fs-2 text-white opacity-50"></i>
+  </div>
+{%- endif -%}

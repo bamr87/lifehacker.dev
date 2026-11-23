@@ -1,0 +1,32 @@
+{
+  "run_id": "local-2026-08-08",
+  "workflow": "local",
+  "calls": [
+    {
+      "at": "2026-08-08T20:55:35.331Z",
+      "label": "smoke-test",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 7,
+      "cache_read_tokens": 0,
+      "cache_creation_tokens": 31210,
+      "cost_usd": 0.187374,
+      "billed": false,
+      "duration_ms": 2833
+    },
+    {
+      "at": "2026-08-08T21:11:28.750Z",
+      "label": "scribe-retest",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 5,
+      "output_tokens": 1181,
+      "cache_read_tokens": 83177,
+      "cache_creation_tokens": 13862,
+      "cost_usd": 0.1258551,
+      "billed": false,
+      "duration_ms": 36598
+    }
+  ]
+}

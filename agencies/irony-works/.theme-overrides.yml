@@ -1,0 +1,76 @@
+# =============================================================================
+# .theme-overrides.yml — the theme files this site intentionally forks
+# =============================================================================
+#
+# Irony Works consumes bamr87/zer0-mistakes via `remote_theme`. Any file kept
+# here that also exists in the theme SHADOWS the theme's copy. The theme's
+# auditor classifies each one:
+#
+#   IDENTICAL            byte-for-byte the same as the theme's copy
+#                        → delete it; the theme's version will be used
+#   DIFFERS_JUSTIFIED    differs AND is listed below → intentional, no action
+#   DIFFERS_UNJUSTIFIED  differs and is NOT listed below → flagged for review
+#   UNIQUE               exists only here → our own file, ignored
+#
+# Without this file all three forks below read as unjustified drift, and the
+# audit is noise instead of a short, actionable list.
+#
+# Keep the `reason` current. An override whose reason has been fixed upstream is
+# the signal to delete the fork and take the theme's version back.
+#
+# Audit from a zer0-mistakes checkout:
+#   ./scripts/bin/audit-consumer --consumer-path /path/to/irony-works
+#   ./scripts/bin/audit-consumer --consumer-path /path/to/irony-works --strict
+# =============================================================================
+
+overrides:
+  - path: "_layouts/section.html"
+    reason: >-
+      From-scratch rewrite (~55 lines vs the theme's ~618). The theme's section
+      layout is a news/magazine view built entirely on site.posts, tags, and
+      categories — a data model this site does not have: it has zero posts, and
+      all content lives in the custom `entries` collection that transplant.mjs
+      writes. Ours filters `site.entries | where: "section", page.section` and
+      renders the vault's own fields — expectation and reversal for ironies,
+      premises and conclusion for paradoxes, plus the gate score, kind,
+      standing, veracity, and status — for the nine branch pages (forms, works,
+      figures, instances, paradoxes, mirrors, futures, nursery, compost).
+    upstream: >-
+      Not upstreamable as-is — it is specific to this site's collection and
+      frontmatter schema. Permanent by design.
+
+  - path: "_includes/components/cookie-consent.html"
+    reason: >-
+      Deliberately emptied stub. The theme's banner tells the reader the site
+      "uses cookies and similar technologies to enhance your browsing
+      experience, analyze traffic, and provide personalized content". Irony
+      Works sets no analytics, no PostHog, and no cookies of any kind, so the
+      banner would be a false statement — occupying a third of the mobile
+      viewport to make it. Asking for consent that is never needed is its own
+      small irony, and not one the vault wants to author.
+    upstream: >-
+      Not a theme bug. Delete this override the day analytics are added: the
+      theme's banner returns automatically, and it should.
+
+  - path: "_includes/custom/head.html"
+    reason: >-
+      Documented extension point, not drift. The theme ships custom/head.html
+      as an intentionally EMPTY stub whose header comment instructs consumers
+      to shadow it for site-specific <head> markup. Ours adds one <link> to
+      /assets/css/sections.css — the branch palette Jekyll generates at build
+      time from _data/sections.yml, so the colours have one source of truth
+      shared with vault/.obsidian/graph.json.
+    upstream: >-
+      None needed — this is the supported consumer hook working as designed.
+      Permanent.
+
+# -----------------------------------------------------------------------------
+# NOT overrides — deliberately absent from the list above:
+#
+#   _includes/home/card.html
+#   _includes/home/cover.html
+#
+# The theme has no _includes/home/ directory at all, so these shadow nothing.
+# They are our own magazine-card partials for index.md, and the auditor
+# correctly classifies them as UNIQUE. Do not add them here.
+# -----------------------------------------------------------------------------

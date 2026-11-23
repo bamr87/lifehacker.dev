@@ -1,0 +1,39 @@
+{%- comment -%}
+  home/card.html — one magazine card for a vault entry.
+
+  The teaser is the entry's payload, not a generic excerpt: the `reversal` of
+  an irony, the `conclusion` of a paradox — showing it is the whole reason
+  someone clicks. Falls back to `description` for taxonomy pages that carry
+  neither.
+
+  Params:
+    item         : an entry object
+    cover_height : CSS min-height for the cover (default 150px)
+{%- endcomment -%}
+{%- assign it = include.item -%}
+{%- assign meta = site.data.sections[it.section] -%}
+{%- assign gate = it.alanis | default: it.epimenides -%}
+{%- assign gate_name = "Alanis Gate" -%}
+{%- if it.epimenides -%}{%- assign gate_name = "Epimenides Gate" -%}{%- endif -%}
+<div class="card h-100 border-0 shadow-sm overflow-hidden">
+  {% include home/cover.html section=it.section height=include.cover_height preview=it.preview alt=it.title %}
+  <div class="card-body">
+    <span class="badge sec-badge sec-{{ it.section }} mb-2">
+      <i class="bi {{ meta.icon | default: 'bi-dot' }} me-1"></i>{{ meta.label | default: it.section }}
+    </span>
+    <h3 class="h6 card-title mb-2">
+      <a href="{{ it.url | relative_url }}" class="text-decoration-none text-body-emphasis stretched-link">{{ it.title | truncate: 60 }}</a>
+    </h3>
+    <p class="card-text small text-body-secondary mb-0">
+      {{ it.reversal | default: it.conclusion | default: it.description | strip_newlines | strip_html | truncate: 120 }}
+    </p>
+  </div>
+  <div class="card-footer bg-transparent border-0 text-body-secondary small d-flex gap-2 flex-wrap">
+    {%- comment -%} A gate score reads like "8/10 (as legend)" — show the score, not a
+      mid-word truncation. The full value stays in the tooltip. {%- endcomment -%}
+    {%- if gate %}<span title="{{ gate_name }}: {{ gate }}"><i class="bi bi-funnel me-1"></i>{{ gate | split: " " | first }}</span>{% endif -%}
+    {%- if it.kind %}<span title="Quine's kind"><i class="bi bi-infinity me-1"></i>{{ it.kind }}</span>{% endif -%}
+    {%- if it.veracity %}<span title="How well the evidence holds"><i class="bi bi-shield-check me-1"></i>{{ it.veracity }}</span>{% endif -%}
+    {%- unless gate or it.veracity %}{% if it.planted %}<span><i class="bi bi-calendar3 me-1"></i>{{ it.date | date: "%b %-d, %Y" }}</span>{% endif %}{% endunless -%}
+  </div>
+</div>

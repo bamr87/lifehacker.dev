@@ -1,0 +1,69 @@
+# Irony Works germination parameters
+vault: ./vault
+
+cadence: weekly          # documented; actual schedule lives in the workflow cron
+batch: 3                 # candidates per cycle
+
+# Scout rotation — one entry per cycle, round-robin by run number. Two genera
+# grow in this vault: a bare name is an irony domain; a `paradox:` prefix is a
+# paradox family (see vault/the-anatomy-of-a-paradox.md). The mix is the list —
+# repeat an entry to weight it. `GERMINATE_DOMAIN` overrides the rotation for
+# one run (the workflow's `domain` dispatch input sets it).
+domains:
+  - history-of-science
+  - paradox:logic-and-self-reference
+  - literature-and-language
+  - paradox:infinity-and-motion
+  - technology-and-automation
+  - paradox:probability-and-decision
+  - politics-and-power
+  - paradox:knowledge-and-belief
+  - commerce-and-institutions
+  - paradox:time-and-physics
+  - the-vault-itself      # recursive pass: new mirrors, stale links, matured futures
+  - paradox:value-and-society
+  - paradox:vagueness-and-identity
+  - paradox:the-vault-itself   # recursive pass: paradoxes of this repository's own arrangements
+
+# Each genus is a schema, a prompt set, and a gate. They share the nursery, the
+# guardrails, and the human merge; lib.mjs → genusOf() resolves the rest.
+genera:
+  irony:
+    template: vault/templates/entry.md
+    prompts: { scout: scout, scribe: scribe, gate: alanis-gate }   # engine/prompts/<name>.md
+    gate:
+      threshold: 7        # of 10 — see engine/prompts/alanis-gate.md
+      compost: vault/compost/the-merely-unfortunate.md
+  paradox:
+    template: vault/templates/paradox.md
+    prompts: { scout: paradox/scout, scribe: paradox/scribe, gate: paradox/epimenides-gate }
+    gate:
+      threshold: 7        # of 10 — see engine/prompts/paradox/epimenides-gate.md
+      compost: vault/compost/the-merely-puzzling.md
+
+harness:
+  provider: claude-code   # Claude Code CLI on OAuth (keychain locally,
+                          # CLAUDE_CODE_OAUTH_TOKEN in CI) — the same harness
+                          # lifehacker.dev runs on. Falls back to
+                          # ANTHROPIC_API_KEY. "anthropic" = API key only.
+                          # There is no lifehacker.dev completion endpoint;
+                          # "the lifehacker harness" IS this one.
+  model: claude-sonnet-5-5
+  max_tokens: 4000        # applies to the API fallback; the CLI budgets itself
+
+metering:                 # the meter, mirroring lifehacker.dev's AI_USAGE.md
+  ledger: _data/ai_usage/ # one JSON file per run; rolled up by usage-ledger.mjs
+  prices:                 # list price per million tokens, for API-equivalent
+                          # accounting on the metered-key path only. OAuth calls
+                          # report their own cost and are $0 marginal spend.
+    default: { input: 3, output: 15 }
+
+guardrails:
+  writable:               # the engine's entire filesystem, enforced in lib.mjs
+    - vault/nursery/
+    - vault/compost/the-merely-unfortunate.md
+    - vault/compost/the-merely-puzzling.md
+    - _data/ai_usage/     # telemetry only: token/cost records, never content
+  immutable_reason: >
+    Canon is promoted by human merge only. An engine that can rewrite its own
+    rules eventually files itself under mirrors/.

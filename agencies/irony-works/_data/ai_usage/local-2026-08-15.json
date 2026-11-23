@@ -1,0 +1,45 @@
+{
+  "run_id": "local-2026-08-15",
+  "workflow": "local",
+  "calls": [
+    {
+      "at": "2026-08-15T19:10:33.273Z",
+      "label": "alanis-gate-pr",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 2106,
+      "cache_read_tokens": 0,
+      "cache_creation_tokens": 30935,
+      "cost_usd": 0.21922,
+      "billed": false,
+      "duration_ms": 47989
+    },
+    {
+      "at": "2026-08-15T19:11:19.704Z",
+      "label": "alanis-gate-pr",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 2135,
+      "cache_read_tokens": 24620,
+      "cache_creation_tokens": 6017,
+      "cost_usd": 0.07726000000000001,
+      "billed": false,
+      "duration_ms": 44281
+    },
+    {
+      "at": "2026-08-15T19:12:04.001Z",
+      "label": "alanis-gate-pr",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 2013,
+      "cache_read_tokens": 24620,
+      "cache_creation_tokens": 5930,
+      "cost_usd": 0.074816,
+      "billed": false,
+      "duration_ms": 42129
+    }
+  ]
+}

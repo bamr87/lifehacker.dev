@@ -1,0 +1,48 @@
+# Primary navigation. The theme falls back to auto-generating this from
+# collections when the file is absent — which produced a single "Entries" link
+# to a page that did not exist. This is the real structure of the vault.
+#
+# NOTE: the desktop navbar is icon-only by design; the `title` becomes the
+# tooltip and the accessible name, and the full text shows in the mobile
+# offcanvas drawer. An entry without `icon` renders as nothing on desktop, so
+# every item here must carry one.
+- title: Browse the vault
+  url: /entries/
+  icon: bi-collection
+  children:
+    - title: Forms — the taxonomy
+      url: /forms/
+    - title: Works
+      url: /works/
+    - title: Figures
+      url: /figures/
+    - title: Instances
+      url: /instances/
+    - title: Paradoxes — the second genus
+      url: /paradoxes/
+    - title: Mirrors — our own ironies
+      url: /mirrors/
+    - title: Futures — reversals pending
+      url: /futures/
+    - title: Nursery — drafts
+      url: /nursery/
+    - title: Compost — the rejected
+      url: /compost/
+    - title: All entries
+      url: /entries/
+
+- title: The Alanis Gate — how ironies are scored
+  url: /entries/alanis-gate/
+  icon: bi-funnel
+
+- title: The Epimenides Gate — how paradoxes are scored
+  url: /entries/epimenides-gate/
+  icon: bi-infinity
+
+- title: How it grows
+  url: /how-it-grows/
+  icon: bi-diagram-3
+
+- title: Vault index
+  url: /entries/home/
+  icon: bi-map

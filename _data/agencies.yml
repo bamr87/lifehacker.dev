@@ -74,3 +74,21 @@ agencies:
       files: 109
       tree_sha256: 87d5902cdc6866d7228bea5afbc4524655bc91affdfd7ef925aee8927bb36629
       reflowed: 1
+- key: irony-works
+  name: Irony Works
+  beat: The perpetual encyclopedia of irony and paradox — an Obsidian vault grown
+    by a germination engine and transplanted into a Jekyll collection.
+  kind: single
+  sites:
+  - key: irony-works
+    path: agencies/irony-works
+    custody: home
+    upstream: bamr87/irony-works
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/irony-works
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 140
+      tree_sha256: 9150614d4df7ff7768470cca474ca8fb0111a0aeb7a5a61d6b1c1d42a4af2d28
+      reflowed: 2

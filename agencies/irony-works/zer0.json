@@ -1,0 +1,160 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bamr87/zer0-CMS/main/schemas/zer0.schema.json",
+  // Irony Works: the zer0-CMS content model (console dialect).
+  //
+  // The vault is the source of truth, so its folders are what this file registers.
+  // _entries/ (the one collection _config.yml declares) is NOT registered on purpose:
+  // it is gitignored output that engine/scripts/transplant.mjs regenerates from
+  // vault/ on every publish, so an edit there would be lost, and on a clean checkout
+  // the folder does not exist. vault/templates/ is not content and stays out.
+  //
+  // Each folder binds exactly one content type. A note's own `type:` key (figure,
+  // form, future, paradox) selects its type first, so a paradox filed under mirrors/
+  // or nursery/ still resolves to `paradox`; notes with no `type:` fall to the folder.
+  //
+  // There is no deterministic front-matter validator here (the gates are LLM judges),
+  // so required fields follow the vault/templates/ shapes and the load-bearing walls
+  // the docs name: `title` everywhere (transplant.mjs indexes it), expectation +
+  // reversal for an irony, premises + inference + conclusion + collision for a paradox.
+  // Choice lists cover every value the vault actually uses (veracity includes the
+  // mirrors' `self-evident`); `era` is free text because entries also carry years.
+  "platform": { "id": "jekyll", "overlay": "zer0-mistakes" },
+  "contentFolders": [
+    { "title": "Instances", "path": "[[workspace]]/vault/instances", "contentTypes": ["irony"], "filePrefix": null },
+    { "title": "Works", "path": "[[workspace]]/vault/works", "contentTypes": ["irony"], "filePrefix": null },
+    { "title": "Figures", "path": "[[workspace]]/vault/figures", "contentTypes": ["figure"], "filePrefix": null },
+    { "title": "Forms", "path": "[[workspace]]/vault/forms", "contentTypes": ["form"], "filePrefix": null },
+    { "title": "Paradoxes", "path": "[[workspace]]/vault/paradoxes", "contentTypes": ["paradox"], "filePrefix": null },
+    { "title": "Futures", "path": "[[workspace]]/vault/futures", "contentTypes": ["future"], "filePrefix": null },
+    { "title": "Hall of Mirrors", "path": "[[workspace]]/vault/mirrors", "contentTypes": ["irony"], "filePrefix": null },
+    { "title": "Nursery", "path": "[[workspace]]/vault/nursery", "contentTypes": ["irony"], "filePrefix": null },
+    // The two compost ledgers are appended rows, never new files.
+    { "title": "Compost", "path": "[[workspace]]/vault/compost", "contentTypes": ["note"], "filePrefix": null, "disableCreation": true },
+    { "title": "Vault index", "path": "[[workspace]]/vault", "contentTypes": ["note"], "excludeSubdir": true, "filePrefix": null, "disableCreation": true },
+    // Root site pages. Files without front matter (README, CLAUDE.md, ...) are not pages;
+    // the two dated design-notes drafts are excluded from the site and from here.
+    { "title": "Site pages", "path": "[[workspace]]", "contentTypes": ["page"], "excludeSubdir": true, "excludePaths": ["2026-*.md"], "filePrefix": null }
+  ],
+  "fieldGroups": [
+    {
+      "id": "garden",
+      "fields": [
+        { "name": "status", "type": "choice", "choices": ["seed", "sapling", "canon", "petrified"] },
+        { "name": "veracity", "type": "choice", "choices": ["attested", "contested", "legend", "speculative", "self-evident"] },
+        { "name": "era", "type": "string", "single": true, "description": "ancient | early-modern | modern | contemporary | future, or a year." },
+        { "name": "planted", "type": "datetime", "isPublishDate": true, "default": "{{now}}" },
+        { "name": "tended", "type": "datetime", "isModifiedDate": true },
+        { "name": "gardener", "type": "string", "single": true, "default": "human" },
+        { "name": "sources", "type": "list" }
+      ]
+    },
+    {
+      "id": "irony-core",
+      "fields": [
+        { "name": "form", "type": "choice", "multiple": true, "choices": ["verbal", "situational", "dramatic", "socratic", "cosmic", "structural", "historical", "meta-and-post"] },
+        { "name": "expectation", "type": "string" },
+        { "name": "reversal", "type": "string" },
+        { "name": "alanis", "type": "string", "single": true, "default": "pending", "description": "Alanis Gate score, e.g. 8/10; threshold 7." }
+      ]
+    }
+  ],
+  "contentTypes": [
+    {
+      "name": "irony",
+      "fields": [
+        { "name": "title", "type": "string", "single": true, "required": true },
+        { "name": "form", "type": "choice", "multiple": true, "choices": ["verbal", "situational", "dramatic", "socratic", "cosmic", "structural", "historical", "meta-and-post"] },
+        { "name": "garden", "type": "fieldCollection", "fieldGroup": "garden" },
+        { "name": "expectation", "type": "string", "required": true },
+        { "name": "reversal", "type": "string", "required": true },
+        { "name": "alanis", "type": "string", "single": true, "default": "pending", "description": "Alanis Gate score, e.g. 8/10; threshold 7." }
+      ]
+    },
+    {
+      "name": "figure",
+      "fields": [
+        { "name": "title", "type": "string", "single": true, "required": true },
+        { "name": "type", "type": "string", "single": true, "default": "figure", "hidden": true, "required": true },
+        { "name": "garden", "type": "fieldCollection", "fieldGroup": "garden" },
+        { "name": "irony", "type": "fieldCollection", "fieldGroup": "irony-core" }
+      ]
+    },
+    {
+      "name": "form",
+      "fields": [
+        { "name": "title", "type": "string", "single": true, "required": true },
+        { "name": "type", "type": "string", "single": true, "default": "form", "hidden": true, "required": true },
+        { "name": "status", "type": "choice", "default": "canon", "choices": ["seed", "sapling", "canon", "petrified"] },
+        { "name": "genus", "type": "string", "single": true, "description": "paradox on the three ways of paradox; absent on the forms of irony." },
+        { "name": "planted", "type": "datetime", "isPublishDate": true, "default": "{{now}}" }
+      ]
+    },
+    {
+      "name": "future",
+      "fields": [
+        { "name": "title", "type": "string", "single": true, "required": true },
+        { "name": "type", "type": "string", "single": true, "default": "future", "hidden": true, "required": true },
+        { "name": "garden", "type": "fieldCollection", "fieldGroup": "garden" },
+        { "name": "form", "type": "choice", "multiple": true, "choices": ["verbal", "situational", "dramatic", "socratic", "cosmic", "structural", "historical", "meta-and-post"] },
+        { "name": "expectation", "type": "string", "required": true },
+        { "name": "reversal", "type": "string", "default": "pending" },
+        { "name": "matures", "type": "string", "single": true, "description": "When the gardener should revisit: a date, or TBD." },
+        { "name": "alanis", "type": "string", "single": true, "default": "provisional" }
+      ]
+    },
+    {
+      "name": "paradox",
+      "fields": [
+        { "name": "title", "type": "string", "single": true, "required": true },
+        { "name": "type", "type": "string", "single": true, "default": "paradox", "hidden": true, "required": true },
+        { "name": "kind", "type": "choice", "choices": ["veridical", "falsidical", "antinomy"] },
+        { "name": "family", "type": "choice", "multiple": true, "choices": ["logic-and-self-reference", "infinity-and-motion", "vagueness-and-identity", "probability-and-decision", "knowledge-and-belief", "time-and-physics", "value-and-society", "the-vault-itself"] },
+        { "name": "standing", "type": "choice", "choices": ["resolved", "contested", "open"] },
+        { "name": "garden", "type": "fieldCollection", "fieldGroup": "garden" },
+        { "name": "posed", "type": "string", "single": true },
+        { "name": "hypothesis", "type": "string", "description": "Only for a hypothetical paradox; omit the key otherwise." },
+        { "name": "premises", "type": "list", "required": true },
+        { "name": "inference", "type": "string", "required": true },
+        { "name": "conclusion", "type": "string", "required": true },
+        { "name": "collision", "type": "string", "required": true },
+        { "name": "fault", "type": "string" },
+        { "name": "epimenides", "type": "string", "single": true, "default": "pending", "description": "Epimenides Gate score, e.g. 9/10; threshold 7." }
+      ]
+    },
+    {
+      "name": "note",
+      "fields": [
+        { "name": "title", "type": "string", "single": true, "required": true },
+        { "name": "type", "type": "string", "single": true },
+        { "name": "description", "type": "string" },
+        // Framework notes, ledgers and the founding prompt (which carries irony fields): all optional.
+        { "name": "garden", "type": "fieldCollection", "fieldGroup": "garden" },
+        { "name": "irony", "type": "fieldCollection", "fieldGroup": "irony-core" }
+      ]
+    },
+    {
+      "name": "page",
+      "fields": [
+        { "name": "title", "type": "string", "single": true, "required": true },
+        { "name": "layout", "type": "string", "single": true },
+        { "name": "section", "type": "choice", "choices": ["forms", "works", "figures", "instances", "paradoxes", "mirrors", "futures", "nursery", "compost"] },
+        { "name": "permalink", "type": "string", "single": true },
+        { "name": "hide_title", "type": "boolean" },
+        { "name": "rss_subscribe", "type": "boolean" },
+        { "name": "sitemap", "type": "boolean" },
+        { "name": "description", "type": "string" },
+        { "name": "preview", "type": "image", "isPreviewImage": true }
+      ]
+    }
+  ],
+  "frontMatter": { "format": "yaml", "indentArrays": true, "quoteStringValues": false },
+  // planted/tended are bare dates: planted: 2026-08-06
+  "date": { "format": "yyyy-MM-dd", "timezone": "UTC" },
+  "content": { "defaultFileType": "md", "publicFolder": "assets", "filePrefix": "" },
+  "slug": { "template": "{{title}}", "stopWords": "minimal" },
+  "governance": { "enabled": true, "target": "jekyll", "publishAllow": false },
+  // No .cms/ contract and no deterministic verify command: the gates call a model.
+  "cms": { "contentDirs": ["vault/"], "verifyCommand": "" },
+  "fleet": { "enabled": true, "manifestPath": "fleet.manifest.yml", "hub": "bamr87/bamr87" },
+  "validation": { "enabled": true }
+}

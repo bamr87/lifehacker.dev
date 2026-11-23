@@ -1,0 +1,6 @@
+{%- comment -%}
+  Consumer head hook (shadows the theme's empty stub). Loads the branch palette
+  generated from _data/sections.yml so cards can carry classes rather than
+  inline styles.
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/css/sections.css' | relative_url }}">

@@ -1,0 +1,19 @@
+---
+# Generated from _data/sections.yml at build time, so the branch palette has
+# exactly one source of truth — the same hexes as vault/.obsidian/graph.json.
+# Adding a branch to sections.yml gives it a colour here automatically.
+---
+{% for s in site.data.sections %}
+.sec-{{ s[0] }} { --sec-color: {{ s[1].color }}; }
+{%- endfor %}
+
+/* Badge and ink helpers read the branch colour from the custom property, so
+   markup carries a class instead of a hard-coded inline style. */
+.sec-badge { background-color: var(--sec-color, #6b7280); color: #fff; }
+.sec-ink { color: var(--sec-color, #6b7280); }
+.sec-wash { background: linear-gradient(135deg, var(--sec-color, #6b7280) 0%, #1b1b1f 100%); }
+
+/* Magazine cards: a restrained lift, and covers that never collapse. */
+.news-cover { background-color: #1b1b1f; }
+.card .news-cover { transition: transform .2s ease; }
+.card:hover .news-cover { transform: scale(1.02); }

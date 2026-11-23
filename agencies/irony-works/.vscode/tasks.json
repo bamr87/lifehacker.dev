@@ -1,0 +1,119 @@
+// irony-works · .vscode/tasks.json — fleet-vscode/v1 · 2026-09-09. Convention + vocabulary: .vscode/README.md.
+// This repo has no Gemfile, package.json, or compose file by design: Pages builds it with actions/jekyll-build-pages and the engine is plain Node ESM with one ad-hoc dependency. Serve therefore uses a throwaway ruby:3.3 container with the github-pages gem — slow the first time, cached in the irony-bundle volume after.
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup",
+      "detail": "Host. Installs the engine's one ad-hoc dependency (lib.mjs loads js-yaml via createRequire).",
+      "type": "shell",
+      "command": "npm i js-yaml --no-save",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build",
+      "detail": "Host node, no credentials. vault → _entries/ (wikilinks → permalinks) — the publish.yml pre-build step.",
+      "type": "shell",
+      "command": "node engine/scripts/transplant.mjs",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Verify",
+      "detail": "Host. The alanis-gate PR check: scores the nursery entries changed against origin/main (calls Claude through the local CLI's OAuth; ANTHROPIC_API_KEY only as fallback). Prints a note when nothing changed.",
+      "type": "shell",
+      "command": "files=$(git diff --name-only --diff-filter=AM origin/main...HEAD -- 'vault/nursery/*.md'); if [ -n \"$files\" ]; then node engine/scripts/gate.mjs $files; else echo 'no changed nursery entries to gate'; fi",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Gate: current file",
+      "detail": "Host. Scores the entry in the ACTIVE editor at the Alanis Gate (threshold 7/10).",
+      "type": "shell",
+      "command": "node engine/scripts/gate.mjs \"${relativeFile}\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Germinate",
+      "detail": "Host. One full cycle: scout → gate → scribe → vault/nursery/ + the compost ledger. Writes nowhere else (assertWritable).",
+      "type": "shell",
+      "command": "node engine/scripts/germinate.mjs",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Serve",
+      "detail": "Docker, unverified path: builds _entries first, then serves http://localhost:4000/irony-works/ from a throwaway ruby:3.3 container with the github-pages gem (first run installs it; the irony-bundle volume caches it). Set JEKYLL_GITHUB_TOKEN to avoid remote_theme rate limits. Runs until Stop.",
+      "type": "shell",
+      "command": "docker run --rm -it --name irony-works-preview -p 4000:4000 -v \"$PWD:/site\" -v irony-bundle:/usr/local/bundle -w /site -e JEKYLL_GITHUB_TOKEN ruby:3.3 bash -lc 'gem list -i github-pages >/dev/null || gem install github-pages --no-document -q; jekyll serve --host 0.0.0.0'",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "owner": "serve",
+        "pattern": {
+          "regexp": "^(never-matches)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Server (running|address)|Container \\S+\\s+Running"
+        }
+      },
+      "dependsOn": [
+        "Build"
+      ]
+    },
+    {
+      "label": "Stop",
+      "detail": "Stops the preview container.",
+      "type": "shell",
+      "command": "docker stop irony-works-preview",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Claude: session",
+      "detail": "Interactive Claude Code in this repo with its .claude/agents + skills, on your logged-in credentials. House rules still apply: branch from main, open a PR, a human merges.",
+      "type": "shell",
+      "command": "claude",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      }
+    }
+  ]
+}
