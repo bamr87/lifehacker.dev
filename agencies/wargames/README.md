@@ -1,5 +1,7 @@
 # Wargames
 
+> **Since 2026-11-23 this directory is the Wargames agency's back office.** Its pages are published as a collection of lifehacker.dev: `overthewire/` is now `pages/_wargames/` at the repository root, served under `/wargames/` (the URLs were `/docs/wargames/…`), and the images are in `assets/images/wargames/`. Read every `overthewire/` path below as `pages/_wargames/`. The pages build with the rest of lifehacker.dev (`scripts/ci/build.sh`), not with the `jekyll_theme.py` command below. Before the next refresh from OverTheWire, change `scripts/docs-aggregator/transform.py`: it still writes `/docs/wargames/…` permalinks, and it leaves relative links to files the mirror does not carry (`papers/…` on the Blacksun reading list), which this site's link check rejects. Decision: `docs/adr/0003-agencies-as-collections.md`.
+
 > OverTheWire security wargames (Bandit, Natas and more) mirrored as a Jekyll study site, extracted from it-journey.
 
 [![CI](https://github.com/bamr87/wargames/actions/workflows/ci.yml/badge.svg)](https://github.com/bamr87/wargames/actions/workflows/ci.yml) [![License](https://img.shields.io/github/license/bamr87/wargames)](LICENSE) [![Live site](https://img.shields.io/badge/live-bamr87.github.io%2Fwargames-2ea44f)](https://bamr87.github.io/wargames/)

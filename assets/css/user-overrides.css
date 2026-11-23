@@ -1,0 +1,133 @@
+/*
+ * lifehacker.dev — site styles on top of the theme.
+ *
+ * Loaded last by the zer0-mistakes theme because `user_overrides: true` is set in _config.yml. This is
+ * the theme's opt-in customisation layer: it shadows no theme file, so it is not a fork and has no row
+ * in .theme-overrides.yml.
+ *
+ * It holds only what an agency's pages need and the theme does not ship. Every rule is namespaced to a
+ * class those pages carry, so nothing here changes a page that does not use it. Everything keys off the
+ * Bootstrap and skin custom properties, so it follows the active skin and light or dark mode.
+ *
+ *   1. Wargames: the study guide at the end of every level page (pages/_wargames/)
+ */
+
+/* ───────────────────────── 1. Wargames: study guide ───────────────────────── */
+/* Carried unchanged from the Wargames site's own stylesheet (agencies/wargames/assets/css/user-overrides.css, section 3). */
+
+/* The site-authored section at the end of every challenge page. It is wrapped in <section
+   class="study-guide"> so it reads as clearly separate from the vendored upstream text above it. */
+.study-guide {
+  margin: 3rem 0 1rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  border: 1px solid var(--bs-border-color);
+  border-left: 0.3rem solid var(--bs-primary);
+  border-radius: 0.75rem;
+  background: var(--bs-tertiary-bg);
+}
+.study-guide > h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.study-guide > h2::before {
+  font-family: bootstrap-icons !important;
+  content: "\f6fe"; /* bi-mortarboard */
+  font-size: 1.35em;
+  line-height: 1;
+  color: var(--bs-primary);
+}
+.study-guide h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.study-guide p,
+.study-guide li {
+  line-height: 1.65;
+}
+.study-guide ul,
+.study-guide ol {
+  padding-left: 1.4rem;
+}
+.study-guide li + li {
+  margin-top: 0.35rem;
+}
+.study-guide table {
+  margin-bottom: 1rem;
+}
+
+/* "Level map": which account you are logged in as and which password you are after. The numbering
+   differs between games, so this is the line readers most need to see first. */
+.sg-map {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(var(--bs-primary-rgb), 0.4);
+  border-radius: 0.5rem;
+  background: rgba(var(--bs-primary-rgb), 0.1);
+}
+.sg-map::before {
+  font-family: bootstrap-icons !important;
+  content: "\f549"; /* bi-signpost-split */
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--bs-primary);
+}
+.sg-map p {
+  margin: 0;
+}
+
+/* Previous / next level, so a reader can keep going without the sidebar. */
+.sg-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin: 1.75rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bs-border-color);
+}
+.sg-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.95rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 2rem;
+  background: var(--bs-body-bg);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.sg-nav a:hover,
+.sg-nav a:focus-visible {
+  border-color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb), 0.12);
+}
+.sg-nav .sg-prev::before,
+.sg-nav .sg-next::after {
+  font-family: bootstrap-icons !important;
+  font-size: 0.85em;
+}
+.sg-nav .sg-prev::before {
+  content: "\f12f"; /* bi-arrow-left */
+}
+.sg-nav .sg-next::after {
+  content: "\f138"; /* bi-arrow-right */
+}
+.sg-nav .sg-next {
+  margin-left: auto;
+}
+
+@media (max-width: 575.98px) {
+  .study-guide {
+    margin-inline: -0.25rem;
+    padding: 1rem 1rem 1.25rem;
+  }
+}

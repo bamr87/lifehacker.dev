@@ -92,6 +92,12 @@ preview_images:
 # Skins: air, aqua, dirt, neon, mint, plum, sunrise. `neon` gives lifehacker
 # its late-night-terminal, infomercial-after-dark energy.
 theme_skin               : "neon"
+# Loads assets/css/user-overrides.css and assets/js/user-overrides.js last (the
+# theme's opt-in customisation layer; it shadows no theme file). The stylesheet
+# holds the styles an agency's pages need and the theme does not ship, each
+# namespaced to those pages. The switch loads both files, so the script exists
+# and is empty.
+user_overrides           : true
 
 # Compile-time overrides of the --zer0-color-* tokens (tokens-inline.html).
 # Hex codes MUST be quoted (unquoted #abc is parsed as a YAML comment → null).
@@ -254,6 +260,14 @@ collections:
   docs:
     output: true
     permalink: /docs/:name/
+  # An agency published as a collection (docs/adr/0003-agencies-as-collections.md):
+  # its pages live in pages/_wargames/ and are served under /wargames/. Every page
+  # pins its own permalink today; the pattern is the default for one that does
+  # not. A collection's index.md has no special case in Jekyll (it would land at
+  # /wargames/<game>/index/), so an index page must always pin its permalink.
+  wargames:
+    output: true
+    permalink: /wargames/:path/
 
 permalink: pretty
 
@@ -352,6 +366,57 @@ defaults:
       collection: docs
       sidebar:
         nav: auto
+  # The Wargames agency. The sidebar is the theme's URL-hierarchy page tree,
+  # rooted at /wargames/ and ordered by each page's nav_order, as it was on the
+  # site these pages came from. `agency:` names the row in _data/agencies.yml.
+  - scope:
+      path: pages/_wargames
+    values:
+      layout: default
+      preview: /images/wargames/banner.svg
+      collection: wargames
+      agency: wargames
+      sidebar:
+        nav: pages
+        base: /wargames/
+        order_by: nav_order
+        title: Wargames
+  - scope: { path: pages/_wargames/bandit }
+    values: { difficulty: Beginner, preview: /images/wargames/banner-bandit.svg }
+  - scope: { path: pages/_wargames/natas }
+    values: { difficulty: Beginner, preview: /images/wargames/banner-natas.svg }
+  - scope: { path: pages/_wargames/krypton }
+    values: { difficulty: Beginner, preview: /images/wargames/banner-krypton.svg }
+  - scope: { path: pages/_wargames/leviathan }
+    values: { difficulty: Beginner, preview: /images/wargames/banner-leviathan.svg }
+  - scope: { path: pages/_wargames/narnia }
+    values: { difficulty: Intermediate, preview: /images/wargames/banner-narnia.svg }
+  - scope: { path: pages/_wargames/behemoth }
+    values: { difficulty: Intermediate, preview: /images/wargames/banner-behemoth.svg }
+  - scope: { path: pages/_wargames/utumno }
+    values: { difficulty: Intermediate, preview: /images/wargames/banner-utumno.svg }
+  - scope: { path: pages/_wargames/maze }
+    values: { difficulty: Advanced, preview: /images/wargames/banner-maze.svg }
+  - scope: { path: pages/_wargames/manpage }
+    values: { difficulty: Advanced, preview: /images/wargames/banner-manpage.svg }
+  - scope: { path: pages/_wargames/vortex }
+    values: { difficulty: Advanced, preview: /images/wargames/banner-vortex.svg }
+  - scope: { path: pages/_wargames/drifter }
+    values: { difficulty: Advanced, preview: /images/wargames/banner-drifter.svg }
+  - scope: { path: pages/_wargames/formulaone }
+    values: { difficulty: Advanced, preview: /images/wargames/banner-formulaone.svg }
+  - scope: { path: pages/_wargames/semtex }
+    values: { difficulty: Archived, preview: /images/wargames/banner-semtex.svg }
+  - scope: { path: pages/_wargames/blacksun }
+    values: { difficulty: Archived, preview: /images/wargames/banner-blacksun.svg }
+  - scope: { path: pages/_wargames/abraxas }
+    values: { difficulty: Archived, preview: /images/wargames/banner-abraxas.svg }
+  - scope: { path: pages/_wargames/hes2010 }
+    values: { difficulty: Archived, preview: /images/wargames/banner-hes2010.svg }
+  - scope: { path: pages/_wargames/kishi }
+    values: { difficulty: Archived, preview: /images/wargames/banner-kishi.svg }
+  - scope: { path: pages/_wargames/monxla }
+    values: { difficulty: Archived, preview: /images/wargames/banner-monxla.svg }
 
 # ── Copyright ────────────────────────────────────────────────────────────────
 cr_year: 2026

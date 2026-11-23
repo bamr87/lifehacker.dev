@@ -1,5 +1,7 @@
 # AGENTS.md — AI Agent Guide for Wargames
 
+> **Since 2026-11-23 this directory is the Wargames agency's back office.** Its pages are published as a collection of lifehacker.dev: `overthewire/` is now `pages/_wargames/` at the repository root, served under `/wargames/` (the URLs were `/docs/wargames/…`), and the images are in `assets/images/wargames/`. Read every `overthewire/` path below as `pages/_wargames/`. The pages build with the rest of lifehacker.dev (`scripts/ci/build.sh`), not with the `jekyll_theme.py` command below. Before the next refresh from OverTheWire, change `scripts/docs-aggregator/transform.py`: it still writes `/docs/wargames/…` permalinks, and it leaves relative links to files the mirror does not carry (`papers/…` on the Blacksun reading list), which this site's link check rejects. Decision: `docs/adr/0003-agencies-as-collections.md`.
+
 > Cross-tool entry point for AI coding agents (GitHub Copilot, Claude Code, Cursor, Aider, etc.)
 
 ## Project snapshot
