@@ -1,0 +1,19 @@
+# Main navigation for the drsai storybook site.
+# Used by the zer0-mistakes theme's _includes/navigation/navbar.html.
+
+- title: The Library
+  icon: bi-bookshelf
+  url: /
+
+- title: Dodge & Reena
+  icon: bi-book-half
+  url: /books/dodge-and-reena/
+  children:
+    - title: About the Book
+      url: /books/dodge-and-reena/
+    - title: Start Reading — January
+      url: /books/dodge-and-reena/january/
+
+- title: About
+  icon: bi-stars
+  url: /about/

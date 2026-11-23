@@ -1,0 +1,89 @@
+# Build the drsai storybook site and deploy it to GitHub Pages.
+#
+# - Every push/PR builds the site (Jekyll + remote zer0-mistakes theme).
+# - Pushes to main deploy the artifact to Pages (enable Pages -> "GitHub
+#   Actions" source in repo settings once).
+# - content-drift re-imports the Dodge & Reena sources and reports (without
+#   failing the build) when committed pages fall behind the content repo.
+
+name: pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      # No committed Gemfile.lock: the Gemfile carries an env-conditional
+      # local-path theme gem for development, so CI resolves fresh instead.
+      - name: Install gems
+        run: bundle install --jobs 4
+
+      - name: Build with Jekyll
+        env:
+          JEKYLL_ENV: production
+          PAGES_REPO_NWO: ${{ github.repository }}
+        run: bundle exec jekyll build --config _config.yml --trace
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  # Informational: warns (never fails) when the committed book pages fall
+  # behind the content repo. Skips quietly when the content repo isn't
+  # readable with the default token (e.g. it is private) — set a
+  # CONTENT_REPO_TOKEN secret with read access to enable it there.
+  content-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Verify imported book matches the content repo
+        env:
+          GH_TOKEN: ${{ secrets.CONTENT_REPO_TOKEN || github.token }}
+        run: |
+          if ! git clone --quiet --depth 1 \
+              "https://x-access-token:${GH_TOKEN}@github.com/bamr87/Dodge-and-Reena-Book" \
+              .dodge-source 2>/dev/null; then
+            echo "::notice::Dodge-and-Reena-Book is not readable with the available token — content-drift check skipped."
+            exit 0
+          fi
+          if python3 tools/import_dodge_and_reena.py --source .dodge-source --check --verbose; then
+            echo "imported book matches the content repo"
+          else
+            echo "::warning::Imported book pages are behind the content repo — run: python3 tools/import_dodge_and_reena.py"
+          fi
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v5
+        id: deployment

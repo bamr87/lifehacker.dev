@@ -1,0 +1,122 @@
+# User interface text and labels — ENGLISH SOURCE OF TRUTH
+# Used by: _includes/core/i18n.html (and through it, layouts/includes)
+#
+# Multilingual model (ZER0-078): this file holds ONLY the English strings.
+# Alternate languages are NOT hand-maintained here anymore — they are
+# machine-generated into _data/i18n/<lang>.yml by scripts/translate.rb
+# (Claude Code OAuth) via .github/workflows/translate.yml. To change a
+# translated label, edit the English string here and let the translate
+# workflow regenerate the alternates. Languages are configured under
+# `translation.languages` in _config.yml.
+#
+# (The former hand-written es/fr/de/ar blocks were removed in favor of the
+# generated pipeline — see docs/systems/multilingual-translation.md.)
+
+# English (default)
+# -----------------
+en: &DEFAULT_EN
+  skip_links                 : "Skip links"
+  skip_primary_nav           : "Skip to primary navigation"
+  skip_content               : "Skip to content"
+  skip_main_content          : "Skip to main content"
+  skip_footer                : "Skip to footer"
+  page                       : "Page"
+  pagination_previous        : "Previous"
+  pagination_next            : "Next"
+  breadcrumb_home_label      : "Home"
+  breadcrumb_separator       : "/"
+  menu_label                 : "Toggle menu"
+  search_label               : "Toggle search"
+  toc_label                  : "On this page"
+  ext_link_label             : "Direct link"
+  less_than                  : "less than"
+  minute_read                : "minute read"
+  share_on_label             : "Share on"
+  meta_label                 :
+  tags_label                 : "Tags:"
+  categories_label           : "Categories:"
+  date_label                 : "Updated:"
+  author_label               : "Author:"
+  comments_label             : "Leave a comment"
+  comments_title             : "Comments"
+  more_label                 : "Learn more"
+  related_label              : "You may also enjoy"
+  follow_label               : "Follow:"
+  feed_label                 : "Feed"
+  powered_by                 : "Powered by"
+  website_label              : "Website"
+  email_label                : "Email"
+  recent_posts               : "Recent posts"
+  undefined_wpm              : "Undefined parameter words_per_minute at _config.yml"
+  comment_form_info          : "Your email address will not be published. Required fields are marked"
+  comment_form_comment_label : "Comment"
+  comment_form_md_info       : "Markdown is supported."
+  comment_form_name_label    : "Name"
+  comment_form_email_label   : "Email address"
+  comment_form_website_label : "Website (optional)"
+  comment_btn_submit         : "Submit comment"
+  comment_btn_submitted      : "Submitted"
+  comment_success_msg        : "Thanks for your comment! It will show on the site once it has been approved."
+  comment_error_msg          : "Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again."
+  loading_label              : "Loading..."
+  search_label_text          : "Enter your search term..."
+  search_placeholder_text    : "Enter your search term..."
+  search_no_results          : "No results"
+  results_found              : "Result(s) found"
+  back_to_top                : "Back to top"
+  # Statistics labels
+  stats_total_posts          : "Total Posts"
+  stats_total_pages          : "Total Pages"
+  stats_categories           : "Categories"
+  stats_tags                 : "Tags"
+  stats_last_updated         : "Last Updated"
+  stats_overview             : "Overview"
+  stats_content_breakdown    : "Content Breakdown"
+  # Theme-specific labels
+  theme_toggle               : "Toggle theme"
+  dark_mode                  : "Dark mode"
+  light_mode                 : "Light mode"
+  view_source                : "View source"
+  edit_page                  : "Edit this page"
+  report_issue               : "Report an issue"
+  # Breadcrumb labels (used by _includes/navigation/breadcrumbs.html)
+  breadcrumbs_root           : "Home"
+  breadcrumbs_aria           : "Breadcrumb"
+  # Keyboard shortcuts modal (Track 5)
+  shortcuts_title            : "Keyboard shortcuts"
+  shortcuts_search           : "Open search"
+  shortcuts_prev_section     : "Previous section"
+  shortcuts_next_section     : "Next section"
+  shortcuts_toggle_sidebar   : "Toggle sidebar"
+  shortcuts_toggle_toc       : "Toggle table of contents"
+  shortcuts_show_help        : "Show this help"
+  # Header / navbar chrome (ZER0-078)
+  home_label                 : "Home"
+  main_nav_label             : "Main Navigation"
+  search_button_label        : "Search"
+  settings_button_label      : "Settings"
+  toc_title                  : "Table of Contents"
+  # Article intro / metadata chrome (ZER0-078)
+  published_label            : "Published"
+  updated_label              : "Updated"
+  reading_time_label         : "Estimated reading time:"
+  reading_time_minute        : "minute"
+  share_label                : "Share"
+  copy_link_label            : "Copy Link"
+  improve_label              : "Improve"
+  edit_on_github             : "Edit on GitHub"
+  # Language toggle & machine translation (ZER0-078)
+  lang_toggle_label          : "Language"
+  lang_toggle_aria           : "Change language"
+  lang_not_available         : "Not yet translated"
+  machine_translation_notice : "This page was translated automatically from the English original."
+  machine_translation_view_source : "View the original"
+
+en-US:
+  <<: *DEFAULT_EN
+en-CA:
+  <<: *DEFAULT_EN
+en-GB:
+  <<: *DEFAULT_EN
+en-AU:
+  <<: *DEFAULT_EN

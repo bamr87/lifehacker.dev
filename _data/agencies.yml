@@ -56,3 +56,21 @@ agencies:
       files: 73
       tree_sha256: c1a09a6ed4314e3ce45e1ee764ea324bc47d0f0a77e077f0afb7f41d7a079452
       reflowed: 11
+- key: drsai
+  name: drsai — AI storybooks
+  beat: Children's picture books written with AI assistance, with the Python story
+    engine and the importers that build them.
+  kind: single
+  sites:
+  - key: drsai
+    path: agencies/drsai
+    custody: home
+    upstream: bamr87/drsai
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/drsai
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 109
+      tree_sha256: 87d5902cdc6866d7228bea5afbc4524655bc91affdfd7ef925aee8927bb36629
+      reflowed: 1
