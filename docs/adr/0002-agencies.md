@@ -11,7 +11,7 @@ The maintainer's direction, in their words: "review the site directory in zer0-c
 
 Before this change the fleet's content sat in three kinds of place. zer0-CMS held nine sites under `sites/`: five bodies of content (1987, 2005, drsai, irony-works, wargames) and four demonstrations of the platform itself. The Year of AI and AI World View networks lived in their own GitHub organizations, as 19 repositories: a hub and one repository per year or country. lifehacker.dev held only its own news sections. The hub constitution already names lifehacker.dev the fleet's news agency, and this repository's own automation was shut down on 2026-11-05 in favour of the central zer0-CMS system, so the two roles the maintainer describes were half in place: a platform that held content, and a content source that held one site.
 
-Two facts shaped the mechanics. Production here is GitHub's own Pages build of the whole repository, while the CI build overlays only `pages/`, `_data/`, `_includes/` and `assets/` onto a theme clone, so a new top-level directory is built in production and invisible to CI unless it is excluded. And on the import date the documented public URLs of 1987, drsai, irony-works and wargames returned 404, while both network hubs and all 17 member sites answered: four of the sites had no public home to break, and 19 had one that must not be broken.
+Two facts shaped the mechanics. Production here is GitHub's own Pages build of the whole repository, while the CI build overlays only `pages/`, `_data/`, `_includes/` and `assets/` onto a theme clone, so a new top-level directory is built in production and invisible to CI unless it is excluded. And on the import date the documented public URLs of 1987, drsai, irony-works and wargames returned 404, while both network hubs and all 17 member sites answered: four of the sites had no public home to break, and 19 had one that must not be broken. The same four had lost more than their public home: the repositories they first lived in (`bamr87/1987`, `bamr87/drsai`, `bamr87/irony-works`, `bamr87/wargames`) no longer exist, so zer0-CMS's `main` held the only copy of each.
 
 ## Decision
 
@@ -37,12 +37,14 @@ Two facts shaped the mechanics. Production here is GitHub's own Pages build of t
 - Each tree brings machinery that is inert here: 48 workflow files under nested `.github/workflows/`, and each tree's `.claude/` commands and guides, which load only when someone works inside that tree.
 - The builds zer0-CMS recorded for 2005 and wargames were made from the bytes before the prose reflow, which changed two and five of their Markdown files. Whoever publishes those sites next re-records them.
 - Nothing publishes an agency from here yet, so the four sites without a public URL stay unpublished until the next decision.
+- The trees from zer0-CMS were moved unedited, so their guides still name its build tool by a relative path that does not resolve here, and 1987 has no `_config.yml` for the platform to register. Nothing can build those four from this repository until the platform builds an external checkout or the guides are corrected.
+- The order of the two merges is a safety rule. Until this import is on `main`, zer0-CMS's `main` is the only place four of the trees exist; its companion change must not merge first.
 
 ## Alternatives considered
 
 - **Fold each agency into this site's one Jekyll build, as sections.** Not chosen now: it means rewriting every agency page to this site's front matter and gates, and the agencies have their own voices and structures. It stays possible per agency later, through the content-import flow, and needs the content here first either way.
 - **Keep the sites as separate repositories, joined as submodules.** Not chosen: it consolidates nothing, and the content would still be written and reviewed in every one of its source repositories.
-- **Carry git history across.** Not chosen: zer0-CMS's `main` holds each of its trees as one squashed commit already, the original repositories keep their own history, and the registry pins the exact commit each tree came from.
+- **Carry git history across.** Not chosen: zer0-CMS's `main` holds each of its trees as one squashed commit already, so there is little to carry; four of the five original repositories no longer exist; the two networks' repositories keep their own history for as long as they are the write side; and the registry pins the exact commit each tree came from.
 - **Move content only, and leave each site's tooling in zer0-CMS.** Not chosen: the tools resolve paths relative to their own tree, so splitting them breaks them, and the platform's ledger already tracks what it must absorb from each one.
 
 ## Left to the maintainer

@@ -22,7 +22,7 @@ agencies/
     └── china/ japan/ north-korea/ south-korea/
 ```
 
-A site tree is self-contained. It carries its content, its own site configuration and its own tooling, exactly as its source repository had them, and nothing in it assumes it is the root of a git repository. Where a tree has its own `AGENTS.md` or `README.md`, that file governs the tree: read it before changing anything inside.
+A site tree is whole. It carries its content, its own site configuration and its own tooling, as its source repository had them, and nothing in it assumes it is the root of a git repository. Where a tree has its own `AGENTS.md` or `README.md`, that file governs the tree: read it before changing anything inside. Those guides were moved unedited, so some still name commands from where the tree used to live; see the last section.
 
 ## Rules
 
@@ -49,4 +49,5 @@ To add an agency: add its entry to the registry (key, name, beat, kind, and each
 
 - **Publishing.** No agency is published from this repository. The sites with a `live_url` in the registry are still served by their source repositories; the others are not public anywhere today.
 - **Cutover of the mirrors.** The two networks still grow in their own organizations. Until the maintainer moves a site's write side here and marks it `home`, refresh it; do not edit it.
+- **Building the trees that came from zer0-CMS.** The guides of 1987, drsai and wargames still tell you to run `python3 ../../tools/jekyll_theme.py build <site>`, and drsai's `_config.yml` names zer0-CMS's image generator by a relative path. Neither exists here: those were zer0-CMS's tools, and it cannot build a checkout outside its own repository yet. (`../../tools/unwrap-prose.py` in the same guides does resolve, to this repository's copy.) 1987 has no `_config.yml`, so the platform cannot register it either.
 - **Lighter CI for agency-only changes.** A pull request that touches only `agencies/` runs the full pipeline, because the change classifier does not know the directory yet.
