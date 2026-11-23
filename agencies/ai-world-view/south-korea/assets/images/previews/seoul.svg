@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Seoul — Capital of South Korea, Atlas Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8ab4c9" />
+      <stop offset="100%" stop-color="#6a9ab0" />
+    </linearGradient>
+    <linearGradient id="skygrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9d8e8" />
+      <stop offset="100%" stop-color="#e8dfc8" stop-opacity="0" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g opacity="0.08" stroke="#5a4a2a" stroke-width="0.8">
+    <line x1="0" y1="100" x2="1536" y2="100" />
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="300" x2="1536" y2="300" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="500" x2="1536" y2="500" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="700" x2="1536" y2="700" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="0" y1="900" x2="1536" y2="900" />
+    <line x1="100" y1="0" x2="100" y2="1024" />
+    <line x1="200" y1="0" x2="200" y2="1024" />
+    <line x1="300" y1="0" x2="300" y2="1024" />
+    <line x1="400" y1="0" x2="400" y2="1024" />
+    <line x1="500" y1="0" x2="500" y2="1024" />
+    <line x1="600" y1="0" x2="600" y2="1024" />
+    <line x1="700" y1="0" x2="700" y2="1024" />
+    <line x1="800" y1="0" x2="800" y2="1024" />
+    <line x1="900" y1="0" x2="900" y2="1024" />
+    <line x1="1000" y1="0" x2="1000" y2="1024" />
+    <line x1="1100" y1="0" x2="1100" y2="1024" />
+    <line x1="1200" y1="0" x2="1200" y2="1024" />
+    <line x1="1300" y1="0" x2="1300" y2="1024" />
+    <line x1="1400" y1="0" x2="1400" y2="1024" />
+    <line x1="1500" y1="0" x2="1500" y2="1024" />
+  </g>
+
+  
+  <g opacity="0.9">
+    
+    <path d="M 820 80 C 860 75, 920 90, 960 120 C 1000 150, 1020 190, 1030 240               C 1040 290, 1035 340, 1025 390 C 1015 440, 1000 490, 985 540              C 970 590, 950 640, 930 690 C 910 740, 880 790, 850 830              C 830 860, 800 880, 770 890 C 750 897, 730 895, 715 885              C 700 875, 690 860, 685 840 C 680 820, 682 800, 688 780              C 695 755, 705 730, 710 700 C 715 665, 712 630, 705 595              C 698 560, 685 528, 675 495 C 660 450, 648 400, 645 350              C 642 300, 650 250, 665 205 C 678 165, 700 130, 730 105 Z" fill="#c8b98a" stroke="#8a7050" stroke-width="2" />
+    
+    <path d="M 820 80 C 860 75, 920 90, 960 120 C 1000 150, 1020 190, 1030 240              C 1040 280, 1038 320, 1030 360 C 1010 370, 985 365, 965 355              C 940 340, 918 318, 895 305 C 870 290, 840 285, 815 280              C 790 275, 768 272, 748 265 C 728 258, 710 245, 700 228              C 690 210, 688 188, 690 168 C 693 148, 700 130, 730 105 Z" fill="#bfab78" stroke="none" />
+    
+    <line x1="700" y1="228" x2="1030" y2="360" stroke="#7a5a3a" stroke-width="2" stroke-dasharray="8,5" opacity="0.7" />
+  </g>
+
+  
+  <path d="M 560 490 C 620 480, 680 485, 740 488 C 790 490, 830 495, 870 500            C 910 505, 950 510, 990 505 C 1020 500, 1045 488, 1060 478" fill="none" stroke="url(#river)" stroke-width="18" stroke-linecap="round" opacity="0.85" />
+  
+  <text x="780" y="478" font-family="Georgia, serif" font-size="14" fill="#4a7a9a" text-anchor="middle" font-style="italic" opacity="0.9">Han River (한강)</text>
+
+  
+  <ellipse cx="800" cy="460" rx="120" ry="80" fill="#b8a070" opacity="0.5" stroke="#7a5a30" stroke-width="1.5" />
+
+  
+  <polygon points="800,310 830,370 770,370" fill="#9a8860" stroke="#6a5840" stroke-width="1.5" opacity="0.85" />
+  <text x="800" y="300" font-family="Georgia, serif" font-size="13" fill="#4a3820" text-anchor="middle" font-style="italic">Bugaksan</text>
+
+  
+  <polygon points="800,540 825,590 775,590" fill="#9a8860" stroke="#6a5840" stroke-width="1.5" opacity="0.85" />
+  <text x="800" y="610" font-family="Georgia, serif" font-size="13" fill="#4a3820" text-anchor="middle" font-style="italic">Namsan</text>
+
+  
+  <polygon points="695,445 718,495 672,495" fill="#9a8860" stroke="#6a5840" stroke-width="1.5" opacity="0.85" />
+
+  
+  <polygon points="905,420 928,468 882,468" fill="#9a8860" stroke="#6a5840" stroke-width="1.5" opacity="0.85" />
+
+  
+  <circle cx="800" cy="455" r="10" fill="#c0392b" stroke="#8a1a0a" stroke-width="2" />
+  <circle cx="800" cy="455" r="4" fill="#fff" opacity="0.7" />
+
+  
+  <g transform="translate(730, 395)">
+    
+    <rect x="0" y="20" width="60" height="30" fill="#c9a050" stroke="#8a6020" stroke-width="1.5" />
+    
+    <polygon points="-8,20 30,0 68,20" fill="#8a3a1a" stroke="#5a1a00" stroke-width="1.5" />
+    
+    <line x1="10" y1="20" x2="10" y2="50" stroke="#8a6020" stroke-width="1.5" />
+    <line x1="22" y1="20" x2="22" y2="50" stroke="#8a6020" stroke-width="1.5" />
+    <line x1="38" y1="20" x2="38" y2="50" stroke="#8a6020" stroke-width="1.5" />
+    <line x1="50" y1="20" x2="50" y2="50" stroke="#8a6020" stroke-width="1.5" />
+  </g>
+  <text x="760" y="460" font-family="Georgia, serif" font-size="11" fill="#5a3010" text-anchor="middle" font-style="italic">Gyeongbokgung</text>
+
+  
+  <g transform="translate(1380, 160)">
+    
+    <circle cx="0" cy="0" r="85" fill="none" stroke="#7a6040" stroke-width="2" opacity="0.7" />
+    <circle cx="0" cy="0" r="70" fill="#e0d4b0" stroke="#7a6040" stroke-width="1" opacity="0.7" />
+    
+    
+    <polygon points="0,-65 -12,-30 12,-30" fill="#5a2a0a" opacity="0.9" />
+    
+    <polygon points="0,65 -12,30 12,30" fill="#8a7050" opacity="0.9" />
+    
+    <polygon points="65,0 30,-12 30,12" fill="#8a7050" opacity="0.9" />
+    
+    <polygon points="-65,0 -30,-12 -30,12" fill="#8a7050" opacity="0.9" />
+    
+    <polygon points="46,-46 20,-15 15,-20" fill="#a0906a" opacity="0.7" />
+    <polygon points="46,46 15,20 20,15" fill="#a0906a" opacity="0.7" />
+    <polygon points="-46,46 -15,20 -20,15" fill="#a0906a" opacity="0.7" />
+    <polygon points="-46,-46 -20,-15 -15,-20" fill="#a0906a" opacity="0.7" />
+    
+    <circle cx="0" cy="0" r="8" fill="#c8a850" stroke="#8a6020" stroke-width="1.5" />
+    
+    <text x="0" y="-72" font-family="Georgia, serif" font-size="18" fill="#3a1a00" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="90" font-family="Georgia, serif" font-size="16" fill="#5a4030" text-anchor="middle">S</text>
+    <text x="82" y="5" font-family="Georgia, serif" font-size="16" fill="#5a4030" text-anchor="middle">E</text>
+    <text x="-82" y="5" font-family="Georgia, serif" font-size="16" fill="#5a4030" text-anchor="middle">W</text>
+  </g>
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8a7050" stroke-width="4" rx="4" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#8a7050" stroke-width="1.5" rx="2" opacity="0.6" />
+
+  
+  <g stroke="#8a7050" stroke-width="2" fill="none" opacity="0.8">
+    
+    <line x1="24" y1="80" x2="80" y2="80" />
+    <line x1="80" y1="24" x2="80" y2="80" />
+    
+    <line x1="1456" y1="80" x2="1512" y2="80" />
+    <line x1="1456" y1="24" x2="1456" y2="80" />
+    
+    <line x1="24" y1="944" x2="80" y2="944" />
+    <line x1="80" y1="944" x2="80" y2="1000" />
+    
+    <line x1="1456" y1="944" x2="1512" y2="944" />
+    <line x1="1456" y1="944" x2="1456" y2="1000" />
+  </g>
+
+  
+  
+  <rect x="60" y="280" width="550" height="440" fill="#e8dfc8" opacity="0.6" rx="2" />
+  <rect x="60" y="280" width="550" height="440" fill="none" stroke="#8a7050" stroke-width="1.5" rx="2" opacity="0.5" />
+
+  
+  <text x="335" y="380" font-family="Georgia, serif" font-size="112" fill="#2a1a08" text-anchor="middle" font-weight="bold" letter-spacing="8">SEOUL</text>
+
+  
+  <text x="335" y="440" font-family="Georgia, serif" font-size="36" fill="#5a3a18" text-anchor="middle" opacity="0.85">서울</text>
+
+  
+  <text x="335" y="490" font-family="Georgia, serif" font-size="20" fill="#5a4030" text-anchor="middle" font-style="italic" letter-spacing="2">Capital of South Korea</text>
+
+  
+  <line x1="120" y1="510" x2="550" y2="510" stroke="#8a7050" stroke-width="1.5" opacity="0.7" />
+  <circle cx="335" cy="510" r="4" fill="#8a7050" opacity="0.7" />
+
+  
+  <text x="335" y="548" font-family="Georgia, serif" font-size="15" fill="#4a3820" text-anchor="middle">
+    Population: ~9.4 million city · ~26 million metro area
+  </text>
+  <text x="335" y="575" font-family="Georgia, serif" font-size="15" fill="#4a3820" text-anchor="middle">
+    Area: 605 km²  ·  Han River basin
+  </text>
+  <text x="335" y="602" font-family="Georgia, serif" font-size="15" fill="#4a3820" text-anchor="middle">
+    37°N 127°E  ·  Northwestern Korean Peninsula
+  </text>
+
+  
+  <line x1="120" y1="622" x2="550" y2="622" stroke="#8a7050" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="335" y="660" font-family="Georgia, serif" font-size="16" fill="#6a4a28" text-anchor="middle" font-style="italic">
+    Political · Economic · Cultural Center
+  </text>
+  <text x="335" y="685" font-family="Georgia, serif" font-size="16" fill="#6a4a28" text-anchor="middle" font-style="italic">
+    Origin of the Korean Wave (Hallyu)
+  </text>
+
+  
+  <text x="768" y="995" font-family="Georgia, serif" font-size="13" fill="#8a7050" text-anchor="middle" opacity="0.8">
+    Seoul Special Metropolitan City  ·  대한민국 서울특별시
+  </text>
+
+  
+  <g transform="translate(1100, 880)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#5a4030" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#5a4030" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#5a4030" stroke-width="1.5" />
+    <line x1="200" y1="-6" x2="200" y2="6" stroke="#5a4030" stroke-width="2" />
+    <text x="0" y="-12" font-family="Georgia, serif" font-size="12" fill="#4a3820" text-anchor="middle">0</text>
+    <text x="100" y="-12" font-family="Georgia, serif" font-size="12" fill="#4a3820" text-anchor="middle">50</text>
+    <text x="200" y="-12" font-family="Georgia, serif" font-size="12" fill="#4a3820" text-anchor="middle">100 km</text>
+  </g>
+
+  
+  <text x="560" y="620" font-family="Georgia, serif" font-size="18" fill="#6a9ab0" text-anchor="middle" font-style="italic" opacity="0.8">Yellow Sea</text>
+
+  
+  <text x="1100" y="600" font-family="Georgia, serif" font-size="17" fill="#6a9ab0" text-anchor="middle" font-style="italic" opacity="0.8">Sea of Japan</text>
+
+  
+  <circle cx="720" cy="468" r="6" fill="#c0392b" stroke="#8a1a0a" stroke-width="1.5" opacity="0.7" />
+  <text x="705" y="455" font-family="Georgia, serif" font-size="12" fill="#3a2010" text-anchor="middle">Incheon</text>
+
+  
+  <g transform="translate(1420, 900)">
+    <rect x="0" y="0" width="72" height="48" fill="#fff" stroke="#8a7050" stroke-width="1.5" rx="2" />
+    
+    <circle cx="36" cy="24" r="13" fill="none" stroke="#c0392b" stroke-width="3" />
+    <path d="M 36,11 A 13,13 0 0,1 36,37" fill="#c0392b" />
+    <path d="M 36,37 A 13,13 0 0,1 36,11" fill="#1a5fa8" />
+    
+    <g stroke="#1a1a2a" stroke-width="1.5">
+      <line x1="14" y1="10" x2="24" y2="10" />
+      <line x1="14" y1="13" x2="24" y2="13" />
+      <line x1="14" y1="16" x2="24" y2="16" />
+      <line x1="48" y1="10" x2="58" y2="10" />
+      <line x1="48" y1="13" x2="52" y2="13" />
+      <line x1="54" y1="13" x2="58" y2="13" />
+      <line x1="48" y1="16" x2="58" y2="16" />
+    </g>
+  </g>
+
+</svg>

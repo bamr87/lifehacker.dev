@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Kangxi — Fourth Emperor of the Qing Dynasty, Greatest Ruler of China's Longest Reign</title>
+
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="100%" stop-color="#d4bc87" />
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9b98a" />
+      <stop offset="100%" stop-color="#e2cfa0" />
+    </linearGradient>
+    <linearGradient id="dragonGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8860b" />
+      <stop offset="100%" stop-color="#8b6914" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="gridLines" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#b8960a" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <pattern id="crosshatch" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L8 8 M8 0 L0 8" stroke="#8b6914" stroke-width="0.5" opacity="0.25" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridLines)" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#7a5c1e" stroke-width="3" opacity="0.7" />
+  <rect x="32" y="32" width="1472" height="960" fill="none" stroke="#7a5c1e" stroke-width="1" opacity="0.5" />
+  <rect x="36" y="36" width="1464" height="952" fill="none" stroke="#b8960a" stroke-width="1" opacity="0.3" />
+
+  
+  
+  <g fill="none" stroke="#7a5c1e" stroke-width="1.5" opacity="0.6">
+    <path d="M 24 24 L 80 24 L 80 30 L 30 30 L 30 80 L 24 80 Z" fill="#b8960a" fill-opacity="0.15" />
+    <line x1="24" y1="55" x2="80" y2="55" />
+    <line x1="55" y1="24" x2="55" y2="80" />
+  </g>
+  
+  <g fill="none" stroke="#7a5c1e" stroke-width="1.5" opacity="0.6">
+    <path d="M 1512 24 L 1456 24 L 1456 30 L 1506 30 L 1506 80 L 1512 80 Z" fill="#b8960a" fill-opacity="0.15" />
+    <line x1="1512" y1="55" x2="1456" y2="55" />
+    <line x1="1481" y1="24" x2="1481" y2="80" />
+  </g>
+  
+  <g fill="none" stroke="#7a5c1e" stroke-width="1.5" opacity="0.6">
+    <path d="M 24 1000 L 80 1000 L 80 994 L 30 994 L 30 944 L 24 944 Z" fill="#b8960a" fill-opacity="0.15" />
+    <line x1="24" y1="969" x2="80" y2="969" />
+    <line x1="55" y1="1000" x2="55" y2="944" />
+  </g>
+  
+  <g fill="none" stroke="#7a5c1e" stroke-width="1.5" opacity="0.6">
+    <path d="M 1512 1000 L 1456 1000 L 1456 994 L 1506 994 L 1506 944 L 1512 944 Z" fill="#b8960a" fill-opacity="0.15" />
+    <line x1="1512" y1="969" x2="1456" y2="969" />
+    <line x1="1481" y1="1000" x2="1481" y2="944" />
+  </g>
+
+  
+  
+  <path d="M 520 200 L 580 180 L 650 170 L 720 165 L 790 170 L 850 180 L 900 200 L 940 230 L 970 260             L 990 300 L 1000 340 L 1010 380 L 1010 420 L 1000 460 L 985 490 L 975 520             L 960 545 L 940 565 L 920 580 L 900 595 L 880 615 L 860 630 L 840 650             L 820 665 L 790 680 L 760 695 L 730 700 L 700 695 L 670 685 L 640 675             L 610 660 L 580 645 L 560 625 L 545 605 L 535 580 L 528 555 L 522 525             L 515 495 L 510 460 L 505 425 L 503 390 L 505 355 L 510 320 L 515 285 L 520 255 Z" fill="#c4a96d" stroke="#7a5c1e" stroke-width="2" opacity="0.85" />
+
+  
+  <path d="M 790 170 L 830 150 L 870 135 L 910 120 L 950 110 L 990 105 L 1020 110             L 1040 125 L 1050 145 L 1045 165 L 1030 185 L 1010 200 L 990 215 L 970 225             L 950 230 L 940 230 L 900 200 L 850 180 Z" fill="#b89a5c" stroke="#7a5c1e" stroke-width="2" opacity="0.85" />
+
+  
+  <path d="M 520 200 L 490 185 L 460 170 L 430 155 L 400 145 L 365 140 L 335 145             L 310 155 L 295 170 L 290 190 L 298 210 L 315 225 L 340 235 L 375 240             L 420 238 L 465 232 L 510 225 L 520 255 L 515 285 L 510 320 L 505 355 L 503 390             L 505 425 L 510 460 L 515 495 L 522 525 L 528 555 Z" fill="#bfa870" stroke="#7a5c1e" stroke-width="2" opacity="0.8" />
+
+  
+  <path d="M 520 255 L 510 320 L 505 355 L 503 390 L 505 425 L 510 460             L 485 470 L 460 480 L 435 490 L 415 505 L 400 520 L 390 540             L 385 560 L 380 540 L 370 510 L 360 480 L 350 450 L 345 415             L 345 380 L 350 345 L 360 310 L 375 280 L 395 255 L 420 238             L 465 232 L 510 225 Z" fill="#c9b07a" stroke="#7a5c1e" stroke-width="2" opacity="0.8" />
+
+  
+  <path d="M 985 490 L 975 520 L 960 545 L 940 565 L 1000 560 L 1040 540 L 1060 510             L 1055 480 L 1040 460 L 1020 445 L 1000 440 L 1010 420 L 1010 380 L 1000 340             L 990 300 L 970 260 L 940 230 L 970 225 L 990 215 L 1010 200 L 1030 185             L 1045 165 L 1050 145 L 1070 150 L 1090 165 L 1100 190 L 1095 220             L 1080 250 L 1070 280 L 1065 320 L 1060 360 L 1060 400 L 1065 440             L 1070 475 L 1065 500 L 1040 540Z" fill="#a8c4b0" stroke="#7a5c1e" stroke-width="1.5" opacity="0.6" />
+
+  
+  <path d="M 520 200 L 580 180 L 650 170 L 720 165 L 790 170 L 850 180 L 900 200 L 940 230 L 970 260             L 990 300 L 1000 340 L 1010 380 L 1010 420 L 1000 460 L 985 490 L 975 520             L 960 545 L 940 565 L 920 580 L 900 595 L 880 615 L 860 630 L 840 650             L 820 665 L 790 680 L 760 695 L 730 700 L 700 695 L 670 685 L 640 675             L 610 660 L 580 645 L 560 625 L 545 605 L 535 580 L 528 555 L 522 525             L 515 495 L 510 460 L 505 425 L 503 390 L 505 355 L 510 320 L 515 285 L 520 255 Z" fill="url(#crosshatch)" opacity="0.5" />
+
+  
+  <path d="M 295 230 L 320 222 L 350 215 L 390 210 L 430 205 L 470 202 L 510 200 L 540 198 L 570 196             L 610 194 L 650 192 L 690 190 L 730 191 L 765 195 L 800 200 L 830 205 L 860 210 L 890 218 L 910 228" fill="none" stroke="#5c3d0e" stroke-width="3.5" stroke-dasharray="8,4" opacity="0.7" />
+  
+  <rect x="308" y="223" width="8" height="10" fill="#5c3d0e" opacity="0.7" />
+  <rect x="388" y="203" width="8" height="10" fill="#5c3d0e" opacity="0.7" />
+  <rect x="468" y="195" width="8" height="10" fill="#5c3d0e" opacity="0.7" />
+  <rect x="548" y="189" width="8" height="10" fill="#5c3d0e" opacity="0.7" />
+  <rect x="648" y="185" width="8" height="10" fill="#5c3d0e" opacity="0.7" />
+  <rect x="728" y="184" width="8" height="10" fill="#5c3d0e" opacity="0.7" />
+  <rect x="808" y="193" width="8" height="10" fill="#5c3d0e" opacity="0.7" />
+  <rect x="888" y="211" width="8" height="10" fill="#5c3d0e" opacity="0.7" />
+
+  
+  <circle cx="800" cy="255" r="10" fill="#8b1a1a" stroke="#5c0e0e" stroke-width="2" opacity="0.9" />
+  <circle cx="800" cy="255" r="4" fill="#f0c040" opacity="0.95" />
+  
+  <text x="816" y="250" font-family="Georgia, serif" font-size="18" fill="#4a2a0a" opacity="0.85" font-style="italic">Beijing</text>
+
+  
+  <g transform="translate(1350, 820)">
+    
+    <circle cx="0" cy="0" r="85" fill="#d4bc87" stroke="#7a5c1e" stroke-width="2" opacity="0.9" />
+    <circle cx="0" cy="0" r="75" fill="none" stroke="#b8960a" stroke-width="1" opacity="0.6" />
+    <circle cx="0" cy="0" r="15" fill="#c4a040" stroke="#7a5c1e" stroke-width="1.5" />
+    
+    <polygon points="0,-75 -10,-30 0,-20 10,-30" fill="#5c3d0e" opacity="0.9" />
+    <polygon points="0,75 -10,30 0,20 10,30" fill="#8b6914" opacity="0.7" />
+    <polygon points="-75,0 -30,-10 -20,0 -30,10" fill="#8b6914" opacity="0.7" />
+    <polygon points="75,0 30,-10 20,0 30,10" fill="#8b6914" opacity="0.7" />
+    
+    <polygon points="0,-75 -7,-55 0,-45 7,-55" fill="#b8960a" opacity="0.5" transform="rotate(45)" />
+    <polygon points="0,-75 -7,-55 0,-45 7,-55" fill="#b8960a" opacity="0.5" transform="rotate(135)" />
+    <polygon points="0,-75 -7,-55 0,-45 7,-55" fill="#b8960a" opacity="0.5" transform="rotate(225)" />
+    <polygon points="0,-75 -7,-55 0,-45 7,-55" fill="#b8960a" opacity="0.5" transform="rotate(315)" />
+    
+    <text x="-7" y="-80" font-family="Georgia, serif" font-size="20" fill="#4a2a0a" font-weight="bold">N</text>
+  </g>
+
+  
+  <g transform="translate(165, 512)" opacity="0.75">
+    
+    <path d="M -40 -220 C -20 -200 20 -180 30 -150 C 40 -120 20 -100 10 -70               C 0 -40 20 -20 30 10 C 40 40 30 70 10 90               C -10 110 -30 120 -40 150 C -50 180 -30 200 -20 230" fill="none" stroke="#8b6914" stroke-width="18" stroke-linecap="round" />
+    <path d="M -40 -220 C -20 -200 20 -180 30 -150 C 40 -120 20 -100 10 -70               C 0 -40 20 -20 30 10 C 40 40 30 70 10 90               C -10 110 -30 120 -40 150 C -50 180 -30 200 -20 230" fill="none" stroke="#c4a040" stroke-width="10" stroke-linecap="round" />
+    
+    <path d="M -40 -220 C -20 -200 20 -180 30 -150 C 40 -120 20 -100 10 -70               C 0 -40 20 -20 30 10 C 40 40 30 70 10 90               C -10 110 -30 120 -40 150 C -50 180 -30 200 -20 230" fill="none" stroke="#5c3d0e" stroke-width="2" stroke-dasharray="6,8" stroke-linecap="round" />
+    
+    <ellipse cx="-40" cy="-228" rx="22" ry="16" fill="#8b6914" stroke="#5c3d0e" stroke-width="2" />
+    <ellipse cx="-45" cy="-235" rx="8" ry="5" fill="#c4a040" />
+    <circle cx="-35" cy="-230" r="4" fill="#5c0e0e" />
+    
+    <path d="M 30 -150 L 55 -165 M 30 -150 L 52 -145 M 30 -150 L 50 -130" stroke="#8b6914" stroke-width="4" stroke-linecap="round" />
+    <path d="M 30 10 L 55 -5 M 30 10 L 52 15 M 30 10 L 48 28" stroke="#8b6914" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  
+  <g transform="translate(1350, 512)" opacity="0.25">
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#7a5c1e" stroke-width="3" />
+    <circle cx="0" cy="0" r="110" fill="none" stroke="#7a5c1e" stroke-width="1" />
+    <path d="M -85 0 A 85 85 0 0 1 85 0 A 85 85 0 0 1 -85 0 Z" fill="#b8960a" opacity="0.15" />
+  </g>
+
+  
+  <text x="768" y="860" font-family="Georgia, 'Times New Roman', serif" font-size="140" font-weight="bold" fill="#3a2008" text-anchor="middle" letter-spacing="16" opacity="0.92">KANGXI</text>
+
+  
+  <text x="768" y="920" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#5c3d0e" text-anchor="middle" letter-spacing="8" opacity="0.8">EMPEROR OF THE QING DYNASTY · 1661–1722</text>
+
+  
+  <rect x="420" y="935" width="696" height="2" fill="#8b6914" opacity="0.5" />
+  <rect x="420" y="940" width="696" height="1" fill="#8b6914" opacity="0.3" />
+
+  
+  <text x="768" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#5c3d0e" text-anchor="middle" letter-spacing="6" opacity="0.7">SIXTY-ONE YEARS · THE LONGEST REIGN IN CHINESE HISTORY</text>
+
+  
+  <line x1="80" y1="145" x2="500" y2="145" stroke="#8b6914" stroke-width="1" opacity="0.5" />
+  <line x1="1036" y1="145" x2="1456" y2="145" stroke="#8b6914" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="148" x2="500" y2="148" stroke="#8b6914" stroke-width="0.5" opacity="0.3" />
+  <line x1="1036" y1="148" x2="1456" y2="148" stroke="#8b6914" stroke-width="0.5" opacity="0.3" />
+
+  
+  <circle cx="500" cy="146" r="5" fill="#b8960a" opacity="0.6" />
+  <circle cx="1036" cy="146" r="5" fill="#b8960a" opacity="0.6" />
+
+  
+  <text x="768" y="75" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#7a5c1e" text-anchor="middle" letter-spacing="10" opacity="0.65">PEOPLE</text>
+
+  
+  <line x1="280" y1="300" x2="1100" y2="300" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+  <line x1="280" y1="400" x2="1100" y2="400" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+  <line x1="280" y1="500" x2="1100" y2="500" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+  <line x1="280" y1="600" x2="1100" y2="600" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+
+  
+  <line x1="450" y1="120" x2="450" y2="780" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+  <line x1="600" y1="120" x2="600" y2="780" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+  <line x1="750" y1="120" x2="750" y2="780" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+  <line x1="900" y1="120" x2="900" y2="780" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+  <line x1="1050" y1="120" x2="1050" y2="780" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,6" />
+
+</svg>

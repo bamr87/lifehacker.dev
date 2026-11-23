@@ -1,0 +1,306 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Education System — North Korean State Education as Instrument of Control</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8dfc8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ddd3b0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c9bc98;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" style="stop-color:#00000000" />
+      <stop offset="100%" style="stop-color:#00000055" />
+    </radialGradient>
+    
+    <linearGradient id="redgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c0392b" />
+      <stop offset="100%" style="stop-color:#922b21" />
+    </linearGradient>
+    
+    <linearGradient id="landgrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b5a882" />
+      <stop offset="100%" style="stop-color:#9c8f6a" />
+    </linearGradient>
+    
+    <linearGradient id="nkgrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b7355" />
+      <stop offset="100%" style="stop-color:#6b5535" />
+    </linearGradient>
+    
+    <linearGradient id="seafill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c5d5d8" />
+      <stop offset="100%" style="stop-color:#a8bfc4" />
+    </linearGradient>
+    
+    <linearGradient id="bookred" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b03a2e" />
+      <stop offset="100%" style="stop-color:#7b241c" />
+    </linearGradient>
+    <linearGradient id="bookblue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2e4a6e" />
+      <stop offset="100%" style="stop-color:#1a2f45" />
+    </linearGradient>
+    
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+
+  
+  <g stroke="#b0a07a" stroke-width="0.8" opacity="0.5" fill="none">
+    
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <ellipse cx="768" cy="512" rx="680" ry="430" fill="url(#seafill)" opacity="0.6" />
+
+  
+  
+  <path d="M 200,150 Q 350,120 500,160 Q 600,180 650,240 Q 680,280 660,340 Q 620,380 580,360 Q 520,340 480,370 Q 440,390 410,380 Q 360,360 320,330 Q 270,300 230,260 Q 200,230 200,150 Z" fill="url(#landgrad)" stroke="#8a7a5a" stroke-width="1.5" opacity="0.85" />
+
+  
+  <path d="M 550,80 Q 680,60 820,90 Q 920,110 980,150 Q 960,200 900,210 Q 840,215 780,200 Q 720,185 680,200 Q 640,210 610,190 Q 570,165 550,80 Z" fill="url(#landgrad)" stroke="#8a7a5a" stroke-width="1.5" opacity="0.85" />
+
+  
+  <path d="M 1080,200 Q 1110,190 1130,220 Q 1150,260 1140,310 Q 1130,350 1110,370 Q 1090,385 1075,360 Q 1060,330 1065,290 Q 1068,250 1080,200 Z" fill="url(#landgrad)" stroke="#8a7a5a" stroke-width="1.5" opacity="0.85" />
+  
+  <path d="M 1050,150 Q 1090,140 1120,160 Q 1140,175 1130,195 Q 1110,205 1085,195 Q 1060,180 1050,150 Z" fill="url(#landgrad)" stroke="#8a7a5a" stroke-width="1.5" opacity="0.85" />
+
+  
+  
+  <path d="M 730,420 Q 770,410 810,425 Q 850,440 870,480 Q 885,520 875,560 Q 860,600 840,630 Q 815,655 790,665 Q 765,670 745,658 Q 720,640 705,610 Q 688,575 690,535 Q 693,490 710,460 Q 720,440 730,420 Z" fill="url(#landgrad)" stroke="#8a7a5a" stroke-width="2" opacity="0.9" />
+
+  
+  <path d="M 650,240 Q 680,220 720,230 Q 760,238 800,235 Q 840,230 880,245 Q 920,260 940,290 Q 955,315 950,345 Q 940,375 920,390 Q 890,405 860,400 Q 840,395 820,400 Q 800,408 790,420 Q 780,430 770,430 Q 755,430 745,420 Q 730,415 720,420 Q 708,425 700,415 Q 685,400 675,380 Q 660,355 650,325 Q 638,295 640,265 Q 642,250 650,240 Z" fill="url(#nkgrad)" stroke="#4a3825" stroke-width="2.5" opacity="1" />
+
+  
+  <path d="M 650,240 Q 680,220 720,230 Q 760,238 800,235 Q 840,230 880,245 Q 920,260 940,290" fill="none" stroke="#4a3825" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
+
+  
+  <path d="M 675,378 Q 710,365 750,368 Q 790,370 830,360 Q 865,350 900,358" fill="none" stroke="#922b21" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.9" />
+
+  
+  <circle cx="760" cy="330" r="8" fill="#c0392b" stroke="#7b241c" stroke-width="1.5" />
+  <circle cx="760" cy="330" r="3" fill="#fff" opacity="0.8" />
+  
+  <text x="772" y="326" font-family="Georgia, serif" font-size="14" fill="#3a2a15" font-style="italic">Pyongyang</text>
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#7a6840" stroke-width="3" rx="4" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#7a6840" stroke-width="1" rx="3" />
+
+  
+  
+  <g transform="translate(34,34)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#7a6840" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="50" stroke="#7a6840" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#7a6840" />
+  </g>
+  
+  <g transform="translate(1502,34)">
+    <line x1="0" y1="0" x2="-50" y2="0" stroke="#7a6840" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="50" stroke="#7a6840" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#7a6840" />
+  </g>
+  
+  <g transform="translate(34,990)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#7a6840" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="-50" stroke="#7a6840" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#7a6840" />
+  </g>
+  
+  <g transform="translate(1502,990)">
+    <line x1="0" y1="0" x2="-50" y2="0" stroke="#7a6840" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="-50" stroke="#7a6840" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#7a6840" />
+  </g>
+
+  
+  <g transform="translate(1370,780)">
+    
+    <circle cx="0" cy="0" r="72" fill="none" stroke="#7a6840" stroke-width="1.5" opacity="0.7" />
+    <circle cx="0" cy="0" r="60" fill="#ddd3b0" stroke="#7a6840" stroke-width="1" opacity="0.9" />
+    
+    
+    <polygon points="0,-60 -10,-30 0,-20 10,-30" fill="#4a3825" stroke="#4a3825" stroke-width="0.5" />
+    
+    <polygon points="0,60 -10,30 0,20 10,30" fill="#9c8f6a" stroke="#7a6840" stroke-width="0.5" />
+    
+    <polygon points="60,0 30,-10 20,0 30,10" fill="#9c8f6a" stroke="#7a6840" stroke-width="0.5" />
+    
+    <polygon points="-60,0 -30,-10 -20,0 -30,10" fill="#9c8f6a" stroke="#7a6840" stroke-width="0.5" />
+    
+    <polygon points="0,-60 -7,-40 0,-35 7,-40" fill="#9c8f6a" opacity="0.5" transform="rotate(45)" />
+    <polygon points="0,-60 -7,-40 0,-35 7,-40" fill="#9c8f6a" opacity="0.5" transform="rotate(135)" />
+    <polygon points="0,-60 -7,-40 0,-35 7,-40" fill="#9c8f6a" opacity="0.5" transform="rotate(225)" />
+    <polygon points="0,-60 -7,-40 0,-35 7,-40" fill="#9c8f6a" opacity="0.5" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="10" fill="#ddd3b0" stroke="#7a6840" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#7a6840" />
+    
+    <text x="0" y="-66" font-family="Georgia, serif" font-size="16" fill="#4a3825" text-anchor="middle" font-weight="bold">N</text>
+  </g>
+
+  
+  
+  <g transform="translate(130,480)">
+    
+    <rect x="-45" y="60" width="90" height="22" rx="2" fill="#2e4a6e" stroke="#1a2f45" stroke-width="1.5" />
+    <rect x="-45" y="60" width="6" height="22" rx="1" fill="#1a2f45" />
+    <rect x="-45" y="60" width="90" height="4" rx="1" fill="#3d5f8a" opacity="0.7" />
+    
+    <rect x="-40" y="34" width="90" height="28" rx="2" fill="url(#bookred)" stroke="#7b241c" stroke-width="1.5" />
+    <rect x="-40" y="34" width="7" height="28" rx="1" fill="#7b241c" />
+    <rect x="-40" y="34" width="90" height="4" rx="1" fill="#c0392b" opacity="0.7" />
+    
+    <rect x="-42" y="4" width="84" height="32" rx="2" fill="#5a7a40" stroke="#3a5228" stroke-width="1.5" />
+    <rect x="-42" y="4" width="7" height="32" rx="1" fill="#3a5228" />
+    <rect x="-42" y="4" width="84" height="4" rx="1" fill="#7a9a58" opacity="0.7" />
+    
+    <path d="M -35,-35 Q -5,-45 0,-30 Q 5,-45 35,-35 L 35,0 Q 5,-12 0,-5 Q -5,-12 -35,0 Z" fill="#efe8d0" stroke="#8a7a5a" stroke-width="1.5" />
+    <line x1="0" y1="-30" x2="0" y2="0" stroke="#8a7a5a" stroke-width="1" />
+    
+    <line x1="-25" y1="-25" x2="-5" y2="-28" stroke="#7a6840" stroke-width="1" opacity="0.7" />
+    <line x1="-25" y1="-18" x2="-5" y2="-21" stroke="#7a6840" stroke-width="1" opacity="0.7" />
+    <line x1="-25" y1="-11" x2="-8" y2="-14" stroke="#7a6840" stroke-width="1" opacity="0.7" />
+    <line x1="8" y1="-27" x2="26" y2="-24" stroke="#7a6840" stroke-width="1" opacity="0.7" />
+    <line x1="5" y1="-20" x2="26" y2="-17" stroke="#7a6840" stroke-width="1" opacity="0.7" />
+    <line x1="7" y1="-13" x2="24" y2="-10" stroke="#7a6840" stroke-width="1" opacity="0.7" />
+  </g>
+
+  
+  <g transform="translate(760,310)">
+    
+    <polygon points="0,-22 5,-8 20,-8 9,1 13,16 0,8 -13,16 -9,1 -20,-8 -5,-8" fill="url(#redgrad)" stroke="#7b241c" stroke-width="1.5" opacity="0.95" />
+  </g>
+
+  
+  <rect x="60" y="120" width="580" height="280" rx="6" fill="#2a1f10" opacity="0.82" />
+  <rect x="64" y="124" width="572" height="272" rx="4" fill="none" stroke="#7a6840" stroke-width="1.5" opacity="0.6" />
+
+  
+  <text x="350" y="218" font-family="Georgia, serif" font-size="22" fill="#c9bc98" text-anchor="middle" letter-spacing="6" opacity="0.85">NORTH KOREA</text>
+  <text x="350" y="280" font-family="Georgia, serif" font-size="68" fill="#e8dfc8" text-anchor="middle" font-weight="bold" letter-spacing="2">Education</text>
+  <text x="350" y="358" font-family="Georgia, serif" font-size="68" fill="#e8dfc8" text-anchor="middle" font-weight="bold" letter-spacing="2">System</text>
+
+  
+  <line x1="100" y1="378" x2="600" y2="378" stroke="#7a6840" stroke-width="1" opacity="0.7" />
+  <line x1="100" y1="382" x2="600" y2="382" stroke="#7a6840" stroke-width="0.5" opacity="0.5" />
+
+  
+  <rect x="60" y="430" width="580" height="80" rx="4" fill="#2a1f10" opacity="0.72" />
+  <text x="350" y="462" font-family="Georgia, serif" font-size="17" fill="#c9bc98" text-anchor="middle" font-style="italic" opacity="0.9">Indoctrination, Juche Ideology</text>
+  <text x="350" y="490" font-family="Georgia, serif" font-size="17" fill="#c9bc98" text-anchor="middle" font-style="italic" opacity="0.9">&amp; Compulsory State Schooling</text>
+
+  
+  <g transform="translate(1260,460)">
+    
+    <rect x="-12" y="40" width="24" height="80" rx="5" fill="#6b5535" stroke="#4a3825" stroke-width="1.5" />
+    
+    <ellipse cx="0" cy="30" rx="28" ry="22" fill="#8b7355" stroke="#4a3825" stroke-width="1.5" />
+    
+    <path d="M 0,-60 Q -25,-20 -20,0 Q -10,20 0,30 Q 10,20 20,0 Q 25,-20 0,-60 Z" fill="#c0392b" stroke="#922b21" stroke-width="1" opacity="0.9" />
+    <path d="M 0,-45 Q -12,-15 -10,5 Q -4,18 0,22 Q 4,18 10,5 Q 12,-15 0,-45 Z" fill="#e67e22" opacity="0.85" />
+    <path d="M 0,-30 Q -5,-5 0,10 Q 5,-5 0,-30 Z" fill="#f9e4b0" opacity="0.8" />
+  </g>
+
+  
+  <g transform="translate(950,680)">
+    
+    <rect x="-60" y="-50" width="120" height="90" fill="#9c8f6a" stroke="#6b5535" stroke-width="2" />
+    
+    <polygon points="-70,-50 0,-100 70,-50" fill="#7a6840" stroke="#4a3825" stroke-width="2" />
+    
+    <rect x="-12" y="10" width="24" height="30" rx="2" fill="#4a3825" />
+    
+    <rect x="-45" y="-30" width="22" height="22" rx="1" fill="#c5d5d8" stroke="#6b5535" stroke-width="1" />
+    <rect x="23" y="-30" width="22" height="22" rx="1" fill="#c5d5d8" stroke="#6b5535" stroke-width="1" />
+    
+    <polygon points="0,-78 3,-70 12,-70 5,-65 8,-56 0,-62 -8,-56 -5,-65 -12,-70 -3,-70" fill="#c0392b" stroke="#7b241c" stroke-width="0.8" />
+    
+    <line x1="0" y1="-100" x2="0" y2="-130" stroke="#4a3825" stroke-width="2" />
+    
+    <rect x="0" y="-130" width="30" height="18" fill="#c0392b" stroke="#7b241c" stroke-width="0.5" />
+    <line x1="0" y1="-130" x2="0" y2="-112" stroke="#c5d5d8" stroke-width="3" />
+  </g>
+
+  
+  <g transform="translate(200,820) rotate(-30)">
+    <rect x="-8" y="-80" width="16" height="120" fill="#d4a843" stroke="#8a6820" stroke-width="1.5" rx="2" />
+    <polygon points="-8,40 8,40 0,70" fill="#e8dfc8" stroke="#8a6820" stroke-width="1" />
+    <polygon points="-8,40 8,40 0,55" fill="#c0392b" stroke="#922b21" stroke-width="0.5" />
+    <rect x="-8" y="-90" width="16" height="12" rx="2" fill="#d0b080" stroke="#8a6820" stroke-width="1" />
+    <rect x="-8" y="-80" width="16" height="4" fill="#8a6820" opacity="0.4" />
+  </g>
+
+  
+  <g transform="translate(420,930)">
+    <text x="0" y="-8" font-family="Georgia, serif" font-size="13" fill="#4a3825" opacity="0.8">Scale (approx.)</text>
+    <rect x="0" y="0" width="60" height="10" fill="#4a3825" />
+    <rect x="60" y="0" width="60" height="10" fill="#e8dfc8" stroke="#4a3825" stroke-width="1" />
+    <rect x="120" y="0" width="60" height="10" fill="#4a3825" />
+    <rect x="180" y="0" width="60" height="10" fill="#e8dfc8" stroke="#4a3825" stroke-width="1" />
+    <text x="0" y="26" font-family="Georgia, serif" font-size="12" fill="#4a3825" opacity="0.8">0</text>
+    <text x="115" y="26" font-family="Georgia, serif" font-size="12" fill="#4a3825" opacity="0.8">100 km</text>
+    <text x="230" y="26" font-family="Georgia, serif" font-size="12" fill="#4a3825" opacity="0.8">200 km</text>
+  </g>
+
+  
+  <g transform="translate(1370,200)">
+    <circle cx="0" cy="0" r="60" fill="#2a1f10" opacity="0.85" stroke="#7a6840" stroke-width="2" />
+    <text x="0" y="-14" font-family="Georgia, serif" font-size="12" fill="#c9bc98" text-anchor="middle" letter-spacing="2">REFORM</text>
+    <text x="0" y="14" font-family="Georgia, serif" font-size="28" fill="#e8dfc8" text-anchor="middle" font-weight="bold">2012</text>
+    <text x="0" y="34" font-family="Georgia, serif" font-size="11" fill="#c9bc98" text-anchor="middle" letter-spacing="1">12-YEAR PLAN</text>
+  </g>
+
+  
+  <text x="1000" y="560" font-family="Georgia, serif" font-size="16" fill="#4a6870" text-anchor="middle" font-style="italic" opacity="0.75" letter-spacing="2">Sea of Japan</text>
+
+  
+  <text x="620" y="620" font-family="Georgia, serif" font-size="16" fill="#4a6870" text-anchor="middle" font-style="italic" opacity="0.75" letter-spacing="2">Yellow Sea</text>
+
+  
+  <text x="360" y="290" font-family="Georgia, serif" font-size="18" fill="#4a3825" text-anchor="middle" font-style="italic" opacity="0.8">China</text>
+
+  
+  <text x="720" y="110" font-family="Georgia, serif" font-size="18" fill="#4a3825" text-anchor="middle" font-style="italic" opacity="0.8">Russia</text>
+
+  
+  <text x="800" y="290" font-family="Georgia, serif" font-size="15" fill="#e8dfc8" text-anchor="middle" font-weight="bold" opacity="0.9">DPRK</text>
+
+  
+  <rect x="60" y="870" width="340" height="110" rx="4" fill="#2a1f10" opacity="0.70" />
+  <text x="230" y="906" font-family="Georgia, serif" font-size="14" fill="#c9bc98" text-anchor="middle" opacity="0.9" font-style="italic">"Universal Compulsory Education"</text>
+  <text x="230" y="932" font-family="Georgia, serif" font-size="13" fill="#9c8f6a" text-anchor="middle" opacity="0.85">Established 1975 · Extended 2012</text>
+  <text x="230" y="957" font-family="Georgia, serif" font-size="13" fill="#9c8f6a" text-anchor="middle" opacity="0.85">Kindergarten through Upper Secondary</text>
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" opacity="0.4" />
+
+</svg>

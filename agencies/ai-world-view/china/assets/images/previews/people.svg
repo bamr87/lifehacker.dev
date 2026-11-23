@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>People — Notable Figures Who Shaped China</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="chinaFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b6f47" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#6b4f2e" stop-opacity="0.7" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7a3b2e" />
+      <stop offset="100%" stop-color="#a0522d" />
+    </linearGradient>
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#b8a882" stroke-width="0.4" opacity="0.5" />
+    </pattern>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#gridPattern)" />
+
+  
+  
+  <line x1="0" y1="200" x2="1536" y2="200" stroke="#b8a882" stroke-width="0.6" opacity="0.6" />
+  <line x1="0" y1="400" x2="1536" y2="400" stroke="#b8a882" stroke-width="0.6" opacity="0.6" />
+  <line x1="0" y1="512" x2="1536" y2="512" stroke="#9a8660" stroke-width="1" opacity="0.5" />
+  <line x1="0" y1="624" x2="1536" y2="624" stroke="#b8a882" stroke-width="0.6" opacity="0.6" />
+  <line x1="0" y1="824" x2="1536" y2="824" stroke="#b8a882" stroke-width="0.6" opacity="0.6" />
+  
+  <line x1="300" y1="0" x2="300" y2="1024" stroke="#b8a882" stroke-width="0.6" opacity="0.6" />
+  <line x1="600" y1="0" x2="600" y2="1024" stroke="#b8a882" stroke-width="0.6" opacity="0.6" />
+  <line x1="768" y1="0" x2="768" y2="1024" stroke="#9a8660" stroke-width="1" opacity="0.5" />
+  <line x1="936" y1="0" x2="936" y2="1024" stroke="#b8a882" stroke-width="0.6" opacity="0.6" />
+  <line x1="1200" y1="0" x2="1200" y2="1024" stroke="#b8a882" stroke-width="0.6" opacity="0.6" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8b6f47" stroke-width="3" opacity="0.7" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#8b6f47" stroke-width="1" opacity="0.4" />
+
+  
+  
+  <path d="M24,24 L80,24 L80,30 L30,30 L30,80 L24,80 Z" fill="#8b6f47" opacity="0.7" />
+  
+  <path d="M1512,24 L1456,24 L1456,30 L1506,30 L1506,80 L1512,80 Z" fill="#8b6f47" opacity="0.7" />
+  
+  <path d="M24,1000 L80,1000 L80,994 L30,994 L30,944 L24,944 Z" fill="#8b6f47" opacity="0.7" />
+  
+  <path d="M1512,1000 L1456,1000 L1456,994 L1506,994 L1506,944 L1512,944 Z" fill="#8b6f47" opacity="0.7" />
+
+  
+  
+  <path d="     M 820,180     L 870,170 L 920,175 L 970,165 L 1020,170 L 1060,160 L 1100,168 L 1130,180     L 1150,200 L 1160,230 L 1155,260 L 1140,290 L 1160,310 L 1180,330     L 1190,360 L 1185,390 L 1170,420 L 1160,450 L 1150,480     L 1140,510 L 1145,540 L 1135,570 L 1110,590 L 1090,620     L 1060,640 L 1040,670 L 1020,690 L 1000,710 L 970,720     L 940,730 L 910,720 L 890,700 L 860,710 L 840,700     L 820,680 L 800,660 L 790,630 L 780,600 L 770,570     L 760,540 L 750,510 L 740,480 L 730,450 L 720,420     L 710,390 L 700,360 L 710,330 L 720,300 L 730,270     L 720,240 L 730,210 L 760,195 L 790,185 Z   " fill="url(#chinaFill)" stroke="#6b4f2e" stroke-width="2.5" opacity="0.85" filter="url(#roughen)" />
+
+  
+  <path d="M 850,250 L 900,240 L 950,250 L 980,270 L 1000,300 L 990,330 L 970,350 L 940,360 L 910,355 L 880,340 L 860,310 L 850,280 Z" fill="#c4a882" opacity="0.25" />
+
+  
+  <path d="M 730,280 Q 760,265 790,270 Q 820,260 850,268 Q 880,255 910,262 Q 940,250 970,258" fill="none" stroke="#5a3a1e" stroke-width="4" stroke-dasharray="8,5" opacity="0.6" />
+
+  
+  <path d="M 760,480 Q 790,460 820,470 Q 860,455 900,465 Q 940,455 970,470 Q 1010,460 1040,475" fill="none" stroke="#6b8faf" stroke-width="3" opacity="0.55" stroke-linecap="round" />
+  
+  <path d="M 740,380 Q 780,360 820,370 Q 860,355 890,368 Q 920,360 950,372 Q 980,362 1010,375" fill="none" stroke="#9aad7a" stroke-width="2.5" opacity="0.5" stroke-linecap="round" />
+
+  
+  <g transform="translate(1330, 760)">
+    
+    <circle r="88" fill="#e8dcc8" stroke="#8b6f47" stroke-width="2.5" opacity="0.9" />
+    <circle r="78" fill="none" stroke="#8b6f47" stroke-width="1" opacity="0.5" />
+    <circle r="20" fill="#c4a060" opacity="0.8" />
+    <circle r="10" fill="#8b6f47" opacity="0.9" />
+    
+    
+    <path d="M0,-88 L-10,-55 L0,-65 L10,-55 Z" fill="#7a3b2e" />
+    
+    <path d="M0,88 L-10,55 L0,65 L10,55 Z" fill="#8b6f47" />
+    
+    <path d="M88,0 L55,-10 L65,0 L55,10 Z" fill="#8b6f47" />
+    
+    <path d="M-88,0 L-55,-10 L-65,0 L-55,10 Z" fill="#8b6f47" />
+    
+    <path d="M0,-88 L-6,-70 L0,-78 L6,-70 Z" fill="#c4a060" transform="rotate(45)" />
+    <path d="M0,-88 L-6,-70 L0,-78 L6,-70 Z" fill="#c4a060" transform="rotate(135)" />
+    <path d="M0,-88 L-6,-70 L0,-78 L6,-70 Z" fill="#c4a060" transform="rotate(225)" />
+    <path d="M0,-88 L-6,-70 L0,-78 L6,-70 Z" fill="#c4a060" transform="rotate(315)" />
+    
+    <text x="0" y="-95" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#7a3b2e" font-weight="bold">N</text>
+  </g>
+
+  
+  
+  <g opacity="0.35" fill="#4a3520">
+    
+    <ellipse cx="210" cy="340" rx="28" ry="32" />
+    <rect x="188" y="370" width="44" height="90" rx="8" />
+    <rect x="182" y="460" width="20" height="70" rx="6" />
+    <rect x="208" y="460" width="20" height="70" rx="6" />
+    
+    <ellipse cx="310" cy="355" rx="24" ry="28" />
+    <rect x="290" y="382" width="40" height="80" rx="8" />
+    <rect x="285" y="462" width="18" height="60" rx="5" />
+    <rect x="307" y="462" width="18" height="60" rx="5" />
+    
+    <ellipse cx="145" cy="360" rx="22" ry="25" />
+    <rect x="126" y="383" width="38" height="75" rx="7" />
+    <rect x="120" y="458" width="17" height="55" rx="5" />
+    <rect x="142" y="458" width="17" height="55" rx="5" />
+  </g>
+
+  
+  <g transform="translate(130, 130)" fill="#7a3b2e" opacity="0.5">
+    <polygon points="0,-30 7,-10 27,-10 11,3 18,25 0,13 -18,25 -11,3 -27,-10 -7,-10" />
+  </g>
+  <g transform="translate(180, 105)" fill="#7a3b2e" opacity="0.35">
+    <polygon points="0,-15 3.5,-5 13.5,-5 5.5,1.5 9,12.5 0,6.5 -9,12.5 -5.5,1.5 -13.5,-5 -3.5,-5" />
+  </g>
+
+  
+  <rect x="80" y="580" width="100" height="100" rx="8" fill="#7a3b2e" opacity="0.12" stroke="#7a3b2e" stroke-width="2" />
+  <text x="130" y="620" text-anchor="middle" font-family="serif" font-size="28" fill="#7a3b2e" opacity="0.4">人</text>
+  <text x="130" y="658" text-anchor="middle" font-family="serif" font-size="28" fill="#7a3b2e" opacity="0.4">物</text>
+
+  
+  <line x1="80" y1="740" x2="480" y2="740" stroke="#8b6f47" stroke-width="1.5" opacity="0.6" />
+  <circle cx="80" cy="740" r="4" fill="#8b6f47" opacity="0.6" />
+  <circle cx="480" cy="740" r="4" fill="#8b6f47" opacity="0.6" />
+  <circle cx="280" cy="740" r="6" fill="#c4a060" opacity="0.7" />
+
+  
+  <rect x="80" y="760" width="240" height="110" rx="4" fill="#d4c4a0" stroke="#8b6f47" stroke-width="1.5" opacity="0.8" />
+  <text x="200" y="782" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a3a1e" letter-spacing="2" opacity="0.9">LEGENDA</text>
+  <line x1="90" y1="790" x2="310" y2="790" stroke="#8b6f47" stroke-width="0.8" opacity="0.6" />
+  <rect x="95" y="800" width="14" height="10" fill="url(#chinaFill)" stroke="#6b4f2e" stroke-width="1" />
+  <text x="118" y="810" font-family="Georgia, serif" font-size="11" fill="#4a3520" opacity="0.85">China (Zhōngguó)</text>
+  <line x1="95" y1="825" x2="109" y2="825" stroke="#6b8faf" stroke-width="3" stroke-linecap="round" />
+  <text x="118" y="829" font-family="Georgia, serif" font-size="11" fill="#4a3520" opacity="0.85">Major Rivers</text>
+  <line x1="95" y1="845" x2="109" y2="845" stroke="#5a3a1e" stroke-width="2" stroke-dasharray="5,3" />
+  <text x="118" y="849" font-family="Georgia, serif" font-size="11" fill="#4a3520" opacity="0.85">Great Wall</text>
+
+  
+  
+  <text x="154" y="184" font-family="Georgia, 'Times New Roman', serif" font-size="148" fill="#4a3520" opacity="0.12" letter-spacing="-2">People</text>
+  
+  <text x="150" y="180" font-family="Georgia, 'Times New Roman', serif" font-size="148" fill="#3d2710" opacity="0.88" letter-spacing="-2">People</text>
+
+  
+  <text x="152" y="235" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#6b4f2e" opacity="0.8" letter-spacing="5">NOTABLE FIGURES OF CHINA</text>
+
+  
+  <rect x="150" y="252" width="420" height="2" fill="#8b6f47" opacity="0.5" />
+
+  
+  <text x="152" y="295" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#5a3a1e" opacity="0.7" letter-spacing="1">A knowledge base of those who shaped</text>
+  <text x="152" y="320" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#5a3a1e" opacity="0.7" letter-spacing="1">the history of modern China.</text>
+
+  
+  <g transform="translate(152, 500)">
+    <rect width="360" height="70" rx="5" fill="#7a3b2e" opacity="0.12" stroke="#7a3b2e" stroke-width="1.5" />
+    <text x="18" y="26" font-family="Georgia, serif" font-size="12" fill="#5a3a1e" opacity="0.7" letter-spacing="3">FEATURED</text>
+    <text x="18" y="54" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#3d2710" opacity="0.9" letter-spacing="1">Mao Zedong</text>
+    <text x="198" y="54" font-family="Georgia, serif" font-size="13" fill="#6b4f2e" opacity="0.7"> 毛泽东</text>
+  </g>
+
+  
+  <circle cx="870" cy="480" r="7" fill="#7a3b2e" opacity="0.7" />
+  <circle cx="870" cy="480" r="12" fill="none" stroke="#7a3b2e" stroke-width="1.5" opacity="0.5" />
+  <line x1="878" y1="472" x2="920" y2="440" stroke="#7a3b2e" stroke-width="1.2" opacity="0.6" />
+  <text x="925" y="436" font-family="Georgia, serif" font-size="14" fill="#3d2710" opacity="0.8">Beijing</text>
+
+  <circle cx="950" cy="580" r="5" fill="#6b4f2e" opacity="0.6" />
+  <line x1="955" y1="576" x2="990" y2="555" stroke="#6b4f2e" stroke-width="1" opacity="0.5" />
+  <text x="994" y="551" font-family="Georgia, serif" font-size="12" fill="#3d2710" opacity="0.7">Shaoshan</text>
+
+  
+  <text x="36" y="208" font-family="Georgia, serif" font-size="11" fill="#8b6f47" opacity="0.6">40°N</text>
+  <text x="36" y="408" font-family="Georgia, serif" font-size="11" fill="#8b6f47" opacity="0.6">30°N</text>
+  <text x="36" y="630" font-family="Georgia, serif" font-size="11" fill="#8b6f47" opacity="0.6">20°N</text>
+  <text x="296" y="1006" font-family="Georgia, serif" font-size="11" fill="#8b6f47" opacity="0.6">100°E</text>
+  <text x="596" y="1006" font-family="Georgia, serif" font-size="11" fill="#8b6f47" opacity="0.6">110°E</text>
+  <text x="930" y="1006" font-family="Georgia, serif" font-size="11" fill="#8b6f47" opacity="0.6">120°E</text>
+</svg>

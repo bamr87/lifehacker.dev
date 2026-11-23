@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Healthcare System in South Korea – Article Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="mapGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8dde8" />
+      <stop offset="100%" stop-color="#a8c4d4" />
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b8a87a" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <filter id="noise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noiseOut" />
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComponentTransfer in="blended">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7550" stroke-width="3" opacity="0.7" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7550" stroke-width="1" opacity="0.4" />
+
+  
+  
+  <g stroke="#8a7550" stroke-width="1.5" fill="none" opacity="0.7">
+    <line x1="18" y1="60" x2="60" y2="18" />
+    <line x1="18" y1="80" x2="80" y2="18" />
+    <circle cx="18" cy="18" r="8" fill="#8a7550" opacity="0.5" />
+    <circle cx="1518" cy="18" r="8" fill="#8a7550" opacity="0.5" />
+    <circle cx="18" cy="1006" r="8" fill="#8a7550" opacity="0.5" />
+    <circle cx="1518" cy="1006" r="8" fill="#8a7550" opacity="0.5" />
+  </g>
+
+  
+  <rect x="50" y="50" width="900" height="924" fill="url(#mapGrad)" opacity="0.55" rx="4" />
+
+  
+  
+  <path d="M80 120 L200 90 L380 80 L480 110 L520 160 L560 200 L580 280 L560 360 L520 420 L480 460 L440 500 L400 560 L380 620 L360 680 L340 740 L300 800 L260 860 L200 880 L150 860 L100 820 L70 760 L60 680 L70 580 L80 480 L70 380 L80 260 Z" fill="#c8b888" stroke="#8a7550" stroke-width="1.5" opacity="0.85" />
+
+  
+  <path d="M640 260 L680 240 L720 250 L750 270 L770 310 L780 360 L775 410 L760 460 L740 510 L720 555 L700 590 L680 620 L660 640 L650 660 L645 680 L648 700 L655 715 L650 730 L640 740 L625 738 L615 720 L610 700 L615 675 L620 650 L610 630 L600 610 L590 580 L585 540 L588 500 L595 460 L600 420 L605 380 L605 340 L615 300 L630 270 Z" fill="#b8634a" stroke="#7a3a28" stroke-width="2" opacity="0.9" />
+
+  
+  <path d="M820 200 L860 180 L900 170 L930 185 L940 210 L920 240 L890 260 L860 265 L835 250 L820 230 Z" fill="#c8b888" stroke="#8a7550" stroke-width="1.5" opacity="0.85" />
+  <path d="M850 290 L890 275 L920 285 L940 310 L935 340 L910 360 L880 365 L860 350 L848 320 Z" fill="#c8b888" stroke="#8a7550" stroke-width="1.5" opacity="0.85" />
+  <path d="M800 370 L840 355 L870 365 L885 390 L880 420 L860 438 L835 440 L815 425 L808 400 Z" fill="#c8b888" stroke="#8a7550" stroke-width="1.5" opacity="0.85" />
+  <path d="M760 450 L800 438 L825 448 L835 472 L828 500 L808 515 L785 516 L768 502 L762 478 Z" fill="#c8b888" stroke="#8a7550" stroke-width="1.5" opacity="0.85" />
+
+  
+  <ellipse cx="645" cy="780" rx="28" ry="16" fill="#b8634a" stroke="#7a3a28" stroke-width="1.5" opacity="0.85" />
+
+  
+  <path d="M640 260 L680 240 L720 250 L750 270 L770 310 L780 360 L775 410 L760 460 L740 510 L720 555 L700 590 L680 620 L660 640 L650 660 L645 680 L648 700 L655 715 L650 730 L640 740 L625 738 L615 720 L610 700 L615 675 L620 650 L610 630 L600 610 L590 580 L585 540 L588 500 L595 460 L600 420 L605 380 L605 340 L615 300 L630 270 Z" fill="none" stroke="#e85a3a" stroke-width="3.5" opacity="0.5" />
+
+  
+  <g transform="translate(160,820)" fill="#8a7550" stroke="#8a7550">
+    <circle cx="0" cy="0" r="44" fill="none" stroke-width="1.2" opacity="0.6" />
+    <circle cx="0" cy="0" r="36" fill="none" stroke-width="0.6" opacity="0.4" />
+    
+    <polygon points="0,-44 -7,-20 0,-28 7,-20" fill="#7a3a28" opacity="0.85" />
+    
+    <polygon points="0,44 -7,20 0,28 7,20" fill="#8a7550" opacity="0.7" />
+    
+    <polygon points="44,0 20,-7 28,0 20,7" fill="#8a7550" opacity="0.7" />
+    
+    <polygon points="-44,0 -20,-7 -28,0 -20,7" fill="#8a7550" opacity="0.7" />
+    
+    <line x1="-30" y1="-30" x2="30" y2="30" stroke-width="0.8" opacity="0.35" />
+    <line x1="30" y1="-30" x2="-30" y2="30" stroke-width="0.8" opacity="0.35" />
+    <circle cx="0" cy="0" r="5" fill="#8a7550" opacity="0.8" />
+    <text x="0" y="-50" text-anchor="middle" font-size="13" font-family="Georgia, serif" fill="#5a3a18" font-weight="bold" opacity="0.9">N</text>
+  </g>
+
+  
+  <g stroke="#8a7550" stroke-width="0.6" opacity="0.25" stroke-dasharray="4,6">
+    <line x1="50" y1="300" x2="950" y2="300" />
+    <line x1="50" y1="500" x2="950" y2="500" />
+    <line x1="50" y1="700" x2="950" y2="700" />
+    <line x1="300" y1="50" x2="300" y2="974" />
+    <line x1="600" y1="50" x2="600" y2="974" />
+    <line x1="800" y1="50" x2="800" y2="974" />
+  </g>
+
+  
+  <g transform="translate(1220, 400)">
+    <rect x="-70" y="-25" width="140" height="50" rx="8" fill="#b8634a" opacity="0.85" />
+    <rect x="-25" y="-70" width="50" height="140" rx="8" fill="#b8634a" opacity="0.85" />
+    <rect x="-62" y="-17" width="124" height="34" rx="6" fill="#d4453a" opacity="0.6" />
+    <rect x="-17" y="-62" width="34" height="124" rx="6" fill="#d4453a" opacity="0.6" />
+    
+    <path d="M-70,-25 L-70,-70 L-25,-70 L-25,-25 L25,-25 L25,-70 L70,-70 L70,-25 L70,25 L70,70 L25,70 L25,25 L-25,25 L-25,70 L-70,70 L-70,25 Z" fill="none" stroke="#7a2a1a" stroke-width="2.5" opacity="0.7" />
+  </g>
+
+  
+  <circle cx="1220" cy="400" r="120" fill="none" stroke="#8a7550" stroke-width="1.2" stroke-dasharray="6,8" opacity="0.4" />
+  <circle cx="1220" cy="400" r="155" fill="none" stroke="#8a7550" stroke-width="0.8" opacity="0.25" />
+
+  
+  
+  <g transform="translate(1100, 620)" stroke="#7a3a28" stroke-width="3" fill="none" opacity="0.75">
+    <path d="M0,0 C-20,-30 -40,-30 -40,-10 C-40,10 -20,20 0,10 C20,0 30,20 20,40 C10,60 -20,65 -30,50" />
+    <circle cx="-35" cy="45" r="10" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="5" fill="#7a3a28" />
+    <circle cx="20" cy="0" r="5" fill="#7a3a28" />
+  </g>
+
+  
+  <g transform="translate(1360, 620)" opacity="0.7">
+    <rect x="-45" y="-18" width="90" height="36" rx="18" fill="#8a7550" />
+    <rect x="-45" y="-18" width="45" height="36" rx="18" fill="#b8634a" />
+    <line x1="0" y1="-18" x2="0" y2="18" stroke="#d4c9a8" stroke-width="2" />
+  </g>
+
+  
+  <g transform="translate(1220, 650)" stroke="#b8634a" stroke-width="3" fill="none" opacity="0.7">
+    <polyline points="-100,0 -60,0 -40,-40 -20,40 0,-20 20,20 40,0 100,0" />
+  </g>
+
+  
+  <rect x="960" y="50" width="528" height="924" fill="#d4c9a8" opacity="0.3" rx="2" />
+  <line x1="960" y1="50" x2="960" y2="974" stroke="#8a7550" stroke-width="1.5" opacity="0.4" />
+
+  
+  <text x="990" y="170" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="bold" fill="#3a2808" letter-spacing="-1" opacity="0.95">Healthcare</text>
+  <text x="990" y="248" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="bold" fill="#3a2808" letter-spacing="-1" opacity="0.95">System in</text>
+  <text x="990" y="326" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="bold" fill="#b8634a" letter-spacing="-1" opacity="0.95">South Korea</text>
+
+  
+  <line x1="990" y1="350" x2="1460" y2="350" stroke="#8a7550" stroke-width="2" opacity="0.6" />
+  <line x1="990" y1="356" x2="1460" y2="356" stroke="#8a7550" stroke-width="0.6" opacity="0.4" />
+
+  
+  <text x="990" y="400" font-family="Georgia, serif" font-size="24" fill="#7a5530" opacity="0.65" letter-spacing="4">의료 체계</text>
+
+  
+  <text x="990" y="470" font-family="Georgia, serif" font-size="19" fill="#4a3010" opacity="0.8">Universal Coverage · National Health Insurance</text>
+  <text x="990" y="504" font-family="Georgia, serif" font-size="19" fill="#4a3010" opacity="0.8">Life Expectancy 83+ Years · Est. 1977</text>
+  <text x="990" y="538" font-family="Georgia, serif" font-size="19" fill="#4a3010" opacity="0.8">Public Insurance · Private Provider Delivery</text>
+
+  
+  <line x1="990" y1="562" x2="1200" y2="562" stroke="#8a7550" stroke-width="1" opacity="0.4" />
+
+  
+  <text x="660" y="480" font-family="Georgia, serif" font-size="16" fill="#3a1808" font-weight="bold" opacity="0.85" transform="rotate(-5, 660, 480)">KOREA</text>
+  <text x="656" y="500" font-family="Georgia, serif" font-size="11" fill="#5a2a10" opacity="0.7" transform="rotate(-5, 656, 500)">한국</text>
+
+  
+  <text x="220" y="420" font-family="Georgia, serif" font-size="18" fill="#4a3818" opacity="0.6" letter-spacing="3">CHINA</text>
+
+  
+  <text x="850" y="310" font-family="Georgia, serif" font-size="14" fill="#4a3818" opacity="0.6" letter-spacing="2">JAPAN</text>
+
+  
+  <text x="530" y="680" font-family="Georgia, serif" font-size="14" fill="#4a6878" opacity="0.6" font-style="italic" letter-spacing="2">Yellow Sea</text>
+  <text x="730" y="550" font-family="Georgia, serif" font-size="13" fill="#4a6878" opacity="0.6" font-style="italic">Sea of Japan</text>
+
+  
+  <rect x="18" y="960" width="1500" height="46" fill="#8a7550" opacity="0.12" />
+  <text x="780" y="990" font-family="Georgia, serif" font-size="15" fill="#5a3a10" opacity="0.6" text-anchor="middle" letter-spacing="4">ATLAS OF MODERN HEALTHCARE SYSTEMS</text>
+
+</svg>

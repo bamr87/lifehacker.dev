@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Shanghai – Asia's Most Economically Dynamic Metropolis</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b99a" />
+      <stop offset="100%" stop-color="#e8d9bf" />
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7aa3b8" />
+      <stop offset="100%" stop-color="#5b8fa8" />
+    </linearGradient>
+    <linearGradient id="rivergrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7aa3b8" />
+      <stop offset="100%" stop-color="#6898ae" />
+    </linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b0956e" stroke-width="0.5" opacity="0.3" />
+    </pattern>
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noiseOut" />
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#sky)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <g stroke="#b0956e" stroke-width="0.6" opacity="0.35" fill="none">
+    <line x1="0" y1="170" x2="1536" y2="170" />
+    <line x1="0" y1="340" x2="1536" y2="340" />
+    <line x1="0" y1="510" x2="1536" y2="510" />
+    <line x1="0" y1="680" x2="1536" y2="680" />
+    <line x1="0" y1="850" x2="1536" y2="850" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <path d="M 200,80 L260,60 L340,55 L420,70 L480,90 L530,80 L580,95 L620,75 L680,80 L720,65 L780,70 L820,90 L860,80 L900,100 L930,85 L960,95 L990,110 L1000,130 L980,150 L960,160 L940,180 L920,195 L900,210 L880,230 L850,250 L840,280 L820,300 L800,310 L780,330 L760,350 L750,380 L760,410 L780,440 L790,470 L780,500 L760,520 L750,550 L760,580 L750,600 L730,610 L710,600 L690,590 L670,600 L650,620 L630,640 L610,660 L590,680 L570,700 L550,720 L530,740 L510,760 L490,780 L470,800 L450,820 L430,840 L410,860 L390,870 L370,860 L360,840 L350,820 L340,800 L330,780 L320,760 L310,740 L300,720 L290,700 L280,680 L270,660 L260,640 L250,620 L240,600 L230,580 L220,560 L210,540 L200,520 L190,500 L185,480 L180,460 L175,440 L170,420 L165,400 L160,380 L155,360 L150,340 L145,320 L140,300 L135,280 L130,260 L125,240 L120,220 L115,200 L110,180 L108,160 L110,140 L115,120 L130,100 L160,85 Z" fill="#c4a97a" stroke="#8a6a3a" stroke-width="1.5" opacity="0.85" />
+
+  
+  <path d="M 760,350 L800,310 L820,300 L840,280 L850,250 L880,230 L900,210 L920,195 L940,180 L960,160 L980,150 L1000,130 L1010,150 L1020,200 L1040,260 L1060,320 L1080,380 L1090,440 L1080,500 L1060,560 L1040,620 L1020,680 L1000,720 L980,760 L960,780 L940,770 L920,750 L900,730 L880,710 L860,690 L840,670 L820,650 L800,630 L780,610 L760,590 L740,570 L730,550 L730,520 L740,490 L750,460 L760,430 L770,400 Z" fill="url(#water)" opacity="0.7" />
+
+  
+  <path d="M 780,440 Q 800,450 810,470 Q 820,490 815,510 Q 810,530 800,545 Q 790,560 785,580 Q 780,600 775,620" fill="none" stroke="#5b8fa8" stroke-width="12" opacity="0.9" />
+
+  
+  <path d="M 600,380 Q 650,390 700,400 Q 740,410 770,420 Q 790,430 810,450" fill="none" stroke="#7aa3b8" stroke-width="18" opacity="0.75" />
+  <path d="M 600,380 Q 640,370 680,365 Q 720,360 760,370 Q 790,380 810,400" fill="none" stroke="#7aa3b8" stroke-width="10" opacity="0.6" />
+
+  
+  <g fill="#5a4a35" opacity="0.9">
+    
+    <rect x="830" y="370" width="8" height="120" rx="2" />
+    <circle cx="834" cy="380" r="18" fill="#7a6048" />
+    <circle cx="834" cy="420" r="12" fill="#7a6048" />
+    <rect x="831" y="340" width="6" height="35" rx="1" />
+    
+    <path d="M855,280 L862,280 L866,380 L864,490 L858,490 L852,380 Z" fill="#6a5a42" />
+    <rect x="854" y="270" width="10" height="15" rx="1" />
+    
+    <rect x="875" y="340" width="22" height="150" rx="2" fill="#6a5a42" />
+    <rect x="878" y="330" width="16" height="15" rx="1" />
+    
+    <path d="M908,300 L912,300 L920,490 L904,490 Z" fill="#6a5a42" />
+    <rect x="908" y="290" width="12" height="14" rx="1" />
+    
+    <rect x="930" y="360" width="18" height="130" rx="2" />
+    <rect x="932" y="350" width="14" height="14" rx="1" />
+    <rect x="955" y="380" width="14" height="110" rx="2" />
+    <rect x="975" y="395" width="12" height="95" rx="2" />
+    <rect x="993" y="410" width="10" height="80" rx="2" />
+    
+    <rect x="820" y="490" width="200" height="8" rx="0" />
+  </g>
+
+  
+  <g fill="#7a6548" opacity="0.85">
+    <rect x="720" y="420" width="16" height="80" rx="1" />
+    <rect x="716" y="415" width="24" height="10" rx="1" />
+    <rect x="700" y="430" width="18" height="70" rx="1" />
+    <rect x="696" y="424" width="26" height="10" rx="1" />
+    <rect x="676" y="425" width="20" height="75" rx="1" />
+    <rect x="672" y="419" width="28" height="10" rx="1" />
+    <rect x="654" y="435" width="18" height="65" rx="1" />
+    <rect x="638" y="440" width="14" height="60" rx="1" />
+    
+    <rect x="742" y="410" width="14" height="90" rx="1" />
+    <ellipse cx="749" cy="408" rx="10" ry="8" fill="#8a7558" />
+    
+    <rect x="630" y="500" width="120" height="8" rx="0" />
+  </g>
+
+  
+  <path d="M 770,495 Q 790,498 820,498 L 820,510 Q 790,510 770,508 Z" fill="#7aa3b8" opacity="0.8" />
+
+  
+  <g transform="translate(1380,160)" opacity="0.75">
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#8a6a3a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#8a6a3a" stroke-width="0.8" />
+    
+    <polygon points="0,-55 -7,-20 7,-20" fill="#8a6a3a" />
+    <polygon points="0,55 -7,20 7,20" fill="#c4a97a" />
+    <polygon points="-55,0 -20,-7 -20,7" fill="#c4a97a" />
+    <polygon points="55,0 20,-7 20,7" fill="#c4a97a" />
+    
+    <polygon points="-39,-39 -18,-12 -12,-18" fill="#b09060" />
+    <polygon points="39,-39 18,-12 12,-18" fill="#b09060" />
+    <polygon points="-39,39 -18,12 -12,18" fill="#b09060" />
+    <polygon points="39,39 18,12 12,18" fill="#b09060" />
+    <circle cx="0" cy="0" r="6" fill="#8a6a3a" />
+    <text x="0" y="-62" text-anchor="middle" font-family="serif" font-size="16" fill="#5a3a1a" font-weight="bold">N</text>
+    <text x="0" y="76" text-anchor="middle" font-family="serif" font-size="14" fill="#7a5a3a">S</text>
+    <text x="68" y="5" text-anchor="middle" font-family="serif" font-size="14" fill="#7a5a3a">E</text>
+    <text x="-68" y="5" text-anchor="middle" font-family="serif" font-size="14" fill="#7a5a3a">W</text>
+  </g>
+
+  
+  <circle cx="800" cy="460" r="10" fill="#c0392b" opacity="0.9" />
+  <circle cx="800" cy="460" r="6" fill="#e74c3c" />
+  <circle cx="800" cy="460" r="20" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.6" />
+  <circle cx="800" cy="460" r="30" fill="none" stroke="#c0392b" stroke-width="0.8" opacity="0.35" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a6a3a" stroke-width="3" rx="2" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8a6a3a" stroke-width="1" rx="1" opacity="0.5" />
+
+  
+  <g stroke="#8a6a3a" stroke-width="1.5" fill="none" opacity="0.7">
+    <path d="M18,18 L60,18 M18,18 L18,60" />
+    <path d="M1518,18 L1476,18 M1518,18 L1518,60" />
+    <path d="M18,1006 L60,1006 M18,1006 L18,964" />
+    <path d="M1518,1006 L1476,1006 M1518,1006 L1518,964" />
+  </g>
+
+  
+  <rect x="60" y="680" width="620" height="300" rx="4" fill="#d4c4a0" opacity="0.88" />
+  <rect x="64" y="684" width="612" height="292" rx="3" fill="none" stroke="#8a6a3a" stroke-width="1.2" />
+
+  
+  <text x="1120" y="700" font-family="serif" font-size="110" fill="#8a6a3a" opacity="0.18" font-weight="bold">上海</text>
+
+  
+  <text x="100" y="760" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="bold" fill="#2c1a08" letter-spacing="8">SHANGHAI</text>
+
+  
+  <line x1="100" y1="778" x2="630" y2="778" stroke="#8a6a3a" stroke-width="2" />
+
+  
+  <text x="100" y="810" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#5a3a1a" letter-spacing="3">CHINA'S GATEWAY TO THE WORLD</text>
+
+  
+  <text x="100" y="850" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#7a5a3a" letter-spacing="1">Mouth of the Yangtze River  ·  31°N 121°E</text>
+
+  
+  <text x="100" y="920" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#8a6a3a" letter-spacing="1" font-style="italic">Population 24.8 million  ·  GDP USD 700 billion</text>
+  <text x="100" y="945" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#8a6a3a" letter-spacing="1" font-style="italic">Est. Song Dynasty (960–1279 CE)</text>
+
+  
+  <text x="795" y="545" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#2c1a08" font-weight="bold" text-anchor="middle" opacity="0.9">SHANGHAI</text>
+
+  
+  <text x="1020" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#2c4a5a" opacity="0.6" font-style="italic" letter-spacing="3">EAST CHINA SEA</text>
+
+  
+  <text x="640" y="390" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#2c4a5a" opacity="0.7" font-style="italic" transform="rotate(-5,640,390)">Yangtze River</text>
+
+  
+  <text x="830" y="530" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#2c4a5a" opacity="0.7" font-style="italic" transform="rotate(-80,830,530)">Huangpu</text>
+
+  
+  <text x="890" y="520" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#2c1a08" opacity="0.8" letter-spacing="1">PUDONG</text>
+  <text x="650" y="520" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#2c1a08" opacity="0.8" letter-spacing="1">THE BUND</text>
+
+</svg>

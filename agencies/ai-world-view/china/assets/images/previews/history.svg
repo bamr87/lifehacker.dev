@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>History — China's Dynasties and Eras</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="mapgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b88a" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#a09060" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="panelgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2c1a0e" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#3d2510" stop-opacity="0.75" />
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a09060" stroke-width="0.4" stroke-opacity="0.3" />
+    </pattern>
+    <filter id="aged">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComponentTransfer in="blended">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect width="1536" height="1024" fill="#c8a860" opacity="0.08" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a5c30" stroke-width="2.5" opacity="0.6" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#7a5c30" stroke-width="1" opacity="0.4" />
+
+  
+  
+  <g transform="translate(680, 80) scale(1.15)">
+    
+    <path d="       M 420,60       L 480,50 L 540,65 L 590,55 L 630,80       L 650,110 L 640,150 L 660,180       L 700,200 L 720,240 L 710,280       L 680,310 L 700,350 L 690,390       L 660,420 L 640,460 L 620,500       L 590,530 L 560,550 L 530,570       L 500,600 L 470,620 L 440,640       L 410,650 L 380,660 L 350,655       L 320,640 L 290,620 L 270,600       L 250,575 L 240,545 L 220,520       L 200,490 L 190,460 L 180,430       L 160,410 L 140,390 L 130,360       L 120,330 L 110,300 L 100,270       L 90,240 L 95,210 L 80,185       L 70,155 L 80,130 L 100,110       L 130,90 L 160,80 L 200,70       L 240,65 L 280,60 L 320,55       L 360,55 L 400,58 Z     " fill="#b8a070" stroke="#7a5c30" stroke-width="2" opacity="0.7" />
+
+    
+    <path d="M 420,60 L 480,50 L 540,65 L 590,55 L 630,80 L 650,110 L 640,150 L 660,180 L 700,200 L 720,240 L 710,280 L 680,310 L 700,350 L 690,390 L 660,420 L 640,460 L 620,500 L 590,530 L 560,550 L 530,570 L 500,600 L 470,620 L 440,640 L 410,650 L 380,660 L 350,655 L 320,640 L 290,620 L 270,600 L 250,575 L 240,545 L 220,520 L 200,490 L 190,460 L 180,430 L 160,410 L 140,390 L 130,360 L 120,330 L 110,300 L 100,270 L 90,240 L 95,210 L 80,185 L 70,155 L 80,130 L 100,110 L 130,90 L 160,80 L 200,70 L 240,65 L 280,60 L 320,55 L 360,55 L 400,58 Z" fill="url(#hatch)" opacity="0.5" />
+
+    
+    <path d="M 200,200 L 230,180 L 260,200 L 290,175 L 320,195 L 350,175" fill="none" stroke="#7a5c30" stroke-width="1.5" opacity="0.5" />
+    <path d="M 350,280 L 380,260 L 410,280 L 440,258 L 470,278" fill="none" stroke="#7a5c30" stroke-width="1.5" opacity="0.5" />
+    <path d="M 150,350 L 180,330 L 210,350 L 240,328" fill="none" stroke="#7a5c30" stroke-width="1.5" opacity="0.4" />
+    <path d="M 500,180 L 530,160 L 560,180 L 590,158 L 620,175" fill="none" stroke="#7a5c30" stroke-width="1.5" opacity="0.4" />
+
+    
+    <path d="M 150,280 Q 220,260 280,290 Q 350,320 420,300 Q 480,285 540,310 Q 590,330 630,350" fill="none" stroke="#8aacb8" stroke-width="2.5" opacity="0.6" stroke-linecap="round" />
+    <path d="M 180,420 Q 250,400 320,420 Q 390,440 460,420 Q 520,404 580,430 Q 620,445 650,460" fill="none" stroke="#8aacb8" stroke-width="2" opacity="0.5" stroke-linecap="round" />
+
+    
+    <circle cx="350" cy="320" r="8" fill="#8B3A2A" stroke="#2c1a0e" stroke-width="1.5" opacity="0.9" />
+    <circle cx="350" cy="320" r="14" fill="none" stroke="#8B3A2A" stroke-width="1.2" opacity="0.5" />
+
+    
+    <circle cx="460" cy="200" r="6" fill="#8B3A2A" stroke="#2c1a0e" stroke-width="1.2" opacity="0.8" />
+    <circle cx="460" cy="200" r="11" fill="none" stroke="#8B3A2A" stroke-width="1" opacity="0.4" />
+
+    
+    <circle cx="530" cy="390" r="5" fill="#8B3A2A" stroke="#2c1a0e" stroke-width="1" opacity="0.7" />
+
+    
+    <text x="368" y="316" font-family="Georgia, serif" font-size="13" fill="#2c1a0e" opacity="0.7" font-style="italic">Xianyang</text>
+
+    
+    
+    <path d="M 700,200 Q 760,250 780,350 Q 790,420 760,500 Q 740,550 710,580 L 650,550 L 640,460 L 660,420 L 700,350 L 710,280 L 720,240 Z" fill="#b8d4e0" opacity="0.35" />
+
+    
+    <path d="M 470,640 L 500,600 L 560,570 L 590,590 L 580,640 L 550,670 L 510,680 L 470,670 Z" fill="#b8d4e0" opacity="0.3" />
+
+    
+    <line x1="80" y1="150" x2="730" y2="150" stroke="#7a5c30" stroke-width="0.6" stroke-dasharray="4,6" opacity="0.25" />
+    <line x1="80" y1="300" x2="730" y2="300" stroke="#7a5c30" stroke-width="0.6" stroke-dasharray="4,6" opacity="0.25" />
+    <line x1="80" y1="450" x2="730" y2="450" stroke="#7a5c30" stroke-width="0.6" stroke-dasharray="4,6" opacity="0.25" />
+    <line x1="80" y1="600" x2="730" y2="600" stroke="#7a5c30" stroke-width="0.6" stroke-dasharray="4,6" opacity="0.25" />
+    <line x1="200" y1="40" x2="200" y2="680" stroke="#7a5c30" stroke-width="0.6" stroke-dasharray="4,6" opacity="0.25" />
+    <line x1="400" y1="40" x2="400" y2="680" stroke="#7a5c30" stroke-width="0.6" stroke-dasharray="4,6" opacity="0.25" />
+    <line x1="600" y1="40" x2="600" y2="680" stroke="#7a5c30" stroke-width="0.6" stroke-dasharray="4,6" opacity="0.25" />
+  </g>
+
+  
+  <g transform="translate(1400, 820)">
+    
+    <circle cx="0" cy="0" r="72" fill="#d4c4a0" stroke="#7a5c30" stroke-width="1.5" opacity="0.7" />
+    <circle cx="0" cy="0" r="64" fill="none" stroke="#7a5c30" stroke-width="0.7" opacity="0.5" />
+    
+    <polygon points="0,-62 -10,-20 0,-30 10,-20" fill="#2c1a0e" opacity="0.8" />
+    <polygon points="0,62 -10,20 0,30 10,20" fill="#7a5c30" opacity="0.7" />
+    <polygon points="-62,0 -20,-10 -30,0 -20,10" fill="#7a5c30" opacity="0.7" />
+    <polygon points="62,0 20,-10 30,0 20,10" fill="#7a5c30" opacity="0.7" />
+    
+    <polygon points="0,-62 10,-20 30,-30" fill="#a09060" opacity="0.4" />
+    <polygon points="62,0 20,-10 30,-30" fill="#a09060" opacity="0.3" />
+    
+    <circle cx="0" cy="0" r="6" fill="#8B3A2A" stroke="#2c1a0e" stroke-width="1" />
+    <circle cx="0" cy="0" r="3" fill="#2c1a0e" />
+    
+    <text x="0" y="-70" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#2c1a0e" opacity="0.85">N</text>
+    <text x="0" y="84" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#2c1a0e" opacity="0.6">S</text>
+    <text x="-78" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#2c1a0e" opacity="0.6">W</text>
+    <text x="78" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#2c1a0e" opacity="0.6">E</text>
+  </g>
+
+  
+  <rect x="60" y="900" width="1416" height="3" fill="#7a5c30" opacity="0.4" />
+  
+  <rect x="60" y="898" width="120" height="7" fill="#8B3A2A" opacity="0.5" rx="1" />
+  <text x="120" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Shang</text>
+  <rect x="190" y="898" width="100" height="7" fill="#7a5c30" opacity="0.5" rx="1" />
+  <text x="240" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Zhou</text>
+  <rect x="300" y="898" width="80" height="7" fill="#8B3A2A" opacity="0.6" rx="1" />
+  <text x="340" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Qin</text>
+  <rect x="390" y="898" width="130" height="7" fill="#7a5c30" opacity="0.5" rx="1" />
+  <text x="455" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Han</text>
+  <rect x="530" y="898" width="90" height="7" fill="#a09060" opacity="0.5" rx="1" />
+  <text x="575" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Tang</text>
+  <rect x="630" y="898" width="110" height="7" fill="#8B3A2A" opacity="0.4" rx="1" />
+  <text x="685" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Song</text>
+  <rect x="750" y="898" width="120" height="7" fill="#7a5c30" opacity="0.5" rx="1" />
+  <text x="810" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Yuan</text>
+  <rect x="880" y="898" width="140" height="7" fill="#a09060" opacity="0.5" rx="1" />
+  <text x="950" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Ming</text>
+  <rect x="1030" y="898" width="150" height="7" fill="#8B3A2A" opacity="0.4" rx="1" />
+  <text x="1105" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Qing</text>
+  <rect x="1190" y="898" width="286" height="7" fill="#7a5c30" opacity="0.35" rx="1" />
+  <text x="1333" y="924" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7">Modern</text>
+
+  
+  <rect x="40" y="60" width="580" height="800" rx="4" fill="url(#panelgrad)" />
+  
+  <rect x="52" y="72" width="556" height="776" rx="2" fill="none" stroke="#c8a860" stroke-width="1" opacity="0.4" />
+
+  
+  <line x1="130" y1="110" x2="470" y2="110" stroke="#c8a860" stroke-width="1" opacity="0.5" />
+  <circle cx="300" cy="110" r="4" fill="#c8a860" opacity="0.6" />
+  <circle cx="130" cy="110" r="3" fill="#c8a860" opacity="0.4" />
+  <circle cx="470" cy="110" r="3" fill="#c8a860" opacity="0.4" />
+
+  
+  <text x="300" y="155" text-anchor="middle" font-family="Georgia, serif" font-size="14" letter-spacing="5" fill="#c8a860" opacity="0.7" font-style="italic">KNOWLEDGE BASE</text>
+
+  
+  <text x="300" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="110" font-weight="bold" fill="#e8dcc8" letter-spacing="8">HISTORY</text>
+
+  
+  <text x="300" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#c8a860" opacity="0.8" letter-spacing="3">OF CHINA</text>
+
+  
+  <line x1="100" y1="340" x2="500" y2="340" stroke="#c8a860" stroke-width="1.5" opacity="0.5" />
+  <polygon points="300,334 305,340 300,346 295,340" fill="#c8a860" opacity="0.5" />
+
+  
+  <text x="300" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#d4c4a0" opacity="0.75" font-style="italic">Dynasties · Eras · Transformations</text>
+
+  
+  <text x="300" y="450" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#b8a880" opacity="0.65">From antiquity to the present,</text>
+  <text x="300" y="474" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#b8a880" opacity="0.65">the developments that shaped a nation.</text>
+
+  
+  <line x1="140" y1="510" x2="460" y2="510" stroke="#c8a860" stroke-width="0.7" opacity="0.35" />
+
+  
+  <rect x="90" y="535" width="420" height="120" rx="3" fill="#c8a860" fill-opacity="0.08" stroke="#c8a860" stroke-width="0.8" stroke-opacity="0.3" />
+  <text x="300" y="565" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="3" fill="#c8a860" opacity="0.6">FEATURED</text>
+  <text x="300" y="600" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#e8dcc8" opacity="0.9">The Qin Dynasty</text>
+  <text x="300" y="624" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#b8a880" opacity="0.6" font-style="italic">221 – 206 BCE</text>
+  <text x="300" y="645" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#a09870" opacity="0.55">China's first centralized empire</text>
+
+  
+  <line x1="130" y1="790" x2="470" y2="790" stroke="#c8a860" stroke-width="1" opacity="0.4" />
+  <text x="300" y="816" text-anchor="middle" font-family="Georgia, serif" font-size="11" letter-spacing="2" fill="#c8a860" opacity="0.4">✦ ✦ ✦</text>
+
+  
+  <g transform="translate(750, 730)" opacity="0.55">
+    
+    <rect x="0" y="20" width="340" height="18" fill="#9a8060" rx="1" />
+    
+    <rect x="5" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="33" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="61" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="89" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="117" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="145" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="173" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="201" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="229" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="257" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="285" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    <rect x="313" y="6" width="18" height="18" fill="#9a8060" rx="1" />
+    
+    <rect x="148" y="-20" width="44" height="30" fill="#7a6040" rx="1" />
+    <rect x="152" y="-32" width="10" height="16" fill="#7a6040" />
+    <rect x="168" y="-32" width="10" height="16" fill="#7a6040" />
+    <rect x="184" y="-32" width="10" height="16" fill="#7a6040" />
+    <text x="170" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3c18" opacity="0.7" letter-spacing="1" font-style="italic">Great Wall</text>
+  </g>
+
+  
+  <g transform="translate(1450, 100)">
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#8B3A2A" stroke-width="2.5" opacity="0.4" />
+    <circle cx="0" cy="0" r="47" fill="none" stroke="#8B3A2A" stroke-width="1" opacity="0.3" />
+    
+    <text x="0" y="-15" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#8B3A2A" opacity="0.45" font-weight="bold">中</text>
+    <text x="0" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#8B3A2A" opacity="0.45" font-weight="bold">国</text>
+    <text x="0" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="10" letter-spacing="1" fill="#8B3A2A" opacity="0.4">ZHŌNGGUÓ</text>
+  </g>
+
+  
+  <g transform="translate(700, 870)" opacity="0.6">
+    <line x1="0" y1="0" x2="180" y2="0" stroke="#5a3c18" stroke-width="1.5" />
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#5a3c18" stroke-width="1.5" />
+    <line x1="90" y1="-3" x2="90" y2="3" stroke="#5a3c18" stroke-width="1" />
+    <line x1="180" y1="-5" x2="180" y2="5" stroke="#5a3c18" stroke-width="1.5" />
+    <text x="0" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a3c18">0</text>
+    <text x="90" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a3c18">500 km</text>
+    <text x="180" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a3c18">1000 km</text>
+  </g>
+
+</svg>

@@ -1,0 +1,250 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Buddhism in China — Atlas Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="silkroad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b6914" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#c8922a" stop-opacity="0.4" />
+    </linearGradient>
+    <linearGradient id="temple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b2020" />
+      <stop offset="100%" stop-color="#5a1010" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 L0 0 0 60" fill="none" stroke="#b8a070" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1" fill="#9a7a3a" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+  <rect width="1536" height="1024" fill="url(#dots)" />
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#7a5c1e" stroke-width="3" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#7a5c1e" stroke-width="1" stroke-dasharray="8,4" />
+
+  
+  
+  <g fill="none" stroke="#7a5c1e" stroke-width="1.5">
+    <path d="M30 30 L80 30 L80 40 L40 40 L40 80 L30 80 Z" />
+    <circle cx="55" cy="55" r="12" fill="#c8a84a" stroke="#7a5c1e" opacity="0.6" />
+    <path d="M55 43 L55 67 M43 55 L67 55" stroke="#7a5c1e" stroke-width="1" />
+  </g>
+  
+  <g fill="none" stroke="#7a5c1e" stroke-width="1.5">
+    <path d="M1506 30 L1456 30 L1456 40 L1496 40 L1496 80 L1506 80 Z" />
+    <circle cx="1481" cy="55" r="12" fill="#c8a84a" stroke="#7a5c1e" opacity="0.6" />
+    <path d="M1481 43 L1481 67 M1469 55 L1493 55" stroke="#7a5c1e" stroke-width="1" />
+  </g>
+  
+  <g fill="none" stroke="#7a5c1e" stroke-width="1.5">
+    <path d="M30 994 L80 994 L80 984 L40 984 L40 944 L30 944 Z" />
+    <circle cx="55" cy="969" r="12" fill="#c8a84a" stroke="#7a5c1e" opacity="0.6" />
+  </g>
+  
+  <g fill="none" stroke="#7a5c1e" stroke-width="1.5">
+    <path d="M1506 994 L1456 994 L1456 984 L1496 984 L1496 944 L1506 944 Z" />
+    <circle cx="1481" cy="969" r="12" fill="#c8a84a" stroke="#7a5c1e" opacity="0.6" />
+  </g>
+
+  
+  
+  <path d="M 350 300 Q 400 250 500 260 Q 600 270 680 300 Q 750 330 800 280 Q 860 240 920 260 Q 970 280 1000 320 Q 1040 370 1020 430 Q 1000 490 940 520 Q 880 550 820 540 Q 760 530 710 560 Q 660 590 620 570 Q 570 545 520 560 Q 470 575 430 550 Q 380 520 360 470 Q 340 420 350 370 Z" fill="#c8b882" stroke="#9a7a3a" stroke-width="1.5" opacity="0.7" />
+
+  
+  <path d="M 920 180 Q 980 160 1060 170 Q 1140 180 1200 210 Q 1270 245 1310 300 Q 1350 355 1340 420 Q 1330 480 1290 520 Q 1250 560 1200 580 Q 1150 600 1090 590 Q 1030 580 980 550 Q 940 525 920 490 Q 890 450 900 400 Q 910 350 940 310 Q 960 270 950 230 Z" fill="#baa870" stroke="#9a7a3a" stroke-width="1.5" opacity="0.8" />
+
+  
+  <path d="M 700 420 Q 740 400 780 420 Q 820 440 830 490 Q 840 540 810 580 Q 780 620 740 610 Q 700 600 680 560 Q 660 520 670 470 Z" fill="#c8b882" stroke="#9a7a3a" stroke-width="1.5" opacity="0.7" />
+
+  
+  <path d="M 300 320 Q 350 290 400 300 Q 440 310 460 350 Q 480 390 460 430 Q 440 465 400 470 Q 360 475 330 450 Q 300 425 295 385 Q 290 345 300 320 Z" fill="#c0aa78" stroke="#9a7a3a" stroke-width="1.5" opacity="0.6" />
+
+  
+  <path d="M 320 390 Q 420 360 520 370 Q 620 380 700 350 Q 800 315 900 330 Q 980 345 1060 310 Q 1120 285 1180 300" fill="none" stroke="#c8922a" stroke-width="4" stroke-dasharray="12,6" opacity="0.9" />
+  
+  <path d="M 380 420 Q 500 440 600 420 Q 700 400 780 440 Q 850 475 920 450 Q 980 430 1040 380" fill="none" stroke="#c8922a" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.6" />
+
+  
+  <g fill="#8b6914" opacity="0.8">
+    <circle cx="420" cy="368" r="5" />
+    <circle cx="580" cy="365" r="5" />
+    <circle cx="740" cy="345" r="5" />
+    <circle cx="900" cy="333" r="5" />
+    <circle cx="1050" cy="308" r="5" />
+  </g>
+
+  
+  <g fill="#8b6914" opacity="0.7">
+    <polygon points="510,358 520,363 510,368" transform="rotate(-5,515,363)" />
+    <polygon points="690,340 700,345 690,350" transform="rotate(-8,695,345)" />
+    <polygon points="885,320 895,325 885,330" />
+    <polygon points="1040,298 1050,303 1040,308" />
+  </g>
+
+  
+  <circle cx="750" cy="540" r="8" fill="#9a7a3a" opacity="0.5" />
+  <text x="755" y="568" font-family="Georgia, serif" font-size="13" fill="#5a3a0a" opacity="0.7" font-style="italic">India</text>
+
+  
+  <text x="1080" y="400" font-family="Georgia, serif" font-size="14" fill="#5a3a0a" opacity="0.7" font-style="italic">China</text>
+
+  
+  <text x="310" y="405" font-family="Georgia, serif" font-size="12" fill="#5a3a0a" opacity="0.7" font-style="italic">Persia</text>
+
+  
+  <text x="620" y="325" font-family="Georgia, serif" font-size="13" fill="#8b5a0a" opacity="0.9" font-style="italic" letter-spacing="3">Silk Road</text>
+
+  
+  <g transform="translate(1150,450)">
+    
+    <rect x="-12" y="0" width="24" height="8" fill="url(#temple)" rx="1" />
+    <rect x="-9" y="-10" width="18" height="8" fill="url(#temple)" rx="1" />
+    <rect x="-6" y="-19" width="12" height="8" fill="url(#temple)" rx="1" />
+    <rect x="-3" y="-26" width="6" height="6" fill="url(#temple)" rx="1" />
+    
+    <path d="M-14 0 L-18 4 M14 0 L18 4" stroke="#8b2020" stroke-width="1.5" fill="none" />
+    <path d="M-11 -10 L-15 -6 M11 -10 L15 -6" stroke="#8b2020" stroke-width="1.5" fill="none" />
+    <path d="M-8 -19 L-11 -15 M8 -19 L11 -15" stroke="#8b2020" stroke-width="1.5" fill="none" />
+    
+    <path d="M0 -26 L0 -34" stroke="#8b2020" stroke-width="1.5" />
+    <circle cx="0" cy="-35" r="2" fill="#c8922a" />
+    
+    <rect x="-15" y="8" width="30" height="5" fill="#7a5a30" />
+    
+    <circle cx="0" cy="20" r="4" fill="#8b2020" stroke="#5a1010" stroke-width="1" />
+  </g>
+  <text x="1115" y="500" font-family="Georgia, serif" font-size="11" fill="#5a1a1a" opacity="0.9" text-anchor="middle" font-style="italic">White Horse Temple</text>
+  <text x="1115" y="513" font-family="Georgia, serif" font-size="10" fill="#5a1a1a" opacity="0.7" text-anchor="middle" font-style="italic">Luoyang, 68 CE</text>
+
+  
+  <g transform="translate(200,512)">
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#7a5c1e" stroke-width="2.5" opacity="0.5" />
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#7a5c1e" stroke-width="2" opacity="0.5" />
+    <circle cx="0" cy="0" r="10" fill="#c8a84a" stroke="#7a5c1e" stroke-width="1.5" opacity="0.6" />
+    
+    <g stroke="#7a5c1e" stroke-width="2" opacity="0.55">
+      <line x1="0" y1="-38" x2="0" y2="38" />
+      <line x1="-38" y1="0" x2="38" y2="0" />
+      <line x1="-26.9" y1="-26.9" x2="26.9" y2="26.9" />
+      <line x1="26.9" y1="-26.9" x2="-26.9" y2="26.9" />
+    </g>
+    
+    <circle cx="0" cy="0" r="6" fill="none" stroke="#7a5c1e" stroke-width="1.5" opacity="0.6" />
+  </g>
+
+  
+  <g transform="translate(1380,520)" opacity="0.55">
+    <ellipse cx="0" cy="-20" rx="10" ry="20" fill="#d4a0a0" stroke="#8b4040" stroke-width="1" transform="rotate(0)" />
+    <ellipse cx="0" cy="-20" rx="10" ry="20" fill="#d4a0a0" stroke="#8b4040" stroke-width="1" transform="rotate(45)" />
+    <ellipse cx="0" cy="-20" rx="10" ry="20" fill="#d4a0a0" stroke="#8b4040" stroke-width="1" transform="rotate(90)" />
+    <ellipse cx="0" cy="-20" rx="10" ry="20" fill="#d4a0a0" stroke="#8b4040" stroke-width="1" transform="rotate(135)" />
+    <ellipse cx="0" cy="-20" rx="10" ry="20" fill="#d4a0a0" stroke="#8b4040" stroke-width="1" transform="rotate(180)" />
+    <ellipse cx="0" cy="-20" rx="10" ry="20" fill="#d4a0a0" stroke="#8b4040" stroke-width="1" transform="rotate(225)" />
+    <ellipse cx="0" cy="-20" rx="10" ry="20" fill="#d4a0a0" stroke="#8b4040" stroke-width="1" transform="rotate(270)" />
+    <ellipse cx="0" cy="-20" rx="10" ry="20" fill="#d4a0a0" stroke="#8b4040" stroke-width="1" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="12" fill="#c8922a" stroke="#8b6914" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1430,820)">
+    <circle cx="0" cy="0" r="55" fill="#d4c4a0" stroke="#7a5c1e" stroke-width="1.5" opacity="0.7" />
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#7a5c1e" stroke-width="1" opacity="0.5" />
+    
+    <polygon points="0,-55 -8,-20 8,-20" fill="#7a5c1e" opacity="0.8" />
+    <polygon points="0,55 -8,20 8,20" fill="#9a7a3a" opacity="0.6" />
+    <polygon points="-55,0 -20,-8 -20,8" fill="#9a7a3a" opacity="0.6" />
+    <polygon points="55,0 20,-8 20,8" fill="#9a7a3a" opacity="0.6" />
+    
+    <polygon points="0,-42 -6,-12 6,-12" fill="#9a7a3a" opacity="0.4" transform="rotate(45)" />
+    <polygon points="0,-42 -6,-12 6,-12" fill="#9a7a3a" opacity="0.4" transform="rotate(135)" />
+    <polygon points="0,-42 -6,-12 6,-12" fill="#9a7a3a" opacity="0.4" transform="rotate(225)" />
+    <polygon points="0,-42 -6,-12 6,-12" fill="#9a7a3a" opacity="0.4" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="6" fill="#c8a84a" stroke="#7a5c1e" stroke-width="1" />
+    
+    <text x="0" y="-60" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#5a3a0a" font-weight="bold">N</text>
+  </g>
+
+  
+  <g transform="translate(1160,340)">
+    <circle cx="0" cy="0" r="6" fill="#8b2020" stroke="#5a1010" stroke-width="1.5" />
+    <line x1="0" y1="6" x2="0" y2="20" stroke="#8b2020" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1240,320)" opacity="0.6">
+    <rect x="-8" y="0" width="16" height="5" fill="#8b2020" rx="0.5" />
+    <rect x="-6" y="-7" width="12" height="5" fill="#8b2020" rx="0.5" />
+    <rect x="-4" y="-13" width="8" height="5" fill="#8b2020" rx="0.5" />
+    <path d="M0 -13 L0 -18" stroke="#8b2020" stroke-width="1" />
+    <circle cx="0" cy="-19" r="1.5" fill="#c8922a" />
+    <path d="M-10 0 L-13 3 M10 0 L13 3" stroke="#8b2020" stroke-width="1" fill="none" />
+    <path d="M-8 -7 L-11 -4 M8 -7 L11 -4" stroke="#8b2020" stroke-width="1" fill="none" />
+  </g>
+
+  
+  <rect x="60" y="660" width="1416" height="2" fill="#9a7a3a" opacity="0.4" />
+  <rect x="60" y="980" width="1416" height="2" fill="#9a7a3a" opacity="0.4" />
+
+  
+  <rect x="60" y="672" width="1416" height="290" fill="#e0ccaa" opacity="0.6" rx="2" />
+
+  
+  <text text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" fill="#2a1a05">
+    <tspan x="768" y="752" font-size="88" font-weight="bold" letter-spacing="6">Buddhism in China</tspan>
+  </text>
+
+  
+  <text x="768" y="800" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#5a3a0a" font-style="italic" letter-spacing="3" opacity="0.85">
+    Two Millennia of Integration Along the Silk Road
+  </text>
+
+  
+  <g opacity="0.6">
+    <line x1="300" y1="820" x2="688" y2="820" stroke="#9a7a3a" stroke-width="1.5" />
+    <circle cx="768" cy="820" r="5" fill="#c8a84a" stroke="#7a5c1e" stroke-width="1" />
+    <line x1="848" y1="820" x2="1236" y2="820" stroke="#9a7a3a" stroke-width="1.5" />
+  </g>
+
+  
+  <text x="768" y="870" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#5a3a0a" opacity="0.75" letter-spacing="2">
+    Han Dynasty · 1st Century CE · Confucianism · Taoism · Mahayana
+  </text>
+
+  
+  <text x="110" y="760" font-family="serif" font-size="72" fill="#7a5c1e" opacity="0.25" font-weight="bold">佛教</text>
+  <text x="1330" y="760" font-family="serif" font-size="72" fill="#7a5c1e" opacity="0.25" font-weight="bold">中國</text>
+
+  
+  <g fill="#9a7a3a" opacity="0.5">
+    <circle cx="680" cy="900" r="3" />
+    <circle cx="710" cy="900" r="3" />
+    <circle cx="740" cy="900" r="3" />
+    <circle cx="768" cy="900" r="4" />
+    <circle cx="796" cy="900" r="3" />
+    <circle cx="826" cy="900" r="3" />
+    <circle cx="856" cy="900" r="3" />
+  </g>
+
+  
+  <g font-family="Georgia,serif" font-size="11" fill="#5a3a0a" opacity="0.75" font-style="italic">
+    <text x="1160" y="430" text-anchor="middle">68 CE</text>
+  </g>
+
+  
+  <line x1="60" y1="655" x2="1476" y2="655" stroke="#7a5c1e" stroke-width="1.5" opacity="0.5" />
+
+</svg>

@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Tourism Industry in South Korea – Banner Illustration</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8c4c8" />
+      <stop offset="100%" stop-color="#8fb4bc" />
+    </linearGradient>
+    <linearGradient id="overlayGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a2a1a" stop-opacity="0.72" />
+      <stop offset="55%" stop-color="#1a2a1a" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#1a2a1a" stop-opacity="0.0" />
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b8a87a" stroke-width="0.4" stroke-opacity="0.4" />
+    </pattern>
+    <pattern id="hatch2" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(-30)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#8fb4bc" stroke-width="0.5" stroke-opacity="0.3" />
+    </pattern>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7650" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7650" stroke-width="1" />
+
+  
+  
+  <g stroke="#8a7650" stroke-width="1.5" fill="none">
+    <line x1="18" y1="58" x2="58" y2="18" />
+    <line x1="18" y1="80" x2="80" y2="18" />
+    <circle cx="18" cy="18" r="8" fill="#8a7650" />
+    <circle cx="1518" cy="18" r="8" fill="#8a7650" />
+    <circle cx="18" cy="1006" r="8" fill="#8a7650" />
+    <circle cx="1518" cy="1006" r="8" fill="#8a7650" />
+    <line x1="1518" y1="58" x2="1478" y2="18" />
+    <line x1="1518" y1="80" x2="1456" y2="18" />
+    <line x1="18" y1="966" x2="58" y2="1006" />
+    <line x1="18" y1="944" x2="80" y2="1006" />
+    <line x1="1518" y1="966" x2="1478" y2="1006" />
+    <line x1="1518" y1="944" x2="1456" y2="1006" />
+  </g>
+
+  
+  <ellipse cx="1000" cy="512" rx="600" ry="520" fill="url(#seaGrad)" opacity="0.85" />
+  <ellipse cx="1000" cy="512" rx="600" ry="520" fill="url(#hatch2)" />
+
+  
+  
+  <path d="M680,180 L780,160 L900,170 L980,200 L1050,190 L1100,220 L1120,260 L1100,310 L1050,340 L1020,390 L980,420 L950,470 L920,490 L900,540 L860,560 L820,540 L780,520 L740,510 L700,490 L660,460 L640,420 L620,380 L610,330 L630,280 L650,230 Z" fill="#c9b882" stroke="#8a7650" stroke-width="1.5" />
+  
+  <path d="M680,180 L780,160 L900,170 L980,200 L1050,190 L1100,220 L1120,260 L1100,310 L1050,340 L1020,390 L980,420 L950,470 L920,490 L900,540 L860,560 L820,540 L780,520 L740,510 L700,490 L660,460 L640,420 L620,380 L610,330 L630,280 L650,230 Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <path d="M1060,310 L1090,300 L1110,320 L1118,355 L1110,395 L1100,430 L1085,460 L1070,490 L1050,510 L1035,530 L1025,515 L1030,490 L1040,460 L1048,430 L1050,400 L1048,365 L1052,335 Z" fill="#b8704a" stroke="#7a4a28" stroke-width="2" />
+  <path d="M1060,310 L1090,300 L1110,320 L1118,355 L1110,395 L1100,430 L1085,460 L1070,490 L1050,510 L1035,530 L1025,515 L1030,490 L1040,460 L1048,430 L1050,400 L1048,365 L1052,335 Z" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <path d="M1048,400 L1060,395 L1075,398 L1085,415 L1090,440 L1082,465 L1068,488 L1052,508 L1038,524 L1028,512 L1032,490 L1042,462 L1047,435 Z" fill="#c85a38" stroke="#7a3a18" stroke-width="2.5" />
+
+  
+  <ellipse cx="1040" cy="548" rx="18" ry="10" fill="#c85a38" stroke="#7a3a18" stroke-width="1.5" />
+
+  
+  <path d="M1145,280 L1165,270 L1180,290 L1175,330 L1160,360 L1148,380 L1138,365 L1135,335 L1138,305 Z" fill="#c9b882" stroke="#8a7650" stroke-width="1.5" />
+  <path d="M1160,400 L1178,390 L1192,410 L1195,445 L1185,480 L1170,510 L1155,530 L1145,515 L1148,480 L1152,450 L1155,420 Z" fill="#c9b882" stroke="#8a7650" stroke-width="1.5" />
+
+  
+  <g stroke="#7a9ea8" stroke-width="0.7" opacity="0.5">
+    <path d="M940,380 Q970,400 990,430" fill="none" />
+    <path d="M930,410 Q960,430 975,460" fill="none" />
+    <path d="M920,440 Q945,460 960,490" fill="none" />
+    <path d="M915,470 Q935,490 945,520" fill="none" />
+  </g>
+
+  
+  <g stroke="#7a9ea8" stroke-width="0.7" opacity="0.5">
+    <path d="M1095,320 Q1120,340 1138,360" fill="none" />
+    <path d="M1098,360 Q1122,380 1136,400" fill="none" />
+    <path d="M1095,395 Q1118,415 1130,440" fill="none" />
+  </g>
+
+  
+  <g transform="translate(1380,200)">
+    <circle r="65" fill="#e8dfc8" stroke="#8a7650" stroke-width="1.5" />
+    <circle r="50" fill="none" stroke="#8a7650" stroke-width="0.8" />
+    <circle r="8" fill="#8a7650" />
+    
+    <polygon points="0,-55 -8,-20 8,-20" fill="#5a3a18" />
+    
+    <polygon points="0,55 -8,20 8,20" fill="#8a7650" />
+    
+    <polygon points="55,0 20,-8 20,8" fill="#8a7650" />
+    
+    <polygon points="-55,0 -20,-8 -20,8" fill="#8a7650" />
+    
+    <line x1="0" y1="-55" x2="0" y2="-45" stroke="#8a7650" stroke-width="1" />
+    <line x1="38" y1="-38" x2="32" y2="-32" stroke="#8a7650" stroke-width="1" />
+    <line x1="38" y1="38" x2="32" y2="32" stroke="#8a7650" stroke-width="1" />
+    <line x1="-38" y1="-38" x2="-32" y2="-32" stroke="#8a7650" stroke-width="1" />
+    <line x1="-38" y1="38" x2="-32" y2="32" stroke="#8a7650" stroke-width="1" />
+    
+    <text x="0" y="-62" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#3a2808">N</text>
+    <text x="0" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#5a3a18">S</text>
+    <text x="68" y="5" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#5a3a18">E</text>
+    <text x="-68" y="5" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#5a3a18">W</text>
+  </g>
+
+  
+  <g transform="translate(1072,390)">
+    <ellipse cx="0" cy="22" rx="8" ry="3" fill="#3a2808" opacity="0.3" />
+    <path d="M0,0 C-12,0 -12,18 0,18 C12,18 12,0 0,0 Z" fill="#c02020" />
+    <circle cx="0" cy="7" r="4" fill="#fff" opacity="0.85" />
+    <path d="M-14,-2 Q0,-18 14,-2" fill="none" stroke="#c02020" stroke-width="1.5" opacity="0.5" />
+  </g>
+  <text x="1090" y="390" font-family="Georgia,serif" font-size="13" fill="#3a1808" font-style="italic">Seoul</text>
+
+  
+  <g transform="translate(1130,600)" fill="#5a3a18" opacity="0.7">
+    
+    <rect x="-4" y="0" width="8" height="40" fill="#5a3a18" />
+    <polygon points="-18,-8 18,-8 12,0 -12,0" fill="#7a4a28" />
+    <polygon points="-14,-20 14,-20 10,-8 -10,-8" fill="#7a4a28" />
+    <polygon points="-10,-30 10,-30 7,-20 -7,-20" fill="#7a4a28" />
+    <polygon points="-6,-38 6,-38 4,-30 -4,-30" fill="#7a4a28" />
+    <polygon points="-3,-44 3,-44 2,-38 -2,-38" fill="#5a3a18" />
+  </g>
+
+  
+  <g transform="translate(1200,630)" fill="#5a3a18" opacity="0.5">
+    <rect x="-3" y="0" width="6" height="30" fill="#5a3a18" />
+    <polygon points="-13,-6 13,-6 9,0 -9,0" fill="#7a4a28" />
+    <polygon points="-10,-15 10,-15 7,-6 -7,-6" fill="#7a4a28" />
+    <polygon points="-7,-22 7,-22 5,-15 -5,-15" fill="#7a4a28" />
+    <polygon points="-4,-28 4,-28 3,-22 -3,-22" fill="#5a3a18" />
+  </g>
+
+  
+  <rect x="18" y="18" width="750" height="988" fill="url(#overlayGrad)" />
+
+  
+  <g stroke="#8a7650" stroke-width="0.6" opacity="0.25">
+    <line x1="18" y1="256" x2="1518" y2="256" />
+    <line x1="18" y1="512" x2="1518" y2="512" />
+    <line x1="18" y1="768" x2="1518" y2="768" />
+    <line x1="384" y1="18" x2="384" y2="1006" />
+    <line x1="768" y1="18" x2="768" y2="1006" />
+    <line x1="1152" y1="18" x2="1152" y2="1006" />
+  </g>
+
+  
+  <g stroke="#c85a38" stroke-width="1.2" fill="none" opacity="0.45">
+    <path d="M1075,450 Q900,380 700,420 Q500,460 350,410" />
+    <path d="M1075,470 Q900,405 700,445 Q500,485 350,435" />
+    <path d="M1075,490 Q900,430 700,470 Q500,510 350,460" />
+  </g>
+
+  
+  <circle cx="700" cy="435" r="6" fill="#c85a38" opacity="0.7" />
+  <circle cx="850" cy="408" r="5" fill="#c85a38" opacity="0.6" />
+  <circle cx="560" cy="452" r="4" fill="#c85a38" opacity="0.5" />
+
+  
+  <g transform="translate(985,470)" fill="#3a5a68" opacity="0.6">
+    <ellipse cx="0" cy="0" rx="18" ry="6" />
+    <rect x="-2" y="-18" width="3" height="18" />
+    <polygon points="-2,-18 -14,-6 -2,-8" fill="#5a7a88" />
+  </g>
+
+  
+  <rect x="68" y="680" width="340" height="120" rx="4" fill="#3a2808" fill-opacity="0.35" stroke="#c9b882" stroke-width="1" />
+  <text x="238" y="710" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#e8dfc8" letter-spacing="2">INTERNATIONAL VISITORS</text>
+  <text x="238" y="755" text-anchor="middle" font-family="Georgia,serif" font-size="42" font-weight="bold" fill="#e8d090">17.5M</text>
+  <text x="238" y="782" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#c9b882" font-style="italic">2019 pre-pandemic peak</text>
+
+  
+  <rect x="440" y="680" width="280" height="120" rx="4" fill="#3a2808" fill-opacity="0.35" stroke="#c9b882" stroke-width="1" />
+  <text x="580" y="710" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#e8dfc8" letter-spacing="2">FOREIGN EARNINGS</text>
+  <text x="580" y="755" text-anchor="middle" font-family="Georgia,serif" font-size="42" font-weight="bold" fill="#e8d090">$21.5B</text>
+  <text x="580" y="782" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#c9b882" font-style="italic">USD revenue</text>
+
+  
+  <text x="68" y="260" font-family="Georgia,serif" font-size="22" fill="#c9b882" letter-spacing="5" opacity="0.9">ATLAS OF</text>
+  <text x="68" y="340" font-family="Georgia,serif" font-size="76" font-weight="bold" fill="#f0e8c8" letter-spacing="1" style="text-shadow:none;">Tourism</text>
+  <text x="68" y="420" font-family="Georgia,serif" font-size="76" font-weight="bold" fill="#f0e8c8" letter-spacing="1">Industry in</text>
+  <text x="68" y="500" font-family="Georgia,serif" font-size="84" font-weight="bold" fill="#e8c870" letter-spacing="2">South Korea</text>
+
+  
+  <line x1="68" y1="540" x2="480" y2="540" stroke="#c9b882" stroke-width="1" />
+  <text x="68" y="570" font-family="Georgia,serif" font-size="18" fill="#d4c090" letter-spacing="3" font-style="italic">Korean Wave · Hallyu · K-Drama · K-Pop</text>
+  <line x1="68" y1="590" x2="480" y2="590" stroke="#c9b882" stroke-width="1" />
+
+  
+  <text x="68" y="638" font-family="Georgia,serif" font-size="14" fill="#a89870" letter-spacing="2">KOREA TOURISM ORGANIZATION</text>
+
+  
+  <rect x="18" y="940" width="1500" height="4" fill="#8a7650" opacity="0.5" />
+
+  
+  <text x="768" y="985" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#6a5230" letter-spacing="4">SERVICE ECONOMY · CULTURAL HERITAGE · HOSPITALITY · TRANSPORT</text>
+
+</svg>

@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>South Korea–North Korea Relations and Inter-Korean Diplomacy</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8bfcc" />
+      <stop offset="100%" stop-color="#8fadb8" />
+    </linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#c4b89a" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComponentTransfer in="blended">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6a4a" stroke-width="2.5" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a6a4a" stroke-width="0.8" />
+
+  
+  
+  <ellipse cx="560" cy="512" rx="280" ry="380" fill="url(#seaGrad)" opacity="0.7" />
+  
+  <ellipse cx="1080" cy="512" rx="260" ry="360" fill="url(#seaGrad)" opacity="0.7" />
+
+  
+  
+  <path d="     M 760,180     L 800,175     L 850,185     L 900,200     L 930,220     L 950,260     L 960,310     L 955,360     L 960,400     L 970,440     L 980,480     L 970,520     L 960,560     L 940,600     L 920,640     L 890,680     L 860,710     L 840,730     L 820,745     L 800,750     L 785,748     L 770,740     L 755,725     L 745,705     L 740,680     L 745,650     L 750,620     L 745,590     L 735,570     L 720,560     L 710,540     L 700,510     L 695,480     L 690,440     L 685,400     L 680,360     L 675,310     L 670,270     L 668,230     L 680,200     L 710,185     Z   " fill="#c8b87a" stroke="#7a6a4a" stroke-width="2" />
+
+  
+  
+  <line x1="660" y1="462" x2="975" y2="462" stroke="#8b1a1a" stroke-width="4" stroke-dasharray="14,6" />
+
+  
+  <path d="     M 760,180     L 800,175     L 850,185     L 900,200     L 930,220     L 950,260     L 960,310     L 955,360     L 960,400     L 970,440     L 975,462     L 660,462     L 668,430     L 668,390     L 670,340     L 672,290     L 675,250     L 685,215     L 710,190     Z   " fill="#b5a868" stroke="#7a6a4a" stroke-width="1.5" />
+
+  
+  <path d="     M 660,462     L 975,462     L 970,490     L 960,530     L 945,570     L 925,610     L 900,648     L 870,680     L 845,705     L 820,726     L 800,738     L 782,736     L 763,725     L 750,708     L 742,685     L 745,655     L 748,625     L 742,596     L 730,572     L 716,548     L 703,520     L 696,490     Z   " fill="#d4c47e" stroke="#7a6a4a" stroke-width="1.5" />
+
+  
+  <path d="M 700,250 Q 750,240 800,245 Q 840,248 870,260" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.6" />
+  <path d="M 690,290 Q 750,280 810,283 Q 860,285 900,298" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.6" />
+  <path d="M 685,330 Q 740,320 800,322 Q 850,323 910,338" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.6" />
+  <path d="M 683,370 Q 730,362 790,363 Q 845,362 940,378" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.6" />
+  <path d="M 683,410 Q 730,405 790,404 Q 850,402 950,415" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.6" />
+
+  
+  <path d="M 680,490 Q 730,484 790,485 Q 850,484 950,495" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.5" />
+  <path d="M 695,530 Q 750,525 810,524 Q 860,522 930,533" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.5" />
+  <path d="M 710,570 Q 760,565 820,562 Q 870,559 910,568" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.5" />
+  <path d="M 730,610 Q 775,605 830,600 Q 875,596 895,604" fill="none" stroke="#9a8a50" stroke-width="1" opacity="0.5" />
+
+  
+  <ellipse cx="770" cy="790" rx="30" ry="16" fill="#c8b87a" stroke="#7a6a4a" stroke-width="1.5" />
+
+  
+  
+  <circle cx="750" cy="370" r="8" fill="#8b1a1a" stroke="#f5f0e0" stroke-width="2" />
+  
+  <circle cx="795" cy="498" r="10" fill="#1a4a8b" stroke="#f5f0e0" stroke-width="2.5" />
+
+  
+  <text x="768" y="368" font-family="Georgia, serif" font-size="13" fill="#3a2a10" font-style="italic">Pyongyang</text>
+  <text x="810" y="502" font-family="Georgia, serif" font-size="13" fill="#3a2a10" font-style="italic">Seoul</text>
+
+  
+  <text x="730" y="330" font-family="Georgia, serif" font-size="19" fill="#3d2d10" font-weight="bold" letter-spacing="1">NORTH</text>
+  <text x="726" y="350" font-family="Georgia, serif" font-size="19" fill="#3d2d10" font-weight="bold" letter-spacing="1">KOREA</text>
+
+  <text x="744" y="620" font-family="Georgia, serif" font-size="19" fill="#3d2d10" font-weight="bold" letter-spacing="1">SOUTH</text>
+  <text x="744" y="642" font-family="Georgia, serif" font-size="19" fill="#3d2d10" font-weight="bold" letter-spacing="1">KOREA</text>
+
+  
+  <rect x="680" y="444" width="120" height="18" rx="3" fill="#8b1a1a" opacity="0.85" />
+  <text x="688" y="457" font-family="Georgia, serif" font-size="11" fill="#f5f0e0" font-weight="bold" letter-spacing="1">— DMZ —</text>
+
+  
+  <text x="990" y="467" font-family="Georgia, serif" font-size="12" fill="#8b1a1a" font-style="italic">38th Parallel</text>
+
+  
+  <path d="M 600,170 L 680,165 L 760,180 L 710,190 L 668,200 L 650,190 Z" fill="#b8aa7a" stroke="#7a6a4a" stroke-width="1" />
+  <text x="595" y="183" font-family="Georgia, serif" font-size="14" fill="#5a4a28" font-style="italic">China</text>
+
+  
+  
+  <path d="M 1060,360 Q 1090,350 1120,355 Q 1160,362 1180,390 Q 1190,415 1175,440 Q 1155,460 1120,465 Q 1085,468 1060,450 Q 1040,432 1042,405 Q 1043,378 1060,360 Z" fill="#c8b87a" stroke="#7a6a4a" stroke-width="1.5" />
+  <text x="1070" y="415" font-family="Georgia, serif" font-size="14" fill="#5a4a28" font-style="italic">Japan</text>
+
+  
+  <g transform="translate(200, 200)">
+    
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#7a6a4a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="52" fill="#e8dfc8" stroke="#7a6a4a" stroke-width="0.8" />
+    
+    <polygon points="0,-52 -8,-20 8,-20" fill="#3d2d10" />
+    <polygon points="0,52 -8,20 8,20" fill="#7a6a4a" />
+    <polygon points="-52,0 -20,-8 -20,8" fill="#7a6a4a" />
+    <polygon points="52,0 20,-8 20,8" fill="#7a6a4a" />
+    
+    <polygon points="0,-52 -5,-35 5,-35" fill="#7a6a4a" transform="rotate(45)" />
+    <polygon points="0,-52 -5,-35 5,-35" fill="#7a6a4a" transform="rotate(135)" />
+    <polygon points="0,-52 -5,-35 5,-35" fill="#7a6a4a" transform="rotate(225)" />
+    <polygon points="0,-52 -5,-35 5,-35" fill="#7a6a4a" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="6" fill="#3d2d10" />
+    <circle cx="0" cy="0" r="3" fill="#e8dfc8" />
+    
+    <text x="-5" y="-56" font-family="Georgia, serif" font-size="16" fill="#3d2d10" font-weight="bold">N</text>
+    <text x="-5" y="72" font-family="Georgia, serif" font-size="13" fill="#7a6a4a">S</text>
+    <text x="-66" y="4" font-family="Georgia, serif" font-size="13" fill="#7a6a4a">W</text>
+    <text x="56" y="4" font-family="Georgia, serif" font-size="13" fill="#7a6a4a">E</text>
+  </g>
+
+  
+  
+  <path d="M 795,498 Q 820,480 820,462 Q 820,444 795,430 Q 770,418 750,372" fill="none" stroke="#c8873a" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.8" />
+  <text x="830" y="468" font-family="Georgia, serif" font-size="11" fill="#8b5a1a" font-style="italic" transform="rotate(-5,830,468)">Diplomatic</text>
+  <text x="830" y="481" font-family="Georgia, serif" font-size="11" fill="#8b5a1a" font-style="italic" transform="rotate(-5,830,481)">Engagement</text>
+
+  
+  <rect x="60" y="380" width="180" height="200" rx="4" fill="#e0d5b0" stroke="#7a6a4a" stroke-width="1.5" opacity="0.9" />
+  <text x="75" y="402" font-family="Georgia, serif" font-size="13" fill="#3d2d10" font-weight="bold">LEGEND</text>
+  <line x1="75" y1="408" x2="225" y2="408" stroke="#7a6a4a" stroke-width="1" />
+
+  
+  <circle cx="88" cy="425" r="6" fill="#1a4a8b" stroke="#f5f0e0" stroke-width="1.5" />
+  <text x="102" y="429" font-family="Georgia, serif" font-size="12" fill="#3d2d10">Capital (South)</text>
+
+  <circle cx="88" cy="447" r="6" fill="#8b1a1a" stroke="#f5f0e0" stroke-width="1.5" />
+  <text x="102" y="451" font-family="Georgia, serif" font-size="12" fill="#3d2d10">Capital (North)</text>
+
+  <line x1="78" y1="469" x2="98" y2="469" stroke="#8b1a1a" stroke-width="3" stroke-dasharray="6,3" />
+  <text x="102" y="473" font-family="Georgia, serif" font-size="12" fill="#3d2d10">DMZ / 38th Par.</text>
+
+  <rect x="78" y="484" width="16" height="10" rx="1" fill="#b5a868" stroke="#7a6a4a" stroke-width="1" />
+  <text x="102" y="494" font-family="Georgia, serif" font-size="12" fill="#3d2d10">North Korea</text>
+
+  <rect x="78" y="502" width="16" height="10" rx="1" fill="#d4c47e" stroke="#7a6a4a" stroke-width="1" />
+  <text x="102" y="512" font-family="Georgia, serif" font-size="12" fill="#3d2d10">South Korea</text>
+
+  <line x1="78" y1="524" x2="98" y2="524" stroke="#c8873a" stroke-width="2" stroke-dasharray="5,3" />
+  <text x="102" y="528" font-family="Georgia, serif" font-size="12" fill="#3d2d10">Diplomacy</text>
+
+  
+  <rect x="1100" y="300" width="380" height="420" rx="4" fill="#e0d5b0" stroke="#7a6a4a" stroke-width="1.5" opacity="0.9" />
+  <text x="1120" y="328" font-family="Georgia, serif" font-size="14" fill="#3d2d10" font-weight="bold" letter-spacing="1">KEY PERIODS</text>
+  <line x1="1120" y1="336" x2="1460" y2="336" stroke="#7a6a4a" stroke-width="1" />
+
+  <text x="1120" y="358" font-family="Georgia, serif" font-size="12" fill="#1a4a8b" font-weight="bold">1998–2008</text>
+  <text x="1120" y="374" font-family="Georgia, serif" font-size="12" fill="#3d2d10">Sunshine Policy</text>
+  <text x="1120" y="389" font-family="Georgia, serif" font-size="11" fill="#5a4a28" font-style="italic">(Kim Dae-jung / Roh Moo-hyun)</text>
+
+  <line x1="1120" y1="400" x2="1460" y2="400" stroke="#9a8a70" stroke-width="0.5" />
+
+  <text x="1120" y="420" font-family="Georgia, serif" font-size="12" fill="#8b1a1a" font-weight="bold">2008–2017</text>
+  <text x="1120" y="436" font-family="Georgia, serif" font-size="12" fill="#3d2d10">Pressure &amp; Sanctions</text>
+  <text x="1120" y="451" font-family="Georgia, serif" font-size="11" fill="#5a4a28" font-style="italic">(Lee Myung-bak / Park Geun-hye)</text>
+
+  <line x1="1120" y1="462" x2="1460" y2="462" stroke="#9a8a70" stroke-width="0.5" />
+
+  <text x="1120" y="482" font-family="Georgia, serif" font-size="12" fill="#1a4a8b" font-weight="bold">2017–2022</text>
+  <text x="1120" y="498" font-family="Georgia, serif" font-size="12" fill="#3d2d10">New Korea Peninsula Policy</text>
+  <text x="1120" y="513" font-family="Georgia, serif" font-size="11" fill="#5a4a28" font-style="italic">(Moon Jae-in)</text>
+
+  <line x1="1120" y1="524" x2="1460" y2="524" stroke="#9a8a70" stroke-width="0.5" />
+
+  <text x="1120" y="544" font-family="Georgia, serif" font-size="12" fill="#8b1a1a" font-weight="bold">2022–present</text>
+  <text x="1120" y="560" font-family="Georgia, serif" font-size="12" fill="#3d2d10">Security-First Approach</text>
+  <text x="1120" y="575" font-family="Georgia, serif" font-size="11" fill="#5a4a28" font-style="italic">(Yoon Suk-yeol)</text>
+
+  <line x1="1120" y1="590" x2="1460" y2="590" stroke="#9a8a70" stroke-width="0.5" />
+
+  <text x="1120" y="612" font-family="Georgia, serif" font-size="11" fill="#3d2d10" font-style="italic">DPRK Leadership:</text>
+  <text x="1120" y="628" font-family="Georgia, serif" font-size="11" fill="#3d2d10">Kim Il-sung → Kim Jong-il</text>
+  <text x="1120" y="644" font-family="Georgia, serif" font-size="11" fill="#3d2d10">→ Kim Jong-un (2011–present)</text>
+
+  
+  <g transform="translate(1380, 650)">
+    <ellipse cx="0" cy="0" rx="22" ry="32" fill="none" stroke="#8b1a1a" stroke-width="2" />
+    <ellipse cx="0" cy="0" rx="22" ry="32" fill="none" stroke="#8b1a1a" stroke-width="2" transform="rotate(60)" />
+    <ellipse cx="0" cy="0" rx="22" ry="32" fill="none" stroke="#8b1a1a" stroke-width="2" transform="rotate(120)" />
+    <circle cx="0" cy="0" r="5" fill="#8b1a1a" />
+  </g>
+  <text x="1340" y="698" font-family="Georgia, serif" font-size="10" fill="#8b1a1a" font-style="italic">Nuclear issue</text>
+
+  
+  <rect x="60" y="840" width="1416" height="150" rx="4" fill="#3d2d10" opacity="0.88" />
+  <text x="150" y="895" font-family="Georgia, serif" font-size="44" fill="#f5f0e0" font-weight="bold" letter-spacing="1">South Korea–North Korea Relations</text>
+  <text x="150" y="945" font-family="Georgia, serif" font-size="32" fill="#c8b87a" letter-spacing="2">and Inter-Korean Diplomacy</text>
+
+  
+  <text x="150" y="975" font-family="Georgia, serif" font-size="16" fill="#a09070" font-style="italic" letter-spacing="1">Government &amp; Politics  ·  Atlas of Contemporary Diplomacy</text>
+
+  
+  
+  <g transform="translate(40,40)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#7a6a4a" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="30" stroke="#7a6a4a" stroke-width="2" />
+    <rect x="2" y="2" width="12" height="12" fill="none" stroke="#7a6a4a" stroke-width="1" />
+  </g>
+  
+  <g transform="translate(1496,40)">
+    <line x1="0" y1="0" x2="-30" y2="0" stroke="#7a6a4a" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="30" stroke="#7a6a4a" stroke-width="2" />
+    <rect x="-14" y="2" width="12" height="12" fill="none" stroke="#7a6a4a" stroke-width="1" />
+  </g>
+  
+  <g transform="translate(40,984)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#7a6a4a" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="-30" stroke="#7a6a4a" stroke-width="2" />
+    <rect x="2" y="-14" width="12" height="12" fill="none" stroke="#7a6a4a" stroke-width="1" />
+  </g>
+  
+  <g transform="translate(1496,984)">
+    <line x1="0" y1="0" x2="-30" y2="0" stroke="#7a6a4a" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="-30" stroke="#7a6a4a" stroke-width="2" />
+    <rect x="-14" y="-14" width="12" height="12" fill="none" stroke="#7a6a4a" stroke-width="1" />
+  </g>
+
+  
+  <text x="430" y="500" font-family="Georgia, serif" font-size="17" fill="#4a6a7a" font-style="italic" opacity="0.8">Yellow</text>
+  <text x="440" y="520" font-family="Georgia, serif" font-size="17" fill="#4a6a7a" font-style="italic" opacity="0.8">Sea</text>
+  <text x="985" y="500" font-family="Georgia, serif" font-size="16" fill="#4a6a7a" font-style="italic" opacity="0.8">Sea of</text>
+  <text x="978" y="520" font-family="Georgia, serif" font-size="16" fill="#4a6a7a" font-style="italic" opacity="0.8">Japan</text>
+  <text x="970" y="537" font-family="Georgia, serif" font-size="11" fill="#4a6a7a" font-style="italic" opacity="0.8">(East Sea)</text>
+
+  
+  <line x1="60" y1="462" x2="1476" y2="462" stroke="#8b1a1a" stroke-width="0.5" opacity="0.25" />
+
+  
+  <g transform="translate(350, 760)">
+    <line x1="0" y1="0" x2="100" y2="0" stroke="#3d2d10" stroke-width="2" />
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#3d2d10" stroke-width="1.5" />
+    <line x1="50" y1="-4" x2="50" y2="4" stroke="#3d2d10" stroke-width="1.5" />
+    <line x1="100" y1="-5" x2="100" y2="5" stroke="#3d2d10" stroke-width="1.5" />
+    <rect x="0" y="-2" width="50" height="4" fill="#3d2d10" />
+    <text x="-5" y="18" font-family="Georgia, serif" font-size="10" fill="#3d2d10">0</text>
+    <text x="40" y="18" font-family="Georgia, serif" font-size="10" fill="#3d2d10">100</text>
+    <text x="85" y="18" font-family="Georgia, serif" font-size="10" fill="#3d2d10">200 km</text>
+  </g>
+</svg>

@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Jeju Island — Volcanic Landscape, Tourism, and History</title>
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#d4c9a8" />
+      <stop offset="100%" stop-color="#b8a87a" />
+    </radialGradient>
+    <radialGradient id="sea" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#7a9eb0" />
+      <stop offset="100%" stop-color="#4e7a8e" />
+    </radialGradient>
+    <radialGradient id="volcano" cx="50%" cy="80%" r="60%">
+      <stop offset="0%" stop-color="#6b5a3e" />
+      <stop offset="100%" stop-color="#3d2f1a" />
+    </radialGradient>
+    <radialGradient id="crater" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7ab3c4" />
+      <stop offset="100%" stop-color="#5a8fa0" />
+    </radialGradient>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#9a8a6a" stroke-width="0.5" opacity="0.3" />
+    </pattern>
+    <pattern id="seaLines" patternUnits="userSpaceOnUse" width="20" height="8">
+      <line x1="0" y1="4" x2="20" y2="4" stroke="#4e7a8e" stroke-width="0.7" opacity="0.25" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#sky)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#6b5533" stroke-width="3" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#6b5533" stroke-width="1" />
+
+  
+  <rect x="21" y="480" width="1494" height="523" fill="url(#sea)" opacity="0.6" />
+  <rect x="21" y="480" width="1494" height="523" fill="url(#seaLines)" />
+
+  
+  <line x1="30" y1="540" x2="1506" y2="540" stroke="#4e7a8e" stroke-width="0.6" opacity="0.4" />
+  <line x1="30" y1="600" x2="1506" y2="600" stroke="#4e7a8e" stroke-width="0.6" opacity="0.4" />
+  <line x1="30" y1="660" x2="1506" y2="660" stroke="#4e7a8e" stroke-width="0.6" opacity="0.4" />
+  <line x1="30" y1="720" x2="1506" y2="720" stroke="#4e7a8e" stroke-width="0.6" opacity="0.4" />
+  <line x1="30" y1="780" x2="1506" y2="780" stroke="#4e7a8e" stroke-width="0.6" opacity="0.4" />
+  <line x1="30" y1="840" x2="1506" y2="840" stroke="#4e7a8e" stroke-width="0.6" opacity="0.4" />
+  <line x1="30" y1="900" x2="1506" y2="900" stroke="#4e7a8e" stroke-width="0.6" opacity="0.4" />
+  <line x1="30" y1="960" x2="1506" y2="960" stroke="#4e7a8e" stroke-width="0.6" opacity="0.4" />
+
+  
+  <line x1="300" y1="30" x2="300" y2="994" stroke="#6b5533" stroke-width="0.5" opacity="0.25" />
+  <line x1="600" y1="30" x2="600" y2="994" stroke="#6b5533" stroke-width="0.5" opacity="0.25" />
+  <line x1="900" y1="30" x2="900" y2="994" stroke="#6b5533" stroke-width="0.5" opacity="0.25" />
+  <line x1="1200" y1="30" x2="1200" y2="994" stroke="#6b5533" stroke-width="0.5" opacity="0.25" />
+  
+  <line x1="30" y1="200" x2="1506" y2="200" stroke="#6b5533" stroke-width="0.5" opacity="0.2" />
+  <line x1="30" y1="400" x2="1506" y2="400" stroke="#6b5533" stroke-width="0.5" opacity="0.2" />
+
+  
+  <path d="M1050,30 L1100,80 L1130,150 L1120,220 L1090,290 L1060,350 L1040,400 L1010,430 L990,460 L980,480 L960,480 L950,460 L960,430 L980,400 L990,370 L1000,330 L1010,280 L1010,220 L1000,160 L990,100 L980,60 L1000,30 Z" fill="#c4b48a" stroke="#8a7050" stroke-width="1.5" opacity="0.7" />
+
+  
+  <ellipse cx="768" cy="650" rx="460" ry="200" fill="#c8b878" stroke="#6b5533" stroke-width="2.5" />
+  
+  <ellipse cx="768" cy="650" rx="460" ry="200" fill="url(#hatch)" opacity="0.4" />
+  
+  <path d="M310,650 Q340,590 400,600 Q430,570 480,590 Q510,560 560,575 Q600,550 650,560 Q700,540 768,545 Q830,540 880,555 Q930,548 970,565 Q1020,560 1060,580 Q1110,575 1150,600 Q1190,615 1220,645 Q1230,680 1220,710 Q1190,750 1150,760 Q1100,780 1050,775 Q1000,785 950,780 Q900,790 850,785 Q800,795 768,792 Q720,795 680,785 Q630,790 580,775 Q530,785 480,770 Q430,760 390,740 Q340,720 315,690 Z" fill="#b8a865" stroke="#6b5533" stroke-width="2" />
+
+  
+  
+  <path d="M540,660 Q620,560 700,510 Q740,490 768,480 Q800,490 840,510 Q920,560 1000,660 Z" fill="#7a6848" stroke="#4a3820" stroke-width="2" />
+  
+  <path d="M620,640 Q690,555 740,520 Q768,505 800,520 Q850,555 920,640 Z" fill="#6b5a3e" stroke="#4a3820" stroke-width="1.5" />
+  
+  <path d="M680,620 Q730,565 755,540 Q768,530 782,540 Q810,565 858,620 Z" fill="#5a4a30" stroke="#3a2a10" stroke-width="1.5" />
+  
+  <path d="M730,575 Q755,548 768,540 Q782,548 807,575 Q790,570 768,568 Q748,570 730,575 Z" fill="#e8e0d0" stroke="#c0b090" stroke-width="1" />
+  
+  <ellipse cx="768" cy="552" rx="22" ry="10" fill="url(#crater)" />
+  
+  <path d="M620,640 Q660,610 700,595 Q740,582 768,580 Q800,582 840,595 Q880,610 920,640 Z" fill="#7a8a50" opacity="0.5" />
+
+  
+  <polygon points="420,670 435,645 450,670" fill="#7a6848" stroke="#4a3820" stroke-width="1" />
+  <polygon points="500,690 512,670 524,690" fill="#7a6848" stroke="#4a3820" stroke-width="1" />
+  <polygon points="1030,670 1042,650 1054,670" fill="#7a6848" stroke="#4a3820" stroke-width="1" />
+  <polygon points="1090,690 1100,672 1110,690" fill="#7a6848" stroke="#4a3820" stroke-width="1" />
+  <polygon points="600,700 610,682 620,700" fill="#7a6848" stroke="#4a3820" stroke-width="1" />
+  <polygon points="920,700 932,680 944,700" fill="#7a6848" stroke="#4a3820" stroke-width="1" />
+
+  
+  <g transform="translate(200,780)" opacity="0.85">
+    
+    <ellipse cx="0" cy="0" rx="12" ry="20" fill="#3a5570" stroke="#2a3a50" stroke-width="1.5" />
+    
+    <circle cx="0" cy="-28" r="10" fill="#c8a878" stroke="#6b5533" stroke-width="1.5" />
+    
+    <line x1="-12" y1="-5" x2="-25" y2="15" stroke="#3a5570" stroke-width="4" stroke-linecap="round" />
+    <line x1="12" y1="-5" x2="25" y2="15" stroke="#3a5570" stroke-width="4" stroke-linecap="round" />
+    
+    <ellipse cx="0" cy="-27" rx="8" ry="6" fill="none" stroke="#2a3a50" stroke-width="1.5" />
+    
+    <ellipse cx="0" cy="25" rx="15" ry="8" fill="none" stroke="#8a7050" stroke-width="1.5" stroke-dasharray="3,2" />
+  </g>
+
+  
+  <g transform="translate(280,820)" opacity="0.7">
+    <ellipse cx="0" cy="0" rx="10" ry="17" fill="#3a5570" stroke="#2a3a50" stroke-width="1" />
+    <circle cx="0" cy="-24" r="8" fill="#c8a878" stroke="#6b5533" stroke-width="1" />
+    <line x1="-10" y1="-4" x2="-20" y2="12" stroke="#3a5570" stroke-width="3" stroke-linecap="round" />
+    <line x1="10" y1="-4" x2="20" y2="12" stroke="#3a5570" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  
+  <g transform="translate(1380,870)">
+    <circle cx="0" cy="0" r="70" fill="#d4c9a8" stroke="#6b5533" stroke-width="1.5" opacity="0.9" />
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#6b5533" stroke-width="0.8" />
+    <circle cx="0" cy="0" r="12" fill="#d4c9a8" stroke="#6b5533" stroke-width="1" />
+    
+    <polygon points="0,-55 -8,-15 0,-10 8,-15" fill="#8a3020" />
+    <polygon points="0,55 -8,15 0,10 8,15" fill="#6b5533" />
+    <polygon points="-55,0 -15,-8 -10,0 -15,8" fill="#6b5533" />
+    <polygon points="55,0 15,-8 10,0 15,8" fill="#6b5533" />
+    
+    <polygon points="-39,-39 -10,-20 -16,-8 -28,-16" fill="#9a8060" opacity="0.7" />
+    <polygon points="39,-39 10,-20 16,-8 28,-16" fill="#9a8060" opacity="0.7" />
+    <polygon points="-39,39 -10,20 -16,8 -28,16" fill="#9a8060" opacity="0.7" />
+    <polygon points="39,39 10,20 16,8 28,16" fill="#9a8060" opacity="0.7" />
+    
+    <text x="0" y="-60" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#3a2a10" font-weight="bold">N</text>
+    <text x="0" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3a2a10">S</text>
+    <text x="72" y="5" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3a2a10">E</text>
+    <text x="-72" y="5" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3a2a10">W</text>
+  </g>
+
+  
+  <g transform="translate(80,950)">
+    <line x1="0" y1="0" x2="120" y2="0" stroke="#3a2a10" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#3a2a10" stroke-width="2" />
+    <line x1="60" y1="-4" x2="60" y2="4" stroke="#3a2a10" stroke-width="1.5" />
+    <line x1="120" y1="-6" x2="120" y2="6" stroke="#3a2a10" stroke-width="2" />
+    <rect x="0" y="-6" width="60" height="6" fill="#3a2a10" opacity="0.7" />
+    <rect x="60" y="-6" width="60" height="6" fill="#d4c9a8" />
+    <text x="0" y="20" font-family="Georgia,serif" font-size="11" fill="#3a2a10">0</text>
+    <text x="50" y="20" font-family="Georgia,serif" font-size="11" fill="#3a2a10">25 km</text>
+    <text x="105" y="20" font-family="Georgia,serif" font-size="11" fill="#3a2a10">50</text>
+  </g>
+
+  
+  <g stroke="#7a9eb0" stroke-width="1.5" fill="none" opacity="0.5">
+    <path d="M100,830 Q120,820 140,830 Q160,840 180,830" />
+    <path d="M220,860 Q240,850 260,860 Q280,870 300,860" />
+    <path d="M100,880 Q120,870 140,880 Q160,890 180,880" />
+    <path d="M350,810 Q370,800 390,810 Q410,820 430,810" />
+    <path d="M1280,840 Q1300,830 1320,840 Q1340,850 1360,840" />
+    <path d="M1280,880 Q1300,870 1320,880 Q1340,890 1360,880" />
+  </g>
+
+  
+  <text x="400" y="900" font-family="Georgia,serif" font-size="18" fill="#2a4a5a" letter-spacing="4" opacity="0.7" text-anchor="middle" font-style="italic">KOREA  STRAIT</text>
+
+  
+  <text x="768" y="500" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#e8e0d0" font-weight="bold" letter-spacing="1">HALLASAN 1,947m</text>
+
+  
+  <text x="768" y="740" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#3a2a10" letter-spacing="2" opacity="0.8">제주도</text>
+
+  
+  <rect x="50" y="50" width="860" height="170" rx="8" fill="#c8b878" opacity="0.88" stroke="#6b5533" stroke-width="2" />
+  <rect x="56" y="56" width="848" height="158" rx="5" fill="none" stroke="#8a7050" stroke-width="1" />
+  
+  <circle cx="70" cy="70" r="6" fill="#6b5533" opacity="0.6" />
+  <circle cx="900" cy="70" r="6" fill="#6b5533" opacity="0.6" />
+  <circle cx="70" cy="208" r="6" fill="#6b5533" opacity="0.6" />
+  <circle cx="900" cy="208" r="6" fill="#6b5533" opacity="0.6" />
+
+  
+  <text x="80" y="115" font-family="Georgia,serif" font-size="52" fill="#2a1a08" font-weight="bold" letter-spacing="1">Jeju Island</text>
+  <text x="80" y="170" font-family="Georgia,serif" font-size="26" fill="#4a3820" letter-spacing="2">Volcanic Landscape, Tourism &amp; History</text>
+  <text x="80" y="205" font-family="Georgia,serif" font-size="16" fill="#6b5533" letter-spacing="1" font-style="italic">South Korea's Largest Island · UNESCO World Heritage · 제주특별자치도</text>
+
+  
+  <circle cx="1150" cy="780" r="14" fill="#d4803a" stroke="#8a5020" stroke-width="1.5" />
+  <circle cx="1185" cy="795" r="12" fill="#d4803a" stroke="#8a5020" stroke-width="1.5" />
+  <circle cx="1220" cy="778" r="13" fill="#d4803a" stroke="#8a5020" stroke-width="1.5" />
+  <line x1="1150" y1="766" x2="1155" y2="758" stroke="#4a7020" stroke-width="2" />
+  <line x1="1185" y1="783" x2="1188" y2="775" stroke="#4a7020" stroke-width="2" />
+  <line x1="1220" y1="765" x2="1224" y2="757" stroke="#4a7020" stroke-width="2" />
+  <ellipse cx="1158" cy="755" rx="10" ry="5" fill="#5a8020" opacity="0.8" transform="rotate(-20,1158,755)" />
+  <ellipse cx="1192" cy="772" rx="9" ry="4" fill="#5a8020" opacity="0.8" transform="rotate(15,1192,772)" />
+
+  
+  <line x1="1000" y1="480" x2="900" y2="560" stroke="#6b5533" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.6" />
+
+  
+  <text x="1506" y="1000" text-anchor="end" font-family="Georgia,serif" font-size="11" fill="#6b5533" opacity="0.7">33°N · 126°E</text>
+
+</svg>

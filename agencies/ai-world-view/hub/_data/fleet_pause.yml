@@ -1,0 +1,18 @@
+# =============================================================================
+# fleet_pause.yml — the global growth kill-switch (ADR-0003 fleet-pause-killswitch).
+# =============================================================================
+# The single, model-free way to halt ALL growth org-wide for incident response
+# (a cost runaway, a bad framework edit, a feedback loop) WITHOUT editing
+# workflows. orchestrate.yml reads this before dispatching any growth tick.
+#
+#   paused: true   → orchestrate skips all growth dispatch (the daily ledger
+#                    refresh still runs; nothing mutates content).
+#   paused: false  → normal growth.
+#
+# A human sets paused: true for an incident; resuming is a human edit back to
+# false. As the ADR-0003 fleet is built, the cost-governor may set this on a hard
+# budget breach (alert-before-act), and every mutating agent will read it first.
+paused: false
+reason: ""
+set_by: ""
+set_at: ""

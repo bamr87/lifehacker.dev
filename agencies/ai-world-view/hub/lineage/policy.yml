@@ -1,0 +1,78 @@
+# =============================================================================
+# Canonical growth policy for the ai-world-view lineage.
+# =============================================================================
+# The hub (ai-world-view/ai-world-view.github.io) orchestrates growth CENTRALLY:
+# it pulls each country's seed from lineage/seeds/<country>.md, clones the
+# country repo, runs the 3-tier content escalation, and pushes the new content
+# back. The country repos hold only content + a GitHub Pages _config.yml +
+# .claude/ + telemetry/.
+#
+# Read by: .github/workflows/orchestrate.yml (cadence) and
+# .github/workflows/grow-lineage.yml (model tiers + preview).
+
+# 3-tier content escalation — the model used for each pass of a growth tick.
+models:
+  generate: "claude-haiku-5-5"    # tier 1: plan + research + draft new topic files
+  expand:   "claude-sonnet-5-5"   # tier 2: deepen each draft (detail, sources, links)
+  enhance:  "claude-opus-5-5"     # tier 3: polish, build indices, sync seed, publish
+  distill:  "claude-opus-5-5"     # rare: lineage meta-review on the frontier model
+
+# Perpetual growth — every repo grows forever and is never consolidated,
+# archived, or deleted. New eras spawn tangentially from the frontier; the hub
+# decides when and what.
+lifecycle:
+  perpetual: true
+  consolidate: false
+  archive: false
+  delete: false
+
+# Cadence (UTC). The hub's orchestrate workflow runs daily; repos_per_run
+# bounds how many members it grows per run (stalest-first rotation, so every
+# member still grows perpetually — just not all of them every day). With one
+# member today the throttle is a no-op, but the keys keep this policy aligned
+# with the year-of-ai reference hub as the roster grows. Set 0 to grow every
+# member every run.
+cadence:
+  cron: "30 5 * * *"
+  ticks_per_run: 1
+  repos_per_run: 4
+  selection: stalest-first
+
+# Tangential spawning (year-of-ai ADR-0002; automation: ADR-0007 — see the
+# reference hub's lineage/decisions/). The atlas WIDENS on its own: when every
+# member country's Evolution Log shows at least frontier_ticks growth cycles
+# (so the newest member has itself matured) and the roster is below
+# max_members, the daily orchestrate run dispatches plant-lineage.yml — a
+# DECIDE pass authors a new tangential country seed (adjacent geography /
+# strong historical ties, from the model's own knowledge) and the
+# deterministic planter (scripts/plant-lineage.rb) creates the member repo.
+# Stateless and self-regulating: each spawn adds a 0-tick member that must
+# mature before the next spawn can fire. Set enabled: false to stop all
+# automatic spawning (the manual two-key path stays available).
+spawn:
+  enabled: true
+  frontier_ticks: 12     # growth cycles EVERY member (incl. the newest) must log
+  max_members: 16        # hard roster cap — auto-spawn never exceeds it
+
+# Preview banners — the grow tick's "Illustrate" step (grow-lineage.yml) runs
+# scripts/claude_svg_banner.py over each tick's new content: Claude AUTHORS a
+# content-aware SVG banner per article (~12 KB vector, no rasterizer), stamped
+# into `preview:` front matter so member pages ship cover art + og:images.
+# Falls back to the zer0-image-generator engine's deterministic `local` SVG
+# when no Claude credential is available. Org-wide art direction lives HERE
+# (not in the workflow) — same policy-over-workflow rule as the model tiers.
+preview:
+  enabled: true
+  model: "claude-sonnet-5-5"      # authoring model for the SVG banner
+  style: "flat vector world-map cartography, muted earth tones, atlas-plate composition, clean geographic shapes"
+  style_modifiers: "engraved-map texture, compass-rose accents, parchment undertone, restrained palette"
+  output_dir: "assets/images/previews"
+
+# Auth (org secrets the hub grow workflow needs):
+#   CLAUDE_CODE_OAUTH_TOKEN  — primary auth for every model pass (subscription)
+#   ANTHROPIC_API_KEY        — fallback auth
+#   LIFECYCLE_PAT            — push content/telemetry back into each country repo
+auth:
+  primary: CLAUDE_CODE_OAUTH_TOKEN
+  fallback: ANTHROPIC_API_KEY
+  cross_repo: LIFECYCLE_PAT

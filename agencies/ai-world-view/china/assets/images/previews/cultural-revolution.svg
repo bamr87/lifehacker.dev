@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Cultural Revolution — China 1966–1976 Atlas Banner</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="50%" stop-color="#ddd0b0" />
+      <stop offset="100%" stop-color="#c9bc9a" />
+    </linearGradient>
+
+    
+    <linearGradient id="redBanner" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b1a1a" />
+      <stop offset="50%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#8b1a1a" />
+    </linearGradient>
+
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="transparent" />
+      <stop offset="100%" stop-color="rgba(60,40,20,0.45)" />
+    </radialGradient>
+
+    
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b8a882" stroke-width="0.4" opacity="0.5" />
+    </pattern>
+
+    
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#b8a882" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+
+    
+    <clipPath id="starClip">
+      <rect width="1536" height="1024" />
+    </clipPath>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#7a6840" stroke-width="5" rx="2" />
+  
+  <rect x="40" y="40" width="1456" height="944" fill="none" stroke="#7a6840" stroke-width="1.5" rx="1" />
+  
+  <line x1="28" y1="80" x2="70" y2="80" stroke="#7a6840" stroke-width="1.2" />
+  <line x1="28" y1="944" x2="70" y2="944" stroke="#7a6840" stroke-width="1.2" />
+  <line x1="1466" y1="80" x2="1508" y2="80" stroke="#7a6840" stroke-width="1.2" />
+  <line x1="1466" y1="944" x2="1508" y2="944" stroke="#7a6840" stroke-width="1.2" />
+  <line x1="80" y1="28" x2="80" y2="70" stroke="#7a6840" stroke-width="1.2" />
+  <line x1="944" y1="28" x2="944" y2="70" stroke="#7a6840" stroke-width="1.2" />
+  <line x1="80" y1="954" x2="80" y2="996" stroke="#7a6840" stroke-width="1.2" />
+  <line x1="944" y1="954" x2="944" y2="996" stroke="#7a6840" stroke-width="1.2" />
+
+  
+  <g transform="translate(820, 100) scale(0.72)" opacity="0.85">
+    
+    <path d="       M 120,80       L 200,60 L 290,50 L 380,70 L 460,55 L 520,80 L 560,120       L 600,100 L 650,130 L 680,110 L 720,140 L 710,180       L 750,200 L 760,240 L 720,270 L 740,310 L 720,360       L 680,380 L 700,420 L 660,450 L 680,490 L 640,530       L 600,560 L 560,580 L 520,610 L 480,640 L 440,660       L 400,650 L 360,680 L 320,660 L 290,700 L 250,720       L 210,700 L 180,680 L 140,710 L 100,690 L 70,660       L 50,620 L 60,580 L 40,540 L 60,500 L 50,460       L 80,420 L 70,380 L 100,340 L 80,300 L 100,260       L 80,220 L 100,180 L 120,140 Z     " fill="#c5b48a" stroke="#7a6840" stroke-width="2" stroke-linejoin="round" />
+
+    
+    <path d="M 200,150 Q 350,130 480,200 Q 550,240 580,320 Q 600,400 560,480" fill="none" stroke="#a89060" stroke-width="1.2" opacity="0.5" />
+    <path d="M 150,300 Q 280,280 400,320 Q 500,350 560,430" fill="none" stroke="#a89060" stroke-width="1" opacity="0.4" />
+    <path d="M 100,450 Q 250,420 380,460 Q 460,490 480,560" fill="none" stroke="#a89060" stroke-width="1" opacity="0.4" />
+
+    
+    <path d="M 520,610 Q 480,540 460,480 Q 430,420 380,380 Q 320,340 260,320 Q 200,300 150,310 Q 110,320 90,360" fill="none" stroke="#7a9ab0" stroke-width="2.5" opacity="0.6" />
+    
+    <path d="M 380,250 Q 340,230 300,250 Q 240,270 200,250 Q 160,230 130,240" fill="none" stroke="#7a9ab0" stroke-width="1.8" opacity="0.5" />
+
+    
+    <circle cx="420" cy="160" r="9" fill="#8b1a1a" stroke="#fff" stroke-width="1.5" />
+    <circle cx="420" cy="160" r="3" fill="#fff" />
+    
+    <text x="434" y="155" font-family="Georgia, serif" font-size="18" fill="#4a3520" font-style="italic">Beijing</text>
+
+    
+    <rect x="405" y="170" width="30" height="4" fill="#8b1a1a" opacity="0.6" />
+
+    
+    <circle cx="590" cy="430" r="7" fill="#8b1a1a" stroke="#fff" stroke-width="1.2" />
+    <text x="604" y="426" font-family="Georgia, serif" font-size="16" fill="#4a3520" font-style="italic">Shanghai</text>
+
+    
+    <path d="M 300,200 L 350,280 L 300,360 L 250,400" fill="none" stroke="#7a6840" stroke-width="0.8" stroke-dasharray="6,4" opacity="0.5" />
+    <path d="M 450,300 L 480,380 L 450,460 L 400,500" fill="none" stroke="#7a6840" stroke-width="0.8" stroke-dasharray="6,4" opacity="0.5" />
+    <path d="M 350,420 L 420,450 L 470,500" fill="none" stroke="#7a6840" stroke-width="0.8" stroke-dasharray="6,4" opacity="0.5" />
+
+    
+    <ellipse cx="680" cy="520" rx="22" ry="40" fill="#c5b48a" stroke="#7a6840" stroke-width="1.5" transform="rotate(-15,680,520)" />
+  </g>
+
+  
+  <g transform="translate(1380, 820)">
+    
+    <circle cx="0" cy="0" r="72" fill="none" stroke="#7a6840" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="68" fill="none" stroke="#7a6840" stroke-width="0.6" />
+    
+    <polygon points="0,-68 -8,-20 0,-10 8,-20" fill="#8b1a1a" />
+    <polygon points="0,68 -8,20 0,10 8,20" fill="#7a6840" />
+    <polygon points="-68,0 -20,-8 -10,0 -20,8" fill="#7a6840" />
+    <polygon points="68,0 20,-8 10,0 20,8" fill="#7a6840" />
+    
+    <polygon points="0,-68 -5,-30 0,-22 5,-30" fill="#a89060" transform="rotate(45)" />
+    <polygon points="0,-68 -5,-30 0,-22 5,-30" fill="#a89060" transform="rotate(135)" />
+    <polygon points="0,-68 -5,-30 0,-22 5,-30" fill="#a89060" transform="rotate(225)" />
+    <polygon points="0,-68 -5,-30 0,-22 5,-30" fill="#a89060" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="8" fill="#7a6840" />
+    <circle cx="0" cy="0" r="4" fill="#ddd0b0" />
+    
+    <text x="0" y="-78" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#4a3520">N</text>
+    <text x="0" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4a3520">S</text>
+    <text x="-84" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4a3520">W</text>
+    <text x="84" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4a3520">E</text>
+  </g>
+
+  
+  <g transform="translate(440, 512)" opacity="0.08">
+    <polygon points="0,-280 66,-91 264,-86 107,33 163,228 0,111 -163,228 -107,33 -264,-86 -66,-91" fill="#c0392b" />
+  </g>
+
+  
+  
+  <rect x="60" y="60" width="680" height="8" fill="url(#redBanner)" rx="1" />
+
+  
+  <g transform="translate(310, 420)" opacity="0.12">
+    <polygon points="0,-180 42,-58 169,-55 68,21 105,146 0,71 -105,146 -68,21 -169,-55 -42,-58" fill="#8b1a1a" />
+  </g>
+
+  
+  <text x="100" y="210" font-family="Georgia, 'Times New Roman', serif" font-size="100" font-weight="bold" fill="#1a0d00" letter-spacing="2" opacity="0.9">Cultural</text>
+  <text x="100" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="100" font-weight="bold" fill="#8b1a1a" letter-spacing="2">Revolution</text>
+
+  
+  <rect x="100" y="360" width="560" height="3" fill="#7a6840" />
+  <rect x="100" y="367" width="560" height="1" fill="#7a6840" opacity="0.4" />
+
+  
+  <text x="100" y="420" font-family="Georgia, 'Times New Roman', serif" font-size="38" fill="#4a3520" letter-spacing="8">1966 — 1976</text>
+
+  
+  <rect x="100" y="455" width="320" height="44" fill="#8b1a1a" rx="2" />
+  <text x="260" y="484" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#f0e8d0" letter-spacing="3">CHINA · HISTORY</text>
+
+  
+  <text x="100" y="560" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#5a4530" font-style="italic">Mao Zedong · Lin Biao · Zhou Enlai · Jiang Qing · Deng Xiaoping</text>
+
+  
+  <g fill="#c0392b">
+    <polygon points="100,610 104,622 116,622 107,630 110,642 100,635 90,642 93,630 84,622 96,622" transform="scale(0.6) translate(67,370)" />
+    <polygon points="100,610 104,622 116,622 107,630 110,642 100,635 90,642 93,630 84,622 96,622" transform="scale(0.6) translate(117,370)" />
+    <polygon points="100,610 104,622 116,622 107,630 110,642 100,635 90,642 93,630 84,622 96,622" transform="scale(0.6) translate(167,370)" />
+    <polygon points="100,610 104,622 116,622 107,630 110,642 100,635 90,642 93,630 84,622 96,622" transform="scale(0.6) translate(217,370)" />
+    <polygon points="100,610 104,622 116,622 107,630 110,642 100,635 90,642 93,630 84,622 96,622" transform="scale(0.6) translate(267,370)" />
+  </g>
+
+  
+  <g transform="translate(90, 620)" opacity="0.7">
+    
+    
+    <rect x="30" y="80" width="50" height="90" rx="4" fill="#8b1a1a" />
+    
+    <circle cx="55" cy="60" r="28" fill="#c5a87a" />
+    
+    <ellipse cx="55" cy="42" rx="32" ry="10" fill="#4a6030" />
+    <rect x="23" y="32" width="64" height="12" rx="3" fill="#4a6030" />
+    
+    <polygon points="55,30 57,36 63,36 58,40 60,46 55,43 50,46 52,40 47,36 53,36" fill="#c0392b" />
+    
+    <rect x="75" y="90" width="38" height="28" rx="3" fill="#c0392b" />
+    <rect x="76" y="91" width="36" height="26" rx="2" fill="#d32f2f" stroke="#8b1a1a" stroke-width="1" />
+    
+    <line x1="82" y1="97" x2="106" y2="97" stroke="#f0c000" stroke-width="1.5" />
+    <line x1="82" y1="103" x2="106" y2="103" stroke="#f0c000" stroke-width="1.2" />
+    <line x1="82" y1="109" x2="106" y2="109" stroke="#f0c000" stroke-width="1.2" />
+    
+    <rect x="66" y="88" width="20" height="10" rx="3" fill="#8b1a1a" />
+    
+    <rect x="30" y="165" width="20" height="55" rx="3" fill="#4a6030" />
+    <rect x="58" y="165" width="20" height="55" rx="3" fill="#4a6030" />
+    
+    <ellipse cx="40" cy="222" rx="14" ry="6" fill="#2a2a2a" />
+    <ellipse cx="68" cy="222" rx="14" ry="6" fill="#2a2a2a" />
+    
+    <rect x="28" y="160" width="54" height="8" rx="1" fill="#6b4c20" />
+    <rect x="49" y="159" width="10" height="10" rx="1" fill="#c8a020" />
+  </g>
+
+  
+  <g transform="translate(200, 640)" opacity="0.55">
+    <rect x="30" y="80" width="46" height="85" rx="4" fill="#8b1a1a" />
+    <circle cx="53" cy="62" r="24" fill="#c5a87a" />
+    <ellipse cx="53" cy="46" rx="28" ry="9" fill="#4a6030" />
+    <rect x="25" y="37" width="56" height="11" rx="3" fill="#4a6030" />
+    <polygon points="53,33 55,39 61,39 56,43 58,49 53,46 48,49 50,43 45,39 51,39" fill="#c0392b" />
+    <rect x="28" y="158" width="18" height="50" rx="3" fill="#4a6030" />
+    <rect x="52" y="158" width="18" height="50" rx="3" fill="#4a6030" />
+    <ellipse cx="37" cy="210" rx="12" ry="5" fill="#2a2a2a" />
+    <ellipse cx="61" cy="210" rx="12" ry="5" fill="#2a2a2a" />
+    
+    <rect x="68" y="92" width="12" height="55" rx="4" fill="#8b1a1a" />
+    <rect x="62" y="86" width="24" height="18" rx="5" fill="#c5a87a" />
+  </g>
+
+  
+  
+  <g transform="translate(310, 730)">
+    <rect x="0" y="0" width="360" height="50" fill="#8b1a1a" rx="2" />
+    <rect x="0" y="52" width="360" height="4" fill="#c0392b" rx="1" />
+    
+    <text x="180" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#f0e000" letter-spacing="5" font-weight="bold">革命万岁</text>
+    
+    <text x="180" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#7a6840" font-style="italic">"Long live the revolution"</text>
+  </g>
+
+  
+  <g opacity="0.25" stroke="#7a6840" stroke-width="0.8" fill="none">
+    
+    <path d="M 820,200 Q 1200,195 1500,200" />
+    <path d="M 820,330 Q 1200,325 1500,330" />
+    <path d="M 820,460 Q 1200,455 1500,460" />
+    <path d="M 820,590 Q 1200,585 1500,590" />
+    <path d="M 820,720 Q 1200,715 1500,720" />
+    
+    <path d="M 920,100 Q 915,512 920,920" />
+    <path d="M 1050,100 Q 1045,512 1050,920" />
+    <path d="M 1180,100 Q 1175,512 1180,920" />
+    <path d="M 1310,100 Q 1305,512 1310,920" />
+    <path d="M 1440,100 Q 1435,512 1440,920" />
+  </g>
+
+  
+  <g transform="translate(100, 920)">
+    <text x="0" y="-8" font-family="Georgia, serif" font-size="14" fill="#5a4530" font-style="italic">Scale</text>
+    <rect x="0" y="0" width="40" height="8" fill="#4a3520" />
+    <rect x="40" y="0" width="40" height="8" fill="#ddd0b0" stroke="#4a3520" stroke-width="0.8" />
+    <rect x="80" y="0" width="40" height="8" fill="#4a3520" />
+    <rect x="120" y="0" width="40" height="8" fill="#ddd0b0" stroke="#4a3520" stroke-width="0.8" />
+    <text x="0" y="22" font-family="Georgia, serif" font-size="12" fill="#5a4530">0</text>
+    <text x="78" y="22" font-family="Georgia, serif" font-size="12" fill="#5a4530">500</text>
+    <text x="148" y="22" font-family="Georgia, serif" font-size="12" fill="#5a4530">1000 km</text>
+  </g>
+
+  
+  <text x="768" y="978" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#7a6840" letter-spacing="6" font-style="italic">CHINA · HISTORY · 1966–1976</text>
+
+  
+  <rect x="60" y="956" width="680" height="6" fill="url(#redBanner)" rx="1" />
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

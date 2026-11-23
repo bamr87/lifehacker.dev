@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Foreign Trade and Economic Sanctions — DPRK Economy Plate</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc0" />
+      <stop offset="50%" stop-color="#ddd0a8" />
+      <stop offset="100%" stop-color="#c9bc90" />
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00000000" />
+      <stop offset="100%" stop-color="#3a2a1055" />
+    </radialGradient>
+    <pattern id="hatch" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="4" stroke="#8a7545" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#3a2500" flood-opacity="0.35" />
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#1a0e00" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  <rect x="18" y="18" width="1500" height="988" rx="4" fill="none" stroke="#7a6030" stroke-width="6" />
+  <rect x="28" y="28" width="1480" height="968" rx="3" fill="none" stroke="#9a8050" stroke-width="2" />
+  <rect x="32" y="32" width="1472" height="960" rx="2" fill="none" stroke="#7a6030" stroke-width="1" />
+
+  <g stroke="#7a6030" stroke-width="2" fill="none">
+    <line x1="18" y1="60" x2="60" y2="60" /><line x1="60" y1="18" x2="60" y2="60" />
+    <line x1="1476" y1="60" x2="1518" y2="60" /><line x1="1476" y1="18" x2="1476" y2="60" />
+    <line x1="18" y1="964" x2="60" y2="964" /><line x1="60" y1="964" x2="60" y2="1006" />
+    <line x1="1476" y1="964" x2="1518" y2="964" /><line x1="1476" y1="964" x2="1476" y2="1006" />
+  </g>
+
+  <!-- Right imagery panel: trade routes + sanctions seal -->
+  <g transform="translate(1080, 0)">
+    <!-- DPRK node -->
+    <circle cx="0" cy="470" r="30" fill="#6b2a2a" stroke="#3a0a0a" stroke-width="3" filter="url(#softShadow)" />
+    <text x="0" y="476" font-family="Georgia, serif" font-size="16" fill="#f5e8c0" text-anchor="middle" font-weight="bold">DPRK</text>
+
+    <!-- China partner (dominant) -->
+    <line x1="-24" y1="452" x2="-180" y2="300" stroke="#5a7a3a" stroke-width="9" opacity="0.8" />
+    <circle cx="-190" cy="290" r="22" fill="#5a7a3a" stroke="#2a3a10" stroke-width="2" />
+    <text x="-190" y="296" font-family="Georgia, serif" font-size="13" fill="#f5e8c0" text-anchor="middle" font-weight="bold">CN</text>
+    <text x="-190" y="256" font-family="Georgia, serif" font-size="14" fill="#3a2810" text-anchor="middle" font-style="italic">~90%</text>
+
+    <!-- Russia partner (rising since 2022) -->
+    <line x1="-4" y1="440" x2="60" y2="270" stroke="#7a5a2a" stroke-width="5" opacity="0.75" stroke-dasharray="10,6" />
+    <circle cx="66" cy="258" r="18" fill="#7a5a2a" stroke="#3a2a10" stroke-width="2" />
+    <text x="66" y="263" font-family="Georgia, serif" font-size="12" fill="#f5e8c0" text-anchor="middle" font-weight="bold">RU</text>
+    <text x="120" y="248" font-family="Georgia, serif" font-size="13" fill="#5a4030" font-style="italic">2022–</text>
+
+    <!-- severed western trade -->
+    <line x1="-30" y1="490" x2="-150" y2="640" stroke="#8b1a1a" stroke-width="4" opacity="0.5" stroke-dasharray="4,10" />
+    <text x="-150" y="672" font-family="Georgia, serif" font-size="13" fill="#8b1a1a" text-anchor="middle" font-style="italic">blocked</text>
+
+    <!-- Sanctions seal -->
+    <g transform="translate(70, 640)" filter="url(#softShadow)">
+      <circle cx="0" cy="0" r="88" fill="none" stroke="#8b1a1a" stroke-width="6" opacity="0.85" />
+      <circle cx="0" cy="0" r="76" fill="none" stroke="#8b1a1a" stroke-width="2" opacity="0.7" />
+      <text x="0" y="-12" font-family="Georgia, serif" font-size="22" fill="#8b1a1a" text-anchor="middle" font-weight="bold" letter-spacing="1">UN · US</text>
+      <text x="0" y="20" font-family="Georgia, serif" font-size="18" fill="#8b1a1a" text-anchor="middle" letter-spacing="2">SANCTIONS</text>
+      <line x1="-70" y1="70" x2="70" y2="-70" stroke="#8b1a1a" stroke-width="5" opacity="0.85" />
+    </g>
+  </g>
+
+  <!-- Left text panel -->
+  <rect x="50" y="50" width="640" height="924" rx="3" fill="#d8c898" opacity="0.5" />
+  <rect x="50" y="50" width="640" height="924" fill="url(#hatch)" opacity="0.4" />
+  <line x1="710" y1="60" x2="710" y2="964" stroke="#7a6030" stroke-width="3" />
+  <line x1="715" y1="60" x2="715" y2="964" stroke="#9a8050" stroke-width="1" />
+
+  <text x="370" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="1" filter="url(#textShadow)">Foreign Trade</text>
+  <text x="370" y="216" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="1" filter="url(#textShadow)">&amp; Sanctions</text>
+  <text x="370" y="258" font-family="Georgia, serif" font-size="22" fill="#6a4010" text-anchor="middle" font-style="italic" letter-spacing="1">Democratic People's Republic of Korea</text>
+
+  <line x1="110" y1="285" x2="630" y2="285" stroke="#7a6030" stroke-width="2" />
+  <line x1="140" y1="290" x2="600" y2="290" stroke="#9a8050" stroke-width="1" />
+
+  <g font-family="Georgia, serif">
+    <text x="110" y="345" font-size="19" fill="#3a2810" font-weight="bold">Top partner:</text>
+    <text x="630" y="345" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">China (~90% of trade)</text>
+    <line x1="110" y1="362" x2="630" y2="362" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="408" font-size="19" fill="#3a2810" font-weight="bold">Peak trade:</text>
+    <text x="630" y="408" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">~$7 bn (2011–2012)</text>
+    <line x1="110" y1="425" x2="630" y2="425" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="471" font-size="19" fill="#3a2810" font-weight="bold">UN sanctions:</text>
+    <text x="630" y="471" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">Res. 1718 (2006) → 2397 (2017)</text>
+    <line x1="110" y1="488" x2="630" y2="488" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="534" font-size="19" fill="#3a2810" font-weight="bold">Cyber theft:</text>
+    <text x="630" y="534" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">est. $2–3 bn (Lazarus Group)</text>
+    <line x1="110" y1="551" x2="630" y2="551" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+  </g>
+
+  <rect x="110" y="600" width="520" height="290" rx="3" fill="#4a3a2a" stroke="#2a1a0a" stroke-width="2" filter="url(#softShadow)" opacity="0.92" />
+  <text x="370" y="644" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="2">ISOLATION &amp; EVASION</text>
+  <line x1="150" y1="662" x2="590" y2="662" stroke="#c8a870" stroke-width="1" opacity="0.6" />
+  <text x="370" y="700" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">Soviet collapse (1991) → famine → China dependence</text>
+  <text x="370" y="730" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">coal, iron, textile &amp; seafood exports banned (2017)</text>
+  <text x="370" y="760" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">ship-to-ship transfers · shell firms · labor export</text>
+  <text x="370" y="790" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">Kaesong closed 2016 · COVID border shut 2020–2023</text>
+  <text x="370" y="826" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">Russia realignment &amp; arms-for-aid (2022–2024)</text>
+  <text x="370" y="864" font-family="Georgia, serif" font-size="13" fill="#c8a870" text-anchor="middle">chronic hard-currency shortage, endemic poverty</text>
+
+  <text x="370" y="945" font-family="Georgia, serif" font-size="16" fill="#8a6030" text-anchor="middle" font-style="italic" letter-spacing="1">Economy</text>
+
+  <text x="1400" y="985" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#8a7550" font-style="italic" opacity="0.6">Atlas Plate · DPRK · Korean Peninsula</text>
+
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

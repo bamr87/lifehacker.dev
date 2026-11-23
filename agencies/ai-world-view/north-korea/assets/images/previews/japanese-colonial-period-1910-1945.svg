@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Japanese Colonial Period (1910–1945) — Atlas Map Banner</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="50%" stop-color="#d9cfa8" />
+      <stop offset="100%" stop-color="#c8ba90" />
+    </linearGradient>
+
+    
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8bfcc" />
+      <stop offset="100%" stop-color="#7fa0b0" />
+    </linearGradient>
+
+    
+    <linearGradient id="koreaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0392b" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#96281b" stop-opacity="0.85" />
+    </linearGradient>
+
+    
+    <linearGradient id="japanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b6e4e" />
+      <stop offset="100%" stop-color="#6b5035" />
+    </linearGradient>
+
+    
+    <linearGradient id="chinaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b5a47a" />
+      <stop offset="100%" stop-color="#9a8a62" />
+    </linearGradient>
+
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.35" />
+    </radialGradient>
+
+    
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6">
+      <line x1="0" y1="6" x2="6" y2="0" stroke="#00000012" stroke-width="0.8" />
+    </pattern>
+
+    
+    <pattern id="seaHatch" patternUnits="userSpaceOnUse" width="8" height="8">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#ffffff18" stroke-width="0.7" />
+    </pattern>
+
+    
+    <filter id="textShadow" x="-5%" y="-5%" width="110%" height="130%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#00000055" />
+    </filter>
+
+    
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0d05" stop-opacity="0.82" />
+      <stop offset="100%" stop-color="#0d0600" stop-opacity="0.90" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  
+  <rect x="320" y="80" width="1150" height="870" rx="6" fill="url(#seaGrad)" opacity="0.85" />
+  <rect x="320" y="80" width="1150" height="870" rx="6" fill="url(#seaHatch)" />
+
+  
+  <g stroke="#ffffff28" stroke-width="0.8" fill="none">
+    <line x1="320" y1="210" x2="1470" y2="210" />
+    <line x1="320" y1="340" x2="1470" y2="340" />
+    <line x1="320" y1="470" x2="1470" y2="470" />
+    <line x1="320" y1="600" x2="1470" y2="600" />
+    <line x1="320" y1="730" x2="1470" y2="730" />
+    
+    <line x1="500" y1="80" x2="500" y2="950" />
+    <line x1="680" y1="80" x2="680" y2="950" />
+    <line x1="860" y1="80" x2="860" y2="950" />
+    <line x1="1040" y1="80" x2="1040" y2="950" />
+    <line x1="1220" y1="80" x2="1220" y2="950" />
+    <line x1="1400" y1="80" x2="1400" y2="950" />
+  </g>
+
+  
+  <path d="M320,80 L750,80 L780,130 L820,160 L840,220 L830,290 L800,340 L780,390 L760,430 L740,480 L720,530 L700,580 L690,640 L680,700 L670,760 L665,820 L660,880 L650,950 L320,950 Z" fill="url(#chinaGrad)" stroke="#7a6845" stroke-width="1.5" />
+  <path d="M320,80 L750,80 L780,130 L820,160 L840,220 L830,290 L800,340 L780,390 L760,430 L740,480 L720,530 L700,580 L690,640 L680,700 L670,760 L665,820 L660,880 L650,950 L320,950 Z" fill="url(#hatch)" />
+
+  
+  <text x="460" y="310" font-family="Georgia, serif" font-size="22" fill="#4a3820" opacity="0.7" transform="rotate(-5,460,310)" letter-spacing="4">MANCHURIA</text>
+  <text x="400" y="580" font-family="Georgia, serif" font-size="26" fill="#4a3820" opacity="0.65" letter-spacing="3">CHINA</text>
+
+  
+  
+  <path d="     M780,190 L820,185 L860,192 L890,210 L910,240 L920,270 L915,310 L905,350     L895,390 L890,430 L885,470 L875,510 L860,540 L845,570 L830,600     L815,625 L800,650 L785,670 L770,690 L758,710 L748,728 L742,745     L738,760 L740,775 L745,785 L748,792 L742,800 L735,808 L730,820     L728,835 L732,848 L740,858 L745,865 L740,872 L732,878 L728,888     L730,900 L738,912 L742,922 L738,932 L730,940 L720,945 L710,940     L704,928 L706,915 L712,905 L718,895 L715,882 L708,870 L703,858     L706,845 L712,835 L715,825 L710,815 L703,808 L698,798 L700,785     L705,772 L700,758 L692,742 L682,725 L672,708 L660,690 L650,668     L642,645 L638,620 L636,593 L638,565 L642,535 L650,505 L660,472     L672,440 L685,408 L695,376 L700,345 L702,315 L698,285 L690,258     L682,232 L678,210 L682,195 L700,188 L730,186 L760,188 L780,190 Z   " fill="url(#koreaGrad)" stroke="#7a1f1a" stroke-width="2" />
+
+  
+  <path d="     M780,190 L820,185 L860,192 L890,210 L910,240 L920,270 L915,310 L905,350     L895,390 L890,430 L885,470 L875,510 L860,540 L845,570 L830,600     L815,625 L800,650 L785,670 L770,690 L758,710 L748,728 L742,745     L738,760 L740,775 L745,785 L748,792 L742,800 L735,808 L730,820     L728,835 L732,848 L740,858 L745,865 L740,872 L732,878 L728,888     L730,900 L738,912 L742,922 L738,932 L730,940 L720,945 L710,940     L704,928 L706,915 L712,905 L718,895 L715,882 L708,870 L703,858     L706,845 L712,835 L715,825 L710,815 L703,808 L698,798 L700,785     L705,772 L700,758 L692,742 L682,725 L672,708 L660,690 L650,668     L642,645 L638,620 L636,593 L638,565 L642,535 L650,505 L660,472     L672,440 L685,408 L695,376 L700,345 L702,315 L698,285 L690,258     L682,232 L678,210 L682,195 L700,188 L730,186 L760,188 L780,190 Z   " fill="#00000015" />
+
+  
+  <text x="790" y="490" font-family="Georgia, serif" font-size="30" fill="#fff8f0" font-weight="bold" opacity="0.9" transform="rotate(10,790,490)" filter="url(#textShadow)" letter-spacing="2">JOSEON</text>
+  <text x="785" y="525" font-family="Georgia, serif" font-size="20" fill="#fff8f0" opacity="0.75" transform="rotate(10,785,525)" letter-spacing="1">KOREA</text>
+
+  
+  <ellipse cx="720" cy="970" rx="28" ry="16" fill="url(#koreaGrad)" stroke="#7a1f1a" stroke-width="1.5" />
+
+  
+  
+  <path d="     M1100,560 L1130,540 L1160,545 L1185,560 L1200,585 L1205,615     L1198,645 L1185,668 L1170,685 L1152,695 L1132,698 L1112,690     L1096,675 L1086,655 L1082,630 L1085,605 L1092,582 Z   " fill="url(#japanGrad)" stroke="#4a3018" stroke-width="1.5" />
+
+  
+  <path d="     M1180,530 L1220,518 L1258,522 L1285,538 L1298,558 L1295,578     L1278,592 L1255,598 L1228,595 L1202,582 L1185,563 Z   " fill="url(#japanGrad)" stroke="#4a3018" stroke-width="1.5" />
+
+  
+  <path d="     M1155,490 L1180,460 L1210,435 L1248,415 L1285,398 L1320,385     L1355,375 L1385,368 L1410,365 L1435,368 L1455,378 L1468,395     L1470,415 L1460,432 L1442,445 L1418,455 L1392,462 L1365,468     L1338,478 L1315,490 L1295,505 L1278,520 L1260,535 L1238,548     L1215,558 L1192,562 L1170,558 L1150,545 L1140,525 L1142,505 Z   " fill="url(#japanGrad)" stroke="#4a3018" stroke-width="1.5" />
+
+  
+  <text x="1340" y="435" font-family="Georgia, serif" font-size="28" fill="#e8dfc8" font-weight="bold" opacity="0.9" transform="rotate(-15,1340,435)" letter-spacing="2">JAPAN</text>
+
+  
+  
+  <g opacity="0.6">
+    <path d="M1125,580 Q980,520 900,450" stroke="#8b3020" stroke-width="3" fill="none" stroke-dasharray="12,6" marker-end="url(#arrowhead)" />
+  </g>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8b3020" />
+    </marker>
+  </defs>
+
+  
+  <path d="M1108,620 Q950,650 870,700" stroke="#8b3020" stroke-width="2.5" fill="none" stroke-dasharray="10,5" marker-end="url(#arrowhead)" opacity="0.5" />
+
+  
+  <g transform="translate(1380,200)">
+    
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#5a4a2a" stroke-width="1.5" opacity="0.7" />
+    <circle cx="0" cy="0" r="45" fill="#d9cfa8" opacity="0.6" stroke="#5a4a2a" stroke-width="0.8" />
+
+    
+    
+    <polygon points="0,-44 -8,-20 0,-28 8,-20" fill="#8b1a1a" />
+    
+    <polygon points="0,44 -8,20 0,28 8,20" fill="#5a4a2a" />
+    
+    <polygon points="44,0 20,-8 28,0 20,8" fill="#5a4a2a" />
+    
+    <polygon points="-44,0 -20,-8 -28,0 -20,8" fill="#5a4a2a" />
+
+    
+    <polygon points="0,-44 -5,-30 0,-35 5,-30" fill="#5a4a2a" transform="rotate(45)" />
+    <polygon points="0,-44 -5,-30 0,-35 5,-30" fill="#5a4a2a" transform="rotate(135)" />
+    <polygon points="0,-44 -5,-30 0,-35 5,-30" fill="#5a4a2a" transform="rotate(225)" />
+    <polygon points="0,-44 -5,-30 0,-35 5,-30" fill="#5a4a2a" transform="rotate(315)" />
+
+    
+    <circle cx="0" cy="0" r="5" fill="#5a4a2a" />
+    <circle cx="0" cy="0" r="2.5" fill="#8b1a1a" />
+
+    
+    <text x="0" y="-50" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#3a2810" opacity="0.9">N</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#6b5535" stroke-width="4" rx="4" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#9a8050" stroke-width="1.5" rx="3" />
+
+  
+  <g stroke="#6b5535" stroke-width="2" fill="none" opacity="0.8">
+    
+    <path d="M18,58 L18,18 L58,18" />
+    <path d="M26,62 L26,26 L62,26" />
+    
+    <path d="M1518,58 L1518,18 L1478,18" />
+    <path d="M1510,62 L1510,26 L1474,26" />
+    
+    <path d="M18,966 L18,1006 L58,1006" />
+    <path d="M26,962 L26,998 L62,998" />
+    
+    <path d="M1518,966 L1518,1006 L1478,1006" />
+    <path d="M1510,962 L1510,998 L1474,998" />
+  </g>
+
+  
+  <rect x="60" y="680" width="580" height="290" rx="4" fill="url(#panelGrad)" />
+  
+  <rect x="60" y="680" width="580" height="290" rx="4" fill="none" stroke="#c8a86a" stroke-width="1.5" opacity="0.6" />
+
+  
+  <line x1="90" y1="714" x2="610" y2="714" stroke="#c8a86a" stroke-width="1" opacity="0.7" />
+
+  
+  <rect x="88" y="722" width="210" height="30" rx="2" fill="#8b1a1a" opacity="0.85" />
+  <text x="193" y="742" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#f5e8d0" letter-spacing="3">1910 – 1945</text>
+
+  
+  <text x="88" y="800" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#f5e8d0" filter="url(#textShadow)">Japanese</text>
+  <text x="88" y="852" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#f5e8d0" filter="url(#textShadow)">Colonial Period</text>
+
+  
+  <line x1="90" y1="870" x2="610" y2="870" stroke="#c8a86a" stroke-width="1" opacity="0.6" />
+
+  
+  <text x="88" y="898" font-family="Georgia, serif" font-size="17" fill="#c8b888" letter-spacing="2" opacity="0.9">ANNEXATION OF THE KOREAN PENINSULA</text>
+  <text x="88" y="922" font-family="Georgia, serif" font-size="15" fill="#a09060" letter-spacing="1" opacity="0.8">Under the Japanese Empire</text>
+
+  
+  <line x1="90" y1="940" x2="610" y2="940" stroke="#c8a86a" stroke-width="1" opacity="0.5" />
+
+  
+  
+  <circle cx="770" cy="340" r="6" fill="#f5e8d0" stroke="#8b1a1a" stroke-width="1.5" />
+  <text x="780" y="334" font-family="Georgia, serif" font-size="13" fill="#f5e8d0" opacity="0.85">Pyongyang</text>
+
+  
+  <circle cx="795" cy="530" r="8" fill="#f5c020" stroke="#8b1a1a" stroke-width="2" />
+  <text x="810" y="524" font-family="Georgia, serif" font-size="14" fill="#f5e8d0" opacity="0.9" font-weight="bold">Seoul (Hanyang)</text>
+
+  
+  <circle cx="580" cy="195" r="6" fill="#f5e8d0" stroke="#8b1a1a" stroke-width="1.5" />
+  <text x="590" y="190" font-family="Georgia, serif" font-size="13" fill="#3a2810" opacity="0.8">Harbin</text>
+  
+  <text x="565" y="196" font-family="Georgia, serif" font-size="11" fill="#8b1a1a" opacity="0.9">★</text>
+
+  
+  <circle cx="1365" cy="480" r="7" fill="#f5e8d0" stroke="#4a3018" stroke-width="1.5" />
+  <text x="1375" y="474" font-family="Georgia, serif" font-size="13" fill="#e8dfc8" opacity="0.85">Tokyo</text>
+
+  
+  <text x="595" y="620" font-family="Georgia, serif" font-size="19" fill="#e8f0f5" opacity="0.65" transform="rotate(-5,595,620)" letter-spacing="3">YELLOW SEA</text>
+  <text x="940" y="420" font-family="Georgia, serif" font-size="19" fill="#e8f0f5" opacity="0.65" transform="rotate(5,940,420)" letter-spacing="2">SEA OF JAPAN</text>
+  <text x="920" y="850" font-family="Georgia, serif" font-size="17" fill="#e8f0f5" opacity="0.55" letter-spacing="2">EAST CHINA SEA</text>
+
+  
+  <g transform="translate(1380,820)" opacity="0.25">
+    <circle cx="0" cy="0" r="38" fill="#c8a020" stroke="#9a7818" stroke-width="1" />
+    
+    <g stroke="#9a7818" stroke-width="1.5">
+      <line x1="0" y1="-55" x2="0" y2="-42" />
+      <line x1="55" y1="0" x2="42" y2="0" />
+      <line x1="0" y1="55" x2="0" y2="42" />
+      <line x1="-55" y1="0" x2="-42" y2="0" />
+      <line x1="39" y1="-39" x2="30" y2="-30" />
+      <line x1="39" y1="39" x2="30" y2="30" />
+      <line x1="-39" y1="39" x2="-30" y2="30" />
+      <line x1="-39" y1="-39" x2="-30" y2="-30" />
+    </g>
+  </g>
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <rect x="1050" y="875" width="450" height="105" rx="3" fill="#1a0d05" fill-opacity="0.72" stroke="#c8a86a" stroke-width="1" stroke-opacity="0.5" />
+  <text x="1070" y="900" font-family="Georgia, serif" font-size="13" fill="#c8b888" letter-spacing="1" opacity="0.9">LEGEND</text>
+  <line x1="1070" y1="906" x2="1482" y2="906" stroke="#c8a86a" stroke-width="0.8" opacity="0.5" />
+
+  
+  <rect x="1070" y="916" width="16" height="10" fill="url(#koreaGrad)" rx="1" />
+  <text x="1093" y="926" font-family="Georgia, serif" font-size="13" fill="#d0c8a8">Korean Peninsula (under Japanese rule)</text>
+
+  <rect x="1070" y="934" width="16" height="10" fill="url(#japanGrad)" rx="1" />
+  <text x="1093" y="944" font-family="Georgia, serif" font-size="13" fill="#d0c8a8">Japanese Empire (metropole)</text>
+
+  <circle cx="1078" cy="958" r="5" fill="#f5c020" stroke="#8b1a1a" stroke-width="1.5" />
+  <text x="1093" y="962" font-family="Georgia, serif" font-size="13" fill="#d0c8a8">Key colonial-era city</text>
+
+  <text x="1070" y="972" font-family="Georgia, serif" font-size="11" fill="#908060" letter-spacing="0.5">★ Harbin — assassination of Ito Hirobumi, 1909</text>
+
+</svg>

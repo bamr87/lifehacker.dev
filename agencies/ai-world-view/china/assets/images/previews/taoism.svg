@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Taoism – The Way of Heaven and Earth</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b99a" />
+    </radialGradient>
+    <radialGradient id="circleGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2a4a3e" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#2a4a3e" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a6741" />
+      <stop offset="100%" stop-color="#3a5233" />
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a8a9f" />
+      <stop offset="100%" stop-color="#3a6a7f" />
+    </linearGradient>
+    <filter id="tex" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="#c4aa7a" opacity="0.18" />
+
+  
+  <g stroke="#a0906a" stroke-width="0.8" opacity="0.4" fill="none">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <circle cx="768" cy="512" r="420" fill="none" stroke="#8a7355" stroke-width="2" opacity="0.5" />
+  <circle cx="768" cy="512" r="380" fill="none" stroke="#8a7355" stroke-width="0.8" opacity="0.3" />
+  <circle cx="768" cy="512" r="420" fill="url(#circleGrad)" />
+
+  
+  <polygon points="60,820 160,580 260,820" fill="#4a6741" opacity="0.85" />
+  <polygon points="140,820 260,600 380,820" fill="#3a5233" opacity="0.85" />
+  <polygon points="20,820 110,650 200,820" fill="#5a7751" opacity="0.7" />
+  
+  <polygon points="160,580 185,625 135,625" fill="#ddd5bf" opacity="0.8" />
+  <polygon points="260,600 285,645 235,645" fill="#ddd5bf" opacity="0.7" />
+
+  
+  <polygon points="1176,820 1296,560 1416,820" fill="#4a6741" opacity="0.85" />
+  <polygon points="1280,820 1380,610 1480,820" fill="#3a5233" opacity="0.85" />
+  <polygon points="1350,820 1450,660 1536,780 1536,820" fill="#5a7751" opacity="0.7" />
+  <polygon points="1296,560 1321,608 1271,608" fill="#ddd5bf" opacity="0.8" />
+
+  
+  <path d="M0,870 Q200,840 400,870 Q600,900 800,865 Q1000,830 1200,865 Q1380,895 1536,860 L1536,1024 L0,1024 Z" fill="url(#waterGrad)" opacity="0.55" />
+  <path d="M0,900 Q250,870 500,900 Q750,930 1000,895 Q1250,860 1536,890 L1536,1024 L0,1024 Z" fill="#3a6a7f" opacity="0.35" />
+  
+  <path d="M100,885 Q200,875 300,885 Q400,895 500,882" fill="none" stroke="#a0c8d8" stroke-width="1.5" opacity="0.6" />
+  <path d="M600,872 Q720,860 840,872 Q960,884 1080,868" fill="none" stroke="#a0c8d8" stroke-width="1.5" opacity="0.6" />
+  <path d="M1150,878 Q1300,862 1450,878" fill="none" stroke="#a0c8d8" stroke-width="1.5" opacity="0.6" />
+
+  
+  <g fill="#2a4a2a" opacity="0.75">
+    <polygon points="310,820 330,760 350,820" />
+    <polygon points="305,800 330,750 355,800" />
+    <rect x="326" y="820" width="8" height="20" fill="#5a3a1a" />
+    <polygon points="360,820 378,770 396,820" />
+    <polygon points="356,803 378,762 400,803" />
+    <rect x="374" y="820" width="8" height="20" fill="#5a3a1a" />
+  </g>
+  
+  <g fill="#2a4a2a" opacity="0.75">
+    <polygon points="1140,820 1158,770 1176,820" />
+    <polygon points="1136,803 1158,760 1180,803" />
+    <rect x="1154" y="820" width="8" height="20" fill="#5a3a1a" />
+    <polygon points="1100,820 1118,775 1136,820" />
+    <polygon points="1096,804 1118,764 1140,804" />
+    <rect x="1114" y="820" width="8" height="20" fill="#5a3a1a" />
+  </g>
+
+  
+  
+  <circle cx="768" cy="500" r="200" fill="#2a3a2e" opacity="0.9" />
+  
+  <path d="M768,300 A200,200 0 0,1 768,700 A100,100 0 0,1 768,500 A100,100 0 0,0 768,300 Z" fill="#e8dfc8" />
+  
+  <circle cx="768" cy="400" r="30" fill="#2a3a2e" opacity="0.9" />
+  
+  <circle cx="768" cy="600" r="30" fill="#e8dfc8" />
+  
+  <circle cx="768" cy="500" r="200" fill="none" stroke="#8a7355" stroke-width="5" />
+  
+  <circle cx="768" cy="400" r="100" fill="none" stroke="#8a7355" stroke-width="2" opacity="0.4" />
+  <circle cx="768" cy="600" r="100" fill="none" stroke="#8a7355" stroke-width="2" opacity="0.4" />
+
+  
+  <g transform="translate(1380,180)" fill="#5a4a30" stroke="#5a4a30">
+    
+    <polygon points="0,-55 8,-20 -8,-20" fill="#3a2a10" />
+    <polygon points="0,55 8,20 -8,20" fill="#8a7355" />
+    <polygon points="-55,0 -20,8 -20,-8" fill="#8a7355" />
+    <polygon points="55,0 20,8 20,-8" fill="#8a7355" />
+    
+    <polygon points="38,-38 18,-8 8,-18" fill="#a08060" opacity="0.7" />
+    <polygon points="-38,-38 -8,-18 -18,-8" fill="#a08060" opacity="0.7" />
+    <polygon points="38,38 8,18 18,8" fill="#a08060" opacity="0.7" />
+    <polygon points="-38,38 -18,8 -8,18" fill="#a08060" opacity="0.7" />
+    
+    <circle cx="0" cy="0" r="8" fill="#c4aa7a" stroke="#5a4a30" stroke-width="2" />
+    
+    <text x="0" y="-62" text-anchor="middle" font-size="16" font-family="serif" fill="#3a2a10" font-weight="bold">N</text>
+  </g>
+
+  
+  <g transform="translate(156,844)" fill="#5a4a30" opacity="0.6">
+    <polygon points="0,-28 4,-10 -4,-10" fill="#3a2a10" />
+    <polygon points="0,28 4,10 -4,10" />
+    <polygon points="-28,0 -10,4 -10,-4" />
+    <polygon points="28,0 10,4 10,-4" />
+    <circle cx="0" cy="0" r="4" fill="#c4aa7a" stroke="#5a4a30" stroke-width="1" />
+  </g>
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8a7355" stroke-width="3" opacity="0.7" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#a08060" stroke-width="1" opacity="0.4" />
+
+  
+  <g stroke="#8a7355" stroke-width="2" fill="none" opacity="0.7">
+    <path d="M24,24 L80,24 L80,30 M24,24 L24,80 L30,80" />
+    <path d="M1512,24 L1456,24 L1456,30 M1512,24 L1512,80 L1506,80" />
+    <path d="M24,1000 L80,1000 L80,994 M24,1000 L24,944 L30,944" />
+    <path d="M1512,1000 L1456,1000 L1456,994 M1512,1000 L1512,944 L1506,944" />
+  </g>
+
+  
+  <text x="430" y="560" text-anchor="middle" font-family="serif" font-size="260" fill="#2a3a2e" opacity="0.08" font-weight="bold">道</text>
+
+  
+  <text x="768" y="148" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="112" fill="#2a2010" letter-spacing="12" font-weight="bold" opacity="0.95">TAOISM</text>
+
+  
+  <text x="768" y="215" text-anchor="middle" font-family="serif" font-size="38" fill="#5a4a30" letter-spacing="6" opacity="0.8">道 教 · 道 家</text>
+
+  
+  <line x1="468" y1="232" x2="1068" y2="232" stroke="#8a7355" stroke-width="2" opacity="0.7" />
+  <line x1="568" y1="240" x2="968" y2="240" stroke="#8a7355" stroke-width="1" opacity="0.4" />
+  <circle cx="768" cy="236" r="5" fill="#8a7355" opacity="0.7" />
+
+  
+  <text x="768" y="930" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#3a2a10" letter-spacing="4" opacity="0.75">THE WAY · WU WEI · HARMONY WITH NATURE</text>
+
+  
+  <circle cx="468" cy="232" r="3" fill="#8a7355" opacity="0.7" />
+  <circle cx="1068" cy="232" r="3" fill="#8a7355" opacity="0.7" />
+
+  
+  <g fill="#c4aa7a" opacity="0.35">
+    <ellipse cx="200" cy="350" rx="70" ry="22" />
+    <ellipse cx="250" cy="340" rx="55" ry="18" />
+    <ellipse cx="155" cy="345" rx="45" ry="15" />
+    <ellipse cx="1336" cy="420" rx="70" ry="22" />
+    <ellipse cx="1386" cy="410" rx="55" ry="18" />
+    <ellipse cx="1291" cy="415" rx="45" ry="15" />
+    <ellipse cx="1280" cy="350" rx="60" ry="18" />
+    <ellipse cx="1325" cy="340" rx="45" ry="15" />
+  </g>
+
+  
+  <g transform="translate(80,940)" fill="#3a2a10" opacity="0.6">
+    <rect x="0" y="0" width="60" height="8" fill="#3a2a10" />
+    <rect x="60" y="0" width="60" height="8" fill="#e8dfc8" stroke="#3a2a10" stroke-width="1" />
+    <rect x="120" y="0" width="60" height="8" fill="#3a2a10" />
+    <line x1="0" y1="-4" x2="0" y2="12" stroke="#3a2a10" stroke-width="1.5" />
+    <line x1="180" y1="-4" x2="180" y2="12" stroke="#3a2a10" stroke-width="1.5" />
+    <text x="90" y="26" text-anchor="middle" font-family="serif" font-size="14" fill="#3a2a10">4th – 3rd century BCE</text>
+  </g>
+</svg>

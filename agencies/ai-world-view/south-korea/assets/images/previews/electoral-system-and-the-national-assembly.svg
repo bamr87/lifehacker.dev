@@ -1,0 +1,379 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Electoral System and the National Assembly — Republic of Korea</title>
+
+  <defs>
+    <linearGradient id="parchBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4e2b0" />
+      <stop offset="60%" stop-color="#edd89a" />
+      <stop offset="100%" stop-color="#e5cc88" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a8c4d4" />
+      <stop offset="100%" stop-color="#7da3bc" />
+    </linearGradient>
+    <linearGradient id="titleBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2008" />
+      <stop offset="100%" stop-color="#5a3510" />
+    </linearGradient>
+    <linearGradient id="nkGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8ad8a" />
+      <stop offset="100%" stop-color="#a89e7c" />
+    </linearGradient>
+    <linearGradient id="skGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d2c49e" />
+      <stop offset="100%" stop-color="#c4b488" />
+    </linearGradient>
+    <pattern id="latLines" x="0" y="0" width="1536" height="55" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="1536" y2="0" stroke="#b09050" stroke-width="0.4" opacity="0.35" />
+    </pattern>
+    <pattern id="lonLines" x="0" y="0" width="62" height="1024" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="1024" stroke="#b09050" stroke-width="0.4" opacity="0.35" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchBg)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#latLines)" />
+  <rect width="1536" height="1024" fill="url(#lonLines)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a5820" stroke-width="4" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a5820" stroke-width="1.2" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#c8a050" stroke-width="0.7" />
+
+  
+  <g fill="none" stroke="#7a5820" stroke-width="1.5">
+    <path d="M18,18 L60,18 M18,18 L18,60" />
+    <path d="M1518,18 L1476,18 M1518,18 L1518,60" />
+    <path d="M18,1006 L60,1006 M18,1006 L18,964" />
+    <path d="M1518,1006 L1476,1006 M1518,1006 L1518,964" />
+  </g>
+  <circle cx="18" cy="18" r="5" fill="#7a5820" />
+  <circle cx="1518" cy="18" r="5" fill="#7a5820" />
+  <circle cx="18" cy="1006" r="5" fill="#7a5820" />
+  <circle cx="1518" cy="1006" r="5" fill="#7a5820" />
+
+  
+  
+  <rect x="36" y="36" width="780" height="952" fill="url(#seaGrad)" opacity="0.72" />
+
+  
+  <g stroke="#6a94b0" stroke-width="0.5" opacity="0.25">
+    <line x1="36" y1="90" x2="816" y2="90" />
+    <line x1="36" y1="145" x2="816" y2="145" />
+    <line x1="36" y1="200" x2="816" y2="200" />
+    <line x1="36" y1="255" x2="816" y2="255" />
+    <line x1="36" y1="310" x2="816" y2="310" />
+    <line x1="36" y1="365" x2="816" y2="365" />
+    <line x1="36" y1="420" x2="816" y2="420" />
+    <line x1="36" y1="475" x2="816" y2="475" />
+    <line x1="36" y1="530" x2="816" y2="530" />
+    <line x1="36" y1="585" x2="816" y2="585" />
+    <line x1="36" y1="640" x2="816" y2="640" />
+    <line x1="36" y1="695" x2="816" y2="695" />
+    <line x1="36" y1="750" x2="816" y2="750" />
+    <line x1="36" y1="805" x2="816" y2="805" />
+    <line x1="36" y1="860" x2="816" y2="860" />
+    <line x1="36" y1="915" x2="816" y2="915" />
+    <line x1="36" y1="970" x2="816" y2="970" />
+  </g>
+
+  
+  <path d="M36,36 L400,36 L460,80 L500,120 L440,160 L380,175 L300,165 L200,180 L100,170 L36,160 Z" fill="#c0b080" stroke="#8a6830" stroke-width="1.2" opacity="0.85" />
+
+  
+  <path d="M640,36 L816,36 L816,130 L760,145 L700,110 L660,80 Z" fill="#c0b080" stroke="#8a6830" stroke-width="1.2" opacity="0.85" />
+
+  
+  <path d="M760,340 L790,320 L816,330 L816,410 L800,430 L770,420 L750,390 Z" fill="#c0b080" stroke="#8a6830" stroke-width="1" opacity="0.7" />
+  <path d="M785,470 L816,455 L816,530 L800,545 L780,530 L775,500 Z" fill="#c0b080" stroke="#8a6830" stroke-width="1" opacity="0.65" />
+
+  
+  <path d="     M 300,168     L 360,155     L 420,148     L 480,142     L 540,138     L 600,142     L 648,160     L 675,195     L 688,240     L 678,290     L 655,330     L 625,360     L 590,378     L 558,385     L 520,375     L 490,380     L 456,375     L 420,380     L 390,373     L 362,355     L 340,325     L 316,295     L 300,260     L 292,220     L 295,190     Z" fill="url(#nkGrad)" stroke="#7a5820" stroke-width="1.8" filter="url(#engrave)" />
+
+  
+  <path d="M 385,374 Q 437,390 490,382 Q 540,374 595,380 Q 620,383 640,374" fill="none" stroke="#3a1a00" stroke-width="2.5" stroke-dasharray="10,5" />
+  <text x="390" y="370" font-family="Georgia,serif" font-size="13" fill="#3a1a00" font-style="italic" opacity="0.9">— — DMZ — —</text>
+
+  
+  <path d="     M 385,374     L 420,380     L 456,375     L 490,382     L 540,374     L 595,380     L 640,374     L 660,405     L 672,445     L 676,490     L 668,540     L 648,588     L 618,632     L 585,665     L 555,688     L 524,698     L 494,692     L 464,682     L 434,660     L 408,630     L 385,595     L 366,552     L 356,508     L 355,462     L 362,418     L 372,390     Z" fill="url(#skGrad)" stroke="#6a4818" stroke-width="2.2" filter="url(#engrave)" />
+
+  
+  <path d="M 420,430 Q 500,420 580,445" fill="none" stroke="#9a8060" stroke-width="0.8" opacity="0.6" />
+  <path d="M 410,490 Q 510,475 610,505" fill="none" stroke="#9a8060" stroke-width="0.8" opacity="0.6" />
+  <path d="M 420,550 Q 500,535 590,560" fill="none" stroke="#9a8060" stroke-width="0.7" opacity="0.5" />
+
+  
+  <ellipse cx="472" cy="756" rx="52" ry="28" fill="#c8b888" stroke="#6a4818" stroke-width="1.8" />
+  <text x="472" y="778" font-family="Georgia,serif" font-size="12" fill="#4a2800" text-anchor="middle" font-style="italic">Jeju</text>
+
+  
+  <circle cx="496" cy="442" r="10" fill="#8b1a1a" stroke="#2c0c00" stroke-width="1.8" />
+  <circle cx="496" cy="442" r="4" fill="#f4e2b0" />
+  <text x="514" y="438" font-family="Georgia,serif" font-size="17" fill="#2c0c00" font-weight="bold">Seoul</text>
+  <text x="514" y="457" font-family="Georgia,serif" font-size="12" fill="#5a3010" font-style="italic">★ Capital</text>
+
+  
+  <circle cx="602" cy="658" r="6" fill="#5a3010" stroke="#2c0c00" stroke-width="1.2" />
+  <text x="614" y="663" font-family="Georgia,serif" font-size="13" fill="#2c0c00">Busan</text>
+
+  
+  <text x="175" y="480" font-family="Georgia,serif" font-size="19" fill="#2e5570" font-style="italic" text-anchor="middle" opacity="0.85">Yellow Sea</text>
+  <text x="175" y="505" font-family="Georgia,serif" font-size="13" fill="#2e5570" font-style="italic" text-anchor="middle" opacity="0.7">(서해 / 황해)</text>
+
+  <text x="728" y="560" font-family="Georgia,serif" font-size="16" fill="#2e5570" font-style="italic" text-anchor="middle" opacity="0.85" transform="rotate(90,728,560)">Sea of Japan</text>
+
+  <text x="430" y="840" font-family="Georgia,serif" font-size="14" fill="#2e5570" font-style="italic" text-anchor="middle" opacity="0.8">Korea Strait</text>
+
+  
+  <circle cx="436" cy="270" r="5" fill="#5a5040" stroke="#2c0c00" stroke-width="1" />
+  <text x="450" y="275" font-family="Georgia,serif" font-size="13" fill="#2c0c00" font-style="italic">Pyongyang</text>
+
+  
+  <text x="480" y="260" font-family="Georgia,serif" font-size="17" fill="#3a2e1a" text-anchor="middle" letter-spacing="1" opacity="0.8">NORTH KOREA</text>
+
+  
+  <text x="510" y="545" font-family="Georgia,serif" font-size="18" fill="#3a2008" text-anchor="middle" letter-spacing="1" font-weight="bold">SOUTH KOREA</text>
+
+  
+  <g transform="translate(128,878)">
+    <circle cx="0" cy="0" r="56" fill="#e8d498" stroke="#8a6030" stroke-width="1.5" opacity="0.9" />
+    <circle cx="0" cy="0" r="46" fill="none" stroke="#8a6030" stroke-width="0.7" opacity="0.7" />
+    
+    <polygon points="0,-50 -7,-22 0,-30 7,-22" fill="#4a2200" />
+    <polygon points="0,50 -7,22 0,30 7,22" fill="#8a6030" />
+    <polygon points="50,0 22,-7 30,0 22,7" fill="#8a6030" />
+    <polygon points="-50,0 -22,-7 -30,0 -22,7" fill="#8a6030" />
+    
+    <polygon points="35,-35 18,-14 22,-18 14,-18" fill="#b08840" opacity="0.7" />
+    <polygon points="-35,-35 -18,-14 -22,-18 -14,-18" fill="#b08840" opacity="0.7" />
+    <polygon points="35,35 18,14 22,18 14,18" fill="#b08840" opacity="0.7" />
+    <polygon points="-35,35 -18,14 -22,18 -14,18" fill="#b08840" opacity="0.7" />
+    <circle cx="0" cy="0" r="7" fill="#8a6030" />
+    <circle cx="0" cy="0" r="3" fill="#e8d498" />
+    <text x="0" y="-56" font-family="Georgia,serif" font-size="15" fill="#2c0c00" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="70" font-family="Georgia,serif" font-size="13" fill="#5a3010" text-anchor="middle">S</text>
+    <text x="62" y="5" font-family="Georgia,serif" font-size="13" fill="#5a3010" text-anchor="start">E</text>
+    <text x="-62" y="5" font-family="Georgia,serif" font-size="13" fill="#5a3010" text-anchor="end">W</text>
+  </g>
+
+  
+  <g transform="translate(260,892)">
+    <rect x="0" y="-5" width="160" height="10" fill="#e8d498" stroke="#5a3010" stroke-width="1" />
+    <rect x="0" y="-5" width="80" height="10" fill="#5a3010" />
+    <line x1="80" y1="-8" x2="80" y2="8" stroke="#e8d498" stroke-width="1.5" />
+    <text x="0" y="-10" font-family="Georgia,serif" font-size="12" fill="#2c0c00">0</text>
+    <text x="72" y="-10" font-family="Georgia,serif" font-size="12" fill="#2c0c00">200 km</text>
+    <text x="148" y="-10" font-family="Georgia,serif" font-size="12" fill="#2c0c00">400</text>
+  </g>
+
+  
+  <text x="60" y="992" font-family="Georgia,serif" font-size="12" fill="#5a3010" font-style="italic" opacity="0.75">한반도  ·  Korean Peninsula  ·  동아시아</text>
+
+  
+  <line x1="816" y1="36" x2="816" y2="988" stroke="#7a5820" stroke-width="2.5" />
+  <line x1="820" y1="36" x2="820" y2="988" stroke="#c8a050" stroke-width="0.8" opacity="0.6" />
+
+  
+
+  
+  <rect x="836" y="60" width="664" height="6" fill="#7a5820" rx="2" />
+
+  
+  <text x="1168" y="115" font-family="Georgia,serif" font-size="20" fill="#7a5820" text-anchor="middle" letter-spacing="6" font-style="italic">REPUBLIC OF KOREA · 대한민국</text>
+
+  
+  <text x="1168" y="198" font-family="Georgia,serif" font-size="62" fill="#2c0c00" text-anchor="middle" font-weight="bold" letter-spacing="-1">Electoral System</text>
+  <text x="1168" y="268" font-family="Georgia,serif" font-size="44" fill="#2c0c00" text-anchor="middle">&amp; the National Assembly</text>
+
+  
+  <rect x="860" y="286" width="616" height="2" fill="#7a5820" />
+  <rect x="940" y="291" width="456" height="1" fill="#c8a050" opacity="0.7" />
+
+  
+  <text x="1168" y="328" font-family="Georgia,serif" font-size="22" fill="#8b6030" text-anchor="middle" font-style="italic">국회 (Gukhoe)  ·  Unicameral Legislature  ·  300 Seats</text>
+
+  
+  
+  <rect x="860" y="356" width="192" height="88" fill="#3a2008" rx="6" />
+  <text x="956" y="385" font-family="Georgia,serif" font-size="13" fill="#c8a050" text-anchor="middle" letter-spacing="1">PRESIDENTIAL</text>
+  <text x="956" y="410" font-family="Georgia,serif" font-size="28" fill="#f4e2b0" text-anchor="middle" font-weight="bold">5 YRS</text>
+  <text x="956" y="432" font-family="Georgia,serif" font-size="12" fill="#c8a050" text-anchor="middle">No reelection · Plurality</text>
+
+  
+  <rect x="1072" y="356" width="192" height="88" fill="#3a2008" rx="6" />
+  <text x="1168" y="385" font-family="Georgia,serif" font-size="13" fill="#c8a050" text-anchor="middle" letter-spacing="1">ASSEMBLY</text>
+  <text x="1168" y="410" font-family="Georgia,serif" font-size="28" fill="#f4e2b0" text-anchor="middle" font-weight="bold">4 YRS</text>
+  <text x="1168" y="432" font-family="Georgia,serif" font-size="12" fill="#c8a050" text-anchor="middle">300 members since 2012</text>
+
+  
+  <rect x="1284" y="356" width="192" height="88" fill="#3a2008" rx="6" />
+  <text x="1380" y="381" font-family="Georgia,serif" font-size="13" fill="#c8a050" text-anchor="middle" letter-spacing="1">NEC · ART. 114</text>
+  <text x="1380" y="408" font-family="Georgia,serif" font-size="20" fill="#f4e2b0" text-anchor="middle" font-weight="bold">중앙선거</text>
+  <text x="1380" y="432" font-family="Georgia,serif" font-size="12" fill="#c8a050" text-anchor="middle">관리위원회</text>
+
+  
+  <rect x="860" y="458" width="616" height="1" fill="#7a5820" opacity="0.6" />
+
+  
+  <text x="1168" y="498" font-family="Georgia,serif" font-size="18" fill="#5a3010" text-anchor="middle" letter-spacing="2">NATIONAL ASSEMBLY · SEAT DISTRIBUTION</text>
+
+  
+  <ellipse cx="1168" cy="820" rx="260" ry="260" fill="#ddd0a8" opacity="0.4" />
+  
+  <path d="M 868,820 A 300,300 0 0,1 1468,820 Z" fill="#c8b888" stroke="#8a6030" stroke-width="1.5" />
+  <path d="M 900,820 A 268,268 0 0,1 1436,820 Z" fill="#e0d0a8" stroke="#8a6030" stroke-width="0.8" />
+
+  
+  
+  <g fill="#8b1a1a">
+    <circle cx="1092" cy="811" r="6.5" />
+    <circle cx="1107" cy="786" r="6.5" />
+    <circle cx="1128" cy="766" r="6.5" />
+    <circle cx="1152" cy="752" r="6.5" />
+    <circle cx="1178" cy="748" r="6.5" />
+    <circle cx="1204" cy="752" r="6.5" />
+    <circle cx="1228" cy="766" r="6.5" />
+    <circle cx="1249" cy="786" r="6.5" />
+    <circle cx="1264" cy="811" r="6.5" />
+  </g>
+
+  
+  <g fill="#1a4a8b">
+    <circle cx="1057" cy="812" r="6.5" />
+    <circle cx="1065" cy="782" r="6.5" />
+    <circle cx="1079" cy="752" r="6.5" />
+    <circle cx="1100" cy="725" r="6.5" />
+    <circle cx="1124" cy="704" r="6.5" />
+    <circle cx="1151" cy="691" r="6.5" />
+    <circle cx="1178" cy="687" r="6.5" />
+    <circle cx="1206" cy="691" r="6.5" />
+    <circle cx="1233" cy="704" r="6.5" />
+    <circle cx="1257" cy="725" r="6.5" />
+    <circle cx="1278" cy="752" r="6.5" />
+    <circle cx="1292" cy="782" r="6.5" />
+    <circle cx="1300" cy="812" r="6.5" />
+  </g>
+
+  
+  <g fill="#2a6a30">
+    <circle cx="1022" cy="813" r="6.5" />
+    <circle cx="1028" cy="779" r="6.5" />
+    <circle cx="1040" cy="746" r="6.5" />
+    <circle cx="1059" cy="714" r="6.5" />
+    <circle cx="1083" cy="686" r="6.5" />
+    <circle cx="1110" cy="663" r="6.5" />
+    <circle cx="1139" cy="648" r="6.5" />
+    <circle cx="1168" cy="642" r="6.5" />
+    <circle cx="1197" cy="648" r="6.5" />
+    <circle cx="1226" cy="663" r="6.5" />
+    <circle cx="1253" cy="686" r="6.5" />
+    <circle cx="1277" cy="714" r="6.5" />
+    <circle cx="1296" cy="746" r="6.5" />
+    <circle cx="1308" cy="779" r="6.5" />
+    <circle cx="1314" cy="813" r="6.5" />
+  </g>
+
+  
+  <g fill="#7a5820">
+    <circle cx="985" cy="814" r="6.5" />
+    <circle cx="990" cy="777" r="6.5" />
+    <circle cx="1002" cy="740" r="6.5" />
+    <circle cx="1020" cy="705" r="6.5" />
+    <circle cx="1044" cy="672" r="6.5" />
+    <circle cx="1072" cy="644" r="6.5" />
+    <circle cx="1102" cy="622" r="6.5" />
+    <circle cx="1134" cy="607" r="6.5" />
+    <circle cx="1168" cy="601" r="6.5" />
+    <circle cx="1202" cy="607" r="6.5" />
+    <circle cx="1234" cy="622" r="6.5" />
+    <circle cx="1264" cy="644" r="6.5" />
+    <circle cx="1292" cy="672" r="6.5" />
+    <circle cx="1316" cy="705" r="6.5" />
+    <circle cx="1334" cy="740" r="6.5" />
+    <circle cx="1346" cy="777" r="6.5" />
+    <circle cx="1351" cy="814" r="6.5" />
+  </g>
+
+  
+  <g fill="#5a3010">
+    <circle cx="950" cy="815" r="6.5" />
+    <circle cx="955" cy="776" r="6.5" />
+    <circle cx="968" cy="736" r="6.5" />
+    <circle cx="988" cy="699" r="6.5" />
+    <circle cx="1014" cy="664" r="6.5" />
+    <circle cx="1044" cy="634" r="6.5" />
+    <circle cx="1076" cy="610" r="6.5" />
+    <circle cx="1110" cy="593" r="6.5" />
+    <circle cx="1145" cy="583" r="6.5" />
+    <circle cx="1181" cy="580" r="6.5" />
+    <circle cx="1216" cy="583" r="6.5" />
+    <circle cx="1250" cy="593" r="6.5" />
+    <circle cx="1284" cy="610" r="6.5" />
+    <circle cx="1316" cy="634" r="6.5" />
+    <circle cx="1346" cy="664" r="6.5" />
+    <circle cx="1372" cy="699" r="6.5" />
+    <circle cx="1392" cy="736" r="6.5" />
+    <circle cx="1405" cy="776" r="6.5" />
+    <circle cx="1410" cy="815" r="6.5" />
+  </g>
+
+  
+  <g fill="#3a1a08">
+    <circle cx="918" cy="816" r="6.5" />
+    <circle cx="923" cy="775" r="6.5" />
+    <circle cx="937" cy="734" r="6.5" />
+    <circle cx="960" cy="696" r="6.5" />
+    <circle cx="988" cy="659" r="6.5" />
+    <circle cx="1020" cy="628" r="6.5" />
+    <circle cx="1054" cy="602" r="6.5" />
+    <circle cx="1090" cy="583" r="6.5" />
+    <circle cx="1128" cy="570" r="6.5" />
+    <circle cx="1168" cy="566" r="6.5" />
+    <circle cx="1208" cy="570" r="6.5" />
+    <circle cx="1246" cy="583" r="6.5" />
+    <circle cx="1282" cy="602" r="6.5" />
+    <circle cx="1316" cy="628" r="6.5" />
+    <circle cx="1348" cy="659" r="6.5" />
+    <circle cx="1376" cy="696" r="6.5" />
+    <circle cx="1399" cy="734" r="6.5" />
+    <circle cx="1413" cy="775" r="6.5" />
+    <circle cx="1418" cy="816" r="6.5" />
+  </g>
+
+  
+  <line x1="868" y1="820" x2="1468" y2="820" stroke="#5a3010" stroke-width="3" />
+
+  
+  <rect x="1148" y="820" width="40" height="28" fill="#8a6030" rx="4" />
+  <rect x="1155" y="814" width="26" height="10" fill="#7a5020" rx="2" />
+
+  
+  <text x="1168" y="888" font-family="Georgia,serif" font-size="64" fill="#2c0c00" text-anchor="middle" font-weight="bold" opacity="0.15">300</text>
+  <text x="1168" y="878" font-family="Georgia,serif" font-size="42" fill="#3a2008" text-anchor="middle" font-weight="bold">300</text>
+  <text x="1168" y="905" font-family="Georgia,serif" font-size="16" fill="#5a3010" text-anchor="middle" letter-spacing="3">SEATS</text>
+
+  
+  <rect x="860" y="930" width="14" height="14" fill="#8b1a1a" rx="2" />
+  <text x="880" y="943" font-family="Georgia,serif" font-size="13" fill="#2c0c00">Constituency (253)</text>
+  <rect x="1015" y="930" width="14" height="14" fill="#1a4a8b" rx="2" />
+  <text x="1035" y="943" font-family="Georgia,serif" font-size="13" fill="#2c0c00">Proportional (47)</text>
+  <rect x="1170" y="930" width="14" height="14" fill="#7a5820" rx="2" />
+  <text x="1190" y="943" font-family="Georgia,serif" font-size="13" fill="#2c0c00">Multiparty (since 1987)</text>
+
+  
+  <rect x="860" y="918" width="616" height="1" fill="#7a5820" opacity="0.5" />
+
+  
+  <text x="1468" y="991" font-family="Georgia,serif" font-size="13" fill="#7a5820" text-anchor="end" font-style="italic">Constitution of the Sixth Republic, 1987  ·  직선제</text>
+
+  
+  <rect x="836" y="988" width="664" height="5" fill="#7a5820" rx="2" />
+
+</svg>

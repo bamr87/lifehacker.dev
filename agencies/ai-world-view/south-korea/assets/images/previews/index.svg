@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Master Index — A complete map of the knowledge base</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0e8d5" />
+      <stop offset="100%" stop-color="#e0d4b8" />
+    </linearGradient>
+    <linearGradient id="ocean" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+    <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 L0 0 0 60" fill="none" stroke="#c8b89a" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <pattern id="hatch" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <path d="M0 6 L6 0" stroke="#b0a080" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#8a7a5a" stroke-width="3" />
+  
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#8a7a5a" stroke-width="1" />
+  
+  <rect x="20" y="20" width="30" height="30" fill="#8a7a5a" />
+  <rect x="1486" y="20" width="30" height="30" fill="#8a7a5a" />
+  <rect x="20" y="974" width="30" height="30" fill="#8a7a5a" />
+  <rect x="1486" y="974" width="30" height="30" fill="#8a7a5a" />
+  <rect x="24" y="24" width="22" height="22" fill="#f0e8d5" />
+  <rect x="1490" y="24" width="22" height="22" fill="#f0e8d5" />
+  <rect x="24" y="978" width="22" height="22" fill="#f0e8d5" />
+  <rect x="1490" y="978" width="22" height="22" fill="#f0e8d5" />
+
+  
+  <rect x="60" y="60" width="1416" height="680" fill="url(#ocean)" rx="4" />
+  <rect x="60" y="60" width="1416" height="680" fill="url(#hatch)" rx="4" />
+
+  
+  <g stroke="#7a9aaa" stroke-width="0.6" opacity="0.5">
+    <line x1="60" y1="230" x2="1476" y2="230" />
+    <line x1="60" y1="400" x2="1476" y2="400" />
+    <line x1="60" y1="570" x2="1476" y2="570" />
+    
+    <line x1="60" y1="400" x2="1476" y2="400" stroke="#5a8a9a" stroke-width="1.2" />
+  </g>
+  
+  <g stroke="#7a9aaa" stroke-width="0.6" opacity="0.5">
+    <line x1="270" y1="60" x2="270" y2="740" />
+    <line x1="480" y1="60" x2="480" y2="740" />
+    <line x1="690" y1="60" x2="690" y2="740" />
+    <line x1="900" y1="60" x2="900" y2="740" />
+    <line x1="1110" y1="60" x2="1110" y2="740" />
+    <line x1="1320" y1="60" x2="1320" y2="740" />
+  </g>
+
+  
+
+  
+  <path d="M 120 150 L 180 130 L 260 140 L 300 170 L 320 220 L 310 280 L 280 330 L 260 380 L 220 420 L 200 400 L 180 360 L 160 300 L 130 250 L 110 200 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1.2" />
+  
+  <path d="M 220 420 L 240 450 L 230 470 L 210 460 L 200 440 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1" />
+  
+  <path d="M 310 80 L 360 75 L 390 90 L 380 120 L 350 130 L 310 120 L 295 100 Z" fill="#d0c898" stroke="#a09060" stroke-width="1" />
+
+  
+  <path d="M 255 480 L 290 470 L 320 490 L 340 540 L 345 600 L 330 650 L 300 690 L 265 700 L 245 670 L 235 620 L 240 560 L 250 510 Z" fill="#b8a870" stroke="#a09060" stroke-width="1.2" />
+
+  
+  <path d="M 640 130 L 700 120 L 750 130 L 760 160 L 740 190 L 710 200 L 680 210 L 650 200 L 630 180 L 625 155 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1.2" />
+  
+  <path d="M 700 80 L 730 75 L 750 100 L 740 130 L 720 135 L 700 120 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1" />
+  
+  <path d="M 618 145 L 635 140 L 640 160 L 628 168 L 615 160 Z" fill="#c8b87a" stroke="#a09060" stroke-width="0.8" />
+  
+  <path d="M 625 195 L 655 190 L 660 215 L 645 230 L 625 225 L 615 210 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1" />
+  
+  <path d="M 710 200 L 725 210 L 730 240 L 718 260 L 705 250 L 700 225 Z" fill="#c8b87a" stroke="#a09060" stroke-width="0.8" />
+
+  
+  <path d="M 640 250 L 700 240 L 760 250 L 790 300 L 800 370 L 790 440 L 770 510 L 740 560 L 710 590 L 680 580 L 655 540 L 640 480 L 630 400 L 625 320 L 630 270 Z" fill="#c0aa72" stroke="#a09060" stroke-width="1.2" />
+  
+  <path d="M 800 480 L 815 470 L 825 500 L 820 530 L 808 535 L 798 515 Z" fill="#c0aa72" stroke="#a09060" stroke-width="0.8" />
+
+  
+  <path d="M 760 100 L 900 80 L 1050 90 L 1150 100 L 1200 130 L 1220 180 L 1200 230 L 1160 260 L 1100 280 L 1050 290 L 1000 300 L 950 310 L 900 290 L 870 260 L 840 230 L 800 220 L 770 200 L 755 170 L 750 135 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1.2" />
+  
+  <path d="M 900 290 L 950 310 L 960 360 L 940 400 L 910 410 L 885 380 L 880 330 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1" />
+  
+  <path d="M 1000 300 L 1050 290 L 1080 320 L 1070 360 L 1040 370 L 1010 350 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1" />
+  
+  <path d="M 780 250 L 820 240 L 840 260 L 845 310 L 825 340 L 800 330 L 780 290 Z" fill="#c8b87a" stroke="#a09060" stroke-width="1" />
+
+  
+  <path d="M 1120 195 L 1140 190 L 1155 205 L 1158 230 L 1148 255 L 1132 265 L 1118 255 L 1112 230 L 1115 210 Z" fill="#8a6a30" stroke="#5a4010" stroke-width="2" />
+  
+  <circle cx="1136" cy="228" r="7" fill="#d44030" stroke="#ffffff" stroke-width="2" />
+  
+  <text x="1170" y="235" font-family="Georgia, serif" font-size="18" fill="#5a4010" font-style="italic" font-weight="bold">Korea</text>
+
+  
+  <path d="M 1175 175 L 1190 170 L 1200 185 L 1195 205 L 1180 210 L 1170 198 Z" fill="#c8b87a" stroke="#a09060" stroke-width="0.8" />
+  <path d="M 1185 210 L 1198 207 L 1205 220 L 1200 235 L 1188 232 Z" fill="#c8b87a" stroke="#a09060" stroke-width="0.8" />
+
+  
+  <path d="M 1080 480 L 1180 460 L 1260 475 L 1290 520 L 1280 580 L 1240 620 L 1180 640 L 1110 630 L 1070 590 L 1060 540 Z" fill="#c0aa72" stroke="#a09060" stroke-width="1.2" />
+
+  
+  <path d="M 60 700 Q 350 720 768 710 Q 1100 720 1476 700 L 1476 740 L 60 740 Z" fill="#d8d0c0" stroke="#a09060" stroke-width="0.8" />
+
+  
+  <rect x="80" y="700" width="200" height="6" fill="#8a7a5a" />
+  <rect x="80" y="700" width="100" height="6" fill="#5a4a2a" />
+  <text x="80" y="722" font-family="Georgia, serif" font-size="14" fill="#5a4a3a">0</text>
+  <text x="176" y="722" font-family="Georgia, serif" font-size="14" fill="#5a4a3a">5000 km</text>
+
+  
+  <g transform="translate(1390, 400)">
+    
+    <circle cx="0" cy="0" r="58" fill="#e8dcc0" stroke="#8a7a5a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#8a7a5a" stroke-width="0.5" />
+    
+    <polygon points="0,-52 -8,-20 0,-12 8,-20" fill="#5a4a2a" />
+    <polygon points="0,52 -8,20 0,12 8,20" fill="#8a7a5a" />
+    <polygon points="-52,0 -20,-8 -12,0 -20,8" fill="#8a7a5a" />
+    <polygon points="52,0 20,-8 12,0 20,8" fill="#8a7a5a" />
+    
+    <polygon points="0,-52 -5,-30 0,-24 5,-30" fill="#8a7a5a" transform="rotate(45)" />
+    <polygon points="0,-52 -5,-30 0,-24 5,-30" fill="#8a7a5a" transform="rotate(135)" />
+    <polygon points="0,-52 -5,-30 0,-24 5,-30" fill="#8a7a5a" transform="rotate(225)" />
+    <polygon points="0,-52 -5,-30 0,-24 5,-30" fill="#8a7a5a" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="7" fill="#5a4a2a" />
+    <circle cx="0" cy="0" r="4" fill="#e8dcc0" />
+    
+    <text x="-6" y="-60" font-family="Georgia, serif" font-size="18" fill="#5a4a2a" font-weight="bold">N</text>
+    <text x="-5" y="78" font-family="Georgia, serif" font-size="14" fill="#8a7a5a">S</text>
+    <text x="-72" y="5" font-family="Georgia, serif" font-size="14" fill="#8a7a5a">W</text>
+    <text x="58" y="5" font-family="Georgia, serif" font-size="14" fill="#8a7a5a">E</text>
+  </g>
+
+  
+  <g stroke="#8a7a5a" stroke-width="1">
+    <line x1="270" y1="60" x2="270" y2="70" />
+    <line x1="480" y1="60" x2="480" y2="70" />
+    <line x1="690" y1="60" x2="690" y2="70" />
+    <line x1="900" y1="60" x2="900" y2="70" />
+    <line x1="1110" y1="60" x2="1110" y2="70" />
+    <line x1="270" y1="730" x2="270" y2="740" />
+    <line x1="480" y1="730" x2="480" y2="740" />
+    <line x1="690" y1="730" x2="690" y2="740" />
+    <line x1="900" y1="730" x2="900" y2="740" />
+    <line x1="1110" y1="730" x2="1110" y2="740" />
+  </g>
+
+  
+  <rect x="60" y="760" width="1416" height="234" fill="#e8dcc0" rx="2" />
+  <line x1="60" y1="760" x2="1476" y2="760" stroke="#8a7a5a" stroke-width="2" />
+
+  
+  <line x1="100" y1="790" x2="1436" y2="790" stroke="#a09060" stroke-width="0.8" />
+
+  
+  <text x="768" y="858" font-family="Georgia, 'Times New Roman', serif" font-size="88" fill="#3a2e18" text-anchor="middle" font-weight="bold" letter-spacing="8">MASTER INDEX</text>
+
+  
+  <text x="768" y="910" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#6a5a38" text-anchor="middle" font-style="italic" letter-spacing="2">A complete map of the knowledge base, grouped by category</text>
+
+  
+  <g font-family="Georgia, serif" font-size="18" fill="#8a7a5a" text-anchor="middle">
+    <text x="285" y="960">GEOGRAPHY</text>
+    <line x1="380" y1="953" x2="400" y2="953" stroke="#a09060" stroke-width="1" />
+    <text x="490" y="960">HISTORY</text>
+    <line x1="555" y1="953" x2="575" y2="953" stroke="#a09060" stroke-width="1" />
+    <text x="690" y="960">GOVERNMENT &amp; POLITICS</text>
+    <line x1="820" y1="953" x2="840" y2="953" stroke="#a09060" stroke-width="1" />
+    <text x="920" y="960">ECONOMY</text>
+    <line x1="980" y1="953" x2="1000" y2="953" stroke="#a09060" stroke-width="1" />
+    <text x="1105" y="960">CULTURE &amp; SOCIETY</text>
+    <line x1="1220" y1="953" x2="1240" y2="953" stroke="#a09060" stroke-width="1" />
+    <text x="1320" y="960">PEOPLE</text>
+  </g>
+
+  
+  <line x1="100" y1="978" x2="1436" y2="978" stroke="#a09060" stroke-width="0.8" />
+</svg>

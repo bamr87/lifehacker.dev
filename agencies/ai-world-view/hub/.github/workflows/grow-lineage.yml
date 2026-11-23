@@ -1,0 +1,574 @@
+---
+name: Grow Lineage
+
+# Central growth engine. The hub grows ONE country repo per run: it checks out the
+# target repo (which holds only content + _config.yml + .claude + telemetry),
+# stages the centralized framework + that country's seed from lineage/, runs the
+# 3-tier content escalation (Haiku draft -> Sonnet expand -> Opus enhance), then
+# pushes back ONLY the new content + telemetry — the staged framework/seed are
+# stripped so the country repo stays clean. The country's Evolution Log (seed §8)
+# is persisted back to the hub's lineage/seeds/<repo>.md.
+#
+# Dispatched per repo by orchestrate.yml, or manually. Model tiers come from
+# lineage/policy.yml. Perpetual growth: every tick is a grow tick (no lifecycle
+# gate, no replant/consolidate).
+#
+# A `gate` job runs first (aligned with the year-of-ai reference hub): it honors
+# the fleet kill-switch (_data/fleet_pause.yml) and validates both dispatch
+# inputs, so a paused fleet or a malformed input can never reach the model
+# passes or the publish steps — including their `if: always()` variants, which
+# an in-job check could not stop.
+#
+# Secrets: CLAUDE_CODE_OAUTH_TOKEN (Claude auth — OAuth only),
+# Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for
+# now (2026-11-15) — the API-key fallback pass is gated off and the Illustrate step
+# no longer gets the key; to restore, re-add the secrets.ANTHROPIC_API_KEY references.
+# LIFECYCLE_PAT (push to the target country repo + the hub's seed log).
+#
+# Kill switches: this workflow is dispatch-only, so it carries no *_ENABLED gate
+# of its own (an event-based gate would be tautological here). Its scheduled
+# consent is the ORCHESTRATE_ENABLED repository variable on orchestrate.yml —
+# the only automated dispatcher; the in-tree emergency stop is
+# _data/fleet_pause.yml, honored by the gate job below.
+#
+# Fleet harness standard (2026-11-13; bamr87/bamr87 _data/fleet.yml
+# `harnesses.standard`): the credential order is this repo's CLAUDE_AUTH_ORDER
+# variable. Unset means oauth, then api_key, which is the "primary" and
+# "fallback" named above: the three tiers take the first usable method and the
+# fallback pass takes the next one the order names. Every pass carries a dollar
+# cap (--max-budget-usd) beside its turn cap, and the grow job has a timeout.
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "Country repo to grow (e.g. 1776)"
+        required: true
+      args:
+        description: "Optional topic count / targets for the generate pass"
+        required: false
+        default: ""
+
+concurrency:
+  # Shared year-repo write-lock (ADR-0003 repo-write-serializer). Every agent that
+  # writes this repo's main — the publish step here, and future rollback / hygiene /
+  # aligner PRs — MUST join this same `repo-write-<repo>` group so two writers can
+  # never race the branch.
+  group: repo-write-${{ inputs.repo }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  TARGET: "ai-world-view/${{ inputs.repo }}"
+  # Paths the staging step adds that never count as real published content.
+  # Shared by the empty-tick check and the seed-log content_changed check so
+  # the two can't drift out of sync again (see grow-lineage bug: the empty
+  # check used to test raw git-status, which the staging step always dirties,
+  # so a tick with zero real output was never detected as empty).
+  HUB_OWNED_EXCLUDE_RE: ' (\.github/|seed\.md|lifecycle\.yml|seed-package/|ROADMAP\.md|LIFECYCLE\.md)'
+  # ---- Tier 1: generate (drafts only, no publish) ------------------------
+  GENERATE_PROMPT: |
+    You are the GENERATE pass (tier 1 of 3: generate -> expand -> enhance) of a
+    content growth tick for this knowledge base. NO WEB - this is the AI's own world view: write every fact from YOUR OWN training knowledge; the web is unavailable (no fetch/search tools). seed.md holds the concept
+    (subject, taxonomy, sources, conventions); the growth skills and slash-commands
+    (plan-roadmap, add-topic, deep-dive, …) are auto-discovered from .claude/ — each
+    is a thin adapter whose canonical procedure is staged under .github/, so read the
+    referenced .github/ file for the full steps. Produce DRAFTS only — do NOT build
+    indices, run sync-seed / encode-seed, commit, or push (later passes + the
+    workflow do that).
+
+    Run plan-roadmap to select 1-3 topics NOT already covered (read README.md and
+    the existing category files first; never re-add an existing topic), then use
+    add-topic / deep-dive to WRITE (from your own knowledge; no web)  a first draft of each selected
+    file under the correct taxonomy directory. ${{ inputs.args }}
+    A pass that writes no new draft content has FAILED — planning alone is not
+    progress. Leave the drafts uncommitted and stop.
+  # ---- Tier 2: expand ----------------------------------------------------
+  EXPAND_PROMPT: |
+    You are the EXPAND pass (tier 2 of 3) of an in-progress growth tick. The
+    generate pass left uncommitted draft files (run `git status` to find them).
+    DEEPEN and EXPAND every new or modified draft: add detail and sub-sections,
+    specific dates and figures, specific accurate facts from your own knowledge, and cross-links to
+    sibling topics. Do NOT build indices, run sync-seed / encode-seed, commit, or
+    push. If nothing is uncommitted, stop.
+  # ---- Tier 3: enhance (no publish — the workflow commits) ----------------
+  ENHANCE_PROMPT: |
+    You are the ENHANCE pass (tier 3 of 3) of an in-progress growth tick. Finish
+    the content (do NOT commit or push — the workflow publishes):
+      1. Polish prose, ensure factual accuracy from your own knowledge, fix cross-references, ensure an
+         encyclopedic neutral tone and correct front matter on every new file.
+         Every front-matter `date:` MUST be a single plain ISO date
+         (YYYY-MM-DD) — never a range, a bare year, or prose.
+      2. build-structure — refresh indices, TIMELINE, INDEX, cross-refs.
+      3. sync-seed — regenerate seed.md sections 1-7.
+      4. encode-seed — append ONE new entry under "## Section 8 — Evolution Log",
+         at the SAME heading level as the existing entries (h3 "### …", NOT h2),
+         in the exact format
+         "### G<gen>-T<seq> — <YYYY-MM-DD> — Tick N: <short summary>"
+         naming what was added. Leave all existing §8 entries intact.
+    Then STOP. Do not run publish-session, do not commit, do not push.
+  # ---- API-key fallback: one complete pass (no publish) — DISABLED for now
+  FALLBACK_PROMPT: |
+    The 3-tier OAuth growth passes produced no publishable content (the
+    subscription token may have failed). Run ONE complete growth tick now on the
+    API key. seed.md holds the concept; the growth skills/slash-commands are
+    auto-discovered from .claude/ (thin adapters whose canonical procedures are
+    staged under .github/).
+      1. plan-roadmap to select 1-3 topics NOT already covered (read README.md and
+         the existing category files first; never re-add an existing topic).
+      2. add-topic / deep-dive to WRITE (from your own knowledge; no web)  each new file under the
+         correct taxonomy directory — detail, specific dates/figures, specific accurate facts from your own knowledge, and cross-links to sibling topics.
+      3. build-structure — refresh indices, TIMELINE, INDEX, cross-refs.
+      4. sync-seed — regenerate seed.md sections 1-7.
+      5. encode-seed — append a seed.md section 8 Evolution Log entry titled
+         "Tick N:" naming what was added.
+    Do NOT run publish-session, commit, or push — the workflow publishes. Stop
+    once the new content + the seed §8 entry exist uncommitted.
+
+jobs:
+  # Kill-switch + input validation (ADR-0003 / year-of-ai ADR-0006 pattern). A
+  # separate job so that when it fails or the fleet is paused, NONE of the grow
+  # job's steps run — including its `if: always()` persist/publish steps, which
+  # an in-job check could not have stopped.
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Honor the fleet kill-switch (_data/fleet_pause.yml)
+        run: |
+          set -euo pipefail
+          curl -fsSL --max-time 20 \
+            "https://raw.githubusercontent.com/ai-world-view/ai-world-view.github.io/main/_data/fleet_pause.yml" \
+            -o /tmp/fleet_pause.yml || { echo "::warning::could not fetch fleet_pause.yml — proceeding"; exit 0; }
+          if ruby -ryaml -e 'exit(YAML.load_file("/tmp/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            reason="$(ruby -ryaml -e 'puts YAML.load_file("/tmp/fleet_pause.yml")["reason"].to_s' 2>/dev/null)"
+            echo "::error::Fleet is PAUSED via _data/fleet_pause.yml — refusing to grow. ${reason:+Reason: $reason}"
+            exit 1
+          fi
+
+      # Both dispatch inputs are validated before any step interpolates them.
+      # `repo` must be a bare repo name (it is spliced into paths and git URLs);
+      # `args` may be topic prose but never shell/expression metacharacters.
+      - name: Validate the repo and args inputs
+        env:
+          REPO: ${{ inputs.repo }}
+          ARGS: ${{ inputs.args }}
+        run: |
+          if ! printf '%s' "$REPO" | LC_ALL=C grep -qE '^[A-Za-z0-9][A-Za-z0-9._-]*$'; then
+            echo "::error::inputs.repo is not a plain repo name; refusing to run."
+            exit 1
+          fi
+          if printf '%s' "$ARGS" | LC_ALL=C grep -qE '[`$<>|;&{}]'; then
+            echo "::error::inputs.args contains disallowed characters (possible injection); refusing to run."
+            exit 1
+          fi
+          echo "inputs OK: repo=$REPO"
+
+  grow:
+    needs: gate
+    runs-on: ubuntu-latest
+    # Wall-clock bound. The longest tick in telemetry/evolution.jsonl took 77
+    # minutes (118 runs, 2026-07-29 to 2026-09-09; median 26); GitHub's own
+    # default is 360.
+    timeout-minutes: 120
+    permissions:
+      # No id-token: write. Passing an explicit github_token to claude-code-action
+      # (below) makes it SKIP the OIDC -> Claude GitHub App token exchange that was
+      # 401ing ("Claude Code is not installed on this repository"). github.token
+      # (contents: read on the hub) is all the action needs; every write to the
+      # country repo and the hub seed log still goes through LIFECYCLE_PAT.
+      contents: read
+    steps:
+      - name: Checkout the target country repo (primary)
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ env.TARGET }}
+          token: ${{ secrets.LIFECYCLE_PAT }}
+          fetch-depth: 0
+          # Never leave the org-wide PAT in .git/config while the model passes
+          # run with Bash — pushes re-authenticate explicitly (aligned with the
+          # year-of-ai reference hub).
+          persist-credentials: false
+
+      - name: Stage framework + seed from the hub
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/ai-world-view/ai-world-view.github.io /tmp/hub
+          # Canonical agent toolkit (skills/prompts/agents/instructions). The
+          # peer-to-peer surfaces are NOT staged: framework/workflows/ and
+          # framework/scripts/ are dead under the central model, and the
+          # consolidate/replant/genesis prompts + the check-lifecycle skill
+          # contradict lineage/policy.yml (perpetual growth, no lifecycle
+          # gate). Keeping them out of .github/ saves staged bytes and model
+          # context on every pass and removes contradictory instructions.
+          mkdir -p .github
+          rsync -a \
+            --exclude='workflows/' \
+            --exclude='scripts/' \
+            --exclude='prompts/consolidate.prompt.md' \
+            --exclude='prompts/replant.prompt.md' \
+            --exclude='prompts/genesis.prompt.md' \
+            --exclude='skills/check-lifecycle/' \
+            /tmp/hub/lineage/framework/ .github/
+          # this country's concept seed (carries §1 concept + §8 Evolution Log)
+          cp "/tmp/hub/lineage/seeds/${{ inputs.repo }}.md" seed.md
+          echo "Staged framework ($(find .github -type f | wc -l) files) + seed.md for ${{ inputs.repo }}"
+
+      - name: Resolve the 3-tier models from lineage/policy.yml
+        id: model
+        run: |
+          m() { grep -E "^[[:space:]]*$1:" /tmp/hub/lineage/policy.yml | head -1 | sed -E "s/.*$1:[[:space:]]*\"?([^\"#]+)\"?.*/\1/" | xargs; }
+          {
+            echo "generate=$(m generate)"
+            echo "expand=$(m expand)"
+            echo "enhance=$(m enhance)"
+          } >> "$GITHUB_OUTPUT"
+          echo "models: generate=$(m generate) expand=$(m expand) enhance=$(m enhance)"
+
+      # The credential comes from this repo's CLAUDE_AUTH_ORDER (ai_auth: in
+      # bamr87/bamr87 _data/fleet.yml; unset = oauth, then api_key). The step
+      # outputs a method NAME, never a secret: the tiers take that method, and
+      # the fallback pass below takes the next one the order names.
+      - name: Choose the Claude credential (ai_auth order)
+        id: claude-auth
+        uses: bamr87/bamr87/.github/actions/claude-auth@main
+        with:
+          order: oauth
+          has-oauth: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+
+      # Dollar caps (--max-budget-usd) are sized by the fleet rule, 0.15 USD a
+      # turn rounded up to the next 5: 15 for 80 turns, 20 for 120, 25 for 150.
+      # The costliest final pass in telemetry/evolution.jsonl was 10.11 USD. A
+      # pass that reaches its cap stops there, as one that reaches its turn cap
+      # does: what it wrote stays in the tree for the next pass, and the steps
+      # are continue-on-error.
+      - name: Tier 1 — generate drafts (Haiku)
+        id: tier1
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ steps.claude-auth.outputs.method == 'oauth' && secrets.CLAUDE_CODE_OAUTH_TOKEN || '' }}
+          # Skips the OIDC GitHub-App-token exchange (the agent only edits files
+          # locally; the workflow does every git push via LIFECYCLE_PAT).
+          github_token: ${{ github.token }}
+          prompt: ${{ env.GENERATE_PROMPT }}
+          claude_args: >-
+            --model ${{ steps.model.outputs.generate }}
+            --max-turns 80
+            --max-budget-usd 15
+            --allowedTools "Bash,Edit,Write,Read,Glob,Grep,TodoWrite,Task,Skill"
+          show_full_output: true
+
+      - name: Tier 2 — expand drafts (Sonnet)
+        id: tier2
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ steps.claude-auth.outputs.method == 'oauth' && secrets.CLAUDE_CODE_OAUTH_TOKEN || '' }}
+          github_token: ${{ github.token }}
+          prompt: ${{ env.EXPAND_PROMPT }}
+          claude_args: >-
+            --model ${{ steps.model.outputs.expand }}
+            --max-turns 80
+            --max-budget-usd 15
+            --allowedTools "Bash,Edit,Write,Read,Glob,Grep,TodoWrite,Task,Skill"
+          show_full_output: true
+
+      - name: Tier 3 — enhance (Opus)
+        id: tier3
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ steps.claude-auth.outputs.method == 'oauth' && secrets.CLAUDE_CODE_OAUTH_TOKEN || '' }}
+          github_token: ${{ github.token }}
+          prompt: ${{ env.ENHANCE_PROMPT }}
+          claude_args: >-
+            --model ${{ steps.model.outputs.enhance }}
+            --max-turns 120
+            --max-budget-usd 20
+            --allowedTools "Bash,Edit,Write,Read,Glob,Grep,TodoWrite,Task,Skill"
+          show_full_output: true
+
+      # API-key fallback. Unlike the per-repo grow.yml (where the enhance pass
+      # commits, so a dirty tree means "unfinished"), the tiers here deliberately
+      # leave content UNcommitted for the publish step — so a dirty tree means the
+      # tick SUCCEEDED and a clean tree means it produced nothing. Fire the fallback
+      # when the tree is empty (no drafts) OR the OAuth passes errored (is_error).
+      - name: Detect a failed/empty tick
+        if: always()
+        id: check
+        run: |
+          # A tick is only "non-empty" if it changed something beyond the files
+          # the staging step itself adds (.github/, seed.md, ...) — otherwise a
+          # tick that produced zero real content always looks non-empty here,
+          # since staging always dirties the tree.
+          empty=true
+          changed="$(git status --porcelain | grep -vE "${HUB_OWNED_EXCLUDE_RE}" | grep -c . || true)"
+          [ "${changed:-0}" -gt 0 ] && empty=false
+          # claude-code-action exits 0 even when the agent result is an error (e.g.
+          # an expired OAuth token): the final result element carries is_error:true.
+          # It also exits 0 with NO output file at all when it fails before ever
+          # invoking the model (e.g. the GitHub App isn't installed on the target
+          # repo) — that missing file is just as much a failure as is_error:true,
+          # so treat it that way instead of silently reading as "not failed".
+          failed=false
+          out=/home/runner/work/_temp/claude-execution-output.json
+          if [ ! -f "$out" ]; then
+            failed=true
+          elif jq -e '[.[] | select(.type=="result")] | last | .is_error == true' "$out" >/dev/null 2>&1; then
+            failed=true
+          fi
+          # Belt-and-suspenders: also fail if any tier step itself reported failure.
+          if [ "${{ steps.tier1.outcome }}" = "failure" ] || \
+             [ "${{ steps.tier2.outcome }}" = "failure" ] || \
+             [ "${{ steps.tier3.outcome }}" = "failure" ]; then
+            failed=true
+          fi
+          echo "empty=$empty" >> "$GITHUB_OUTPUT"
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+          echo "empty=$empty failed=$failed"
+
+      # Disabled: API key off for now (2026-11-15). This pass exists only to run on
+      # ANTHROPIC_API_KEY. To restore, put back the condition
+      #   if: steps.check.outputs.empty == 'true' || steps.check.outputs.failed == 'true'
+      # and the input  anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Fallback — generate the tick on the API key
+        if: false # disabled: API key off for now
+        continue-on-error: true
+        id: fallback
+        uses: anthropics/claude-code-action@v1
+        with:
+          # The NEXT method in the order, never the one the tiers just used:
+          # the API key when the tiers ran on OAuth (the default order, so this
+          # is the same pass as before), the OAuth token when they ran on the
+          # key. A method the order does not name is never spent, so an order of
+          # `oauth` alone leaves this pass without a credential and it fails fast.
+          claude_code_oauth_token: ${{ steps.claude-auth.outputs.method == 'api_key' && contains(steps.claude-auth.outputs.order, 'oauth') && secrets.CLAUDE_CODE_OAUTH_TOKEN || '' }}
+          github_token: ${{ github.token }}
+          prompt: ${{ env.FALLBACK_PROMPT }}
+          claude_args: >-
+            --model ${{ steps.model.outputs.enhance }}
+            --max-turns 150
+            --max-budget-usd 25
+            --allowedTools "Bash,Edit,Write,Read,Glob,Grep,TodoWrite,Task,Skill"
+          show_full_output: true
+
+      # Run-scoped agent telemetry. Each claude-code-action pass overwrites this
+      # file, so the artifact holds the LAST pass (the fallback if it ran, else
+      # the enhance pass) — enough to post-mortem the is_error fallback gate.
+      - name: Upload agent telemetry artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: grow-lineage-telemetry-${{ inputs.repo }}-${{ github.run_id }}
+          path: /home/runner/work/_temp/claude-execution-output.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      # ---- Illustrate: Claude-authored SVG banners for the tick's content ----
+      # Deterministic step, not a model pass: every new/changed markdown file
+      # this tick gets a content-aware SVG preview banner (cover art + og:image
+      # on the member site). Claude AUTHORS the vector via the hub's
+      # scripts/claude_svg_banner.py (art direction + model from
+      # lineage/policy.yml `preview:`); with no Claude credential it falls back
+      # to the zer0-image-generator engine's deterministic `local` SVG. A
+      # banner failure never blocks the tick's publish.
+      - name: Illustrate — SVG preview banners for new content
+        if: always()
+        continue-on-error: true
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
+        run: |
+          set -uo pipefail
+          # Art direction + on/off come from policy, not the workflow.
+          readarray -t P < <(ruby -ryaml -e '
+            p = (YAML.load_file("/tmp/hub/lineage/policy.yml")["preview"] rescue nil) || {}
+            puts p.fetch("enabled", false) ? "true" : "false"
+            puts (p["model"] || "").to_s.tr("\n", " ")
+            puts (p["style"] || "").to_s.tr("\n", " ")
+            puts (p["style_modifiers"] || "").to_s.tr("\n", " ")
+            puts (p["output_dir"] || "assets/images/previews").to_s
+          ')
+          ENABLED="${P[0]:-false}"; MODEL="${P[1]:-}"; STYLE="${P[2]:-}"
+          MODIFIERS="${P[3]:-}"; OUT_DIR="${P[4]:-assets/images/previews}"
+          if [ "$ENABLED" != "true" ]; then
+            echo "preview.enabled is false in lineage/policy.yml — skipping banners."
+            exit 0
+          fi
+          # -uall: without it a brand-new directory collapses to one `?? dir/`
+          # line and every article inside it is invisible to this gate.
+          if ! git status --porcelain -uall | grep -vE "${HUB_OWNED_EXCLUDE_RE}" \
+               | grep -qE '\.(md|markdown)$'; then
+            echo "No new content this tick — nothing to illustrate."
+            exit 0
+          fi
+          # The engine ships inside the zer0-image-generator gem (a single
+          # python file); the companion imports it as a library.
+          gem install --user-install --no-document zer0-image-generator >/dev/null 2>&1 || true
+          ENGINE="$(gem contents zer0-image-generator 2>/dev/null | grep -m1 'preview_generator\.py$' || true)"
+          if [ -z "$ENGINE" ]; then
+            echo "::warning::zer0-image-generator engine unavailable — skipping banners this tick."
+            exit 0
+          fi
+          python3 -c 'import yaml' 2>/dev/null || pip3 install --quiet PyYAML || true
+          status=0
+          python3 /tmp/hub/scripts/claude_svg_banner.py --engine "$ENGINE" --changed \
+            ${MODEL:+--model "$MODEL"} \
+            ${STYLE:+--style "$STYLE"} \
+            ${MODIFIERS:+--style-modifiers "$MODIFIERS"} \
+            --output-dir "$OUT_DIR" || status=$?
+          if [ "$status" = "3" ]; then
+            echo "No Claude credential — deterministic local SVG banners instead."
+            git status --porcelain -uall | grep -vE "${HUB_OWNED_EXCLUDE_RE}" \
+              | grep -E '\.(md|markdown)$' | sed -E 's/^.{3}//; s/^"(.*)"$/\1/' \
+              | while IFS= read -r f; do
+                  [ -f "$f" ] && python3 "$ENGINE" -f "$f" -p local --rasterizer none \
+                    --output-dir "$OUT_DIR" ${STYLE:+--style "$STYLE"} || true
+                done
+          elif [ "$status" != "0" ]; then
+            echo "::warning::banner generation reported failures (exit $status) — the tick publishes regardless."
+          fi
+          # A failed front-matter stamp can leave a .bak next to the article;
+          # never let one ride into the publish commit.
+          find . -name '*.md.bak' -not -path './.git/*' -delete 2>/dev/null || true
+
+      - name: Persist the seed Evolution Log back to the hub
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+        run: |
+          set -uo pipefail
+          [ -f seed.md ] || exit 0
+          ORIG="/tmp/hub/lineage/seeds/${{ inputs.repo }}.md"
+          # Did this tick publish new content? (ignore the staged hub-owned files)
+          content_changed=$(git status --porcelain \
+            | grep -vE "${HUB_OWNED_EXCLUDE_RE}" \
+            | grep -c . || true)
+          # Count §8 tick entries leniently — h2 or h3, any "Tick N:" header.
+          count_ticks() { grep -cE '^#{2,3} .*Tick [0-9]+ *:' "$1" 2>/dev/null || echo 0; }
+          now=$(count_ticks seed.md); orig=$(count_ticks "$ORIG")
+          # Safety net: the enhance pass should append a §8 "Tick N" entry, but it is
+          # a non-deterministic model pass and sometimes publishes content without
+          # logging the tick. If content was published yet no new tick entry exists,
+          # append one deterministically so the central tick clock never lags reality.
+          if [ "${content_changed:-0}" -gt 0 ] && [ "${now:-0}" -le "${orig:-0}" ]; then
+            last=$(grep -oE '^#{2,3} G[0-9]+-T[0-9]+' seed.md | tail -1)
+            if [ -n "$last" ]; then
+              gen=$(printf '%s' "$last" | sed -E 's/.*G([0-9]+)-T([0-9]+).*/\1/')
+              seq=$(printf '%s' "$last" | sed -E 's/.*G([0-9]+)-T([0-9]+).*/\2/')
+            else
+              gen=1; seq=0
+            fi
+            printf '\n### G%s-T%s — %s — Tick %s: growth tick (Haiku -> Sonnet -> Opus)\n**Action**: Content published by the 3-tier escalation; this §8 entry was recorded deterministically by the workflow because the enhance pass did not run encode-seed.\n' \
+              "$gen" "$((seq + 1))" "$(date -u +%F)" "$((orig + 1))" >> seed.md
+            echo "::notice::tick clock advanced by safety net — Tick $((orig + 1)) for ${{ inputs.repo }}"
+          fi
+          # Persist the (now guaranteed-advanced) Evolution Log back to the hub.
+          cp seed.md "$ORIG"
+          ( cd /tmp/hub
+            if [ -n "$(git status --porcelain -- lineage/seeds/${{ inputs.repo }}.md)" ]; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/ai-world-view/ai-world-view.github.io.git"
+              git add "lineage/seeds/${{ inputs.repo }}.md"
+              git commit -q -m "chore(lineage): grow ${{ inputs.repo }} — update seed Evolution Log"
+              # The hub's main advances often (other ticks, the daily orchestrate,
+              # manual pushes). A single non-rebasing push loses this seed update to
+              # a non-fast-forward rejection — exactly how 2012's first tick clock was
+              # lost. Retry with rebase, matching the content-publish step.
+              pushed=""
+              for _ in 1 2 3 4 5; do
+                if git push origin HEAD:main; then pushed=1; break; fi
+                git pull --rebase origin main || true
+              done
+              [ -n "$pushed" ] || echo "::warning::could not push seed log update after retries"
+            fi
+          )
+
+      - name: Strip the staged framework/seed and publish content + telemetry
+        id: publish
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+        run: |
+          set -uo pipefail
+          # Remove everything that belongs to the hub, leaving only the country repo's
+          # own content + telemetry. claude-code-action staged .github + seed.md;
+          # plan-roadmap may regenerate ROADMAP.md (process scaffolding, not content).
+          # Country repos keep only content + _config.yml + .claude + telemetry, so none
+          # of these may be published.
+          rm -rf .github seed.md lifecycle.yml seed-package ROADMAP.md LIFECYCLE.md
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "No new content this tick — nothing to publish."
+            exit 0
+          fi
+          # Front-matter gate (aligned with the year-of-ai reference hub): a
+          # single unparseable `date:` fails the member's whole Pages build.
+          # Deterministically normalize ranges / bare years / prose dates to
+          # ISO, and refuse to publish anything that still cannot be parsed.
+          if ! ruby /tmp/hub/scripts/normalize-front-matter-dates.rb --fix .; then
+            echo "::error::unparseable front-matter date(s) remain after normalization — refusing to publish a broken build."
+            exit 1
+          fi
+          git config user.name "claude-grow"
+          git config user.email "noreply@anthropic.com"
+          # claude-code-action leaves a stale http.extraheader that overrides auth.
+          { git config --local --get-regexp 'http\..*\.extraheader' 2>/dev/null || true; } \
+            | awk '{print $1}' | while read -r k; do git config --local --unset-all "$k" || true; done
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${TARGET}.git"
+          git add -A
+          git commit -q -m "content: growth tick (Haiku -> Sonnet -> Opus)"
+          pushed=""
+          for _ in 1 2 3; do
+            if git push origin HEAD:main; then pushed=1; break; fi
+            git pull --rebase origin main || true
+          done
+          if [ -z "$pushed" ]; then
+            git push origin HEAD:main && pushed=1
+          fi
+          if [ -n "$pushed" ]; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "::error::content was generated but could not be pushed to ${TARGET}."
+            exit 1
+          fi
+
+      # Loud failure gate. The three tiers + fallback are continue-on-error, so a
+      # tick where EVERY model pass died at startup (e.g. the old GitHub-App auth
+      # 401, or an invalid OAuth token) used to reach the empty-tree publish and
+      # report the whole run GREEN. Surface that instead: if nothing was published,
+      # fail the job and say whether the cause was an auth/setup error or a genuine
+      # no-op tick.
+      - name: Fail loudly if the growth tick produced no content
+        if: always()
+        env:
+          PUBLISHED: ${{ steps.publish.outputs.published }}
+          GEN_OUTCOME: ${{ steps.tier1.outcome }}
+          EXP_OUTCOME: ${{ steps.tier2.outcome }}
+          ENH_OUTCOME: ${{ steps.tier3.outcome }}
+          FB_OUTCOME: ${{ steps.fallback.outcome }}
+          # claude-code-action exits 0 even when the agent result is an error
+          # (is_error:true — e.g. an expired OAuth token), so tier OUTCOMES are
+          # 'success' in the primary auth-failure mode. steps.check already
+          # parsed every tier's is_error; it is the authoritative auth signal.
+          CHECK_FAILED: ${{ steps.check.outputs.failed }}
+        run: |
+          set -uo pipefail
+          if [ "$PUBLISHED" = "true" ]; then
+            echo "Growth tick published content for ${{ inputs.repo }} — OK."
+            exit 0
+          fi
+          echo "::error::Growth tick produced NO content for ${{ inputs.repo }} (nothing was published)."
+          echo "pass outcomes: generate=$GEN_OUTCOME expand=$EXP_OUTCOME enhance=$ENH_OUTCOME fallback=$FB_OUTCOME is_error_seen=$CHECK_FAILED"
+          if [ "$CHECK_FAILED" = "true" ] || { [ "$GEN_OUTCOME" = "failure" ] && [ "$EXP_OUTCOME" = "failure" ] && [ "$ENH_OUTCOME" = "failure" ]; }; then
+            echo "::error::Model passes reported errors (is_error/outcome) — this is an auth/setup failure (expired or invalid CLAUDE_CODE_OAUTH_TOKEN, or claude-code-action could not authenticate). Re-mint the token; do not chase a content problem."
+          else
+            echo "::error::Model passes ran without error but wrote no new content — growth stalled (every topic may already be covered, or the prompt selected nothing)."
+          fi
+          exit 1

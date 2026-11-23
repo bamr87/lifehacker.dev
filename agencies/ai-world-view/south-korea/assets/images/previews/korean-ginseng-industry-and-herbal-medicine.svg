@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean Ginseng Industry and Herbal Medicine</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5edd8" />
+      <stop offset="100%" stop-color="#e8d9b8" />
+    </linearGradient>
+    <linearGradient id="rootGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a86b" />
+      <stop offset="100%" stop-color="#8b5e3c" />
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6b8f4e" />
+      <stop offset="100%" stop-color="#4a6b35" />
+    </linearGradient>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g stroke="#c8b898" stroke-width="0.8" opacity="0.5">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8b6b3d" stroke-width="3" />
+  <rect x="40" y="40" width="1456" height="944" fill="none" stroke="#8b6b3d" stroke-width="1" />
+
+  
+  <g stroke="#8b6b3d" stroke-width="1.5" fill="none">
+    
+    <line x1="40" y1="80" x2="80" y2="40" />
+    <line x1="40" y1="60" x2="60" y2="40" />
+    
+    <line x1="1496" y1="80" x2="1456" y2="40" />
+    <line x1="1496" y1="60" x2="1476" y2="40" />
+    
+    <line x1="40" y1="944" x2="80" y2="984" />
+    <line x1="40" y1="964" x2="60" y2="984" />
+    
+    <line x1="1496" y1="944" x2="1456" y2="984" />
+    <line x1="1496" y1="964" x2="1476" y2="984" />
+  </g>
+
+  
+  
+  <g transform="translate(420, 100)">
+    
+    <ellipse cx="0" cy="680" rx="28" ry="45" fill="#c8a86b" stroke="#8b5e3c" stroke-width="2" />
+    
+    <path d="M-15,710 Q-30,760 -25,800" stroke="#8b5e3c" stroke-width="8" fill="none" stroke-linecap="round" />
+    <path d="M15,710 Q30,760 25,800" stroke="#8b5e3c" stroke-width="8" fill="none" stroke-linecap="round" />
+    
+    <path d="M-25,660 Q-55,650 -60,630" stroke="#8b5e3c" stroke-width="6" fill="none" stroke-linecap="round" />
+    <path d="M25,660 Q55,650 60,630" stroke="#8b5e3c" stroke-width="6" fill="none" stroke-linecap="round" />
+    
+    <path d="M-25,800 Q-35,820 -30,835" stroke="#a07848" stroke-width="4" fill="none" stroke-linecap="round" />
+    <path d="M25,800 Q35,820 30,835" stroke="#a07848" stroke-width="4" fill="none" stroke-linecap="round" />
+    <path d="M-60,630 Q-75,625 -78,615" stroke="#a07848" stroke-width="3" fill="none" stroke-linecap="round" />
+    <path d="M60,630 Q75,625 78,615" stroke="#a07848" stroke-width="3" fill="none" stroke-linecap="round" />
+    
+    <ellipse cx="0" cy="640" rx="18" ry="22" fill="#c8a86b" stroke="#8b5e3c" stroke-width="2" />
+    
+    <line x1="-20" y1="660" x2="20" y2="660" stroke="#8b5e3c" stroke-width="1" opacity="0.4" />
+    <line x1="-22" y1="675" x2="22" y2="675" stroke="#8b5e3c" stroke-width="1" opacity="0.4" />
+    <line x1="-20" y1="690" x2="20" y2="690" stroke="#8b5e3c" stroke-width="1" opacity="0.4" />
+    
+    <line x1="0" y1="618" x2="0" y2="280" stroke="#5a7a3a" stroke-width="6" stroke-linecap="round" />
+    
+    <line x1="0" y1="440" x2="-80" y2="380" stroke="#5a7a3a" stroke-width="4" stroke-linecap="round" />
+    <line x1="0" y1="380" x2="90" y2="310" stroke="#5a7a3a" stroke-width="4" stroke-linecap="round" />
+    <line x1="0" y1="320" x2="-70" y2="260" stroke="#5a7a3a" stroke-width="4" stroke-linecap="round" />
+    
+    <g transform="translate(-80,380)">
+      <ellipse cx="-30" cy="-25" rx="28" ry="14" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(-30,-30,-25)" />
+      <ellipse cx="10" cy="-35" rx="26" ry="13" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(10,10,-35)" />
+      <ellipse cx="-10" cy="-50" rx="22" ry="11" fill="#7a9f5a" stroke="#4a6b35" stroke-width="1.5" transform="rotate(-15,-10,-50)" />
+      <ellipse cx="25" cy="-10" rx="24" ry="12" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(20,25,-10)" />
+      <ellipse cx="-40" cy="-5" rx="22" ry="11" fill="#7a9f5a" stroke="#4a6b35" stroke-width="1.5" transform="rotate(-35,-40,-5)" />
+    </g>
+    
+    <g transform="translate(90,310)">
+      <ellipse cx="30" cy="-25" rx="28" ry="14" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(30,30,-25)" />
+      <ellipse cx="-10" cy="-35" rx="26" ry="13" fill="#7a9f5a" stroke="#4a6b35" stroke-width="1.5" transform="rotate(-10,-10,-35)" />
+      <ellipse cx="10" cy="-50" rx="22" ry="11" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(15,10,-50)" />
+      <ellipse cx="-25" cy="-10" rx="24" ry="12" fill="#7a9f5a" stroke="#4a6b35" stroke-width="1.5" transform="rotate(-20,-25,-10)" />
+      <ellipse cx="40" cy="-5" rx="22" ry="11" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(35,40,-5)" />
+    </g>
+    
+    <g transform="translate(-70,260)">
+      <ellipse cx="-25" cy="-20" rx="26" ry="13" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(-25,-25,-20)" />
+      <ellipse cx="8" cy="-30" rx="24" ry="12" fill="#7a9f5a" stroke="#4a6b35" stroke-width="1.5" transform="rotate(10,8,-30)" />
+      <ellipse cx="-8" cy="-45" rx="20" ry="10" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" />
+      <ellipse cx="22" cy="-8" rx="22" ry="11" fill="#7a9f5a" stroke="#4a6b35" stroke-width="1.5" transform="rotate(20,22,-8)" />
+      <ellipse cx="-35" cy="-3" rx="20" ry="10" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(-30,-35,-3)" />
+    </g>
+    
+    <g transform="translate(0,280)">
+      <circle cx="0" cy="0" r="8" fill="#d4a843" stroke="#8b6b2a" stroke-width="1.5" />
+      <circle cx="-18" cy="-10" r="6" fill="#d4a843" stroke="#8b6b2a" stroke-width="1.5" />
+      <circle cx="18" cy="-10" r="6" fill="#d4a843" stroke="#8b6b2a" stroke-width="1.5" />
+      <circle cx="-10" cy="-22" r="5" fill="#c8963a" stroke="#8b6b2a" stroke-width="1.5" />
+      <circle cx="10" cy="-22" r="5" fill="#c8963a" stroke="#8b6b2a" stroke-width="1.5" />
+      <circle cx="0" cy="-28" r="6" fill="#d4a843" stroke="#8b6b2a" stroke-width="1.5" />
+    </g>
+  </g>
+
+  
+  <g transform="translate(900, 120)" fill="#b8a070" stroke="#8b6b3d" stroke-width="2" opacity="0.7">
+    
+    <path d="M 60,20 L 90,30 L 110,60 L 120,100 L 115,150 L 125,200 L 130,260 L 120,320 L 100,380 L 80,420 L 70,460 L 65,490 L 60,510 L 50,500 L 40,480 L 35,450 L 40,420 L 30,380 L 20,340 L 10,300 L 15,260 L 10,220 L 15,180 L 10,140 L 20,100 L 30,60 L 50,30 Z" fill="#b8a070" stroke="#8b6b3d" stroke-width="2" />
+    
+    <ellipse cx="55" cy="560" rx="22" ry="14" fill="#b8a070" stroke="#8b6b3d" stroke-width="1.5" />
+    
+    <text x="65" y="280" font-family="Georgia, serif" font-size="16" fill="#5a3e1e" text-anchor="middle" font-style="italic">Korea</text>
+  </g>
+
+  
+  <g stroke="#8b6b3d" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.5" fill="none">
+    <path d="M 960,400 Q 1150,350 1300,380" />
+    <path d="M 960,400 Q 1050,500 1200,560" />
+    <path d="M 960,400 Q 850,300 700,250" />
+  </g>
+
+  
+  <circle cx="1300" cy="380" r="6" fill="#8b6b3d" opacity="0.6" />
+  <circle cx="1200" cy="560" r="6" fill="#8b6b3d" opacity="0.6" />
+  <circle cx="700" cy="250" r="6" fill="#8b6b3d" opacity="0.6" />
+
+  
+  <g transform="translate(1400, 200)">
+    <circle cx="0" cy="0" r="55" fill="#e8d9b8" stroke="#8b6b3d" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#8b6b3d" stroke-width="1" />
+    <circle cx="0" cy="0" r="8" fill="#8b6b3d" />
+    
+    <polygon points="0,-55 -8,-30 0,-20 8,-30" fill="#8b5e3c" stroke="#5a3e1e" stroke-width="0.5" />
+    <polygon points="0,55 -8,30 0,20 8,30" fill="#c8a86b" stroke="#5a3e1e" stroke-width="0.5" />
+    <polygon points="-55,0 -30,-8 -20,0 -30,8" fill="#c8a86b" stroke="#5a3e1e" stroke-width="0.5" />
+    <polygon points="55,0 30,-8 20,0 30,8" fill="#c8a86b" stroke="#5a3e1e" stroke-width="0.5" />
+    
+    <text x="0" y="-62" font-family="Georgia, serif" font-size="14" fill="#5a3e1e" text-anchor="middle" font-weight="bold">N</text>
+  </g>
+
+  
+  <g fill="#6b8f4e" opacity="0.4">
+    <ellipse cx="80" cy="512" rx="18" ry="8" transform="rotate(-30,80,512)" />
+    <ellipse cx="110" cy="490" rx="16" ry="7" transform="rotate(10,110,490)" />
+    <ellipse cx="1450" cy="512" rx="18" ry="8" transform="rotate(30,1450,512)" />
+    <ellipse cx="1420" cy="490" rx="16" ry="7" transform="rotate(-10,1420,490)" />
+  </g>
+
+  
+  
+  <text x="768" y="130" font-family="Georgia, serif" font-size="18" fill="#8b6b3d" text-anchor="middle" letter-spacing="4" opacity="0.8">ATLAS OF TRADITIONAL INDUSTRIES</text>
+
+  
+  <line x1="500" y1="145" x2="1036" y2="145" stroke="#8b6b3d" stroke-width="1" opacity="0.6" />
+
+  
+  <text x="768" y="820" font-family="Georgia, serif" font-size="72" fill="#3a2810" text-anchor="middle" font-weight="bold" letter-spacing="1">Korean Ginseng</text>
+  <text x="768" y="900" font-family="Georgia, serif" font-size="52" fill="#5a3e1e" text-anchor="middle" letter-spacing="2">Industry &amp; Herbal Medicine</text>
+
+  
+  <text x="768" y="960" font-family="serif" font-size="22" fill="#8b6b3d" text-anchor="middle" opacity="0.7" letter-spacing="6">인삼 · Panax ginseng · 韓國人蔘</text>
+
+  
+  <line x1="380" y1="928" x2="1156" y2="928" stroke="#8b6b3d" stroke-width="1.5" opacity="0.5" />
+
+  
+  <circle cx="380" cy="928" r="3" fill="#8b6b3d" opacity="0.6" />
+  <circle cx="1156" cy="928" r="3" fill="#8b6b3d" opacity="0.6" />
+  <circle cx="768" cy="928" r="4" fill="#8b6b3d" opacity="0.6" />
+
+  
+  <text x="1100" y="600" font-family="Georgia, serif" font-size="13" fill="#5a3e1e" opacity="0.7" text-anchor="middle">~USD 2B</text>
+  <text x="1100" y="616" font-family="Georgia, serif" font-size="13" fill="#5a3e1e" opacity="0.7" text-anchor="middle">annual market</text>
+
+  
+  <g transform="translate(1250, 350) scale(0.45)">
+    <ellipse cx="0" cy="200" rx="22" ry="38" fill="#c8a86b" stroke="#8b5e3c" stroke-width="2" />
+    <path d="M-12,225 Q-25,265 -20,295" stroke="#8b5e3c" stroke-width="7" fill="none" stroke-linecap="round" />
+    <path d="M12,225 Q25,265 20,295" stroke="#8b5e3c" stroke-width="7" fill="none" stroke-linecap="round" />
+    <path d="M-20,175 Q-45,168 -50,152" stroke="#8b5e3c" stroke-width="5" fill="none" stroke-linecap="round" />
+    <path d="M20,175 Q45,168 50,152" stroke="#8b5e3c" stroke-width="5" fill="none" stroke-linecap="round" />
+    <ellipse cx="0" cy="162" rx="14" ry="18" fill="#c8a86b" stroke="#8b5e3c" stroke-width="2" />
+    <line x1="0" y1="144" x2="0" y2="20" stroke="#5a7a3a" stroke-width="5" stroke-linecap="round" />
+    <ellipse cx="-30" cy="60" rx="22" ry="11" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" transform="rotate(-25,-30,60)" />
+    <ellipse cx="30" cy="40" rx="22" ry="11" fill="#7a9f5a" stroke="#4a6b35" stroke-width="1.5" transform="rotate(20,30,40)" />
+    <ellipse cx="0" cy="20" rx="18" ry="9" fill="#6b8f4e" stroke="#4a6b35" stroke-width="1.5" />
+  </g>
+</svg>

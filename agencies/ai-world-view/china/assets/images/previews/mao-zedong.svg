@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Mao Zedong – Portrait Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8b89a" />
+      <stop offset="100%" stop-color="#a08060" />
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#922b21" />
+    </linearGradient>
+    <linearGradient id="flagGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#e74c3c" />
+    </linearGradient>
+    <filter id="tex" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="#d4b896" opacity="0.4" filter="url(#tex)" />
+
+  
+  <g stroke="#8a6a40" stroke-width="0.8" opacity="0.4" fill="none">
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="200" y1="0" x2="200" y2="1024" />
+    <line x1="450" y1="0" x2="450" y2="1024" />
+    <line x1="700" y1="0" x2="700" y2="1024" />
+    <line x1="950" y1="0" x2="950" y2="1024" />
+    <line x1="1200" y1="0" x2="1200" y2="1024" />
+    <line x1="1450" y1="0" x2="1450" y2="1024" />
+  </g>
+
+  
+  <g fill="#b5956a" stroke="#7a5c30" stroke-width="1.5" opacity="0.85">
+    <path d="M 480 200 L 520 180 L 580 175 L 650 165 L 720 155 L 800 150 L 870 160 L 930 175 L 980 195 L 1020 220 L 1050 255 L 1060 290 L 1040 330 L 1010 360 L 990 395 L 1010 430 L 1030 465 L 1010 500 L 980 530 L 940 555 L 900 570 L 860 575 L 820 565 L 790 545 L 760 520 L 730 510 L 700 525 L 680 555 L 660 580 L 640 600 L 610 615 L 580 610 L 555 590 L 540 565 L 525 540 L 505 520 L 480 510 L 460 490 L 445 465 L 440 435 L 445 405 L 455 375 L 460 345 L 455 315 L 445 285 L 455 255 L 470 225 Z" />
+  </g>
+
+  
+  <rect x="0" y="0" width="1536" height="120" fill="url(#sky)" />
+
+  
+  <g transform="translate(768 520)" fill="#c0392b" stroke="#7a1a10" stroke-width="2">
+    <polygon points="0,-180 42,-124 110,-124 55,-75 78,-5 0,-50 -78,-5 -55,-75 -110,-124 -42,-124" opacity="0.18" />
+  </g>
+
+  
+  <g transform="translate(1400 820)" fill="#7a5c30" stroke="#5a3c10" stroke-width="1" opacity="0.6">
+    <polygon points="0,-55 8,-12 0,-20 -8,-12" />
+    <polygon points="0,55 8,12 0,20 -8,12" />
+    <polygon points="-55,0 -12,8 -20,0 -12,-8" />
+    <polygon points="55,0 12,8 20,0 12,-8" />
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#7a5c30" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="3" fill="#7a5c30" />
+    <text x="0" y="-62" text-anchor="middle" font-size="14" font-family="serif" fill="#5a3c10">N</text>
+  </g>
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#7a5c30" stroke-width="2.5" opacity="0.6" />
+  <rect x="38" y="38" width="1460" height="948" fill="none" stroke="#7a5c30" stroke-width="1" opacity="0.4" />
+
+  
+  <g fill="#f1c40f" opacity="0.9">
+    
+    <polygon transform="translate(130,62)" points="0,-28 6.5,-19 18,-19 9,-11 13,-0.5 0,-8 -13,-0.5 -9,-11 -18,-19 -6.5,-19" />
+    
+    <polygon transform="translate(175,42) rotate(15)" points="0,-12 2.8,-8 8,-8 4,-5 5.5,-0.2 0,-3.5 -5.5,-0.2 -4,-5 -8,-8 -2.8,-8" />
+    <polygon transform="translate(192,58) rotate(-10)" points="0,-12 2.8,-8 8,-8 4,-5 5.5,-0.2 0,-3.5 -5.5,-0.2 -4,-5 -8,-8 -2.8,-8" />
+    <polygon transform="translate(188,78) rotate(5)" points="0,-12 2.8,-8 8,-8 4,-5 5.5,-0.2 0,-3.5 -5.5,-0.2 -4,-5 -8,-8 -2.8,-8" />
+    <polygon transform="translate(173,90) rotate(20)" points="0,-12 2.8,-8 8,-8 4,-5 5.5,-0.2 0,-3.5 -5.5,-0.2 -4,-5 -8,-8 -2.8,-8" />
+  </g>
+
+  
+  <rect x="60" y="150" width="780" height="290" rx="4" fill="#922b21" opacity="0.92" />
+  <rect x="64" y="154" width="772" height="282" rx="3" fill="none" stroke="#e8c87a" stroke-width="2" opacity="0.7" />
+
+  
+  <text x="100" y="270" font-family="Georgia, 'Times New Roman', serif" font-size="108" font-weight="bold" fill="#f5e6c8" letter-spacing="4">MAO</text>
+  <text x="100" y="390" font-family="Georgia, 'Times New Roman', serif" font-size="108" font-weight="bold" fill="#f5e6c8" letter-spacing="4">ZEDONG</text>
+
+  
+  <rect x="60" y="465" width="500" height="52" rx="2" fill="#7a1a10" opacity="0.7" />
+  <text x="310" y="500" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#e8c87a" text-anchor="middle" letter-spacing="3">1893 – 1976</text>
+
+  
+  <text x="100" y="560" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#5a3c10" opacity="0.9" letter-spacing="2">CHAIRMAN · PEOPLE'S REPUBLIC OF CHINA</text>
+
+  
+  <g transform="translate(1120 480)" fill="#6b3a1f" opacity="0.55">
+    
+    <ellipse cx="0" cy="-160" rx="72" ry="82" />
+    
+    <rect x="-22" y="-85" width="44" height="35" />
+    
+    <path d="M -140 0 L -90 -60 L -40 -52 L -22 -50 L 22 -50 L 40 -52 L 90 -60 L 140 0 L 140 200 L -140 200 Z" />
+    
+    <polygon points="-20,-50 0,-30 20,-50 12,-50 0,-38 -12,-50" fill="#8a5030" />
+  </g>
+
+  
+  <g stroke="#7a5c30" stroke-width="0.6" opacity="0.15">
+    <line x1="480" y1="200" x2="640" y2="600" />
+    <line x1="540" y1="190" x2="700" y2="590" />
+    <line x1="600" y1="180" x2="760" y2="580" />
+    <line x1="660" y1="175" x2="820" y2="575" />
+    <line x1="720" y1="165" x2="880" y2="565" />
+    <line x1="780" y1="160" x2="940" y2="555" />
+    <line x1="840" y1="155" x2="1000" y2="525" />
+    <line x1="900" y1="165" x2="1050" y2="490" />
+    <line x1="960" y1="185" x2="1050" y2="380" />
+  </g>
+
+  
+  <rect x="0" y="940" width="1536" height="84" fill="#6b3a1f" opacity="0.75" />
+  <text x="768" y="992" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#e8c87a" text-anchor="middle" letter-spacing="5" opacity="0.9">MARXIST REVOLUTIONARY · FOUNDER OF THE PEOPLE'S REPUBLIC OF CHINA</text>
+
+</svg>

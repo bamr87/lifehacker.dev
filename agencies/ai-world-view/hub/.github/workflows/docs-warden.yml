@@ -1,0 +1,142 @@
+name: Docs Warden
+
+# Documentation coverage / anti-drift for the HUB's own doc surface (ADR-0005,
+# an ADR-0003 fleet agent). "Every change is documented":
+#   GATE  (pull_request) — were the docs each changed code/config surface obligates
+#          (per .github/config/docs_warden.yml) updated in the same PR?
+#   SWEEP (weekly + dispatch) — does main still name every script/workflow in the
+#          docs? Catches drift from the no-PR automated commits.
+# Read-only / proposer (PR-not-direct): GATE comments, SWEEP files an issue. The
+# rollout enforcement is `warn` (always advises, never blocks). Distinct from
+# ai-content-review (pages/** prose), framework-pr-reviewer (framework safety),
+# and genome-sync (genome drift). See .github/instructions/docs-warden.instructions.md.
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - ".github/config/**"
+      - ".github/instructions/**"
+      - ".github/skills/**"
+      - ".github/dependabot.yml"
+      - "scripts/**"
+      - "lineage/policy.yml"
+      - "lineage/framework/**"
+      - "lineage/seed-package/**"
+      - "lineage/repo-template/**"
+      - "lineage/decisions/**"
+      - "lineage/seeds/**"
+      - "genome/**"
+      - "templates/**"
+      - "_data/hub.yml"
+      - "_data/authors.yml"
+      - "_data/navigation/main.yml"
+      - "_data/fleet_pause.yml"
+      - "_config.yml"
+      - "_config_dev.yml"
+      - "telemetry/README.md"
+  schedule:
+    - cron: "47 6 * * 2" # Tue 06:47 UTC — off orchestrate (05:30) + genome-sync (Mon)
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Base ref for the gate diff"
+        required: false
+        default: "origin/main"
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: docs-warden-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: PR documentation coverage
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Kill-switch
+        id: pause
+        run: |
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            echo "::notice::Fleet paused — skipping docs-warden gate."; echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: ruby/setup-ruby@v1
+        if: steps.pause.outputs.skip != 'true'
+        with:
+          ruby-version: "3.3"
+      - name: Run coverage gate
+        id: gate
+        if: steps.pause.outputs.skip != 'true'
+        run: |
+          base="${{ github.event.inputs.base || format('origin/{0}', github.base_ref) }}"
+          ruby scripts/docs-warden.rb --base "$base" \
+            --summary /tmp/docs-warden.md --json /tmp/docs-warden.json --check || echo "::warning::docs-warden gate reported gaps (see comment)."
+          cat /tmp/docs-warden.md
+          count=$(ruby -rjson -e 'puts (JSON.parse(File.read("/tmp/docs-warden.json"))["findings"] || []).length' 2>/dev/null || echo 0)
+          echo "findings=${count:-0}" >> "$GITHUB_OUTPUT"
+      # Comment noise policy: a clean run never CREATES a comment (the green
+      # check is the signal) — it only flips an EXISTING sticky to ✅ so a
+      # previously-reported gap shows as resolved.
+      - name: Post / update PR comment (findings)
+        if: github.event_name == 'pull_request' && steps.pause.outputs.skip != 'true' && steps.gate.outputs.findings != '0'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: docs-warden
+          path: /tmp/docs-warden.md
+      - name: Resolve the sticky comment (clean run)
+        if: github.event_name == 'pull_request' && steps.pause.outputs.skip != 'true' && steps.gate.outputs.findings == '0'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: docs-warden
+          only_update: true
+          path: /tmp/docs-warden.md
+
+  sweep:
+    name: Main documentation drift sweep
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: docs-warden-sweep
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+      - name: Kill-switch
+        id: pause
+        run: |
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            echo "::notice::Fleet paused — skipping docs-warden sweep."; echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: ruby/setup-ruby@v1
+        if: steps.pause.outputs.skip != 'true'
+        with:
+          ruby-version: "3.3"
+      - name: Run drift sweep (census)
+        id: census
+        if: steps.pause.outputs.skip != 'true'
+        run: |
+          ruby scripts/docs-warden.rb --census --summary /tmp/sweep.md --json /tmp/sweep.json || true
+          cat /tmp/sweep.md
+          n=$(ruby -rjson -e 'puts (JSON.parse(File.read("/tmp/sweep.json"))["findings"] || []).length' 2>/dev/null || echo 0)
+          echo "findings=${n:-0}" >> "$GITHUB_OUTPUT"
+      - name: File / update the drift issue
+        if: steps.pause.outputs.skip != 'true' && steps.census.outputs.findings != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Docs Warden — documentation drift"
+          body="$(cat /tmp/sweep.md)"
+          num=$(gh issue list --search "$title in:title" --state open --json number --jq '.[0].number' 2>/dev/null)
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body" --label documentation 2>/dev/null \
+              || gh issue create --title "$title" --body "$body"
+          fi

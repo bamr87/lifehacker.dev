@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Deng Xiaoping — Architect of Reform and Opening-Up</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="chinaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c0392b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#922b21" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="franceGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2471a3" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#1a5276" stop-opacity="0.8" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="gridLines" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#b8a880" stroke-width="0.5" opacity="0.5" />
+    </pattern>
+    <pattern id="latLon" width="120" height="80" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="40" x2="120" y2="40" stroke="#a89060" stroke-width="0.4" opacity="0.4" />
+      <line x1="60" y1="0" x2="60" y2="80" stroke="#a89060" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#latLon)" opacity="0.6" />
+  <rect width="1536" height="1024" fill="url(#gridLines)" opacity="0.3" />
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#8b7355" stroke-width="3" opacity="0.7" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8b7355" stroke-width="1" opacity="0.4" />
+
+  
+  
+  <path d="M 300 250 Q 350 220 420 230 Q 500 210 580 220 Q 650 200 720 210 Q 800 195 870 205 Q 950 200 1020 220 Q 1080 210 1130 230 Q 1180 220 1200 250 Q 1220 280 1210 310 Q 1200 350 1180 370 Q 1160 400 1140 420 Q 1120 450 1100 460 Q 1070 480 1050 500 Q 1020 510 990 520 Q 960 530 930 520 Q 900 510 870 520 Q 840 530 810 510 Q 780 490 750 500 Q 720 510 690 490 Q 660 470 630 480 Q 600 490 570 470 Q 540 450 510 460 Q 480 470 450 450 Q 420 430 400 400 Q 370 360 360 320 Q 340 280 300 250 Z" fill="#c8b88a" stroke="#8b7355" stroke-width="1.5" opacity="0.5" />
+
+  
+  <path d="M 580 460 Q 620 440 660 450 Q 700 460 720 490 Q 740 520 730 560 Q 720 600 700 630 Q 680 660 660 680 Q 640 700 620 690 Q 595 680 580 650 Q 560 620 555 580 Q 550 540 560 510 Q 565 480 580 460 Z" fill="#c8b88a" stroke="#8b7355" stroke-width="1" opacity="0.4" />
+
+  
+  <path d="M 100 230 Q 130 210 160 220 Q 190 215 210 240 Q 230 265 225 300 Q 220 340 210 370 Q 200 400 190 430 Q 180 460 170 490 Q 160 520 155 550 Q 145 590 140 620 Q 130 660 120 690 Q 110 710 100 720 Q 85 730 75 710 Q 60 680 65 640 Q 70 600 80 560 Q 85 520 80 480 Q 75 440 80 400 Q 85 360 90 320 Q 92 280 100 250 Q 98 235 100 230 Z" fill="#c8b88a" stroke="#8b7355" stroke-width="1" opacity="0.4" />
+
+  
+  <path d="M 820 230 Q 870 215 920 220 Q 970 225 1010 240 Q 1050 255 1070 280 Q 1090 305 1085 335 Q 1078 365 1060 385 Q 1040 408 1010 420 Q 975 432 940 430 Q 905 428 870 415 Q 835 400 815 375 Q 795 348 795 315 Q 795 278 820 255 Q 818 242 820 230 Z" fill="url(#chinaGrad)" stroke="#7b241c" stroke-width="2" />
+
+  
+  <path d="M 540 265 Q 560 255 578 260 Q 596 265 605 280 Q 614 296 608 312 Q 600 330 582 338 Q 562 346 544 338 Q 526 328 520 310 Q 515 292 525 277 Q 530 268 540 265 Z" fill="url(#franceGrad)" stroke="#1a5276" stroke-width="1.5" />
+
+  
+  <path d="M 574 299 Q 700 180 870 320" fill="none" stroke="#8b7355" stroke-width="2" stroke-dasharray="8,5" opacity="0.7" />
+  
+  <polygon points="870,320 855,308 865,330" fill="#8b7355" opacity="0.8" />
+
+  
+  <g transform="translate(700,210)" opacity="0.8">
+    <ellipse cx="0" cy="8" rx="22" ry="7" fill="#8b7355" />
+    <rect x="-4" y="-10" width="2" height="18" fill="#6b5535" />
+    <path d="M -4 -8 L 12 -2" fill="none" stroke="#6b5535" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1380, 200)">
+    
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#8b7355" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="8" fill="#8b7355" opacity="0.8" />
+    
+    <polygon points="0,-70 -8,-20 0,-30 8,-20" fill="#8b7355" opacity="0.8" />
+    <polygon points="0,70 -8,20 0,30 8,20" fill="#a89060" opacity="0.7" />
+    <polygon points="-70,0 -20,-8 -30,0 -20,8" fill="#a89060" opacity="0.7" />
+    <polygon points="70,0 20,-8 30,0 20,8" fill="#a89060" opacity="0.7" />
+    
+    <polygon points="-50,-50 -15,-20 -20,-15" fill="#a89060" opacity="0.5" />
+    <polygon points="50,-50 20,-15 15,-20" fill="#a89060" opacity="0.5" />
+    <polygon points="50,50 15,20 20,15" fill="#a89060" opacity="0.5" />
+    <polygon points="-50,50 -20,15 -15,20" fill="#a89060" opacity="0.5" />
+    
+    <text x="0" y="-76" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5d4e37" font-weight="bold">N</text>
+    <text x="0" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5d4e37">S</text>
+    <text x="82" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5d4e37">E</text>
+    <text x="-82" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5d4e37">W</text>
+  </g>
+
+  
+  <g fill="#f1c40f" opacity="0.9">
+    <polygon points="940,265 944,278 958,278 947,286 951,299 940,291 929,299 933,286 922,278 936,278" transform="scale(0.7) translate(390,120)" />
+    <polygon points="960,255 963,262 970,262 965,267 967,274 960,269 953,274 955,267 950,262 957,262" transform="scale(0.55) translate(600,145)" />
+    <polygon points="970,270 973,277 980,277 975,282 977,289 970,284 963,289 965,282 960,277 967,277" transform="scale(0.55) translate(620,130)" />
+  </g>
+
+  
+  <line x1="380" y1="50" x2="380" y2="974" stroke="#8b7355" stroke-width="1" opacity="0.3" />
+
+  
+  
+  <text x="110" y="185" font-family="Georgia, serif" font-size="52" fill="#8b7355" opacity="0.25" letter-spacing="8">邓小平</text>
+
+  
+  <text x="90" y="590" font-family="Georgia, serif" font-size="86" font-weight="bold" fill="#3b2d1e" letter-spacing="-1">Deng</text>
+  <text x="90" y="690" font-family="Georgia, serif" font-size="86" font-weight="bold" fill="#3b2d1e" letter-spacing="-1">Xiaoping</text>
+
+  
+  <text x="92" y="735" font-family="Georgia, serif" font-size="30" fill="#8b7355" letter-spacing="4">邓小平  ·  1904 – 1997</text>
+
+  
+  <line x1="90" y1="758" x2="520" y2="758" stroke="#8b7355" stroke-width="2" />
+
+  
+  <text x="92" y="790" font-family="Georgia, serif" font-size="22" fill="#5d4e37" font-style="italic">Paramount Leader of China, 1978–1992</text>
+  <text x="92" y="820" font-family="Georgia, serif" font-size="20" fill="#6b5535">Architect of Reform and Opening-Up</text>
+  <text x="92" y="848" font-family="Georgia, serif" font-size="18" fill="#7a6545" font-style="italic">改革开放 · Gǎigé Kāifàng</text>
+
+  
+  <rect x="90" y="875" width="460" height="80" fill="#8b7355" opacity="0.12" rx="4" />
+  <text x="104" y="905" font-family="Georgia, serif" font-size="16" fill="#4a3728" font-style="italic">"Seek truth from facts"</text>
+  <text x="104" y="928" font-family="Georgia, serif" font-size="15" fill="#6b5535">实事求是</text>
+  <text x="104" y="946" font-family="Georgia, serif" font-size="13" fill="#7a6545">Third Plenum, December 1978 · 800 million lifted from poverty</text>
+
+  
+  <g transform="translate(980, 500)" opacity="0.22">
+    
+    <ellipse cx="0" cy="-80" rx="28" ry="32" fill="#3b2d1e" />
+    <path d="M -30 -50 Q -45 0 -42 60 L 42 60 Q 45 0 30 -50 Q 15 -30 0 -30 Q -15 -30 -30 -50 Z" fill="#3b2d1e" />
+    
+    <rect x="-50" y="60" width="100" height="12" fill="#3b2d1e" rx="2" />
+    <path d="M -35 72 L -42 130 L 42 130 L 35 72 Z" fill="#3b2d1e" />
+    
+    <path d="M -30 -20 Q -55 10 -52 60" stroke="#3b2d1e" stroke-width="14" fill="none" stroke-linecap="round" />
+    <path d="M 30 -20 Q 55 10 52 60" stroke="#3b2d1e" stroke-width="14" fill="none" stroke-linecap="round" />
+  </g>
+
+  
+  <text x="912" y="345" font-family="Georgia, serif" font-size="16" fill="#7b241c" font-weight="bold" text-anchor="middle" letter-spacing="3">CHINA</text>
+
+  
+  <text x="574" y="310" font-family="Georgia, serif" font-size="12" fill="#1a5276" font-weight="bold" text-anchor="middle" letter-spacing="2">FRANCE</text>
+
+  
+  <text x="594" y="294" font-family="Georgia, serif" font-size="11" fill="#5d4e37" text-anchor="middle">1920</text>
+  <text x="860" y="300" font-family="Georgia, serif" font-size="11" fill="#5d4e37" text-anchor="middle">1927</text>
+
+  
+  <rect x="20" y="968" width="1496" height="36" fill="#8b7355" opacity="0.15" />
+  <text x="768" y="991" font-family="Georgia, serif" font-size="13" fill="#5d4e37" text-anchor="middle" letter-spacing="4">STATESMAN · REFORMER · ARCHITECT OF MODERN CHINA</text>
+
+  
+  <g stroke="#8b7355" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M 40 40 L 40 80 M 40 40 L 80 40" />
+    <path d="M 1496 40 L 1496 80 M 1496 40 L 1456 40" />
+    <path d="M 40 984 L 40 944 M 40 984 L 80 984" />
+    <path d="M 1496 984 L 1496 944 M 1496 984 L 1456 984" />
+  </g>
+</svg>

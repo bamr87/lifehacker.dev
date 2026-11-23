@@ -291,3 +291,70 @@ agencies:
       files: 66
       tree_sha256: e3d836ae1068d444a2902ff8f2e9c53c3d33eca7e363bd118cda4916ca3e10ed
       reflowed: 16
+- key: ai-world-view
+  name: AI World View
+  beat: A federated network of self-growing, country-by-country knowledge bases written
+    from the model's own knowledge, with the hub that presents and grows them.
+  kind: network
+  sites:
+  - key: hub
+    path: agencies/ai-world-view/hub
+    custody: mirror
+    live_url: https://ai-world-view.github.io/
+    note: The organization root site and the growth engine for every country.
+    source:
+      repo: ai-world-view/ai-world-view.github.io
+      path: "."
+      commit: d6825dd36b9e9da853dc5a078b3051be587ff353
+      imported: '2026-11-22'
+      files: 189
+      tree_sha256: 7fa57fbb5a5f27cc66d1356ca183e3acbb52ca7eb2fb77ea7b410528ba048e6c
+      reflowed: 51
+  - key: china
+    path: agencies/ai-world-view/china
+    custody: mirror
+    live_url: https://ai-world-view.github.io/china/
+    source:
+      repo: ai-world-view/china
+      path: "."
+      commit: 93792189a47cba0e604648462cb84f6c39e57c69
+      imported: '2026-11-22'
+      files: 200
+      tree_sha256: 752b8ed71a0e60d56b49112ac4330bf3bc2f374ef52014d3e04833d403aa8d40
+      reflowed: 17
+  - key: japan
+    path: agencies/ai-world-view/japan
+    custody: mirror
+    live_url: https://ai-world-view.github.io/japan/
+    source:
+      repo: ai-world-view/japan
+      path: "."
+      commit: 3bad31c63884c0cbc7471835178a33f97365727c
+      imported: '2026-11-22'
+      files: 104
+      tree_sha256: 4279d1dabc8a9c0c85512e97cf17d268b80f063c91435ebaa43f6adf72d22cfa
+      reflowed: 21
+  - key: north-korea
+    path: agencies/ai-world-view/north-korea
+    custody: mirror
+    live_url: https://ai-world-view.github.io/north-korea/
+    source:
+      repo: ai-world-view/north-korea
+      path: "."
+      commit: 8934ff955a86c6184e14025de310649389f98f41
+      imported: '2026-11-22'
+      files: 132
+      tree_sha256: cf9f742a7abdca96b8e5b15115d2ebbcf8bad90c405795f66526724df26e9db2
+      reflowed: 23
+  - key: south-korea
+    path: agencies/ai-world-view/south-korea
+    custody: mirror
+    live_url: https://ai-world-view.github.io/south-korea/
+    source:
+      repo: ai-world-view/south-korea
+      path: "."
+      commit: c46c57d7ff0f1eb30a4386b6c7abccba4dbc62a7
+      imported: '2026-11-22'
+      files: 263
+      tree_sha256: e202b5722c5d79d19198096a0124711d4fc2d5c81250dc2891a1440307cc3db7
+      reflowed: 28

@@ -1,0 +1,42 @@
+---
+name: CodeQL
+
+# Static security analysis (ADR-0003 defect #2 — supply-chain). Scans the hub's
+# Ruby tooling (scripts/**) and JavaScript (the chat-proxy Worker) for security
+# issues, surfacing alerts in the Security tab. Read-only analysis; no app secrets.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '23 4 * * 2' # weekly (off-peak, off the :00 mark)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  security-events: write
+
+concurrency:
+  group: codeql-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze ${{ matrix.language }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ruby, javascript-typescript]
+    steps:
+      - uses: actions/checkout@v7
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          language: ${{ matrix.language }}
+      - name: Analyze
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:${{ matrix.language }}"

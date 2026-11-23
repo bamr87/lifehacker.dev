@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Warring States Period – Ancient China, 475–221 BCE</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9bfa0" />
+      <stop offset="100%" stop-color="#b8aa84" />
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c1a0e" />
+      <stop offset="100%" stop-color="#4a2c10" />
+    </linearGradient>
+    <linearGradient id="qinGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b3a1a" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#6b2a10" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="chuGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a5c3a" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#1e4228" stop-opacity="0.8" />
+    </linearGradient>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" result="displaced" />
+      <feBlend in="displaced" in2="SourceGraphic" mode="multiply" />
+    </filter>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#a0906a" stroke-width="0.5" stroke-opacity="0.4" />
+    </pattern>
+    <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="8" height="8">
+      <line x1="0" y1="0" x2="8" y2="8" stroke="#8a7a5a" stroke-width="0.5" stroke-opacity="0.3" />
+      <line x1="8" y1="0" x2="0" y2="8" stroke="#8a7a5a" stroke-width="0.5" stroke-opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#6b5530" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#6b5530" stroke-width="1" />
+
+  
+  
+  <line x1="18" y1="18" x2="80" y2="18" stroke="#6b5530" stroke-width="2" />
+  <line x1="18" y1="18" x2="18" y2="80" stroke="#6b5530" stroke-width="2" />
+  <circle cx="18" cy="18" r="5" fill="#6b5530" />
+  
+  <line x1="1518" y1="18" x2="1456" y2="18" stroke="#6b5530" stroke-width="2" />
+  <line x1="1518" y1="18" x2="1518" y2="80" stroke="#6b5530" stroke-width="2" />
+  <circle cx="1518" cy="18" r="5" fill="#6b5530" />
+  
+  <line x1="18" y1="1006" x2="80" y2="1006" stroke="#6b5530" stroke-width="2" />
+  <line x1="18" y1="1006" x2="18" y2="944" stroke="#6b5530" stroke-width="2" />
+  <circle cx="18" cy="1006" r="5" fill="#6b5530" />
+  
+  <line x1="1518" y1="1006" x2="1456" y2="1006" stroke="#6b5530" stroke-width="2" />
+  <line x1="1518" y1="1006" x2="1518" y2="944" stroke="#6b5530" stroke-width="2" />
+  <circle cx="1518" cy="1006" r="5" fill="#6b5530" />
+
+  
+  
+  
+  <g transform="translate(400, 80)">
+
+    
+    <ellipse cx="480" cy="480" rx="440" ry="420" fill="#b8ccd8" fill-opacity="0.35" stroke="#8aabbd" stroke-width="1.5" />
+    
+    <rect x="40" y="60" width="880" height="840" fill="url(#crosshatch)" opacity="0.3" />
+
+    
+    <path d="       M200,60       L320,50 L420,45 L520,55 L610,70 L680,90       L720,120 L740,160 L760,200       L780,240 L790,290 L800,340       L810,400 L820,460 L810,520       L800,580 L780,630 L750,670       L720,710 L700,750 L680,790       L660,820 L620,840 L580,850       L540,860 L500,855 L460,840       L420,820 L390,800 L360,770       L330,740 L310,710 L290,670       L270,630 L250,580 L230,530       L210,480 L195,430 L180,380       L165,330 L155,280 L150,230       L155,180 L165,130 L180,90       Z     " fill="#c8bb96" stroke="#8a7a5a" stroke-width="2" filter="url(#engrave)" />
+
+    
+    <path d="       M155,180 L165,130 L180,90 L200,60 L260,55 L320,50       L320,120 L310,180 L300,240 L290,300 L280,360       L270,420 L260,480 L250,530       L230,530 L210,480 L195,430 L180,380       L165,330 L155,280 L150,230 Z     " fill="url(#qinGrad)" stroke="#6b2010" stroke-width="2" />
+
+    
+    <path d="       M330,580 L340,540 L360,510 L390,500       L430,495 L470,500 L510,510 L550,520       L580,530 L610,540 L640,560 L660,590       L680,620 L690,660 L680,700 L660,740       L640,770 L610,800 L580,820 L540,840       L500,850 L460,840 L420,820 L390,800       L360,770 L340,740 L325,710 L320,670       L325,630 Z     " fill="url(#chuGrad)" stroke="#1a3a1e" stroke-width="2" />
+
+    
+    <path d="       M560,120 L610,110 L660,115 L710,130 L740,160       L760,200 L770,240 L760,280 L740,320       L710,350 L670,370 L630,380 L590,375       L550,360 L520,340 L500,310 L490,275       L490,240 L500,200 L520,165 L540,140 Z     " fill="#7a6030" fill-opacity="0.7" stroke="#5a4020" stroke-width="1.5" />
+
+    
+    <path d="       M320,120 L400,100 L480,95 L560,100 L560,120 L540,140       L520,165 L500,200 L490,240 L490,275       L470,290 L440,295 L410,290 L380,275       L350,255 L325,235 L310,210 L310,180 Z     " fill="#5a4a70" fill-opacity="0.7" stroke="#3a2a50" stroke-width="1.5" />
+
+    
+    <path d="       M380,300 L410,290 L440,295 L470,290 L490,310       L500,340 L500,370 L480,395 L450,410       L420,415 L390,405 L365,385 L350,360       L345,330 L355,305 Z     " fill="#7a5030" fill-opacity="0.75" stroke="#5a3010" stroke-width="1.5" />
+
+    
+    <path d="       M350,420 L390,415 L420,415 L450,420       L470,440 L480,465 L470,490 L450,505       L420,510 L390,505 L365,490 L348,468       L345,445 Z     " fill="#704a20" fill-opacity="0.75" stroke="#503010" stroke-width="1.5" />
+
+    
+    <path d="       M420,45 L520,40 L610,50 L660,60 L660,115       L610,110 L560,100 L480,95 L400,100       L360,90 L340,70 L360,50 Z     " fill="#405060" fill-opacity="0.7" stroke="#203040" stroke-width="1.5" />
+
+    
+    
+    <path d="M180,320 Q220,280 280,310 Q330,340 380,330 Q440,315 490,340 Q540,365 590,360 Q640,350 680,380 Q720,410 760,400" fill="none" stroke="#8aabbd" stroke-width="3" stroke-linecap="round" />
+    
+    <path d="M200,560 Q260,540 320,560 Q380,580 440,570 Q510,555 570,580 Q630,605 680,590 Q730,570 770,600" fill="none" stroke="#8aabbd" stroke-width="2.5" stroke-linecap="round" />
+
+    
+    <text x="200" y="350" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#f0e0c0" text-anchor="middle" letter-spacing="3">秦</text>
+    <text x="205" y="385" font-family="Georgia, serif" font-size="14" fill="#f0e0c0" text-anchor="middle" letter-spacing="1">QIN</text>
+
+    <text x="490" y="660" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#d0e8d0" text-anchor="middle" letter-spacing="3">楚</text>
+    <text x="490" y="695" font-family="Georgia, serif" font-size="14" fill="#d0e8d0" text-anchor="middle" letter-spacing="1">CHU</text>
+
+    <text x="630" y="250" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#e8d8a0" text-anchor="middle" letter-spacing="2">齊</text>
+    <text x="630" y="278" font-family="Georgia, serif" font-size="12" fill="#e8d8a0" text-anchor="middle">QI</text>
+
+    <text x="435" y="200" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#d0c8e0" text-anchor="middle" letter-spacing="2">趙</text>
+    <text x="435" y="225" font-family="Georgia, serif" font-size="11" fill="#d0c8e0" text-anchor="middle">ZHAO</text>
+
+    <text x="560" y="80" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#b8c8d8" text-anchor="middle" letter-spacing="2">燕</text>
+    <text x="560" y="100" font-family="Georgia, serif" font-size="10" fill="#b8c8d8" text-anchor="middle">YAN</text>
+
+    <text x="420" y="368" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#e8c8a0" text-anchor="middle" letter-spacing="1">魏</text>
+    <text x="420" y="385" font-family="Georgia, serif" font-size="9" fill="#e8c8a0" text-anchor="middle">WEI</text>
+
+    <text x="415" y="465" font-family="Georgia, serif" font-size="15" font-weight="bold" fill="#e0c890" text-anchor="middle" letter-spacing="1">韓</text>
+    <text x="415" y="481" font-family="Georgia, serif" font-size="9" fill="#e0c890" text-anchor="middle">HAN</text>
+
+    
+    <text x="540" y="328" font-family="Georgia, serif" font-size="10" fill="#6a9ab0" text-anchor="middle" font-style="italic">Huang He</text>
+    <text x="520" y="590" font-family="Georgia, serif" font-size="10" fill="#6a9ab0" text-anchor="middle" font-style="italic">Yangtze</text>
+
+  </g>
+
+  
+  <g transform="translate(140, 760)">
+    
+    <circle cx="0" cy="0" r="70" fill="#d4c9a8" stroke="#6b5530" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="58" fill="none" stroke="#6b5530" stroke-width="0.8" />
+    
+    
+    <polygon points="0,-58 -10,-30 0,-38 10,-30" fill="#8b3a1a" stroke="#6b2010" stroke-width="0.5" />
+    
+    <polygon points="0,58 -10,30 0,38 10,30" fill="#6b5530" stroke="#4a3a20" stroke-width="0.5" />
+    
+    <polygon points="58,0 30,-10 38,0 30,10" fill="#6b5530" stroke="#4a3a20" stroke-width="0.5" />
+    
+    <polygon points="-58,0 -30,-10 -38,0 -30,10" fill="#6b5530" stroke="#4a3a20" stroke-width="0.5" />
+    
+    <polygon points="0,-58 -7,-35 0,-42 7,-35" fill="none" stroke="#6b5530" stroke-width="0.5" transform="rotate(45)" />
+    <polygon points="0,-58 -7,-35 0,-42 7,-35" fill="none" stroke="#6b5530" stroke-width="0.5" transform="rotate(135)" />
+    <polygon points="0,-58 -7,-35 0,-42 7,-35" fill="none" stroke="#6b5530" stroke-width="0.5" transform="rotate(225)" />
+    <polygon points="0,-58 -7,-35 0,-42 7,-35" fill="none" stroke="#6b5530" stroke-width="0.5" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="8" fill="#d4c9a8" stroke="#6b5530" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="3" fill="#8b3a1a" />
+    
+    <text x="0" y="-65" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#2c1a0e" text-anchor="middle">N</text>
+    <text x="0" y="80" font-family="Georgia, serif" font-size="12" fill="#2c1a0e" text-anchor="middle">S</text>
+    <text x="75" y="5" font-family="Georgia, serif" font-size="12" fill="#2c1a0e" text-anchor="start">E</text>
+    <text x="-80" y="5" font-family="Georgia, serif" font-size="12" fill="#2c1a0e" text-anchor="end">W</text>
+  </g>
+
+  
+  <g transform="translate(60, 60)">
+    <rect x="0" y="0" width="200" height="220" fill="#d4c9a8" fill-opacity="0.9" stroke="#6b5530" stroke-width="1.5" />
+    <text x="100" y="22" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#2c1a0e" text-anchor="middle" letter-spacing="1">THE SEVEN STATES</text>
+    <line x1="10" y1="28" x2="190" y2="28" stroke="#6b5530" stroke-width="0.8" />
+    
+    <rect x="12" y="36" width="16" height="12" fill="#6b2010" fill-opacity="0.85" />
+    <text x="36" y="47" font-family="Georgia, serif" font-size="11" fill="#2c1a0e">Qin 秦</text>
+    <rect x="12" y="56" width="16" height="12" fill="#1e4228" fill-opacity="0.8" />
+    <text x="36" y="67" font-family="Georgia, serif" font-size="11" fill="#2c1a0e">Chu 楚</text>
+    <rect x="12" y="76" width="16" height="12" fill="#5a4020" fill-opacity="0.7" />
+    <text x="36" y="87" font-family="Georgia, serif" font-size="11" fill="#2c1a0e">Qi 齊</text>
+    <rect x="12" y="96" width="16" height="12" fill="#3a2a50" fill-opacity="0.7" />
+    <text x="36" y="107" font-family="Georgia, serif" font-size="11" fill="#2c1a0e">Zhao 趙</text>
+    <rect x="12" y="116" width="16" height="12" fill="#5a3010" fill-opacity="0.75" />
+    <text x="36" y="127" font-family="Georgia, serif" font-size="11" fill="#2c1a0e">Wei 魏</text>
+    <rect x="12" y="136" width="16" height="12" fill="#503010" fill-opacity="0.75" />
+    <text x="36" y="147" font-family="Georgia, serif" font-size="11" fill="#2c1a0e">Han 韓</text>
+    <rect x="12" y="156" width="16" height="12" fill="#203040" fill-opacity="0.7" />
+    <text x="36" y="167" font-family="Georgia, serif" font-size="11" fill="#2c1a0e">Yan 燕</text>
+    <line x1="10" y1="175" x2="190" y2="175" stroke="#6b5530" stroke-width="0.8" />
+    <line x1="12" y1="188" x2="36" y2="188" stroke="#8aabbd" stroke-width="2.5" />
+    <text x="44" y="192" font-family="Georgia, serif" font-size="10" fill="#2c1a0e" font-style="italic">Rivers</text>
+    <text x="100" y="210" font-family="Georgia, serif" font-size="9" fill="#6b5530" text-anchor="middle" font-style="italic">475 – 221 BCE</text>
+  </g>
+
+  
+  
+  <rect x="980" y="200" width="500" height="620" rx="4" fill="#2c1a0e" fill-opacity="0.82" />
+  <rect x="988" y="208" width="484" height="604" rx="3" fill="none" stroke="#8b6a30" stroke-width="1.5" />
+  <rect x="996" y="216" width="468" height="588" rx="2" fill="none" stroke="#6b5030" stroke-width="0.5" />
+
+  
+  <line x1="1020" y1="240" x2="1460" y2="240" stroke="#8b6a30" stroke-width="1" />
+
+  
+  <text x="1230" y="310" font-family="Georgia, serif" font-size="72" fill="#8b6a30" fill-opacity="0.25" text-anchor="middle" letter-spacing="20">戰國</text>
+
+  
+  <text x="1230" y="295" font-family="Georgia, serif" font-size="11" fill="#c8a870" text-anchor="middle" letter-spacing="4">ZHANGUO SHI DAI</text>
+
+  
+  <text x="1230" y="375" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#f0e0c0" text-anchor="middle" letter-spacing="1">THE WARRING</text>
+  <text x="1230" y="440" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#f0e0c0" text-anchor="middle" letter-spacing="1">STATES PERIOD</text>
+
+  
+  <line x1="1050" y1="460" x2="1410" y2="460" stroke="#8b6a30" stroke-width="1.5" />
+  <circle cx="1230" cy="460" r="4" fill="#8b6a30" />
+
+  
+  <text x="1230" y="498" font-family="Georgia, serif" font-size="22" fill="#c8a870" text-anchor="middle" letter-spacing="3">475 – 221 BCE</text>
+
+  
+  <line x1="1100" y1="515" x2="1360" y2="515" stroke="#6b5030" stroke-width="0.8" />
+
+  
+  <text x="1230" y="548" font-family="Georgia, serif" font-size="12" fill="#b09060" text-anchor="middle" letter-spacing="2">KEY FIGURES</text>
+  <text x="1230" y="572" font-family="Georgia, serif" font-size="13" fill="#d4b880" text-anchor="middle">Sun Tzu · Shang Yang · Mencius</text>
+  <text x="1230" y="593" font-family="Georgia, serif" font-size="13" fill="#d4b880" text-anchor="middle">Zhuangzi · Han Feizi · Bai Qi</text>
+
+  
+  <line x1="1100" y1="610" x2="1360" y2="610" stroke="#6b5030" stroke-width="0.8" />
+
+  
+  <text x="1230" y="638" font-family="Georgia, serif" font-size="11" fill="#b09060" text-anchor="middle" letter-spacing="2">HUNDRED SCHOOLS OF THOUGHT</text>
+  <text x="1230" y="660" font-family="Georgia, serif" font-size="12" fill="#c8b090" text-anchor="middle">Confucianism · Daoism · Legalism · Mohism</text>
+
+  
+  <line x1="1100" y1="678" x2="1360" y2="678" stroke="#6b5030" stroke-width="0.8" />
+
+  
+  <text x="1230" y="706" font-family="Georgia, serif" font-size="11" fill="#b09060" text-anchor="middle" letter-spacing="2">CULMINATED IN</text>
+  <text x="1230" y="730" font-family="Georgia, serif" font-size="14" fill="#e8c870" text-anchor="middle" font-style="italic">Qin Shi Huang's Unification</text>
+  <text x="1230" y="752" font-family="Georgia, serif" font-size="13" fill="#c8a860" text-anchor="middle">China's First Empire — 221 BCE</text>
+
+  
+  <line x1="1020" y1="778" x2="1460" y2="778" stroke="#8b6a30" stroke-width="1" />
+
+  
+  <text x="1230" y="800" font-family="Georgia, serif" font-size="11" fill="#8b7a50" text-anchor="middle" letter-spacing="4">HISTORY</text>
+
+  
+  
+  <g transform="translate(280, 870)">
+    <line x1="-20" y1="-20" x2="20" y2="20" stroke="#6b5530" stroke-width="3" stroke-linecap="round" />
+    <line x1="20" y1="-20" x2="-20" y2="20" stroke="#6b5530" stroke-width="3" stroke-linecap="round" />
+    <line x1="-20" y1="-20" x2="-26" y2="-26" stroke="#6b5530" stroke-width="4" stroke-linecap="round" />
+    <line x1="20" y1="-20" x2="26" y2="-26" stroke="#6b5530" stroke-width="4" stroke-linecap="round" />
+    <line x1="-15" y1="-8" x2="15" y2="-8" stroke="#6b5530" stroke-width="2" />
+    <line x1="-15" y1="8" x2="15" y2="8" stroke="#6b5530" stroke-width="2" />
+  </g>
+
+  
+  <g transform="translate(870, 870)">
+    <rect x="-30" y="-18" width="60" height="36" rx="3" fill="none" stroke="#6b5530" stroke-width="1.5" />
+    <line x1="0" y1="-18" x2="0" y2="18" stroke="#6b5530" stroke-width="1" />
+    <line x1="-20" y1="-8" x2="-5" y2="-8" stroke="#6b5530" stroke-width="0.8" />
+    <line x1="-20" y1="0" x2="-5" y2="0" stroke="#6b5530" stroke-width="0.8" />
+    <line x1="-20" y1="8" x2="-5" y2="8" stroke="#6b5530" stroke-width="0.8" />
+    <line x1="5" y1="-8" x2="20" y2="-8" stroke="#6b5530" stroke-width="0.8" />
+    <line x1="5" y1="0" x2="20" y2="0" stroke="#6b5530" stroke-width="0.8" />
+  </g>
+
+  
+  <g transform="translate(380, 960)">
+    <rect x="0" y="-6" width="120" height="6" fill="none" stroke="#6b5530" stroke-width="1" />
+    <rect x="0" y="-6" width="30" height="6" fill="#6b5530" />
+    <rect x="60" y="-6" width="30" height="6" fill="#6b5530" />
+    <text x="0" y="10" font-family="Georgia, serif" font-size="9" fill="#4a3a20">0</text>
+    <text x="55" y="10" font-family="Georgia, serif" font-size="9" fill="#4a3a20">500</text>
+    <text x="110" y="10" font-family="Georgia, serif" font-size="9" fill="#4a3a20">1000 km</text>
+  </g>
+
+  
+  <line x1="400" y1="200" x2="940" y2="200" stroke="#a09070" stroke-width="0.5" stroke-dasharray="4,8" stroke-opacity="0.4" />
+  <line x1="400" y1="400" x2="940" y2="400" stroke="#a09070" stroke-width="0.5" stroke-dasharray="4,8" stroke-opacity="0.4" />
+  <line x1="400" y1="600" x2="940" y2="600" stroke="#a09070" stroke-width="0.5" stroke-dasharray="4,8" stroke-opacity="0.4" />
+  <line x1="400" y1="800" x2="940" y2="800" stroke="#a09070" stroke-width="0.5" stroke-dasharray="4,8" stroke-opacity="0.4" />
+
+  
+  <rect x="18" y="970" width="1500" height="36" fill="#2c1a0e" fill-opacity="0.6" />
+  <text x="768" y="993" font-family="Georgia, serif" font-size="12" fill="#c8a870" text-anchor="middle" letter-spacing="3">SEVEN KINGDOMS — MILITARY INNOVATION — HUNDRED SCHOOLS OF THOUGHT — THE ART OF WAR — UNIFICATION UNDER QIN</text>
+
+</svg>

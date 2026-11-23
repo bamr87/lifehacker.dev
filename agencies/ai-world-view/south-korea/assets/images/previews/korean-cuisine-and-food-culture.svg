@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean Cuisine and Food Culture – Atlas Banner</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b990" />
+    </radialGradient>
+    <radialGradient id="plateGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5edd8" />
+      <stop offset="100%" stop-color="#d4c49a" />
+    </radialGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#b8a870" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#9a8650" stroke-width="0.6" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#7a6a3a" stroke-width="3" opacity="0.6" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#7a6a3a" stroke-width="1" opacity="0.4" />
+
+  
+  <g transform="translate(320, 180)" fill="#8b6a3e" opacity="0.85">
+    
+    <path d="M 80,20 C 90,18 110,22 120,35 C 130,48 125,70 130,90 C 135,110 145,125 140,150 C 135,175 120,200 110,230 C 100,260 95,290 85,320 C 75,350 60,370 55,390 C 50,410 58,425 50,440 C 42,455 30,460 25,475 C 20,490 30,510 25,520 C 20,530 10,535 8,520 C 6,505 15,490 18,475 C 21,460 12,445 15,430 C 18,415 30,405 35,390 C 40,375 32,355 38,335 C 44,315 58,300 62,275 C 66,250 55,225 60,200 C 65,175 78,155 75,130 C 72,105 60,85 62,65 C 64,45 70,22 80,20 Z" fill="#7a5c2e" />
+    
+    <ellipse cx="55" cy="560" rx="25" ry="15" fill="#7a5c2e" />
+  </g>
+
+  
+  <g stroke="#9aae98" stroke-width="1.2" fill="none" opacity="0.5">
+    <path d="M 200,150 Q 280,200 260,350 Q 240,450 280,550" />
+    <path d="M 180,180 Q 250,240 230,380 Q 210,470 250,570" />
+    <path d="M 560,200 Q 500,280 520,380 Q 540,460 510,560" />
+    <path d="M 580,230 Q 520,300 540,400 Q 555,480 530,570" />
+  </g>
+
+  
+  <g transform="translate(900, 350)">
+    
+    <ellipse cx="200" cy="430" rx="180" ry="25" fill="#8a7040" opacity="0.3" />
+    
+    <path d="M 30,250 Q 20,150 60,80 Q 100,20 200,10 Q 300,20 340,80 Q 380,150 370,250 Q 330,380 200,400 Q 70,380 30,250 Z" fill="#c8a86a" stroke="#8a6030" stroke-width="3" />
+    
+    <path d="M 55,240 Q 48,155 82,95 Q 118,40 200,32 Q 282,40 318,95 Q 352,155 345,240 Q 310,355 200,372 Q 90,355 55,240 Z" fill="#d4b87a" />
+    
+    <ellipse cx="200" cy="220" rx="130" ry="80" fill="#f0ead8" />
+    
+    <circle cx="150" cy="200" r="6" fill="#e8e0cc" />
+    <circle cx="180" cy="185" r="5" fill="#ede5d2" />
+    <circle cx="210" cy="195" r="6" fill="#e8e0cc" />
+    <circle cx="240" cy="205" r="5" fill="#ede5d2" />
+    <circle cx="165" cy="220" r="5" fill="#e8e0cc" />
+    <circle cx="200" cy="215" r="6" fill="#ede5d2" />
+    <circle cx="230" cy="225" r="5" fill="#e8e0cc" />
+    <circle cx="170" cy="240" r="5" fill="#e8e0cc" />
+    <circle cx="205" cy="238" r="4" fill="#ede5d2" />
+    <circle cx="235" cy="242" r="5" fill="#e8e0cc" />
+    
+    <rect x="310" y="80" width="8" height="320" rx="4" fill="#5c3a1e" transform="rotate(8, 314, 240)" />
+    <rect x="330" y="80" width="8" height="320" rx="4" fill="#5c3a1e" transform="rotate(5, 334, 240)" />
+  </g>
+
+  
+  <g transform="translate(140, 480)">
+    
+    <path d="M 20,20 Q 15,10 30,5 L 120,5 Q 135,10 130,20 L 140,160 Q 142,200 80,210 Q 18,200 10,160 Z" fill="#8b4513" stroke="#5c2a08" stroke-width="2.5" />
+    
+    <ellipse cx="75" cy="15" rx="50" ry="12" fill="#6b3410" />
+    
+    <path d="M 12,80 Q 8,120 10,140 L 140,140 Q 142,120 138,80 Z" fill="#c87840" opacity="0.6" />
+    
+    <ellipse cx="75" cy="15" rx="40" ry="9" fill="#cc3322" opacity="0.8" />
+    
+    <path d="M 15,5 Q 20,-10 75,-12 Q 130,-10 135,5 Z" fill="#5c2a08" />
+  </g>
+
+  
+  <g transform="translate(1380, 100)">
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#7a6a3a" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#7a6a3a" stroke-width="0.8" opacity="0.4" />
+    
+    <polygon points="0,-65 8,-30 0,-40 -8,-30" fill="#7a6a3a" opacity="0.8" />
+    <polygon points="0,65 8,30 0,40 -8,30" fill="#7a6a3a" opacity="0.6" />
+    <polygon points="-65,0 -30,8 -40,0 -30,-8" fill="#7a6a3a" opacity="0.6" />
+    <polygon points="65,0 30,8 40,0 30,-8" fill="#7a6a3a" opacity="0.6" />
+    
+    <polygon points="46,-46 25,-15 30,-30 15,-25" fill="#9a8650" opacity="0.5" />
+    <polygon points="-46,-46 -25,-15 -30,-30 -15,-25" fill="#9a8650" opacity="0.5" />
+    <polygon points="46,46 25,15 30,30 15,25" fill="#9a8650" opacity="0.5" />
+    <polygon points="-46,46 -25,15 -30,30 -15,25" fill="#9a8650" opacity="0.5" />
+    <circle cx="0" cy="0" r="10" fill="#c8a86a" stroke="#7a6a3a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#7a6a3a" />
+    
+    <text x="0" y="-76" text-anchor="middle" font-family="serif" font-size="18" fill="#5a4a1a" font-weight="bold">N</text>
+  </g>
+
+  
+  <g transform="translate(100, 900)" opacity="0.5">
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#7a6a3a" stroke-width="1" />
+    <polygon points="0,-32 4,-15 0,-20 -4,-15" fill="#7a6a3a" />
+    <polygon points="0,32 4,15 0,20 -4,15" fill="#7a6a3a" />
+    <polygon points="-32,0 -15,4 -20,0 -15,-4" fill="#7a6a3a" />
+    <polygon points="32,0 15,4 20,0 15,-4" fill="#7a6a3a" />
+    <circle cx="0" cy="0" r="5" fill="#c8a86a" stroke="#7a6a3a" stroke-width="1" />
+  </g>
+
+  
+  <g transform="translate(680, 700)">
+    
+    <path d="M 10,10 Q 8,0 40,0 L 120,0 Q 152,0 150,10 L 158,130 Q 160,165 80,170 Q 0,165 2,130 Z" fill="#7a5c3a" stroke="#5a3c1a" stroke-width="2" />
+    <ellipse cx="80" cy="10" rx="75" ry="12" fill="#5a3c1a" />
+    <ellipse cx="80" cy="10" rx="60" ry="9" fill="#8b6a42" />
+    
+    <path d="M 5,60 Q 2,90 2,110 L 158,110 Q 158,90 155,60 Z" fill="#6a4c2a" opacity="0.5" />
+    
+    <g transform="translate(170, 30)">
+      <path d="M 8,8 Q 6,0 32,0 L 90,0 Q 116,0 114,8 L 120,110 Q 122,138 60,142 Q 0,138 0,110 Z" fill="#8a6c44" stroke="#5a3c1a" stroke-width="2" />
+      <ellipse cx="60" cy="8" rx="58" ry="10" fill="#5a3c1a" />
+      <ellipse cx="60" cy="8" rx="46" ry="7" fill="#9a7c54" />
+    </g>
+    
+    <g transform="translate(310, 50)">
+      <path d="M 6,6 Q 5,0 28,0 L 75,0 Q 98,0 97,6 L 102,90 Q 104,112 52,116 Q 0,112 0,90 Z" fill="#9a7850" stroke="#5a3c1a" stroke-width="1.5" />
+      <ellipse cx="52" cy="6" rx="49" ry="8" fill="#5a3c1a" />
+    </g>
+  </g>
+
+  
+  <g stroke="#9a8650" stroke-width="0.8" fill="none" opacity="0.3">
+    <path d="M 0,200 Q 768,180 1536,200" />
+    <path d="M 0,400 Q 768,380 1536,400" />
+    <path d="M 0,600 Q 768,580 1536,600" />
+    <path d="M 0,800 Q 768,780 1536,800" />
+    <path d="M 300,0 Q 290,512 300,1024" />
+    <path d="M 600,0 Q 590,512 600,1024" />
+    <path d="M 900,0 Q 890,512 900,1024" />
+    <path d="M 1200,0 Q 1190,512 1200,1024" />
+  </g>
+
+  
+  <g transform="translate(580, 100)">
+    <path d="M 0,80 Q -5,40 10,10 Q 20,-5 30,5 Q 40,15 35,50 Q 30,80 20,90 Q 10,95 0,80 Z" fill="#cc3322" stroke="#8a1a0a" stroke-width="1.5" />
+    <path d="M 20,5 Q 25,-15 22,-30" stroke="#5a8a20" stroke-width="3" fill="none" stroke-linecap="round" />
+    <path d="M 10,30 Q 0,25 -5,20" stroke="#aa2212" stroke-width="1" fill="none" />
+    <path d="M 8,50 Q -2,46 -6,42" stroke="#aa2212" stroke-width="1" fill="none" />
+  </g>
+  <g transform="translate(620, 120) rotate(-20)">
+    <path d="M 0,75 Q -4,38 8,10 Q 18,-4 27,4 Q 36,13 32,46 Q 28,75 18,84 Q 9,89 0,75 Z" fill="#bb2211" stroke="#8a1a0a" stroke-width="1.5" />
+    <path d="M 18,4 Q 22,-14 19,-28" stroke="#5a8a20" stroke-width="3" fill="none" stroke-linecap="round" />
+  </g>
+
+  
+  <g transform="translate(450, 720)">
+    <ellipse cx="70" cy="20" rx="70" ry="20" fill="#6b4a1e" stroke="#4a2e08" stroke-width="1.5" />
+    <rect x="0" y="20" width="140" height="60" rx="5" fill="#7a5528" stroke="#4a2e08" stroke-width="1.5" />
+    <ellipse cx="70" cy="80" rx="70" ry="20" fill="#6b4a1e" stroke="#4a2e08" stroke-width="1.5" />
+    <text x="70" y="58" text-anchor="middle" font-family="serif" font-size="22" fill="#c8a86a" opacity="0.9">간장</text>
+  </g>
+
+  
+  <text x="760" y="160" text-anchor="middle" font-family="serif" font-size="110" fill="#8a7040" opacity="0.12" font-weight="bold">한식</text>
+
+  
+  <rect x="60" y="60" width="740" height="200" rx="8" fill="#2a1e0a" opacity="0.75" />
+  <rect x="60" y="60" width="740" height="200" rx="8" fill="none" stroke="#c8a86a" stroke-width="2" />
+
+  <text x="430" y="135" text-anchor="middle" font-family="Georgia, serif" font-size="58" font-weight="bold" fill="#f0dca0" letter-spacing="2">Korean Cuisine</text>
+  <text x="430" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#d4b870" letter-spacing="4">and Food Culture</text>
+
+  
+  <text x="430" y="245" text-anchor="middle" font-family="serif" font-size="22" fill="#c8a86a" opacity="0.85">한식  ·  Hansik  ·  韓食</text>
+
+  
+  <line x1="80" y1="270" x2="780" y2="270" stroke="#9a8650" stroke-width="1.5" opacity="0.7" />
+  <line x1="80" y1="278" x2="780" y2="278" stroke="#9a8650" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="768" y="990" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#5a4a1a" opacity="0.7" letter-spacing="3">FERMENTATION · RICE · KIMCHI · TEMPLE CUISINE · THE KOREAN WAVE</text>
+
+  
+  <circle cx="30" cy="30" r="5" fill="#7a6a3a" opacity="0.7" />
+  <circle cx="1506" cy="30" r="5" fill="#7a6a3a" opacity="0.7" />
+  <circle cx="30" cy="994" r="5" fill="#7a6a3a" opacity="0.7" />
+  <circle cx="1506" cy="994" r="5" fill="#7a6a3a" opacity="0.7" />
+
+  
+  <text x="200" y="700" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5a7a6a" opacity="0.6" letter-spacing="2" font-style="italic">Yellow Sea</text>
+  <text x="540" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5a7a6a" opacity="0.6" letter-spacing="2" font-style="italic">Sea of Japan</text>
+</svg>

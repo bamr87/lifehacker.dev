@@ -1,0 +1,76 @@
+---
+name: Build Validation
+
+# Pre-merge Jekyll build gate — the hub's only BEFORE-the-fact site check.
+#
+# Production deploys via native GitHub Pages ("deploy from branch": main, /), so
+# nothing here publishes; a broken Liquid tag, an unparseable front-matter date,
+# or a bad _config edit would otherwise reach main and only surface afterwards
+# through pages-deploy-sentinel's hourly liveness probe. This job reproduces the
+# local build (`_config.yml,_config_dev.yml`) on every PR that touches content,
+# data, config, or the Gemfile and fails the PR instead.
+#
+# Two gates, cheapest first:
+#   1. scripts/normalize-front-matter-dates.rb --check pages — one unparseable
+#      `date:` fails a WHOLE Pages build (this took a member site down for six
+#      days in the reference fleet); the same script is the grow tick's publish
+#      gate for member repos.
+#   2. bundle exec jekyll build — the real render, theme and all.
+#
+# The theme is fetched over the network via `remote_theme`, so the build sets
+# JEKYLL_GITHUB_TOKEN; without it the theme download hits the anonymous GitHub
+# API rate limit and the job goes flaky.
+#
+# No `_data/fleet_pause.yml` kill-switch: that guard exists so a paused fleet
+# MUTATES nothing. This workflow is read-only — it writes no repo, dispatches no
+# workflow, files no issue — and pausing growth is not a reason to stop
+# validating a human's pull request.
+
+on:
+  pull_request:
+    paths:
+      - 'pages/**'
+      - '_data/**'
+      - '_config*.yml'
+      - 'Gemfile*'
+      - 'assets/**'
+      - '404.html'
+      - '.github/workflows/build-validation.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          # Matches the Ruby the github-pages gem set targets (and hub-sync).
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Validate front-matter dates
+        run: ruby scripts/normalize-front-matter-dates.rb --check pages
+
+      - name: Build the site
+        env:
+          # remote_theme downloads the theme through the GitHub API — an
+          # authenticated request avoids the anonymous rate limit.
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The theme's SCSS contains non-ASCII characters and jekyll-sass-
+          # converter reads through the locale encoding: without a UTF-8 locale
+          # the build dies with `Invalid US-ASCII character "\xE2"`.
+          LANG: C.UTF-8
+          LC_ALL: C.UTF-8
+        run: bundle exec jekyll build --config '_config.yml,_config_dev.yml'

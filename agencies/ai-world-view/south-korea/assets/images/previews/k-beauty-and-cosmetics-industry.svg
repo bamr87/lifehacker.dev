@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>K-beauty and Cosmetics Industry — Korean Beauty Global Export Banner</title>
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5eedc" />
+      <stop offset="100%" stop-color="#e8dfc8" />
+    </linearGradient>
+    <linearGradient id="koreaGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c9a96e" />
+      <stop offset="100%" stop-color="#a07840" />
+    </linearGradient>
+    <linearGradient id="bottleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4c5e8" />
+      <stop offset="100%" stop-color="#9b7bb8" />
+    </linearGradient>
+    <linearGradient id="serum" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8d4e8" />
+      <stop offset="100%" stop-color="#6a9ab8" />
+    </linearGradient>
+    <linearGradient id="compact" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8c8c8" />
+      <stop offset="100%" stop-color="#c89090" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComponentTransfer in="blend">
+        <feFuncA type="linear" slope="0.08" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode />
+      </feMerge>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bgGrad)" />
+
+  
+  <g stroke="#c8b88a" stroke-width="0.5" opacity="0.4">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8a6e3a" stroke-width="3" />
+  <rect x="32" y="32" width="1472" height="960" fill="none" stroke="#8a6e3a" stroke-width="1" />
+
+  
+  
+  <path d="M 90 220 L 120 200 L 160 195 L 200 205 L 230 220 L 260 240 L 270 280 L 260 320 L 240 360 L 220 390 L 200 420 L 180 440 L 160 460 L 140 450 L 120 420 L 100 380 L 85 340 L 80 300 L 82 260 Z" fill="#c8b070" opacity="0.5" stroke="#8a6e3a" stroke-width="1.2" />
+  
+  <path d="M 200 470 L 230 460 L 250 470 L 265 500 L 270 540 L 265 580 L 255 620 L 240 650 L 220 670 L 200 660 L 185 630 L 178 590 L 180 550 L 188 510 Z" fill="#c8b070" opacity="0.5" stroke="#8a6e3a" stroke-width="1.2" />
+  
+  <path d="M 580 160 L 620 150 L 660 155 L 690 165 L 700 185 L 690 205 L 670 215 L 640 220 L 610 215 L 590 200 L 578 180 Z" fill="#c8b070" opacity="0.5" stroke="#8a6e3a" stroke-width="1.2" />
+  
+  <path d="M 590 240 L 630 230 L 670 235 L 695 255 L 705 290 L 705 340 L 695 390 L 675 430 L 650 460 L 625 475 L 600 465 L 580 440 L 568 400 L 562 350 L 565 300 L 572 265 Z" fill="#c8b070" opacity="0.5" stroke="#8a6e3a" stroke-width="1.2" />
+  
+  <path d="M 720 130 L 800 118 L 890 120 L 970 130 L 1040 145 L 1080 165 L 1095 190 L 1085 215 L 1060 230 L 1020 240 L 980 248 L 940 250 L 900 248 L 860 242 L 820 235 L 785 225 L 755 210 L 730 195 L 715 175 L 712 152 Z" fill="#c8b070" opacity="0.5" stroke="#8a6e3a" stroke-width="1.2" />
+  
+  <path d="M 980 260 L 1010 255 L 1035 265 L 1045 285 L 1040 310 L 1025 325 L 1005 320 L 990 305 L 982 285 Z" fill="#c8b070" opacity="0.5" stroke="#8a6e3a" stroke-width="1.2" />
+  
+  <path d="M 1060 480 L 1110 468 L 1160 472 L 1195 490 L 1210 520 L 1205 555 L 1185 578 L 1155 588 L 1120 585 L 1090 570 L 1068 545 L 1055 515 L 1052 490 Z" fill="#c8b070" opacity="0.5" stroke="#8a6e3a" stroke-width="1.2" />
+
+  
+  
+  <path d="M 1062 188 L 1072 182 L 1082 183 L 1090 190 L 1092 202 L 1088 216 L 1080 226 L 1070 230 L 1060 225 L 1054 214 L 1054 202 Z" fill="url(#koreaGlow)" stroke="#5a3e1a" stroke-width="2" />
+  
+  <text x="1105" y="210" font-family="Georgia, serif" font-size="16" fill="#5a3e1a" font-style="italic">Korea</text>
+  
+  <g stroke="#8a6e3a" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.6" fill="none">
+    
+    <path d="M 1072 205 Q 900 100 260 300" />
+    
+    <path d="M 1072 205 Q 900 160 640 185" />
+    
+    <path d="M 1072 205 Q 1040 250 1010 280" />
+    
+    <path d="M 1072 205 Q 1100 350 1130 480" />
+  </g>
+  
+  <circle cx="260" cy="300" r="6" fill="#c9a96e" stroke="#5a3e1a" stroke-width="1.5" />
+  <circle cx="640" cy="185" r="6" fill="#c9a96e" stroke="#5a3e1a" stroke-width="1.5" />
+  <circle cx="1010" cy="280" r="6" fill="#c9a96e" stroke="#5a3e1a" stroke-width="1.5" />
+  <circle cx="1130" cy="480" r="6" fill="#c9a96e" stroke="#5a3e1a" stroke-width="1.5" />
+  <circle cx="1072" cy="205" r="10" fill="#e8c840" stroke="#5a3e1a" stroke-width="2" />
+
+  
+  
+  <ellipse cx="1280" cy="480" rx="70" ry="22" fill="#b8884a" stroke="#5a3e1a" stroke-width="2" />
+  <rect x="1210" y="440" width="140" height="42" rx="12" fill="url(#compact)" stroke="#5a3e1a" stroke-width="2" />
+  <ellipse cx="1280" cy="440" rx="70" ry="22" fill="#e8d0d0" stroke="#5a3e1a" stroke-width="2" />
+  <ellipse cx="1280" cy="440" rx="50" ry="14" fill="#f0c0c0" stroke="#5a3e1a" stroke-width="1" />
+  <text x="1280" y="520" font-family="Georgia, serif" font-size="13" fill="#5a3e1a" text-anchor="middle" font-style="italic">Cushion Compact</text>
+
+  
+  <rect x="1350" y="350" width="36" height="90" rx="8" fill="url(#serum)" stroke="#5a3e1a" stroke-width="2" />
+  <rect x="1356" y="335" width="24" height="22" rx="4" fill="#8ab0c8" stroke="#5a3e1a" stroke-width="1.5" />
+  <rect x="1362" y="328" width="12" height="12" rx="3" fill="#6a8aaa" stroke="#5a3e1a" stroke-width="1.5" />
+  
+  <rect x="1358" y="358" width="6" height="40" rx="3" fill="white" opacity="0.3" />
+  <text x="1368" y="460" font-family="Georgia, serif" font-size="13" fill="#5a3e1a" text-anchor="middle" font-style="italic">Serum</text>
+
+  
+  <rect x="1410" y="320" width="44" height="110" rx="10" fill="url(#bottleGrad)" stroke="#5a3e1a" stroke-width="2" />
+  <rect x="1416" y="305" width="32" height="20" rx="5" fill="#b09acc" stroke="#5a3e1a" stroke-width="1.5" />
+  <rect x="1422" y="295" width="20" height="14" rx="3" fill="#9078aa" stroke="#5a3e1a" stroke-width="1.5" />
+  <rect x="1417" y="328" width="8" height="55" rx="4" fill="white" opacity="0.25" />
+  <text x="1432" y="448" font-family="Georgia, serif" font-size="13" fill="#5a3e1a" text-anchor="middle" font-style="italic">Essence</text>
+
+  
+  <ellipse cx="1290" cy="620" rx="55" ry="68" fill="#e8f0e0" stroke="#8a6e3a" stroke-width="2" />
+  <ellipse cx="1290" cy="620" rx="42" ry="55" fill="none" stroke="#8a6e3a" stroke-width="1" stroke-dasharray="4 3" />
+  
+  <ellipse cx="1275" cy="608" rx="8" ry="5" fill="#c8b888" />
+  <ellipse cx="1305" cy="608" rx="8" ry="5" fill="#c8b888" />
+  
+  <path d="M 1278 635 Q 1290 645 1302 635" fill="none" stroke="#8a6e3a" stroke-width="2" />
+  <text x="1290" y="710" font-family="Georgia, serif" font-size="13" fill="#5a3e1a" text-anchor="middle" font-style="italic">Sheet Mask</text>
+
+  
+  <g transform="translate(1430, 820)">
+    <circle r="40" fill="none" stroke="#8a6e3a" stroke-width="1.5" />
+    <circle r="4" fill="#8a6e3a" />
+    
+    <polygon points="0,-38 -6,-20 6,-20" fill="#8a6e3a" />
+    <polygon points="0,38 -6,20 6,20" fill="#c8b888" />
+    <polygon points="38,0 20,-6 20,6" fill="#c8b888" />
+    <polygon points="-38,0 -20,-6 -20,6" fill="#c8b888" />
+    
+    <polygon points="0,-38 -3,-28 3,-28" fill="#c8b888" transform="rotate(45)" />
+    <polygon points="0,-38 -3,-28 3,-28" fill="#c8b888" transform="rotate(135)" />
+    <polygon points="0,-38 -3,-28 3,-28" fill="#c8b888" transform="rotate(225)" />
+    <polygon points="0,-38 -3,-28 3,-28" fill="#c8b888" transform="rotate(315)" />
+    <text y="-44" font-family="Georgia, serif" font-size="14" fill="#5a3e1a" text-anchor="middle" font-weight="bold">N</text>
+    <text y="56" font-family="Georgia, serif" font-size="12" fill="#5a3e1a" text-anchor="middle">S</text>
+    <text x="48" y="4" font-family="Georgia, serif" font-size="12" fill="#5a3e1a">E</text>
+    <text x="-52" y="4" font-family="Georgia, serif" font-size="12" fill="#5a3e1a">W</text>
+  </g>
+
+  
+  <g transform="translate(420, 780)" opacity="0.45">
+    <circle cx="0" cy="-18" r="9" fill="#e8a0a8" />
+    <circle cx="17" cy="-6" r="9" fill="#e8a0a8" />
+    <circle cx="11" cy="14" r="9" fill="#e8a0a8" />
+    <circle cx="-11" cy="14" r="9" fill="#e8a0a8" />
+    <circle cx="-17" cy="-6" r="9" fill="#e8a0a8" />
+    <circle cx="0" cy="0" r="6" fill="#f8d0d8" />
+  </g>
+  <g transform="translate(1200, 800)" opacity="0.35">
+    <circle cx="0" cy="-14" r="7" fill="#e8a0a8" />
+    <circle cx="13" cy="-4" r="7" fill="#e8a0a8" />
+    <circle cx="8" cy="11" r="7" fill="#e8a0a8" />
+    <circle cx="-8" cy="11" r="7" fill="#e8a0a8" />
+    <circle cx="-13" cy="-4" r="7" fill="#e8a0a8" />
+    <circle cx="0" cy="0" r="5" fill="#f8d0d8" />
+  </g>
+
+  
+  <g transform="translate(80, 820)">
+    <rect x="0" y="0" width="120" height="8" fill="#8a6e3a" />
+    <rect x="0" y="0" width="60" height="8" fill="#e8dfc8" />
+    <line x1="0" y1="-4" x2="0" y2="14" stroke="#5a3e1a" stroke-width="1.5" />
+    <line x1="120" y1="-4" x2="120" y2="14" stroke="#5a3e1a" stroke-width="1.5" />
+    <text x="60" y="26" font-family="Georgia, serif" font-size="12" fill="#5a3e1a" text-anchor="middle">Global Reach</text>
+  </g>
+
+  
+  <rect x="80" y="680" width="280" height="100" rx="8" fill="#8a6e3a" opacity="0.15" stroke="#8a6e3a" stroke-width="1.5" />
+  <text x="220" y="715" font-family="Georgia, serif" font-size="14" fill="#5a3e1a" text-anchor="middle" font-style="italic">Cosmetics Exports</text>
+  <text x="220" y="748" font-family="Georgia, serif" font-size="28" fill="#5a3e1a" text-anchor="middle" font-weight="bold">$9.2B</text>
+  <text x="220" y="770" font-family="Georgia, serif" font-size="13" fill="#5a3e1a" text-anchor="middle" font-style="italic">in 2023</text>
+
+  
+  
+  <rect x="60" y="60" width="900" height="180" rx="6" fill="#3a2a0a" opacity="0.82" />
+  <rect x="66" y="66" width="888" height="168" rx="4" fill="none" stroke="#c9a96e" stroke-width="1.5" />
+
+  <text x="510" y="148" font-family="Georgia, 'Times New Roman', serif" font-size="72" fill="#f5eedc" text-anchor="middle" font-weight="bold" letter-spacing="2">K-beauty</text>
+  <text x="510" y="208" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#c9a96e" text-anchor="middle" letter-spacing="6">and the Cosmetics Industry</text>
+
+  
+  <text x="510" y="310" font-family="Georgia, serif" font-size="20" fill="#5a3e1a" text-anchor="middle" font-style="italic" opacity="0.85">Global Export · Skincare Innovation · Hallyu Wave · Soft Power</text>
+
+  
+  <line x1="100" y1="310" x2="370" y2="310" stroke="#8a6e3a" stroke-width="1" opacity="0.6" />
+  <line x1="650" y1="310" x2="900" y2="310" stroke="#8a6e3a" stroke-width="1" opacity="0.6" />
+
+  
+  <text x="80" y="890" font-family="Georgia, serif" font-size="14" fill="#5a3e1a" font-style="italic" opacity="0.7">Amorepacific · LG H&amp;H · COSRX · Missha · Clio · Olive Young</text>
+
+  
+  <rect x="1370" y="60" width="130" height="34" rx="4" fill="#8a6e3a" />
+  <text x="1435" y="82" font-family="Georgia, serif" font-size="16" fill="#f5eedc" text-anchor="middle" letter-spacing="1">ECONOMY</text>
+
+</svg>

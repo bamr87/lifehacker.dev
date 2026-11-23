@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Gwangju – Gwangju Metropolitan City, South Korea</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4763b" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#d4763b" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#b8a070" stroke-width="0.4" stroke-opacity="0.4" />
+    </pattern>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <rect width="1536" height="1024" fill="#c9b065" opacity="0.08" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#7a6040" stroke-width="3" opacity="0.7" />
+  <rect x="36" y="36" width="1464" height="952" fill="none" stroke="#7a6040" stroke-width="1" opacity="0.4" />
+
+  
+  
+  <path d="M24,60 L24,24 L60,24" fill="none" stroke="#7a6040" stroke-width="4" />
+  <circle cx="24" cy="24" r="5" fill="#7a6040" />
+  
+  <path d="M1476,24 L1512,24 L1512,60" fill="none" stroke="#7a6040" stroke-width="4" />
+  <circle cx="1512" cy="24" r="5" fill="#7a6040" />
+  
+  <path d="M24,964 L24,1000 L60,1000" fill="none" stroke="#7a6040" stroke-width="4" />
+  <circle cx="24" cy="1000" r="5" fill="#7a6040" />
+  
+  <path d="M1476,1000 L1512,1000 L1512,964" fill="none" stroke="#7a6040" stroke-width="4" />
+  <circle cx="1512" cy="1000" r="5" fill="#7a6040" />
+
+  
+  <path d="     M780,130     L820,145 L870,140 L920,160 L950,190 L960,230     L980,260 L975,300 L990,340 L985,380     L970,420 L975,460 L960,500 L950,540     L930,570 L910,600 L880,630 L870,670     L850,700 L840,730 L820,750 L800,780     L780,800 L760,820 L740,800     L720,780 L700,750 L685,720     L670,690 L660,660 L640,640     L620,610 L600,580 L590,550     L580,510 L570,470 L575,430     L560,390 L565,350 L580,310     L590,270 L610,240 L630,210     L660,185 L700,160 L740,140 Z   " fill="#8fac7a" stroke="#5a7a4a" stroke-width="2.5" opacity="0.85" />
+
+  
+  
+  <path d="M580,520 L610,480 L640,520 Z" fill="#6a8f5a" opacity="0.5" />
+  <path d="M620,530 L660,475 L700,530 Z" fill="#6a8f5a" opacity="0.5" />
+  <path d="M560,540 L590,500 L620,540 Z" fill="#6a8f5a" opacity="0.45" />
+
+  
+  
+  <path d="M760,680 Q720,670 690,690 Q665,710 650,730 Q635,750 620,760" fill="none" stroke="#5b8aaa" stroke-width="5" stroke-linecap="round" opacity="0.7" />
+  <path d="M760,680 Q750,700 740,730 Q730,760 720,780" fill="none" stroke="#5b8aaa" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+
+  
+  <circle cx="748" cy="672" r="22" fill="#c0392b" stroke="#7a1515" stroke-width="3" opacity="0.95" />
+  <circle cx="748" cy="672" r="10" fill="#e8e0d0" opacity="0.9" />
+  <circle cx="748" cy="672" r="4" fill="#c0392b" />
+
+  
+  <circle cx="748" cy="672" r="50" fill="url(#glow)" />
+
+  
+  <circle cx="830" cy="330" r="10" fill="#7a6040" stroke="#5a4020" stroke-width="2" opacity="0.7" />
+  <text x="845" y="325" font-family="Georgia, serif" font-size="18" fill="#5a4020" opacity="0.7" font-style="italic">Seoul</text>
+
+  
+  <circle cx="920" cy="590" r="8" fill="#7a6040" stroke="#5a4020" stroke-width="1.5" opacity="0.6" />
+  <text x="930" y="600" font-family="Georgia, serif" font-size="16" fill="#5a4020" opacity="0.6" font-style="italic">Busan</text>
+
+  
+  <text x="700" y="655" font-family="Georgia, serif" font-size="20" fill="#7a1515" font-weight="bold" text-anchor="end">광주</text>
+
+  
+  <g transform="translate(1100, 580)">
+    
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#7a6040" stroke-width="2" opacity="0.6" />
+    <circle cx="0" cy="0" r="55" fill="#e8dfc8" stroke="#7a6040" stroke-width="1" opacity="0.5" />
+    
+    <polygon points="0,-52 -10,-20 0,-30 10,-20" fill="#7a1515" opacity="0.9" />
+    
+    <polygon points="0,52 -10,20 0,30 10,20" fill="#7a6040" opacity="0.7" />
+    
+    <polygon points="52,0 20,-10 30,0 20,10" fill="#7a6040" opacity="0.7" />
+    
+    <polygon points="-52,0 -20,-10 -30,0 -20,10" fill="#7a6040" opacity="0.7" />
+    
+    <circle cx="0" cy="0" r="5" fill="#7a6040" />
+    
+    <text x="0" y="-60" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#7a1515">N</text>
+    <text x="0" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#7a6040">S</text>
+    <text x="70" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#7a6040">E</text>
+    <text x="-70" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#7a6040">W</text>
+    
+    <line x1="39" y1="-39" x2="44" y2="-44" stroke="#7a6040" stroke-width="1.5" opacity="0.5" />
+    <line x1="39" y1="39" x2="44" y2="44" stroke="#7a6040" stroke-width="1.5" opacity="0.5" />
+    <line x1="-39" y1="-39" x2="-44" y2="-44" stroke="#7a6040" stroke-width="1.5" opacity="0.5" />
+    <line x1="-39" y1="39" x2="-44" y2="44" stroke="#7a6040" stroke-width="1.5" opacity="0.5" />
+  </g>
+
+  
+  <line x1="400" y1="100" x2="400" y2="924" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+  <line x1="600" y1="100" x2="600" y2="924" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+  <line x1="800" y1="100" x2="800" y2="924" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+  <line x1="1000" y1="100" x2="1000" y2="924" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+  <line x1="1200" y1="100" x2="1200" y2="924" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+  <line x1="400" y1="250" x2="1136" y2="250" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+  <line x1="400" y1="450" x2="1136" y2="450" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+  <line x1="400" y1="650" x2="1136" y2="650" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+  <line x1="400" y1="850" x2="1136" y2="850" stroke="#8a7050" stroke-width="0.8" stroke-dasharray="6,8" opacity="0.25" />
+
+  
+  <rect x="36" y="36" width="520" height="952" fill="#a8bfcf" opacity="0.18" rx="4" />
+
+  
+  <path d="M80,200 Q150,195 220,200" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.4" />
+  <path d="M60,240 Q140,232 230,240" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.35" />
+  <path d="M100,280 Q170,274 250,278" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.3" />
+  <path d="M70,360 Q160,353 260,358" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.3" />
+  <path d="M80,420 Q180,413 280,418" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.3" />
+  <path d="M60,500 Q150,493 240,498" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.3" />
+  <path d="M100,560 Q190,554 290,558" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.3" />
+  <path d="M70,640 Q170,633 270,638" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.3" />
+  <path d="M80,720 Q160,713 250,718" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.3" />
+  <path d="M60,800 Q155,794 260,798" fill="none" stroke="#7a9aaf" stroke-width="1" opacity="0.3" />
+
+  
+  <text x="200" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#5a7a8a" opacity="0.55" font-style="italic" letter-spacing="2">Yellow Sea</text>
+
+  
+  <rect x="1050" y="36" width="486" height="600" fill="#a8bfcf" opacity="0.12" rx="4" />
+  <text x="1300" y="350" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#5a7a8a" opacity="0.45" font-style="italic" letter-spacing="1">Sea of Japan</text>
+
+  
+  
+  <rect x="60" y="60" width="430" height="904" fill="#3d2e1a" opacity="0.82" rx="3" />
+
+  
+  <rect x="60" y="60" width="430" height="8" fill="#c0392b" opacity="0.9" />
+  <rect x="60" y="956" width="430" height="8" fill="#c0392b" opacity="0.9" />
+
+  
+  <text x="275" y="250" text-anchor="middle" font-family="serif" font-size="140" fill="#c0392b" opacity="0.18" font-weight="bold">광주</text>
+
+  
+  <text x="275" y="170" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="bold" fill="#f0e8d0" letter-spacing="3">GWANGJU</text>
+
+  
+  <text x="275" y="225" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#c9a86c" letter-spacing="6" opacity="0.9">광주광역시</text>
+
+  
+  <line x1="100" y1="248" x2="450" y2="248" stroke="#c0392b" stroke-width="1.5" opacity="0.7" />
+  <line x1="130" y1="255" x2="420" y2="255" stroke="#c9a86c" stroke-width="0.8" opacity="0.5" />
+
+  
+  <text x="275" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#c9a86c" font-style="italic" letter-spacing="1">Gwangju Metropolitan City</text>
+
+  
+  <text x="275" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#b0a080" opacity="0.8">Southwestern South Korea</text>
+
+  
+  <line x1="100" y1="365" x2="450" y2="365" stroke="#7a6040" stroke-width="0.8" opacity="0.5" />
+
+  
+  
+  <circle cx="105" cy="405" r="6" fill="#c9a86c" opacity="0.8" />
+  <circle cx="118" cy="400" r="5" fill="#c9a86c" opacity="0.6" />
+  <circle cx="118" cy="410" r="5" fill="#c9a86c" opacity="0.6" />
+  <text x="135" y="410" font-family="Georgia, serif" font-size="17" fill="#e8dfc8">Population: ~1.4 million</text>
+
+  
+  <circle cx="107" cy="445" r="6" fill="#c0392b" opacity="0.8" />
+  <circle cx="107" cy="445" r="3" fill="#f0e8d0" opacity="0.9" />
+  <text x="125" y="450" font-family="Georgia, serif" font-size="17" fill="#e8dfc8">Honam Region Capital</text>
+
+  
+  <polygon points="107,478 109,484 116,484 110,488 112,494 107,490 102,494 104,488 98,484 105,484" fill="#c9a86c" opacity="0.9" />
+  <text x="125" y="486" font-family="Georgia, serif" font-size="17" fill="#e8dfc8">Cultural &amp; Arts Center</text>
+
+  
+  <line x1="100" y1="510" x2="450" y2="510" stroke="#7a6040" stroke-width="0.8" opacity="0.5" />
+
+  
+  <text x="105" y="545" font-family="Georgia, serif" font-size="16" fill="#c0392b" letter-spacing="1" font-weight="bold">MAY 18, 1980 UPRISING</text>
+  <text x="105" y="568" font-family="Georgia, serif" font-size="14" fill="#b0a080">Symbol of Democratic Struggle</text>
+
+  
+  <path d="M280,610 Q275,590 280,575 Q285,560 288,575 Q295,560 292,580 Q300,565 295,585 Q305,575 298,595 Q310,590 300,610 Z" fill="#c0392b" opacity="0.8" />
+  <path d="M280,610 Q278,595 282,583 Q284,572 287,583 Q291,565 289,582 Q296,570 293,590 Q302,580 295,600 Q306,593 299,610 Z" fill="#e07030" opacity="0.7" />
+  
+  <rect x="283" y="608" width="16" height="40" rx="3" fill="#c9a86c" opacity="0.7" />
+
+  
+  <line x1="100" y1="665" x2="450" y2="665" stroke="#7a6040" stroke-width="0.8" opacity="0.4" />
+
+  
+  <text x="105" y="700" font-family="Georgia, serif" font-size="15" fill="#c9a86c" font-style="italic">Birthplace of President</text>
+  <text x="105" y="722" font-family="Georgia, serif" font-size="19" fill="#e8dfc8" font-weight="bold">Kim Dae-jung</text>
+  <text x="105" y="744" font-family="Georgia, serif" font-size="13" fill="#908060" font-style="italic">Nobel Peace Prize Laureate</text>
+
+  
+  <line x1="100" y1="765" x2="450" y2="765" stroke="#7a6040" stroke-width="0.8" opacity="0.4" />
+
+  
+  <text x="275" y="810" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#908060">6th Largest City in South Korea</text>
+
+  
+  <line x1="110" y1="880" x2="310" y2="880" stroke="#c9a86c" stroke-width="2" opacity="0.6" />
+  <line x1="110" y1="875" x2="110" y2="885" stroke="#c9a86c" stroke-width="2" opacity="0.6" />
+  <line x1="210" y1="875" x2="210" y2="885" stroke="#c9a86c" stroke-width="1.5" opacity="0.6" />
+  <line x1="310" y1="875" x2="310" y2="885" stroke="#c9a86c" stroke-width="2" opacity="0.6" />
+  <text x="155" y="898" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#908060">Scale Reference</text>
+
+  
+  <text x="510" y="254" text-anchor="end" font-family="Georgia, serif" font-size="12" fill="#7a6040" opacity="0.6">38°N</text>
+  <text x="510" y="454" text-anchor="end" font-family="Georgia, serif" font-size="12" fill="#7a6040" opacity="0.6">35°N</text>
+  <text x="510" y="654" text-anchor="end" font-family="Georgia, serif" font-size="12" fill="#7a6040" opacity="0.6">33°N</text>
+
+  
+  <text x="748" y="760" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#3d2e1a" opacity="0.7" font-style="italic">Honam Region</text>
+
+  
+  <rect x="800" y="870" width="280" height="70" rx="8" fill="#3d2e1a" opacity="0.7" stroke="#7a6040" stroke-width="1.5" />
+  <line x1="810" y1="882" x2="1070" y2="882" stroke="#c9a86c" stroke-width="0.8" opacity="0.5" />
+  <line x1="810" y1="932" x2="1070" y2="932" stroke="#c9a86c" stroke-width="0.8" opacity="0.5" />
+  <text x="940" y="905" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#c9a86c" letter-spacing="2">SOUTH KOREA</text>
+  <text x="940" y="925" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#908060" font-style="italic">Republic of Korea  ·  대한민국</text>
+
+</svg>

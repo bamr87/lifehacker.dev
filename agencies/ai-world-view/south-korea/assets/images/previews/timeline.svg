@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Timeline — A chronological index of dated events</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5ead6" />
+      <stop offset="100%" stop-color="#e8d5b0" />
+    </linearGradient>
+    <linearGradient id="stripe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a96e" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#c8a96e" stop-opacity="0" />
+    </linearGradient>
+    
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="none" />
+      <circle cx="1" cy="1" r="0.4" fill="#b89050" opacity="0.15" />
+      <circle cx="3" cy="3" r="0.4" fill="#b89050" opacity="0.1" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grain)" />
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8b6c3a" stroke-width="3" opacity="0.5" />
+  <rect x="38" y="38" width="1460" height="948" fill="none" stroke="#8b6c3a" stroke-width="1" opacity="0.3" />
+
+  
+  
+  <path d="M28,68 L28,28 L68,28" fill="none" stroke="#8b6c3a" stroke-width="3" />
+  
+  <path d="M1468,28 L1508,28 L1508,68" fill="none" stroke="#8b6c3a" stroke-width="3" />
+  
+  <path d="M28,956 L28,996 L68,996" fill="none" stroke="#8b6c3a" stroke-width="3" />
+  
+  <path d="M1468,996 L1508,996 L1508,956" fill="none" stroke="#8b6c3a" stroke-width="3" />
+
+  
+  <g transform="translate(1300,512)" opacity="0.25">
+    
+    <line x1="0" y1="-110" x2="0" y2="110" stroke="#5a3e1b" stroke-width="2" />
+    <line x1="-110" y1="0" x2="110" y2="0" stroke="#5a3e1b" stroke-width="2" />
+    <line x1="-78" y1="-78" x2="78" y2="78" stroke="#5a3e1b" stroke-width="1" />
+    <line x1="78" y1="-78" x2="-78" y2="78" stroke="#5a3e1b" stroke-width="1" />
+    
+    <polygon points="0,-110 -12,-70 0,-85 12,-70" fill="#5a3e1b" />
+    <polygon points="0,110 -12,70 0,85 12,70" fill="#5a3e1b" opacity="0.5" />
+    <polygon points="-110,0 -70,-12 -85,0 -70,12" fill="#5a3e1b" opacity="0.5" />
+    <polygon points="110,0 70,-12 85,0 70,12" fill="#5a3e1b" opacity="0.5" />
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#5a3e1b" stroke-width="2" />
+    <circle cx="0" cy="0" r="6" fill="#5a3e1b" />
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#5a3e1b" stroke-width="1" stroke-dasharray="4,6" />
+    <text x="0" y="-118" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#5a3e1b" font-weight="bold">N</text>
+  </g>
+
+  
+  <g opacity="0.18" transform="translate(1050,220)">
+    <path d="M80,0 C100,20 120,60 115,100 C110,140 100,170 90,200 C80,230 70,260 75,300 C80,340 90,360 85,400 C80,440 60,460 50,480 C40,500 45,520 40,540 L20,540 C15,520 10,500 15,480 C20,460 30,440 25,400 C20,360 10,340 15,300 C20,260 30,230 25,200 C20,170 10,140 5,100 C0,60 20,20 40,0 Z" fill="#7a5c2e" />
+  </g>
+
+  
+  <line x1="280" y1="120" x2="280" y2="900" stroke="#8b6c3a" stroke-width="3" opacity="0.6" />
+
+  
+  
+  <circle cx="280" cy="170" r="9" fill="#8b6c3a" opacity="0.8" />
+  <line x1="280" y1="170" x2="340" y2="170" stroke="#8b6c3a" stroke-width="1.5" opacity="0.5" />
+  <text x="355" y="163" font-family="Georgia,serif" font-size="20" fill="#5a3e1b" font-weight="bold">c. 18 BCE</text>
+  <text x="355" y="183" font-family="Georgia,serif" font-size="16" fill="#6b4e2a" opacity="0.85">Baekje establishes Wiryeseong</text>
+
+  
+  <circle cx="280" cy="260" r="9" fill="#8b6c3a" opacity="0.8" />
+  <line x1="280" y1="260" x2="340" y2="260" stroke="#8b6c3a" stroke-width="1.5" opacity="0.5" />
+  <text x="355" y="253" font-family="Georgia,serif" font-size="20" fill="#5a3e1b" font-weight="bold">1394</text>
+  <text x="355" y="273" font-family="Georgia,serif" font-size="16" fill="#6b4e2a" opacity="0.85">Hanyang designated Joseon capital</text>
+
+  
+  <circle cx="280" cy="350" r="9" fill="#8b6c3a" opacity="0.8" />
+  <line x1="280" y1="350" x2="340" y2="350" stroke="#8b6c3a" stroke-width="1.5" opacity="0.5" />
+  <text x="355" y="343" font-family="Georgia,serif" font-size="20" fill="#5a3e1b" font-weight="bold">1910</text>
+  <text x="355" y="363" font-family="Georgia,serif" font-size="16" fill="#6b4e2a" opacity="0.85">Japan annexes Korea; capital renamed Keijō</text>
+
+  
+  <circle cx="280" cy="440" r="9" fill="#8b6c3a" opacity="0.8" />
+  <line x1="280" y1="440" x2="340" y2="440" stroke="#8b6c3a" stroke-width="1.5" opacity="0.5" />
+  <text x="355" y="433" font-family="Georgia,serif" font-size="20" fill="#5a3e1b" font-weight="bold">1945</text>
+  <text x="355" y="453" font-family="Georgia,serif" font-size="16" fill="#6b4e2a" opacity="0.85">Liberation; peninsula divided at 38th parallel</text>
+
+  
+  <circle cx="280" cy="530" r="9" fill="#8b6c3a" opacity="0.8" />
+  <line x1="280" y1="530" x2="340" y2="530" stroke="#8b6c3a" stroke-width="1.5" opacity="0.5" />
+  <text x="355" y="523" font-family="Georgia,serif" font-size="20" fill="#5a3e1b" font-weight="bold">1948</text>
+  <text x="355" y="543" font-family="Georgia,serif" font-size="16" fill="#6b4e2a" opacity="0.85">Republic of Korea proclaimed</text>
+
+  
+  <circle cx="280" cy="620" r="9" fill="#7a3020" opacity="0.85" />
+  <line x1="280" y1="620" x2="340" y2="620" stroke="#7a3020" stroke-width="1.5" opacity="0.5" />
+  <text x="355" y="613" font-family="Georgia,serif" font-size="20" fill="#5a1a0a" font-weight="bold">1950 Jun 25</text>
+  <text x="355" y="633" font-family="Georgia,serif" font-size="16" fill="#6b4e2a" opacity="0.85">North Korea invades — Korean War begins</text>
+
+  
+  <circle cx="280" cy="710" r="9" fill="#7a3020" opacity="0.85" />
+  <line x1="280" y1="710" x2="340" y2="710" stroke="#7a3020" stroke-width="1.5" opacity="0.5" />
+  <text x="355" y="703" font-family="Georgia,serif" font-size="20" fill="#5a1a0a" font-weight="bold">1950 Sep 15</text>
+  <text x="355" y="723" font-family="Georgia,serif" font-size="16" fill="#6b4e2a" opacity="0.85">Incheon Landing reverses the war</text>
+
+  
+  <circle cx="280" cy="900" r="6" fill="none" stroke="#8b6c3a" stroke-width="2" opacity="0.5" />
+
+  
+  <line x1="900" y1="512" x2="1240" y2="512" stroke="#5a3e1b" stroke-width="1.5" stroke-dasharray="12,6" opacity="0.2" />
+  <text x="970" y="505" font-family="Georgia,serif" font-size="14" fill="#5a3e1b" opacity="0.35" letter-spacing="2">38° N PARALLEL</text>
+
+  
+  <text x="768" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="110" fill="#3a2508" opacity="0.07" letter-spacing="20" font-weight="bold">TIMELINE</text>
+
+  
+  <text x="768" y="930" text-anchor="middle" font-family="Georgia,serif" font-size="72" fill="#3a2508" font-weight="bold" letter-spacing="8">TIMELINE</text>
+  <text x="768" y="975" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#6b4e2a" letter-spacing="4" opacity="0.8">A CHRONOLOGICAL INDEX OF DATED EVENTS</text>
+
+  
+  <line x1="580" y1="944" x2="958" y2="944" stroke="#8b6c3a" stroke-width="1" opacity="0.4" />
+  <circle cx="768" cy="944" r="4" fill="#8b6c3a" opacity="0.4" />
+
+</svg>

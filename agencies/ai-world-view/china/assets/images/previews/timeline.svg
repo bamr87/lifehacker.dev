@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Timeline of Chinese History – chronological milestones banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </linearGradient>
+    <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b6f47" />
+      <stop offset="100%" stop-color="#5c4a2a" />
+    </linearGradient>
+    <filter id="tex" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  
+  <rect width="1536" height="1024" fill="#c4a96a" opacity="0.18" filter="url(#tex)" />
+
+  
+  <g stroke="#a08850" stroke-width="0.7" opacity="0.35" fill="none">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <g fill="#b5956a" stroke="#7a5c30" stroke-width="2" opacity="0.55">
+    <path d="M 560,180 L 620,160 L 700,155 L 780,140 L 860,148 L 940,155 L 1010,170 L 1060,195 L 1080,230 L 1060,265 L 1040,300 L 1060,340 L 1080,370 L 1070,410 L 1040,440 L 1000,470 L 960,510 L 940,555 L 920,590 L 880,620 L 840,640 L 800,650 L 760,645 L 720,630 L 680,600 L 640,570 L 600,540 L 570,500 L 555,460 L 540,420 L 530,380 L 520,340 L 515,300 L 520,260 L 535,220 Z" />
+  </g>
+
+  
+  <g fill="none" stroke="#5c3d1a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <path d="M 510,310 Q 540,290 570,285 Q 610,278 650,272 Q 700,265 750,260 Q 800,255 850,258 Q 900,262 940,268 Q 980,274 1010,280 Q 1040,286 1060,295" />
+    
+  </g>
+  
+  <g fill="#5c3d1a" opacity="0.8">
+    <rect x="518" y="303" width="6" height="10" rx="1" />
+    <rect x="540" y="291" width="6" height="10" rx="1" />
+    <rect x="565" y="282" width="6" height="10" rx="1" />
+    <rect x="592" y="277" width="6" height="10" rx="1" />
+    <rect x="620" y="271" width="6" height="10" rx="1" />
+    <rect x="650" y="267" width="6" height="10" rx="1" />
+    <rect x="680" y="263" width="6" height="10" rx="1" />
+    <rect x="710" y="260" width="6" height="10" rx="1" />
+    <rect x="740" y="258" width="6" height="10" rx="1" />
+    <rect x="770" y="257" width="6" height="10" rx="1" />
+    <rect x="800" y="256" width="6" height="10" rx="1" />
+    <rect x="830" y="257" width="6" height="10" rx="1" />
+    <rect x="860" y="259" width="6" height="10" rx="1" />
+    <rect x="890" y="263" width="6" height="10" rx="1" />
+    <rect x="920" y="267" width="6" height="10" rx="1" />
+    <rect x="950" y="272" width="6" height="10" rx="1" />
+    <rect x="978" y="277" width="6" height="10" rx="1" />
+    <rect x="1005" y="282" width="6" height="10" rx="1" />
+    <rect x="1030" y="288" width="6" height="10" rx="1" />
+    <rect x="1052" y="296" width="6" height="10" rx="1" />
+  </g>
+
+  
+  <line x1="220" y1="100" x2="220" y2="950" stroke="#5c3d1a" stroke-width="3" opacity="0.7" />
+
+  
+  
+  <circle cx="220" cy="200" r="8" fill="#8b3a1a" stroke="#5c3d1a" stroke-width="2" />
+  <line x1="220" y1="200" x2="260" y2="200" stroke="#5c3d1a" stroke-width="1.5" opacity="0.6" />
+  <text x="272" y="196" font-family="Georgia, serif" font-size="17" fill="#3a2008" font-weight="bold">551 BCE</text>
+  <text x="272" y="216" font-family="Georgia, serif" font-size="14" fill="#5c3d1a">Birth of Confucius</text>
+
+  
+  <circle cx="220" cy="310" r="8" fill="#8b3a1a" stroke="#5c3d1a" stroke-width="2" />
+  <line x1="220" y1="310" x2="260" y2="310" stroke="#5c3d1a" stroke-width="1.5" opacity="0.6" />
+  <text x="272" y="306" font-family="Georgia, serif" font-size="17" fill="#3a2008" font-weight="bold">221 BCE</text>
+  <text x="272" y="326" font-family="Georgia, serif" font-size="14" fill="#5c3d1a">Qin Unification; Great Wall begun</text>
+
+  
+  <circle cx="220" cy="420" r="8" fill="#8b3a1a" stroke="#5c3d1a" stroke-width="2" />
+  <line x1="220" y1="420" x2="260" y2="420" stroke="#5c3d1a" stroke-width="1.5" opacity="0.6" />
+  <text x="272" y="416" font-family="Georgia, serif" font-size="17" fill="#3a2008" font-weight="bold">136 BCE</text>
+  <text x="272" y="436" font-family="Georgia, serif" font-size="14" fill="#5c3d1a">Confucianism becomes state ideology</text>
+
+  
+  <circle cx="220" cy="530" r="8" fill="#8b3a1a" stroke="#5c3d1a" stroke-width="2" />
+  <line x1="220" y1="530" x2="260" y2="530" stroke="#5c3d1a" stroke-width="1.5" opacity="0.6" />
+  <text x="272" y="526" font-family="Georgia, serif" font-size="17" fill="#3a2008" font-weight="bold">1368 CE</text>
+  <text x="272" y="546" font-family="Georgia, serif" font-size="14" fill="#5c3d1a">Ming Dynasty; iconic Wall rebuilt in brick</text>
+
+  
+  <circle cx="220" cy="635" r="8" fill="#8b3a1a" stroke="#5c3d1a" stroke-width="2" />
+  <line x1="220" y1="635" x2="260" y2="635" stroke="#5c3d1a" stroke-width="1.5" opacity="0.6" />
+  <text x="272" y="631" font-family="Georgia, serif" font-size="17" fill="#3a2008" font-weight="bold">1905</text>
+  <text x="272" y="651" font-family="Georgia, serif" font-size="14" fill="#5c3d1a">Abolition of imperial examination system</text>
+
+  
+  <circle cx="220" cy="730" r="8" fill="#8b3a1a" stroke="#5c3d1a" stroke-width="2" />
+  <line x1="220" y1="730" x2="260" y2="730" stroke="#5c3d1a" stroke-width="1.5" opacity="0.6" />
+  <text x="272" y="726" font-family="Georgia, serif" font-size="17" fill="#3a2008" font-weight="bold">1921</text>
+  <text x="272" y="746" font-family="Georgia, serif" font-size="14" fill="#5c3d1a">Communist Party of China founded</text>
+
+  
+  <circle cx="220" cy="820" r="8" fill="#8b3a1a" stroke="#5c3d1a" stroke-width="2" />
+  <line x1="220" y1="820" x2="260" y2="820" stroke="#5c3d1a" stroke-width="1.5" opacity="0.6" />
+  <text x="272" y="816" font-family="Georgia, serif" font-size="17" fill="#3a2008" font-weight="bold">1949</text>
+  <text x="272" y="836" font-family="Georgia, serif" font-size="14" fill="#5c3d1a">Proclamation of the People's Republic</text>
+
+  
+  <circle cx="220" cy="910" r="8" fill="#8b3a1a" stroke="#5c3d1a" stroke-width="2" />
+  <line x1="220" y1="910" x2="260" y2="910" stroke="#5c3d1a" stroke-width="1.5" opacity="0.6" />
+  <text x="272" y="906" font-family="Georgia, serif" font-size="17" fill="#3a2008" font-weight="bold">1978</text>
+  <text x="272" y="926" font-family="Georgia, serif" font-size="14" fill="#5c3d1a">Reform and Opening Up under Deng Xiaoping</text>
+
+  
+  <g transform="translate(1380,820)" fill="#6b4c1e" opacity="0.75">
+    
+    <circle cx="0" cy="0" r="72" fill="none" stroke="#6b4c1e" stroke-width="2" />
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#6b4c1e" stroke-width="1" />
+    
+    <polygon points="0,-72 -10,-40 0,-48 10,-40" fill="#6b4c1e" />
+    <polygon points="0,72 -10,40 0,48 10,40" fill="#8b6f47" />
+    <polygon points="-72,0 -40,-10 -48,0 -40,10" fill="#8b6f47" />
+    <polygon points="72,0 40,-10 48,0 40,10" fill="#8b6f47" />
+    
+    <polygon points="0,-72 -6,-52 0,-58 6,-52" fill="#6b4c1e" transform="rotate(45)" />
+    <polygon points="0,-72 -6,-52 0,-58 6,-52" fill="#6b4c1e" transform="rotate(135)" />
+    <polygon points="0,-72 -6,-52 0,-58 6,-52" fill="#6b4c1e" transform="rotate(225)" />
+    <polygon points="0,-72 -6,-52 0,-58 6,-52" fill="#6b4c1e" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="8" fill="#6b4c1e" />
+    <circle cx="0" cy="0" r="4" fill="#e8dfc8" />
+    
+    <text x="-5" y="-78" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#3a2008">N</text>
+  </g>
+
+  
+  <rect x="560" y="680" width="840" height="250" rx="6" fill="#3a2008" opacity="0.82" />
+  <rect x="565" y="685" width="830" height="240" rx="5" fill="none" stroke="#c4a96a" stroke-width="2" opacity="0.6" />
+
+  <text x="980" y="760" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#f0e0b0" text-anchor="middle" letter-spacing="4">TIMELINE</text>
+  <text x="980" y="820" font-family="Georgia, serif" font-size="28" fill="#c9aa6a" text-anchor="middle" letter-spacing="8">OF CHINESE HISTORY</text>
+  <line x1="640" y1="840" x2="1320" y2="840" stroke="#c9aa6a" stroke-width="1.5" opacity="0.5" />
+  <text x="980" y="876" font-family="Georgia, serif" font-size="16" fill="#b09060" text-anchor="middle" letter-spacing="3" font-style="italic">A Chronological Index of Dated Milestones</text>
+
+  
+  <g stroke="#8b6f47" stroke-width="1.5" fill="none" opacity="0.5">
+    <path d="M 40,40 L 100,40 L 100,50" />
+    <path d="M 40,40 L 40,100 L 50,100" />
+    <path d="M 1496,40 L 1436,40 L 1436,50" />
+    <path d="M 1496,40 L 1496,100 L 1486,100" />
+    <path d="M 40,984 L 100,984 L 100,974" />
+    <path d="M 40,984 L 40,924 L 50,924" />
+    <path d="M 1496,984 L 1436,984 L 1436,974" />
+    <path d="M 1496,984 L 1496,924 L 1486,924" />
+  </g>
+
+  
+  <g fill="#8b2020" opacity="0.4">
+    <polygon points="1460,60 1463,70 1473,70 1465,76 1468,86 1460,80 1452,86 1455,76 1447,70 1457,70" transform="scale(0.8) translate(375,15)" />
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" rx="4" fill="none" stroke="#7a5c30" stroke-width="3" opacity="0.5" />
+  <rect x="26" y="26" width="1484" height="972" rx="3" fill="none" stroke="#7a5c30" stroke-width="1" opacity="0.3" />
+</svg>

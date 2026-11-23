@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Daejeon — science city and central region hub</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9db8c8" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b8a870" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a09070" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <pattern id="crosshatch" width="10" height="10" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="10" y2="10" stroke="#7a9aaa" stroke-width="0.5" opacity="0.25" />
+      <line x1="10" y1="0" x2="0" y2="10" stroke="#7a9aaa" stroke-width="0.5" opacity="0.25" />
+    </pattern>
+    <radialGradient id="glowDaejeon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c04030" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#c04030" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7550" stroke-width="3" opacity="0.7" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7550" stroke-width="1" opacity="0.5" />
+  <rect x="10" y="10" width="1516" height="1004" fill="none" stroke="#6a5530" stroke-width="1.5" opacity="0.4" />
+
+  
+  <ellipse cx="980" cy="512" rx="580" ry="460" fill="url(#seaGrad)" opacity="0.6" />
+  <rect x="550" y="60" width="950" height="904" fill="url(#seaGrad)" opacity="0.25" rx="4" />
+  <rect x="550" y="60" width="950" height="904" fill="url(#crosshatch)" />
+
+  
+  
+  
+  <g transform="translate(820, 160) scale(1.1)">
+    
+    <path d="       M 80,0       C 100,0 140,10 160,30       C 180,50 190,70 195,100       C 200,130 198,160 200,190       C 202,220 210,240 215,270       C 220,300 218,330 220,360       C 222,390 228,410 225,440       C 222,470 215,490 210,515       C 205,540 200,560 195,585       C 190,610 182,625 175,645       C 168,665 160,678 150,690       C 140,702 125,710 115,718       C 105,726 95,730 85,732       C 75,734 65,730 58,722       C 51,714 48,702 45,690       C 42,678 40,665 38,650       C 36,635 35,618 33,600       C 31,582 28,565 25,545       C 22,525 18,505 15,482       C 12,459 10,435 8,410       C 6,385 5,358 4,330       C 3,302 3,272 4,242       C 5,212 8,182 12,155       C 16,128 22,103 30,80       C 38,57 48,38 62,22       C 70,12 75,2 80,0 Z     " fill="url(#landGrad)" stroke="#8a7550" stroke-width="1.8" />
+    
+    <path d="       M 80,0       C 100,0 140,10 160,30       C 180,50 190,70 195,100       C 200,130 198,160 200,190       C 202,220 210,240 215,270       C 220,300 218,330 220,360       C 222,390 228,410 225,440       C 222,470 215,490 210,515       C 205,540 200,560 195,585       C 190,610 182,625 175,645       C 168,665 160,678 150,690       C 140,702 125,710 115,718       C 105,726 95,730 85,732       C 75,734 65,730 58,722       C 51,714 48,702 45,690       C 42,678 40,665 38,650       C 36,635 35,618 33,600       C 31,582 28,565 25,545       C 22,525 18,505 15,482       C 12,459 10,435 8,410       C 6,385 5,358 4,330       C 3,302 3,272 4,242       C 5,212 8,182 12,155       C 16,128 22,103 30,80       C 38,57 48,38 62,22       C 70,12 75,2 80,0 Z     " fill="url(#hatch)" opacity="0.5" />
+    
+    <ellipse cx="85" cy="790" rx="30" ry="18" fill="url(#landGrad)" stroke="#8a7550" stroke-width="1.5" />
+    
+    <ellipse cx="170" cy="580" rx="12" ry="8" fill="url(#landGrad)" stroke="#8a7550" stroke-width="1" opacity="0.8" />
+    <ellipse cx="185" cy="620" rx="9" ry="6" fill="url(#landGrad)" stroke="#8a7550" stroke-width="1" opacity="0.8" />
+    <ellipse cx="20" cy="400" rx="14" ry="9" fill="url(#landGrad)" stroke="#8a7550" stroke-width="1" opacity="0.7" />
+    
+    <line x1="8" y1="255" x2="200" y2="235" stroke="#8a7550" stroke-width="1" stroke-dasharray="6,4" opacity="0.5" />
+
+    
+    
+    <circle cx="112" cy="440" r="28" fill="url(#glowDaejeon)" />
+    <circle cx="112" cy="440" r="9" fill="#c04030" stroke="#ffffff" stroke-width="2" />
+    <circle cx="112" cy="440" r="5" fill="#e86050" />
+
+    
+    <circle cx="118" cy="280" r="5" fill="#5a4a30" stroke="#c8b98a" stroke-width="1.5" />
+    
+    <circle cx="165" cy="640" r="4" fill="#5a4a30" stroke="#c8b98a" stroke-width="1.5" />
+
+    
+    
+    <path d="M 118,280 L 112,440 L 165,640" fill="none" stroke="#6a5530" stroke-width="2.5" stroke-dasharray="8,3" opacity="0.7" />
+    
+    <path d="M 112,440 L 50,600 L 30,680" fill="none" stroke="#6a5530" stroke-width="2" stroke-dasharray="8,3" opacity="0.6" />
+    
+    <path d="M 112,440 L 175,400 L 215,360" fill="none" stroke="#6a5530" stroke-width="2" stroke-dasharray="8,3" opacity="0.6" />
+
+    
+    <text x="125" y="275" font-family="Georgia, serif" font-size="11" fill="#3a2a10" opacity="0.8">Seoul</text>
+    <text x="170" y="648" font-family="Georgia, serif" font-size="11" fill="#3a2a10" opacity="0.8">Busan</text>
+  </g>
+
+  
+  <text x="980" y="590" font-family="Georgia, serif" font-size="13" fill="#c04030" font-style="italic" text-anchor="middle" opacity="0.9">Daejeon</text>
+  <text x="980" y="606" font-family="Georgia, serif" font-size="11" fill="#8a5040" text-anchor="middle" opacity="0.8">대전 · 大田</text>
+  
+  <line x1="940" y1="595" x2="1035" y2="600" stroke="#c04030" stroke-width="0.8" opacity="0" />
+
+  
+  <g transform="translate(1280, 300)">
+    
+    <ellipse cx="0" cy="0" rx="75" ry="28" fill="none" stroke="#6a8a9a" stroke-width="1.8" opacity="0.6" />
+    <ellipse cx="0" cy="0" rx="75" ry="28" fill="none" stroke="#6a8a9a" stroke-width="1.8" opacity="0.6" transform="rotate(60)" />
+    <ellipse cx="0" cy="0" rx="75" ry="28" fill="none" stroke="#6a8a9a" stroke-width="1.8" opacity="0.6" transform="rotate(120)" />
+    
+    <circle cx="0" cy="0" r="10" fill="#6a8a9a" opacity="0.7" />
+    
+    <circle cx="75" cy="0" r="5" fill="#c04030" opacity="0.8" />
+    <circle cx="-37.5" cy="64.95" r="5" fill="#c04030" opacity="0.8" transform="rotate(60)" />
+    <circle cx="37.5" cy="-21.65" r="5" fill="#c04030" opacity="0.8" transform="rotate(120)" />
+  </g>
+  <text x="1280" y="415" font-family="Georgia, serif" font-size="12" fill="#5a7a8a" text-anchor="middle" font-style="italic" opacity="0.8">Daedeok Innopolis</text>
+
+  
+  <g transform="translate(1390, 820)">
+    
+    <circle cx="0" cy="0" r="72" fill="#d4c9a8" stroke="#8a7550" stroke-width="1.5" opacity="0.7" />
+    <circle cx="0" cy="0" r="68" fill="none" stroke="#8a7550" stroke-width="0.8" opacity="0.5" />
+    
+    
+    <polygon points="0,-62 -10,-30 0,-42 10,-30" fill="#5a4a30" />
+    
+    <polygon points="0,62 -10,30 0,42 10,30" fill="#8a7550" />
+    
+    <polygon points="62,0 30,-10 42,0 30,10" fill="#8a7550" />
+    
+    <polygon points="-62,0 -30,-10 -42,0 -30,10" fill="#8a7550" />
+    
+    <polygon points="0,-62 -6,-38 0,-48 6,-38" fill="#8a7550" transform="rotate(45)" />
+    <polygon points="0,-62 -6,-38 0,-48 6,-38" fill="#8a7550" transform="rotate(135)" />
+    <polygon points="0,-62 -6,-38 0,-48 6,-38" fill="#8a7550" transform="rotate(225)" />
+    <polygon points="0,-62 -6,-38 0,-48 6,-38" fill="#8a7550" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="8" fill="#8a7550" stroke="#c8b98a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#c8b98a" />
+    
+    <text x="0" y="-68" font-family="Georgia, serif" font-size="14" fill="#3a2a10" text-anchor="middle" font-weight="bold">N</text>
+  </g>
+
+  
+  <g transform="translate(1270, 880)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#6a5530" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#6a5530" stroke-width="2" />
+    <line x1="80" y1="-4" x2="80" y2="4" stroke="#6a5530" stroke-width="1.5" />
+    <line x1="160" y1="-6" x2="160" y2="6" stroke="#6a5530" stroke-width="2" />
+    <rect x="0" y="-3" width="80" height="6" fill="#6a5530" opacity="0.6" />
+    <rect x="80" y="-3" width="80" height="6" fill="#c8b98a" opacity="0.8" />
+    <text x="0" y="18" font-family="Georgia, serif" font-size="11" fill="#5a4a30" text-anchor="middle">0</text>
+    <text x="80" y="18" font-family="Georgia, serif" font-size="11" fill="#5a4a30" text-anchor="middle">100</text>
+    <text x="160" y="18" font-family="Georgia, serif" font-size="11" fill="#5a4a30" text-anchor="middle">200 km</text>
+  </g>
+
+  
+  <rect x="60" y="60" width="680" height="904" fill="#d8cca8" opacity="0.35" rx="2" />
+  <rect x="60" y="60" width="680" height="904" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <line x1="90" y1="115" x2="710" y2="115" stroke="#8a7550" stroke-width="2" opacity="0.7" />
+  <line x1="90" y1="119" x2="710" y2="119" stroke="#8a7550" stroke-width="0.6" opacity="0.4" />
+
+  
+  <text x="400" y="108" font-family="Georgia, serif" font-size="13" fill="#8a7550" text-anchor="middle" letter-spacing="3" font-style="italic">GEOGRAPHY · SOUTH KOREA</text>
+
+  
+  <text x="400" y="195" font-family="Georgia, serif" font-size="72" fill="#2a1a08" text-anchor="middle" font-weight="bold" letter-spacing="-1">DAEJEON</text>
+  
+  <text x="400" y="250" font-family="Georgia, serif" font-size="26" fill="#6a5530" text-anchor="middle" letter-spacing="6" opacity="0.85">대전  ·  大田</text>
+  
+  <text x="400" y="295" font-family="Georgia, serif" font-size="18" fill="#5a4a30" text-anchor="middle" font-style="italic" letter-spacing="1">"Great Field"</text>
+
+  
+  <line x1="140" y1="318" x2="660" y2="318" stroke="#8a7550" stroke-width="1" opacity="0.6" />
+  <circle cx="400" cy="318" r="4" fill="#8a7550" opacity="0.6" />
+  <circle cx="380" cy="318" r="2" fill="#8a7550" opacity="0.4" />
+  <circle cx="420" cy="318" r="2" fill="#8a7550" opacity="0.4" />
+
+  
+  <text x="400" y="358" font-family="Georgia, serif" font-size="16" fill="#3a2a10" text-anchor="middle" font-style="italic">Science &amp; Technology Capital of South Korea</text>
+
+  
+  
+  <rect x="90" y="380" width="290" height="140" fill="#c8b98a" opacity="0.3" rx="3" stroke="#8a7550" stroke-width="0.8" />
+  <text x="235" y="402" font-family="Georgia, serif" font-size="11" fill="#8a7550" text-anchor="middle" letter-spacing="2">LOCATION</text>
+  <line x1="105" y1="408" x2="365" y2="408" stroke="#8a7550" stroke-width="0.6" opacity="0.5" />
+  <text x="235" y="428" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">Central South Korea</text>
+  <text x="235" y="448" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">Geum River Basin</text>
+  <text x="235" y="470" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">Geographic Heart of</text>
+  <text x="235" y="490" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">the Korean Peninsula</text>
+  <text x="235" y="510" font-family="Georgia, serif" font-size="12" fill="#6a5530" text-anchor="middle" font-style="italic">Pop. ~1.45 million (2023)</text>
+
+  
+  <rect x="400" y="380" width="290" height="140" fill="#c8b98a" opacity="0.3" rx="3" stroke="#8a7550" stroke-width="0.8" />
+  <text x="545" y="402" font-family="Georgia, serif" font-size="11" fill="#8a7550" text-anchor="middle" letter-spacing="2">STATUS</text>
+  <line x1="415" y1="408" x2="675" y2="408" stroke="#8a7550" stroke-width="0.6" opacity="0.5" />
+  <text x="545" y="428" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">Metropolitan City</text>
+  <text x="545" y="448" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">Since 1995</text>
+  <text x="545" y="470" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">5th Largest Metro</text>
+  <text x="545" y="490" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">Area in South Korea</text>
+  <text x="545" y="510" font-family="Georgia, serif" font-size="12" fill="#6a5530" text-anchor="middle" font-style="italic">Direct-jurisdiction city 1989</text>
+
+  
+  <rect x="90" y="540" width="600" height="120" fill="#b8a870" opacity="0.2" rx="3" stroke="#8a7550" stroke-width="0.8" />
+  <text x="390" y="562" font-family="Georgia, serif" font-size="11" fill="#8a7550" text-anchor="middle" letter-spacing="2">DAEDEOK INNOPOLIS · 대덕연구개발특구</text>
+  <line x1="105" y1="568" x2="675" y2="568" stroke="#8a7550" stroke-width="0.6" opacity="0.5" />
+  <text x="390" y="592" font-family="Georgia, serif" font-size="14" fill="#3a2a10" text-anchor="middle">South Korea's foremost science and technology hub</text>
+  <text x="390" y="614" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">Government institutes · Universities · Corporate R&amp;D centers</text>
+  <text x="390" y="636" font-family="Georgia, serif" font-size="13" fill="#5a4a30" text-anchor="middle" font-style="italic">Initiated by Park Chung-hee · Developed 1970s–1990s</text>
+  <text x="390" y="652" font-family="Georgia, serif" font-size="12" fill="#6a5530" text-anchor="middle" font-style="italic">Host of World Exposition — Expo '93</text>
+
+  
+  <rect x="90" y="678" width="600" height="100" fill="#b8a870" opacity="0.15" rx="3" stroke="#8a7550" stroke-width="0.8" />
+  <text x="390" y="700" font-family="Georgia, serif" font-size="11" fill="#8a7550" text-anchor="middle" letter-spacing="2">TRANSPORT NEXUS</text>
+  <line x1="105" y1="706" x2="675" y2="706" stroke="#8a7550" stroke-width="0.6" opacity="0.5" />
+  
+  <line x1="130" y1="730" x2="660" y2="730" stroke="#6a5530" stroke-width="1.5" stroke-dasharray="12,4" opacity="0.5" />
+  <text x="390" y="727" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">Gyeongbu · Honam · Jungang Rail Lines Converge</text>
+  <text x="390" y="752" font-family="Georgia, serif" font-size="13" fill="#3a2a10" text-anchor="middle">KTX High-Speed Rail Hub — Western &amp; Central Korea</text>
+  <text x="390" y="770" font-family="Georgia, serif" font-size="12" fill="#6a5530" text-anchor="middle" font-style="italic">Colonial-era railway junction → planned technology center</text>
+
+  
+  <line x1="90" y1="820" x2="710" y2="820" stroke="#8a7550" stroke-width="0.6" opacity="0.4" />
+  <line x1="90" y1="824" x2="710" y2="824" stroke="#8a7550" stroke-width="2" opacity="0.7" />
+
+  
+  <text x="400" y="868" font-family="Georgia, serif" font-size="13" fill="#6a5530" text-anchor="middle" font-style="italic" letter-spacing="1">Science City and Central Region Hub</text>
+  
+  <circle cx="225" cy="868" r="2" fill="#8a7550" opacity="0.5" />
+  <circle cx="575" cy="868" r="2" fill="#8a7550" opacity="0.5" />
+
+  
+  
+  <path d="M 42,42 L 90,42 L 90,46 L 46,46 L 46,90 L 42,90 Z" fill="#8a7550" opacity="0.6" />
+  
+  <path d="M 1494,42 L 1446,42 L 1446,46 L 1490,46 L 1490,90 L 1494,90 Z" fill="#8a7550" opacity="0.6" />
+  
+  <path d="M 42,982 L 90,982 L 90,978 L 46,978 L 46,934 L 42,934 Z" fill="#8a7550" opacity="0.6" />
+  
+  <path d="M 1494,982 L 1446,982 L 1446,978 L 1490,978 L 1490,934 L 1494,934 Z" fill="#8a7550" opacity="0.6" />
+
+  
+  <text x="1440" y="200" font-family="Georgia, serif" font-size="16" fill="#5a7a8a" text-anchor="middle" font-style="italic" opacity="0.6" transform="rotate(-15, 1440, 200)">Sea of Japan</text>
+  <text x="760" y="750" font-family="Georgia, serif" font-size="14" fill="#5a7a8a" text-anchor="middle" font-style="italic" opacity="0.6" transform="rotate(10, 760, 750)">Yellow Sea</text>
+
+  
+  <line x1="550" y1="340" x2="1480" y2="340" stroke="#7a9aaa" stroke-width="0.6" stroke-dasharray="4,8" opacity="0.3" />
+  <line x1="550" y1="500" x2="1480" y2="500" stroke="#7a9aaa" stroke-width="0.6" stroke-dasharray="4,8" opacity="0.3" />
+  <line x1="550" y1="660" x2="1480" y2="660" stroke="#7a9aaa" stroke-width="0.6" stroke-dasharray="4,8" opacity="0.3" />
+  <text x="1480" y="338" font-family="Georgia, serif" font-size="10" fill="#5a7a8a" text-anchor="end" opacity="0.5">38°N</text>
+  <text x="1480" y="498" font-family="Georgia, serif" font-size="10" fill="#5a7a8a" text-anchor="end" opacity="0.5">36°N</text>
+  <text x="1480" y="658" font-family="Georgia, serif" font-size="10" fill="#5a7a8a" text-anchor="end" opacity="0.5">34°N</text>
+</svg>

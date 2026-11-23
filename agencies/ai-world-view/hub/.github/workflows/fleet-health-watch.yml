@@ -1,0 +1,62 @@
+name: Fleet Health Watch
+
+# Read-only daily health digest (ADR-0003 fleet-health-watch, a P1 monitor) — the
+# DETECT half of the loop. After the growth window it reads the evolution ledger
+# (telemetry/evolution.jsonl, filled by the telemetry-ledger collector) + the
+# lineage roster and reports error rate, cost trend, per-member last-grow, and
+# stalls. Always writes the digest to the run summary; files/auto-closes ONE issue
+# only when there are flags (errors or genuine stalls). Reports — never
+# re-dispatches or remediates.
+
+on:
+  schedule:
+    - cron: "23 7 * * *" # 07:23 UTC — after orchestrate's 05:30 window completes
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: fleet-health-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Kill-switch
+        id: pause
+        run: |
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            echo "::notice::Fleet paused — skipping fleet-health-watch."; echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: ruby/setup-ruby@v1
+        if: steps.pause.outputs.skip != 'true'
+        with:
+          ruby-version: "3.3"
+      - name: Compute the health digest
+        id: digest
+        if: steps.pause.outputs.skip != 'true'
+        run: |
+          ruby scripts/fleet-health.rb --summary /tmp/health.md --json /tmp/health.json
+          cat /tmp/health.md >> "$GITHUB_STEP_SUMMARY"
+          n=$(ruby -rjson -e 'puts (JSON.parse(File.read("/tmp/health.json"))["flags"] rescue 0)' 2>/dev/null || echo 0)
+          echo "flags=${n:-0}" >> "$GITHUB_OUTPUT"
+      - name: File / close the health issue
+        if: steps.pause.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Fleet Health — anomalies detected"
+          num="$(gh issue list --search "$title in:title" --state open --json number --jq '.[0].number' 2>/dev/null)"
+          if [ "${{ steps.digest.outputs.flags }}" != "0" ]; then
+            if [ -n "$num" ]; then gh issue edit "$num" --body-file /tmp/health.md; else
+              gh issue create --title "$title" --body-file /tmp/health.md --label monitoring 2>/dev/null \
+                || gh issue create --title "$title" --body-file /tmp/health.md
+            fi
+            echo "::warning::Fleet health flags present — see issue."
+          elif [ -n "$num" ]; then
+            gh issue close "$num" --comment "✅ Fleet health back to normal — auto-closed by fleet-health-watch." 2>/dev/null || true
+          fi

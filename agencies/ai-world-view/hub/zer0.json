@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bamr87/zer0-CMS/main/schemas/zer0.schema.json",
+  // ai-world-view.github.io (the ai-world-view org root site) in the zer0-CMS console dialect.
+  // Folders mirror what Jekyll actually reads. _config.yml declares nine collections under
+  // collections_dir: pages (pages posts docs quests hobbies notebooks notes quickstart about),
+  // but none of their _<name> directories exists: Jekyll's reader returns only the eight
+  // loose pages/*.md files plus the root 404.html (a utility page with no title, left out).
+  // Add a folder here when a collection directory actually lands. The country knowledge
+  // bases are separate member repos, grown by grow-lineage.yml, not content folders here.
+  // Required keys mirror .github/config/frontmatter_schema.yml `pages` (path_pattern
+  // pages/*.md): title layout description lastmod. scripts/content-review.rb enforces that
+  // schema in ai-content-review.yml; lengths come from .github/config/content_review.yml.
+  "platform": { "id": "jekyll", "overlay": "zer0-mistakes" },
+  "contentFolders": [
+    { "title": "Pages", "path": "[[workspace]]/pages", "contentTypes": ["page"], "excludeSubdir": true, "filePrefix": null }
+  ],
+  "contentTypes": [
+    {
+      "name": "page",
+      "fields": [
+        { "name": "title", "type": "string", "single": true, "required": true },
+        { "name": "description", "type": "string", "required": true, "description": "120-160 chars (content_review.yml)." },
+        { "name": "layout", "type": "choice", "required": true, "default": "default", "choices": ["default", "home", "search", "landing", "collection", "sitemap-collection", "tag"] },
+        { "name": "lastmod", "type": "datetime", "isModifiedDate": true, "required": true },
+        { "name": "date", "type": "datetime", "isPublishDate": true },
+        { "name": "permalink", "type": "string", "single": true },
+        { "name": "subtitle", "type": "string", "single": true },
+        { "name": "keywords", "type": "list" },
+        { "name": "categories", "type": "categories" },
+        { "name": "tags", "type": "tags" },
+        { "name": "comments", "type": "boolean" },
+        { "name": "toc", "type": "boolean" },
+        { "name": "draft", "type": "draft" }
+      ]
+    }
+  ],
+  "taxonomy": { "categories": [], "tags": [] },
+  // frontmatter_schema.yml global.draft_type: boolean.
+  "draftField": { "name": "draft", "type": "boolean" },
+  "frontMatter": { "format": "yaml", "indentArrays": true, "quoteStringValues": false, "commaSeparatedFields": [] },
+  "content": { "defaultFileType": "md", "publicFolder": "assets", "filePrefix": "", "autoUpdateModifiedDate": true },
+  "seo": { "enabled": true, "titleLength": 60, "descriptionLength": 160, "slugLength": 75, "contentLength": 1760 },
+  "slug": { "template": "{{title}}", "stopWords": "minimal" },
+  // CLAUDE.md rule 6: front-matter dates are single plain ISO dates (YYYY-MM-DD);
+  // scripts/normalize-front-matter-dates.rb is the gate.
+  "date": { "format": "yyyy-MM-dd", "timezone": "UTC" },
+  "governance": { "enabled": true, "target": "jekyll", "publishAllow": false },
+  // No .cms/ contract and no _data/ai.yml here; the verify command is the first gate
+  // build-validation.yml runs (the second is the Jekyll build itself).
+  "cms": { "contentDirs": ["pages/"], "verifyCommand": "ruby scripts/normalize-front-matter-dates.rb --check pages" },
+  "fleet": { "enabled": true, "manifestPath": "fleet.manifest.yml" },
+  "validation": { "enabled": true }
+}

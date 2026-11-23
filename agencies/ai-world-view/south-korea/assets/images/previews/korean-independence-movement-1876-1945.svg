@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean Independence Movement (1876–1945) — Historical Banner</title>
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8bfc9" />
+      <stop offset="100%" stop-color="#8fadb8" />
+    </linearGradient>
+    <linearGradient id="koreaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8a96e" />
+      <stop offset="100%" stop-color="#b89558" />
+    </linearGradient>
+    <linearGradient id="titleOverlay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2c1a0e" stop-opacity="0.92" />
+      <stop offset="60%" stop-color="#2c1a0e" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#2c1a0e" stop-opacity="0" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComponentTransfer in="blend">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+    <pattern id="gridLines" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#7a6a4a" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#5a4a2a" stroke-width="0.5" opacity="0.2" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bgGrad)" />
+  <rect width="1536" height="1024" fill="url(#gridLines)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#seaGrad)" opacity="0.35" />
+
+  
+  <g stroke="#7a6a4a" stroke-width="0.6" opacity="0.25" fill="none">
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="200" y1="0" x2="200" y2="1024" />
+    <line x1="450" y1="0" x2="450" y2="1024" />
+    <line x1="700" y1="0" x2="700" y2="1024" />
+    <line x1="950" y1="0" x2="950" y2="1024" />
+    <line x1="1200" y1="0" x2="1200" y2="1024" />
+    <line x1="1450" y1="0" x2="1450" y2="1024" />
+  </g>
+
+  
+  <path d="M 600,0 L 1536,0 L 1536,600 Q 1400,500 1300,420 Q 1200,380 1150,300 Q 1050,220 950,180 Q 850,140 750,120 Q 680,100 630,60 Z" fill="#c9b98a" opacity="0.6" />
+
+  
+  
+  <ellipse cx="1280" cy="580" rx="45" ry="60" fill="#b8a870" opacity="0.75" transform="rotate(-20,1280,580)" />
+  
+  <ellipse cx="1310" cy="500" rx="55" ry="30" fill="#b8a870" opacity="0.75" transform="rotate(-15,1310,500)" />
+  
+  <path d="M 1290,460 Q 1360,400 1420,350 Q 1480,310 1530,290 L 1536,320 Q 1490,340 1440,390 Q 1380,440 1320,490 Z" fill="#b8a870" opacity="0.75" />
+  
+  <ellipse cx="1480" cy="240" rx="70" ry="50" fill="#b8a870" opacity="0.75" transform="rotate(-10,1480,240)" />
+
+  
+  <g transform="translate(900,250)">
+    
+    <path d="M 80,0 Q 160,10 200,60 Q 240,110 250,180 Q 260,260 240,340 Q 220,420 190,490 Q 165,550 140,590 Q 120,620 110,640 Q 95,660 85,670 Q 70,685 60,670 Q 45,650 40,620 Q 30,580 35,540 Q 40,500 50,460 Q 60,410 55,360 Q 50,310 40,270 Q 25,210 20,160 Q 10,100 30,50 Q 50,10 80,0 Z" fill="url(#koreaGrad)" stroke="#6b4e2a" stroke-width="2.5" />
+    
+    <path d="M 80,0 Q 160,10 200,60 Q 240,110 250,180 Q 260,260 240,340 Q 220,420 190,490 Q 165,550 140,590 Q 120,620 110,640 Q 95,660 85,670 Q 70,685 60,670 Q 45,650 40,620 Q 30,580 35,540 Q 40,500 50,460 Q 60,410 55,360 Q 50,310 40,270 Q 25,210 20,160 Q 10,100 30,50 Q 50,10 80,0 Z" fill="url(#hatch)" />
+    
+    <ellipse cx="75" cy="730" rx="35" ry="20" fill="#c8a96e" stroke="#6b4e2a" stroke-width="1.5" />
+  </g>
+
+  
+  <text x="840" y="600" font-family="Georgia, serif" font-size="18" fill="#4a5a6a" opacity="0.6" text-anchor="middle" font-style="italic" transform="rotate(-5,840,600)">Yellow Sea</text>
+  <text x="1130" y="650" font-family="Georgia, serif" font-size="18" fill="#4a5a6a" opacity="0.6" text-anchor="middle" font-style="italic" transform="rotate(5,1130,650)">Sea of Japan</text>
+
+  
+  <g transform="translate(1400,800)">
+    <circle r="55" fill="#e8dfc8" stroke="#6b4e2a" stroke-width="1.5" opacity="0.9" />
+    <circle r="48" fill="none" stroke="#6b4e2a" stroke-width="0.8" opacity="0.6" />
+    
+    <polygon points="0,-42 6,-18 -6,-18" fill="#8b2020" />
+    <polygon points="0,42 6,18 -6,18" fill="#5a4a2a" />
+    <polygon points="42,0 18,6 18,-6" fill="#5a4a2a" />
+    <polygon points="-42,0 -18,6 -18,-6" fill="#5a4a2a" />
+    
+    <polygon points="30,-30 14,-8 8,-14" fill="#9a8a6a" opacity="0.7" />
+    <polygon points="30,30 8,14 14,8" fill="#9a8a6a" opacity="0.7" />
+    <polygon points="-30,30 -14,8 -8,14" fill="#9a8a6a" opacity="0.7" />
+    <polygon points="-30,-30 -8,-14 -14,-8" fill="#9a8a6a" opacity="0.7" />
+    <circle r="5" fill="#6b4e2a" />
+    <text y="-48" font-family="Georgia, serif" font-size="14" fill="#2c1a0e" text-anchor="middle" font-weight="bold">N</text>
+    <text y="60" font-family="Georgia, serif" font-size="12" fill="#2c1a0e" text-anchor="middle">S</text>
+    <text x="50" y="4" font-family="Georgia, serif" font-size="12" fill="#2c1a0e" text-anchor="middle">E</text>
+    <text x="-50" y="4" font-family="Georgia, serif" font-size="12" fill="#2c1a0e" text-anchor="middle">W</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#6b4e2a" stroke-width="3" opacity="0.7" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#6b4e2a" stroke-width="1" opacity="0.4" />
+  
+  <g stroke="#6b4e2a" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M 18,70 L 18,18 L 70,18" />
+    <path d="M 1466,18 L 1518,18 L 1518,70" />
+    <path d="M 18,954 L 18,1006 L 70,1006" />
+    <path d="M 1466,1006 L 1518,1006 L 1518,954" />
+  </g>
+
+  
+  <rect x="0" y="0" width="780" height="1024" fill="url(#titleOverlay)" />
+
+  
+  <g transform="translate(320,650)">
+    <circle r="70" fill="none" stroke="#8b2020" stroke-width="1" opacity="0.3" />
+    
+    <path d="M -40,0 A 40,40 0 0 1 40,0 A 20,20 0 0 0 0,0 A 20,20 0 0 1 -40,0 Z" fill="#8b2020" opacity="0.7" />
+    <path d="M -40,0 A 40,40 0 0 0 40,0 A 20,20 0 0 1 0,0 A 20,20 0 0 0 -40,0 Z" fill="#1a3a6e" opacity="0.7" />
+    <circle cx="-20" cy="-10" r="10" fill="#8b2020" opacity="0.7" />
+    <circle cx="20" cy="10" r="10" fill="#1a3a6e" opacity="0.7" />
+    <circle r="4" fill="#e8dfc8" opacity="0.8" />
+  </g>
+
+  
+  <text x="480" y="820" font-family="serif" font-size="200" fill="#5a3a1a" opacity="0.07" text-anchor="middle">독립</text>
+
+  
+  <g font-family="Georgia, serif" fill="#d4c9a8" opacity="0.85">
+    <text x="120" y="760" font-size="15" opacity="0.7">1876</text>
+    <line x1="120" y1="763" x2="200" y2="763" stroke="#d4c9a8" stroke-width="0.8" opacity="0.5" />
+    <text x="120" y="800" font-size="15" opacity="0.7">1919</text>
+    <line x1="120" y1="803" x2="200" y2="803" stroke="#d4c9a8" stroke-width="0.8" opacity="0.5" />
+    <text x="120" y="840" font-size="15" opacity="0.7">1945</text>
+    <line x1="120" y1="843" x2="200" y2="843" stroke="#d4c9a8" stroke-width="0.8" opacity="0.5" />
+  </g>
+
+  
+  <text x="90" y="220" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="bold" fill="#f0e6cc" letter-spacing="1">Korean</text>
+  <text x="90" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="bold" fill="#f0e6cc" letter-spacing="1">Independence</text>
+  <text x="90" y="416" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="bold" fill="#f0e6cc" letter-spacing="1">Movement</text>
+
+  
+  <text x="90" y="488" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#c8b888" letter-spacing="4">1876 – 1945</text>
+
+  
+  <line x1="90" y1="508" x2="560" y2="508" stroke="#c8b888" stroke-width="1.5" opacity="0.7" />
+  <line x1="90" y1="514" x2="560" y2="514" stroke="#c8b888" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="90" y="568" font-family="serif" font-size="28" fill="#b8a870" opacity="0.9" letter-spacing="3">한국 독립운동</text>
+
+  
+  <text x="90" y="630" font-family="Georgia, serif" font-size="18" fill="#c8b888" opacity="0.8" font-style="italic">광복절 · Day of Restored Light · August 15</text>
+
+  
+  <text x="985" y="380" font-family="Georgia, serif" font-size="16" fill="#3a2a10" opacity="0.8" text-anchor="middle" transform="rotate(-10,985,380)">JOSEON</text>
+  <text x="985" y="400" font-family="Georgia, serif" font-size="13" fill="#3a2a10" opacity="0.6" text-anchor="middle" transform="rotate(-10,985,400)">KOREA</text>
+
+  
+  <text x="1370" y="460" font-family="Georgia, serif" font-size="16" fill="#3a2a10" opacity="0.7" text-anchor="middle" transform="rotate(-60,1370,460)">JAPAN</text>
+
+  
+  <circle cx="970" cy="420" r="8" fill="#8b2020" opacity="0.8" />
+  <line x1="978" y1="415" x2="1020" y2="390" stroke="#8b2020" stroke-width="1" opacity="0.7" />
+  <text x="1025" y="387" font-family="Georgia, serif" font-size="13" fill="#8b2020" opacity="0.9">March 1, 1919</text>
+
+  
+  <rect width="1536" height="1024" fill="#c8a850" opacity="0.04" />
+</svg>

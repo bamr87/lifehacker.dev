@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Standing Committee of the Politburo — Atlas-style banner</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="chinaFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c9b98a" />
+      <stop offset="100%" stop-color="#b8a870" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b1a1a" />
+      <stop offset="100%" stop-color="#c0392b" />
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6b1111" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#3d0a0a" stop-opacity="0.95" />
+    </linearGradient>
+    <pattern id="hatch" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="6" x2="6" y2="0" stroke="#b8a870" stroke-width="0.5" stroke-opacity="0.4" />
+    </pattern>
+    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.8" fill="#7a6a40" fill-opacity="0.3" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grey" />
+      <feBlend in="SourceGraphic" in2="grey" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <clipPath id="bannerClip">
+      <rect width="1536" height="1024" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#bannerClip)">
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#dots)" />
+
+  
+  <rect width="1536" height="1024" fill="none" stroke="#a09060" stroke-width="0.3" opacity="0.2" />
+
+  
+  
+  <g stroke="#9a8a5a" stroke-width="0.6" stroke-opacity="0.35" fill="none">
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+    
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6a40" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a6a40" stroke-width="1" />
+
+  
+  
+  <g fill="none" stroke="#7a6a40" stroke-width="1.5">
+    <line x1="18" y1="80" x2="80" y2="18" />
+    <line x1="18" y1="120" x2="120" y2="18" />
+    <rect x="26" y="26" width="30" height="30" fill="#7a6a40" fill-opacity="0.2" />
+  </g>
+  
+  <g fill="none" stroke="#7a6a40" stroke-width="1.5">
+    <line x1="1518" y1="80" x2="1456" y2="18" />
+    <line x1="1518" y1="120" x2="1416" y2="18" />
+    <rect x="1480" y="26" width="30" height="30" fill="#7a6a40" fill-opacity="0.2" />
+  </g>
+  
+  <g fill="none" stroke="#7a6a40" stroke-width="1.5">
+    <line x1="18" y1="944" x2="80" y2="1006" />
+    <line x1="18" y1="904" x2="120" y2="1006" />
+    <rect x="26" y="968" width="30" height="30" fill="#7a6a40" fill-opacity="0.2" />
+  </g>
+  
+  <g fill="none" stroke="#7a6a40" stroke-width="1.5">
+    <line x1="1518" y1="944" x2="1456" y2="1006" />
+    <line x1="1518" y1="904" x2="1416" y2="1006" />
+    <rect x="1480" y="968" width="30" height="30" fill="#7a6a40" fill-opacity="0.2" />
+  </g>
+
+  
+  
+  <g transform="translate(560,470) scale(1.15)">
+    
+    <path d="       M -80,-280       L 40,-310       L 120,-290       L 180,-260       L 220,-210       L 260,-180       L 300,-140       L 310,-90       L 290,-40       L 310,10       L 330,60       L 280,100       L 240,130       L 200,160       L 160,200       L 120,230       L 80,250       L 20,260       L -40,240       L -100,220       L -150,190       L -190,150       L -210,100       L -230,50       L -220,0       L -200,-50       L -190,-110       L -180,-160       L -150,-210       L -100,-260       Z     " fill="url(#chinaFill)" stroke="#8a7a50" stroke-width="2.5" />
+    
+    <path d="       M -80,-280       L 40,-310       L 120,-290       L 180,-260       L 220,-210       L 260,-180       L 300,-140       L 310,-90       L 290,-40       L 310,10       L 330,60       L 280,100       L 240,130       L 200,160       L 160,200       L 120,230       L 80,250       L 20,260       L -40,240       L -100,220       L -150,190       L -190,150       L -210,100       L -230,50       L -220,0       L -200,-50       L -190,-110       L -180,-160       L -150,-210       L -100,-260       Z     " fill="url(#hatch)" opacity="0.6" />
+    
+    <g stroke="#8a7a50" stroke-width="1" stroke-opacity="0.5" fill="none">
+      <line x1="-80" y1="-100" x2="100" y2="-80" />
+      <line x1="-120" y1="20" x2="80" y2="10" />
+      <line x1="-60" y1="130" x2="120" y2="120" />
+      <line x1="50" y1="-200" x2="70" y2="50" />
+      <line x1="-100" y1="-180" x2="-50" y2="200" />
+      <line x1="150" y1="-100" x2="200" y2="100" />
+      <line x1="-180" y1="-30" x2="0" y2="-10" />
+    </g>
+    
+    <circle cx="120" cy="-140" r="8" fill="#8b1a1a" stroke="#e8dfc8" stroke-width="1.5" />
+    <circle cx="120" cy="-140" r="14" fill="none" stroke="#8b1a1a" stroke-width="1.2" stroke-dasharray="3,3" />
+    
+    <circle cx="-30" cy="80" r="4" fill="#8b1a1a" stroke="#e8dfc8" stroke-width="1" />
+    <circle cx="200" cy="80" r="4" fill="#8b1a1a" stroke="#e8dfc8" stroke-width="1" />
+    <circle cx="100" cy="160" r="4" fill="#8b1a1a" stroke="#e8dfc8" stroke-width="1" />
+  </g>
+
+  
+  <path d="M 880,200 Q 950,300 980,450 Q 1000,580 950,700 Q 900,800 830,870" fill="none" stroke="#7a9ab0" stroke-width="1.5" stroke-dasharray="8,5" stroke-opacity="0.5" />
+  
+  <g fill="#7a9ab0" fill-opacity="0.25">
+    <circle cx="910" cy="380" r="3" />
+    <circle cx="930" cy="430" r="2.5" />
+    <circle cx="940" cy="490" r="3" />
+    <circle cx="925" cy="550" r="2" />
+    <circle cx="905" cy="610" r="3" />
+  </g>
+
+  
+  <g transform="translate(1380,300)">
+    
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#7a6a40" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="82" fill="none" stroke="#7a6a40" stroke-width="0.6" />
+    
+    <g stroke="#7a6a40" stroke-width="1">
+      <line x1="0" y1="-82" x2="0" y2="-90" />
+      <line x1="82" y1="0" x2="90" y2="0" />
+      <line x1="0" y1="82" x2="0" y2="90" />
+      <line x1="-82" y1="0" x2="-90" y2="0" />
+      <line x1="58" y1="-58" x2="63" y2="-63" />
+      <line x1="58" y1="58" x2="63" y2="63" />
+      <line x1="-58" y1="58" x2="-63" y2="63" />
+      <line x1="-58" y1="-58" x2="-63" y2="-63" />
+    </g>
+    
+    <polygon points="0,-75 -10,-20 0,-35 10,-20" fill="#8b1a1a" />
+    <polygon points="0,75 -10,20 0,35 10,20" fill="#7a6a40" />
+    <polygon points="-75,0 -20,-10 -35,0 -20,10" fill="#7a6a40" />
+    <polygon points="75,0 20,-10 35,0 20,10" fill="#7a6a40" />
+    
+    <polygon points="0,-75 -7,-18 0,-30 7,-18" fill="#7a6a40" transform="rotate(45)" />
+    <polygon points="0,-75 -7,-18 0,-30 7,-18" fill="#7a6a40" transform="rotate(135)" />
+    <polygon points="0,-75 -7,-18 0,-30 7,-18" fill="#7a6a40" transform="rotate(225)" />
+    <polygon points="0,-75 -7,-18 0,-30 7,-18" fill="#7a6a40" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="10" fill="#c9b98a" stroke="#7a6a40" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#8b1a1a" />
+    
+    <text x="0" y="-96" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3a1a" font-weight="bold">N</text>
+    <text x="0" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">S</text>
+    <text x="102" y="5" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">E</text>
+    <text x="-102" y="5" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">W</text>
+  </g>
+
+  
+  
+  <g transform="translate(200,500)">
+    
+    <circle cx="0" cy="0" r="65" fill="#8b1a1a" fill-opacity="0.15" stroke="#8b1a1a" stroke-width="2" />
+    
+    <circle cx="0" cy="0" r="110" fill="none" stroke="#7a6a40" stroke-width="1.5" stroke-dasharray="6,4" />
+    
+    <circle cx="0" cy="0" r="155" fill="none" stroke="#7a6a40" stroke-width="1" stroke-dasharray="4,6" />
+    
+    <text x="0" y="4" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#4a3a1a" font-weight="bold">PSC</text>
+    <text x="0" y="-118" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a3a1a">Politburo</text>
+    <text x="0" y="-163" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4a3a1a">Central Committee</text>
+    
+    
+    <g fill="#8b1a1a" stroke="#e8dfc8" stroke-width="1">
+      <circle cx="0" cy="-55" r="7" />
+      <circle cx="52" cy="-18" r="7" />
+      <circle cx="32" cy="48" r="7" />
+      <circle cx="-32" cy="48" r="7" />
+      <circle cx="-52" cy="-18" r="7" />
+      
+      <circle cx="25" cy="-50" r="5" fill-opacity="0.5" stroke-opacity="0.5" />
+      <circle cx="-25" cy="-50" r="5" fill-opacity="0.5" stroke-opacity="0.5" />
+    </g>
+    
+    <g stroke="#8b1a1a" stroke-width="0.8" stroke-opacity="0.4">
+      <line x1="0" y1="0" x2="0" y2="-55" />
+      <line x1="0" y1="0" x2="52" y2="-18" />
+      <line x1="0" y1="0" x2="32" y2="48" />
+      <line x1="0" y1="0" x2="-32" y2="48" />
+      <line x1="0" y1="0" x2="-52" y2="-18" />
+    </g>
+    
+    <polygon points="0,-22 5,-8 20,-8 9,2 13,17 0,8 -13,17 -9,2 -20,-8 -5,-8" fill="#8b1a1a" transform="translate(0,0) scale(0.9)" />
+  </g>
+
+  
+  <rect x="18" y="680" width="1500" height="310" fill="url(#panelGrad)" rx="0" />
+  
+  <line x1="18" y1="680" x2="1518" y2="680" stroke="#c9a84c" stroke-width="2" />
+  <line x1="18" y1="687" x2="1518" y2="687" stroke="#c9a84c" stroke-width="0.6" />
+
+  
+  <text x="1450" y="760" font-family="serif" font-size="42" fill="#c9a84c" fill-opacity="0.25" text-anchor="middle">中共</text>
+  <text x="1450" y="810" font-family="serif" font-size="42" fill="#c9a84c" fill-opacity="0.25" text-anchor="middle">政治局</text>
+
+  
+  <text x="80" y="768" font-family="Georgia,'Times New Roman',serif" font-size="62" font-weight="bold" fill="#e8dfc8" letter-spacing="1">The Standing Committee</text>
+  <text x="80" y="848" font-family="Georgia,'Times New Roman',serif" font-size="62" font-weight="bold" fill="#e8dfc8" letter-spacing="1">of the Politburo</text>
+
+  
+  <text x="80" y="900" font-family="Georgia,'Times New Roman',serif" font-size="22" fill="#c9a84c" letter-spacing="3">ZHONGGONG ZHONGYANG ZHENGZHIJU CHANGWU WEIYUANHUI</text>
+
+  
+  <line x1="80" y1="920" x2="900" y2="920" stroke="#c9a84c" stroke-width="1.2" />
+
+  
+  <text x="80" y="950" font-family="Georgia,'Times New Roman',serif" font-size="18" fill="#d4c9a8" letter-spacing="2">GOVERNMENT &amp; POLITICS  ·  PEOPLE'S REPUBLIC OF CHINA  ·  SUPREME DECISION-MAKING BODY</text>
+
+  
+  
+  <g transform="translate(1050,620)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#7a6a40" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#7a6a40" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#7a6a40" stroke-width="1.5" />
+    <line x1="200" y1="-6" x2="200" y2="6" stroke="#7a6a40" stroke-width="2" />
+    <rect x="0" y="-12" width="100" height="6" fill="#7a6a40" fill-opacity="0.6" />
+    <rect x="100" y="-12" width="100" height="6" fill="#e8dfc8" stroke="#7a6a40" stroke-width="0.8" />
+    <text x="0" y="20" font-family="Georgia,serif" font-size="11" fill="#4a3a1a">0</text>
+    <text x="90" y="20" font-family="Georgia,serif" font-size="11" fill="#4a3a1a">500</text>
+    <text x="185" y="20" font-family="Georgia,serif" font-size="11" fill="#4a3a1a">1000 km</text>
+  </g>
+
+  
+  <text x="697" y="322" font-family="Georgia,serif" font-size="13" fill="#4a3a1a" font-weight="bold">BEIJING</text>
+  <line x1="693" y1="330" x2="680" y2="348" stroke="#8b1a1a" stroke-width="1" />
+
+  
+  <g transform="translate(1050,400)">
+    <rect x="0" y="0" width="370" height="230" rx="4" fill="#d4c9a8" fill-opacity="0.7" stroke="#7a6a40" stroke-width="1.5" />
+    <rect x="8" y="8" width="354" height="214" rx="3" fill="none" stroke="#7a6a40" stroke-width="0.6" />
+    <text x="185" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#3d0a0a" letter-spacing="2">NOTABLE LEADERS</text>
+    <line x1="20" y1="44" x2="350" y2="44" stroke="#7a6a40" stroke-width="0.8" />
+    <text x="30" y="68" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">· Mao Zedong</text>
+    <text x="200" y="68" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">· Deng Xiaoping</text>
+    <text x="30" y="95" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">· Jiang Zemin</text>
+    <text x="200" y="95" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">· Hu Jintao</text>
+    <text x="30" y="122" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">· Xi Jinping</text>
+    <text x="200" y="122" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">· Li Keqiang</text>
+    <text x="30" y="149" font-family="Georgia,serif" font-size="13" fill="#4a3a1a">· Wang Huning</text>
+    <line x1="20" y1="162" x2="350" y2="162" stroke="#7a6a40" stroke-width="0.8" />
+    <text x="185" y="183" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#5a4a2a">Membership: 5–9 senior officials</text>
+    <text x="185" y="202" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#5a4a2a">Meets weekly in regular session</text>
+  </g>
+
+  
+  <g transform="translate(768,130)" opacity="0.18">
+    <polygon points="0,-50 11,-16 47,-16 19,6 29,40 0,18 -29,40 -19,6 -47,-16 -11,-16" fill="#8b1a1a" />
+  </g>
+
+  
+  <text x="130" y="220" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a3a1a" font-weight="bold">POWER STRUCTURE</text>
+  <text x="130" y="238" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#5a4a2a">Concentric authority</text>
+
+  </g>
+</svg>

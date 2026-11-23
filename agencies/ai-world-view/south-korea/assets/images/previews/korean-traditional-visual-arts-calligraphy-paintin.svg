@@ -1,0 +1,328 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean Traditional Visual Arts — Calligraphy, Painting, Sculpture, and Pottery</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="celadon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8fada0" />
+      <stop offset="100%" stop-color="#6b8c7e" />
+    </linearGradient>
+    <linearGradient id="vase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8d2c4" />
+      <stop offset="100%" stop-color="#b8b0a0" />
+    </linearGradient>
+    <linearGradient id="inkwash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5a5a6a" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#2a2a3a" stop-opacity="0.35" />
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="hatching" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a09070" stroke-width="0.5" stroke-opacity="0.3" />
+    </pattern>
+    <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#7a6a50" stroke-width="0.4" stroke-opacity="0.25" />
+      <line x1="0" y1="0" x2="10" y2="0" stroke="#7a6a50" stroke-width="0.4" stroke-opacity="0.25" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatching)" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8a7a5a" stroke-width="3" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#8a7a5a" stroke-width="1" />
+
+  
+  
+  <path d="M24,24 L80,24 L80,30 L30,30 L30,80 L24,80 Z" fill="#8a7a5a" opacity="0.6" />
+  
+  <path d="M1512,24 L1456,24 L1456,30 L1506,30 L1506,80 L1512,80 Z" fill="#8a7a5a" opacity="0.6" />
+  
+  <path d="M24,1000 L80,1000 L80,994 L30,994 L30,944 L24,944 Z" fill="#8a7a5a" opacity="0.6" />
+  
+  <path d="M1512,1000 L1456,1000 L1456,994 L1506,994 L1506,944 L1512,944 Z" fill="#8a7a5a" opacity="0.6" />
+
+  
+  
+  <ellipse cx="1100" cy="680" rx="340" ry="180" fill="#b0a888" opacity="0.25" />
+  <ellipse cx="1300" cy="700" rx="260" ry="160" fill="#9a9278" opacity="0.2" />
+  
+  <path d="M820,900 Q880,700 940,650 Q970,630 1000,660 Q1050,600 1100,580 Q1150,555 1180,600 Q1220,540 1270,520 Q1320,495 1360,550 Q1400,500 1450,480 Q1510,455 1536,470 L1536,900 Z" fill="#7a7260" opacity="0.22" />
+  <path d="M900,900 Q950,730 1010,690 Q1060,660 1090,700 Q1130,640 1180,620 Q1230,598 1260,640 Q1300,590 1350,575 Q1400,558 1440,600 Q1480,565 1536,550 L1536,900 Z" fill="#6a6250" opacity="0.28" />
+  
+  <path d="M950,900 Q980,800 1020,760 Q1060,720 1090,755 Q1120,710 1160,695 Q1200,678 1230,715 Q1265,680 1310,665 Q1360,648 1390,685 Q1430,655 1480,640 Q1520,628 1536,635 L1536,900 Z" fill="#5a5446" opacity="0.35" />
+
+  
+  <g opacity="0.45">
+    
+    <line x1="1430" y1="750" x2="1430" y2="860" stroke="#3a3428" stroke-width="4" />
+    <path d="M1430,752 Q1410,775 1405,790 Q1430,780 1455,790 Q1450,775 1430,752Z" fill="#3a3428" />
+    <path d="M1430,772 Q1405,798 1400,815 Q1430,803 1460,815 Q1455,798 1430,772Z" fill="#3a3428" />
+    <path d="M1430,795 Q1402,824 1397,843 Q1430,829 1463,843 Q1458,824 1430,795Z" fill="#3a3428" />
+    
+    <line x1="1470" y1="770" x2="1470" y2="870" stroke="#3a3428" stroke-width="3.5" />
+    <path d="M1470,772 Q1452,793 1448,806 Q1470,797 1492,806 Q1488,793 1470,772Z" fill="#3a3428" />
+    <path d="M1470,790 Q1448,814 1444,829 Q1470,818 1496,829 Q1492,814 1470,790Z" fill="#3a3428" />
+    <path d="M1470,810 Q1446,837 1442,854 Q1470,841 1498,854 Q1494,837 1470,810Z" fill="#3a3428" />
+  </g>
+
+  
+  <rect x="820" y="820" width="716" height="18" fill="#c8c0a0" opacity="0.4" />
+  <rect x="900" y="860" width="636" height="12" fill="#c8c0a0" opacity="0.3" />
+
+  
+  <g transform="translate(160, 300)">
+    
+    <ellipse cx="140" cy="500" rx="90" ry="18" fill="#8a7a5a" opacity="0.2" />
+    
+    <path d="M80,460 Q60,420 65,360 Q70,280 90,220 Q110,155 140,130 Q170,155 190,220 Q210,280 215,360 Q220,420 200,460 Q180,490 140,495 Q100,490 80,460Z" fill="url(#celadon)" stroke="#4a6a5e" stroke-width="2" />
+    
+    <path d="M80,460 Q60,420 65,360 Q70,280 90,220 Q110,155 140,130 Q170,155 190,220 Q210,280 215,360 Q220,420 200,460 Q180,490 140,495 Q100,490 80,460Z" fill="url(#crosshatch)" opacity="0.4" />
+    
+    <path d="M115,130 Q120,95 125,75 Q130,60 140,52 Q150,60 155,75 Q160,95 165,130Z" fill="#7a9d8f" stroke="#4a6a5e" stroke-width="1.5" />
+    
+    <ellipse cx="140" cy="52" rx="20" ry="6" fill="#8aada0" stroke="#4a6a5e" stroke-width="1.5" />
+    
+    <g stroke="#3a5a50" stroke-width="1.5" fill="none" opacity="0.7">
+      
+      <ellipse cx="140" cy="310" rx="28" ry="18" fill="#c8e0d8" stroke="#3a5a50" />
+      
+      <path d="M155,298 Q162,275 158,260" stroke="#3a5a50" stroke-width="2" fill="none" />
+      
+      <circle cx="157" cy="256" r="7" fill="#c8e0d8" stroke="#3a5a50" />
+      
+      <ellipse cx="157" cy="250" rx="4" ry="3" fill="#8a3030" />
+      
+      <path d="M118,308 Q105,295 100,285 Q115,290 128,300Z" fill="#a8c8c0" stroke="#3a5a50" />
+      <path d="M162,308 Q175,295 182,285 Q165,290 152,300Z" fill="#a8c8c0" stroke="#3a5a50" />
+      
+      <line x1="132" y1="326" x2="128" y2="355" stroke="#3a5a50" stroke-width="1.5" />
+      <line x1="148" y1="326" x2="152" y2="355" stroke="#3a5a50" stroke-width="1.5" />
+      
+      <path d="M100,370 Q110,362 118,368 Q122,358 130,362 Q136,354 145,358 Q148,350 158,354 Q162,360 158,368 Q148,374 100,370Z" fill="#a8c8c0" opacity="0.6" stroke="#3a5a50" stroke-width="1" />
+    </g>
+    
+    <path d="M90,240 Q85,290 88,350" stroke="#b0d0c4" stroke-width="3" fill="none" opacity="0.5" stroke-linecap="round" />
+    
+    <ellipse cx="140" cy="490" rx="65" ry="10" fill="#5a8070" opacity="0.5" stroke="#4a6a5e" stroke-width="1.5" />
+    
+    <text x="140" y="530" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5a4a2a" letter-spacing="1">고려청자</text>
+    <text x="140" y="550" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#7a6a4a">Goryeo Celadon</text>
+  </g>
+
+  
+  <g transform="translate(380, 340)">
+    
+    <ellipse cx="110" cy="445" rx="75" ry="15" fill="#8a7a5a" opacity="0.18" />
+    
+    <path d="M55,415 Q42,382 46,325 Q50,255 72,200 Q90,155 110,138 Q130,155 148,200 Q170,255 174,325 Q178,382 165,415 Q150,438 110,443 Q70,438 55,415Z" fill="url(#vase)" stroke="#8a8070" stroke-width="2" />
+    <path d="M55,415 Q42,382 46,325 Q50,255 72,200 Q90,155 110,138 Q130,155 148,200 Q170,255 174,325 Q178,382 165,415 Q150,438 110,443 Q70,438 55,415Z" fill="url(#crosshatch)" opacity="0.2" />
+    
+    <path d="M90,138 Q94,110 98,92 Q103,78 110,70 Q117,78 122,92 Q126,110 130,138Z" fill="#c8c4b4" stroke="#8a8070" stroke-width="1.5" />
+    
+    <ellipse cx="110" cy="70" rx="16" ry="5" fill="#d0ccc0" stroke="#8a8070" stroke-width="1.5" />
+    
+    <g stroke="#5a6a8a" stroke-width="1.2" fill="none" opacity="0.55">
+      <line x1="95" y1="200" x2="95" y2="380" />
+      <line x1="105" y1="195" x2="105" y2="385" />
+      
+      <line x1="92" y1="240" x2="108" y2="240" />
+      <line x1="92" y1="285" x2="108" y2="285" />
+      <line x1="92" y1="330" x2="108" y2="330" />
+      <line x1="92" y1="375" x2="108" y2="375" />
+      
+      <path d="M105,230 Q125,215 132,205" />
+      <path d="M105,250 Q128,240 138,232" />
+      <path d="M95,275 Q72,260 65,250" />
+      <path d="M105,320 Q130,308 140,298" />
+      <path d="M95,340 Q70,325 60,316" />
+    </g>
+    
+    <path d="M62,260 Q58,305 60,350" stroke="#e8e4d8" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round" />
+    
+    <ellipse cx="110" cy="440" rx="56" ry="9" fill="#a09080" opacity="0.4" stroke="#8a8070" stroke-width="1.5" />
+    
+    <text x="110" y="475" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5a4a2a" letter-spacing="1">백자</text>
+    <text x="110" y="495" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#7a6a4a">Baekja Porcelain</text>
+  </g>
+
+  
+  <g transform="translate(590, 180)">
+    
+    <rect x="20" y="0" width="240" height="18" rx="9" fill="#8a6a3a" stroke="#6a4a20" stroke-width="1.5" />
+    
+    <rect x="30" y="18" width="220" height="580" fill="#f0e8d0" stroke="#a08860" stroke-width="2" />
+    
+    <rect x="30" y="18" width="220" height="580" fill="url(#hatching)" opacity="0.5" />
+    
+    <rect x="30" y="18" width="12" height="580" fill="#d0c8a8" opacity="0.4" />
+    <rect x="238" y="18" width="12" height="580" fill="#d0c8a8" opacity="0.4" />
+    
+    <rect x="20" y="598" width="240" height="18" rx="9" fill="#8a6a3a" stroke="#6a4a20" stroke-width="1.5" />
+    
+    <line x1="140" y1="0" x2="140" y2="-30" stroke="#8a6a3a" stroke-width="2" />
+    <circle cx="140" cy="-35" r="5" fill="#8a6a3a" />
+
+    
+    
+    <g fill="#1a1818" opacity="0.85">
+      
+      <rect x="95" y="55" width="90" height="10" rx="2" />
+      
+      <rect x="133" y="55" width="14" height="110" rx="2" />
+      
+      <rect x="88" y="105" width="104" height="9" rx="2" />
+      
+      <rect x="80" y="150" width="120" height="9" rx="2" />
+      
+      <path d="M95,168 Q85,195 78,220" stroke="#1a1818" stroke-width="10" fill="none" stroke-linecap="round" />
+      
+      <path d="M185,168 Q195,195 202,220" stroke="#1a1818" stroke-width="10" fill="none" stroke-linecap="round" />
+      
+      <rect x="78" y="218" width="124" height="10" rx="2" />
+    </g>
+
+    
+    <g fill="#1a1818" opacity="0.85" transform="translate(0,230)">
+      <rect x="90" y="55" width="100" height="9" rx="2" />
+      <rect x="130" y="55" width="20" height="18" rx="2" />
+      <rect x="85" y="70" width="110" height="9" rx="2" />
+      <rect x="88" y="78" width="12" height="65" rx="2" />
+      <rect x="180" y="78" width="12" height="65" rx="2" />
+      <rect x="88" y="105" width="104" height="8" rx="2" />
+      <rect x="115" y="78" width="10" height="65" rx="2" />
+      <rect x="155" y="78" width="10" height="65" rx="2" />
+      <rect x="88" y="140" width="104" height="9" rx="2" />
+    </g>
+
+    
+    <rect x="150" y="520" width="58" height="58" fill="#9a2020" rx="3" />
+    <rect x="154" y="524" width="50" height="50" fill="none" stroke="#f0d0a0" stroke-width="1.5" rx="1" />
+    <text x="179" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#f0d0a0" font-weight="bold">印</text>
+  </g>
+
+  
+  <g transform="translate(870, 220)">
+    
+    <circle cx="130" cy="130" r="105" fill="none" stroke="#c8a840" stroke-width="3" opacity="0.6" />
+    <circle cx="130" cy="130" r="90" fill="none" stroke="#c8a840" stroke-width="1" opacity="0.4" />
+    
+    <circle cx="130" cy="130" r="85" fill="#e8d870" opacity="0.08" />
+
+    
+    
+    <ellipse cx="130" cy="500" rx="95" ry="20" fill="#b8a070" opacity="0.5" />
+    <path d="M48,495 Q65,465 80,470 Q90,455 105,462 Q115,448 130,455 Q145,448 155,462 Q170,455 180,470 Q195,465 212,495Z" fill="#c8b080" stroke="#a08858" stroke-width="1.5" />
+    <path d="M55,495 Q70,472 85,478 Q95,462 110,469 Q120,454 130,460 Q140,454 150,469 Q165,462 175,478 Q190,472 205,495Z" fill="#d8c090" stroke="#a08858" stroke-width="1" />
+
+    
+    <path d="M70,490 Q60,420 65,340 Q70,280 90,230 Q110,195 130,185 Q150,195 170,230 Q190,280 195,340 Q200,420 190,490Z" fill="#c0b898" stroke="#8a7a5a" stroke-width="2" />
+    
+    <path d="M100,300 Q95,360 98,420" stroke="#a09070" stroke-width="1.5" fill="none" opacity="0.6" />
+    <path d="M160,300 Q165,360 162,420" stroke="#a09070" stroke-width="1.5" fill="none" opacity="0.6" />
+    <path d="M118,290 Q114,360 116,430" stroke="#a09070" stroke-width="1" fill="none" opacity="0.5" />
+    <path d="M142,290 Q146,360 144,430" stroke="#a09070" stroke-width="1" fill="none" opacity="0.5" />
+
+    
+    <ellipse cx="130" cy="400" rx="42" ry="18" fill="#c8b898" stroke="#8a7a5a" stroke-width="1.5" />
+
+    
+    <rect x="115" y="183" width="30" height="30" rx="8" fill="#c8b898" stroke="#8a7a5a" stroke-width="1.5" />
+
+    
+    <ellipse cx="130" cy="155" rx="48" ry="52" fill="#c8b898" stroke="#8a7a5a" stroke-width="2" />
+    
+    <ellipse cx="130" cy="108" rx="22" ry="18" fill="#b8a888" stroke="#8a7a5a" stroke-width="1.5" />
+    <ellipse cx="130" cy="95" rx="12" ry="10" fill="#a89878" stroke="#8a7a5a" stroke-width="1" />
+    
+    <path d="M92,148 Q95,138 100,132 Q110,124 120,122" stroke="#6a5a3a" stroke-width="1.2" fill="none" opacity="0.5" />
+    <path d="M168,148 Q165,138 160,132 Q150,124 140,122" stroke="#6a5a3a" stroke-width="1.2" fill="none" opacity="0.5" />
+    
+    
+    <path d="M110,160 Q120,156 128,158" stroke="#5a4a2a" stroke-width="2" fill="none" stroke-linecap="round" />
+    <path d="M132,158 Q140,156 150,160" stroke="#5a4a2a" stroke-width="2" fill="none" stroke-linecap="round" />
+    
+    <path d="M127,168 Q130,175 133,168" stroke="#8a7a5a" stroke-width="1.5" fill="none" />
+    
+    <path d="M118,185 Q130,191 142,185" stroke="#8a6a5a" stroke-width="2" fill="none" stroke-linecap="round" />
+    
+    <ellipse cx="82" cy="168" rx="10" ry="18" fill="#c0b090" stroke="#8a7a5a" stroke-width="1.2" />
+    <ellipse cx="178" cy="168" rx="10" ry="18" fill="#c0b090" stroke="#8a7a5a" stroke-width="1.2" />
+    
+    <circle cx="130" cy="152" r="3.5" fill="#8a6a2a" />
+
+    
+    <text x="130" y="545" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5a4a2a" letter-spacing="1">불교 조각</text>
+    <text x="130" y="565" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#7a6a4a">Buddhist Sculpture</text>
+  </g>
+
+  
+  <g transform="translate(1360, 100)" opacity="0.55">
+    <circle cx="80" cy="80" r="70" fill="none" stroke="#8a7a5a" stroke-width="1.5" />
+    <circle cx="80" cy="80" r="55" fill="none" stroke="#8a7a5a" stroke-width="0.8" />
+    <circle cx="80" cy="80" r="8" fill="#8a7a5a" />
+    
+    <path d="M80,10 L87,50 L80,60 L73,50 Z" fill="#5a4a2a" />
+    <path d="M80,150 L87,110 L80,100 L73,110 Z" fill="#8a7a5a" />
+    <path d="M10,80 L50,73 L60,80 L50,87 Z" fill="#8a7a5a" />
+    <path d="M150,80 L110,73 L100,80 L110,87 Z" fill="#8a7a5a" />
+    
+    <path d="M127,33 L104,62 L100,58 L108,28Z" fill="#a09070" opacity="0.7" />
+    <path d="M33,33 L56,62 L60,58 L52,28Z" fill="#a09070" opacity="0.7" />
+    <path d="M127,127 L104,98 L100,102 L108,132Z" fill="#a09070" opacity="0.7" />
+    <path d="M33,127 L56,98 L60,102 L52,132Z" fill="#a09070" opacity="0.7" />
+    
+    <text x="80" y="7" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3a2a10" font-weight="bold">N</text>
+    <text x="80" y="166" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a4a2a">S</text>
+    <text x="3" y="85" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a4a2a">W</text>
+    <text x="158" y="85" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a4a2a">E</text>
+  </g>
+
+  
+  <line x1="60" y1="130" x2="500" y2="130" stroke="#8a7a5a" stroke-width="1" opacity="0.5" />
+  <line x1="60" y1="133" x2="500" y2="133" stroke="#8a7a5a" stroke-width="0.5" opacity="0.3" />
+
+  
+  <text x="60" y="110" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#2a1e0a" letter-spacing="1">Korean Traditional</text>
+  <text x="60" y="172" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#2a1e0a" letter-spacing="1">Visual Arts</text>
+
+  
+  <text x="62" y="208" font-family="Georgia, serif" font-size="22" fill="#5a4a2a" letter-spacing="3">CALLIGRAPHY · PAINTING · SCULPTURE · POTTERY</text>
+
+  
+  <line x1="60" y1="220" x2="820" y2="220" stroke="#8a7a5a" stroke-width="1" opacity="0.5" />
+
+  
+  <g font-family="Georgia, serif" font-size="14" fill="#6a5a3a" opacity="0.75">
+    <text x="60" y="950">Goryeo Dynasty  ·  918–1392</text>
+    <text x="340" y="950">Joseon Dynasty  ·  1392–1910</text>
+    <text x="640" y="950">문인화  ·  수묵화  ·  청자  ·  백자</text>
+    <text x="1000" y="950">Jeong Seon  ·  Kim Jeong-hui  ·  Lee Ufan</text>
+  </g>
+
+  
+  <line x1="60" y1="935" x2="1476" y2="935" stroke="#8a7a5a" stroke-width="1" opacity="0.4" />
+
+  
+  <path d="M62,235 Q200,228 350,232 Q500,236 650,230" stroke="#5a4a2a" stroke-width="2.5" fill="none" opacity="0.3" stroke-linecap="round" />
+
+  
+  <line x1="820" y1="460" x2="1536" y2="460" stroke="#8a7a5a" stroke-width="0.6" stroke-dasharray="6,8" opacity="0.3" />
+  <line x1="820" y1="560" x2="1536" y2="560" stroke="#8a7a5a" stroke-width="0.6" stroke-dasharray="6,8" opacity="0.3" />
+  <line x1="820" y1="660" x2="1536" y2="660" stroke="#8a7a5a" stroke-width="0.6" stroke-dasharray="6,8" opacity="0.3" />
+  <line x1="820" y1="760" x2="1536" y2="760" stroke="#8a7a5a" stroke-width="0.6" stroke-dasharray="6,8" opacity="0.3" />
+
+  
+  <rect x="60" y="895" width="580" height="4" fill="#8a7a5a" opacity="0.3" rx="2" />
+  <rect x="60" y="895" width="200" height="4" fill="#6a8a7a" opacity="0.5" rx="2" />
+  <rect x="260" y="895" width="380" height="4" fill="#8a6a4a" opacity="0.5" rx="2" />
+
+</svg>

@@ -1,0 +1,273 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Government Structure — DPRK Atlas Plate</title>
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc0" />
+      <stop offset="50%" stop-color="#ddd0a8" />
+      <stop offset="100%" stop-color="#c9bc90" />
+    </linearGradient>
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00000000" />
+      <stop offset="100%" stop-color="#3a2a1055" />
+    </radialGradient>
+    
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab5c4" />
+    </linearGradient>
+    
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b97a" />
+      <stop offset="100%" stop-color="#b5a362" />
+    </linearGradient>
+    
+    <linearGradient id="dprkGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b3a3a" />
+      <stop offset="100%" stop-color="#6b2a2a" />
+    </linearGradient>
+    
+    <pattern id="hatch" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="4" stroke="#8a7545" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <pattern id="crosshatch" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="6" y2="6" stroke="#6b5a2a" stroke-width="0.5" opacity="0.25" />
+      <line x1="6" y1="0" x2="0" y2="6" stroke="#6b5a2a" stroke-width="0.5" opacity="0.25" />
+    </pattern>
+    
+    <pattern id="seahatch" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#6a8ea0" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#3a2500" flood-opacity="0.35" />
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#1a0e00" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" rx="4" fill="none" stroke="#7a6030" stroke-width="6" />
+  <rect x="28" y="28" width="1480" height="968" rx="3" fill="none" stroke="#9a8050" stroke-width="2" />
+  <rect x="32" y="32" width="1472" height="960" rx="2" fill="none" stroke="#7a6030" stroke-width="1" />
+
+  
+  <g stroke="#7a6030" stroke-width="2" fill="none">
+    
+    <line x1="18" y1="60" x2="60" y2="60" />
+    <line x1="60" y1="18" x2="60" y2="60" />
+    
+    <line x1="1476" y1="60" x2="1518" y2="60" />
+    <line x1="1476" y1="18" x2="1476" y2="60" />
+    
+    <line x1="18" y1="964" x2="60" y2="964" />
+    <line x1="60" y1="964" x2="60" y2="1006" />
+    
+    <line x1="1476" y1="964" x2="1518" y2="964" />
+    <line x1="1476" y1="964" x2="1476" y2="1006" />
+  </g>
+
+  
+  
+  <rect x="700" y="50" width="800" height="924" fill="url(#seaGrad)" opacity="0.6" />
+  <rect x="700" y="50" width="800" height="924" fill="url(#seahatch)" opacity="0.8" />
+
+  
+  <path d="M700,50 L1500,50 L1500,400 L1350,380 L1280,340 L1200,310 L1100,280 L1020,260 L960,240 L920,230 L870,200 L820,180 L780,170 L740,160 L700,140 Z" fill="url(#landGrad)" stroke="#8a7040" stroke-width="1.5" />
+  <path d="M700,50 L1500,50 L1350,380 L1280,340 L1200,310 L1020,260 L870,200 L780,170 L700,140 Z" fill="url(#hatch)" opacity="0.6" />
+
+  
+  <path d="M1380,320 L1400,300 L1430,310 L1450,340 L1460,390 L1450,440 L1430,460 L1410,450 L1390,420 L1370,380 L1360,350 Z" fill="url(#landGrad)" stroke="#8a7040" stroke-width="1.2" opacity="0.9" />
+  <path d="M1420,460 L1440,450 L1460,480 L1470,530 L1460,570 L1440,580 L1420,560 L1410,520 L1405,480 Z" fill="url(#landGrad)" stroke="#8a7040" stroke-width="1.2" opacity="0.85" />
+
+  
+  <path d="M970,580 L1000,560 L1030,555 L1060,560 L1080,590 L1090,630 L1080,680 L1060,720 L1030,750 L1000,760 L970,750 L950,720 L940,680 L940,640 L950,600 Z" fill="#c4b578" stroke="#8a7040" stroke-width="1.5" />
+  <path d="M970,580 L1000,560 L1030,555 L1060,560 L1080,590 L1090,630 L1080,680 L1060,720 L1030,750 L1000,760 L970,750 L950,720 L940,680 L940,640 L950,600 Z" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <path d="M830,230 L860,210 L890,195 L930,185 L970,180 L1010,185 L1050,200 L1080,220 L1100,250 L1110,280 L1110,310 L1100,340 L1080,370 L1060,400 L1040,430 L1020,460 L1000,490 L980,510 L965,530 L958,555 L970,580 L950,600 L940,580 L920,555 L900,530 L880,510 L860,490 L840,460 L825,430 L815,400 L810,370 L808,340 L810,310 L818,280 L828,255 Z" fill="url(#dprkGrad)" stroke="#5a1a1a" stroke-width="2" filter="url(#softShadow)" />
+  
+  <path d="M830,230 L860,210 L890,195 L930,185 L970,180 L1010,185 L1050,200 L1080,220 L1100,250 L1110,280 L1110,310 L1100,340 L1080,370 L1060,400 L1040,430 L1020,460 L1000,490 L980,510 L965,530 L958,555 L970,580 L950,600 L940,580 L920,555 L900,530 L880,510 L860,490 L840,460 L825,430 L815,400 L810,370 L808,340 L810,310 L818,280 L828,255 Z" fill="url(#crosshatch)" opacity="0.4" />
+
+  
+  <circle cx="945" cy="420" r="8" fill="#f5e8c0" stroke="#3a0a0a" stroke-width="2" />
+  <circle cx="945" cy="420" r="3" fill="#3a0a0a" />
+  <text x="958" y="416" font-family="Georgia, serif" font-size="18" fill="#f5e8c0" font-style="italic" letter-spacing="0.5">Pyongyang</text>
+
+  
+  <line x1="940" y1="580" x2="970" y2="580" stroke="#3a0a0a" stroke-width="2.5" stroke-dasharray="6,4" />
+  <line x1="970" y1="580" x2="1000" y2="565" stroke="#3a0a0a" stroke-width="2.5" stroke-dasharray="6,4" />
+  <text x="1010" y="572" font-family="Georgia, serif" font-size="14" fill="#3a1a1a" font-style="italic" opacity="0.8">38th Parallel</text>
+
+  
+  <text x="920" y="350" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#f0dca0" text-anchor="middle" letter-spacing="3" filter="url(#textShadow)">DPRK</text>
+
+  
+  <text x="780" y="450" font-family="Georgia, serif" font-size="20" fill="#4a6878" font-style="italic" text-anchor="middle" opacity="0.9" transform="rotate(-8,780,450)">Yellow</text>
+  <text x="780" y="475" font-family="Georgia, serif" font-size="20" fill="#4a6878" font-style="italic" text-anchor="middle" opacity="0.9" transform="rotate(-8,780,475)">Sea</text>
+  <text x="1200" y="500" font-family="Georgia, serif" font-size="20" fill="#4a6878" font-style="italic" text-anchor="middle" opacity="0.9" transform="rotate(8,1200,500)">Sea of</text>
+  <text x="1200" y="525" font-family="Georgia, serif" font-size="20" fill="#4a6878" font-style="italic" text-anchor="middle" opacity="0.9" transform="rotate(8,1200,525)">Japan</text>
+
+  
+  <g stroke="#7a8a6a" stroke-width="0.6" opacity="0.35" fill="none">
+    <line x1="700" y1="200" x2="1500" y2="200" />
+    <line x1="700" y1="400" x2="1500" y2="400" />
+    <line x1="700" y1="600" x2="1500" y2="600" />
+    <line x1="700" y1="800" x2="1500" y2="800" />
+    <line x1="850" y1="50" x2="850" y2="974" />
+    <line x1="1050" y1="50" x2="1050" y2="974" />
+    <line x1="1250" y1="50" x2="1250" y2="974" />
+    <line x1="1450" y1="50" x2="1450" y2="974" />
+  </g>
+
+  
+  
+  <rect x="50" y="50" width="620" height="924" rx="3" fill="#d8c898" opacity="0.5" />
+  <rect x="50" y="50" width="620" height="924" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <line x1="690" y1="60" x2="690" y2="964" stroke="#7a6030" stroke-width="3" />
+  <line x1="695" y1="60" x2="695" y2="964" stroke="#9a8050" stroke-width="1" />
+
+  
+  <text x="360" y="145" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="2" filter="url(#textShadow)">Government</text>
+  <text x="360" y="218" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="2" filter="url(#textShadow)">Structure</text>
+
+  
+  <text x="360" y="258" font-family="Georgia, serif" font-size="22" fill="#6a4010" text-anchor="middle" font-style="italic" letter-spacing="1">Democratic People's Republic of Korea</text>
+
+  
+  <line x1="100" y1="275" x2="620" y2="275" stroke="#7a6030" stroke-width="2" />
+  <line x1="130" y1="280" x2="590" y2="280" stroke="#9a8050" stroke-width="1" />
+
+  
+  
+  <rect x="220" y="310" width="280" height="72" rx="4" fill="#6b2a2a" stroke="#3a0a0a" stroke-width="2" filter="url(#softShadow)" />
+  <rect x="220" y="310" width="280" height="72" rx="4" fill="url(#crosshatch)" opacity="0.3" />
+  <text x="360" y="345" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="1">SUPREME LEADER</text>
+  <text x="360" y="367" font-family="Georgia, serif" font-size="14" fill="#e0c890" text-anchor="middle" font-style="italic">Kim Jong-un</text>
+
+  
+  <line x1="360" y1="382" x2="360" y2="415" stroke="#5a3010" stroke-width="2.5" />
+  <line x1="220" y1="415" x2="500" y2="415" stroke="#5a3010" stroke-width="2" />
+  <line x1="220" y1="415" x2="220" y2="440" stroke="#5a3010" stroke-width="2" />
+  <line x1="360" y1="415" x2="360" y2="440" stroke="#5a3010" stroke-width="2" />
+  <line x1="500" y1="415" x2="500" y2="440" stroke="#5a3010" stroke-width="2" />
+
+  
+  
+  <rect x="95" y="440" width="188" height="62" rx="3" fill="#8b5e2a" stroke="#5a3010" stroke-width="1.8" filter="url(#softShadow)" />
+  <text x="189" y="465" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="0.5">WORKERS' PARTY</text>
+  <text x="189" y="482" font-family="Georgia, serif" font-size="12" fill="#e0c890" text-anchor="middle">of Korea (WPK)</text>
+  <text x="189" y="498" font-family="Georgia, serif" font-size="11" fill="#c8a870" text-anchor="middle" font-style="italic">Ruling Party</text>
+
+  
+  <rect x="267" y="440" width="188" height="62" rx="3" fill="#6a5a2a" stroke="#5a3010" stroke-width="1.8" filter="url(#softShadow)" />
+  <text x="361" y="465" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="0.5">STATE</text>
+  <text x="361" y="482" font-family="Georgia, serif" font-size="12" fill="#e0c890" text-anchor="middle">Apparatus</text>
+  <text x="361" y="498" font-family="Georgia, serif" font-size="11" fill="#c8a870" text-anchor="middle" font-style="italic">SPA / Cabinet</text>
+
+  
+  <rect x="439" y="440" width="188" height="62" rx="3" fill="#4a5a3a" stroke="#3a4a2a" stroke-width="1.8" filter="url(#softShadow)" />
+  <text x="533" y="465" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="0.5">MILITARY</text>
+  <text x="533" y="482" font-family="Georgia, serif" font-size="12" fill="#e0c890" text-anchor="middle">Korean People's</text>
+  <text x="533" y="498" font-family="Georgia, serif" font-size="11" fill="#c8a870" text-anchor="middle" font-style="italic">Army (KPA)</text>
+
+  
+  <line x1="189" y1="502" x2="189" y2="540" stroke="#5a3010" stroke-width="1.8" />
+  <line x1="361" y1="502" x2="361" y2="540" stroke="#5a3010" stroke-width="1.8" />
+  <line x1="533" y1="502" x2="533" y2="540" stroke="#3a4a2a" stroke-width="1.8" />
+
+  
+  <rect x="100" y="540" width="178" height="54" rx="3" fill="#a08040" stroke="#7a6020" stroke-width="1.5" />
+  <text x="189" y="562" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#f5e8c0" text-anchor="middle">Politburo</text>
+  <text x="189" y="578" font-family="Georgia, serif" font-size="11" fill="#e0c890" text-anchor="middle">Central Committee</text>
+  <text x="189" y="592" font-family="Georgia, serif" font-size="10" fill="#c8a870" text-anchor="middle" font-style="italic">Party Control</text>
+
+  <rect x="272" y="540" width="178" height="54" rx="3" fill="#7a7040" stroke="#5a5020" stroke-width="1.5" />
+  <text x="361" y="562" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#f5e8c0" text-anchor="middle">Supreme People's</text>
+  <text x="361" y="578" font-family="Georgia, serif" font-size="11" fill="#e0c890" text-anchor="middle">Assembly (SPA)</text>
+  <text x="361" y="592" font-family="Georgia, serif" font-size="10" fill="#c8a870" text-anchor="middle" font-style="italic">Legislature (nominal)</text>
+
+  <rect x="444" y="540" width="178" height="54" rx="3" fill="#5a6848" stroke="#3a4828" stroke-width="1.5" />
+  <text x="533" y="562" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#f5e8c0" text-anchor="middle">State Affairs</text>
+  <text x="533" y="578" font-family="Georgia, serif" font-size="11" fill="#e0c890" text-anchor="middle">Commission</text>
+  <text x="533" y="592" font-family="Georgia, serif" font-size="10" fill="#c8a870" text-anchor="middle" font-style="italic">Executive Power</text>
+
+  
+  <line x1="360" y1="594" x2="360" y2="635" stroke="#5a3010" stroke-width="1.5" />
+  <line x1="160" y1="635" x2="560" y2="635" stroke="#5a3010" stroke-width="1.5" />
+
+  <rect x="100" y="652" width="520" height="52" rx="3" fill="#9a9060" stroke="#7a7040" stroke-width="1.5" />
+  <text x="360" y="676" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="1">ALL ORGANIZED INSTITUTIONS</text>
+  <text x="360" y="694" font-family="Georgia, serif" font-size="11" fill="#e0c890" text-anchor="middle" font-style="italic">media · judiciary · education · economy · religion</text>
+
+  
+  <line x1="100" y1="730" x2="620" y2="730" stroke="#7a6030" stroke-width="1.5" stroke-dasharray="8,4" />
+
+  
+  
+  <g transform="translate(360, 810)">
+    
+    <polygon points="0,-48 11,-16 44,-16 19,6 29,38 0,18 -29,38 -19,6 -44,-16 -11,-16" fill="#8b1a1a" stroke="#3a0a0a" stroke-width="2" filter="url(#softShadow)" />
+    
+    <line x1="-8" y1="-5" x2="8" y2="-5" stroke="#f0d080" stroke-width="3" stroke-linecap="round" />
+    <line x1="0" y1="-12" x2="0" y2="5" stroke="#f0d080" stroke-width="3" stroke-linecap="round" />
+    
+    <line x1="5" y1="-8" x2="12" y2="5" stroke="#f0d080" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+  </g>
+
+  
+  <text x="360" y="880" font-family="Georgia, serif" font-size="19" font-weight="bold" fill="#3a1a05" text-anchor="middle" letter-spacing="2">JUCHE · SONGUN · ONE-PARTY STATE</text>
+
+  
+  <g transform="translate(1430, 900)" filter="url(#softShadow)">
+    
+    <circle r="52" fill="#d8c898" stroke="#7a6030" stroke-width="2" opacity="0.85" />
+    
+    
+    <polygon points="0,-50 -8,-20 0,-8 8,-20" fill="#3a1a05" />
+    
+    <polygon points="0,50 -8,20 0,8 8,20" fill="#8a7040" />
+    
+    <polygon points="50,0 20,-8 8,0 20,8" fill="#8a7040" />
+    
+    <polygon points="-50,0 -20,-8 -8,0 -20,8" fill="#8a7040" />
+    
+    <polygon points="34,-34 18,-18 26,-10 28,-28" fill="#b09050" opacity="0.8" />
+    <polygon points="34,34 18,18 26,10 28,28" fill="#b09050" opacity="0.8" />
+    <polygon points="-34,34 -18,18 -26,10 -28,28" fill="#b09050" opacity="0.8" />
+    <polygon points="-34,-34 -18,-18 -26,-10 -28,-28" fill="#b09050" opacity="0.8" />
+    
+    <circle r="6" fill="#3a1a05" />
+    <circle r="3" fill="#d8c898" />
+    
+    <text x="0" y="-56" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1a0a00" text-anchor="middle">N</text>
+    <text x="0" y="70" font-family="Georgia, serif" font-size="13" fill="#5a4020" text-anchor="middle">S</text>
+    <text x="62" y="4" font-family="Georgia, serif" font-size="13" fill="#5a4020" text-anchor="middle">E</text>
+    <text x="-62" y="4" font-family="Georgia, serif" font-size="13" fill="#5a4020" text-anchor="middle">W</text>
+  </g>
+
+  
+  <g transform="translate(740, 940)">
+    <rect x="0" y="0" width="120" height="10" fill="#3a2a10" opacity="0.7" />
+    <rect x="0" y="0" width="60" height="10" fill="#d8c898" opacity="0.8" />
+    <line x1="0" y1="-4" x2="0" y2="14" stroke="#3a2a10" stroke-width="1.5" />
+    <line x1="60" y1="-4" x2="60" y2="14" stroke="#3a2a10" stroke-width="1.5" />
+    <line x1="120" y1="-4" x2="120" y2="14" stroke="#3a2a10" stroke-width="1.5" />
+    <text x="0" y="-7" font-family="Georgia, serif" font-size="12" fill="#2a1a05" text-anchor="middle">0</text>
+    <text x="60" y="-7" font-family="Georgia, serif" font-size="12" fill="#2a1a05" text-anchor="middle">200</text>
+    <text x="120" y="-7" font-family="Georgia, serif" font-size="12" fill="#2a1a05" text-anchor="middle">400 km</text>
+  </g>
+
+  
+  <text x="360" y="955" font-family="Georgia, serif" font-size="16" fill="#8a6030" text-anchor="middle" font-style="italic" letter-spacing="1">Government &amp; Politics</text>
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

@@ -1,0 +1,63 @@
+# =============================================================================
+# features/features.yml — THE FEATURE INDEX for ai-world-view/japan
+# =============================================================================
+# kit: verify v0.1.0 · governance v0.1.0 (bamr87/bamr87 templates/verify/, templates/governance/)
+#
+# One entry per user-facing capability, grounded in this repo's PRD, README and
+# code: what it does, where it lives (`link`), where it is explained (`docs`),
+# its `status` (shipped | partial | planned | deprecated | tbd) and the PRD
+# requirements it serves (`prd:`; TBD = not yet traced). Ids are STABLE: never
+# renumber or reuse one. The PRD's "Feature catalog" block is generated from
+# this file — edit here, then run:
+#   python3 <bamr87/bamr87>/tools/governance_lint.py prd-sync . --write
+# Validate: python3 <hub>/tools/governance_lint.py check .  ·  <hub>/tools/features_index.py check .
+# Schema: features/v1 (field reference: bamr87/bamr87 templates/verify/features.template.yml)
+# =============================================================================
+schema: features/v1
+repo: ai-world-view/japan
+
+features:
+  - id: AWV-JAPAN-001
+    title: "Static site: Jekyll with remote_theme:…"
+    description: "Static site: Jekyll with `remote_theme: bamr87/zer0-mistakes`, `baseurl: /japan`."
+    implemented: true
+    status: shipped
+    prd: [FR2]
+    surface: ui
+    link: "_config.yml"
+    docs: "README.md"
+  - id: AWV-JAPAN-002
+    title: "Content by taxonomy category"
+    description: "Content by taxonomy category (Markdown files with `title` / `date` / `category` front matter):"
+    implemented: true
+    status: shipped
+    prd: [FR1]
+    surface: content
+    docs: "README.md"
+  - id: AWV-JAPAN-003
+    title: "Index/navigation documents at root"
+    description: "Index/navigation documents at root: `README.md`, `TIMELINE.md`, `INDEX.md`, `CLAUDE.md`, `LICENSE`."
+    implemented: true
+    status: shipped
+    prd: [FR4]
+    surface: docs
+    link: "README.md"
+    docs: "README.md"
+  - id: AWV-JAPAN-004
+    title: "telemetry/ growth ledger written by the hub's growth ticks"
+    description: "`telemetry/` growth ledger written by the hub's growth ticks."
+    implemented: true
+    status: shipped
+    prd: [FR3, NFR3]
+    surface: infra
+    link: "telemetry"
+    docs: "README.md"
+  - id: AWV-JAPAN-005
+    title: ".claude/ thin adapters"
+    description: "`.claude/` thin adapters (skills/commands) pointing at hub-staged procedures."
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: infra
+    link: ".claude"
+    docs: "README.md"

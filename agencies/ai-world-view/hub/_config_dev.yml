@@ -1,0 +1,189 @@
+# Development Configuration Override
+# This file overrides production settings for local development
+
+# Theme Configuration
+# Local dev fetches the theme over the network via remote_theme, exactly like
+# production — this repo vendors NO theme files (no _layouts/, _includes/,
+# _sass/), so there is nothing local to fall back to and remote_theme is never
+# disabled here. Set JEKYLL_GITHUB_TOKEN to avoid GitHub API rate limits on the
+# theme download.
+#
+# DELIBERATELY UNTAGGED, matching _config.yml. The fleet tracks the theme's
+# latest main by policy, so there is no tag to keep in lockstep here. Because
+# this override is layered last, it is what local previews AND the
+# build-validation gate render with — leaving it untagged is what makes the gate
+# test the same latest theme production actually serves.
+remote_theme             : "bamr87/zer0-mistakes"
+
+# Development URL Configuration
+# Override production URLs for local development server
+url                      : "http://localhost:4000"
+baseurl                  : ""  # Keep baseurl for GitHub Pages compatibility testing
+
+# Development Server Settings
+host                     : "0.0.0.0"  # Allow access from other devices on network
+port                     : 4000
+livereload               : true
+livereload_port          : 35729
+
+# Development Environment
+environment              : "development"
+show_drafts              : true
+future                   : true
+unpublished              : true
+
+# Analytics Configuration for Development
+# Disable analytics in development to avoid polluting production data
+google_analytics         : null
+posthog:
+  enabled                : false  # Disable PostHog in development
+  api_key                : null
+  api_host               : null
+
+# AI Chat Configuration for Development
+# Local dev talks to the chat dev proxy, which reads your credential from .env
+# (CLAUDE_CODE_OAUTH_TOKEN preferred — from `claude setup-token` — or
+# ANTHROPIC_API_KEY). Start it alongside the site, from the repo root:
+#   node --env-file=.env templates/deploy/chat-proxy/dev-proxy.mjs
+# The widget then streams through http://localhost:8787. If the proxy isn't
+# running, the chat button still appears but sends will fail (connection refused).
+ai_chat:
+  auth_mode              : proxy
+  proxy_ready            : true
+  endpoint               : 'http://localhost:8787/api/chat'
+  local_edit             : true                          # let the assistant edit the current page locally
+  local_edit_endpoint    : 'http://localhost:8787/api/page'
+  github:
+    mode                 : 'url'   # pre-filled github.com forms; no token needed in dev
+
+# Disable production optimizations for faster builds.
+# `limit_posts` caps the post-processing window during dev serves. Category
+# index pages (index: true) use a recent date so they stay inside this window.
+# Raise the limit or run without it when editing older posts.
+incremental              : true
+limit_posts              : 30
+profile                  : false
+
+# Performance: Disable rarely-edited collections during development.
+# Comment out or set output: true for any collection you're actively working on.
+# NOTE: `quests` stays enabled because consumer sites (e.g. it-journey) use it as
+# their primary dev loop. Sites without quest content can opt out by overriding
+# `collections.quests.output: false` in their own dev config.
+collections:
+  notebooks:
+    output: false
+  hobbies:
+    output: false
+  quests:
+    output: true
+
+# Development-only plugin list. Jekyll *replaces* (does not merge) the `plugins:`
+# key when layering configs, so this slim list intentionally drops remote-theme
+# (which fully regenerates every rebuild) to shave seconds off dev serves.
+# jekyll-feed and jekyll-sitemap stay enabled because integration tests treat
+# /feed.xml and /sitemap.xml as critical paths. Re-enable any plugin here when
+# you need to test its output locally.
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-relative-links
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude — MUST include everything from _config.yml plus dev-only paths.
+# When using --config _config.yml,_config_dev.yml, Jekyll applies this file
+# last; a short list here *replaces* the base exclude and would skip
+# node_modules/, causing Liquid to parse README.md samples under npm packages.
+
+exclude:
+  # ── Repo docs that are not site pages ────────────────────────────────────
+  # README.md is the GitHub repo readme, not the homepage (that lives in
+  # pages/home.md). It has no front matter, so this exclude is what keeps it
+  # from rendering and colliding with home.md at "/" (dev sets unpublished:true).
+  - README.md
+  - PRD.md
+  - CLAUDE.md
+  # fleet.manifest.yml is the AI-lane inventory (fleet/v1) — repo metadata, not
+  # a static file to copy into _site/.
+  - fleet.manifest.yml
+  # zer0.json is the zer0-CMS console config (content folders + types) — editor
+  # metadata, not a static file to copy into _site/.
+  - zer0.json
+  # Orchestration source data (centralized seeds + bootstrap kit), not site content.
+  - lineage/
+  # Abstracted org-model DNA / replant tooling, not site content.
+  - genome/
+  # Hub evolution ledger (growth run records), not site content.
+  - telemetry/
+  - features/
+
+  # ── Jekyll cache ─────────────────────────────────────────────────────────
+  - .sass-cache/
+  - .jekyll-cache/
+
+  # ── Obsidian vault working files ─────────────────────────────────────────
+  - .obsidian/
+  - "*.canvas"
+  - "*.excalidraw.md"
+
+  # ── IDE / editor config ───────────────────────────────────────────────────
+  - .cursor/
+  - .devcontainer/
+  - .frontmatter/
+  - .github/
+  - .vscode/
+
+  # ── Ruby / Bundler ────────────────────────────────────────────────────────
+  - Gemfile
+  - Gemfile.lock
+  - gemfiles/
+  - jekyll-theme-zer0.gemspec
+  - lib/
+  - pkg/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+  # ── Node.js ───────────────────────────────────────────────────────────────
+  - node_modules/
+  - package.json
+  - package-lock.json
+
+  # ── Shell scripts and automation ──────────────────────────────────────────
+  - scripts/
+  - "*.sh"
+
+  # ── Docker configuration ──────────────────────────────────────────────────
+  - docker/
+  - docker-compose.yml
+  - docker-compose.prod.yml
+  - docker-compose.publish.yml
+  - docker-compose.test.yml
+
+  # ── Build / task runners ──────────────────────────────────────────────────
+  - Makefile
+  - Rakefile
+
+  # ── Project tooling metadata ──────────────────────────────────────────────
+  - AGENTS.md
+  - docs/
+  - frontmatter.json
+  - logs/
+  - templates/
+  - vendor-manifest.json
+  - "*.code-workspace"
+
+  # ── Submodules, tests, and authoring scaffolding ──────────────────────────
+  - submodules/
+  - test/
+  - tests/
+  - MERMAID-*.md
+  - MERMAID-*/
+  - pages/_notes/_templates/
+  - "*.log"
+  - debug-*.log
+

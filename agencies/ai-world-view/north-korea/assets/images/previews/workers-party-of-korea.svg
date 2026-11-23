@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Workers' Party of Korea — DPRK Atlas Plate</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc0" />
+      <stop offset="50%" stop-color="#ddd0a8" />
+      <stop offset="100%" stop-color="#c9bc90" />
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00000000" />
+      <stop offset="100%" stop-color="#3a2a1055" />
+    </radialGradient>
+    <radialGradient id="emblem" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#a8402e" />
+      <stop offset="100%" stop-color="#6b1f1a" />
+    </radialGradient>
+    <pattern id="hatch" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="4" stroke="#8a7545" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#3a2500" flood-opacity="0.35" />
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#1a0e00" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  <rect x="18" y="18" width="1500" height="988" rx="4" fill="none" stroke="#7a6030" stroke-width="6" />
+  <rect x="28" y="28" width="1480" height="968" rx="3" fill="none" stroke="#9a8050" stroke-width="2" />
+  <rect x="32" y="32" width="1472" height="960" rx="2" fill="none" stroke="#7a6030" stroke-width="1" />
+
+  <g stroke="#7a6030" stroke-width="2" fill="none">
+    <line x1="18" y1="60" x2="60" y2="60" /><line x1="60" y1="18" x2="60" y2="60" />
+    <line x1="1476" y1="60" x2="1518" y2="60" /><line x1="1476" y1="18" x2="1476" y2="60" />
+    <line x1="18" y1="964" x2="60" y2="964" /><line x1="60" y1="964" x2="60" y2="1006" />
+    <line x1="1476" y1="964" x2="1518" y2="964" /><line x1="1476" y1="964" x2="1476" y2="1006" />
+  </g>
+
+  <!-- Left text panel -->
+  <rect x="50" y="50" width="620" height="924" rx="3" fill="#d8c898" opacity="0.5" />
+  <rect x="50" y="50" width="620" height="924" fill="url(#hatch)" opacity="0.4" />
+  <line x1="690" y1="60" x2="690" y2="964" stroke="#7a6030" stroke-width="3" />
+  <line x1="695" y1="60" x2="695" y2="964" stroke="#9a8050" stroke-width="1" />
+
+  <text x="360" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="2" filter="url(#textShadow)">Workers' Party</text>
+  <text x="360" y="222" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="2" filter="url(#textShadow)">of Korea</text>
+  <text x="360" y="262" font-family="Georgia, serif" font-size="22" fill="#6a4010" text-anchor="middle" font-style="italic" letter-spacing="1">Chosŏn Nodongdang · 조선로동당</text>
+
+  <line x1="100" y1="285" x2="620" y2="285" stroke="#7a6030" stroke-width="2" />
+  <line x1="130" y1="290" x2="590" y2="290" stroke="#9a8050" stroke-width="1" />
+
+  <!-- Fact rows -->
+  <g font-family="Georgia, serif">
+    <text x="100" y="345" font-size="19" fill="#3a2810" font-weight="bold">Founded:</text>
+    <text x="620" y="345" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">10 October 1945 · Pyongyang</text>
+    <line x1="100" y1="362" x2="620" y2="362" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="100" y="408" font-size="19" fill="#3a2810" font-weight="bold">Role:</text>
+    <text x="620" y="408" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">Sole ruling party of the DPRK</text>
+    <line x1="100" y1="425" x2="620" y2="425" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="100" y="471" font-size="19" fill="#3a2810" font-weight="bold">Membership:</text>
+    <text x="620" y="471" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">est. 3–4 million (early 2020s)</text>
+    <line x1="100" y1="488" x2="620" y2="488" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="100" y="534" font-size="19" fill="#3a2810" font-weight="bold">Structure:</text>
+    <text x="620" y="534" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">Congress · Central Cmte · Politburo</text>
+    <line x1="100" y1="551" x2="620" y2="551" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+  </g>
+
+  <!-- congresses timeline -->
+  <text x="360" y="620" font-family="Georgia, serif" font-size="18" fill="#6a4010" text-anchor="middle" letter-spacing="1">Party Congresses</text>
+  <g font-family="Georgia, serif" font-size="15" fill="#5a4030" text-anchor="middle">
+    <text x="150" y="662">6th · 1980</text>
+    <text x="360" y="662">7th · 2016</text>
+    <text x="570" y="662">8th · 2021</text>
+  </g>
+  <line x1="120" y1="678" x2="600" y2="678" stroke="#7a6030" stroke-width="1.5" />
+  <g fill="#8b1a1a" stroke="#3a0a0a" stroke-width="1">
+    <circle cx="150" cy="678" r="6" /><circle cx="360" cy="678" r="6" /><circle cx="570" cy="678" r="6" />
+  </g>
+
+  <rect x="100" y="730" width="520" height="150" rx="3" fill="#6b2a2a" stroke="#3a0a0a" stroke-width="2" filter="url(#softShadow)" opacity="0.92" />
+  <text x="360" y="775" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="2">TRANSMISSION BELT OF THE STATE</text>
+  <text x="360" y="812" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">ideology · patronage · mobilization</text>
+  <text x="360" y="840" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">surveillance · cadre system</text>
+  <text x="360" y="868" font-family="Georgia, serif" font-size="14" fill="#c8a870" text-anchor="middle">embedded in every workplace &amp; neighborhood</text>
+
+  <text x="360" y="945" font-family="Georgia, serif" font-size="16" fill="#8a6030" text-anchor="middle" font-style="italic" letter-spacing="1">Government &amp; Politics</text>
+
+  <!-- Right: party emblem medallion -->
+  <g transform="translate(1090, 470)">
+    <circle cx="0" cy="0" r="300" fill="#d8c898" opacity="0.45" />
+    <circle cx="0" cy="0" r="270" fill="url(#emblem)" stroke="#3a0a0a" stroke-width="4" filter="url(#softShadow)" />
+    <circle cx="0" cy="0" r="250" fill="none" stroke="#e8c070" stroke-width="2" opacity="0.7" />
+
+    <!-- crossed hammer, sickle, writing brush -->
+    <g transform="translate(0, 20)">
+      <!-- hammer (left) -->
+      <g transform="rotate(-30)" fill="#f0d886" stroke="#7a5a10" stroke-width="2">
+        <rect x="-14" y="-150" width="28" height="240" rx="6" />
+        <rect x="-58" y="-172" width="116" height="46" rx="8" />
+      </g>
+      <!-- sickle (right) -->
+      <g transform="rotate(30)" fill="none" stroke="#f0d886" stroke-width="26" stroke-linecap="round">
+        <path d="M 6,90 L 6,-70 A 130 130 0 0 1 130 20" />
+      </g>
+      <g transform="rotate(30)" fill="#f0d886" stroke="#7a5a10" stroke-width="2">
+        <rect x="-9" y="-70" width="18" height="164" rx="6" />
+      </g>
+      <!-- writing brush (center) -->
+      <g fill="#f0d886" stroke="#7a5a10" stroke-width="2">
+        <rect x="-11" y="-180" width="22" height="270" rx="6" />
+        <path d="M -11,-180 L 11,-180 L 4,-224 L 0,-236 L -4,-224 Z" fill="#e8b060" />
+      </g>
+      <circle cx="0" cy="96" r="20" fill="#f0d886" stroke="#7a5a10" stroke-width="2" />
+    </g>
+
+    <!-- radiating rule marks -->
+    <g stroke="#e8c070" stroke-width="1.5" opacity="0.4">
+      <line x1="0" y1="-270" x2="0" y2="-250" /><line x1="0" y1="270" x2="0" y2="250" />
+      <line x1="270" y1="0" x2="250" y2="0" /><line x1="-270" y1="0" x2="-250" y2="0" />
+    </g>
+  </g>
+
+  <text x="1400" y="980" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#8a7550" font-style="italic" opacity="0.6">Atlas Plate · DPRK · Korean Peninsula</text>
+
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

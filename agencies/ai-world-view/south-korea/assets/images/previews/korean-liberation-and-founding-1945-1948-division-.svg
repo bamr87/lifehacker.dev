@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean Liberation and Founding, 1945–1948 — Division and the Birth of Two Republics</title>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="northZone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a9bb5" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#5b7f9e" stop-opacity="0.75" />
+    </linearGradient>
+    <linearGradient id="southZone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c47a4a" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#a85f35" stop-opacity="0.75" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab5c4" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComponentTransfer in="blend">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+    <pattern id="gridLines" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="60" y2="0" stroke="#b0a080" stroke-width="0.4" stroke-opacity="0.5" />
+      <line x1="0" y1="0" x2="0" y2="60" stroke="#b0a080" stroke-width="0.4" stroke-opacity="0.5" />
+    </pattern>
+    <pattern id="hatch" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="8" x2="8" y2="0" stroke="#7a9bb5" stroke-width="0.8" stroke-opacity="0.3" />
+    </pattern>
+    <pattern id="hatchS" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="8" stroke="#c47a4a" stroke-width="0.8" stroke-opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridLines)" />
+  
+  <rect width="1536" height="1024" fill="#c8b888" opacity="0.12" filter="url(#parchment)" />
+
+  
+  <ellipse cx="780" cy="512" rx="520" ry="440" fill="url(#seaGrad)" opacity="0.55" />
+
+  
+  
+  <path d="M 420 200 Q 500 160 620 180 Q 700 185 750 240 Q 760 270 730 300 Q 680 290 600 300 Q 520 310 460 350 Q 420 330 400 280 Z" fill="#c8b87a" opacity="0.6" />
+  
+  <path d="M 600 140 Q 700 120 820 130 Q 900 135 950 170 Q 920 200 860 195 Q 780 185 720 195 Q 660 200 620 185 Z" fill="#c8b87a" opacity="0.45" />
+  
+  
+  <path d="M 1040 340 Q 1080 320 1120 330 Q 1150 345 1160 380 Q 1155 410 1130 430 Q 1100 445 1065 440 Q 1035 430 1020 400 Q 1010 370 1040 340 Z" fill="#c8b87a" opacity="0.6" />
+  
+  <path d="M 1000 470 Q 1030 455 1055 465 Q 1070 480 1065 500 Q 1050 515 1025 510 Q 1005 500 1000 485 Z" fill="#c8b87a" opacity="0.6" />
+  
+  <path d="M 1060 240 Q 1100 225 1135 235 Q 1150 250 1140 270 Q 1115 280 1080 272 Q 1058 260 1060 240 Z" fill="#c8b87a" opacity="0.5" />
+
+  
+  
+  <path d="M 650 310 Q 680 290 720 285 Q 760 282 800 290 Q 840 298 870 310 Q 895 325 900 345 Q 905 365 895 385 Q 880 400 860 408 Q 840 415 820 418 L 820 530 Q 800 532 780 530 L 780 418 Q 730 415 700 408 Q 670 398 655 380 Q 642 360 645 340 Z" fill="url(#northZone)" />
+  <path d="M 650 310 Q 680 290 720 285 Q 760 282 800 290 Q 840 298 870 310 Q 895 325 900 345 Q 905 365 895 385 Q 880 400 860 408 Q 840 415 820 418 L 820 530 Q 800 532 780 530 L 780 418 Q 730 415 700 408 Q 670 398 655 380 Q 642 360 645 340 Z" fill="url(#hatch)" />
+
+  
+  <path d="M 645 532 Q 648 520 655 510 L 780 530 L 820 530 L 895 510 Q 902 522 905 535 Q 910 565 900 595 Q 885 635 860 665 Q 835 690 810 710 Q 790 728 780 745 Q 770 728 755 710 Q 730 688 705 665 Q 678 638 662 605 Q 648 572 645 545 Z" fill="url(#southZone)" />
+  <path d="M 645 532 Q 648 520 655 510 L 780 530 L 820 530 L 895 510 Q 902 522 905 535 Q 910 565 900 595 Q 885 635 860 665 Q 835 690 810 710 Q 790 728 780 745 Q 770 728 755 710 Q 730 688 705 665 Q 678 638 662 605 Q 648 572 645 545 Z" fill="url(#hatchS)" />
+
+  
+  <path d="M 650 310 Q 680 290 720 285 Q 760 282 800 290 Q 840 298 870 310 Q 895 325 900 345 Q 905 365 895 385 Q 880 400 860 408 Q 840 415 820 418 L 895 510 Q 902 522 905 535 Q 910 565 900 595 Q 885 635 860 665 Q 835 690 810 710 Q 790 728 780 745 Q 770 728 755 710 Q 730 688 705 665 Q 678 638 662 605 Q 648 572 645 545 Q 642 522 645 510 L 780 530 L 820 418 Q 730 415 700 408 Q 670 398 655 380 Q 642 360 645 340 Z" fill="none" stroke="#5a4820" stroke-width="2" />
+
+  
+  <line x1="630" y1="530" x2="920" y2="530" stroke="#2a1a05" stroke-width="3.5" stroke-dasharray="14,6" />
+  
+  <text x="935" y="536" font-family="Georgia, serif" font-size="18" fill="#2a1a05" font-style="italic">38°N</text>
+
+  
+  <text x="770" y="480" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1a2d3f" font-weight="bold" letter-spacing="2">SOVIET ZONE</text>
+  
+  <text x="775" y="625" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#3f1a05" font-weight="bold" letter-spacing="2">U.S. ZONE</text>
+
+  
+  <g transform="translate(1290, 420)">
+    
+    <circle cx="0" cy="0" r="78" fill="none" stroke="#7a6840" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="60" fill="#e8dfc8" fill-opacity="0.85" stroke="#7a6840" stroke-width="1" />
+    
+    <polygon points="0,-58 6,-28 0,-35 -6,-28" fill="#3a2a10" />
+    <polygon points="0,58 6,28 0,35 -6,28" fill="#7a6840" />
+    <polygon points="58,0 28,6 35,0 28,-6" fill="#7a6840" />
+    <polygon points="-58,0 -28,6 -35,0 -28,-6" fill="#7a6840" />
+    
+    <polygon points="41,-41 18,-24 24,-18" fill="#b0a060" />
+    <polygon points="41,41 24,18 18,24" fill="#b0a060" />
+    <polygon points="-41,41 -18,24 -24,18" fill="#b0a060" />
+    <polygon points="-41,-41 -24,-18 -18,-24" fill="#b0a060" />
+    
+    <circle cx="0" cy="0" r="5" fill="#3a2a10" />
+    
+    <text x="0" y="-64" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#3a2a10">N</text>
+    <text x="0" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4830">S</text>
+    <text x="70" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4830">E</text>
+    <text x="-68" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4830">W</text>
+  </g>
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#8a7040" stroke-width="3" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#8a7040" stroke-width="1" />
+
+  
+  <g stroke="#8a7040" stroke-width="1.2" fill="none">
+    <path d="M 20 20 L 80 20 M 20 20 L 20 80" />
+    <path d="M 1516 20 L 1456 20 M 1516 20 L 1516 80" />
+    <path d="M 20 1004 L 80 1004 M 20 1004 L 20 944" />
+    <path d="M 1516 1004 L 1456 1004 M 1516 1004 L 1516 944" />
+  </g>
+
+  
+  <text x="100" y="200" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#5a4820" letter-spacing="4" font-style="italic">ATLAS OF MODERN HISTORY</text>
+
+  <text x="100" y="295" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="bold" fill="#1e1208" letter-spacing="-1">Korean Liberation</text>
+  <text x="100" y="385" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="bold" fill="#1e1208" letter-spacing="-1">and Founding</text>
+
+  
+  <line x1="100" y1="415" x2="560" y2="415" stroke="#8a5030" stroke-width="3" />
+  <line x1="100" y1="422" x2="560" y2="422" stroke="#8a5030" stroke-width="1" />
+
+  <text x="100" y="470" font-family="Georgia, 'Times New Roman', serif" font-size="38" fill="#3a2010" letter-spacing="1">1945 – 1948</text>
+
+  <text x="100" y="540" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#4a3818" font-style="italic">Division and the Birth of Two Republics</text>
+
+  
+  <rect x="100" y="600" width="320" height="70" rx="4" fill="#c8b888" fill-opacity="0.6" stroke="#8a7040" stroke-width="1.2" />
+  <text x="120" y="628" font-family="Georgia, serif" font-size="14" fill="#2a1a05" font-weight="bold">August 15, 1945</text>
+  <text x="120" y="650" font-family="Georgia, serif" font-size="13" fill="#3a2a10">Liberation from Japanese Colonial Rule</text>
+
+  <rect x="100" y="688" width="320" height="70" rx="4" fill="#c8b888" fill-opacity="0.6" stroke="#8a7040" stroke-width="1.2" />
+  <text x="120" y="716" font-family="Georgia, serif" font-size="14" fill="#2a1a05" font-weight="bold">August 15, 1948</text>
+  <text x="120" y="738" font-family="Georgia, serif" font-size="13" fill="#3a2a10">Republic of Korea Established</text>
+
+  <rect x="100" y="776" width="320" height="70" rx="4" fill="#c8b888" fill-opacity="0.6" stroke="#8a7040" stroke-width="1.2" />
+  <text x="120" y="804" font-family="Georgia, serif" font-size="14" fill="#2a1a05" font-weight="bold">September 9, 1948</text>
+  <text x="120" y="826" font-family="Georgia, serif" font-size="13" fill="#3a2a10">DPRK Proclaimed in the North</text>
+
+  
+  
+  <g transform="translate(770,415)">
+    <polygon points="0,-14 3.3,-4.5 13.3,-4.5 5.5,1.7 8.2,11.5 0,5.5 -8.2,11.5 -5.5,1.7 -13.3,-4.5 -3.3,-4.5" fill="#c8c820" stroke="#8a8a10" stroke-width="0.5" />
+  </g>
+  
+  <g transform="translate(770,610)">
+    <polygon points="0,-10 2.4,-3.2 9.5,-3.2 3.9,1.2 5.9,8.2 0,4 -5.9,8.2 -3.9,1.2 -9.5,-3.2 -2.4,-3.2" fill="#c8c8f0" stroke="#6060a0" stroke-width="0.5" />
+  </g>
+
+  
+  <g transform="translate(100, 900)">
+    <rect x="0" y="0" width="480" height="60" rx="4" fill="#e0d4b0" fill-opacity="0.7" stroke="#8a7040" stroke-width="1" />
+    <rect x="14" y="18" width="24" height="14" fill="#7a9bb5" fill-opacity="0.8" />
+    <rect x="14" y="18" width="24" height="14" fill="url(#hatch)" />
+    <text x="46" y="30" font-family="Georgia, serif" font-size="14" fill="#1a2d3f">Soviet Occupation Zone (North)</text>
+    <rect x="250" y="18" width="24" height="14" fill="#c47a4a" fill-opacity="0.8" />
+    <rect x="250" y="18" width="24" height="14" fill="url(#hatchS)" />
+    <text x="282" y="30" font-family="Georgia, serif" font-size="14" fill="#3f1a05">U.S. Occupation Zone (South)</text>
+    
+    <line x1="14" y1="50" x2="50" y2="50" stroke="#2a1a05" stroke-width="2.5" stroke-dasharray="8,4" />
+    <text x="58" y="54" font-family="Georgia, serif" font-size="13" fill="#2a1a05">38th Parallel Division Line</text>
+  </g>
+
+  
+  <text x="530" y="500" font-family="Georgia, serif" font-size="16" fill="#4a6878" font-style="italic" transform="rotate(-30, 530, 500)">Yellow Sea</text>
+  <text x="1000" y="450" font-family="Georgia, serif" font-size="16" fill="#4a6878" font-style="italic" transform="rotate(20, 1000, 450)">Sea of Japan</text>
+
+  
+  <text x="1080" y="400" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4820">JAPAN</text>
+
+  
+  <text x="560" y="230" font-family="Georgia, serif" font-size="14" fill="#5a4820">MANCHURIA</text>
+
+  
+  <text x="775" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#1e1208" font-weight="bold" letter-spacing="3">KOREA</text>
+
+</svg>

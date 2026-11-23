@@ -1,0 +1,186 @@
+---
+name: Lineage Orchestrator
+
+# The hub is the central orchestrator for the org's self-growing knowledge bases.
+# Once a day it:
+#   1. READS each country's centralized seed (lineage/seeds/<year>.md) into
+#      _data/lineage.yml via sync-lineage-state.rb, and commits any change
+#      (which rebuilds the /lineage/ + /hub/ dashboards).
+#   2. TRIGGERS one central growth tick per country repo by dispatching the hub's
+#      grow-lineage.yml (-f repo=<year>) — which stages the framework + seed and
+#      runs the 3-tier Haiku->Sonnet->Opus escalation against that repo.
+#
+# Each repo grows perpetually and is never consolidated, archived, or deleted.
+#
+# Secrets (org- or repo-level):
+#   LIFECYCLE_PAT  — a PAT with `actions: write` on this hub, used to dispatch
+#                    grow-lineage.yml. grow-lineage itself uses it to push content
+#                    into each country repo. If unset, the ledger still refreshes
+#                    (tracking-only).
+#
+# Deterministic: when no repo's state changed, the ledger is unchanged and no
+# commit is made.
+#
+# Kill switches — two layers, both must permit a scheduled run:
+#   _data/fleet_pause.yml   in-tree emergency STOP (ADR-0003): `paused: true`
+#                           halts every growth dispatch at once; default running.
+#   ORCHESTRATE_ENABLED     repository variable, opt-in ARM: the daily cron idles
+#                           until a human sets it —
+#                             gh variable set ORCHESTRATE_ENABLED --body true
+#                           push / pull_request / workflow_dispatch runs are never
+#                           gated by it, so a human can always validate a PR or
+#                           run a tick by hand. The bot token cannot set repo
+#                           variables, so the loop can never arm itself.
+#                           grow-lineage.yml and plant-lineage.yml are dispatch-
+#                           only and inherit this consent through their only
+#                           automated dispatcher (this workflow).
+
+permissions:
+  contents: write
+
+on:
+  # Schedule paused (Actions waste reduction, Oct 14): the job is gated by vars.ORCHESTRATE_ENABLED, which is
+  # currently off, so every scheduled run was skipped. To restore: set ORCHESTRATE_ENABLED=true AND uncomment the block below.
+  # schedule:
+  #   - cron: '30 5 * * *' # daily, ahead of any residual per-repo automation
+  workflow_dispatch:
+    inputs:
+      trigger_growth:
+        description: 'Dispatch a grow tick to every repo (needs LIFECYCLE_PAT)'
+        type: boolean
+        default: true
+      targets:
+        description: 'Optional space-separated repo list (owner/name); blank = all in the ledger'
+        required: false
+        default: ''
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync-lineage-state.rb'
+      - 'scripts/lib/hub.rb'
+      - '.github/workflows/orchestrate.yml'
+  pull_request:
+    paths:
+      - 'scripts/sync-lineage-state.rb'
+      - '.github/workflows/orchestrate.yml'
+
+concurrency:
+  group: lineage-orchestrate
+  cancel-in-progress: false
+
+jobs:
+  orchestrate:
+    runs-on: ubuntu-latest
+    # The scheduled run idles until a human arms ORCHESTRATE_ENABLED (see the
+    # header); push / pull_request / workflow_dispatch always run.
+    if: github.event_name != 'schedule' || vars.ORCHESTRATE_ENABLED == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Validate ledger (PRs)
+        if: github.event_name == 'pull_request'
+        run: ruby scripts/sync-lineage-state.rb --check
+
+      - name: Refresh lineage ledger
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ruby scripts/sync-lineage-state.rb
+
+      - name: Commit refreshed ledger
+        if: github.event_name != 'pull_request'
+        run: |
+          if [ -z "$(git status --porcelain -- _data/lineage.yml)" ]; then
+            echo "Lineage state unchanged — nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/lineage.yml
+          git commit -m "chore(lineage): refresh state ledger"
+          # Hub main advances often (seed persists, telemetry ledger). Retry
+          # with rebase so this commit is never lost to a non-fast-forward.
+          for _ in 1 2 3; do
+            git push && exit 0
+            git pull --rebase origin main || true
+          done
+          git push
+
+      - name: Trigger growth ticks
+        # Schedule and manual dispatch (when trigger_growth is true) fan out a
+        # grow tick to every repo in the ledger. Skipped gracefully if the PAT
+        # is absent — the ledger refresh above still ran (tracking-only).
+        if: >-
+          github.event_name == 'schedule' ||
+          (github.event_name == 'workflow_dispatch' && inputs.trigger_growth)
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+          TARGETS: ${{ inputs.targets }}
+        run: |
+          # Global kill-switch (ADR-0003): halt all growth dispatch when paused.
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            reason="$(ruby -ryaml -e 'puts YAML.load_file("_data/fleet_pause.yml")["reason"].to_s' 2>/dev/null)"
+            echo "::notice::Fleet is PAUSED via _data/fleet_pause.yml — skipping all growth dispatch. ${reason:+Reason: $reason}"
+            exit 0
+          fi
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::LIFECYCLE_PAT not set — refreshed the ledger but did not trigger growth (tracking-only)."
+            exit 0
+          fi
+          if [ -n "$TARGETS" ]; then
+            repos="$TARGETS"
+          else
+            # Cadence (lineage/policy.yml): grow only cadence.repos_per_run
+            # members per run, picking the stalest first (never-grown members
+            # sort to the front). 0 or absent = grow every member every run.
+            repos="$(ruby -ryaml -e '
+              policy = YAML.load_file("lineage/policy.yml") rescue {}
+              per = (policy.dig("cadence", "repos_per_run") || 0).to_i
+              members = (YAML.load_file("_data/lineage.yml")["members"] || [])
+              members = members.sort_by { |m| m["last_activity"].to_s }
+              members = members.first(per) if per.positive? && per < members.size
+              puts members.map { |m| m["repo"] }.join(" ")
+            ')"
+          fi
+          echo "Dispatching central grow ticks (grow-lineage.yml) for: $repos"
+          for r in $repos; do
+            name="${r##*/}"   # ai-world-view/japan -> japan
+            if gh workflow run grow-lineage.yml -R ai-world-view/ai-world-view.github.io -f repo="$name" >/dev/null 2>&1; then
+              echo "  ✓ $name"
+            else
+              echo "  ✗ $name (could not dispatch grow-lineage.yml; PAT needs actions:write on the hub)"
+            fi
+          done
+
+          # Maturity-gated tangential spawning (year-of-ai ADR-0002 automation,
+          # ADR-0007): when EVERY member country has logged >=
+          # spawn.frontier_ticks growth cycles (the newest member has itself
+          # matured) and the roster is below spawn.max_members, dispatch ONE
+          # plant-lineage run — its DECIDE pass authors a tangential country
+          # seed and the planter creates the repo. plant-lineage.yml
+          # RE-VERIFIES this gate from a fresh checkout, so a stale ledger or
+          # double dispatch is a clean no-op there.
+          spawn_due="$(ruby -ryaml -e '
+            sp      = (YAML.load_file("lineage/policy.yml")["spawn"] rescue nil) || {}
+            members = (YAML.load_file("_data/lineage.yml")["members"] rescue nil) || []
+            ok = sp["enabled"] == true &&
+                 !members.empty? &&
+                 members.size < sp.fetch("max_members", 0).to_i &&
+                 members.all? { |m| m["ticks_logged"].to_i >= sp.fetch("frontier_ticks", 1 << 30).to_i }
+            puts ok ? "true" : "false"
+          ')"
+          if [ "$spawn_due" = "true" ]; then
+            if gh workflow run plant-lineage.yml -R ai-world-view/ai-world-view.github.io -f auto=true >/dev/null 2>&1; then
+              echo "  🌱 atlas mature — dispatched plant-lineage (auto-spawn)"
+            else
+              echo "  ✗ could not dispatch plant-lineage.yml (PAT needs actions:write on the hub)"
+            fi
+          else
+            echo "  spawn gate: not due (spawn.enabled + every member >= frontier_ticks + roster < max_members)"
+          fi

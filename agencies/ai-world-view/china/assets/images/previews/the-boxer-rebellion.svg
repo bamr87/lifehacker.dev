@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Boxer Rebellion — Historical Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4c4a0" />
+      <stop offset="100%" stop-color="#b8a882" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a9aaa" />
+      <stop offset="100%" stop-color="#5a7a8a" />
+    </linearGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#c0a870" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <pattern id="crosshatch" width="10" height="10" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="10" y2="10" stroke="#8a7a5a" stroke-width="0.4" opacity="0.3" />
+      <line x1="10" y1="0" x2="0" y2="10" stroke="#8a7a5a" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#crosshatch)" />
+
+  
+  <rect x="60" y="60" width="1416" height="904" rx="4" fill="url(#sea)" opacity="0.5" />
+  <rect x="60" y="60" width="1416" height="904" rx="4" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <rect x="60" y="60" width="1416" height="904" rx="4" fill="none" stroke="#7a6040" stroke-width="3" />
+  <rect x="72" y="72" width="1392" height="880" rx="2" fill="none" stroke="#7a6040" stroke-width="1" />
+
+  
+  
+  <path d="M 580,180 L 620,170 L 680,175 L 740,165 L 800,170 L 860,160 L 920,175 L 980,170 L 1040,185 L 1080,200 L 1100,230 L 1095,270 L 1110,300 L 1100,340 L 1085,370 L 1090,410 L 1070,450 L 1050,480 L 1020,500 L 1000,530 L 980,560 L 950,580 L 920,600 L 890,590 L 860,600 L 840,580 L 820,560 L 800,540 L 780,520 L 760,510 L 730,520 L 700,510 L 680,490 L 660,470 L 640,450 L 620,430 L 600,410 L 580,390 L 560,370 L 550,340 L 545,310 L 550,280 L 555,250 L 560,220 Z" fill="#c8aa70" stroke="#8a6a40" stroke-width="1.5" />
+  
+  <path d="M 580,180 L 620,170 L 680,175 L 740,165 L 800,170 L 860,160 L 920,175 L 980,170 L 1040,185 L 1080,200 L 1100,230 L 1095,270 L 1110,300 L 1100,340 L 1085,370 L 1090,410 L 1070,450 L 1050,480 L 1020,500 L 1000,530 L 980,560 L 950,580 L 920,600 L 890,590 L 860,600 L 840,580 L 820,560 L 800,540 L 780,520 L 760,510 L 730,520 L 700,510 L 680,490 L 660,470 L 640,450 L 620,430 L 600,410 L 580,390 L 560,370 L 550,340 L 545,310 L 550,280 L 555,250 L 560,220 Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <path d="M 980,170 L 1040,155 L 1090,160 L 1120,175 L 1130,210 L 1110,230 L 1080,200 L 1040,185 L 980,170 Z" fill="#c8aa70" stroke="#8a6a40" stroke-width="1.5" />
+  <path d="M 980,170 L 1040,155 L 1090,160 L 1120,175 L 1130,210 L 1110,230 L 1080,200 L 1040,185 L 980,170 Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <path d="M 1085,270 L 1110,260 L 1130,280 L 1125,320 L 1110,350 L 1095,340 L 1085,310 L 1085,270 Z" fill="#c8aa70" stroke="#8a6a40" stroke-width="1.2" />
+
+  
+  <path d="M 1140,220 L 1160,215 L 1175,235 L 1170,255 L 1150,260 L 1135,245 Z" fill="#c8aa70" stroke="#8a6a40" stroke-width="1.2" />
+  <path d="M 1160,265 L 1180,255 L 1200,270 L 1205,300 L 1185,320 L 1165,310 L 1155,285 Z" fill="#c8aa70" stroke="#8a6a40" stroke-width="1.2" />
+  <path d="M 1175,330 L 1195,320 L 1210,340 L 1200,360 L 1180,355 Z" fill="#c8aa70" stroke="#8a6a40" stroke-width="1.2" />
+
+  
+  <path d="M 800,540 L 820,560 L 830,600 L 820,640 L 800,660 L 780,640 L 770,610 L 780,580 L 780,520 Z" fill="#c8aa70" stroke="#8a6a40" stroke-width="1.2" />
+  
+  <path d="M 830,600 L 860,600 L 880,630 L 870,670 L 840,680 L 820,660 L 820,640 L 830,600 Z" fill="#c8aa70" stroke="#8a6a40" stroke-width="1.2" />
+
+  
+  <path d="M 600,180 L 740,165 L 800,170 L 860,160 L 920,175 L 980,170 L 980,220 L 940,240 L 880,235 L 820,240 L 760,235 L 700,240 L 640,230 L 600,220 Z" fill="#d4b878" stroke="#8a6a40" stroke-width="1" opacity="0.7" />
+
+  
+  
+  <path d="M 620,280 Q 680,260 740,270 Q 800,280 850,260 Q 900,240 940,265 Q 970,285 980,310 Q 990,335 970,355 Q 940,375 900,365 Q 860,355 830,360" fill="none" stroke="#7a9aaa" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+  
+  <path d="M 600,370 Q 660,360 720,370 Q 790,385 850,380 Q 910,375 960,395 Q 990,410 1010,440 Q 1020,465 1000,480" fill="none" stroke="#7a9aaa" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+
+  
+  <circle cx="900" cy="285" r="14" fill="#8B1A1A" opacity="0.9" />
+  <circle cx="900" cy="285" r="10" fill="#CC2222" opacity="0.9" />
+  <circle cx="900" cy="285" r="5" fill="#FF4444" />
+  
+  <circle cx="900" cy="285" r="22" fill="none" stroke="#8B1A1A" stroke-width="1.5" opacity="0.6" />
+  <circle cx="900" cy="285" r="32" fill="none" stroke="#8B1A1A" stroke-width="1" opacity="0.35" />
+  <circle cx="900" cy="285" r="42" fill="none" stroke="#8B1A1A" stroke-width="0.7" opacity="0.2" />
+
+  
+  <text x="920" y="278" font-family="Georgia, serif" font-size="18" fill="#3a2010" font-style="italic" font-weight="bold">北京</text>
+  <text x="920" y="296" font-family="Georgia, serif" font-size="14" fill="#3a2010" font-style="italic">Peking</text>
+
+  
+  <circle cx="940" cy="318" r="7" fill="#8B1A1A" opacity="0.7" />
+  <text x="950" y="323" font-family="Georgia, serif" font-size="12" fill="#3a2010" font-style="italic">Tientsin</text>
+
+  
+  <g transform="translate(240, 400)">
+    
+    <rect x="-35" y="-20" width="70" height="50" rx="8" fill="#8B1A1A" opacity="0.85" />
+    <rect x="-35" y="-35" width="18" height="25" rx="5" fill="#8B1A1A" opacity="0.85" />
+    <rect x="-13" y="-40" width="18" height="28" rx="5" fill="#8B1A1A" opacity="0.85" />
+    <rect x="9" y="-38" width="18" height="26" rx="5" fill="#8B1A1A" opacity="0.85" />
+    <rect x="30" y="-32" width="16" height="22" rx="5" fill="#8B1A1A" opacity="0.85" />
+    
+    <rect x="-50" y="-5" width="22" height="15" rx="6" fill="#8B1A1A" opacity="0.85" />
+    
+    <line x1="-35" y1="-20" x2="-35" y2="-5" stroke="#CC4444" stroke-width="1" opacity="0.5" />
+    <line x1="-13" y1="-20" x2="-13" y2="-5" stroke="#CC4444" stroke-width="1" opacity="0.5" />
+    <line x1="9" y1="-20" x2="9" y2="-5" stroke="#CC4444" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="-20" x2="30" y2="-5" stroke="#CC4444" stroke-width="1" opacity="0.5" />
+  </g>
+
+  
+  <text x="180" y="550" font-family="serif" font-size="72" fill="#8B1A1A" opacity="0.25" font-weight="bold">義</text>
+  <text x="180" y="630" font-family="serif" font-size="72" fill="#8B1A1A" opacity="0.25" font-weight="bold">和</text>
+  <text x="180" y="710" font-family="serif" font-size="72" fill="#8B1A1A" opacity="0.25" font-weight="bold">團</text>
+
+  
+  <text x="1340" y="450" font-family="serif" font-size="80" fill="#5a3a1a" opacity="0.18" font-weight="bold">義</text>
+  <text x="1340" y="545" font-family="serif" font-size="80" fill="#5a3a1a" opacity="0.18" font-weight="bold">和</text>
+  <text x="1340" y="640" font-family="serif" font-size="80" fill="#5a3a1a" opacity="0.18" font-weight="bold">團</text>
+
+  
+  <g transform="translate(1370, 820)">
+    
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#7a6040" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#7a6040" stroke-width="0.8" />
+    
+    <polygon points="0,-70 -8,-30 0,-40 8,-30" fill="#5a3a1a" />
+    <polygon points="0,70 -8,30 0,40 8,30" fill="#c8aa70" stroke="#7a6040" stroke-width="0.8" />
+    <polygon points="-70,0 -30,-8 -40,0 -30,8" fill="#c8aa70" stroke="#7a6040" stroke-width="0.8" />
+    <polygon points="70,0 30,-8 40,0 30,8" fill="#c8aa70" stroke="#7a6040" stroke-width="0.8" />
+    
+    <polygon points="0,-55 -5,-30 0,-35 5,-30" fill="#8a6a40" opacity="0.7" transform="rotate(45)" />
+    <polygon points="0,-55 -5,-30 0,-35 5,-30" fill="#8a6a40" opacity="0.7" transform="rotate(135)" />
+    <polygon points="0,-55 -5,-30 0,-35 5,-30" fill="#8a6a40" opacity="0.7" transform="rotate(225)" />
+    <polygon points="0,-55 -5,-30 0,-35 5,-30" fill="#8a6a40" opacity="0.7" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="8" fill="#5a3a1a" />
+    <circle cx="0" cy="0" r="4" fill="#c8aa70" />
+    
+    <text x="-6" y="-78" font-family="Georgia, serif" font-size="18" fill="#5a3a1a" font-weight="bold">N</text>
+  </g>
+
+  
+  <g opacity="0.5">
+    
+    <rect x="1160" y="450" width="60" height="10" rx="2" fill="#5a4a3a" />
+    <polygon points="1175,450 1195,420 1215,450" fill="#5a4a3a" />
+    <rect x="1185" y="425" width="3" height="25" fill="#5a4a3a" />
+    
+    <rect x="1200" y="500" width="55" height="9" rx="2" fill="#5a4a3a" />
+    <polygon points="1215,500 1232,475 1248,500" fill="#5a4a3a" />
+    <rect x="1228" y="478" width="3" height="22" fill="#5a4a3a" />
+  </g>
+
+  
+  <line x1="60" y1="400" x2="1476" y2="400" stroke="#7a6040" stroke-width="0.5" stroke-dasharray="8,6" opacity="0.3" />
+  <line x1="60" y1="600" x2="1476" y2="600" stroke="#7a6040" stroke-width="0.5" stroke-dasharray="8,6" opacity="0.3" />
+  <line x1="700" y1="60" x2="700" y2="964" stroke="#7a6040" stroke-width="0.5" stroke-dasharray="8,6" opacity="0.3" />
+  <line x1="950" y1="60" x2="950" y2="964" stroke="#7a6040" stroke-width="0.5" stroke-dasharray="8,6" opacity="0.3" />
+
+  
+  <rect x="60" y="720" width="620" height="224" rx="3" fill="#2a1a0a" opacity="0.88" />
+  <rect x="63" y="723" width="614" height="218" rx="2" fill="none" stroke="#c8aa70" stroke-width="1.5" />
+  <rect x="68" y="728" width="604" height="208" rx="1" fill="none" stroke="#c8aa70" stroke-width="0.5" opacity="0.5" />
+
+  
+  <text x="370" y="800" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#e8d090" font-weight="bold" text-anchor="middle" letter-spacing="2">THE BOXER</text>
+  <text x="370" y="866" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#e8d090" font-weight="bold" text-anchor="middle" letter-spacing="2">REBELLION</text>
+
+  
+  <text x="370" y="905" font-family="Georgia, serif" font-size="20" fill="#c8aa70" text-anchor="middle" letter-spacing="4">1899 – 1901</text>
+
+  
+  <line x1="110" y1="878" x2="630" y2="878" stroke="#c8aa70" stroke-width="1" opacity="0.5" />
+  <line x1="110" y1="882" x2="630" y2="882" stroke="#c8aa70" stroke-width="0.4" opacity="0.3" />
+
+  
+  <text x="370" y="930" font-family="Georgia, serif" font-size="16" fill="#8a7a5a" text-anchor="middle" letter-spacing="6" font-style="italic">HISTORY</text>
+
+  
+  <g transform="translate(1200, 720)" opacity="0.7">
+    <circle cx="0" cy="0" r="80" fill="#2a1a0a" opacity="0.85" />
+    <circle cx="0" cy="0" r="76" fill="none" stroke="#c8aa70" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="68" fill="none" stroke="#c8aa70" stroke-width="0.6" opacity="0.5" />
+    
+    <path d="M 0,-60 Q 30,-40 50,0 Q 30,40 0,60 Q -30,40 -50,0 Q -30,-40 0,-60 Z" fill="none" stroke="#c8aa70" stroke-width="1.5" />
+    <path d="M 0,-45 Q 22,-30 38,0 Q 22,30 0,45 Q -22,30 -38,0 Q -22,-30 0,-45 Z" fill="none" stroke="#c8aa70" stroke-width="1" opacity="0.6" />
+    
+    <circle cx="0" cy="-52" r="10" fill="#c8aa70" opacity="0.8" />
+    <circle cx="-5" cy="-56" r="3" fill="#2a1a0a" />
+    <circle cx="5" cy="-56" r="3" fill="#2a1a0a" />
+    
+    <ellipse cx="0" cy="-30" rx="8" ry="5" fill="none" stroke="#c8aa70" stroke-width="0.8" opacity="0.6" />
+    <ellipse cx="15" cy="-15" rx="8" ry="5" fill="none" stroke="#c8aa70" stroke-width="0.8" opacity="0.6" transform="rotate(60,15,-15)" />
+    <ellipse cx="15" cy="15" rx="8" ry="5" fill="none" stroke="#c8aa70" stroke-width="0.8" opacity="0.6" transform="rotate(120,15,15)" />
+    <ellipse cx="0" cy="30" rx="8" ry="5" fill="none" stroke="#c8aa70" stroke-width="0.8" opacity="0.6" />
+    <ellipse cx="-15" cy="15" rx="8" ry="5" fill="none" stroke="#c8aa70" stroke-width="0.8" opacity="0.6" transform="rotate(60,-15,15)" />
+    <ellipse cx="-15" cy="-15" rx="8" ry="5" fill="none" stroke="#c8aa70" stroke-width="0.8" opacity="0.6" transform="rotate(120,-15,-15)" />
+    <text x="0" y="8" font-family="serif" font-size="22" fill="#c8aa70" text-anchor="middle" opacity="0.9">龍</text>
+  </g>
+
+  
+  <g transform="translate(700, 800)" opacity="0.75">
+    <text x="0" y="-10" font-family="Georgia, serif" font-size="13" fill="#8a7a5a" letter-spacing="2">EIGHT-NATION ALLIANCE</text>
+    
+    <rect x="0" y="0" width="36" height="24" fill="#CC0000" />
+    <rect x="12" y="0" width="12" height="24" fill="#FFFFFF" />
+    <rect x="40" y="0" width="36" height="24" fill="#003087" />
+    <rect x="40" y="8" width="36" height="8" fill="#CC0000" />
+    <rect x="80" y="0" width="36" height="24" fill="#FFFFFF" />
+    <rect x="80" y="0" width="36" height="8" fill="#000080" />
+    <rect x="80" y="16" width="36" height="8" fill="#CC0000" />
+    <rect x="120" y="0" width="36" height="24" fill="#D4AF37" />
+    <rect x="160" y="0" width="36" height="24" fill="#CC0000" />
+    <line x1="178" y1="0" x2="178" y2="24" stroke="#FFFFFF" stroke-width="4" />
+    <line x1="160" y1="12" x2="196" y2="12" stroke="#FFFFFF" stroke-width="4" />
+    <rect x="200" y="0" width="36" height="24" fill="#FFFFFF" />
+    <rect x="200" y="0" width="12" height="24" fill="#003087" />
+    <rect x="224" y="0" width="12" height="24" fill="#CC0000" />
+    <rect x="240" y="0" width="36" height="24" fill="#FFFFFF" />
+    <line x1="258" y1="0" x2="258" y2="24" stroke="#CC0000" stroke-width="5" />
+    <rect x="280" y="0" width="36" height="24" fill="#CC0000" />
+    <rect x="285" y="4" width="26" height="16" rx="2" fill="#CC0000" />
+    <circle cx="298" cy="12" r="7" fill="#FFCC00" />
+  </g>
+
+  
+  <g transform="translate(700, 920)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#7a6040" stroke-width="2" />
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#7a6040" stroke-width="2" />
+    <line x1="100" y1="-3" x2="100" y2="3" stroke="#7a6040" stroke-width="1.5" />
+    <line x1="200" y1="-5" x2="200" y2="5" stroke="#7a6040" stroke-width="2" />
+    <rect x="0" y="-8" width="100" height="8" fill="#5a3a1a" opacity="0.6" />
+    <rect x="100" y="-8" width="100" height="8" fill="#c8aa70" opacity="0.6" />
+    <text x="0" y="18" font-family="Georgia, serif" font-size="12" fill="#5a3a1a" text-anchor="middle">0</text>
+    <text x="100" y="18" font-family="Georgia, serif" font-size="12" fill="#5a3a1a" text-anchor="middle">500 km</text>
+    <text x="200" y="18" font-family="Georgia, serif" font-size="12" fill="#5a3a1a" text-anchor="middle">1000 km</text>
+  </g>
+
+  
+  
+  <path d="M 60,60 L 130,60 L 130,65 L 65,65 L 65,130 L 60,130 Z" fill="#7a6040" />
+  
+  <path d="M 1476,60 L 1406,60 L 1406,65 L 1471,65 L 1471,130 L 1476,130 Z" fill="#7a6040" />
+  
+  <path d="M 60,964 L 130,964 L 130,959 L 65,959 L 65,894 L 60,894 Z" fill="#7a6040" />
+  
+  <path d="M 1476,964 L 1406,964 L 1406,959 L 1471,959 L 1471,894 L 1476,894 Z" fill="#7a6040" />
+
+  
+  <text x="68" y="405" font-family="Georgia, serif" font-size="11" fill="#7a6040" opacity="0.7">40°N</text>
+  <text x="68" y="605" font-family="Georgia, serif" font-size="11" fill="#7a6040" opacity="0.7">30°N</text>
+  <text x="704" y="80" font-family="Georgia, serif" font-size="11" fill="#7a6040" opacity="0.7">110°E</text>
+  <text x="954" y="80" font-family="Georgia, serif" font-size="11" fill="#7a6040" opacity="0.7">120°E</text>
+
+</svg>

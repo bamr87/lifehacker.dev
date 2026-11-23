@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Busan — South Korea's Major Port City and Second Metropolis</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8bafc4" />
+      <stop offset="100%" stop-color="#6a94ae" />
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b5c9a0" />
+      <stop offset="100%" stop-color="#9db88a" />
+    </linearGradient>
+    <linearGradient id="mtn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a7a6a" />
+      <stop offset="100%" stop-color="#6b5f50" />
+    </linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#c4b890" stroke-width="0.5" opacity="0.5" />
+    </pattern>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+      <feBlend in="SourceGraphic" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <linearGradient id="overlay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a0f00" stop-opacity="0.55" />
+      <stop offset="45%" stop-color="#1a0f00" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#1a0f00" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.4" />
+
+  
+  
+  <rect width="1536" height="1024" fill="url(#sea)" opacity="0.35" />
+
+  
+  <g stroke="#7a9fb5" stroke-width="0.8" opacity="0.4" fill="none">
+    <path d="M600,200 Q750,220 900,200 Q1050,180 1200,200" />
+    <path d="M620,240 Q770,260 920,240 Q1070,220 1220,240" />
+    <path d="M580,280 Q730,300 880,280 Q1030,260 1180,280" />
+    <path d="M640,320 Q790,340 940,320 Q1090,300 1240,320" />
+    <path d="M600,360 Q750,380 900,360 Q1050,340 1200,360" />
+    <path d="M560,400 Q710,420 860,400 Q1010,380 1160,400" />
+    <path d="M620,440 Q770,460 920,440 Q1070,420 1220,440" />
+    <path d="M580,480 Q730,500 880,480 Q1030,460 1180,480" />
+    <path d="M600,520 Q750,540 900,520 Q1050,500 1200,520" />
+    <path d="M640,560 Q790,580 940,560 Q1090,540 1240,560" />
+    <path d="M600,600 Q750,620 900,600 Q1050,580 1200,600" />
+    <path d="M560,640 Q710,660 860,640 Q1010,620 1160,640" />
+    <path d="M620,680 Q770,700 920,680 Q1070,660 1220,680" />
+    <path d="M580,720 Q730,740 880,720 Q1030,700 1180,720" />
+    <path d="M600,760 Q750,780 900,760 Q1050,740 1200,760" />
+    <path d="M620,800 Q770,820 920,800 Q1070,780 1220,800" />
+    <path d="M580,840 Q730,860 880,840 Q1030,820 1180,840" />
+  </g>
+
+  
+  
+  <path d="     M 820,80     L 850,90 L 880,85 L 910,95 L 940,88 L 960,100     L 970,130 L 980,160 L 975,190 L 985,220     L 1000,250 L 1010,280 L 1005,310     L 1015,340 L 1020,370 L 1015,400     L 1020,430 L 1025,460 L 1020,490     L 1010,520 L 1000,545 L 985,565     L 970,580 L 960,600 L 950,620     L 940,640 L 930,655 L 915,665     L 900,675 L 888,685 L 878,700     L 865,715 L 855,725 L 842,730     L 830,728 L 818,722 L 808,712     L 800,700 L 795,688 L 790,672     L 782,655 L 775,638 L 768,620     L 762,600 L 758,580 L 755,558     L 752,535 L 750,510 L 748,485     L 746,460 L 745,435 L 744,410     L 742,385 L 740,360 L 738,335     L 736,310 L 735,285 L 736,260     L 738,235 L 742,210 L 748,185     L 755,160 L 762,140 L 772,120     L 784,105 L 800,92 L 820,80   " fill="url(#land)" stroke="#8a9e78" stroke-width="1.5" />
+
+  
+  <path d="     M 820,80 L 800,92 L 784,105 L 772,120 L 762,140     L 755,160 L 748,185 L 742,210 L 738,235     L 736,260 L 735,285 L 736,310 L 738,335     L 740,360 L 742,385 L 744,410 L 745,435     L 780,420 L 800,400 L 820,390 L 840,380     L 860,360 L 870,340 L 865,310 L 860,280     L 855,250 L 850,220 L 848,190 L 845,160     L 840,130 L 835,105 L 828,90 L 820,80   " fill="#a8bc92" stroke="#8a9e78" stroke-width="1" opacity="0.8" />
+
+  
+  <line x1="742" y1="410" x2="870" y2="340" stroke="#8a7060" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.6" />
+
+  
+  <g fill="url(#mtn)" opacity="0.75">
+    
+    <polygon points="840,620 855,595 870,620" />
+    <polygon points="855,615 872,588 889,615" />
+    <polygon points="870,622 888,592 906,622" />
+    
+    <polygon points="800,580 815,555 830,580" />
+    <polygon points="815,575 832,548 849,575" />
+  </g>
+
+  
+  <path d="M 778,180 Q 772,220 768,260 Q 764,300 762,340 Q 760,380 758,420            Q 756,460 754,500 Q 752,530 748,560 Q 744,590 740,610            Q 736,625 732,638 Q 728,650 730,662 Q 732,675 742,682            Q 752,688 760,692" fill="none" stroke="#7a9fb5" stroke-width="3" opacity="0.7" />
+  
+  <text x="710" y="480" font-family="Georgia, serif" font-size="11" fill="#5a7a8a" opacity="0.8" transform="rotate(-5,710,480)">Nakdong</text>
+
+  
+  <text x="920" y="780" font-family="Georgia, serif" font-size="13" fill="#4a6a7a" opacity="0.7" font-style="italic" letter-spacing="2">KOREA STRAIT</text>
+
+  
+  <text x="1100" y="450" font-family="Georgia, serif" font-size="13" fill="#4a6a7a" opacity="0.7" font-style="italic" letter-spacing="1">SEA OF JAPAN</text>
+
+  
+  <text x="560" y="450" font-family="Georgia, serif" font-size="13" fill="#4a6a7a" opacity="0.7" font-style="italic" letter-spacing="1">YELLOW SEA</text>
+
+  
+  <ellipse cx="1080" cy="760" rx="18" ry="32" fill="#c8d4b0" stroke="#8a9e78" stroke-width="1" transform="rotate(-10,1080,760)" />
+  <text x="1102" y="762" font-family="Georgia, serif" font-size="10" fill="#5a5040" font-style="italic">Tsushima</text>
+
+  
+  <ellipse cx="810" cy="820" rx="30" ry="18" fill="#c8d4b0" stroke="#8a9e78" stroke-width="1" />
+  <text x="840" y="824" font-family="Georgia, serif" font-size="10" fill="#5a5040" font-style="italic">Jeju</text>
+
+  
+  <circle cx="870" cy="690" r="10" fill="#c0392b" stroke="#fff" stroke-width="2" opacity="0.9" />
+  <circle cx="870" cy="690" r="18" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.5" />
+  <circle cx="870" cy="690" r="26" fill="none" stroke="#c0392b" stroke-width="0.8" opacity="0.3" />
+  
+  <text x="895" y="686" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#3a1a00" letter-spacing="1">BUSAN</text>
+  <text x="895" y="700" font-family="Georgia, serif" font-size="10" fill="#5a4030" font-style="italic">부산</text>
+
+  
+  <circle cx="810" cy="380" r="5" fill="#7a5a40" stroke="#fff" stroke-width="1.2" opacity="0.8" />
+  <text x="820" y="377" font-family="Georgia, serif" font-size="11" fill="#3a2a10" opacity="0.8">Seoul</text>
+
+  
+  
+  <g transform="translate(960, 710)" opacity="0.85">
+    
+    <path d="M-45,8 L45,8 L50,18 L-50,18 Z" fill="#4a3a2a" stroke="#2a1a10" stroke-width="0.8" />
+    
+    <rect x="-35" y="-2" width="16" height="10" fill="#c0392b" rx="1" />
+    <rect x="-17" y="-2" width="16" height="10" fill="#2980b9" rx="1" />
+    <rect x="1" y="-2" width="16" height="10" fill="#f39c12" rx="1" />
+    <rect x="19" y="-2" width="16" height="10" fill="#27ae60" rx="1" />
+    
+    <rect x="25" y="-12" width="15" height="12" fill="#8a7a60" rx="1" />
+    
+    <rect x="30" y="-20" width="6" height="10" fill="#5a4a30" rx="1" />
+  </g>
+
+  
+  <g transform="translate(1020, 750) scale(0.7)" opacity="0.6">
+    <path d="M-45,8 L45,8 L50,18 L-50,18 Z" fill="#4a3a2a" stroke="#2a1a10" stroke-width="1" />
+    <rect x="-30" y="-2" width="14" height="10" fill="#2980b9" rx="1" />
+    <rect x="-14" y="-2" width="14" height="10" fill="#c0392b" rx="1" />
+    <rect x="2" y="-2" width="14" height="10" fill="#8a9e78" rx="1" />
+    <rect x="20" y="-14" width="14" height="14" fill="#7a6a50" rx="1" />
+  </g>
+
+  
+  <g transform="translate(870, 650)" opacity="0.7" fill="#4a3a2a">
+    
+    <rect x="-2" y="-50" width="4" height="55" fill="#5a4a30" />
+    
+    <rect x="-2" y="-50" width="40" height="3" fill="#5a4a30" />
+    
+    <line x1="30" y1="-47" x2="30" y2="-20" stroke="#5a4a30" stroke-width="1.5" />
+    
+    <rect x="22" y="-20" width="16" height="10" fill="#c0392b" rx="1" />
+  </g>
+
+  
+  <g transform="translate(1350, 200)">
+    
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#8a7060" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="42" fill="#e8dfc8" stroke="#8a7060" stroke-width="1" opacity="0.8" />
+    
+    
+    <polygon points="0,-42 -7,-25 7,-25" fill="#8a5040" />
+    
+    <polygon points="0,42 -7,25 7,25" fill="#8a7060" />
+    
+    <polygon points="42,0 25,-7 25,7" fill="#8a7060" />
+    
+    <polygon points="-42,0 -25,-7 -25,7" fill="#8a7060" />
+    
+    <polygon points="0,-42 -5,-28 5,-28" fill="#8a7060" transform="rotate(45)" />
+    <polygon points="0,-42 -5,-28 5,-28" fill="#8a7060" transform="rotate(90)" />
+    <polygon points="0,-42 -5,-28 5,-28" fill="#8a7060" transform="rotate(135)" />
+    <polygon points="0,-42 -5,-28 5,-28" fill="#8a7060" transform="rotate(225)" />
+    
+    <circle cx="0" cy="0" r="5" fill="#c0392b" stroke="#8a5040" stroke-width="1" />
+    
+    <text x="0" y="-48" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#5a3020" text-anchor="middle">N</text>
+    <text x="0" y="60" font-family="Georgia, serif" font-size="11" fill="#5a4030" text-anchor="middle">S</text>
+    <text x="57" y="4" font-family="Georgia, serif" font-size="11" fill="#5a4030" text-anchor="middle">E</text>
+    <text x="-57" y="4" font-family="Georgia, serif" font-size="11" fill="#5a4030" text-anchor="middle">W</text>
+  </g>
+
+  
+  <g stroke="#9a8a6a" stroke-width="0.5" opacity="0.25" stroke-dasharray="4,6">
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="300" y1="0" x2="300" y2="1024" />
+    <line x1="600" y1="0" x2="600" y2="1024" />
+    <line x1="900" y1="0" x2="900" y2="1024" />
+    <line x1="1200" y1="0" x2="1200" y2="1024" />
+  </g>
+
+  
+  <text x="1200" y="18" font-family="Georgia, serif" font-size="10" fill="#8a7060" opacity="0.6" text-anchor="middle">129°E</text>
+  <text x="1536" y="640" font-family="Georgia, serif" font-size="10" fill="#8a7060" opacity="0.6" text-anchor="end">35°N</text>
+
+  
+  <rect x="0" y="0" width="580" height="1024" fill="url(#overlay)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7060" stroke-width="2" opacity="0.5" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7060" stroke-width="0.8" opacity="0.3" />
+
+  
+  <g stroke="#8a7060" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M18,18 L58,18 M18,18 L18,58" />
+    <path d="M1518,18 L1478,18 M1518,18 L1518,58" />
+    <path d="M18,1006 L58,1006 M18,1006 L18,966" />
+    <path d="M1518,1006 L1478,1006 M1518,1006 L1518,966" />
+  </g>
+
+  
+  <text x="68" y="240" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#f5efe0" letter-spacing="3" opacity="0.95">BUSAN</text>
+  <text x="68" y="310" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#f5efe0" letter-spacing="1" opacity="0.98" dominant-baseline="auto">South Korea's</text>
+  <text x="68" y="375" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#f5efe0" letter-spacing="1" opacity="0.98">Major Port City</text>
+  <text x="68" y="435" font-family="Georgia, serif" font-size="38" fill="#e8d8b8" letter-spacing="1" opacity="0.9">&amp; Second Metropolis</text>
+
+  
+  <line x1="68" y1="465" x2="480" y2="465" stroke="#c0392b" stroke-width="2.5" opacity="0.8" />
+
+  
+  <text x="68" y="500" font-family="Georgia, serif" font-size="17" fill="#d4c4a0" letter-spacing="2" opacity="0.85">부산 · 35°N 129°E · KOREA STRAIT</text>
+
+  
+  <text x="68" y="580" font-family="Georgia, serif" font-size="14" fill="#c8b888" opacity="0.8">Population: 3,367,753  ·  Area: 770 km²</text>
+  <text x="68" y="606" font-family="Georgia, serif" font-size="14" fill="#c8b888" opacity="0.8">Nation's Primary Maritime Port</text>
+  <text x="68" y="632" font-family="Georgia, serif" font-size="14" fill="#c8b888" opacity="0.8">Nakdong River · Korea Strait</text>
+
+  
+  <g transform="translate(68, 710)" opacity="0.5" fill="#c8b888">
+    <path d="M0,10 L80,10 L88,22 L-8,22 Z" />
+    <rect x="8" y="0" width="12" height="10" rx="1" />
+    <rect x="22" y="2" width="10" height="8" rx="1" />
+    <rect x="34" y="2" width="10" height="8" rx="1" />
+    <rect x="50" y="-5" width="12" height="15" rx="1" />
+    <line x1="56" y1="-15" x2="56" y2="-5" stroke="#c8b888" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(68, 800)" opacity="0.45" stroke="#c8b888" fill="none" stroke-width="2">
+    <circle cx="20" cy="12" r="8" />
+    <line x1="20" y1="4" x2="20" y2="45" />
+    <line x1="8" y1="8" x2="32" y2="8" />
+    <path d="M8,45 Q14,38 20,45 Q26,38 32,45" />
+  </g>
+
+  
+  <text x="1536" y="1000" font-family="Georgia, serif" font-size="11" fill="#8a7060" opacity="0.6" text-anchor="end" font-style="italic">Atlas Plate — Korean Peninsula, Southeast Coast</text>
+
+</svg>

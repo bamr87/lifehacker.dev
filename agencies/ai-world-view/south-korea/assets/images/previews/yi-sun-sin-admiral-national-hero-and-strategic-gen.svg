@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Yi Sun-sin — Admiral, National Hero, and Strategic Genius</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8b89a" />
+      <stop offset="100%" stop-color="#a8956e" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7a9eab" />
+      <stop offset="100%" stop-color="#5c7f8e" />
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c4b48a" />
+      <stop offset="100%" stop-color="#a89060" />
+    </linearGradient>
+    <linearGradient id="shipgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a3520" />
+      <stop offset="100%" stop-color="#2e2010" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g stroke="#8a7550" stroke-width="0.5" opacity="0.4">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <ellipse cx="820" cy="560" rx="580" ry="420" fill="url(#sea)" opacity="0.85" />
+
+  
+  <path d="M 520,100 L 560,120 L 590,160 L 600,220 L 610,280 L 620,340 L 615,400 L 600,460 L 580,520 L 555,570 L 530,610 L 510,650 L 490,680 L 480,720 L 500,740 L 520,730 L 540,710 L 560,690 L 575,660 L 590,630 L 600,600 L 610,570 L 625,540 L 630,510 L 625,480 L 620,450 L 630,420 L 640,390 L 650,350 L 645,300 L 640,250 L 650,200 L 660,160 L 650,120 L 620,100 Z" fill="url(#land)" stroke="#7a6040" stroke-width="2" />
+  
+  <path d="M 490,680 L 510,650 L 530,610 L 555,570 L 580,520 L 600,460 L 615,400 L 610,460 L 600,510 L 580,560 L 555,600 L 530,640 L 510,670 L 495,700 Z" fill="#b8a070" stroke="#7a6040" stroke-width="1.5" />
+
+  
+  <path d="M 1000,200 L 1040,180 L 1080,190 L 1110,220 L 1120,260 L 1100,300 L 1060,320 L 1020,310 L 990,280 L 985,240 Z" fill="url(#land)" stroke="#7a6040" stroke-width="2" opacity="0.9" />
+  <path d="M 980,370 L 1020,350 L 1060,360 L 1090,390 L 1100,430 L 1080,470 L 1040,490 L 1000,480 L 970,450 L 960,410 Z" fill="url(#land)" stroke="#7a6040" stroke-width="2" opacity="0.9" />
+  <path d="M 950,520 L 990,510 L 1030,520 L 1060,550 L 1070,590 L 1050,630 L 1010,650 L 970,640 L 940,610 L 930,570 Z" fill="url(#land)" stroke="#7a6040" stroke-width="2" opacity="0.9" />
+
+  
+  <path d="M 0,80 L 80,100 L 150,140 L 200,200 L 220,270 L 210,340 L 200,420 L 210,500 L 200,580 L 180,650 L 160,720 L 140,800 L 120,880 L 100,960 L 0,1024 Z" fill="url(#land)" stroke="#7a6040" stroke-width="2" opacity="0.7" />
+
+  
+  <g stroke="#6a8e9e" stroke-width="1.2" fill="none" opacity="0.5">
+    <path d="M 650,480 Q 680,470 710,480 Q 740,490 770,480" />
+    <path d="M 660,510 Q 690,500 720,510 Q 750,520 780,510" />
+    <path d="M 700,540 Q 730,530 760,540 Q 790,550 820,540" />
+    <path d="M 720,570 Q 750,560 780,570 Q 810,580 840,570" />
+    <path d="M 750,600 Q 780,590 810,600 Q 840,610 870,600" />
+    <path d="M 780,630 Q 810,620 840,630 Q 870,640 900,630" />
+    <path d="M 810,480 Q 840,470 870,480 Q 900,490 930,480" />
+    <path d="M 840,510 Q 870,500 900,510 Q 930,520 960,510" />
+    <path d="M 670,440 Q 700,430 730,440 Q 760,450 790,440" />
+    <path d="M 750,420 Q 780,410 810,420 Q 840,430 870,420" />
+  </g>
+
+  
+  <g transform="translate(730, 580)">
+    
+    <path d="M -120,40 Q -130,70 -100,90 L 100,90 Q 130,70 120,40 Z" fill="#3a2510" stroke="#1a1005" stroke-width="2" />
+    
+    <path d="M -110,10 L -120,40 L 120,40 L 110,10 Z" fill="#4a3520" stroke="#2a1505" stroke-width="1.5" />
+    
+    <path d="M -100,10 Q -110,-30 -80,-50 L 80,-50 Q 110,-30 100,10 Z" fill="#5a4030" stroke="#2a1505" stroke-width="2" />
+    
+    <line x1="-80" y1="-50" x2="-80" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="-40" y1="-50" x2="-40" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="0" y1="-50" x2="0" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="40" y1="-50" x2="40" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="80" y1="-50" x2="80" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="-95" y1="-20" x2="95" y2="-20" stroke="#3a2510" stroke-width="1" />
+    
+    <path d="M -110,10 L -130,-5 Q -145,-20 -135,-35 Q -125,-50 -110,-50 L -80,-50 L -80,10 Z" fill="#6a2010" stroke="#2a1005" stroke-width="2" />
+    
+    <path d="M -145,-20 L -160,-22 L -158,-18 L -143,-16 Z" fill="#2a1005" />
+    
+    <circle cx="-120" cy="-30" r="5" fill="#c08020" />
+    <circle cx="-120" cy="-30" r="2" fill="#000" />
+    
+    <rect x="-100" y="15" width="14" height="7" rx="2" fill="#2a1505" />
+    <rect x="-60" y="15" width="14" height="7" rx="2" fill="#2a1505" />
+    <rect x="-20" y="15" width="14" height="7" rx="2" fill="#2a1505" />
+    <rect x="20" y="15" width="14" height="7" rx="2" fill="#2a1505" />
+    <rect x="60" y="15" width="14" height="7" rx="2" fill="#2a1505" />
+    
+    <line x1="-80" y1="50" x2="-110" y2="85" stroke="#5a4020" stroke-width="3" />
+    <line x1="-40" y1="55" x2="-60" y2="88" stroke="#5a4020" stroke-width="3" />
+    <line x1="0" y1="58" x2="-5" y2="90" stroke="#5a4020" stroke-width="3" />
+    <line x1="40" y1="55" x2="55" y2="88" stroke="#5a4020" stroke-width="3" />
+    <line x1="80" y1="50" x2="100" y2="85" stroke="#5a4020" stroke-width="3" />
+    
+    <line x1="80" y1="-50" x2="80" y2="-110" stroke="#5a4020" stroke-width="3" />
+    <path d="M 80,-110 L 120,-95 L 80,-80 Z" fill="#8b2020" />
+    
+    <text x="90" y="-95" font-size="16" fill="#f0d080" font-family="serif" font-weight="bold">元</text>
+  </g>
+
+  
+  <g transform="translate(900, 480) scale(0.55)">
+    <path d="M -120,40 Q -130,70 -100,90 L 100,90 Q 130,70 120,40 Z" fill="#3a2510" stroke="#1a1005" stroke-width="2" />
+    <path d="M -110,10 L -120,40 L 120,40 L 110,10 Z" fill="#4a3520" stroke="#2a1505" stroke-width="1.5" />
+    <path d="M -100,10 Q -110,-30 -80,-50 L 80,-50 Q 110,-30 100,10 Z" fill="#5a4030" stroke="#2a1505" stroke-width="2" />
+    <line x1="-80" y1="-50" x2="-80" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="-40" y1="-50" x2="-40" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="0" y1="-50" x2="0" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="40" y1="-50" x2="40" y2="10" stroke="#3a2510" stroke-width="1" />
+    <line x1="80" y1="-50" x2="80" y2="10" stroke="#3a2510" stroke-width="1" />
+    <path d="M -110,10 L -130,-5 Q -145,-20 -135,-35 Q -125,-50 -110,-50 L -80,-50 L -80,10 Z" fill="#6a2010" stroke="#2a1005" stroke-width="2" />
+  </g>
+
+  
+  <g transform="translate(1380, 200)">
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#7a6040" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#7a6040" stroke-width="1" />
+    <circle cx="0" cy="0" r="8" fill="#7a6040" />
+    
+    <polygon points="0,-80 -12,-30 0,-45 12,-30" fill="#6a2010" />
+    <polygon points="0,80 -12,30 0,45 12,30" fill="#5a4020" />
+    <polygon points="-80,0 -30,-12 -45,0 -30,12" fill="#5a4020" />
+    <polygon points="80,0 30,-12 45,0 30,12" fill="#5a4020" />
+    
+    <polygon points="0,-80 12,-30 55,-55" fill="#8a7050" opacity="0.7" />
+    <polygon points="80,0 30,-12 55,-55" fill="#8a7050" opacity="0.5" />
+    <polygon points="80,0 30,12 55,55" fill="#8a7050" opacity="0.5" />
+    <polygon points="0,80 12,30 55,55" fill="#8a7050" opacity="0.7" />
+    <polygon points="0,80 -12,30 -55,55" fill="#8a7050" opacity="0.5" />
+    <polygon points="-80,0 -30,12 -55,55" fill="#8a7050" opacity="0.5" />
+    <polygon points="-80,0 -30,-12 -55,-55" fill="#8a7050" opacity="0.5" />
+    <polygon points="0,-80 -12,-30 -55,-55" fill="#8a7050" opacity="0.7" />
+    
+    <text x="-8" y="-88" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#4a2010">N</text>
+    <text x="-6" y="108" font-family="Georgia, serif" font-size="16" fill="#4a3020">S</text>
+    <text x="88" y="5" font-family="Georgia, serif" font-size="16" fill="#4a3020">E</text>
+    <text x="-106" y="5" font-family="Georgia, serif" font-size="16" fill="#4a3020">W</text>
+  </g>
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#7a6040" stroke-width="3" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#7a6040" stroke-width="1" />
+
+  
+  <g stroke="#8b2020" stroke-width="2.5" fill="none" opacity="0.7" stroke-dasharray="8,4">
+    <path d="M 1000,430 Q 880,470 780,510" />
+    <path d="M 980,370 Q 860,380 750,380 Q 650,380 580,350" />
+  </g>
+  
+  <polygon points="780,510 800,495 795,518" fill="#8b2020" opacity="0.7" />
+  <polygon points="580,350 600,340 598,362" fill="#8b2020" opacity="0.7" />
+
+  
+  <rect x="60" y="680" width="600" height="300" rx="4" fill="#2a1a08" opacity="0.75" />
+
+  
+  <text x="360" y="748" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="bold" fill="#f0e0b0" text-anchor="middle" letter-spacing="1">Yi Sun-sin</text>
+  <line x1="100" y1="762" x2="620" y2="762" stroke="#c8a040" stroke-width="1.5" />
+  <text x="360" y="800" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#e0c890" text-anchor="middle" letter-spacing="2">Admiral · National Hero</text>
+  <text x="360" y="838" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#e0c890" text-anchor="middle" letter-spacing="2">Strategic Genius</text>
+  <text x="360" y="878" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#b8a070" text-anchor="middle" font-style="italic">1545 – 1598  ·  Imjin War  ·  Korea</text>
+  <line x1="100" y1="896" x2="620" y2="896" stroke="#c8a040" stroke-width="1" />
+  <text x="360" y="924" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#a08860" text-anchor="middle" font-style="italic">Undefeated Commander of the Joseon Navy</text>
+  <text x="360" y="948" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#907850" text-anchor="middle">Inventor of the Turtle Ship · Geobukseon</text>
+
+  
+  <text x="570" y="290" font-family="Georgia, serif" font-size="14" fill="#4a3020" font-style="italic" opacity="0.9">Joseon Korea</text>
+  <text x="540" y="580" font-family="Georgia, serif" font-size="12" fill="#4a3020" font-style="italic" opacity="0.8">Jeolla</text>
+  <text x="1000" y="320" font-family="Georgia, serif" font-size="14" fill="#4a3020" font-style="italic" opacity="0.9">Japan</text>
+  <text x="80" y="400" font-family="Georgia, serif" font-size="13" fill="#4a3020" font-style="italic" opacity="0.7">Ming China</text>
+  <text x="720" y="420" font-family="Georgia, serif" font-size="13" fill="#3a5560" font-style="italic" opacity="0.8">Korea Strait</text>
+
+  
+  <circle cx="545" cy="640" r="8" fill="none" stroke="#8b2020" stroke-width="2" />
+  <circle cx="545" cy="640" r="3" fill="#8b2020" />
+  <text x="558" y="638" font-family="Georgia, serif" font-size="11" fill="#6a2010">Myeongnyang</text>
+
+  
+  <circle cx="640" cy="590" r="8" fill="none" stroke="#8b2020" stroke-width="2" />
+  <circle cx="640" cy="590" r="3" fill="#8b2020" />
+  <text x="653" y="588" font-family="Georgia, serif" font-size="11" fill="#6a2010">Hansan-do</text>
+
+  
+  <path d="M 20,20 L 60,20 L 60,60 L 20,60 Z" fill="none" stroke="#7a6040" stroke-width="3" />
+  <path d="M 1516,20 L 1476,20 L 1476,60 L 1516,60 Z" fill="none" stroke="#7a6040" stroke-width="3" />
+  <path d="M 20,1004 L 60,1004 L 60,964 L 20,964 Z" fill="none" stroke="#7a6040" stroke-width="3" />
+  <path d="M 1516,1004 L 1476,1004 L 1476,964 L 1516,964 Z" fill="none" stroke="#7a6040" stroke-width="3" />
+
+  
+  <g transform="translate(1100, 900)">
+    <rect x="0" y="0" width="80" height="8" fill="#4a3020" />
+    <rect x="80" y="0" width="80" height="8" fill="#c8b890" />
+    <rect x="160" y="0" width="80" height="8" fill="#4a3020" />
+    <line x1="0" y1="-4" x2="0" y2="14" stroke="#4a3020" stroke-width="1.5" />
+    <line x1="240" y1="-4" x2="240" y2="14" stroke="#4a3020" stroke-width="1.5" />
+    <text x="0" y="28" font-family="Georgia, serif" font-size="11" fill="#4a3020">0</text>
+    <text x="100" y="28" font-family="Georgia, serif" font-size="11" fill="#4a3020">500 km</text>
+    <text x="200" y="28" font-family="Georgia, serif" font-size="11" fill="#4a3020">1000</text>
+  </g>
+
+  
+  <rect width="1536" height="1024" fill="#c8a060" opacity="0.05" />
+</svg>

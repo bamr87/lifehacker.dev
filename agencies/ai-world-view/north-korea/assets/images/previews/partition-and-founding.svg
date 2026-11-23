@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Partition and Founding (1945–1948) – Division at the 38th Parallel and the Establishment of the DPRK</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </radialGradient>
+    <radialGradient id="sea" cx="60%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#8aacb8" />
+      <stop offset="100%" stop-color="#5e8a9a" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#b8a070" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <linearGradient id="titleBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a1f0e" stop-opacity="0.85" />
+      <stop offset="80%" stop-color="#2a1f0e" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#2a1f0e" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  <!-- Sea of Japan / Yellow Sea -->
+  <ellipse cx="1360" cy="480" rx="360" ry="520" fill="url(#sea)" opacity="0.75" />
+  <ellipse cx="760" cy="960" rx="420" ry="180" fill="url(#sea)" opacity="0.6" />
+  <text x="1400" y="300" font-family="Georgia, serif" font-size="20" fill="#3a5a6a" opacity="0.65" text-anchor="middle" letter-spacing="3" font-style="italic">EAST SEA</text>
+
+  <!-- Korean peninsula -->
+  <path d="M 820 60 L 900 90 L 950 150 L 960 230 L 1000 300 L 1010 380 L 1050 450 L 1030 520 L 1050 590 L 1020 660 L 1000 720 L 960 780 L 920 840 L 880 900 L 840 940 L 800 910 L 790 850 L 770 790 L 760 720 L 740 650 L 720 580 L 700 510 L 690 440 L 680 370 L 690 300 L 700 230 L 720 160 L 760 100 Z" fill="#c4b48a" stroke="#8a6a30" stroke-width="2" />
+
+  <!-- Soviet zone shading (north) -->
+  <path d="M 820 60 L 900 90 L 950 150 L 960 230 L 1000 300 L 1010 380 L 1030 420 L 690 420 L 680 370 L 690 300 L 700 230 L 720 160 L 760 100 Z" fill="#8a3a2a" opacity="0.16" />
+  <text x="830" y="250" font-family="Georgia, serif" font-size="20" fill="#7a3020" text-anchor="middle" letter-spacing="2" font-style="italic" opacity="0.85">SOVIET ZONE</text>
+  <text x="830" y="300" font-family="Georgia, serif" font-size="14" fill="#7a3020" text-anchor="middle" letter-spacing="1" opacity="0.7">→ DPRK · Sept 9, 1948</text>
+
+  <!-- US zone shading (south) -->
+  <path d="M 1030 420 L 1050 450 L 1030 520 L 1050 590 L 1020 660 L 1000 720 L 960 780 L 920 840 L 880 900 L 840 940 L 800 910 L 790 850 L 770 790 L 760 720 L 740 650 L 720 580 L 700 510 L 690 440 L 690 420 Z" fill="#3a4a8a" opacity="0.14" />
+  <text x="880" y="680" font-family="Georgia, serif" font-size="18" fill="#3a4a7a" text-anchor="middle" letter-spacing="2" font-style="italic" opacity="0.8">U.S. ZONE</text>
+  <text x="880" y="720" font-family="Georgia, serif" font-size="14" fill="#3a4a7a" text-anchor="middle" letter-spacing="1" opacity="0.7">→ ROK · Aug 15, 1948</text>
+
+  <!-- 38th parallel -->
+  <line x1="620" y1="420" x2="1120" y2="420" stroke="#8a2a1a" stroke-width="4" stroke-dasharray="14,8" opacity="0.85" />
+  <text x="600" y="426" font-family="Georgia, serif" font-size="17" fill="#8a2a1a" text-anchor="end" font-weight="bold" letter-spacing="1">38°N</text>
+
+  <!-- Pyongyang marker -->
+  <circle cx="800" cy="300" r="14" fill="#8a2a1a" stroke="#f0e0c0" stroke-width="3" />
+  <circle cx="800" cy="300" r="5" fill="#f0e0c0" />
+  <text x="770" y="292" font-family="Georgia, serif" font-size="15" fill="#2a1208" font-weight="bold" text-anchor="end">Pyongyang ★</text>
+
+  <!-- Seoul marker -->
+  <circle cx="820" cy="470" r="9" fill="#3a4a8a" stroke="#f0e0c0" stroke-width="2" />
+  <circle cx="820" cy="470" r="3" fill="#f0e0c0" />
+  <text x="838" y="475" font-family="Georgia, serif" font-size="13" fill="#2a1208">Seoul</text>
+
+  <!-- Compass rose -->
+  <g transform="translate(1390, 830)">
+    <circle cx="0" cy="0" r="55" fill="#d8c898" stroke="#8a6a30" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#8a6a30" stroke-width="1" />
+    <polygon points="0,-50 -7,-28 7,-28" fill="#2a1208" />
+    <polygon points="0,50 -7,28 7,28" fill="#8a6a30" opacity="0.5" />
+    <polygon points="-50,0 -28,-7 -28,7" fill="#8a6a30" opacity="0.5" />
+    <polygon points="50,0 28,-7 28,7" fill="#8a6a30" opacity="0.5" />
+    <text x="0" y="-54" font-family="Georgia, serif" font-size="16" fill="#2a1208" text-anchor="middle" font-weight="bold">N</text>
+    <circle cx="0" cy="0" r="5" fill="#8a6a30" />
+  </g>
+
+  <!-- Title panel -->
+  <rect x="0" y="0" width="500" height="1024" fill="url(#titleBg)" />
+  <line x1="40" y1="40" x2="460" y2="40" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="44" x2="460" y2="44" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="984" x2="460" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="980" x2="460" y2="980" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="40" x2="40" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="44" y1="40" x2="44" y2="984" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+
+  <text x="250" y="110" font-family="Georgia, serif" font-size="14" fill="#c8a84a" text-anchor="middle" letter-spacing="5" opacity="0.9">DPRK · HISTORY</text>
+  <line x1="70" y1="130" x2="430" y2="130" stroke="#c8a84a" stroke-width="1" opacity="0.5" />
+
+  <text x="250" y="250" font-family="Georgia, serif" font-size="60" fill="#f5e8c8" text-anchor="middle" font-weight="bold" letter-spacing="2">PARTITION</text>
+  <text x="250" y="330" font-family="Georgia, serif" font-size="46" fill="#f5e8c8" text-anchor="middle" letter-spacing="2">&amp; FOUNDING</text>
+  <text x="250" y="390" font-family="Georgia, serif" font-size="22" fill="#c8a84a" text-anchor="middle" letter-spacing="4" font-style="italic">1945 – 1948</text>
+  <line x1="100" y1="420" x2="400" y2="420" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <text x="250" y="480" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Division at the 38th parallel</text>
+  <text x="250" y="510" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Soviet occupation &amp; the DPRK</text>
+  <line x1="100" y1="535" x2="400" y2="535" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <!-- Star motif -->
+  <g transform="translate(250, 650)" fill="#c8a84a" opacity="0.8">
+    <polygon points="0,-56 16,-17 58,-17 24,9 37,50 0,25 -37,50 -24,9 -58,-17 -16,-17" />
+  </g>
+
+  <text x="250" y="770" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">LIBERATION · AUG 15, 1945</text>
+  <text x="250" y="795" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">DPRK PROCLAIMED · SEP 9, 1948</text>
+  <line x1="100" y1="820" x2="400" y2="820" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <text x="250" y="860" font-family="Georgia, serif" font-size="14" fill="#9a8050" text-anchor="middle" font-style="italic">Kim Il-sung · Terenti Shtykov</text>
+  <text x="250" y="950" font-family="Georgia, serif" font-size="13" fill="#c8a84a" text-anchor="middle" letter-spacing="4" opacity="0.6">ATLAS PLATE · KOREA</text>
+
+  <rect x="8" y="8" width="1520" height="1008" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.5" />
+  <rect x="14" y="14" width="1508" height="996" fill="none" stroke="#c8a84a" stroke-width="1" opacity="0.3" />
+  <rect width="1536" height="1024" fill="#c8a050" opacity="0.04" />
+</svg>

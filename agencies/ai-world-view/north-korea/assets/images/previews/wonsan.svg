@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Wonsan – Principal East-Coast Port of the DPRK, Kangwon Province</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </radialGradient>
+    <radialGradient id="sea" cx="60%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#8aacb8" />
+      <stop offset="100%" stop-color="#5e8a9a" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#b8a070" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <linearGradient id="titleBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a1f0e" stop-opacity="0.85" />
+      <stop offset="80%" stop-color="#2a1f0e" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#2a1f0e" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  <!-- East Sea -->
+  <ellipse cx="1240" cy="500" rx="520" ry="440" fill="url(#sea)" opacity="0.85" />
+  <ellipse cx="1440" cy="320" rx="240" ry="200" fill="#7aa0ae" opacity="0.6" />
+  <text x="1320" y="360" font-family="Georgia, serif" font-size="22" fill="#3a5a6a" opacity="0.7" text-anchor="middle" letter-spacing="3" font-style="italic">EAST SEA</text>
+  <text x="1320" y="388" font-family="Georgia, serif" font-size="16" fill="#3a5a6a" opacity="0.5" text-anchor="middle" letter-spacing="2" font-style="italic">(SEA OF JAPAN)</text>
+
+  <!-- Coastline / landmass -->
+  <path d="M 560 40 L 640 70 L 720 60 L 800 90 L 850 140 L 860 210 L 830 270 L 860 330 L 900 390 L 880 450 L 900 500 L 880 560 L 900 620 L 870 680 L 840 730 L 810 780 L 780 830 L 760 880 L 740 930 L 700 970 L 660 960 L 650 920 L 640 870 L 620 820 L 600 770 L 580 720 L 560 660 L 545 600 L 530 540 L 515 480 L 500 420 L 490 360 L 480 300 L 470 240 L 460 180 L 480 120 L 520 70 Z" fill="#c4b48a" stroke="#8a6a30" stroke-width="2" />
+
+  <!-- Yonghung Bay inlet -->
+  <path d="M 880 450 Q 940 470 990 500 Q 940 540 880 560 Q 900 500 880 450 Z" fill="url(#sea)" opacity="0.8" />
+  <text x="1000" y="540" font-family="Georgia, serif" font-size="16" fill="#3a5a6a" opacity="0.7" font-style="italic" letter-spacing="1">Yonghung Bay</text>
+
+  <!-- DMZ line to the south -->
+  <path d="M 560 830 Q 660 815 760 830 Q 810 838 850 825" stroke="#8a3a2a" stroke-width="3" stroke-dasharray="8,5" fill="none" opacity="0.7" />
+  <text x="700" y="815" font-family="Georgia, serif" font-size="14" fill="#8a3a2a" text-anchor="middle" opacity="0.8" letter-spacing="1">DMZ</text>
+
+  <!-- Taebaek mountains south -->
+  <g fill="#9a7a4a" opacity="0.7">
+    <polygon points="640,700 660,660 680,700" />
+    <polygon points="670,710 695,665 720,710" />
+    <polygon points="700,700 725,658 750,700" />
+    <polygon points="620,715 640,678 660,715" />
+  </g>
+  <text x="700" y="650" font-family="Georgia, serif" font-size="13" fill="#5a4020" text-anchor="middle" font-style="italic" letter-spacing="1">Mt. Kumgang</text>
+
+  <!-- Wonsan marker -->
+  <circle cx="870" cy="500" r="18" fill="#8a2a1a" stroke="#f0e0c0" stroke-width="3" />
+  <circle cx="870" cy="500" r="8" fill="#f0e0c0" />
+  <text x="898" y="488" font-family="Georgia, serif" font-size="20" fill="#2a1208" font-weight="bold" letter-spacing="1">원산</text>
+  <text x="898" y="510" font-family="Georgia, serif" font-size="17" fill="#2a1208" font-weight="bold" letter-spacing="0.5">WONSAN</text>
+
+  <!-- Kalma Peninsula marker -->
+  <circle cx="915" cy="545" r="10" fill="#4a6a3a" stroke="#f0e0c0" stroke-width="2" />
+  <circle cx="915" cy="545" r="4" fill="#f0e0c0" />
+  <text x="930" y="550" font-family="Georgia, serif" font-size="13" fill="#2a1208" letter-spacing="0.5">Kalma (Airport / Resort)</text>
+
+  <!-- Hamhung to the north -->
+  <circle cx="820" cy="300" r="10" fill="#4a3a8a" stroke="#f0e0c0" stroke-width="2" />
+  <circle cx="820" cy="300" r="4" fill="#f0e0c0" />
+  <text x="836" y="305" font-family="Georgia, serif" font-size="13" fill="#2a1208">Hamhung</text>
+
+  <!-- Pyongyang to the west -->
+  <circle cx="560" cy="500" r="12" fill="#4a3a8a" stroke="#f0e0c0" stroke-width="2" />
+  <circle cx="560" cy="500" r="5" fill="#f0e0c0" />
+  <text x="470" y="505" font-family="Georgia, serif" font-size="13" fill="#2a1208">Pyongyang ★</text>
+
+  <!-- Pyongwon rail line -->
+  <path d="M 575 500 Q 700 495 855 500" stroke="#5a3a1a" stroke-width="2" stroke-dasharray="6,4" fill="none" opacity="0.6" />
+  <text x="700" y="480" font-family="Georgia, serif" font-size="11" fill="#5a3a1a" text-anchor="middle" font-style="italic" opacity="0.7">Pyongwon Line</text>
+
+  <!-- Compass rose -->
+  <g transform="translate(1390, 810)">
+    <circle cx="0" cy="0" r="55" fill="#d8c898" stroke="#8a6a30" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#8a6a30" stroke-width="1" />
+    <polygon points="0,-50 -7,-28 7,-28" fill="#2a1208" />
+    <polygon points="0,50 -7,28 7,28" fill="#8a6a30" opacity="0.5" />
+    <polygon points="-50,0 -28,-7 -28,7" fill="#8a6a30" opacity="0.5" />
+    <polygon points="50,0 28,-7 28,7" fill="#8a6a30" opacity="0.5" />
+    <text x="0" y="-54" font-family="Georgia, serif" font-size="16" fill="#2a1208" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="68" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">S</text>
+    <text x="-62" y="4" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">W</text>
+    <text x="62" y="4" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">E</text>
+    <circle cx="0" cy="0" r="5" fill="#8a6a30" />
+  </g>
+
+  <!-- Title panel -->
+  <rect x="0" y="0" width="480" height="1024" fill="url(#titleBg)" />
+  <line x1="40" y1="40" x2="440" y2="40" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="44" x2="440" y2="44" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="984" x2="440" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="980" x2="440" y2="980" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="40" x2="40" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="44" y1="40" x2="44" y2="984" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+
+  <text x="240" y="110" font-family="Georgia, serif" font-size="14" fill="#c8a84a" text-anchor="middle" letter-spacing="5" opacity="0.9">DPRK · EAST COAST</text>
+  <line x1="70" y1="130" x2="410" y2="130" stroke="#c8a84a" stroke-width="1" opacity="0.5" />
+
+  <text x="240" y="230" font-family="Georgia, serif" font-size="64" fill="#f5e8c8" text-anchor="middle" letter-spacing="8">원산</text>
+  <line x1="70" y1="255" x2="410" y2="255" stroke="#c8a84a" stroke-width="1" opacity="0.5" />
+  <text x="240" y="330" font-family="Georgia, serif" font-size="68" fill="#f5e8c8" text-anchor="middle" font-weight="bold" letter-spacing="2">WONSAN</text>
+  <text x="240" y="385" font-family="Georgia, serif" font-size="20" fill="#c8a84a" text-anchor="middle" letter-spacing="3" font-style="italic">Kangwon Province</text>
+  <line x1="100" y1="410" x2="380" y2="410" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <text x="240" y="470" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Principal east-coast port city</text>
+  <text x="240" y="500" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Population: 300,000 – 350,000</text>
+  <line x1="100" y1="525" x2="380" y2="525" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <!-- Anchor motif -->
+  <g transform="translate(240, 640)" fill="none" stroke="#c8a84a" stroke-width="6" opacity="0.75" stroke-linecap="round">
+    <circle cx="0" cy="-42" r="10" />
+    <line x1="0" y1="-32" x2="0" y2="46" />
+    <line x1="-30" y1="-14" x2="30" y2="-14" />
+    <path d="M -42 20 Q -42 52 0 52 Q 42 52 42 20" />
+  </g>
+
+  <text x="240" y="730" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">TREATY PORT (1880) · NAVAL BASE</text>
+  <text x="240" y="752" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">SPECIAL ECONOMIC ZONE</text>
+  <line x1="100" y1="775" x2="380" y2="775" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <text x="240" y="815" font-family="Georgia, serif" font-size="15" fill="#9a8050" text-anchor="middle" font-style="italic">39.15°N · 127.44°E</text>
+  <text x="240" y="855" font-family="Georgia, serif" font-size="14" fill="#9a8050" text-anchor="middle" font-style="italic">Ice-free harbor on Yonghung Bay</text>
+
+  <text x="240" y="950" font-family="Georgia, serif" font-size="13" fill="#c8a84a" text-anchor="middle" letter-spacing="4" opacity="0.6">ATLAS PLATE · KOREA</text>
+
+  <!-- Scale bar -->
+  <g transform="translate(1000, 950)">
+    <line x1="0" y1="0" x2="120" y2="0" stroke="#5a4020" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#5a4020" stroke-width="2" />
+    <line x1="60" y1="-4" x2="60" y2="4" stroke="#5a4020" stroke-width="1.5" />
+    <line x1="120" y1="-6" x2="120" y2="6" stroke="#5a4020" stroke-width="2" />
+    <rect x="0" y="-2" width="60" height="4" fill="#5a4020" />
+    <rect x="60" y="-2" width="60" height="4" fill="#d8c898" />
+    <text x="0" y="-12" font-family="Georgia, serif" font-size="11" fill="#3a2010" text-anchor="middle">0</text>
+    <text x="60" y="-12" font-family="Georgia, serif" font-size="11" fill="#3a2010" text-anchor="middle">50</text>
+    <text x="120" y="-12" font-family="Georgia, serif" font-size="11" fill="#3a2010" text-anchor="middle">100 km</text>
+  </g>
+
+  <rect x="8" y="8" width="1520" height="1008" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.5" />
+  <rect x="14" y="14" width="1508" height="996" fill="none" stroke="#c8a84a" stroke-width="1" opacity="0.3" />
+  <rect width="1536" height="1024" fill="#c8a050" opacity="0.04" />
+</svg>

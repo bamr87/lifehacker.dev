@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The An Lushan Rebellion – Tang Dynasty Crisis 755–763 CE</title>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#c9b89a" />
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#8b2500" />
+      <stop offset="60%" stop-color="#c94a00" />
+      <stop offset="100%" stop-color="#e8750a" stop-opacity="0.3" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8ba8b5" />
+      <stop offset="100%" stop-color="#6d8f9e" />
+    </linearGradient>
+    <filter id="roughen" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a08060" stroke-width="0.5" stroke-opacity="0.4" />
+    </pattern>
+    <pattern id="crossHatch" width="10" height="10" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="5" x2="10" y2="5" stroke="#7a5c3a" stroke-width="0.4" stroke-opacity="0.3" />
+      <line x1="5" y1="0" x2="5" y2="10" stroke="#7a5c3a" stroke-width="0.4" stroke-opacity="0.3" />
+    </pattern>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,1 L7,4 L0,7 Z" fill="#8b2500" />
+    </marker>
+    <marker id="arrowDark" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,1 L7,4 L0,7 Z" fill="#4a3020" />
+    </marker>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bgGrad)" />
+  <rect width="1536" height="1024" fill="url(#crossHatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a5c3a" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a5c3a" stroke-width="1" />
+
+  
+  <g fill="none" stroke="#7a5c3a" stroke-width="1.5">
+    
+    <path d="M18,60 L18,18 L60,18" />
+    <path d="M26,70 L26,26 L70,26" />
+    
+    <path d="M1518,60 L1518,18 L1476,18" />
+    <path d="M1510,70 L1510,26 L1466,26" />
+    
+    <path d="M18,964 L18,1006 L60,1006" />
+    <path d="M26,954 L26,998 L70,998" />
+    
+    <path d="M1518,964 L1518,1006 L1476,1006" />
+    <path d="M1510,954 L1510,998 L1466,998" />
+  </g>
+
+  
+  
+  <ellipse cx="1050" cy="540" rx="420" ry="350" fill="url(#seaGrad)" opacity="0.5" />
+
+  
+  
+  <path d="     M 580,120     L 660,110     L 740,95     L 820,105     L 900,90     L 980,100     L 1060,88     L 1120,110     L 1150,140     L 1140,180     L 1100,200     L 1080,230     L 1110,260     L 1130,300     L 1120,340     L 1090,370     L 1100,410     L 1080,450     L 1050,480     L 1020,510     L 980,530     L 940,560     L 920,590     L 900,630     L 880,660     L 850,680     L 820,700     L 800,730     L 780,760     L 760,790     L 730,820     L 710,850     L 690,870     L 670,880     L 650,870     L 630,850     L 620,820     L 600,800     L 580,780     L 560,760     L 540,740     L 520,720     L 500,700     L 480,680     L 460,660     L 450,630     L 440,600     L 430,570     L 420,540     L 430,510     L 440,480     L 450,450     L 460,420     L 450,390     L 440,360     L 450,330     L 460,300     L 480,270     L 500,250     L 510,220     L 520,190     L 540,165     L 560,140     Z   " fill="#c4a870" stroke="#7a5c3a" stroke-width="1.5" filter="url(#roughen)" />
+
+  
+  <path d="     M 580,120 L 660,110 L 740,95 L 820,105 L 900,90 L 980,100 L 1060,88     L 1120,110 L 1150,140 L 1140,180 L 1100,200 L 1080,230 L 1110,260     L 1130,300 L 1120,340 L 1090,370 L 1100,410 L 1080,450 L 1050,480     L 1020,510 L 980,530 L 940,560 L 920,590 L 900,630 L 880,660     L 850,680 L 820,700 L 800,730 L 780,760 L 760,790 L 730,820     L 710,850 L 690,870 L 670,880 L 650,870 L 630,850 L 620,820     L 600,800 L 580,780 L 560,760 L 540,740 L 520,720 L 500,700     L 480,680 L 460,660 L 450,630 L 440,600 L 430,570 L 420,540     L 430,510 L 440,480 L 450,450 L 460,420 L 450,390 L 440,360     L 450,330 L 460,300 L 480,270 L 500,250 L 510,220 L 520,190     L 540,165 L 560,140 Z   " fill="url(#hatch)" opacity="0.6" />
+
+  
+  <path d="M 560,120 L 580,95 L 640,80 L 720,70 L 820,65 L 920,72 L 1020,75 L 1060,88 L 980,100 L 900,90 L 820,105 L 740,95 L 660,110 L 580,120 Z" fill="#b89a60" stroke="#7a5c3a" stroke-width="1" opacity="0.7" />
+
+  
+  <g fill="none" stroke="#7a5c3a" stroke-width="1.2" opacity="0.6">
+    
+    <path d="M 490,300 L 510,285 L 530,300 L 550,282 L 570,298 L 590,278 L 610,295" />
+    <path d="M 490,330 L 510,315 L 530,330 L 550,312 L 570,328" />
+    
+    <path d="M 650,170 L 670,155 L 690,170 L 710,152 L 730,168 L 750,150 L 770,165 L 790,148 L 810,163" />
+    
+    <path d="M 580,450 L 600,435 L 620,450 L 640,432 L 660,448" />
+  </g>
+
+  
+  <g fill="none" stroke="#6d8f9e" stroke-width="2" opacity="0.7">
+    
+    <path d="M 520,380 Q 560,320 620,280 Q 720,230 820,250 Q 900,260 940,300 Q 970,340 950,390 Q 920,430 860,460 Q 800,490 750,520" />
+    
+    <path d="M 520,500 Q 600,520 700,540 Q 800,555 880,580 Q 920,600 940,640" />
+  </g>
+
+  
+  <text x="820" y="245" font-family="Georgia, serif" font-size="11" fill="#4a6878" transform="rotate(-15,820,245)" opacity="0.8">Huang He</text>
+  <text x="700" y="565" font-family="Georgia, serif" font-size="11" fill="#4a6878" opacity="0.8">Yangzi</text>
+
+  
+  
+  <ellipse cx="990" cy="185" rx="110" ry="75" fill="#8b2500" opacity="0.18" stroke="#8b2500" stroke-width="1.5" stroke-dasharray="6,4" />
+
+  
+  <g opacity="0.85">
+    
+    <path d="M 970,200 Q 968,175 975,155 Q 978,140 972,125 Q 985,138 988,155 Q 992,145 990,128 Q 1002,145 998,165 Q 1005,148 1003,132 Q 1015,150 1008,175 Q 1015,168 1018,155 Q 1024,172 1018,192 Q 1010,205 990,210 Q 975,208 970,200 Z" fill="url(#flameGrad)" />
+    <path d="M 990,198 Q 988,178 994,160 Q 998,148 993,135 Q 1004,147 1005,163 Q 1010,152 1009,138 Q 1018,153 1014,172 Q 1020,162 1022,150 Q 1028,165 1023,183 Q 1018,198 1002,202 Q 994,200 990,198 Z" fill="#c94a00" opacity="0.7" />
+    
+    <path d="M 1025,175 Q 1023,162 1027,150 Q 1030,142 1025,132 Q 1034,142 1034,155 Q 1038,147 1037,136 Q 1043,148 1040,162 Q 1043,156 1045,148 Q 1049,158 1046,170 Q 1042,178 1033,180 Q 1026,178 1025,175 Z" fill="url(#flameGrad)" />
+    <path d="M 945,195 Q 943,180 948,167 Q 951,158 946,147 Q 957,158 957,170 Q 961,163 960,152 Q 967,163 964,177 Q 968,170 970,162 Q 974,173 971,185 Q 967,193 957,195 Q 949,194 945,195 Z" fill="url(#flameGrad)" />
+  </g>
+
+  
+  
+  <path d="M 960,230 Q 900,300 820,360 Q 760,410 720,430" fill="none" stroke="#8b2500" stroke-width="4" stroke-dasharray="12,6" marker-end="url(#arrowRed)" opacity="0.85" />
+  
+  <path d="M 950,250 Q 920,320 890,380 Q 870,420 850,460" fill="none" stroke="#8b2500" stroke-width="3" stroke-dasharray="10,5" marker-end="url(#arrowRed)" opacity="0.7" />
+  
+  <path d="M 720,440 Q 670,450 630,470 Q 600,490 570,510" fill="none" stroke="#4a3020" stroke-width="3" stroke-dasharray="8,5" marker-end="url(#arrowDark)" opacity="0.7" />
+
+  
+  
+  <g transform="translate(720,430)">
+    <circle cx="0" cy="0" r="12" fill="#8b2500" stroke="#4a2000" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="6" fill="#c9b89a" />
+    
+    <line x1="-16" y1="0" x2="16" y2="0" stroke="#4a2000" stroke-width="1" />
+    <line x1="0" y1="-16" x2="0" y2="16" stroke="#4a2000" stroke-width="1" />
+    <text x="16" y="-10" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#3a1a00">Chang'an</text>
+    <text x="16" y="5" font-family="Georgia, serif" font-size="11" fill="#5a3a20" font-style="italic">(Capital)</text>
+  </g>
+
+  
+  <g transform="translate(820,390)">
+    <circle cx="0" cy="0" r="8" fill="#8b2500" stroke="#4a2000" stroke-width="1.2" opacity="0.8" />
+    <circle cx="0" cy="0" r="4" fill="#c9b89a" />
+    <text x="12" y="4" font-family="Georgia, serif" font-size="12" fill="#3a1a00">Luoyang</text>
+  </g>
+
+  
+  <g transform="translate(980,190)">
+    <rect x="-8" y="-8" width="16" height="16" fill="#8b2500" stroke="#4a2000" stroke-width="1.5" transform="rotate(45)" />
+    <text x="20" y="-12" font-family="Georgia, serif" font-size="12" fill="#3a1a00" font-weight="bold">Fanyang</text>
+    <text x="20" y="2" font-family="Georgia, serif" font-size="10" fill="#6a3a20" font-style="italic">Rebellion origin</text>
+  </g>
+
+  
+  <g transform="translate(600,320)">
+    <circle cx="0" cy="0" r="7" fill="#5a6a3a" stroke="#3a4a2a" stroke-width="1.2" />
+    <circle cx="0" cy="0" r="3" fill="#c9b89a" />
+    <text x="12" y="4" font-family="Georgia, serif" font-size="11" fill="#3a3a20">Lingwu</text>
+  </g>
+
+  
+  <g transform="translate(430,200)">
+    
+    <circle cx="0" cy="0" r="48" fill="#c9b89a" stroke="#7a5c3a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#7a5c3a" stroke-width="0.8" />
+    
+    <path d="M0,-44 L5,-20 L0,-28 L-5,-20 Z" fill="#4a3020" />
+    <path d="M0,44 L5,20 L0,28 L-5,20 Z" fill="#7a5c3a" />
+    <path d="M44,0 L20,5 L28,0 L20,-5 Z" fill="#7a5c3a" />
+    <path d="M-44,0 L-20,5 L-28,0 L-20,-5 Z" fill="#7a5c3a" />
+    
+    <path d="M30,-30 L14,-8 L8,-14 Z" fill="#9a7c5a" opacity="0.7" />
+    <path d="M-30,-30 L-14,-8 L-8,-14 Z" fill="#9a7c5a" opacity="0.7" />
+    <path d="M30,30 L14,8 L8,14 Z" fill="#9a7c5a" opacity="0.7" />
+    <path d="M-30,30 L-14,8 L-8,14 Z" fill="#9a7c5a" opacity="0.7" />
+    
+    <circle cx="0" cy="0" r="5" fill="#7a5c3a" />
+    <circle cx="0" cy="0" r="2" fill="#c9b89a" />
+    
+    <text x="0" y="-50" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#3a2010" text-anchor="middle">N</text>
+  </g>
+
+  
+  <g transform="translate(430,880)">
+    <rect x="-80" y="0" width="40" height="8" fill="#7a5c3a" />
+    <rect x="-40" y="0" width="40" height="8" fill="#c9b89a" stroke="#7a5c3a" stroke-width="0.8" />
+    <rect x="0" y="0" width="40" height="8" fill="#7a5c3a" />
+    <rect x="40" y="0" width="40" height="8" fill="#c9b89a" stroke="#7a5c3a" stroke-width="0.8" />
+    <text x="-80" y="22" font-family="Georgia, serif" font-size="10" fill="#4a3020">0</text>
+    <text x="75" y="22" font-family="Georgia, serif" font-size="10" fill="#4a3020">1000 km</text>
+  </g>
+
+  
+  
+  <line x1="400" y1="60" x2="400" y2="964" stroke="#7a5c3a" stroke-width="1.5" stroke-dasharray="4,6" />
+
+  
+  <text x="760" y="78" font-family="Georgia, serif" font-size="13" fill="#5a3a20" text-anchor="middle" font-style="italic" letter-spacing="3">TANG DYNASTY · 618–907 CE</text>
+
+  
+  
+  <rect x="60" y="100" width="6" height="180" fill="#8b2500" />
+
+  <text x="90" y="175" font-family="Georgia, serif" font-size="78" font-weight="bold" fill="#2a1200" letter-spacing="-2">THE</text>
+  <text x="90" y="258" font-family="Georgia, serif" font-size="62" font-weight="bold" fill="#8b2500" letter-spacing="1">AN LUSHAN</text>
+  <text x="90" y="330" font-family="Georgia, serif" font-size="78" font-weight="bold" fill="#2a1200" letter-spacing="-2">REBELLION</text>
+
+  
+  <rect x="90" y="350" width="280" height="36" fill="#8b2500" />
+  <text x="100" y="374" font-family="Georgia, serif" font-size="20" fill="#e8dcc8" letter-spacing="4">755 – 763 CE</text>
+
+  
+  <line x1="90" y1="408" x2="370" y2="408" stroke="#7a5c3a" stroke-width="1.5" />
+  <line x1="90" y1="414" x2="370" y2="414" stroke="#7a5c3a" stroke-width="0.5" />
+
+  
+  <g font-family="Georgia, serif" fill="#3a2010">
+    <text x="90" y="450" font-size="13" font-style="italic" fill="#6a4a2a">Commander of the Uprising:</text>
+    <text x="90" y="472" font-size="17" font-weight="bold">An Lushan</text>
+    <text x="90" y="492" font-size="12" fill="#6a4a2a">Half-Turkish · Half-Sogdian · Tang General</text>
+
+    <line x1="90" y1="508" x2="370" y2="508" stroke="#9a7c5a" stroke-width="0.8" />
+
+    <text x="90" y="530" font-size="13" font-style="italic" fill="#6a4a2a">Estimated Population Loss:</text>
+    <text x="90" y="556" font-size="24" font-weight="bold" fill="#8b2500">35 Million</text>
+    <text x="90" y="574" font-size="12" fill="#6a4a2a">52.9M (754 CE) → 16.9M (764 CE)</text>
+
+    <line x1="90" y1="590" x2="370" y2="590" stroke="#9a7c5a" stroke-width="0.8" />
+
+    <text x="90" y="612" font-size="13" font-style="italic" fill="#6a4a2a">Duration:</text>
+    <text x="90" y="635" font-size="20" font-weight="bold">8 Years of Warfare</text>
+
+    <line x1="90" y1="652" x2="370" y2="652" stroke="#9a7c5a" stroke-width="0.8" />
+
+    <text x="90" y="674" font-size="13" font-style="italic" fill="#6a4a2a">Legacy:</text>
+    <text x="90" y="696" font-size="14">Rise of the Jiedushi</text>
+    <text x="90" y="714" font-size="14">(Regional Military Governors)</text>
+    <text x="90" y="736" font-size="13" fill="#5a3a20">End of Tang's Golden Age</text>
+  </g>
+
+  
+  <g transform="translate(310,810)">
+    <rect x="-35" y="-35" width="70" height="70" fill="none" stroke="#8b2500" stroke-width="2" />
+    <rect x="-28" y="-28" width="56" height="56" fill="#8b2500" opacity="0.12" />
+    
+    <line x1="-20" y1="-20" x2="20" y2="-20" stroke="#8b2500" stroke-width="2" />
+    <line x1="-20" y1="20" x2="20" y2="20" stroke="#8b2500" stroke-width="2" />
+    <line x1="-20" y1="-20" x2="-20" y2="20" stroke="#8b2500" stroke-width="2" />
+    <line x1="20" y1="-20" x2="20" y2="20" stroke="#8b2500" stroke-width="2" />
+    <line x1="0" y1="-20" x2="0" y2="20" stroke="#8b2500" stroke-width="1.5" />
+    <line x1="-20" y1="0" x2="20" y2="0" stroke="#8b2500" stroke-width="1.5" />
+  </g>
+
+  
+  <text x="90" y="940" font-family="Georgia, serif" font-size="12" fill="#6a4a2a" font-style="italic">
+    The rebellion shattered Tang Dynasty unity and accelerated the rise of regional autonomy
+  </text>
+
+  
+  <text x="620" y="155" font-family="Georgia, serif" font-size="13" fill="#5a3a20" font-style="italic" opacity="0.7" transform="rotate(-5,620,155)">FRONTIER ZONE</text>
+  <text x="650" y="520" font-family="Georgia, serif" font-size="14" fill="#4a3020" font-style="italic" opacity="0.6">TANG TERRITORY</text>
+  <text x="990" y="600" font-family="Georgia, serif" font-size="13" fill="#5a7a8a" font-style="italic" opacity="0.8">EAST SEA</text>
+
+  
+  <g transform="translate(430,720)" font-family="Georgia, serif" font-size="12" fill="#3a2010">
+    <text x="0" y="-8" font-size="13" font-weight="bold" fill="#4a3020">LEGEND</text>
+    <line x1="0" y1="-4" x2="160" y2="-4" stroke="#7a5c3a" stroke-width="0.8" />
+    
+    <line x1="0" y1="16" x2="40" y2="16" stroke="#8b2500" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowRed)" />
+    <text x="48" y="20">Rebel advance</text>
+    
+    <line x1="0" y1="40" x2="40" y2="40" stroke="#4a3020" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#arrowDark)" />
+    <text x="48" y="44">Imperial retreat</text>
+    
+    <circle cx="8" cy="64" r="8" fill="#8b2500" stroke="#4a2000" stroke-width="1.2" />
+    <circle cx="8" cy="64" r="4" fill="#c9b89a" />
+    <text x="24" y="68">Capital city</text>
+    
+    <rect x="1" y="83" width="14" height="14" fill="#8b2500" stroke="#4a2000" stroke-width="1.2" transform="rotate(45,8,90)" />
+    <text x="24" y="95">Rebellion origin</text>
+  </g>
+
+  
+  <g stroke="#9a7c5a" stroke-width="0.5" stroke-dasharray="3,8" opacity="0.4">
+    <line x1="420" y1="300" x2="1180" y2="300" />
+    <line x1="420" y1="500" x2="1180" y2="500" />
+    <line x1="420" y1="700" x2="1180" y2="700" />
+    <line x1="700" y1="80" x2="700" y2="920" />
+    <line x1="900" y1="80" x2="900" y2="920" />
+    <line x1="1100" y1="80" x2="1100" y2="920" />
+  </g>
+
+</svg>

@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Special Economic Zones – China's experimental market laboratories, 1979–present</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cfd8" />
+      <stop offset="100%" stop-color="#9ab8c4" />
+    </linearGradient>
+    <pattern id="gridPat" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#c4b48a" stroke-width="0.5" opacity="0.5" />
+    </pattern>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#gridPat)" opacity="0.6" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8b7355" stroke-width="2.5" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8b7355" stroke-width="1" />
+
+  
+  <rect x="50" y="50" width="1436" height="924" fill="url(#seaGrad)" opacity="0.25" />
+
+  
+  
+  <path d="M 580,80 L 720,72 L 860,85 L 980,100 L 1080,130 L 1150,160 L 1200,200 L 1220,250 L 1210,310 L 1180,360 L 1160,420 L 1130,470 L 1100,510 L 1050,540 L 1000,560 L 960,580 L 920,610 L 890,650 L 860,700 L 840,740 L 830,780 L 820,750 L 800,720 L 780,690 L 750,670 L 720,660 L 700,650 L 680,630 L 660,600 L 640,570 L 610,560 L 580,550 L 550,530 L 520,500 L 490,470 L 460,440 L 440,400 L 430,360 L 420,320 L 410,280 L 400,240 L 410,200 L 430,165 L 460,135 L 500,108 L 540,90 Z" fill="#c8b878" stroke="#8b7355" stroke-width="1.5" opacity="0.9" />
+
+  
+  <path d="M 980,100 L 1080,80 L 1180,90 L 1260,110 L 1300,150 L 1280,200 L 1230,220 L 1200,200 L 1150,160 L 1080,130 Z" fill="#c8b878" stroke="#8b7355" stroke-width="1.5" opacity="0.9" />
+
+  
+  <path d="M 580,80 L 720,72 L 860,85 L 980,100 L 1080,80 L 1060,50 L 920,40 L 780,45 L 650,55 Z" fill="#c8b878" stroke="#8b7355" stroke-width="1.5" opacity="0.9" />
+
+  
+  <path d="M 410,200 L 430,165 L 460,135 L 500,108 L 540,90 L 580,80 L 650,55 L 580,120 L 520,150 L 470,180 L 440,220 L 420,260 L 410,280 Z" fill="#b8a868" stroke="#8b7355" stroke-width="1" opacity="0.7" />
+
+  
+  <path d="M 820,650 L 860,630 L 900,620 L 940,630 L 960,650 L 950,680 L 930,710 L 900,730 L 870,740 L 840,740 L 820,720 L 810,700 L 815,670 Z" fill="#c8873a" stroke="#7a4a15" stroke-width="2" opacity="0.85" />
+
+  
+  <path d="M 960,560 L 990,545 L 1020,550 L 1040,570 L 1035,600 L 1015,625 L 990,635 L 965,630 L 950,610 L 952,585 Z" fill="#c8873a" stroke="#7a4a15" stroke-width="2" opacity="0.85" />
+
+  
+  
+  <circle cx="878" cy="688" r="14" fill="#d44a1a" stroke="#fff" stroke-width="2.5" />
+  <circle cx="878" cy="688" r="22" fill="none" stroke="#d44a1a" stroke-width="2" opacity="0.6" />
+  <circle cx="878" cy="688" r="32" fill="none" stroke="#d44a1a" stroke-width="1" opacity="0.3" />
+
+  
+  <circle cx="848" cy="714" r="11" fill="#d44a1a" stroke="#fff" stroke-width="2" />
+  <circle cx="848" cy="714" r="18" fill="none" stroke="#d44a1a" stroke-width="1.5" opacity="0.5" />
+
+  
+  <circle cx="942" cy="672" r="11" fill="#d44a1a" stroke="#fff" stroke-width="2" />
+  <circle cx="942" cy="672" r="18" fill="none" stroke="#d44a1a" stroke-width="1.5" opacity="0.5" />
+
+  
+  <circle cx="988" cy="598" r="11" fill="#d44a1a" stroke="#fff" stroke-width="2" />
+  <circle cx="988" cy="598" r="18" fill="none" stroke="#d44a1a" stroke-width="1.5" opacity="0.5" />
+
+  
+  <text x="896" y="684" font-family="Georgia, serif" font-size="15" fill="#fff" font-weight="bold">Shenzhen</text>
+  <text x="862" y="738" font-family="Georgia, serif" font-size="13" fill="#5a2800">Zhuhai</text>
+  <text x="952" y="668" font-family="Georgia, serif" font-size="13" fill="#5a2800">Shantou</text>
+  <text x="1002" y="596" font-family="Georgia, serif" font-size="13" fill="#5a2800">Xiamen</text>
+
+  
+  <g transform="translate(130, 820)">
+    <circle cx="0" cy="0" r="55" fill="#e8dcc8" stroke="#8b7355" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#8b7355" stroke-width="0.8" />
+    
+    <polygon points="0,-48 -7,-20 7,-20" fill="#8b3a1a" />
+    
+    <polygon points="0,48 -7,20 7,20" fill="#8b7355" />
+    
+    <polygon points="48,0 20,-7 20,7" fill="#8b7355" />
+    
+    <polygon points="-48,0 -20,-7 -20,7" fill="#8b7355" />
+    
+    <polygon points="0,-35 -5,-15 5,-15" fill="#8b7355" transform="rotate(45)" />
+    <polygon points="0,-35 -5,-15 5,-15" fill="#8b7355" transform="rotate(135)" />
+    <polygon points="0,-35 -5,-15 5,-15" fill="#8b7355" transform="rotate(225)" />
+    <polygon points="0,-35 -5,-15 5,-15" fill="#8b7355" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="6" fill="#8b3a1a" />
+    <text x="0" y="-52" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#5a2800">N</text>
+  </g>
+
+  
+  <g transform="translate(130, 900)">
+    <rect x="0" y="0" width="120" height="8" fill="#8b7355" />
+    <rect x="0" y="0" width="30" height="8" fill="#e8dcc8" />
+    <rect x="60" y="0" width="30" height="8" fill="#e8dcc8" />
+    <line x1="0" y1="-4" x2="0" y2="14" stroke="#8b7355" stroke-width="1.5" />
+    <line x1="120" y1="-4" x2="120" y2="14" stroke="#8b7355" stroke-width="1.5" />
+    <text x="0" y="26" font-family="Georgia,serif" font-size="11" fill="#5a2800">0</text>
+    <text x="100" y="26" font-family="Georgia,serif" font-size="11" fill="#5a2800">500 km</text>
+  </g>
+
+  
+  <ellipse cx="880" cy="790" rx="28" ry="16" fill="#c8873a" stroke="#7a4a15" stroke-width="1.5" opacity="0.8" />
+  <circle cx="880" cy="790" r="8" fill="#d44a1a" stroke="#fff" stroke-width="1.5" />
+  <text x="912" y="795" font-family="Georgia,serif" font-size="12" fill="#5a2800">Hainan</text>
+
+  
+  <g transform="translate(820, 730)" opacity="0.7">
+    <rect x="0" y="-30" width="10" height="30" fill="#7a5a2a" />
+    <rect x="14" y="-20" width="10" height="20" fill="#7a5a2a" />
+    <rect x="28" y="-38" width="10" height="38" fill="#7a5a2a" />
+    <rect x="42" y="-25" width="10" height="25" fill="#7a5a2a" />
+    
+    <path d="M5,-32 Q8,-40 5,-48" fill="none" stroke="#9a8a6a" stroke-width="1.5" />
+    <path d="M33,-40 Q36,-50 33,-58" fill="none" stroke="#9a8a6a" stroke-width="1.5" />
+  </g>
+
+  
+  <path d="M 1100,600 Q 1200,650 1300,680" fill="none" stroke="#c8873a" stroke-width="2" stroke-dasharray="8,6" opacity="0.6" marker-end="url(#arrow)" />
+  <path d="M 1050,620 Q 1150,700 1220,760" fill="none" stroke="#c8873a" stroke-width="2" stroke-dasharray="8,6" opacity="0.5" />
+
+  
+  <ellipse cx="1040" cy="650" rx="20" ry="38" fill="#b8c8a8" stroke="#8b7355" stroke-width="1" opacity="0.7" />
+
+  
+  <circle cx="906" cy="722" r="5" fill="#444" stroke="#fff" stroke-width="1.5" />
+  <text x="915" y="726" font-family="Georgia,serif" font-size="11" fill="#333">HK</text>
+
+  
+  <line x1="50" y1="300" x2="1486" y2="300" stroke="#8b7355" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,8" />
+  <line x1="50" y1="500" x2="1486" y2="500" stroke="#8b7355" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,8" />
+  <line x1="50" y1="700" x2="1486" y2="700" stroke="#8b7355" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,8" />
+  <line x1="400" y1="50" x2="400" y2="974" stroke="#8b7355" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,8" />
+  <line x1="700" y1="50" x2="700" y2="974" stroke="#8b7355" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,8" />
+  <line x1="1000" y1="50" x2="1000" y2="974" stroke="#8b7355" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,8" />
+  <line x1="1300" y1="50" x2="1300" y2="974" stroke="#8b7355" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,8" />
+
+  
+  <rect x="50" y="50" width="340" height="580" fill="#e8dcc8" opacity="0.88" />
+  <rect x="50" y="50" width="340" height="580" fill="none" stroke="#8b7355" stroke-width="1.5" />
+
+  
+  <text x="220" y="140" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="bold" fill="#3a2800" letter-spacing="1">Special</text>
+  <text x="220" y="192" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="bold" fill="#3a2800" letter-spacing="1">Economic</text>
+  <text x="220" y="244" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="bold" fill="#3a2800" letter-spacing="1">Zones</text>
+
+  
+  <line x1="80" y1="262" x2="360" y2="262" stroke="#8b7355" stroke-width="1.5" />
+  <line x1="80" y1="267" x2="360" y2="267" stroke="#8b7355" stroke-width="0.5" />
+
+  
+  <text x="220" y="298" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#7a5a2a" font-style="italic">China's Market Laboratories</text>
+  <text x="220" y="328" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4020">1979 – present</text>
+
+  
+  <rect x="155" y="348" width="130" height="26" rx="4" fill="#8b3a1a" />
+  <text x="220" y="365" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#fff" letter-spacing="2">ECONOMY</text>
+
+  
+  <text x="80" y="410" font-family="Georgia, serif" font-size="13" fill="#5a4020" font-weight="bold">Key Figures:</text>
+  <text x="80" y="432" font-family="Georgia, serif" font-size="13" fill="#5a4020">• Deng Xiaoping</text>
+  <text x="80" y="452" font-family="Georgia, serif" font-size="13" fill="#5a4020">• Jiang Zemin</text>
+  <text x="80" y="472" font-family="Georgia, serif" font-size="13" fill="#5a4020">• Xi Jinping</text>
+
+  
+  <text x="80" y="510" font-family="Georgia, serif" font-size="13" fill="#5a4020" font-weight="bold">First Four SEZs (1979):</text>
+  <text x="80" y="532" font-family="Georgia, serif" font-size="13" fill="#8b3a1a">● Shenzhen</text>
+  <text x="80" y="552" font-family="Georgia, serif" font-size="13" fill="#8b3a1a">● Zhuhai</text>
+  <text x="80" y="572" font-family="Georgia, serif" font-size="13" fill="#8b3a1a">● Shantou</text>
+  <text x="80" y="592" font-family="Georgia, serif" font-size="13" fill="#8b3a1a">● Xiamen</text>
+
+  
+  <rect x="50" y="650" width="340" height="140" fill="#c8873a" opacity="0.15" />
+  <rect x="50" y="650" width="340" height="140" fill="none" stroke="#c8873a" stroke-width="1.5" />
+  <text x="220" y="676" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#5a2800">Shenzhen: A Symbol of Transformation</text>
+  <text x="80" y="700" font-family="Georgia,serif" font-size="13" fill="#5a2800">1979: fishing village ~30,000 people</text>
+  <text x="80" y="720" font-family="Georgia,serif" font-size="13" fill="#5a2800">2010: modern city of 10+ million</text>
+  <text x="80" y="748" font-family="Georgia,serif" font-size="12" fill="#7a4a15" font-style="italic">"Capitalist mechanisms within</text>
+  <text x="80" y="765" font-family="Georgia,serif" font-size="12" fill="#7a4a15" font-style="italic">Communist Party control."</text>
+
+  
+  <rect x="50" y="800" width="340" height="174" fill="#d4b87a" opacity="0.2" />
+
+  
+  <text x="220" y="840" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#5a4020" font-style="italic">Reform and Opening-up Program</text>
+  <text x="220" y="860" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#7a5a2a">Guangdong &amp; Fujian Provinces</text>
+
+  
+  <circle cx="80" cy="900" r="8" fill="#d44a1a" stroke="#fff" stroke-width="1.5" />
+  <circle cx="80" cy="900" r="14" fill="none" stroke="#d44a1a" stroke-width="1.5" opacity="0.5" />
+  <text x="102" y="905" font-family="Georgia,serif" font-size="13" fill="#5a2800">SEZ City</text>
+
+  <rect x="196" y="892" width="16" height="16" rx="2" fill="#c8873a" stroke="#7a4a15" stroke-width="1.5" />
+  <text x="218" y="905" font-family="Georgia,serif" font-size="13" fill="#5a2800">SEZ Province</text>
+
+  
+  <rect x="600" y="880" width="700" height="80" fill="#e8dcc8" stroke="#8b7355" stroke-width="1.5" opacity="0.92" />
+  <text x="950" y="912" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#3a2800" letter-spacing="3">PEOPLE'S REPUBLIC OF CHINA</text>
+  <text x="950" y="936" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#7a5a2a" letter-spacing="1">Special Economic Zones — Cartographic Reference</text>
+  <text x="950" y="952" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#8b7355" font-style="italic">Est. July 1, 1979 · National People's Congress Authorization</text>
+
+  
+  <g fill="none" stroke="#8b7355" stroke-width="1.5">
+    <path d="M 40,40 L 40,80 L 80,80" />
+    <path d="M 1496,40 L 1496,80 L 1456,80" />
+    <path d="M 40,984 L 40,944 L 80,944" />
+    <path d="M 1496,984 L 1496,944 L 1456,944" />
+  </g>
+</svg>

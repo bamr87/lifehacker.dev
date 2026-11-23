@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean Language and Linguistics — Article Banner</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab4c4" />
+    </linearGradient>
+    <linearGradient id="landgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9b98a" />
+      <stop offset="100%" stop-color="#b8a870" />
+    </linearGradient>
+    <filter id="aged" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="gridpat" width="60" height="60" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="60" y2="0" stroke="#c4b48a" stroke-width="0.4" opacity="0.5" />
+      <line x1="0" y1="0" x2="0" y2="60" stroke="#c4b48a" stroke-width="0.4" opacity="0.5" />
+    </pattern>
+    <linearGradient id="titleplate" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3d2b1a" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#5c3e22" stop-opacity="0.88" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridpat)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7050" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7050" stroke-width="1" />
+
+  
+  <rect x="60" y="60" width="1416" height="904" fill="url(#sea)" opacity="0.35" rx="4" />
+
+  
+  <g stroke="#8a9aaa" stroke-width="0.7" opacity="0.4">
+    <line x1="60" y1="200" x2="1476" y2="200" />
+    <line x1="60" y1="340" x2="1476" y2="340" />
+    <line x1="60" y1="480" x2="1476" y2="480" />
+    <line x1="60" y1="620" x2="1476" y2="620" />
+    <line x1="60" y1="760" x2="1476" y2="760" />
+    <line x1="60" y1="900" x2="1476" y2="900" />
+  </g>
+  
+  <g stroke="#8a9aaa" stroke-width="0.7" opacity="0.4">
+    <line x1="200" y1="60" x2="200" y2="964" />
+    <line x1="380" y1="60" x2="380" y2="964" />
+    <line x1="560" y1="60" x2="560" y2="964" />
+    <line x1="740" y1="60" x2="740" y2="964" />
+    <line x1="920" y1="60" x2="920" y2="964" />
+    <line x1="1100" y1="60" x2="1100" y2="964" />
+    <line x1="1280" y1="60" x2="1280" y2="964" />
+  </g>
+
+  
+  
+  <path d="M 350,80 C 400,100 500,130 580,180 C 650,220 700,300 720,380 C 740,450 730,520 710,580 C 690,640 660,690 640,740 C 620,790 610,840 620,900 L 300,900 L 280,800 C 260,720 270,640 290,560 C 310,480 340,420 360,360 C 380,300 390,240 380,180 Z" fill="#c2b07a" stroke="#9a8a5a" stroke-width="1.2" opacity="0.7" />
+
+  
+  <path d="M 1050,180 C 1080,200 1100,240 1090,280 C 1080,320 1050,350 1020,360 C 1000,370 980,360 970,340 C 960,320 965,290 975,260 C 985,230 1010,200 1030,185 Z" fill="#c2b07a" stroke="#9a8a5a" stroke-width="1" opacity="0.7" />
+  <path d="M 1020,360 C 1040,380 1060,420 1050,460 C 1040,500 1010,530 980,540 C 960,548 940,538 932,520 C 924,502 930,476 942,452 C 954,428 976,400 1000,382 Z" fill="#c2b07a" stroke="#9a8a5a" stroke-width="1" opacity="0.7" />
+  <path d="M 980,540 C 995,565 1005,600 995,635 C 985,670 958,695 930,700 C 910,705 892,694 886,676 C 880,658 888,632 900,610 C 912,588 938,566 960,554 Z" fill="#c2b07a" stroke="#9a8a5a" stroke-width="1" opacity="0.7" />
+
+  
+  <g transform="translate(680, 220)">
+    
+    <path d="M 80,0 C 110,10 145,30 160,70 C 175,110 170,155 165,200 C 160,245 148,288 140,330 C 132,372 128,414 125,450 C 122,486 120,516 118,540 C 116,564 110,585 98,598 C 86,611 70,616 55,610 C 40,604 28,588 20,568 C 12,548 8,522 6,496 C 4,470 4,442 8,416 C 12,390 20,366 18,340 C 16,314 4,290 0,262 C -4,234 0,202 14,176 C 28,150 52,130 68,106 C 84,82 82,30 80,0 Z" fill="#b8a46e" stroke="#7a6840" stroke-width="2.5" />
+    
+    <path d="M 10,80 C 30,60 60,50 90,55 C 120,60 145,75 155,95 C 140,100 120,98 100,96 C 80,94 55,90 35,88 Z" fill="#a09060" opacity="0.6" />
+    
+    <path d="M 130,150 C 138,170 142,200 138,230 C 134,260 125,285 120,310 L 110,310 C 112,285 115,260 116,230 C 117,200 120,170 118,150 Z" fill="#a09060" opacity="0.5" />
+    
+    <path d="M 30,240 C 50,238 75,242 95,248 C 115,254 130,265 125,272 C 115,270 95,264 75,260 C 55,256 32,255 28,248 Z" fill="#9ab4c4" opacity="0.7" />
+    
+    <circle cx="90" cy="245" r="8" fill="#8a2020" stroke="#f0e8d0" stroke-width="2" />
+    <text x="102" y="242" font-family="Georgia, serif" font-size="18" fill="#3d2b1a" font-weight="bold">Seoul</text>
+
+    
+    <ellipse cx="55" cy="650" rx="28" ry="18" fill="#b8a46e" stroke="#7a6840" stroke-width="1.5" />
+  </g>
+
+  
+  
+  <text x="140" y="420" font-family="serif" font-size="180" fill="#7a6840" opacity="0.18" font-weight="bold">한</text>
+  
+  <text x="1180" y="580" font-family="serif" font-size="160" fill="#7a6840" opacity="0.18" font-weight="bold">국</text>
+  
+  <text x="300" y="820" font-family="serif" font-size="140" fill="#7a6840" opacity="0.15" font-weight="bold">어</text>
+
+  
+  <g transform="translate(1080, 640)">
+    <rect x="0" y="0" width="350" height="280" fill="#d8cca8" stroke="#8a7050" stroke-width="1.5" rx="4" opacity="0.85" />
+    <rect x="8" y="8" width="334" height="264" fill="none" stroke="#8a7050" stroke-width="0.8" rx="2" />
+    <text x="175" y="38" font-family="Georgia, serif" font-size="14" fill="#5c3e22" text-anchor="middle" font-style="italic">Hangul · 한글</text>
+    <line x1="30" y1="48" x2="320" y2="48" stroke="#8a7050" stroke-width="0.8" />
+    
+    <text x="30" y="90" font-family="serif" font-size="28" fill="#3d2b1a">ㄱ ㄴ ㄷ ㄹ ㅁ</text>
+    <text x="30" y="130" font-family="serif" font-size="28" fill="#3d2b1a">ㅂ ㅅ ㅇ ㅈ ㅊ</text>
+    <text x="30" y="170" font-family="serif" font-size="28" fill="#3d2b1a">ㅋ ㅌ ㅍ ㅎ</text>
+    
+    <text x="30" y="210" font-family="serif" font-size="26" fill="#5c3e22">ㅏ ㅑ ㅓ ㅕ ㅗ ㅛ</text>
+    <text x="30" y="248" font-family="serif" font-size="26" fill="#5c3e22">ㅜ ㅠ ㅡ ㅣ ㅐ ㅔ</text>
+  </g>
+
+  
+  <g transform="translate(200, 760)">
+    
+    <circle cx="0" cy="0" r="88" fill="none" stroke="#8a7050" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="78" fill="#e0d4b0" stroke="#8a7050" stroke-width="0.8" />
+    
+    <polygon points="0,-78 -10,-30 0,-18 10,-30" fill="#3d2b1a" />
+    <polygon points="0,78 -10,30 0,18 10,30" fill="#8a7050" />
+    <polygon points="-78,0 -30,-10 -18,0 -30,10" fill="#8a7050" />
+    <polygon points="78,0 30,-10 18,0 30,10" fill="#8a7050" />
+    
+    <polygon points="0,-78 -6,-40 0,-30 6,-40" fill="#8a7050" transform="rotate(45)" />
+    <polygon points="0,-78 -6,-40 0,-30 6,-40" fill="#8a7050" transform="rotate(135)" />
+    <polygon points="0,-78 -6,-40 0,-30 6,-40" fill="#8a7050" transform="rotate(225)" />
+    <polygon points="0,-78 -6,-40 0,-30 6,-40" fill="#8a7050" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="14" fill="#e0d4b0" stroke="#8a7050" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="6" fill="#3d2b1a" />
+    
+    <text x="0" y="-88" font-family="Georgia, serif" font-size="18" fill="#3d2b1a" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="106" font-family="Georgia, serif" font-size="18" fill="#3d2b1a" text-anchor="middle" font-weight="bold">S</text>
+    <text x="-98" y="6" font-family="Georgia, serif" font-size="18" fill="#3d2b1a" text-anchor="middle" font-weight="bold">W</text>
+    <text x="98" y="6" font-family="Georgia, serif" font-size="18" fill="#3d2b1a" text-anchor="middle" font-weight="bold">E</text>
+  </g>
+
+  
+  <g transform="translate(1100, 120)">
+    <rect x="0" y="0" width="320" height="110" fill="#d8cca8" stroke="#8a7050" stroke-width="1.5" rx="4" opacity="0.85" />
+    <text x="160" y="28" font-family="Georgia, serif" font-size="13" fill="#5c3e22" text-anchor="middle" font-style="italic">Word Order · 어순</text>
+    <line x1="20" y1="36" x2="300" y2="36" stroke="#8a7050" stroke-width="0.7" />
+    <text x="50" y="72" font-family="Georgia, serif" font-size="22" fill="#3d2b1a" text-anchor="middle" font-weight="bold">S</text>
+    <text x="160" y="72" font-family="Georgia, serif" font-size="22" fill="#3d2b1a" text-anchor="middle" font-weight="bold">O</text>
+    <text x="270" y="72" font-family="Georgia, serif" font-size="22" fill="#3d2b1a" text-anchor="middle" font-weight="bold">V</text>
+    <text x="50" y="96" font-family="Georgia, serif" font-size="12" fill="#7a6840" text-anchor="middle">주어</text>
+    <text x="160" y="96" font-family="Georgia, serif" font-size="12" fill="#7a6840" text-anchor="middle">목적어</text>
+    <text x="270" y="96" font-family="Georgia, serif" font-size="12" fill="#7a6840" text-anchor="middle">동사</text>
+    <line x1="75" y1="68" x2="120" y2="68" stroke="#8a7050" stroke-width="1" marker-end="url(#arr)" />
+    <line x1="185" y1="68" x2="235" y2="68" stroke="#8a7050" stroke-width="1" />
+    <polygon points="235,64 245,68 235,72" fill="#8a7050" />
+  </g>
+
+  
+  <rect x="60" y="820" width="920" height="160" fill="url(#titleplate)" rx="3" />
+  <rect x="68" y="828" width="904" height="144" fill="none" stroke="#c4a870" stroke-width="1" rx="2" />
+
+  
+  <text x="110" y="900" font-family="Georgia, 'Times New Roman', serif" font-size="60" fill="#f0e4c4" font-weight="bold" letter-spacing="2">Korean Language</text>
+  <text x="110" y="960" font-family="Georgia, 'Times New Roman', serif" font-size="60" fill="#f0e4c4" font-weight="bold" letter-spacing="2">and Linguistics</text>
+
+  
+  <text x="110" y="842" font-family="serif" font-size="22" fill="#c4a870" letter-spacing="4">한국어 · Hangugeo</text>
+
+  
+  <g stroke="#8a7050" stroke-width="1.5" fill="none" opacity="0.7">
+    
+    <path d="M 40,40 L 100,40 L 100,46 M 40,40 L 40,100 L 46,100" />
+    
+    <path d="M 1496,40 L 1436,40 L 1436,46 M 1496,40 L 1496,100 L 1490,100" />
+    
+    <path d="M 40,984 L 100,984 L 100,978 M 40,984 L 40,924 L 46,924" />
+    
+    <path d="M 1496,984 L 1436,984 L 1436,978 M 1496,984 L 1496,924 L 1490,924" />
+  </g>
+
+  
+  <g transform="translate(420, 660)">
+    <rect x="0" y="0" width="240" height="80" fill="#d8cca8" stroke="#8a7050" stroke-width="1.2" rx="3" opacity="0.88" />
+    <text x="120" y="24" font-family="Georgia, serif" font-size="12" fill="#5c3e22" text-anchor="middle" font-style="italic">Speech Levels</text>
+    <text x="120" y="52" font-family="serif" font-size="24" fill="#3d2b1a" text-anchor="middle">존댓말 / 반말</text>
+    <text x="120" y="72" font-family="Georgia, serif" font-size="11" fill="#7a6840" text-anchor="middle">Formal · Informal</text>
+  </g>
+
+  
+  <g transform="translate(1100, 940)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#5c3e22" stroke-width="1.5" />
+    <line x1="0" y1="-8" x2="0" y2="8" stroke="#5c3e22" stroke-width="1.5" />
+    <line x1="100" y1="-5" x2="100" y2="5" stroke="#5c3e22" stroke-width="1.5" />
+    <line x1="200" y1="-8" x2="200" y2="8" stroke="#5c3e22" stroke-width="1.5" />
+    <rect x="0" y="-8" width="100" height="8" fill="#5c3e22" />
+    <rect x="100" y="-8" width="100" height="8" fill="#d8cca8" />
+    <text x="0" y="20" font-family="Georgia, serif" font-size="11" fill="#3d2b1a" text-anchor="middle">0</text>
+    <text x="100" y="20" font-family="Georgia, serif" font-size="11" fill="#3d2b1a" text-anchor="middle">500 km</text>
+    <text x="200" y="20" font-family="Georgia, serif" font-size="11" fill="#3d2b1a" text-anchor="middle">1000 km</text>
+  </g>
+
+  
+  <text x="500" y="600" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#6a8a9a" opacity="0.7" font-style="italic" text-anchor="middle" transform="rotate(-8, 500, 600)">Yellow Sea</text>
+  <text x="1000" y="440" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#6a8a9a" opacity="0.7" font-style="italic" text-anchor="middle" transform="rotate(-8, 1000, 440)">Sea of Japan</text>
+
+  
+  <g transform="translate(90, 130)">
+    <rect x="0" y="0" width="270" height="55" fill="#d8cca8" stroke="#8a7050" stroke-width="1.2" rx="3" opacity="0.88" />
+    <text x="135" y="22" font-family="Georgia, serif" font-size="12" fill="#5c3e22" text-anchor="middle" font-style="italic">Language Type</text>
+    <text x="135" y="44" font-family="Georgia, serif" font-size="18" fill="#3d2b1a" text-anchor="middle" font-weight="bold">Agglutinative · SOV</text>
+  </g>
+
+  
+  <g transform="translate(90, 220)">
+    <rect x="0" y="0" width="270" height="55" fill="#d8cca8" stroke="#8a7050" stroke-width="1.2" rx="3" opacity="0.88" />
+    <text x="135" y="22" font-family="Georgia, serif" font-size="12" fill="#5c3e22" text-anchor="middle" font-style="italic">Language Family</text>
+    <text x="135" y="44" font-family="Georgia, serif" font-size="18" fill="#3d2b1a" text-anchor="middle" font-weight="bold">Koreanic · 한국어족</text>
+  </g>
+
+</svg>

@@ -1,0 +1,7 @@
+# Claude Code — harness / local state (never commit)
+.claude/worktrees/
+.claude/settings.local.json
+.claude/**/settings.local.json
+
+# macOS
+.DS_Store

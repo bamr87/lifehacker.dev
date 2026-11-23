@@ -1,0 +1,250 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Jiang Zemin – Paramount Leader of China, 1989–2004</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc0" />
+      <stop offset="50%" stop-color="#d9cfa8" />
+      <stop offset="100%" stop-color="#c9bc90" />
+    </linearGradient>
+    <linearGradient id="chinaFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b5472a" />
+      <stop offset="100%" stop-color="#8a3220" />
+    </linearGradient>
+    <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a9eb5" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#5a7e9a" stop-opacity="0.5" />
+    </linearGradient>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="60" y2="0" stroke="#a09060" stroke-width="0.4" stroke-opacity="0.3" />
+      <line x1="0" y1="0" x2="0" y2="60" stroke="#a09060" stroke-width="0.4" stroke-opacity="0.3" />
+    </pattern>
+    <pattern id="latPattern" width="120" height="60" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="30" x2="120" y2="30" stroke="#8a7a50" stroke-width="0.6" stroke-opacity="0.2" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridPattern)" />
+  <rect width="1536" height="1024" fill="url(#latPattern)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6a40" stroke-width="3" rx="4" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#9a8a58" stroke-width="1" rx="2" />
+  <rect x="32" y="32" width="1472" height="960" fill="none" stroke="#7a6a40" stroke-width="0.5" rx="1" />
+
+  
+  
+  <g transform="translate(50,50)">
+    <line x1="0" y1="0" x2="40" y2="0" stroke="#7a6a40" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#7a6a40" stroke-width="2" />
+    <circle cx="0" cy="0" r="4" fill="#7a6a40" />
+  </g>
+  
+  <g transform="translate(1486,50)">
+    <line x1="0" y1="0" x2="-40" y2="0" stroke="#7a6a40" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#7a6a40" stroke-width="2" />
+    <circle cx="0" cy="0" r="4" fill="#7a6a40" />
+  </g>
+  
+  <g transform="translate(50,974)">
+    <line x1="0" y1="0" x2="40" y2="0" stroke="#7a6a40" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="-40" stroke="#7a6a40" stroke-width="2" />
+    <circle cx="0" cy="0" r="4" fill="#7a6a40" />
+  </g>
+  
+  <g transform="translate(1486,974)">
+    <line x1="0" y1="0" x2="-40" y2="0" stroke="#7a6a40" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="-40" stroke="#7a6a40" stroke-width="2" />
+    <circle cx="0" cy="0" r="4" fill="#7a6a40" />
+  </g>
+
+  
+  <ellipse cx="950" cy="540" rx="580" ry="380" fill="url(#oceanGrad)" />
+
+  
+  
+  <path d="     M 680,240     L 740,220 L 800,215 L 860,225 L 920,210 L 980,200 L 1040,215     L 1100,205 L 1150,225 L 1180,260 L 1200,300 L 1220,340     L 1210,380 L 1230,420 L 1240,460 L 1220,500     L 1200,530 L 1210,570 L 1190,610 L 1160,640     L 1120,660 L 1080,680 L 1050,700 L 1010,710     L 980,720 L 950,700 L 920,680 L 900,650     L 870,630 L 850,600 L 820,580 L 800,560     L 770,540 L 750,510 L 730,490 L 700,470     L 670,450 L 650,420 L 640,390 L 630,360     L 620,330 L 630,300 L 650,270 Z   " fill="url(#chinaFill)" stroke="#6a2510" stroke-width="2" opacity="0.92" />
+
+  
+  <path d="     M 1040,215 L 1080,190 L 1120,175 L 1160,180 L 1200,195     L 1220,220 L 1210,250 L 1190,260 L 1180,260 L 1150,225 L 1100,205 Z   " fill="url(#chinaFill)" stroke="#6a2510" stroke-width="2" opacity="0.92" />
+
+  
+  <path d="     M 680,240 L 650,270 L 630,300 L 600,310 L 570,340     L 550,370 L 560,400 L 580,420 L 610,430 L 630,360 L 640,390 L 650,420 L 670,450 L 700,470     L 690,440 L 680,400 L 670,360 L 680,320 L 690,290 Z   " fill="url(#chinaFill)" stroke="#6a2510" stroke-width="2" opacity="0.85" />
+
+  
+  <ellipse cx="1000" cy="750" rx="35" ry="22" fill="url(#chinaFill)" stroke="#6a2510" stroke-width="1.5" />
+
+  
+  <ellipse cx="1195" cy="660" rx="18" ry="32" fill="#c4603e" stroke="#6a2510" stroke-width="1" opacity="0.7" />
+
+  
+  
+  <path d="M 700,220 L 740,200 L 800,190 L 860,195 L 920,185 L 980,178 L 1040,190 L 1080,175 L 1100,160 L 1050,145 L 980,140 L 900,145 L 830,155 L 760,170 L 710,185 Z" fill="#c4b07a" stroke="#9a8a58" stroke-width="1" opacity="0.6" />
+
+  
+  <path d="M 680,210 L 700,185 L 760,170 L 830,155 L 900,145 L 980,140 L 1050,145 L 1100,145 L 1120,130 L 1080,115 L 1000,110 L 900,115 L 800,125 L 720,140 L 670,160 L 655,190 Z" fill="#b8a870" stroke="#9a8a58" stroke-width="1" opacity="0.4" />
+
+  
+  <path d="M 920,680 L 950,700 L 960,740 L 940,770 L 910,760 L 890,730 L 900,700 Z" fill="#c4b07a" stroke="#9a8a58" stroke-width="1" opacity="0.5" />
+
+  
+  <ellipse cx="1200" cy="560" rx="100" ry="160" fill="#7a9eb5" opacity="0.25" />
+  
+  <ellipse cx="1060" cy="760" rx="130" ry="90" fill="#7a9eb5" opacity="0.25" />
+
+  
+  <path d="M 690,440 Q 740,420 800,430 Q 860,440 920,430 Q 980,415 1030,420 Q 1060,425 1080,440" fill="none" stroke="#5a7e9a" stroke-width="2.5" stroke-opacity="0.6" stroke-dasharray="8,4" />
+
+  
+  <path d="M 660,350 Q 710,330 770,340 Q 830,355 880,340 Q 930,320 980,330 Q 1010,340 1040,355" fill="none" stroke="#5a7e9a" stroke-width="2" stroke-opacity="0.5" stroke-dasharray="6,4" />
+
+  
+  <circle cx="1080" cy="490" r="7" fill="#e8c840" stroke="#7a5010" stroke-width="1.5" opacity="0.9" />
+  <text x="1090" y="486" font-family="Georgia, serif" font-size="14" fill="#5a3a10" opacity="0.8">Beijing</text>
+
+  <circle cx="1130" cy="580" r="5" fill="#e8c840" stroke="#7a5010" stroke-width="1.5" opacity="0.9" />
+  <text x="1140" y="576" font-family="Georgia, serif" font-size="13" fill="#5a3a10" opacity="0.8">Shanghai</text>
+
+  <circle cx="1090" cy="650" r="5" fill="#e8c840" stroke="#7a5010" stroke-width="1.5" opacity="0.9" />
+  <text x="1100" y="646" font-family="Georgia, serif" font-size="13" fill="#5a3a10" opacity="0.8">Hong Kong</text>
+
+  
+  <polygon points="1080,480 1082.4,487.4 1090,487.4 1084,492 1086.4,499.4 1080,495 1073.6,499.4 1076,492 1070,487.4 1077.6,487.4" fill="#c8391a" stroke="#7a1a00" stroke-width="0.5" transform="translate(0,-12) scale(0.8) translate(0,12)" />
+
+  
+  <g transform="translate(200, 540)">
+    
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#7a6a40" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#7a6a40" stroke-width="0.8" opacity="0.4" />
+    <circle cx="0" cy="0" r="12" fill="#d9cfa8" stroke="#7a6a40" stroke-width="1.5" />
+
+    
+    
+    <polygon points="0,-90 -10,-55 0,-40 10,-55" fill="#7a3820" stroke="#5a2810" stroke-width="1" />
+    <polygon points="0,-90 -10,-55 0,-70 10,-55" fill="#e8dfc0" stroke="#5a2810" stroke-width="0.5" />
+    
+    <polygon points="0,90 -10,55 0,40 10,55" fill="#9a8a58" stroke="#7a6a38" stroke-width="1" />
+    <polygon points="0,90 -10,55 0,70 10,55" fill="#c9bc90" stroke="#7a6a38" stroke-width="0.5" />
+    
+    <polygon points="90,0 55,-10 40,0 55,10" fill="#9a8a58" stroke="#7a6a38" stroke-width="1" />
+    
+    <polygon points="-90,0 -55,-10 -40,0 -55,10" fill="#9a8a58" stroke="#7a6a38" stroke-width="1" />
+
+    
+    <polygon points="0,-40 -6,-28 0,-20 6,-28" fill="#9a8a58" stroke="#7a6a38" stroke-width="0.5" transform="rotate(45)" />
+    <polygon points="0,-40 -6,-28 0,-20 6,-28" fill="#9a8a58" stroke="#7a6a38" stroke-width="0.5" transform="rotate(135)" />
+    <polygon points="0,-40 -6,-28 0,-20 6,-28" fill="#9a8a58" stroke="#7a6a38" stroke-width="0.5" transform="rotate(225)" />
+    <polygon points="0,-40 -6,-28 0,-20 6,-28" fill="#9a8a58" stroke="#7a6a38" stroke-width="0.5" transform="rotate(315)" />
+
+    
+    <g stroke="#7a6a40" stroke-width="0.8" opacity="0.5">
+      <line x1="0" y1="-92" x2="0" y2="-82" transform="rotate(30)" />
+      <line x1="0" y1="-92" x2="0" y2="-82" transform="rotate(60)" />
+      <line x1="0" y1="-92" x2="0" y2="-82" transform="rotate(120)" />
+      <line x1="0" y1="-92" x2="0" y2="-82" transform="rotate(150)" />
+      <line x1="0" y1="-92" x2="0" y2="-82" transform="rotate(210)" />
+      <line x1="0" y1="-92" x2="0" y2="-82" transform="rotate(240)" />
+      <line x1="0" y1="-92" x2="0" y2="-82" transform="rotate(300)" />
+      <line x1="0" y1="-92" x2="0" y2="-82" transform="rotate(330)" />
+    </g>
+
+    
+    <text x="-6" y="-100" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#5a3a10" letter-spacing="0">N</text>
+
+    
+    <circle cx="0" cy="0" r="5" fill="#7a3820" />
+  </g>
+
+  
+  <g transform="translate(1380, 130)" opacity="0.7">
+    
+    <polygon points="0,-28 6.6,-9.2 26.6,-9.2 11.4,3.5 17.4,22.8 0,11 -17.4,22.8 -11.4,3.5 -26.6,-9.2 -6.6,-9.2" fill="#c8391a" stroke="#7a1a00" stroke-width="1" />
+    
+    <polygon points="38,-48 40.5,-41 47.5,-41 42,-37 44,-30 38,-34 32,-30 34,-37 28.5,-41 35.5,-41" fill="#c8391a" stroke="#7a1a00" stroke-width="0.5" />
+    <polygon points="52,-30 54.5,-23 61.5,-23 56,-19 58,-12 52,-16 46,-12 48,-19 42.5,-23 49.5,-23" fill="#c8391a" stroke="#7a1a00" stroke-width="0.5" />
+    <polygon points="48,-8 50.5,-1 57.5,-1 52,3 54,10 48,6 42,10 44,3 38.5,-1 45.5,-1" fill="#c8391a" stroke="#7a1a00" stroke-width="0.5" />
+    <polygon points="34,8 36.5,15 43.5,15 38,19 40,26 34,22 28,26 30,19 24.5,15 31.5,15" fill="#c8391a" stroke="#7a1a00" stroke-width="0.5" />
+  </g>
+
+  
+  <line x1="60" y1="620" x2="380" y2="620" stroke="#7a6a40" stroke-width="1" opacity="0.5" />
+  <line x1="60" y1="624" x2="380" y2="624" stroke="#7a6a40" stroke-width="0.4" opacity="0.3" />
+
+  
+  <text x="90" y="190" font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="bold" fill="#3a2510" letter-spacing="-2" opacity="0.95">Jiang</text>
+  <text x="90" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="bold" fill="#3a2510" letter-spacing="-2" opacity="0.95">Zemin</text>
+
+  
+  <text x="92" y="390" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#6a4a20" letter-spacing="3" font-style="italic">1926 – 2022</text>
+
+  
+  <line x1="90" y1="408" x2="460" y2="408" stroke="#7a3820" stroke-width="2.5" />
+  <line x1="90" y1="414" x2="460" y2="414" stroke="#7a3820" stroke-width="0.8" />
+
+  
+  <text x="90" y="460" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#5a4a28" letter-spacing="1">Paramount Leader of the</text>
+  <text x="90" y="490" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#5a4a28" letter-spacing="1">People's Republic of China</text>
+  <text x="90" y="525" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#7a6a40" letter-spacing="2" font-style="italic">General Secretary  ·  President  ·  CMC Chairman</text>
+
+  
+  <rect x="90" y="648" width="370" height="6" rx="3" fill="#7a6a40" opacity="0.4" />
+  <rect x="90" y="648" width="220" height="6" rx="3" fill="#7a3820" opacity="0.7" />
+
+  
+  <text x="90" y="700" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#5a3a10" font-weight="bold">Key Milestones</text>
+  <line x1="90" y1="710" x2="360" y2="710" stroke="#7a6a40" stroke-width="0.8" opacity="0.6" />
+
+  <text x="90" y="735" font-family="Georgia, serif" font-size="15" fill="#6a4a20">▸ 1989  Rise during Tiananmen crisis</text>
+  <text x="90" y="760" font-family="Georgia, serif" font-size="15" fill="#6a4a20">▸ 1997  Hong Kong handover</text>
+  <text x="90" y="785" font-family="Georgia, serif" font-size="15" fill="#6a4a20">▸ 2001  WTO accession</text>
+  <text x="90" y="810" font-family="Georgia, serif" font-size="15" fill="#6a4a20">▸ 2004  Retirement</text>
+
+  
+  <text x="90" y="870" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#7a6040" font-style="italic" opacity="0.8">三个代表  ·  The Three Represents</text>
+
+  
+  <g transform="translate(1280, 920)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#7a6a40" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#7a6a40" stroke-width="2" />
+    <line x1="80" y1="-4" x2="80" y2="4" stroke="#7a6a40" stroke-width="1.5" />
+    <line x1="160" y1="-6" x2="160" y2="6" stroke="#7a6a40" stroke-width="2" />
+    <rect x="0" y="-3" width="80" height="6" fill="#7a6a40" opacity="0.4" />
+    <rect x="80" y="-3" width="80" height="6" fill="#c9bc90" opacity="0.7" />
+    <text x="0" y="18" font-family="Georgia, serif" font-size="12" fill="#5a4a28" text-anchor="middle">0</text>
+    <text x="80" y="18" font-family="Georgia, serif" font-size="12" fill="#5a4a28" text-anchor="middle">500 km</text>
+    <text x="160" y="18" font-family="Georgia, serif" font-size="12" fill="#5a4a28" text-anchor="middle">1000 km</text>
+  </g>
+
+  
+  <g stroke="#7a9eb5" stroke-width="0.6" stroke-opacity="0.2" fill="none">
+    <path d="M 870,160 Q 880,400 870,750" />
+    <path d="M 930,160 Q 940,400 930,750" />
+    <path d="M 990,160 Q 1000,400 990,750" />
+    <path d="M 1050,160 Q 1060,400 1050,750" />
+    <path d="M 1110,160 Q 1120,400 1110,750" />
+    <path d="M 1170,160 Q 1180,400 1170,750" />
+    <path d="M 1230,160 Q 1240,400 1230,750" />
+  </g>
+  
+  <g stroke="#7a9eb5" stroke-width="0.6" stroke-opacity="0.2" fill="none">
+    <line x1="550" y1="280" x2="1300" y2="280" />
+    <line x1="550" y1="340" x2="1300" y2="340" />
+    <line x1="550" y1="400" x2="1300" y2="400" />
+    <line x1="550" y1="460" x2="1300" y2="460" />
+    <line x1="550" y1="520" x2="1300" y2="520" />
+    <line x1="550" y1="580" x2="1300" y2="580" />
+    <line x1="550" y1="640" x2="1300" y2="640" />
+    <line x1="550" y1="700" x2="1300" y2="700" />
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#3a2510" stroke-width="0.5" rx="4" opacity="0.3" />
+</svg>

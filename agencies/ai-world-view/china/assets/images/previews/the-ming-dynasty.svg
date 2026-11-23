@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Ming Dynasty — Article Preview Banner</title>
+  <defs>
+    <linearGradient id="parch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="100%" stop-color="#c9b47a" />
+    </linearGradient>
+    <linearGradient id="skygrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cfd8" />
+      <stop offset="100%" stop-color="#dde8c0" />
+    </linearGradient>
+    <linearGradient id="wallgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a7055" />
+      <stop offset="100%" stop-color="#5c4a2a" />
+    </linearGradient>
+    <linearGradient id="roofgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b2020" />
+      <stop offset="100%" stop-color="#5a1010" />
+    </linearGradient>
+    <linearGradient id="seagrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7aabbc" />
+      <stop offset="100%" stop-color="#4d8fa0" />
+    </linearGradient>
+    <linearGradient id="overlay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a0f00" stop-opacity="0.55" />
+      <stop offset="45%" stop-color="#1a0f00" stop-opacity="0.0" />
+      <stop offset="100%" stop-color="#1a0f00" stop-opacity="0.0" />
+    </linearGradient>
+    <filter id="noise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noiseOut" />
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parch)" />
+
+  
+  <rect width="1536" height="560" fill="url(#skygrad)" opacity="0.6" />
+
+  
+  <g stroke="#a08840" stroke-width="0.8" opacity="0.35">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <g fill="#9aab88" opacity="0.5">
+    <polygon points="1100,560 1180,390 1260,560" />
+    <polygon points="1200,560 1300,340 1400,560" />
+    <polygon points="1320,560 1420,400 1536,560" />
+    <polygon points="1050,560 1130,440 1210,560" />
+  </g>
+  <g fill="#7a8c6a" opacity="0.4">
+    <polygon points="1150,560 1240,420 1330,560" />
+    <polygon points="1350,560 1450,370 1536,560" />
+  </g>
+
+  
+  <ellipse cx="1300" cy="800" rx="320" ry="180" fill="url(#seagrad)" opacity="0.45" />
+
+  
+  <path d="M680,200 Q730,180 790,195 Q850,210 900,250 Q940,290 930,340 Q950,380 980,410 Q1000,450 970,500 Q940,540 920,580 Q900,620 870,650 Q840,690 800,710 Q760,730 720,720 Q680,710 650,680 Q620,650 610,610 Q590,570 600,530 Q610,490 630,460 Q640,430 630,390 Q620,350 640,310 Q660,270 680,240 Z" fill="#c8a85a" opacity="0.6" stroke="#8a6830" stroke-width="1.5" />
+
+  
+  <g>
+    
+    <path d="M400,480 Q480,440 560,460 Q640,480 720,450 Q800,420 880,440 Q960,460 1040,430 Q1100,415 1160,430" fill="none" stroke="#6b5535" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <path d="M400,480 Q480,440 560,460 Q640,480 720,450 Q800,420 880,440 Q960,460 1040,430 Q1100,415 1160,430" fill="none" stroke="#9a7a4a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <g fill="#7a5c35" stroke="#5a3c20" stroke-width="1">
+      <rect x="394" y="464" width="22" height="30" rx="2" />
+      <rect x="480" y="428" width="22" height="30" rx="2" />
+      <rect x="560" y="446" width="22" height="30" rx="2" />
+      <rect x="648" y="432" width="22" height="30" rx="2" />
+      <rect x="720" y="435" width="22" height="30" rx="2" />
+      <rect x="808" y="424" width="22" height="30" rx="2" />
+      <rect x="880" y="426" width="22" height="30" rx="2" />
+      <rect x="960" y="416" width="22" height="30" rx="2" />
+      <rect x="1040" y="416" width="22" height="30" rx="2" />
+      <rect x="1140" y="414" width="22" height="30" rx="2" />
+    </g>
+  </g>
+
+  
+  <g transform="translate(840, 580)">
+    
+    <rect x="-140" y="80" width="280" height="30" fill="#c8a870" stroke="#8a6830" stroke-width="1.5" />
+    <rect x="-120" y="60" width="240" height="25" fill="#d4b47a" stroke="#8a6830" stroke-width="1.5" />
+    <rect x="-100" y="42" width="200" height="22" fill="#c8a870" stroke="#8a6830" stroke-width="1.5" />
+    
+    <rect x="-90" y="0" width="180" height="46" fill="#e8d09a" stroke="#8a6830" stroke-width="1.5" />
+    
+    <polygon points="-110,-10 0,-55 110,-10" fill="#8b2020" stroke="#5a1010" stroke-width="1.5" />
+    <polygon points="-100,-10 0,-48 100,-10" fill="#a83030" stroke="#8b2020" stroke-width="1" />
+    
+    <circle cx="0" cy="-55" r="5" fill="#d4a820" />
+    <circle cx="-110" cy="-10" r="4" fill="#d4a820" />
+    <circle cx="110" cy="-10" r="4" fill="#d4a820" />
+    
+    <polygon points="-95,0 0,-30 95,0" fill="#8b2020" stroke="#5a1010" stroke-width="1" />
+    
+    <rect x="-15" y="20" width="30" height="26" fill="#6b4020" stroke="#4a2a10" stroke-width="1" />
+    <rect x="-55" y="18" width="18" height="20" fill="#c8a040" opacity="0.6" stroke="#8a6820" stroke-width="1" />
+    <rect x="37" y="18" width="18" height="20" fill="#c8a040" opacity="0.6" stroke="#8a6820" stroke-width="1" />
+    
+    <rect x="-160" y="20" width="70" height="36" fill="#dcc088" stroke="#8a6830" stroke-width="1" />
+    <polygon points="-165,20 -125,-8 -85,20" fill="#922020" stroke="#5a1010" stroke-width="1" />
+    <rect x="90" y="20" width="70" height="36" fill="#dcc088" stroke="#8a6830" stroke-width="1" />
+    <polygon points="85,20 125,-8 165,20" fill="#922020" stroke="#5a1010" stroke-width="1" />
+  </g>
+
+  
+  <g transform="translate(1340, 750)">
+    
+    <path d="M-70,20 Q-60,40 0,45 Q60,40 70,20 L50,0 L-50,0 Z" fill="#7a5535" stroke="#4a3015" stroke-width="1.5" />
+    
+    <rect x="-48" y="-4" width="96" height="10" fill="#9a7045" stroke="#6a4820" stroke-width="1" />
+    
+    <line x1="0" y1="-4" x2="0" y2="-80" stroke="#5a3820" stroke-width="3" />
+    
+    <polygon points="-30,-70 30,-70 20,-20 -20,-20" fill="#c8a050" opacity="0.85" stroke="#8a6830" stroke-width="1" />
+    
+    <line x1="-30" y1="-4" x2="-30" y2="-50" stroke="#5a3820" stroke-width="2" />
+    <polygon points="-50,-44 -10,-44 -14,-14 -46,-14" fill="#c8a050" opacity="0.7" stroke="#8a6830" stroke-width="1" />
+    
+    <polygon points="0,-80 18,-73 0,-66" fill="#c82020" />
+  </g>
+
+  
+  <g transform="translate(1100, 800)">
+    <ellipse cx="0" cy="-60" rx="28" ry="12" fill="#dce8f0" stroke="#3a6890" stroke-width="1.5" />
+    <path d="M-28,-60 Q-35,-20 -30,40 Q-20,60 0,62 Q20,60 30,40 Q35,-20 28,-60" fill="#dce8f0" stroke="#3a6890" stroke-width="1.5" />
+    <ellipse cx="0" cy="62" rx="30" ry="10" fill="#c8daea" stroke="#3a6890" stroke-width="1" />
+    
+    <ellipse cx="0" cy="-30" rx="27" ry="5" fill="none" stroke="#3a6890" stroke-width="4" opacity="0.6" />
+    <ellipse cx="0" cy="20" rx="29" ry="5" fill="none" stroke="#3a6890" stroke-width="3" opacity="0.5" />
+    
+    <circle cx="0" cy="-5" r="10" fill="none" stroke="#3a6890" stroke-width="2" opacity="0.5" />
+    <circle cx="0" cy="-5" r="4" fill="#3a6890" opacity="0.4" />
+  </g>
+
+  
+  <g transform="translate(1440, 130)" fill="#6b4820" stroke="#4a2a10">
+    <polygon points="0,-48 8,-12 -8,-12" fill="#8a2020" />
+    <polygon points="0,48 8,12 -8,12" fill="#6b4820" />
+    <polygon points="-48,0 -12,8 -12,-8" fill="#6b4820" />
+    <polygon points="48,0 12,8 12,-8" fill="#6b4820" />
+    <polygon points="-34,-34 -6,-10 -10,-6" fill="#9a8060" />
+    <polygon points="34,-34 6,-10 10,-6" fill="#9a8060" />
+    <polygon points="-34,34 -6,10 -10,6" fill="#9a8060" />
+    <polygon points="34,34 6,10 10,6" fill="#9a8060" />
+    <circle cx="0" cy="0" r="9" fill="#c8a040" stroke="#8a6020" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#6b4820" />
+    
+    <text x="0" y="-54" text-anchor="middle" font-size="14" font-family="serif" fill="#4a2a10" stroke="none">N</text>
+    <text x="0" y="66" text-anchor="middle" font-size="14" font-family="serif" fill="#4a2a10" stroke="none">S</text>
+    <text x="-58" y="5" text-anchor="middle" font-size="14" font-family="serif" fill="#4a2a10" stroke="none">W</text>
+    <text x="58" y="5" text-anchor="middle" font-size="14" font-family="serif" fill="#4a2a10" stroke="none">E</text>
+  </g>
+
+  
+  <rect width="1536" height="1024" fill="url(#overlay)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a6030" stroke-width="3" opacity="0.7" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#c8a040" stroke-width="1" opacity="0.5" />
+
+  
+  <g fill="none" stroke="#c8a040" stroke-width="1.5" opacity="0.6">
+    <path d="M18,18 L18,80 M18,18 L80,18" />
+    <path d="M1518,18 L1518,80 M1518,18 L1456,18" />
+    <path d="M18,1006 L18,944 M18,1006 L80,1006" />
+    <path d="M1518,1006 L1518,944 M1518,1006 L1456,1006" />
+  </g>
+
+  
+  <text x="100" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="148" font-weight="bold" fill="#f5e8c0" opacity="0.97" letter-spacing="6">The Ming</text>
+  <text x="100" y="460" font-family="Georgia, 'Times New Roman', serif" font-size="148" font-weight="bold" fill="#f5e8c0" opacity="0.97" letter-spacing="6">Dynasty</text>
+
+  
+  <text x="104" y="530" font-family="Georgia, 'Times New Roman', serif" font-size="36" fill="#d4b870" opacity="0.9" letter-spacing="10">1368 – 1644 CE</text>
+
+  
+  <line x1="104" y1="548" x2="560" y2="548" stroke="#c8a040" stroke-width="2" opacity="0.7" />
+
+  
+  <text x="104" y="600" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#c8b880" opacity="0.8" letter-spacing="4">Forbidden City · Great Wall · Treasure Fleet</text>
+
+  
+  <rect x="0" y="940" width="1536" height="84" fill="#1a0f00" opacity="0.45" />
+  <text x="768" y="990" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#c8a840" letter-spacing="8" opacity="0.9">Han Chinese Sovereignty · Imperial Grandeur · Maritime Ambition</text>
+
+  
+  <rect width="1536" height="1024" fill="#c8a050" opacity="0.07" filter="url(#noise)" />
+</svg>

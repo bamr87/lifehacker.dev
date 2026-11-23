@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Goryeo Period: Korean Kingdom and Medieval Civilization</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8bfcc" />
+      <stop offset="100%" stop-color="#8faab8" />
+    </linearGradient>
+    <linearGradient id="landgrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b8a870" />
+    </linearGradient>
+    <linearGradient id="koreagrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b6f3e" />
+      <stop offset="100%" stop-color="#7a5f2e" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="hatching" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#9a8a60" stroke-width="0.5" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatching)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7550" stroke-width="3" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8a7550" stroke-width="1" />
+
+  
+  <rect x="29" y="29" width="1478" height="966" fill="url(#sea)" opacity="0.35" />
+
+  
+  
+  <path d="M 29,29 L 900,29 L 920,60 L 880,120 L 860,180 L 820,240 L 780,300 L 750,380 L 720,460 L 700,540 L 680,620 L 660,700 L 640,780 L 620,860 L 610,960 L 580,995 L 29,995 Z" fill="url(#landgrad)" stroke="#8a7550" stroke-width="1.5" />
+
+  
+  <path d="M 1050,200 Q 1080,180 1110,220 Q 1140,260 1120,310 Q 1100,360 1070,390 Q 1040,420 1010,400 Q 980,380 990,330 Q 1000,270 1050,200 Z" fill="url(#landgrad)" stroke="#8a7550" stroke-width="1" />
+  <path d="M 1080,420 Q 1100,400 1130,440 Q 1160,480 1150,540 Q 1140,600 1110,640 Q 1080,670 1060,650 Q 1030,620 1040,570 Q 1055,500 1080,420 Z" fill="url(#landgrad)" stroke="#8a7550" stroke-width="1" />
+
+  
+  <path d="M 760,300 Q 790,290 820,310 Q 850,330 860,370 Q 870,410 860,460 Q 850,510 830,555 Q 810,600 790,640 Q 770,670 750,690 Q 730,700 718,685 Q 706,670 710,640 Q 714,600 720,560 Q 726,510 730,460 Q 734,410 740,360 Q 748,320 760,300 Z" fill="url(#koreagrad)" stroke="#5a3e1e" stroke-width="2.5" />
+
+  
+  <text x="784" y="490" font-family="Georgia, serif" font-size="20" fill="#f0e8d0" text-anchor="middle" font-style="italic" transform="rotate(-5, 784, 490)">고려</text>
+  <text x="784" y="514" font-family="Georgia, serif" font-size="14" fill="#e8dfc8" text-anchor="middle" font-style="italic">高麗</text>
+
+  
+  <text x="920" y="580" font-family="Georgia, serif" font-size="18" fill="#5a7080" text-anchor="middle" font-style="italic" opacity="0.8">Yellow</text>
+  <text x="920" y="602" font-family="Georgia, serif" font-size="18" fill="#5a7080" text-anchor="middle" font-style="italic" opacity="0.8">Sea</text>
+  <text x="1050" y="520" font-family="Georgia, serif" font-size="18" fill="#5a7080" text-anchor="middle" font-style="italic" opacity="0.8">Sea of</text>
+  <text x="1050" y="542" font-family="Georgia, serif" font-size="18" fill="#5a7080" text-anchor="middle" font-style="italic" opacity="0.8">Japan</text>
+
+  
+  <text x="380" y="480" font-family="Georgia, serif" font-size="28" fill="#8a7550" text-anchor="middle" font-style="italic" opacity="0.7">China</text>
+
+  
+  <text x="520" y="200" font-family="Georgia, serif" font-size="22" fill="#8a7550" text-anchor="middle" font-style="italic" opacity="0.7">Manchuria</text>
+
+  
+  <g transform="translate(200, 400)">
+    
+    <ellipse cx="0" cy="-120" rx="28" ry="10" fill="#7aaa88" stroke="#4a7a58" stroke-width="1.5" />
+    <path d="M -28,-120 Q -55,-80 -60,0 Q -65,80 -50,140 Q -30,160 0,165 Q 30,160 50,140 Q 65,80 60,0 Q 55,-80 28,-120 Z" fill="#6a9978" stroke="#4a7a58" stroke-width="1.5" />
+    <ellipse cx="0" cy="165" rx="50" ry="14" fill="#5a8968" stroke="#4a7a58" stroke-width="1.5" />
+    
+    <path d="M -20,-100 Q -35,-60 -38,-10" stroke="#8abf98" stroke-width="3" fill="none" opacity="0.6" />
+    
+    <path d="M -15,20 Q 0,5 15,20 Q 25,40 15,55 Q 0,65 -15,55 Q -25,40 -15,20 Z" fill="none" stroke="#4a7a58" stroke-width="1.2" opacity="0.7" />
+    <circle cx="0" cy="37" r="5" fill="none" stroke="#4a7a58" stroke-width="1" opacity="0.7" />
+    <path d="M -10,80 Q 0,70 10,80 Q 18,95 10,108 Q 0,115 -10,108 Q -18,95 -10,80 Z" fill="none" stroke="#4a7a58" stroke-width="1.2" opacity="0.7" />
+  </g>
+
+  
+  <g transform="translate(200, 700)">
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#8a7550" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#8a7550" stroke-width="1" opacity="0.5" />
+    
+    <ellipse cx="0" cy="-28" rx="9" ry="16" fill="#c8a870" stroke="#8a7550" stroke-width="1" opacity="0.7" />
+    <ellipse cx="28" cy="0" rx="16" ry="9" fill="#c8a870" stroke="#8a7550" stroke-width="1" opacity="0.7" />
+    <ellipse cx="0" cy="28" rx="9" ry="16" fill="#c8a870" stroke="#8a7550" stroke-width="1" opacity="0.7" />
+    <ellipse cx="-28" cy="0" rx="16" ry="9" fill="#c8a870" stroke="#8a7550" stroke-width="1" opacity="0.7" />
+    <ellipse cx="20" cy="-20" rx="9" ry="16" fill="#c8a870" stroke="#8a7550" stroke-width="1" opacity="0.7" transform="rotate(45,20,-20)" />
+    <ellipse cx="20" cy="20" rx="9" ry="16" fill="#c8a870" stroke="#8a7550" stroke-width="1" opacity="0.7" transform="rotate(-45,20,20)" />
+    <ellipse cx="-20" cy="20" rx="9" ry="16" fill="#c8a870" stroke="#8a7550" stroke-width="1" opacity="0.7" transform="rotate(45,-20,20)" />
+    <ellipse cx="-20" cy="-20" rx="9" ry="16" fill="#c8a870" stroke="#8a7550" stroke-width="1" opacity="0.7" transform="rotate(-45,-20,-20)" />
+    <circle cx="0" cy="0" r="8" fill="#c8a870" stroke="#8a7550" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1400, 870)">
+    
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#8a7550" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#8a7550" stroke-width="0.8" />
+    
+    <polygon points="0,-60 -10,-30 0,-20 10,-30" fill="#8a7550" />
+    <polygon points="0,60 -10,30 0,20 10,30" fill="#b8a870" />
+    <polygon points="-60,0 -30,-10 -20,0 -30,10" fill="#b8a870" />
+    <polygon points="60,0 30,-10 20,0 30,10" fill="#b8a870" />
+    
+    <polygon points="0,-60 -8,-38 0,-28 8,-38" fill="#8a7550" transform="rotate(45)" />
+    <polygon points="0,-60 -8,-38 0,-28 8,-38" fill="#b8a870" transform="rotate(135)" />
+    <polygon points="0,-60 -8,-38 0,-28 8,-38" fill="#b8a870" transform="rotate(225)" />
+    <polygon points="0,-60 -8,-38 0,-28 8,-38" fill="#8a7550" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="8" fill="#8a7550" />
+    <circle cx="0" cy="0" r="4" fill="#e8dfc8" />
+    
+    <text x="0" y="-66" font-family="Georgia, serif" font-size="16" fill="#5a3e1e" text-anchor="middle" font-weight="bold">N</text>
+  </g>
+
+  
+  <g transform="translate(1280, 300)" opacity="0.6">
+    <rect x="-45" y="-60" width="90" height="120" rx="3" fill="#c8a870" stroke="#8a7550" stroke-width="1.5" />
+    
+    <line x1="-30" y1="-40" x2="30" y2="-40" stroke="#5a3e1e" stroke-width="2" />
+    <line x1="-30" y1="-28" x2="30" y2="-28" stroke="#5a3e1e" stroke-width="2" />
+    <line x1="-30" y1="-16" x2="20" y2="-16" stroke="#5a3e1e" stroke-width="2" />
+    <line x1="-30" y1="-4" x2="30" y2="-4" stroke="#5a3e1e" stroke-width="2" />
+    <line x1="-30" y1="8" x2="25" y2="8" stroke="#5a3e1e" stroke-width="2" />
+    <line x1="-30" y1="20" x2="30" y2="20" stroke="#5a3e1e" stroke-width="2" />
+    <line x1="-30" y1="32" x2="18" y2="32" stroke="#5a3e1e" stroke-width="2" />
+    <line x1="-30" y1="44" x2="30" y2="44" stroke="#5a3e1e" stroke-width="2" />
+  </g>
+
+  
+  <g transform="translate(1330, 580)">
+    
+    <rect x="-6" y="0" width="12" height="100" fill="#8a7550" opacity="0.7" />
+    
+    <polygon points="-20,-180 20,-180 15,-160 -15,-160" fill="#8a7550" opacity="0.8" />
+    <rect x="-15" y="-160" width="30" height="20" fill="#7a6540" opacity="0.8" />
+    
+    <polygon points="-28,-140 28,-140 22,-118 -22,-118" fill="#8a7550" opacity="0.8" />
+    <rect x="-22" y="-118" width="44" height="20" fill="#7a6540" opacity="0.8" />
+    
+    <polygon points="-36,-98 36,-98 30,-76 -30,-76" fill="#8a7550" opacity="0.8" />
+    <rect x="-30" y="-76" width="60" height="20" fill="#7a6540" opacity="0.8" />
+    
+    <polygon points="-46,-56 46,-56 38,-34 -38,-34" fill="#8a7550" opacity="0.8" />
+    <rect x="-38" y="-34" width="76" height="20" fill="#7a6540" opacity="0.8" />
+    
+    <polygon points="-58,-14 58,-14 48,8 -48,8" fill="#8a7550" opacity="0.8" />
+    <rect x="-48" y="8" width="96" height="22" fill="#7a6540" opacity="0.8" />
+    
+    <rect x="-60" y="30" width="120" height="12" fill="#8a7550" opacity="0.8" />
+    <rect x="-70" y="42" width="140" height="10" fill="#8a7550" opacity="0.8" />
+  </g>
+
+  
+  <text x="800" y="650" font-family="Georgia, serif" font-size="16" fill="#5a7080" text-anchor="middle" font-style="italic" opacity="0.85">918–1392 CE</text>
+
+  
+  <rect x="900" y="60" width="600" height="440" rx="4" fill="#e8dfc8" opacity="0.7" stroke="#8a7550" stroke-width="1.5" />
+
+  <text x="1200" y="120" font-family="Georgia, serif" font-size="22" fill="#5a3e1e" text-anchor="middle" letter-spacing="4" opacity="0.8">GORYEO PERIOD</text>
+
+  
+  <line x1="940" y1="135" x2="1460" y2="135" stroke="#8a7550" stroke-width="1.5" />
+  <line x1="940" y1="140" x2="1460" y2="140" stroke="#8a7550" stroke-width="0.5" />
+
+  <text x="1200" y="210" font-family="Georgia, serif" font-size="52" fill="#3a2a10" text-anchor="middle" font-weight="bold" letter-spacing="1">Korean</text>
+  <text x="1200" y="275" font-family="Georgia, serif" font-size="52" fill="#3a2a10" text-anchor="middle" font-weight="bold" letter-spacing="1">Kingdom</text>
+
+  <line x1="960" y1="295" x2="1440" y2="295" stroke="#8a7550" stroke-width="1" />
+
+  <text x="1200" y="345" font-family="Georgia, serif" font-size="30" fill="#5a3e1e" text-anchor="middle" font-style="italic">&amp; Medieval</text>
+  <text x="1200" y="385" font-family="Georgia, serif" font-size="30" fill="#5a3e1e" text-anchor="middle" font-style="italic">Civilization</text>
+
+  
+  <line x1="940" y1="405" x2="1460" y2="405" stroke="#8a7550" stroke-width="0.5" />
+  <line x1="940" y1="410" x2="1460" y2="410" stroke="#8a7550" stroke-width="1.5" />
+
+  <text x="1200" y="456" font-family="Georgia, serif" font-size="17" fill="#5a3e1e" text-anchor="middle" font-style="italic">高麗 · 918–1392</text>
+
+  
+  <text x="750" y="330" font-family="Georgia, serif" font-size="11" fill="#f0e8d0" text-anchor="middle" opacity="0.9">Later</text>
+  <text x="750" y="344" font-family="Georgia, serif" font-size="11" fill="#f0e8d0" text-anchor="middle" opacity="0.9">Goguryeo</text>
+
+  
+  <circle cx="760" cy="355" r="4" fill="#f0e8d0" stroke="#5a3e1e" stroke-width="1" />
+  <circle cx="770" cy="540" r="4" fill="#f0e8d0" stroke="#5a3e1e" stroke-width="1" />
+  <circle cx="750" cy="640" r="4" fill="#f0e8d0" stroke="#5a3e1e" stroke-width="1" />
+
+  
+  <circle cx="762" cy="415" r="6" fill="#e8c850" stroke="#5a3e1e" stroke-width="1.5" />
+  <text x="780" y="412" font-family="Georgia, serif" font-size="13" fill="#f0e8d0" font-style="italic">Kaesong</text>
+  <text x="780" y="426" font-family="Georgia, serif" font-size="11" fill="#e8dfc8" font-style="italic">(Capital)</text>
+
+  
+  <rect x="29" y="900" width="1478" height="95" fill="#5a3e1e" opacity="0.75" />
+  <text x="768" y="945" font-family="Georgia, serif" font-size="19" fill="#e8dfc8" text-anchor="middle" letter-spacing="3">BUDDHIST CIVILIZATION · CELADON CERAMICS · MOVABLE TYPE PRINTING · KOREAN PENINSULA</text>
+  <text x="768" y="975" font-family="Georgia, serif" font-size="14" fill="#c8b98a" text-anchor="middle" letter-spacing="2" font-style="italic">The medieval kingdom whose name endures in "Korea" to this day</text>
+
+</svg>

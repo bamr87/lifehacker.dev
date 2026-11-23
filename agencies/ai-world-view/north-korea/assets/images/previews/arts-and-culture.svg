@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Arts and Culture – State-Controlled Film, Music, Literature, and Visual Arts of the DPRK</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#b8a070" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <linearGradient id="titleBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a1f0e" stop-opacity="0.85" />
+      <stop offset="80%" stop-color="#2a1f0e" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#2a1f0e" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  <!-- Film reel -->
+  <g transform="translate(1010, 380)">
+    <circle cx="0" cy="0" r="180" fill="#3a2a12" opacity="0.85" stroke="#5a4020" stroke-width="4" />
+    <circle cx="0" cy="0" r="48" fill="#c9b98a" />
+    <g fill="#c9b98a">
+      <circle cx="0" cy="-120" r="26" /><circle cx="104" cy="-60" r="26" /><circle cx="104" cy="60" r="26" /><circle cx="0" cy="120" r="26" /><circle cx="-104" cy="60" r="26" /><circle cx="-104" cy="-60" r="26" />
+    </g>
+  </g>
+  <!-- Film strip -->
+  <g transform="translate(1010, 660) rotate(-8)">
+    <rect x="-260" y="-46" width="520" height="92" rx="6" fill="#3a2a12" opacity="0.85" />
+    <g fill="#c9b98a">
+      <rect x="-244" y="-40" width="16" height="16" /><rect x="-244" y="24" width="16" height="16" />
+      <rect x="-180" y="-40" width="16" height="16" /><rect x="-180" y="24" width="16" height="16" />
+      <rect x="-116" y="-40" width="16" height="16" /><rect x="-116" y="24" width="16" height="16" />
+      <rect x="-52" y="-40" width="16" height="16" /><rect x="-52" y="24" width="16" height="16" />
+      <rect x="12" y="-40" width="16" height="16" /><rect x="12" y="24" width="16" height="16" />
+      <rect x="76" y="-40" width="16" height="16" /><rect x="76" y="24" width="16" height="16" />
+      <rect x="140" y="-40" width="16" height="16" /><rect x="140" y="24" width="16" height="16" />
+      <rect x="204" y="-40" width="16" height="16" /><rect x="204" y="24" width="16" height="16" />
+    </g>
+    <g fill="#8a2a1a" opacity="0.5">
+      <rect x="-216" y="-18" width="52" height="36" /><rect x="-152" y="-18" width="52" height="36" /><rect x="-88" y="-18" width="52" height="36" /><rect x="-24" y="-18" width="52" height="36" /><rect x="40" y="-18" width="52" height="36" /><rect x="104" y="-18" width="52" height="36" /><rect x="168" y="-18" width="52" height="36" />
+    </g>
+  </g>
+
+  <!-- Title panel -->
+  <rect x="0" y="0" width="510" height="1024" fill="url(#titleBg)" />
+  <line x1="40" y1="40" x2="470" y2="40" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="44" x2="470" y2="44" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="984" x2="470" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="980" x2="470" y2="980" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="40" x2="40" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="44" y1="40" x2="44" y2="984" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+
+  <text x="255" y="110" font-family="Georgia, serif" font-size="14" fill="#c8a84a" text-anchor="middle" letter-spacing="5" opacity="0.9">DPRK · CULTURE &amp; SOCIETY</text>
+  <line x1="70" y1="130" x2="440" y2="130" stroke="#c8a84a" stroke-width="1" opacity="0.5" />
+
+  <text x="255" y="250" font-family="Georgia, serif" font-size="66" fill="#f5e8c8" text-anchor="middle" font-weight="bold" letter-spacing="2">ARTS &amp;</text>
+  <text x="255" y="330" font-family="Georgia, serif" font-size="66" fill="#f5e8c8" text-anchor="middle" font-weight="bold" letter-spacing="2">CULTURE</text>
+  <text x="255" y="390" font-family="Georgia, serif" font-size="20" fill="#c8a84a" text-anchor="middle" letter-spacing="3" font-style="italic">Culture as state propaganda</text>
+  <line x1="100" y1="415" x2="410" y2="415" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <text x="255" y="475" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Film · music · literature · visual arts</text>
+  <text x="255" y="505" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Entirely state-controlled production</text>
+  <line x1="100" y1="530" x2="410" y2="530" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <!-- Theatre masks motif -->
+  <g transform="translate(255, 650)" fill="none" stroke="#c8a84a" stroke-width="6" opacity="0.8">
+    <path d="M -70 -34 Q -70 44 -30 44 Q 10 44 10 -34 Q -30 -46 -70 -34 Z" />
+    <path d="M -56 -12 q 10 -8 20 0 M -24 -12 q 10 -8 20 0" stroke-width="4" />
+    <path d="M -54 18 q 16 16 42 0" stroke-width="4" />
+    <path d="M 30 -34 Q 30 44 70 44 Q 30 46 -6 34" />
+    <path d="M 40 -10 q 10 -6 18 2 M 62 -10 q -4 6 4 12" stroke-width="4" />
+  </g>
+
+  <text x="255" y="770" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">MANSUDAE · MORANBONG · SEK STUDIO</text>
+  <text x="255" y="795" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">THE SHIN SANG-OK ABDUCTION</text>
+  <line x1="100" y1="820" x2="410" y2="820" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <text x="255" y="860" font-family="Georgia, serif" font-size="14" fill="#9a8050" text-anchor="middle" font-style="italic">Propaganda &amp; Agitation Department</text>
+  <text x="255" y="950" font-family="Georgia, serif" font-size="13" fill="#c8a84a" text-anchor="middle" letter-spacing="4" opacity="0.6">ATLAS PLATE · KOREA</text>
+
+  <rect x="8" y="8" width="1520" height="1008" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.5" />
+  <rect x="14" y="14" width="1508" height="996" fill="none" stroke="#c8a84a" stroke-width="1" opacity="0.3" />
+  <rect width="1536" height="1024" fill="#c8a050" opacity="0.04" />
+</svg>

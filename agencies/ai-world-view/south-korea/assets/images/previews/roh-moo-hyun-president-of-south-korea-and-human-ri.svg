@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Roh Moo-hyun — President of South Korea and Human-Rights Advocate</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="50%" stop-color="#d9cc9e" />
+      <stop offset="100%" stop-color="#c8b87a" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a8c4c8" />
+      <stop offset="100%" stop-color="#7fa8b0" />
+    </linearGradient>
+    <linearGradient id="landgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a96e" />
+      <stop offset="100%" stop-color="#b89050" />
+    </linearGradient>
+    <linearGradient id="darkpanel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3a2e1a" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#2a200e" stop-opacity="0.88" />
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#8a7a50" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#7a6a3a" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <clipPath id="banner">
+      <rect width="1536" height="1024" />
+    </clipPath>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  
+  <rect width="1536" height="1024" fill="none" stroke="#8a6a2a" stroke-width="24" opacity="0.5" />
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a6a2a" stroke-width="6" opacity="0.3" />
+
+  
+  <ellipse cx="860" cy="512" rx="620" ry="440" fill="url(#sea)" opacity="0.55" />
+
+  
+  <g stroke="#7a8a6a" stroke-width="0.8" fill="none" opacity="0.35">
+    <ellipse cx="860" cy="512" rx="580" ry="400" />
+    <ellipse cx="860" cy="512" rx="480" ry="320" />
+    <ellipse cx="860" cy="512" rx="370" ry="230" />
+    <line x1="280" y1="512" x2="1440" y2="512" />
+    <line x1="860" y1="112" x2="860" y2="912" />
+    <line x1="400" y1="200" x2="1320" y2="824" />
+    <line x1="1320" y1="200" x2="400" y2="824" />
+  </g>
+
+  
+  <g fill="#c4aa78" opacity="0.5" filter="url(#roughen)">
+    
+    <path d="M 1060 520 C 1068 510 1080 505 1090 510 C 1100 515 1105 530 1098 545 C 1090 558 1072 562 1062 552 C 1052 542 1052 530 1060 520 Z" />
+    
+    <path d="M 1080 490 C 1095 480 1120 478 1135 488 C 1148 498 1145 510 1130 516 C 1115 522 1095 518 1083 508 Z" />
+    
+    <path d="M 1110 470 C 1130 455 1165 445 1200 440 C 1250 435 1300 430 1340 420 C 1360 415 1375 408 1370 420 C 1365 432 1340 440 1310 450 C 1275 462 1230 470 1200 478 C 1165 488 1140 495 1118 490 Z" />
+    
+    <path d="M 1260 390 C 1280 375 1315 370 1340 380 C 1362 390 1368 408 1352 420 C 1335 432 1302 432 1280 420 C 1260 410 1250 402 1260 390 Z" />
+  </g>
+
+  
+  
+  <path d="     M 780 330     C 790 320 810 315 835 318     C 860 321 880 328 900 332     C 920 336 940 338 955 345     C 968 352 975 362 972 375     C 969 388 960 398 948 405     C 938 412 925 418 918 428     C 912 438 914 450 910 460     C 906 470 898 478 888 484     C 878 490 864 492 852 488     C 838 484 828 474 818 466     C 806 456 794 448 782 442     C 770 436 758 432 752 422     C 746 412 748 398 752 386     C 756 374 762 360 770 348     Z   " fill="#b89a5a" stroke="#8a6a2a" stroke-width="2.5" />
+
+  
+  <line x1="752" y1="422" x2="918" y2="428" stroke="#5a3a1a" stroke-width="2" stroke-dasharray="8,4" opacity="0.7" />
+
+  
+  <path d="     M 752 422     C 758 432 770 436 782 442     C 794 448 806 456 818 466     C 828 474 838 484 848 495     C 858 506 862 520 858 535     C 854 550 842 562 828 570     C 812 578 794 580 776 574     C 758 568 742 556 730 542     C 718 528 710 512 708 496     C 706 480 710 464 718 452     C 726 440 740 430 752 422     Z   " fill="#c8a85e" stroke="#8a6a2a" stroke-width="3" />
+
+  
+  <path d="     M 752 422     C 758 432 770 436 782 442     C 794 448 806 456 818 466     C 828 474 838 484 848 495     C 858 506 862 520 858 535     C 854 550 842 562 828 570     C 812 578 794 580 776 574     C 758 568 742 556 730 542     C 718 528 710 512 708 496     C 706 480 710 464 718 452     C 726 440 740 430 752 422     Z   " fill="none" stroke="#d4b870" stroke-width="1.5" opacity="0.6" />
+
+  
+  <ellipse cx="760" cy="605" rx="28" ry="16" fill="#c8a85e" stroke="#8a6a2a" stroke-width="2" />
+
+  
+  <circle cx="800" cy="452" r="7" fill="#5a2a0a" stroke="#f0e0a0" stroke-width="2" />
+  <text x="814" y="448" font-family="Georgia, serif" font-size="13" fill="#3a1a05" font-style="italic" opacity="0.85">Seoul</text>
+
+  
+  <g transform="translate(1080, 750)">
+    
+    <circle r="62" fill="none" stroke="#8a6a2a" stroke-width="2" opacity="0.6" />
+    <circle r="55" fill="none" stroke="#8a6a2a" stroke-width="0.8" opacity="0.4" />
+    
+    
+    <polygon points="0,-55 -10,-30 0,-20 10,-30" fill="#5a3a1a" opacity="0.85" />
+    <polygon points="0,-55 -10,-30 0,-20 10,-30" fill="#3a1a05" clip-path="url(#cnorth)" opacity="0.5" />
+    
+    <polygon points="0,55 -10,30 0,20 10,30" fill="#c8a85e" opacity="0.85" />
+    
+    <polygon points="55,0 30,-10 20,0 30,10" fill="#c8a85e" opacity="0.85" />
+    
+    <polygon points="-55,0 -30,-10 -20,0 -30,10" fill="#5a3a1a" opacity="0.85" />
+    
+    <polygon points="0,-55 5,-35 0,-25 -5,-35" fill="#8a6a2a" opacity="0.4" transform="rotate(45)" />
+    <polygon points="0,-55 5,-35 0,-25 -5,-35" fill="#8a6a2a" opacity="0.4" transform="rotate(135)" />
+    <polygon points="0,-55 5,-35 0,-25 -5,-35" fill="#8a6a2a" opacity="0.4" transform="rotate(225)" />
+    <polygon points="0,-55 5,-35 0,-25 -5,-35" fill="#8a6a2a" opacity="0.4" transform="rotate(315)" />
+    
+    <circle r="8" fill="#8a6a2a" />
+    <circle r="4" fill="#d4b870" />
+    
+    <text x="0" y="-62" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#3a1a05">N</text>
+    <text x="0" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3a1a">S</text>
+    <text x="70" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3a1a">E</text>
+    <text x="-70" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3a1a">W</text>
+  </g>
+
+  
+  <g transform="translate(340, 180)" opacity="0.18">
+    <circle r="55" fill="none" stroke="#5a3a1a" stroke-width="3" />
+    <path d="M -55 0 A 55 55 0 0 1 55 0 A 27.5 27.5 0 0 0 0 0 A 27.5 27.5 0 0 1 -55 0 Z" fill="#8a3a3a" />
+    <path d="M -55 0 A 55 55 0 0 0 55 0 A 27.5 27.5 0 0 1 0 0 A 27.5 27.5 0 0 0 -55 0 Z" fill="#2a2a6a" />
+  </g>
+
+  
+  <rect x="48" y="48" width="620" height="928" rx="4" fill="url(#darkpanel)" />
+
+  
+  <line x1="80" y1="140" x2="636" y2="140" stroke="#d4b870" stroke-width="1.5" opacity="0.6" />
+  <line x1="80" y1="148" x2="636" y2="148" stroke="#d4b870" stroke-width="0.5" opacity="0.3" />
+  <line x1="80" y1="760" x2="636" y2="760" stroke="#d4b870" stroke-width="1.5" opacity="0.4" />
+
+  
+  <rect x="80" y="70" width="556" height="56" rx="2" fill="none" stroke="#d4b870" stroke-width="1" opacity="0.35" />
+
+  
+  <text x="358" y="106" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="6" fill="#d4b870" opacity="0.7">BIOGRAPHICAL ATLAS</text>
+
+  
+  <text x="358" y="195" text-anchor="middle" font-family="serif" font-size="48" fill="#d4b870" opacity="0.5" letter-spacing="8">노무현</text>
+
+  
+  <text x="100" y="280" font-family="Georgia, serif" font-size="50" font-weight="bold" fill="#f0e8cc" letter-spacing="1">Roh Moo-hyun</text>
+  <line x1="100" y1="295" x2="620" y2="295" stroke="#d4b870" stroke-width="1.5" opacity="0.5" />
+
+  
+  <text x="100" y="340" font-family="Georgia, serif" font-size="22" fill="#d4b870" font-style="italic">President of South Korea</text>
+  <text x="100" y="370" font-family="Georgia, serif" font-size="22" fill="#d4b870" font-style="italic">&amp; Human-Rights Advocate</text>
+
+  
+  <text x="100" y="415" font-family="Georgia, serif" font-size="16" fill="#b8a070" letter-spacing="2">1946 – 2009</text>
+
+  
+  <g transform="translate(358, 440)" fill="#d4b870" opacity="0.5">
+    <polygon points="0,-8 3,-3 8,-3 4,1 6,7 0,4 -6,7 -4,1 -8,-3 -3,-3" />
+  </g>
+  <line x1="100" y1="440" x2="330" y2="440" stroke="#d4b870" stroke-width="0.8" opacity="0.4" />
+  <line x1="386" y1="440" x2="618" y2="440" stroke="#d4b870" stroke-width="0.8" opacity="0.4" />
+
+  
+  <text x="100" y="480" font-family="Georgia, serif" font-size="15" fill="#c8b880" opacity="0.85">16th President of the Republic of Korea</text>
+  <text x="100" y="505" font-family="Georgia, serif" font-size="15" fill="#b8a870" opacity="0.7">February 25, 2003 – February 25, 2008</text>
+
+  <text x="100" y="548" font-family="Georgia, serif" font-size="14" fill="#a89860" opacity="0.65" font-style="italic">Self-taught human-rights lawyer</text>
+  <text x="100" y="568" font-family="Georgia, serif" font-size="14" fill="#a89860" opacity="0.65" font-style="italic">from South Gyeongsang Province</text>
+
+  <text x="100" y="610" font-family="Georgia, serif" font-size="14" fill="#988050" opacity="0.6">Born: Kimhae (김해), September 1, 1946</text>
+  <text x="100" y="630" font-family="Georgia, serif" font-size="14" fill="#988050" opacity="0.6">Died: May 23, 2009</text>
+
+  
+  <g transform="translate(100, 700)">
+    <text x="0" y="-8" font-family="Georgia, serif" font-size="11" fill="#c8a840" opacity="0.55" letter-spacing="2">KOREAN PENINSULA</text>
+    <rect x="0" y="0" width="60" height="8" fill="#d4b870" opacity="0.5" />
+    <rect x="60" y="0" width="60" height="8" fill="none" stroke="#d4b870" stroke-width="1" opacity="0.5" />
+    <rect x="120" y="0" width="60" height="8" fill="#d4b870" opacity="0.5" />
+    <text x="0" y="20" font-family="Georgia, serif" font-size="10" fill="#b8a060" opacity="0.5">0</text>
+    <text x="55" y="20" font-family="Georgia, serif" font-size="10" fill="#b8a060" opacity="0.5">100</text>
+    <text x="115" y="20" font-family="Georgia, serif" font-size="10" fill="#b8a060" opacity="0.5">200 km</text>
+  </g>
+
+  
+  <text x="358" y="800" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="3" fill="#b8a060" opacity="0.5">DEMOCRATIZATION · DIPLOMACY · JUSTICE</text>
+
+  
+  <rect x="110" y="830" width="436" height="100" rx="3" fill="none" stroke="#d4b870" stroke-width="1" opacity="0.25" />
+  <text x="328" y="868" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#c8a840" opacity="0.5" letter-spacing="2">REPUBLIC OF KOREA</text>
+  <text x="328" y="890" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#a88030" opacity="0.4">대한민국</text>
+  <text x="328" y="912" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#a88030" opacity="0.4" letter-spacing="1">Est. 1948</text>
+
+  
+  <rect x="48" y="48" width="620" height="928" rx="4" fill="url(#hatch)" opacity="0.12" />
+
+  
+  <text x="1180" y="490" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4a6a70" opacity="0.6" font-style="italic" transform="rotate(-15, 1180, 490)">Sea of Japan</text>
+  <text x="680" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4a6a70" opacity="0.6" font-style="italic" transform="rotate(10, 680, 500)">Yellow Sea</text>
+
+  
+  <path d="M 670 250 C 680 260 685 280 682 310 C 678 340 668 360 660 380 C 652 400 645 420 648 440 C 651 460 660 475 658 490 C 656 505 645 515 650 520 C 655 525 668 520 680 515" fill="#b89a5a" opacity="0.3" stroke="#8a6a2a" stroke-width="1" filter="url(#roughen)" />
+
+  
+  <text x="835" y="418" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a3a1a" opacity="0.7" letter-spacing="1">— DMZ —</text>
+
+  
+  <g stroke="#8a6a2a" stroke-width="2" fill="none" opacity="0.5">
+    <path d="M 48 48 L 48 108 M 48 48 L 108 48" />
+    <path d="M 1488 48 L 1488 108 M 1488 48 L 1428 48" />
+    <path d="M 48 976 L 48 916 M 48 976 L 108 976" />
+    <path d="M 1488 976 L 1488 916 M 1488 976 L 1428 976" />
+  </g>
+</svg>

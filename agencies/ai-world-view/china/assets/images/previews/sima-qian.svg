@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Sima Qian – China's Grand Historian</title>
+  <defs>
+    <linearGradient id="parch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="100%" stop-color="#c9b47a" />
+    </linearGradient>
+    <linearGradient id="scrollgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4a855" />
+      <stop offset="50%" stop-color="#f5e6c0" />
+      <stop offset="100%" stop-color="#c9a040" />
+    </linearGradient>
+    <linearGradient id="inkgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a1f0a" />
+      <stop offset="100%" stop-color="#4a3520" />
+    </linearGradient>
+    <linearGradient id="skygrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b6e3a" />
+      <stop offset="100%" stop-color="#c9a55a" />
+    </linearGradient>
+    <filter id="etched">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parch)" />
+
+  
+  <g opacity="0.08" stroke="#3a2800" stroke-width="1">
+    <line x1="0" y1="102" x2="1536" y2="102" />
+    <line x1="0" y1="204" x2="1536" y2="204" />
+    <line x1="0" y1="306" x2="1536" y2="306" />
+    <line x1="0" y1="408" x2="1536" y2="408" />
+    <line x1="0" y1="510" x2="1536" y2="510" />
+    <line x1="0" y1="612" x2="1536" y2="612" />
+    <line x1="0" y1="714" x2="1536" y2="714" />
+    <line x1="0" y1="816" x2="1536" y2="816" />
+    <line x1="0" y1="918" x2="1536" y2="918" />
+    <line x1="153" y1="0" x2="153" y2="1024" />
+    <line x1="307" y1="0" x2="307" y2="1024" />
+    <line x1="460" y1="0" x2="460" y2="1024" />
+    <line x1="614" y1="0" x2="614" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="921" y1="0" x2="921" y2="1024" />
+    <line x1="1075" y1="0" x2="1075" y2="1024" />
+    <line x1="1228" y1="0" x2="1228" y2="1024" />
+    <line x1="1382" y1="0" x2="1382" y2="1024" />
+  </g>
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#7a5a1e" stroke-width="6" />
+  
+  <rect x="36" y="36" width="1464" height="952" fill="none" stroke="#7a5a1e" stroke-width="2" />
+
+  
+  
+  <path d="M 340 180 Q 380 150 440 155 Q 500 148 560 160 Q 620 155 680 165 Q 740 158 800 170 Q 860 160 910 175 Q 960 165 1000 185 Q 1040 175 1070 200 Q 1100 210 1110 240 Q 1130 260 1120 290 Q 1110 320 1130 350 Q 1140 380 1120 410 Q 1100 440 1080 460 Q 1060 490 1050 520 Q 1040 550 1020 570 Q 990 600 960 610 Q 930 630 900 650 Q 870 670 840 660 Q 810 680 780 700 Q 750 720 720 710 Q 690 730 660 720 Q 630 740 600 730 Q 570 750 540 740 Q 510 760 480 745 Q 450 760 420 750 Q 390 760 370 740 Q 340 730 320 710 Q 300 690 290 660 Q 280 630 285 600 Q 280 570 270 540 Q 260 510 265 480 Q 255 450 260 420 Q 255 390 265 360 Q 260 330 270 300 Q 265 270 280 240 Q 290 210 320 195 Z" fill="#b8975a" stroke="#7a5a1e" stroke-width="2.5" opacity="0.7" />
+
+  
+  <path d="M 380 380 Q 450 360 510 390 Q 560 410 620 400 Q 680 385 730 410 Q 790 430 840 420 Q 880 415 920 435 Q 950 450 970 470" fill="none" stroke="#6a9ab8" stroke-width="3.5" opacity="0.6" stroke-linecap="round" />
+
+  
+  <path d="M 420 530 Q 490 510 560 520 Q 630 530 700 525 Q 760 515 820 535 Q 870 548 920 560 Q 950 570 980 585" fill="none" stroke="#6a9ab8" stroke-width="3" opacity="0.6" stroke-linecap="round" />
+
+  
+  <circle cx="680" cy="430" r="12" fill="#8b1a1a" opacity="0.85" />
+  <circle cx="680" cy="430" r="20" fill="none" stroke="#8b1a1a" stroke-width="2" opacity="0.5" />
+  <text x="700" y="418" font-family="serif" font-size="22" fill="#5a1010" opacity="0.85" font-style="italic">Chang'an</text>
+
+  
+  <g fill="#9a7840" opacity="0.5" stroke="#7a5a1e" stroke-width="1.5">
+    <polygon points="620,480 650,430 680,480" />
+    <polygon points="640,480 675,425 710,480" />
+    <polygon points="660,480 700,420 740,480" />
+    <polygon points="680,480 722,422 762,480" />
+  </g>
+
+  
+  <path d="M 500 200 Q 550 190 600 200 Q 650 190 700 195 Q 750 188 800 195 Q 850 185 900 195 Q 940 190 970 205" fill="none" stroke="#7a5a1e" stroke-width="4" stroke-dasharray="12,6" opacity="0.6" stroke-linecap="round" />
+  <text x="700" y="178" font-family="serif" font-size="18" fill="#5a3a0a" opacity="0.6" text-anchor="middle" font-style="italic">Great Wall</text>
+
+  
+  
+  <rect x="1020" y="130" width="420" height="720" rx="8" fill="url(#scrollgrad)" stroke="#8b6010" stroke-width="3" />
+  
+  <ellipse cx="1230" cy="130" rx="210" ry="28" fill="#c48820" stroke="#8b6010" stroke-width="2.5" />
+  <ellipse cx="1230" cy="130" rx="200" ry="20" fill="#e0a840" />
+  
+  <ellipse cx="1230" cy="850" rx="210" ry="28" fill="#c48820" stroke="#8b6010" stroke-width="2.5" />
+  <ellipse cx="1230" cy="850" rx="200" ry="20" fill="#e0a840" />
+  
+  <ellipse cx="1020" cy="130" rx="18" ry="28" fill="#b07010" stroke="#8b6010" stroke-width="2" />
+  <ellipse cx="1440" cy="130" rx="18" ry="28" fill="#b07010" stroke="#8b6010" stroke-width="2" />
+  <ellipse cx="1020" cy="850" rx="18" ry="28" fill="#b07010" stroke="#8b6010" stroke-width="2" />
+  <ellipse cx="1440" cy="850" rx="18" ry="28" fill="#b07010" stroke="#8b6010" stroke-width="2" />
+
+  
+  <g font-family="serif" font-size="38" fill="#1a0f00" text-anchor="middle" opacity="0.88">
+    
+    <text x="1370" y="230">史</text>
+    <text x="1370" y="278">記</text>
+    <text x="1370" y="326">太</text>
+    <text x="1370" y="374">史</text>
+    <text x="1370" y="422">公</text>
+    <text x="1370" y="470">書</text>
+    
+    <text x="1310" y="230">司</text>
+    <text x="1310" y="278">馬</text>
+    <text x="1310" y="326">遷</text>
+    <text x="1310" y="374">著</text>
+    <text x="1310" y="422">漢</text>
+    <text x="1310" y="470">武</text>
+    
+    <text x="1250" y="230">本</text>
+    <text x="1250" y="278">紀</text>
+    <text x="1250" y="326">世</text>
+    <text x="1250" y="374">家</text>
+    <text x="1250" y="422">列</text>
+    <text x="1250" y="470">傳</text>
+    
+    <text x="1190" y="230">志</text>
+    <text x="1190" y="278">表</text>
+    <text x="1190" y="326">百</text>
+    <text x="1190" y="374">三</text>
+    <text x="1190" y="422">十</text>
+    <text x="1190" y="470">卷</text>
+    
+    <text x="1130" y="230">五</text>
+    <text x="1130" y="278">十</text>
+    <text x="1130" y="326">二</text>
+    <text x="1130" y="374">萬</text>
+    <text x="1130" y="422">言</text>
+    
+    <text x="1060" y="230">以</text>
+    <text x="1060" y="278">究</text>
+    <text x="1060" y="326">天</text>
+    <text x="1060" y="374">人</text>
+    <text x="1060" y="422">之</text>
+    <text x="1060" y="470">際</text>
+  </g>
+  
+  <g stroke="#8b6010" stroke-width="1" opacity="0.3">
+    <line x1="1025" y1="210" x2="1435" y2="210" />
+    <line x1="1025" y1="258" x2="1435" y2="258" />
+    <line x1="1025" y1="306" x2="1435" y2="306" />
+    <line x1="1025" y1="354" x2="1435" y2="354" />
+    <line x1="1025" y1="402" x2="1435" y2="402" />
+    <line x1="1025" y1="450" x2="1435" y2="450" />
+    <line x1="1025" y1="498" x2="1435" y2="498" />
+  </g>
+  
+  <g stroke="#8b6010" stroke-width="1" opacity="0.25">
+    <line x1="1085" y1="162" x2="1085" y2="820" />
+    <line x1="1145" y1="162" x2="1145" y2="820" />
+    <line x1="1205" y1="162" x2="1205" y2="820" />
+    <line x1="1265" y1="162" x2="1265" y2="820" />
+    <line x1="1325" y1="162" x2="1325" y2="820" />
+    <line x1="1385" y1="162" x2="1385" y2="820" />
+  </g>
+
+  
+  
+  <rect x="96" y="60" width="22" height="560" rx="6" fill="#8b5a1a" stroke="#5a3010" stroke-width="2" />
+  
+  <rect x="90" y="590" width="34" height="30" rx="4" fill="#c8a020" stroke="#8b6010" stroke-width="2" />
+  
+  <path d="M 90 620 Q 107 680 107 760 Q 107 820 107 860 L 107 860 Q 107 820 107 760 Q 107 680 124 620 Z" fill="#2a1a0a" stroke="#1a0a00" stroke-width="1.5" />
+  
+  <ellipse cx="107" cy="872" rx="14" ry="18" fill="#1a0a00" opacity="0.8" />
+  <path d="M 107 890 Q 112 910 107 930 Q 102 910 107 890" fill="#1a0a00" opacity="0.6" />
+
+  
+  <ellipse cx="107" cy="950" rx="60" ry="18" fill="#1a0a00" opacity="0.3" />
+
+  
+  <g transform="translate(260, 820)" opacity="0.7">
+    
+    <polygon points="0,-60 8,-20 0,-10 -8,-20" fill="#7a5a1e" />
+    <polygon points="0,60 8,20 0,10 -8,20" fill="#7a5a1e" />
+    <polygon points="-60,0 -20,8 -10,0 -20,-8" fill="#7a5a1e" />
+    <polygon points="60,0 20,8 10,0 20,-8" fill="#7a5a1e" />
+    
+    <polygon points="-42,-42 -20,-10 -10,-20" fill="#9a7a3a" opacity="0.6" />
+    <polygon points="42,-42 20,-10 10,-20" fill="#9a7a3a" opacity="0.6" />
+    <polygon points="-42,42 -20,10 -10,20" fill="#9a7a3a" opacity="0.6" />
+    <polygon points="42,42 20,10 10,20" fill="#9a7a3a" opacity="0.6" />
+    
+    <circle r="12" fill="#c8a020" stroke="#7a5a1e" stroke-width="2" />
+    <circle r="5" fill="#7a5a1e" />
+    
+    <circle r="65" fill="none" stroke="#7a5a1e" stroke-width="1.5" />
+    
+    <text x="0" y="-70" font-family="serif" font-size="20" fill="#5a3a0a" text-anchor="middle" font-weight="bold">N</text>
+  </g>
+
+  
+  
+  <rect x="160" y="580" width="820" height="340" rx="6" fill="#2a1f0a" opacity="0.82" />
+  <rect x="166" y="586" width="808" height="328" rx="4" fill="none" stroke="#c8a020" stroke-width="2" opacity="0.6" />
+
+  
+  <text x="570" y="680" font-family="Georgia, 'Times New Roman', serif" font-size="108" fill="#f0d880" text-anchor="middle" letter-spacing="8">SIMA QIAN</text>
+
+  
+  <text x="570" y="755" font-family="serif" font-size="52" fill="#c8a020" text-anchor="middle" letter-spacing="12">司馬遷</text>
+
+  
+  <text x="570" y="820" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#d4b870" text-anchor="middle" letter-spacing="4" font-style="italic">Grand Historian of the Han Dynasty</text>
+
+  
+  <text x="570" y="870" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#a08840" text-anchor="middle" letter-spacing="2">c. 145 – 86 BCE  ·  Records of the Grand Historian  ·  130 Chapters</text>
+
+  
+  <g transform="translate(768, 60)" fill="#7a5a1e" opacity="0.7">
+    <polygon points="0,-14 4,-4 14,-4 6,2 10,14 0,8 -10,14 -6,2 -14,-4 -4,-4" />
+  </g>
+  
+  <g stroke="#7a5a1e" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M 60 60 L 60 100 M 60 60 L 100 60" />
+    <path d="M 1476 60 L 1476 100 M 1476 60 L 1436 60" />
+    <path d="M 60 964 L 60 924 M 60 964 L 100 964" />
+    <path d="M 1476 964 L 1476 924 M 1476 964 L 1436 964" />
+  </g>
+
+  
+  <rect x="340" y="720" width="220" height="100" rx="4" fill="#d4b870" stroke="#7a5a1e" stroke-width="2" opacity="0.0" />
+
+  
+  <rect x="470" y="635" width="200" height="44" rx="4" fill="#c8a020" opacity="0.75" />
+  <text x="570" y="664" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#2a1a00" text-anchor="middle" font-weight="bold">HAN DYNASTY</text>
+
+</svg>

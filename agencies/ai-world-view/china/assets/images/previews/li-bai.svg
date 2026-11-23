@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Li Bai – Tang Dynasty Poet</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </linearGradient>
+    <linearGradient id="moonGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5edd0" />
+      <stop offset="100%" stop-color="#e0c97a" />
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a6b4e" />
+      <stop offset="100%" stop-color="#4a3f2f" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g stroke="#b8a878" stroke-width="0.7" opacity="0.4">
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="256" y1="0" x2="256" y2="1024" />
+    <line x1="512" y1="0" x2="512" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="1024" y1="0" x2="1024" y2="1024" />
+    <line x1="1280" y1="0" x2="1280" y2="1024" />
+  </g>
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#7a6040" stroke-width="3" opacity="0.6" />
+  <rect x="32" y="32" width="1472" height="960" fill="none" stroke="#7a6040" stroke-width="1" opacity="0.4" />
+
+  
+  <circle cx="1180" cy="220" r="160" fill="url(#moonGrad)" opacity="0.85" />
+  <circle cx="1180" cy="220" r="160" fill="none" stroke="#c8a84a" stroke-width="2" opacity="0.5" />
+  
+  <circle cx="1140" cy="180" r="22" fill="none" stroke="#c8a84a" stroke-width="1" opacity="0.3" />
+  <circle cx="1210" cy="250" r="14" fill="none" stroke="#c8a84a" stroke-width="1" opacity="0.3" />
+  <circle cx="1155" cy="255" r="9" fill="none" stroke="#c8a84a" stroke-width="1" opacity="0.25" />
+
+  
+  
+  <polygon points="0,700 120,480 240,600 360,420 480,560 600,380 720,520 840,340 960,500 1080,360 1200,480 1320,400 1440,460 1536,420 1536,780 0,780" fill="#9a8a6a" opacity="0.5" />
+  
+  <polygon points="0,820 150,560 300,680 420,500 560,640 680,460 820,600 950,440 1100,580 1250,470 1380,560 1536,490 1536,900 0,900" fill="url(#mountainGrad)" opacity="0.8" />
+  
+  <polygon points="0,900 200,760 400,840 600,720 800,800 1000,700 1200,780 1400,720 1536,760 1536,1024 0,1024" fill="#3d3020" opacity="0.7" />
+
+  
+  <g fill="#2d2818" opacity="0.75">
+    
+    <polygon points="80,820 110,740 140,820" />
+    <polygon points="75,800 110,710 145,800" />
+    <polygon points="70,780 110,680 150,780" />
+    <rect x="105" y="820" width="10" height="30" />
+    
+    <polygon points="160,830 185,760 210,830" />
+    <polygon points="156,812 185,735 214,812" />
+    <polygon points="152,794 185,710 218,794" />
+    <rect x="181" y="830" width="8" height="25" />
+    
+    <polygon points="1350,810 1378,735 1406,810" />
+    <polygon points="1346,792 1378,708 1410,792" />
+    <polygon points="1342,774 1378,682 1414,774" />
+    <rect x="1373" y="810" width="10" height="28" />
+    
+    <polygon points="1420,820 1445,752 1470,820" />
+    <polygon points="1416,803 1445,728 1474,803" />
+    <rect x="1441" y="820" width="8" height="25" />
+  </g>
+
+  
+  <g stroke="#8aabb0" stroke-width="2" fill="none" opacity="0.5">
+    <path d="M0,940 Q200,920 400,950 Q600,980 800,935 Q1000,890 1200,930 Q1350,955 1536,920" />
+    <path d="M0,960 Q200,940 400,970 Q600,1000 800,955 Q1000,910 1200,950 Q1350,975 1536,940" />
+  </g>
+
+  
+  <g transform="translate(310, 560)" opacity="0.9">
+    
+    <ellipse cx="0" cy="170" rx="38" ry="80" fill="#3d3020" />
+    <polygon points="-38,150 38,150 55,260 -55,260" fill="#3d3020" />
+    
+    <path d="M-38,120 Q-90,140 -100,180 Q-80,175 -38,160Z" fill="#3d3020" />
+    <path d="M38,120 Q90,140 100,180 Q80,175 38,160Z" fill="#3d3020" />
+    
+    <rect x="-22" y="80" width="44" height="80" fill="#3d3020" rx="4" />
+    
+    <ellipse cx="0" cy="60" rx="22" ry="28" fill="#3d3020" />
+    
+    <ellipse cx="0" cy="36" rx="28" ry="8" fill="#2a1e0e" />
+    <polygon points="-10,36 10,36 4,-5 -4,-5" fill="#2a1e0e" />
+    
+    <line x1="90" y1="150" x2="115" y2="120" stroke="#3d3020" stroke-width="8" stroke-linecap="round" />
+    <ellipse cx="118" cy="115" rx="12" ry="8" fill="#b88a40" opacity="0.9" />
+  </g>
+
+  
+  <g stroke="#4a6040" stroke-width="5" fill="none" opacity="0.6">
+    <line x1="1450" y1="750" x2="1460" y2="500" />
+    <line x1="1470" y1="760" x2="1480" y2="520" />
+    <line x1="1490" y1="755" x2="1497" y2="530" />
+  </g>
+  <g fill="#4a6040" opacity="0.55">
+    <ellipse cx="1456" cy="620" rx="20" ry="6" transform="rotate(-30,1456,620)" />
+    <ellipse cx="1475" cy="600" rx="20" ry="6" transform="rotate(20,1475,600)" />
+    <ellipse cx="1460" cy="565" rx="18" ry="5" transform="rotate(-25,1460,565)" />
+    <ellipse cx="1480" cy="650" rx="19" ry="6" transform="rotate(15,1480,650)" />
+    <ellipse cx="1492" cy="610" rx="18" ry="5" transform="rotate(-20,1492,610)" />
+  </g>
+
+  
+  <g transform="translate(100,100)" fill="#7a6040" opacity="0.5">
+    <polygon points="0,-35 5,-10 0,-15 -5,-10" />
+    <polygon points="0,35 5,10 0,15 -5,10" />
+    <polygon points="-35,0 -10,5 -15,0 -10,-5" />
+    <polygon points="35,0 10,5 15,0 10,-5" />
+    <polygon points="-22,-22 -8,-12 -12,-8 -5,-20" />
+    <polygon points="22,-22 8,-12 12,-8 5,-20" />
+    <polygon points="-22,22 -8,12 -12,8 -5,20" />
+    <polygon points="22,22 8,12 12,8 5,20" />
+    <circle cx="0" cy="0" r="5" fill="none" stroke="#7a6040" stroke-width="1.5" />
+    <text x="0" y="-42" text-anchor="middle" font-size="12" font-family="serif" fill="#7a6040">N</text>
+  </g>
+
+  
+  <line x1="440" y1="180" x2="1000" y2="180" stroke="#7a6040" stroke-width="1.5" opacity="0.5" />
+  <line x1="440" y1="490" x2="1000" y2="490" stroke="#7a6040" stroke-width="1.5" opacity="0.5" />
+  <circle cx="440" cy="335" r="5" fill="#7a6040" opacity="0.5" />
+  <circle cx="1000" cy="335" r="5" fill="#7a6040" opacity="0.5" />
+
+  
+  <text x="720" y="310" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="148" font-weight="bold" fill="#2a1e0e" opacity="0.92" letter-spacing="8">Li Bai</text>
+
+  
+  <text x="720" y="390" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#4a3828" opacity="0.8" letter-spacing="4">701–762 CE · Tang Dynasty Poet</text>
+
+  
+  <text x="720" y="450" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#6a5438" opacity="0.65" font-style="italic" letter-spacing="2">Wine · Moon · Nature · Freedom</text>
+
+  
+  <text x="950" y="680" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#5a4830" opacity="0.55" font-style="italic" letter-spacing="3">SICHUAN · TANG EMPIRE</text>
+
+  
+  <circle cx="840" cy="650" r="5" fill="#7a4020" opacity="0.6" />
+  <circle cx="840" cy="650" r="10" fill="none" stroke="#7a4020" stroke-width="1.5" opacity="0.4" />
+</svg>

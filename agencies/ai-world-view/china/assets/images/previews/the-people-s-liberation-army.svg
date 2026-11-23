@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The People's Liberation Army — Atlas Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="starGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#922b21" />
+    </linearGradient>
+    <linearGradient id="mapShade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8a882" />
+      <stop offset="100%" stop-color="#9e9070" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g opacity="0.08" stroke="#5a4a2a" stroke-width="0.5">
+    <line x1="0" y1="100" x2="1536" y2="100" />
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="300" x2="1536" y2="300" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="500" x2="1536" y2="500" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="700" x2="1536" y2="700" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="0" y1="900" x2="1536" y2="900" />
+  </g>
+
+  
+  <g opacity="0.18" stroke="#7a6840" stroke-width="0.7" fill="none">
+    
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+    
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    
+    <ellipse cx="768" cy="512" rx="700" ry="490" stroke-dasharray="6,4" />
+    <ellipse cx="768" cy="512" rx="500" ry="490" stroke-dasharray="6,4" />
+  </g>
+
+  
+  <rect width="1536" height="1024" fill="#c8d4d8" opacity="0.3" />
+
+  
+  
+  <g fill="url(#mapShade)" stroke="#8a7a58" stroke-width="1.5" opacity="0.92">
+    
+    <path d="       M 700,170       L 760,155       L 830,162       L 890,148       L 950,155       L 1000,175       L 1040,160       L 1080,190       L 1100,220       L 1090,270       L 1110,300       L 1095,340       L 1120,370       L 1100,410       L 1080,440       L 1090,480       L 1060,510       L 1040,555       L 1000,580       L 970,560       L 940,590       L 910,610       L 880,600       L 850,630       L 820,620       L 800,640       L 780,630       L 750,660       L 720,650       L 700,670       L 680,650       L 650,660       L 620,640       L 600,610       L 580,580       L 560,540       L 540,500       L 520,460       L 510,420       L 490,390       L 480,350       L 500,310       L 520,280       L 510,250       L 530,220       L 560,200       L 600,195       L 640,180       Z     " />
+    
+    <path d="M 520,170 L 560,155 L 620,148 L 700,170 L 640,180 L 600,195 L 560,200 L 530,220 L 510,190 L 495,175 Z" />
+    
+    <path d="M 890,148 L 950,130 L 1010,140 L 1040,160 L 1000,175 L 950,155 Z" />
+    
+    <path d="M 1090,270 L 1110,250 L 1130,270 L 1140,310 L 1120,340 L 1110,370 L 1095,340 L 1110,300 Z" />
+    
+    <path d="M 700,670 L 720,650 L 750,660 L 780,710 L 770,760 L 755,790 L 740,760 L 720,730 Z" />
+    <path d="M 800,640 L 820,620 L 850,630 L 870,670 L 860,720 L 840,750 L 820,720 L 800,680 Z" />
+    
+    <path d="M 1140,250 L 1160,230 L 1190,250 L 1200,290 L 1180,320 L 1155,300 Z" />
+    <path d="M 1160,310 L 1185,300 L 1210,330 L 1200,370 L 1175,380 L 1155,355 Z" />
+    
+    <ellipse cx="1055" cy="600" rx="18" ry="30" transform="rotate(-15,1055,600)" />
+  </g>
+
+  
+  <rect x="0" y="0" width="460" height="1024" fill="#2c2416" opacity="0.88" />
+  <rect x="460" y="0" width="3" height="1024" fill="#c0392b" opacity="0.9" />
+
+  
+  <rect x="20" y="20" width="420" height="984" fill="none" stroke="#7a6030" stroke-width="1.5" opacity="0.6" />
+  <rect x="28" y="28" width="404" height="968" fill="none" stroke="#7a6030" stroke-width="0.7" opacity="0.4" />
+
+  
+  <g fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.7">
+    <path d="M 36,36 L 60,36 L 60,40 M 36,36 L 36,60 L 40,60" />
+    <path d="M 444,36 L 420,36 L 420,40 M 444,36 L 444,60 L 440,60" />
+    <path d="M 36,988 L 60,988 L 60,984 M 36,988 L 36,964 L 40,964" />
+    <path d="M 444,988 L 420,988 L 420,984 M 444,988 L 444,964 L 440,964" />
+  </g>
+
+  
+  <g transform="translate(950,400)">
+    
+    <circle cx="0" cy="0" r="145" fill="#922b21" opacity="0.15" />
+    <circle cx="0" cy="0" r="125" fill="#922b21" opacity="0.2" />
+    
+    <polygon points="0,-115 27,-37 108,-35 45,14 69,92 0,46 -69,92 -45,14 -108,-35 -27,-37" fill="url(#starGrad)" stroke="#7a1a0f" stroke-width="2" />
+    
+    <circle cx="0" cy="0" r="42" fill="#e74c3c" opacity="0.5" />
+    
+  </g>
+
+  
+  <g fill="#c0392b" opacity="0.75">
+    <polygon points="950,255 956,273 975,273 960,284 966,302 950,291 934,302 940,284 925,273 944,273" transform="scale(0.55) translate(775,-195)" />
+    <polygon points="950,255 956,273 975,273 960,284 966,302 950,291 934,302 940,284 925,273 944,273" transform="translate(70,-80) scale(0.45)" />
+    <polygon points="950,255 956,273 975,273 960,284 966,302 950,291 934,302 940,284 925,273 944,273" transform="translate(88,-40) scale(0.45)" />
+    <polygon points="950,255 956,273 975,273 960,284 966,302 950,291 934,302 940,284 925,273 944,273" transform="translate(80,10) scale(0.45)" />
+    <polygon points="950,255 956,273 975,273 960,284 966,302 950,291 934,302 940,284 925,273 944,273" transform="translate(60,48) scale(0.45)" />
+  </g>
+
+  
+  <g transform="translate(1380,780)">
+    <circle cx="0" cy="0" r="95" fill="#d4c9a8" stroke="#8a7a58" stroke-width="1.5" opacity="0.9" />
+    <circle cx="0" cy="0" r="88" fill="none" stroke="#8a7a58" stroke-width="0.7" opacity="0.6" />
+    
+    <polygon points="0,-80 8,-30 0,-40 -8,-30" fill="#2c2416" />
+    <polygon points="0,80 8,30 0,40 -8,30" fill="#8a7a58" />
+    <polygon points="-80,0 -30,-8 -40,0 -30,8" fill="#8a7a58" />
+    <polygon points="80,0 30,-8 40,0 30,8" fill="#8a7a58" />
+    
+    <polygon points="0,-80 8,-30 0,-40 -8,-30" fill="#c0392b" transform="rotate(45)" />
+    <polygon points="0,-80 6,-35 0,-45 -6,-35" fill="#9e9070" transform="rotate(90)" />
+    <polygon points="0,-80 6,-35 0,-45 -6,-35" fill="#9e9070" transform="rotate(135)" />
+    <polygon points="0,-80 6,-35 0,-45 -6,-35" fill="#9e9070" transform="rotate(225)" />
+    <polygon points="0,-80 6,-35 0,-45 -6,-35" fill="#9e9070" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="8" fill="#c0392b" />
+    <circle cx="0" cy="0" r="4" fill="#2c2416" />
+    
+    <text x="0" y="-60" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#2c2416" font-weight="bold">N</text>
+    <text x="0" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a4a2a">S</text>
+    <text x="-68" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a4a2a">W</text>
+    <text x="68" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a4a2a">E</text>
+  </g>
+
+  
+  <g transform="translate(550,950)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#8a7a58" stroke-width="1.5" />
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#8a7a58" stroke-width="1.5" />
+    <line x1="100" y1="-3" x2="100" y2="3" stroke="#8a7a58" stroke-width="1" />
+    <line x1="200" y1="-5" x2="200" y2="5" stroke="#8a7a58" stroke-width="1.5" />
+    <text x="100" y="-10" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a4a2a">500 km</text>
+  </g>
+
+  
+  <g opacity="0.07" stroke="#4a6878" stroke-width="0.8">
+    <line x1="463" y1="0" x2="1536" y2="1073" />
+    <line x1="563" y1="0" x2="1536" y2="973" />
+    <line x1="663" y1="0" x2="1536" y2="873" />
+    <line x1="463" y1="100" x2="1436" y2="1073" />
+    <line x1="463" y1="200" x2="1336" y2="1073" />
+    <line x1="463" y1="300" x2="1236" y2="1073" />
+    <line x1="463" y1="400" x2="1136" y2="1073" />
+    <line x1="463" y1="500" x2="1036" y2="1073" />
+  </g>
+
+  
+
+  
+  <text x="240" y="130" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" letter-spacing="4" fill="#c0392b" opacity="0.9">GOVERNMENT &amp; POLITICS</text>
+
+  
+  <line x1="60" y1="148" x2="420" y2="148" stroke="#c0392b" stroke-width="1" opacity="0.6" />
+
+  
+  <text x="240" y="230" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#e8dfc8" letter-spacing="-1">THE</text>
+  <text x="240" y="300" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="bold" fill="#e8dfc8" letter-spacing="1">PEOPLE'S</text>
+  <text x="240" y="360" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="bold" fill="#e8dfc8" letter-spacing="1">LIBERATION</text>
+  <text x="240" y="420" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#e8dfc8" letter-spacing="-1">ARMY</text>
+
+  
+  <rect x="175" y="445" width="130" height="44" rx="3" fill="#c0392b" opacity="0.85" />
+  <text x="240" y="474" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="bold" letter-spacing="6" fill="#e8dfc8">PLA</text>
+
+  
+  <line x1="60" y1="512" x2="420" y2="512" stroke="#7a6030" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="240" y="548" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" letter-spacing="3" fill="#c0a060" opacity="0.9">EST. 1927 · RENAMED 1949</text>
+
+  
+  <text x="240" y="600" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13.5" fill="#c8b88a" opacity="0.88">Armed instrument of the</text>
+  <text x="240" y="620" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13.5" fill="#c8b88a" opacity="0.88">Communist Party of China</text>
+
+  
+  <line x1="60" y1="645" x2="420" y2="645" stroke="#7a6030" stroke-width="1" opacity="0.4" />
+
+  
+  <text x="240" y="675" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="11" letter-spacing="3" fill="#c0a060" opacity="0.8">KEY FIGURES</text>
+
+  <text x="240" y="700" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#a89070" opacity="0.85">Zhu De · Peng Dehuai</text>
+  <text x="240" y="718" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#a89070" opacity="0.85">Deng Xiaoping · Lin Biao</text>
+  <text x="240" y="736" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#a89070" opacity="0.85">Xi Jinping</text>
+
+  
+  <line x1="60" y1="880" x2="420" y2="880" stroke="#7a6030" stroke-width="1" opacity="0.4" />
+
+  
+  <text x="600" y="80" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-size="12" letter-spacing="4" fill="#5a4a2a" opacity="0.6">EAST ASIA · OPERATIONAL THEATRE</text>
+
+  
+  <text x="760" y="420" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="bold" letter-spacing="3" fill="#2c2416" opacity="0.5">CHINA</text>
+
+  
+  <text x="1220" y="550" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic" letter-spacing="1" fill="#4a6878" opacity="0.55">South China</text>
+  <text x="1220" y="568" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic" letter-spacing="1" fill="#4a6878" opacity="0.55">Sea</text>
+
+  <text x="1260" y="340" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic" fill="#4a6878" opacity="0.55">Sea of Japan</text>
+
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="none" stroke="#7a6030" stroke-width="3" opacity="0.4" />
+</svg>

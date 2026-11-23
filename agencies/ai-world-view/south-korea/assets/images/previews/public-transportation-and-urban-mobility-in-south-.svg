@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Public Transportation and Urban Mobility in South Korea</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="mapgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b88a" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#a09060" stop-opacity="0.1" />
+    </linearGradient>
+    <linearGradient id="seagrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8aadcc" />
+      <stop offset="100%" stop-color="#6b90b0" />
+    </linearGradient>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a09060" stroke-width="0.5" stroke-opacity="0.3" />
+    </pattern>
+    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <polygon points="0 0, 6 3, 0 6" fill="#4a3a20" opacity="0.7" />
+    </marker>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.4" />
+
+  
+  
+  <ellipse cx="480" cy="560" rx="320" ry="280" fill="url(#seagrad)" opacity="0.5" filter="url(#roughen)" />
+  
+  <ellipse cx="1100" cy="500" rx="280" ry="260" fill="url(#seagrad)" opacity="0.45" filter="url(#roughen)" />
+
+  
+  
+  <path d="M 640,220 C 650,215 700,210 730,215 C 770,218 810,225 840,240            C 870,255 900,270 910,300 C 920,330 915,360 920,390            C 925,420 930,450 920,480 C 910,510 895,540 880,565            C 865,590 845,615 830,640 C 815,665 800,690 795,715            C 790,740 795,760 790,775 C 785,790 770,800 760,810            C 750,820 735,825 725,820 C 715,815 705,800 700,785            C 695,770 698,755 693,740 C 688,725 675,715 668,700            C 661,685 660,668 655,652 C 650,636 640,622 635,607            C 630,592 630,577 625,562 C 620,547 610,534 605,519            C 600,504 600,488 595,473 C 590,458 578,445 572,430            C 566,415 562,398 558,382 C 554,366 548,350 545,334            C 542,318 542,300 545,285 C 548,270 558,258 568,248            C 578,238 610,225 640,220 Z" fill="#b8a878" stroke="#7a6840" stroke-width="2" filter="url(#roughen)" />
+
+  
+  <path d="M 640,220 C 630,210 620,200 615,188 C 610,176 612,162 618,150            C 624,138 635,128 648,120 C 661,112 678,108 695,106            C 712,104 730,106 746,112 C 762,118 778,128 790,140            C 802,152 810,168 814,185 C 818,202 816,220 812,236            C 808,252 800,268 800,280 L 730,215 C 700,210 650,215 640,220 Z" fill="#c8b880" stroke="#7a6840" stroke-width="1.5" filter="url(#roughen)" />
+
+  
+  <ellipse cx="730" cy="855" rx="48" ry="28" fill="#b8a878" stroke="#7a6840" stroke-width="1.5" filter="url(#roughen)" />
+
+  
+  
+  <circle cx="700" cy="320" r="14" fill="#c0392b" stroke="#7a0000" stroke-width="2" opacity="0.9" />
+  <circle cx="700" cy="320" r="6" fill="#fff" opacity="0.7" />
+  
+  <circle cx="870" cy="660" r="11" fill="#c0392b" stroke="#7a0000" stroke-width="1.5" opacity="0.85" />
+  <circle cx="870" cy="660" r="5" fill="#fff" opacity="0.7" />
+  
+  <circle cx="845" cy="560" r="9" fill="#c0392b" stroke="#7a0000" stroke-width="1.5" opacity="0.8" />
+  
+  <circle cx="660" cy="338" r="8" fill="#c0392b" stroke="#7a0000" stroke-width="1.5" opacity="0.8" />
+  
+  <circle cx="760" cy="460" r="8" fill="#c0392b" stroke="#7a0000" stroke-width="1.5" opacity="0.8" />
+  
+  <circle cx="710" cy="600" r="8" fill="#c0392b" stroke="#7a0000" stroke-width="1.5" opacity="0.8" />
+
+  
+  
+  <path d="M 700,320 C 720,380 745,420 760,460 C 790,510 820,530 845,560 C 858,600 865,630 870,660" stroke="#d4504a" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85" />
+  
+  <path d="M 700,320 C 700,400 710,480 710,540 C 710,570 710,585 710,600" stroke="#d4504a" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="12,4" opacity="0.8" />
+
+  
+  
+  <path d="M 650,295 L 700,320 L 740,350 L 760,380" stroke="#003499" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.9" />
+  
+  <ellipse cx="703" cy="325" rx="28" ry="20" fill="none" stroke="#33a23d" stroke-width="3.5" opacity="0.85" />
+  
+  <path d="M 660,305 L 695,320 L 720,335 L 740,348" stroke="#bdb133" stroke-width="3.5" fill="none" opacity="0.85" />
+
+  
+  <rect x="693" y="313" width="14" height="14" rx="2" fill="#fff" stroke="#333" stroke-width="1.5" />
+  <rect x="753" y="453" width="11" height="11" rx="2" fill="#fff" stroke="#333" stroke-width="1.5" />
+  <rect x="838" y="553" width="11" height="11" rx="2" fill="#333" stroke="#333" stroke-width="1" />
+  <rect x="863" y="653" width="11" height="11" rx="2" fill="#fff" stroke="#333" stroke-width="1.5" />
+
+  
+  <path d="M 700,320 C 680,360 668,400 665,440 C 662,470 668,490 668,520" stroke="#7a6840" stroke-width="2.5" fill="none" stroke-dasharray="6,6" opacity="0.6" />
+  <path d="M 760,460 C 790,480 820,500 845,520 C 860,535 862,548 845,560" stroke="#7a6840" stroke-width="2.5" fill="none" stroke-dasharray="6,6" opacity="0.6" />
+
+  
+  <rect x="1050" y="680" width="110" height="75" rx="10" fill="#1a237e" stroke="#0d47a1" stroke-width="2" opacity="0.9" />
+  <rect x="1055" y="700" width="100" height="18" rx="3" fill="#4fc3f7" opacity="0.7" />
+  <circle cx="1105" cy="735" r="14" fill="none" stroke="#4fc3f7" stroke-width="3" opacity="0.8" />
+  <text x="1105" y="740" text-anchor="middle" font-family="serif" font-size="12" fill="#fff" opacity="0.9">T</text>
+  <text x="1105" y="775" text-anchor="middle" font-family="serif" font-size="10" fill="#9ecfee">T-money</text>
+
+  
+  <g transform="translate(1050,260)">
+    
+    <circle cx="0" cy="0" r="52" fill="#e8dfc8" stroke="#7a6840" stroke-width="1.5" opacity="0.8" />
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#7a6840" stroke-width="0.8" opacity="0.6" />
+    
+    <polygon points="0,-48 -8,-20 8,-20" fill="#4a3a20" opacity="0.85" />
+    <polygon points="0,48 -8,20 8,20" fill="#7a6840" opacity="0.7" />
+    <polygon points="-48,0 -20,-8 -20,8" fill="#7a6840" opacity="0.7" />
+    <polygon points="48,0 20,-8 20,8" fill="#7a6840" opacity="0.7" />
+    
+    <polygon points="0,-48 -5,-32 5,-32" fill="#c0a060" opacity="0.5" transform="rotate(45)" />
+    <polygon points="0,-48 -5,-32 5,-32" fill="#c0a060" opacity="0.5" transform="rotate(135)" />
+    <polygon points="0,-48 -5,-32 5,-32" fill="#c0a060" opacity="0.5" transform="rotate(225)" />
+    <polygon points="0,-48 -5,-32 5,-32" fill="#c0a060" opacity="0.5" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="5" fill="#4a3a20" opacity="0.8" />
+    
+    <text x="0" y="-55" text-anchor="middle" font-family="serif" font-size="16" font-weight="bold" fill="#4a3a20">N</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" rx="4" fill="none" stroke="#7a6840" stroke-width="3" opacity="0.7" />
+  <rect x="26" y="26" width="1484" height="972" rx="3" fill="none" stroke="#7a6840" stroke-width="1" opacity="0.5" />
+  
+  <g stroke="#7a6840" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M 18,50 L 18,18 L 50,18" />
+    <path d="M 1486,18 L 1518,18 L 1518,50" />
+    <path d="M 18,974 L 18,1006 L 50,1006" />
+    <path d="M 1486,1006 L 1518,1006 L 1518,974" />
+  </g>
+
+  
+  <rect x="1150" y="380" width="340" height="270" rx="6" fill="#ede4cc" stroke="#7a6840" stroke-width="1.5" opacity="0.92" />
+  <text x="1175" y="408" font-family="serif" font-size="15" font-weight="bold" fill="#4a3a20" letter-spacing="1">LEGEND</text>
+  <line x1="1175" y1="415" x2="1465" y2="415" stroke="#7a6840" stroke-width="1" opacity="0.5" />
+  
+  <line x1="1175" y1="438" x2="1220" y2="438" stroke="#d4504a" stroke-width="6" stroke-linecap="round" />
+  <text x="1232" y="443" font-family="serif" font-size="14" fill="#4a3a20">KTX High-Speed Rail</text>
+  
+  <line x1="1175" y1="466" x2="1220" y2="466" stroke="#d4504a" stroke-width="5" stroke-linecap="round" stroke-dasharray="10,4" />
+  <text x="1232" y="471" font-family="serif" font-size="14" fill="#4a3a20">Honam KTX Line</text>
+  
+  <line x1="1175" y1="494" x2="1220" y2="494" stroke="#003499" stroke-width="4" />
+  <text x="1232" y="499" font-family="serif" font-size="14" fill="#4a3a20">Seoul Metro Line 1</text>
+  <line x1="1175" y1="522" x2="1220" y2="522" stroke="#33a23d" stroke-width="3.5" />
+  <text x="1232" y="527" font-family="serif" font-size="14" fill="#4a3a20">Metro Line 2 (Circular)</text>
+  
+  <line x1="1175" y1="550" x2="1220" y2="550" stroke="#7a6840" stroke-width="2.5" stroke-dasharray="6,5" />
+  <text x="1232" y="555" font-family="serif" font-size="14" fill="#4a3a20">Bus Routes</text>
+  
+  <circle cx="1197" cy="578" r="8" fill="#c0392b" stroke="#7a0000" stroke-width="1.5" />
+  <circle cx="1197" cy="578" r="3.5" fill="#fff" opacity="0.7" />
+  <text x="1212" y="583" font-family="serif" font-size="14" fill="#4a3a20">Major City / Station</text>
+  <rect x="1188" y="598" width="18" height="18" rx="3" fill="#fff" stroke="#333" stroke-width="1.5" />
+  <text x="1212" y="612" font-family="serif" font-size="14" fill="#4a3a20">Subway Station</text>
+  
+  <line x1="1175" y1="635" x2="1325" y2="635" stroke="#4a3a20" stroke-width="1.5" />
+  <line x1="1175" y1="630" x2="1175" y2="640" stroke="#4a3a20" stroke-width="1.5" />
+  <line x1="1250" y1="630" x2="1250" y2="640" stroke="#4a3a20" stroke-width="1.5" />
+  <line x1="1325" y1="630" x2="1325" y2="640" stroke="#4a3a20" stroke-width="1.5" />
+  <text x="1175" y="650" font-family="serif" font-size="11" fill="#4a3a20">0</text>
+  <text x="1240" y="650" font-family="serif" font-size="11" fill="#4a3a20">100 km</text>
+  <text x="1310" y="650" font-family="serif" font-size="11" fill="#4a3a20">200</text>
+
+  
+  <text x="714" y="316" font-family="serif" font-size="13" font-weight="bold" fill="#2c1a00">서울</text>
+  <text x="714" y="330" font-family="serif" font-size="12" fill="#2c1a00">Seoul</text>
+  <text x="882" y="665" font-family="serif" font-size="12" font-weight="bold" fill="#2c1a00">Busan</text>
+  <text x="857" y="548" font-family="serif" font-size="11" fill="#2c1a00">Daegu</text>
+  <text x="775" y="458" font-family="serif" font-size="11" fill="#2c1a00">Daejeon</text>
+  <text x="720" y="598" font-family="serif" font-size="11" fill="#2c1a00">Gwangju</text>
+  <text x="630" y="346" font-family="serif" font-size="11" fill="#2c1a00">Incheon</text>
+  <text x="710" y="870" font-family="serif" font-size="11" fill="#2c1a00">Jeju</text>
+
+  
+  <text x="430" y="530" font-family="serif" font-size="15" fill="#3a6a90" opacity="0.7" transform="rotate(-8,430,530)">Yellow Sea</text>
+  <text x="950" y="430" font-family="serif" font-size="15" fill="#3a6a90" opacity="0.7" transform="rotate(-8,950,430)">East Sea</text>
+
+  
+  <rect x="60" y="60" width="960" height="220" rx="6" fill="#ede4cc" stroke="#7a6840" stroke-width="2" opacity="0.95" />
+  
+  <rect x="60" y="60" width="960" height="8" rx="3" fill="#4a3a20" opacity="0.7" />
+
+  <text x="100" y="128" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#1a0e00" letter-spacing="1">
+    Public Transportation
+  </text>
+  <text x="100" y="184" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#1a0e00" letter-spacing="1">
+    &amp; Urban Mobility
+  </text>
+  <text x="100" y="240" font-family="Georgia, serif" font-size="38" fill="#4a3a20" letter-spacing="3">
+    SOUTH KOREA
+  </text>
+  
+  <line x1="100" y1="258" x2="860" y2="258" stroke="#c0392b" stroke-width="3" />
+
+  
+  <rect x="60" y="268" width="960" height="5" rx="2" fill="none" />
+
+  
+  <text x="100" y="300" font-family="serif" font-size="18" fill="#7a6840" letter-spacing="2" opacity="0.85">대한민국 대중교통 및 도시 교통망</text>
+
+  
+  <g transform="translate(1240,110)">
+    
+    <rect x="-55" y="-35" width="110" height="60" rx="10" fill="#1a237e" opacity="0.9" />
+    <rect x="-45" y="-28" width="35" height="28" rx="4" fill="#b3d9f7" opacity="0.85" />
+    <rect x="-2" y="-28" width="35" height="28" rx="4" fill="#b3d9f7" opacity="0.85" />
+    
+    <line x1="-9" y1="-28" x2="-9" y2="0" stroke="#4a3a20" stroke-width="1.5" opacity="0.5" />
+    
+    <circle cx="-35" cy="28" r="9" fill="#333" />
+    <circle cx="-35" cy="28" r="4" fill="#999" />
+    <circle cx="35" cy="28" r="9" fill="#333" />
+    <circle cx="35" cy="28" r="4" fill="#999" />
+    
+    <line x1="-80" y1="37" x2="80" y2="37" stroke="#7a6840" stroke-width="3" stroke-linecap="round" />
+    
+    <line x1="0" y1="-35" x2="-15" y2="-60" stroke="#555" stroke-width="2" />
+    <line x1="0" y1="-35" x2="15" y2="-60" stroke="#555" stroke-width="2" />
+    <line x1="-20" y1="-60" x2="20" y2="-60" stroke="#555" stroke-width="2.5" />
+    
+    <rect x="-30" y="-22" width="60" height="14" rx="2" fill="#ff6600" opacity="0.85" />
+    <text x="0" y="-11" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#fff" font-weight="bold">KTX · 서울</text>
+  </g>
+
+  
+  <g transform="translate(1360,110)">
+    <rect x="-48" y="-32" width="96" height="58" rx="8" fill="#e65100" opacity="0.9" />
+    <rect x="-38" y="-24" width="30" height="22" rx="3" fill="#b3d9f7" opacity="0.85" />
+    <rect x="2" y="-24" width="30" height="22" rx="3" fill="#b3d9f7" opacity="0.85" />
+    <circle cx="-28" cy="28" r="10" fill="#333" />
+    <circle cx="-28" cy="28" r="4.5" fill="#aaa" />
+    <circle cx="28" cy="28" r="10" fill="#333" />
+    <circle cx="28" cy="28" r="4.5" fill="#aaa" />
+    <rect x="-48" y="-4" width="96" height="4" rx="1" fill="#bf360c" opacity="0.6" />
+    <text x="0" y="10" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#fff" font-weight="bold">간선버스</text>
+  </g>
+
+  
+  <line x1="550" y1="150" x2="950" y2="150" stroke="#7a6840" stroke-width="0.5" stroke-dasharray="4,8" opacity="0.3" />
+  <line x1="550" y1="400" x2="950" y2="400" stroke="#7a6840" stroke-width="0.5" stroke-dasharray="4,8" opacity="0.3" />
+  <line x1="550" y1="650" x2="950" y2="650" stroke="#7a6840" stroke-width="0.5" stroke-dasharray="4,8" opacity="0.3" />
+  <line x1="620" y1="130" x2="620" y2="880" stroke="#7a6840" stroke-width="0.5" stroke-dasharray="4,8" opacity="0.3" />
+  <line x1="780" y1="130" x2="780" y2="880" stroke="#7a6840" stroke-width="0.5" stroke-dasharray="4,8" opacity="0.3" />
+  <line x1="920" y1="130" x2="920" y2="880" stroke="#7a6840" stroke-width="0.5" stroke-dasharray="4,8" opacity="0.3" />
+
+  
+  <text x="1518" y="1008" text-anchor="end" font-family="serif" font-size="11" fill="#7a6840" opacity="0.6">Atlas of South Korean Urban Mobility</text>
+</svg>

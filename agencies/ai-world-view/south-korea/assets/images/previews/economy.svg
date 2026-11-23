@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Economy — South Korea's industrial and economic development</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b878" />
+      <stop offset="100%" stop-color="#b8a860" />
+    </linearGradient>
+    <linearGradient id="koreaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4a855" />
+      <stop offset="100%" stop-color="#c49040" />
+    </linearGradient>
+    <linearGradient id="overlayGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a1e0a" stop-opacity="0.75" />
+      <stop offset="45%" stop-color="#2a1e0a" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#2a1e0a" stop-opacity="0" />
+    </linearGradient>
+    
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#a09050" stroke-width="0.4" stroke-opacity="0.3" />
+    </pattern>
+    
+    <pattern id="seahatch" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#7a9aaa" stroke-width="0.3" stroke-opacity="0.4" />
+      <line x1="0" y1="4" x2="8" y2="4" stroke="#7a9aaa" stroke-width="0.3" stroke-opacity="0.2" />
+    </pattern>
+    <filter id="noise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noiseOut" />
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6a38" stroke-width="2.5" opacity="0.6" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a6a38" stroke-width="1" opacity="0.4" />
+
+  
+  <rect x="600" y="0" width="936" height="1024" fill="url(#seaGrad)" />
+  <rect x="600" y="0" width="936" height="1024" fill="url(#seahatch)" />
+
+  
+  <g stroke="#8899aa" stroke-width="0.6" opacity="0.4">
+    <line x1="600" y1="200" x2="1536" y2="200" />
+    <line x1="600" y1="400" x2="1536" y2="400" />
+    <line x1="600" y1="600" x2="1536" y2="600" />
+    <line x1="600" y1="800" x2="1536" y2="800" />
+    <line x1="700" y1="0" x2="700" y2="1024" />
+    <line x1="900" y1="0" x2="900" y2="1024" />
+    <line x1="1100" y1="0" x2="1100" y2="1024" />
+    <line x1="1300" y1="0" x2="1300" y2="1024" />
+    <line x1="1500" y1="0" x2="1500" y2="1024" />
+  </g>
+
+  
+  
+  <path d="M600,0 L1536,0 L1536,1024 L600,1024 Z" fill="none" />
+  
+  
+  <path d="M950,290 C960,285 980,280 1000,275 C1020,270 1040,268 1055,272             C1070,276 1080,285 1085,300 C1090,315 1088,335 1082,355            C1076,375 1066,395 1055,415 C1044,435 1030,455 1018,470            C1006,485 994,495 984,500 C978,503 974,502 972,498            C968,490 968,475 970,458 C972,441 976,422 975,405            C974,390 969,377 962,365 C955,353 946,343 940,330            C934,317 933,300 950,290 Z" fill="url(#koreaGrad)" stroke="#8a6a28" stroke-width="2" />
+  <path d="M950,290 C960,285 980,280 1000,275 C1020,270 1040,268 1055,272             C1070,276 1080,285 1085,300 C1090,315 1088,335 1082,355            C1076,375 1066,395 1055,415 C1044,435 1030,455 1018,470            C1006,485 994,495 984,500 C978,503 974,502 972,498            C968,490 968,475 970,458 C972,441 976,422 975,405            C974,390 969,377 962,365 C955,353 946,343 940,330            C934,317 933,300 950,290 Z" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <line x1="942" y1="368" x2="1074" y2="375" stroke="#5a3a18" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.7" />
+
+  
+  <path d="M942,368 C945,362 950,355 955,348 C960,341 966,334 972,330            C978,326 984,324 990,326 C1000,330 1008,342 1014,358            C1020,374 1022,394 1020,412 C1018,430 1012,447 1005,460            C998,473 990,483 983,489 C977,493 972,493 968,487            C963,479 961,462 962,444 C963,427 966,408 966,392            C966,382 963,374 958,368 C952,360 945,358 942,368 Z" fill="#c8883a" stroke="#8a5a18" stroke-width="1.5" opacity="0.9" />
+
+  
+  <ellipse cx="985" cy="520" rx="18" ry="10" fill="#c8883a" stroke="#8a5a18" stroke-width="1.2" opacity="0.8" />
+
+  
+  <path d="M1120,320 C1125,315 1132,312 1138,316 C1144,320 1148,330 1150,344            C1152,358 1150,375 1146,390 C1142,405 1135,418 1128,428            C1121,438 1114,444 1108,444 C1102,444 1098,438 1096,428            C1094,418 1094,404 1096,390 C1098,376 1104,360 1110,347            C1116,334 1118,325 1120,320 Z" fill="url(#landGrad)" stroke="#8a6a28" stroke-width="1.5" />
+  <path d="M1120,320 C1125,315 1132,312 1138,316 C1144,320 1148,330 1150,344            C1152,358 1150,375 1146,390 C1142,405 1135,418 1128,428            C1121,438 1114,444 1108,444 C1102,444 1098,438 1096,428            C1094,418 1094,404 1096,390 C1098,376 1104,360 1110,347            C1116,334 1118,325 1120,320 Z" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <path d="M600,0 L870,0 L880,50 L900,100 C920,140 930,180 925,220            C920,260 905,295 895,320 C885,345 880,360 878,380            C876,400 878,420 882,440 C886,460 892,478 896,500            C900,520 900,545 895,570 C890,595 880,618 870,640            C860,662 850,680 840,700 C830,720 820,738 812,758            C804,778 800,800 800,824 C800,860 804,900 810,940 L810,1024 L600,1024 Z" fill="url(#landGrad)" stroke="#8a6a28" stroke-width="1.5" />
+  <path d="M600,0 L870,0 L880,50 L900,100 C920,140 930,180 925,220            C920,260 905,295 895,320 C885,345 880,360 878,380            C876,400 878,420 882,440 C886,460 892,478 896,500            C900,520 900,545 895,570 C890,595 880,618 870,640            C860,662 850,680 840,700 C830,720 820,738 812,758            C804,778 800,800 800,824 C800,860 804,900 810,940 L810,1024 L600,1024 Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <g transform="translate(780, 600)" opacity="0.7">
+    
+    <path d="M-80,20 L80,20 L70,40 L-70,40 Z" fill="#6a5a38" stroke="#4a3a20" stroke-width="1.2" />
+    <rect x="-30" y="5" width="60" height="16" fill="#6a5a38" stroke="#4a3a20" stroke-width="1" />
+    <rect x="-15" y="-8" width="15" height="14" fill="#7a6a48" stroke="#4a3a20" stroke-width="0.8" />
+    <rect x="5" y="-4" width="10" height="10" fill="#7a6a48" stroke="#4a3a20" stroke-width="0.8" />
+  </g>
+
+  
+  <g transform="translate(1320, 680)" opacity="0.55">
+    <rect x="-50" y="-30" width="30" height="50" fill="#8a7a58" stroke="#5a4a28" stroke-width="1" />
+    <rect x="-15" y="-45" width="40" height="65" fill="#9a8a68" stroke="#5a4a28" stroke-width="1" />
+    <rect x="30" y="-20" width="25" height="40" fill="#8a7a58" stroke="#5a4a28" stroke-width="1" />
+    
+    <rect x="-38" y="-55" width="7" height="26" fill="#7a6a48" stroke="#5a4a28" stroke-width="0.8" />
+    <rect x="-18" y="-65" width="7" height="21" fill="#7a6a48" stroke="#5a4a28" stroke-width="0.8" />
+    <rect x="5" y="-60" width="7" height="16" fill="#7a6a48" stroke="#5a4a28" stroke-width="0.8" />
+    
+    <circle cx="-34" cy="-60" r="5" fill="#c8b888" opacity="0.5" />
+    <circle cx="-29" cy="-66" r="4" fill="#c8b888" opacity="0.4" />
+    <circle cx="-14" cy="-70" r="5" fill="#c8b888" opacity="0.5" />
+    <circle cx="8" cy="-66" r="4" fill="#c8b888" opacity="0.4" />
+  </g>
+
+  
+  <g transform="translate(1380, 820)" opacity="0.6">
+    <rect x="0" y="-20" width="18" height="20" fill="#8a6a28" stroke="#5a3a10" stroke-width="1" />
+    <rect x="24" y="-38" width="18" height="38" fill="#9a7a38" stroke="#5a3a10" stroke-width="1" />
+    <rect x="48" y="-58" width="18" height="58" fill="#aa8a48" stroke="#5a3a10" stroke-width="1" />
+    <rect x="72" y="-80" width="18" height="80" fill="#ba9a58" stroke="#5a3a10" stroke-width="1" />
+    <line x1="-5" y1="0" x2="100" y2="0" stroke="#5a3a10" stroke-width="1.5" />
+    
+    <polyline points="4,-12 28,-32 52,-52 76,-74" fill="none" stroke="#5a3a10" stroke-width="1.5" stroke-dasharray="3,2" />
+  </g>
+
+  
+  <g transform="translate(1440, 120)">
+    
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#7a6a38" stroke-width="1.2" opacity="0.5" />
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#7a6a38" stroke-width="0.6" opacity="0.4" />
+    
+    <polygon points="0,-44 6,-20 0,-28 -6,-20" fill="#5a4a28" opacity="0.8" />
+    <polygon points="0,44 6,20 0,28 -6,20" fill="#8a7a58" opacity="0.6" />
+    <polygon points="-44,0 -20,6 -28,0 -20,-6" fill="#8a7a58" opacity="0.6" />
+    <polygon points="44,0 20,6 28,0 20,-6" fill="#8a7a58" opacity="0.6" />
+    
+    <polygon points="31,-31 18,-8 24,-16 8,-18" fill="#9a8a68" opacity="0.5" />
+    <polygon points="-31,-31 -8,-18 -16,-24 -18,-8" fill="#9a8a68" opacity="0.5" />
+    <polygon points="31,31 8,18 16,24 18,8" fill="#9a8a68" opacity="0.5" />
+    <polygon points="-31,31 -18,8 -24,16 -8,18" fill="#9a8a68" opacity="0.5" />
+    
+    <circle cx="0" cy="0" r="5" fill="#5a4a28" opacity="0.7" />
+    <circle cx="0" cy="0" r="3" fill="#c8a848" opacity="0.8" />
+    
+    <text x="0" y="-50" font-family="Georgia, serif" font-size="11" fill="#4a3a18" text-anchor="middle" font-weight="bold" opacity="0.8">N</text>
+    <text x="0" y="60" font-family="Georgia, serif" font-size="11" fill="#4a3a18" text-anchor="middle" opacity="0.7">S</text>
+    <text x="-54" y="4" font-family="Georgia, serif" font-size="11" fill="#4a3a18" text-anchor="middle" opacity="0.7">W</text>
+    <text x="54" y="4" font-family="Georgia, serif" font-size="11" fill="#4a3a18" text-anchor="middle" opacity="0.7">E</text>
+  </g>
+
+  
+  <circle cx="1005" cy="402" r="7" fill="#8a2a10" stroke="#f0d880" stroke-width="2" opacity="0.9" />
+  <circle cx="1005" cy="402" r="14" fill="none" stroke="#8a2a10" stroke-width="1" opacity="0.5" />
+  <text x="1020" y="396" font-family="Georgia, serif" font-size="13" fill="#3a2008" opacity="0.85" font-style="italic">Seoul</text>
+
+  
+  <circle cx="1042" cy="458" r="5" fill="#6a3a10" stroke="#e0c870" stroke-width="1.5" opacity="0.85" />
+  <text x="1052" y="462" font-family="Georgia, serif" font-size="11" fill="#3a2008" opacity="0.75" font-style="italic">Busan</text>
+
+  
+  <text x="880" y="350" font-family="Georgia, serif" font-size="15" fill="#5a7a8a" text-anchor="middle" opacity="0.6" font-style="italic" letter-spacing="2">Yellow Sea</text>
+  <text x="1180" y="400" font-family="Georgia, serif" font-size="15" fill="#5a7a8a" text-anchor="middle" opacity="0.6" font-style="italic" letter-spacing="2">Sea of Japan</text>
+
+  
+  <rect x="0" y="0" width="680" height="1024" fill="url(#overlayGrad)" />
+
+  
+  <line x1="60" y1="290" x2="540" y2="290" stroke="#c8a848" stroke-width="1.5" opacity="0.7" />
+  <line x1="60" y1="295" x2="540" y2="295" stroke="#c8a848" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="62" y="275" font-family="Georgia, serif" font-size="16" fill="#e0c878" letter-spacing="4" opacity="0.85">SOUTH KOREA</text>
+
+  
+  <text x="60" y="390" font-family="Georgia, serif" font-size="108" font-weight="bold" fill="#f4e8c0" letter-spacing="-2" opacity="0.97">Economy</text>
+
+  
+  <line x1="60" y1="415" x2="540" y2="415" stroke="#c8a848" stroke-width="1.5" opacity="0.7" />
+  <line x1="60" y1="420" x2="540" y2="420" stroke="#c8a848" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="62" y="462" font-family="Georgia, serif" font-size="19" fill="#d4c898" opacity="0.85" font-style="italic">Industries · Institutions · Development</text>
+
+  
+  <text x="62" y="530" font-family="Georgia, serif" font-size="16" fill="#c4b880" opacity="0.75">From post-war reconstruction</text>
+  <text x="62" y="554" font-family="Georgia, serif" font-size="16" fill="#c4b880" opacity="0.75">to a high-income, technology-leading economy.</text>
+
+  
+  <rect x="62" y="600" width="460" height="2" fill="#c8a848" opacity="0.4" />
+  <text x="62" y="638" font-family="Georgia, serif" font-size="14" fill="#d4b870" opacity="0.7" letter-spacing="2">FEATURED TOPIC</text>
+  <text x="62" y="672" font-family="Georgia, serif" font-size="20" fill="#f0e0a0" opacity="0.9" font-style="italic">Chaebol</text>
+  <text x="62" y="698" font-family="Georgia, serif" font-size="14" fill="#c4b478" opacity="0.7">Family-controlled conglomerates</text>
+  <text x="62" y="718" font-family="Georgia, serif" font-size="14" fill="#c4b478" opacity="0.7">that drove rapid industrialization.</text>
+
+  
+  <line x1="60" y1="780" x2="480" y2="780" stroke="#c8a848" stroke-width="0.8" opacity="0.4" />
+
+  
+  <g transform="translate(62, 820)" opacity="0.6">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#c8b880" stroke-width="1.5" />
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#c8b880" stroke-width="1.5" />
+    <line x1="80" y1="-3" x2="80" y2="3" stroke="#c8b880" stroke-width="1" />
+    <line x1="160" y1="-5" x2="160" y2="5" stroke="#c8b880" stroke-width="1.5" />
+    <rect x="0" y="-5" width="40" height="5" fill="#c8b880" opacity="0.5" />
+    <rect x="80" y="-5" width="40" height="5" fill="#c8b880" opacity="0.5" />
+    <text x="0" y="16" font-family="Georgia, serif" font-size="11" fill="#c8b880">0</text>
+    <text x="68" y="16" font-family="Georgia, serif" font-size="11" fill="#c8b880">200 km</text>
+    <text x="140" y="16" font-family="Georgia, serif" font-size="11" fill="#c8b880">400</text>
+  </g>
+
+  
+  <g stroke="#9a8848" stroke-width="1.5" fill="none" opacity="0.6">
+    
+    <polyline points="18,50 18,18 50,18" />
+    
+    <polyline points="1486,18 1518,18 1518,50" />
+    
+    <polyline points="18,974 18,1006 50,1006" />
+    
+    <polyline points="1486,1006 1518,1006 1518,974" />
+  </g>
+</svg>

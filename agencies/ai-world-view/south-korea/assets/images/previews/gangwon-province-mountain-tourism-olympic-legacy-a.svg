@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Gangwon Province — Mountain Tourism, Olympic Legacy, and the DMZ Frontier</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8bfa0" />
+      <stop offset="100%" stop-color="#e8dfc0" />
+    </linearGradient>
+    <linearGradient id="mtGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a8c6e" />
+      <stop offset="100%" stop-color="#5a6e4e" />
+    </linearGradient>
+    <linearGradient id="snowGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0ece0" />
+      <stop offset="60%" stop-color="#d8d0b8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9ab5c8" />
+      <stop offset="100%" stop-color="#7a9eb5" />
+    </linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#8a7a5a" stroke-width="0.5" opacity="0.3" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#sky)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8a7a5a" stroke-width="2" opacity="0.6" />
+  <rect x="32" y="32" width="1472" height="960" fill="none" stroke="#8a7a5a" stroke-width="1" opacity="0.4" />
+
+  
+  <path d="M1100,0 L1536,0 L1536,1024 L1150,1024 L1080,900 L1060,700 L1090,500 L1100,300 Z" fill="url(#seaGrad)" opacity="0.7" />
+  
+  <line x1="1150" y1="150" x2="1480" y2="150" stroke="#6a8ea8" stroke-width="0.8" opacity="0.4" />
+  <line x1="1130" y1="220" x2="1500" y2="220" stroke="#6a8ea8" stroke-width="0.8" opacity="0.4" />
+  <line x1="1140" y1="290" x2="1510" y2="290" stroke="#6a8ea8" stroke-width="0.8" opacity="0.4" />
+  <line x1="1110" y1="360" x2="1490" y2="360" stroke="#6a8ea8" stroke-width="0.8" opacity="0.4" />
+  <line x1="1100" y1="430" x2="1480" y2="430" stroke="#6a8ea8" stroke-width="0.8" opacity="0.4" />
+  <line x1="1090" y1="500" x2="1470" y2="500" stroke="#6a8ea8" stroke-width="0.8" opacity="0.4" />
+  <line x1="1080" y1="570" x2="1460" y2="570" stroke="#6a8ea8" stroke-width="0.8" opacity="0.4" />
+  <line x1="1090" y1="640" x2="1470" y2="640" stroke="#6a8ea8" stroke-width="0.8" opacity="0.4" />
+  <text x="1310" y="750" font-family="Georgia, serif" font-size="22" fill="#4a6a80" opacity="0.7" text-anchor="middle" font-style="italic">East Sea</text>
+  <text x="1310" y="778" font-family="Georgia, serif" font-size="16" fill="#4a6a80" opacity="0.5" text-anchor="middle" font-style="italic">(동해)</text>
+
+  
+  <path d="M320,180 L380,160 L460,170 L540,155 L620,165 L700,150 L780,160 L850,145 L920,155 L980,140 L1060,150 L1100,170 L1110,220 L1090,300 L1100,380 L1090,460 L1080,540 L1090,620 L1080,700 L1060,780 L1020,840 L960,880 L880,900 L800,890 L720,900 L640,880 L560,870 L480,860 L400,840 L340,800 L300,740 L290,660 L310,580 L300,500 L310,420 L295,340 L310,260 Z" fill="#b5a880" opacity="0.5" stroke="#8a7a5a" stroke-width="1.5" />
+
+  
+  <path d="M340,220 L420,200 L520,210 L620,195 L720,205 L820,190 L920,200 L1000,185 L1070,200 L1080,250 L1060,330 L1070,410 L1060,490 L1070,570 L1060,650 L1040,730 L1000,800 L940,850 L860,870 L780,860 L700,870 L620,855 L540,845 L460,835 L390,815 L340,775 L320,710 L335,630 L320,550 L335,470 L320,390 L330,310 Z" fill="#c8bc98" opacity="0.4" />
+
+  
+  
+  
+  <path d="M950,140 L870,360 L810,360 L760,250 L720,360 L660,360 L750,140 Z" fill="url(#mtGrad)" opacity="0.9" />
+  <path d="M950,140 L880,220 L820,180 L760,250 L800,200 L850,160 Z" fill="url(#snowGrad)" opacity="0.85" />
+  
+  <circle cx="870" cy="170" r="5" fill="#8a7a5a" opacity="0.8" />
+  <text x="920" y="165" font-family="Georgia, serif" font-size="16" fill="#3a2a1a" opacity="0.85" font-style="italic">Seoraksan</text>
+  <text x="920" y="184" font-family="Georgia, serif" font-size="13" fill="#3a2a1a" opacity="0.7" font-style="italic">1,708 m</text>
+
+  
+  <path d="M760,280 L700,460 L640,460 L600,360 L560,460 L500,460 L580,280 Z" fill="url(#mtGrad)" opacity="0.85" />
+  <path d="M760,280 L700,340 L660,300 L600,360 L640,320 L700,290 Z" fill="url(#snowGrad)" opacity="0.8" />
+  <circle cx="680" cy="295" r="4" fill="#8a7a5a" opacity="0.8" />
+  <text x="710" y="290" font-family="Georgia, serif" font-size="15" fill="#3a2a1a" opacity="0.8" font-style="italic">Odaesan</text>
+
+  
+  <path d="M640,500 L580,660 L520,660 L490,580 L460,660 L400,660 L490,500 Z" fill="url(#mtGrad)" opacity="0.8" />
+  <path d="M640,500 L590,545 L550,520 L490,580 L530,540 L590,510 Z" fill="url(#snowGrad)" opacity="0.75" />
+
+  
+  <path d="M850,350 L810,480 L770,480 L740,420 L710,480 L670,480 L730,350 Z" fill="#6a7e5e" opacity="0.7" />
+  <path d="M1000,280 L960,420 L920,420 L890,350 L860,420 L820,420 L880,280 Z" fill="#6a7e5e" opacity="0.65" />
+
+  
+  <path d="M400,400 L370,540 L340,540 L320,480 L300,540 L270,540 L320,400 Z" fill="#7a8e6a" opacity="0.55" />
+  <path d="M500,380 L460,520 L420,520 L400,450 L380,520 L340,520 L400,380 Z" fill="#7a8e6a" opacity="0.5" />
+
+  
+  <line x1="60" y1="108" x2="1090" y2="108" stroke="#8a3a3a" stroke-width="3" stroke-dasharray="12,8" opacity="0.7" />
+  <text x="80" y="98" font-family="Georgia, serif" font-size="18" fill="#8a3a3a" opacity="0.85" font-weight="bold" letter-spacing="2">DMZ — DEMILITARIZED ZONE</text>
+  
+  <polygon points="68,108 56,100 56,116" fill="#8a3a3a" opacity="0.7" />
+  <polygon points="1082,108 1094,100 1094,116" fill="#8a3a3a" opacity="0.7" />
+
+  
+  <text x="400" y="75" font-family="Georgia, serif" font-size="15" fill="#6a4a4a" opacity="0.6" font-style="italic" text-anchor="middle">North Korea — Kangwŏn-do</text>
+
+  
+  
+  <rect x="330" y="580" width="140" height="90" rx="4" fill="#d8cc9a" stroke="#8a7a5a" stroke-width="1.5" opacity="0.85" />
+  
+  <circle cx="365" cy="617" r="12" fill="none" stroke="#3a6aaa" stroke-width="3" />
+  <circle cx="390" cy="617" r="12" fill="none" stroke="#3a3a3a" stroke-width="3" />
+  <circle cx="415" cy="617" r="12" fill="none" stroke="#aa3a3a" stroke-width="3" />
+  <circle cx="378" cy="632" r="12" fill="none" stroke="#c8a020" stroke-width="3" />
+  <circle cx="403" cy="632" r="12" fill="none" stroke="#3a8a3a" stroke-width="3" />
+  <text x="400" y="658" font-family="Georgia, serif" font-size="13" fill="#3a2a1a" text-anchor="middle" font-weight="bold">PyeongChang 2018</text>
+  
+  <circle cx="490" cy="600" r="6" fill="#aa3a3a" stroke="#3a2a1a" stroke-width="1.5" opacity="0.9" />
+  <text x="505" y="596" font-family="Georgia, serif" font-size="13" fill="#3a2a1a" opacity="0.85" font-style="italic">PyeongChang</text>
+
+  
+  <circle cx="1065" cy="195" r="5" fill="#3a5a7a" stroke="#1a2a3a" stroke-width="1.5" opacity="0.9" />
+  <text x="1010" y="215" font-family="Georgia, serif" font-size="13" fill="#1a2a3a" opacity="0.85" font-style="italic">Sokcho</text>
+
+  
+  <circle cx="420" cy="700" r="7" fill="#8a3a3a" stroke="#3a2a1a" stroke-width="1.5" opacity="0.9" />
+  <text x="438" y="696" font-family="Georgia, serif" font-size="14" fill="#3a2a1a" opacity="0.9" font-weight="bold">Chuncheon</text>
+
+  
+  <g transform="translate(1220, 820)">
+    
+    <circle cx="0" cy="0" r="52" fill="#d8cc9a" stroke="#8a7a5a" stroke-width="2" opacity="0.9" />
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#8a7a5a" stroke-width="1" opacity="0.6" />
+    
+    <polygon points="0,-42 -8,-12 0,-22 8,-12" fill="#3a2a1a" opacity="0.9" />
+    
+    <polygon points="0,42 -8,12 0,22 8,12" fill="#8a7a5a" opacity="0.7" />
+    
+    <polygon points="42,0 12,-8 22,0 12,8" fill="#8a7a5a" opacity="0.7" />
+    
+    <polygon points="-42,0 -12,-8 -22,0 -12,8" fill="#8a7a5a" opacity="0.7" />
+    
+    <text x="0" y="-48" font-family="Georgia, serif" font-size="14" fill="#3a2a1a" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="62" font-family="Georgia, serif" font-size="12" fill="#6a5a4a" text-anchor="middle">S</text>
+    <text x="56" y="5" font-family="Georgia, serif" font-size="12" fill="#6a5a4a" text-anchor="middle">E</text>
+    <text x="-56" y="5" font-family="Georgia, serif" font-size="12" fill="#6a5a4a" text-anchor="middle">W</text>
+    
+    <circle cx="0" cy="0" r="4" fill="#8a7a5a" />
+  </g>
+
+  
+  <path d="M245,700 L295,820" stroke="#6a8ea8" stroke-width="3" opacity="0.7" />
+  <path d="M248,700 L220,780 L255,820" stroke="#6a8ea8" stroke-width="2" stroke-dasharray="4,3" opacity="0.5" />
+  
+  <circle cx="265" cy="730" r="8" fill="#d8cc9a" stroke="#3a2a1a" stroke-width="1.5" opacity="0.85" />
+  <line x1="265" y1="738" x2="265" y2="760" stroke="#3a2a1a" stroke-width="2" opacity="0.85" />
+  <line x1="255" y1="748" x2="278" y2="748" stroke="#3a2a1a" stroke-width="2" opacity="0.85" />
+  <line x1="265" y1="760" x2="252" y2="778" stroke="#3a2a1a" stroke-width="2" opacity="0.85" />
+  <line x1="265" y1="760" x2="278" y2="778" stroke="#3a2a1a" stroke-width="2" opacity="0.85" />
+
+  
+  <g transform="translate(80, 920)">
+    <line x1="0" y1="0" x2="120" y2="0" stroke="#3a2a1a" stroke-width="2" opacity="0.7" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#3a2a1a" stroke-width="2" opacity="0.7" />
+    <line x1="60" y1="-4" x2="60" y2="4" stroke="#3a2a1a" stroke-width="1.5" opacity="0.7" />
+    <line x1="120" y1="-6" x2="120" y2="6" stroke="#3a2a1a" stroke-width="2" opacity="0.7" />
+    <text x="0" y="-10" font-family="Georgia, serif" font-size="12" fill="#3a2a1a" opacity="0.7">0</text>
+    <text x="50" y="-10" font-family="Georgia, serif" font-size="12" fill="#3a2a1a" opacity="0.7">50 km</text>
+    <text x="105" y="-10" font-family="Georgia, serif" font-size="12" fill="#3a2a1a" opacity="0.7">100</text>
+  </g>
+
+  
+  <text x="580" y="780" font-family="Georgia, serif" font-size="15" fill="#3a2a1a" opacity="0.5" text-anchor="middle" font-style="italic">강원특별자치도</text>
+  <text x="580" y="800" font-family="Georgia, serif" font-size="13" fill="#3a2a1a" opacity="0.4" text-anchor="middle" font-style="italic">16,830 km² · pop. 1.5M</text>
+
+  
+  <rect x="0" y="870" width="1536" height="154" fill="#2a2018" opacity="0.88" />
+  <rect x="0" y="867" width="1536" height="4" fill="#c8a040" opacity="0.9" />
+
+  
+  <text x="80" y="924" font-family="Georgia, serif" font-size="42" fill="#f0e8c8" font-weight="bold" letter-spacing="1">Gangwon Province</text>
+  <text x="80" y="968" font-family="Georgia, serif" font-size="24" fill="#c8b880" letter-spacing="0.5">Mountain Tourism · Olympic Legacy · DMZ Frontier</text>
+
+  
+  <text x="1440" y="932" font-family="Georgia, serif" font-size="28" fill="#c8a040" opacity="0.8" text-anchor="end">강원도</text>
+  <text x="1440" y="966" font-family="Georgia, serif" font-size="14" fill="#a89060" opacity="0.7" text-anchor="end">Kangwŏn-do</text>
+
+  
+  <text x="720" y="430" font-family="Georgia, serif" font-size="16" fill="#2a3a2a" opacity="0.65" text-anchor="middle" font-style="italic" transform="rotate(-85, 720, 430)">Taebaek Mountains</text>
+
+  
+  <path d="M310,700 Q400,680 480,720 Q560,750 640,730 Q700,715 740,740" fill="none" stroke="#7aaecc" stroke-width="2.5" opacity="0.5" />
+  <path d="M300,600 Q380,590 440,620 Q500,645 560,630" fill="none" stroke="#7aaecc" stroke-width="2" opacity="0.4" />
+
+</svg>

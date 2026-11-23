@@ -1,0 +1,278 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Chaebol (Korean Conglomerates) — Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b8a870" />
+    </linearGradient>
+    <linearGradient id="accentGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B6914" />
+      <stop offset="100%" stop-color="#c49a2a" />
+    </linearGradient>
+    <pattern id="hatch" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="6" x2="6" y2="0" stroke="#a89660" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8B6914" stroke-width="2" opacity="0.5" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8B6914" stroke-width="1" opacity="0.3" />
+
+  
+  <ellipse cx="820" cy="512" rx="560" ry="420" fill="url(#seaGrad)" opacity="0.6" />
+
+  
+  
+  <path d="M 820,210 C 840,210 870,220 885,240 C 900,260 910,280 915,310             C 920,340 918,370 910,400 C 900,430 885,455 875,480            C 865,505 858,530 855,555 C 852,580 853,605 848,625            C 843,645 832,660 820,670 C 808,680 795,685 782,678            C 770,671 762,658 758,640 C 754,622 755,600 758,578            C 761,556 766,534 768,510 C 770,486 768,462 760,438            C 752,414 738,392 730,368 C 722,344 720,318 725,292            C 730,266 742,244 758,228 C 774,212 798,208 820,210 Z" fill="url(#landGrad)" stroke="#8B6914" stroke-width="1.5" />
+
+  
+  <path d="M 820,210 C 840,210 870,220 885,240 C 900,260 910,280 915,310            C 920,340 918,370 910,400 C 900,430 885,455 875,480            C 855,470 840,458 822,450 C 804,442 788,440 772,444            C 756,448 742,458 730,468 C 720,440 718,410 722,382            C 726,354 736,328 748,304 C 760,280 774,258 786,238            C 798,218 810,210 820,210 Z" fill="#c4b07c" stroke="#8B6914" stroke-width="1.2" opacity="0.9" />
+
+  
+  <line x1="730" y1="468" x2="875" y2="480" stroke="#6b3a3a" stroke-width="2" stroke-dasharray="8,4" opacity="0.7" />
+
+  
+  <ellipse cx="790" cy="710" rx="28" ry="18" fill="#c4b07c" stroke="#8B6914" stroke-width="1.2" />
+
+  
+  <path d="M 1020,280 C 1030,270 1045,268 1055,275 C 1065,282 1068,295 1062,308            C 1056,321 1042,330 1030,335 C 1018,340 1006,338 1000,328            C 994,318 998,302 1010,292 Z" fill="#c4b07c" stroke="#8B6914" stroke-width="1" opacity="0.7" />
+  <path d="M 1040,340 C 1055,332 1072,330 1082,340 C 1092,350 1090,368 1078,382            C 1066,396 1048,402 1034,398 C 1020,394 1012,382 1016,368            C 1020,354 1030,346 1040,340 Z" fill="#c4b07c" stroke="#8B6914" stroke-width="1" opacity="0.7" />
+  <path d="M 1055,400 C 1072,390 1092,388 1105,400 C 1118,412 1116,435 1100,452            C 1084,469 1060,474 1044,464 C 1028,454 1028,434 1040,420            C 1046,413 1052,406 1055,400 Z" fill="#c4b07c" stroke="#8B6914" stroke-width="1" opacity="0.7" />
+  <path d="M 1060,465 C 1078,452 1100,450 1115,464 C 1130,478 1128,504 1110,522            C 1092,540 1065,544 1048,530 C 1031,516 1034,492 1048,478 Z" fill="#c4b07c" stroke="#8B6914" stroke-width="1" opacity="0.7" />
+
+  
+  <path d="M 580,180 C 600,170 640,165 670,172 C 700,179 720,196 730,218            C 740,240 738,266 730,292 C 722,318 710,342 700,366            C 690,390 682,415 678,440 C 674,465 674,490 676,514            C 678,538 682,560 680,582 C 678,604 668,622 655,635            C 642,648 626,655 610,654 C 594,653 578,644 566,630            C 554,616 547,596 548,575 C 549,554 558,534 560,510            C 562,486 558,460 548,436 C 538,412 522,390 514,366            C 506,342 506,316 514,292 C 522,268 538,246 558,230            C 568,222 576,184 580,180 Z" fill="#c4b07c" stroke="#8B6914" stroke-width="1" opacity="0.55" />
+
+  
+  <text x="960" y="430" font-family="Georgia, serif" font-size="16" fill="#4a6878" text-anchor="middle" font-style="italic" opacity="0.8" letter-spacing="3">Sea of Japan</text>
+  
+  <text x="668" y="490" font-family="Georgia, serif" font-size="16" fill="#4a6878" text-anchor="middle" font-style="italic" opacity="0.8" letter-spacing="2">Yellow Sea</text>
+
+  
+  <circle cx="808" cy="520" r="7" fill="#8B1a1a" stroke="#f5e8c0" stroke-width="2" />
+  <circle cx="808" cy="520" r="12" fill="none" stroke="#8B1a1a" stroke-width="1" opacity="0.5" />
+  <text x="828" y="516" font-family="Georgia, serif" font-size="13" fill="#3a2808" font-weight="bold">Seoul</text>
+
+  
+  <circle cx="808" cy="388" r="5" fill="#6b3a3a" stroke="#f5e8c0" stroke-width="1.5" />
+  <text x="820" y="384" font-family="Georgia, serif" font-size="11" fill="#3a2808">Pyongyang</text>
+
+  
+  <g transform="translate(1040,650)">
+    
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#8B6914" stroke-width="1.5" opacity="0.7" />
+    <circle cx="0" cy="0" r="44" fill="#e8dfc8" stroke="#8B6914" stroke-width="0.5" opacity="0.5" />
+    
+    <polygon points="0,-42 -7,-18 7,-18" fill="#8B1a1a" />
+    <polygon points="0,-42 -7,-18 0,-24" fill="#6b0a0a" />
+    
+    <polygon points="0,42 -7,18 7,18" fill="#8B6914" />
+    
+    <polygon points="42,0 18,-7 18,7" fill="#8B6914" />
+    
+    <polygon points="-42,0 -18,-7 -18,7" fill="#8B6914" />
+    
+    <circle cx="0" cy="0" r="5" fill="#8B6914" />
+    <circle cx="0" cy="0" r="3" fill="#e8dfc8" />
+    
+    <text x="0" y="-52" font-family="Georgia, serif" font-size="13" fill="#3a2808" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="64" font-family="Georgia, serif" font-size="11" fill="#3a2808" text-anchor="middle">S</text>
+    <text x="56" y="4" font-family="Georgia, serif" font-size="11" fill="#3a2808" text-anchor="middle">E</text>
+    <text x="-56" y="4" font-family="Georgia, serif" font-size="11" fill="#3a2808" text-anchor="middle">W</text>
+    
+    <line x1="0" y1="-44" x2="0" y2="-38" stroke="#8B6914" stroke-width="1" />
+    <line x1="0" y1="44" x2="0" y2="38" stroke="#8B6914" stroke-width="1" />
+    <line x1="44" y1="0" x2="38" y2="0" stroke="#8B6914" stroke-width="1" />
+    <line x1="-44" y1="0" x2="-38" y2="0" stroke="#8B6914" stroke-width="1" />
+  </g>
+
+  
+  
+  <g transform="translate(120,320)">
+    <rect x="-35" y="-35" width="70" height="70" rx="4" fill="#8B6914" opacity="0.2" stroke="#8B6914" stroke-width="1.5" />
+    <rect x="-22" y="-22" width="44" height="44" rx="2" fill="none" stroke="#8B6914" stroke-width="1.5" />
+    
+    <line x1="-35" y1="-12" x2="-22" y2="-12" stroke="#8B6914" stroke-width="2" />
+    <line x1="-35" y1="0" x2="-22" y2="0" stroke="#8B6914" stroke-width="2" />
+    <line x1="-35" y1="12" x2="-22" y2="12" stroke="#8B6914" stroke-width="2" />
+    <line x1="35" y1="-12" x2="22" y2="-12" stroke="#8B6914" stroke-width="2" />
+    <line x1="35" y1="0" x2="22" y2="0" stroke="#8B6914" stroke-width="2" />
+    <line x1="35" y1="12" x2="22" y2="12" stroke="#8B6914" stroke-width="2" />
+    <line x1="-12" y1="-35" x2="-12" y2="-22" stroke="#8B6914" stroke-width="2" />
+    <line x1="0" y1="-35" x2="0" y2="-22" stroke="#8B6914" stroke-width="2" />
+    <line x1="12" y1="-35" x2="12" y2="-22" stroke="#8B6914" stroke-width="2" />
+    <line x1="-12" y1="35" x2="-12" y2="22" stroke="#8B6914" stroke-width="2" />
+    <line x1="0" y1="35" x2="0" y2="22" stroke="#8B6914" stroke-width="2" />
+    <line x1="12" y1="35" x2="12" y2="22" stroke="#8B6914" stroke-width="2" />
+    
+    <line x1="-10" y1="0" x2="-10" y2="-10" stroke="#8B6914" stroke-width="1" opacity="0.7" />
+    <line x1="-10" y1="-10" x2="10" y2="-10" stroke="#8B6914" stroke-width="1" opacity="0.7" />
+    <line x1="10" y1="-10" x2="10" y2="10" stroke="#8B6914" stroke-width="1" opacity="0.7" />
+    <line x1="-10" y1="10" x2="10" y2="10" stroke="#8B6914" stroke-width="1" opacity="0.7" />
+  </g>
+  <text x="120" y="400" font-family="Georgia, serif" font-size="12" fill="#3a2808" text-anchor="middle" font-style="italic">Semiconductors</text>
+
+  
+  <g transform="translate(240,340)">
+    <rect x="-40" y="-12" width="80" height="28" rx="3" fill="#8B6914" opacity="0.25" stroke="#8B6914" stroke-width="1.5" />
+    <path d="M -25,-12 L -32,-28 L 28,-28 L 35,-12 Z" fill="#8B6914" opacity="0.25" stroke="#8B6914" stroke-width="1.5" />
+    <circle cx="-22" cy="18" r="9" fill="#8B6914" opacity="0.3" stroke="#8B6914" stroke-width="1.5" />
+    <circle cx="-22" cy="18" r="4" fill="#e8dfc8" stroke="#8B6914" stroke-width="1" />
+    <circle cx="22" cy="18" r="9" fill="#8B6914" opacity="0.3" stroke="#8B6914" stroke-width="1.5" />
+    <circle cx="22" cy="18" r="4" fill="#e8dfc8" stroke="#8B6914" stroke-width="1" />
+    
+    <path d="M -20,-24 L -10,-12 L 22,-12 L 28,-24 Z" fill="#9ab8c8" opacity="0.5" stroke="#8B6914" stroke-width="0.8" />
+  </g>
+  <text x="240" y="400" font-family="Georgia, serif" font-size="12" fill="#3a2808" text-anchor="middle" font-style="italic">Automobiles</text>
+
+  
+  <g transform="translate(120,480)">
+    
+    <path d="M -42,8 C -42,8 -36,20 0,20 C 36,20 42,8 42,8 Z" fill="#8B6914" opacity="0.3" stroke="#8B6914" stroke-width="1.5" />
+    <rect x="-30" y="-14" width="60" height="22" fill="#8B6914" opacity="0.2" stroke="#8B6914" stroke-width="1.5" />
+    
+    <rect x="-12" y="-32" width="8" height="20" fill="#8B6914" opacity="0.4" stroke="#8B6914" stroke-width="1" />
+    <rect x="6" y="-28" width="8" height="16" fill="#8B6914" opacity="0.4" stroke="#8B6914" stroke-width="1" />
+    
+    <circle cx="-8" cy="-36" r="5" fill="#a89660" opacity="0.3" />
+    <circle cx="10" cy="-32" r="4" fill="#a89660" opacity="0.3" />
+  </g>
+  <text x="120" y="542" font-family="Georgia, serif" font-size="12" fill="#3a2808" text-anchor="middle" font-style="italic">Shipbuilding</text>
+
+  
+  <g transform="translate(240,470)">
+    
+    <rect x="-14" y="-52" width="28" height="72" fill="#8B6914" opacity="0.2" stroke="#8B6914" stroke-width="1.5" />
+    
+    <rect x="-10" y="-46" width="8" height="8" fill="#8B6914" opacity="0.35" />
+    <rect x="2" y="-46" width="8" height="8" fill="#8B6914" opacity="0.35" />
+    <rect x="-10" y="-32" width="8" height="8" fill="#8B6914" opacity="0.35" />
+    <rect x="2" y="-32" width="8" height="8" fill="#8B6914" opacity="0.35" />
+    <rect x="-10" y="-18" width="8" height="8" fill="#8B6914" opacity="0.35" />
+    <rect x="2" y="-18" width="8" height="8" fill="#8B6914" opacity="0.35" />
+    <rect x="-10" y="-4" width="8" height="8" fill="#8B6914" opacity="0.35" />
+    <rect x="2" y="-4" width="8" height="8" fill="#8B6914" opacity="0.35" />
+    
+    <rect x="-28" y="18" width="56" height="4" fill="#8B6914" opacity="0.5" />
+  </g>
+  <text x="240" y="542" font-family="Georgia, serif" font-size="12" fill="#3a2808" text-anchor="middle" font-style="italic">Construction</text>
+
+  
+  <line x1="560" y1="300" x2="1060" y2="300" stroke="#4a6878" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,6" />
+  <line x1="560" y1="400" x2="1060" y2="400" stroke="#4a6878" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,6" />
+  <line x1="560" y1="500" x2="1060" y2="500" stroke="#4a6878" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,6" />
+  <line x1="560" y1="600" x2="1060" y2="600" stroke="#4a6878" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,6" />
+  <line x1="680" y1="200" x2="680" y2="730" stroke="#4a6878" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,6" />
+  <line x1="780" y1="200" x2="780" y2="730" stroke="#4a6878" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,6" />
+  <line x1="880" y1="200" x2="880" y2="730" stroke="#4a6878" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,6" />
+  <line x1="980" y1="200" x2="980" y2="730" stroke="#4a6878" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,6" />
+
+  
+  
+  <g transform="translate(1320, 230)">
+    <rect x="-90" y="-22" width="180" height="44" rx="3" fill="#8B1a1a" opacity="0.15" stroke="#8B1a1a" stroke-width="1.5" />
+    <text x="0" y="6" font-family="Georgia, serif" font-size="20" fill="#8B1a1a" text-anchor="middle" font-weight="bold" letter-spacing="2">SAMSUNG</text>
+  </g>
+
+  
+  <g transform="translate(1320, 300)">
+    <rect x="-90" y="-22" width="180" height="44" rx="3" fill="#1a3a6b" opacity="0.12" stroke="#1a3a6b" stroke-width="1.5" />
+    <text x="0" y="6" font-family="Georgia, serif" font-size="20" fill="#1a3a6b" text-anchor="middle" font-weight="bold" letter-spacing="2">HYUNDAI</text>
+  </g>
+
+  
+  <g transform="translate(1320, 370)">
+    <rect x="-90" y="-22" width="180" height="44" rx="3" fill="#8B1a1a" opacity="0.12" stroke="#8B1a1a" stroke-width="1.5" />
+    <text x="0" y="6" font-family="Georgia, serif" font-size="20" fill="#8B1a1a" text-anchor="middle" font-weight="bold" letter-spacing="4">LG</text>
+  </g>
+
+  
+  <g transform="translate(1320, 440)">
+    <rect x="-90" y="-22" width="180" height="44" rx="3" fill="#e07800" opacity="0.12" stroke="#e07800" stroke-width="1.5" />
+    <text x="0" y="6" font-family="Georgia, serif" font-size="20" fill="#8B5000" text-anchor="middle" font-weight="bold" letter-spacing="4">SK</text>
+  </g>
+
+  
+  <g transform="translate(1320, 510)">
+    <rect x="-90" y="-22" width="180" height="44" rx="3" fill="#8B1a1a" opacity="0.12" stroke="#8B1a1a" stroke-width="1.5" />
+    <text x="0" y="6" font-family="Georgia, serif" font-size="20" fill="#8B1a1a" text-anchor="middle" font-weight="bold" letter-spacing="2">LOTTE</text>
+  </g>
+
+  
+  <text x="1320" y="570" font-family="Georgia, serif" font-size="13" fill="#3a2808" text-anchor="middle" font-style="italic" opacity="0.8">— The Big Five —</text>
+  <text x="1320" y="592" font-family="Georgia, serif" font-size="12" fill="#3a2808" text-anchor="middle" opacity="0.7">~50% of South Korea's GDP</text>
+
+  
+  <g transform="translate(1320, 680)">
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#d4c9a8" stroke-width="12" />
+    
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#8B1a1a" stroke-width="12" stroke-dasharray="172.8 172.8" stroke-dashoffset="86.4" opacity="0.7" />
+    
+    <text x="0" y="-8" font-family="Georgia, serif" font-size="18" fill="#8B1a1a" text-anchor="middle" font-weight="bold">50%</text>
+    <text x="0" y="10" font-family="Georgia, serif" font-size="10" fill="#3a2808" text-anchor="middle">of GDP</text>
+    
+    <rect x="-50" y="68" width="12" height="12" fill="#8B1a1a" opacity="0.7" />
+    <text x="-32" y="79" font-family="Georgia, serif" font-size="11" fill="#3a2808">Chaebol</text>
+    <rect x="18" y="68" width="12" height="12" fill="#d4c9a8" stroke="#a89660" stroke-width="1" />
+    <text x="36" y="79" font-family="Georgia, serif" font-size="11" fill="#3a2808">Other</text>
+  </g>
+
+  
+  <text x="820" y="790" font-family="serif" font-size="52" fill="#8B6914" text-anchor="middle" opacity="0.18" letter-spacing="8">재벌</text>
+
+  
+  <line x1="60" y1="830" x2="1476" y2="830" stroke="#8B6914" stroke-width="1" opacity="0.5" />
+  <line x1="60" y1="836" x2="1476" y2="836" stroke="#8B6914" stroke-width="0.4" opacity="0.3" />
+
+  
+  <path d="M 60,60 L 110,60 L 110,65 L 65,65 L 65,110 L 60,110 Z" fill="#8B6914" opacity="0.6" />
+  <path d="M 1476,60 L 1426,60 L 1426,65 L 1471,65 L 1471,110 L 1476,110 Z" fill="#8B6914" opacity="0.6" />
+  <path d="M 60,964 L 110,964 L 110,959 L 65,959 L 65,914 L 60,914 Z" fill="#8B6914" opacity="0.6" />
+  <path d="M 1476,964 L 1426,964 L 1426,959 L 1471,959 L 1471,914 L 1476,914 Z" fill="#8B6914" opacity="0.6" />
+
+  
+  <rect x="60" y="855" width="200" height="28" rx="2" fill="#8B6914" opacity="0.85" />
+  <text x="160" y="874" font-family="Georgia, serif" font-size="13" fill="#f5e8c0" text-anchor="middle" letter-spacing="3">SOUTH KOREA</text>
+
+  
+  <text x="540" y="900" font-family="Georgia, serif" font-size="68" fill="#1a1008" text-anchor="middle" font-weight="bold" letter-spacing="2">Chaebol</text>
+  <text x="540" y="965" font-family="Georgia, serif" font-size="28" fill="#3a2808" text-anchor="middle" font-style="italic" letter-spacing="4">Korean Conglomerates</text>
+
+  
+  <text x="1100" y="895" font-family="Georgia, serif" font-size="18" fill="#3a2808" text-anchor="middle" opacity="0.85" font-style="italic">"Wealth clique" — family-owned empires</text>
+  <text x="1100" y="925" font-family="Georgia, serif" font-size="16" fill="#3a2808" text-anchor="middle" opacity="0.75">driving South Korea's economic rise</text>
+  <text x="1100" y="955" font-family="Georgia, serif" font-size="16" fill="#3a2808" text-anchor="middle" opacity="0.75">since the 1960s industrial era</text>
+
+  
+  <rect x="60" y="58" width="1416" height="50" fill="#8B6914" opacity="0.1" />
+  <text x="768" y="90" font-family="Georgia, serif" font-size="16" fill="#3a2808" text-anchor="middle" letter-spacing="8" opacity="0.8">ATLAS OF KOREAN ECONOMIC GEOGRAPHY</text>
+
+  
+  <g transform="translate(630, 770)">
+    <line x1="-60" y1="0" x2="60" y2="0" stroke="#3a2808" stroke-width="1.5" />
+    <line x1="-60" y1="-5" x2="-60" y2="5" stroke="#3a2808" stroke-width="1.5" />
+    <line x1="0" y1="-4" x2="0" y2="4" stroke="#3a2808" stroke-width="1.5" />
+    <line x1="60" y1="-5" x2="60" y2="5" stroke="#3a2808" stroke-width="1.5" />
+    <rect x="-60" y="-4" width="60" height="8" fill="#3a2808" opacity="0.6" />
+    <text x="0" y="18" font-family="Georgia, serif" font-size="11" fill="#3a2808" text-anchor="middle">200 km</text>
+  </g>
+
+</svg>

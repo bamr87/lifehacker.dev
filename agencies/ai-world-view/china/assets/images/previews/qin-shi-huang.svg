@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Qin Shi Huang – First Emperor of Unified China</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </linearGradient>
+    <linearGradient id="mapGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4c49a" />
+      <stop offset="100%" stop-color="#b8a872" />
+    </linearGradient>
+    <linearGradient id="sealGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b2020" />
+      <stop offset="100%" stop-color="#5c1010" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4a820" />
+      <stop offset="100%" stop-color="#9a7010" />
+    </linearGradient>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  
+  <rect width="1536" height="1024" fill="#c4a85a" opacity="0.12" />
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#7a6030" stroke-width="4" />
+  
+  <rect x="32" y="32" width="1472" height="960" fill="none" stroke="#7a6030" stroke-width="1.5" />
+
+  
+  
+  <line x1="20" y1="60" x2="60" y2="20" stroke="#7a6030" stroke-width="1.5" />
+  <line x1="20" y1="80" x2="80" y2="20" stroke="#7a6030" stroke-width="1" />
+  
+  <line x1="1516" y1="60" x2="1476" y2="20" stroke="#7a6030" stroke-width="1.5" />
+  <line x1="1516" y1="80" x2="1456" y2="20" stroke="#7a6030" stroke-width="1" />
+  
+  <line x1="20" y1="964" x2="60" y2="1004" stroke="#7a6030" stroke-width="1.5" />
+  <line x1="20" y1="944" x2="80" y2="1004" stroke="#7a6030" stroke-width="1" />
+  
+  <line x1="1516" y1="964" x2="1476" y2="1004" stroke="#7a6030" stroke-width="1.5" />
+  <line x1="1516" y1="944" x2="1456" y2="1004" stroke="#7a6030" stroke-width="1" />
+
+  
+  
+  <path d="M 560,140 L 1100,140 L 1180,200 L 1220,320 L 1200,460 L 1150,560 L 1080,640 L 980,700 L 860,740 L 740,720 L 640,680 L 560,620 L 500,520 L 480,400 L 500,280 Z" fill="url(#mapGrad)" stroke="#7a6030" stroke-width="2.5" opacity="0.9" />
+
+  
+  
+  <path d="M 500,280 L 660,260 L 680,380 L 660,480 L 580,520 L 500,520 L 480,400 Z" fill="#c4956a" stroke="#7a6030" stroke-width="1.5" />
+  
+  <path d="M 660,260 L 860,200 L 920,260 L 900,380 L 800,400 L 680,380 Z" fill="#b8a878" stroke="#7a6030" stroke-width="1.5" />
+  
+  <path d="M 680,380 L 800,400 L 820,480 L 740,520 L 660,480 Z" fill="#c8b888" stroke="#7a6030" stroke-width="1.5" />
+  
+  <path d="M 660,480 L 740,520 L 720,600 L 640,620 L 580,560 L 580,520 Z" fill="#bca870" stroke="#7a6030" stroke-width="1.5" />
+  
+  <path d="M 860,200 L 1060,180 L 1100,260 L 1000,320 L 920,300 L 920,260 Z" fill="#b4a06a" stroke="#7a6030" stroke-width="1.5" />
+  
+  <path d="M 920,260 L 1000,320 L 1060,340 L 1100,460 L 1000,500 L 900,480 L 900,380 Z" fill="#c0b07a" stroke="#7a6030" stroke-width="1.5" />
+  
+  <path d="M 580,520 L 640,620 L 640,700 L 740,720 L 860,720 L 920,660 L 900,560 L 820,540 L 820,480 L 740,520 L 720,600 Z" fill="#b8aa74" stroke="#7a6030" stroke-width="1.5" />
+
+  
+  
+  <path d="M 520,340 Q 580,300 660,310 Q 740,320 800,360 Q 860,390 920,370 Q 980,350 1040,380" fill="none" stroke="#7a9ab8" stroke-width="3" opacity="0.7" />
+  
+  <path d="M 580,560 Q 660,540 740,560 Q 820,580 900,560 Q 960,545 1010,580" fill="none" stroke="#7a9ab8" stroke-width="2.5" opacity="0.6" />
+
+  
+  <path d="M 490,300 L 505,285 L 520,300 L 535,282 L 550,300 L 565,280 L 580,300" fill="none" stroke="#6a5830" stroke-width="2" />
+  <path d="M 490,370 L 505,355 L 520,372 L 535,353 L 550,370" fill="none" stroke="#6a5830" stroke-width="2" />
+
+  
+  <path d="M 530,270 Q 620,230 720,215 Q 820,200 920,220 Q 1000,230 1080,210" fill="none" stroke="#7a5030" stroke-width="3" stroke-dasharray="8,5" />
+
+  
+  <text x="555" y="410" font-family="Georgia, serif" font-size="28" fill="#4a3010" text-anchor="middle" font-style="italic" opacity="0.85">秦</text>
+  <text x="555" y="440" font-family="Georgia, serif" font-size="14" fill="#4a3010" text-anchor="middle" opacity="0.7">QIN</text>
+
+  <text x="780" y="310" font-family="Georgia, serif" font-size="24" fill="#4a3010" text-anchor="middle" font-style="italic" opacity="0.8">趙</text>
+
+  <text x="740" y="460" font-family="Georgia, serif" font-size="20" fill="#4a3010" text-anchor="middle" font-style="italic" opacity="0.8">魏</text>
+
+  <text x="660" y="560" font-family="Georgia, serif" font-size="20" fill="#4a3010" text-anchor="middle" font-style="italic" opacity="0.8">韓</text>
+
+  <text x="990" y="240" font-family="Georgia, serif" font-size="22" fill="#4a3010" text-anchor="middle" font-style="italic" opacity="0.8">燕</text>
+
+  <text x="1000" y="400" font-family="Georgia, serif" font-size="24" fill="#4a3010" text-anchor="middle" font-style="italic" opacity="0.8">齊</text>
+
+  <text x="760" y="640" font-family="Georgia, serif" font-size="26" fill="#4a3010" text-anchor="middle" font-style="italic" opacity="0.8">楚</text>
+
+  
+  <circle cx="1350" cy="512" r="140" fill="url(#sealGrad)" opacity="0.9" />
+  <circle cx="1350" cy="512" r="132" fill="none" stroke="#c04040" stroke-width="3" />
+  <circle cx="1350" cy="512" r="124" fill="none" stroke="#d06060" stroke-width="1" />
+
+  
+  <text x="1350" y="490" font-family="Georgia, serif" font-size="72" fill="#f0d090" text-anchor="middle" dominant-baseline="middle" font-weight="bold">皇</text>
+  <text x="1350" y="558" font-family="Georgia, serif" font-size="30" fill="#f0c060" text-anchor="middle">帝</text>
+
+  
+  <path id="sealRing" d="M 1350,512 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0" fill="none" />
+  <text font-family="Georgia, serif" font-size="13" fill="#f0c060" letter-spacing="3">
+    <textPath href="#sealRing" startOffset="5%">· QIN SHI HUANG · FIRST EMPEROR · 221 BCE ·</textPath>
+  </text>
+
+  
+  <g transform="translate(200, 720)">
+    
+    <line x1="0" y1="-70" x2="0" y2="70" stroke="#7a6030" stroke-width="1.5" />
+    <line x1="-70" y1="0" x2="70" y2="0" stroke="#7a6030" stroke-width="1.5" />
+    
+    <line x1="-50" y1="-50" x2="50" y2="50" stroke="#7a6030" stroke-width="1" />
+    <line x1="50" y1="-50" x2="-50" y2="50" stroke="#7a6030" stroke-width="1" />
+    
+    <polygon points="0,-70 -12,-30 0,-45 12,-30" fill="#8b2020" />
+    <polygon points="0,70 -12,30 0,45 12,30" fill="#7a6030" />
+    <polygon points="-70,0 -30,-12 -45,0 -30,12" fill="#7a6030" />
+    <polygon points="70,0 30,-12 45,0 30,12" fill="#7a6030" />
+    
+    <circle cx="0" cy="0" r="10" fill="#e8dcc8" stroke="#7a6030" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#8b2020" />
+    
+    <text x="0" y="-78" font-family="Georgia, serif" font-size="18" fill="#4a3010" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="96" font-family="Georgia, serif" font-size="16" fill="#4a3010" text-anchor="middle">S</text>
+    <text x="84" y="5" font-family="Georgia, serif" font-size="16" fill="#4a3010" text-anchor="start">E</text>
+    <text x="-84" y="5" font-family="Georgia, serif" font-size="16" fill="#4a3010" text-anchor="end">W</text>
+  </g>
+
+  
+  <line x1="60" y1="100" x2="1476" y2="100" stroke="#7a6030" stroke-width="1" opacity="0.5" />
+
+  
+  <line x1="60" y1="100" x2="60" y2="924" stroke="#7a6030" stroke-width="1" opacity="0.4" />
+  <line x1="440" y1="100" x2="440" y2="924" stroke="#7a6030" stroke-width="0.5" opacity="0.3" />
+
+  
+  <text x="250" y="205" font-family="Georgia, serif" font-size="88" fill="#2a1a05" text-anchor="middle" font-weight="bold" letter-spacing="2">QIN SHI</text>
+  <text x="250" y="310" font-family="Georgia, serif" font-size="88" fill="#2a1a05" text-anchor="middle" font-weight="bold" letter-spacing="2">HUANG</text>
+
+  
+  <text x="250" y="390" font-family="Georgia, serif" font-size="52" fill="#7a3010" text-anchor="middle" letter-spacing="8">秦始皇</text>
+
+  
+  <line x1="90" y1="415" x2="410" y2="415" stroke="#7a6030" stroke-width="2" />
+  <circle cx="250" cy="415" r="5" fill="#8b2020" />
+
+  
+  <text x="250" y="455" font-family="Georgia, serif" font-size="20" fill="#5a4020" text-anchor="middle" font-style="italic">First Emperor of Unified China</text>
+  <text x="250" y="485" font-family="Georgia, serif" font-size="18" fill="#5a4020" text-anchor="middle">259 – 210 BCE</text>
+
+  
+  <rect x="90" y="505" width="320" height="44" fill="#7a3010" rx="3" />
+  <text x="250" y="533" font-family="Georgia, serif" font-size="18" fill="#f0d090" text-anchor="middle" letter-spacing="1">QIN DYNASTY  221–206 BCE</text>
+
+  
+  <text x="100" y="590" font-family="Georgia, serif" font-size="15" fill="#4a3010">▸ Born: Ying Zheng, Handan, 259 BCE</text>
+  <text x="100" y="615" font-family="Georgia, serif" font-size="15" fill="#4a3010">▸ Throne at age 13 (246 BCE)</text>
+  <text x="100" y="640" font-family="Georgia, serif" font-size="15" fill="#4a3010">▸ Conquered 6 rival states (230–221)</text>
+  <text x="100" y="665" font-family="Georgia, serif" font-size="15" fill="#4a3010">▸ Standardized script, weights, currency</text>
+  <text x="100" y="690" font-family="Georgia, serif" font-size="15" fill="#4a3010">▸ Built the Great Wall</text>
+
+  
+  <line x1="60" y1="924" x2="1476" y2="924" stroke="#7a6030" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="768" y="970" font-family="Georgia, serif" font-size="16" fill="#6a5030" text-anchor="middle" font-style="italic" letter-spacing="3">ATLAS OF IMPERIAL CHINA  ·  WARRING STATES TO UNIFIED EMPIRE</text>
+
+  
+  <rect x="565" y="760" width="530" height="36" fill="#7a5030" opacity="0.8" rx="2" />
+  <text x="830" y="784" font-family="Georgia, serif" font-size="16" fill="#f0d090" text-anchor="middle" letter-spacing="2">THE SEVEN STATES AT UNIFICATION  c. 221 BCE</text>
+
+  
+  <line x1="620" y1="810" x2="820" y2="810" stroke="#4a3010" stroke-width="2" />
+  <line x1="620" y1="804" x2="620" y2="816" stroke="#4a3010" stroke-width="2" />
+  <line x1="820" y1="804" x2="820" y2="816" stroke="#4a3010" stroke-width="2" />
+  <text x="720" y="830" font-family="Georgia, serif" font-size="13" fill="#4a3010" text-anchor="middle">Scale (approx.)</text>
+
+  
+  <text x="760" y="195" font-family="Georgia, serif" font-size="13" fill="#7a5030" text-anchor="middle" font-style="italic">― ― Great Wall ― ―</text>
+
+</svg>
