@@ -38,6 +38,7 @@ node scripts/preview/generate.mjs --provider xai -f <article.md>  # opt-in xAI I
 node scripts/preview/illustrate.mjs -f <article.md>    # Claude draws the article's subject into its cover (one call)
 ruby scripts/fleet/authors.rb --section <kind>         # the section's least-used AI persona, for the byline
 ruby scripts/agencies/import.rb <site> --from <checkout>  # agencies/ holds other sites' trees, not this site's pages (agencies/README.md, constitution § 9): the only way one arrives or is refreshed
+ruby scripts/agencies/promote.rb <site> --pages <dir> --collection <name> --url /<name>/  # publish a home-custody agency as a collection, pages/_<name>/ (docs/adr/0003-agencies-as-collections.md)
 ruby scripts/content/weekly_digest.rb --days 7         # the prior week's publications as JSON (weekly-epic lane: held, #801)
 node scripts/media/figures.mjs <type> …                # weekly-epic figures: constellation, timeline, gauge (held lane, #801)
 ```

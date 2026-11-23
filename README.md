@@ -57,6 +57,7 @@ This site grows itself: Claude Code reads `_data/brand/` + `_data/backlog.yml`, 
 | `_data/campaigns/` | Editorial campaign contracts consumed by external drafting tools; `git-with-the-program.yml` governs evidence-grounded repository histories. |
 | `_data/backlog.yml` | The autopilot's content queue. |
 | `agencies/`, `_data/agencies.yml` | The sub-agencies' site trees and their registry: whole sites held here as content for zer0-CMS to manage, excluded from this site's build. See [agencies/README.md](agencies/README.md). |
+| `pages/_wargames/` | The Wargames agency, published as a collection of this site under `/wargames/` and listed on `/agencies/`. |
 | `_data/wire/` | The Wire's assignment editor (`sources.yml`: news sources, frequencies, trust tiers, filters) + the crawl trail the `wire-scout` loop writes. The press charter it answers to lives in `_data/brand/identity.yml`. |
 | `pages/_posts/` `_about/` `_docs/` | Content collections (under `pages/` because `collections_dir: pages`). `_posts/` splits into `hacks/`, `tools/`, `field-notes/`, `wire/` — the news sections. |
 | `pages/news/` | The `/news/` landing pages (`index.md` + one per section). |

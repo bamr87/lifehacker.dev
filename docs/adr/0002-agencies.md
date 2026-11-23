@@ -49,7 +49,7 @@ Two facts shaped the mechanics. Production here is GitHub's own Pages build of t
 
 ## Left to the maintainer
 
-- Where and how agencies are published (their URLs, and whether this repository moves from the native Pages build to a workflow that builds each tree).
+- Where and how agencies are published (their URLs, and whether this repository moves from the native Pages build to a workflow that builds each tree). Settled since by [ADR 0003](0003-agencies-as-collections.md): as collections of this site, under their own paths.
 - When each mirror's write side moves here, and what happens to the two organizations' repositories and growth engines when it does.
 - The hub's registry rows and submodules for the two network hubs.
 

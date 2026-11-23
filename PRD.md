@@ -54,6 +54,7 @@ Feature [LHD-008](features/features.yml) traces to requirement MR1.
 - CI harness: Pages safe-mode build plus front-matter, brand, drift and link lints
 - Author personas in `_data/authors.yml`
 - Sub-agencies held as self-contained site trees under `agencies/`, registered in `_data/agencies.yml` and excluded from this site's build
+- The Wargames agency published as a collection of this site under `/wargames/`, listed on `/agencies/`
 
 ## Feature catalog
 
@@ -73,6 +74,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | [LHD-NEW](features/features.yml) | Hub-originated publishing in character voice | planned | [`_data/hub_intake.yml`](_data/hub_intake.yml) · [`docs/proposals/hub-origination.md`](docs/proposals/hub-origination.md) | FR5 |
 | [LHD-008](features/features.yml) | Constitution missions | planned | [`docs/constitution.md`](docs/constitution.md) · [`PRD.md`](PRD.md) | MR1 |
 | [LHD-009](features/features.yml) | Sub-agencies: self-contained site trees under agencies/ | partial | [`agencies`](agencies) · [`agencies/README.md`](agencies/README.md) | FR6, NFR5 |
+| [LHD-010](features/features.yml) | Wargames agency at /wargames/ | shipped | [`pages/_wargames`](pages/_wargames) · [`docs/adr/0003-agencies-as-collections.md`](docs/adr/0003-agencies-as-collections.md) | FR7 |
 
 **Requirement → feature trace**
 
@@ -89,6 +91,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | MR1 | LHD-008 |
 | FR6 | LHD-009 |
 | NFR5 | LHD-009 |
+| FR7 | LHD-010 |
 <!-- features:end -->
 
 ## 5. Requirements
@@ -101,6 +104,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 - FR4: All model calls go through the fleet runner `bamr87/bamr87/.github/actions/claude-run`
 - FR5 (planned): Articles originate as reviewed drafts in the hub (`bamr87/bamr87` `pages/posts/`, constitution § 23) and are written here in the voice of an SDLC-role persona from the shared fleet voice model `voices/v1` (canonical in the hub `_data/voices/voices.yml`, console edits write back by PR, schema-validated, drift-checked); nothing publishes without review
 - FR6: lifehacker.dev is the content source for its sub-agencies and zer0-CMS is the platform: every agency site is a self-contained tree under `agencies/`, listed in `_data/agencies.yml` with its source and its custody (`home` or `mirror`), and arrives or is refreshed only through `scripts/agencies/import.rb`
+- FR7: An agency is published as a Jekyll collection of this site under its own path (`pages/_<name>/`, served at `/<name>/`), only through `scripts/agencies/promote.rb` and only when its custody is `home`; its pages stay out of the news sections and the feed, and are listed on `/agencies/`, in the navbar and in the sitemap
 
 **Non-functional**
 

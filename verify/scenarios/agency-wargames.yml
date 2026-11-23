@@ -1,0 +1,68 @@
+# =============================================================================
+# verify/scenarios/agency-wargames.yml — a USER SCENARIO (scenario/v1)
+# =============================================================================
+# A reader finds the Wargames agency from the agencies index, lands on its map
+# of games, opens a level, reads the study guide at the end of it and steps to
+# the next level. Along the way the things that would break quietly are checked:
+# the level's tag badges resolve on /tags/, the page tree in the sidebar holds
+# the whole agency, and the agency's pages are not served at the URL base they
+# had on the site they came from, nor at the /index/ path a collection's index
+# page lands on when it does not pin its permalink.
+# The step grammar is documented in verify/scenarios/smoke-home.yml.
+# Decision: docs/adr/0003-agencies-as-collections.md.
+# =============================================================================
+id: agency-wargames
+feature: LHD-010
+title: "A reader finds the Wargames agency and works through a level"
+description: "The agencies index lists Wargames; /wargames/ maps the games; a level page shows its study guide, its sidebar tree and level-to-level navigation; its tag badges resolve."
+viewports: [desktop, mobile]
+steps:
+  # The front door: the index of agencies, driven by _data/agencies.yml.
+  - goto: /agencies/
+  - expect: { status: 200 }
+  - expect: { title: "Agencies" }
+  - expect: { text: "Wargames" }
+  - expect: { count: { selector: "a.list-group-item[href='/wargames/']", min: 1, max: 1 } }
+  - expect: { no_horizontal_scroll: true }
+  - expect: { no_console_errors: true }
+  - screenshot: agencies-index
+
+  # The agency's own landing: the map of games.
+  - click: "a.list-group-item[href='/wargames/']"
+  - wait: { url: "/wargames/" }
+  - expect: { status: 200 }
+  - expect: { text: "Suggested order to play the games in" }
+  - expect: { count: { selector: "[data-nav-tree] a", min: 200 } }
+  - expect: { no_horizontal_scroll: true }
+  - screenshot: wargames-landing
+
+  # A level: upstream text, then the study guide, then on to the next level.
+  - goto: /wargames/bandit/bandit11/
+  - expect: { status: 200 }
+  - expect: { title: "Bandit Level 11" }
+  - expect: { text: "Study guide" }
+  - expect: { count: { selector: "section.study-guide", min: 1, max: 1 } }
+  - expect: { count: { selector: "a[href='/authors/amr/']", min: 1 } }
+  - expect: { count: { selector: ".sg-nav a.sg-next[href='../bandit12/']", min: 1, max: 1 } }
+  - eval: { name: study-guide-is-styled, script: "getComputedStyle(document.querySelector('section.study-guide')).borderLeftStyle" }
+  - eval: { name: sidebar-links, script: "document.querySelectorAll('[data-nav-tree] a').length" }
+  - expect: { no_horizontal_scroll: true }
+  - expect: { no_console_errors: true }
+  - screenshot: level
+  - goto: /wargames/bandit/bandit12/
+  - expect: { status: 200 }
+  - expect: { title: "Bandit Level 12" }
+
+  # The tag badges on every level link to /tags/#<tag>; the anchors must exist.
+  - goto: /tags/
+  - expect: { status: 200 }
+  - expect: { count: { selector: "h2#wargames", min: 1, max: 1 } }
+  - expect: { count: { selector: "h2#cybersecurity", min: 1, max: 1 } }
+  - expect: { count: { selector: "h2#wargames + ul a[href='/wargames/']", min: 1 } }
+
+  # Not served: the URL base these pages had where they came from, and the
+  # /index/ path a collection index lands on without a pinned permalink.
+  - goto: /docs/wargames/bandit/
+  - expect: { status: 404 }
+  - goto: /wargames/bandit/index/
+  - expect: { status: 404 }
