@@ -390,3 +390,10 @@ exclude:
   - node_modules
   - mcp
   - features/
+  # The sub-agencies' site trees (agencies/README.md). Each is a whole site of
+  # its own, held here as content for zer0-CMS to manage — never a page of this
+  # one. Production builds the WHOLE repository while the CI overlay copies only
+  # pages/, _data/, _includes/ and assets/, so dropping this line would publish
+  # every agency page on the apex domain with no gate having built it.
+  # scripts/ci/lint_agencies.rb fails the build if it goes missing.
+  - agencies

@@ -1,0 +1,38 @@
+# =============================================================================
+# _data/agencies.yml — the registry of lifehacker.dev's sub-agencies
+# =============================================================================
+# lifehacker.dev is the fleet's news agency and the content source; zer0-CMS is
+# the platform that manages, renders and publishes what it holds. Each agency
+# below is a named desk with one or more self-contained site trees under
+# agencies/. Rules and layout: agencies/README.md. Decision: docs/adr/0002-agencies.md.
+#
+# Schema agencies/v1 (checked by scripts/ci/lint_agencies.rb):
+#   agencies[]:
+#     key      directory name under agencies/ (unique)
+#     name     display name
+#     beat     one line: what the agency covers
+#     kind     single (one site, at agencies/<key>) | network (a hub and members,
+#              each at agencies/<key>/<site>)
+#     sites[]:
+#       key      the site's name inside the agency (unique in the agency)
+#       path     the tree, relative to the repository root (unique)
+#       custody  home   — this tree is the only place the site is written
+#                mirror — the source repository is still written; this copy is
+#                         refreshed with scripts/agencies/import.rb, not edited
+#       live_url the public URL the site answers at today, if any (checked by
+#                hand on the import date; absent = not published anywhere)
+#       upstream the repository the site first lived in, when that is not `source.repo`
+#       note     anything a reader of this row needs that the fields do not say
+#       source:  where the tree was imported from — written by import.rb, never by hand
+#         repo         owner/name
+#         path         sub-directory of that repository ("." = the whole repository)
+#         commit       the commit exported
+#         imported     the date
+#         files        how many files the export held
+#         tree_sha256  the digest of the export (import.rb --digest explains it)
+#
+# This file's body is rewritten by scripts/agencies/import.rb (through
+# LH.ywrite, which keeps this header). Put commentary here, not between rows.
+# =============================================================================
+schema: agencies/v1
+agencies: []
