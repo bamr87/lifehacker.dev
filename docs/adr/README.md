@@ -17,3 +17,4 @@ This directory records decisions for lifehacker.dev that are hard to reverse: th
 | ID | Title | Status |
 | --- | --- | --- |
 | 0001 | [Record architecture decisions](0001-record-architecture-decisions.md) | accepted |
+| 0002 | [lifehacker.dev holds its sub-agencies' site trees; zer0-CMS is the platform](0002-agencies.md) | proposed |

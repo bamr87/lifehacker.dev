@@ -53,6 +53,7 @@ Feature [LHD-008](features/features.yml) traces to requirement MR1.
 - Offline-generated cover art (`scripts/preview/`)
 - CI harness: Pages safe-mode build plus front-matter, brand, drift and link lints
 - Author personas in `_data/authors.yml`
+- Sub-agencies held as self-contained site trees under `agencies/`, registered in `_data/agencies.yml` and excluded from this site's build
 
 ## Feature catalog
 
@@ -71,6 +72,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | [LHD-008](features/features.yml) | Page feedback: Improve this page | shipped | [`_config.yml`](_config.yml) · [`pages/_about/colophon.md`](pages/_about/colophon.md) | TBD |
 | [LHD-NEW](features/features.yml) | Hub-originated publishing in character voice | planned | [`_data/hub_intake.yml`](_data/hub_intake.yml) · [`docs/proposals/hub-origination.md`](docs/proposals/hub-origination.md) | FR5 |
 | [LHD-008](features/features.yml) | Constitution missions | planned | [`docs/constitution.md`](docs/constitution.md) · [`PRD.md`](PRD.md) | MR1 |
+| [LHD-009](features/features.yml) | Sub-agencies: self-contained site trees under agencies/ | partial | [`agencies`](agencies) · [`agencies/README.md`](agencies/README.md) | FR6, NFR5 |
 
 **Requirement → feature trace**
 
@@ -79,12 +81,14 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 | FR1 | LHD-001, LHD-004 |
 | NFR1 | LHD-001, LHD-006 |
 | NFR2 | LHD-002 |
-| TBD | LHD-008 |
 | FR3 | LHD-003, LHD-004, LHD-007 |
 | NFR3 | LHD-005 |
 | FR2 | LHD-006 |
+| TBD | LHD-008 |
 | FR5 | LHD-NEW |
 | MR1 | LHD-008 |
+| FR6 | LHD-009 |
+| NFR5 | LHD-009 |
 <!-- features:end -->
 
 ## 5. Requirements
@@ -96,6 +100,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 - FR3: Authors must exist in `_data/authors.yml`
 - FR4: All model calls go through the fleet runner `bamr87/bamr87/.github/actions/claude-run`
 - FR5 (planned): Articles originate as reviewed drafts in the hub (`bamr87/bamr87` `pages/posts/`, constitution § 23) and are written here in the voice of an SDLC-role persona from the shared fleet voice model `voices/v1` (canonical in the hub `_data/voices/voices.yml`, console edits write back by PR, schema-validated, drift-checked); nothing publishes without review
+- FR6: lifehacker.dev is the content source for its sub-agencies and zer0-CMS is the platform: every agency site is a self-contained tree under `agencies/`, listed in `_data/agencies.yml` with its source and its custody (`home` or `mirror`), and arrives or is refreshed only through `scripts/agencies/import.rb`
 
 **Non-functional**
 
@@ -103,6 +108,7 @@ Every user-facing capability has a stable id in the feature catalog [`features/f
 - NFR2: Brand `avoid_phrases` hard-fail; other brand findings advisory
 - NFR3: Cover-art seed order is a stable contract (append-only)
 - NFR4: Performance/accessibility budgets: TBD
+- NFR5: Nothing under `agencies/` is built into the apex site: `agencies` stays in `_config.yml` `exclude:`, and the harness fails if it does not
 
 ## 6. Success metrics (proposed — not defined in sources)
 
