@@ -1,10 +1,10 @@
 <!-- kit: governance v0.1.0 -->
 # 0004 — Agencies
 
-- **Status:** proposed
+- **Status:** ratified
 - **Date:** 2026-11-22
 - **Proposed by:** Claude Code (agent), on the maintainer's direction of 2026-11-22
-- **Ratified by:**
+- **Ratified by:** [#829](https://github.com/bamr87/lifehacker.dev/pull/829), merged by the maintainer on 2026-11-24
 - **Affects:** constitution § 9 (new); PRD FR6 and NFR5; feature LHD-009
 - **Supersedes:** none
 - **Related:** [ADR 0002](../adr/0002-agencies.md); zer0-CMS ADR 0012; [hub constitution § 23.6](https://github.com/bamr87/bamr87/blob/main/docs/constitution.md#23-writing-section-chronicles-fleet-activity)
@@ -31,4 +31,4 @@ _(amendment 0004)_
 
 ## Consequences
 
-Agents treat `agencies/` as other sites' content held in custody, not as pages of lifehacker.dev: they register before importing, never edit a mirror, and never remove the build exclude. `scripts/ci/lint_agencies.rb` enforces rules 2 and 4 in the harness; rules 1, 3 and 5 are review rules. The PRD gains FR6 and NFR5, and the feature catalog gains LHD-009. Merging the pull request that carries this record ratifies it. Until then the record stays `Status: proposed`.
+Agents treat `agencies/` as other sites' content held in custody, not as pages of lifehacker.dev: they register before importing, never edit a mirror, and never remove the build exclude. `scripts/ci/lint_agencies.rb` enforces rules 2 and 4 in the harness; rules 1, 3 and 5 are review rules. The PRD gains FR6 and NFR5, and the feature catalog gains LHD-009. The maintainer merged the pull request that carried this record ([#829](https://github.com/bamr87/lifehacker.dev/pull/829)) on 2026-11-24, which ratified it.

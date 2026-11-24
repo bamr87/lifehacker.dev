@@ -14,4 +14,4 @@ Process: constitution § 8.
 | [0001](0001-ratify-constitution.md) | Ratify the constitution | ratified on merge | whole constitution |
 | [0002](0002-reflow-to-one-paragraph-per-line.md) | Reflow the constitution to one paragraph per line (editorial) | proposed | preamble, § 8 (formatting only) |
 | [0003](0003-mission-statement.md) | Missions | proposed | constitution §1; PRD §1.1; feature LHD-008 |
-| [0004](0004-agencies.md) | Agencies | proposed | constitution § 9 (new); PRD FR6, NFR5; feature LHD-009 |
+| [0004](0004-agencies.md) | Agencies | ratified ([#829](https://github.com/bamr87/lifehacker.dev/pull/829)) | constitution § 9 (new); PRD FR6, NFR5; feature LHD-009 |

@@ -1,7 +1,7 @@
 # ADR 0003 — An agency is published as a collection of this site, under its own path; Wargames is the first
 
-- **Status**: proposed
-- **Date**: 2026-11-23
+- **Status**: accepted
+- **Date**: 2026-11-23 (accepted 2026-11-24, [#829](https://github.com/bamr87/lifehacker.dev/pull/829))
 - **Deciders**: the maintainer (direction of 2026-11-22 and go-ahead of 2026-11-23); recorded by Claude Code
 - **Related**: [ADR 0002](0002-agencies.md) (the trees and their custody); [constitution § 9](../constitution.md#9-agencies) rule 4; features LHD-009 and LHD-010; PRD FR6, FR7 and NFR5
 
