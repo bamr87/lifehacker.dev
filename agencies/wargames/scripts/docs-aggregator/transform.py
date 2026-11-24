@@ -87,6 +87,14 @@ def level_nav(game: str, stem: str) -> Tuple[int, str]:
     return -1, label
 
 
+# Where the site serves a category's pages: f"{URL_PREFIX}/{category}/…". The Wargames agency is a
+# collection of lifehacker.dev served under /wargames/ (docs/adr/0003-agencies-as-collections.md at the
+# repository root), so the prefix is empty. On the site these pages first lived in it was "/docs", which
+# gave /docs/wargames/…; a refresh that wrote that base again would move every page, because the carry
+# step (tools/carry-study-guides.py) lets the fresh permalink win.
+URL_PREFIX = ""
+
+
 def build_jekyll_frontmatter(
     source_meta: Dict,
     existing_fm: Dict,
@@ -106,13 +114,13 @@ def build_jekyll_frontmatter(
     source_tags = source_meta.get("tags", [])
 
     # Build permalink from category and relative path
-    # e.g. wargames/bandit/index.md → /docs/wargames/bandit/
+    # e.g. wargames/bandit/index.md → /wargames/bandit/
     parts = list(rel_path.parent.parts) if rel_path.parent != Path(".") else []
     slug = rel_path.stem
     if slug == "index":
-        permalink = f"/docs/{category}/" + "/".join(parts) + ("/" if parts else "")
+        permalink = f"{URL_PREFIX}/{category}/" + "/".join(parts) + ("/" if parts else "")
     else:
-        permalink = f"/docs/{category}/" + "/".join(parts + [slug]) + "/"
+        permalink = f"{URL_PREFIX}/{category}/" + "/".join(parts + [slug]) + "/"
 
     # Build source URL pointing to the file on GitHub
     source_file_path = "/".join(rel_path.parts)
@@ -200,29 +208,70 @@ def absolutize_relative_images(body: str, rel_dir: str) -> str:
     return re.sub(r"<img\b[^>]*>", _fix, body)
 
 
-def normalize_overthewire_links(body: str, rel_dir: str = "") -> str:
+def normalize_overthewire_links(body: str, rel_dir: str = "", stem: str = "index",
+                                siblings: frozenset = frozenset()) -> str:
     """Fix OverTheWire self-referential links to this site's permalinks.
 
     Upstream serves challenge pages at ``/wargames/<game>/<page>.html``; here
-    they live at ``/docs/wargames/<game>/<page>/``. Reference-style links
+    they live at ``<URL_PREFIX>/wargames/<game>/<page>/``. Reference-style links
     (``[text]: /path``) are not matched by ``rewrite_relative_links`` (which
     only handles inline ``[text](url)``), so they arrive verbatim and 404.
 
-    The site is served under a ``baseurl`` (``/wargames`` on GitHub Pages), so the
-    new targets go through Liquid's ``relative_url`` filter; a bare ``/docs/...`` would
-    resolve against the domain root and 404. The lookbehinds keep absolute
-    ``https://overthewire.org/wargames/...`` links untouched and the pass idempotent.
+    The new targets go through Liquid's ``relative_url`` filter, so they hold on a site
+    served under a ``baseurl`` too. The lookbehind keeps absolute
+    ``https://overthewire.org/wargames/...`` links untouched, and keeps the pass
+    idempotent: a rewritten target sits inside single quotes (``'/wargames/bandit/'``),
+    and a quote before ``/wargames/`` is never rewritten again. When ``URL_PREFIX`` is not
+    empty, a target already under it is skipped as well.
     Also point the community chat link (which has no local page) back to overthewire.org,
-    and make relative images absolute (see ``absolutize_relative_images``).
+    make relative images absolute (see ``absolutize_relative_images``) and make relative
+    reference links resolve (see ``resolve_relative_references``).
     """
-    body = re.sub(r"(?<![\w./:-])(?<!/docs)/wargames/([a-z0-9]+)/([a-z0-9]+)\.html",
-                  r"{{ '/docs/wargames/\1/\2/' | relative_url }}", body)
-    body = re.sub(r"(?<![\w./:-])(?<!/docs)/wargames/([a-z0-9]+)/",
-                  r"{{ '/docs/wargames/\1/' | relative_url }}", body)
+    site = f"{URL_PREFIX}/wargames"
+    guard = r"(?<![\w./:'-])" + (f"(?<!{re.escape(URL_PREFIX)})" if URL_PREFIX else "")
+    body = re.sub(guard + r"/wargames/([a-z0-9]+)/([a-z0-9]+)\.html",
+                  "{{ '" + site + r"/\1/\2/' | relative_url }}", body)
+    body = re.sub(guard + r"/wargames/([a-z0-9]+)/",
+                  "{{ '" + site + r"/\1/' | relative_url }}", body)
     body = re.sub(r"(?<!overthewire\.org)/information/chat\.html",
                   "https://overthewire.org/information/chat.html", body)
     rel_dir = "" if rel_dir in (".", "") else rel_dir
-    return absolutize_relative_images(body, rel_dir)
+    body = absolutize_relative_images(body, rel_dir)
+    return resolve_relative_references(body, rel_dir, stem, siblings)
+
+
+def resolve_relative_references(body: str, rel_dir: str, stem: str = "index",
+                                siblings: frozenset = frozenset()) -> str:
+    """Make a relative reference-style link (``[text]: target``) resolve on this site.
+
+    Upstream a relative target means "next to this page". Here it has to become one of two things:
+
+    * a sibling page that is mirrored (``reading_material.html`` beside ``blacksun/index.md``) is a page
+      of this site, served as a directory, so it becomes ``reading_material/`` from an index page and
+      ``../reading_material/`` from any other page (whose own URL is one directory deeper);
+    * anything else (``papers/p57-0x09``, an ``.html`` file that is not a mirrored page) is a file the
+      mirror does not carry, so it is pointed at the upstream site. Without this the target resolves to
+      nothing here and the site's link check rejects it.
+
+    A directory (``vortex/``) or a ``.md`` target is left alone. ``siblings`` is the set of page names
+    (file stems) mirrored in this page's directory.
+    """
+    base = f"{UPSTREAM_SITE}/{rel_dir}".rstrip("/")
+
+    def _fix(match: re.Match) -> str:
+        target = match.group(2)
+        if re.match(r"(?:[a-z][a-z0-9+.-]*:|/|#|\{\{)", target, re.IGNORECASE):
+            return match.group(0)
+        if target.endswith(("/", ".md")):
+            return match.group(0)
+        clean = target.lstrip("./")
+        if clean.endswith(".html") and "/" not in clean:
+            page = clean[: -len(".html")]
+            if page in siblings and page != "index":
+                return f"{match.group(1)}{'' if stem == 'index' else '../'}{page}/"
+        return f"{match.group(1)}{base}/{clean}"
+
+    return re.sub(r"^([ \t]*\[[^\]]+\]:[ \t]*)(\S+)", _fix, body, flags=re.MULTILINE)
 
 
 def strip_jekyll_includes(body: str) -> str:
@@ -269,7 +318,8 @@ def transform_file(
     body = strip_jekyll_includes(body)
     body = rewrite_relative_links(body, source_meta["repo"], branch, content_base)
     if source_meta.get("category") == "wargames" or source_meta.get("name") == "overthewire":
-        body = normalize_overthewire_links(body, rel_path.parent.as_posix())
+        siblings = frozenset(p.stem for p in raw_path.parent.glob("*.md"))
+        body = normalize_overthewire_links(body, rel_path.parent.as_posix(), rel_path.stem, siblings)
     body = add_source_attribution(body, source_meta)
 
     # Serialize
@@ -302,15 +352,15 @@ def generate_nav_fragment(
                 content = md.read_text(encoding="utf-8", errors="replace")
                 fm, _ = parse_frontmatter(content)
                 title = fm.get("title", rel.stem.replace("-", " ").title())
-                url = fm.get("permalink", f"/docs/{category}/{source_meta['name']}/{rel.stem}/")
+                url = fm.get("permalink", f"{URL_PREFIX}/{category}/{source_meta['name']}/{rel.stem}/")
             except Exception:
                 title = rel.stem.replace("-", " ").title()
-                url = f"/docs/{category}/{source_meta['name']}/{rel.stem}/"
+                url = f"{URL_PREFIX}/{category}/{source_meta['name']}/{rel.stem}/"
             pages.append({"title": title, "url": url})
 
     nav_entry = {
         "title": source_meta["name"].replace("-", " ").title(),
-        "url": f"/docs/{category}/",
+        "url": f"{URL_PREFIX}/{category}/",
         "icon": "bi-globe",
         "children": pages,
     }
