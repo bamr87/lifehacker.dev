@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Japanese Colonial Period (1910–1945) — DPRK History Plate</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc0" />
+      <stop offset="50%" stop-color="#ddd0a8" />
+      <stop offset="100%" stop-color="#c9bc90" />
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00000000" />
+      <stop offset="100%" stop-color="#3a2a1055" />
+    </radialGradient>
+    <radialGradient id="rays" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#c85a4a" />
+      <stop offset="100%" stop-color="#8b2a1a" />
+    </radialGradient>
+    <pattern id="hatch" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="4" stroke="#8a7545" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#3a2500" flood-opacity="0.35" />
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#1a0e00" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  <rect x="18" y="18" width="1500" height="988" rx="4" fill="none" stroke="#7a6030" stroke-width="6" />
+  <rect x="28" y="28" width="1480" height="968" rx="3" fill="none" stroke="#9a8050" stroke-width="2" />
+  <rect x="32" y="32" width="1472" height="960" rx="2" fill="none" stroke="#7a6030" stroke-width="1" />
+
+  <g stroke="#7a6030" stroke-width="2" fill="none">
+    <line x1="18" y1="60" x2="60" y2="60" /><line x1="60" y1="18" x2="60" y2="60" />
+    <line x1="1476" y1="60" x2="1518" y2="60" /><line x1="1476" y1="18" x2="1476" y2="60" />
+    <line x1="18" y1="964" x2="60" y2="964" /><line x1="60" y1="964" x2="60" y2="1006" />
+    <line x1="1476" y1="964" x2="1518" y2="964" /><line x1="1476" y1="964" x2="1476" y2="1006" />
+  </g>
+
+  <!-- Right imagery panel: imperial sun over a divided peninsula -->
+  <g transform="translate(1100, 380)">
+    <!-- rising-sun rays -->
+    <g opacity="0.55">
+      <g fill="url(#rays)">
+        <polygon points="0,0 -260,-70 -260,-40" /><polygon points="0,0 -270,10 -260,40" />
+        <polygon points="0,0 -230,110 -210,140" /><polygon points="0,0 -150,200 -120,220" />
+        <polygon points="0,0 -50,260 -20,268" /><polygon points="0,0 60,262 90,250" />
+        <polygon points="0,0 170,190 195,165" /><polygon points="0,0 250,80 258,50" />
+        <polygon points="0,0 262,-30 258,-62" />
+      </g>
+    </g>
+    <circle cx="0" cy="0" r="70" fill="#b5202a" stroke="#5a0a0a" stroke-width="3" filter="url(#softShadow)" />
+
+    <!-- peninsula silhouette under the sun -->
+    <g transform="translate(40, 320)">
+      <path d="M 0 -120 C 30 -100 26 -60 40 -30 C 54 0 40 40 54 80 C 60 120 40 150 20 180 C 8 200 -14 190 -10 160 C -20 130 -34 110 -24 80 C -34 50 -20 20 -30 -10 C -20 -50 -26 -90 0 -120 Z"
+            fill="#6a5a3a" stroke="#3a2810" stroke-width="2" opacity="0.85" />
+      <!-- 38th parallel line -->
+      <line x1="-44" y1="40" x2="64" y2="40" stroke="#8b1a1a" stroke-width="3" stroke-dasharray="7,5" />
+      <text x="70" y="45" font-family="Georgia, serif" font-size="13" fill="#8b1a1a" font-style="italic">38°N (1945)</text>
+    </g>
+  </g>
+
+  <!-- Left text panel -->
+  <rect x="50" y="50" width="640" height="924" rx="3" fill="#d8c898" opacity="0.5" />
+  <rect x="50" y="50" width="640" height="924" fill="url(#hatch)" opacity="0.4" />
+  <line x1="710" y1="60" x2="710" y2="964" stroke="#7a6030" stroke-width="3" />
+  <line x1="715" y1="60" x2="715" y2="964" stroke="#9a8050" stroke-width="1" />
+
+  <text x="370" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="60" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="1" filter="url(#textShadow)">Japanese</text>
+  <text x="370" y="216" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="1" filter="url(#textShadow)">Colonial Period</text>
+  <text x="370" y="258" font-family="Georgia, serif" font-size="26" fill="#6a4010" text-anchor="middle" font-style="italic" letter-spacing="3">1910 – 1945</text>
+
+  <line x1="110" y1="285" x2="630" y2="285" stroke="#7a6030" stroke-width="2" />
+  <line x1="140" y1="290" x2="600" y2="290" stroke="#9a8050" stroke-width="1" />
+
+  <g font-family="Georgia, serif">
+    <text x="110" y="345" font-size="19" fill="#3a2810" font-weight="bold">Annexation:</text>
+    <text x="630" y="345" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">22 August 1910</text>
+    <line x1="110" y1="362" x2="630" y2="362" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="408" font-size="19" fill="#3a2810" font-weight="bold">Uprising:</text>
+    <text x="630" y="408" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">March 1st Movement, 1919</text>
+    <line x1="110" y1="425" x2="630" y2="425" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="471" font-size="19" fill="#3a2810" font-weight="bold">Assimilation:</text>
+    <text x="630" y="471" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">language ban · Sōshi-kaimei</text>
+    <line x1="110" y1="488" x2="630" y2="488" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="534" font-size="19" fill="#3a2810" font-weight="bold">Liberation:</text>
+    <text x="630" y="534" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">15 August 1945 · partition</text>
+    <line x1="110" y1="551" x2="630" y2="551" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+  </g>
+
+  <rect x="110" y="600" width="520" height="290" rx="3" fill="#3a2a1a" stroke="#1a0e00" stroke-width="2" filter="url(#softShadow)" opacity="0.92" />
+  <text x="370" y="644" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="2">OCCUPATION &amp; LEGACY</text>
+  <line x1="150" y1="662" x2="590" y2="662" stroke="#c8a870" stroke-width="1" opacity="0.6" />
+  <text x="370" y="700" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">heavy industry built in the north (Hungnam, Suiho)</text>
+  <text x="370" y="730" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">forced labor · conscription · "comfort women"</text>
+  <text x="370" y="760" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">Kim Il-sung's Manchurian guerrilla struggle</text>
+  <text x="370" y="790" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">Zainichi, Joseonjok &amp; Koryo-saram diasporas</text>
+  <text x="370" y="826" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">38th-parallel partition → the two Koreas</text>
+  <text x="370" y="864" font-family="Georgia, serif" font-size="13" fill="#c8a870" text-anchor="middle">the root of the DPRK's anti-imperialist ideology</text>
+
+  <text x="370" y="945" font-family="Georgia, serif" font-size="16" fill="#8a6030" text-anchor="middle" font-style="italic" letter-spacing="1">History</text>
+
+  <text x="1400" y="985" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#8a7550" font-style="italic" opacity="0.6">Atlas Plate · DPRK · Korean Peninsula</text>
+
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

@@ -25,6 +25,17 @@ SPECS = [
   { dir: 'pages/_docs',              kind: 'docs', lenient: true }
 ]
 
+# An agency published as a collection (_data/agencies.yml `published:`,
+# docs/adr/0003-agencies-as-collections.md) is held to the lenient gate, through
+# its nested directories. Its banners come from `defaults:` scopes in _config.yml
+# rather than each page's own front matter, so the missing-preview nudge — which
+# reads front matter only — is skipped for it.
+agency_registry = (LH.yload(LH.read(File.join(LH::ROOT, '_data', 'agencies.yml'))) rescue nil)
+((agency_registry || {})['agencies'] || []).flat_map { |a| a['sites'] || [] }.each do |site|
+  pub = site['published'] or next
+  SPECS << { dir: "pages/_#{pub['collection']}", kind: pub['collection'], lenient: true, recursive: true, preview_from_defaults: true }
+end
+
 COMMON = %w[title description date author excerpt tags] # hacks/tools/posts
 findings = []
 
@@ -57,7 +68,7 @@ def present?(v)
 end
 
 SPECS.each do |spec|
-  Dir.glob(File.join(LH::ROOT, spec[:dir], '*.md')).sort.each do |path|
+  Dir.glob(File.join(LH::ROOT, spec[:dir], spec[:recursive] ? '**/*.md' : '*.md')).sort.each do |path|
     next if SCOPE && !SCOPE.include?(LH.rel(path))
     fm, = LH.parse(path)
     rel = LH.rel(path)
@@ -89,7 +100,7 @@ SPECS.each do |spec|
     # green on the pre-existing posts that predate the wiring, while steering
     # every new draft to run `scripts/generate-preview-images.sh -f <file>`, which
     # stamps this line. See _config.yml `preview_images` + the grow-lifehacker skill.
-    unless present?(fm['preview'])
+    unless present?(fm['preview']) || spec[:preview_from_defaults]
       findings << LH.finding(check_id: 'frontmatter', severity: 'warning',
                              rule: 'missing-preview', file: rel,
                              evidence: 'no `preview:` banner — run scripts/generate-preview-images.sh -f <file>')

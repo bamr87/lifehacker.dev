@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Geography – Land, Regions, and Physical Features of China</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b88a" />
+      <stop offset="100%" stop-color="#b8a070" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8fb5c8" />
+      <stop offset="100%" stop-color="#6a9ab0" />
+    </linearGradient>
+    
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#a09060" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="8" height="8">
+      <line x1="0" y1="0" x2="8" y2="8" stroke="#706040" stroke-width="0.5" opacity="0.15" />
+      <line x1="8" y1="0" x2="0" y2="8" stroke="#706040" stroke-width="0.5" opacity="0.15" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8a7450" stroke-width="3" rx="4" />
+  <rect x="36" y="36" width="1464" height="952" fill="none" stroke="#8a7450" stroke-width="1" rx="2" />
+
+  
+  <ellipse cx="1150" cy="512" rx="420" ry="380" fill="url(#sea)" opacity="0.5" />
+  
+  <path d="M 980 200 Q 1100 180 1200 260 Q 1340 340 1380 480 Q 1420 600 1360 720 Q 1300 820 1180 860 Q 1060 900 980 840 L 980 200 Z" fill="url(#sea)" opacity="0.55" />
+
+  
+  <path d="     M 380 180     L 440 160     L 520 150     L 600 155     L 680 145     L 760 150     L 830 160     L 880 145     L 920 155     L 950 175     L 970 200     L 960 230     L 940 255     L 970 270     L 990 290     L 980 320     L 950 340     L 960 370     L 980 400     L 975 430     L 950 460     L 930 490     L 940 520     L 960 545     L 965 580     L 945 610     L 920 630     L 900 660     L 880 680     L 850 700     L 820 720     L 800 750     L 780 770     L 750 790     L 720 810     L 690 840     L 660 860     L 630 870     L 600 865     L 580 845     L 560 820     L 540 800     L 520 810     L 500 830     L 470 840     L 440 830     L 420 810     L 400 780     L 380 750     L 360 720     L 340 690     L 330 660     L 320 630     L 310 590     L 300 550     L 290 510     L 285 470     L 290 430     L 300 390     L 310 350     L 320 310     L 330 270     L 340 240     L 350 210     L 380 180     Z   " fill="url(#land)" stroke="#8a7450" stroke-width="2.5" />
+  <path d="     M 380 180     L 440 160     L 520 150     L 600 155     L 680 145     L 760 150     L 830 160     L 880 145     L 920 155     L 950 175     L 970 200     L 960 230     L 940 255     L 970 270     L 990 290     L 980 320     L 950 340     L 960 370     L 980 400     L 975 430     L 950 460     L 930 490     L 940 520     L 960 545     L 965 580     L 945 610     L 920 630     L 900 660     L 880 680     L 850 700     L 820 720     L 800 750     L 780 770     L 750 790     L 720 810     L 690 840     L 660 860     L 630 870     L 600 865     L 580 845     L 560 820     L 540 800     L 520 810     L 500 830     L 470 840     L 440 830     L 420 810     L 400 780     L 380 750     L 360 720     L 340 690     L 330 660     L 320 630     L 310 590     L 300 550     L 290 510     L 285 470     L 290 430     L 300 390     L 310 350     L 320 310     L 330 270     L 340 240     L 350 210     L 380 180     Z   " fill="url(#crosshatch)" />
+
+  
+  <g fill="none" stroke="#7a6840" stroke-width="1.5" opacity="0.7">
+    <polyline points="290,390 310,370 330,385 350,365 370,380 390,360 410,375 430,358" />
+    <polyline points="300,420 325,400 348,415 370,398 392,410 415,393" />
+    
+    <polyline points="400,200 420,185 440,195 460,180 480,190 500,178 520,188" />
+    <polyline points="510,170 535,158 558,168 580,155 600,165 620,153 645,162" />
+  </g>
+
+  
+  <path d="M 360 350 Q 420 320 480 340 Q 540 360 590 345 Q 640 330 680 350 Q 720 370 760 360 Q 800 350 830 370 Q 860 390 880 410" fill="none" stroke="#6a9ab0" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+  <path d="M 340 490 Q 400 470 460 490 Q 520 510 580 500 Q 640 490 700 510 Q 760 530 810 520 Q 860 510 900 530 Q 930 545 950 560" fill="none" stroke="#6a9ab0" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+
+  
+  <path d="M 310 310 Q 370 285 430 295 Q 490 305 550 288 Q 610 272 670 280 Q 730 288 790 272 Q 850 256 910 265 Q 940 270 965 280" fill="none" stroke="#5a4830" stroke-width="5" stroke-linecap="round" stroke-dasharray="12,4" opacity="0.85" />
+  
+  <path d="M 310 310 Q 370 285 430 295 Q 490 305 550 288 Q 610 272 670 280 Q 730 288 790 272 Q 850 256 910 265 Q 940 270 965 280" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+
+  
+  <g transform="translate(1340, 720)">
+    
+    <circle r="90" fill="#e8dfc8" stroke="#8a7450" stroke-width="2" opacity="0.9" />
+    <circle r="70" fill="none" stroke="#8a7450" stroke-width="1" opacity="0.5" />
+    <circle r="12" fill="#8a7450" />
+    
+    
+    <polygon points="0,-70 -12,-30 0,-45 12,-30" fill="#5a3820" />
+    <polygon points="0,-70 -12,-30 0,-45 12,-30" fill="#5a3820" transform="rotate(180)" />
+    <polygon points="0,-70 -12,-30 0,-45 12,-30" fill="#b0a080" transform="rotate(90)" />
+    <polygon points="0,-70 -12,-30 0,-45 12,-30" fill="#b0a080" transform="rotate(270)" />
+    
+    <polygon points="0,-55 -8,-25 0,-35 8,-25" fill="#8a7450" transform="rotate(45)" opacity="0.6" />
+    <polygon points="0,-55 -8,-25 0,-35 8,-25" fill="#8a7450" transform="rotate(135)" opacity="0.6" />
+    <polygon points="0,-55 -8,-25 0,-35 8,-25" fill="#8a7450" transform="rotate(225)" opacity="0.6" />
+    <polygon points="0,-55 -8,-25 0,-35 8,-25" fill="#8a7450" transform="rotate(315)" opacity="0.6" />
+    
+    <text x="0" y="-76" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#3a2810">N</text>
+    <text x="0" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4030">S</text>
+    <text x="80" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4030">E</text>
+    <text x="-80" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4030">W</text>
+  </g>
+
+  
+  <g stroke="#a09060" stroke-width="0.6" opacity="0.25">
+    <line x1="60" y1="200" x2="1200" y2="200" />
+    <line x1="60" y1="400" x2="1200" y2="400" />
+    <line x1="60" y1="600" x2="1200" y2="600" />
+    <line x1="60" y1="800" x2="1200" y2="800" />
+    <line x1="250" y1="100" x2="250" y2="940" />
+    <line x1="500" y1="100" x2="500" y2="940" />
+    <line x1="750" y1="100" x2="750" y2="940" />
+    <line x1="1000" y1="100" x2="1000" y2="940" />
+  </g>
+
+  
+  <g transform="translate(200, 900)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#5a4030" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#5a4030" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#5a4030" stroke-width="1.5" />
+    <line x1="200" y1="-6" x2="200" y2="6" stroke="#5a4030" stroke-width="2" />
+    <rect x="0" y="-3" width="100" height="6" fill="#5a4030" opacity="0.5" />
+    <text x="100" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a4030">Scale</text>
+  </g>
+
+  
+  <rect x="1050" y="60" width="440" height="340" rx="6" fill="#e8dfc8" stroke="#8a7450" stroke-width="1.5" opacity="0.92" />
+
+  
+  <text x="1270" y="145" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="80" font-weight="bold" fill="#2a1a08" letter-spacing="6">GEOGRAPHY</text>
+
+  
+  <line x1="1080" y1="175" x2="1470" y2="175" stroke="#8a7450" stroke-width="1.5" />
+  <line x1="1080" y1="180" x2="1470" y2="180" stroke="#8a7450" stroke-width="0.5" />
+
+  <text x="1270" y="222" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#5a4030" letter-spacing="3">LAND · REGIONS · FEATURES</text>
+
+  <text x="1270" y="264" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#6a5040" font-style="italic">of China</text>
+
+  
+  <line x1="1140" y1="285" x2="1400" y2="285" stroke="#8a7450" stroke-width="1" />
+
+  
+  <text x="1270" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#5a4030" letter-spacing="1">The Great Wall · 13,000 miles</text>
+  <text x="1270" y="345" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#7a6040" font-style="italic">Two millennia of fortification</text>
+  <line x1="1080" y1="365" x2="1470" y2="365" stroke="#8a7450" stroke-width="1.5" />
+  <line x1="1080" y1="370" x2="1470" y2="370" stroke="#8a7450" stroke-width="0.5" />
+
+  
+  <g stroke="#8a7450" stroke-width="1.5" fill="none" opacity="0.7">
+    
+    <path d="M 60 60 L 100 60 M 60 60 L 60 100" />
+    <path d="M 70 70 L 95 70 M 70 70 L 70 95" />
+    
+    <path d="M 1476 60 L 1436 60 M 1476 60 L 1476 100" />
+    <path d="M 1466 70 L 1441 70 M 1466 70 L 1466 95" />
+    
+    <path d="M 60 964 L 100 964 M 60 964 L 60 924" />
+    <path d="M 70 954 L 95 954 M 70 954 L 70 929" />
+    
+    <path d="M 1476 964 L 1436 964 M 1476 964 L 1476 924" />
+    <path d="M 1466 954 L 1441 954 M 1466 954 L 1466 929" />
+  </g>
+
+  
+  <text x="540" y="268" font-family="Georgia, serif" font-size="13" fill="#3a2810" font-style="italic" opacity="0.9" transform="rotate(-8, 540, 268)">The Great Wall</text>
+  <line x1="500" y1="278" x2="620" y2="278" stroke="#3a2810" stroke-width="1" opacity="0.5" transform="rotate(-8, 560, 278)" />
+
+  
+  <text x="700" y="332" font-family="Georgia, serif" font-size="12" fill="#3a5870" font-style="italic" opacity="0.8">Yellow River</text>
+  <text x="680" y="492" font-family="Georgia, serif" font-size="12" fill="#3a5870" font-style="italic" opacity="0.8">Yangtze River</text>
+
+  
+  <rect x="60" y="930" width="1416" height="58" rx="3" fill="#b8a878" opacity="0.3" />
+  <text x="768" y="966" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#4a3820" letter-spacing="4">ATLAS OF CHINA · GEOGRAPHIC KNOWLEDGE BASE</text>
+</svg>

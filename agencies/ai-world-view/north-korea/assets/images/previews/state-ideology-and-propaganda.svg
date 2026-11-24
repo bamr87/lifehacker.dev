@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>State Ideology and Propaganda — Juche and the Personality Cult</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#e6c07a" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#e8dfc8" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#9a8a6a" stroke-width="0.4" stroke-opacity="0.3" />
+    </pattern>
+    <filter id="engrave" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.0" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6540" stroke-width="3" opacity="0.7" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#7a6540" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5" />
+
+  <!-- Radiant star emblem -->
+  <g transform="translate(1090, 480)" filter="url(#engrave)">
+    <circle cx="0" cy="0" r="300" fill="url(#glow)" />
+    <!-- radiating rays -->
+    <g stroke="#c0392b" stroke-width="2" opacity="0.35">
+      <line x1="0" y1="0" x2="0" y2="-290" /><line x1="0" y1="0" x2="0" y2="290" />
+      <line x1="0" y1="0" x2="290" y2="0" /><line x1="0" y1="0" x2="-290" y2="0" />
+      <line x1="0" y1="0" x2="205" y2="-205" /><line x1="0" y1="0" x2="-205" y2="-205" />
+      <line x1="0" y1="0" x2="205" y2="205" /><line x1="0" y1="0" x2="-205" y2="205" />
+      <line x1="0" y1="0" x2="150" y2="-260" /><line x1="0" y1="0" x2="-150" y2="-260" />
+      <line x1="0" y1="0" x2="260" y2="-150" /><line x1="0" y1="0" x2="-260" y2="-150" />
+      <line x1="0" y1="0" x2="150" y2="260" /><line x1="0" y1="0" x2="-150" y2="260" />
+      <line x1="0" y1="0" x2="260" y2="150" /><line x1="0" y1="0" x2="-260" y2="150" />
+    </g>
+    <circle cx="0" cy="0" r="180" fill="none" stroke="#8a7550" stroke-width="1.5" opacity="0.5" />
+    <!-- five-pointed star -->
+    <polygon points="0,-150 44,-46 156,-46 66,26 100,136 0,68 -100,136 -66,26 -156,-46 -44,-46"
+             fill="#c0392b" stroke="#8b1a1a" stroke-width="3" />
+    <polygon points="0,-150 20,-52 0,-70 -20,-52" fill="#8b1a1a" opacity="0.5" />
+  </g>
+
+  <!-- Loudspeaker motif -->
+  <g transform="translate(300, 720)" filter="url(#engrave)" opacity="0.7">
+    <path d="M -70,-20 L -20,-20 L 40,-60 L 40,60 L -20,20 L -70,20 Z" fill="#7a6540" stroke="#5a4530" stroke-width="2" />
+    <rect x="-90" y="-20" width="20" height="40" fill="#7a6540" />
+    <g stroke="#8a7550" stroke-width="3" fill="none" opacity="0.7">
+      <path d="M 58,-46 A 60 60 0 0 1 58 46" />
+      <path d="M 80,-72 A 96 96 0 0 1 80 72" />
+      <path d="M 102,-96 A 130 130 0 0 1 102 96" />
+    </g>
+  </g>
+
+  <!-- Title block -->
+  <text x="108" y="180" font-family="Georgia, serif" font-size="60" fill="#3a2810" font-weight="bold" letter-spacing="2">STATE IDEOLOGY</text>
+  <text x="108" y="248" font-family="Georgia, serif" font-size="60" fill="#3a2810" font-weight="bold" letter-spacing="2">&amp; PROPAGANDA</text>
+  <g transform="translate(108, 268)">
+    <line x1="0" y1="0" x2="660" y2="0" stroke="#8a7550" stroke-width="2.5" />
+    <line x1="0" y1="6" x2="660" y2="6" stroke="#8a7550" stroke-width="1" />
+    <polygon points="330,18 325,10 335,10" fill="#8a7550" />
+  </g>
+  <text x="108" y="328" font-family="Georgia, serif" font-size="25" fill="#5a4530" font-style="italic" letter-spacing="2">Juche · the personality cult · the propaganda state · 주체</text>
+
+  <!-- Fact card -->
+  <g transform="translate(108, 470)">
+    <rect x="0" y="0" width="230" height="34" fill="#7a6540" rx="3" />
+    <text x="12" y="23" font-family="Georgia, serif" font-size="15" fill="#e8dfc8" letter-spacing="2">CULTURE &amp; SOCIETY</text>
+    <text x="0" y="74" font-family="Georgia, serif" font-size="18" fill="#3a2810" font-weight="bold">Core doctrine:</text>
+    <text x="0" y="98" font-family="Georgia, serif" font-size="16" fill="#5a4030" font-style="italic">Juche (self-reliance) — proclaimed by Kim Il-sung, 1955</text>
+    <text x="0" y="138" font-family="Georgia, serif" font-size="18" fill="#3a2810" font-weight="bold">Instruments:</text>
+    <text x="0" y="162" font-family="Georgia, serif" font-size="16" fill="#5a4030" font-style="italic">State media monopoly · mass games · songbun · surveillance</text>
+    <text x="0" y="204" font-family="Georgia, serif" font-size="16" fill="#5a4030" font-style="italic" opacity="0.75">"Where narrative is as central to rule as force"</text>
+  </g>
+
+  <text x="1400" y="980" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#8a7550" font-style="italic" opacity="0.6">Atlas Plate · DPRK · Korean Peninsula</text>
+
+  <g stroke="#8a7550" stroke-width="1.5" fill="none" opacity="0.5">
+    <path d="M 45,45 L 80,45 L 80,50 M 45,45 L 45,80 L 50,80" />
+    <path d="M 1491,45 L 1456,45 L 1456,50 M 1491,45 L 1491,80 L 1486,80" />
+    <path d="M 45,979 L 80,979 L 80,974 M 45,979 L 45,944 L 50,944" />
+    <path d="M 1491,979 L 1456,979 L 1456,974 M 1491,979 L 1491,944 L 1486,944" />
+  </g>
+  <rect x="0" y="0" width="1536" height="1024" fill="none" stroke="#5a4030" stroke-width="8" opacity="0.15" />
+</svg>

@@ -1,0 +1,315 @@
+name: AI Content Review
+
+# Reviews new/changed Jekyll content on pull requests in two tiers:
+#   1. Deterministic SEO + quality checks (scripts/content-review.rb) — always
+#      runs, no secrets required, works on fork PRs.
+#   2. Claude Code content-reviewer agent — runs when CLAUDE_CODE_OAUTH_TOKEN is
+#      configured (OAuth only — ANTHROPIC_API_KEY disabled for now, 2026-11-15),
+#      for editorial/consistency/polish review.
+# See .github/instructions/content-review.instructions.md for the contract.
+#
+# Fleet harness standard (2026-11-13; bamr87/bamr87 _data/fleet.yml
+# `harnesses.standard`): tier 2 reaches the model through the hub's claude-run
+# action instead of a bare `claude -p`. That gives it the credential order of
+# this repo's CLAUDE_AUTH_ORDER variable (unset = oauth, then api_key), a
+# dollar cap beside the turn cap, and a kill switch: the model tier idles when
+# the repository variable AI_CONTENT_REVIEW_ENABLED is "false". Unset means ON,
+# so the switch changes nothing until someone sets it, and tier 1 is never gated.
+
+on:
+  pull_request:
+    paths:
+      - "pages/**/*.md"
+      - ".github/config/content_review.yml"
+      - ".claude/agents/content-reviewer.md"
+      - "scripts/content-review.rb"
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Base git ref to diff against"
+        required: false
+        default: "origin/main"
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: content-review-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Tier 1 — deterministic checks (always)
+  # ---------------------------------------------------------------------------
+  deterministic-review:
+    name: SEO & quality checks
+    runs-on: ubuntu-latest
+    outputs:
+      has_content: ${{ steps.review.outputs.has_content }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Determine base ref
+        id: base
+        run: |
+          base="${{ github.event.inputs.base || format('origin/{0}', github.base_ref) }}"
+          echo "ref=${base}" >> "$GITHUB_OUTPUT"
+
+      - name: Run content review
+        id: review
+        run: |
+          ruby scripts/content-review.rb \
+            --changed --base "${{ steps.base.outputs.ref }}" \
+            --json /tmp/content-review.json \
+            --summary /tmp/content-review.md \
+            --quiet || true
+          # Surface a build-log copy too.
+          cat /tmp/content-review.md || true
+          # Did any in-scope content files actually change? Gates the AI tier.
+          count=$(ruby -rjson -e 'puts (JSON.parse(File.read("/tmp/content-review.json"))["files"] || []).length' 2>/dev/null || echo 0)
+          if [ "${count:-0}" -gt 0 ]; then
+            echo "has_content=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_content=false" >> "$GITHUB_OUTPUT"
+          fi
+          # Total issue count across files — gates whether a comment is worth
+          # a reader's attention at all.
+          issues=$(ruby -rjson -e 'puts (JSON.parse(File.read("/tmp/content-review.json"))["files"] || []).sum { |f| (f["issues"] || []).length }' 2>/dev/null || echo 0)
+          echo "issues=${issues:-0}" >> "$GITHUB_OUTPUT"
+
+      # Comment noise policy: an all-clean run never CREATES a comment (the
+      # green check is the signal) — it only flips an EXISTING sticky to the
+      # clean table so a previously-reported issue shows as resolved.
+      - name: Post / update PR comment (findings)
+        if: github.event_name == 'pull_request' && steps.review.outputs.issues != '0'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: ai-content-review
+          path: /tmp/content-review.md
+
+      - name: Resolve the sticky comment (clean run)
+        if: github.event_name == 'pull_request' && steps.review.outputs.issues == '0'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: ai-content-review
+          only_update: true
+          path: /tmp/content-review.md
+
+      - name: Upload results
+        uses: actions/upload-artifact@v7
+        with:
+          name: content-review-results
+          path: |
+            /tmp/content-review.json
+            /tmp/content-review.md
+          retention-days: 30
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # Gate — is the Claude Code tier available? (secret present, not a fork PR)
+  # ---------------------------------------------------------------------------
+  gate:
+    name: Check AI availability
+    runs-on: ubuntu-latest
+    outputs:
+      ai_enabled: ${{ steps.check.outputs.enabled }}
+    steps:
+      - id: check
+        env:
+          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
+        run: |
+          if [ -n "$OAUTH" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No Claude auth (CLAUDE_CODE_OAUTH_TOKEN) set — skipping Claude Code content review (deterministic tier still ran)."
+          fi
+
+  # ---------------------------------------------------------------------------
+  # Tier 2 — Claude Code content-reviewer agent
+  # ---------------------------------------------------------------------------
+  ai-review:
+    name: Claude Code content review
+    needs: [deterministic-review, gate]
+    # Kill switch: `gh variable set AI_CONTENT_REVIEW_ENABLED --body false` stops
+    # the model tier; unset (or anything else) leaves it running. This job only
+    # ever runs on pull_request events, so there is no manual dispatch to bypass it.
+    if: ${{ github.event_name == 'pull_request' && vars.AI_CONTENT_REVIEW_ENABLED != 'false' && needs.gate.outputs.ai_enabled == 'true' && needs.deterministic-review.outputs.has_content == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      # npm for the claude-run step below, which installs the Claude Code CLI
+      # itself (`@latest`, so Node 20 does not resolve an old release).
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: "20"
+
+      # Delta discipline: fetch the review this agent last posted so the new
+      # pass reports only what CHANGED — without this, every push produced a
+      # full fresh review that re-litigated settled files with new nit-level
+      # findings each round.
+      - name: Fetch the previous agent review (delta baseline)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Strip the sticky marker + our H2 wrapper from the baseline so the
+          # agent cannot echo them back into its own output (the posted body
+          # otherwise grows a duplicate header/marker every round).
+          gh api "repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
+            --paginate \
+            --jq '.[] | select(.body | contains("<!-- Sticky Pull Request Commentai-content-review-agent -->")) | .body' \
+            2>/dev/null \
+            | sed -e '/<!-- Sticky Pull Request Comment/d' -e '/^## 🤖 Claude Code Content Review$/d' \
+            > /tmp/previous-agent-review.md || true
+          # Maintainer replies are part of the record: a finding someone has
+          # explicitly declined (with reasons) in the PR discussion is SETTLED,
+          # not "unresolved" — without this the delta review re-litigates it
+          # forever. Bot stickies are excluded; bodies are size-capped.
+          gh api "repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
+            --paginate \
+            --jq '.[] | select(.body | contains("<!-- Sticky Pull Request Comment") | not) | "--- @\(.user.login) ---\n\(.body)\n"' \
+            2>/dev/null | head -c 20000 > /tmp/pr-discussion.md || true
+          if [ -s /tmp/previous-agent-review.md ]; then
+            echo "Previous agent review found ($(wc -c < /tmp/previous-agent-review.md) bytes) — running a DELTA review."
+          else
+            echo "No previous agent review — running a full first review."
+          fi
+
+      # The model call is the fleet's claude-run step. It tries the credentials
+      # in the order this repo's CLAUDE_AUTH_ORDER names (unset = oauth, then
+      # api_key), each attempt seeing only its own credential, and a refused
+      # one hands over to the next. The model is an exact id, and the call
+      # stops at the turn cap or the dollar cap, whichever comes first. A call
+      # that fails (refused credentials, a cap, no result) fails this step, so
+      # it is continue-on-error and the next step decides what reaches the PR.
+      - name: Run content-reviewer agent (headless)
+        id: claude
+        continue-on-error: true
+        uses: bamr87/bamr87/.github/actions/claude-run@main
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
+          AI_AUTH_ORDER: oauth
+        with:
+          prompt: |-
+            Use the content-reviewer subagent to review the Markdown content files
+            changed on this branch versus origin/${{ github.base_ref }}. Follow
+            .github/instructions/content-review.instructions.md and the
+            per-collection thresholds in .github/config/content_review.yml. Focus
+            on SEO, consistency, polish, accessibility, and technical accuracy.
+
+            DELTA RULES — /tmp/previous-agent-review.md holds the review you
+            already posted on this pull request (empty file = first review).
+            When it is non-empty: report ONLY (a) findings that are genuinely
+            NEW since that review and (b) previously-reported actionable
+            findings that remain unresolved. Do NOT restate resolved items
+            (one line acknowledging resolution is enough), do NOT re-review
+            files whose content is unchanged since the previous review, and do
+            NOT add new nice-to-have polish suggestions for files you already
+            reviewed once — "nothing new" is the expected steady state of a
+            well-tended pull request.
+
+            SETTLED FINDINGS — /tmp/pr-discussion.md holds the human/non-sticky
+            discussion on this pull request. A prior finding that a maintainer
+            has explicitly declined or answered there is SETTLED: do not
+            re-report it (regardless of your own judgement) unless the
+            underlying file content has changed since their reply. Reviews
+            advise; maintainers decide.
+
+            If nothing is new and nothing actionable remains, output exactly
+            the single line:
+            NO_NEW_FINDINGS
+
+            Output ONLY the final Markdown review (verdict + per-file findings +
+            summary) — or the NO_NEW_FINDINGS line — to stdout. Never include
+            the "## 🤖 Claude Code Content Review" header or any
+            "<!-- Sticky Pull Request Comment… -->" marker (the workflow adds
+            those). Do not modify any files, and do not print anything before
+            or after the review.
+          # Read-only allowlist: the agent never writes — posting is done by the
+          # sticky-comment steps below, so no edit/comment tools are granted.
+          # `permission-mode: default` makes that allowlist the whole grant: in
+          # a headless run a tool outside it is refused, as under the bare CLI.
+          # claude-run's own default, acceptEdits, would let the agent edit
+          # files. The input comes with bamr87/bamr87#840; a claude-run without
+          # it ignores the input (with a warning) and runs in acceptEdits.
+          tools: "Task,Read,Grep,Glob,Bash(ruby scripts/content-review.rb:*),Bash(git diff:*),Bash(git merge-base:*),Bash(cat /tmp/content-review.json)"
+          permission-mode: default
+          model: claude-sonnet-5-5
+          max-turns: "30"
+          max-budget-usd: "10"
+          out: /tmp/agent-review.md
+
+      # Decide what (if anything) reaches the PR. Raw API/billing errors
+      # and empty output are job-log warnings, never PR comments.
+      - name: Decide what reaches the PR
+        id: agent
+        env:
+          AGENT_OUTCOME: ${{ steps.claude.outcome }}
+        run: |
+          set +e
+          echo "claude-run outcome: $AGENT_OUTCOME"
+          if [ "$AGENT_OUTCOME" != "success" ] || [ ! -s /tmp/agent-review.md ]; then
+            echo "::warning::content-reviewer agent produced no review (claude-run: $AGENT_OUTCOME) — not posting a PR comment."
+            echo "post=skip" >> "$GITHUB_OUTPUT"
+          elif [ "$(wc -l < /tmp/agent-review.md)" -lt 5 ] \
+               && grep -qiE 'credit balance|billing|invalid.*api.?key|authentication_error|not_found_error|overloaded_error' /tmp/agent-review.md; then
+            echo "::warning::content-reviewer agent returned an API error, not a review — not posting it: $(head -c 200 /tmp/agent-review.md)"
+            echo "post=skip" >> "$GITHUB_OUTPUT"
+          elif grep -qx 'NO_NEW_FINDINGS' <(sed -e 's/^[[:space:]]*//;s/[[:space:]]*$//' /tmp/agent-review.md | grep -v '^$'); then
+            {
+              echo "## 🤖 Claude Code Content Review"
+              echo
+              echo "✅ No new findings since the previous review (checked at ${GITHUB_SHA:0:7})."
+            } > /tmp/agent-review-final.md
+            echo "post=update-only" >> "$GITHUB_OUTPUT"
+          else
+            {
+              echo "## 🤖 Claude Code Content Review"
+              echo
+              # Belt-and-braces: even if the agent echoes our header or a
+              # sticky marker despite the prompt, never post them twice.
+              sed -e '/<!-- Sticky Pull Request Comment/d' \
+                  -e '/^## 🤖 Claude Code Content Review$/d' /tmp/agent-review.md
+            } > /tmp/agent-review-final.md
+            echo "post=full" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Post agent review
+        if: steps.agent.outputs.post == 'full'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: ai-content-review-agent
+          path: /tmp/agent-review-final.md
+
+      # "No new findings" only UPDATES an existing sticky (so a prior review
+      # shows as settled) — it never creates a comment just to say nothing.
+      - name: Mark previous review settled
+        if: steps.agent.outputs.post == 'update-only'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: ai-content-review-agent
+          only_update: true
+          path: /tmp/agent-review-final.md

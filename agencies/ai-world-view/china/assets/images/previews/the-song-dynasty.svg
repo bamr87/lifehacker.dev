@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Song Dynasty – Imperial China 960–1279 CE</title>
+
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8c4c8" />
+      <stop offset="100%" stop-color="#8aadb5" />
+    </linearGradient>
+    <linearGradient id="northGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b88a" />
+      <stop offset="100%" stop-color="#b8a472" />
+    </linearGradient>
+    <linearGradient id="southGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8aaa78" />
+      <stop offset="100%" stop-color="#6e9060" />
+    </linearGradient>
+    <linearGradient id="headerOverlay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2c1f0e" stop-opacity="0.88" />
+      <stop offset="55%" stop-color="#2c1f0e" stop-opacity="0.72" />
+      <stop offset="100%" stop-color="#2c1f0e" stop-opacity="0.0" />
+    </linearGradient>
+    
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#8a7050" stroke-width="0.4" stroke-opacity="0.3" />
+    </pattern>
+    <pattern id="crosshatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#5a8060" stroke-width="0.5" stroke-opacity="0.25" />
+    </pattern>
+    <pattern id="seahatch" width="10" height="5" patternUnits="userSpaceOnUse">
+      <path d="M0,2.5 Q2.5,0 5,2.5 Q7.5,5 10,2.5" fill="none" stroke="#6090a0" stroke-width="0.5" stroke-opacity="0.35" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.4" />
+
+  
+
+  
+  <rect x="580" y="0" width="956" height="1024" fill="url(#seaGrad)" />
+  <rect x="580" y="0" width="956" height="1024" fill="url(#seahatch)" />
+
+  
+  
+  <path d="M650,0 L1536,0 L1536,320 Q1400,280 1300,260 Q1200,240 1100,250 Q1000,260 900,240 Q800,220 730,200 Q680,180 650,160 Z" fill="#c8b88a" stroke="#8a7050" stroke-width="1.5" />
+  <path d="M650,0 L1536,0 L1536,320 Q1400,280 1300,260 Q1200,240 1100,250 Q1000,260 900,240 Q800,220 730,200 Q680,180 650,160 Z" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <path d="M680,160 Q730,155 800,165 Q870,175 940,180 Q1010,185 1060,195 Q1110,205 1140,230 Q1160,250 1150,290 Q1140,330 1120,360 Q1100,390 1080,410 Q1050,430 1010,445 Q970,460 940,470 Q900,480 860,485 Q820,490 790,488 Q760,486 740,480 Q710,470 695,455 Q678,438 672,415 Q660,385 658,350 Q655,310 660,275 Q665,235 668,200 Q670,178 680,160Z" fill="#c4aa7a" stroke="#7a6040" stroke-width="2" />
+  <path d="M680,160 Q730,155 800,165 Q870,175 940,180 Q1010,185 1060,195 Q1110,205 1140,230 Q1160,250 1150,290 Q1140,330 1120,360 Q1100,390 1080,410 Q1050,430 1010,445 Q970,460 940,470 Q900,480 860,485 Q820,490 790,488 Q760,486 740,480 Q710,470 695,455 Q678,438 672,415 Q660,385 658,350 Q655,310 660,275 Q665,235 668,200 Q670,178 680,160Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <path d="M658,350 Q660,385 672,415 Q678,438 695,455 Q710,470 740,480 Q760,486 790,488 Q820,490 860,485 Q900,480 940,470 Q970,460 1010,445 Q1050,430 1080,410 Q1090,430 1095,460 Q1100,490 1090,520 Q1075,555 1055,580 Q1030,608 1000,628 Q965,648 925,660 Q885,672 845,678 Q805,682 768,678 Q730,672 702,658 Q675,642 660,620 Q642,595 636,565 Q628,532 630,500 Q632,470 638,445 Q644,415 650,390 Q655,368 658,350Z" fill="#8aaa78" stroke="#5a7a50" stroke-width="2" />
+  <path d="M658,350 Q660,385 672,415 Q678,438 695,455 Q710,470 740,480 Q760,486 790,488 Q820,490 860,485 Q900,480 940,470 Q970,460 1010,445 Q1050,430 1080,410 Q1090,430 1095,460 Q1100,490 1090,520 Q1075,555 1055,580 Q1030,608 1000,628 Q965,648 925,660 Q885,672 845,678 Q805,682 768,678 Q730,672 702,658 Q675,642 660,620 Q642,595 636,565 Q628,532 630,500 Q632,470 638,445 Q644,415 650,390 Q655,368 658,350Z" fill="url(#crosshatch)" opacity="0.5" />
+
+  
+  <path d="M636,565 Q628,532 630,500 Q632,470 638,445 Q625,470 615,500 Q605,530 608,560 Q611,590 622,612 Q634,635 648,650 Q660,665 660,620 Q642,595 636,565Z" fill="#8aaa78" stroke="#5a7a50" stroke-width="1.5" />
+
+  
+  <path d="M660,665 Q680,700 690,740 Q698,775 695,810 Q692,840 680,860 Q670,875 660,880 L640,900 Q630,870 625,840 Q618,800 622,760 Q626,720 636,690 Q645,668 660,665Z" fill="#9ab888" stroke="#5a7a50" stroke-width="1.5" />
+
+  
+  <path d="M1100,200 Q1120,195 1140,210 Q1155,225 1155,255 Q1152,280 1140,300 Q1128,318 1112,325 Q1095,330 1082,320 Q1068,308 1065,285 Q1062,260 1072,238 Q1082,218 1100,200Z" fill="#b8a870" stroke="#7a6040" stroke-width="1.5" />
+
+  
+  <path d="M1200,180 Q1215,170 1228,178 Q1240,188 1245,205 Q1248,222 1240,238 Q1230,252 1215,255 Q1200,256 1190,244 Q1180,232 1183,215 Q1186,198 1200,180Z" fill="#b8a870" stroke="#7a6040" stroke-width="1.5" />
+  <path d="M1255,280 Q1268,268 1282,272 Q1295,278 1300,295 Q1303,312 1295,328 Q1286,342 1272,345 Q1258,346 1249,334 Q1240,320 1244,304 Q1248,290 1255,280Z" fill="#b8a870" stroke="#7a6040" stroke-width="1.5" />
+
+  
+  <path d="M730,200 Q800,220 900,240 Q1000,260 1100,250 Q1050,195 980,175 Q910,158 840,155 Q785,153 750,158 Q720,162 710,170 Q700,178 680,160 Q678,178 680,200Z" fill="#c09060" stroke="#7a5030" stroke-width="1.5" stroke-dasharray="6,3" />
+
+  
+  <line x1="655" y1="348" x2="1085" y2="412" stroke="#7a5030" stroke-width="2" stroke-dasharray="10,5" opacity="0.7" />
+
+  
+  <path d="M636,560 Q680,540 730,520 Q790,498 850,488 Q910,478 970,468 Q1020,458 1060,445" fill="none" stroke="#6090b0" stroke-width="3" opacity="0.8" />
+
+  
+  <path d="M660,290 Q700,275 750,265 Q810,252 870,248 Q930,244 990,245 Q1040,246 1080,255" fill="none" stroke="#8aaa60" stroke-width="2.5" opacity="0.7" />
+
+  
+  <text x="810" y="510" font-family="Georgia, serif" font-size="13" fill="#3a6080" opacity="0.9" font-style="italic">Yangtze River</text>
+  <text x="780" y="240" font-family="Georgia, serif" font-size="13" fill="#506030" opacity="0.9" font-style="italic">Yellow River</text>
+
+  
+  <circle cx="850" cy="330" r="10" fill="#c04020" stroke="#fff" stroke-width="2" />
+  <circle cx="850" cy="330" r="16" fill="none" stroke="#c04020" stroke-width="1.5" opacity="0.6" />
+  <text x="868" y="325" font-family="Georgia, serif" font-size="15" fill="#2c1a08" font-weight="bold">Kaifeng</text>
+  <text x="868" y="342" font-family="Georgia, serif" font-size="12" fill="#2c1a08" font-style="italic">(Northern Capital)</text>
+
+  
+  <circle cx="960" cy="548" r="9" fill="#3a7030" stroke="#fff" stroke-width="2" />
+  <circle cx="960" cy="548" r="15" fill="none" stroke="#3a7030" stroke-width="1.5" opacity="0.6" />
+  <text x="978" y="544" font-family="Georgia, serif" font-size="15" fill="#1a2c08" font-weight="bold">Lin'an</text>
+  <text x="978" y="560" font-family="Georgia, serif" font-size="12" fill="#1a2c08" font-style="italic">(Southern Capital)</text>
+
+  
+  <text x="780" y="300" font-family="Georgia, serif" font-size="18" fill="#4a3010" font-weight="bold" opacity="0.85">NORTHERN SONG</text>
+  <text x="760" y="580" font-family="Georgia, serif" font-size="18" fill="#2a4020" font-weight="bold" opacity="0.85">SOUTHERN SONG</text>
+  <text x="790" y="195" font-family="Georgia, serif" font-size="15" fill="#6a4020" font-style="italic" opacity="0.8">Jurchen Jin</text>
+  <text x="1090" y="270" font-family="Georgia, serif" font-size="14" fill="#4a3010" font-style="italic" opacity="0.7">Korea</text>
+  <text x="1190" y="240" font-family="Georgia, serif" font-size="14" fill="#4a3010" font-style="italic" opacity="0.7">Japan</text>
+
+  
+  <text x="1220" y="480" font-family="Georgia, serif" font-size="20" fill="#3a6070" font-style="italic" opacity="0.6" transform="rotate(-5,1220,480)">East China Sea</text>
+  <text x="1100" y="720" font-family="Georgia, serif" font-size="18" fill="#3a6070" font-style="italic" opacity="0.6">South China Sea</text>
+
+  
+  <g transform="translate(1380,820)">
+    
+    <circle cx="0" cy="0" r="72" fill="#d4c4a0" stroke="#7a6040" stroke-width="2" />
+    <circle cx="0" cy="0" r="66" fill="none" stroke="#7a6040" stroke-width="0.8" />
+    
+    <polygon points="0,-62 -8,-18 0,-28 8,-18" fill="#c04020" />
+    <polygon points="0,62 -8,18 0,28 8,18" fill="#7a6040" />
+    <polygon points="-62,0 -18,-8 -28,0 -18,8" fill="#7a6040" />
+    <polygon points="62,0 18,-8 28,0 18,8" fill="#7a6040" />
+    
+    <circle cx="0" cy="0" r="12" fill="#c04020" stroke="#fff" stroke-width="1.5" />
+    
+    <line x1="-44" y1="-44" x2="-18" y2="-18" stroke="#7a6040" stroke-width="1.2" />
+    <line x1="44" y1="-44" x2="18" y2="-18" stroke="#7a6040" stroke-width="1.2" />
+    <line x1="-44" y1="44" x2="-18" y2="18" stroke="#7a6040" stroke-width="1.2" />
+    <line x1="44" y1="44" x2="18" y2="18" stroke="#7a6040" stroke-width="1.2" />
+    
+    <text x="0" y="-74" font-family="Georgia, serif" font-size="18" fill="#c04020" font-weight="bold" text-anchor="middle">N</text>
+    <text x="0" y="92" font-family="Georgia, serif" font-size="16" fill="#7a6040" font-weight="bold" text-anchor="middle">S</text>
+    <text x="82" y="5" font-family="Georgia, serif" font-size="16" fill="#7a6040" font-weight="bold" text-anchor="middle">E</text>
+    <text x="-82" y="5" font-family="Georgia, serif" font-size="16" fill="#7a6040" font-weight="bold" text-anchor="middle">W</text>
+  </g>
+
+  
+  <rect x="0" y="0" width="680" height="1024" fill="url(#headerOverlay)" />
+
+  
+  <rect x="30" y="30" width="580" height="964" fill="none" stroke="#c8a060" stroke-width="1.5" opacity="0.5" />
+  <rect x="38" y="38" width="564" height="948" fill="none" stroke="#c8a060" stroke-width="0.7" opacity="0.35" />
+
+  
+  <g stroke="#c8a060" stroke-width="1.5" fill="none" opacity="0.7">
+    <path d="M30,30 L70,30 M30,30 L30,70" />
+    <path d="M610,30 L570,30 M610,30 L610,70" />
+    <path d="M30,994 L70,994 M30,994 L30,954" />
+    <path d="M610,994 L570,994 M610,994 L610,954" />
+  </g>
+
+  
+  <g transform="translate(310,100)" opacity="0.8">
+    <line x1="-120" y1="0" x2="-20" y2="0" stroke="#c8a060" stroke-width="1" />
+    <circle cx="0" cy="0" r="6" fill="#c8a060" />
+    <line x1="20" y1="0" x2="120" y2="0" stroke="#c8a060" stroke-width="1" />
+    <circle cx="-20" cy="0" r="3" fill="none" stroke="#c8a060" stroke-width="1" />
+    <circle cx="20" cy="0" r="3" fill="none" stroke="#c8a060" stroke-width="1" />
+  </g>
+
+  
+  <text x="310" y="230" font-family="serif" font-size="120" fill="#c8a060" text-anchor="middle" opacity="0.25" font-weight="bold">宋</text>
+
+  
+  <text x="310" y="340" font-family="Georgia, 'Times New Roman', serif" font-size="80" fill="#f0e0c0" text-anchor="middle" font-weight="bold" letter-spacing="4">The Song</text>
+  <text x="310" y="430" font-family="Georgia, 'Times New Roman', serif" font-size="80" fill="#f0e0c0" text-anchor="middle" font-weight="bold" letter-spacing="4">Dynasty</text>
+
+  
+  <line x1="100" y1="460" x2="520" y2="460" stroke="#c8a060" stroke-width="1.5" opacity="0.8" />
+  <circle cx="310" cy="460" r="4" fill="#c8a060" opacity="0.8" />
+
+  
+  <text x="310" y="505" font-family="Georgia, serif" font-size="26" fill="#d4b880" text-anchor="middle" letter-spacing="6">960 – 1279 CE</text>
+
+  
+  <line x1="140" y1="528" x2="480" y2="528" stroke="#c8a060" stroke-width="0.8" opacity="0.5" />
+
+  
+  <text x="310" y="568" font-family="Georgia, serif" font-size="18" fill="#c0a870" text-anchor="middle" letter-spacing="3" font-style="italic">Imperial China · History</text>
+
+  
+  <text x="100" y="630" font-family="Georgia, serif" font-size="16" fill="#d0c0a0" letter-spacing="1">■  Northern Song: 960–1127 CE · Capital: Kaifeng</text>
+  <text x="100" y="665" font-family="Georgia, serif" font-size="16" fill="#c0d0b0" letter-spacing="1">■  Southern Song: 1127–1279 CE · Capital: Lin'an</text>
+  <text x="100" y="700" font-family="Georgia, serif" font-size="16" fill="#d0c0a0" letter-spacing="1">■  Founded by Zhao Kuangyin (Emperor Taizu)</text>
+  <text x="100" y="735" font-family="Georgia, serif" font-size="16" fill="#d0c0a0" letter-spacing="1">■  Duration: 319 years</text>
+
+  
+  <line x1="100" y1="758" x2="520" y2="758" stroke="#c8a060" stroke-width="0.8" opacity="0.4" />
+
+  
+  <text x="310" y="795" font-family="Georgia, serif" font-size="14" fill="#b0c0a0" text-anchor="middle" letter-spacing="2" font-style="italic">Philosophy · Technology · Poetry · Trade · Painting</text>
+
+  
+  <text x="310" y="840" font-family="Georgia, serif" font-size="13" fill="#a0b090" text-anchor="middle" opacity="0.9">Su Shi · Wang Anshi · Sima Guang · Emperor Shenzong</text>
+
+  
+  <g transform="translate(310,900)" opacity="0.6">
+    <line x1="-150" y1="0" x2="-25" y2="0" stroke="#c8a060" stroke-width="1" />
+    <path d="M-20,-8 L0,0 L-20,8 M20,-8 L0,0 L20,8" fill="none" stroke="#c8a060" stroke-width="1.2" />
+    <line x1="25" y1="0" x2="150" y2="0" stroke="#c8a060" stroke-width="1" />
+  </g>
+
+  
+  <text x="310" y="950" font-family="Georgia, serif" font-size="13" fill="#907860" text-anchor="middle" letter-spacing="3" font-style="italic">One of Imperial China's greatest dynasties</text>
+
+  
+  <g stroke="#8a7050" stroke-width="0.5" opacity="0.2">
+    <line x1="580" y1="200" x2="1536" y2="200" />
+    <line x1="580" y1="400" x2="1536" y2="400" />
+    <line x1="580" y1="600" x2="1536" y2="600" />
+    <line x1="580" y1="800" x2="1536" y2="800" />
+    <line x1="750" y1="0" x2="750" y2="1024" />
+    <line x1="950" y1="0" x2="950" y2="1024" />
+    <line x1="1150" y1="0" x2="1150" y2="1024" />
+    <line x1="1350" y1="0" x2="1350" y2="1024" />
+  </g>
+
+  
+  <g transform="translate(620,970)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#4a3a20" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#4a3a20" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#4a3a20" stroke-width="1.5" />
+    <line x1="200" y1="-6" x2="200" y2="6" stroke="#4a3a20" stroke-width="2" />
+    <text x="0" y="-12" font-family="Georgia, serif" font-size="11" fill="#4a3a20" text-anchor="middle">0</text>
+    <text x="100" y="-12" font-family="Georgia, serif" font-size="11" fill="#4a3a20" text-anchor="middle">500 km</text>
+    <text x="200" y="-12" font-family="Georgia, serif" font-size="11" fill="#4a3a20" text-anchor="middle">1000 km</text>
+  </g>
+
+  
+  <g transform="translate(620,880)">
+    <rect x="0" y="0" width="280" height="70" fill="#d4c4a0" stroke="#8a7050" stroke-width="1" opacity="0.85" rx="3" />
+    <rect x="12" y="12" width="18" height="12" fill="#c4aa7a" stroke="#7a6040" stroke-width="1" />
+    <text x="38" y="22" font-family="Georgia, serif" font-size="13" fill="#3a2a10">Northern Song Territory</text>
+    <rect x="12" y="34" width="18" height="12" fill="#8aaa78" stroke="#5a7a50" stroke-width="1" />
+    <text x="38" y="44" font-family="Georgia, serif" font-size="13" fill="#3a2a10">Southern Song Territory</text>
+    <rect x="12" y="56" width="18" height="10" fill="#c09060" stroke="#7a5030" stroke-width="1" stroke-dasharray="4,2" />
+    <text x="38" y="65" font-family="Georgia, serif" font-size="13" fill="#3a2a10">Jurchen Jin Dynasty</text>
+  </g>
+</svg>

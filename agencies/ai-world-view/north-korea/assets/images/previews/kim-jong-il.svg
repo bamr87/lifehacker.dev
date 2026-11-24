@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Kim Jong-il — Leader of North Korea 1994–2011</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cfd8" />
+      <stop offset="100%" stop-color="#9ab8c4" />
+    </linearGradient>
+    <linearGradient id="redBanner" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b1a1a" />
+      <stop offset="100%" stop-color="#6b1212" />
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#c4b898" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#seaGrad)" opacity="0.35" />
+
+  
+  <g stroke="#a89870" stroke-width="0.7" opacity="0.5" fill="none">
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="350" x2="1536" y2="350" />
+    <line x1="0" y1="500" x2="1536" y2="500" />
+    <line x1="0" y1="650" x2="1536" y2="650" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="0" y1="950" x2="1536" y2="950" />
+  </g>
+  
+  <g stroke="#a89870" stroke-width="0.7" opacity="0.5" fill="none">
+    <line x1="200" y1="0" x2="200" y2="1024" />
+    <line x1="400" y1="0" x2="400" y2="1024" />
+    <line x1="600" y1="0" x2="600" y2="1024" />
+    <line x1="800" y1="0" x2="800" y2="1024" />
+    <line x1="1000" y1="0" x2="1000" y2="1024" />
+    <line x1="1200" y1="0" x2="1200" y2="1024" />
+    <line x1="1400" y1="0" x2="1400" y2="1024" />
+  </g>
+
+  
+  <path d="M0,0 L700,0 L750,80 L820,120 L870,200 L840,320 L800,380 L760,420 L720,430 L680,480 L640,500 L600,520 L560,490 L500,470 L440,480 L400,460 L360,430 L320,400 L280,380 L240,360 L200,330 L160,300 L100,280 L0,260 Z" fill="#c8b888" stroke="#a89060" stroke-width="1.5" />
+
+  
+  <path d="M600,0 L1536,0 L1536,300 L1400,280 L1300,260 L1200,250 L1100,240 L1000,200 L900,180 L870,200 L820,120 L750,80 L700,0 Z" fill="#c4b480" stroke="#a89060" stroke-width="1.5" />
+
+  
+  <path d="M820,380 L840,360 L860,340 L880,330 L900,320 L920,330 L930,350 L940,370 L950,400 L945,430 L935,455 L920,470 L910,490 L900,510 L885,525 L870,530 L855,520 L840,505 L830,480 L820,455 L815,430 L812,405 Z" fill="#c4372a" stroke="#8b1a1a" stroke-width="2" />
+
+  
+  <path d="M870,530 L885,525 L900,510 L910,490 L920,470 L935,455 L945,430 L950,400 L960,420 L965,445 L960,470 L950,495 L935,515 L920,540 L905,560 L890,570 L875,565 L865,550 Z" fill="#d4c090" stroke="#a89060" stroke-width="1.5" />
+
+  
+  <path d="M1010,300 L1020,280 L1030,300 L1045,330 L1050,360 L1040,390 L1025,410 L1010,420 L1000,400 L998,370 L1002,340 Z" fill="#d4c090" stroke="#a89060" stroke-width="1.2" />
+  <path d="M1030,430 L1040,420 L1055,440 L1065,470 L1070,500 L1060,530 L1045,550 L1032,545 L1025,520 L1020,490 L1022,460 Z" fill="#d4c090" stroke="#a89060" stroke-width="1.2" />
+
+  
+  <ellipse cx="885" cy="430" rx="90" ry="80" fill="#8b1a1a" opacity="0.12" />
+
+  
+  <g transform="translate(840,345)">
+    <polygon points="0,-14 8,4 -8,4" fill="#8b1a1a" stroke="#5a0e0e" stroke-width="1" />
+    <circle cx="0" cy="-17" r="4" fill="#c4372a" stroke="#8b1a1a" stroke-width="1" />
+  </g>
+  <text x="852" y="332" font-family="Georgia, serif" font-size="11" fill="#5a0e0e" font-style="italic">Paektu Mtn.</text>
+
+  
+  <circle cx="882" cy="460" r="7" fill="#8b1a1a" stroke="#5a0e0e" stroke-width="1.5" />
+  <circle cx="882" cy="460" r="3" fill="#e8dfc8" />
+  <text x="893" y="465" font-family="Georgia, serif" font-size="12" fill="#3a0808" font-weight="bold">Pyongyang</text>
+
+  
+  <line x1="850" y1="528" x2="970" y2="528" stroke="#5a4a2a" stroke-width="1.5" stroke-dasharray="6,4" />
+  <text x="975" y="532" font-family="Georgia, serif" font-size="10" fill="#5a4a2a" font-style="italic">38°N</text>
+
+  
+  <g transform="translate(920, 390) scale(0.6)">
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#8b1a1a" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="5" fill="#8b1a1a" />
+    <line x1="0" y1="-5" x2="0" y2="-17" stroke="#8b1a1a" stroke-width="2.5" />
+    <line x1="0" y1="5" x2="8" y2="16" stroke="#8b1a1a" stroke-width="2.5" transform="rotate(120)" />
+    <line x1="0" y1="5" x2="8" y2="16" stroke="#8b1a1a" stroke-width="2.5" transform="rotate(240)" />
+  </g>
+  <text x="935" y="380" font-family="Georgia, serif" font-size="9" fill="#8b1a1a" font-style="italic">2006 Test</text>
+
+  
+  <g transform="translate(190, 820)">
+    <circle cx="0" cy="0" r="55" fill="#e8dfc8" stroke="#8b7040" stroke-width="2" />
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#8b7040" stroke-width="0.8" />
+    
+    <polygon points="0,-42 6,-10 -6,-10" fill="#5a3a10" />
+    
+    <polygon points="0,42 6,10 -6,10" fill="#c4b888" />
+    
+    <polygon points="42,0 10,6 10,-6" fill="#c4b888" />
+    
+    <polygon points="-42,0 -10,6 -10,-6" fill="#c4b888" />
+    <circle cx="0" cy="0" r="6" fill="#8b7040" />
+    <circle cx="0" cy="0" r="3" fill="#e8dfc8" />
+    <text x="0" y="-50" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#3a2a08">N</text>
+    <text x="0" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#5a4a20">S</text>
+    <text x="52" y="5" font-family="Georgia,serif" font-size="12" fill="#5a4a20">E</text>
+    <text x="-58" y="5" font-family="Georgia,serif" font-size="12" fill="#5a4a20">W</text>
+  </g>
+
+  
+  <rect x="0" y="640" width="1536" height="320" fill="url(#redBanner)" opacity="0.93" />
+  
+  <rect x="0" y="636" width="1536" height="6" fill="#c4a030" />
+  <rect x="0" y="956" width="1536" height="4" fill="#c4a030" />
+
+  
+  <g transform="translate(80, 800)">
+    <polygon points="0,-30 7,-10 28,-10 12,4 19,24 0,12 -19,24 -12,4 -28,-10 -7,-10" fill="#c4a030" opacity="0.85" />
+  </g>
+  
+  <g transform="translate(1456, 800)">
+    <polygon points="0,-30 7,-10 28,-10 12,4 19,24 0,12 -19,24 -12,4 -28,-10 -7,-10" fill="#c4a030" opacity="0.85" />
+  </g>
+
+  
+  <text x="768" y="730" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="112" font-weight="bold" fill="#f0e8d0" letter-spacing="6">KIM JONG-IL</text>
+  <text x="768" y="748" text-anchor="middle" font-family="Georgia, serif" font-size="112" font-weight="bold" fill="none" stroke="#c4a030" stroke-width="1.5" letter-spacing="6">KIM JONG-IL</text>
+
+  
+  <text x="768" y="800" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#c4a030" letter-spacing="12">김 정 일</text>
+
+  
+  <text x="768" y="855" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#e0d0b0" letter-spacing="4">SUPREME LEADER · DEMOCRATIC PEOPLE'S REPUBLIC OF KOREA</text>
+
+  
+  <rect x="334" y="876" width="868" height="1" fill="#c4a030" opacity="0.6" />
+  <text x="768" y="910" text-anchor="middle" font-family="Georgia, serif" font-size="19" fill="#c8b888" letter-spacing="2">February 16, 1942 — December 17, 2011</text>
+  <text x="768" y="938" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#a89878" letter-spacing="1" font-style="italic">Songun · 선군 · Military-First Policy · 1994–2011</text>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8b7040" stroke-width="2.5" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8b7040" stroke-width="0.8" />
+
+  
+  <g stroke="#8b7040" stroke-width="2" fill="none">
+    <path d="M18,80 L18,18 L80,18" />
+    <path d="M1456,18 L1518,18 L1518,80" />
+    <path d="M18,944 L18,1006 L80,1006" />
+    <path d="M1456,1006 L1518,1006 L1518,944" />
+  </g>
+
+  
+  <g transform="translate(1300, 570)">
+    <rect x="0" y="0" width="120" height="8" fill="#5a4a20" />
+    <rect x="0" y="0" width="60" height="8" fill="#e8dfc8" />
+    <line x1="0" y1="-4" x2="0" y2="14" stroke="#5a4a20" stroke-width="1.5" />
+    <line x1="60" y1="-4" x2="60" y2="14" stroke="#5a4a20" stroke-width="1.5" />
+    <line x1="120" y1="-4" x2="120" y2="14" stroke="#5a4a20" stroke-width="1.5" />
+    <text x="0" y="-8" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#5a4a20">0</text>
+    <text x="60" y="-8" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#5a4a20">200 km</text>
+    <text x="120" y="-8" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#5a4a20">400 km</text>
+  </g>
+
+  
+  <g transform="translate(1280, 430)">
+    <rect x="0" y="0" width="200" height="90" fill="#e8dfc8" stroke="#8b7040" stroke-width="1" opacity="0.9" />
+    <rect x="10" y="12" width="16" height="16" fill="#c4372a" stroke="#8b1a1a" stroke-width="1" />
+    <text x="32" y="24" font-family="Georgia,serif" font-size="12" fill="#3a2a08">North Korea (DPRK)</text>
+    <rect x="10" y="36" width="16" height="16" fill="#d4c090" stroke="#a89060" stroke-width="1" />
+    <text x="32" y="48" font-family="Georgia,serif" font-size="12" fill="#3a2a08">Neighboring states</text>
+    <circle cx="18" cy="66" r="5" fill="#8b1a1a" />
+    <circle cx="18" cy="66" r="2" fill="#e8dfc8" />
+    <text x="32" y="70" font-family="Georgia,serif" font-size="12" fill="#3a2a08">Capital city</text>
+  </g>
+
+  
+  <rect x="28" y="28" width="180" height="8" fill="#8b1a1a" />
+  <rect x="28" y="36" width="180" height="4" fill="#c4a030" />
+  <rect x="28" y="40" width="180" height="8" fill="#e8dfc8" />
+</svg>

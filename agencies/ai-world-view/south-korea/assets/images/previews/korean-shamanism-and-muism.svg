@@ -1,0 +1,425 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean Shamanism and Muism — Atlas Banner</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="50%" stop-color="#ddd0b0" />
+      <stop offset="100%" stop-color="#c9bb98" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8ccd8" />
+      <stop offset="100%" stop-color="#9ab4c4" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b887" />
+      <stop offset="100%" stop-color="#b0a070" />
+    </linearGradient>
+    <linearGradient id="robeRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9e3a2a" />
+      <stop offset="100%" stop-color="#7a2a1c" />
+    </linearGradient>
+    <linearGradient id="robeBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a4a7a" />
+      <stop offset="100%" stop-color="#1c3560" />
+    </linearGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a09060" stroke-width="0.5" opacity="0.3" />
+    </pattern>
+    <pattern id="crosshatch" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#8a7a50" stroke-width="0.4" opacity="0.25" />
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#8a7a50" stroke-width="0.4" opacity="0.25" />
+    </pattern>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#crosshatch)" />
+
+  
+  <rect width="1536" height="1024" fill="#8a6a30" opacity="0.05" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#5a4820" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#5a4820" stroke-width="1" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#8a7040" stroke-width="0.5" />
+
+  
+  
+  <g transform="translate(30,30)">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#5a4820" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#5a4820" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#5a4820" />
+    <circle cx="30" cy="30" r="3" fill="none" stroke="#5a4820" stroke-width="1" />
+  </g>
+  
+  <g transform="translate(1506,30)">
+    <line x1="0" y1="0" x2="-60" y2="0" stroke="#5a4820" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#5a4820" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#5a4820" />
+    <circle cx="-30" cy="30" r="3" fill="none" stroke="#5a4820" stroke-width="1" />
+  </g>
+  
+  <g transform="translate(30,994)">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#5a4820" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="-60" stroke="#5a4820" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#5a4820" />
+    <circle cx="30" cy="-30" r="3" fill="none" stroke="#5a4820" stroke-width="1" />
+  </g>
+  
+  <g transform="translate(1506,994)">
+    <line x1="0" y1="0" x2="-60" y2="0" stroke="#5a4820" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="-60" stroke="#5a4820" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#5a4820" />
+    <circle cx="-30" cy="-30" r="3" fill="none" stroke="#5a4820" stroke-width="1" />
+  </g>
+
+  
+  <ellipse cx="900" cy="512" rx="560" ry="460" fill="url(#seaGrad)" opacity="0.6" />
+  <rect x="340" y="52" width="1150" height="920" fill="url(#seaGrad)" opacity="0.35" rx="8" />
+
+  
+  <g stroke="#7a9ab0" stroke-width="0.6" opacity="0.4">
+    <path d="M400,200 Q500,190 600,200 Q700,210 800,200" />
+    <path d="M400,220 Q500,210 600,220 Q700,230 800,220" />
+    <path d="M400,240 Q500,230 600,240 Q700,250 800,240" />
+    <path d="M900,350 Q1000,340 1100,350 Q1200,360 1300,350" />
+    <path d="M900,370 Q1000,360 1100,370 Q1200,380 1300,370" />
+    <path d="M850,600 Q950,590 1050,600 Q1150,610 1250,600" />
+    <path d="M850,620 Q950,610 1050,620 Q1150,630 1250,620" />
+    <path d="M500,700 Q600,690 700,700 Q800,710 900,700" />
+    <path d="M500,720 Q600,710 700,720 Q800,730 900,720" />
+  </g>
+
+  
+  <path d="M360,80 L700,80 L760,120 L820,160 L840,220 L820,280 L780,320 L740,350 L700,370 L660,390 L620,400 L580,410 L540,400 L500,380 L460,350 L420,310 L390,270 L370,220 L360,170 Z" fill="url(#landGrad)" stroke="#8a7040" stroke-width="1.5" />
+  <path d="M360,80 L700,80 L760,120 L820,160 L840,220 L820,280 L780,320 L740,350 L700,370 L660,390 L620,400 L580,410 L540,400 L500,380 L460,350 L420,310 L390,270 L370,220 L360,170 Z" fill="url(#hatch)" />
+
+  
+  <path d="M360,170 L370,220 L390,270 L420,310 L460,350 L500,380 L540,400 L550,450 L540,510 L520,560 L500,610 L480,660 L460,700 L440,740 L420,780 L400,820 L380,860 L370,900 L360,944 L360,944 L320,900 L300,840 L290,780 L290,720 L300,660 L310,600 L320,540 L330,480 L340,420 L345,360 L350,300 L352,240 L355,200 Z" fill="url(#landGrad)" stroke="#8a7040" stroke-width="1.5" />
+  <path d="M360,170 L370,220 L390,270 L420,310 L460,350 L500,380 L540,400 L550,450 L540,510 L520,560 L500,610 L480,660 L460,700 L440,740 L420,780 L400,820 L380,860 L370,900 L360,944 L320,900 L300,840 L290,780 L290,720 L300,660 L310,600 L320,540 L330,480 L340,420 L345,360 L350,300 L352,240 Z" fill="url(#hatch)" />
+
+  
+  <path d="M1100,200 L1120,230 L1130,270 L1120,310 L1100,340 L1080,320 L1070,280 L1075,240 L1090,210 Z" fill="url(#landGrad)" stroke="#8a7040" stroke-width="1.2" />
+  <path d="M1100,200 L1120,230 L1130,270 L1120,310 L1100,340 L1080,320 L1070,280 L1075,240 L1090,210 Z" fill="url(#hatch)" />
+  <path d="M1060,360 L1090,400 L1100,450 L1095,510 L1075,550 L1050,530 L1035,490 L1035,440 L1045,400 Z" fill="url(#landGrad)" stroke="#8a7040" stroke-width="1.2" />
+  <path d="M1060,360 L1090,400 L1100,450 L1095,510 L1075,550 L1050,530 L1035,490 L1035,440 L1045,400 Z" fill="url(#hatch)" />
+  <path d="M1025,580 L1050,620 L1055,660 L1045,700 L1025,720 L1005,700 L995,660 L1000,620 Z" fill="url(#landGrad)" stroke="#8a7040" stroke-width="1.2" />
+  <path d="M1025,580 L1050,620 L1055,660 L1045,700 L1025,720 L1005,700 L995,660 L1000,620 Z" fill="url(#hatch)" />
+
+  
+  <path d="M700,370 L740,350 L780,320 L820,280 L840,340 L845,390 L840,440 L830,490 L815,540 L795,590 L770,635 L745,670 L720,700 L700,720 L685,740 L670,760 L660,780 L655,800 L660,820 L650,810 L635,790 L625,770 L620,750 L618,730 L622,710 L630,690 L640,665 L645,640 L640,615 L630,590 L615,560 L600,530 L590,500 L585,465 L590,430 L600,400 L620,375 L650,362 L680,360 Z" fill="#c4a55a" stroke="#7a5a20" stroke-width="2" />
+  <path d="M700,370 L740,350 L780,320 L820,280 L840,340 L845,390 L840,440 L830,490 L815,540 L795,590 L770,635 L745,670 L720,700 L700,720 L685,740 L670,760 L660,780 L655,800 L660,820 L650,810 L635,790 L625,770 L620,750 L618,730 L622,710 L630,690 L640,665 L645,640 L640,615 L630,590 L615,560 L600,530 L590,500 L585,465 L590,430 L600,400 L620,375 L650,362 L680,360 Z" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <g fill="none" stroke="#7a5a20" stroke-width="1" opacity="0.6">
+    <path d="M700,400 L715,380 L730,400" />
+    <path d="M720,430 L738,408 L756,430" />
+    <path d="M690,460 L705,440 L720,460" />
+    <path d="M730,480 L748,458 L766,480" />
+    <path d="M700,510 L716,490 L732,510" />
+    <path d="M720,540 L735,520 L750,540" />
+    <path d="M690,570 L705,550 L720,570" />
+  </g>
+
+  
+  <path d="M700,370 L740,350 L780,320 L820,280 L840,340 L845,390 L840,440 L830,490 L815,540 L795,590 L770,635 L745,670 L720,700 L700,720 L685,740 L670,760 L660,780 L655,800 L660,820 L650,810 L635,790 L625,770 L620,750 L618,730 L622,710 L630,690 L640,665 L645,640 L640,615 L630,590 L615,560 L600,530 L590,500 L585,465 L590,430 L600,400 L620,375 L650,362 L680,360 Z" fill="none" stroke="#9e7a30" stroke-width="2.5" />
+
+  
+  
+  <g transform="translate(960, 160)">
+    
+    
+    <path d="M0,80 L-80,100 L-100,200 L-110,320 L-90,400 L-60,460 L0,490 L60,460 L90,400 L110,320 L100,200 L80,100 Z" fill="#9e3a2a" />
+    
+    <path d="M-80,100 L-100,200 L-110,320 L-90,400 L-60,460 L-20,480 L-20,100 Z" fill="#7a2a1c" />
+    
+    <path d="M-80,100 L-120,130 L-140,200 L-130,280 L-110,320 L-100,200 Z" fill="#2a4a7a" />
+    <path d="M80,100 L120,130 L140,200 L130,280 L110,320 L100,200 Z" fill="#2a4a7a" />
+    
+    <path d="M-30,90 L0,110 L30,90 L20,80 L0,88 L-20,80 Z" fill="#e8dcc8" />
+    
+    <path d="M-80,100 L80,100" stroke="#c8a030" stroke-width="3" fill="none" />
+    <path d="M-110,320 L110,320" stroke="#c8a030" stroke-width="2" fill="none" />
+    <path d="M-60,460 L60,460" stroke="#c8a030" stroke-width="2" fill="none" />
+    
+    <rect x="-90" y="200" width="180" height="20" fill="#c8a030" rx="2" />
+    
+    <ellipse cx="0" cy="60" rx="38" ry="42" fill="#d4a870" />
+    
+    <path d="M-38,50 L-45,10 L-20,-10 L0,-20 L20,-10 L45,10 L38,50 Z" fill="#2a1a0a" />
+    
+    <rect x="-50" y="-5" width="100" height="15" fill="#9e3a2a" rx="3" />
+    <rect x="-40" y="-20" width="80" height="18" fill="#9e3a2a" rx="2" />
+    
+    <circle cx="-20" cy="-28" r="5" fill="#c8a030" />
+    <circle cx="0" cy="-32" r="6" fill="#c8a030" />
+    <circle cx="20" cy="-28" r="5" fill="#c8a030" />
+    <line x1="0" y1="-38" x2="0" y2="-55" stroke="#c8a030" stroke-width="2" />
+    <circle cx="0" cy="-58" r="4" fill="#c8a030" />
+    
+    <ellipse cx="-12" cy="62" rx="5" ry="6" fill="#2a1a0a" />
+    <ellipse cx="12" cy="62" rx="5" ry="6" fill="#2a1a0a" />
+    <path d="M-8,78 Q0,85 8,78" stroke="#8a4a30" stroke-width="2" fill="none" />
+    
+    <path d="M-80,100 L-140,130 L-155,180 L-145,200 L-130,280" fill="none" stroke="#9e3a2a" stroke-width="30" stroke-linecap="round" />
+    
+    <g transform="translate(-165,170) rotate(-20)">
+      <path d="M0,0 L-30,-60 L-10,-65 L0,-20 L10,-65 L30,-60 Z" fill="#c8a030" />
+      <path d="M0,0 L-30,-60" stroke="#9e3a2a" stroke-width="1.5" fill="none" />
+      <path d="M0,0 L-15,-63" stroke="#9e3a2a" stroke-width="1" fill="none" />
+      <path d="M0,0 L0,-67" stroke="#9e3a2a" stroke-width="1" fill="none" />
+      <path d="M0,0 L15,-63" stroke="#9e3a2a" stroke-width="1" fill="none" />
+      <path d="M0,0 L30,-60" stroke="#9e3a2a" stroke-width="1.5" fill="none" />
+      <rect x="-4" y="0" width="8" height="25" fill="#7a5a20" rx="2" />
+    </g>
+    
+    <path d="M80,100 L140,130 L155,180 L145,200 L130,280" fill="none" stroke="#2a4a7a" stroke-width="28" stroke-linecap="round" />
+    
+    <g transform="translate(158,175)">
+      <ellipse cx="0" cy="0" rx="15" ry="20" fill="#c8a030" />
+      <ellipse cx="0" cy="-18" rx="8" ry="6" fill="#a88820" />
+      <line x1="0" y1="-24" x2="0" y2="-35" stroke="#c8a030" stroke-width="3" />
+      <circle cx="0" cy="10" r="5" fill="#a88820" />
+      
+      <path d="M-10,-5 Q0,5 10,-5" stroke="#a88820" stroke-width="1" fill="none" />
+    </g>
+    
+    <path d="M-60,460 L-80,520 L-60,560 L0,580 L60,560 L80,520 L60,460 Z" fill="#2a4a7a" />
+    <path d="M-60,460 L-80,520 L-60,560 L-10,575 L-10,460 Z" fill="#1c3560" />
+    
+    <ellipse cx="-20" cy="572" rx="22" ry="10" fill="#2a1a0a" />
+    <ellipse cx="20" cy="572" rx="22" ry="10" fill="#2a1a0a" />
+  </g>
+
+  
+  
+  <g transform="translate(830, 280)">
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#5a4820" stroke-width="2" />
+    <path d="M0,-35 A17.5,17.5 0 0,1 0,0 A17.5,17.5 0 0,0 0,35 A35,35 0 0,1 0,-35 Z" fill="#9e3a2a" />
+    <path d="M0,-35 A17.5,17.5 0 0,0 0,0 A17.5,17.5 0 0,1 0,35 A35,35 0 0,0 0,-35 Z" fill="#1c3560" />
+    <circle cx="0" cy="-17.5" r="8" fill="#1c3560" />
+    <circle cx="0" cy="17.5" r="8" fill="#9e3a2a" />
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#5a4820" stroke-width="2.5" />
+  </g>
+
+  
+  <g transform="translate(1180, 600)">
+    <circle cx="0" cy="0" r="25" fill="none" stroke="#5a4820" stroke-width="1.5" />
+    <path d="M0,-25 A12.5,12.5 0 0,1 0,0 A12.5,12.5 0 0,0 0,25 A25,25 0 0,1 0,-25 Z" fill="#9e3a2a" opacity="0.8" />
+    <path d="M0,-25 A12.5,12.5 0 0,0 0,0 A12.5,12.5 0 0,1 0,25 A25,25 0 0,0 0,-25 Z" fill="#1c3560" opacity="0.8" />
+    <circle cx="0" cy="-12.5" r="5" fill="#1c3560" />
+    <circle cx="0" cy="12.5" r="5" fill="#9e3a2a" />
+  </g>
+
+  
+  <g transform="translate(1280, 380)">
+    <path d="M0,80 L-20,40 L-10,55 L-5,20 L0,45 L8,10 L12,40 L20,30 L15,60 L25,45 L20,80 Z" fill="#c85a20" opacity="0.85" />
+    <path d="M0,80 L-12,45 L-5,55 L0,30 L5,50 L10,25 L14,50 L18,40 L15,80 Z" fill="#e8901a" opacity="0.9" />
+    <path d="M2,80 L-5,55 L0,60 L3,45 L6,58 L10,80 Z" fill="#f0c040" />
+    
+    <ellipse cx="0" cy="85" rx="28" ry="10" fill="#5a3a10" />
+    <path d="M-28,85 L-22,110 L22,110 L28,85 Z" fill="#4a2e08" />
+    <ellipse cx="0" cy="110" rx="22" ry="6" fill="#3a2206" />
+    <path d="M-35,85 L-28,85" stroke="#5a3a10" stroke-width="4" stroke-linecap="round" />
+    <path d="M35,85 L28,85" stroke="#5a3a10" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  
+  <g transform="translate(1370, 600)">
+    <ellipse cx="0" cy="0" rx="40" ry="20" fill="#7a5a20" stroke="#5a3a10" stroke-width="2" />
+    <rect x="-40" y="0" width="80" height="35" fill="#9a7030" stroke="#5a3a10" stroke-width="1.5" />
+    <ellipse cx="0" cy="35" rx="40" ry="20" fill="#7a5a20" stroke="#5a3a10" stroke-width="2" />
+    
+    <line x1="-38" y1="-5" x2="38" y2="-5" stroke="#5a3a10" stroke-width="0.8" opacity="0.5" />
+    <line x1="-38" y1="5" x2="38" y2="5" stroke="#5a3a10" stroke-width="0.8" opacity="0.5" />
+  </g>
+
+  
+  <g transform="translate(160, 760)">
+    
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#5a4820" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="85" fill="none" stroke="#5a4820" stroke-width="0.5" />
+    
+    <path d="M0,-85 L8,-40 L0,-55 L-8,-40 Z" fill="#5a4820" />
+    <path d="M0,85 L8,40 L0,55 L-8,40 Z" fill="#8a7040" />
+    <path d="M-85,0 L-40,-8 L-55,0 L-40,8 Z" fill="#8a7040" />
+    <path d="M85,0 L40,-8 L55,0 L40,8 Z" fill="#8a7040" />
+    
+    <path d="M60,-60 L35,-25 L45,-35 L20,-45 Z" fill="#8a7040" opacity="0.7" />
+    <path d="M-60,-60 L-20,-45 L-35,-35 L-25,-20 Z" fill="#8a7040" opacity="0.7" />
+    <path d="M60,60 L20,45 L35,35 L25,20 Z" fill="#8a7040" opacity="0.7" />
+    <path d="M-60,60 L-25,20 L-35,35 L-20,45 Z" fill="#8a7040" opacity="0.7" />
+    
+    <circle cx="0" cy="0" r="12" fill="#5a4820" />
+    <circle cx="0" cy="0" r="7" fill="#c8a030" />
+    <circle cx="0" cy="0" r="3" fill="#5a4820" />
+    
+    <text x="0" y="-96" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5a4820" font-weight="bold">N</text>
+    <text x="0" y="112" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4820">S</text>
+    <text x="102" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4820">E</text>
+    <text x="-102" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4820">W</text>
+  </g>
+
+  
+  <g stroke="#7a9ab0" stroke-width="0.8" opacity="0.5" fill="none">
+    <line x1="350" y1="200" x2="1500" y2="200" />
+    <line x1="350" y1="400" x2="1500" y2="400" />
+    <line x1="350" y1="600" x2="1500" y2="600" />
+    <line x1="350" y1="800" x2="1500" y2="800" />
+    <line x1="500" y1="52" x2="500" y2="944" />
+    <line x1="700" y1="52" x2="700" y2="944" />
+    <line x1="900" y1="52" x2="900" y2="944" />
+    <line x1="1100" y1="52" x2="1100" y2="944" />
+    <line x1="1300" y1="52" x2="1300" y2="944" />
+  </g>
+
+  
+  <g font-family="Georgia, serif" font-size="11" fill="#5a4820" opacity="0.6">
+    <text x="355" y="196">38°N</text>
+    <text x="355" y="396">35°N</text>
+    <text x="355" y="596">32°N</text>
+  </g>
+
+  
+  <text x="718" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a2a10" font-style="italic" opacity="0.85">한반도</text>
+  <text x="718" y="578" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a2a10" font-style="italic" opacity="0.7">Korean Peninsula</text>
+
+  
+  <text x="500" y="650" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#3a6a8a" font-style="italic" opacity="0.7" transform="rotate(-5,500,650)">Yellow Sea</text>
+  <text x="880" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#3a6a8a" font-style="italic" opacity="0.7" transform="rotate(-8,880,500)">Sea of Japan</text>
+
+  
+  <g opacity="0.7">
+    <circle cx="820" cy="180" r="5" fill="#c8a030" stroke="#8a6020" stroke-width="1" />
+    <circle cx="860" cy="160" r="3" fill="#c8a030" />
+    <circle cx="840" cy="145" r="4" fill="#c8a030" stroke="#8a6020" stroke-width="1" />
+    <circle cx="1150" cy="380" r="5" fill="#c8a030" stroke="#8a6020" stroke-width="1" />
+    <circle cx="1170" cy="360" r="3" fill="#c8a030" />
+    <circle cx="1200" cy="340" r="4" fill="#c8a030" stroke="#8a6020" stroke-width="1" />
+    
+    <path d="M820,180 Q840,162 860,160 Q850,152 840,145" stroke="#c8a030" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.5" />
+  </g>
+
+  
+  <g fill="none" stroke="#8a7040" stroke-width="1.2" opacity="0.45">
+    <path d="M400,120 Q415,108 430,120 Q445,108 460,120 Q460,135 445,140 Q430,148 415,140 Q400,135 400,120 Z" />
+    <path d="M1350,820 Q1365,808 1380,820 Q1395,808 1410,820 Q1410,835 1395,840 Q1380,848 1365,840 Q1350,835 1350,820 Z" />
+    <path d="M1400,150 Q1418,138 1436,150 Q1454,138 1472,150 Q1472,168 1454,174 Q1436,180 1418,174 Q1400,168 1400,150 Z" />
+  </g>
+
+  
+  <rect x="42" y="42" width="320" height="940" fill="#ddd0b0" opacity="0.55" rx="3" />
+  <rect x="42" y="42" width="320" height="940" fill="url(#crosshatch)" opacity="0.8" />
+
+  
+  <rect x="48" y="48" width="308" height="928" fill="none" stroke="#5a4820" stroke-width="1.5" rx="2" />
+  <rect x="54" y="54" width="296" height="916" fill="none" stroke="#8a7040" stroke-width="0.5" rx="1" />
+
+  
+  <rect x="48" y="48" width="308" height="60" fill="#5a4820" rx="2" />
+  <text x="202" y="85" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#ddd0b0" letter-spacing="3">ATLAS OF BELIEF</text>
+
+  
+  <text x="202" y="175" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#3a2810" font-weight="bold" letter-spacing="1">Korean</text>
+  <text x="202" y="225" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#3a2810" font-weight="bold" letter-spacing="1">Shamanism</text>
+  <line x1="80" y1="242" x2="324" y2="242" stroke="#8a6030" stroke-width="1.5" />
+  <text x="202" y="272" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#5a2a10" font-style="italic">and</text>
+  <line x1="80" y1="288" x2="324" y2="288" stroke="#8a6030" stroke-width="1.5" />
+
+  
+  <text x="202" y="350" text-anchor="middle" font-family="Georgia, serif" font-size="52" fill="#9e3a2a" font-weight="bold" letter-spacing="2">Muism</text>
+  
+  <text x="202" y="405" text-anchor="middle" font-family="serif" font-size="34" fill="#5a2a10" opacity="0.85">무교</text>
+  <text x="202" y="438" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a3a20" font-style="italic" letter-spacing="2">mugyo</text>
+
+  
+  <g transform="translate(202, 465)">
+    <line x1="-60" y1="0" x2="-20" y2="0" stroke="#8a6030" stroke-width="1" />
+    <line x1="20" y1="0" x2="60" y2="0" stroke="#8a6030" stroke-width="1" />
+    <circle cx="0" cy="0" r="5" fill="none" stroke="#8a6030" stroke-width="1.5" />
+    <circle cx="-15" cy="0" r="2" fill="#8a6030" />
+    <circle cx="15" cy="0" r="2" fill="#8a6030" />
+  </g>
+
+  
+  <text x="202" y="510" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a3a20" font-style="italic">Indigenous Spiritual Tradition</text>
+  <text x="202" y="530" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a3a20" font-style="italic">of the Korean Peninsula</text>
+
+  
+  <rect x="70" y="560" width="264" height="200" fill="none" stroke="#8a7040" stroke-width="1" rx="2" />
+  <rect x="70" y="560" width="264" height="20" fill="#8a7040" rx="2" />
+  <text x="202" y="574" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#ddd0b0" letter-spacing="2">KEY TERMS</text>
+
+  <g font-family="Georgia, serif" fill="#3a2810">
+    <text x="86" y="602" font-size="12" font-weight="bold">Mudang</text>
+    <text x="86" y="617" font-size="11" font-style="italic" fill="#5a3a20">무당 · Shaman / spirit mediator</text>
+    <line x1="86" y1="626" x2="318" y2="626" stroke="#8a7040" stroke-width="0.5" />
+    <text x="86" y="644" font-size="12" font-weight="bold">Gut</text>
+    <text x="86" y="659" font-size="11" font-style="italic" fill="#5a3a20">굿 · Shamanic ritual ceremony</text>
+    <line x1="86" y1="668" x2="318" y2="668" stroke="#8a7040" stroke-width="0.5" />
+    <text x="86" y="686" font-size="12" font-weight="bold">Sin</text>
+    <text x="86" y="701" font-size="11" font-style="italic" fill="#5a3a20">신 · Spirits / deities</text>
+    <line x1="86" y1="710" x2="318" y2="710" stroke="#8a7040" stroke-width="0.5" />
+    <text x="86" y="728" font-size="12" font-weight="bold">Muism</text>
+    <text x="86" y="743" font-size="11" font-style="italic" fill="#5a3a20">무교 · The shamanic tradition</text>
+  </g>
+
+  
+  <text x="202" y="790" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a4820" letter-spacing="1" opacity="0.8">EST. PRE-4th CENTURY CE</text>
+  <line x1="80" y1="797" x2="324" y2="797" stroke="#8a7040" stroke-width="0.5" />
+
+  
+  <text x="202" y="830" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5a3a20" font-style="italic">Goguryeo · Baekje · Silla</text>
+  <text x="202" y="850" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a3a20" opacity="0.75">The Three Kingdoms Period</text>
+
+  
+  <rect x="48" y="944" width="308" height="36" fill="#5a4820" rx="2" />
+  <g font-family="Georgia, serif" font-size="10" fill="#ddd0b0" opacity="0.7">
+    <text x="202" y="966" text-anchor="middle" letter-spacing="3">KOREAN SPIRITUAL HERITAGE</text>
+  </g>
+
+  
+  
+  <g transform="translate(1430, 200)" opacity="0.6">
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#5a4820" stroke-width="1" />
+    
+    <g stroke="#5a4820" stroke-width="2" stroke-linecap="round">
+      
+      <line x1="-12" y1="-50" x2="-2" y2="-50" />
+      <line x1="2" y1="-50" x2="12" y2="-50" />
+      <line x1="-12" y1="-56" x2="12" y2="-56" />
+      <line x1="-12" y1="-62" x2="12" y2="-62" />
+      
+      <line x1="50" y1="-12" x2="50" y2="-2" />
+      <line x1="50" y1="2" x2="50" y2="12" />
+      <line x1="56" y1="-12" x2="56" y2="12" />
+      <line x1="62" y1="-12" x2="62" y2="12" />
+      
+      <line x1="-12" y1="50" x2="12" y2="50" />
+      <line x1="-12" y1="56" x2="-2" y2="56" />
+      <line x1="2" y1="56" x2="12" y2="56" />
+      <line x1="-12" y1="62" x2="12" y2="62" />
+      
+      <line x1="-50" y1="-12" x2="-50" y2="12" />
+      <line x1="-56" y1="-12" x2="-56" y2="-2" />
+      <line x1="-56" y1="2" x2="-56" y2="12" />
+      <line x1="-62" y1="-12" x2="-62" y2="12" />
+    </g>
+  </g>
+
+  
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="transparent" />
+    <stop offset="100%" stop-color="#2a1a08" stop-opacity="0.25" />
+  </radialGradient>
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <rect width="1536" height="1024" fill="#c8a060" opacity="0.04" />
+</svg>

@@ -1,0 +1,200 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# drsai — AI-crafted children's storybooks, published on GitHub Pages
+# ─────────────────────────────────────────────────────────────────────────────
+# The site is a consumer of the zer0-mistakes theme's `books` collection:
+# stories live under pages/_books/, illustrations under assets/images/books/,
+# and every page carries the AI prompts that produced (or will produce) its
+# art. See README.md for the full pipeline.
+
+site_configured          : true
+
+# ── Theme ────────────────────────────────────────────────────────────────────
+# Tracks the theme's main branch, which ships the books collection
+# (zer0-mistakes PR #328). Pin a SHA/tag here only when consuming
+# unreleased theme work (jekyll-remote-theme 0.4.x rejects slashed
+# branch refs, so pins must be commit SHAs or tags).
+remote_theme             : "bamr87/zer0-mistakes"
+
+# ── GitHub / URLs ────────────────────────────────────────────────────────────
+github_user              : bamr87
+repository_name          : drsai
+repository               : bamr87/drsai
+branch                   : main
+url                      : "https://bamr87.github.io"
+baseurl                  : "/drsai"
+
+# ── Site identity ────────────────────────────────────────────────────────────
+title                    : "drsai"
+title_url                : "/"
+title_icon               : "book-half"
+subtitle                 : "AI storybooks"
+title_separator          : "|"
+name                     : "Amr"
+email                    : "amr.abdel@gmail.com"
+founder                  : "Amr Abdel-Motaleb"
+description: >-
+  AI-crafted children's picture books: stories generated with the drsai
+  engine, illustrations rendered with OpenAI image models, published as a
+  living library with the zer0-mistakes theme.
+og_image                 : "/assets/images/books/dodge-and-reena/front-cover.jpg"
+teaser                   : "/assets/images/books/dodge-and-reena/front-cover.jpg"
+locale                   : "en-US"
+logo                     : "/assets/images/books/dodge-and-reena/front-cover.jpg"
+
+author:
+  name                   : "Amr"
+  github_username        : bamr87
+
+maintainers:
+  - name: "Amr"
+    profile: "https://github.com/bamr87"
+
+# ── Content ──────────────────────────────────────────────────────────────────
+collections_dir: pages
+
+collections:
+  books:
+    output: true
+    title: Books
+    icon: bi-book-half
+    permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      comments: false
+      share: true
+
+  # pages/_books — picture-book stories read cover-to-cover: immersive
+  # layouts, no sidebar/comments; each book's index.md sets `layout: book`.
+  - scope:
+      path: pages/_books
+      type: books
+    values:
+      layout: book-story
+      sidebar: false
+      comments: false
+      share: true
+      author_profile: false
+
+permalink: pretty
+
+# ── Plugins (GitHub Pages whitelist) ─────────────────────────────────────────
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-relative-links
+  - jekyll-include-cache
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  toc_levels: 1..6
+
+sass:
+  sass_dir: _sass
+  style: compressed
+  sourcemap: never
+
+# ── AI illustration pipeline ─────────────────────────────────────────────────
+# Story plates: tools/generate_illustrations.py renders any `illustrations:`
+# entry whose image file is missing, via the OpenAI Images API, using each
+# book's illustration_style + character bible. Script-driven on demand — never
+# part of `jekyll build`.
+#
+# Preview banners (social/OG images per story): the zer0-image-generator's
+# Python engine, run from this directory (python3 ../../packages/
+# zer0-image-generator/lib/zer0_image_generator/preview_generator.py), reads
+# the block below. The style matches the book's watercolor look so cards and
+# stories feel like one book.
+preview_images:
+  enabled                : true
+  provider               : 'openai'
+  model                  : 'gpt-image-2'
+  size                   : '1536x1024'
+  quality                : 'auto'
+  collections            : [books]
+  front_matter_key       : preview
+  authors_file           : ''
+  output_dir             : 'assets/images/previews'
+  assets_prefix          : '/assets'
+  auto_prefix            : true
+  prompt_engine          : 'claude'
+  review_engine          : 'claude'
+  style: >-
+    cozy warm digital watercolor storybook art, soft colored-pencil outlines,
+    rounded friendly shapes, sun-baked desert palette, gentle golden-hour light
+  style_modifiers: >-
+    kid-friendly, never photorealistic, never dark or scary
+
+# ── Theme appearance ─────────────────────────────────────────────────────────
+theme_skin               : "sunrise"
+color_mode_default       : light
+appearance_panel         : true
+theme_background:
+  enabled: true
+  gradient_opacity: 0.5
+  texture_opacity: 0.04
+  pattern_opacity: 0.06
+  blend_mode: overlay
+theme_color:
+  main:         "#c4622d"   # desert terracotta
+  secondary:    "#6c757d"
+
+breadcrumbs              : false
+words_per_minute         : 130   # read-aloud pace for the reading-time hints
+
+navigation:
+  unified_mobile_drawer  : false
+
+# ── Features off for a quiet, kid-focused site ──────────────────────────────
+google_analytics         : null
+posthog:
+  enabled                : false
+nanobar:
+  enabled                : true
+  color                  : "var(--bs-primary)"
+  position               : "navbar"
+ai_chat:
+  enabled                : false
+page_feedback:
+  enabled                : false
+  fab                    : false
+giscus:
+  enabled                : false
+translation:
+  enabled                : false
+user_overrides           : false
+
+# ── Exclusions ───────────────────────────────────────────────────────────────
+# Planning docs, the Python engine, and tooling are repo content, not site
+# content.
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - .cursor/
+  - .github/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - node_modules/
+  - tools/
+  - drsai/
+  - AGENTS.md
+  - CLAUDE.md
+  - PRD.md
+  - PRD_CHANGE_SUMMARY.md
+  - PRD_OPEN_QUESTIONS.md
+  - IMPLEMENTATION_PLAN.md
+  - DRSAI_GENERATION_PROMPT.md
+  - "Family newsletter.md"
+  - newsletter_seuss.md
+  - reena_poem.md
+  - "*.sh"
+
+sitemap_include: ["html", "xml"]

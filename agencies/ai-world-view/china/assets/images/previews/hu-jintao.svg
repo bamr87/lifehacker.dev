@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Hu Jintao – Paramount Leader of China 2002–2012</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="mapwater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd6" />
+      <stop offset="100%" stop-color="#9fbcca" />
+    </linearGradient>
+    <linearGradient id="chinagrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#96281b" />
+    </linearGradient>
+    <linearGradient id="panelgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2c1a0e" stop-opacity="0.82" />
+      <stop offset="100%" stop-color="#2c1a0e" stop-opacity="0.0" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray" />
+      <feBlend in="SourceGraphic" in2="gray" mode="multiply" result="blend" />
+      <feComponentTransfer in="blend">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g stroke="#b8a882" stroke-width="0.6" opacity="0.5">
+    
+    <line x1="0" y1="170" x2="1536" y2="170" />
+    <line x1="0" y1="340" x2="1536" y2="340" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="682" x2="1536" y2="682" />
+    <line x1="0" y1="852" x2="1536" y2="852" />
+    
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <rect x="400" y="80" width="1100" height="870" rx="4" fill="url(#mapwater)" opacity="0.6" />
+
+  
+  
+  <path d="M560,85 L1450,85 L1450,320 L1300,300 L1200,340 L1100,310 L980,360 L860,320 L760,370 L660,330 L580,360 L520,300 Z" fill="#c8b98a" stroke="#9a8a68" stroke-width="1.2" />
+  
+  <path d="M760,370 L980,360 L1020,420 L960,460 L820,450 L760,410 Z" fill="#c4b480" stroke="#9a8a68" stroke-width="1" />
+  
+  <path d="M820,450 L860,440 L900,480 L920,560 L890,640 L860,700 L830,720 L800,700 L780,640 L770,560 L790,490 Z" fill="#c8b98a" stroke="#9a8a68" stroke-width="1" />
+  
+  <path d="M1020,500 L1100,480 L1160,520 L1180,580 L1150,620 L1100,640 L1050,620 L1010,570 Z" fill="#c4b480" stroke="#9a8a68" stroke-width="1" />
+  
+  <path d="M1240,340 L1270,360 L1260,410 L1240,430 L1220,410 L1230,370 Z" fill="#c8b98a" stroke="#9a8a68" stroke-width="1" />
+  <path d="M1300,310 L1330,320 L1340,360 L1320,390 L1295,370 L1290,340 Z" fill="#c8b98a" stroke="#9a8a68" stroke-width="1" />
+
+  
+  <path d="M860,320 L980,360 L1020,420 L960,460 L940,500 L1020,500 L1060,540 L1080,600 L1040,650 L980,680 L920,680 L880,720 L840,720 L800,700 L830,720 L800,700 L780,640 L770,560 L790,490 L820,450 L760,410 L760,370 Z" fill="url(#chinagrad)" stroke="#7a1a0e" stroke-width="2" opacity="0.88" />
+
+  
+  <text x="900" y="550" font-family="Georgia, serif" font-size="22" fill="#f5e6d0" text-anchor="middle" opacity="0.9" letter-spacing="4">CHINA</text>
+
+  
+  <polygon points="905,395 910,410 926,410 913,419 918,434 905,425 892,434 897,419 884,410 900,410" fill="#f5c842" stroke="#c8a020" stroke-width="0.8" />
+
+  
+  <g transform="translate(1410,160)">
+    <circle r="52" fill="#e8dfc8" stroke="#9a8a68" stroke-width="1.5" />
+    <circle r="46" fill="none" stroke="#9a8a68" stroke-width="0.7" />
+    
+    <polygon points="0,-42 6,-18 0,-28 -6,-18" fill="#c0392b" />
+    <polygon points="0,42 6,18 0,28 -6,18" fill="#8a7a5a" />
+    <polygon points="42,0 18,6 28,0 18,-6" fill="#8a7a5a" />
+    <polygon points="-42,0 -18,6 -28,0 -18,-6" fill="#8a7a5a" />
+    
+    <polygon points="30,-30 14,-10 20,-20 10,-14" fill="#b8a882" />
+    <polygon points="30,30 10,14 20,20 14,10" fill="#b8a882" />
+    <polygon points="-30,30 -14,10 -20,20 -10,14" fill="#b8a882" />
+    <polygon points="-30,-30 -10,-14 -20,-20 -14,-10" fill="#b8a882" />
+    <circle r="5" fill="#c0392b" />
+    
+    <text x="0" y="-50" font-family="Georgia,serif" font-size="13" fill="#5a4a2a" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="62" font-family="Georgia,serif" font-size="11" fill="#5a4a2a" text-anchor="middle">S</text>
+    <text x="54" y="4" font-family="Georgia,serif" font-size="11" fill="#5a4a2a" text-anchor="start">E</text>
+    <text x="-54" y="4" font-family="Georgia,serif" font-size="11" fill="#5a4a2a" text-anchor="end">W</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" rx="3" fill="none" stroke="#8a7050" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" rx="2" fill="none" stroke="#8a7050" stroke-width="1" />
+
+  
+  <rect x="0" y="0" width="600" height="1024" fill="url(#panelgrad)" />
+
+  
+  <line x1="60" y1="220" x2="520" y2="220" stroke="#c8a842" stroke-width="1.5" />
+  <line x1="60" y1="228" x2="520" y2="228" stroke="#c8a842" stroke-width="0.5" />
+
+  <line x1="60" y1="560" x2="520" y2="560" stroke="#c8a842" stroke-width="1.5" />
+  <line x1="60" y1="568" x2="520" y2="568" stroke="#c8a842" stroke-width="0.5" />
+
+  
+  <text x="60" y="320" font-family="Georgia, 'Times New Roman', serif" font-size="110" font-weight="bold" fill="#f0e6d0" letter-spacing="-2">Hu</text>
+  <text x="60" y="440" font-family="Georgia, 'Times New Roman', serif" font-size="110" font-weight="bold" fill="#f0e6d0" letter-spacing="-2">Jintao</text>
+
+  
+  <text x="62" y="510" font-family="Georgia, serif" font-size="22" fill="#c8a842" letter-spacing="3">PARAMOUNT LEADER OF CHINA</text>
+  <text x="62" y="540" font-family="Georgia, serif" font-size="18" fill="#c8b882" letter-spacing="2">2002 – 2012</text>
+
+  
+  <text x="62" y="620" font-family="Georgia, serif" font-size="15" fill="#d4c9a8" opacity="0.85" letter-spacing="1">Harmonious Society  ·  Scientific Outlook on Development</text>
+  <text x="62" y="648" font-family="Georgia, serif" font-size="15" fill="#d4c9a8" opacity="0.85" letter-spacing="1">General Secretary  ·  President  ·  CPC Central Military Commission</text>
+
+  
+  <g transform="translate(80,750)">
+    <rect x="0" y="0" width="40" height="40" fill="none" stroke="#c8a842" stroke-width="2" transform="rotate(45,20,20)" />
+    <rect x="6" y="6" width="28" height="28" fill="none" stroke="#c8a842" stroke-width="1" transform="rotate(45,20,20)" />
+    <circle cx="20" cy="20" r="5" fill="#c8a842" />
+  </g>
+
+  
+  <g transform="translate(140,740)" fill="#c8a842">
+    <polygon points="18,0 21,10 31,10 23,16 26,26 18,20 10,26 13,16 5,10 15,10" />
+    <g transform="translate(42,4)" opacity="0.7">
+      <polygon points="8,0 10,6 16,6 11,9 13,15 8,11 3,15 5,9 0,6 6,6" />
+    </g>
+    <g transform="translate(58,0)" opacity="0.7">
+      <polygon points="8,0 10,6 16,6 11,9 13,15 8,11 3,15 5,9 0,6 6,6" />
+    </g>
+    <g transform="translate(68,10)" opacity="0.7">
+      <polygon points="8,0 10,6 16,6 11,9 13,15 8,11 3,15 5,9 0,6 6,6" />
+    </g>
+    <g transform="translate(60,22)" opacity="0.7">
+      <polygon points="8,0 10,6 16,6 11,9 13,15 8,11 3,15 5,9 0,6 6,6" />
+    </g>
+  </g>
+
+  
+  <rect x="0" y="940" width="1536" height="84" fill="#2c1a0e" opacity="0.75" />
+  <text x="60" y="990" font-family="Georgia, serif" font-size="16" fill="#d4c9a8" letter-spacing="2" opacity="0.9">TSINGHUA UNIVERSITY  ·  GANSU PROVINCE  ·  BEIJING  ·  1942 – PRESENT  ·  PEOPLE'S REPUBLIC OF CHINA</text>
+
+  
+  <g transform="translate(1300,960)">
+    <line x1="0" y1="10" x2="160" y2="10" stroke="#c8a882" stroke-width="1.5" />
+    <line x1="0" y1="5" x2="0" y2="15" stroke="#c8a882" stroke-width="1.5" />
+    <line x1="80" y1="7" x2="80" y2="13" stroke="#c8a882" stroke-width="1" />
+    <line x1="160" y1="5" x2="160" y2="15" stroke="#c8a882" stroke-width="1.5" />
+    <rect x="0" y="8" width="80" height="4" fill="#8a7050" />
+    <rect x="80" y="8" width="80" height="4" fill="#c8a882" />
+    <text x="80" y="26" font-family="Georgia,serif" font-size="11" fill="#c8a882" text-anchor="middle">SCALE</text>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+# Claude Code — harness / local state (never commit)
+.claude/worktrees/
+.claude/settings.local.json
+.claude/**/settings.local.json
+
+# macOS
+.DS_Store
+
+# Jekyll build output. A local `bundle exec jekyll build` (the way to validate
+# a config or content change against the remote theme) drops these in the repo
+# root; none of them belong in a content repo.
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata

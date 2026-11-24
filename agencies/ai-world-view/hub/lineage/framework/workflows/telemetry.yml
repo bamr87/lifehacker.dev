@@ -1,0 +1,110 @@
+# Telemetry collector — the evolution ledger.
+#
+# Fires after every completed grow run. Downloads the run's agent-telemetry
+# artifact (the raw claude-code execution logs: full conversation, tool calls,
+# usage, cost — one file per auth attempt, plus the phase resolution) and
+# appends ONE self-contained JSON record per run to telemetry/evolution.jsonl.gz.
+#
+# Format: gzipped JSONL, schema "evolution-telemetry/v1" — one line per run,
+# stable envelope, raw agent I/O embedded verbatim. Chosen for detached AI
+# evaluation/monitoring tools: stream-parse with `gunzip -c | jq`, load with
+# pandas.read_json(lines=True), or feed straight to an eval harness.
+
+name: telemetry
+
+on:
+  workflow_run:
+    workflows: ["grow"]
+    types: [completed]
+
+permissions:
+  contents: write
+  actions: read
+
+# Serialize appends — two collectors must never race on the ledger file.
+concurrency:
+  group: telemetry-append
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.LIFECYCLE_PAT || github.token }}
+
+      - name: Download agent telemetry artifact
+        uses: actions/download-artifact@v4
+        continue-on-error: true # some runs legitimately produce no agent output
+        with:
+          pattern: agent-telemetry-*
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+          path: /tmp/artifacts
+          merge-multiple: true
+
+      - name: Append run record to the evolution ledger
+        env:
+          WR_ID: ${{ github.event.workflow_run.id }}
+          WR_NUMBER: ${{ github.event.workflow_run.run_number }}
+          WR_EVENT: ${{ github.event.workflow_run.event }}
+          WR_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          WR_SHA: ${{ github.event.workflow_run.head_sha }}
+          WR_STARTED: ${{ github.event.workflow_run.run_started_at }}
+          WR_UPDATED: ${{ github.event.workflow_run.updated_at }}
+          WR_URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          set -euo pipefail
+          dir=/tmp/artifacts
+          # Execution logs can be megabytes — they must reach jq as FILES
+          # (--slurpfile), never as CLI arguments (E2BIG: "Argument list too long").
+          for f in meta execution-api-key execution-subscription; do
+            if [ -s "$dir/$f.json" ] && jq -ce . "$dir/$f.json" > "/tmp/$f.norm.json" 2>/dev/null; then :
+            else echo null > "/tmp/$f.norm.json"; fi
+          done
+
+          jq -cn \
+            --arg schema "evolution-telemetry/v1" \
+            --arg repo "$GITHUB_REPOSITORY" \
+            --arg id "$WR_ID" --arg number "$WR_NUMBER" \
+            --arg event "$WR_EVENT" --arg conclusion "$WR_CONCLUSION" \
+            --arg sha "$WR_SHA" --arg started "$WR_STARTED" \
+            --arg completed "$WR_UPDATED" --arg url "$WR_URL" \
+            --slurpfile meta /tmp/meta.norm.json \
+            --slurpfile primary /tmp/execution-api-key.norm.json \
+            --slurpfile fallback /tmp/execution-subscription.norm.json \
+            '{
+              schema: $schema,
+              repo: $repo,
+              run: {
+                id: ($id | tonumber), number: ($number | tonumber),
+                event: $event, conclusion: $conclusion, head_sha: $sha,
+                started_at: $started, completed_at: $completed, url: $url
+              },
+              phase_resolution: $meta[0],
+              attempts: { api_key: $primary[0], subscription: $fallback[0] },
+              collected_at: (now | todate)
+            }' > /tmp/record.json
+
+          mkdir -p telemetry
+          {
+            [ -f telemetry/evolution.jsonl.gz ] && gunzip -c telemetry/evolution.jsonl.gz
+            cat /tmp/record.json
+          } | gzip -9 > /tmp/evolution.jsonl.gz
+          mv /tmp/evolution.jsonl.gz telemetry/evolution.jsonl.gz
+          gunzip -c telemetry/evolution.jsonl.gz | wc -l | xargs echo "Ledger records:"
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git config user.name "claude-telemetry"
+          git config user.email "noreply@anthropic.com"
+          git add telemetry/
+          git diff --cached --quiet && { echo "No telemetry delta"; exit 0; }
+          git commit -m "chore(telemetry): record grow run #${{ github.event.workflow_run.run_number }} (${{ github.event.workflow_run.conclusion }})"
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase origin main
+          done
+          git push

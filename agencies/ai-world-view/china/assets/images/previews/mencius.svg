@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Mencius – Philosopher of Human Goodness</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#c9b99a" />
+    </linearGradient>
+    <linearGradient id="scroll" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5edd8" />
+      <stop offset="100%" stop-color="#ddd0b4" />
+    </linearGradient>
+    <linearGradient id="figGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c3d1e" />
+      <stop offset="100%" stop-color="#3a2410" />
+    </linearGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#b5a080" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#7a5c32" stroke-width="3" opacity="0.6" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#7a5c32" stroke-width="1" opacity="0.4" />
+
+  
+  
+  <g opacity="0.25" fill="none" stroke="#5c3d1e" stroke-width="1.5">
+    <polyline points="900,80 920,50 940,80 960,45 980,80 1000,55 1020,80" />
+    <polyline points="1050,90 1070,60 1090,90 1110,65 1130,90 1150,70 1170,90" />
+    <polyline points="1200,75 1220,48 1240,75 1260,52 1280,75 1300,55 1320,75" />
+    <polyline points="900,90 920,62 940,90 960,57 980,90 1000,67 1020,90" />
+    <polyline points="1050,100 1070,72 1090,100 1110,77 1130,100 1150,82 1170,100" />
+  </g>
+
+  
+  <path d="M 200,600 Q 350,580 500,620 Q 650,660 800,640 Q 950,620 1100,660" fill="none" stroke="#8aaabf" stroke-width="2.5" opacity="0.4" />
+  <path d="M 150,700 Q 300,680 450,720 Q 600,760 750,740" fill="none" stroke="#8aaabf" stroke-width="2" opacity="0.3" />
+
+  
+  <g transform="translate(1380,820)">
+    <circle cx="0" cy="0" r="60" fill="#ddd0b4" stroke="#7a5c32" stroke-width="1.5" opacity="0.7" />
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#7a5c32" stroke-width="0.8" opacity="0.5" />
+    
+    <polygon points="0,-55 -8,-30 8,-30" fill="#5c3d1e" opacity="0.8" />
+    
+    <polygon points="0,55 -8,30 8,30" fill="#a08060" opacity="0.8" />
+    
+    <polygon points="55,0 30,-8 30,8" fill="#a08060" opacity="0.8" />
+    
+    <polygon points="-55,0 -30,-8 -30,8" fill="#a08060" opacity="0.8" />
+    <circle cx="0" cy="0" r="6" fill="#5c3d1e" opacity="0.8" />
+    <text x="0" y="-62" text-anchor="middle" font-family="serif" font-size="14" fill="#5c3d1e" opacity="0.9">N</text>
+  </g>
+
+  
+  <rect x="80" y="160" width="180" height="700" rx="8" fill="url(#scroll)" stroke="#9a7a4a" stroke-width="2" opacity="0.9" />
+  
+  <line x1="80" y1="220" x2="260" y2="220" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="280" x2="260" y2="280" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="340" x2="260" y2="340" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="400" x2="260" y2="400" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="460" x2="260" y2="460" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="520" x2="260" y2="520" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="580" x2="260" y2="580" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="640" x2="260" y2="640" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="700" x2="260" y2="700" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+  <line x1="80" y1="760" x2="260" y2="760" stroke="#9a7a4a" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="170" y="310" text-anchor="middle" font-family="serif" font-size="52" fill="#5c3d1e" opacity="0.85" font-weight="bold">孟</text>
+  <text x="170" y="390" text-anchor="middle" font-family="serif" font-size="52" fill="#5c3d1e" opacity="0.85" font-weight="bold">子</text>
+  
+  <text x="170" y="500" text-anchor="middle" font-family="serif" font-size="44" fill="#7a5c32" opacity="0.7">仁</text>
+  
+  <text x="170" y="580" text-anchor="middle" font-family="serif" font-size="44" fill="#7a5c32" opacity="0.7">善</text>
+
+  
+  <g transform="translate(950, 300)">
+    
+    <ellipse cx="0" cy="280" rx="90" ry="30" fill="#3a2410" opacity="0.3" />
+    
+    <path d="M -80,180 Q -90,280 -70,320 L 70,320 Q 90,280 80,180 Q 40,160 0,158 Q -40,160 -80,180Z" fill="url(#figGrad)" opacity="0.85" />
+    
+    <path d="M 0,160 L 0,320" stroke="#c9a878" stroke-width="1.5" opacity="0.5" />
+    <path d="M -80,200 Q -40,190 0,192 Q 40,190 80,200" fill="none" stroke="#c9a878" stroke-width="1.5" opacity="0.4" />
+    
+    <rect x="-15" y="120" width="30" height="45" rx="5" fill="#c8956a" />
+    
+    <ellipse cx="0" cy="95" rx="45" ry="52" fill="#c8956a" />
+    
+    <rect x="-48" y="48" width="96" height="18" rx="4" fill="#3a2410" />
+    <rect x="-38" y="30" width="76" height="22" rx="3" fill="#3a2410" />
+    <rect x="-20" y="18" width="40" height="14" rx="2" fill="#3a2410" />
+    
+    <ellipse cx="-14" cy="95" rx="5" ry="4" fill="#2a1a08" />
+    <ellipse cx="14" cy="95" rx="5" ry="4" fill="#2a1a08" />
+    
+    <path d="M -20,120 Q -25,155 -10,160 Q 0,165 10,160 Q 25,155 20,120" fill="#2a1a08" opacity="0.7" />
+    
+    <path d="M -80,200 Q -110,240 -95,270" stroke="#3a2410" stroke-width="28" stroke-linecap="round" fill="none" opacity="0.85" />
+    <path d="M 80,200 Q 110,240 100,265" stroke="#3a2410" stroke-width="28" stroke-linecap="round" fill="none" opacity="0.85" />
+    
+    <ellipse cx="-90" cy="272" rx="18" ry="12" fill="#c8956a" />
+    <ellipse cx="103" cy="267" rx="18" ry="12" fill="#c8956a" />
+    
+    <rect x="-88" y="258" width="195" height="22" rx="6" fill="#f0e0c0" stroke="#9a7a4a" stroke-width="1.5" />
+    <line x1="-78" y1="258" x2="-78" y2="280" stroke="#9a7a4a" stroke-width="2" />
+    <line x1="99" y1="258" x2="99" y2="280" stroke="#9a7a4a" stroke-width="2" />
+  </g>
+
+  
+  <g opacity="0.7">
+    
+    <g transform="translate(400, 700)">
+      <path d="M 0,-20 C -15,-35 -35,-25 -35,-10 C -35,5 0,25 0,25 C 0,25 35,5 35,-10 C 35,-25 15,-35 0,-20Z" fill="#8b4513" opacity="0.6" />
+      <line x1="0" y1="25" x2="0" y2="55" stroke="#4a7a2a" stroke-width="3" />
+      <path d="M 0,40 Q -15,30 -20,20" fill="none" stroke="#4a7a2a" stroke-width="2" />
+      <path d="M 0,40 Q 15,30 20,20" fill="none" stroke="#4a7a2a" stroke-width="2" />
+    </g>
+    <g transform="translate(520, 680)">
+      <path d="M 0,-20 C -15,-35 -35,-25 -35,-10 C -35,5 0,25 0,25 C 0,25 35,5 35,-10 C 35,-25 15,-35 0,-20Z" fill="#8b4513" opacity="0.6" />
+      <line x1="0" y1="25" x2="0" y2="55" stroke="#4a7a2a" stroke-width="3" />
+      <path d="M 0,40 Q -15,30 -20,20" fill="none" stroke="#4a7a2a" stroke-width="2" />
+    </g>
+    <g transform="translate(640, 700)">
+      <path d="M 0,-20 C -15,-35 -35,-25 -35,-10 C -35,5 0,25 0,25 C 0,25 35,5 35,-10 C 35,-25 15,-35 0,-20Z" fill="#8b4513" opacity="0.6" />
+      <line x1="0" y1="25" x2="0" y2="55" stroke="#4a7a2a" stroke-width="3" />
+      <path d="M 0,40 Q 15,30 20,20" fill="none" stroke="#4a7a2a" stroke-width="2" />
+    </g>
+    <g transform="translate(760, 680)">
+      <path d="M 0,-20 C -15,-35 -35,-25 -35,-10 C -35,5 0,25 0,25 C 0,25 35,5 35,-10 C 35,-25 15,-35 0,-20Z" fill="#8b4513" opacity="0.6" />
+      <line x1="0" y1="25" x2="0" y2="55" stroke="#4a7a2a" stroke-width="3" />
+    </g>
+  </g>
+
+  
+  <text x="580" y="790" text-anchor="middle" font-family="serif" font-size="18" fill="#5c3d1e" opacity="0.7" font-style="italic">Four Moral Sprouts (四端)</text>
+
+  
+  <rect x="300" y="100" width="820" height="200" rx="6" fill="#3a2410" opacity="0.08" />
+  
+  <text x="710" y="185" text-anchor="middle" font-family="Georgia, serif" font-size="110" font-weight="bold" fill="#3a2410" letter-spacing="6">MENCIUS</text>
+  <text x="710" y="245" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#7a5c32" letter-spacing="8">MENGZI  ·  372–289 BCE</text>
+  <text x="710" y="285" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#7a5c32" opacity="0.8" font-style="italic">Second Sage of Confucianism  ·  Architect of Human Goodness</text>
+
+  
+  <line x1="300" y1="310" x2="1200" y2="310" stroke="#7a5c32" stroke-width="1.5" opacity="0.5" />
+  <circle cx="750" cy="310" r="6" fill="#7a5c32" opacity="0.5" />
+  <circle cx="300" cy="310" r="4" fill="#7a5c32" opacity="0.4" />
+  <circle cx="1200" cy="310" r="4" fill="#7a5c32" opacity="0.4" />
+
+  
+  <text x="710" y="365" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#5c3d1e" opacity="0.85">
+    <tspan font-style="italic">ren</tspan> (humaneness)  ·  Human Nature is Good  ·  Mandate of Heaven  ·  Moral Cultivation
+  </text>
+
+  
+  <circle cx="1200" cy="450" r="10" fill="#8b4513" opacity="0.6" />
+  <circle cx="1200" cy="450" r="18" fill="none" stroke="#8b4513" stroke-width="1.5" opacity="0.5" />
+  <text x="1230" y="455" font-family="serif" font-size="16" fill="#5c3d1e" opacity="0.8" font-style="italic">State of Zou</text>
+  <text x="1230" y="475" font-family="serif" font-size="13" fill="#5c3d1e" opacity="0.6">(modern Shandong)</text>
+
+  
+  <text x="710" y="975" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#7a5c32" opacity="0.7" font-style="italic">
+    "The great man is he who does not lose his child's heart." — Mencius
+  </text>
+</svg>

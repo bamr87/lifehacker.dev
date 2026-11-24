@@ -1,0 +1,11 @@
+.claude/worktrees/
+*.local.json
+.env
+
+# Jekyll build output. A local `bundle exec jekyll build` (the way to validate
+# a config or content change against the remote theme) drops these in the repo
+# root; none of them belong in a content repo.
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata

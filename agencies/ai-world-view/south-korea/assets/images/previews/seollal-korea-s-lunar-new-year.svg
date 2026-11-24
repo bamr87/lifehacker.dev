@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Seollal — Korea's Lunar New Year: Atlas-style banner with Korean peninsula, lunar motifs, and traditional decorative elements</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="50%" stop-color="#dcc99a" />
+      <stop offset="100%" stop-color="#c9b07a" />
+    </linearGradient>
+    
+    <linearGradient id="ocean" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a8bfcc" />
+      <stop offset="100%" stop-color="#8eaab8" />
+    </linearGradient>
+    
+    <linearGradient id="landgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c4aa72" />
+      <stop offset="100%" stop-color="#b09458" />
+    </linearGradient>
+    
+    <radialGradient id="moonglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fdf6d8" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#f5e8a0" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#f5e8a0" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="moonface" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fdf6d8" />
+      <stop offset="100%" stop-color="#e8d06a" />
+    </radialGradient>
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#5a3e1b" stop-opacity="0.45" />
+    </radialGradient>
+    
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b09050" stroke-width="0.4" opacity="0.35" />
+    </pattern>
+    <pattern id="crosshatch" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="8" stroke="#8a6e30" stroke-width="0.3" opacity="0.2" />
+      <line x1="8" y1="0" x2="0" y2="8" stroke="#8a6e30" stroke-width="0.3" opacity="0.2" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#crosshatch)" />
+
+  
+  <line x1="0" y1="200" x2="1536" y2="198" stroke="#b09050" stroke-width="0.5" opacity="0.2" />
+  <line x1="0" y1="400" x2="1536" y2="402" stroke="#b09050" stroke-width="0.5" opacity="0.2" />
+  <line x1="0" y1="600" x2="1536" y2="598" stroke="#b09050" stroke-width="0.5" opacity="0.2" />
+  <line x1="0" y1="800" x2="1536" y2="802" stroke="#b09050" stroke-width="0.5" opacity="0.2" />
+  <line x1="300" y1="0" x2="302" y2="1024" stroke="#b09050" stroke-width="0.5" opacity="0.15" />
+  <line x1="600" y1="0" x2="598" y2="1024" stroke="#b09050" stroke-width="0.5" opacity="0.15" />
+  <line x1="900" y1="0" x2="902" y2="1024" stroke="#b09050" stroke-width="0.5" opacity="0.15" />
+  <line x1="1200" y1="0" x2="1198" y2="1024" stroke="#b09050" stroke-width="0.5" opacity="0.15" />
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#7a5c25" stroke-width="3" opacity="0.7" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#7a5c25" stroke-width="1" opacity="0.4" />
+  <rect x="40" y="40" width="1456" height="944" fill="none" stroke="#7a5c25" stroke-width="0.5" opacity="0.3" />
+
+  
+  
+  <path d="M24,24 L80,24 L80,30 L30,30 L30,80 L24,80 Z" fill="#7a5c25" opacity="0.6" />
+  <circle cx="60" cy="60" r="12" fill="none" stroke="#7a5c25" stroke-width="1.5" opacity="0.5" />
+  <line x1="48" y1="60" x2="72" y2="60" stroke="#7a5c25" stroke-width="1" opacity="0.5" />
+  <line x1="60" y1="48" x2="60" y2="72" stroke="#7a5c25" stroke-width="1" opacity="0.5" />
+  
+  <path d="M1512,24 L1456,24 L1456,30 L1506,30 L1506,80 L1512,80 Z" fill="#7a5c25" opacity="0.6" />
+  <circle cx="1476" cy="60" r="12" fill="none" stroke="#7a5c25" stroke-width="1.5" opacity="0.5" />
+  <line x1="1464" y1="60" x2="1488" y2="60" stroke="#7a5c25" stroke-width="1" opacity="0.5" />
+  <line x1="1476" y1="48" x2="1476" y2="72" stroke="#7a5c25" stroke-width="1" opacity="0.5" />
+  
+  <path d="M24,1000 L80,1000 L80,994 L30,994 L30,944 L24,944 Z" fill="#7a5c25" opacity="0.6" />
+  <circle cx="60" cy="964" r="12" fill="none" stroke="#7a5c25" stroke-width="1.5" opacity="0.5" />
+  <line x1="48" y1="964" x2="72" y2="964" stroke="#7a5c25" stroke-width="1" opacity="0.5" />
+  <line x1="60" y1="952" x2="60" y2="976" stroke="#7a5c25" stroke-width="1" opacity="0.5" />
+  
+  <path d="M1512,1000 L1456,1000 L1456,994 L1506,994 L1506,944 L1512,944 Z" fill="#7a5c25" opacity="0.6" />
+  <circle cx="1476" cy="964" r="12" fill="none" stroke="#7a5c25" stroke-width="1.5" opacity="0.5" />
+  <line x1="1464" y1="964" x2="1488" y2="964" stroke="#7a5c25" stroke-width="1" opacity="0.5" />
+  <line x1="1476" y1="952" x2="1476" y2="976" stroke="#7a5c25" stroke-width="1" opacity="0.5" />
+
+  
+  <ellipse cx="860" cy="520" rx="520" ry="420" fill="url(#ocean)" opacity="0.7" />
+  <ellipse cx="860" cy="520" rx="520" ry="420" fill="url(#hatch)" opacity="0.6" />
+
+  
+  <g opacity="0.3" stroke="#4a6e88" stroke-width="0.8" fill="none">
+    <path d="M400,350 Q430,340 460,350 Q490,360 520,350" />
+    <path d="M420,370 Q450,360 480,370 Q510,380 540,370" />
+    <path d="M380,420 Q420,408 460,420 Q500,432 540,420" />
+    <path d="M700,680 Q740,668 780,680 Q820,692 860,680" />
+    <path d="M680,710 Q720,698 760,710 Q800,722 840,710" />
+    <path d="M900,600 Q930,590 960,600 Q990,610 1020,600" />
+    <path d="M920,630 Q950,618 980,630 Q1010,642 1040,630" />
+    <path d="M1050,450 Q1080,438 1110,450 Q1140,462 1170,450" />
+    <path d="M1070,480 Q1100,468 1130,480 Q1160,492 1190,480" />
+  </g>
+
+  
+  <circle cx="280" cy="200" r="180" fill="url(#moonglow)" />
+
+  
+  <circle cx="280" cy="200" r="95" fill="url(#moonface)" stroke="#c8a820" stroke-width="2" />
+  
+  <circle cx="240" cy="170" r="18" fill="#d4b840" opacity="0.35" />
+  <circle cx="310" cy="215" r="12" fill="#d4b840" opacity="0.3" />
+  <circle cx="255" cy="230" r="9" fill="#d4b840" opacity="0.25" />
+  <circle cx="300" cy="155" r="8" fill="#c8a020" opacity="0.3" />
+  
+  <circle cx="280" cy="200" r="95" fill="none" stroke="#7a5c15" stroke-width="1.5" opacity="0.5" />
+  
+  <path d="M185,200 Q230,185 280,185 Q330,185 375,200" fill="none" stroke="#b09030" stroke-width="0.8" opacity="0.4" />
+  <path d="M195,225 Q237,210 280,210 Q323,210 365,225" fill="none" stroke="#b09030" stroke-width="0.8" opacity="0.4" />
+  <path d="M210,175 Q245,162 280,162 Q315,162 350,175" fill="none" stroke="#b09030" stroke-width="0.8" opacity="0.4" />
+
+  
+  
+  <path d="     M 780,200     L 820,195     L 870,205     L 900,215     L 940,210     L 970,225     L 980,250     L 960,280     L 975,310     L 970,340     L 990,370     L 1000,400     L 980,440     L 960,470     L 940,500     L 920,540     L 900,570     L 875,610     L 850,640     L 830,660     L 810,680     L 795,700     L 785,720     L 775,700     L 760,680     L 745,660     L 725,635     L 700,600     L 685,565     L 670,530     L 660,490     L 665,455     L 655,420     L 645,390     L 650,360     L 660,330     L 655,300     L 660,270     L 680,245     L 710,225     L 745,210     L 780,200     Z   " fill="url(#landgrad)" stroke="#7a5c25" stroke-width="2" stroke-linejoin="round" />
+
+  
+  <path d="     M 780,200 L 820,195 L 870,205 L 900,215 L 940,210 L 970,225 L 980,250 L 960,280 L 975,310 L 970,340 L 990,370 L 1000,400 L 980,440 L 960,470 L 940,500 L 920,540 L 900,570 L 875,610 L 850,640 L 830,660 L 810,680 L 795,700 L 785,720 L 775,700 L 760,680 L 745,660 L 725,635 L 700,600 L 685,565 L 670,530 L 660,490 L 665,455 L 655,420 L 645,390 L 650,360 L 660,330 L 655,300 L 660,270 L 680,245 L 710,225 L 745,210 L 780,200 Z   " fill="url(#hatch)" opacity="0.5" />
+
+  
+  <line x1="660" y1="360" x2="990" y2="355" stroke="#7a5c25" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.6" />
+
+  
+  <path d="M720,260 L740,240 L760,258 L780,244 L800,262" fill="none" stroke="#7a5c25" stroke-width="1.2" opacity="0.5" stroke-linejoin="round" />
+  <path d="M860,290 L880,270 L900,285 L920,268 L940,280" fill="none" stroke="#7a5c25" stroke-width="1.2" opacity="0.5" stroke-linejoin="round" />
+  <path d="M760,450 L780,430 L800,448 L820,432" fill="none" stroke="#7a5c25" stroke-width="1" opacity="0.4" stroke-linejoin="round" />
+  <path d="M850,500 L870,482 L890,498" fill="none" stroke="#7a5c25" stroke-width="1" opacity="0.4" stroke-linejoin="round" />
+
+  
+  <ellipse cx="755" cy="770" rx="42" ry="26" fill="url(#landgrad)" stroke="#7a5c25" stroke-width="1.5" />
+  <ellipse cx="755" cy="770" rx="42" ry="26" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <ellipse cx="1050" cy="420" rx="18" ry="12" fill="url(#landgrad)" stroke="#7a5c25" stroke-width="1" opacity="0.8" />
+  <ellipse cx="1080" cy="460" rx="10" ry="7" fill="url(#landgrad)" stroke="#7a5c25" stroke-width="1" opacity="0.7" />
+
+  
+  <circle cx="790" cy="320" r="8" fill="#8b1a1a" opacity="0.85" />
+  <circle cx="790" cy="320" r="4" fill="#cc2222" />
+  
+  <text x="804" y="316" font-family="Georgia, serif" font-size="18" fill="#5a2a0a" font-style="italic" opacity="0.85">Seoul</text>
+
+  
+  <circle cx="770" cy="270" r="6" fill="#5a3a1a" opacity="0.7" />
+  <circle cx="770" cy="270" r="3" fill="#9a6a3a" opacity="0.7" />
+  <text x="782" y="267" font-family="Georgia, serif" font-size="15" fill="#5a3a1a" font-style="italic" opacity="0.6">Pyongyang</text>
+
+  
+  <g transform="translate(160, 760)">
+    
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#7a5c25" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="72" fill="none" stroke="#7a5c25" stroke-width="0.5" opacity="0.4" />
+    
+    
+    <path d="M0,-72 L10,-45 L0,-55 L-10,-45 Z" fill="#5a3e15" />
+    
+    <path d="M0,72 L8,45 L0,55 L-8,45 Z" fill="#8a6e35" />
+    
+    <path d="M72,0 L45,8 L55,0 L45,-8 Z" fill="#8a6e35" />
+    
+    <path d="M-72,0 L-45,-8 L-55,0 L-45,8 Z" fill="#8a6e35" />
+    
+    <path d="M51,-51 L38,-25 L25,-38 Z" fill="#9a7e45" opacity="0.6" />
+    <path d="M51,51 L25,38 L38,25 Z" fill="#9a7e45" opacity="0.6" />
+    <path d="M-51,51 L-38,25 L-25,38 Z" fill="#9a7e45" opacity="0.6" />
+    <path d="M-51,-51 L-25,-38 L-38,-25 Z" fill="#9a7e45" opacity="0.6" />
+    
+    <circle cx="0" cy="0" r="10" fill="#dcc99a" stroke="#7a5c25" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#7a5c25" />
+    
+    <text x="0" y="-82" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#5a3e15">N</text>
+    <text x="0" y="98" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#7a5c25">S</text>
+    <text x="90" y="5" text-anchor="start" font-family="Georgia, serif" font-size="16" fill="#7a5c25">E</text>
+    <text x="-90" y="5" text-anchor="end" font-family="Georgia, serif" font-size="16" fill="#7a5c25">W</text>
+  </g>
+
+  
+  <g opacity="0.12" stroke="#7a5c25" stroke-width="0.8" fill="none">
+    <line x1="60" y1="300" x2="1476" y2="300" />
+    <line x1="60" y1="500" x2="1476" y2="500" />
+    <line x1="60" y1="700" x2="1476" y2="700" />
+    <line x1="450" y1="60" x2="450" y2="964" />
+    <line x1="650" y1="60" x2="650" y2="964" />
+    <line x1="850" y1="60" x2="850" y2="964" />
+    <line x1="1050" y1="60" x2="1050" y2="964" />
+    <line x1="1250" y1="60" x2="1250" y2="964" />
+  </g>
+
+  
+  
+  <g opacity="0.25" fill="#7a5c25">
+    <path d="M1200,100 Q1220,85 1240,100 Q1260,85 1280,100 Q1300,85 1320,100 Q1320,120 1300,125 Q1280,130 1260,125 Q1240,130 1220,125 Q1200,120 1200,100 Z" />
+    <path d="M1300,150 Q1315,138 1330,150 Q1345,138 1360,150 Q1375,138 1390,150 Q1390,166 1375,170 Q1360,174 1345,170 Q1330,174 1315,170 Q1300,166 1300,150 Z" />
+  </g>
+  
+  <g opacity="0.2" fill="#7a5c25">
+    <path d="M1150,870 Q1175,855 1200,870 Q1225,855 1250,870 Q1275,855 1300,870 Q1300,892 1275,897 Q1250,902 1225,897 Q1200,902 1175,897 Q1150,892 1150,870 Z" />
+    <path d="M1280,920 Q1300,908 1320,920 Q1340,908 1360,920 Q1380,908 1400,920 Q1400,938 1380,942 Q1360,946 1340,942 Q1320,946 1300,942 Q1280,938 1280,920 Z" />
+  </g>
+
+  
+  <g transform="translate(1380, 760)" opacity="0.3">
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#7a5c25" stroke-width="2" />
+    <path d="M0,-55 A27.5,27.5 0 0,1 0,0 A27.5,27.5 0 0,0 0,55" fill="none" stroke="#8b1a1a" stroke-width="12" stroke-linecap="round" opacity="0.5" />
+    <path d="M0,55 A27.5,27.5 0 0,1 0,0 A27.5,27.5 0 0,0 0,-55" fill="none" stroke="#1a3a8b" stroke-width="12" stroke-linecap="round" opacity="0.5" />
+    <circle cx="0" cy="-27.5" r="8" fill="#1a3a8b" opacity="0.5" />
+    <circle cx="0" cy="27.5" r="8" fill="#8b1a1a" opacity="0.5" />
+  </g>
+
+  
+  <g transform="translate(1300, 200)" opacity="0.55">
+    
+    <ellipse cx="0" cy="0" rx="35" ry="12" fill="#e8d4aa" stroke="#9a7840" stroke-width="1.5" />
+    <ellipse cx="0" cy="-14" rx="35" ry="12" fill="#dbc898" stroke="#9a7840" stroke-width="1.5" />
+    <ellipse cx="0" cy="-28" rx="35" ry="12" fill="#cfc090" stroke="#9a7840" stroke-width="1.5" />
+    <text x="0" y="25" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#7a5c25" font-style="italic">Tteokguk</text>
+  </g>
+
+  
+  <g transform="translate(1370, 350)" opacity="0.45">
+    
+    <circle cx="0" cy="-80" r="20" fill="#b09458" />
+    
+    <path d="M-15,-60 Q-5,-50 0,-40 Q5,-50 15,-60 L18,-30 Q12,-20 0,-15 Q-12,-20 -18,-30 Z" fill="#8b1a1a" />
+    
+    <path d="M-18,-30 Q-35,20 -45,70 L45,70 Q35,20 18,-30 Z" fill="#8b1a1a" />
+    
+    <path d="M-8,-55 L0,-40 L8,-55" fill="none" stroke="#e8d9b5" stroke-width="3" />
+  </g>
+
+  
+  <rect x="60" y="820" width="960" height="160" rx="4" fill="#c9b07a" opacity="0.5" />
+  <rect x="60" y="820" width="960" height="160" rx="4" fill="none" stroke="#7a5c25" stroke-width="1.5" opacity="0.6" />
+
+  
+  <rect x="80" y="835" width="220" height="30" rx="2" fill="#7a5c25" opacity="0.7" />
+  <text x="190" y="856" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#e8d9b5" letter-spacing="2">CULTURE &amp; SOCIETY</text>
+
+  
+  <text x="90" y="912" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#3a2505" letter-spacing="-1" opacity="0.92">설날  Seollal</text>
+  <text x="92" y="965" font-family="Georgia, serif" font-size="34" fill="#5a3e15" letter-spacing="1" opacity="0.8">Korea's Lunar New Year</text>
+
+  
+  <text x="1080" y="870" font-family="Georgia, serif" font-size="16" fill="#5a3e15" font-style="italic" opacity="0.7">First Day of the Lunar Calendar</text>
+  <line x1="1080" y1="878" x2="1460" y2="878" stroke="#7a5c25" stroke-width="0.8" opacity="0.4" />
+  <text x="1080" y="900" font-family="Georgia, serif" font-size="15" fill="#5a3e15" opacity="0.65">Jan 21 – Feb 20 (Gregorian)</text>
+  <text x="1080" y="922" font-family="Georgia, serif" font-size="15" fill="#5a3e15" opacity="0.65">Three-day public holiday, South Korea</text>
+  <text x="1080" y="944" font-family="Georgia, serif" font-size="15" fill="#5a3e15" opacity="0.65">Ancestral rites · Family reunion · Tteokguk</text>
+
+  
+  
+  <circle cx="1100" cy="140" r="22" fill="#c4aa72" stroke="#7a5c25" stroke-width="1.2" opacity="0.7" />
+  
+  <g transform="translate(1160, 140)">
+    <circle cx="0" cy="0" r="22" fill="#e8d59a" stroke="#7a5c25" stroke-width="1.2" opacity="0.7" />
+    <circle cx="10" cy="0" r="16" fill="#c4aa72" opacity="0.9" />
+  </g>
+  
+  <g transform="translate(1220, 140)">
+    <circle cx="0" cy="0" r="22" fill="#c4aa72" stroke="#7a5c25" stroke-width="1.2" opacity="0.7" />
+    <path d="M0,-22 A22,22 0 0,1 0,22 Z" fill="#e8d59a" opacity="0.9" />
+  </g>
+  
+  <circle cx="1280" cy="140" r="22" fill="#f0e0a0" stroke="#7a5c25" stroke-width="1.5" opacity="0.85" />
+  <text x="1190" y="182" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a3e15" font-style="italic" opacity="0.6">Lunar cycle</text>
+
+  
+  <text x="580" y="480" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#4a6e88" font-style="italic" opacity="0.55" transform="rotate(-5, 580, 480)">Yellow Sea</text>
+  <text x="1070" y="440" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#4a6e88" font-style="italic" opacity="0.55" transform="rotate(-10, 1070, 440)">Sea of Japan</text>
+
+  
+  <text x="830" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#3a2505" opacity="0.55" font-style="italic">Korean</text>
+  <text x="830" y="582" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#3a2505" opacity="0.55" font-style="italic">Peninsula</text>
+
+  
+  <g transform="translate(320, 920)" opacity="0.6">
+    <line x1="0" y1="0" x2="100" y2="0" stroke="#5a3e15" stroke-width="2" />
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#5a3e15" stroke-width="1.5" />
+    <line x1="100" y1="-5" x2="100" y2="5" stroke="#5a3e15" stroke-width="1.5" />
+    <text x="50" y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a3e15">200 km</text>
+  </g>
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Silk Road – Trade and Cultural Exchange Routes Across Eurasia</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b0" />
+      <stop offset="50%" stop-color="#d4c090" />
+      <stop offset="100%" stop-color="#c4a96e" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8bafc4" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#6a90a8" stop-opacity="0.5" />
+    </linearGradient>
+    <linearGradient id="titleBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b2a14" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#5c3d1a" stop-opacity="0.85" />
+    </linearGradient>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b09060" stroke-width="0.5" stroke-opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect width="1536" height="1024" fill="none" stroke="#7a5c30" stroke-width="18" stroke-opacity="0.4" />
+  <rect x="14" y="14" width="1508" height="996" fill="none" stroke="#7a5c30" stroke-width="3" stroke-opacity="0.3" />
+
+  
+
+  
+  <path d="M0,300 Q80,280 160,310 Q200,380 180,450 Q160,500 200,540 Q220,560 200,600 L0,600 Z" fill="url(#seaGrad)" filter="url(#engrave)" />
+
+  
+  <path d="M80,120 Q160,100 280,110 Q360,115 400,140 Q440,160 460,200 Q480,240 460,280 Q440,310 400,320 Q360,330 320,360 Q290,380 260,370 Q220,355 200,330 Q180,300 160,290 Q130,280 110,260 Q80,235 75,200 Q70,160 80,120 Z" fill="#c8b878" stroke="#9a7840" stroke-width="1.5" filter="url(#engrave)" />
+
+  
+  <path d="M110,260 Q130,280 160,290 Q155,320 140,340 Q120,360 100,350 Q70,330 80,300 Q85,275 110,260 Z" fill="#c8b878" stroke="#9a7840" stroke-width="1" filter="url(#engrave)" />
+
+  
+  <path d="M310,280 Q330,300 340,340 Q350,380 340,410 Q330,430 315,420 Q300,400 305,360 Q300,320 310,280 Z" fill="#c8b878" stroke="#9a7840" stroke-width="1" filter="url(#engrave)" />
+
+  
+  <path d="M60,430 Q200,410 400,420 Q520,425 600,440 Q640,450 660,480 Q670,510 650,540 Q620,570 580,580 Q500,590 400,585 Q280,580 180,570 Q100,560 60,540 Z" fill="#c8b878" stroke="#9a7840" stroke-width="1.5" filter="url(#engrave)" />
+
+  
+  <path d="M580,450 Q640,440 700,450 Q740,460 760,500 Q780,540 760,580 Q740,620 700,640 Q660,650 630,630 Q600,610 590,570 Q575,530 580,490 Z" fill="#d4c080" stroke="#9a7840" stroke-width="1.5" filter="url(#engrave)" />
+
+  
+  <path d="M560,340 Q640,320 720,330 Q780,340 820,370 Q850,395 840,430 Q830,460 800,475 Q760,485 720,480 Q680,475 640,460 Q600,445 570,420 Q545,395 550,365 Z" fill="#c8b878" stroke="#9a7840" stroke-width="1.5" filter="url(#engrave)" />
+
+  
+  <path d="M760,400 Q820,390 870,410 Q910,430 930,470 Q950,510 940,560 Q930,610 900,650 Q870,690 840,710 Q810,720 790,700 Q760,670 750,630 Q730,580 730,530 Q730,480 745,440 Q755,415 760,400 Z" fill="#c8b878" stroke="#9a7840" stroke-width="1.5" filter="url(#engrave)" />
+
+  
+  <path d="M560,200 Q700,180 860,190 Q960,195 1020,215 Q1060,230 1070,260 Q1075,290 1050,310 Q1010,335 950,340 Q880,345 800,335 Q720,325 650,315 Q580,305 550,280 Q530,255 540,225 Z" fill="#d0bc78" stroke="#9a7840" stroke-width="1.5" filter="url(#engrave)" />
+
+  
+  <path d="M200,60 Q500,30 800,40 Q1000,45 1200,55 Q1350,62 1440,80 Q1480,90 1500,110 Q1510,140 1490,165 Q1460,185 1400,190 Q1300,195 1150,185 Q950,172 750,168 Q550,165 380,175 Q260,182 190,190 Q155,190 135,170 Q110,145 120,110 Z" fill="#bfad74" stroke="#9a7840" stroke-width="1.5" filter="url(#engrave)" />
+
+  
+  <path d="M1000,180 Q1120,170 1220,185 Q1300,198 1340,230 Q1370,258 1355,295 Q1338,330 1290,350 Q1240,368 1170,372 Q1100,375 1040,355 Q985,335 960,300 Q940,268 950,235 Q960,200 1000,180 Z" fill="#c8b878" stroke="#9a7840" stroke-width="1.5" filter="url(#engrave)" />
+
+  
+  <path d="M1200,370 Q1260,360 1310,380 Q1340,400 1330,440 Q1315,470 1280,475 Q1245,478 1220,455 Q1195,428 1200,395 Z" fill="#c8b878" stroke="#9a7840" stroke-width="1" filter="url(#engrave)" />
+
+  
+  
+  <path d="M260,295 Q340,310 420,350 Q480,380 530,390 Q590,395 650,385 Q720,370 790,360 Q870,345 950,330 Q1020,315 1090,295 Q1150,278 1200,265 Q1240,255 1280,248" fill="none" stroke="#8b2000" stroke-width="5" stroke-opacity="0.7" stroke-dasharray="14,6" stroke-linecap="round" />
+
+  
+  <path d="M420,350 Q490,400 560,430 Q620,450 670,470 Q710,485 750,490 Q800,490 840,470 Q890,445 930,420 Q970,395 1010,375 Q1060,352 1100,340" fill="none" stroke="#8b2000" stroke-width="3.5" stroke-opacity="0.55" stroke-dasharray="10,6" stroke-linecap="round" />
+
+  
+  <path d="M220,200 Q380,185 540,195 Q680,205 820,210 Q940,215 1060,220 Q1150,225 1230,235" fill="none" stroke="#8b2000" stroke-width="3.5" stroke-opacity="0.5" stroke-dasharray="10,6" stroke-linecap="round" />
+
+  
+  
+  <circle cx="262" cy="293" r="10" fill="#8b2000" stroke="#e8d0a0" stroke-width="2.5" opacity="0.9" />
+  
+  <circle cx="390" cy="305" r="9" fill="#8b2000" stroke="#e8d0a0" stroke-width="2" opacity="0.9" />
+  
+  <circle cx="510" cy="355" r="8" fill="#8b2000" stroke="#e8d0a0" stroke-width="2" opacity="0.85" />
+  
+  <circle cx="670" cy="390" r="8" fill="#8b2000" stroke="#e8d0a0" stroke-width="2" opacity="0.85" />
+  
+  <circle cx="820" cy="345" r="10" fill="#8b2000" stroke="#e8d0a0" stroke-width="2.5" opacity="0.9" />
+  
+  <circle cx="960" cy="305" r="8" fill="#8b2000" stroke="#e8d0a0" stroke-width="2" opacity="0.85" />
+  
+  <circle cx="1155" cy="272" r="11" fill="#8b2000" stroke="#e8d0a0" stroke-width="2.5" opacity="0.9" />
+
+  
+  <text x="262" y="316" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3b1e08" opacity="0.85">Rome</text>
+  <text x="390" y="326" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#3b1e08" opacity="0.8">Byzantium</text>
+  <text x="820" y="368" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3b1e08" opacity="0.85">Samarkand</text>
+  <text x="1155" y="295" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3b1e08" opacity="0.85">Chang'an</text>
+
+  
+
+  
+  <g transform="translate(1400,140)">
+    <circle cx="0" cy="0" r="62" fill="#c4a96e" stroke="#7a5c30" stroke-width="2" opacity="0.7" />
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#7a5c30" stroke-width="1" opacity="0.5" />
+    
+    <polygon points="0,-55 -8,-20 0,-10 8,-20" fill="#8b2000" opacity="0.85" />
+    <polygon points="0,55 -8,20 0,10 8,20" fill="#7a5c30" opacity="0.7" />
+    <polygon points="-55,0 -20,-8 -10,0 -20,8" fill="#7a5c30" opacity="0.7" />
+    <polygon points="55,0 20,-8 10,0 20,8" fill="#7a5c30" opacity="0.7" />
+    
+    <polygon points="0,-55 -5,-30 0,-22 5,-30" fill="#7a5c30" opacity="0.5" transform="rotate(45)" />
+    <polygon points="0,-55 -5,-30 0,-22 5,-30" fill="#7a5c30" opacity="0.5" transform="rotate(135)" />
+    <polygon points="0,-55 -5,-30 0,-22 5,-30" fill="#7a5c30" opacity="0.5" transform="rotate(225)" />
+    <polygon points="0,-55 -5,-30 0,-22 5,-30" fill="#7a5c30" opacity="0.5" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="7" fill="#8b2000" opacity="0.9" />
+    <text x="0" y="-66" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#3b1e08" opacity="0.9">N</text>
+    <text x="0" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3b1e08" opacity="0.8">S</text>
+    <text x="70" y="5" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3b1e08" opacity="0.8">E</text>
+    <text x="-70" y="5" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#3b1e08" opacity="0.8">W</text>
+  </g>
+
+  
+  <g transform="translate(55,560)" opacity="0.7">
+    <rect x="0" y="0" width="70" height="22" rx="4" fill="#c00040" stroke="#8b0030" stroke-width="1.5" />
+    <rect x="70" y="2" width="130" height="18" rx="2" fill="#e8a0b0" stroke="#c06080" stroke-width="1" />
+    <line x1="80" y1="2" x2="80" y2="20" stroke="#c06080" stroke-width="0.8" />
+    <line x1="100" y1="2" x2="100" y2="20" stroke="#c06080" stroke-width="0.8" />
+    <line x1="120" y1="2" x2="120" y2="20" stroke="#c06080" stroke-width="0.8" />
+    <line x1="140" y1="2" x2="140" y2="20" stroke="#c06080" stroke-width="0.8" />
+    <line x1="160" y1="2" x2="160" y2="20" stroke="#c06080" stroke-width="0.8" />
+    <line x1="180" y1="2" x2="180" y2="20" stroke="#c06080" stroke-width="0.8" />
+  </g>
+
+  
+  <g transform="translate(700,348)" fill="#7a5030" opacity="0.75">
+    
+    <ellipse cx="0" cy="0" rx="28" ry="14" />
+    <ellipse cx="20" cy="-10" rx="10" ry="18" />
+    <ellipse cx="-16" cy="-14" rx="8" ry="12" />
+    
+    <ellipse cx="36" cy="-14" rx="9" ry="7" />
+    <rect x="38" y="-10" width="4" height="12" rx="2" />
+    
+    <rect x="-20" y="12" width="5" height="18" rx="2" />
+    <rect x="-6" y="12" width="5" height="18" rx="2" />
+    <rect x="8" y="12" width="5" height="18" rx="2" />
+    <rect x="18" y="12" width="5" height="18" rx="2" />
+  </g>
+
+  
+  <g transform="translate(760,345)" fill="#7a5030" opacity="0.6">
+    <ellipse cx="0" cy="0" rx="24" ry="12" />
+    <ellipse cx="17" cy="-9" rx="9" ry="16" />
+    <ellipse cx="-14" cy="-12" rx="7" ry="10" />
+    <ellipse cx="31" cy="-12" rx="8" ry="6" />
+    <rect x="33" y="-8" width="4" height="10" rx="2" />
+    <rect x="-17" y="10" width="4" height="15" rx="2" />
+    <rect x="-5" y="10" width="4" height="15" rx="2" />
+    <rect x="7" y="10" width="4" height="15" rx="2" />
+    <rect x="16" y="10" width="4" height="15" rx="2" />
+  </g>
+
+  
+  <g fill="#b09050" stroke="#8a6e30" stroke-width="1.2" opacity="0.6">
+    <polygon points="880,290 900,250 920,290" />
+    <polygon points="905,295 928,248 950,295" />
+    <polygon points="930,292 955,252 978,292" />
+    <polygon points="955,288 978,255 1000,288" />
+  </g>
+  
+  <g fill="#e8e0c8" opacity="0.7">
+    <polygon points="900,258 890,275 910,275" />
+    <polygon points="928,256 919,270 937,270" />
+    <polygon points="955,260 946,274 964,274" />
+    <polygon points="978,263 970,276 986,276" />
+  </g>
+
+  
+  <rect x="0" y="720" width="1536" height="304" fill="url(#titleBg)" />
+  
+  <line x1="60" y1="736" x2="1476" y2="736" stroke="#c4a050" stroke-width="1.5" opacity="0.6" />
+  <line x1="60" y1="742" x2="1476" y2="742" stroke="#c4a050" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="768" y="820" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="96" font-weight="bold" letter-spacing="8" fill="#f0dfa0">THE SILK ROAD</text>
+
+  
+  <text x="768" y="878" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="28" letter-spacing="4" fill="#c4a060" opacity="0.9">Trade &amp; Cultural Exchange Across Eurasia  ·  2nd Century BCE – 15th Century CE</text>
+
+  
+  <text x="768" y="934" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="20" letter-spacing="2" fill="#a08040" opacity="0.8">Zhang Qian  ·  Xuanzang  ·  Zheng He</text>
+
+  
+  <line x1="60" y1="958" x2="1476" y2="958" stroke="#c4a050" stroke-width="1" opacity="0.4" />
+
+  
+  <rect x="60" y="968" width="160" height="36" rx="4" fill="#8b2000" opacity="0.8" />
+  <text x="140" y="992" text-anchor="middle" font-family="Georgia,serif" font-size="18" letter-spacing="2" fill="#f0dfa0">GEOGRAPHY</text>
+
+  
+  <g fill="#c4a050" opacity="0.5">
+    <polygon points="768,755 776,763 768,771 760,763" />
+    <polygon points="200,880 206,886 200,892 194,886" />
+    <polygon points="1336,880 1342,886 1336,892 1330,886" />
+  </g>
+
+</svg>

@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Sewol Ferry Disaster (2014) — National Tragedy and Accountability Crisis</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c3e5a" />
+      <stop offset="100%" stop-color="#3d5a7a" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a3a5c" />
+      <stop offset="100%" stop-color="#0d2438" />
+    </linearGradient>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9aa" />
+    </linearGradient>
+    <linearGradient id="ferrybody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8d4dc" />
+      <stop offset="100%" stop-color="#8fa8bc" />
+    </linearGradient>
+    <linearGradient id="hullgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a3a5c" />
+      <stop offset="100%" stop-color="#0d2438" />
+    </linearGradient>
+    <pattern id="gridpat" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#2a4a6a" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#b8a882" stroke-width="0.8" opacity="0.5" />
+    </pattern>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="2" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#sea)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#gridpat)" />
+
+  
+  <g stroke="#3a6a9a" stroke-width="0.8" opacity="0.5">
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="300" y1="0" x2="300" y2="1024" />
+    <line x1="600" y1="0" x2="600" y2="1024" />
+    <line x1="900" y1="0" x2="900" y2="1024" />
+    <line x1="1200" y1="0" x2="1200" y2="1024" />
+  </g>
+
+  
+  
+  <path d="M 620,80 C 660,70 710,75 740,90 C 780,110 810,130 820,160 C 835,200 830,240 820,270 C 800,320 780,360 760,390 C 740,420 720,450 710,480 C 695,520 700,550 710,570 C 725,600 740,620 730,650 C 718,680 700,700 690,720 C 675,745 665,760 660,780 C 650,810 655,830 640,840 C 620,855 590,850 570,840 C 545,828 530,810 520,790 C 505,765 500,740 495,715 C 488,680 490,650 495,620 C 502,585 515,560 520,530 C 528,495 522,465 510,440 C 495,410 475,390 465,360 C 452,320 455,280 460,245 C 468,200 480,165 500,135 C 520,105 578,92 620,80 Z" fill="#c8b98a" stroke="#a09060" stroke-width="2" opacity="0.9" />
+
+  
+  <path d="M 620,80 C 660,70 710,75 740,90 C 780,110 810,130 820,160 C 835,200 830,240 820,270 C 800,320 780,360 760,390 C 740,420 720,450 710,480 C 695,520 700,550 710,570 C 725,600 740,620 730,650 C 718,680 700,700 690,720 C 675,745 665,760 660,780 C 650,810 655,830 640,840 C 620,855 590,850 570,840 C 545,828 530,810 520,790 C 505,765 500,740 495,715 C 488,680 490,650 495,620 C 502,585 515,560 520,530 C 528,495 522,465 510,440 C 495,410 475,390 465,360 C 452,320 455,280 460,245 C 468,200 480,165 500,135 C 520,105 578,92 620,80 Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <path d="M 620,80 C 660,70 710,75 740,90 C 780,110 810,130 820,160 C 835,200 830,240 820,270 L 790,285 C 770,290 745,295 720,298 C 695,300 665,298 640,295 C 610,290 580,282 560,275 C 535,266 515,255 500,245 C 480,230 468,215 460,200 C 455,185 458,165 465,148 C 475,125 495,108 515,100 C 540,88 578,82 620,80 Z" fill="#b8a575" stroke="#a09060" stroke-width="1.5" opacity="0.9" />
+
+  
+  <ellipse cx="620" cy="900" rx="55" ry="30" fill="#c8b98a" stroke="#a09060" stroke-width="1.5" />
+  <ellipse cx="620" cy="900" rx="55" ry="30" fill="url(#hatch)" opacity="0.4" />
+  <text x="620" y="904" font-family="Georgia, serif" font-size="14" fill="#6a5030" text-anchor="middle" font-style="italic">Jeju Island</text>
+
+  
+  <ellipse cx="530" cy="800" rx="22" ry="14" fill="#c8b98a" stroke="#a09060" stroke-width="1.5" />
+  <text x="530" y="830" font-family="Georgia, serif" font-size="12" fill="#7a6040" text-anchor="middle" font-style="italic">Jindo</text>
+
+  
+  <text x="320" y="550" font-family="Georgia, serif" font-size="22" fill="#4a7aaa" text-anchor="middle" font-style="italic" opacity="0.8" letter-spacing="3">YELLOW SEA</text>
+
+  
+  <text x="850" y="350" font-family="Georgia, serif" font-size="18" fill="#4a7aaa" text-anchor="middle" font-style="italic" opacity="0.7" letter-spacing="2">SEA OF JAPAN</text>
+
+  
+  <g transform="translate(470, 760)">
+    
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.3" />
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.5" />
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#c0392b" stroke-width="2" opacity="0.7" />
+    <circle cx="0" cy="0" r="6" fill="#c0392b" opacity="0.9" />
+    
+    <line x1="-10" y1="0" x2="10" y2="0" stroke="#c0392b" stroke-width="2.5" />
+    <line x1="0" y1="-10" x2="0" y2="10" stroke="#c0392b" stroke-width="2.5" />
+  </g>
+
+  
+  <text x="415" y="710" font-family="Georgia, serif" font-size="13" fill="#e8c4b0" text-anchor="middle" font-style="italic">Sinking Site</text>
+  <text x="415" y="726" font-family="Georgia, serif" font-size="12" fill="#e8c4b0" text-anchor="middle" font-style="italic">Apr. 16, 2014</text>
+
+  
+  <path d="M 640,360 C 610,500 580,620 560,700 C 545,760 530,800 530,820" fill="none" stroke="#d4a060" stroke-width="2" stroke-dasharray="8,6" opacity="0.7" />
+  <text x="648" y="420" font-family="Georgia, serif" font-size="12" fill="#d4a060" font-style="italic">Incheon–Jeju route</text>
+
+  
+  <g transform="translate(900, 580) rotate(-35)">
+    
+    <path d="M -130,30 C -120,55 120,55 130,30 L 110,-10 L -110,-10 Z" fill="#1a3a5c" stroke="#0d2438" stroke-width="2" />
+    
+    <rect x="-110" y="-60" width="220" height="50" rx="4" fill="#8fa8bc" stroke="#6a8898" stroke-width="1.5" />
+    
+    <rect x="-80" y="-100" width="160" height="42" rx="4" fill="#a0b8c8" stroke="#7a9aaa" stroke-width="1.5" />
+    
+    <rect x="-45" y="-135" width="90" height="38" rx="4" fill="#b8ccd8" stroke="#8aaabb" stroke-width="1.5" />
+    
+    <rect x="-15" y="-170" width="30" height="38" rx="3" fill="#c0392b" />
+    
+    <rect x="-95" y="-50" width="14" height="10" rx="1" fill="#2c5a7a" opacity="0.8" />
+    <rect x="-75" y="-50" width="14" height="10" rx="1" fill="#2c5a7a" opacity="0.8" />
+    <rect x="-55" y="-50" width="14" height="10" rx="1" fill="#2c5a7a" opacity="0.8" />
+    <rect x="45" y="-50" width="14" height="10" rx="1" fill="#2c5a7a" opacity="0.8" />
+    <rect x="65" y="-50" width="14" height="10" rx="1" fill="#2c5a7a" opacity="0.8" />
+    <rect x="85" y="-50" width="14" height="10" rx="1" fill="#2c5a7a" opacity="0.8" />
+    
+    <rect x="-65" y="-90" width="11" height="8" rx="1" fill="#2c5a7a" opacity="0.7" />
+    <rect x="-48" y="-90" width="11" height="8" rx="1" fill="#2c5a7a" opacity="0.7" />
+    <rect x="40" y="-90" width="11" height="8" rx="1" fill="#2c5a7a" opacity="0.7" />
+    <rect x="57" y="-90" width="11" height="8" rx="1" fill="#2c5a7a" opacity="0.7" />
+    
+    <path d="M -5,-175 C -20,-200 -10,-225 -25,-245 C -15,-230 0,-210 -5,-190" fill="none" stroke="#888" stroke-width="3" opacity="0.5" />
+    <path d="M 10,-175 C 25,-198 15,-222 30,-240 C 18,-225 5,-205 10,-185" fill="none" stroke="#888" stroke-width="3" opacity="0.4" />
+  </g>
+
+  
+  <g transform="translate(900,580)" opacity="0.6">
+    <path d="M -160,60 C -130,45 -100,55 -70,45 C -40,35 -10,50 20,42 C 50,34 80,48 110,40 C 140,32 160,50 185,42" fill="none" stroke="#5a9ac0" stroke-width="3" />
+    <path d="M -150,80 C -120,68 -90,78 -60,70 C -30,62 0,72 30,65 C 60,58 90,70 120,62 C 150,54 170,68 195,60" fill="none" stroke="#4a8ab0" stroke-width="2.5" />
+  </g>
+
+  
+  <g transform="translate(1380, 200)">
+    <circle cx="0" cy="0" r="70" fill="#1a3050" stroke="#5a8aaa" stroke-width="1.5" opacity="0.85" />
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#4a7a9a" stroke-width="1" opacity="0.6" />
+    
+    <polygon points="0,-65 -8,-15 0,-30 8,-15" fill="#e8dfc8" />
+    <polygon points="0,65 -8,15 0,30 8,15" fill="#c8bfaa" />
+    <polygon points="-65,0 -15,-8 -30,0 -15,8" fill="#c8bfaa" />
+    <polygon points="65,0 15,-8 30,0 15,8" fill="#c8bfaa" />
+    
+    <polygon points="-46,-46 -10,-10 -20,-4 -4,-20" fill="#a0b0b8" opacity="0.7" />
+    <polygon points="46,-46 10,-10 20,-4 4,-20" fill="#a0b0b8" opacity="0.7" />
+    <polygon points="-46,46 -10,10 -20,4 -4,20" fill="#a0b0b8" opacity="0.7" />
+    <polygon points="46,46 10,10 20,4 4,20" fill="#a0b0b8" opacity="0.7" />
+    <circle cx="0" cy="0" r="7" fill="#c0392b" />
+    <circle cx="0" cy="0" r="4" fill="#e8c0a0" />
+    
+    <text x="0" y="-72" font-family="Georgia, serif" font-size="14" fill="#e8dfc8" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="84" font-family="Georgia, serif" font-size="12" fill="#c8bfaa" text-anchor="middle">S</text>
+    <text x="-78" y="4" font-family="Georgia, serif" font-size="12" fill="#c8bfaa" text-anchor="middle">W</text>
+    <text x="78" y="4" font-family="Georgia, serif" font-size="12" fill="#c8bfaa" text-anchor="middle">E</text>
+  </g>
+
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#sky)" opacity="0.0" />
+
+  
+  <rect x="60" y="60" width="680" height="380" rx="6" fill="#0d1e30" opacity="0.75" />
+  <rect x="60" y="60" width="680" height="380" rx="6" fill="none" stroke="#4a7aaa" stroke-width="1.5" opacity="0.6" />
+
+  
+  <rect x="80" y="80" width="640" height="3" fill="#c0392b" opacity="0.9" />
+
+  
+  <rect x="80" y="100" width="180" height="32" rx="3" fill="#c0392b" />
+  <text x="170" y="121" font-family="Georgia, serif" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold" letter-spacing="2">APRIL 16, 2014</text>
+
+  
+  <text x="80" y="185" font-family="Georgia, serif" font-size="52" fill="#e8f0f8" font-weight="bold" letter-spacing="-1">Sewol Ferry</text>
+  <text x="80" y="248" font-family="Georgia, serif" font-size="52" fill="#e8f0f8" font-weight="bold" letter-spacing="-1">Disaster</text>
+
+  
+  <text x="80" y="295" font-family="Georgia, serif" font-size="22" fill="#a0c0d8" font-style="italic">National Tragedy &amp; Accountability Crisis</text>
+
+  
+  <line x1="80" y1="318" x2="640" y2="318" stroke="#4a7aaa" stroke-width="1" opacity="0.7" />
+
+  
+  <text x="80" y="348" font-family="Georgia, serif" font-size="16" fill="#d0b890">476 Aboard</text>
+  <text x="80" y="348" font-family="Georgia, serif" font-size="16" fill="#8aacca">  ·  </text>
+  <text x="230" y="348" font-family="Georgia, serif" font-size="16" fill="#d0b890">304 Lives Lost</text>
+  <text x="430" y="348" font-family="Georgia, serif" font-size="16" fill="#d0b890">325 Students</text>
+
+  
+  <rect x="80" y="410" width="640" height="2" fill="#4a7aaa" opacity="0.5" />
+
+  
+  <text x="1020" y="490" font-family="Georgia, serif" font-size="16" fill="#d4e8f0" font-style="italic" font-weight="bold">MV Sewol (세월호)</text>
+
+  
+  <g transform="translate(1180, 950)">
+    <rect x="0" y="0" width="200" height="8" fill="#2a4a6a" />
+    <rect x="0" y="0" width="100" height="8" fill="#4a7a9a" />
+    <line x1="0" y1="-4" x2="0" y2="12" stroke="#8aaac0" stroke-width="1.5" />
+    <line x1="100" y1="-4" x2="100" y2="12" stroke="#8aaac0" stroke-width="1.5" />
+    <line x1="200" y1="-4" x2="200" y2="12" stroke="#8aaac0" stroke-width="1.5" />
+    <text x="0" y="-8" font-family="Georgia, serif" font-size="11" fill="#8aaac0" text-anchor="middle">0</text>
+    <text x="100" y="-8" font-family="Georgia, serif" font-size="11" fill="#8aaac0" text-anchor="middle">100 km</text>
+    <text x="200" y="-8" font-family="Georgia, serif" font-size="11" fill="#8aaac0" text-anchor="middle">200 km</text>
+  </g>
+
+  
+  <rect x="0" y="980" width="1536" height="44" fill="#060e18" opacity="0.8" />
+  <text x="80" y="1007" font-family="Georgia, serif" font-size="14" fill="#5a8aaa" font-style="italic">South Korean Waters — Yellow Sea — Southwestern Coast of South Jeolla Province</text>
+
+  
+  <g transform="translate(1460, 1000)" opacity="0.4">
+    <circle cx="0" cy="-8" r="5" fill="none" stroke="#5a8aaa" stroke-width="1.5" />
+    <line x1="0" y1="-3" x2="0" y2="12" stroke="#5a8aaa" stroke-width="1.5" />
+    <path d="M -10,12 C -5,8 5,8 10,12" fill="none" stroke="#5a8aaa" stroke-width="1.5" />
+    <line x1="-12" y1="4" x2="12" y2="4" stroke="#5a8aaa" stroke-width="1.5" />
+  </g>
+
+</svg>

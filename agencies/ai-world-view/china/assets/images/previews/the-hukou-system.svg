@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Hukou System – China's Household Registration System</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="chinaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b85c38" />
+      <stop offset="100%" stop-color="#8b3a22" />
+    </linearGradient>
+    <linearGradient id="docGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5ecd6" />
+      <stop offset="100%" stop-color="#e8d9b8" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="gridLines" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#c4a97a" stroke-width="0.4" opacity="0.5" />
+    </pattern>
+    <pattern id="hashLines" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a08060" stroke-width="0.6" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#gridLines)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8b6a3a" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8b6a3a" stroke-width="1" />
+
+  
+  
+  <path d="M18,18 L80,18 L80,24 L24,24 L24,80 L18,80 Z" fill="#8b6a3a" />
+  
+  <path d="M1518,18 L1456,18 L1456,24 L1512,24 L1512,80 L1518,80 Z" fill="#8b6a3a" />
+  
+  <path d="M18,1006 L80,1006 L80,1000 L24,1000 L24,944 L18,944 Z" fill="#8b6a3a" />
+  
+  <path d="M1518,1006 L1456,1006 L1456,1000 L1512,1000 L1512,944 L1518,944 Z" fill="#8b6a3a" />
+
+  
+  <rect x="26" y="26" width="900" height="972" fill="#c8d8e8" opacity="0.35" />
+
+  
+  
+  <g id="china-map">
+    
+    <path d="       M 520,180       L 580,170 L 650,160 L 720,155 L 800,150 L 870,148 L 940,152       L 1010,160 L 1060,170 L 1100,185       L 1120,210 L 1130,240 L 1125,270       L 1110,295 L 1090,315 L 1060,330       L 1040,355 L 1030,385 L 1025,415       L 1020,450 L 1015,480 L 1000,510       L 980,540 L 960,565 L 940,585       L 915,610 L 890,635 L 870,660       L 855,685 L 840,710 L 820,730       L 795,748 L 770,758 L 745,762       L 720,760 L 700,750 L 680,738       L 660,725 L 640,715 L 620,710       L 600,708 L 575,712 L 555,720       L 535,732 L 518,745 L 505,758       L 492,770       L 480,760 L 468,745 L 460,728       L 455,710 L 452,690 L 448,668       L 440,648 L 428,630 L 415,615       L 400,602 L 385,592 L 370,588       L 355,590 L 342,598 L 332,610       L 325,625       L 315,615 L 305,600 L 298,582       L 292,562 L 290,540 L 292,518       L 298,496 L 308,476 L 320,458       L 335,442 L 352,428 L 370,416       L 390,406 L 410,398 L 430,392       L 450,388 L 468,382 L 482,372       L 492,358 L 498,342 L 500,324       L 498,306 L 492,290 L 482,276       L 470,264 L 456,252 L 442,242       L 428,232 L 416,220 L 408,206       L 402,192 L 400,178       L 420,172 L 445,168 L 475,166 L 505,167 Z     " fill="url(#chinaGrad)" opacity="0.85" />
+
+    
+    <path d="       M 940,152 L 980,140 L 1020,132 L 1060,128 L 1080,140       L 1095,158 L 1100,185 L 1060,170 L 1010,160 L 940,152 Z     " fill="url(#chinaGrad)" opacity="0.85" />
+
+    
+    <line x1="700" y1="200" x2="680" y2="450" stroke="#7a2e10" stroke-width="0.8" opacity="0.4" />
+    <line x1="850" y1="200" x2="840" y2="500" stroke="#7a2e10" stroke-width="0.8" opacity="0.4" />
+    <line x1="450" y1="380" x2="850" y2="350" stroke="#7a2e10" stroke-width="0.8" opacity="0.4" />
+    <line x1="430" y1="500" x2="950" y2="470" stroke="#7a2e10" stroke-width="0.8" opacity="0.4" />
+    <line x1="450" y1="620" x2="880" y2="590" stroke="#7a2e10" stroke-width="0.8" opacity="0.4" />
+
+    
+    <path d="       M 520,180 L 580,170 L 650,160 L 720,155 L 800,150 L 870,148 L 940,152       L 1010,160 L 1060,170 L 1100,185 L 1120,210 L 1130,240 L 1125,270       L 1110,295 L 1090,315 L 1060,330 L 1040,355 L 1030,385 L 1025,415       L 1020,450 L 1015,480 L 1000,510 L 980,540 L 960,565 L 940,585       L 915,610 L 890,635 L 870,660 L 855,685 L 840,710 L 820,730       L 795,748 L 770,758 L 745,762 L 720,760 L 700,750 L 680,738       L 660,725 L 640,715 L 620,710 L 600,708 L 575,712 L 555,720       L 535,732 L 518,745 L 505,758 L 492,770       L 480,760 L 468,745 L 460,728 L 455,710 L 452,690 L 448,668       L 440,648 L 428,630 L 415,615 L 400,602 L 385,592 L 370,588       L 355,590 L 342,598 L 332,610 L 325,625       L 315,615 L 305,600 L 298,582 L 292,562 L 290,540 L 292,518       L 298,496 L 308,476 L 320,458 L 335,442 L 352,428 L 370,416       L 390,406 L 410,398 L 430,392 L 450,388 L 468,382 L 482,372       L 492,358 L 498,342 L 500,324 L 498,306 L 492,290 L 482,276       L 470,264 L 456,252 L 442,242 L 428,232 L 416,220 L 408,206       L 402,192 L 400,178 L 420,172 L 445,168 L 475,166 L 505,167       L 520,180 Z     " fill="url(#hashLines)" opacity="0.4" />
+  </g>
+
+  
+  
+  <circle cx="870" cy="248" r="7" fill="#f0e0c0" stroke="#5a1a00" stroke-width="1.5" />
+  <circle cx="870" cy="248" r="3" fill="#c0392b" />
+  
+  <circle cx="960" cy="490" r="6" fill="#f0e0c0" stroke="#5a1a00" stroke-width="1.5" />
+  <circle cx="960" cy="490" r="2.5" fill="#c0392b" />
+  
+  <circle cx="860" cy="640" r="5" fill="#f0e0c0" stroke="#5a1a00" stroke-width="1.5" />
+  <circle cx="860" cy="640" r="2" fill="#c0392b" />
+  
+  <circle cx="660" cy="500" r="5" fill="#f0e0c0" stroke="#5a1a00" stroke-width="1.5" />
+  <circle cx="660" cy="500" r="2" fill="#c0392b" />
+
+  
+  <text x="882" y="244" font-family="Georgia, serif" font-size="13" fill="#2a0a00" opacity="0.8">Beijing</text>
+  <text x="972" y="490" font-family="Georgia, serif" font-size="13" fill="#2a0a00" opacity="0.8">Shanghai</text>
+  <text x="870" y="660" font-family="Georgia, serif" font-size="13" fill="#2a0a00" opacity="0.8">Guangzhou</text>
+
+  
+  <g id="hukou-doc" transform="translate(1090, 200)">
+    
+    <rect x="8" y="8" width="310" height="420" rx="4" fill="#8b6a3a" opacity="0.25" />
+    
+    <rect x="0" y="0" width="310" height="420" rx="4" fill="url(#docGrad)" stroke="#8b6a3a" stroke-width="2" />
+    
+    <rect x="0" y="0" width="310" height="65" rx="4" fill="#b82a1a" />
+    <rect x="0" y="30" width="310" height="35" fill="#b82a1a" />
+
+    
+    <text x="155" y="28" font-family="serif" font-size="22" fill="#f5e8d0" text-anchor="middle" font-weight="bold">中华人民共和国</text>
+    <text x="155" y="55" font-family="serif" font-size="18" fill="#f5e8d0" text-anchor="middle">居民户口本</text>
+
+    
+    <line x1="20" y1="95" x2="290" y2="95" stroke="#a08060" stroke-width="0.8" />
+    <line x1="20" y1="130" x2="290" y2="130" stroke="#a08060" stroke-width="0.8" />
+    <line x1="20" y1="165" x2="290" y2="165" stroke="#a08060" stroke-width="0.8" />
+    <line x1="20" y1="200" x2="290" y2="200" stroke="#a08060" stroke-width="0.8" />
+    <line x1="20" y1="235" x2="290" y2="235" stroke="#a08060" stroke-width="0.8" />
+    <line x1="20" y1="270" x2="290" y2="270" stroke="#a08060" stroke-width="0.8" />
+    <line x1="20" y1="305" x2="290" y2="305" stroke="#a08060" stroke-width="0.8" />
+    <line x1="20" y1="340" x2="290" y2="340" stroke="#a08060" stroke-width="0.8" />
+    <line x1="20" y1="375" x2="290" y2="375" stroke="#a08060" stroke-width="0.8" />
+
+    
+    <text x="25" y="118" font-family="Georgia, serif" font-size="13" fill="#5a3a1a">户主姓名 · Name</text>
+    <text x="25" y="153" font-family="Georgia, serif" font-size="13" fill="#5a3a1a">性别 · Gender</text>
+    <text x="25" y="188" font-family="Georgia, serif" font-size="13" fill="#5a3a1a">出生日期 · Date of Birth</text>
+    <text x="25" y="223" font-family="Georgia, serif" font-size="13" fill="#5a3a1a">户口类型 · Hukou Type</text>
+    <text x="25" y="258" font-family="Georgia, serif" font-size="13" fill="#5a3a1a">户籍地址 · Registered Address</text>
+    <text x="25" y="293" font-family="Georgia, serif" font-size="13" fill="#5a3a1a">政治面貌 · Political Status</text>
+
+    
+    <rect x="160" y="210" width="110" height="28" rx="3" fill="none" stroke="#b82a1a" stroke-width="1.5" />
+    <text x="215" y="229" font-family="Georgia, serif" font-size="13" fill="#b82a1a" text-anchor="middle">农业 / Rural</text>
+
+    
+    <circle cx="215" cy="370" r="45" fill="none" stroke="#c0392b" stroke-width="2.5" />
+    <circle cx="215" cy="370" r="38" fill="none" stroke="#c0392b" stroke-width="1" />
+    <text x="215" y="365" font-family="serif" font-size="11" fill="#c0392b" text-anchor="middle">公安机关</text>
+    <text x="215" y="381" font-family="serif" font-size="10" fill="#c0392b" text-anchor="middle">户籍专用章</text>
+
+    
+    <rect x="0" y="65" width="5" height="355" rx="0" fill="#b82a1a" opacity="0.3" />
+  </g>
+
+  
+  <g id="compass" transform="translate(160, 820)">
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#8b6a3a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="5" fill="#8b6a3a" />
+    
+    <polygon points="0,-48 -8,-12 0,-20 8,-12" fill="#8b3a22" />
+    
+    <polygon points="0,48 -8,12 0,20 8,12" fill="#8b6a3a" />
+    
+    <polygon points="48,0 12,-8 20,0 12,8" fill="#8b6a3a" />
+    
+    <polygon points="-48,0 -12,-8 -20,0 -12,8" fill="#8b6a3a" />
+    <text x="0" y="-54" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#5a2a0a">N</text>
+    <text x="0" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a2a0a">S</text>
+    <text x="62" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a2a0a">E</text>
+    <text x="-62" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a2a0a">W</text>
+  </g>
+
+  
+  
+  <g opacity="0.7">
+    <defs>
+      <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#5a2a0a" />
+      </marker>
+    </defs>
+    <path d="M 560,560 Q 680,490 855,490" fill="none" stroke="#5a2a0a" stroke-width="2" stroke-dasharray="8,5" marker-end="url(#arrowhead)" />
+    <path d="M 520,650 Q 650,620 850,635" fill="none" stroke="#5a2a0a" stroke-width="2" stroke-dasharray="8,5" marker-end="url(#arrowhead)" />
+    <path d="M 600,350 Q 710,310 858,255" fill="none" stroke="#5a2a0a" stroke-width="2" stroke-dasharray="8,5" marker-end="url(#arrowhead)" />
+    
+    <circle cx="550" cy="555" r="8" fill="#8b6a3a" opacity="0.6" />
+    <rect x="544" y="563" width="12" height="16" rx="3" fill="#8b6a3a" opacity="0.6" />
+    <circle cx="510" cy="645" r="8" fill="#8b6a3a" opacity="0.6" />
+    <rect x="504" y="653" width="12" height="16" rx="3" fill="#8b6a3a" opacity="0.6" />
+  </g>
+
+  
+  <rect x="270" y="820" width="140" height="28" rx="3" fill="#b82a1a" opacity="0.85" />
+  <text x="340" y="839" font-family="Georgia, serif" font-size="14" fill="#f5e8d0" text-anchor="middle">URBAN 城市</text>
+  <rect x="270" y="858" width="140" height="28" rx="3" fill="#6a7a4a" opacity="0.85" />
+  <text x="340" y="877" font-family="Georgia, serif" font-size="14" fill="#f5e8d0" text-anchor="middle">RURAL 农村</text>
+
+  
+  <g transform="translate(270, 920)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#5a3a1a" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#5a3a1a" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#5a3a1a" stroke-width="1.5" />
+    <line x1="200" y1="-6" x2="200" y2="6" stroke="#5a3a1a" stroke-width="2" />
+    <text x="0" y="20" font-family="Georgia, serif" font-size="11" fill="#5a3a1a">0</text>
+    <text x="88" y="20" font-family="Georgia, serif" font-size="11" fill="#5a3a1a">500km</text>
+    <text x="175" y="20" font-family="Georgia, serif" font-size="11" fill="#5a3a1a">1000km</text>
+  </g>
+
+  
+  <g id="title-block">
+    
+    <rect x="42" y="42" width="420" height="180" rx="3" fill="#2a0a00" opacity="0.82" />
+    <rect x="44" y="44" width="416" height="176" rx="2" fill="none" stroke="#c09060" stroke-width="1" />
+
+    
+    <text x="62" y="130" font-family="serif" font-size="88" fill="#c0392b" opacity="0.18" font-weight="bold">户口</text>
+
+    <text x="64" y="95" font-family="Georgia, serif" font-size="38" fill="#f5e8d0" font-weight="bold" letter-spacing="1">The Hukou</text>
+    <text x="64" y="142" font-family="Georgia, serif" font-size="38" fill="#f5e8d0" font-weight="bold" letter-spacing="1">System</text>
+    <text x="64" y="170" font-family="Georgia, serif" font-size="15" fill="#c4a870" letter-spacing="2">HOUSEHOLD REGISTRATION · 户口制度</text>
+
+    
+    <rect x="42" y="238" width="420" height="70" rx="3" fill="#3a1a00" opacity="0.7" />
+    <text x="62" y="265" font-family="Georgia, serif" font-size="14" fill="#d4b880" font-style="italic">China's mechanism of population control,</text>
+    <text x="62" y="286" font-family="Georgia, serif" font-size="14" fill="#d4b880" font-style="italic">spatial classification &amp; social entitlement</text>
+
+    
+    <rect x="42" y="325" width="200" height="36" rx="3" fill="#8b3a22" opacity="0.8" />
+    <text x="142" y="348" font-family="Georgia, serif" font-size="15" fill="#f5e8d0" text-anchor="middle" letter-spacing="1">EST. 1951 · PRC</text>
+  </g>
+
+  
+  <line x1="26" y1="340" x2="1100" y2="320" stroke="#8b6a3a" stroke-width="0.5" opacity="0.4" stroke-dasharray="4,8" />
+  <line x1="26" y1="480" x2="1100" y2="460" stroke="#8b6a3a" stroke-width="0.5" opacity="0.4" stroke-dasharray="4,8" />
+  <line x1="26" y1="620" x2="1100" y2="600" stroke="#8b6a3a" stroke-width="0.5" opacity="0.4" stroke-dasharray="4,8" />
+
+  
+  <text x="720" y="420" font-family="Georgia, serif" font-size="32" fill="#f5e8d0" opacity="0.55" text-anchor="middle" font-style="italic" letter-spacing="4">CHINA</text>
+  <text x="720" y="458" font-family="serif" font-size="22" fill="#f5e8d0" opacity="0.45" text-anchor="middle" letter-spacing="6">中华人民共和国</text>
+
+  
+  <rect x="26" y="960" width="1484" height="38" fill="#2a0a00" opacity="0.55" />
+  <text x="768" y="984" font-family="Georgia, serif" font-size="13" fill="#c4a870" text-anchor="middle" letter-spacing="3">ADMINISTRATIVE GEOGRAPHY · POPULATION CONTROL · MIGRATION · SOCIAL POLICY</text>
+</svg>

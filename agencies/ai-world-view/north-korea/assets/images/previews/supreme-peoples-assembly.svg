@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Supreme People's Assembly – The Nominal Legislature of the DPRK</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#b8a070" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <linearGradient id="titleBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a1f0e" stop-opacity="0.85" />
+      <stop offset="80%" stop-color="#2a1f0e" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#2a1f0e" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  <!-- Assembly hall: tiered seating fan -->
+  <g transform="translate(1000, 560)">
+    <!-- rostrum / podium -->
+    <rect x="-70" y="-220" width="140" height="70" rx="6" fill="#8a6a30" opacity="0.7" stroke="#5a4020" stroke-width="2" />
+    <polygon points="0,-260 -22,-222 22,-222" fill="#8a2a1a" opacity="0.8" />
+    <!-- tiered arcs of seats -->
+    <g fill="none" stroke="#7a5a28" stroke-width="10" opacity="0.55">
+      <path d="M -260 40 A 300 300 0 0 1 260 40" />
+      <path d="M -320 110 A 360 360 0 0 1 320 110" />
+      <path d="M -380 180 A 420 420 0 0 1 380 180" />
+      <path d="M -440 250 A 480 480 0 0 1 440 250" />
+    </g>
+    <!-- seat dots (unanimous rows) -->
+    <g fill="#8a2a1a" opacity="0.7">
+      <circle cx="-200" cy="20" r="8" /><circle cx="-130" cy="2" r="8" /><circle cx="-60" cy="-8" r="8" /><circle cx="10" cy="-10" r="8" /><circle cx="80" cy="-6" r="8" /><circle cx="150" cy="8" r="8" /><circle cx="215" cy="26" r="8" />
+      <circle cx="-250" cy="92" r="8" /><circle cx="-170" cy="72" r="8" /><circle cx="-90" cy="60" r="8" /><circle cx="0" cy="56" r="8" /><circle cx="90" cy="60" r="8" /><circle cx="170" cy="72" r="8" /><circle cx="250" cy="92" r="8" />
+      <circle cx="-300" cy="164" r="8" /><circle cx="-200" cy="140" r="8" /><circle cx="-100" cy="126" r="8" /><circle cx="10" cy="122" r="8" /><circle cx="120" cy="126" r="8" /><circle cx="220" cy="140" r="8" /><circle cx="300" cy="164" r="8" />
+    </g>
+  </g>
+
+  <!-- Title panel -->
+  <rect x="0" y="0" width="520" height="1024" fill="url(#titleBg)" />
+  <line x1="40" y1="40" x2="480" y2="40" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="44" x2="480" y2="44" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="984" x2="480" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="980" x2="480" y2="980" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="40" x2="40" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="44" y1="40" x2="44" y2="984" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+
+  <text x="260" y="110" font-family="Georgia, serif" font-size="14" fill="#c8a84a" text-anchor="middle" letter-spacing="5" opacity="0.9">DPRK · GOVERNMENT</text>
+  <line x1="70" y1="130" x2="450" y2="130" stroke="#c8a84a" stroke-width="1" opacity="0.5" />
+
+  <text x="260" y="230" font-family="Georgia, serif" font-size="60" fill="#f5e8c8" text-anchor="middle" letter-spacing="6">최고인민회의</text>
+  <line x1="80" y1="258" x2="440" y2="258" stroke="#c8a84a" stroke-width="1" opacity="0.5" />
+  <text x="260" y="330" font-family="Georgia, serif" font-size="46" fill="#f5e8c8" text-anchor="middle" font-weight="bold" letter-spacing="1">SUPREME</text>
+  <text x="260" y="385" font-family="Georgia, serif" font-size="40" fill="#f5e8c8" text-anchor="middle" font-weight="bold" letter-spacing="1">PEOPLE'S ASSEMBLY</text>
+  <line x1="100" y1="415" x2="420" y2="415" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <text x="260" y="475" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Nominal highest organ of state power</text>
+  <text x="260" y="505" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">687 deputies · five-year terms</text>
+  <line x1="100" y1="530" x2="420" y2="530" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <!-- Gavel motif -->
+  <g transform="translate(260, 650)" stroke="#c8a84a" stroke-width="10" opacity="0.8" stroke-linecap="round">
+    <line x1="-46" y1="-46" x2="30" y2="30" />
+    <line x1="-52" y1="-14" x2="-14" y2="-52" />
+    <line x1="-14" y1="-14" x2="14" y2="-52" transform="translate(-6,-6)" />
+    <line x1="24" y1="24" x2="58" y2="58" />
+  </g>
+  <ellipse cx="260" cy="712" rx="60" ry="8" fill="#c8a84a" opacity="0.5" />
+
+  <text x="260" y="790" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">ESTABLISHED 1948 · RUBBER-STAMP</text>
+  <text x="260" y="815" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">SUBORDINATE TO THE STATE AFFAIRS COMMISSION</text>
+  <line x1="100" y1="840" x2="420" y2="840" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  <text x="260" y="880" font-family="Georgia, serif" font-size="14" fill="#9a8050" text-anchor="middle" font-style="italic">Unanimous votes · turnout ~99.99%</text>
+  <text x="260" y="950" font-family="Georgia, serif" font-size="13" fill="#c8a84a" text-anchor="middle" letter-spacing="4" opacity="0.6">ATLAS PLATE · KOREA</text>
+
+  <rect x="8" y="8" width="1520" height="1008" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.5" />
+  <rect x="14" y="14" width="1508" height="996" fill="none" stroke="#c8a84a" stroke-width="1" opacity="0.3" />
+  <rect width="1536" height="1024" fill="#c8a050" opacity="0.04" />
+</svg>

@@ -1,0 +1,226 @@
+name: Site Quality Scan
+
+# Weekly live-site quality scan of the hub's own site and every lineage member
+# (read-only on the sites; writes only its own issues). Each site is scanned by
+# the fleet's reusable workflow, bamr87/bamr87/.github/workflows/site-quality.yml
+# pinned @v2, in `mode: url`: Lighthouse CI, axe-core at 390 px and 1366 px and
+# pa11y contrast against the LIVE URL, graded by .github/site-quality.yml (this
+# repo's config, report-only: nothing in it fails a scan).
+#
+# The site list comes from the registry, never hard-coded: _data/lineage.yml
+# `members[]` (repo + site_url), plus the hub itself from $GITHUB_REPOSITORY and
+# _config.yml url+baseurl, the same derivation as pages-deploy-sentinel.yml.
+#
+# Issues: EXACTLY ONE per site, fingerprinted with a hidden marker
+#   <!-- site-quality-scan:site=<owner/repo> -->
+# and the fixed title "Site quality scan: <owner/repo>". The lookup is the one
+# the Pages sentinel switched to after its duplicate-issue bug: list issues and
+# match the exact title or the marker in jq (never `gh issue list --search`,
+# whose index lags), `set -euo pipefail` so a failed lookup fails the step
+# instead of filing a copy, the label ensured with `gh label create --force`.
+# The listing pages through every issue (`gh api --paginate`, no `--limit`
+# cap), and the title and marker reach jq as `--arg` values, never spliced
+# into the filter.
+# Per site:
+#   findings (status warn|fail)  edit the open issue, else reopen the newest
+#                                closed one, else create it; extra open copies
+#                                are closed as duplicates of the kept one
+#   clean (status pass)          close the open issue with the summary
+#   no report (scan crashed)     leave issues alone; the job summary says so
+
+on:
+  schedule:
+    - cron: "41 6 * * 1" # weekly, Monday 06:41 UTC (off the :00 mark)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-quality-scan
+  cancel-in-progress: false
+
+jobs:
+  sites:
+    name: Sites from the registry
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.list.outputs.matrix }}
+      count: ${{ steps.list.outputs.count }}
+      skip: ${{ steps.pause.outputs.skip }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Kill-switch
+        id: pause
+        run: |
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            echo "::notice::Fleet paused; skipping the site quality scan."; echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: List the hub + member sites
+        id: list
+        if: steps.pause.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          # [{repo, slug, url}] for the hub (first) and every member. `aliases:
+          # true` because _config.yml is full of YAML anchors (Psych 4 refuses
+          # aliases by default).
+          matrix="$(ruby -ryaml -rjson -e '
+            sites = []
+            c = YAML.load_file("_config.yml", aliases: true)
+            hub = "#{c["url"]}#{c["baseurl"]}"
+            sites << { "repo" => ENV.fetch("GITHUB_REPOSITORY"), "url" => (hub.end_with?("/") ? hub : "#{hub}/") } unless c["url"].to_s.empty?
+            d = YAML.load_file("_data/lineage.yml")
+            org = d["org"]
+            (d["members"] || []).each do |m|
+              repo = m["repo"] || "#{org}/#{m["name"]}"
+              url = m["site_url"] || "https://#{org.split("/").first}.github.io/#{m["name"]}/"
+              sites << { "repo" => repo, "url" => url }
+            end
+            sites.uniq! { |s| s["repo"] }
+            sites.each { |s| s["slug"] = s["repo"].tr("/", "-").gsub(/[^A-Za-z0-9._-]/, "-") }
+            puts JSON.generate(sites)')"
+          count="$(jq 'length' <<< "$matrix")"
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "scanning ${count} site(s):"; jq -r '.[] | "  \(.repo)  \(.url)"' <<< "$matrix"
+
+  scan:
+    name: Scan
+    needs: sites
+    if: needs.sites.outputs.skip != 'true' && needs.sites.outputs.count != '0'
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        site: ${{ fromJSON(needs.sites.outputs.matrix) }}
+    uses: bamr87/bamr87/.github/workflows/site-quality.yml@v2
+    permissions:
+      contents: read
+    with:
+      mode: url
+      config: .github/site-quality.yml
+      base-url: ${{ matrix.site.url }}
+      gate: false
+      artifact-name: site-quality-${{ matrix.site.slug }}
+      retention-days: 30
+      hub-ref: v2
+
+  issues:
+    name: One issue per site
+    needs: [sites, scan]
+    if: always() && needs.sites.result == 'success' && needs.sites.outputs.skip != 'true' && needs.sites.outputs.count != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Download the reports
+        uses: actions/download-artifact@v8
+        continue-on-error: true
+        with:
+          path: reports
+          pattern: site-quality-*
+      - name: Open, update or close each site's issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SITES: ${{ needs.sites.outputs.matrix }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          label="site-quality"
+          gh label create "$label" --repo "$GITHUB_REPOSITORY" --force \
+            --color "C5DEF5" --description "Weekly site quality scan (Lighthouse, axe, contrast)" \
+            || echo "::warning::Could not ensure the '${label}' label; issues are filed without it."
+          has_label=0
+          if gh api "repos/${GITHUB_REPOSITORY}/labels/${label}" --silent 2>/dev/null; then has_label=1; fi
+          # One listing per state for the whole run; every lookup below is jq
+          # over these files, so the search index is never involved. Paginated
+          # over ALL issues (not just the label: a copy filed without it, or
+          # with the label removed, must still match), pull requests dropped,
+          # kept only if the title or body could belong to this scan.
+          list_issues() {
+            gh api --paginate "repos/${GITHUB_REPOSITORY}/issues?state=$1&per_page=100" \
+              --jq '[.[] | select(.pull_request | not)
+                     | select((.title | startswith("Site quality scan: ")) or ((.body // "") | contains("<!-- site-quality-scan:site=")))
+                     | {number, title, body: (.body // ""), state_reason}]' \
+              | jq -s 'add // []'
+          }
+          list_issues open > /tmp/open.json
+          list_issues closed > /tmp/closed.json
+          # The issues of one listing that belong to the current site (by its
+          # exact title or its marker), as a JSON array.
+          matching() { jq -c --arg t "$title" --arg m "$marker" '[.[] | select(.title == $t or (.body | contains($m)))]' "$1"; }
+          {
+            echo "## 🚦 Site quality scan"
+            echo
+            echo "| Site | Status | Errors | Warnings | Issue |"
+            echo "|---|---|---|---|---|"
+          } > /tmp/scan-summary.md
+
+          while IFS=$'\t' read -r repo slug url; do
+            title="Site quality scan: ${repo}"
+            marker="<!-- site-quality-scan:site=${repo} -->"
+            # Command substitution, not < <(...), so a failed jq fails the step.
+            open_list="$(matching /tmp/open.json | jq -r 'map(.number) | sort | .[]')"
+            open_nums=()
+            [ -z "$open_list" ] || mapfile -t open_nums <<< "$open_list"
+            report="reports/site-quality-${slug}/report.json"
+            if [ ! -f "$report" ]; then
+              echo "::warning title=site-quality ${repo}::no report (the scan job failed before uploading); issues left as they are"
+              echo "| [${repo}](${url}) | ❔ no report | | | ${open_nums[0]:+#${open_nums[0]}} |" >> /tmp/scan-summary.md
+              continue
+            fi
+            status="$(jq -r '.status' "$report")"
+            errors="$(jq -r '.counts.error' "$report")"
+            warnings="$(jq -r '.counts.warn + .counts.allowed' "$report")"
+            summary="reports/site-quality-${slug}/summary.md"
+            {
+              echo "Weekly scan of **${url}** by [Site Quality Scan](${RUN_URL}) (bamr87/bamr87 \`site-quality.yml@v2\`, \`mode: url\`, config \`.github/site-quality.yml\`). This issue is kept up to date by the workflow: one issue per site, updated every week, closed automatically when the scan comes back clean."
+              echo
+              head -c 60000 "$summary" 2>/dev/null || echo "_summary.md missing from the report artifact._"
+              echo
+              echo "${marker}"
+            } > /tmp/body.md
+
+            if [ "$status" = "pass" ]; then
+              for n in "${open_nums[@]}"; do
+                gh issue close "$n" --repo "$GITHUB_REPOSITORY" \
+                  --comment "The weekly scan of ${url} is clean ([run](${RUN_URL})); closing. It reopens if findings come back."
+              done
+              echo "| [${repo}](${url}) | ✅ pass | 0 | 0 | ${open_nums[0]:+closed #${open_nums[0]}} |" >> /tmp/scan-summary.md
+              continue
+            fi
+
+            if [ "${#open_nums[@]}" -gt 0 ]; then
+              num="${open_nums[0]}"
+              gh issue edit "$num" --repo "$GITHUB_REPOSITORY" --title "$title" --body-file /tmp/body.md
+              for dup in "${open_nums[@]:1}"; do
+                gh issue close "$dup" --repo "$GITHUB_REPOSITORY" --reason "not planned" \
+                  --comment "Duplicate of #${num}: the site quality scan keeps exactly one issue per site."
+              done
+              action="updated #${num}"
+            else
+              # Newest closed match, preferring one not closed as a duplicate.
+              num="$(matching /tmp/closed.json | jq -r 'sort_by(.number) | ((map(select(.state_reason != "not_planned")) | last) // last) | .number // empty')"
+              if [ -n "$num" ]; then
+                gh issue reopen "$num" --repo "$GITHUB_REPOSITORY"
+                gh issue edit "$num" --repo "$GITHUB_REPOSITORY" --title "$title" --body-file /tmp/body.md
+                action="reopened #${num}"
+              else
+                label_args=()
+                [ "$has_label" = "1" ] && label_args=(--label "$label")
+                created="$(gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file /tmp/body.md "${label_args[@]}")"
+                num="${created##*/}"
+                action="opened #${num}"
+              fi
+              # Record it so a later row in this same run can never file a copy.
+              jq --argjson n "$num" --arg t "$title" --rawfile b /tmp/body.md '. + [{number: $n, title: $t, body: $b, state_reason: null}]' /tmp/open.json > /tmp/open.tmp && mv /tmp/open.tmp /tmp/open.json
+            fi
+            icon="⚠️ warn"; [ "$status" = "fail" ] && icon="❌ fail"
+            echo "| [${repo}](${url}) | ${icon} | ${errors} | ${warnings} | ${action} |" >> /tmp/scan-summary.md
+          done < <(jq -r '.[] | [.repo, .slug, .url] | @tsv' <<< "$SITES")
+
+          cat /tmp/scan-summary.md >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/scan-summary.md

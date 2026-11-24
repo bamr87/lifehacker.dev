@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Yangtze River — Atlas Banner</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d6c9a8" />
+      <stop offset="100%" stop-color="#e8dfc0" />
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4a7fa5" />
+      <stop offset="40%" stop-color="#5b9ec9" />
+      <stop offset="100%" stop-color="#7bb8d4" />
+    </linearGradient>
+    <linearGradient id="plateauGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a89070" />
+      <stop offset="100%" stop-color="#c4aa85" />
+    </linearGradient>
+    <linearGradient id="gorgeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a6a55" />
+      <stop offset="100%" stop-color="#5c5040" />
+    </linearGradient>
+    <linearGradient id="plainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8c99a" />
+      <stop offset="100%" stop-color="#9aad7e" />
+    </linearGradient>
+    <linearGradient id="overlayDark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a2015" stop-opacity="0.55" />
+      <stop offset="50%" stop-color="#2a2015" stop-opacity="0.0" />
+      <stop offset="100%" stop-color="#2a2015" stop-opacity="0.15" />
+    </linearGradient>
+    <filter id="parchment" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="gridPat" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 L0 0 0 60" fill="none" stroke="#8a7455" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <marker id="arrowSmall" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#4a7fa5" />
+    </marker>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#sky)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridPat)" />
+
+  
+  <g stroke="#8a7455" stroke-width="0.6" opacity="0.35" fill="none">
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="256" y1="0" x2="256" y2="1024" />
+    <line x1="512" y1="0" x2="512" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="1024" y1="0" x2="1024" y2="1024" />
+    <line x1="1280" y1="0" x2="1280" y2="1024" />
+  </g>
+
+  
+  <ellipse cx="260" cy="380" rx="260" ry="200" fill="url(#plateauGrad)" opacity="0.9" />
+  
+  <g stroke="#9a8060" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M80,320 Q130,290 180,310 Q230,330 280,300 Q330,270 380,295" />
+    <path d="M90,350 Q150,325 200,345 Q260,365 310,335 Q360,310 410,330" />
+    <path d="M100,380 Q160,360 220,375 Q280,390 340,365 Q395,342 440,360" />
+    <path d="M110,410 Q170,392 230,405 Q295,418 355,398" />
+    
+    <path d="M150,340 L170,295 L190,340" stroke-width="2" />
+    <path d="M220,320 L245,270 L270,320" stroke-width="2" />
+    <path d="M300,310 L320,265 L340,310" stroke-width="2" />
+  </g>
+  
+  <path d="M163,303 L170,295 L177,303 Z" fill="#ede8d8" opacity="0.9" />
+  <path d="M238,278 L245,270 L252,278 Z" fill="#ede8d8" opacity="0.9" />
+  <path d="M313,273 L320,265 L327,273 Z" fill="#ede8d8" opacity="0.9" />
+
+  
+  <ellipse cx="1200" cy="580" rx="380" ry="280" fill="url(#plainGrad)" opacity="0.85" />
+  
+  <ellipse cx="1020" cy="640" rx="60" ry="35" fill="#7bb8d4" opacity="0.7" />
+  <text x="1020" y="644" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a3a50" opacity="0.8">Dongting</text>
+
+  
+  
+  <path d="M620,280 L660,150 L700,200 L730,120 L760,190 L790,140 L810,260 L800,700 L620,700 Z" fill="url(#gorgeGrad)" opacity="0.88" />
+  
+  <path d="M940,280 L920,140 L900,200 L870,130 L840,185 L820,260 L820,700 L940,700 Z" fill="url(#gorgeGrad)" opacity="0.88" />
+  
+  <g stroke="#3d3228" stroke-width="0.8" fill="none" opacity="0.5">
+    <path d="M630,350 L630,650" />
+    <path d="M650,300 L650,680" />
+    <path d="M670,310 L670,670" />
+    <path d="M690,290 L690,660" />
+    <path d="M710,300 L710,670" />
+    <path d="M730,330 L730,680" />
+    <path d="M750,280 L750,670" />
+    <path d="M770,290 L770,670" />
+    <path d="M790,300 L790,660" />
+    <path d="M930,330 L930,660" />
+    <path d="M910,290 L910,670" />
+    <path d="M890,310 L890,670" />
+    <path d="M870,280 L870,670" />
+    <path d="M850,290 L850,670" />
+    <path d="M830,300 L830,680" />
+  </g>
+  
+  <g stroke="#5c4e3c" stroke-width="1.2" fill="none" opacity="0.45">
+    <path d="M625,380 Q710,390 795,380" />
+    <path d="M625,450 Q710,458 795,450" />
+    <path d="M625,520 Q710,525 795,520" />
+    <path d="M625,590 Q710,594 795,590" />
+    <path d="M830,380 Q875,390 930,380" />
+    <path d="M830,450 Q875,458 930,450" />
+    <path d="M830,520 Q875,525 930,520" />
+    <path d="M830,590 Q875,594 930,590" />
+  </g>
+
+  
+  
+  <circle cx="200" cy="360" r="8" fill="#4a7fa5" stroke="#2a4a65" stroke-width="2" />
+  
+  <path d="M200,360            Q280,370 350,430            Q420,490 430,580            Q440,660 500,700            Q560,735 600,720            Q640,705 660,680            Q700,650 730,640            Q760,632 790,638            Q830,645 870,638            Q890,632 910,640            Q950,660 1000,660            Q1080,658 1150,620            Q1250,570 1340,560            Q1420,552 1490,540" fill="none" stroke="url(#waterGrad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+  
+  <path d="M200,357            Q280,367 350,427            Q420,487 430,577            Q440,657 500,697            Q560,732 600,717            Q640,702 660,677            Q700,647 730,637            Q760,629 790,635            Q830,642 870,635            Q890,629 910,637            Q950,657 1000,657            Q1080,655 1150,617            Q1250,567 1340,557            Q1420,549 1490,537" fill="none" stroke="#a8d4e8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
+
+  
+  <ellipse cx="1510" cy="538" rx="30" ry="55" fill="#7bb8d4" opacity="0.6" />
+  <text x="1500" y="480" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#2a4065" opacity="0.85" transform="rotate(-5,1500,480)">East China</text>
+  <text x="1500" y="497" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#2a4065" opacity="0.85" transform="rotate(-5,1500,497)">Sea</text>
+
+  
+  <text x="180" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3d2a10" font-style="italic" opacity="0.9">Source</text>
+  <text x="178" y="355" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3d2a10" opacity="0.8">5,800m</text>
+
+  
+  <text x="220" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#3d2a10" font-style="italic" opacity="0.85" letter-spacing="0.5">Tibetan Plateau</text>
+
+  
+  <text x="715" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#2a1a0a" font-style="italic" opacity="0.9" letter-spacing="1">Three Gorges</text>
+  <line x1="715" y1="118" x2="715" y2="140" stroke="#3d2a10" stroke-width="1.2" opacity="0.7" />
+
+  
+  <circle cx="1000" cy="660" r="6" fill="#8a4a20" stroke="#5c2a10" stroke-width="1.5" />
+  <text x="1010" y="648" font-family="Georgia, serif" font-size="14" fill="#3d2a10" font-style="italic" opacity="0.9">Wuhan</text>
+
+  
+  <circle cx="645" cy="683" r="6" fill="#8a4a20" stroke="#5c2a10" stroke-width="1.5" />
+  <text x="620" y="675" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3d2a10" font-style="italic" opacity="0.9">Chongqing</text>
+
+  
+  <circle cx="945" cy="643" r="5" fill="#8a4a20" stroke="#5c2a10" stroke-width="1.5" />
+  <text x="952" y="635" font-family="Georgia, serif" font-size="13" fill="#3d2a10" font-style="italic" opacity="0.85">Yichang</text>
+
+  
+  <rect width="1536" height="1024" fill="url(#overlayDark)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#6a5535" stroke-width="2.5" opacity="0.7" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#6a5535" stroke-width="1" opacity="0.4" />
+
+  
+  <g transform="translate(110, 880)">
+    
+    <circle r="55" fill="#e8dfc0" stroke="#6a5535" stroke-width="1.5" opacity="0.85" />
+    <circle r="42" fill="none" stroke="#6a5535" stroke-width="0.8" opacity="0.6" />
+    
+    
+    <polygon points="0,-50 -7,-30 0,-36 7,-30" fill="#3d2a10" />
+    
+    <polygon points="0,50 -7,30 0,36 7,30" fill="#8a7455" />
+    
+    <polygon points="50,0 30,-7 36,0 30,7" fill="#8a7455" />
+    
+    <polygon points="-50,0 -30,-7 -36,0 -30,7" fill="#8a7455" />
+    
+    <polygon points="0,-50 -5,-32 0,-38 5,-32" fill="none" stroke="#6a5535" stroke-width="0.5" />
+    <line x1="0" y1="-50" x2="0" y2="50" stroke="#6a5535" stroke-width="0.5" opacity="0.4" />
+    <line x1="-50" y1="0" x2="50" y2="0" stroke="#6a5535" stroke-width="0.5" opacity="0.4" />
+    <line x1="-35" y1="-35" x2="35" y2="35" stroke="#6a5535" stroke-width="0.5" opacity="0.3" />
+    <line x1="35" y1="-35" x2="-35" y2="35" stroke="#6a5535" stroke-width="0.5" opacity="0.3" />
+    
+    <circle r="5" fill="#6a5535" />
+    <circle r="3" fill="#e8dfc0" />
+    
+    <text x="0" y="-55" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#2a1a0a">N</text>
+  </g>
+
+  
+  <g transform="translate(200, 920)">
+    <rect x="0" y="0" width="200" height="8" fill="none" stroke="#6a5535" stroke-width="1.2" />
+    <rect x="0" y="0" width="50" height="8" fill="#6a5535" opacity="0.7" />
+    <rect x="100" y="0" width="50" height="8" fill="#6a5535" opacity="0.7" />
+    <text x="0" y="-4" font-family="Georgia, serif" font-size="11" fill="#3d2a10">0</text>
+    <text x="100" y="-4" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#3d2a10">1000</text>
+    <text x="200" y="-4" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#3d2a10">2000 km</text>
+  </g>
+
+  
+  <text x="768" y="790" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#3d2a10" font-style="italic" opacity="0.75">6,300 km · Asia's longest river</text>
+
+  
+  
+  <text x="768" y="215" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" letter-spacing="8" fill="#8a6a35" opacity="0.9" font-style="italic">CARTOGRAPHIC ATLAS</text>
+
+  
+  <text x="768" y="310" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="bold" letter-spacing="4" fill="#1a120a" opacity="0.92">The Yangtze</text>
+  <text x="768" y="415" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="bold" letter-spacing="4" fill="#1a120a" opacity="0.92">River</text>
+
+  
+  <line x1="468" y1="440" x2="1068" y2="440" stroke="#6a5535" stroke-width="2" opacity="0.7" />
+  <line x1="518" y1="448" x2="1018" y2="448" stroke="#6a5535" stroke-width="0.8" opacity="0.5" />
+  
+  <polygon points="768,437 774,443 768,449 762,443" fill="#6a5535" opacity="0.8" />
+
+  
+  <text x="768" y="490" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" letter-spacing="3" fill="#3d2a10" opacity="0.85" font-style="italic">From the Tibetan Plateau to the East China Sea</text>
+
+</svg>

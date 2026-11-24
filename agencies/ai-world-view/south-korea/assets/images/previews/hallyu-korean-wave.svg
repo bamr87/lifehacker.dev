@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Hallyu (Korean Wave) – Global spread of South Korean popular culture</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </radialGradient>
+    <radialGradient id="wave1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2563a8" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#2563a8" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="wave2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2563a8" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#2563a8" stop-opacity="0" />
+    </radialGradient>
+    <filter id="tex" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grey" />
+      <feBlend in="SourceGraphic" in2="grey" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <linearGradient id="titleBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a3a6b" stop-opacity="0.88" />
+      <stop offset="100%" stop-color="#1a3a6b" stop-opacity="0.0" />
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="60%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  
+  <rect width="1536" height="1024" fill="#b09060" opacity="0.08" />
+
+  
+  
+  <path d="M580,200 L640,190 L680,200 L700,230 L720,240 L710,270 L690,280 L660,270 L640,290 L620,285 L600,270 L580,260 L565,240 L570,220 Z" fill="#8fa87c" opacity="0.75" />
+  
+  <path d="M600,300 L650,290 L690,300 L710,340 L720,390 L710,440 L690,490 L660,520 L630,530 L600,510 L575,470 L560,420 L558,370 L565,330 Z" fill="#8fa87c" opacity="0.75" />
+  
+  <path d="M720,160 L820,140 L920,150 L1000,170 L1060,200 L1080,240 L1050,270 L1000,280 L950,270 L900,280 L860,310 L820,320 L780,300 L740,270 L710,250 L700,220 Z" fill="#8fa87c" opacity="0.75" />
+  
+  <path d="M970,240 L985,235 L995,250 L990,275 L978,285 L965,278 L958,260 L960,245 Z" fill="#2563a8" opacity="0.85" />
+  
+  <path d="M1010,230 L1020,225 L1030,238 L1025,255 L1015,260 L1005,250 Z" fill="#8fa87c" opacity="0.75" />
+  
+  <path d="M960,500 L1040,490 L1090,510 L1100,560 L1080,610 L1040,630 L990,620 L950,590 L940,550 L945,510 Z" fill="#8fa87c" opacity="0.75" />
+  
+  <path d="M200,160 L320,150 L380,170 L400,210 L390,260 L360,290 L320,300 L280,290 L240,270 L200,250 L180,210 L185,175 Z" fill="#8fa87c" opacity="0.75" />
+  
+  <path d="M260,320 L310,310 L340,330 L350,380 L340,440 L320,500 L290,550 L260,570 L235,550 L220,500 L215,440 L220,380 L235,340 Z" fill="#8fa87c" opacity="0.75" />
+
+  
+  
+  <ellipse cx="978" cy="262" rx="80" ry="55" fill="none" stroke="#2563a8" stroke-width="2" opacity="0.5" />
+  <ellipse cx="978" cy="262" rx="160" ry="110" fill="none" stroke="#2563a8" stroke-width="1.5" opacity="0.4" />
+  <ellipse cx="978" cy="262" rx="260" ry="170" fill="none" stroke="#2563a8" stroke-width="1.5" opacity="0.3" />
+  <ellipse cx="978" cy="262" rx="380" ry="240" fill="none" stroke="#2563a8" stroke-width="1.5" opacity="0.22" />
+  <ellipse cx="978" cy="262" rx="520" ry="320" fill="none" stroke="#2563a8" stroke-width="1.2" opacity="0.16" />
+  <ellipse cx="978" cy="262" rx="680" ry="410" fill="none" stroke="#2563a8" stroke-width="1" opacity="0.12" />
+
+  
+  
+  <line x1="60" y1="300" x2="1476" y2="300" stroke="#8a7040" stroke-width="0.8" stroke-dasharray="6,10" opacity="0.4" />
+  <line x1="60" y1="450" x2="1476" y2="450" stroke="#8a7040" stroke-width="0.8" stroke-dasharray="6,10" opacity="0.4" />
+  <line x1="60" y1="600" x2="1476" y2="600" stroke="#8a7040" stroke-width="0.8" stroke-dasharray="6,10" opacity="0.4" />
+  <line x1="60" y1="150" x2="1476" y2="150" stroke="#8a7040" stroke-width="0.8" stroke-dasharray="6,10" opacity="0.4" />
+  
+  <line x1="300" y1="60" x2="300" y2="960" stroke="#8a7040" stroke-width="0.8" stroke-dasharray="6,10" opacity="0.4" />
+  <line x1="600" y1="60" x2="600" y2="960" stroke="#8a7040" stroke-width="0.8" stroke-dasharray="6,10" opacity="0.4" />
+  <line x1="900" y1="60" x2="900" y2="960" stroke="#8a7040" stroke-width="0.8" stroke-dasharray="6,10" opacity="0.4" />
+  <line x1="1200" y1="60" x2="1200" y2="960" stroke="#8a7040" stroke-width="0.8" stroke-dasharray="6,10" opacity="0.4" />
+
+  
+  <g transform="translate(1380,780)" opacity="0.6">
+    
+    <circle cx="0" cy="0" r="72" fill="none" stroke="#6b5730" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#6b5730" stroke-width="0.8" />
+    
+    <polygon points="0,-70 -10,-20 0,-5 10,-20" fill="#6b5730" />
+    <polygon points="0,70 -10,20 0,5 10,20" fill="#9a8050" />
+    <polygon points="-70,0 -20,-10 -5,0 -20,10" fill="#9a8050" />
+    <polygon points="70,0 20,-10 5,0 20,10" fill="#9a8050" />
+    
+    <polygon points="-50,-50 -15,-20 -5,-5 -20,-15" fill="#9a8050" opacity="0.7" />
+    <polygon points="50,-50 15,-20 5,-5 20,-15" fill="#9a8050" opacity="0.7" />
+    <polygon points="-50,50 -15,20 -5,5 -20,15" fill="#9a8050" opacity="0.7" />
+    <polygon points="50,50 15,20 5,5 20,15" fill="#9a8050" opacity="0.7" />
+    <circle cx="0" cy="0" r="8" fill="#6b5730" />
+    <circle cx="0" cy="0" r="4" fill="#c9b98a" />
+    
+    <text x="0" y="-78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#3a2a10" font-weight="bold">N</text>
+  </g>
+
+  
+  
+  <circle cx="978" cy="262" r="8" fill="#c0392b" stroke="#fff" stroke-width="2" />
+  
+  <path d="M978,262 Q800,180 320,220" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="8,7" opacity="0.55" />
+  <circle cx="320" cy="220" r="5" fill="#c0392b" opacity="0.6" />
+  
+  <path d="M978,262 Q820,200 650,240" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="8,7" opacity="0.55" />
+  <circle cx="650" cy="240" r="5" fill="#c0392b" opacity="0.6" />
+  
+  <path d="M978,262 Q1000,400 1040,560" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="8,7" opacity="0.55" />
+  <circle cx="1040" cy="560" r="5" fill="#c0392b" opacity="0.6" />
+  
+  <path d="M978,262 Q700,500 290,460" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="8,7" opacity="0.55" />
+  <circle cx="290" cy="460" r="5" fill="#c0392b" opacity="0.6" />
+
+  
+  <text x="994" y="256" font-family="Georgia, serif" font-size="16" fill="#1a3a6b" font-weight="bold" opacity="0.9">Seoul</text>
+
+  
+  <g transform="translate(978,262)">
+    
+    <circle cx="0" cy="0" r="18" fill="#fff" opacity="0.15" />
+  </g>
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#7a6030" stroke-width="3" opacity="0.5" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#7a6030" stroke-width="1" opacity="0.35" />
+
+  
+  <rect x="0" y="0" width="700" height="1024" fill="url(#titleBg)" />
+
+  
+  <rect x="68" y="330" width="480" height="6" fill="url(#accentLine)" rx="3" />
+
+  
+  <text x="80" y="310" font-family="Georgia, serif" font-size="120" fill="#ffffff" opacity="0.12" font-weight="bold">한류</text>
+
+  
+  <text x="80" y="430" font-family="Georgia, serif" font-size="88" fill="#ffffff" font-weight="bold" letter-spacing="1">Hallyu</text>
+  <text x="80" y="510" font-family="Georgia, serif" font-size="46" fill="#d4c090" font-weight="normal" letter-spacing="3">한류</text>
+
+  
+  <text x="80" y="578" font-family="Georgia, serif" font-size="30" fill="#c8daf0" opacity="0.9" letter-spacing="1">Korean Wave</text>
+
+  
+  <rect x="80" y="608" width="380" height="1.5" fill="#c0392b" opacity="0.7" />
+
+  <text x="80" y="650" font-family="Georgia, serif" font-size="22" fill="#e0d0a0" opacity="0.85">K-pop · K-drama · Film · Fashion · Food</text>
+  <text x="80" y="686" font-family="Georgia, serif" font-size="20" fill="#c8daf0" opacity="0.75">A global soft-power phenomenon</text>
+  <text x="80" y="722" font-family="Georgia, serif" font-size="20" fill="#c8daf0" opacity="0.75">centered in Seoul, South Korea</text>
+
+  
+  <text x="80" y="800" font-family="Georgia, serif" font-size="18" fill="#d4c090" opacity="0.6" font-style="italic">$10+ billion in annual export value</text>
+
+  
+  <g fill="#2563a8" opacity="0.25">
+    <text x="850" y="750" font-family="Georgia, serif" font-size="90">♪</text>
+    <text x="1100" y="820" font-family="Georgia, serif" font-size="60">♫</text>
+    <text x="1300" y="680" font-family="Georgia, serif" font-size="50">♪</text>
+  </g>
+
+  
+  <text x="1030" y="320" font-family="Georgia, serif" font-size="13" fill="#3a2a10" opacity="0.5" font-style="italic" letter-spacing="2">EAST ASIA</text>
+
+  
+  <rect x="0" y="960" width="1536" height="64" fill="#1a3a6b" opacity="0.45" />
+  <text x="80" y="998" font-family="Georgia, serif" font-size="18" fill="#d4c090" opacity="0.8" font-style="italic">The global diffusion of South Korean popular culture — music, drama, film, beauty &amp; cuisine</text>
+</svg>

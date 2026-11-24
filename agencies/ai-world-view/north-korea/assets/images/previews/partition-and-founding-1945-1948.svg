@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Partition and Founding (1945–1948) — Korea divided at the 38th Parallel</title>
+
+  <defs>
+    
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d9c9a3" />
+      <stop offset="100%" stop-color="#c4b08a" />
+    </linearGradient>
+    
+    <linearGradient id="northGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a9e9f" />
+      <stop offset="100%" stop-color="#5a8080" />
+    </linearGradient>
+    
+    <linearGradient id="southGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c4855a" />
+      <stop offset="100%" stop-color="#a8623a" />
+    </linearGradient>
+    
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#000" stroke-width="0.3" stroke-opacity="0.08" />
+    </pattern>
+    
+    <linearGradient id="oceanGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8cfd8" />
+      <stop offset="100%" stop-color="#9ab8c5" />
+    </linearGradient>
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="transparent" />
+      <stop offset="100%" stop-color="#3a2a10" stop-opacity="0.45" />
+    </radialGradient>
+    
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c1e0e" stop-opacity="0.82" />
+      <stop offset="100%" stop-color="#1a1005" stop-opacity="0.92" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="3" dy="4" stdDeviation="6" flood-color="#3a2a10" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bgGrad)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a5c2e" stroke-width="3" rx="2" />
+  
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a5c2e" stroke-width="1" rx="1" />
+
+  
+  <rect x="60" y="60" width="1416" height="904" fill="url(#oceanGrad)" rx="2" opacity="0.55" />
+
+  
+  <g stroke="#7a9e9f" stroke-width="0.6" stroke-opacity="0.3">
+    <line x1="60" y1="200" x2="1476" y2="200" />
+    <line x1="60" y1="320" x2="1476" y2="320" />
+    <line x1="60" y1="440" x2="1476" y2="440" />
+    <line x1="60" y1="560" x2="1476" y2="560" />
+    <line x1="60" y1="680" x2="1476" y2="680" />
+    <line x1="60" y1="800" x2="1476" y2="800" />
+  </g>
+  
+  <g stroke="#7a9e9f" stroke-width="0.6" stroke-opacity="0.3">
+    <line x1="200" y1="60" x2="200" y2="964" />
+    <line x1="380" y1="60" x2="380" y2="964" />
+    <line x1="560" y1="60" x2="560" y2="964" />
+    <line x1="740" y1="60" x2="740" y2="964" />
+    <line x1="920" y1="60" x2="920" y2="964" />
+    <line x1="1100" y1="60" x2="1100" y2="964" />
+    <line x1="1280" y1="60" x2="1280" y2="964" />
+  </g>
+
+  
+  
+  
+  
+  <path d="     M 870,170     L 960,160     L 1070,175     L 1130,200     L 1160,240     L 1155,270     L 1120,290     L 1100,330     L 1090,370     L 1070,390     L 1040,400     L 1000,410     L 960,415     L 920,412     L 890,405     L 860,395     L 840,380     L 820,360     L 810,340     L 808,310     L 815,280     L 825,255     L 835,225     L 845,200     Z   " fill="url(#northGrad)" stroke="#3a5050" stroke-width="2" filter="url(#shadow)" />
+  
+  <path d="     M 870,170     L 960,160     L 1070,175     L 1130,200     L 1160,240     L 1155,270     L 1120,290     L 1100,330     L 1090,370     L 1070,390     L 1040,400     L 1000,410     L 960,415     L 920,412     L 890,405     L 860,395     L 840,380     L 820,360     L 810,340     L 808,310     L 815,280     L 825,255     L 835,225     L 845,200     Z   " fill="url(#hatch)" opacity="0.6" />
+
+  
+  <path d="     M 808,310     L 815,340     L 820,360     L 840,380     L 860,395     L 890,405     L 920,412     L 960,415     L 1000,410     L 1040,400     L 1070,390     L 1090,370     L 1100,425     L 1095,470     L 1080,510     L 1060,545     L 1040,570     L 1010,595     L 980,615     L 950,630     L 920,640     L 900,645     L 880,640     L 855,625     L 830,600     L 808,570     L 790,540     L 775,505     L 768,470     L 768,435     L 775,400     L 785,365     L 795,340     Z   " fill="url(#southGrad)" stroke="#5c3020" stroke-width="2" filter="url(#shadow)" />
+  
+  <path d="     M 808,310     L 815,340     L 820,360     L 840,380     L 860,395     L 890,405     L 920,412     L 960,415     L 1000,410     L 1040,400     L 1070,390     L 1090,370     L 1100,425     L 1095,470     L 1080,510     L 1060,545     L 1040,570     L 1010,595     L 980,615     L 950,630     L 920,640     L 900,645     L 880,640     L 855,625     L 830,600     L 808,570     L 790,540     L 775,505     L 768,470     L 768,435     L 775,400     L 785,365     L 795,340     Z   " fill="url(#hatch)" opacity="0.5" />
+
+  
+  
+  <line x1="720" y1="412" x2="1200" y2="412" stroke="#e8d44d" stroke-width="4" stroke-dasharray="18,7" stroke-linecap="round" filter="url(#shadow)" />
+  
+  <rect x="1205" y="398" width="110" height="28" fill="#2c1e0e" rx="3" opacity="0.8" />
+  <text x="1260" y="417" font-family="Georgia, serif" font-size="15" fill="#e8d44d" text-anchor="middle" font-style="italic">38th Parallel</text>
+
+  
+  <text x="728" y="408" font-family="Georgia, serif" font-size="13" fill="#e8d44d" text-anchor="start">— — — — — —</text>
+
+  
+  
+  <text x="965" y="295" font-family="Georgia, serif" font-size="22" fill="#e8f0f0" text-anchor="middle" font-weight="bold" letter-spacing="3" opacity="0.9">NORTH</text>
+  <text x="965" y="320" font-family="Georgia, serif" font-size="14" fill="#c8e0e0" text-anchor="middle" letter-spacing="2" opacity="0.85">SOVIET ZONE</text>
+
+  
+  <text x="940" y="520" font-family="Georgia, serif" font-size="22" fill="#f5e8e0" text-anchor="middle" font-weight="bold" letter-spacing="3" opacity="0.9">SOUTH</text>
+  <text x="940" y="545" font-family="Georgia, serif" font-size="14" fill="#e0c8b8" text-anchor="middle" letter-spacing="2" opacity="0.85">U.S. ZONE</text>
+
+  
+  <circle cx="930" cy="340" r="7" fill="#e8f0f0" stroke="#3a5050" stroke-width="1.5" />
+  <text x="945" y="337" font-family="Georgia, serif" font-size="13" fill="#e8f0f0" font-style="italic">Pyongyang</text>
+
+  
+  <circle cx="870" cy="460" r="7" fill="#f5e8e0" stroke="#5c3020" stroke-width="1.5" />
+  <text x="885" y="457" font-family="Georgia, serif" font-size="13" fill="#f5e8e0" font-style="italic">Seoul ★</text>
+
+  
+  <g transform="translate(1370, 760)" filter="url(#shadow)">
+    
+    <circle cx="0" cy="0" r="72" fill="#c4b08a" stroke="#7a5c2e" stroke-width="2" opacity="0.9" />
+    <circle cx="0" cy="0" r="64" fill="none" stroke="#7a5c2e" stroke-width="1" opacity="0.6" />
+    
+    <polygon points="0,-64 -10,-20 0,-8 10,-20" fill="#2c1e0e" />
+    <polygon points="0,64 -10,20 0,8 10,20" fill="#7a5c2e" />
+    <polygon points="-64,0 -20,-10 -8,0 -20,10" fill="#7a5c2e" />
+    <polygon points="64,0 20,-10 8,0 20,10" fill="#7a5c2e" />
+    
+    <polygon points="0,-64 -6,-44 0,-38 6,-44" fill="#7a5c2e" transform="rotate(45)" />
+    <polygon points="0,-64 -6,-44 0,-38 6,-44" fill="#7a5c2e" transform="rotate(90)" />
+    <polygon points="0,-64 -6,-44 0,-38 6,-44" fill="#7a5c2e" transform="rotate(135)" />
+    <polygon points="0,-64 -6,-44 0,-38 6,-44" fill="#7a5c2e" transform="rotate(180)" />
+    
+    <circle cx="0" cy="0" r="8" fill="#2c1e0e" />
+    <circle cx="0" cy="0" r="4" fill="#e8d44d" />
+    
+    <text x="0" y="-74" font-family="Georgia, serif" font-size="16" fill="#2c1e0e" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="88" font-family="Georgia, serif" font-size="14" fill="#2c1e0e" text-anchor="middle">S</text>
+    <text x="-80" y="5" font-family="Georgia, serif" font-size="14" fill="#2c1e0e" text-anchor="middle">W</text>
+    <text x="80" y="5" font-family="Georgia, serif" font-size="14" fill="#2c1e0e" text-anchor="middle">E</text>
+  </g>
+
+  
+  <text x="950" y="148" font-family="Georgia, serif" font-size="16" fill="#5a4a2e" text-anchor="middle" font-style="italic" opacity="0.7">MANCHURIA</text>
+  <line x1="860" y1="155" x2="1080" y2="155" stroke="#7a5c2e" stroke-width="0.8" opacity="0.4" />
+
+  
+  <text x="1220" y="390" font-family="Georgia, serif" font-size="16" fill="#4a6a7a" text-anchor="middle" font-style="italic" opacity="0.75" transform="rotate(-5,1220,390)">Sea of Japan</text>
+
+  
+  <text x="700" y="490" font-family="Georgia, serif" font-size="16" fill="#4a6a7a" text-anchor="middle" font-style="italic" opacity="0.75" transform="rotate(10,700,490)">Yellow Sea</text>
+
+  
+  <line x1="640" y1="60" x2="640" y2="964" stroke="#7a5c2e" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.4" />
+
+  
+  
+  <rect x="60" y="60" width="565" height="904" fill="url(#panelGrad)" rx="2" opacity="0.88" />
+  <rect x="60" y="60" width="565" height="904" fill="url(#hatch)" opacity="0.2" />
+
+  
+  <line x1="100" y1="110" x2="585" y2="110" stroke="#e8d44d" stroke-width="1.5" opacity="0.6" />
+  <line x1="100" y1="116" x2="585" y2="116" stroke="#e8d44d" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="343" y="160" font-family="Georgia, serif" font-size="15" fill="#e8d44d" text-anchor="middle" letter-spacing="5" opacity="0.9">HISTORY</text>
+
+  
+  <text x="343" y="240" font-family="Georgia, serif" font-size="58" fill="#f0e8d4" text-anchor="middle" font-weight="bold" letter-spacing="1">Partition</text>
+  <text x="343" y="305" font-family="Georgia, serif" font-size="58" fill="#f0e8d4" text-anchor="middle" font-weight="bold" letter-spacing="1">&amp; Founding</text>
+
+  
+  <rect x="160" y="330" width="366" height="50" fill="#e8d44d" rx="2" />
+  <text x="343" y="365" font-family="Georgia, serif" font-size="30" fill="#1a1005" text-anchor="middle" font-weight="bold" letter-spacing="4">1945 – 1948</text>
+
+  
+  <line x1="120" y1="408" x2="566" y2="408" stroke="#e8d44d" stroke-width="1" opacity="0.4" />
+
+  
+  <text x="343" y="450" font-family="Georgia, serif" font-size="17" fill="#d4c0a0" text-anchor="middle" font-style="italic" opacity="0.9">The division of Korea at the 38th Parallel</text>
+  <text x="343" y="475" font-family="Georgia, serif" font-size="17" fill="#d4c0a0" text-anchor="middle" font-style="italic" opacity="0.9">and the founding of the DPRK</text>
+
+  
+  <line x1="120" y1="505" x2="566" y2="505" stroke="#7a5c2e" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="343" y="545" font-family="Georgia, serif" font-size="13" fill="#e8d44d" text-anchor="middle" letter-spacing="4" opacity="0.8">KEY FIGURES</text>
+  <text x="343" y="580" font-family="Georgia, serif" font-size="16" fill="#c8b890" text-anchor="middle">Kim Il-sung · Pak Hon-yong</text>
+  <text x="343" y="605" font-family="Georgia, serif" font-size="16" fill="#c8b890" text-anchor="middle">Cho Man-sik · Terenti Shtykov</text>
+  <text x="343" y="630" font-family="Georgia, serif" font-size="16" fill="#c8b890" text-anchor="middle">Dean Rusk · Charles Bonesteel</text>
+
+  
+  <line x1="120" y1="660" x2="566" y2="660" stroke="#7a5c2e" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="343" y="705" font-family="Georgia, serif" font-size="13" fill="#e8d44d" text-anchor="middle" letter-spacing="4" opacity="0.8">38TH PARALLEL</text>
+  <text x="343" y="738" font-family="Georgia, serif" font-size="15" fill="#c8b890" text-anchor="middle" font-style="italic">Drawn on the night of August 10–11, 1945</text>
+  <text x="343" y="762" font-family="Georgia, serif" font-size="15" fill="#c8b890" text-anchor="middle" font-style="italic">by Rusk &amp; Bonesteel using a National</text>
+  <text x="343" y="786" font-family="Georgia, serif" font-size="15" fill="#c8b890" text-anchor="middle" font-style="italic">Geographic map — Seoul placed in U.S. zone</text>
+
+  
+  <line x1="100" y1="864" x2="585" y2="864" stroke="#e8d44d" stroke-width="0.5" opacity="0.4" />
+  <line x1="100" y1="870" x2="585" y2="870" stroke="#e8d44d" stroke-width="1.5" opacity="0.6" />
+
+  
+  
+  <g transform="translate(200, 820)">
+    <polygon points="0,-18 4,-8 16,-8 7,0 10,12 0,6 -10,12 -7,0 -16,-8 -4,-8" fill="#8b2020" stroke="#c04040" stroke-width="1" />
+    <text x="28" y="5" font-family="Georgia, serif" font-size="13" fill="#c8b890">Soviet Occupation</text>
+  </g>
+  
+  <g transform="translate(200, 848)">
+    <polygon points="0,-18 4,-8 16,-8 7,0 10,12 0,6 -10,12 -7,0 -16,-8 -4,-8" fill="#1a3a6a" stroke="#4060a0" stroke-width="1" />
+    <text x="28" y="5" font-family="Georgia, serif" font-size="13" fill="#c8b890">U.S. Occupation</text>
+  </g>
+
+  
+  <ellipse cx="880" cy="700" rx="25" ry="14" fill="url(#southGrad)" stroke="#5c3020" stroke-width="1.5" />
+  <ellipse cx="880" cy="700" rx="25" ry="14" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a5c2e" stroke-width="2.5" rx="2" opacity="0.7" />
+</svg>

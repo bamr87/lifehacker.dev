@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Tang Dynasty – Golden Age of Chinese Civilization</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="100%" stop-color="#c9b87a" />
+    </linearGradient>
+    <linearGradient id="skygrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b5c9d9" />
+      <stop offset="100%" stop-color="#e8d9b5" />
+    </linearGradient>
+    <linearGradient id="silkgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c47a2b" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#c47a2b" stop-opacity="0" />
+    </linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#a8956a" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect width="1536" height="1024" fill="none" stroke="#7a5c2a" stroke-width="24" opacity="0.5" />
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a5c2a" stroke-width="3" opacity="0.4" />
+
+  
+
+  
+  <path d="M 300,250 Q 400,210 550,230 Q 700,200 900,220 Q 1100,180 1250,240 Q 1350,280 1400,350 Q 1420,420 1380,480 Q 1300,520 1200,510 Q 1100,540 1000,520 Q 850,560 700,530 Q 550,560 420,510 Q 320,480 280,420 Q 250,360 300,250 Z" fill="#b5a06a" opacity="0.6" />
+
+  
+  <path d="M 680,290 Q 780,260 900,270 Q 1020,250 1100,300 Q 1160,350 1140,430 Q 1100,490 1020,510 Q 920,540 820,520 Q 720,530 660,480 Q 610,430 620,370 Q 630,320 680,290 Z" fill="#8a6e3a" opacity="0.7" />
+
+  
+  <path d="M 1140,300 Q 1180,290 1200,330 Q 1210,370 1190,410 Q 1170,430 1150,420 Q 1130,400 1130,360 Q 1125,330 1140,300 Z" fill="#7a5c2a" opacity="0.5" />
+
+  
+  <path d="M 200,300 Q 280,270 360,290 Q 420,310 440,370 Q 430,420 380,440 Q 300,460 240,430 Q 180,400 180,350 Q 185,320 200,300 Z" fill="#9a8050" opacity="0.5" />
+
+  
+  <g fill="#7a6040" opacity="0.6">
+    <polygon points="660,380 680,340 700,380" />
+    <polygon points="700,375 720,335 740,375" />
+    <polygon points="740,380 760,340 780,380" />
+    <polygon points="780,375 800,335 820,375" />
+    <polygon points="820,380 840,340 860,380" />
+    <polygon points="860,375 880,335 900,375" />
+  </g>
+  
+  <g fill="#6a5030" opacity="0.5">
+    <polygon points="500,310 520,275 540,310" />
+    <polygon points="540,308 560,273 580,308" />
+    <polygon points="580,312 600,277 620,312" />
+  </g>
+
+  
+  <path d="M 220,360 Q 400,330 600,340 Q 750,345 850,360 Q 980,370 1100,350 Q 1200,340 1300,360" fill="none" stroke="#c47a2b" stroke-width="4" stroke-dasharray="16,8" opacity="0.7" />
+  <path d="M 220,380 Q 400,355 600,362 Q 750,368 850,382 Q 980,392 1100,372 Q 1200,362 1300,380" fill="none" stroke="#c47a2b" stroke-width="2" stroke-dasharray="10,12" opacity="0.4" />
+
+  
+  <circle cx="870" cy="390" r="18" fill="#8b1a1a" opacity="0.85" />
+  <circle cx="870" cy="390" r="10" fill="#d4421a" opacity="0.9" />
+  <circle cx="870" cy="390" r="4" fill="#f0c060" />
+  
+  <g stroke="#8b1a1a" stroke-width="1.5" opacity="0.4">
+    <line x1="870" y1="390" x2="870" y2="340" />
+    <line x1="870" y1="390" x2="912" y2="358" />
+    <line x1="870" y1="390" x2="920" y2="390" />
+    <line x1="870" y1="390" x2="912" y2="422" />
+    <line x1="870" y1="390" x2="870" y2="440" />
+    <line x1="870" y1="390" x2="828" y2="422" />
+    <line x1="870" y1="390" x2="820" y2="390" />
+    <line x1="870" y1="390" x2="828" y2="358" />
+  </g>
+
+  
+  <text x="870" y="472" font-family="Georgia, serif" font-size="20" fill="#5a3a10" text-anchor="middle" font-style="italic" opacity="0.9">Chang'an</text>
+
+  
+  <g transform="translate(160, 480)" fill="#5a3a10" opacity="0.75">
+    
+    <rect x="-30" y="160" width="60" height="12" />
+    
+    <rect x="-22" y="132" width="44" height="30" />
+    <polygon points="-32,132 0,114 32,132" />
+    
+    <rect x="-17" y="108" width="34" height="26" />
+    <polygon points="-26,108 0,92 26,108" />
+    
+    <rect x="-12" y="86" width="24" height="24" />
+    <polygon points="-20,86 0,72 20,86" />
+    
+    <rect x="-8" y="66" width="16" height="22" />
+    <polygon points="-15,66 0,52 15,66" />
+    
+    <rect x="-5" y="48" width="10" height="20" />
+    <polygon points="-11,48 0,36 11,48" />
+    
+    <rect x="-2" y="20" width="4" height="28" />
+    <polygon points="-6,20 0,8 6,20" />
+    <circle cx="0" cy="6" r="4" />
+  </g>
+
+  
+  <g transform="translate(1370, 500)" fill="#5a3a10" opacity="0.6">
+    <rect x="-22" y="130" width="44" height="10" />
+    <rect x="-17" y="108" width="34" height="24" />
+    <polygon points="-26,108 0,92 26,108" />
+    <rect x="-12" y="88" width="24" height="22" />
+    <polygon points="-20,88 0,74 20,88" />
+    <rect x="-8" y="70" width="16" height="20" />
+    <polygon points="-15,70 0,56 15,70" />
+    <rect x="-5" y="52" width="10" height="20" />
+    <polygon points="-11,52 0,38 11,52" />
+    <rect x="-2" y="30" width="4" height="24" />
+    <polygon points="-6,30 0,18 6,30" />
+    <circle cx="0" cy="16" r="3" />
+  </g>
+
+  
+  <g transform="translate(1390,820)">
+    <circle cx="0" cy="0" r="60" fill="#d4c080" opacity="0.3" stroke="#7a5c2a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#7a5c2a" stroke-width="1" opacity="0.5" />
+    
+    <polygon points="0,-60 -8,-30 0,-20 8,-30" fill="#8b1a1a" opacity="0.8" />
+    <polygon points="0,60 -8,30 0,20 8,30" fill="#5a3a10" opacity="0.7" />
+    <polygon points="-60,0 -30,-8 -20,0 -30,8" fill="#5a3a10" opacity="0.7" />
+    <polygon points="60,0 30,-8 20,0 30,8" fill="#5a3a10" opacity="0.7" />
+    
+    <polygon points="0,-60 -5,-38 0,-28 5,-38" fill="#7a5c2a" opacity="0.4" transform="rotate(45)" />
+    <polygon points="0,-60 -5,-38 0,-28 5,-38" fill="#7a5c2a" opacity="0.4" transform="rotate(135)" />
+    <polygon points="0,-60 -5,-38 0,-28 5,-38" fill="#7a5c2a" opacity="0.4" transform="rotate(225)" />
+    <polygon points="0,-60 -5,-38 0,-28 5,-38" fill="#7a5c2a" opacity="0.4" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="6" fill="#8b1a1a" opacity="0.8" />
+    
+    <text x="0" y="-68" font-family="Georgia, serif" font-size="18" fill="#5a3a10" text-anchor="middle" font-weight="bold">N</text>
+  </g>
+
+  
+  <rect x="60" y="580" width="680" height="360" rx="8" ry="8" fill="#c9b87a" opacity="0.55" stroke="#7a5c2a" stroke-width="2" />
+  <rect x="70" y="590" width="660" height="340" rx="4" ry="4" fill="none" stroke="#7a5c2a" stroke-width="1" opacity="0.5" />
+
+  
+  <g stroke="#7a5c2a" stroke-width="1.5" fill="none" opacity="0.7">
+    <path d="M70,620 L70,590 L100,590" />
+    <path d="M730,620 L730,590 L700,590" />
+    <path d="M70,900 L70,930 L100,930" />
+    <path d="M730,900 L730,930 L700,930" />
+  </g>
+
+  
+  <text x="400" y="670" font-family="Georgia, 'Times New Roman', serif" font-size="88" font-weight="bold" fill="#3a2008" text-anchor="middle" letter-spacing="2">The Tang</text>
+  <text x="400" y="768" font-family="Georgia, 'Times New Roman', serif" font-size="88" font-weight="bold" fill="#3a2008" text-anchor="middle" letter-spacing="2">Dynasty</text>
+
+  
+  <rect x="200" y="800" width="400" height="4" fill="#8b1a1a" opacity="0.6" />
+  <text x="400" y="844" font-family="Georgia, serif" font-size="30" fill="#5a2a08" text-anchor="middle" letter-spacing="4">618 – 907 CE</text>
+
+  
+  <text x="400" y="892" font-family="Georgia, serif" font-size="22" fill="#5a3a10" text-anchor="middle" font-style="italic" opacity="0.85">Golden Age of Chinese Civilization</text>
+
+  
+  <g transform="translate(768, 150)" opacity="0.55">
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#7a5c2a" stroke-width="2" />
+    <circle cx="0" cy="0" r="40" fill="#c9b060" opacity="0.4" stroke="#7a5c2a" stroke-width="1" />
+    
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="#8b1a1a" opacity="0.5" />
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="#8b1a1a" opacity="0.5" transform="rotate(45)" />
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="#8b1a1a" opacity="0.5" transform="rotate(90)" />
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="#8b1a1a" opacity="0.5" transform="rotate(135)" />
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="#8b1a1a" opacity="0.5" transform="rotate(180)" />
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="#8b1a1a" opacity="0.5" transform="rotate(225)" />
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="#8b1a1a" opacity="0.5" transform="rotate(270)" />
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="#8b1a1a" opacity="0.5" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="12" fill="#d4a030" opacity="0.7" />
+  </g>
+
+  
+  <text x="530" y="300" font-family="Georgia, serif" font-size="18" fill="#7a4a10" text-anchor="middle" font-style="italic" opacity="0.8">Silk Road</text>
+
+  
+  <text x="100" y="80" font-family="Georgia, serif" font-size="22" fill="#5a3a10" letter-spacing="6" opacity="0.7">HISTORY</text>
+  <line x1="100" y1="90" x2="380" y2="90" stroke="#7a5c2a" stroke-width="1.5" opacity="0.5" />
+
+  
+  <text x="1436" y="80" font-family="Georgia, serif" font-size="18" fill="#5a3a10" text-anchor="end" letter-spacing="3" opacity="0.6">TANG 唐</text>
+
+</svg>

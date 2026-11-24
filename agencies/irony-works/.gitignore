@@ -1,0 +1,30 @@
+# OS
+.DS_Store
+
+# Credentials — never commit. CLAUDE_CODE_OAUTH_TOKEN lives here locally;
+# in CI it comes from the repo secret of the same name.
+.env
+.env.*
+!.env.example
+
+# Build artifacts — transplant.mjs output and Jekyll
+_entries/
+_site/
+.jekyll-cache/
+
+# Node (js-yaml is installed ad hoc, never committed)
+node_modules/
+package-lock.json
+package.json
+
+# Obsidian per-user workspace state
+vault/.obsidian/workspace*
+
+# Generated at publish time by engine/scripts/preview.mjs
+assets/images/previews/
+
+# Playwright MCP scratch output from UI review sessions
+.playwright-mcp/
+
+# Browser-session screenshots are never committed.
+.playwright-mcp/

@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Unified Silla Period – Historical Map Banner</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="50%" stop-color="#ddc99a" />
+      <stop offset="100%" stop-color="#c9b080" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a8bfcc" />
+      <stop offset="100%" stop-color="#8daabb" />
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8a46a" />
+      <stop offset="100%" stop-color="#9e8c58" />
+    </linearGradient>
+    <linearGradient id="landChina" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c4aa72" />
+      <stop offset="100%" stop-color="#a89058" />
+    </linearGradient>
+    <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5a3e1b" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#5a3e1b" stop-opacity="0" />
+      <stop offset="100%" stop-color="#5a3e1b" stop-opacity="0.35" />
+    </linearGradient>
+    <filter id="tex" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grey" />
+      <feBlend in="SourceGraphic" in2="grey" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#8daabb" stroke-width="0.4" stroke-opacity="0.4" />
+    </pattern>
+    <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="10" height="10">
+      <line x1="0" y1="0" x2="10" y2="10" stroke="#7a6a40" stroke-width="0.3" stroke-opacity="0.2" />
+      <line x1="10" y1="0" x2="0" y2="10" stroke="#7a6a40" stroke-width="0.3" stroke-opacity="0.2" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#crosshatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a5c2a" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a5c2a" stroke-width="1" />
+  
+  <g fill="none" stroke="#7a5c2a" stroke-width="1.5">
+    <rect x="18" y="18" width="40" height="40" />
+    <rect x="1478" y="18" width="40" height="40" />
+    <rect x="18" y="966" width="40" height="40" />
+    <rect x="1478" y="966" width="40" height="40" />
+  </g>
+  <g fill="#7a5c2a">
+    <circle cx="38" cy="38" r="4" />
+    <circle cx="1498" cy="38" r="4" />
+    <circle cx="38" cy="986" r="4" />
+    <circle cx="1498" cy="986" r="4" />
+  </g>
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="url(#sea)" opacity="0.45" />
+  <rect x="28" y="28" width="1480" height="968" fill="url(#hatch)" opacity="0.6" />
+
+  
+  <g stroke="#7a8fa0" stroke-width="0.5" stroke-opacity="0.35" fill="none">
+    <line x1="28" y1="200" x2="1508" y2="200" />
+    <line x1="28" y1="400" x2="1508" y2="400" />
+    <line x1="28" y1="600" x2="1508" y2="600" />
+    <line x1="28" y1="800" x2="1508" y2="800" />
+    <line x1="250" y1="28" x2="250" y2="996" />
+    <line x1="500" y1="28" x2="500" y2="996" />
+    <line x1="750" y1="28" x2="750" y2="996" />
+    <line x1="1000" y1="28" x2="1000" y2="996" />
+    <line x1="1250" y1="28" x2="1250" y2="996" />
+  </g>
+
+  
+  <path d="M 420,28 L 820,28 L 850,80 L 870,150 L 840,220 L 790,260 L 740,280 L 680,290 L 620,295 L 570,280 L 510,260 L 460,230 L 420,190 L 400,140 L 410,80 Z" fill="url(#landChina)" stroke="#7a5c2a" stroke-width="1.5" stroke-opacity="0.7" />
+
+  
+  <path d="M 28,28 L 420,28 L 410,140 L 420,220 L 440,320 L 420,450 L 380,560 L 340,680 L 300,800 L 280,900 L 260,996 L 28,996 Z" fill="url(#landChina)" stroke="#7a5c2a" stroke-width="1.5" stroke-opacity="0.7" />
+  <text x="160" y="450" font-family="Georgia, serif" font-size="22" fill="#5a3e1b" fill-opacity="0.7" text-anchor="middle" font-style="italic" transform="rotate(-5,160,450)">Tang</text>
+  <text x="160" y="478" font-family="Georgia, serif" font-size="22" fill="#5a3e1b" fill-opacity="0.7" text-anchor="middle" font-style="italic" transform="rotate(-5,160,478)">China</text>
+
+  
+  <path d="M 1150,220 Q 1170,200 1200,210 Q 1240,230 1230,280 Q 1210,320 1170,330 Q 1130,340 1120,300 Q 1110,260 1150,220 Z" fill="url(#land)" stroke="#7a5c2a" stroke-width="1.5" stroke-opacity="0.7" />
+  <path d="M 1200,320 Q 1240,290 1280,310 Q 1340,340 1350,410 Q 1360,480 1320,530 Q 1280,570 1240,560 Q 1190,540 1180,490 Q 1160,420 1200,320 Z" fill="url(#land)" stroke="#7a5c2a" stroke-width="1.5" stroke-opacity="0.7" />
+  <path d="M 1290,500 Q 1330,470 1380,490 Q 1420,510 1430,570 Q 1440,630 1400,670 Q 1360,700 1330,680 Q 1290,650 1280,600 Q 1270,550 1290,500 Z" fill="url(#land)" stroke="#7a5c2a" stroke-width="1.5" stroke-opacity="0.7" />
+  <text x="1280" y="430" font-family="Georgia, serif" font-size="20" fill="#5a3e1b" fill-opacity="0.7" text-anchor="middle" font-style="italic" transform="rotate(15,1280,430)">Japan</text>
+
+  
+  <text x="620" y="180" font-family="Georgia, serif" font-size="20" fill="#5a3e1b" fill-opacity="0.65" text-anchor="middle" font-style="italic">Manchuria</text>
+
+  
+  
+  <path d="     M 570,280     L 620,295     L 680,290     L 740,280     L 790,260     L 820,290     L 840,330     L 855,380     L 860,440     L 850,500     L 835,560     L 810,620     L 780,670     L 750,720     L 720,760     L 700,800     L 680,840     L 670,870     L 660,900     L 650,930     L 640,960     L 630,990     L 620,996     L 610,990     L 600,960     L 590,930     L 575,900     L 555,870     L 530,840     L 510,810     L 490,780     L 470,740     L 450,700     L 435,660     L 420,610     L 405,560     L 395,500     L 390,450     L 400,400     L 415,350     L 440,310     L 480,285     L 520,278     L 570,280     Z" fill="url(#land)" stroke="#7a5c2a" stroke-width="2" stroke-opacity="0.85" />
+
+  
+  <path d="     M 570,280 L 620,295 L 680,290 L 740,280 L 790,260     L 820,290 L 840,330 L 855,380 L 860,440 L 850,500     L 835,560 L 810,620 L 780,670 L 750,720 L 720,760     L 700,800 L 680,840 L 670,870 L 660,900 L 650,930     L 640,960 L 630,990 L 620,996 L 610,990 L 600,960     L 590,930 L 575,900 L 555,870 L 530,840 L 510,810     L 490,780 L 470,740 L 450,700 L 435,660 L 420,610     L 405,560 L 395,500 L 390,450 L 400,400 L 415,350     L 440,310 L 480,285 L 520,278 L 570,280 Z" fill="url(#crosshatch)" opacity="0.5" />
+
+  
+  <circle cx="710" cy="720" r="10" fill="#8b1a1a" stroke="#5a0d0d" stroke-width="1.5" />
+  <circle cx="710" cy="720" r="18" fill="none" stroke="#8b1a1a" stroke-width="1.2" stroke-dasharray="4,3" />
+  <text x="740" y="715" font-family="Georgia, serif" font-size="16" fill="#5a0d0d" font-style="italic">Seorabeol</text>
+  <text x="740" y="733" font-family="Georgia, serif" font-size="13" fill="#5a0d0d" fill-opacity="0.8" font-style="italic">(Gyeongju)</text>
+
+  
+  <circle cx="490" cy="580" r="7" fill="#5a3e1b" stroke="#3a2a0e" stroke-width="1.2" opacity="0.7" />
+  <text x="360" y="575" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" fill-opacity="0.75" font-style="italic">Baekje</text>
+
+  
+  <circle cx="680" cy="340" r="7" fill="#5a3e1b" stroke="#3a2a0e" stroke-width="1.2" opacity="0.7" />
+  <text x="700" y="345" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" fill-opacity="0.75" font-style="italic">Goguryeo</text>
+
+  
+  <text x="330" y="600" font-family="Georgia, serif" font-size="18" fill="#4a6070" fill-opacity="0.75" text-anchor="middle" font-style="italic" transform="rotate(-80,330,600)">Yellow Sea</text>
+  <text x="1000" y="550" font-family="Georgia, serif" font-size="18" fill="#4a6070" fill-opacity="0.75" text-anchor="middle" font-style="italic" transform="rotate(-80,1000,550)">East Sea</text>
+
+  
+  <g stroke="#7a5c2a" stroke-width="1.5" stroke-dasharray="5,5" fill="none" stroke-opacity="0.5">
+    
+    <path d="M 490,500 Q 380,480 280,460" />
+    
+    <path d="M 780,600 Q 950,550 1150,450" />
+  </g>
+  <text x="320" y="455" font-family="Georgia, serif" font-size="11" fill="#7a5c2a" fill-opacity="0.65" font-style="italic">trade route</text>
+  <text x="930" y="530" font-family="Georgia, serif" font-size="11" fill="#7a5c2a" fill-opacity="0.65" font-style="italic">trade route</text>
+
+  
+  <g transform="translate(1350,750)">
+    
+    <circle r="70" fill="#ddc99a" fill-opacity="0.7" stroke="#7a5c2a" stroke-width="1.5" />
+    <circle r="55" fill="none" stroke="#7a5c2a" stroke-width="0.8" />
+    <circle r="12" fill="#c9b080" stroke="#7a5c2a" stroke-width="1.2" />
+    
+    
+    <polygon points="0,-55 -10,-25 0,-35 10,-25" fill="#8b1a1a" />
+    
+    <polygon points="0,55 -10,25 0,35 10,25" fill="#7a5c2a" />
+    
+    <polygon points="55,0 25,-10 35,0 25,10" fill="#7a5c2a" />
+    
+    <polygon points="-55,0 -25,-10 -35,0 -25,10" fill="#7a5c2a" />
+    
+    <polygon points="0,-55 -6,-30 0,-38 6,-30" fill="#c9b080" transform="rotate(45)" />
+    <polygon points="0,-55 -6,-30 0,-38 6,-30" fill="#c9b080" transform="rotate(135)" />
+    <polygon points="0,-55 -6,-30 0,-38 6,-30" fill="#c9b080" transform="rotate(225)" />
+    <polygon points="0,-55 -6,-30 0,-38 6,-30" fill="#c9b080" transform="rotate(315)" />
+    
+    <text x="0" y="-60" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="75" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" text-anchor="middle" font-weight="bold">S</text>
+    <text x="72" y="5" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" text-anchor="middle" font-weight="bold">E</text>
+    <text x="-72" y="5" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" text-anchor="middle" font-weight="bold">W</text>
+  </g>
+
+  
+  <g transform="translate(180,820)" fill="#9e7a3a" fill-opacity="0.55" stroke="#7a5c2a" stroke-width="0.8" stroke-opacity="0.5">
+    <ellipse cx="0" cy="0" rx="18" ry="30" transform="rotate(-20)" />
+    <ellipse cx="0" cy="0" rx="18" ry="30" transform="rotate(20)" />
+    <ellipse cx="0" cy="0" rx="18" ry="30" transform="rotate(60)" />
+    <ellipse cx="0" cy="0" rx="18" ry="30" transform="rotate(-60)" />
+    <ellipse cx="0" cy="0" rx="18" ry="30" transform="rotate(100)" />
+    <ellipse cx="0" cy="0" rx="18" ry="30" transform="rotate(-100)" />
+    <ellipse cx="0" cy="0" rx="18" ry="30" transform="rotate(140)" />
+    <ellipse cx="0" cy="0" rx="18" ry="30" transform="rotate(-140)" />
+    <circle cx="0" cy="0" r="12" fill="#c9b080" stroke="#7a5c2a" stroke-width="1" />
+  </g>
+
+  
+  <g transform="translate(1400,130)" fill="#9e7a3a" fill-opacity="0.45" stroke="#7a5c2a" stroke-width="0.7" stroke-opacity="0.4">
+    <ellipse cx="0" cy="0" rx="14" ry="24" transform="rotate(-20)" />
+    <ellipse cx="0" cy="0" rx="14" ry="24" transform="rotate(20)" />
+    <ellipse cx="0" cy="0" rx="14" ry="24" transform="rotate(60)" />
+    <ellipse cx="0" cy="0" rx="14" ry="24" transform="rotate(-60)" />
+    <ellipse cx="0" cy="0" rx="14" ry="24" transform="rotate(100)" />
+    <ellipse cx="0" cy="0" rx="14" ry="24" transform="rotate(-100)" />
+    <ellipse cx="0" cy="0" rx="14" ry="24" transform="rotate(140)" />
+    <ellipse cx="0" cy="0" rx="14" ry="24" transform="rotate(-140)" />
+    <circle cx="0" cy="0" r="9" fill="#c9b080" stroke="#7a5c2a" stroke-width="0.8" />
+  </g>
+
+  
+  
+  <rect x="900" y="80" width="590" height="380" rx="4" ry="4" fill="#ddc99a" fill-opacity="0.88" stroke="#7a5c2a" stroke-width="2" />
+  <rect x="910" y="90" width="570" height="360" rx="2" ry="2" fill="none" stroke="#7a5c2a" stroke-width="0.8" />
+
+  
+  <line x1="930" y1="115" x2="1470" y2="115" stroke="#7a5c2a" stroke-width="1" />
+  <line x1="930" y1="119" x2="1470" y2="119" stroke="#7a5c2a" stroke-width="0.4" />
+
+  
+  <text x="1195" y="180" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#3a2505" text-anchor="middle" font-weight="bold" letter-spacing="1">Unified</text>
+  <text x="1195" y="248" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#3a2505" text-anchor="middle" font-weight="bold" letter-spacing="1">Silla</text>
+  <text x="1195" y="316" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#3a2505" text-anchor="middle" font-weight="bold" letter-spacing="1">Period</text>
+
+  
+  <line x1="930" y1="335" x2="1470" y2="335" stroke="#7a5c2a" stroke-width="0.8" />
+  <text x="1195" y="365" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#5a3e1b" text-anchor="middle" font-style="italic" letter-spacing="2">통일신라 · 668–935 CE</text>
+  <line x1="930" y1="382" x2="1470" y2="382" stroke="#7a5c2a" stroke-width="0.8" />
+  <line x1="930" y1="386" x2="1470" y2="386" stroke="#7a5c2a" stroke-width="0.4" />
+
+  
+  <g transform="translate(900,940)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#5a3e1b" stroke-width="1.5" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#5a3e1b" stroke-width="1.5" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#5a3e1b" stroke-width="1" />
+    <line x1="200" y1="-6" x2="200" y2="6" stroke="#5a3e1b" stroke-width="1.5" />
+    <rect x="0" y="-5" width="100" height="10" fill="#5a3e1b" fill-opacity="0.6" />
+    <rect x="100" y="-5" width="100" height="10" fill="#ddc99a" fill-opacity="0.8" />
+    <text x="0" y="20" font-family="Georgia, serif" font-size="12" fill="#5a3e1b" text-anchor="middle">0</text>
+    <text x="100" y="20" font-family="Georgia, serif" font-size="12" fill="#5a3e1b" text-anchor="middle">300 km</text>
+    <text x="200" y="20" font-family="Georgia, serif" font-size="12" fill="#5a3e1b" text-anchor="middle">600 km</text>
+  </g>
+
+  
+  <text x="1195" y="520" font-family="Georgia, serif" font-size="17" fill="#5a3e1b" fill-opacity="0.8" text-anchor="middle" font-style="italic">History · Korean Peninsula</text>
+
+  
+  <rect x="910" y="540" width="570" height="160" rx="2" fill="#c9b080" fill-opacity="0.4" stroke="#7a5c2a" stroke-width="0.8" />
+  <text x="1195" y="568" font-family="Georgia, serif" font-size="13" fill="#5a3e1b" text-anchor="middle" font-weight="bold" letter-spacing="1">KEY FIGURES</text>
+  <line x1="930" y1="575" x2="1470" y2="575" stroke="#7a5c2a" stroke-width="0.5" />
+  <text x="930" y="597" font-family="Georgia, serif" font-size="13" fill="#5a3e1b">· Kim Yu-shin · King Munmu of Silla</text>
+  <text x="930" y="617" font-family="Georgia, serif" font-size="13" fill="#5a3e1b">· Wonhyo &amp; Uisang (Buddhist scholars)</text>
+  <text x="930" y="637" font-family="Georgia, serif" font-size="13" fill="#5a3e1b">· Monk Jajang · Jang Bogo (maritime trader)</text>
+  <line x1="930" y1="650" x2="1470" y2="650" stroke="#7a5c2a" stroke-width="0.5" />
+  <text x="930" y="668" font-family="Georgia, serif" font-size="12" fill="#5a3e1b" font-style="italic">First political unification of the Korean peninsula</text>
+  <text x="930" y="686" font-family="Georgia, serif" font-size="12" fill="#5a3e1b" font-style="italic">Buddhist civilization · Administrative sophistication</text>
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="url(#vignette)" opacity="0.5" />
+
+  
+  <text x="620" y="580" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#5a0d0d" fill-opacity="0.85" text-anchor="middle" font-weight="bold" font-style="italic" transform="rotate(-5,620,580)">Silla</text>
+
+  
+  <g fill="#7a5c2a" opacity="0.6">
+    <circle cx="250" cy="200" r="3" />
+    <circle cx="500" cy="200" r="3" />
+    <circle cx="750" cy="200" r="3" />
+    <circle cx="1000" cy="200" r="3" />
+    <circle cx="1250" cy="200" r="3" />
+    <circle cx="250" cy="400" r="3" />
+    <circle cx="500" cy="400" r="3" />
+    <circle cx="750" cy="400" r="3" />
+    <circle cx="1000" cy="400" r="3" />
+    <circle cx="1250" cy="400" r="3" />
+    <circle cx="250" cy="600" r="3" />
+    <circle cx="500" cy="600" r="3" />
+    <circle cx="750" cy="600" r="3" />
+    <circle cx="250" cy="800" r="3" />
+    <circle cx="500" cy="800" r="3" />
+    <circle cx="750" cy="800" r="3" />
+  </g>
+</svg>

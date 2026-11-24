@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Sui Dynasty – Historical Banner</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="100%" stop-color="#c9b87a" />
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cfa8" />
+      <stop offset="100%" stop-color="#8faa7c" />
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7a9eb5" />
+      <stop offset="100%" stop-color="#5c8099" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b87a" />
+      <stop offset="100%" stop-color="#a89550" />
+    </linearGradient>
+    <linearGradient id="overlayGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a0f00" stop-opacity="0.72" />
+      <stop offset="45%" stop-color="#1a0f00" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#1a0f00" stop-opacity="0.0" />
+    </linearGradient>
+    <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#8a7040" stroke-width="0.4" opacity="0.35" />
+    </pattern>
+    <pattern id="hatchPattern" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#6b5530" stroke-width="0.5" opacity="0.2" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridPattern)" />
+  
+  <rect width="1536" height="1024" fill="url(#hatchPattern)" />
+
+  
+  <ellipse cx="1380" cy="400" rx="220" ry="300" fill="url(#waterGrad)" opacity="0.7" />
+  <ellipse cx="1450" cy="750" rx="180" ry="180" fill="url(#waterGrad)" opacity="0.6" />
+  
+  <path d="M1100,200 Q1180,250 1200,350 Q1220,450 1180,550 Q1140,630 1100,680 L1060,680 Q1090,600 1100,500 Q1110,380 1060,280 Z" fill="url(#waterGrad)" opacity="0.55" />
+
+  
+  <path d="M260,80 L420,60 L580,75 L700,55 L820,80 L920,70 L1020,110 L1080,160 L1100,220 L1060,280 L1080,350 L1060,430 L1000,500 L980,580 L950,640 L900,700 L840,760 L780,800 L700,840 L620,870 L540,860 L460,830 L380,790 L300,720 L240,650 L200,560 L190,460 L210,360 L230,260 L240,160 Z" fill="url(#landGrad)" />
+
+  
+  <path d="M300,200 Q400,180 500,200 Q600,220 700,200 Q800,180 900,210 Q950,230 980,280" fill="none" stroke="#8a6e30" stroke-width="1.2" opacity="0.3" />
+  <path d="M280,350 Q400,330 550,360 Q680,385 800,360 Q880,345 940,380" fill="none" stroke="#8a6e30" stroke-width="1" opacity="0.25" />
+  <path d="M260,480 Q380,460 520,490 Q660,515 780,490 Q870,470 930,510" fill="none" stroke="#8a6e30" stroke-width="1" opacity="0.2" />
+
+  
+  <g fill="#8a7040" opacity="0.6">
+    <polygon points="580,160 600,120 620,160" />
+    <polygon points="615,155 640,110 665,155" />
+    <polygon points="650,162 670,118 690,162" />
+    <polygon points="685,158 710,115 735,158" />
+    <polygon points="720,162 745,120 770,162" />
+    <polygon points="755,158 778,116 801,158" />
+    <polygon points="538,168 560,128 582,168" />
+  </g>
+  
+  <g fill="#8a7040" opacity="0.5">
+    <polygon points="620,680 640,645 660,680" />
+    <polygon points="655,678 678,638 701,678" />
+    <polygon points="690,682 715,642 740,682" />
+    <polygon points="725,676 748,636 771,676" />
+  </g>
+
+  
+  <path d="M280,540 Q350,520 430,530 Q510,540 580,510 Q650,480 720,490 Q800,502 860,480 Q910,462 950,470 Q990,478 1030,500 Q1060,518 1080,540" fill="none" stroke="#5c8099" stroke-width="5" stroke-linecap="round" opacity="0.8" />
+  
+  <path d="M300,300 Q380,280 460,290 Q530,300 580,270 Q640,240 710,260 Q780,280 830,260 Q880,242 930,260 Q970,275 1000,300" fill="none" stroke="#5c8099" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+
+  
+  
+  <path d="M740,780 Q760,700 758,620 Q756,540 750,490 Q745,450 748,390 Q751,330 755,270 Q758,210 760,150" fill="none" stroke="#4a7a9b" stroke-width="10" stroke-linecap="round" stroke-dasharray="0" opacity="0.9" />
+  
+  <path d="M740,780 Q760,700 758,620 Q756,540 750,490 Q745,450 748,390 Q751,330 755,270 Q758,210 760,150" fill="none" stroke="#a0c8e0" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+
+  
+  <text x="775" y="480" font-family="Georgia, serif" font-size="18" fill="#2a4a60" opacity="0.85" transform="rotate(-88 775 480)" letter-spacing="2">大運河  Grand Canal</text>
+
+  
+  
+  <circle cx="750" cy="390" r="10" fill="#6b3a1f" stroke="#c8a060" stroke-width="2" />
+  <circle cx="750" cy="390" r="4" fill="#f0d080" />
+  
+  <circle cx="640" cy="370" r="10" fill="#6b3a1f" stroke="#c8a060" stroke-width="2" />
+  <circle cx="640" cy="370" r="4" fill="#f0d080" />
+  
+  <circle cx="820" cy="590" r="8" fill="#6b3a1f" stroke="#c8a060" stroke-width="1.5" />
+  <circle cx="820" cy="590" r="3" fill="#f0d080" />
+
+  
+  <text x="762" y="380" font-family="Georgia, serif" font-size="16" fill="#2a1a00" opacity="0.9">Luoyang</text>
+  <text x="610" y="358" font-family="Georgia, serif" font-size="16" fill="#2a1a00" opacity="0.9">Chang'an</text>
+  <text x="832" y="588" font-family="Georgia, serif" font-size="14" fill="#2a1a00" opacity="0.8">Jiankang</text>
+
+  
+  <text x="530" y="472" font-family="Georgia, serif" font-size="14" fill="#3a6080" opacity="0.8" transform="rotate(-5 530 472)">Yangtze River</text>
+  <text x="480" y="278" font-family="Georgia, serif" font-size="14" fill="#3a6080" opacity="0.8" transform="rotate(-3 480 278)">Yellow River</text>
+
+  
+  <g transform="translate(1060, 820)" opacity="0.75">
+    
+    <circle r="55" fill="none" stroke="#6b5530" stroke-width="1.5" />
+    <circle r="48" fill="none" stroke="#6b5530" stroke-width="0.5" />
+    
+    <polygon points="0,-55 -8,-18 0,-25 8,-18" fill="#6b3a1f" />
+    <polygon points="0,55 -8,18 0,25 8,18" fill="#6b5530" />
+    <polygon points="-55,0 -18,-8 -25,0 -18,8" fill="#6b5530" />
+    <polygon points="55,0 18,-8 25,0 18,8" fill="#6b5530" />
+    
+    <text x="-5" y="-30" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#2a1a00">N</text>
+    
+    <line x1="-38" y1="-38" x2="38" y2="38" stroke="#6b5530" stroke-width="0.8" opacity="0.5" />
+    <line x1="38" y1="-38" x2="-38" y2="38" stroke="#6b5530" stroke-width="0.8" opacity="0.5" />
+    <circle r="6" fill="#c8a060" stroke="#6b3a1f" stroke-width="1" />
+  </g>
+
+  
+  <g transform="translate(320, 900)" opacity="0.7">
+    <rect x="0" y="0" width="120" height="8" fill="#6b5530" />
+    <rect x="120" y="0" width="120" height="8" fill="#e8d9b5" stroke="#6b5530" stroke-width="1" />
+    <text x="0" y="22" font-family="Georgia, serif" font-size="13" fill="#2a1a00">0</text>
+    <text x="110" y="22" font-family="Georgia, serif" font-size="13" fill="#2a1a00">500</text>
+    <text x="225" y="22" font-family="Georgia, serif" font-size="13" fill="#2a1a00">1000 km</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#6b5530" stroke-width="3" opacity="0.6" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#6b5530" stroke-width="1" opacity="0.4" />
+
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#overlayGrad)" />
+
+  
+  <text x="80" y="220" font-family="Georgia, 'Times New Roman', serif" font-size="100" font-weight="bold" fill="#f5e9c8" letter-spacing="4" opacity="0.97">The Sui</text>
+  <text x="80" y="340" font-family="Georgia, 'Times New Roman', serif" font-size="100" font-weight="bold" fill="#f5e9c8" letter-spacing="4" opacity="0.97">Dynasty</text>
+
+  
+  <text x="82" y="410" font-family="Georgia, serif" font-size="34" fill="#c8a060" letter-spacing="6" opacity="0.9">581 – 618 CE</text>
+
+  
+  <line x1="82" y1="438" x2="480" y2="438" stroke="#c8a060" stroke-width="2" opacity="0.7" />
+
+  
+  <text x="82" y="478" font-family="Georgia, serif" font-size="22" fill="#e8d5a8" opacity="0.85">Reunification · Grand Canal · Imperial Reform</text>
+
+  
+  <text x="82" y="530" font-family="Georgia, serif" font-size="18" fill="#c8b880" opacity="0.75">Emperor Wen  ·  Emperor Yang  ·  Li Yuan</text>
+
+  
+  <text x="82" y="720" font-family="serif" font-size="130" fill="#c8a060" opacity="0.18" letter-spacing="10">隋朝</text>
+
+  
+  <rect x="82" y="870" width="130" height="36" fill="#6b3a1f" opacity="0.85" />
+  <text x="96" y="894" font-family="Georgia, serif" font-size="18" fill="#f5e9c8" letter-spacing="2">HISTORY</text>
+
+</svg>

@@ -1,0 +1,289 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>South Jeolla Province (Jeollanam) – Atlas Banner</title>
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8d8e8" />
+      <stop offset="100%" stop-color="#dfe8d0" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7dafc4" />
+      <stop offset="100%" stop-color="#5a8fa8" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9b98a" />
+      <stop offset="100%" stop-color="#b5a470" />
+    </linearGradient>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2e8cc" />
+      <stop offset="100%" stop-color="#e0d0a8" />
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a7a5a" />
+      <stop offset="100%" stop-color="#b5a470" />
+    </linearGradient>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+
+  
+  <g stroke="#c4a85a" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <path d="M0,200 Q80,180 160,220 Q200,280 180,400 Q160,520 200,620 Q240,700 200,800 Q160,900 120,950 L0,1024 Z" fill="#7dafc4" opacity="0.85" />
+  <path d="M0,200 Q80,180 160,220 Q200,280 180,400 Q160,520 200,620 Q240,700 200,800 Q160,900 120,950 L0,1024 Z" fill="none" stroke="#5a8fa8" stroke-width="1.5" opacity="0.5" />
+
+  
+  <path d="M200,950 Q400,980 600,1024 L0,1024 L0,950 Z" fill="#7dafc4" opacity="0.75" />
+  <path d="M200,950 Q400,980 600,960 Q700,970 800,1024 L600,1024 Q400,980 200,950 Z" fill="#5a8fa8" opacity="0.4" />
+
+  
+  <g stroke="#4a7a95" stroke-width="1" fill="none" opacity="0.4">
+    <path d="M20,300 Q50,290 80,300 Q110,310 140,300" />
+    <path d="M20,340 Q50,330 80,340 Q110,350 140,340" />
+    <path d="M20,380 Q50,370 80,380 Q110,390 140,380" />
+    <path d="M20,420 Q50,410 80,420 Q110,430 140,420" />
+    <path d="M20,460 Q50,450 80,460 Q110,470 140,460" />
+    <path d="M20,500 Q50,490 80,500 Q110,510 140,500" />
+    <path d="M20,540 Q50,530 80,540 Q110,550 140,540" />
+    <path d="M20,580 Q50,570 80,580 Q110,590 140,580" />
+    <path d="M20,620 Q50,610 80,620 Q110,630 140,620" />
+    <path d="M20,660 Q50,650 80,660 Q110,670 140,660" />
+    <path d="M20,700 Q50,690 80,700 Q110,710 140,700" />
+    <path d="M20,740 Q50,730 80,740 Q110,750 140,740" />
+    <path d="M20,780 Q50,770 80,780 Q110,790 140,780" />
+    <path d="M20,820 Q50,810 80,820 Q110,830 140,820" />
+    <path d="M20,860 Q50,850 80,860 Q110,870 140,860" />
+    <path d="M300,960 Q340,950 380,960 Q420,970 460,960" />
+    <path d="M300,985 Q340,975 380,985 Q420,995 460,985" />
+  </g>
+
+  
+  <path d="M180,210 Q250,190 340,195 Q420,200 500,185 Q580,170 660,180 Q740,190 800,200 Q860,210 900,230 Q940,250 960,290 Q975,330 960,370 Q945,410 920,440 Q895,470 870,500 Q845,530 850,570 Q855,610 840,640 Q820,680 790,710 Q760,740 720,760 Q680,780 640,790 Q600,800 570,820 Q540,840 510,860 Q480,880 460,910 Q440,940 420,960 Q400,980 380,990 Q360,1000 330,995 Q300,990 280,975 Q260,960 250,940 Q240,920 230,900 Q215,870 200,840 Q185,800 185,760 Q185,720 195,680 Q205,640 200,600 Q195,560 185,530 Q175,500 170,460 Q165,420 170,380 Q175,340 175,300 Q175,260 180,210 Z" fill="#c9b98a" />
+  <path d="M180,210 Q250,190 340,195 Q420,200 500,185 Q580,170 660,180 Q740,190 800,200 Q860,210 900,230 Q940,250 960,290 Q975,330 960,370 Q945,410 920,440 Q895,470 870,500 Q845,530 850,570 Q855,610 840,640 Q820,680 790,710 Q760,740 720,760 Q680,780 640,790 Q600,800 570,820 Q540,840 510,860 Q480,880 460,910 Q440,940 420,960 Q400,980 380,990 Q360,1000 330,995 Q300,990 280,975 Q260,960 250,940 Q240,920 230,900 Q215,870 200,840 Q185,800 185,760 Q185,720 195,680 Q205,640 200,600 Q195,560 185,530 Q175,500 170,460 Q165,420 170,380 Q175,340 175,300 Q175,260 180,210 Z" fill="none" stroke="#8a7040" stroke-width="2.5" />
+
+  
+  <path d="M180,210 Q250,190 340,195 Q420,200 500,185 Q580,170 660,180 Q740,190 800,200 Q860,210 900,230" fill="none" stroke="#8a7040" stroke-width="3.5" stroke-dasharray="8,4" opacity="0.6" />
+  <path d="M900,230 Q940,250 960,290 Q975,330 960,370" fill="none" stroke="#8a7040" stroke-width="3.5" stroke-dasharray="8,4" opacity="0.6" />
+
+  
+  <g opacity="0.5">
+    <rect x="280" y="400" width="60" height="30" rx="3" fill="#9aab60" stroke="#7a8b40" stroke-width="0.8" />
+    <rect x="350" y="390" width="55" height="28" rx="3" fill="#a8b870" stroke="#7a8b40" stroke-width="0.8" />
+    <rect x="285" y="438" width="58" height="30" rx="3" fill="#90a058" stroke="#7a8b40" stroke-width="0.8" />
+    <rect x="352" y="425" width="52" height="30" rx="3" fill="#9aab60" stroke="#7a8b40" stroke-width="0.8" />
+    <rect x="410" y="382" width="50" height="28" rx="3" fill="#a8b870" stroke="#7a8b40" stroke-width="0.8" />
+    <rect x="412" y="416" width="48" height="28" rx="3" fill="#9aab60" stroke="#7a8b40" stroke-width="0.8" />
+    <rect x="280" y="474" width="55" height="28" rx="3" fill="#a0b065" stroke="#7a8b40" stroke-width="0.8" />
+    <rect x="343" y="462" width="55" height="28" rx="3" fill="#9aab60" stroke="#7a8b40" stroke-width="0.8" />
+    <rect x="404" y="450" width="50" height="28" rx="3" fill="#a8b870" stroke="#7a8b40" stroke-width="0.8" />
+  </g>
+
+  
+  <g fill="#8a7a5a" opacity="0.85">
+    <polygon points="890,220 920,170 950,220" />
+    <polygon points="910,225 945,168 978,225" />
+    <polygon points="930,235 968,175 1002,235" />
+    <polygon points="875,235 905,182 935,235" />
+    <polygon points="895,280 930,225 962,280" />
+    <polygon points="915,290 955,230 990,290" />
+    <polygon points="935,300 975,238 1012,300" />
+    <polygon points="870,290 902,238 934,290" />
+    <polygon points="900,340 935,285 968,340" />
+    <polygon points="920,350 958,292 994,350" />
+    <polygon points="880,350 914,295 948,350" />
+    <polygon points="905,400 942,342 978,400" />
+    <polygon points="925,410 962,352 998,410" />
+    <polygon points="885,410 920,354 955,410" />
+  </g>
+  
+  <g fill="#e8e0cc" opacity="0.6">
+    <polygon points="920,170 932,185 908,185" />
+    <polygon points="945,168 958,183 932,183" />
+    <polygon points="968,175 982,190 956,190" />
+    <polygon points="905,182 918,197 892,197" />
+    <polygon points="930,225 943,240 917,240" />
+  </g>
+
+  
+  <path d="M700,240 Q680,280 660,320 Q640,360 600,390 Q560,420 520,440 Q480,455 440,460 Q400,462 360,468 Q320,474 290,490 Q270,500 255,520 Q240,542 235,570 Q232,595 235,615" fill="none" stroke="#5a8fa8" stroke-width="3.5" stroke-linecap="round" />
+  <path d="M235,615 Q230,640 220,660 Q210,680 205,710" fill="none" stroke="#5a8fa8" stroke-width="3" stroke-linecap="round" />
+
+  
+  <path d="M820,280 Q800,310 780,340 Q760,370 740,400 Q720,430 700,460 Q680,490 660,520 Q640,550 620,580 Q600,610 580,640 Q560,670 545,700" fill="none" stroke="#5a8fa8" stroke-width="2.5" stroke-linecap="round" />
+
+  
+  <text x="430" y="445" font-family="Georgia, serif" font-size="14" fill="#2a5a78" opacity="0.85" transform="rotate(-10,430,445)">영산강 Yeongsan R.</text>
+  <text x="670" y="455" font-family="Georgia, serif" font-size="13" fill="#2a5a78" opacity="0.85" transform="rotate(-60,670,455)">Seomjin R.</text>
+
+  
+  
+  <path d="M195,750 Q220,740 250,748 Q268,755 270,770 Q272,785 255,795 Q235,805 215,800 Q195,794 190,780 Q186,765 195,750 Z" fill="#c0aa7a" stroke="#8a7040" stroke-width="1.5" />
+  
+  <ellipse cx="310" cy="890" rx="30" ry="18" fill="#c0aa7a" stroke="#8a7040" stroke-width="1.2" />
+  <ellipse cx="360" cy="910" rx="18" ry="12" fill="#c0aa7a" stroke="#8a7040" stroke-width="1" />
+  <ellipse cx="270" cy="920" rx="14" ry="9" fill="#c0aa7a" stroke="#8a7040" stroke-width="1" />
+  
+  <ellipse cx="220" cy="870" rx="12" ry="7" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="240" cy="910" rx="10" ry="6" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="185" cy="840" rx="8" ry="5" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="150" cy="820" rx="10" ry="6" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="120" cy="860" rx="9" ry="5" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="100" cy="900" rx="12" ry="7" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="130" cy="940" rx="8" ry="5" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="170" cy="960" rx="11" ry="6" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="400" cy="940" rx="15" ry="9" fill="#c0aa7a" stroke="#8a7040" stroke-width="1" />
+  <ellipse cx="440" cy="955" rx="12" ry="7" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.8" />
+  <ellipse cx="75" cy="780" rx="7" ry="4" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.7" />
+  <ellipse cx="55" cy="820" rx="9" ry="5" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.7" />
+  <ellipse cx="50" cy="870" rx="8" ry="5" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.7" />
+  <ellipse cx="40" cy="920" rx="10" ry="6" fill="#c0aa7a" stroke="#8a7040" stroke-width="0.7" />
+
+  
+  
+  <circle cx="210" cy="720" r="7" fill="#8a3020" stroke="#f2e8cc" stroke-width="1.5" />
+  <text x="222" y="724" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#8a3020">Mokpo</text>
+  
+  <rect x="288" y="345" width="12" height="12" fill="#8a3020" stroke="#f2e8cc" stroke-width="1.5" transform="rotate(45,294,351)" />
+  <text x="308" y="358" font-family="Georgia, serif" font-size="15" fill="#5a2010">Muan ★</text>
+  
+  <circle cx="720" cy="740" r="6" fill="#8a3020" stroke="#f2e8cc" stroke-width="1.5" />
+  <text x="732" y="744" font-family="Georgia, serif" font-size="15" fill="#8a3020">Yeosu</text>
+  
+  <circle cx="790" cy="680" r="5" fill="#5a2010" stroke="#f2e8cc" stroke-width="1.2" />
+  <text x="800" y="684" font-family="Georgia, serif" font-size="13" fill="#5a2010">Suncheon</text>
+  
+  <text x="650" y="172" font-family="Georgia, serif" font-size="13" fill="#5a5050" font-style="italic" opacity="0.75">Gwangju ↑</text>
+
+  
+  <text x="48" y="480" font-family="Georgia, serif" font-size="18" fill="#2a5a78" font-style="italic" transform="rotate(-90,48,480)" text-anchor="middle" opacity="0.85">Yellow Sea (서해)</text>
+  <text x="300" y="1010" font-family="Georgia, serif" font-size="16" fill="#2a5a78" font-style="italic" opacity="0.85">Korea Strait</text>
+
+  
+  <g transform="translate(1050,380)" opacity="0.9">
+    
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#8a7040" stroke-width="1.5" opacity="0.5" />
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#8a7040" stroke-width="0.5" opacity="0.4" />
+    
+    
+    <polygon points="0,-65 -10,-30 0,-40 10,-30" fill="#8a3020" />
+    
+    <polygon points="0,65 -10,30 0,40 10,30" fill="#c9b98a" stroke="#8a7040" stroke-width="0.5" />
+    
+    <polygon points="65,0 30,-10 40,0 30,10" fill="#c9b98a" stroke="#8a7040" stroke-width="0.5" />
+    
+    <polygon points="-65,0 -30,-10 -40,0 -30,10" fill="#c9b98a" stroke="#8a7040" stroke-width="0.5" />
+    
+    <polygon points="0,-65 -5,-50 0,-55 5,-50" fill="#8a3020" opacity="0.4" transform="rotate(45)" />
+    <polygon points="0,-65 -5,-50 0,-55 5,-50" fill="#8a3020" opacity="0.4" transform="rotate(90)" />
+    <polygon points="0,-65 -5,-50 0,-55 5,-50" fill="#8a3020" opacity="0.4" transform="rotate(135)" />
+    <polygon points="0,-65 -5,-50 0,-55 5,-50" fill="#8a3020" opacity="0.4" transform="rotate(180)" />
+    <polygon points="0,-65 -5,-50 0,-55 5,-50" fill="#8a3020" opacity="0.4" transform="rotate(225)" />
+    <polygon points="0,-65 -5,-50 0,-55 5,-50" fill="#8a3020" opacity="0.4" transform="rotate(270)" />
+    <polygon points="0,-65 -5,-50 0,-55 5,-50" fill="#8a3020" opacity="0.4" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="5" fill="#8a7040" />
+    <circle cx="0" cy="0" r="2.5" fill="#f2e8cc" />
+    
+    <text x="0" y="-75" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#8a3020" text-anchor="middle">N</text>
+  </g>
+
+  
+  <rect x="20" y="20" width="1496" height="984" rx="6" fill="none" stroke="#8a7040" stroke-width="3" />
+  <rect x="28" y="28" width="1480" height="968" rx="4" fill="none" stroke="#8a7040" stroke-width="1" opacity="0.6" />
+  
+  <g stroke="#8a7040" stroke-width="1.5" fill="none" opacity="0.7">
+    <path d="M20,60 L20,20 L60,20" />
+    <path d="M1476,20 L1516,20 L1516,60" />
+    <path d="M20,964 L20,1004 L60,1004" />
+    <path d="M1476,1004 L1516,1004 L1516,964" />
+  </g>
+
+  
+  <rect x="1020" y="30" width="496" height="320" rx="4" fill="#2a3a28" opacity="0.88" />
+  <rect x="1026" y="36" width="484" height="308" rx="3" fill="none" stroke="#c9a84a" stroke-width="1.5" />
+
+  
+  <text x="1268" y="110" font-family="Georgia, serif" font-size="22" fill="#c9a84a" text-anchor="middle" letter-spacing="4" opacity="0.9">ATLAS OF KOREA</text>
+  <line x1="1060" y1="122" x2="1476" y2="122" stroke="#c9a84a" stroke-width="1" opacity="0.5" />
+  <text x="1268" y="175" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#f2e8cc" text-anchor="middle" letter-spacing="1">South Jeolla</text>
+  <text x="1268" y="225" font-family="Georgia, serif" font-size="38" font-weight="bold" fill="#f2e8cc" text-anchor="middle" letter-spacing="1">Province</text>
+  <text x="1268" y="268" font-family="Georgia, serif" font-size="22" fill="#c9b98a" text-anchor="middle" font-style="italic">전라남도  ·  Jeollanam</text>
+  <line x1="1060" y1="285" x2="1476" y2="285" stroke="#c9a84a" stroke-width="1" opacity="0.5" />
+  <text x="1268" y="318" font-family="Georgia, serif" font-size="16" fill="#a08860" text-anchor="middle" letter-spacing="2">SOUTH-WESTERN KOREA</text>
+
+  
+  <rect x="1020" y="365" width="496" height="165" rx="4" fill="#3a2a1a" opacity="0.82" />
+  <rect x="1026" y="371" width="484" height="153" rx="3" fill="none" stroke="#c9a84a" stroke-width="1" />
+  <text x="1268" y="400" font-family="Georgia, serif" font-size="13" fill="#c9a84a" text-anchor="middle" letter-spacing="3" opacity="0.85">KEY FACTS</text>
+  <line x1="1040" y1="410" x2="1496" y2="410" stroke="#c9a84a" stroke-width="0.5" opacity="0.4" />
+  <text x="1060" y="440" font-family="Georgia, serif" font-size="15" fill="#d4c090">Area:</text>
+  <text x="1160" y="440" font-family="Georgia, serif" font-size="15" fill="#f2e8cc">12,313 km²</text>
+  <text x="1060" y="470" font-family="Georgia, serif" font-size="15" fill="#d4c090">Population:</text>
+  <text x="1180" y="470" font-family="Georgia, serif" font-size="15" fill="#f2e8cc">~1.78 million</text>
+  <text x="1060" y="500" font-family="Georgia, serif" font-size="15" fill="#d4c090">Capital:</text>
+  <text x="1160" y="500" font-family="Georgia, serif" font-size="15" fill="#f2e8cc">Muan (Namak)</text>
+  <text x="1060" y="500" font-family="Georgia, serif" font-size="15" fill="#d4c090" />
+  <text x="1060" y="500" font-family="Georgia, serif" font-size="15" fill="#d4c090" />
+  <text x="1060" y="528" font-family="Georgia, serif" font-size="15" fill="#d4c090">Region:</text>
+  <text x="1160" y="528" font-family="Georgia, serif" font-size="15" fill="#f2e8cc">Honam (호남)</text>
+
+  
+  <text x="490" y="560" font-family="Georgia, serif" font-size="28" fill="#5a4020" opacity="0.25" font-style="italic" text-anchor="middle" transform="rotate(-5,490,560)">Honam</text>
+
+  
+  <g transform="translate(1040,900)">
+    <rect x="0" y="0" width="80" height="10" fill="#5a4020" />
+    <rect x="80" y="0" width="80" height="10" fill="#f2e8cc" stroke="#5a4020" stroke-width="1" />
+    <rect x="160" y="0" width="80" height="10" fill="#5a4020" />
+    <line x1="0" y1="-4" x2="0" y2="14" stroke="#5a4020" stroke-width="1.5" />
+    <line x1="240" y1="-4" x2="240" y2="14" stroke="#5a4020" stroke-width="1.5" />
+    <line x1="120" y1="-2" x2="120" y2="12" stroke="#5a4020" stroke-width="1" />
+    <text x="0" y="28" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">0</text>
+    <text x="120" y="28" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">50</text>
+    <text x="240" y="28" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">100 km</text>
+  </g>
+
+  
+  <text x="950" y="260" font-family="Georgia, serif" font-size="13" fill="#5a4020" font-style="italic" opacity="0.8" transform="rotate(-75,950,260)">Sobaek Range</text>
+
+  
+  <g transform="translate(1350,820)" opacity="0.5">
+    <ellipse cx="0" cy="0" rx="8" ry="22" fill="#c9b98a" stroke="#8a7040" stroke-width="1" transform="rotate(-20)" />
+    <ellipse cx="30" cy="-10" rx="8" ry="22" fill="#c9b98a" stroke="#8a7040" stroke-width="1" transform="rotate(10,30,-10)" />
+    <ellipse cx="60" cy="5" rx="8" ry="22" fill="#c9b98a" stroke="#8a7040" stroke-width="1" transform="rotate(-15,60,5)" />
+    <ellipse cx="90" cy="-8" rx="8" ry="22" fill="#c9b98a" stroke="#8a7040" stroke-width="1" transform="rotate(5,90,-8)" />
+    <ellipse cx="120" cy="2" rx="8" ry="22" fill="#c9b98a" stroke="#8a7040" stroke-width="1" transform="rotate(-25,120,2)" />
+    
+    <line x1="0" y1="22" x2="0" y2="50" stroke="#8a7040" stroke-width="1.5" transform="rotate(-20)" />
+    <line x1="30" y1="22" x2="30" y2="50" stroke="#8a7040" stroke-width="1.5" transform="rotate(10,30,0)" />
+    <line x1="60" y1="22" x2="60" y2="50" stroke="#8a7040" stroke-width="1.5" transform="rotate(-15,60,0)" />
+    <line x1="90" y1="22" x2="90" y2="50" stroke="#8a7040" stroke-width="1.5" />
+    <line x1="120" y1="22" x2="120" y2="50" stroke="#8a7040" stroke-width="1.5" transform="rotate(-25,120,0)" />
+    <path d="M-15,70 Q60,55 135,70" fill="none" stroke="#8a7040" stroke-width="2" />
+  </g>
+
+  
+  <text x="570" y="178" font-family="Georgia, serif" font-size="13" fill="#5a5050" opacity="0.65" text-anchor="middle" font-style="italic">← North Jeolla Province →</text>
+</svg>

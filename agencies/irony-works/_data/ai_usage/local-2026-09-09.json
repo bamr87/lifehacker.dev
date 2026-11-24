@@ -1,0 +1,19 @@
+{
+  "run_id": "local-2026-09-09",
+  "workflow": "local",
+  "calls": [
+    {
+      "at": "2026-09-09T18:15:22.482Z",
+      "label": "paradox/epimenides-gate-pr",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 4495,
+      "cache_read_tokens": 0,
+      "cache_creation_tokens": 35524,
+      "cost_usd": 0.280578,
+      "billed": false,
+      "duration_ms": 95347
+    }
+  ]
+}

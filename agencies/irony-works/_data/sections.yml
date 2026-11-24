@@ -1,0 +1,63 @@
+# The vault's branches, single-sourced for the homepage, cards, and section
+# pages. Colours are the same hexes configured in vault/.obsidian/graph.json,
+# so the site and the Obsidian graph read as one system.
+forms:
+  label: Forms
+  icon: bi-diagram-2
+  color: "#e5484d"
+  url: /forms/
+  blurb: The taxonomy — the trunk everything else branches from.
+works:
+  label: Works
+  icon: bi-book
+  color: "#46a758"
+  url: /works/
+  blurb: Texts that use irony as a structural instrument.
+figures:
+  label: Figures
+  icon: bi-person-bounding-box
+  color: "#0090ff"
+  url: /figures/
+  blurb: Ironists whose lives enacted what they described.
+instances:
+  label: Instances
+  icon: bi-clock-history
+  color: "#f76b15"
+  url: /instances/
+  blurb: The specimens — history and the present, dated and sourced.
+paradoxes:
+  label: Paradoxes
+  icon: bi-infinity
+  color: "#12a594"
+  url: /paradoxes/
+  blurb: Premises accepted, conclusions refused — old, new, debated, hypothetical.
+mirrors:
+  label: Mirrors
+  icon: bi-arrow-repeat
+  color: "#8e4ec6"
+  url: /mirrors/
+  blurb: This machine's own ironies. No self-exemption.
+futures:
+  label: Futures
+  icon: bi-hourglass-split
+  color: "#ffb224"
+  url: /futures/
+  blurb: Expectations on record, reversals pending.
+nursery:
+  label: Nursery
+  icon: bi-flower1
+  color: "#7ac74f"
+  url: /nursery/
+  blurb: Gate-passed drafts awaiting a human merge.
+compost:
+  label: Compost
+  icon: bi-recycle
+  color: "#8b5a2b"
+  url: /compost/
+  blurb: The merely unfortunate and the merely puzzling, kept with their verdicts.
+root:
+  label: Vault
+  icon: bi-signpost-split
+  color: "#6b7280"
+  url: /entries/
+  blurb: The vault's own front matter.

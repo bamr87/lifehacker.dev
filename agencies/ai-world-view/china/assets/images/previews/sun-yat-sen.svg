@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Sun Yat-sen — Revolutionary Leader and Founding Father of the Republic of China</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="mapGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#a89060" stop-opacity="0.1" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#b8a87a" stroke-width="0.4" stroke-opacity="0.5" />
+    </pattern>
+    <filter id="tex">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComponentTransfer in="blend">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8b7040" stroke-width="3" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8b7040" stroke-width="1" />
+
+  
+  <g opacity="0.55">
+    
+    <path d="M 680,180 L 720,160 L 780,155 L 850,165 L 920,175 L 980,160 L 1040,170 L 1080,190 L 1100,220 L 1090,260 L 1110,290 L 1100,330 L 1070,360 L 1050,400 L 1060,440 L 1040,470 L 1000,500 L 960,520 L 920,560 L 880,590 L 840,610 L 800,630 L 760,620 L 720,600 L 690,570 L 660,540 L 640,510 L 620,480 L 610,450 L 600,410 L 610,370 L 600,330 L 610,290 L 630,250 L 650,210 Z" fill="#c4a96a" stroke="#8b7040" stroke-width="1.5" />
+    
+    <ellipse cx="1005" cy="580" rx="20" ry="35" transform="rotate(-20,1005,580)" fill="#c4a96a" stroke="#8b7040" stroke-width="1" />
+    
+    <path d="M 1060,230 L 1090,220 L 1110,250 L 1100,290 L 1075,300 L 1060,270 Z" fill="#c4a96a" stroke="#8b7040" stroke-width="1" />
+    
+    <path d="M 1120,240 L 1150,220 L 1180,230 L 1185,260 L 1160,280 L 1130,270 Z" fill="#c4a96a" stroke="#8b7040" stroke-width="1" />
+    <ellipse cx="1155" cy="310" rx="12" ry="30" transform="rotate(30,1155,310)" fill="#c4a96a" stroke="#8b7040" stroke-width="1" />
+    
+    <path d="M 810,545 L 850,535 L 890,540 L 910,560 L 900,590 L 870,605 L 840,605 L 810,585 L 800,565 Z" fill="#b8894a" stroke="#6b5020" stroke-width="1.5" opacity="0.9" />
+    
+    <ellipse cx="280" cy="520" rx="25" ry="12" fill="#c4a96a" stroke="#8b7040" stroke-width="1" opacity="0.7" />
+    <ellipse cx="320" cy="525" rx="15" ry="8" fill="#c4a96a" stroke="#8b7040" stroke-width="1" opacity="0.7" />
+  </g>
+
+  
+  <g stroke="#8b7040" stroke-width="0.6" stroke-opacity="0.3" fill="none">
+    <ellipse cx="768" cy="512" rx="300" ry="400" />
+    <ellipse cx="768" cy="512" rx="500" ry="400" />
+    <ellipse cx="768" cy="512" rx="700" ry="400" />
+    <line x1="768" y1="112" x2="768" y2="912" />
+    <line x1="68" y1="512" x2="1468" y2="512" />
+  </g>
+
+  
+  <g transform="translate(1360, 820)">
+    <circle cx="0" cy="0" r="60" fill="#e8dfc8" stroke="#8b7040" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#8b7040" stroke-width="0.7" />
+    
+    <polygon points="0,-48 -8,-20 0,-28 8,-20" fill="#6b5020" />
+    <polygon points="0,-28 -8,-20 0,48 8,-20" fill="#b8a88a" />
+    
+    <polygon points="48,0 20,-8 28,0 20,8" fill="#8b7040" />
+    <polygon points="-48,0 -20,-8 -28,0 -20,8" fill="#8b7040" />
+    <polygon points="0,48 -8,20 0,28 8,20" fill="#8b7040" />
+    <circle cx="0" cy="0" r="6" fill="#6b5020" />
+    
+    <text x="0" y="-55" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#6b5020" font-weight="bold">N</text>
+    <text x="55" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#6b5020">E</text>
+    <text x="-55" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#6b5020">W</text>
+    <text x="0" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#6b5020">S</text>
+  </g>
+
+  
+  <g transform="translate(350, 200)">
+    
+    <path d="M -90,380 L -110,320 L -100,260 L -80,240 L -40,250 L 0,245 L 40,250 L 80,240 L 100,260 L 110,320 L 90,380 Z" fill="#5a4530" opacity="0.85" />
+    
+    <path d="M -30,248 L 0,240 L 30,248 L 25,270 L 0,265 L -25,270 Z" fill="#6b5540" opacity="0.85" />
+    
+    <rect x="-18" y="210" width="36" height="45" rx="8" fill="#c8a878" opacity="0.9" />
+    
+    <ellipse cx="0" cy="165" rx="70" ry="80" fill="#c8a878" opacity="0.9" />
+    
+    <path d="M -70,145 Q -72,90 -40,70 Q 0,50 40,70 Q 72,90 70,145 Q 50,120 0,115 Q -50,120 -70,145 Z" fill="#2a1a0a" opacity="0.9" />
+    
+    <ellipse cx="-68" cy="175" rx="10" ry="15" fill="#c0a070" opacity="0.9" />
+    
+    <ellipse cx="68" cy="175" rx="10" ry="15" fill="#c0a070" opacity="0.9" />
+    
+    <ellipse cx="-22" cy="165" rx="11" ry="7" fill="#1a1008" />
+    <ellipse cx="22" cy="165" rx="11" ry="7" fill="#1a1008" />
+    <ellipse cx="-21" cy="164" rx="4" ry="4" fill="#3a2810" />
+    <ellipse cx="23" cy="164" rx="4" ry="4" fill="#3a2810" />
+    
+    <path d="M -34,153 Q -22,148 -10,153" fill="none" stroke="#1a1008" stroke-width="3" stroke-linecap="round" />
+    <path d="M 10,153 Q 22,148 34,153" fill="none" stroke="#1a1008" stroke-width="3" stroke-linecap="round" />
+    
+    <path d="M 0,175 Q -8,192 -12,200 Q 0,205 12,200 Q 8,192 0,175" fill="#b89060" opacity="0.7" />
+    
+    <path d="M -18,218 Q 0,228 18,218" fill="none" stroke="#8b5a3a" stroke-width="2.5" stroke-linecap="round" />
+    
+    <path d="M -20,210 Q -8,215 0,212 Q 8,215 20,210" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+
+  
+  <path d="M 860,575 Q 650,480 320,522" fill="none" stroke="#8b7040" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.6" />
+  
+  <circle cx="860" cy="575" r="5" fill="#8b4020" opacity="0.8" />
+  <circle cx="320" cy="522" r="5" fill="#8b4020" opacity="0.8" />
+  
+  <text x="870" y="570" font-family="Georgia, serif" font-size="14" fill="#5a3010" opacity="0.8">Guangdong</text>
+  <text x="250" y="510" font-family="Georgia, serif" font-size="14" fill="#5a3010" opacity="0.8">Hawaiʻi</text>
+
+  
+  <rect x="1180" y="180" width="280" height="300" rx="4" fill="#c8b98a" fill-opacity="0.5" stroke="#8b7040" stroke-width="1.5" />
+  <text x="1320" y="240" text-anchor="middle" font-family="serif" font-size="72" fill="#6b5020" opacity="0.75">孫</text>
+  <text x="1320" y="330" text-anchor="middle" font-family="serif" font-size="72" fill="#6b5020" opacity="0.75">中</text>
+  <text x="1320" y="420" text-anchor="middle" font-family="serif" font-size="72" fill="#6b5020" opacity="0.75">山</text>
+
+  
+  <g transform="translate(1180, 520)">
+    <rect width="280" height="140" rx="4" fill="#c8b98a" fill-opacity="0.5" stroke="#8b7040" stroke-width="1" />
+    <text x="140" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a3010" font-style="italic">Three Principles of the People</text>
+    <line x1="20" y1="38" x2="260" y2="38" stroke="#8b7040" stroke-width="0.8" />
+    <text x="140" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#6b4010">民族 Nationalism</text>
+    <text x="140" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#6b4010">民權 Democracy</text>
+    <text x="140" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#6b4010">民生 Social Welfare</text>
+  </g>
+
+  
+  <g transform="translate(1260, 700)">
+    <circle cx="0" cy="0" r="55" fill="#8b4020" opacity="0.15" stroke="#8b4020" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#8b4020" stroke-width="0.8" />
+    <text x="0" y="-14" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#6b2010">1911</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#6b2010">XINHAI</text>
+    <text x="0" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#6b2010">REVOLUTION</text>
+  </g>
+
+  
+  <g transform="translate(180, 760)" opacity="0.6">
+    <circle cx="0" cy="0" r="50" fill="#c8b98a" stroke="#8b7040" stroke-width="1.5" />
+    
+    <g stroke="#8b7040" stroke-width="1.2">
+      <line x1="0" y1="-50" x2="0" y2="-35" />
+      <line x1="35" y1="-35" x2="25" y2="-25" />
+      <line x1="50" y1="0" x2="35" y2="0" />
+      <line x1="35" y1="35" x2="25" y2="25" />
+      <line x1="0" y1="50" x2="0" y2="35" />
+      <line x1="-35" y1="35" x2="-25" y2="25" />
+      <line x1="-50" y1="0" x2="-35" y2="0" />
+      <line x1="-35" y1="-35" x2="-25" y2="-25" />
+      
+      <line x1="18" y1="-47" x2="13" y2="-33" />
+      <line x1="47" y1="-18" x2="33" y2="-13" />
+      <line x1="47" y1="18" x2="33" y2="13" />
+      <line x1="18" y1="47" x2="13" y2="33" />
+      <line x1="-18" y1="47" x2="-13" y2="33" />
+      <line x1="-47" y1="18" x2="-33" y2="13" />
+      <line x1="-47" y1="-18" x2="-33" y2="-13" />
+      <line x1="-18" y1="-47" x2="-13" y2="-33" />
+    </g>
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#8b7040" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="8" fill="#8b7040" />
+  </g>
+
+  
+  <text x="768" y="870" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="86" font-weight="bold" fill="#3a2408" letter-spacing="6">SUN YAT-SEN</text>
+  <text x="768" y="930" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#6b5020" letter-spacing="3">孫中山  ·  1866 – 1925</text>
+  <text x="768" y="968" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#8b7040" letter-spacing="2" font-style="italic">Founding Father of the Republic of China</text>
+
+  
+  <line x1="160" y1="848" x2="540" y2="848" stroke="#8b7040" stroke-width="1" />
+  <line x1="996" y1="848" x2="1376" y2="848" stroke="#8b7040" stroke-width="1" />
+  <circle cx="548" cy="848" r="4" fill="#8b7040" />
+  <circle cx="988" cy="848" r="4" fill="#8b7040" />
+
+  
+  <text x="430" y="290" font-family="Georgia, serif" font-size="13" fill="#5a3010" opacity="0.7">Born: Cuiheng Village, Guangdong, 1866</text>
+  <text x="430" y="312" font-family="Georgia, serif" font-size="13" fill="#5a3010" opacity="0.7">Physician · Statesman · Revolutionary</text>
+
+  
+  <rect width="1536" height="1024" fill="#c8a84820" filter="url(#tex)" opacity="0.15" />
+</svg>

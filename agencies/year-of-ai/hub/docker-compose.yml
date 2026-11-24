@@ -1,0 +1,36 @@
+# =============================================================================
+# Local development — year-of-ai.github.io (remote_theme consumer)
+# =============================================================================
+# Serves the site at http://localhost:4000 with live reload. No theme files are
+# vendored: the zer0-mistakes theme is fetched over the network via remote_theme
+# on each build, so set JEKYLL_GITHUB_TOKEN to avoid GitHub API rate limits.
+#
+#   export JEKYLL_GITHUB_TOKEN=$(gh auth token)   # optional but recommended
+#   docker compose up                             # first run installs gems
+#   docker compose down -v                        # clean up
+# =============================================================================
+services:
+  jekyll:
+    image: ruby:3.3
+    platform: linux/amd64
+    working_dir: /site
+    command: >
+      sh -c "bundle check || bundle install &&
+             bundle exec jekyll serve --watch --livereload
+             --config '_config.yml,_config_dev.yml'
+             --host 0.0.0.0 --port 4000"
+    environment:
+      - JEKYLL_ENV=development
+      - JEKYLL_GITHUB_TOKEN=${JEKYLL_GITHUB_TOKEN:-}
+      - PAGES_REPO_NWO=year-of-ai/year-of-ai.github.io
+    volumes:
+      - .:/site
+      - bundle_cache:/usr/local/bundle
+    ports:
+      - "4000:4000"
+      - "35729:35729" # LiveReload
+    stdin_open: true
+    tty: true
+
+volumes:
+  bundle_cache:

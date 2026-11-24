@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>K-pop Industry and Global Music Market — Atlas Banner</title>
+
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+    <linearGradient id="koreaPulse" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#96281b" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComponentTransfer in="blended">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+    <pattern id="gridLines" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#b8a882" stroke-width="0.4" opacity="0.5" />
+    </pattern>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#c8b88a" stroke-width="0.6" opacity="0.4" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridLines)" />
+
+  
+  
+  <rect x="60" y="60" width="1416" height="904" rx="4" fill="url(#oceanGrad)" opacity="0.55" />
+  
+  <line x1="60" y1="292" x2="1476" y2="292" stroke="#8aaabb" stroke-width="0.8" opacity="0.6" />
+  <line x1="60" y1="512" x2="1476" y2="512" stroke="#8aaabb" stroke-width="0.8" opacity="0.6" />
+  <line x1="60" y1="732" x2="1476" y2="732" stroke="#8aaabb" stroke-width="0.8" opacity="0.6" />
+  
+  <line x1="384" y1="60" x2="384" y2="964" stroke="#8aaabb" stroke-width="0.8" opacity="0.6" />
+  <line x1="768" y1="60" x2="768" y2="964" stroke="#8aaabb" stroke-width="0.8" opacity="0.6" />
+  <line x1="1152" y1="60" x2="1152" y2="964" stroke="#8aaabb" stroke-width="0.8" opacity="0.6" />
+
+  
+
+  
+  <path d="M 90 120 L 340 100 L 390 130 L 420 180 L 400 240 L 380 300 L 340 360 L 300 400 L 260 450 L 220 500 L 200 560 L 180 600 L 150 620 L 120 610 L 100 570 L 90 500 L 80 400 L 75 300 L 80 200 Z" fill="#c8b878" stroke="#a09060" stroke-width="1.2" />
+  
+  <path d="M 200 620 L 230 640 L 240 680 L 220 700 L 200 690 L 180 660 Z" fill="#c8b878" stroke="#a09060" stroke-width="1" />
+  
+  <path d="M 240 700 L 300 690 L 360 710 L 390 760 L 400 840 L 370 900 L 320 940 L 270 950 L 230 920 L 200 860 L 195 790 L 210 740 Z" fill="#c8b878" stroke="#a09060" stroke-width="1.2" />
+
+  
+  <path d="M 680 100 L 780 95 L 830 110 L 850 140 L 840 180 L 800 210 L 760 230 L 720 240 L 690 220 L 670 190 L 660 160 L 665 130 Z" fill="#c8b878" stroke="#a09060" stroke-width="1.2" />
+  
+  <path d="M 720 95 L 740 70 L 760 75 L 780 95 Z" fill="#c8b878" stroke="#a09060" stroke-width="1" />
+
+  
+  <path d="M 660 250 L 720 240 L 800 250 L 850 300 L 860 380 L 850 460 L 820 560 L 780 640 L 740 700 L 700 730 L 660 720 L 630 680 L 610 600 L 600 520 L 605 420 L 620 340 L 640 280 Z" fill="#c8b878" stroke="#a09060" stroke-width="1.2" />
+
+  
+  <path d="M 840 200 L 900 210 L 940 250 L 950 300 L 920 340 L 880 360 L 850 340 L 840 300 L 830 250 Z" fill="#c8b878" stroke="#a09060" stroke-width="1" />
+
+  
+  <path d="M 840 100 L 1000 90 L 1100 100 L 1200 110 L 1280 130 L 1340 160 L 1380 200 L 1390 260 L 1360 320 L 1300 360 L 1240 380 L 1180 390 L 1120 400 L 1060 410 L 1000 420 L 950 400 L 900 380 L 860 340 L 840 300 L 830 250 L 830 180 Z" fill="#c8b878" stroke="#a09060" stroke-width="1.2" />
+  
+  <path d="M 950 400 L 1000 420 L 1020 480 L 1010 540 L 980 580 L 950 590 L 920 560 L 910 500 L 920 440 Z" fill="#c8b878" stroke="#a09060" stroke-width="1" />
+  
+  <path d="M 1100 400 L 1140 440 L 1150 500 L 1130 560 L 1100 580 L 1075 550 L 1070 480 L 1080 430 Z" fill="#c8b878" stroke="#a09060" stroke-width="1" />
+
+  
+  <path d="M 1200 620 L 1340 600 L 1430 620 L 1460 680 L 1450 760 L 1400 820 L 1320 850 L 1240 840 L 1190 800 L 1170 730 L 1180 660 Z" fill="#c8b878" stroke="#a09060" stroke-width="1.2" />
+
+  
+  <path d="M 1320 220 L 1340 210 L 1360 220 L 1365 250 L 1345 270 L 1325 255 Z" fill="#c8b878" stroke="#a09060" stroke-width="1" />
+
+  
+  <path d="M 1270 270 L 1290 260 L 1310 265 L 1318 285 L 1308 305 L 1285 310 L 1268 298 Z" fill="#c0392b" stroke="#7b1a12" stroke-width="1.5" />
+  
+  <circle cx="1293" cy="285" r="20" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.7" />
+  <circle cx="1293" cy="285" r="35" fill="none" stroke="#c0392b" stroke-width="1" opacity="0.5" />
+  <circle cx="1293" cy="285" r="52" fill="none" stroke="#c0392b" stroke-width="0.8" opacity="0.3" />
+
+  
+  
+  <g transform="translate(200,350)" opacity="0.85">
+    <circle cx="0" cy="0" r="14" fill="#c0392b" opacity="0.9" />
+    <text x="0" y="5" font-family="serif" font-size="16" fill="white" text-anchor="middle">♪</text>
+  </g>
+  
+  <g transform="translate(740,170)" opacity="0.85">
+    <circle cx="0" cy="0" r="14" fill="#c0392b" opacity="0.9" />
+    <text x="0" y="5" font-family="serif" font-size="16" fill="white" text-anchor="middle">♪</text>
+  </g>
+  
+  <g transform="translate(300,800)" opacity="0.85">
+    <circle cx="0" cy="0" r="14" fill="#c0392b" opacity="0.9" />
+    <text x="0" y="5" font-family="serif" font-size="16" fill="white" text-anchor="middle">♪</text>
+  </g>
+  
+  <g transform="translate(1110,500)" opacity="0.85">
+    <circle cx="0" cy="0" r="14" fill="#c0392b" opacity="0.9" />
+    <text x="0" y="5" font-family="serif" font-size="16" fill="white" text-anchor="middle">♪</text>
+  </g>
+  
+  <g transform="translate(1320,720)" opacity="0.85">
+    <circle cx="0" cy="0" r="14" fill="#c0392b" opacity="0.9" />
+    <text x="0" y="5" font-family="serif" font-size="16" fill="white" text-anchor="middle">♪</text>
+  </g>
+
+  
+  <line x1="1293" y1="285" x2="200" y2="350" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5" />
+  <line x1="1293" y1="285" x2="740" y2="170" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5" />
+  <line x1="1293" y1="285" x2="300" y2="800" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5" />
+  <line x1="1293" y1="285" x2="1110" y2="500" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5" />
+  <line x1="1293" y1="285" x2="1320" y2="720" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5" />
+
+  
+  <g transform="translate(1420, 860)">
+    
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#8a7850" stroke-width="1.2" opacity="0.7" />
+    <circle cx="0" cy="0" r="44" fill="#e2d5b0" opacity="0.8" stroke="#8a7850" stroke-width="0.8" />
+    
+    <polygon points="0,-44 6,-20 -6,-20" fill="#4a3820" opacity="0.8" />
+    <polygon points="0,44 6,20 -6,20" fill="#8a7850" opacity="0.7" />
+    <polygon points="44,0 20,6 20,-6" fill="#8a7850" opacity="0.7" />
+    <polygon points="-44,0 -20,6 -20,-6" fill="#8a7850" opacity="0.7" />
+    
+    <polygon points="0,-44 4,-22 -4,-22" fill="#8a7850" opacity="0.4" transform="rotate(45)" />
+    <polygon points="0,-44 4,-22 -4,-22" fill="#8a7850" opacity="0.4" transform="rotate(135)" />
+    <polygon points="0,-44 4,-22 -4,-22" fill="#8a7850" opacity="0.4" transform="rotate(225)" />
+    <polygon points="0,-44 4,-22 -4,-22" fill="#8a7850" opacity="0.4" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="5" fill="#4a3820" opacity="0.8" />
+    
+    <text x="0" y="-50" font-family="Georgia, serif" font-size="11" fill="#4a3820" text-anchor="middle" font-weight="bold">N</text>
+  </g>
+
+  
+  
+  <rect x="60" y="680" width="780" height="244" rx="3" fill="#e8dfc8" opacity="0.92" stroke="#a09060" stroke-width="1.5" />
+  
+  <line x1="85" y1="700" x2="815" y2="700" stroke="#8a7850" stroke-width="1.5" />
+  <line x1="85" y1="704" x2="815" y2="704" stroke="#8a7850" stroke-width="0.6" />
+
+  
+  <text x="100" y="730" font-family="Georgia, serif" font-size="15" fill="#7a6840" letter-spacing="3" font-style="italic">Culture &amp; Society · Global Music</text>
+
+  
+  <text x="100" y="788" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#2a1f0e" letter-spacing="1">K-pop Industry</text>
+  <text x="100" y="848" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#2a1f0e" letter-spacing="1">&amp; Global Music Market</text>
+
+  
+  <line x1="85" y1="870" x2="815" y2="870" stroke="#8a7850" stroke-width="0.6" />
+  <line x1="85" y1="874" x2="815" y2="874" stroke="#8a7850" stroke-width="1.5" />
+
+  
+  <text x="100" y="908" font-family="Georgia, serif" font-size="14" fill="#7a5040" letter-spacing="1.5">HYBE · SM Entertainment · JYP · YG</text>
+
+  
+  <g opacity="0.25" stroke="#5a4020" stroke-width="0.8">
+    <line x1="90" y1="500" x2="380" y2="500" />
+    <line x1="90" y1="510" x2="380" y2="510" />
+    <line x1="90" y1="520" x2="380" y2="520" />
+    <line x1="90" y1="530" x2="380" y2="530" />
+    <line x1="90" y1="540" x2="380" y2="540" />
+  </g>
+  
+  <g opacity="0.35" fill="#5a4020" font-family="serif" font-size="22">
+    <text x="110" y="526">♩</text>
+    <text x="150" y="516">♩</text>
+    <text x="192" y="530">♪</text>
+    <text x="232" y="520">♩</text>
+    <text x="272" y="512">♪</text>
+    <text x="312" y="526">♩</text>
+  </g>
+
+  
+  
+  <g transform="translate(1293,285)">
+    <circle cx="0" cy="0" r="8" fill="none" stroke="white" stroke-width="1.2" />
+    <path d="M -8,0 A 8,8 0 0,1 8,0 A 4,4 0 0,1 0,0 A 4,4 0 0,0 -8,0 Z" fill="white" opacity="0.8" />
+  </g>
+
+  
+  <rect x="60" y="60" width="1416" height="904" rx="4" fill="none" stroke="#8a7850" stroke-width="3" />
+  <rect x="68" y="68" width="1400" height="888" rx="2" fill="none" stroke="#8a7850" stroke-width="0.8" opacity="0.6" />
+
+  
+  <g stroke="#8a7850" stroke-width="1.5" fill="none" opacity="0.7">
+    
+    <path d="M 60,90 L 60,60 L 90,60" />
+    <path d="M 68,96 L 68,68 L 96,68" />
+    
+    <path d="M 1446,90 L 1446,60 L 1476,60" />
+    <path d="M 1440,96 L 1440,68 L 1468,68" />
+    
+    <path d="M 60,934 L 60,964 L 90,964" />
+    <path d="M 68,928 L 68,956 L 96,956" />
+    
+    <path d="M 1446,934 L 1446,964 L 1476,964" />
+    <path d="M 1440,928 L 1440,956 L 1468,956" />
+  </g>
+
+  
+  <rect x="1220" y="315" width="90" height="20" rx="2" fill="#e8dfc8" opacity="0.85" />
+  <text x="1265" y="329" font-family="Georgia, serif" font-size="11" fill="#4a1810" text-anchor="middle" font-weight="bold">KOREA</text>
+
+</svg>

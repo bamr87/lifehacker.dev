@@ -95,3 +95,13 @@ This constitution changes only through a numbered record in [docs/amendments/](a
 4. **Supersede** — a later amendment may replace an earlier one; mark the old record `superseded by NNNN`.
 
 Records are append-only history: fix a ratified rule with a new amendment, never by editing an old record. [0001](amendments/0001-ratify-constitution.md) ratifies this document.
+
+## 9. Agencies
+
+_(amendment [0004](amendments/0004-agencies.md))_
+
+1. **lifehacker.dev is the content source; zer0-CMS is the platform.** This repository holds the content of its sub-agencies. zer0-CMS manages, renders and publishes it. Neither keeps a second copy of the other's part.
+2. **An agency is a registered, self-contained tree.** Every agency site lives under `agencies/`, is listed in `_data/agencies.yml` with its source and its custody, and arrives or is refreshed only through `scripts/agencies/import.rb`.
+3. **One write side per site.** A site's custody is `home` (written here and nowhere else) or `mirror` (written at its source and refreshed here), never both.
+4. **Nothing under `agencies/` reaches the apex domain unreviewed.** `agencies` stays in `_config.yml` `exclude:`. Publishing an agency from this repository is its own change, with an ADR, merged by the maintainer.
+5. **The same merge gate, a voice of its own.** § 2 applies to every file under `agencies/`: no push to `main`, no secrets, a human merge. The apex site's brand and front-matter gates apply to `pages/` only; an agency keeps its own voice, and its own guide governs its tree.

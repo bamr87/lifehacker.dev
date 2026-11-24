@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Seoul National University – South Korea's Flagship Institution</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c8a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8fb4c8" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#6a9ab0" stop-opacity="0.4" />
+    </linearGradient>
+    <pattern id="hatch" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="6" y2="6" stroke="#b8a880" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <pattern id="dots" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="0.6" fill="#8a7a5a" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#dots)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6a48" stroke-width="3" opacity="0.7" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#7a6a48" stroke-width="1" opacity="0.4" />
+
+  
+  <rect x="19" y="19" width="1498" height="986" fill="url(#seaGrad)" opacity="0.3" />
+
+  
+  
+  <g transform="translate(820, 180) scale(2.2)">
+    
+    <path d="M80,10 C95,8 115,15 125,30 C140,50 145,75 140,100 C135,125 125,148 120,165 C115,182 112,195 108,210 C104,225 100,240 95,255 C90,270 82,280 75,285 C68,290 60,288 54,282 C48,276 44,265 42,250 C40,235 42,218 45,200 C48,182 50,165 48,148 C46,130 40,115 38,98 C36,80 40,60 50,42 C60,24 70,12 80,10 Z" fill="#c8b878" stroke="#8a7550" stroke-width="1.5" />
+    
+    <path d="M80,10 C95,8 115,15 125,30 C140,50 145,75 140,100 C135,125 125,148 120,165 L60,165 C55,145 50,125 48,105 C46,85 48,65 55,45 C62,25 72,12 80,10 Z" fill="#b8a860" stroke="#8a7550" stroke-width="0.8" />
+    
+    <line x1="60" y1="165" x2="120" y2="165" stroke="#7a6a48" stroke-width="1.5" stroke-dasharray="4,3" />
+    
+    
+    <circle cx="82" cy="178" r="5" fill="#8a2020" stroke="#5a1010" stroke-width="1" />
+    <circle cx="82" cy="178" r="2" fill="#cc3030" />
+    
+    <ellipse cx="85" cy="300" rx="8" ry="5" fill="#c8b878" stroke="#8a7550" stroke-width="1" />
+    <ellipse cx="60" cy="240" rx="5" ry="3" fill="#c8b878" stroke="#8a7550" stroke-width="0.8" />
+    
+    <ellipse cx="72" cy="315" rx="12" ry="7" fill="#c8b878" stroke="#8a7550" stroke-width="1" />
+  </g>
+
+  
+  <g transform="translate(1120,200) scale(1.8)" opacity="0.6">
+    <path d="M40,20 C48,15 58,18 65,28 C72,38 72,52 68,65 C64,78 57,88 50,95 C43,102 36,105 30,102 C24,99 21,90 22,78 C23,66 28,52 33,40 C36,30 38,23 40,20 Z" fill="#c8b878" stroke="#8a7550" stroke-width="1" />
+    <path d="M20,60 C26,55 34,57 39,64 C44,71 44,82 40,91 C36,100 30,107 24,110 C18,113 12,112 9,107 C6,102 7,93 10,83 C13,73 17,65 20,60 Z" fill="#c8b878" stroke="#8a7550" stroke-width="1" />
+  </g>
+
+  
+  <g transform="translate(400,150) scale(1.6)" opacity="0.5">
+    <path d="M20,30 C40,10 80,8 120,20 C160,32 190,60 200,95 C210,130 195,165 170,185 C145,205 110,210 80,205 C50,200 25,185 15,165 C5,145 5,120 10,95 C15,70 15,45 20,30 Z" fill="#c8b878" stroke="#8a7550" stroke-width="1.2" />
+  </g>
+
+  
+  <g transform="translate(160, 780)">
+    <circle cx="0" cy="0" r="62" fill="#d4c8a8" stroke="#7a6a48" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#7a6a48" stroke-width="0.6" />
+    
+    <polygon points="0,-52 -8,-20 0,-28 8,-20" fill="#8a2020" />
+    
+    <polygon points="0,52 -8,20 0,28 8,20" fill="#7a6a48" />
+    
+    <polygon points="52,0 20,-8 28,0 20,8" fill="#7a6a48" />
+    
+    <polygon points="-52,0 -20,-8 -28,0 -20,8" fill="#7a6a48" />
+    
+    <line x1="0" y1="0" x2="35" y2="-35" stroke="#7a6a48" stroke-width="0.8" opacity="0.5" />
+    <line x1="0" y1="0" x2="-35" y2="-35" stroke="#7a6a48" stroke-width="0.8" opacity="0.5" />
+    <line x1="0" y1="0" x2="35" y2="35" stroke="#7a6a48" stroke-width="0.8" opacity="0.5" />
+    <line x1="0" y1="0" x2="-35" y2="35" stroke="#7a6a48" stroke-width="0.8" opacity="0.5" />
+    <circle cx="0" cy="0" r="5" fill="#7a6a48" />
+    
+    <text x="0" y="-60" text-anchor="middle" font-size="14" font-family="Georgia, serif" fill="#5a3a1a" font-weight="bold">N</text>
+  </g>
+
+  
+  <g stroke="#8a7a5a" stroke-width="0.5" opacity="0.25">
+    <line x1="19" y1="256" x2="1517" y2="256" />
+    <line x1="19" y1="512" x2="1517" y2="512" />
+    <line x1="19" y1="768" x2="1517" y2="768" />
+    <line x1="384" y1="19" x2="384" y2="1005" />
+    <line x1="768" y1="19" x2="768" y2="1005" />
+    <line x1="1152" y1="19" x2="1152" y2="1005" />
+  </g>
+
+  
+  <g transform="translate(1280, 920)">
+    <rect x="0" y="0" width="40" height="8" fill="#7a6a48" />
+    <rect x="40" y="0" width="40" height="8" fill="#d4c8a8" stroke="#7a6a48" stroke-width="0.8" />
+    <rect x="80" y="0" width="40" height="8" fill="#7a6a48" />
+    <rect x="120" y="0" width="40" height="8" fill="#d4c8a8" stroke="#7a6a48" stroke-width="0.8" />
+    <line x1="0" y1="0" x2="0" y2="-5" stroke="#7a6a48" stroke-width="1" />
+    <line x1="80" y1="0" x2="80" y2="-5" stroke="#7a6a48" stroke-width="1" />
+    <line x1="160" y1="0" x2="160" y2="-5" stroke="#7a6a48" stroke-width="1" />
+    <text x="0" y="-8" text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="#5a3a1a">0</text>
+    <text x="80" y="-8" text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="#5a3a1a">500 km</text>
+    <text x="160" y="-8" text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="#5a3a1a">1000 km</text>
+  </g>
+
+  
+  <g transform="translate(1005, 578)">
+    <circle cx="0" cy="0" r="9" fill="#8a2020" stroke="#fff" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#fff" />
+    <line x1="10" y1="-5" x2="35" y2="-18" stroke="#5a1010" stroke-width="1" />
+    <rect x="34" y="-32" width="72" height="20" rx="2" fill="#5a1010" opacity="0.85" />
+    <text x="70" y="-18" text-anchor="middle" font-size="13" font-family="Georgia,serif" fill="#f0e8d0" font-weight="bold">Seoul</text>
+  </g>
+
+  
+  <g transform="translate(220, 280)" fill="#8a7550" opacity="0.85">
+    
+    
+    <rect x="0" y="180" width="220" height="12" rx="2" />
+    
+    <rect x="15" y="80" width="18" height="100" />
+    <rect x="187" y="80" width="18" height="100" />
+    <rect x="55" y="100" width="14" height="80" />
+    <rect x="151" y="100" width="14" height="80" />
+    <rect x="95" y="110" width="30" height="70" />
+    
+    <polygon points="-10,80 230,80 210,60 20,60" />
+    
+    <polygon points="30,60 190,60 175,42 45,42" />
+    
+    <polygon points="60,42 160,42 148,26 72,26" />
+    
+    <rect x="105" y="10" width="10" height="16" />
+    <polygon points="100,10 120,10 110,0" />
+    
+    <path d="M-10,80 Q-30,70 -20,55 L20,60" fill="#8a7550" opacity="0.5" />
+    <path d="M230,80 Q250,70 240,55 L200,60" fill="#8a7550" opacity="0.5" />
+  </g>
+
+  
+  <text x="270" y="570" text-anchor="middle" font-size="36" font-family="serif" fill="#7a6a48" opacity="0.4" letter-spacing="4">서울대학교</text>
+
+  
+  <text x="680" y="430" text-anchor="middle" font-size="90" font-family="Georgia, 'Times New Roman', serif" fill="#3a2a0a" font-weight="bold" letter-spacing="2">Seoul National</text>
+  <text x="680" y="535" text-anchor="middle" font-size="90" font-family="Georgia, 'Times New Roman', serif" fill="#3a2a0a" font-weight="bold" letter-spacing="2">University</text>
+
+  
+  <text x="680" y="595" text-anchor="middle" font-size="28" font-family="Georgia, serif" fill="#5a3a1a" letter-spacing="6">SOUTH KOREA'S FLAGSHIP INSTITUTION</text>
+
+  
+  <line x1="200" y1="400" x2="480" y2="400" stroke="#8a7550" stroke-width="1.5" />
+  <line x1="880" y1="400" x2="1160" y2="400" stroke="#8a7550" stroke-width="1.5" />
+  <line x1="300" y1="615" x2="560" y2="615" stroke="#8a7550" stroke-width="1" />
+  <line x1="800" y1="615" x2="1060" y2="615" stroke="#8a7550" stroke-width="1" />
+
+  
+  <polygon points="680,395 688,400 680,405 672,400" fill="#8a7550" />
+
+  
+  <text x="680" y="680" text-anchor="middle" font-size="20" font-family="Georgia, serif" fill="#7a5a2a" letter-spacing="4">EST. 1946 · GWANAK, SEOUL · 서울대학교</text>
+
+  
+  <g fill="none" stroke="#8a7550" stroke-width="1.2" opacity="0.6">
+    
+    <path d="M40,40 L40,90 L90,40 Z" fill="none" />
+    <path d="M40,40 L90,40" />
+    <path d="M40,40 L40,90" />
+    
+    <path d="M1496,40 L1496,90 L1446,40 Z" fill="none" />
+    <path d="M1496,40 L1446,40" />
+    <path d="M1496,40 L1496,90" />
+    
+    <path d="M40,984 L40,934 L90,984 Z" fill="none" />
+    <path d="M40,984 L90,984" />
+    <path d="M40,984 L40,934" />
+    
+    <path d="M1496,984 L1496,934 L1446,984 Z" fill="none" />
+    <path d="M1496,984 L1446,984" />
+    <path d="M1496,984 L1496,934" />
+  </g>
+
+  
+  <text x="680" y="975" text-anchor="middle" font-size="13" font-family="Georgia, serif" fill="#8a7550" opacity="0.7" letter-spacing="2">EAST ASIA · 37°27'N 126°57'E</text>
+</svg>

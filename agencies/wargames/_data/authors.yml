@@ -1,0 +1,23 @@
+# Site Authors
+# The theme reads this for bylines and author cards.
+#
+# `avatar` is deliberately omitted: the theme's
+# _includes/components/author-avatar-url.html falls back to
+# https://github.com/<github handle>.png when no avatar is set, and this repo
+# has no assets/ directory to serve a local image from.
+
+default:
+  name: "bamr87"
+  bio: "Amr Abdel-Motaleb — maintainer of this OverTheWire challenge mirror and of the zer0-mistakes Jekyll theme it is built on."
+  github: "bamr87"
+  twitter: ""
+  email: ""
+  role: "Site Owner"
+
+# Level pages carry `author: bamr87` (stamped by the content pipeline); this entry gives the
+# byline a display name and a profile link instead of the bare handle.
+bamr87:
+  name: "Amr Abdel-Motaleb"
+  bio: "Maintainer of this OverTheWire challenge mirror and of the zer0-mistakes Jekyll theme it is built on."
+  github: "bamr87"
+  role: "Site Owner"

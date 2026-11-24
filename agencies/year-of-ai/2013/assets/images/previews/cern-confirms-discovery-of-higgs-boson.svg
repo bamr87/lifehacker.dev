@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>CERN Confirms Discovery of Higgs Boson – Retro Pixel Art Banner</title>
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0a0a2e" />
+      <stop offset="100%" stop-color="#000008" />
+    </radialGradient>
+    <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#00ffff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowPink" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff00ff" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ff00ff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="bosonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#ffff00" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ff8800" stop-opacity="0" />
+    </radialGradient>
+    <filter id="crt">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="screen" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="scanlines" x="0" y="0" width="1" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="1536" height="2" fill="#000000" opacity="0.15" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bgGrad)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#scanlines)" />
+
+  
+  <rect width="1536" height="1024" fill="none" stroke="#0a1a3a" stroke-width="0.5" opacity="0.3" />
+
+  
+  
+  <g opacity="0.85">
+    
+    <circle cx="768" cy="560" r="340" fill="none" stroke="#003366" stroke-width="32" />
+    <circle cx="768" cy="560" r="340" fill="none" stroke="#0055aa" stroke-width="20" />
+    <circle cx="768" cy="560" r="340" fill="none" stroke="#0088ff" stroke-width="6" />
+    
+    
+    <circle cx="768" cy="560" r="308" fill="none" stroke="#001133" stroke-width="4" />
+    <circle cx="768" cy="560" r="372" fill="none" stroke="#001133" stroke-width="4" />
+  </g>
+
+  
+  <ellipse cx="768" cy="560" rx="200" ry="200" fill="url(#glowBlue)" />
+  <ellipse cx="768" cy="560" rx="120" ry="120" fill="url(#glowPink)" />
+
+  
+  
+  <polyline points="768,560 800,520 840,490 890,450 950,400 1020,340" fill="none" stroke="#00ffff" stroke-width="4" opacity="0.9" />
+  <polyline points="768,560 810,530 860,510 920,490 990,470 1070,460" fill="none" stroke="#00ff88" stroke-width="4" opacity="0.8" />
+  
+  <polyline points="768,560 730,510 680,470 620,420 550,360 470,290" fill="none" stroke="#ff00ff" stroke-width="4" opacity="0.9" />
+  <polyline points="768,560 720,530 660,510 590,490 510,480 430,470" fill="none" stroke="#ff8800" stroke-width="4" opacity="0.8" />
+  
+  <polyline points="768,560 820,600 880,650 950,710 1030,780 1110,860" fill="none" stroke="#ffff00" stroke-width="4" opacity="0.8" />
+  
+  <polyline points="768,560 710,610 640,670 560,740 470,820" fill="none" stroke="#ff4444" stroke-width="4" opacity="0.8" />
+  
+  <polyline points="768,560 850,555 950,548 1060,540 1180,530" fill="none" stroke="#88ff00" stroke-width="4" opacity="0.8" />
+  
+  <polyline points="768,560 680,560 580,565 470,572 350,580" fill="none" stroke="#ff88ff" stroke-width="4" opacity="0.8" />
+  
+  <polyline points="768,560 770,490 775,410 780,320 786,220" fill="none" stroke="#00ffff" stroke-width="4" opacity="0.7" />
+  
+  <polyline points="768,560 830,480 910,390 1000,290" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.6" />
+  <polyline points="768,560 700,480 620,390 530,290" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.6" />
+
+  
+  
+  <rect x="800" y="516" width="8" height="8" fill="#00ffff" />
+  <rect x="836" y="486" width="8" height="8" fill="#00ffff" />
+  <rect x="884" y="446" width="8" height="8" fill="#00ffff" />
+  <rect x="944" y="396" width="8" height="8" fill="#00ffff" />
+  <rect x="1012" y="336" width="8" height="8" fill="#00ffff" />
+
+  
+  <rect x="726" y="506" width="8" height="8" fill="#ff00ff" />
+  <rect x="676" y="466" width="8" height="8" fill="#ff00ff" />
+  <rect x="616" y="416" width="8" height="8" fill="#ff00ff" />
+  <rect x="546" y="356" width="8" height="8" fill="#ff00ff" />
+  <rect x="466" y="286" width="8" height="8" fill="#ff00ff" />
+
+  
+  <rect x="816" y="596" width="8" height="8" fill="#ffff00" />
+  <rect x="876" y="646" width="8" height="8" fill="#ffff00" />
+  <rect x="946" y="706" width="8" height="8" fill="#ffff00" />
+  <rect x="1026" y="776" width="8" height="8" fill="#ffff00" />
+
+  
+  <rect x="706" y="606" width="8" height="8" fill="#ff4444" />
+  <rect x="636" y="666" width="8" height="8" fill="#ff4444" />
+  <rect x="556" y="736" width="8" height="8" fill="#ff4444" />
+  <rect x="466" y="816" width="8" height="8" fill="#ff4444" />
+
+  
+  <rect x="846" y="550" width="8" height="8" fill="#00ff88" />
+  <rect x="946" y="544" width="8" height="8" fill="#00ff88" />
+  <rect x="1056" y="536" width="8" height="8" fill="#00ff88" />
+  <rect x="1176" y="526" width="8" height="8" fill="#00ff88" />
+
+  
+  
+  <circle cx="768" cy="560" rx="80" ry="80" fill="url(#bosonGlow)" opacity="0.8" />
+  
+  
+  
+  <rect x="748" y="520" width="40" height="80" fill="#ffffff" opacity="0.15" />
+  <rect x="728" y="540" width="80" height="40" fill="#ffffff" opacity="0.15" />
+  
+  
+  <rect x="756" y="548" width="24" height="24" fill="#ffff88" />
+  <rect x="748" y="540" width="16" height="16" fill="#ffff44" />
+  <rect x="772" y="540" width="16" height="16" fill="#ffff44" />
+  <rect x="748" y="564" width="16" height="16" fill="#ffff44" />
+  <rect x="772" y="564" width="16" height="16" fill="#ffff44" />
+  
+  <rect x="760" y="552" width="16" height="16" fill="#ffffff" />
+  
+  <rect x="740" y="548" width="8" height="8" fill="#ffdd00" />
+  <rect x="788" y="548" width="8" height="8" fill="#ffdd00" />
+  <rect x="756" y="532" width="8" height="8" fill="#ffdd00" />
+  <rect x="772" y="532" width="8" height="8" fill="#ffdd00" />
+  <rect x="756" y="580" width="8" height="8" fill="#ffdd00" />
+  <rect x="772" y="580" width="8" height="8" fill="#ffdd00" />
+  <rect x="732" y="540" width="8" height="8" fill="#ff8800" />
+  <rect x="796" y="540" width="8" height="8" fill="#ff8800" />
+  <rect x="732" y="572" width="8" height="8" fill="#ff8800" />
+  <rect x="796" y="572" width="8" height="8" fill="#ff8800" />
+
+  
+  
+  <rect x="0" y="550" width="400" height="20" fill="#003366" />
+  <rect x="0" y="554" width="400" height="12" fill="#0055aa" />
+  <rect x="0" y="558" width="400" height="4" fill="#0088ff" opacity="0.8" />
+  
+  <rect x="1136" y="550" width="400" height="20" fill="#003366" />
+  <rect x="1136" y="554" width="400" height="12" fill="#0055aa" />
+  <rect x="1136" y="558" width="400" height="4" fill="#0088ff" opacity="0.8" />
+
+  
+  
+  <rect x="752" y="214" width="32" height="16" fill="#0088ff" />
+  <rect x="756" y="218" width="24" height="8" fill="#00ccff" />
+  
+  <rect x="752" y="886" width="32" height="16" fill="#0088ff" />
+  <rect x="756" y="890" width="24" height="8" fill="#00ccff" />
+  
+  <rect x="422" y="552" width="16" height="32" fill="#0088ff" />
+  <rect x="426" y="556" width="8" height="24" fill="#00ccff" />
+  
+  <rect x="1098" y="552" width="16" height="32" fill="#0088ff" />
+  <rect x="1102" y="556" width="8" height="24" fill="#00ccff" />
+  
+  <rect x="548" y="298" width="24" height="16" fill="#0066cc" />
+  <rect x="960" y="298" width="24" height="16" fill="#0066cc" />
+  <rect x="548" y="810" width="24" height="16" fill="#0066cc" />
+  <rect x="960" y="810" width="24" height="16" fill="#0066cc" />
+
+  
+  <g transform="translate(60, 60)">
+    
+    <rect x="0" y="0" width="80" height="20" fill="#003399" />
+    <rect x="0" y="0" width="80" height="20" fill="none" stroke="#0055ff" stroke-width="2" />
+    
+    <text x="40" y="16" font-family="monospace" font-size="18" font-weight="bold" fill="#00aaff" text-anchor="middle" letter-spacing="4">CERN</text>
+  </g>
+
+  
+  <g transform="translate(1380, 60)">
+    <rect x="0" y="0" width="96" height="56" fill="#220022" />
+    <rect x="2" y="2" width="92" height="52" fill="none" stroke="#ff00ff" stroke-width="3" />
+    <text x="48" y="24" font-family="monospace" font-size="14" fill="#ff88ff" text-anchor="middle" letter-spacing="1">5-SIGMA</text>
+    <text x="48" y="46" font-family="monospace" font-size="20" font-weight="bold" fill="#ff00ff" text-anchor="middle">✓</text>
+  </g>
+
+  
+  <g transform="translate(60, 860)">
+    <rect x="0" y="0" width="120" height="56" fill="#001122" />
+    <rect x="2" y="2" width="116" height="52" fill="none" stroke="#00ffff" stroke-width="3" />
+    <text x="60" y="22" font-family="monospace" font-size="12" fill="#88ffff" text-anchor="middle">MASS</text>
+    <text x="60" y="48" font-family="monospace" font-size="22" font-weight="bold" fill="#00ffff" text-anchor="middle">125 GeV</text>
+  </g>
+
+  
+  <g transform="translate(1356, 860)">
+    <rect x="0" y="0" width="120" height="56" fill="#110011" />
+    <rect x="2" y="2" width="116" height="52" fill="none" stroke="#ffff00" stroke-width="3" />
+    <text x="60" y="22" font-family="monospace" font-size="12" fill="#ffff88" text-anchor="middle">CONFIRMED</text>
+    <text x="60" y="48" font-family="monospace" font-size="22" font-weight="bold" fill="#ffff00" text-anchor="middle">14.03.13</text>
+  </g>
+
+  
+  <g transform="translate(668, 460)">
+    
+    <rect x="0" y="0" width="16" height="80" fill="#ffff00" opacity="0.7" />
+    <rect x="16" y="32" width="68" height="16" fill="#ffff00" opacity="0.7" />
+    <rect x="84" y="0" width="16" height="80" fill="#ffff00" opacity="0.7" />
+  </g>
+
+  
+  
+  <text x="768" y="142" font-family="monospace, 'Courier New', Courier" font-size="72" font-weight="bold" fill="#001155" text-anchor="middle" letter-spacing="2">CERN CONFIRMS</text>
+  <text x="768" y="224" font-family="monospace, 'Courier New', Courier" font-size="72" font-weight="bold" fill="#001155" text-anchor="middle" letter-spacing="2">DISCOVERY OF</text>
+  <text x="768" y="306" font-family="monospace, 'Courier New', Courier" font-size="72" font-weight="bold" fill="#001155" text-anchor="middle" letter-spacing="2">HIGGS BOSON</text>
+
+  
+  <text x="764" y="138" font-family="monospace, 'Courier New', Courier" font-size="72" font-weight="bold" fill="#00ffff" text-anchor="middle" letter-spacing="2">CERN CONFIRMS</text>
+  <text x="764" y="220" font-family="monospace, 'Courier New', Courier" font-size="72" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="2">DISCOVERY OF</text>
+  
+  <text x="764" y="302" font-family="monospace, 'Courier New', Courier" font-size="72" font-weight="bold" fill="#ffff00" text-anchor="middle" letter-spacing="2">HIGGS BOSON</text>
+
+  
+  <rect x="200" y="318" width="1136" height="4" fill="#0055aa" />
+  <rect x="240" y="326" width="1056" height="2" fill="#003377" />
+
+  
+  <text x="768" y="378" font-family="monospace, 'Courier New', Courier" font-size="24" fill="#88aaff" text-anchor="middle" letter-spacing="3">STANDARD MODEL VALIDATED  ·  LARGE HADRON COLLIDER  ·  MARCH 2013</text>
+
+  
+  
+  <rect x="160" y="820" width="8" height="8" fill="#0044aa" opacity="0.6" />
+  <rect x="176" y="812" width="8" height="8" fill="#0044aa" opacity="0.5" />
+  <rect x="192" y="828" width="8" height="8" fill="#0044aa" opacity="0.6" />
+  <rect x="1344" y="820" width="8" height="8" fill="#0044aa" opacity="0.6" />
+  <rect x="1360" y="812" width="8" height="8" fill="#0044aa" opacity="0.5" />
+  <rect x="1376" y="828" width="8" height="8" fill="#0044aa" opacity="0.6" />
+
+  
+  
+  <rect x="0" y="0" width="40" height="8" fill="#0055aa" />
+  <rect x="0" y="0" width="8" height="40" fill="#0055aa" />
+  <rect x="4" y="4" width="20" height="4" fill="#00aaff" />
+  <rect x="4" y="4" width="4" height="20" fill="#00aaff" />
+  
+  <rect x="1496" y="0" width="40" height="8" fill="#0055aa" />
+  <rect x="1528" y="0" width="8" height="40" fill="#0055aa" />
+  <rect x="1512" y="4" width="20" height="4" fill="#00aaff" />
+  <rect x="1528" y="4" width="4" height="20" fill="#00aaff" />
+  
+  <rect x="0" y="1016" width="40" height="8" fill="#0055aa" />
+  <rect x="0" y="984" width="8" height="40" fill="#0055aa" />
+  <rect x="4" y="1016" width="20" height="4" fill="#00aaff" />
+  <rect x="4" y="1000" width="4" height="20" fill="#00aaff" />
+  
+  <rect x="1496" y="1016" width="40" height="8" fill="#0055aa" />
+  <rect x="1528" y="984" width="8" height="40" fill="#0055aa" />
+  <rect x="1512" y="1016" width="20" height="4" fill="#00aaff" />
+  <rect x="1528" y="1000" width="4" height="20" fill="#00aaff" />
+
+  
+  <rect x="0" y="960" width="1536" height="64" fill="#000022" opacity="0.85" />
+  <rect x="0" y="960" width="1536" height="3" fill="#0055aa" />
+  <text x="768" y="1000" font-family="monospace, 'Courier New', Courier" font-size="20" fill="#4488cc" text-anchor="middle" letter-spacing="4">ATLAS · CMS · ~6000 SCIENTISTS · RUN 1 DATA · 25 INVERSE FEMTOBARNS</text>
+
+  
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="#000000" stop-opacity="0" />
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.6" />
+  </radialGradient>
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#scanlines)" opacity="0.5" />
+</svg>

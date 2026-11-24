@@ -1,0 +1,79 @@
+site:
+  title: "The Year 1777"
+  tagline: "Revolution, empire, and Enlightenment — dispatches from the world as it turned in 1777."
+sections:
+  politics:
+    name: "Political Events"
+    icon: "bi-bank"
+    description: "National founding milestones in Revolutionary America alongside the dynastic diplomacy and balance-of-power struggles of Europe's great courts in 1777."
+    featured: "articles-of-confederation"
+  military:
+    name: "Military Events"
+    icon: "bi-shield"
+    description: "Battles, campaigns, and winter encampments of the American Revolutionary War in 1777, from Brandywine and Philadelphia to the decisive turn at Saratoga."
+    featured: "battles-of-saratoga"
+  science:
+    name: "Science & Discovery"
+    icon: "bi-lightbulb"
+    description: "Enlightenment breakthroughs across chemistry, astronomy, physics, and medicine as natural philosophy reshaped the sciences in 1777."
+    featured: "lavoisier-oxygen-theory"
+  arts:
+    name: "Arts & Culture"
+    icon: "bi-palette"
+    description: "Landmark operas, plays, and musical milestones that premiered across the theatres and courts of Europe in 1777."
+    featured: "beaumarchais-marriage-of-figaro"
+  economics:
+    name: "Economics & Trade"
+    icon: "bi-coin"
+    description: "The economics of empire and revolution in 1777, from Adam Smith's market theory and Watt's steam engine to privateering, war finance, and colonial trade reform."
+    featured: "adam-smith-wealth-of-nations"
+  people:
+    name: "Key Figures"
+    icon: "bi-person-badge"
+    description: "The commanders, statesmen, diplomats, and thinkers who shaped 1777 — from Washington's Continental Army and Britain's high command to the mathematicians and writers of the wider world."
+    featured: "george-washington"
+tags:
+  politics/articles-of-confederation: ["american founding", "constitution", "continental congress"]
+  politics/flag-resolution: ["american founding", "continental congress"]
+  politics/vermont-constitution: ["american founding", "constitution", "civil liberties"]
+  politics/massachusetts-slavery-petition-1777: ["american founding", "civil liberties"]
+  politics/catherine-the-great-1777: ["european diplomacy", "russian expansion", "balance of power"]
+  politics/shahin-giray-crimean-khan: ["european diplomacy", "russian expansion"]
+  politics/treaty-of-teschen-1777: ["european diplomacy", "balance of power"]
+  military/battles-of-saratoga: ["saratoga campaign", "american victory"]
+  military/battle-of-bennington: ["saratoga campaign", "american victory", "continental forces"]
+  military/battle-of-brandywine: ["philadelphia campaign", "british offensive"]
+  military/battle-of-germantown: ["philadelphia campaign", "continental forces"]
+  military/british-occupation-philadelphia: ["philadelphia campaign", "british offensive"]
+  military/howe-strategy-1777: ["philadelphia campaign", "saratoga campaign", "british offensive"]
+  military/john-paul-jones-1777: ["continental forces", "professionalization"]
+  military/valley-forge: ["continental forces", "professionalization"]
+  science/lavoisier-oxygen-theory: ["french academy", "scientific controversy", "empirical method"]
+  science/coulomb-electrostatics: ["electricity", "instrumentation", "french academy"]
+  science/herschel-telescopes-deep-sky: ["astronomy", "instrumentation"]
+  science/laplace-nebular-hypothesis-1777: ["astronomy", "french academy"]
+  science/royal-society-lightning-controversy-1777: ["electricity", "scientific controversy"]
+  science/smallpox-inoculation-1777: ["scientific controversy", "empirical method"]
+  arts/beaumarchais-marriage-of-figaro: ["comedy", "social satire"]
+  arts/gluck-armide: ["opera", "1777 premiere", "composer"]
+  arts/haydn-il-mondo-della-luna: ["opera", "1777 premiere", "court patronage"]
+  arts/mozart-1777-tour: ["composer", "court patronage"]
+  arts/sheridan-school-for-scandal: ["comedy", "1777 premiere", "social satire"]
+  economics/adam-smith-wealth-of-nations: ["trade policy", "british economy", "enterprise"]
+  economics/american-privateering-1777: ["war economy", "imperial rivalry", "enterprise"]
+  economics/franco-american-diplomacy-1777: ["trade policy", "war economy", "imperial rivalry"]
+  economics/james-watt-steam-engine: ["british economy", "enterprise"]
+  economics/spanish-bourbon-reforms-1777: ["colonial administration", "trade policy"]
+  economics/warren-hastings-1777: ["colonial administration", "imperial rivalry"]
+  people/george-washington: ["military commanders", "the american cause"]
+  people/benedict-arnold: ["military commanders", "the american cause", "saratoga campaign"]
+  people/baron-von-steuben: ["military commanders", "the american cause"]
+  people/marquis-de-lafayette: ["military commanders", "the american cause", "diplomacy & statecraft"]
+  people/benjamin-franklin: ["the american cause", "diplomacy & statecraft", "writers & scholars"]
+  people/abigail-adams: ["the american cause", "writers & scholars"]
+  people/general-john-burgoyne: ["military commanders", "british crown", "saratoga campaign"]
+  people/sir-henry-clinton: ["military commanders", "british crown", "saratoga campaign"]
+  people/lord-george-germain: ["british crown", "diplomacy & statecraft"]
+  people/carl-friedrich-gauss: ["mathematics", "wider world"]
+  people/leonhard-euler: ["mathematics", "wider world"]
+  people/tipu-sultan: ["military commanders", "wider world"]

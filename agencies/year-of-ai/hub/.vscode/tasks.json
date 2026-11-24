@@ -1,0 +1,96 @@
+// year-of-ai.github.io · .vscode/tasks.json — fleet-vscode/v1 · 2026-09-09. Convention + vocabulary: .vscode/README.md.
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Serve",
+      "detail": "Docker. The Jekyll dev server (_config.yml,_config_dev.yml) on http://localhost:4000 with livereload on :35729; the remote theme is fetched at build (set JEKYLL_GITHUB_TOKEN to avoid rate limits). Runs until Stop.",
+      "type": "shell",
+      "command": "docker compose up",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "owner": "serve",
+        "pattern": {
+          "regexp": "^(never-matches)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Server (running|address)|Container \\S+\\s+Running"
+        }
+      }
+    },
+    {
+      "label": "Stop",
+      "detail": "Stops and removes the dev stack (docker compose down).",
+      "type": "shell",
+      "command": "docker compose down",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build",
+      "detail": "Docker. bundle exec jekyll build with the dev config — the render build-validation.yml runs on every PR.",
+      "type": "shell",
+      "command": "docker compose up -d && docker compose exec -T jekyll sh -c 'bundle check || bundle install; bundle exec jekyll build --config _config.yml,_config_dev.yml'",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Lint",
+      "detail": "Host ruby, plain script. The front-matter date check that runs before the build in build-validation.yml (an unparseable date fails a whole Pages build).",
+      "type": "shell",
+      "command": "ruby scripts/normalize-front-matter-dates.rb --check pages",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Verify",
+      "detail": "Lint, then Build — build-validation.yml in order.",
+      "dependsOn": [
+        "Lint",
+        "Build"
+      ],
+      "dependsOrder": "sequence",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Claude: session",
+      "detail": "Interactive Claude Code in this repo with its .claude/agents + skills, on your logged-in credentials. House rules still apply: branch from main, open a PR, a human merges.",
+      "type": "shell",
+      "command": "claude",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      }
+    }
+  ]
+}

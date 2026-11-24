@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Calligraphy — The Art of Brushwork and Written Characters</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="50%" stop-color="#d9cba8" />
+      <stop offset="100%" stop-color="#c8b888" />
+    </linearGradient>
+    <linearGradient id="inkgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1208" />
+      <stop offset="100%" stop-color="#2c1f0e" />
+    </linearGradient>
+    <linearGradient id="redgrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b2020" />
+      <stop offset="100%" stop-color="#6b1515" />
+    </linearGradient>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <pattern id="gridlines" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#b8a878" stroke-width="0.4" opacity="0.5" />
+    </pattern>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.8" fill="#9a8858" opacity="0.4" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridlines)" />
+  <rect width="1536" height="1024" fill="url(#dots)" />
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#7a6840" stroke-width="3" opacity="0.7" />
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#9a8858" stroke-width="1.5" opacity="0.5" />
+  <rect x="38" y="38" width="1460" height="948" fill="none" stroke="#9a8858" stroke-width="0.8" opacity="0.4" />
+
+  
+  
+  <path d="M 18 18 L 100 18 M 18 18 L 18 100" stroke="#7a6840" stroke-width="3" fill="none" />
+  <circle cx="18" cy="18" r="5" fill="#7a6840" />
+  
+  <path d="M 1518 18 L 1436 18 M 1518 18 L 1518 100" stroke="#7a6840" stroke-width="3" fill="none" />
+  <circle cx="1518" cy="18" r="5" fill="#7a6840" />
+  
+  <path d="M 18 1006 L 100 1006 M 18 1006 L 18 924" stroke="#7a6840" stroke-width="3" fill="none" />
+  <circle cx="18" cy="1006" r="5" fill="#7a6840" />
+  
+  <path d="M 1518 1006 L 1436 1006 M 1518 1006 L 1518 924" stroke="#7a6840" stroke-width="3" fill="none" />
+  <circle cx="1518" cy="1006" r="5" fill="#7a6840" />
+
+  
+  
+  <g opacity="0.07" transform="translate(980, 80)">
+    
+    <rect x="120" y="20" width="160" height="18" rx="6" fill="#1a1208" />
+    <rect x="170" y="38" width="60" height="120" rx="4" fill="#1a1208" />
+    <rect x="80" y="90" width="240" height="16" rx="5" fill="#1a1208" />
+    <rect x="80" y="130" width="240" height="16" rx="5" fill="#1a1208" />
+    <rect x="80" y="170" width="240" height="16" rx="5" fill="#1a1208" />
+    <rect x="60" y="210" width="280" height="18" rx="6" fill="#1a1208" />
+    <rect x="110" y="228" width="180" height="16" rx="5" fill="#1a1208" />
+    <rect x="110" y="244" width="180" height="16" rx="5" fill="#1a1208" />
+    <rect x="110" y="260" width="180" height="16" rx="5" fill="#1a1208" />
+    <rect x="60" y="300" width="280" height="20" rx="6" fill="#1a1208" />
+    <rect x="140" y="320" width="120" height="130" rx="5" fill="#1a1208" />
+    <rect x="60" y="440" width="280" height="18" rx="6" fill="#1a1208" />
+    
+    <animateTransform attributeName="transform" type="scale" from="1" to="1" />
+  </g>
+  <g opacity="0.06" transform="translate(980, 80) scale(1.8)">
+    <rect x="120" y="20" width="160" height="18" rx="6" fill="#1a1208" />
+    <rect x="170" y="38" width="60" height="120" rx="4" fill="#1a1208" />
+    <rect x="80" y="90" width="240" height="16" rx="5" fill="#1a1208" />
+    <rect x="80" y="130" width="240" height="16" rx="5" fill="#1a1208" />
+    <rect x="80" y="170" width="240" height="16" rx="5" fill="#1a1208" />
+    <rect x="60" y="210" width="280" height="18" rx="6" fill="#1a1208" />
+    <rect x="110" y="228" width="180" height="16" rx="5" fill="#1a1208" />
+    <rect x="110" y="244" width="180" height="16" rx="5" fill="#1a1208" />
+    <rect x="110" y="260" width="180" height="16" rx="5" fill="#1a1208" />
+    <rect x="60" y="300" width="280" height="20" rx="6" fill="#1a1208" />
+    <rect x="140" y="320" width="120" height="130" rx="5" fill="#1a1208" />
+    <rect x="60" y="440" width="280" height="18" rx="6" fill="#1a1208" />
+  </g>
+
+  
+  
+  <g transform="translate(100, 80)" opacity="0.88">
+    
+    <path d="M 60 120 Q 180 108 340 118 Q 420 122 460 130" stroke="#1a1208" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <path d="M 200 130 Q 196 260 190 420 Q 188 500 195 580" stroke="#1a1208" stroke-width="18" fill="none" stroke-linecap="round" />
+    
+    <path d="M 70 200 Q 66 240 72 280" stroke="#1a1208" stroke-width="14" fill="none" stroke-linecap="round" />
+    <path d="M 56 320 Q 52 370 64 410 Q 70 440 58 480" stroke="#1a1208" stroke-width="14" fill="none" stroke-linecap="round" />
+    
+    <ellipse cx="68" cy="185" rx="12" ry="8" fill="#1a1208" transform="rotate(-20, 68, 185)" />
+    <ellipse cx="52" cy="305" rx="10" ry="8" fill="#1a1208" transform="rotate(15, 52, 305)" />
+    <ellipse cx="56" cy="465" rx="11" ry="9" fill="#1a1208" transform="rotate(-10, 56, 465)" />
+    
+    <path d="M 260 170 Q 340 165 420 172" stroke="#1a1208" stroke-width="15" fill="none" stroke-linecap="round" />
+    <path d="M 340 172 Q 336 280 338 380" stroke="#1a1208" stroke-width="14" fill="none" stroke-linecap="round" />
+    <path d="M 240 260 Q 340 252 430 260" stroke="#1a1208" stroke-width="13" fill="none" stroke-linecap="round" />
+    <path d="M 240 350 Q 340 342 430 350" stroke="#1a1208" stroke-width="13" fill="none" stroke-linecap="round" />
+    <path d="M 220 440 Q 340 428 450 440 Q 480 445 500 460" stroke="#1a1208" stroke-width="15" fill="none" stroke-linecap="round" />
+    
+    <path d="M 220 530 Q 300 520 380 528 Q 440 534 490 555 Q 530 572 510 610" stroke="#1a1208" stroke-width="17" fill="none" stroke-linecap="round" />
+    <path d="M 270 530 Q 264 570 255 620 Q 248 660 240 710" stroke="#1a1208" stroke-width="14" fill="none" stroke-linecap="round" />
+  </g>
+
+  
+  <g transform="translate(680, 120)" opacity="0.75">
+    
+    <path d="M 40 60 L 160 55" stroke="#2c1f0e" stroke-width="10" fill="none" stroke-linecap="round" />
+    <path d="M 100 55 L 96 180 L 90 300" stroke="#2c1f0e" stroke-width="9" fill="none" stroke-linecap="round" />
+    <path d="M 30 130 L 170 125" stroke="#2c1f0e" stroke-width="9" fill="none" stroke-linecap="round" />
+    <path d="M 40 220 L 170 215" stroke="#2c1f0e" stroke-width="9" fill="none" stroke-linecap="round" />
+    <path d="M 30 300 L 190 295" stroke="#2c1f0e" stroke-width="10" fill="none" stroke-linecap="round" />
+    <path d="M 60 300 Q 55 380 50 450" stroke="#2c1f0e" stroke-width="9" fill="none" stroke-linecap="round" />
+    <path d="M 140 300 Q 145 360 160 420 Q 170 460 150 500" stroke="#2c1f0e" stroke-width="9" fill="none" stroke-linecap="round" />
+    <path d="M 30 390 L 185 385" stroke="#2c1f0e" stroke-width="8" fill="none" stroke-linecap="round" />
+  </g>
+
+  
+  <ellipse cx="880" cy="680" rx="180" ry="90" fill="#2a2018" opacity="0.82" />
+  <ellipse cx="880" cy="680" rx="140" ry="65" fill="#1a1208" opacity="0.9" />
+  <ellipse cx="870" cy="675" rx="80" ry="38" fill="#0e0c08" opacity="0.85" />
+  
+  <ellipse cx="858" cy="670" rx="35" ry="16" fill="#2a3040" opacity="0.3" />
+  
+  <text x="880" y="800" font-family="Georgia, serif" font-size="16" fill="#7a6840" text-anchor="middle" opacity="0.8" letter-spacing="3">墨 · INK STONE</text>
+
+  
+  <g transform="translate(1050, 150) rotate(35)">
+    
+    <rect x="-8" y="0" width="16" height="340" rx="8" fill="#8b6e3a" />
+    <rect x="-6" y="0" width="12" height="340" rx="6" fill="#a07840" />
+    
+    <rect x="-9" y="330" width="18" height="30" rx="3" fill="#5a4020" />
+    
+    <path d="M -9 360 Q 0 430 0 520 Q 0 580 0 620" stroke="#1a1208" stroke-width="18" fill="none" stroke-linecap="round" />
+    <path d="M -6 362 Q 0 430 0 520 Q 0 580 0 620" stroke="#2c1f0e" stroke-width="12" fill="none" stroke-linecap="round" />
+    <path d="M 0 365 Q 0 430 0 520 Q 0 575 0 615" stroke="#1a1208" stroke-width="6" fill="none" stroke-linecap="round" />
+    
+    <ellipse cx="0" cy="620" rx="6" ry="4" fill="#1a1208" opacity="0.9" />
+  </g>
+
+  
+  <g transform="translate(1180, 100) rotate(20)">
+    <rect x="-6" y="0" width="12" height="280" rx="6" fill="#7a5e2a" />
+    <rect x="-7" y="270" width="14" height="25" rx="3" fill="#4a3018" />
+    <path d="M -7 295 Q 0 350 0 440 Q 0 490 -2 520" stroke="#1a1208" stroke-width="14" fill="none" stroke-linecap="round" />
+    <path d="M 0 298 Q 0 350 0 440 Q 0 488 -2 518" stroke="#2c1f0e" stroke-width="8" fill="none" stroke-linecap="round" />
+    <ellipse cx="-2" cy="520" rx="5" ry="3" fill="#1a1208" opacity="0.8" />
+  </g>
+
+  
+  <g transform="translate(1400, 160)">
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#9a8858" stroke-width="1.2" opacity="0.6" />
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#9a8858" stroke-width="0.8" opacity="0.5" />
+    <circle cx="0" cy="0" r="8" fill="#9a8858" opacity="0.7" />
+    
+    <polygon points="0,-60 -10,-30 0,-40 10,-30" fill="#7a6840" opacity="0.8" />
+    <polygon points="0,60 -10,30 0,40 10,30" fill="#9a8858" opacity="0.6" />
+    <polygon points="-60,0 -30,-10 -40,0 -30,10" fill="#9a8858" opacity="0.6" />
+    <polygon points="60,0 30,-10 40,0 30,10" fill="#9a8858" opacity="0.6" />
+    
+    <polygon points="-42,-42 -24,-30 -30,-24" fill="#9a8858" opacity="0.45" />
+    <polygon points="42,-42 24,-30 30,-24" fill="#9a8858" opacity="0.45" />
+    <polygon points="-42,42 -24,30 -30,24" fill="#9a8858" opacity="0.45" />
+    <polygon points="42,42 24,30 30,24" fill="#9a8858" opacity="0.45" />
+    <text x="0" y="-68" font-family="Georgia, serif" font-size="14" fill="#7a6840" text-anchor="middle" opacity="0.8">N</text>
+  </g>
+
+  
+  <g transform="translate(1340, 680)">
+    <rect x="0" y="0" width="110" height="110" rx="6" fill="#8b2020" opacity="0.85" />
+    <rect x="6" y="6" width="98" height="98" rx="4" fill="none" stroke="#d04040" stroke-width="1.5" opacity="0.6" />
+    
+    <rect x="20" y="20" width="70" height="8" rx="3" fill="#d06060" opacity="0.7" />
+    <rect x="50" y="28" width="8" height="35" rx="3" fill="#d06060" opacity="0.7" />
+    <rect x="20" y="55" width="70" height="7" rx="3" fill="#d06060" opacity="0.7" />
+    <rect x="25" y="62" width="25" height="30" rx="3" fill="#d06060" opacity="0.7" />
+    <rect x="65" y="62" width="25" height="30" rx="3" fill="#d06060" opacity="0.7" />
+    <rect x="20" y="82" width="70" height="8" rx="3" fill="#d06060" opacity="0.7" />
+  </g>
+
+  
+  <rect x="80" y="820" width="800" height="155" rx="8" fill="#c8b070" opacity="0.25" />
+  <rect x="80" y="820" width="800" height="155" rx="8" fill="none" stroke="#9a8858" stroke-width="1.5" opacity="0.5" />
+  
+  <rect x="68" y="815" width="20" height="165" rx="10" fill="#8b6e3a" opacity="0.6" />
+  <rect x="890" y="815" width="20" height="165" rx="10" fill="#8b6e3a" opacity="0.6" />
+
+  
+  <text x="120" y="910" font-family="Georgia, 'Times New Roman', serif" font-size="110" font-weight="bold" fill="#1a1208" opacity="0.92" letter-spacing="8">Calligraphy</text>
+
+  
+  <text x="122" y="950" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#5a4820" opacity="0.85" letter-spacing="6">書法 · THE ART OF BRUSHWORK</text>
+
+  
+  <line x1="120" y1="840" x2="880" y2="840" stroke="#9a8858" stroke-width="1.2" opacity="0.6" />
+
+  
+  <text x="1380" y="870" font-family="Georgia, serif" font-size="13" fill="#7a6840" text-anchor="middle" opacity="0.75" letter-spacing="2">甲骨文</text>
+  <text x="1380" y="892" font-family="Georgia, serif" font-size="11" fill="#9a8858" text-anchor="middle" opacity="0.65" letter-spacing="2">ORACLE BONE SCRIPT</text>
+
+  
+  <path d="M 28 340 Q 768 320 1508 340" stroke="#9a8858" stroke-width="0.6" fill="none" opacity="0.35" />
+  <path d="M 28 500 Q 768 480 1508 500" stroke="#9a8858" stroke-width="0.6" fill="none" opacity="0.3" />
+  <path d="M 28 660 Q 768 640 1508 660" stroke="#9a8858" stroke-width="0.6" fill="none" opacity="0.3" />
+
+  
+  <text x="1480" y="1000" font-family="Georgia, serif" font-size="11" fill="#7a6840" text-anchor="end" opacity="0.6" letter-spacing="1">書法 · SHUFA · THREE MILLENNIA OF BRUSHWORK</text>
+
+</svg>

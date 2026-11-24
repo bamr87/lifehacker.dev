@@ -18,6 +18,9 @@
     // posts belong in a section folder, so creation is off here.
     { "title": "Posts (no section folder)", "path": "[[workspace]]/pages/_posts", "contentTypes": ["field-note"], "excludeSubdir": true, "disableCreation": true, "filePrefix": "{{date|yyyy-MM-dd}}" },
     { "title": "Docs", "path": "[[workspace]]/pages/_docs", "contentTypes": ["doc"], "filePrefix": null },
+    // An agency published as a collection (docs/adr/0003-agencies-as-collections.md). Its pages are
+    // synced from OverTheWire, so they are edited here but not created here.
+    { "title": "Wargames (agency)", "path": "[[workspace]]/pages/_wargames", "contentTypes": ["doc"], "filePrefix": null, "disableCreation": true },
     { "title": "About", "path": "[[workspace]]/pages/_about", "contentTypes": ["page"], "filePrefix": null, "disableCreation": true },
     { "title": "News landings", "path": "[[workspace]]/pages/news", "contentTypes": ["page"], "filePrefix": null, "disableCreation": true },
     { "title": "Pages", "path": "[[workspace]]/pages", "contentTypes": ["page"], "excludeSubdir": true, "filePrefix": null, "disableCreation": true }

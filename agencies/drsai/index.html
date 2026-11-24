@@ -1,0 +1,85 @@
+---
+layout: root
+title: "drsai — AI storybooks"
+description: >-
+  A living library of AI-crafted children's picture books: stories generated
+  with the drsai engine, illustrated with OpenAI image models, published with
+  the zer0-mistakes theme.
+permalink: /
+sitemap: true
+---
+
+<!-- ================================ -->
+<!-- HERO                             -->
+<!-- ================================ -->
+<div class="zer0-bg-hero py-5">
+  <div class="container-xl py-4 text-center">
+    <h1 class="display-3 fw-bold" style="font-family: var(--zer0-book-serif);">Once upon an algorithm&hellip;</h1>
+    <p class="lead mx-auto mt-3" style="max-width: 44rem;">
+      <strong>drsai</strong> is a children's book platform where AI helps tell the story:
+      verses and tales from a story engine, watercolor worlds from image models,
+      and a bookshelf that lives on GitHub Pages.
+    </p>
+    <div class="d-flex gap-2 justify-content-center mt-4 flex-wrap">
+      <a class="btn btn-primary btn-lg" href="{{ '/books/dodge-and-reena/' | relative_url }}">
+        <i class="bi bi-book-half me-2" aria-hidden="true"></i>Read Deputy Dodge &amp; Ranger Reena
+      </a>
+      <a class="btn btn-outline-secondary btn-lg" href="{{ '/about/' | relative_url }}">
+        <i class="bi bi-stars me-2" aria-hidden="true"></i>How it works
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container-xl py-5">
+
+  <!-- ================================ -->
+  <!-- BOOKSHELF                        -->
+  <!-- ================================ -->
+  {% include components/bookshelf.html heading="The Library" %}
+
+  <!-- ================================ -->
+  <!-- PIPELINE CARDS                   -->
+  <!-- ================================ -->
+  <section class="mt-5 pt-4 border-top" aria-labelledby="pipeline-heading">
+    <h2 id="pipeline-heading" class="mb-4">How a book gets made</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-pencil me-2 text-primary" aria-hidden="true"></i>1. The words</h3>
+            <p class="card-text small">
+              Stories are drafted with the <a href="https://github.com/bamr87/drsai/tree/main/drsai">drsai story engine</a>
+              (OpenAI-powered, with meter and rhyme validation for verse) and refined by hand in their own
+              content repo — <a href="https://github.com/bamr87/Dodge-and-Reena-Book">Dodge-and-Reena-Book</a> is the first.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-palette me-2 text-primary" aria-hidden="true"></i>2. The pictures</h3>
+            <p class="card-text small">
+              Every story carries its illustration prompts in front matter — a shared style and character
+              bible keeps the cast consistent. <code>tools/generate_illustrations.py</code> renders missing
+              scenes with the OpenAI Images API.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-book me-2 text-primary" aria-hidden="true"></i>3. The book</h3>
+            <p class="card-text small">
+              The <a href="https://github.com/bamr87/zer0-mistakes">zer0-mistakes</a> theme's books collection
+              turns it all into a picture book: cover, table of contents, and immersive story pages —
+              rendered right here on GitHub Pages.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

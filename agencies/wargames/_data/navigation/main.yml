@@ -1,0 +1,80 @@
+# Main navbar for the Wargames site.
+# Schema: title (required), url, icon (Bootstrap Icons), children[] (2 levels).
+# The dropdowns follow the recommended order of play (see overthewire/index.md).
+# The games→levels sidebar is separate: it is built automatically from page URLs.
+
+- title: Home
+  icon: bi-house
+  url: /
+
+- title: Start here
+  icon: bi-rocket-takeoff
+  url: /docs/wargames/bandit/
+  children:
+    - title: Bandit — Linux basics
+      icon: bi-terminal
+      url: /docs/wargames/bandit/
+    - title: Natas — Web security
+      icon: bi-globe2
+      url: /docs/wargames/natas/
+    - title: Krypton — Cryptography
+      icon: bi-key
+      url: /docs/wargames/krypton/
+    - title: Leviathan — Reversing
+      icon: bi-bug
+      url: /docs/wargames/leviathan/
+    - title: How wargames work
+      icon: bi-info-circle
+      url: /docs/wargames/
+
+- title: Exploitation
+  icon: bi-cpu
+  url: /docs/wargames/narnia/
+  children:
+    - title: Narnia — With source
+      icon: bi-cpu
+      url: /docs/wargames/narnia/
+    - title: Behemoth — Without source
+      icon: bi-memory
+      url: /docs/wargames/behemoth/
+    - title: Utumno — Harder
+      icon: bi-bricks
+      url: /docs/wargames/utumno/
+    - title: Maze — Tricky
+      icon: bi-diagram-3
+      url: /docs/wargames/maze/
+
+- title: Advanced
+  icon: bi-mortarboard
+  url: /docs/wargames/vortex/
+  children:
+    - title: Vortex
+      icon: bi-tornado
+      url: /docs/wargames/vortex/
+    - title: Drifter
+      icon: bi-compass
+      url: /docs/wargames/drifter/
+    - title: FormulaOne
+      icon: bi-speedometer2
+      url: /docs/wargames/formulaone/
+    - title: Manpage — Code auditing
+      icon: bi-book
+      url: /docs/wargames/manpage/
+
+- title: Archive
+  icon: bi-archive
+  url: /docs/wargames/
+  children:
+    - title: Semtex (offline)
+      icon: bi-broadcast
+      url: /docs/wargames/semtex/
+    - title: Blacksun (down)
+      icon: bi-brightness-high
+      url: /docs/wargames/blacksun/
+    - title: Abraxas · HES2010 · Monxla · Kishi
+      icon: bi-hdd-network
+      url: /docs/wargames/abraxas/
+
+- title: Source
+  icon: bi-github
+  url: https://github.com/bamr87/wargames

@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Hamhung – Second-Largest City of the DPRK, East Coast Industrial Center</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#c9b98a" />
+    </radialGradient>
+    <radialGradient id="sea" cx="60%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#8aacb8" />
+      <stop offset="100%" stop-color="#5e8a9a" />
+    </radialGradient>
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noiseOut" />
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#b8a070" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <linearGradient id="titleBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a1f0e" stop-opacity="0.85" />
+      <stop offset="80%" stop-color="#2a1f0e" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#2a1f0e" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#grid)" />
+
+  
+  <ellipse cx="1200" cy="480" rx="500" ry="420" fill="url(#sea)" opacity="0.85" />
+  <ellipse cx="1400" cy="300" rx="250" ry="200" fill="#7aa0ae" opacity="0.6" />
+
+  
+  <text x="1300" y="340" font-family="Georgia, serif" font-size="22" fill="#3a5a6a" opacity="0.7" text-anchor="middle" letter-spacing="3" font-style="italic">SEA OF JAPAN</text>
+  <text x="1300" y="368" font-family="Georgia, serif" font-size="16" fill="#3a5a6a" opacity="0.5" text-anchor="middle" letter-spacing="2" font-style="italic">(EAST SEA)</text>
+
+  
+  
+  <path d="     M 580 60     L 640 80     L 700 70     L 760 90     L 800 130     L 820 180     L 810 240     L 840 300     L 870 360     L 890 420     L 880 480     L 860 530     L 870 580     L 860 630     L 830 680     L 800 720     L 770 760     L 740 800     L 720 840     L 700 870     L 680 890     L 660 880     L 650 850     L 660 820     L 650 790     L 630 760     L 610 730     L 590 700     L 570 660     L 550 620     L 540 580     L 530 540     L 520 500     L 510 460     L 500 420     L 490 380     L 480 340     L 470 300     L 460 260     L 450 220     L 460 180     L 490 140     L 530 100     Z   " fill="#c4b48a" stroke="#8a6a30" stroke-width="2" />
+
+  
+  <path d="M 510 610 Q 590 590 680 600 Q 750 605 800 590" stroke="#8a3a2a" stroke-width="3" stroke-dasharray="8,5" fill="none" opacity="0.7" />
+  <text x="660" y="585" font-family="Georgia, serif" font-size="14" fill="#8a3a2a" text-anchor="middle" opacity="0.8" letter-spacing="1">DMZ</text>
+
+  
+  <g fill="#9a7a4a" opacity="0.7">
+    <polygon points="700,200 720,160 740,200" />
+    <polygon points="730,210 755,165 780,210" />
+    <polygon points="760,200 785,158 810,200" />
+    <polygon points="690,215 710,178 730,215" />
+    <polygon points="755,195 778,152 800,195" />
+    <polygon points="720,205 742,170 764,205" />
+  </g>
+  
+  <text x="750" y="145" font-family="Georgia, serif" font-size="13" fill="#5a4020" text-anchor="middle" font-style="italic" letter-spacing="1">Hamgyong Mts.</text>
+
+  
+  <path d="M 710 300 Q 730 320 740 350 Q 748 380 755 410 Q 760 440 768 460" stroke="#6a9aaa" stroke-width="3" fill="none" stroke-linecap="round" />
+  <text x="705" y="390" font-family="Georgia, serif" font-size="12" fill="#3a6a7a" font-style="italic" transform="rotate(-70 705 390)">Songchon R.</text>
+
+  
+  <text x="1050" y="680" font-family="Georgia, serif" font-size="18" fill="#3a5a6a" opacity="0.65" text-anchor="middle" letter-spacing="2" font-style="italic">Korea Bay</text>
+
+  
+  <circle cx="780" cy="390" r="18" fill="#8a2a1a" stroke="#f0e0c0" stroke-width="3" />
+  <circle cx="780" cy="390" r="8" fill="#f0e0c0" />
+  
+  <text x="808" y="378" font-family="Georgia, serif" font-size="20" fill="#2a1208" font-weight="bold" letter-spacing="1">함흥</text>
+  <text x="808" y="400" font-family="Georgia, serif" font-size="17" fill="#2a1208" font-weight="bold" letter-spacing="0.5">HAMHUNG</text>
+
+  
+  <circle cx="820" cy="430" r="11" fill="#4a6a3a" stroke="#f0e0c0" stroke-width="2" />
+  <circle cx="820" cy="430" r="5" fill="#f0e0c0" />
+  <text x="836" y="435" font-family="Georgia, serif" font-size="13" fill="#2a1208" letter-spacing="0.5">Hungnam (Port)</text>
+
+  
+  <circle cx="590" cy="640" r="12" fill="#4a3a8a" stroke="#f0e0c0" stroke-width="2" />
+  <circle cx="590" cy="640" r="5" fill="#f0e0c0" />
+  <text x="608" y="645" font-family="Georgia, serif" font-size="13" fill="#2a1208">Pyongyang ★</text>
+
+  
+  <path d="M 600 630 Q 660 550 700 480 Q 730 440 760 400" stroke="#5a3a1a" stroke-width="2" stroke-dasharray="6,4" fill="none" opacity="0.6" />
+
+  
+  <g transform="translate(1380, 800)">
+    <circle cx="0" cy="0" r="55" fill="#d8c898" stroke="#8a6a30" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#8a6a30" stroke-width="1" />
+    
+    <polygon points="0,-50 -7,-28 7,-28" fill="#2a1208" />
+    <polygon points="0,50 -7,28 7,28" fill="#8a6a30" opacity="0.5" />
+    <polygon points="-50,0 -28,-7 -28,7" fill="#8a6a30" opacity="0.5" />
+    <polygon points="50,0 28,-7 28,7" fill="#8a6a30" opacity="0.5" />
+    <text x="0" y="-54" font-family="Georgia, serif" font-size="16" fill="#2a1208" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="68" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">S</text>
+    <text x="-62" y="4" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">W</text>
+    <text x="62" y="4" font-family="Georgia, serif" font-size="12" fill="#5a4020" text-anchor="middle">E</text>
+    <circle cx="0" cy="0" r="5" fill="#8a6a30" />
+  </g>
+
+  
+  <rect x="0" y="0" width="480" height="1024" fill="url(#titleBg)" />
+
+  
+  <line x1="40" y1="40" x2="440" y2="40" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="44" x2="440" y2="44" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="984" x2="440" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="40" y1="980" x2="440" y2="980" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+  <line x1="40" y1="40" x2="40" y2="984" stroke="#c8a84a" stroke-width="1.5" opacity="0.7" />
+  <line x1="44" y1="40" x2="44" y2="984" stroke="#c8a84a" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="240" y="110" font-family="Georgia, serif" font-size="14" fill="#c8a84a" text-anchor="middle" letter-spacing="5" opacity="0.9">DPRK · EAST COAST</text>
+
+  
+  <line x1="70" y1="130" x2="410" y2="130" stroke="#c8a84a" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="240" y="230" font-family="Georgia, serif" font-size="64" fill="#f5e8c8" text-anchor="middle" letter-spacing="8">함흥</text>
+
+  
+  <line x1="70" y1="255" x2="410" y2="255" stroke="#c8a84a" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="240" y="330" font-family="Georgia, serif" font-size="68" fill="#f5e8c8" text-anchor="middle" font-weight="bold" letter-spacing="2">HAMHUNG</text>
+
+  
+  <text x="240" y="385" font-family="Georgia, serif" font-size="20" fill="#c8a84a" text-anchor="middle" letter-spacing="3" font-style="italic">South Hamgyong Province</text>
+
+  
+  <line x1="100" y1="410" x2="380" y2="410" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  
+  <text x="240" y="470" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Second-largest city of the DPRK</text>
+  <text x="240" y="500" font-family="Georgia, serif" font-size="17" fill="#e0cfa0" text-anchor="middle" letter-spacing="1">Population: 700,000 – 800,000</text>
+
+  <line x1="100" y1="525" x2="380" y2="525" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  
+  
+  <g transform="translate(120, 600)" fill="#c8a84a" opacity="0.75">
+    
+    <rect x="0" y="40" width="80" height="50" fill="#c8a84a" />
+    <rect x="10" y="20" width="16" height="40" fill="#c8a84a" />
+    <rect x="32" y="10" width="16" height="50" fill="#c8a84a" />
+    <rect x="54" y="25" width="16" height="35" fill="#c8a84a" />
+    
+    <circle cx="18" cy="14" r="5" fill="#c8a84a" opacity="0.5" />
+    <circle cx="22" cy="8" r="4" fill="#c8a84a" opacity="0.35" />
+    <circle cx="40" cy="4" r="5" fill="#c8a84a" opacity="0.5" />
+    <circle cx="44" cy="-2" r="4" fill="#c8a84a" opacity="0.35" />
+  </g>
+
+  <text x="240" y="700" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">CHEMICAL · TEXTILE</text>
+  <text x="240" y="722" font-family="Georgia, serif" font-size="15" fill="#b89a60" text-anchor="middle" letter-spacing="2">INDUSTRIAL CENTER</text>
+
+  <line x1="100" y1="745" x2="380" y2="745" stroke="#c8a84a" stroke-width="0.8" opacity="0.4" />
+
+  
+  <text x="240" y="790" font-family="Georgia, serif" font-size="15" fill="#9a8050" text-anchor="middle" font-style="italic">39.9°N · 127.5°E</text>
+
+  
+  <text x="240" y="840" font-family="Georgia, serif" font-size="14" fill="#9a8050" text-anchor="middle" font-style="italic">Port of Hungnam · Ice-free Year-round</text>
+
+  
+  <text x="240" y="950" font-family="Georgia, serif" font-size="13" fill="#c8a84a" text-anchor="middle" letter-spacing="4" opacity="0.6">ATLAS PLATE · KOREA</text>
+
+  
+  <g transform="translate(950, 940)">
+    <line x1="0" y1="0" x2="120" y2="0" stroke="#5a4020" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#5a4020" stroke-width="2" />
+    <line x1="60" y1="-4" x2="60" y2="4" stroke="#5a4020" stroke-width="1.5" />
+    <line x1="120" y1="-6" x2="120" y2="6" stroke="#5a4020" stroke-width="2" />
+    <rect x="0" y="-2" width="60" height="4" fill="#5a4020" />
+    <rect x="60" y="-2" width="60" height="4" fill="#d8c898" />
+    <text x="0" y="-12" font-family="Georgia, serif" font-size="11" fill="#3a2010" text-anchor="middle">0</text>
+    <text x="60" y="-12" font-family="Georgia, serif" font-size="11" fill="#3a2010" text-anchor="middle">100</text>
+    <text x="120" y="-12" font-family="Georgia, serif" font-size="11" fill="#3a2010" text-anchor="middle">200 km</text>
+  </g>
+
+  
+  <rect x="8" y="8" width="1520" height="1008" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.5" />
+  <rect x="14" y="14" width="1508" height="996" fill="none" stroke="#c8a84a" stroke-width="1" opacity="0.3" />
+
+  
+  <rect width="1536" height="1024" fill="#c8a050" opacity="0.04" />
+</svg>

@@ -1,0 +1,190 @@
+# The wargames, grouped by tier, in the recommended order of play.
+# Drives the card grids on the homepage (index.md) through the theme's
+# components/card-grid.html + components/data-card.html, so adding a game is a data edit.
+#
+# Item schema (the theme's data-card): title, url, icon (Bootstrap Icons), image, badge,
+# badge_variant, description, meta[{icon,text}]. `image` is a path under /assets/.
+#
+# Level counts and SSH ports come from the upstream game pages (see overthewire/index.md).
+
+beginner:
+  - title: Bandit
+    url: /docs/wargames/bandit/
+    icon: bi-terminal
+    image: /assets/images/wargames/banner-bandit.svg
+    badge: Start here
+    badge_variant: success
+    description: "Linux command line, SSH, text tools, permissions, cron and git. Every other game assumes this one."
+    meta:
+      - { icon: bi-layers, text: "34 levels" }
+      - { icon: bi-plug, text: "SSH :2220" }
+  - title: Natas
+    url: /docs/wargames/natas/
+    icon: bi-globe2
+    image: /assets/images/wargames/banner-natas.svg
+    badge: Web
+    badge_variant: info
+    description: "Server-side web security, from reading page source to SQL injection, sessions and cryptographic oracles."
+    meta:
+      - { icon: bi-layers, text: "35 levels" }
+      - { icon: bi-window, text: "In your browser" }
+  - title: Krypton
+    url: /docs/wargames/krypton/
+    icon: bi-key
+    image: /assets/images/wargames/banner-krypton.svg
+    badge: Crypto
+    badge_variant: info
+    description: "Classical ciphers, frequency analysis, Vigenère and a weak stream cipher."
+    meta:
+      - { icon: bi-layers, text: "7 levels" }
+      - { icon: bi-plug, text: "SSH :2231" }
+  - title: Leviathan
+    url: /docs/wargames/leviathan/
+    icon: bi-bug
+    image: /assets/images/wargames/banner-leviathan.svg
+    badge: Reversing
+    badge_variant: info
+    description: "Trace small setuid programs to see how they work. No programming required."
+    meta:
+      - { icon: bi-layers, text: "8 levels" }
+      - { icon: bi-plug, text: "SSH :2223" }
+
+intermediate:
+  - title: Narnia
+    url: /docs/wargames/narnia/
+    icon: bi-cpu
+    image: /assets/images/wargames/banner-narnia.svg
+    badge: Intermediate
+    badge_variant: warning
+    description: "Your first memory-corruption bugs: overflows and format strings, with the source code provided."
+    meta:
+      - { icon: bi-layers, text: "10 levels" }
+      - { icon: bi-plug, text: "SSH :2226" }
+  - title: Behemoth
+    url: /docs/wargames/behemoth/
+    icon: bi-memory
+    image: /assets/images/wargames/banner-behemoth.svg
+    badge: Intermediate
+    badge_variant: warning
+    description: "Overflows, format strings and race conditions in binaries you receive without source."
+    meta:
+      - { icon: bi-layers, text: "9 levels" }
+      - { icon: bi-plug, text: "SSH :2221" }
+  - title: Utumno
+    url: /docs/wargames/utumno/
+    icon: bi-bricks
+    image: /assets/images/wargames/banner-utumno.svg
+    badge: Intermediate
+    badge_variant: warning
+    description: "Harder binary exploitation, a step above Behemoth. Undocumented levels you investigate yourself."
+    meta:
+      - { icon: bi-layers, text: "9 levels" }
+      - { icon: bi-plug, text: "SSH :2227" }
+
+advanced:
+  - title: Maze
+    url: /docs/wargames/maze/
+    icon: bi-diagram-3
+    image: /assets/images/wargames/banner-maze.svg
+    badge: Advanced
+    badge_variant: danger
+    description: "Tricky, unconventional exploitation and reverse engineering. Bring gdb."
+    meta:
+      - { icon: bi-layers, text: "10 levels" }
+      - { icon: bi-plug, text: "SSH :2225" }
+  - title: Manpage
+    url: /docs/wargames/manpage/
+    icon: bi-book
+    image: /assets/images/wargames/banner-manpage.svg
+    badge: Advanced
+    badge_variant: danger
+    description: "Find bugs by reading manual pages: breaking common misconceptions about C on Linux."
+    meta:
+      - { icon: bi-layers, text: "8 levels" }
+      - { icon: bi-plug, text: "SSH :2224" }
+  - title: Vortex
+    url: /docs/wargames/vortex/
+    icon: bi-tornado
+    image: /assets/images/wargames/banner-vortex.svg
+    badge: Advanced
+    badge_variant: danger
+    description: "Network programming, heap bugs, weak randomness, cryptanalysis and reverse engineering."
+    meta:
+      - { icon: bi-layers, text: "27 levels" }
+      - { icon: bi-plug, text: "SSH :2228" }
+  - title: Drifter
+    url: /docs/wargames/drifter/
+    icon: bi-compass
+    image: /assets/images/wargames/banner-drifter.svg
+    badge: Advanced
+    badge_variant: danger
+    description: "Vortex-style challenges: remote services, C++ and heap corruption, ASLR bypass."
+    meta:
+      - { icon: bi-layers, text: "16 levels" }
+      - { icon: bi-plug, text: "SSH :2230" }
+  - title: FormulaOne
+    url: /docs/wargames/formulaone/
+    icon: bi-speedometer2
+    image: /assets/images/wargames/banner-formulaone.svg
+    badge: Advanced
+    badge_variant: danger
+    description: "A game rescued from intruded.net. Its first puzzle is working out where the first level's source lives."
+    meta:
+      - { icon: bi-layers, text: "7 levels" }
+      - { icon: bi-plug, text: "SSH :2232" }
+
+archive:
+  - title: Semtex
+    url: /docs/wargames/semtex/
+    icon: bi-broadcast
+    image: /assets/images/wargames/banner-semtex.svg
+    badge: Offline
+    badge_variant: secondary
+    description: "Network programming, covert channels and reverse engineering. Offline, but a good syllabus."
+    meta:
+      - { icon: bi-layers, text: "13 levels" }
+  - title: Blacksun
+    url: /docs/wargames/blacksun/
+    icon: bi-brightness-high
+    image: /assets/images/wargames/banner-blacksun.svg
+    badge: Down
+    badge_variant: secondary
+    description: "Exploiting hardened hosts: ASLR, non-executable memory and stack protection."
+    meta:
+      - { icon: bi-layers, text: "5 levels" }
+  - title: Abraxas
+    url: /docs/wargames/abraxas/
+    icon: bi-hdd-network
+    image: /assets/images/wargames/banner-abraxas.svg
+    badge: Download
+    badge_variant: secondary
+    description: "A Hackito Ergo Sum 2011 conference game, played locally as a virtual machine."
+    meta:
+      - { icon: bi-box-seam, text: "VM image" }
+  - title: HES2010
+    url: /docs/wargames/hes2010/
+    icon: bi-hdd-network
+    image: /assets/images/wargames/banner-hes2010.svg
+    badge: Download
+    badge_variant: secondary
+    description: "The Hackito Ergo Sum 2010 conference game, with its own website inside the VM."
+    meta:
+      - { icon: bi-box-seam, text: "VM image" }
+  - title: Monxla
+    url: /docs/wargames/monxla/
+    icon: bi-disc
+    image: /assets/images/wargames/banner-monxla.svg
+    badge: Download
+    badge_variant: secondary
+    description: "A Hackito Ergo Sum 2012 game on a live CD: boot it, play it, reboot to reset."
+    meta:
+      - { icon: bi-disc, text: "Live CD" }
+  - title: Kishi
+    url: /docs/wargames/kishi/
+    icon: bi-hdd-network
+    image: /assets/images/wargames/banner-kishi.svg
+    badge: Download
+    badge_variant: secondary
+    description: "A 2013 conference game shipped as a Vagrant box with several LXC containers."
+    meta:
+      - { icon: bi-box-seam, text: "Vagrant box" }

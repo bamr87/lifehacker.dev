@@ -1,0 +1,276 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean War — Banner Illustration</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4c9a8" />
+      <stop offset="100%" stop-color="#b8a882" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a9bb5" />
+      <stop offset="100%" stop-color="#5a7a95" />
+    </linearGradient>
+    <linearGradient id="northGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8fa87a" />
+      <stop offset="100%" stop-color="#6d8a5e" />
+    </linearGradient>
+    <linearGradient id="southGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9a87a" />
+      <stop offset="100%" stop-color="#a88050" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+    </filter>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a09070" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="8" height="8">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#8a7050" stroke-width="0.4" opacity="0.3" />
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#8a7050" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#6b5a3a" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#6b5a3a" stroke-width="1" />
+
+  
+  
+  <line x1="18" y1="50" x2="50" y2="18" stroke="#6b5a3a" stroke-width="1.5" />
+  <line x1="18" y1="70" x2="70" y2="18" stroke="#6b5a3a" stroke-width="0.8" />
+  
+  <line x1="1518" y1="50" x2="1486" y2="18" stroke="#6b5a3a" stroke-width="1.5" />
+  <line x1="1518" y1="70" x2="1466" y2="18" stroke="#6b5a3a" stroke-width="0.8" />
+  
+  <line x1="18" y1="974" x2="50" y2="1006" stroke="#6b5a3a" stroke-width="1.5" />
+  <line x1="18" y1="954" x2="70" y2="1006" stroke="#6b5a3a" stroke-width="0.8" />
+  
+  <line x1="1518" y1="974" x2="1486" y2="1006" stroke="#6b5a3a" stroke-width="1.5" />
+  <line x1="1518" y1="954" x2="1466" y2="1006" stroke="#6b5a3a" stroke-width="0.8" />
+
+  
+  
+  <rect x="50" y="50" width="900" height="924" fill="url(#seaGrad)" opacity="0.6" />
+  <rect x="50" y="50" width="900" height="924" fill="url(#crosshatch)" />
+
+  
+  <line x1="50" y1="250" x2="950" y2="250" stroke="#4a6a85" stroke-width="0.6" opacity="0.5" stroke-dasharray="6,4" />
+  <line x1="50" y1="450" x2="950" y2="450" stroke="#4a6a85" stroke-width="0.6" opacity="0.5" stroke-dasharray="6,4" />
+  <line x1="50" y1="650" x2="950" y2="650" stroke="#4a6a85" stroke-width="0.6" opacity="0.5" stroke-dasharray="6,4" />
+  <line x1="50" y1="850" x2="950" y2="850" stroke="#4a6a85" stroke-width="0.6" opacity="0.5" stroke-dasharray="6,4" />
+  
+  <line x1="200" y1="50" x2="200" y2="974" stroke="#4a6a85" stroke-width="0.6" opacity="0.5" stroke-dasharray="6,4" />
+  <line x1="400" y1="50" x2="400" y2="974" stroke="#4a6a85" stroke-width="0.6" opacity="0.5" stroke-dasharray="6,4" />
+  <line x1="600" y1="50" x2="600" y2="974" stroke="#4a6a85" stroke-width="0.6" opacity="0.5" stroke-dasharray="6,4" />
+  <line x1="800" y1="50" x2="800" y2="974" stroke="#4a6a85" stroke-width="0.6" opacity="0.5" stroke-dasharray="6,4" />
+
+  
+  <path d="M50,50 L950,50 L950,340 Q850,300 750,310 Q650,290 580,320 Q500,340 430,300 Q360,270 300,290 Q200,310 50,280 Z" fill="#8fa87a" opacity="0.7" />
+  <path d="M50,50 L950,50 L950,340 Q850,300 750,310 Q650,290 580,320 Q500,340 430,300 Q360,270 300,290 Q200,310 50,280 Z" fill="url(#hatch)" opacity="0.6" />
+
+  
+  
+  <path d="M340,310 Q370,290 420,295 Q480,285 540,300 Q590,310 620,330 Q650,350 660,390 Q680,430 670,470 Q660,510 650,530 Q640,555 620,565 Q600,575 580,570 Q560,575 540,590 Q520,610 510,640 L490,640 Q470,610 450,595 Q430,580 410,575 Q385,570 365,555 Q340,530 330,500 Q315,460 320,420 Q325,370 340,330 Z" fill="url(#northGrad)" />
+  <path d="M340,310 Q370,290 420,295 Q480,285 540,300 Q590,310 620,330 Q650,350 660,390 Q680,430 670,470 Q660,510 650,530 Q640,555 620,565 Q600,575 580,570 Q560,575 540,590 Q520,610 510,640 L490,640 Q470,610 450,595 Q430,580 410,575 Q385,570 365,555 Q340,530 330,500 Q315,460 320,420 Q325,370 340,330 Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <path d="M510,640 Q530,615 550,595 Q570,578 590,572 Q615,568 635,575 Q650,535 650,530 Q660,510 670,470 Q680,430 660,390 Q680,400 690,430 Q700,465 695,510 Q685,555 665,590 Q650,615 640,650 Q630,680 620,720 Q610,760 590,790 Q565,820 540,840 Q515,855 495,855 Q470,855 450,840 Q425,820 405,790 Q385,755 375,710 Q368,670 375,640 Q385,615 405,600 Q425,582 445,580 Q465,578 480,590 Q495,605 500,625 Z" fill="url(#southGrad)" />
+  <path d="M510,640 Q530,615 550,595 Q570,578 590,572 Q615,568 635,575 Q650,535 650,530 Q660,510 670,470 Q680,430 695,510 Q685,555 665,590 Q650,615 640,650 Q630,680 620,720 Q610,760 590,790 Q565,820 540,840 Q515,855 495,855 Q470,855 450,840 Q425,820 405,790 Q385,755 375,710 Q368,670 375,640 Q385,615 405,600 Q425,582 445,580 Q465,578 480,590 Q495,605 500,625 Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <path d="M340,310 Q370,290 420,295 Q480,285 540,300 Q590,310 620,330 Q650,350 660,390 Q680,430 670,470 Q660,510 650,530 Q640,555 620,565 Q600,575 580,570 Q560,575 540,590 Q520,610 510,640 Q495,605 480,590 Q465,578 445,580 Q425,582 405,600 Q385,615 375,640 Q368,670 375,710 Q385,755 405,790 Q425,820 450,840 Q470,855 495,855 Q515,855 540,840 Q565,820 590,790 Q610,760 620,720 Q630,680 640,650 Q650,615 665,590 Q685,555 695,510 Q700,465 690,430 Q680,400 660,390" fill="none" stroke="#4a3820" stroke-width="2" />
+
+  
+  <line x1="290" y1="540" x2="720" y2="540" stroke="#8b0000" stroke-width="3.5" />
+  <line x1="290" y1="540" x2="720" y2="540" stroke="#cc2200" stroke-width="1.5" stroke-dasharray="12,6" />
+
+  
+  <rect x="300" y="533" width="380" height="14" fill="#cc2200" opacity="0.25" />
+
+  
+  <text x="720" y="534" font-family="Georgia, serif" font-size="15" fill="#8b0000" font-weight="bold">38th Parallel</text>
+  <line x1="718" y1="540" x2="748" y2="540" stroke="#8b0000" stroke-width="1.5" />
+
+  
+  <path d="M830,180 Q850,170 870,180 Q885,200 875,240 Q865,280 850,310 Q835,340 820,360 Q805,375 800,360 Q795,340 805,310 Q815,280 820,240 Q822,210 830,180 Z" fill="#c8b870" opacity="0.8" />
+  <path d="M830,180 Q850,170 870,180 Q885,200 875,240 Q865,280 850,310 Q835,340 820,360 Q805,375 800,360 Q795,340 805,310 Q815,280 820,240 Q822,210 830,180 Z" fill="url(#hatch)" opacity="0.5" />
+  <path d="M830,180 Q850,170 870,180 Q885,200 875,240 Q865,280 850,310 Q835,340 820,360 Q805,375 800,360 Q795,340 805,310 Q815,280 820,240 Q822,210 830,180 Z" fill="none" stroke="#4a3820" stroke-width="1.5" />
+  <text x="855" y="290" font-family="Georgia, serif" font-size="16" fill="#4a3820" font-style="italic" transform="rotate(15,855,290)">Japan</text>
+
+  
+  
+  <circle cx="440" cy="420" r="7" fill="#4a6a30" stroke="#2a3a18" stroke-width="1.5" />
+  <circle cx="440" cy="420" r="3" fill="#ffffff" opacity="0.6" />
+  <text x="452" y="415" font-family="Georgia, serif" font-size="14" fill="#2a3a18" font-style="italic">Pyongyang</text>
+
+  
+  <circle cx="480" cy="590" r="7" fill="#a05020" stroke="#5a2810" stroke-width="1.5" />
+  <circle cx="480" cy="590" r="3" fill="#ffffff" opacity="0.6" />
+  <text x="493" y="585" font-family="Georgia, serif" font-size="14" fill="#5a2810" font-style="italic">Seoul</text>
+
+  
+  <circle cx="590" cy="800" r="5" fill="#a05020" stroke="#5a2810" stroke-width="1" />
+  <text x="600" y="796" font-family="Georgia, serif" font-size="13" fill="#5a2810" font-style="italic">Pusan</text>
+
+  
+  <circle cx="410" cy="600" r="5" fill="#a05020" stroke="#5a2810" stroke-width="1" />
+  <text x="350" y="596" font-family="Georgia, serif" font-size="13" fill="#5a2810" font-style="italic">Inchon</text>
+
+  
+  <text x="160" y="600" font-family="Georgia, serif" font-size="18" fill="#2a4a65" font-style="italic" opacity="0.8" transform="rotate(-90,160,600)">Yellow Sea</text>
+  <text x="760" y="560" font-family="Georgia, serif" font-size="17" fill="#2a4a65" font-style="italic" opacity="0.8" transform="rotate(90,760,560)">Sea of Japan</text>
+
+  
+  <text x="130" y="200" font-family="Georgia, serif" font-size="22" fill="#3a4a28" font-style="italic" opacity="0.9">China</text>
+
+  
+  <text x="600" y="160" font-family="Georgia, serif" font-size="20" fill="#3a4a28" font-style="italic" opacity="0.8">Manchuria</text>
+
+  
+  <text x="460" y="460" font-family="Georgia, serif" font-size="16" fill="#2a3a18" font-style="italic" text-anchor="middle" opacity="0.9">North Korea</text>
+  <text x="500" y="720" font-family="Georgia, serif" font-size="16" fill="#5a3010" font-style="italic" text-anchor="middle" opacity="0.9">South Korea</text>
+
+  
+  <g transform="translate(130,880)">
+    
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#6b5a3a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="52" fill="#d4c9a8" stroke="#6b5a3a" stroke-width="1" />
+    
+    <polygon points="0,-52 -9,-30 9,-30" fill="#4a3820" />
+    <polygon points="0,52 -9,30 9,30" fill="#a09070" />
+    <polygon points="-52,0 -30,-9 -30,9" fill="#a09070" />
+    <polygon points="52,0 30,-9 30,9" fill="#a09070" />
+    
+    <polygon points="0,-52 -6,-36 6,-36" fill="none" stroke="#6b5a3a" stroke-width="0.8" />
+    <line x1="-37" y1="-37" x2="37" y2="37" stroke="#6b5a3a" stroke-width="0.8" />
+    <line x1="37" y1="-37" x2="-37" y2="37" stroke="#6b5a3a" stroke-width="0.8" />
+    <circle cx="0" cy="0" r="8" fill="#d4c9a8" stroke="#6b5a3a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="3" fill="#6b5a3a" />
+    
+    <text x="0" y="-58" font-family="Georgia, serif" font-size="16" fill="#4a3820" font-weight="bold" text-anchor="middle">N</text>
+    <text x="0" y="72" font-family="Georgia, serif" font-size="13" fill="#6b5a3a" text-anchor="middle">S</text>
+    <text x="-68" y="5" font-family="Georgia, serif" font-size="13" fill="#6b5a3a" text-anchor="middle">W</text>
+    <text x="68" y="5" font-family="Georgia, serif" font-size="13" fill="#6b5a3a" text-anchor="middle">E</text>
+  </g>
+
+  
+  <rect x="970" y="50" width="516" height="924" fill="#c8bb95" opacity="0.4" />
+  <rect x="970" y="50" width="516" height="924" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <line x1="970" y1="50" x2="970" y2="974" stroke="#6b5a3a" stroke-width="2" />
+
+  
+  <rect x="990" y="80" width="476" height="6" fill="#6b5a3a" />
+  <rect x="990" y="92" width="476" height="2" fill="#6b5a3a" />
+
+  <text x="1228" y="175" font-family="Georgia, serif" font-size="68" fill="#2a1a0a" font-weight="bold" text-anchor="middle" letter-spacing="2">KOREAN</text>
+  <text x="1228" y="255" font-family="Georgia, serif" font-size="68" fill="#2a1a0a" font-weight="bold" text-anchor="middle" letter-spacing="2">WAR</text>
+
+  <rect x="990" y="270" width="476" height="2" fill="#6b5a3a" />
+  <rect x="990" y="278" width="476" height="6" fill="#6b5a3a" />
+
+  
+  <text x="1228" y="332" font-family="serif" font-size="26" fill="#4a3820" text-anchor="middle" font-style="italic">한국전쟁</text>
+
+  
+  <rect x="1050" y="355" width="356" height="50" fill="#6b5a3a" opacity="0.15" />
+  <rect x="1050" y="355" width="356" height="50" fill="none" stroke="#6b5a3a" stroke-width="1.5" />
+  <text x="1228" y="389" font-family="Georgia, serif" font-size="20" fill="#4a3820" text-anchor="middle" font-weight="bold">June 25, 1950 — July 27, 1953</text>
+
+  
+  <text x="1005" y="440" font-family="Georgia, serif" font-size="15" fill="#6b5a3a" font-weight="bold">COMBATANTS</text>
+  <line x1="1005" y1="448" x2="1450" y2="448" stroke="#6b5a3a" stroke-width="1" />
+
+  
+  <rect x="1005" y="460" width="205" height="130" fill="#c9a87a" opacity="0.4" rx="4" />
+  <rect x="1005" y="460" width="205" height="130" fill="none" stroke="#a07040" stroke-width="1.5" rx="4" />
+  <text x="1107" y="482" font-family="Georgia, serif" font-size="13" fill="#5a3010" text-anchor="middle" font-weight="bold">UNITED NATIONS</text>
+  <text x="1107" y="500" font-family="Georgia, serif" font-size="12" fill="#5a3010" text-anchor="middle">Republic of Korea</text>
+  <text x="1107" y="518" font-family="Georgia, serif" font-size="12" fill="#5a3010" text-anchor="middle">United States</text>
+  <text x="1107" y="536" font-family="Georgia, serif" font-size="12" fill="#5a3010" text-anchor="middle">United Kingdom</text>
+  <text x="1107" y="554" font-family="Georgia, serif" font-size="12" fill="#5a3010" text-anchor="middle">+ 15 other nations</text>
+  <line x1="1025" y1="565" x2="1195" y2="565" stroke="#a07040" stroke-width="0.8" stroke-dasharray="4,3" />
+  <text x="1107" y="582" font-family="Georgia, serif" font-size="11" fill="#5a3010" text-anchor="middle" font-style="italic">South Korea</text>
+
+  
+  <text x="1228" y="535" font-family="Georgia, serif" font-size="22" fill="#8b0000" text-anchor="middle" font-weight="bold">vs.</text>
+
+  
+  <rect x="1245" y="460" width="205" height="130" fill="#8fa87a" opacity="0.4" rx="4" />
+  <rect x="1245" y="460" width="205" height="130" fill="none" stroke="#4a7030" stroke-width="1.5" rx="4" />
+  <text x="1347" y="482" font-family="Georgia, serif" font-size="13" fill="#2a4a18" text-anchor="middle" font-weight="bold">COMMUNIST BLOC</text>
+  <text x="1347" y="500" font-family="Georgia, serif" font-size="12" fill="#2a4a18" text-anchor="middle">North Korea</text>
+  <text x="1347" y="518" font-family="Georgia, serif" font-size="12" fill="#2a4a18" text-anchor="middle">People's Rep. of China</text>
+  <text x="1347" y="536" font-family="Georgia, serif" font-size="12" fill="#2a4a18" text-anchor="middle">Soviet Union (supply)</text>
+  <line x1="1265" y1="555" x2="1435" y2="555" stroke="#4a7030" stroke-width="0.8" stroke-dasharray="4,3" />
+  <text x="1347" y="574" font-family="Georgia, serif" font-size="11" fill="#2a4a18" text-anchor="middle" font-style="italic">North Korea</text>
+
+  
+  <line x1="1005" y1="615" x2="1450" y2="615" stroke="#6b5a3a" stroke-width="1" />
+  <text x="1005" y="608" font-family="Georgia, serif" font-size="15" fill="#6b5a3a" font-weight="bold">KEY STATISTICS</text>
+
+  
+  <rect x="1005" y="628" width="135" height="90" fill="#d4c9a8" stroke="#6b5a3a" stroke-width="1" rx="3" />
+  <text x="1072" y="660" font-family="Georgia, serif" font-size="26" fill="#8b0000" text-anchor="middle" font-weight="bold">2.5M</text>
+  <text x="1072" y="680" font-family="Georgia, serif" font-size="11" fill="#4a3820" text-anchor="middle">Estimated</text>
+  <text x="1072" y="698" font-family="Georgia, serif" font-size="11" fill="#4a3820" text-anchor="middle">Total Dead</text>
+  <text x="1072" y="712" font-family="Georgia, serif" font-size="10" fill="#6b5a3a" text-anchor="middle">(soldiers &amp; civilians)</text>
+
+  <rect x="1155" y="628" width="135" height="90" fill="#d4c9a8" stroke="#6b5a3a" stroke-width="1" rx="3" />
+  <text x="1222" y="660" font-family="Georgia, serif" font-size="26" fill="#4a3820" text-anchor="middle" font-weight="bold">38°N</text>
+  <text x="1222" y="680" font-family="Georgia, serif" font-size="11" fill="#4a3820" text-anchor="middle">Division at</text>
+  <text x="1222" y="698" font-family="Georgia, serif" font-size="11" fill="#4a3820" text-anchor="middle">38th Parallel</text>
+  <text x="1222" y="712" font-family="Georgia, serif" font-size="10" fill="#6b5a3a" text-anchor="middle">DMZ</text>
+
+  <rect x="1305" y="628" width="145" height="90" fill="#d4c9a8" stroke="#6b5a3a" stroke-width="1" rx="3" />
+  <text x="1377" y="655" font-family="Georgia, serif" font-size="18" fill="#8b0000" text-anchor="middle" font-weight="bold">NO PEACE</text>
+  <text x="1377" y="675" font-family="Georgia, serif" font-size="18" fill="#8b0000" text-anchor="middle" font-weight="bold">TREATY</text>
+  <text x="1377" y="695" font-family="Georgia, serif" font-size="11" fill="#4a3820" text-anchor="middle">Armistice only</text>
+  <text x="1377" y="712" font-family="Georgia, serif" font-size="10" fill="#6b5a3a" text-anchor="middle">July 27, 1953</text>
+
+  
+  <line x1="1005" y1="742" x2="1450" y2="742" stroke="#6b5a3a" stroke-width="1" />
+
+  <rect x="1005" y="758" width="445" height="80" fill="none" stroke="#6b5a3a" stroke-width="1" stroke-dasharray="6,3" />
+  <text x="1228" y="785" font-family="Georgia, serif" font-size="17" fill="#4a3820" text-anchor="middle" font-style="italic">"The Forgotten War"</text>
+  <text x="1228" y="810" font-family="Georgia, serif" font-size="13" fill="#6b5a3a" text-anchor="middle">1950–1953 · Korean Peninsula · Cold War Proxy Conflict</text>
+  <text x="1228" y="830" font-family="Georgia, serif" font-size="12" fill="#6b5a3a" text-anchor="middle">Shaped the geopolitical architecture of East Asia</text>
+
+  
+  <line x1="1005" y1="870" x2="1450" y2="870" stroke="#6b5a3a" stroke-width="1" />
+  <text x="1005" y="862" font-family="Georgia, serif" font-size="15" fill="#6b5a3a" font-weight="bold">MAP LEGEND</text>
+
+  <line x1="1010" y1="890" x2="1060" y2="890" stroke="#cc2200" stroke-width="3" />
+  <line x1="1010" y1="890" x2="1060" y2="890" stroke="#cc2200" stroke-width="1.5" stroke-dasharray="8,4" />
+  <text x="1070" y="895" font-family="Georgia, serif" font-size="13" fill="#4a3820">38th Parallel / DMZ</text>
+
+  <circle cx="1215" cy="890" r="6" fill="#4a6a30" stroke="#2a3a18" stroke-width="1.5" />
+  <circle cx="1215" cy="890" r="2.5" fill="#fff" opacity="0.6" />
+  <text x="1228" y="895" font-family="Georgia, serif" font-size="13" fill="#4a3820">North Korean city</text>
+
+  <circle cx="1360" cy="890" r="6" fill="#a05020" stroke="#5a2810" stroke-width="1.5" />
+  <circle cx="1360" cy="890" r="2.5" fill="#fff" opacity="0.6" />
+  <text x="1373" y="895" font-family="Georgia, serif" font-size="13" fill="#4a3820">South Korean city</text>
+
+  
+  <rect x="990" y="962" width="476" height="2" fill="#6b5a3a" />
+  <rect x="990" y="968" width="476" height="4" fill="#6b5a3a" />
+
+  
+  <g transform="translate(280,935)">
+    <rect x="0" y="0" width="60" height="10" fill="#4a3820" />
+    <rect x="60" y="0" width="60" height="10" fill="#d4c9a8" stroke="#4a3820" stroke-width="1" />
+    <rect x="120" y="0" width="60" height="10" fill="#4a3820" />
+    <text x="0" y="25" font-family="Georgia, serif" font-size="12" fill="#4a3820">0</text>
+    <text x="55" y="25" font-family="Georgia, serif" font-size="12" fill="#4a3820">100</text>
+    <text x="110" y="25" font-family="Georgia, serif" font-size="12" fill="#4a3820">200 km</text>
+    <text x="90" y="-5" font-family="Georgia, serif" font-size="11" fill="#4a3820" font-style="italic">Scale</text>
+  </g>
+
+</svg>

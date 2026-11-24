@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Democratization of South Korea (1987–1993) — Atlas Banner</title>
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="50%" stop-color="#d9c9a8" />
+      <stop offset="100%" stop-color="#c9b890" />
+    </linearGradient>
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00000000" />
+      <stop offset="100%" stop-color="#00000044" />
+    </radialGradient>
+    
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8ccd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+    
+    <linearGradient id="landgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b87a" />
+      <stop offset="100%" stop-color="#b8a060" />
+    </linearGradient>
+    
+    <linearGradient id="skgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#922b21" />
+    </linearGradient>
+    
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2c1810cc" />
+      <stop offset="80%" stop-color="#2c1810aa" />
+      <stop offset="100%" stop-color="#2c181000" />
+    </linearGradient>
+    
+    <pattern id="hatch" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="6" y2="6" stroke="#00000010" stroke-width="0.8" />
+    </pattern>
+    <pattern id="seahatch" x="0" y="0" width="10" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="2" x2="10" y2="2" stroke="#7a9fb088" stroke-width="0.6" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6040" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a6040" stroke-width="1" />
+
+  
+  <rect x="700" y="40" width="796" height="944" fill="url(#sea)" opacity="0.5" />
+  <rect x="700" y="40" width="796" height="944" fill="url(#seahatch)" opacity="0.6" />
+
+  
+  <text x="1300" y="580" font-family="Georgia, serif" font-size="22" fill="#4a6878" opacity="0.7" letter-spacing="6" text-anchor="middle" transform="rotate(-5,1300,580)">YELLOW SEA</text>
+  <text x="1430" y="400" font-family="Georgia, serif" font-size="18" fill="#4a6878" opacity="0.7" letter-spacing="4" text-anchor="middle" transform="rotate(10,1430,400)">SEA OF JAPAN</text>
+
+  
+  
+  <path d="M700,40 L1100,40 L1100,200 Q1050,220 980,240 Q920,260 860,310 Q820,340 790,380 L700,380 Z" fill="url(#landgrad)" stroke="#8a7050" stroke-width="1.5" />
+
+  
+  <path d="M790,380 Q820,340 860,310 Q920,260 980,240 Q1040,225 1050,300 Q1060,360 1020,420 Q990,460 960,490 Q930,510 900,520 Q870,530 850,520 Q820,510 810,480 Q795,450 790,420 Z" fill="#c8b870" stroke="#8a7050" stroke-width="1.5" />
+
+  
+  <text x="930" y="420" font-family="Georgia, serif" font-size="20" fill="#5a4828" text-anchor="middle" opacity="0.85">NORTH KOREA</text>
+
+  
+  <path d="M790,420 Q795,450 810,480 Q820,510 850,520 Q870,530 900,520 Q930,510 960,490 Q990,460 1020,420 Q1040,450 1040,500 Q1045,550 1020,600 Q1000,640 970,670 Q940,700 910,720 Q880,740 850,750 Q820,755 800,740 Q775,720 760,690 Q745,660 748,630 Q750,590 760,555 Q770,510 785,470 Z" fill="url(#skgrad)" stroke="#7a2018" stroke-width="2" />
+
+  
+  <path d="M790,420 Q795,450 810,480 Q820,510 850,520 Q870,530 900,520 Q930,510 960,490 Q990,460 1020,420 Q1040,450 1040,500 Q1045,550 1020,600 Q1000,640 970,670 Q940,700 910,720 Q880,740 850,750 Q820,755 800,740 Q775,720 760,690 Q745,660 748,630 Q750,590 760,555 Q770,510 785,470 Z" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <text x="885" y="590" font-family="Georgia, serif" font-size="22" fill="#f5e8c8" text-anchor="middle" font-weight="bold">SOUTH</text>
+  <text x="885" y="616" font-family="Georgia, serif" font-size="22" fill="#f5e8c8" text-anchor="middle" font-weight="bold">KOREA</text>
+
+  
+  <circle cx="900" cy="472" r="7" fill="#f5e8c8" stroke="#2c1810" stroke-width="1.5" />
+  <circle cx="900" cy="472" r="3" fill="#2c1810" />
+  <text x="918" y="468" font-family="Georgia, serif" font-size="16" fill="#f5e8c8" font-style="italic">Seoul</text>
+
+  
+  <ellipse cx="840" cy="790" rx="28" ry="16" fill="url(#skgrad)" stroke="#7a2018" stroke-width="1.5" />
+
+  
+  <path d="M1150,200 Q1180,240 1190,310 Q1195,360 1180,420 Q1170,460 1160,480 L1200,480 Q1210,440 1220,380 Q1230,310 1210,240 Z" fill="url(#landgrad)" stroke="#8a7050" stroke-width="1.5" />
+  <text x="1220" y="360" font-family="Georgia, serif" font-size="18" fill="#5a4828" text-anchor="middle" opacity="0.7" transform="rotate(15,1220,360)">JAPAN</text>
+
+  
+  <line x1="700" y1="40" x2="700" y2="984" stroke="#8a7050" stroke-width="0.5" opacity="0.4" />
+  <line x1="900" y1="40" x2="900" y2="984" stroke="#8a7050" stroke-width="0.5" opacity="0.3" />
+  <line x1="1100" y1="40" x2="1100" y2="984" stroke="#8a7050" stroke-width="0.5" opacity="0.3" />
+  <line x1="1300" y1="40" x2="1300" y2="984" stroke="#8a7050" stroke-width="0.5" opacity="0.3" />
+  <line x1="700" y1="300" x2="1496" y2="300" stroke="#8a7050" stroke-width="0.5" opacity="0.3" />
+  <line x1="700" y1="500" x2="1496" y2="500" stroke="#8a7050" stroke-width="0.5" opacity="0.3" />
+  <line x1="700" y1="700" x2="1496" y2="700" stroke="#8a7050" stroke-width="0.5" opacity="0.3" />
+
+  
+  <g transform="translate(1390,860)">
+    
+    <circle r="68" fill="none" stroke="#7a6040" stroke-width="1.5" />
+    <circle r="62" fill="#d9c9a888" stroke="#7a6040" stroke-width="0.7" />
+    
+    
+    <polygon points="0,-58 -10,-30 0,-20 10,-30" fill="#2c1810" />
+    
+    <polygon points="0,58 -10,30 0,20 10,30" fill="#8a7050" />
+    
+    <polygon points="58,0 30,-10 20,0 30,10" fill="#8a7050" />
+    
+    <polygon points="-58,0 -30,-10 -20,0 -30,10" fill="#8a7050" />
+    
+    <polygon points="0,-58 6,-32 0,-24 -6,-32" fill="none" stroke="#7a6040" stroke-width="0.5" />
+    <line x1="41" y1="-41" x2="-41" y2="41" stroke="#7a6040" stroke-width="0.7" opacity="0.5" />
+    <line x1="-41" y1="-41" x2="41" y2="41" stroke="#7a6040" stroke-width="0.7" opacity="0.5" />
+    
+    <circle r="6" fill="#2c1810" stroke="#d9c9a8" stroke-width="1" />
+    
+    <text x="0" y="-66" font-family="Georgia, serif" font-size="16" fill="#2c1810" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="78" font-family="Georgia, serif" font-size="14" fill="#5a4828" text-anchor="middle">S</text>
+    <text x="74" y="5" font-family="Georgia, serif" font-size="14" fill="#5a4828" text-anchor="middle">E</text>
+    <text x="-74" y="5" font-family="Georgia, serif" font-size="14" fill="#5a4828" text-anchor="middle">W</text>
+  </g>
+
+  
+  
+  <g transform="translate(80, 750)" opacity="0.35">
+    
+    <ellipse cx="40" cy="200" rx="18" ry="35" fill="#2c1810" />
+    <ellipse cx="40" cy="155" rx="13" ry="13" fill="#2c1810" />
+    <ellipse cx="90" cy="195" rx="18" ry="40" fill="#2c1810" />
+    <ellipse cx="90" cy="148" rx="13" ry="13" fill="#2c1810" />
+    
+    <rect x="82" y="80" width="16" height="60" rx="8" fill="#2c1810" />
+    <rect x="75" y="55" width="30" height="32" rx="6" fill="#2c1810" />
+    <ellipse cx="140" cy="200" rx="16" ry="38" fill="#2c1810" />
+    <ellipse cx="140" cy="155" rx="12" ry="12" fill="#2c1810" />
+    <ellipse cx="185" cy="205" rx="18" ry="33" fill="#2c1810" />
+    <ellipse cx="185" cy="164" rx="12" ry="12" fill="#2c1810" />
+    
+    <rect x="178" y="95" width="14" height="55" rx="7" fill="#2c1810" />
+    <rect x="172" y="72" width="26" height="28" rx="5" fill="#2c1810" />
+    <ellipse cx="230" cy="200" rx="17" ry="36" fill="#2c1810" />
+    <ellipse cx="230" cy="158" rx="12" ry="12" fill="#2c1810" />
+    <ellipse cx="270" cy="202" rx="16" ry="34" fill="#2c1810" />
+    <ellipse cx="270" cy="161" rx="11" ry="11" fill="#2c1810" />
+    <ellipse cx="315" cy="198" rx="18" ry="37" fill="#2c1810" />
+    <ellipse cx="315" cy="153" rx="13" ry="13" fill="#2c1810" />
+    
+    <rect x="308" y="85" width="14" height="58" rx="7" fill="#2c1810" />
+    <rect x="302" y="62" width="26" height="28" rx="5" fill="#2c1810" />
+    <ellipse cx="360" cy="200" rx="16" ry="36" fill="#2c1810" />
+    <ellipse cx="360" cy="157" rx="12" ry="12" fill="#2c1810" />
+    <ellipse cx="400" cy="200" rx="17" ry="35" fill="#2c1810" />
+    <ellipse cx="400" cy="158" rx="12" ry="12" fill="#2c1810" />
+    <ellipse cx="445" cy="200" rx="18" ry="38" fill="#2c1810" />
+    <ellipse cx="445" cy="155" rx="13" ry="13" fill="#2c1810" />
+    
+    <rect x="438" y="88" width="14" height="57" rx="7" fill="#2c1810" />
+    <rect x="432" y="65" width="26" height="28" rx="5" fill="#2c1810" />
+    <ellipse cx="490" cy="203" rx="16" ry="33" fill="#2c1810" />
+    <ellipse cx="490" cy="163" rx="11" ry="11" fill="#2c1810" />
+    <ellipse cx="530" cy="200" rx="17" ry="36" fill="#2c1810" />
+    <ellipse cx="530" cy="157" rx="12" ry="12" fill="#2c1810" />
+    <ellipse cx="575" cy="198" rx="18" ry="36" fill="#2c1810" />
+    <ellipse cx="575" cy="155" rx="13" ry="13" fill="#2c1810" />
+    <ellipse cx="615" cy="202" rx="16" ry="34" fill="#2c1810" />
+    <ellipse cx="615" cy="161" rx="11" ry="11" fill="#2c1810" />
+    
+    <rect x="-10" y="232" width="660" height="8" rx="3" fill="#2c1810" />
+  </g>
+
+  
+  <rect x="40" y="40" width="680" height="700" fill="url(#panel)" />
+
+  
+  <line x1="80" y1="110" x2="620" y2="110" stroke="#c8a050" stroke-width="2" />
+  <line x1="80" y1="115" x2="620" y2="115" stroke="#c8a050" stroke-width="0.7" />
+
+  
+  <text x="350" y="100" font-family="Georgia, serif" font-size="28" fill="#c8a050" text-anchor="middle" letter-spacing="8">1987 — 1993</text>
+
+  
+  <text x="350" y="210" font-family="Georgia, serif" font-size="72" fill="#f5e8c8" text-anchor="middle" font-weight="bold">Democratization</text>
+  <text x="350" y="290" font-family="Georgia, serif" font-size="50" fill="#f5e8c8" text-anchor="middle">of South Korea</text>
+
+  
+  <line x1="80" y1="320" x2="620" y2="320" stroke="#c8a050" stroke-width="1.5" />
+
+  
+  <text x="350" y="385" font-family="serif" font-size="44" fill="#c8a050" text-anchor="middle" opacity="0.9">유월 항쟁</text>
+  <text x="350" y="420" font-family="Georgia, serif" font-size="18" fill="#d9c9a8" text-anchor="middle" font-style="italic" letter-spacing="2">June Democracy Movement</text>
+
+  
+  <line x1="80" y1="440" x2="620" y2="440" stroke="#c8a050" stroke-width="1.5" />
+  <line x1="80" y1="445" x2="620" y2="445" stroke="#c8a050" stroke-width="0.7" />
+
+  
+  <text x="90" y="490" font-family="Georgia, serif" font-size="17" fill="#d9c9a8" opacity="0.9">▸  June Uprising &amp; Constitutional Reform</text>
+  <text x="90" y="520" font-family="Georgia, serif" font-size="17" fill="#d9c9a8" opacity="0.9">▸  Direct Presidential Elections Restored</text>
+  <text x="90" y="550" font-family="Georgia, serif" font-size="17" fill="#d9c9a8" opacity="0.9">▸  End of Military Authoritarian Rule</text>
+  <text x="90" y="580" font-family="Georgia, serif" font-size="17" fill="#d9c9a8" opacity="0.9">▸  Civilian Government of Kim Young-sam</text>
+
+  
+  <rect x="40" y="920" width="680" height="64" fill="#2c1810cc" />
+  <text x="350" y="960" font-family="Georgia, serif" font-size="16" fill="#c8a050" text-anchor="middle" letter-spacing="5">POLITICAL HISTORY  ·  EAST ASIA</text>
+
+  
+  <g transform="translate(750, 960)">
+    <text x="0" y="-8" font-family="Georgia, serif" font-size="13" fill="#5a4828">Scale (approx.)</text>
+    <rect x="0" y="0" width="50" height="8" fill="#5a4828" />
+    <rect x="50" y="0" width="50" height="8" fill="#d9c9a8" stroke="#5a4828" stroke-width="0.8" />
+    <rect x="100" y="0" width="50" height="8" fill="#5a4828" />
+    <rect x="150" y="0" width="50" height="8" fill="#d9c9a8" stroke="#5a4828" stroke-width="0.8" />
+    <text x="0" y="22" font-family="Georgia, serif" font-size="11" fill="#5a4828">0</text>
+    <text x="98" y="22" font-family="Georgia, serif" font-size="11" fill="#5a4828">200 km</text>
+    <text x="196" y="22" font-family="Georgia, serif" font-size="11" fill="#5a4828">400 km</text>
+  </g>
+
+  
+  <line x1="795" y1="422" x2="1028" y2="422" stroke="#f5e8c8" stroke-width="2" stroke-dasharray="8,5" opacity="0.7" />
+  <text x="910" y="414" font-family="Georgia, serif" font-size="13" fill="#f5e8c8" text-anchor="middle" opacity="0.8">— DMZ —</text>
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#c8a050" stroke-width="1" opacity="0.5" />
+</svg>

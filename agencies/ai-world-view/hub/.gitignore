@@ -1,0 +1,22 @@
+# Jekyll build output + caches. `bundle exec jekyll build` (and the
+# build-validation CI gate) generate these; nothing here is source. This repo
+# publishes via native GitHub Pages "deploy from branch", so a committed _site/
+# would be stale generated HTML sitting in the published tree.
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler local state (a sandboxed `BUNDLE_PATH=<scratch>` install, .bundle
+# config, vendored gems).
+.bundle/
+/vendor/
+
+# Gemfile.lock is deliberately NOT committed here: production builds on native
+# GitHub Pages with its own gem set, and CI resolves fresh through
+# ruby/setup-ruby's bundler-cache. The Gemfile's `github-pages "~> 232"` pin is
+# what keeps that resolution deterministic.
+Gemfile.lock
+
+# macOS
+.DS_Store

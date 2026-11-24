@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Windows Phone 7 Launch — Microsoft's Metro Reset</title>
+  <defs>
+    <radialGradient id="crt" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a0a2e" />
+      <stop offset="100%" stop-color="#050510" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="glowStrong">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#crt)" />
+
+  
+  <rect width="1536" height="1024" fill="none" stroke="#00ffff" stroke-width="0.3" opacity="0.04" />
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#crt)" opacity="0.3" />
+
+  
+  <g opacity="0.12" stroke="#00ffff" stroke-width="1">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  
+  <rect x="540" y="100" width="240" height="420" rx="0" ry="0" fill="#0078d4" filter="url(#glow)" />
+  
+  <rect x="548" y="108" width="224" height="404" fill="#111133" />
+  
+  <rect x="556" y="140" width="208" height="340" fill="#000820" />
+
+  
+  
+  <rect x="560" y="144" width="96" height="96" fill="#0078d4" />
+  
+  <rect x="664" y="144" width="96" height="96" fill="#00b050" />
+  
+  <rect x="560" y="248" width="96" height="96" fill="#7030a0" />
+  
+  <rect x="664" y="248" width="96" height="96" fill="#e36c00" />
+  
+  <rect x="560" y="352" width="200" height="56" fill="#c00000" />
+  
+  <rect x="560" y="416" width="96" height="60" fill="#008080" />
+  
+  <rect x="664" y="416" width="96" height="60" fill="#003680" />
+
+  
+  
+  <rect x="596" y="168" width="24" height="24" fill="#fff" opacity="0.9" />
+  <rect x="592" y="200" width="32" height="16" fill="#fff" opacity="0.9" />
+  
+  <rect x="672" y="168" width="80" height="48" fill="none" stroke="#fff" stroke-width="6" />
+  <rect x="692" y="216" width="16" height="16" fill="#00b050" />
+  <rect x="700" y="208" width="8" height="16" fill="#fff" />
+  
+  <rect x="568" y="264" width="80" height="64" fill="none" stroke="#fff" stroke-width="6" />
+  <rect x="568" y="264" width="80" height="16" fill="#fff" opacity="0.8" />
+  <rect x="580" y="292" width="16" height="8" fill="#fff" opacity="0.9" />
+  <rect x="608" y="292" width="16" height="8" fill="#fff" opacity="0.9" />
+  <rect x="580" y="308" width="16" height="8" fill="#fff" opacity="0.9" />
+  
+  <rect x="696" y="272" width="8" height="40" fill="#fff" opacity="0.9" />
+  <rect x="696" y="272" width="24" height="8" fill="#fff" opacity="0.9" />
+  <rect x="684" y="304" width="20" height="16" fill="#fff" opacity="0.9" />
+  
+  <rect x="568" y="362" width="48" height="8" fill="#fff" opacity="0.8" />
+  <rect x="568" y="378" width="32" height="8" fill="#fff" opacity="0.6" />
+  
+  <rect x="596" y="432" width="8" height="32" fill="#fff" opacity="0.8" />
+  <rect x="576" y="448" width="48" height="8" fill="#fff" opacity="0.8" />
+
+  
+  <rect x="620" y="120" width="80" height="8" fill="#0055aa" />
+  <rect x="628" y="122" width="8" height="4" fill="#003388" />
+  <rect x="644" y="122" width="8" height="4" fill="#003388" />
+  <rect x="660" y="122" width="8" height="4" fill="#003388" />
+  <rect x="676" y="122" width="8" height="4" fill="#003388" />
+
+  
+  <rect x="608" y="492" width="104" height="20" fill="#0055aa" />
+  <rect x="640" y="496" width="40" height="12" fill="#003388" />
+
+  
+  <g filter="url(#glowStrong)">
+    
+    <rect x="1100" y="200" width="240" height="48" fill="#00d4ff" />
+    <rect x="1292" y="248" width="48" height="96" fill="#00d4ff" />
+    <rect x="1196" y="344" width="96" height="48" fill="#00d4ff" />
+    <rect x="1148" y="392" width="48" height="144" fill="#00d4ff" />
+  </g>
+
+  
+  <g fill="#ffff00" filter="url(#glow)" opacity="0.8">
+    <rect x="100" y="80" width="16" height="16" />
+    <rect x="108" y="72" width="16" height="32" />
+    <rect x="92" y="88" width="32" height="16" />
+
+    <rect x="1440" y="900" width="12" height="12" />
+    <rect x="1446" y="894" width="12" height="24" />
+    <rect x="1434" y="906" width="24" height="12" />
+
+    <rect x="200" y="900" width="8" height="8" />
+    <rect x="204" y="896" width="8" height="16" />
+    <rect x="196" y="904" width="16" height="8" />
+
+    <rect x="1380" y="120" width="12" height="12" />
+    <rect x="1386" y="114" width="12" height="24" />
+    <rect x="1374" y="126" width="24" height="12" />
+  </g>
+
+  
+  <g filter="url(#glow)">
+    <rect x="880" y="680" width="320" height="48" fill="#00d4ff" opacity="0.15" />
+    <text x="1040" y="720" font-family="monospace" font-size="40" fill="#00d4ff" text-anchor="middle" letter-spacing="12" font-weight="bold">METRO</text>
+  </g>
+
+  
+  
+  <rect x="60" y="200" width="80" height="80" fill="#0078d4" opacity="0.7" />
+  <rect x="148" y="200" width="80" height="80" fill="#00b050" opacity="0.7" />
+  <rect x="60" y="288" width="168" height="40" fill="#7030a0" opacity="0.7" />
+
+  
+  <rect x="1360" y="600" width="80" height="80" fill="#e36c00" opacity="0.7" />
+  <rect x="1448" y="600" width="64" height="80" fill="#c00000" opacity="0.7" />
+  <rect x="1360" y="688" width="152" height="40" fill="#0078d4" opacity="0.7" />
+
+  
+  <g fill="#0078d4" opacity="0.4">
+    <rect x="0" y="960" width="32" height="32" />
+    <rect x="40" y="960" width="32" height="32" />
+    <rect x="80" y="960" width="32" height="32" />
+    <rect x="120" y="960" width="32" height="32" />
+    <rect x="160" y="960" width="32" height="32" />
+    <rect x="200" y="960" width="32" height="32" />
+    <rect x="240" y="960" width="32" height="32" />
+    <rect x="0" y="992" width="32" height="32" />
+    <rect x="80" y="992" width="32" height="32" />
+    <rect x="160" y="992" width="32" height="32" />
+    <rect x="240" y="992" width="32" height="32" />
+  </g>
+  <g fill="#0078d4" opacity="0.4">
+    <rect x="1296" y="960" width="32" height="32" />
+    <rect x="1336" y="960" width="32" height="32" />
+    <rect x="1376" y="960" width="32" height="32" />
+    <rect x="1416" y="960" width="32" height="32" />
+    <rect x="1456" y="960" width="32" height="32" />
+    <rect x="1496" y="960" width="32" height="32" />
+    <rect x="1296" y="992" width="32" height="32" />
+    <rect x="1376" y="992" width="32" height="32" />
+    <rect x="1456" y="992" width="32" height="32" />
+  </g>
+
+  
+  <rect x="0" y="780" width="1536" height="4" fill="#0078d4" opacity="0.5" filter="url(#glow)" />
+
+  
+  <text x="768" y="858" font-family="monospace" font-size="72" fill="#ffffff" text-anchor="middle" font-weight="bold" filter="url(#glow)" letter-spacing="2">WINDOWS PHONE 7</text>
+  <text x="768" y="936" font-family="monospace" font-size="38" fill="#00d4ff" text-anchor="middle" letter-spacing="6" filter="url(#glow)">MICROSOFT'S METRO RESET</text>
+
+  
+  <rect x="600" y="960" width="336" height="48" fill="#0078d4" opacity="0.3" />
+  <text x="768" y="993" font-family="monospace" font-size="28" fill="#00d4ff" text-anchor="middle" letter-spacing="4" opacity="0.9">OCT 21, 2010</text>
+
+  
+  <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+    <stop offset="60%" stop-color="transparent" />
+    <stop offset="100%" stop-color="#000010" stop-opacity="0.7" />
+  </radialGradient>
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <rect width="1536" height="1024" fill="none" opacity="0.05" style="background: repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 4px)" />
+</svg>

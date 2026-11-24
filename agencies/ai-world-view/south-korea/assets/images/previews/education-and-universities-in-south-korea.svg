@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Education and Universities in South Korea</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8ccd8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8faabf" />
+      <stop offset="100%" stop-color="#6e90a8" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g stroke="#c0b090" stroke-width="0.8" opacity="0.5" fill="none">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <ellipse cx="250" cy="500" rx="320" ry="420" fill="#8faabf" opacity="0.35" />
+  
+  <ellipse cx="1100" cy="520" rx="280" ry="380" fill="#8faabf" opacity="0.25" />
+
+  
+  <g id="peninsula">
+    
+    <path d="M 680 180               L 720 170 L 780 175 L 830 185 L 870 200               L 890 230 L 900 270 L 895 310 L 905 350               L 910 390 L 900 430 L 880 460 L 860 490               L 850 530 L 840 560 L 820 590 L 800 620               L 780 650 L 760 680 L 740 700 L 720 720               L 700 740 L 680 760 L 660 775 L 640 780               L 620 770 L 610 755 L 620 730 L 640 710               L 650 690 L 660 660 L 660 630 L 650 600               L 640 570 L 630 540 L 620 510 L 615 480               L 610 450 L 600 420 L 590 390 L 585 360               L 585 330 L 590 300 L 595 270 L 600 240               L 610 215 L 630 195 L 655 185 Z" fill="#c8b87a" stroke="#8a7040" stroke-width="2.5" />
+    
+    <path d="M 655 185 L 680 180 L 720 170 L 780 175 L 830 185               L 870 200 L 890 230 L 900 270 L 895 310               L 880 320 L 850 315 L 820 310 L 790 315               L 760 320 L 730 315 L 700 310 L 670 315               L 645 320 L 625 315 L 605 310 L 595 300               L 590 270 L 595 240 L 610 215 L 630 195 Z" fill="#b8a668" stroke="#8a7040" stroke-width="1.5" />
+    
+    <line x1="605" y1="310" x2="895" y2="310" stroke="#7a5030" stroke-width="2.5" stroke-dasharray="8,5" />
+    
+    <path d="M 605 310 L 645 320 L 670 315 L 700 310               L 730 315 L 760 320 L 790 315 L 820 310               L 850 315 L 880 320 L 895 310               L 910 350 L 910 390 L 900 430 L 880 460               L 860 490 L 850 530 L 840 560 L 820 590               L 800 620 L 780 650 L 760 680 L 740 700               L 720 720 L 700 740 L 680 760 L 660 775               L 640 780 L 620 770 L 610 755 L 620 730               L 640 710 L 650 690 L 660 660 L 660 630               L 650 600 L 640 570 L 630 540 L 620 510               L 615 480 L 610 450 L 600 420 L 590 390               L 585 360 L 585 330 L 595 310 Z" fill="#d4a84b" stroke="#8a7040" stroke-width="2" />
+    
+    <ellipse cx="680" cy="820" rx="45" ry="25" fill="#d4a84b" stroke="#8a7040" stroke-width="2" />
+  </g>
+
+  
+  <circle cx="740" cy="420" r="14" fill="#8b2020" opacity="0.9" />
+  <circle cx="740" cy="420" r="8" fill="#c43030" />
+  <circle cx="740" cy="420" r="3" fill="#fff" />
+
+  
+  <text x="760" y="415" font-family="Georgia, serif" font-size="18" fill="#3a2010" font-weight="bold" letter-spacing="1">SEOUL</text>
+
+  
+  <g transform="translate(1380, 160)">
+    <circle cx="0" cy="0" r="70" fill="#e8dfc8" stroke="#8a7040" stroke-width="2" />
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#8a7040" stroke-width="1" />
+    <circle cx="0" cy="0" r="10" fill="#8a7040" />
+    
+    <polygon points="0,-65 -8,-20 0,-10 8,-20" fill="#8a7040" />
+    <polygon points="0,65 -8,20 0,10 8,20" fill="#c0b090" />
+    <polygon points="-65,0 -20,-8 -10,0 -20,8" fill="#c0b090" />
+    <polygon points="65,0 20,-8 10,0 20,8" fill="#c0b090" />
+    
+    <polygon points="46,-46 18,-12 12,-18" fill="#c0b090" />
+    <polygon points="-46,-46 -18,-12 -12,-18" fill="#c0b090" />
+    <polygon points="46,46 18,12 12,18" fill="#c0b090" />
+    <polygon points="-46,46 -18,12 -12,18" fill="#c0b090" />
+    <text x="0" y="-73" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#3a2010" font-weight="bold">N</text>
+    <text x="0" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3a2010">S</text>
+    <text x="80" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3a2010">E</text>
+    <text x="-80" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3a2010">W</text>
+  </g>
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8a7040" stroke-width="3" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#8a7040" stroke-width="1" />
+  
+  <g stroke="#8a7040" stroke-width="2" fill="none">
+    <path d="M 24 24 L 70 24 M 24 24 L 24 70" />
+    <path d="M 1512 24 L 1466 24 M 1512 24 L 1512 70" />
+    <path d="M 24 1000 L 70 1000 M 24 1000 L 24 954" />
+    <path d="M 1512 1000 L 1466 1000 M 1512 1000 L 1512 954" />
+  </g>
+
+  
+  <g transform="translate(1050, 350)">
+    
+    <path d="M -80 -50 Q -80 60 -80 70 Q -40 55 0 60 L 0 -55 Q -40 -70 -80 -50 Z" fill="#f0e8d0" stroke="#8a7040" stroke-width="2.5" />
+    
+    <path d="M 80 -50 Q 80 60 80 70 Q 40 55 0 60 L 0 -55 Q 40 -70 80 -50 Z" fill="#f0e8d0" stroke="#8a7040" stroke-width="2.5" />
+    
+    <line x1="0" y1="-55" x2="0" y2="60" stroke="#8a7040" stroke-width="2" />
+    
+    <line x1="-65" y1="-20" x2="-15" y2="-22" stroke="#8a7040" stroke-width="1.5" opacity="0.6" />
+    <line x1="-65" y1="-5" x2="-15" y2="-7" stroke="#8a7040" stroke-width="1.5" opacity="0.6" />
+    <line x1="-65" y1="10" x2="-15" y2="8" stroke="#8a7040" stroke-width="1.5" opacity="0.6" />
+    <line x1="-65" y1="25" x2="-15" y2="23" stroke="#8a7040" stroke-width="1.5" opacity="0.6" />
+    
+    <line x1="65" y1="-20" x2="15" y2="-22" stroke="#8a7040" stroke-width="1.5" opacity="0.6" />
+    <line x1="65" y1="-5" x2="15" y2="-7" stroke="#8a7040" stroke-width="1.5" opacity="0.6" />
+    <line x1="65" y1="10" x2="15" y2="8" stroke="#8a7040" stroke-width="1.5" opacity="0.6" />
+    <line x1="65" y1="25" x2="15" y2="23" stroke="#8a7040" stroke-width="1.5" opacity="0.6" />
+    
+    <text x="35" y="48" font-family="serif" font-size="22" fill="#8a7040" opacity="0.8" text-anchor="middle">학</text>
+    <text x="-35" y="48" font-family="serif" font-size="22" fill="#8a7040" opacity="0.8" text-anchor="middle">교</text>
+  </g>
+
+  
+  <g transform="translate(1050, 580)">
+    
+    <polygon points="0,-45 80,0 0,20 -80,0" fill="#3a2010" />
+    <polygon points="0,-45 80,0 0,20 -80,0" fill="#5a3820" />
+    
+    <polygon points="0,-55 70,-10 0,10 -70,-10" fill="#3a2010" />
+    
+    <line x1="70" y1="-10" x2="70" y2="30" stroke="#c8900a" stroke-width="3" />
+    <circle cx="70" cy="30" r="5" fill="#c8900a" />
+    
+    <line x1="65" y1="30" x2="60" y2="50" stroke="#c8900a" stroke-width="2" />
+    <line x1="70" y1="32" x2="70" y2="52" stroke="#c8900a" stroke-width="2" />
+    <line x1="75" y1="30" x2="80" y2="50" stroke="#c8900a" stroke-width="2" />
+  </g>
+
+  
+  <g transform="translate(1200, 470)">
+    <rect x="-60" y="-28" width="160" height="40" rx="6" fill="#3a2010" opacity="0.85" />
+    <text x="20" y="-4" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#e8c860" font-weight="bold" letter-spacing="3">SKY</text>
+    <text x="20" y="13" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#d4c9a8" letter-spacing="1">UNIVERSITIES</text>
+  </g>
+
+  
+  <g transform="translate(1280, 600)">
+    <rect x="-45" y="-65" width="90" height="115" rx="4" fill="#f5f0e0" stroke="#8a7040" stroke-width="2" />
+    <text x="0" y="-45" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#3a2010" font-weight="bold">수능</text>
+    <line x1="-30" y1="-30" x2="30" y2="-30" stroke="#8a7040" stroke-width="1.2" />
+    <line x1="-30" y1="-18" x2="30" y2="-18" stroke="#8a7040" stroke-width="1.2" />
+    <line x1="-30" y1="-6" x2="30" y2="-6" stroke="#8a7040" stroke-width="1.2" />
+    <line x1="-30" y1="6" x2="30" y2="6" stroke="#8a7040" stroke-width="1.2" />
+    <line x1="-30" y1="18" x2="30" y2="18" stroke="#8a7040" stroke-width="1.2" />
+    
+    <circle cx="-20" cy="35" r="6" fill="none" stroke="#8a7040" stroke-width="1.5" />
+    <circle cx="-5" cy="35" r="6" fill="#3a2010" />
+    <circle cx="10" cy="35" r="6" fill="none" stroke="#8a7040" stroke-width="1.5" />
+    <circle cx="25" cy="35" r="6" fill="none" stroke="#8a7040" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(200, 500)" opacity="0.25">
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#8a7040" stroke-width="2" />
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#8a7040" stroke-width="1" />
+    
+    <g stroke="#3a2010" stroke-width="3" fill="none">
+      <line x1="-25" y1="-82" x2="25" y2="-82" />
+      <line x1="-25" y1="-75" x2="8" y2="-75" />
+      <line x1="12" y1="-75" x2="25" y2="-75" />
+      <line x1="-25" y1="-68" x2="25" y2="-68" />
+    </g>
+  </g>
+
+  
+  <rect x="60" y="60" width="480" height="900" fill="#3a2010" opacity="0.06" rx="4" />
+
+  
+  <text x="100" y="200" font-family="Georgia, serif" font-size="68" fill="#2a1808" font-weight="bold" letter-spacing="-1">Education</text>
+  <text x="100" y="278" font-family="Georgia, serif" font-size="68" fill="#2a1808" font-weight="bold" letter-spacing="-1">and</text>
+  <text x="100" y="356" font-family="Georgia, serif" font-size="68" fill="#2a1808" font-weight="bold" letter-spacing="-1">Universities</text>
+  
+  <rect x="100" y="375" width="380" height="4" fill="#c8900a" />
+  <text x="100" y="430" font-family="Georgia, serif" font-size="56" fill="#2a1808" font-weight="bold" letter-spacing="2">in South</text>
+  <text x="100" y="500" font-family="Georgia, serif" font-size="56" fill="#2a1808" font-weight="bold" letter-spacing="2">Korea</text>
+
+  
+  <text x="100" y="560" font-family="Georgia, serif" font-size="20" fill="#6a4820" letter-spacing="3">CULTURE &amp; SOCIETY</text>
+  <rect x="100" y="572" width="240" height="2" fill="#8a7040" />
+
+  
+  <text x="100" y="620" font-family="Georgia, serif" font-size="17" fill="#4a3010">Suneung · SKY Universities</text>
+  <text x="100" y="648" font-family="Georgia, serif" font-size="17" fill="#4a3010">Confucian Academic Tradition</text>
+  <text x="100" y="676" font-family="Georgia, serif" font-size="17" fill="#4a3010">National Knowledge Economy</text>
+
+  
+  <text x="100" y="780" font-family="serif" font-size="72" fill="#8a7040" opacity="0.18" letter-spacing="8">대학교</text>
+
+  
+  <g transform="translate(768, 960)">
+    <rect x="-200" y="-22" width="400" height="36" rx="4" fill="#3a2010" opacity="0.12" />
+    <rect x="-198" y="-20" width="396" height="32" rx="3" fill="none" stroke="#8a7040" stroke-width="1" />
+    <text x="0" y="6" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#3a2010" letter-spacing="4">REPUBLIC OF KOREA · 대한민국</text>
+  </g>
+
+  
+  <circle cx="720" cy="520" r="5" fill="#8b2020" opacity="0.7" />
+  <text x="728" y="523" font-family="Georgia, serif" font-size="12" fill="#3a2010" opacity="0.9">Daejeon (KAIST)</text>
+  <circle cx="820" cy="480" r="5" fill="#8b2020" opacity="0.7" />
+  <text x="828" y="483" font-family="Georgia, serif" font-size="12" fill="#3a2010" opacity="0.9">Pohang (POSTECH)</text>
+  <circle cx="680" cy="600" r="5" fill="#8b2020" opacity="0.7" />
+  <text x="688" y="603" font-family="Georgia, serif" font-size="12" fill="#3a2010" opacity="0.9">Gwangju</text>
+  <circle cx="850" cy="570" r="5" fill="#8b2020" opacity="0.7" />
+  <text x="858" y="573" font-family="Georgia, serif" font-size="12" fill="#3a2010" opacity="0.9">Busan</text>
+
+</svg>

@@ -107,3 +107,26 @@ features:
     surface: docs
     link: "docs/constitution.md"
     docs: "PRD.md"
+  - id: LHD-009
+    title: "Sub-agencies: self-contained site trees under agencies/"
+    description: "The content of lifehacker.dev's sub-agencies, held as self-contained site trees under `agencies/` and registered in `_data/agencies.yml` with each site's source and custody; imported only by `scripts/agencies/import.rb`, checked by `scripts/ci/lint_agencies.rb`, and excluded from the apex site's build. One agency is published as a collection of this site (LHD-010); the others are held, unpublished"
+    implemented: true
+    status: partial
+    prd: [FR6, NFR5]
+    surface: content
+    link: "agencies"
+    docs: "agencies/README.md"
+  - id: LHD-010
+    title: "Wargames agency at /wargames/"
+    description: "The Wargames agency, published as a collection of this site: 219 OverTheWire game and level pages with study guides under `/wargames/`, reached from the Agencies menu and the `/agencies/` index, with a page-tree sidebar and level-to-level navigation. Kept out of the news sections and the feed"
+    implemented: true
+    status: shipped
+    prd: [FR7]
+    surface: content
+    link: "pages/_wargames"
+    docs: "docs/adr/0003-agencies-as-collections.md"
+    scenarios: [agency-wargames]
+    evidence: ["test/evidence/agency-wargames"]
+    verified:
+      date: 2026-11-23
+      by: agent

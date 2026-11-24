@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drsai"
+version = "0.1.0"
+description = "DrSAI – Doctor Seuss Artificial Intelligence: Generate whimsical, rhyming content in the style of Dr. Seuss"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "DrSAI Team", email = "team@drsai.example.com"}
+]
+keywords = ["dr-seuss", "poetry", "ai", "llm", "cli", "education", "rhyme"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Education",
+]
+dependencies = [
+    "typer>=0.12.0",
+    "openai>=3.24.0",
+    "anthropic>=0.7.0",
+    "nltk>=3.10.3",
+    "pydantic>=2.0",
+    "python-dotenv>=1.2.4",
+    "requests>=2.34.2",
+    "rich>=13.0",
+    "pronouncing>=0.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=7.1.0",
+    "black>=23.0",
+    "mypy>=2.4.0",
+    "ruff>=0.1",
+    "pre-commit>=4.6.2",
+    # Parses .github/workflows/ci.yml in tests/unit/test_ci_matrix.py. Arrives
+    # transitively via pre-commit today; declared so the CI-contract tests fail
+    # loudly rather than skip if that ever changes.
+    "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+drsai = "drsai.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/drsai/drsai"
+Documentation = "https://github.com/drsai/drsai#readme"
+Repository = "https://github.com/drsai/drsai"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --cov=drsai --cov-report=term-missing"
+
+

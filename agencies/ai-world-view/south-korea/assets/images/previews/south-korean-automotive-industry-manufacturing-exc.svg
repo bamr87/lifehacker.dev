@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>South Korean Automotive Industry: Manufacturing Excellence and Global Growth</title>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="carBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#922b21" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7fb3c8" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#5a9ab5" stop-opacity="0.25" />
+    </linearGradient>
+    <linearGradient id="flagGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f0ebe0" />
+    </linearGradient>
+    <filter id="parchment" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g stroke="#b8a97a" stroke-width="0.6" opacity="0.4">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="128" y1="0" x2="128" y2="1024" />
+    <line x1="256" y1="0" x2="256" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="512" y1="0" x2="512" y2="1024" />
+    <line x1="640" y1="0" x2="640" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="896" y1="0" x2="896" y2="1024" />
+    <line x1="1024" y1="0" x2="1024" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1280" y1="0" x2="1280" y2="1024" />
+    <line x1="1408" y1="0" x2="1408" y2="1024" />
+  </g>
+
+  
+  <ellipse cx="900" cy="520" rx="680" ry="420" fill="url(#seaGrad)" />
+
+  
+  <g id="korea-map">
+    
+    <path d="M 820,200 L 860,190 L 900,200 L 920,230 L 930,270 L 940,310 L 950,360 L 945,410 L 940,460 L 930,500 L 910,540 L 890,570 L 870,590 L 855,580 L 840,560 L 830,530 L 820,500 L 800,480 L 790,450 L 785,410 L 780,370 L 775,330 L 770,290 L 775,250 L 790,220 Z" fill="#c8b87a" stroke="#8a7540" stroke-width="2.5" />
+    
+    <path d="M 820,200 L 790,220 L 775,200 L 760,185 L 740,170 L 770,160 L 810,165 L 840,175 Z" fill="#c8b87a" stroke="#8a7540" stroke-width="2" />
+    
+    <ellipse cx="840" cy="640" rx="28" ry="16" fill="#c8b87a" stroke="#8a7540" stroke-width="2" />
+    
+    <circle cx="860" cy="360" r="14" fill="#c0392b" stroke="#ffffff" stroke-width="3" />
+    <circle cx="860" cy="360" r="6" fill="#ffffff" />
+    
+    <text x="880" y="355" font-family="Georgia, serif" font-size="20" fill="#5a3a10" font-style="italic">Seoul</text>
+  </g>
+
+  
+  <g opacity="0.6">
+    <path d="M 1040,250 L 1060,240 L 1080,260 L 1090,300 L 1085,340 L 1075,370 L 1060,380 L 1045,360 L 1040,320 L 1038,280 Z" fill="#c8b87a" stroke="#8a7540" stroke-width="1.5" />
+    <path d="M 1030,400 L 1050,390 L 1070,410 L 1080,450 L 1070,490 L 1050,510 L 1030,500 L 1020,470 L 1020,430 Z" fill="#c8b87a" stroke="#8a7540" stroke-width="1.5" />
+  </g>
+
+  
+  <path d="M 0,0 L 700,0 L 720,80 L 750,160 L 760,185 L 740,200 L 700,220 L 660,260 L 620,300 L 600,350 L 590,420 L 570,480 L 540,540 L 500,580 L 440,600 L 380,590 L 320,560 L 260,520 L 200,480 L 140,440 L 80,400 L 0,380 Z" fill="#c8b87a" stroke="#8a7540" stroke-width="2" />
+
+  
+  <g stroke="#c0392b" stroke-width="2" fill="none" opacity="0.55" stroke-dasharray="8,6">
+    
+    <path d="M 870,420 Q 900,300 960,280 Q 1080,200 1200,180 Q 1350,160 1450,200" />
+    
+    <path d="M 860,380 Q 800,300 720,240 Q 600,180 460,160 Q 300,140 180,180 Q 80,210 40,260" />
+    
+    <path d="M 870,480 Q 850,560 800,620 Q 740,680 660,720 Q 560,760 460,800" />
+    
+    <path d="M 880,520 Q 920,580 940,640 Q 960,700 980,760 Q 1000,820 1040,880" />
+  </g>
+
+  
+  <circle cx="1450" cy="200" r="8" fill="#c0392b" opacity="0.7" />
+  <circle cx="40" cy="260" r="8" fill="#c0392b" opacity="0.7" />
+  <circle cx="460" cy="800" r="8" fill="#c0392b" opacity="0.7" />
+  <circle cx="1040" cy="880" r="8" fill="#c0392b" opacity="0.7" />
+
+  
+  <g transform="translate(160, 640)">
+    
+    <rect x="40" y="80" width="380" height="100" rx="18" fill="#922b21" />
+    
+    <path d="M 100,80 L 130,30 L 290,20 L 340,80 Z" fill="#c0392b" />
+    
+    <path d="M 140,75 L 160,40 L 220,35 L 220,75 Z" fill="#7fb3c8" opacity="0.8" />
+    <path d="M 228,75 L 228,33 L 280,30 L 310,75 Z" fill="#7fb3c8" opacity="0.8" />
+    
+    <circle cx="120" cy="180" r="42" fill="#3d3228" stroke="#8a7540" stroke-width="4" />
+    <circle cx="120" cy="180" r="24" fill="#6b5d4f" />
+    <circle cx="120" cy="180" r="10" fill="#d4c9a8" />
+    <circle cx="340" cy="180" r="42" fill="#3d3228" stroke="#8a7540" stroke-width="4" />
+    <circle cx="340" cy="180" r="24" fill="#6b5d4f" />
+    <circle cx="340" cy="180" r="10" fill="#d4c9a8" />
+    
+    <ellipse cx="418" cy="120" rx="10" ry="18" fill="#f0e68c" opacity="0.9" />
+    
+    <rect x="400" y="95" width="20" height="50" rx="4" fill="#5a3a10" />
+    <line x1="405" y1="100" x2="405" y2="140" stroke="#8a7540" stroke-width="1.5" />
+    <line x1="412" y1="100" x2="412" y2="140" stroke="#8a7540" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(280, 780) scale(0.6)">
+    <rect x="40" y="80" width="380" height="100" rx="18" fill="#5a7a9a" />
+    <path d="M 100,80 L 130,30 L 290,20 L 340,80 Z" fill="#7098b8" />
+    <path d="M 140,75 L 160,40 L 220,35 L 220,75 Z" fill="#7fb3c8" opacity="0.8" />
+    <path d="M 228,75 L 228,33 L 280,30 L 310,75 Z" fill="#7fb3c8" opacity="0.8" />
+    <circle cx="120" cy="180" r="42" fill="#3d3228" stroke="#8a7540" stroke-width="4" />
+    <circle cx="120" cy="180" r="24" fill="#6b5d4f" />
+    <circle cx="340" cy="180" r="42" fill="#3d3228" stroke="#8a7540" stroke-width="4" />
+    <circle cx="340" cy="180" r="24" fill="#6b5d4f" />
+    <ellipse cx="418" cy="120" rx="10" ry="18" fill="#f0e68c" opacity="0.9" />
+    <rect x="400" y="95" width="20" height="50" rx="4" fill="#5a3a10" />
+  </g>
+
+  
+  <g transform="translate(1320, 80)">
+    <rect x="0" y="0" width="160" height="106" rx="4" fill="url(#flagGrad)" stroke="#8a7540" stroke-width="2" />
+    
+    <circle cx="80" cy="53" r="28" fill="none" stroke="#8a7540" stroke-width="1" opacity="0.3" />
+    
+    <path d="M 80,25 A 28,28 0 0,1 80,81 A 14,14 0 0,0 80,53 A 14,14 0 0,1 80,25 Z" fill="#c0392b" />
+    
+    <path d="M 80,25 A 28,28 0 0,0 80,81 A 14,14 0 0,1 80,53 A 14,14 0 0,0 80,25 Z" fill="#1a3a7a" />
+    
+    <g fill="#2c2c2c">
+      
+      <rect x="22" y="22" width="18" height="5" />
+      <rect x="22" y="30" width="18" height="5" />
+      <rect x="22" y="38" width="18" height="5" />
+      
+      <rect x="120" y="22" width="18" height="5" />
+      <rect x="120" y="30" width="7" height="5" />
+      <rect x="131" y="30" width="7" height="5" />
+      <rect x="120" y="38" width="18" height="5" />
+      
+      <rect x="22" y="64" width="18" height="5" />
+      <rect x="22" y="72" width="7" height="5" />
+      <rect x="33" y="72" width="7" height="5" />
+      <rect x="22" y="80" width="7" height="5" />
+      <rect x="33" y="80" width="7" height="5" />
+      
+      <rect x="120" y="64" width="7" height="5" />
+      <rect x="131" y="64" width="7" height="5" />
+      <rect x="120" y="72" width="7" height="5" />
+      <rect x="131" y="72" width="7" height="5" />
+      <rect x="120" y="80" width="18" height="5" />
+    </g>
+  </g>
+
+  
+  <g transform="translate(1410, 820)">
+    <circle cx="0" cy="0" r="52" fill="#e8dfc8" stroke="#8a7540" stroke-width="2" />
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#8a7540" stroke-width="1" stroke-dasharray="4,3" />
+    
+    <polygon points="0,-44 -8,-20 8,-20" fill="#c0392b" />
+    <polygon points="0,44 -8,20 8,20" fill="#8a7540" />
+    <polygon points="-44,0 -20,-8 -20,8" fill="#8a7540" />
+    <polygon points="44,0 20,-8 20,8" fill="#8a7540" />
+    <circle cx="0" cy="0" r="6" fill="#5a3a10" />
+    <text x="0" y="-50" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5a3a10" font-weight="bold">N</text>
+    <text x="0" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3a10">S</text>
+    <text x="-56" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3a10">W</text>
+    <text x="56" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3a10">E</text>
+  </g>
+
+  
+  <g transform="translate(1050, 780)">
+    <rect x="0" y="0" width="260" height="120" rx="8" fill="#5a3a10" opacity="0.85" />
+    <rect x="3" y="3" width="254" height="114" rx="6" fill="none" stroke="#b8a97a" stroke-width="1.5" />
+    <text x="130" y="38" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#d4c9a8" letter-spacing="2">PRODUCTION 2023</text>
+    <text x="130" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#e8dfc8" font-weight="bold">4.1M</text>
+    <text x="130" y="105" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#b8a97a">vehicles · 5th largest worldwide</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" rx="6" fill="none" stroke="#8a7540" stroke-width="3" />
+  <rect x="28" y="28" width="1480" height="968" rx="4" fill="none" stroke="#b8a97a" stroke-width="1" />
+
+  
+  <g>
+    
+    <rect x="60" y="60" width="720" height="220" rx="6" fill="#3d2d10" opacity="0.82" />
+    <rect x="64" y="64" width="712" height="212" rx="4" fill="none" stroke="#b8a97a" stroke-width="1.2" />
+
+    <text x="100" y="128" font-family="Georgia, serif" font-size="46" font-weight="bold" fill="#e8dfc8" letter-spacing="1">South Korean</text>
+    <text x="100" y="182" font-family="Georgia, serif" font-size="46" font-weight="bold" fill="#e8dfc8" letter-spacing="1">Automotive Industry</text>
+    <text x="100" y="240" font-family="Georgia, serif" font-size="22" fill="#c0392b" letter-spacing="3">MANUFACTURING EXCELLENCE &amp; GLOBAL GROWTH</text>
+  </g>
+
+  
+  <rect x="60" y="295" width="560" height="4" fill="#c0392b" opacity="0.7" />
+
+  
+  <text x="820" y="620" font-family="Georgia, serif" font-size="15" fill="#5a3a10" font-style="italic" opacity="0.8">Korean Peninsula</text>
+  <text x="1000" y="350" font-family="Georgia, serif" font-size="13" fill="#5a3a10" font-style="italic" opacity="0.6">Japan</text>
+  <text x="500" y="300" font-family="Georgia, serif" font-size="13" fill="#5a3a10" font-style="italic" opacity="0.6">China</text>
+
+  
+  <text x="740" y="480" font-family="Georgia, serif" font-size="14" fill="#3a6a80" font-style="italic" opacity="0.7" text-anchor="middle">Yellow Sea</text>
+
+</svg>

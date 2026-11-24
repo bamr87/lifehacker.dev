@@ -1,0 +1,78 @@
+# The germination cycle: scout → gate → scribe → nursery + compost.
+# Survivors arrive as a pull request; merging is the selection pressure.
+# Two genera share the cycle: a bare rotation entry grows ironies through the
+# Alanis Gate; a `paradox:` family grows paradoxes through the Epimenides Gate.
+name: Germinate
+
+on:
+  schedule:
+    - cron: "40 14 * * 1"  # staggered AI cron (bamr87/bamr87#348); was 0 6 * * 1
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Candidates this cycle (defaults to engine/seed.config.yml batch)"
+        required: false
+        default: "3"
+      domain:
+        description: "Rotation entry to grow, e.g. paradox:time-and-physics (defaults to the run number's slot)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# Two scheduled/dispatched cycles must never race on the nursery PR: queue, never cancel a writer.
+concurrency:
+  group: germinate
+  cancel-in-progress: false
+
+jobs:
+  germinate:
+    runs-on: ubuntu-latest
+    # The scheduled run idles until a human flips the switch:
+    #   gh variable set GERMINATE_ENABLED --body true
+    # A manual dispatch always runs. The bot token cannot set repo variables,
+    # so the loop can never enable itself.
+    if: github.event_name == 'workflow_dispatch' || vars.GERMINATE_ENABLED == 'true'
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Install engine dependencies
+        run: |
+          npm i js-yaml --no-save
+          npm i -g @anthropic-ai/claude-code
+
+      - name: Run the cycle
+        id: cycle
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GERMINATE_DOMAIN: ${{ github.event.inputs.domain }}
+        run: node engine/scripts/germinate.mjs ${{ github.event.inputs.count }}
+
+      - name: Roll up AI usage
+        if: always()
+        run: node engine/scripts/usage-ledger.mjs
+
+      - name: Open nursery pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: germination/cycle-${{ github.run_number }}
+          add-paths: |
+            vault/nursery/**
+            vault/compost/the-merely-unfortunate.md
+            vault/compost/the-merely-puzzling.md
+            _data/ai_usage/**
+            AI_USAGE.md
+          commit-message: "Germination cycle ${{ github.run_number }}: ${{ steps.cycle.outputs.domain }}"
+          title: "🌱 Germination cycle ${{ github.run_number }} — ${{ steps.cycle.outputs.domain }}"
+          body: |
+            ${{ steps.cycle.outputs.report }}
+
+            ---
+            The machine proposes; the reader disposes. Merge = promote toward canon, close = compost.

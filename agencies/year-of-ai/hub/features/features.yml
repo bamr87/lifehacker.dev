@@ -1,0 +1,64 @@
+# =============================================================================
+# features/features.yml — THE FEATURE INDEX for year-of-ai/year-of-ai.github.io
+# =============================================================================
+# kit: verify v0.1.0 · governance v0.1.0 (bamr87/bamr87 templates/verify/, templates/governance/)
+#
+# One entry per user-facing capability, grounded in this repo's PRD, README and
+# code: what it does, where it lives (`link`), where it is explained (`docs`),
+# its `status` (shipped | partial | planned | deprecated | tbd) and the PRD
+# requirements it serves (`prd:`; TBD = not yet traced). Ids are STABLE: never
+# renumber or reuse one. The PRD's "Feature catalog" block is generated from
+# this file — edit here, then run:
+#   python3 <bamr87/bamr87>/tools/governance_lint.py prd-sync . --write
+# Validate: python3 <hub>/tools/governance_lint.py check .  ·  <hub>/tools/features_index.py check .
+# Schema: features/v1 (field reference: bamr87/bamr87 templates/verify/features.template.yml)
+# =============================================================================
+schema: features/v1
+repo: year-of-ai/year-of-ai.github.io
+
+features:
+  - id: YOAI-HUB-001
+    title: "Jekyll hub on remote zer0-mistakes theme"
+    description: "Jekyll hub on remote `zer0-mistakes` theme; dashboards for hub and lineage"
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: ui
+    link: "_config.yml"
+    docs: "README.md"
+  - id: YOAI-HUB-002
+    title: "lineage/ seeds"
+    description: "`lineage/` seeds, policy and staged agent framework"
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: content
+    link: "lineage"
+    docs: "README.md"
+  - id: YOAI-HUB-003
+    title: "Workflows: orchestrate, grow-lineage, telemetry ledger,…"
+    description: "Workflows: orchestrate, grow-lineage, telemetry ledger, fleet health, docs-warden, content review"
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: infra
+    link: ".github/workflows/orchestrate.yml"
+    docs: "README.md"
+  - id: YOAI-HUB-004
+    title: "Genome: manifest, schema, genome/bin/ verify/render/plant"
+    description: "Genome: manifest, schema, `genome/bin/` verify/render/plant"
+    implemented: true
+    status: shipped
+    prd: [FR1]
+    surface: infra
+    link: "genome/bin"
+    docs: "README.md"
+  - id: YOAI-HUB-005
+    title: "telemetry/evolution.jsonl ledger"
+    description: "`telemetry/evolution.jsonl` ledger"
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: infra
+    link: "telemetry/evolution.jsonl"
+    docs: "README.md"

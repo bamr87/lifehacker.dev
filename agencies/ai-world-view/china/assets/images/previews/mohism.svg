@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Mohism — Atlas-plate banner depicting ancient China, a compass rose, and the philosophy of Mozi</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="50%" stop-color="#dfc99a" />
+      <stop offset="100%" stop-color="#c9b07a" />
+    </linearGradient>
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#3b2a0a" stop-opacity="0" />
+      <stop offset="100%" stop-color="#3b2a0a" stop-opacity="0.45" />
+    </radialGradient>
+    
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8a86a" />
+      <stop offset="100%" stop-color="#9e9050" />
+    </linearGradient>
+    
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c5d4d8" />
+      <stop offset="100%" stop-color="#a9bfc5" />
+    </linearGradient>
+    
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#7a6030" stroke-width="0.4" stroke-opacity="0.25" />
+    </pattern>
+    
+    <pattern id="seahatch" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="8" stroke="#6a8a92" stroke-width="0.5" stroke-opacity="0.3" />
+      <line x1="8" y1="0" x2="0" y2="8" stroke="#6a8a92" stroke-width="0.5" stroke-opacity="0.3" />
+    </pattern>
+    <clipPath id="bannerClip">
+      <rect width="1536" height="1024" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#bannerClip)">
+
+    
+    <rect width="1536" height="1024" fill="url(#parchment)" />
+    
+    <rect width="1536" height="1024" fill="url(#hatch)" />
+
+    
+    <rect x="22" y="22" width="1492" height="980" fill="none" stroke="#7a5c20" stroke-width="3.5" />
+    <rect x="32" y="32" width="1472" height="960" fill="none" stroke="#7a5c20" stroke-width="1.2" />
+    
+    
+    <path d="M22,22 L80,22 L80,28 L28,28 L28,80 L22,80 Z" fill="#7a5c20" />
+    
+    <path d="M1514,22 L1456,22 L1456,28 L1508,28 L1508,80 L1514,80 Z" fill="#7a5c20" />
+    
+    <path d="M22,1002 L80,1002 L80,996 L28,996 L28,944 L22,944 Z" fill="#7a5c20" />
+    
+    <path d="M1514,1002 L1456,1002 L1456,996 L1508,996 L1508,944 L1514,944 Z" fill="#7a5c20" />
+
+    
+    
+    <rect x="560" y="55" width="930" height="914" rx="4" fill="url(#seaGrad)" />
+    <rect x="560" y="55" width="930" height="914" rx="4" fill="url(#seahatch)" />
+
+    
+    <path d="       M 780,90       C 820,88 870,92 910,100       L 960,108 990,120 1020,135       C 1050,150 1070,160 1090,175       L 1120,195 1140,220 1150,250       C 1158,275 1155,300 1145,325       L 1130,355 1110,375 1100,400       C 1090,425 1095,450 1105,470       L 1120,495 1130,520 1125,545       C 1118,570 1100,588 1080,600       L 1055,615 1030,625 1010,640       C 990,655 978,672 970,690       L 960,715 945,738 925,752       C 905,766 880,772 858,768       L 835,760 815,748 798,732       C 780,716 770,698 760,680       L 748,660 736,642 720,630       C 704,618 685,612 668,610       L 648,610 628,615 610,622       L 600,628 590,638 582,650       L 575,665 572,682 574,700       C 576,718 583,734 592,748       L 604,762 618,774 625,790       C 632,806 630,822 622,836       L 610,850 595,860 578,866       C 560,872 540,872 522,866       L 506,858 494,846 485,832       C 476,818 472,802 471,786       L 472,768 476,750 482,733       C 488,716 496,700 500,683       C 504,666 501,649 492,635       L 478,620 462,610 446,604       C 430,598 414,597 400,601       L 385,608 372,618 362,630       L 355,644 352,660 354,676       C 356,692 362,706 370,718       L 380,730 388,742 390,756       C 392,770 387,784 378,794       L 365,804 350,810 334,812       C 318,814 302,810 288,802       L 276,792 267,780 262,766       C 257,752 256,737 258,722       L 263,706 271,691 280,677       C 289,663 298,650 302,635       C 306,620 302,605 293,593       L 280,582 266,574 252,569       L 238,567 224,568 212,573       L 202,581 194,591 190,603       C 186,615 186,628 190,640       L 197,652 206,662 215,672       C 224,682 232,692 235,704       C 238,716 234,728 225,736       L 210,742 193,743 178,738       L 165,729 155,716 150,700       C 145,684 145,667 150,651       L 158,636 168,622 178,608       C 188,594 196,580 197,564       C 198,548 191,534 180,522       L 165,512 148,506 132,504       C 116,503 101,507 90,516       L 82,527 78,540 78,554       C 78,568 82,581 88,592       L 96,602 104,610 110,620       C 116,630 118,641 115,652       L 107,662 96,668 84,669       L 72,666 62,658 55,646       L 52,632 53,617 58,603       L 65,590 72,578 75,564       C 78,550 74,536 65,525       L 55,516 44,512 42,505       L 45,490 55,478 68,469       L 84,463 100,461 116,462       C 132,463 147,467 160,474       L 172,482 182,492 190,503       C 198,514 203,526 205,539       C 207,552 204,565 197,576       L 185,586 170,592 154,594       C 138,596 122,593 108,586       C 130,590 152,588 172,580       L 190,568 204,552 210,534       C 216,516 214,498 206,482       L 192,468 174,458 155,453       C 136,448 117,448 100,453       L 86,461 76,472 70,485       C 64,498 63,512 66,526       L 74,540 84,552 95,562       C 106,572 116,580 122,592       L 124,606 121,620 114,632       L 102,642 88,648 74,648       C 60,648 48,642 40,632       L 35,620 34,607 37,594       L 44,582 54,572 65,564       C 76,556 87,550 95,540       L 100,528 100,514 96,501       L 88,490 78,482 68,478       C 78,470 90,465 103,463       L 118,462 133,464 147,470       L 160,478 172,488 181,500       C 190,512 196,525 197,540       C 198,555 194,570 186,582       L 174,592 160,598 146,600       L 132,598 120,592 110,582       C 100,572 92,560 88,546       L 86,532 88,518 94,506       L 104,496 116,490 130,488       C 140,487 150,490 158,496       L 165,504 168,514 167,524       L 161,533 152,539 142,541       L 132,540 123,535 116,528        M 780,90       L 760,95 740,104 722,116       C 704,128 688,142 676,158       L 668,175 664,192 665,210       C 666,228 672,244 682,258       L 695,270 710,278 726,282       C 742,286 758,284 772,278       L 784,268 793,256 797,242       C 801,228 800,213 795,200       L 786,188 774,178 762,172       C 750,166 738,163 728,163       L 718,166 710,172 705,180       C 700,188 698,198 700,208       L 705,218 714,226 724,230       C 734,234 744,233 753,228       L 760,220 762,210 758,200       L 748,192 736,190 725,195     " fill="url(#landGrad)" stroke="#6a5018" stroke-width="1.2" stroke-linejoin="round" />
+
+    
+    <path d="M 1085,360 C 1095,355 1108,358 1118,365 L 1126,375 1128,390 1122,405 L 1110,420 1098,432 1088,445 C 1080,458 1076,472 1078,486 L 1082,498 1088,508 1090,520 C 1092,532 1088,543 1080,550 L 1068,555 1055,555 1044,548 L 1036,538 1032,526 1033,513 L 1038,500 1046,488 1052,476 C 1058,464 1060,452 1056,440 L 1048,428 1036,420 1025,416 C 1015,412 1006,414 998,420 L 1003,408 1012,398 1024,390 L 1038,384 1052,381 1066,381 Z" fill="#b5a462" stroke="#6a5018" stroke-width="1" />
+
+    
+    <path d="M 1165,280 C 1175,275 1186,278 1194,285 L 1200,295 1200,308 1195,320 L 1186,330 1175,336 1164,338 C 1153,340 1143,336 1136,328 L 1131,318 1131,306 1136,294 L 1145,284 Z" fill="#b5a462" stroke="#6a5018" stroke-width="0.9" />
+    <path d="M 1210,340 C 1222,332 1236,333 1246,341 L 1254,352 1254,366 1246,378 L 1234,387 1220,391 1206,389 C 1192,387 1180,380 1175,369 L 1173,357 1178,346 1188,339 Z" fill="#b5a462" stroke="#6a5018" stroke-width="0.9" />
+    <path d="M 1258,415 C 1272,405 1290,405 1302,415 L 1312,428 1312,445 1302,458 L 1285,465 1268,464 1254,456 L 1246,443 1247,429 Z" fill="#b5a462" stroke="#6a5018" stroke-width="0.9" />
+    <path d="M 1295,495 C 1308,488 1323,490 1333,499 L 1340,512 1337,527 1326,536 L 1310,540 1295,536 1285,525 L 1282,510 Z" fill="#b5a462" stroke="#6a5018" stroke-width="0.9" />
+
+    
+    <path d="M 1060,680 C 1068,672 1078,671 1086,676 L 1092,686 1091,699 1083,708 L 1072,714 1061,712 1054,703 L 1052,691 Z" fill="#b5a462" stroke="#6a5018" stroke-width="0.8" />
+
+    
+    <path d="M 700,180 C 720,175 745,172 768,178 L 790,188 808,202 820,220 C 832,238 836,258 830,278 L 818,296 800,308 780,314 C 760,320 738,318 718,310 L 700,298 685,283 676,265 C 667,247 664,228 668,210 C 672,192 682,176 694,165" fill="none" stroke="#7a9ab0" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8,4" stroke-opacity="0.7" />
+
+    
+    <path d="M 660,420 C 690,415 722,418 750,428 L 778,442 802,460 820,482 C 838,504 848,528 850,554 L 848,578 838,600 822,618 C 806,636 784,648 760,654 L 734,656 708,652 685,643" fill="none" stroke="#7a9ab0" stroke-width="2" stroke-linecap="round" stroke-dasharray="6,3" stroke-opacity="0.65" />
+
+    
+    
+    <circle cx="920" cy="220" r="8" fill="#8b6914" fill-opacity="0.8" stroke="#5c4010" stroke-width="1" />
+    <text x="932" y="225" font-family="Georgia, serif" font-size="18" fill="#3d2a05" font-style="italic">Qi</text>
+    
+    <circle cx="810" cy="520" r="8" fill="#8b6914" fill-opacity="0.8" stroke="#5c4010" stroke-width="1" />
+    <text x="822" y="525" font-family="Georgia, serif" font-size="18" fill="#3d2a05" font-style="italic">Chu</text>
+    
+    <circle cx="820" cy="340" r="8" fill="#8b6914" fill-opacity="0.8" stroke="#5c4010" stroke-width="1" />
+    <text x="832" y="345" font-family="Georgia, serif" font-size="18" fill="#3d2a05" font-style="italic">Wei</text>
+    
+    <circle cx="875" cy="390" r="10" fill="#7a2810" stroke="#5c0808" stroke-width="1.5" />
+    <text x="890" y="395" font-family="Georgia, serif" font-size="18" fill="#5c0808" font-style="italic" font-weight="bold">Song</text>
+    
+    <circle cx="680" cy="300" r="8" fill="#8b6914" fill-opacity="0.8" stroke="#5c4010" stroke-width="1" />
+    <text x="692" y="305" font-family="Georgia, serif" font-size="18" fill="#3d2a05" font-style="italic">Qin</text>
+    
+    <circle cx="800" cy="220" r="8" fill="#8b6914" fill-opacity="0.8" stroke="#5c4010" stroke-width="1" />
+    <text x="812" y="225" font-family="Georgia, serif" font-size="18" fill="#3d2a05" font-style="italic">Zhao</text>
+
+    
+    <text x="620" y="940" font-family="Georgia, serif" font-size="16" fill="#4a3810" font-style="italic" letter-spacing="1.5">Warring States Period · c. 475–221 BCE</text>
+
+    
+    <line x1="620" y1="910" x2="820" y2="910" stroke="#5c4010" stroke-width="2" />
+    <line x1="620" y1="904" x2="620" y2="916" stroke="#5c4010" stroke-width="2" />
+    <line x1="820" y1="904" x2="820" y2="916" stroke="#5c4010" stroke-width="2" />
+    <line x1="720" y1="906" x2="720" y2="914" stroke="#5c4010" stroke-width="1.5" />
+
+    
+    <g transform="translate(1400,160)">
+      
+      <circle r="64" fill="#dfc99a" fill-opacity="0.85" stroke="#7a5c20" stroke-width="2" />
+      <circle r="58" fill="none" stroke="#7a5c20" stroke-width="0.8" />
+      
+      
+      <polygon points="0,-58 -10,-18 0,-28 10,-18" fill="#7a2810" />
+      
+      <polygon points="0,58 -10,18 0,28 10,18" fill="#7a5c20" />
+      
+      <polygon points="58,0 18,-10 28,0 18,10" fill="#7a5c20" />
+      
+      <polygon points="-58,0 -18,-10 -28,0 -18,10" fill="#7a5c20" />
+      
+      <polygon points="0,-58 -6,-32 0,-40 6,-32" fill="#7a5c20" transform="rotate(45)" />
+      <polygon points="0,-58 -6,-32 0,-40 6,-32" fill="#7a5c20" transform="rotate(135)" />
+      <polygon points="0,-58 -6,-32 0,-40 6,-32" fill="#7a5c20" transform="rotate(225)" />
+      <polygon points="0,-58 -6,-32 0,-40 6,-32" fill="#7a5c20" transform="rotate(315)" />
+      
+      <circle r="8" fill="#7a5c20" />
+      <circle r="4" fill="#dfc99a" />
+      
+      <text x="0" y="-66" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#3d2a05" text-anchor="middle">N</text>
+    </g>
+
+    
+    <rect x="48" y="48" width="500" height="928" fill="#e2cc9a" fill-opacity="0.55" />
+
+    
+    <rect x="48" y="48" width="500" height="6" fill="#7a5c20" />
+    <rect x="48" y="54" width="500" height="2" fill="#c8a850" />
+
+    
+    <text x="298" y="248" font-family="serif" font-size="175" fill="#7a5c20" fill-opacity="0.18" text-anchor="middle" dominant-baseline="middle">兼愛</text>
+
+    
+    <line x1="80" y1="92" x2="518" y2="92" stroke="#7a5c20" stroke-width="1.5" />
+    <line x1="80" y1="96" x2="518" y2="96" stroke="#7a5c20" stroke-width="0.5" />
+
+    
+    <text x="298" y="185" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="bold" fill="#2c1e05" text-anchor="middle" letter-spacing="4">Mohism</text>
+
+    
+    <text x="298" y="235" font-family="Georgia, serif" font-size="28" fill="#5c3e0a" text-anchor="middle" font-style="italic" letter-spacing="2">墨家 · Mòjiā</text>
+
+    
+    <line x1="120" y1="258" x2="476" y2="258" stroke="#8a6520" stroke-width="1" />
+
+    
+    <text x="298" y="300" font-family="Georgia, serif" font-size="20" fill="#5c3e0a" text-anchor="middle" font-style="italic">Founded by Mozi (墨翟), c. 470–391 BCE</text>
+
+    
+    <rect x="80" y="332" width="420" height="4" fill="#8a6520" />
+    <text x="298" y="388" font-family="Georgia, serif" font-size="22" fill="#3d2a05" text-anchor="middle" font-style="italic">“Impartial care for all under heaven”</text>
+    <text x="298" y="420" font-family="Georgia, serif" font-size="20" fill="#5c3e0a" text-anchor="middle" font-style="italic">兼愛 · Jiān ài</text>
+    <rect x="80" y="440" width="420" height="4" fill="#8a6520" />
+
+    
+    <text x="100" y="490" font-family="Georgia, serif" font-size="17" fill="#3d2a05" font-weight="bold" letter-spacing="1">CORE DOCTRINES</text>
+    <line x1="100" y1="498" x2="340" y2="498" stroke="#8a6520" stroke-width="1" />
+
+    
+    <circle cx="112" cy="526" r="4" fill="#7a2810" />
+    <text x="125" y="531" font-family="Georgia, serif" font-size="18" fill="#3d2a05">Jian'ai — Universal love &amp; impartial care</text>
+
+    <circle cx="112" cy="562" r="4" fill="#7a2810" />
+    <text x="125" y="567" font-family="Georgia, serif" font-size="18" fill="#3d2a05">Consequentialist ethics</text>
+
+    <circle cx="112" cy="598" r="4" fill="#7a2810" />
+    <text x="125" y="603" font-family="Georgia, serif" font-size="18" fill="#3d2a05">Pioneering logical theory</text>
+
+    <circle cx="112" cy="634" r="4" fill="#7a2810" />
+    <text x="125" y="639" font-family="Georgia, serif" font-size="18" fill="#3d2a05">Proto-scientific inquiry (optics)</text>
+
+    <circle cx="112" cy="670" r="4" fill="#7a2810" />
+    <text x="125" y="675" font-family="Georgia, serif" font-size="18" fill="#3d2a05">Anti-aristocratic values</text>
+
+    <circle cx="112" cy="706" r="4" fill="#7a2810" />
+    <text x="125" y="711" font-family="Georgia, serif" font-size="18" fill="#3d2a05">Rival to Confucianism, 500–136 BCE</text>
+
+    
+    <line x1="80" y1="735" x2="518" y2="735" stroke="#8a6520" stroke-width="0.8" stroke-dasharray="4,3" />
+
+    
+    <g transform="translate(160, 800)">
+      
+      <rect x="0" y="-60" width="10" height="70" rx="2" fill="#7a5c20" />
+      <rect x="0" y="0" width="80" height="10" rx="2" fill="#7a5c20" />
+      
+      <line x1="2" y1="-50" x2="8" y2="-50" stroke="#c8a850" stroke-width="0.8" />
+      <line x1="2" y1="-38" x2="8" y2="-38" stroke="#c8a850" stroke-width="0.8" />
+      <line x1="2" y1="-26" x2="8" y2="-26" stroke="#c8a850" stroke-width="0.8" />
+      <line x1="12" y1="2" x2="12" y2="8" stroke="#c8a850" stroke-width="0.8" />
+      <line x1="28" y1="2" x2="28" y2="8" stroke="#c8a850" stroke-width="0.8" />
+      <line x1="44" y1="2" x2="44" y2="8" stroke="#c8a850" stroke-width="0.8" />
+      <line x1="60" y1="2" x2="60" y2="8" stroke="#c8a850" stroke-width="0.8" />
+    </g>
+
+    
+    <g transform="translate(320, 770)">
+      <line x1="0" y1="0" x2="60" y2="-60" stroke="#5c3e0a" stroke-width="4" stroke-linecap="round" />
+      <polygon points="60,-60 48,-52 52,-48" fill="#5c3e0a" />
+      <polygon points="0,0 -8,10 5,12" fill="#3d2a05" />
+    </g>
+
+    
+    <text x="298" y="885" font-family="Georgia, serif" font-size="16" fill="#5c3e0a" text-anchor="middle" font-style="italic">Warring States Period, c. 476–221 BCE</text>
+    <text x="298" y="908" font-family="Georgia, serif" font-size="15" fill="#7a5c20" text-anchor="middle">Primary rival to Confucianism</text>
+
+    
+    <rect x="48" y="968" width="500" height="6" fill="#7a5c20" />
+
+    
+    <rect width="1536" height="1024" fill="url(#vignette)" />
+
+    
+    <g stroke="#7a9ab0" stroke-width="0.6" stroke-opacity="0.35" stroke-dasharray="5,5">
+      
+      <line x1="660" y1="55" x2="660" y2="969" />
+      <line x1="760" y1="55" x2="760" y2="969" />
+      <line x1="860" y1="55" x2="860" y2="969" />
+      <line x1="960" y1="55" x2="960" y2="969" />
+      <line x1="1060" y1="55" x2="1060" y2="969" />
+      <line x1="1160" y1="55" x2="1160" y2="969" />
+      <line x1="1260" y1="55" x2="1260" y2="969" />
+      <line x1="1360" y1="55" x2="1360" y2="969" />
+      <line x1="1460" y1="55" x2="1460" y2="969" />
+      
+      <line x1="560" y1="155" x2="1490" y2="155" />
+      <line x1="560" y1="255" x2="1490" y2="255" />
+      <line x1="560" y1="355" x2="1490" y2="355" />
+      <line x1="560" y1="455" x2="1490" y2="455" />
+      <line x1="560" y1="555" x2="1490" y2="555" />
+      <line x1="560" y1="655" x2="1490" y2="655" />
+      <line x1="560" y1="755" x2="1490" y2="755" />
+      <line x1="560" y1="855" x2="1490" y2="855" />
+    </g>
+
+  </g>
+</svg>

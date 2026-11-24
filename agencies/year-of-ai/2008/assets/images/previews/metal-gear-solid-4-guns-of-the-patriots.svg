@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Metal Gear Solid 4 – Guns of the Patriots – Retro Pixel Art Banner</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a2a1a" />
+      <stop offset="100%" stop-color="#050d05" />
+    </radialGradient>
+    <radialGradient id="crt" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" stop-color="#00ff41" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.3" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <pattern id="scanlines" x="0" y="0" width="1536" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1536" height="2" fill="#000000" opacity="0.18" />
+    </pattern>
+    <pattern id="pixels" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="none" />
+      <rect width="7" height="7" fill="#00ff41" opacity="0.01" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#crt)" />
+
+  
+  
+  <rect x="0" y="800" width="1536" height="224" fill="#0d1a0d" />
+  
+  <rect x="0" y="800" width="1536" height="8" fill="#1e3a1e" />
+  <rect x="0" y="808" width="1536" height="8" fill="#152a15" />
+
+  
+  
+  <rect x="0" y="580" width="16" height="220" fill="#0f1f0f" />
+  <rect x="16" y="560" width="16" height="240" fill="#0f1f0f" />
+  <rect x="32" y="540" width="16" height="260" fill="#0f1f0f" />
+  <rect x="48" y="560" width="16" height="240" fill="#0f1f0f" />
+  <rect x="64" y="520" width="16" height="280" fill="#0f1f0f" />
+  <rect x="80" y="540" width="8" height="260" fill="#0f1f0f" />
+  <rect x="88" y="580" width="16" height="220" fill="#0f1f0f" />
+  <rect x="104" y="560" width="8" height="240" fill="#0f1f0f" />
+  <rect x="112" y="600" width="16" height="200" fill="#0f1f0f" />
+  <rect x="128" y="540" width="16" height="260" fill="#0f1f0f" />
+  <rect x="144" y="560" width="8" height="240" fill="#0f1f0f" />
+
+  
+  <rect x="1360" y="580" width="16" height="220" fill="#0f1f0f" />
+  <rect x="1376" y="550" width="16" height="250" fill="#0f1f0f" />
+  <rect x="1392" y="520" width="16" height="280" fill="#0f1f0f" />
+  <rect x="1408" y="560" width="16" height="240" fill="#0f1f0f" />
+  <rect x="1424" y="540" width="16" height="260" fill="#0f1f0f" />
+  <rect x="1440" y="560" width="16" height="240" fill="#0f1f0f" />
+  <rect x="1456" y="580" width="16" height="220" fill="#0f1f0f" />
+  <rect x="1472" y="540" width="16" height="260" fill="#0f1f0f" />
+  <rect x="1488" y="560" width="16" height="240" fill="#0f1f0f" />
+  <rect x="1504" y="580" width="16" height="220" fill="#0f1f0f" />
+  <rect x="1520" y="560" width="16" height="240" fill="#0f1f0f" />
+
+  
+  
+  <rect x="980" y="400" width="240" height="400" fill="#0a150a" />
+  
+  <rect x="940" y="440" width="40" height="120" fill="#0a150a" />
+  <rect x="1220" y="440" width="40" height="120" fill="#0a150a" />
+  
+  <rect x="1020" y="340" width="160" height="64" fill="#0a150a" />
+  
+  <rect x="996" y="240" width="208" height="104" fill="#0a150a" />
+  
+  <rect x="1004" y="264" width="192" height="32" fill="#00ff41" opacity="0.15" />
+  <rect x="1012" y="272" width="176" height="16" fill="#00ff41" opacity="0.2" />
+  
+  <rect x="1040" y="272" width="32" height="16" fill="#00ff41" opacity="0.7" filter="url(#glow)" />
+  <rect x="1128" y="272" width="32" height="16" fill="#00ff41" opacity="0.7" filter="url(#glow)" />
+  
+  <rect x="988" y="800" width="88" height="24" fill="#0a150a" />
+  <rect x="1124" y="800" width="88" height="24" fill="#0a150a" />
+  
+  <rect x="860" y="460" width="80" height="24" fill="#0a150a" />
+  <rect x="860" y="452" width="16" height="40" fill="#0a150a" />
+  <rect x="1260" y="460" width="80" height="24" fill="#0a150a" />
+  <rect x="1324" y="452" width="16" height="40" fill="#0a150a" />
+
+  
+  
+  <rect x="380" y="320" width="80" height="16" fill="#8b0000" />
+  
+  <rect x="388" y="336" width="64" height="56" fill="#5c4a32" />
+  
+  <rect x="396" y="348" width="24" height="16" fill="#1a1a1a" />
+  <rect x="396" y="348" width="24" height="4" fill="#333" />
+  
+  <rect x="396" y="368" width="48" height="16" fill="#3d3020" />
+  <rect x="404" y="376" width="32" height="8" fill="#2a1e10" />
+  
+  <rect x="412" y="392" width="24" height="16" fill="#5c4a32" />
+  
+  <rect x="364" y="408" width="120" height="120" fill="#2a3a2a" />
+  
+  <rect x="372" y="416" width="8" height="8" fill="#1e2e1e" />
+  <rect x="388" y="424" width="8" height="8" fill="#1e2e1e" />
+  <rect x="404" y="416" width="8" height="8" fill="#3a4a3a" />
+  <rect x="420" y="432" width="8" height="8" fill="#1e2e1e" />
+  <rect x="436" y="416" width="8" height="8" fill="#3a4a3a" />
+  <rect x="372" y="440" width="8" height="8" fill="#3a4a3a" />
+  <rect x="452" y="428" width="8" height="8" fill="#1e2e1e" />
+  <rect x="380" y="456" width="8" height="8" fill="#1e2e1e" />
+  <rect x="428" y="448" width="8" height="8" fill="#3a4a3a" />
+  
+  <rect x="340" y="408" width="24" height="88" fill="#2a3a2a" />
+  <rect x="484" y="408" width="24" height="88" fill="#2a3a2a" />
+  
+  <rect x="336" y="496" width="28" height="20" fill="#4a3820" />
+  <rect x="484" y="496" width="28" height="20" fill="#4a3820" />
+  
+  <rect x="284" y="500" width="120" height="12" fill="#1a1a1a" />
+  <rect x="284" y="508" width="16" height="20" fill="#1a1a1a" />
+  <rect x="260" y="504" width="28" height="8" fill="#111" />
+  <rect x="380" y="496" width="32" height="8" fill="#1a1a1a" />
+  
+  <rect x="372" y="528" width="44" height="96" fill="#2a3a2a" />
+  <rect x="432" y="528" width="44" height="96" fill="#2a3a2a" />
+  
+  <rect x="364" y="620" width="52" height="20" fill="#1a1a1a" />
+  <rect x="432" y="620" width="52" height="20" fill="#1a1a1a" />
+  
+  <rect x="364" y="520" width="120" height="8" fill="#1a1a1a" />
+  <rect x="380" y="516" width="16" height="16" fill="#333" />
+
+  
+  
+  <rect x="780" y="360" width="48" height="16" fill="#e0e8ff" />
+  
+  <rect x="784" y="376" width="40" height="48" fill="#c0c8d8" />
+  
+  <rect x="788" y="384" width="32" height="16" fill="#003366" />
+  <rect x="792" y="388" width="24" height="8" fill="#0066cc" opacity="0.8" />
+  
+  <rect x="772" y="424" width="64" height="96" fill="#7a8090" />
+  
+  <rect x="780" y="432" width="48" height="8" fill="#5a6070" />
+  <rect x="788" y="448" width="32" height="32" fill="#6a7080" />
+  
+  <rect x="748" y="424" width="24" height="80" fill="#7a8090" />
+  <rect x="836" y="424" width="24" height="80" fill="#7a8090" />
+  
+  <rect x="854" y="340" width="8" height="200" fill="#88ccff" />
+  <rect x="852" y="340" width="12" height="8" fill="#aaddff" />
+  <rect x="854" y="340" width="8" height="200" fill="#00aaff" opacity="0.4" filter="url(#glow)" />
+  
+  <rect x="780" y="520" width="24" height="80" fill="#7a8090" />
+  <rect x="812" y="520" width="24" height="80" fill="#7a8090" />
+  
+  <rect x="772" y="596" width="32" height="16" fill="#5a6070" />
+  <rect x="808" y="596" width="32" height="16" fill="#5a6070" />
+
+  
+  
+  <rect x="40" y="40" width="200" height="4" fill="#00ff41" opacity="0.6" />
+  <rect x="40" y="40" width="4" height="200" fill="#00ff41" opacity="0.6" />
+  <rect x="40" y="44" width="40" height="4" fill="#00ff41" opacity="0.4" />
+
+  
+  <rect x="1296" y="40" width="200" height="4" fill="#00ff41" opacity="0.6" />
+  <rect x="1492" y="40" width="4" height="200" fill="#00ff41" opacity="0.6" />
+  <rect x="1452" y="44" width="40" height="4" fill="#00ff41" opacity="0.4" />
+
+  
+  <rect x="40" y="980" width="200" height="4" fill="#00ff41" opacity="0.6" />
+  <rect x="40" y="784" width="4" height="200" fill="#00ff41" opacity="0.6" />
+
+  
+  <rect x="1296" y="980" width="200" height="4" fill="#00ff41" opacity="0.6" />
+  <rect x="1492" y="784" width="4" height="200" fill="#00ff41" opacity="0.6" />
+
+  
+  <rect x="200" y="700" width="8" height="8" fill="#00ff41" opacity="0.2" />
+  <rect x="216" y="688" width="8" height="8" fill="#00ff41" opacity="0.15" />
+  <rect x="232" y="676" width="8" height="8" fill="#00ff41" opacity="0.1" />
+  <rect x="1280" y="700" width="8" height="8" fill="#00ff41" opacity="0.2" />
+  <rect x="1264" y="688" width="8" height="8" fill="#00ff41" opacity="0.15" />
+  <rect x="1248" y="676" width="8" height="8" fill="#00ff41" opacity="0.1" />
+
+  
+  <rect x="660" y="180" width="24" height="64" fill="#ffcc00" opacity="0.8" />
+  <rect x="660" y="256" width="24" height="8" fill="#ffcc00" opacity="0.5" />
+  <rect x="660" y="272" width="24" height="24" fill="#ffcc00" opacity="0.8" />
+
+  
+  <rect x="56" y="860" width="160" height="8" fill="#00ff41" opacity="0.3" />
+  <rect x="56" y="876" width="120" height="8" fill="#00ff41" opacity="0.2" />
+  <rect x="56" y="892" width="140" height="8" fill="#00ff41" opacity="0.25" />
+
+  
+  
+  <text x="772" y="134" font-family="'Courier New', Courier, monospace" font-size="68" font-weight="900" text-anchor="middle" fill="#003300" letter-spacing="4">METAL GEAR SOLID 4</text>
+  
+  <text x="768" y="130" font-family="'Courier New', Courier, monospace" font-size="68" font-weight="900" text-anchor="middle" fill="#00ff41" letter-spacing="4" filter="url(#glow)">METAL GEAR SOLID 4</text>
+
+  
+  <text x="772" y="198" font-family="'Courier New', Courier, monospace" font-size="32" font-weight="bold" text-anchor="middle" fill="#003300" letter-spacing="8">GUNS OF THE PATRIOTS</text>
+  <text x="768" y="194" font-family="'Courier New', Courier, monospace" font-size="32" font-weight="bold" text-anchor="middle" fill="#88ff88" letter-spacing="8">GUNS OF THE PATRIOTS</text>
+
+  
+  <rect x="240" y="212" width="1056" height="4" fill="#00ff41" opacity="0.5" />
+  <rect x="240" y="216" width="1056" height="2" fill="#00ff41" opacity="0.2" />
+
+  
+  <rect x="648" y="228" width="240" height="40" fill="#00ff41" opacity="0.1" />
+  <rect x="648" y="228" width="240" height="40" fill="none" stroke="#00ff41" stroke-width="2" opacity="0.4" />
+  <text x="768" y="254" font-family="'Courier New', Courier, monospace" font-size="18" font-weight="bold" text-anchor="middle" fill="#00ff41" opacity="0.8" letter-spacing="4">PS3 // 2008 // KOJIMA</text>
+
+  
+  <rect width="1536" height="1024" fill="url(#scanlines)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#crt)" />
+
+  
+  <rect x="0" y="0" width="40" height="40" fill="#00ff41" opacity="0.08" />
+  <rect x="1496" y="0" width="40" height="40" fill="#00ff41" opacity="0.08" />
+  <rect x="0" y="984" width="40" height="40" fill="#00ff41" opacity="0.08" />
+  <rect x="1496" y="984" width="40" height="40" fill="#00ff41" opacity="0.08" />
+</svg>

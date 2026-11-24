@@ -1,0 +1,410 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>YouTube in 2010 — The Mobile Video Milestone: Retro pixel art banner showing a CRT screen with pixel YouTube play button and mobile phone</title>
+
+  <defs>
+    <radialGradient id="crtglow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1a2a1a" />
+      <stop offset="100%" stop-color="#050a05" />
+    </radialGradient>
+    <radialGradient id="screenglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#003300" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <pattern id="scanlines" x="0" y="0" width="2" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="2" height="2" fill="black" fill-opacity="0.15" />
+    </pattern>
+    <pattern id="pixels" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="8" fill="none" stroke="#00ff4120" stroke-width="0.5" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#crtglow)" />
+  <rect width="1536" height="1024" fill="url(#screenglow)" />
+  <rect width="1536" height="1024" fill="url(#pixels)" opacity="0.3" />
+
+  
+  <rect x="80" y="60" width="4" height="4" fill="#00ff88" opacity="0.6" />
+  <rect x="200" y="120" width="4" height="4" fill="#00ff88" opacity="0.4" />
+  <rect x="1400" y="80" width="4" height="4" fill="#00ff88" opacity="0.6" />
+  <rect x="1460" y="200" width="4" height="4" fill="#ffff00" opacity="0.4" />
+  <rect x="100" y="900" width="4" height="4" fill="#00ffff" opacity="0.5" />
+  <rect x="1480" y="920" width="4" height="4" fill="#00ff88" opacity="0.5" />
+  <rect x="300" y="40" width="8" height="8" fill="#00ffff" opacity="0.2" />
+  <rect x="1200" y="960" width="8" height="8" fill="#ffff00" opacity="0.2" />
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#00ff44" stroke-width="4" opacity="0.3" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#00ff44" stroke-width="2" opacity="0.15" />
+
+  
+  
+  <rect x="0" y="0" width="1536" height="24" fill="#111111" />
+  
+  <rect x="16" y="8" width="8" height="8" fill="#ff0000" />
+  <rect x="32" y="8" width="8" height="8" fill="#ffff00" />
+  <rect x="48" y="8" width="8" height="8" fill="#00ff44" />
+  <rect x="64" y="8" width="8" height="8" fill="#00ffff" />
+  <rect x="80" y="8" width="8" height="8" fill="#ff0088" />
+  
+  <text x="1520" y="18" font-family="monospace" font-size="12" fill="#00ff44" text-anchor="end" opacity="0.8">YT2010.EXE</text>
+
+  
+  <rect x="0" y="1000" width="1536" height="24" fill="#111111" />
+  <rect x="16" y="1008" width="8" height="8" fill="#ff0000" />
+  <rect x="32" y="1008" width="8" height="8" fill="#ffff00" />
+  <rect x="48" y="1008" width="8" height="8" fill="#00ff44" />
+  <rect x="64" y="1008" width="8" height="8" fill="#00ffff" />
+  <rect x="80" y="1008" width="8" height="8" fill="#ff0088" />
+  <text x="1520" y="1018" font-family="monospace" font-size="12" fill="#00ff44" text-anchor="end" opacity="0.8">STAGE: MOBILE</text>
+
+  
+  
+  
+  <rect x="60" y="100" width="560" height="440" rx="0" fill="#222222" />
+  <rect x="60" y="100" width="560" height="440" fill="none" stroke="#444444" stroke-width="4" />
+  
+  <rect x="60" y="100" width="16" height="16" fill="#333333" />
+  <rect x="604" y="100" width="16" height="16" fill="#333333" />
+  <rect x="60" y="524" width="16" height="16" fill="#333333" />
+  <rect x="604" y="524" width="16" height="16" fill="#333333" />
+
+  
+  <rect x="80" y="116" width="520" height="400" fill="#111111" />
+  
+  <rect x="88" y="124" width="504" height="384" fill="#0a1a0a" />
+  <rect x="88" y="124" width="504" height="384" fill="#001100" opacity="0.5" />
+
+  
+  
+  <rect x="96" y="132" width="488" height="272" fill="#111111" />
+  
+  <rect x="96" y="132" width="488" height="272" fill="#0d0d0d" />
+
+  
+  
+  <rect x="238" y="210" width="200" height="136" fill="#cc0000" />
+  <rect x="246" y="202" width="184" height="152" fill="#cc0000" />
+  <rect x="230" y="218" width="216" height="120" fill="#cc0000" />
+  
+  <rect x="246" y="202" width="184" height="8" fill="#ff2222" opacity="0.5" />
+
+  
+  
+  <rect x="310" y="234" width="8" height="72" fill="white" />
+  <rect x="318" y="242" width="8" height="56" fill="white" />
+  <rect x="326" y="250" width="8" height="40" fill="white" />
+  <rect x="334" y="258" width="8" height="24" fill="white" />
+  <rect x="342" y="266" width="8" height="8" fill="white" />
+  
+  <rect x="238" y="338" width="200" height="8" fill="#880000" />
+
+  
+  <text x="340" y="196" font-family="monospace" font-size="28" font-weight="bold" fill="#ff3333" text-anchor="middle" filter="url(#glow)">▶ PLAY</text>
+
+  
+  <rect x="96" y="404" width="488" height="32" fill="#1a1a1a" />
+  <rect x="96" y="408" width="200" height="8" fill="#cc0000" />
+  <rect x="296" y="408" width="288" height="8" fill="#333333" />
+  
+  <rect x="96" y="420" width="4" height="8" fill="#666666" />
+  <rect x="580" y="420" width="4" height="8" fill="#666666" />
+  
+  <rect x="292" y="404" width="8" height="20" fill="#ff4444" />
+
+  
+  <rect x="96" y="436" width="488" height="36" fill="#111111" />
+  
+  <rect x="108" y="446" width="4" height="16" fill="#cccccc" />
+  <rect x="112" y="450" width="4" height="8" fill="#cccccc" />
+  <rect x="116" y="454" width="4" height="4" fill="#cccccc" />
+  
+  <rect x="132" y="454" width="4" height="8" fill="#00ff44" />
+  <rect x="140" y="450" width="4" height="12" fill="#00ff44" />
+  <rect x="148" y="446" width="4" height="16" fill="#00ff44" />
+  
+  <rect x="532" y="446" width="40" height="16" fill="#cc0000" />
+  <text x="552" y="458" font-family="monospace" font-size="10" fill="white" text-anchor="middle">HD</text>
+  
+  <rect x="576" y="446" width="4" height="4" fill="#cccccc" />
+  <rect x="576" y="458" width="4" height="4" fill="#cccccc" />
+  <rect x="576" y="446" width="4" height="4" fill="#cccccc" />
+
+  
+  <rect x="96" y="404" width="488" height="4" fill="#cc0000" />
+
+  
+  <rect x="284" y="540" width="112" height="20" fill="#2a2a2a" />
+  <rect x="252" y="560" width="176" height="16" fill="#333333" />
+  <rect x="220" y="576" width="240" height="12" fill="#2a2a2a" />
+
+  
+  <rect x="88" y="124" width="504" height="384" fill="url(#scanlines)" opacity="0.4" />
+
+  
+  <rect x="84" y="120" width="512" height="392" fill="none" stroke="#00ff44" stroke-width="2" opacity="0.15" />
+
+  
+  
+  <rect x="680" y="100" width="200" height="100" fill="#0a1a0a" />
+  <rect x="680" y="100" width="200" height="100" fill="none" stroke="#00ff44" stroke-width="4" />
+  <rect x="680" y="100" width="200" height="16" fill="#00ff44" />
+  <text x="780" y="113" font-family="monospace" font-size="11" fill="#000000" text-anchor="middle" font-weight="bold">USERS</text>
+  <text x="780" y="162" font-family="monospace" font-size="32" fill="#00ff44" text-anchor="middle" font-weight="bold" filter="url(#glow)">200M</text>
+  <text x="780" y="186" font-family="monospace" font-size="10" fill="#00aa44" text-anchor="middle">GLOBAL 2010</text>
+
+  
+  <rect x="900" y="100" width="200" height="100" fill="#1a0a0a" />
+  <rect x="900" y="100" width="200" height="100" fill="none" stroke="#ff4444" stroke-width="4" />
+  <rect x="900" y="100" width="200" height="16" fill="#ff4444" />
+  <text x="1000" y="113" font-family="monospace" font-size="11" fill="#000000" text-anchor="middle" font-weight="bold">UPLOAD/MIN</text>
+  <text x="1000" y="162" font-family="monospace" font-size="28" fill="#ff4444" text-anchor="middle" font-weight="bold" filter="url(#glow)">24 HRS</text>
+  <text x="1000" y="186" font-family="monospace" font-size="10" fill="#aa2222" text-anchor="middle">EVERY MINUTE</text>
+
+  
+  <rect x="1120" y="100" width="200" height="100" fill="#0a0a1a" />
+  <rect x="1120" y="100" width="200" height="100" fill="none" stroke="#00ffff" stroke-width="4" />
+  <rect x="1120" y="100" width="200" height="16" fill="#00ffff" />
+  <text x="1220" y="113" font-family="monospace" font-size="11" fill="#000000" text-anchor="middle" font-weight="bold">MOBILE VIEWS</text>
+  <text x="1220" y="162" font-family="monospace" font-size="28" fill="#00ffff" text-anchor="middle" font-weight="bold" filter="url(#glow)">3X ↑</text>
+  <text x="1220" y="186" font-family="monospace" font-size="10" fill="#0088aa" text-anchor="middle">GROWTH 2010</text>
+
+  
+  
+  <rect x="1050" y="230" width="200" height="340" fill="#1a1a1a" />
+  <rect x="1050" y="230" width="200" height="340" fill="none" stroke="#444444" stroke-width="6" />
+  
+  <rect x="1050" y="230" width="8" height="8" fill="#1a1a1a" />
+  <rect x="1242" y="230" width="8" height="8" fill="#1a1a1a" />
+  <rect x="1050" y="562" width="8" height="8" fill="#1a1a1a" />
+  <rect x="1242" y="562" width="8" height="8" fill="#1a1a1a" />
+
+  
+  <rect x="1058" y="270" width="184" height="240" fill="#0d0d0d" />
+  
+  <rect x="1066" y="278" width="168" height="224" fill="#0a0f1a" />
+
+  
+  
+  <rect x="1066" y="278" width="168" height="224" fill="#111111" />
+  
+  <rect x="1106" y="330" width="88" height="60" fill="#cc0000" />
+  <rect x="1110" y="326" width="80" height="68" fill="#cc0000" />
+  
+  <rect x="1134" y="344" width="4" height="32" fill="white" />
+  <rect x="1138" y="348" width="4" height="24" fill="white" />
+  <rect x="1142" y="352" width="4" height="16" fill="white" />
+  <rect x="1146" y="356" width="4" height="8" fill="white" />
+  <rect x="1150" y="360" width="4" height="4" fill="white" />
+
+  
+  <rect x="1066" y="398" width="168" height="16" fill="#1a1a1a" />
+  <rect x="1066" y="402" width="80" height="4" fill="#cc0000" />
+  <rect x="1146" y="402" width="88" height="4" fill="#333333" />
+
+  
+  <rect x="1066" y="278" width="168" height="16" fill="#111111" />
+  
+  <rect x="1072" y="286" width="3" height="4" fill="#00ff44" />
+  <rect x="1077" y="283" width="3" height="7" fill="#00ff44" />
+  <rect x="1082" y="280" width="3" height="10" fill="#00ff44" />
+  <rect x="1087" y="279" width="3" height="11" fill="#333333" />
+  
+  <rect x="1216" y="281" width="14" height="8" fill="#333333" />
+  <rect x="1216" y="281" width="10" height="8" fill="#00ff44" />
+  <rect x="1230" y="283" width="2" height="4" fill="#555555" />
+  
+  <rect x="1196" y="287" width="4" height="4" fill="#00ffff" />
+  <rect x="1192" y="283" width="12" height="3" fill="#00ffff" opacity="0.6" />
+  <rect x="1188" y="279" width="20" height="3" fill="#00ffff" opacity="0.3" />
+
+  
+  <rect x="1126" y="528" width="48" height="24" fill="#222222" />
+  <rect x="1130" y="532" width="40" height="16" fill="#333333" />
+
+  
+  <rect x="1110" y="242" width="80" height="8" fill="#333333" />
+  <rect x="1114" y="244" width="72" height="4" fill="#222222" />
+
+  
+  <rect x="1076" y="244" width="8" height="8" fill="#111111" />
+  <rect x="1078" y="246" width="4" height="4" fill="#333333" />
+
+  
+  <rect x="1058" y="270" width="184" height="240" fill="none" stroke="#cc0000" stroke-width="2" opacity="0.3" />
+
+  
+  
+  <rect x="1290" y="310" width="40" height="32" fill="#3ddc84" />
+  
+  <rect x="1296" y="298" width="4" height="12" fill="#3ddc84" />
+  <rect x="1318" y="298" width="4" height="12" fill="#3ddc84" />
+  
+  <rect x="1300" y="318" width="6" height="6" fill="#111111" />
+  <rect x="1316" y="318" width="6" height="6" fill="#111111" />
+  
+  <rect x="1286" y="342" width="48" height="36" fill="#3ddc84" />
+  
+  <rect x="1270" y="342" width="16" height="8" fill="#3ddc84" />
+  <rect x="1334" y="342" width="16" height="8" fill="#3ddc84" />
+  
+  <rect x="1294" y="378" width="8" height="16" fill="#3ddc84" />
+  <rect x="1318" y="378" width="8" height="16" fill="#3ddc84" />
+
+  
+  <rect x="1290" y="430" width="32" height="36" fill="#cccccc" />
+  <rect x="1294" y="426" width="24" height="8" fill="#cccccc" />
+  <rect x="1306" y="420" width="8" height="8" fill="#cccccc" />
+  
+  <rect x="1314" y="426" width="8" height="12" fill="#0a1a0a" />
+  
+  <rect x="1306" y="416" width="4" height="8" fill="#aaaaaa" />
+  
+  <rect x="1310" y="418" width="8" height="4" fill="#00aa44" />
+
+  
+  <text x="1340" y="402" font-family="monospace" font-size="14" fill="#ffff00" text-anchor="middle" font-weight="bold">VS</text>
+
+  
+  
+  <rect x="60" y="600" width="1416" height="180" fill="#0d0d0d" />
+  <rect x="60" y="600" width="1416" height="180" fill="none" stroke="#cc0000" stroke-width="4" />
+  
+  <rect x="60" y="600" width="1416" height="8" fill="#cc0000" />
+
+  
+  <rect x="68" y="616" width="8" height="8" fill="#cc0000" />
+  <rect x="84" y="616" width="8" height="8" fill="#cc0000" />
+  <rect x="100" y="616" width="8" height="8" fill="#cc0000" />
+  <rect x="116" y="616" width="8" height="8" fill="#cc0000" />
+
+  
+  <text x="768" y="675" font-family="monospace" font-size="72" font-weight="bold" fill="#ffffff" text-anchor="middle" filter="url(#glow)" letter-spacing="2">YOUTUBE IN 2010</text>
+  
+  <text x="772" y="679" font-family="monospace" font-size="72" font-weight="bold" fill="#cc0000" text-anchor="middle" opacity="0.3" letter-spacing="2">YOUTUBE IN 2010</text>
+
+  
+  <text x="768" y="755" font-family="monospace" font-size="36" fill="#00ffff" text-anchor="middle" filter="url(#glow)" letter-spacing="4">THE MOBILE VIDEO MILESTONE</text>
+
+  
+  <rect x="1380" y="616" width="8" height="8" fill="#00ffff" />
+  <rect x="1396" y="616" width="8" height="8" fill="#00ffff" />
+  <rect x="1412" y="616" width="8" height="8" fill="#00ffff" />
+  <rect x="1428" y="616" width="8" height="8" fill="#00ffff" />
+  <rect x="1444" y="616" width="8" height="8" fill="#00ffff" />
+
+  
+  <rect x="60" y="790" width="1416" height="200" fill="#080808" />
+  <rect x="60" y="790" width="1416" height="200" fill="none" stroke="#333333" stroke-width="2" />
+
+  
+  <text x="120" y="825" font-family="monospace" font-size="14" fill="#00ff44" opacity="0.8">MOBILE VIEWS/DAY (PIXEL CHART)</text>
+
+  
+  
+  <rect x="200" y="870" width="48" height="80" fill="#cc0000" opacity="0.8" />
+  <rect x="200" y="866" width="48" height="4" fill="#ff4444" />
+  <rect x="200" y="870" width="4" height="80" fill="#ff4444" opacity="0.5" />
+  <text x="224" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">JAN</text>
+  <text x="224" y="860" font-family="monospace" font-size="10" fill="#ff4444" text-anchor="middle">140M</text>
+
+  
+  <rect x="280" y="862" width="48" height="88" fill="#cc0000" opacity="0.8" />
+  <rect x="280" y="858" width="48" height="4" fill="#ff4444" />
+  <text x="304" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">FEB</text>
+
+  
+  <rect x="360" y="854" width="48" height="96" fill="#cc2200" opacity="0.8" />
+  <rect x="360" y="850" width="48" height="4" fill="#ff4444" />
+  <text x="384" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">MAR</text>
+
+  
+  <rect x="440" y="846" width="48" height="104" fill="#dd1100" opacity="0.8" />
+  <rect x="440" y="842" width="48" height="4" fill="#ff4444" />
+  <text x="464" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">APR</text>
+
+  
+  <rect x="520" y="838" width="48" height="112" fill="#dd1100" opacity="0.8" />
+  <rect x="520" y="834" width="48" height="4" fill="#ff5555" />
+  <text x="544" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">MAY</text>
+
+  
+  <rect x="600" y="820" width="48" height="130" fill="#ee0000" opacity="0.9" />
+  <rect x="600" y="816" width="48" height="4" fill="#ff6666" />
+  <rect x="600" y="820" width="4" height="130" fill="#ff4444" opacity="0.5" />
+  <text x="624" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">JUN</text>
+  <text x="624" y="810" font-family="monospace" font-size="10" fill="#ff6666" text-anchor="middle">200M</text>
+
+  
+  <rect x="680" y="814" width="48" height="136" fill="#ee0000" opacity="0.9" />
+  <rect x="680" y="810" width="48" height="4" fill="#ff6666" />
+  <text x="704" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">JUL</text>
+
+  
+  <rect x="760" y="808" width="48" height="142" fill="#ff0000" opacity="0.9" />
+  <rect x="760" y="804" width="48" height="4" fill="#ff8888" />
+  <text x="784" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">AUG</text>
+
+  
+  <rect x="840" y="800" width="48" height="150" fill="#ff0000" />
+  <rect x="840" y="796" width="48" height="4" fill="#ff8888" />
+  <text x="864" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">SEP</text>
+
+  
+  <rect x="920" y="792" width="48" height="158" fill="#ff2200" />
+  <rect x="920" y="788" width="48" height="4" fill="#ffaaaa" />
+  <text x="944" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">OCT</text>
+
+  
+  <rect x="1000" y="784" width="48" height="166" fill="#ff2200" />
+  <rect x="1000" y="780" width="48" height="4" fill="#ffaaaa" />
+  <text x="1024" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">NOV</text>
+
+  
+  <rect x="1080" y="776" width="48" height="174" fill="#ff3300" />
+  <rect x="1080" y="772" width="48" height="4" fill="#ffbbbb" />
+  <rect x="1080" y="776" width="4" height="174" fill="#ff6666" opacity="0.5" />
+  <text x="1104" y="966" font-family="monospace" font-size="10" fill="#aaaaaa" text-anchor="middle">DEC</text>
+  <text x="1104" y="766" font-family="monospace" font-size="10" fill="#ffbbbb" text-anchor="middle">3X↑</text>
+
+  
+  <rect x="180" y="950" width="980" height="4" fill="#333333" />
+
+  
+  <rect x="180" y="790" width="4" height="160" fill="#333333" />
+
+  
+  <rect x="1160" y="870" width="8" height="8" fill="#ffff00" />
+  <rect x="1168" y="862" width="8" height="8" fill="#ffff00" />
+  <rect x="1176" y="854" width="8" height="8" fill="#ffff00" />
+  <rect x="1184" y="846" width="8" height="8" fill="#ffff00" />
+  <rect x="1192" y="838" width="8" height="8" fill="#ffff00" />
+  <rect x="1200" y="830" width="8" height="8" fill="#ffff00" />
+  <text x="1260" y="860" font-family="monospace" font-size="13" fill="#ffff00" text-anchor="middle" filter="url(#glow)">TRENDING</text>
+  <text x="1260" y="878" font-family="monospace" font-size="13" fill="#ffff00" text-anchor="middle" filter="url(#glow)">UP ↗</text>
+
+  
+  <rect x="1330" y="840" width="120" height="60" fill="#cc0000" />
+  <rect x="1330" y="840" width="120" height="60" fill="none" stroke="#ff4444" stroke-width="4" />
+  <rect x="1330" y="840" width="120" height="8" fill="#ff4444" opacity="0.5" />
+  <text x="1390" y="867" font-family="monospace" font-size="18" fill="white" text-anchor="middle" font-weight="bold">VIRAL</text>
+  <text x="1390" y="888" font-family="monospace" font-size="11" fill="#ffcccc" text-anchor="middle">CONTENT ×∞</text>
+
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#scanlines)" opacity="0.25" pointer-events="none" />
+
+  
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="black" stop-opacity="0" />
+    <stop offset="100%" stop-color="black" stop-opacity="0.5" />
+  </radialGradient>
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#vignette)" pointer-events="none" />
+</svg>

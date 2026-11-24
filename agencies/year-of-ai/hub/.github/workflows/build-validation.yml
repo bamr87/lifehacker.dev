@@ -1,0 +1,78 @@
+---
+name: Build Validation
+
+# Pre-merge Jekyll build gate — the missing "does this site still render?" check.
+#
+# Production deploys via native GitHub Pages ("deploy from branch": main, /), so
+# nothing between a merge and a live deploy ever compiled the site: a broken
+# Liquid template, an unparseable front-matter `date:`, or a bad remote_theme
+# reference reached production unnoticed. The only downstream signal was
+# pages-deploy-sentinel.yml — an HOURLY, AFTER-THE-FACT liveness probe. This
+# workflow moves that detection BEFORE the merge (ADR-0006 finding #1: a member
+# site served stale content for six days behind a green dashboard).
+#
+# Read-only by construction: it compiles the site into the runner's _site/ and
+# throws it away. It writes nothing, dispatches nothing, and pushes nowhere, so
+# the convention-#8 `_data/fleet_pause.yml` kill-switch does NOT apply — pausing
+# the fleet halts CONTENT MUTATION, and a paused fleet still wants its PRs
+# checked. There is deliberately no deploy step here; Pages owns publishing.
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - 'pages/**'
+      - '_data/**'
+      - '_config*.yml'
+      - 'Gemfile*'
+      - 'assets/**'
+      # Root-level content files — 404.html is a real Liquid template (the first
+      # local reproduction of the theme/Ruby break surfaced there, not in pages/).
+      - '404.html'
+      - 'search.json'
+      - '.github/workflows/build-validation.yml'
+  workflow_dispatch: {}
+
+concurrency:
+  group: build-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Jekyll build (remote theme)
+    runs-on: ubuntu-latest
+    # The remote theme is fetched over the network and SassC compiles the whole
+    # theme, but it is quick: 52s end-to-end on the first, cache-cold run
+    # (~7s of that is the render). The generous cap only trips on a hang.
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          # Matches docker-compose.yml (ruby:3.3) and the rest of the fleet's
+          # workflows. The Gemfile pins github-pages to the release GitHub Pages
+          # itself runs, which is what makes 3.3 safe: an unpinned github-pages
+          # resolves back to 222 (jekyll 3.9.0 / liquid 4.0.3), and liquid 4.0.3
+          # calls `tainted?`, removed in Ruby 3.2.
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Front-matter date gate
+        # Convention #6 — one unparseable `date:` fails the WHOLE Pages build.
+        # Cheap and deterministic, so it runs before the (slower) render.
+        run: ruby scripts/normalize-front-matter-dates.rb --check pages
+
+      - name: Build the site
+        env:
+          # remote_theme downloads the theme through the GitHub API; anonymous
+          # requests are rate-limited hard enough to make this job flaky.
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # SassC reads the theme's UTF-8 SCSS through the process locale; a
+          # non-UTF-8 default turns it into `Invalid US-ASCII character "\xE2"`.
+          LC_ALL: C.UTF-8
+        run: bundle exec jekyll build --config '_config.yml,_config_dev.yml'

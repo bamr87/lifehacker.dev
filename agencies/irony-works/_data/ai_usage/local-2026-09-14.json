@@ -1,0 +1,32 @@
+{
+  "run_id": "local-2026-09-14",
+  "workflow": "local",
+  "calls": [
+    {
+      "at": "2026-09-14T16:47:21.409Z",
+      "label": "alanis-gate-pr",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 2306,
+      "cache_read_tokens": 0,
+      "cache_creation_tokens": 41061,
+      "cost_usd": 0.280965,
+      "billed": false,
+      "duration_ms": 54969
+    },
+    {
+      "at": "2026-09-14T16:58:50.273Z",
+      "label": "alanis-gate-pr",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 2814,
+      "cache_read_tokens": 28501,
+      "cache_creation_tokens": 14105,
+      "cost_usd": 0.1353993,
+      "billed": false,
+      "duration_ms": 62611
+    }
+  ]
+}

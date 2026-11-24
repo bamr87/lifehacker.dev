@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>State Security Department (Bowibu) — DPRK Government &amp; Politics Plate</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc0" />
+      <stop offset="50%" stop-color="#ddd0a8" />
+      <stop offset="100%" stop-color="#c9bc90" />
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00000000" />
+      <stop offset="100%" stop-color="#3a2a1055" />
+    </radialGradient>
+    <radialGradient id="iris" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#1a0e00" />
+      <stop offset="55%" stop-color="#6b2a2a" />
+      <stop offset="100%" stop-color="#b5622a" />
+    </radialGradient>
+    <pattern id="hatch" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="4" stroke="#8a7545" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#3a2500" flood-opacity="0.35" />
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#1a0e00" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  <rect x="18" y="18" width="1500" height="988" rx="4" fill="none" stroke="#7a6030" stroke-width="6" />
+  <rect x="28" y="28" width="1480" height="968" rx="3" fill="none" stroke="#9a8050" stroke-width="2" />
+  <rect x="32" y="32" width="1472" height="960" rx="2" fill="none" stroke="#7a6030" stroke-width="1" />
+
+  <g stroke="#7a6030" stroke-width="2" fill="none">
+    <line x1="18" y1="60" x2="60" y2="60" /><line x1="60" y1="18" x2="60" y2="60" />
+    <line x1="1476" y1="60" x2="1518" y2="60" /><line x1="1476" y1="18" x2="1476" y2="60" />
+    <line x1="18" y1="964" x2="60" y2="964" /><line x1="60" y1="964" x2="60" y2="1006" />
+    <line x1="1476" y1="964" x2="1518" y2="964" /><line x1="1476" y1="964" x2="1476" y2="1006" />
+  </g>
+
+  <!-- Right imagery panel: all-seeing eye over an informant web -->
+  <g transform="translate(1090, 470)">
+    <!-- surveillance web -->
+    <g stroke="#7a6030" stroke-width="1.2" opacity="0.5">
+      <line x1="0" y1="0" x2="-190" y2="150" /><line x1="0" y1="0" x2="-60" y2="230" />
+      <line x1="0" y1="0" x2="90" y2="230" /><line x1="0" y1="0" x2="200" y2="150" />
+      <line x1="0" y1="0" x2="-220" y2="20" /><line x1="0" y1="0" x2="220" y2="20" />
+    </g>
+    <g fill="#5a4030" opacity="0.7">
+      <circle cx="-190" cy="150" r="9" /><circle cx="-60" cy="230" r="9" /><circle cx="90" cy="230" r="9" />
+      <circle cx="200" cy="150" r="9" /><circle cx="-220" cy="20" r="9" /><circle cx="220" cy="20" r="9" />
+    </g>
+    <!-- eye -->
+    <g filter="url(#softShadow)">
+      <path d="M -230 0 Q 0 -170 230 0 Q 0 170 -230 0 Z" fill="#e8dfc0" stroke="#3a2810" stroke-width="4" />
+      <circle cx="0" cy="0" r="88" fill="url(#iris)" stroke="#3a0a0a" stroke-width="3" />
+      <circle cx="0" cy="0" r="38" fill="#1a0e00" />
+      <circle cx="-16" cy="-16" r="14" fill="#f5e8c0" opacity="0.8" />
+    </g>
+    <path d="M -230 0 Q 0 -170 230 0" fill="none" stroke="#8b1a1a" stroke-width="2" opacity="0.5" />
+  </g>
+
+  <!-- Left text panel -->
+  <rect x="50" y="50" width="640" height="924" rx="3" fill="#d8c898" opacity="0.5" />
+  <rect x="50" y="50" width="640" height="924" fill="url(#hatch)" opacity="0.4" />
+  <line x1="710" y1="60" x2="710" y2="964" stroke="#7a6030" stroke-width="3" />
+  <line x1="715" y1="60" x2="715" y2="964" stroke="#9a8050" stroke-width="1" />
+
+  <text x="370" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="1" filter="url(#textShadow)">State Security</text>
+  <text x="370" y="214" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="1" filter="url(#textShadow)">Department</text>
+  <text x="370" y="256" font-family="Georgia, serif" font-size="24" fill="#6a4010" text-anchor="middle" font-style="italic" letter-spacing="2">Bowibu · Ministry of State Security</text>
+
+  <line x1="110" y1="285" x2="630" y2="285" stroke="#7a6030" stroke-width="2" />
+  <line x1="140" y1="290" x2="600" y2="290" stroke="#9a8050" stroke-width="1" />
+
+  <g font-family="Georgia, serif">
+    <text x="110" y="345" font-size="19" fill="#3a2810" font-weight="bold">Role:</text>
+    <text x="630" y="345" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">secret police · counterintelligence</text>
+    <line x1="110" y1="362" x2="630" y2="362" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="408" font-size="19" fill="#3a2810" font-weight="bold">Separated:</text>
+    <text x="630" y="408" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">1973 (from ordinary policing)</text>
+    <line x1="110" y1="425" x2="630" y2="425" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="471" font-size="19" fill="#3a2810" font-weight="bold">Answers to:</text>
+    <text x="630" y="471" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">the Supreme Leader alone</text>
+    <line x1="110" y1="488" x2="630" y2="488" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="534" font-size="19" fill="#3a2810" font-weight="bold">Informants:</text>
+    <text x="630" y="534" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">est. hundreds of thousands</text>
+    <line x1="110" y1="551" x2="630" y2="551" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+  </g>
+
+  <rect x="110" y="600" width="520" height="290" rx="3" fill="#4a2a2a" stroke="#2a0a0a" stroke-width="2" filter="url(#softShadow)" opacity="0.92" />
+  <text x="370" y="644" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="2">THE SURVEILLANCE STATE</text>
+  <line x1="150" y1="662" x2="590" y2="662" stroke="#c8a870" stroke-width="1" opacity="0.6" />
+  <text x="370" y="700" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">inminban informant networks · life-review sessions</text>
+  <text x="370" y="730" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">songbun files · collective punishment (yonzwa)</text>
+  <text x="370" y="760" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">foreign-media raids · border signal detection</text>
+  <text x="370" y="790" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">interrogation, torture · referrals to the kwanliso</text>
+  <text x="370" y="826" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">2013 Jang Song-thaek purge · rivalry with the RGB</text>
+  <text x="370" y="864" font-family="Georgia, serif" font-size="13" fill="#c8a870" text-anchor="middle">terror internalized from childhood</text>
+
+  <text x="370" y="945" font-family="Georgia, serif" font-size="16" fill="#8a6030" text-anchor="middle" font-style="italic" letter-spacing="1">Government &amp; Politics</text>
+
+  <text x="1400" y="985" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#8a7550" font-style="italic" opacity="0.6">Atlas Plate · DPRK · Korean Peninsula</text>
+
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

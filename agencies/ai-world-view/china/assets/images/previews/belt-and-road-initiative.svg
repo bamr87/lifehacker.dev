@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Belt and Road Initiative — China's Global Infrastructure Program</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5ead6" />
+      <stop offset="100%" stop-color="#e8d5b0" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8dce8" />
+      <stop offset="100%" stop-color="#a8c4d8" />
+    </linearGradient>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#8b1a1a" opacity="0.8" />
+    </marker>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <rect width="1536" height="1024" fill="#c8a96e" opacity="0.08" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8b6914" stroke-width="3" opacity="0.6" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8b6914" stroke-width="1" opacity="0.4" />
+
+  
+  <rect x="40" y="40" width="1456" height="944" fill="url(#seaGrad)" opacity="0.45" />
+
+  
+
+  
+  <path d="M620,220 L640,210 L670,205 L695,215 L710,230 L700,250 L685,260 L665,270 L645,265 L630,255 L615,240 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1.2" opacity="0.9" />
+  
+  <path d="M595,255 L610,245 L620,255 L615,275 L600,280 L588,268 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1" opacity="0.9" />
+  
+  <path d="M608,205 L618,198 L625,205 L620,218 L610,220 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1" opacity="0.85" />
+  
+  <path d="M650,170 L665,160 L680,165 L690,185 L680,200 L665,205 L650,195 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M620,300 L665,290 L700,300 L720,330 L730,380 L720,440 L700,490 L680,520 L660,530 L640,520 L618,490 L608,440 L605,390 L610,340 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1.2" opacity="0.9" />
+
+  
+  <path d="M720,280 L755,270 L780,280 L795,310 L785,340 L760,355 L735,345 L718,320 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1.2" opacity="0.9" />
+
+  
+  <path d="M700,160 L780,150 L880,145 L980,150 L1060,160 L1080,185 L1060,205 L980,215 L880,210 L780,205 L700,200 L688,185 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1.2" opacity="0.9" />
+
+  
+  <path d="M820,270 L860,260 L895,270 L910,300 L905,340 L890,375 L870,395 L850,385 L830,355 L815,315 L810,285 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1.2" opacity="0.9" />
+
+  
+  <path d="M960,290 L995,280 L1025,285 L1040,305 L1035,330 L1010,345 L980,340 L960,320 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1.2" opacity="0.9" />
+  
+  <path d="M1005,340 L1015,335 L1025,350 L1020,375 L1010,385 L1000,370 L998,350 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1" opacity="0.85" />
+  
+  <ellipse cx="1055" cy="375" rx="40" ry="18" fill="#c8b47a" stroke="#8b6914" stroke-width="1" opacity="0.85" />
+  <ellipse cx="1120" cy="365" rx="30" ry="15" fill="#c8b47a" stroke="#8b6914" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M960,190 L1000,180 L1055,182 L1090,195 L1110,220 L1105,255 L1080,280 L1040,292 L995,288 L960,270 L940,245 L935,220 Z" fill="#c0392b" stroke="#8b1a1a" stroke-width="2" opacity="0.85" />
+  
+  <text x="1025" y="242" font-family="Georgia, serif" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold" opacity="0.95">中国</text>
+
+  
+  <path d="M1115,210 L1125,200 L1135,210 L1130,230 L1118,235 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1" opacity="0.85" />
+
+  
+  <ellipse cx="1150" cy="520" rx="90" ry="65" fill="#c8b47a" stroke="#8b6914" stroke-width="1.2" opacity="0.9" />
+
+  
+  <path d="M685,380 L700,370 L710,390 L705,420 L690,430 L678,415 Z" fill="#c8b47a" stroke="#8b6914" stroke-width="1" opacity="0.7" />
+
+  
+
+  
+  
+  <path d="M960,238 C920,232 880,220 840,215 C800,210 760,205 720,200 C680,195 650,192 620,198 C600,202 585,218 570,235" fill="none" stroke="#c0392b" stroke-width="4" stroke-dasharray="12,8" opacity="0.9" marker-end="url(#arrow)" />
+
+  
+  <path d="M960,260 C930,268 900,270 870,272 C845,274 825,278 808,295" fill="none" stroke="#c0392b" stroke-width="3" stroke-dasharray="10,7" opacity="0.75" />
+
+  
+  
+  <path d="M1060,288 C1050,315 1030,340 1015,365 C995,398 970,420 940,440 C900,468 860,475 820,470 C780,465 755,450 730,430 C705,410 688,390 678,370" fill="none" stroke="#1a3a6b" stroke-width="4" stroke-dasharray="14,7" opacity="0.85" marker-end="url(#arrow)" />
+
+  
+  <path d="M678,370 C665,355 650,335 638,315 C628,300 622,285 622,270 C622,258 628,248 638,240" fill="none" stroke="#1a3a6b" stroke-width="3.5" stroke-dasharray="12,7" opacity="0.8" />
+
+  
+  <circle cx="1060" cy="288" r="8" fill="#1a3a6b" opacity="0.9" />
+  <circle cx="1015" cy="365" r="6" fill="#1a3a6b" opacity="0.85" />
+  <circle cx="808" cy="295" r="6" fill="#1a3a6b" opacity="0.85" />
+  <circle cx="678" cy="370" r="6" fill="#1a3a6b" opacity="0.85" />
+  <circle cx="638" cy="240" r="6" fill="#1a3a6b" opacity="0.85" />
+
+  
+  <circle cx="960" cy="238" r="10" fill="#c0392b" opacity="0.95" />
+  <circle cx="820" cy="215" r="6" fill="#c0392b" opacity="0.85" />
+  <circle cx="720" cy="200" r="6" fill="#c0392b" opacity="0.85" />
+  <circle cx="620" cy="198" r="6" fill="#c0392b" opacity="0.85" />
+  <circle cx="570" cy="235" r="8" fill="#c0392b" opacity="0.9" />
+
+  
+  <g transform="translate(1380, 780)">
+    
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#8b6914" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="40" fill="#f5ead6" stroke="#8b6914" stroke-width="1" opacity="0.8" />
+    
+    <polygon points="0,-38 5,-18 -5,-18" fill="#8b1a1a" opacity="0.9" />
+    <polygon points="0,38 5,18 -5,18" fill="#8b6914" opacity="0.7" />
+    <polygon points="38,0 18,5 18,-5" fill="#8b6914" opacity="0.7" />
+    <polygon points="-38,0 -18,5 -18,-5" fill="#8b6914" opacity="0.7" />
+    
+    <polygon points="0,-38 3,-22 -3,-22" fill="#8b1a1a" opacity="0.5" transform="rotate(45)" />
+    <polygon points="0,-38 3,-22 -3,-22" fill="#8b6914" opacity="0.5" transform="rotate(135)" />
+    <polygon points="0,-38 3,-22 -3,-22" fill="#8b6914" opacity="0.5" transform="rotate(225)" />
+    <polygon points="0,-38 3,-22 -3,-22" fill="#8b6914" opacity="0.5" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="5" fill="#8b6914" opacity="0.9" />
+    
+    <text x="0" y="-44" font-family="Georgia, serif" font-size="13" fill="#8b1a1a" text-anchor="middle" font-weight="bold" opacity="0.9">N</text>
+  </g>
+
+  
+  <line x1="40" y1="300" x2="1496" y2="300" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,8" />
+  <line x1="40" y1="400" x2="1496" y2="400" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,8" />
+  <line x1="40" y1="500" x2="1496" y2="500" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,8" />
+  <line x1="40" y1="200" x2="1496" y2="200" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,8" />
+  
+  <line x1="640" y1="40" x2="640" y2="984" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,8" />
+  <line x1="800" y1="40" x2="800" y2="984" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,8" />
+  <line x1="960" y1="40" x2="960" y2="984" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,8" />
+  <line x1="1120" y1="40" x2="1120" y2="984" stroke="#8b6914" stroke-width="0.5" opacity="0.2" stroke-dasharray="4,8" />
+
+  
+  <g transform="translate(80, 750)">
+    <rect x="0" y="0" width="340" height="120" rx="4" fill="#f5ead6" fill-opacity="0.88" stroke="#8b6914" stroke-width="1.5" />
+    <text x="170" y="26" font-family="Georgia, serif" font-size="14" fill="#5a3e0a" text-anchor="middle" font-weight="bold" opacity="0.9">LEGEND</text>
+    
+    <line x1="20" y1="50" x2="70" y2="50" stroke="#c0392b" stroke-width="3.5" stroke-dasharray="10,6" />
+    <circle cx="45" cy="50" r="5" fill="#c0392b" />
+    <text x="84" y="55" font-family="Georgia, serif" font-size="13" fill="#3a1a0a" opacity="0.9">Silk Road Economic Belt</text>
+    
+    <line x1="20" y1="80" x2="70" y2="80" stroke="#1a3a6b" stroke-width="3.5" stroke-dasharray="12,6" />
+    <circle cx="45" cy="80" r="5" fill="#1a3a6b" />
+    <text x="84" y="85" font-family="Georgia, serif" font-size="13" fill="#3a1a0a" opacity="0.9">21st-Century Maritime Silk Road</text>
+    
+    <rect x="20" y="100" width="24" height="12" rx="2" fill="#c0392b" opacity="0.8" />
+    <text x="54" y="112" font-family="Georgia, serif" font-size="13" fill="#3a1a0a" opacity="0.9">China (BRI Origin)</text>
+  </g>
+
+  
+  
+  <rect x="40" y="600" width="1456" height="380" fill="#2c1a08" opacity="0.82" rx="2" />
+  <rect x="40" y="600" width="1456" height="4" fill="#c0392b" />
+
+  
+  <text x="768" y="655" font-family="Georgia, serif" font-size="20" fill="#d4a853" text-anchor="middle" letter-spacing="5" opacity="0.9">ESTABLISHED 2013 · XI JINPING · 一帶一路</text>
+
+  
+  <text x="768" y="740" font-family="Georgia, serif" font-size="96" fill="#f5ead6" text-anchor="middle" font-weight="bold" letter-spacing="2" opacity="0.97">BELT AND ROAD</text>
+  <text x="768" y="830" font-family="Georgia, serif" font-size="96" fill="#f5ead6" text-anchor="middle" font-weight="bold" letter-spacing="2" opacity="0.97">INITIATIVE</text>
+
+  
+  <text x="768" y="895" font-family="Georgia, serif" font-size="22" fill="#c8a96e" text-anchor="middle" letter-spacing="3" opacity="0.85">China's Global Infrastructure &amp; Economic Integration Program</text>
+
+  
+  <text x="768" y="945" font-family="Georgia, serif" font-size="16" fill="#8b6914" text-anchor="middle" letter-spacing="2" opacity="0.7">150+ PARTICIPATING COUNTRIES · $1 TRILLION+ INVESTED (2013–2023)</text>
+
+  
+  <line x1="500" y1="665" x2="768" y2="665" stroke="#d4a853" stroke-width="1" opacity="0.5" />
+  <line x1="768" y1="665" x2="1036" y2="665" stroke="#d4a853" stroke-width="1" opacity="0.5" />
+  <circle cx="768" cy="665" r="3" fill="#d4a853" opacity="0.7" />
+
+  
+  <g transform="translate(1280, 420)" opacity="0.6">
+    <path d="M-30,10 L-20,-5 L-5,-8 L10,-5 L20,0 L25,10 Z" fill="#1a3a6b" stroke="#0a1a3b" stroke-width="1" />
+    <line x1="-5" y1="-8" x2="-5" y2="-28" stroke="#1a3a6b" stroke-width="2" />
+    <path d="M-5,-28 L12,-18 L-5,-16 Z" fill="#1a3a6b" />
+    <path d="M-30,10 Q0,18 25,10" fill="#a8c4d8" stroke="none" />
+  </g>
+
+  
+  <g transform="translate(500, 175)" opacity="0.65">
+    <rect x="-25" y="-12" width="50" height="22" rx="4" fill="#8b1a1a" stroke="#5a0a0a" stroke-width="1" />
+    <rect x="-20" y="-8" width="15" height="12" rx="2" fill="#f5ead6" opacity="0.7" />
+    <rect x="2" y="-8" width="15" height="12" rx="2" fill="#f5ead6" opacity="0.7" />
+    <circle cx="-15" cy="12" r="5" fill="#3a1a0a" />
+    <circle cx="10" cy="12" r="5" fill="#3a1a0a" />
+    <line x1="-25" y1="10" x2="-50" y2="10" stroke="#8b1a1a" stroke-width="2" />
+    <line x1="25" y1="10" x2="50" y2="10" stroke="#8b1a1a" stroke-width="2" />
+  </g>
+
+</svg>

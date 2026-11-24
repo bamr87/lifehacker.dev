@@ -1,0 +1,61 @@
+# Authors Data File
+# =================
+# Define author profiles for blog posts
+#
+# Usage in front matter:
+#   author: johndoe  (references the key below)
+#
+# Fields:
+#   name: Display name (required)
+#   bio: Short biography (optional)
+#   avatar: Path to avatar image (optional)
+#   email: Contact email (optional)
+#   twitter: Twitter handle without @ (optional)
+#   github: GitHub username (optional)
+#   linkedin: LinkedIn profile ID (optional)
+#   website: Personal website URL (optional)
+#   role: Job title or role (optional)
+
+default:
+  name: "Zer0-Mistakes Team"
+  bio: "The collective voice of the Zer0-Mistakes Jekyll theme development team."
+  avatar: "/images/gravatar-small.png"
+  github: "bamr87"
+  website: "https://bamr87.github.io/zer0-mistakes/"
+  role: "Development Team"
+
+bamr87:
+  name: "Amr Abdel-Motaleb"
+  display_name: "Amr Abdel (bamr87)"
+  bio: "Creator of zer0-mistakes and the AIEO methodology. Developer, automation enthusiast, and Docker advocate building tools for the Jekyll community."
+  avatar: "/images/authors/bamr87.png"
+  github: "bamr87"
+  twitter: "bamr87"
+  linkedin: "bamr87"
+  website: "https://zer0-mistakes.com"
+  role: "Creator & Lead Developer"
+  expertise:
+    - "Jekyll theme development"
+    - "Docker containerization"
+    - "AI Engine Optimization (AIEO)"
+    - "GitHub Pages deployment"
+    - "Bootstrap UI frameworks"
+
+guest:
+  name: "Guest Author"
+  bio: "A valued contributor to our community."
+  avatar: "/images/gravatar-small.png"
+  role: "Guest Contributor"
+
+# Add more authors as needed:
+#
+# author_key:
+#   name: "Author Full Name"
+#   bio: "Short biography about the author."
+#   avatar: "/images/authors/author.png"
+#   email: "author@example.com"
+#   twitter: "twitterhandle"
+#   github: "githubuser"
+#   linkedin: "linkedinprofile"
+#   website: "https://example.com"
+#   role: "Writer"

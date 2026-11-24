@@ -1,0 +1,21 @@
+// year-of-ai.github.io · .vscode/launch.json — fleet-vscode/v1 · 2026-09-09. Convention + vocabulary: .vscode/README.md.
+// webRoot is the served build output (_site), so breakpoints in served files bind; the server on :4000 comes from the Serve task.
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug: site in Edge (:4000)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4000",
+      "webRoot": "${workspaceFolder}/_site",
+      "preLaunchTask": "Serve"
+    },
+    {
+      "name": "Debug: live site (year-of-ai.github.io)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "https://year-of-ai.github.io"
+    }
+  ]
+}

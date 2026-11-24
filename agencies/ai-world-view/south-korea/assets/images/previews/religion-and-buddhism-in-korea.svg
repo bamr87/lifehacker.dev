@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Religion and Buddhism in Korea — Cultural History Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd6" />
+      <stop offset="100%" stop-color="#9ab8c4" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b5a472" />
+    </linearGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a0956a" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComponentTransfer in="blend">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6a3e" stroke-width="4" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a6a3e" stroke-width="1.5" />
+
+  
+  <rect x="36" y="36" width="1464" height="952" fill="url(#seaGrad)" opacity="0.45" />
+
+  
+  <g stroke="#8a9eaa" stroke-width="0.6" opacity="0.5">
+    <line x1="300" y1="36" x2="300" y2="988" />
+    <line x1="500" y1="36" x2="500" y2="988" />
+    <line x1="700" y1="36" x2="700" y2="988" />
+    <line x1="900" y1="36" x2="900" y2="988" />
+    <line x1="1100" y1="36" x2="1100" y2="988" />
+    <line x1="1300" y1="36" x2="1300" y2="988" />
+    <line x1="36" y1="200" x2="1500" y2="200" />
+    <line x1="36" y1="400" x2="1500" y2="400" />
+    <line x1="36" y1="600" x2="1500" y2="600" />
+    <line x1="36" y1="800" x2="1500" y2="800" />
+  </g>
+
+  
+  <path d="M 36 36 L 580 36 L 620 80 L 650 120 L 640 180 L 680 220 L 700 280 L 720 340 L 700 400 L 720 460 L 710 520 L 680 560 L 650 600 L 620 640 L 580 660 L 540 700 L 500 720 L 460 740 L 420 760 L 380 780 L 340 800 L 300 820 L 260 840 L 220 860 L 180 880 L 140 900 L 100 920 L 60 950 L 36 960 Z" fill="url(#landGrad)" stroke="#7a6a3e" stroke-width="1.5" />
+
+  
+  <path d="M 580 36 L 800 36 L 820 60 L 810 100 L 780 140 L 760 180 L 740 220 L 720 260 L 700 280 L 680 220 L 650 180 L 640 120 L 620 80 Z" fill="url(#landGrad)" stroke="#7a6a3e" stroke-width="1.5" />
+
+  
+  <path d="M 820 180 L 860 160 L 900 155 L 940 160 L 960 180 L 970 220 L 965 260 L 960 300 L 950 340 L 940 380 L 930 420 L 920 460 L 910 500 L 900 530 L 890 560 L 880 590 L 870 620 L 855 650 L 840 670 L 820 685 L 800 680 L 785 660 L 780 630 L 785 600 L 790 570 L 788 540 L 780 510 L 770 480 L 765 450 L 762 420 L 760 390 L 758 360 L 755 330 L 750 300 L 748 270 L 750 240 L 758 210 L 770 190 L 790 178 Z" fill="#c4ad78" stroke="#7a6a3e" stroke-width="2.5" />
+
+  
+  <path d="M 840 175 L 875 165 L 910 162 L 945 170 L 960 195 L 965 235 L 958 275 L 948 315 L 936 355 L 924 395 L 912 430 L 900 462 L 888 492 L 875 522 L 862 550 L 848 578 L 835 605 L 820 635 L 808 658 L 800 672 L 788 670 L 780 652 L 778 628 L 783 600 L 788 572 L 785 545 L 777 518 L 769 490 L 763 462 L 760 434 L 758 406 L 756 378 L 752 348 L 750 316 L 748 284 L 752 252 L 762 224 L 778 200 L 800 182 Z" fill="#cdb882" stroke="none" opacity="0.4" />
+
+  
+  <ellipse cx="820" cy="720" rx="28" ry="16" fill="#c4ad78" stroke="#7a6a3e" stroke-width="1.5" />
+
+  
+  <path d="M 1100 120 L 1130 110 L 1160 115 L 1180 135 L 1175 160 L 1155 175 L 1130 180 L 1105 168 L 1092 148 Z" fill="url(#landGrad)" stroke="#7a6a3e" stroke-width="1.5" />
+  <path d="M 1060 200 L 1100 190 L 1140 195 L 1160 215 L 1158 245 L 1140 265 L 1110 275 L 1078 268 L 1055 248 L 1048 224 Z" fill="url(#landGrad)" stroke="#7a6a3e" stroke-width="1.5" />
+  <path d="M 1020 310 L 1065 295 L 1105 300 L 1130 325 L 1128 360 L 1108 385 L 1070 395 L 1032 385 L 1010 360 L 1008 335 Z" fill="url(#landGrad)" stroke="#7a6a3e" stroke-width="1.5" />
+  <path d="M 1000 440 L 1040 425 L 1080 428 L 1105 450 L 1105 485 L 1085 510 L 1048 520 L 1012 510 L 990 488 L 988 462 Z" fill="url(#landGrad)" stroke="#7a6a3e" stroke-width="1.5" />
+  <path d="M 990 580 L 1025 568 L 1058 572 L 1075 592 L 1072 622 L 1052 640 L 1020 648 L 990 638 L 972 616 L 972 596 Z" fill="url(#landGrad)" stroke="#7a6a3e" stroke-width="1.5" />
+
+  
+  <g transform="translate(1300, 512)">
+    <circle cx="0" cy="0" r="110" fill="#c4a84a" opacity="0.18" stroke="#8a6e1e" stroke-width="2" />
+    <circle cx="0" cy="0" r="85" fill="none" stroke="#8a6e1e" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="28" fill="#c4a84a" opacity="0.5" stroke="#8a6e1e" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="12" fill="#8a6e1e" opacity="0.7" />
+    
+    <g stroke="#8a6e1e" stroke-width="2.5">
+      <line x1="0" y1="-85" x2="0" y2="85" />
+      <line x1="-85" y1="0" x2="85" y2="0" />
+      <line x1="-60" y1="-60" x2="60" y2="60" />
+      <line x1="60" y1="-60" x2="-60" y2="60" />
+    </g>
+    
+    <g fill="#8a6e1e">
+      <circle cx="0" cy="-85" r="5" />
+      <circle cx="0" cy="85" r="5" />
+      <circle cx="-85" cy="0" r="5" />
+      <circle cx="85" cy="0" r="5" />
+      <circle cx="-60" cy="-60" r="5" />
+      <circle cx="60" cy="60" r="5" />
+      <circle cx="60" cy="-60" r="5" />
+      <circle cx="-60" cy="60" r="5" />
+    </g>
+    
+    <circle cx="0" cy="-110" r="6" fill="#8a6e1e" opacity="0.6" />
+    <circle cx="0" cy="110" r="6" fill="#8a6e1e" opacity="0.6" />
+    <circle cx="-110" cy="0" r="6" fill="#8a6e1e" opacity="0.6" />
+    <circle cx="110" cy="0" r="6" fill="#8a6e1e" opacity="0.6" />
+  </g>
+
+  
+  <g transform="translate(430, 700)" opacity="0.7">
+    <rect x="-8" y="-52" width="16" height="104" rx="3" fill="#7a5a3a" />
+    <rect x="-36" y="-18" width="72" height="16" rx="3" fill="#7a5a3a" />
+  </g>
+
+  
+  <g transform="translate(1440, 920)">
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#7a6a3e" stroke-width="1.5" opacity="0.7" />
+    <circle cx="0" cy="0" r="6" fill="#7a6a3e" opacity="0.7" />
+    
+    <polygon points="0,-42 -8,-20 0,-28 8,-20" fill="#5a4a2e" opacity="0.8" />
+    
+    <polygon points="0,42 -8,20 0,28 8,20" fill="#8a7a5e" opacity="0.8" />
+    
+    <polygon points="42,0 20,-8 28,0 20,8" fill="#8a7a5e" opacity="0.8" />
+    
+    <polygon points="-42,0 -20,-8 -28,0 -20,8" fill="#8a7a5e" opacity="0.8" />
+    <text x="0" y="-50" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a4a2e" opacity="0.8">N</text>
+  </g>
+
+  
+  <g transform="translate(868, 400)" fill="#6a5030" opacity="0.85">
+    
+    <rect x="-4" y="0" width="8" height="60" rx="1" />
+    
+    <rect x="-16" y="-8" width="32" height="8" rx="1" />
+    <polygon points="-20,-8 20,-8 14,-20 -14,-20" />
+    
+    <rect x="-22" y="8" width="44" height="8" rx="1" />
+    <polygon points="-26,8 26,8 20,-4 -20,-4" />
+    
+    <rect x="-28" y="24" width="56" height="8" rx="1" />
+    
+    <rect x="-34" y="40" width="68" height="8" rx="1" />
+    
+    <rect x="-40" y="56" width="80" height="10" rx="2" />
+    
+    <line x1="0" y1="-20" x2="0" y2="-40" stroke="#6a5030" stroke-width="2" />
+    <circle cx="0" cy="-42" r="4" fill="#6a5030" />
+  </g>
+
+  
+  <g transform="translate(860, 300)" opacity="0.6">
+    <circle cx="0" cy="0" r="22" fill="#4a6a9a" />
+    <path d="M 0 -22 A 11 11 0 0 1 0 0 A 11 11 0 0 0 0 22 A 22 22 0 0 1 0 -22 Z" fill="#c84040" />
+    <circle cx="0" cy="-11" r="11" fill="#c84040" />
+    <circle cx="0" cy="11" r="11" fill="#4a6a9a" />
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#3a3a3a" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(200, 500)" opacity="0.55">
+    
+    <ellipse cx="0" cy="-30" rx="12" ry="22" fill="#d4a0a0" transform="rotate(0)" />
+    <ellipse cx="0" cy="-30" rx="12" ry="22" fill="#d4a0a0" transform="rotate(45)" />
+    <ellipse cx="0" cy="-30" rx="12" ry="22" fill="#d4a0a0" transform="rotate(90)" />
+    <ellipse cx="0" cy="-30" rx="12" ry="22" fill="#d4a0a0" transform="rotate(135)" />
+    <ellipse cx="0" cy="-30" rx="12" ry="22" fill="#d4a0a0" transform="rotate(180)" />
+    <ellipse cx="0" cy="-30" rx="12" ry="22" fill="#d4a0a0" transform="rotate(225)" />
+    <ellipse cx="0" cy="-30" rx="12" ry="22" fill="#d4a0a0" transform="rotate(270)" />
+    <ellipse cx="0" cy="-30" rx="12" ry="22" fill="#d4a0a0" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="16" fill="#e8c87a" opacity="0.9" />
+  </g>
+
+  
+  <text x="855" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#4a3820" letter-spacing="3" opacity="0.8">KOREA</text>
+
+  
+  <text x="340" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#4a3820" letter-spacing="2" opacity="0.6">CHINA</text>
+
+  
+  <text x="1050" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#3a5a6a" letter-spacing="1" opacity="0.7" transform="rotate(-8,1050,380)">SEA OF JAPAN</text>
+
+  
+  <text x="670" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#3a5a6a" letter-spacing="1" opacity="0.7" transform="rotate(-5,670,560)">YELLOW SEA</text>
+
+  
+  <rect x="36" y="36" width="620" height="952" fill="#2a1e0e" opacity="0.78" rx="0" />
+
+  
+  <g stroke="#c4a84a" stroke-width="0.5" opacity="0.15">
+    <line x1="56" y1="100" x2="636" y2="100" />
+    <line x1="56" y1="900" x2="636" y2="900" />
+  </g>
+
+  
+  <rect x="36" y="36" width="620" height="6" fill="#c4a84a" opacity="0.8" />
+  <rect x="36" y="982" width="620" height="6" fill="#c4a84a" opacity="0.8" />
+
+  
+  <rect x="56" y="56" width="2" height="912" fill="#c4a84a" opacity="0.4" />
+  <rect x="616" y="56" width="2" height="912" fill="#c4a84a" opacity="0.4" />
+
+  
+  <text x="336" y="250" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#c4a84a" letter-spacing="6" opacity="0.9">RELIGION AND</text>
+  <text x="336" y="330" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="bold" fill="#f0e0b0" letter-spacing="2">BUDDHISM</text>
+  <text x="336" y="400" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#c4a84a" letter-spacing="6" opacity="0.9">IN KOREA</text>
+
+  
+  <line x1="100" y1="430" x2="572" y2="430" stroke="#c4a84a" stroke-width="1.5" opacity="0.7" />
+  <circle cx="336" cy="430" r="5" fill="#c4a84a" opacity="0.7" />
+  <line x1="100" y1="440" x2="572" y2="440" stroke="#c4a84a" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="336" y="480" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#d4b870" letter-spacing="4" opacity="0.85">CULTURE &amp; SOCIETY</text>
+
+  
+  <text x="336" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#c0a870" opacity="0.75" font-style="italic">Buddhism · Christianity · Confucianism · Muism</text>
+
+  
+  <line x1="140" y1="560" x2="532" y2="560" stroke="#c4a84a" stroke-width="0.8" opacity="0.4" />
+
+  
+  <g fill="#c4a84a" opacity="0.7">
+    <circle cx="150" cy="600" r="5" />
+    <circle cx="258" cy="600" r="5" />
+    <circle cx="366" cy="600" r="5" />
+    <circle cx="474" cy="600" r="5" />
+    <line x1="150" y1="600" x2="474" y2="600" stroke="#c4a84a" stroke-width="1" opacity="0.5" />
+  </g>
+  <text x="150" y="625" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c0a870" opacity="0.7">372 CE</text>
+  <text x="258" y="625" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c0a870" opacity="0.7">935</text>
+  <text x="366" y="625" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c0a870" opacity="0.7">1392</text>
+  <text x="474" y="625" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c0a870" opacity="0.7">1900s</text>
+  <text x="150" y="648" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#a09060" opacity="0.6">Buddhism</text>
+  <text x="150" y="660" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#a09060" opacity="0.6">arrives</text>
+  <text x="258" y="648" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#a09060" opacity="0.6">Goryeo</text>
+  <text x="366" y="648" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#a09060" opacity="0.6">Joseon</text>
+  <text x="474" y="648" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#a09060" opacity="0.6">Christianity</text>
+
+  
+  <text x="336" y="720" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#c4a84a" letter-spacing="2" opacity="0.7">KEY FIGURES</text>
+  <text x="336" y="748" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#d0be90" opacity="0.8" font-style="italic">Wonhyo · Uicheon · Jinul</text>
+  <text x="336" y="770" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#d0be90" opacity="0.8" font-style="italic">Yi Hwang · Kim Jae-jun</text>
+
+  
+  <line x1="100" y1="820" x2="572" y2="820" stroke="#c4a84a" stroke-width="1" opacity="0.4" />
+
+  
+  <text x="336" y="856" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#a09060" opacity="0.7">2015 Census · 19.7% Protestant · 15.5% Buddhist · 7.9% Catholic</text>
+
+  
+  <g transform="translate(336, 172)" opacity="0.35">
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#c4a84a" stroke-width="2" />
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#c4a84a" stroke-width="2" />
+    <g stroke="#c4a84a" stroke-width="1.5">
+      <line x1="0" y1="-35" x2="0" y2="35" />
+      <line x1="-35" y1="0" x2="35" y2="0" />
+      <line x1="-25" y1="-25" x2="25" y2="25" />
+      <line x1="25" y1="-25" x2="-25" y2="25" />
+    </g>
+  </g>
+
+  
+  <g stroke="#7a6a3e" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M 36 36 L 80 36 M 36 36 L 36 80" />
+    <path d="M 1500 36 L 1456 36 M 1500 36 L 1500 80" />
+    <path d="M 36 988 L 80 988 M 36 988 L 36 944" />
+    <path d="M 1500 988 L 1456 988 M 1500 988 L 1500 944" />
+  </g>
+
+</svg>

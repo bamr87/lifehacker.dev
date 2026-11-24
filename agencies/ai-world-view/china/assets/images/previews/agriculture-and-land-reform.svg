@@ -1,0 +1,331 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Agriculture and Land Reform – Banner Illustration</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c49a" />
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8c9a3" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#d4c49a" stop-opacity="0" />
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#b8a870" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#8a7a50" stroke-width="0.4" opacity="0.3" />
+      <line x1="0" y1="0" x2="10" y2="0" stroke="#8a7a50" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <filter id="noise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noiseOut" />
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <linearGradient id="fieldGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a9e5a" />
+      <stop offset="100%" stop-color="#5a7a3a" />
+    </linearGradient>
+    <linearGradient id="fieldBrown" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8955a" />
+      <stop offset="100%" stop-color="#8a6a30" />
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a9a6a" />
+      <stop offset="100%" stop-color="#6a7a4a" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.6" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7040" stroke-width="3" opacity="0.7" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8a7040" stroke-width="1" opacity="0.4" />
+
+  
+  
+  <g stroke="#8a7040" stroke-width="1.5" fill="none" opacity="0.7">
+    <line x1="18" y1="60" x2="60" y2="18" />
+    <line x1="18" y1="80" x2="80" y2="18" />
+    <circle cx="38" cy="38" r="8" fill="#c4a84a" stroke="#8a7040" />
+  </g>
+  
+  <g stroke="#8a7040" stroke-width="1.5" fill="none" opacity="0.7">
+    <line x1="1518" y1="60" x2="1476" y2="18" />
+    <line x1="1518" y1="80" x2="1456" y2="18" />
+    <circle cx="1498" cy="38" r="8" fill="#c4a84a" stroke="#8a7040" />
+  </g>
+  
+  <g stroke="#8a7040" stroke-width="1.5" fill="none" opacity="0.7">
+    <line x1="18" y1="964" x2="60" y2="1006" />
+    <line x1="18" y1="944" x2="80" y2="1006" />
+    <circle cx="38" cy="986" r="8" fill="#c4a84a" stroke="#8a7040" />
+  </g>
+  
+  <g stroke="#8a7040" stroke-width="1.5" fill="none" opacity="0.7">
+    <line x1="1518" y1="964" x2="1476" y2="1006" />
+    <line x1="1518" y1="944" x2="1456" y2="1006" />
+    <circle cx="1498" cy="986" r="8" fill="#c4a84a" stroke="#8a7040" />
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="500" fill="url(#skyGrad)" />
+
+  
+
+  
+  <polygon points="80,620 200,400 320,580 440,380 560,560 680,350 800,540 920,360 1040,520 1160,380 1280,560 1400,400 1520,580 1520,700 80,700" fill="url(#mountainGrad)" opacity="0.5" />
+  <polygon points="80,650 220,450 380,620 500,420 640,600 760,400 900,580 1020,420 1160,600 1280,440 1420,620 1520,500 1520,720 80,720" fill="#7a8a5a" opacity="0.4" />
+
+  
+  
+  <ellipse cx="1150" cy="840" rx="320" ry="60" fill="#7a9e5a" opacity="0.85" />
+  <ellipse cx="1150" cy="840" rx="320" ry="60" fill="url(#crosshatch)" />
+  
+  <ellipse cx="1150" cy="775" rx="275" ry="52" fill="#6a8e4a" opacity="0.85" />
+  <ellipse cx="1150" cy="775" rx="275" ry="52" fill="url(#crosshatch)" />
+  
+  <ellipse cx="1150" cy="715" rx="230" ry="44" fill="#5a7e3a" opacity="0.85" />
+  
+  <ellipse cx="1150" cy="663" rx="185" ry="36" fill="#4a6e2a" opacity="0.85" />
+  
+  <ellipse cx="1150" cy="618" rx="140" ry="28" fill="#3a5e1a" opacity="0.85" />
+  
+  <path d="M830,840 Q1150,880 1470,840" fill="none" stroke="#4a6a2a" stroke-width="2" opacity="0.6" />
+  <path d="M875,775 Q1150,812 1425,775" fill="none" stroke="#4a6a2a" stroke-width="1.5" opacity="0.6" />
+  <path d="M920,715 Q1150,748 1380,715" fill="none" stroke="#4a6a2a" stroke-width="1.5" opacity="0.6" />
+  <path d="M965,663 Q1150,692 1335,663" fill="none" stroke="#4a6a2a" stroke-width="1.5" opacity="0.6" />
+  
+  <ellipse cx="1100" cy="838" rx="80" ry="18" fill="#a8c4d4" opacity="0.3" />
+  <ellipse cx="1200" cy="773" rx="60" ry="14" fill="#a8c4d4" opacity="0.3" />
+
+  
+  
+  <path d="M80,720 L550,680 L580,900 L80,940 Z" fill="#b8955a" opacity="0.75" />
+  <path d="M80,720 L550,680 L580,900 L80,940 Z" fill="url(#hatch)" opacity="0.5" />
+  
+  <g stroke="#8a6a30" stroke-width="1.5" opacity="0.5">
+    <line x1="85" y1="740" x2="545" y2="702" />
+    <line x1="88" y1="760" x2="548" y2="724" />
+    <line x1="90" y1="780" x2="552" y2="746" />
+    <line x1="92" y1="800" x2="555" y2="768" />
+    <line x1="94" y1="820" x2="558" y2="790" />
+    <line x1="96" y1="840" x2="562" y2="812" />
+    <line x1="98" y1="860" x2="565" y2="834" />
+    <line x1="100" y1="880" x2="568" y2="856" />
+    <line x1="102" y1="900" x2="572" y2="878" />
+    <line x1="104" y1="920" x2="575" y2="896" />
+  </g>
+  
+  <path d="M560,680 L800,660 L820,900 L580,900 Z" fill="#c4a870" opacity="0.7" />
+  
+  <g stroke="#9a7840" stroke-width="1" opacity="0.5">
+    <line x1="590" y1="682" x2="596" y2="898" />
+    <line x1="615" y1="680" x2="622" y2="899" />
+    <line x1="640" y1="679" x2="648" y2="899" />
+    <line x1="665" y1="678" x2="674" y2="899" />
+    <line x1="690" y1="677" x2="700" y2="899" />
+    <line x1="715" y1="676" x2="726" y2="899" />
+    <line x1="740" y1="675" x2="752" y2="900" />
+    <line x1="765" y1="674" x2="778" y2="900" />
+    <line x1="790" y1="673" x2="804" y2="900" />
+  </g>
+
+  
+  <path d="M80,940 L580,900 L820,900 L1520,880 L1520,1006 L80,1006 Z" fill="#c4a870" opacity="0.6" />
+  <path d="M80,940 L580,900 L820,900 L1520,880 L1520,1006 L80,1006 Z" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <path d="M400,1006 Q430,900 460,680 Q465,640 480,580" fill="none" stroke="#d4b880" stroke-width="18" opacity="0.6" />
+  <path d="M400,1006 Q430,900 460,680 Q465,640 480,580" fill="none" stroke="#c4a860" stroke-width="12" opacity="0.4" />
+
+  
+  
+  <g fill="#c4a830" opacity="0.9">
+    
+    <rect x="280" y="700" width="3" height="60" rx="1" />
+    <ellipse cx="281" cy="700" rx="6" ry="18" fill="#d4b840" />
+    <rect x="293" y="695" width="3" height="65" rx="1" />
+    <ellipse cx="294" cy="695" rx="6" ry="18" fill="#d4b840" />
+    <rect x="306" y="698" width="3" height="62" rx="1" />
+    <ellipse cx="307" cy="698" rx="6" ry="18" fill="#d4b840" />
+    <rect x="319" y="693" width="3" height="67" rx="1" />
+    <ellipse cx="320" cy="693" rx="6" ry="18" fill="#d4b840" />
+    <rect x="332" y="700" width="3" height="60" rx="1" />
+    <ellipse cx="333" cy="700" rx="6" ry="18" fill="#d4b840" />
+    
+    <rect x="345" y="696" width="3" height="64" rx="1" />
+    <ellipse cx="346" cy="696" rx="6" ry="18" fill="#d4b840" />
+    <rect x="358" y="692" width="3" height="68" rx="1" />
+    <ellipse cx="359" cy="692" rx="6" ry="18" fill="#d4b840" />
+    <rect x="371" y="698" width="3" height="62" rx="1" />
+    <ellipse cx="372" cy="698" rx="6" ry="18" fill="#d4b840" />
+  </g>
+
+  
+  <g transform="translate(620,700)">
+    
+    <rect x="0" y="60" width="100" height="70" fill="#d4b888" stroke="#8a6840" stroke-width="1.5" />
+    
+    <polygon points="-10,60 50,10 110,60" fill="#8a5a30" stroke="#6a3a10" stroke-width="1.5" />
+    
+    <rect x="38" y="95" width="24" height="35" fill="#6a4a20" rx="2" />
+    
+    <rect x="8" y="72" width="22" height="18" fill="#b8d4c8" stroke="#6a4a20" stroke-width="1" />
+    <line x1="19" y1="72" x2="19" y2="90" stroke="#6a4a20" stroke-width="0.8" />
+    <line x1="8" y1="81" x2="30" y2="81" stroke="#6a4a20" stroke-width="0.8" />
+    
+    <rect x="70" y="72" width="22" height="18" fill="#b8d4c8" stroke="#6a4a20" stroke-width="1" />
+    <line x1="81" y1="72" x2="81" y2="90" stroke="#6a4a20" stroke-width="0.8" />
+    <line x1="70" y1="81" x2="92" y2="81" stroke="#6a4a20" stroke-width="0.8" />
+    
+    <rect x="65" y="20" width="14" height="30" fill="#9a6a40" stroke="#6a4a20" stroke-width="1" />
+  </g>
+
+  
+  <g transform="translate(740,820)" fill="#5a3a18" opacity="0.8">
+    
+    <ellipse cx="60" cy="30" rx="55" ry="25" fill="#6a4a28" />
+    
+    <ellipse cx="112" cy="18" rx="22" ry="16" fill="#6a4a28" />
+    
+    <path d="M118,5 Q130,-5 125,8" fill="none" stroke="#5a3a18" stroke-width="3" />
+    <path d="M108,5 Q95,-5 100,8" fill="none" stroke="#5a3a18" stroke-width="3" />
+    
+    <rect x="20" y="48" width="8" height="25" rx="3" fill="#5a3a18" />
+    <rect x="38" y="50" width="8" height="23" rx="3" fill="#5a3a18" />
+    <rect x="75" y="48" width="8" height="25" rx="3" fill="#5a3a18" />
+    <rect x="93" y="50" width="8" height="23" rx="3" fill="#5a3a18" />
+    
+    <path d="M10,30 Q-8,20 -5,40" fill="none" stroke="#5a3a18" stroke-width="3" />
+    
+    <path d="M-20,55 L30,55 L40,70 L-10,70 Z" fill="#8a6a38" />
+    <path d="M30,55 L-25,58" stroke="#8a6a38" stroke-width="4" fill="none" />
+  </g>
+
+  
+  <g transform="translate(870,800)" fill="#5a3a18" opacity="0.85">
+    
+    <ellipse cx="0" cy="-30" rx="10" ry="14" fill="#7a5a30" />
+    
+    <circle cx="0" cy="-52" r="12" fill="#c4956a" />
+    
+    <ellipse cx="0" cy="-62" rx="16" ry="5" fill="#8a6a30" />
+    <ellipse cx="0" cy="-66" rx="10" ry="8" fill="#7a5a20" />
+    
+    <line x1="0" y1="-30" x2="-25" y2="-15" stroke="#7a5a30" stroke-width="6" stroke-linecap="round" />
+    <line x1="0" y1="-30" x2="20" y2="-20" stroke="#7a5a30" stroke-width="6" stroke-linecap="round" />
+    
+    <line x1="20" y1="-20" x2="35" y2="20" stroke="#6a4a20" stroke-width="4" />
+    <line x1="28" y1="18" x2="42" y2="22" stroke="#6a4a20" stroke-width="3" />
+    
+    <line x1="0" y1="-18" x2="-10" y2="25" stroke="#5a3a18" stroke-width="7" stroke-linecap="round" />
+    <line x1="0" y1="-18" x2="12" y2="25" stroke="#5a3a18" stroke-width="7" stroke-linecap="round" />
+  </g>
+
+  
+  <g transform="translate(1400,140)" opacity="0.6">
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#8a7040" stroke-width="1" />
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#8a7040" stroke-width="0.5" />
+    <circle cx="0" cy="0" r="8" fill="#c4a84a" stroke="#8a7040" stroke-width="1" />
+    
+    <polygon points="0,-48 -8,-20 0,-28 8,-20" fill="#8a4a2a" />
+    
+    <polygon points="0,48 -8,20 0,28 8,20" fill="#8a7040" />
+    
+    <polygon points="48,0 20,-8 28,0 20,8" fill="#8a7040" />
+    
+    <polygon points="-48,0 -20,-8 -28,0 -20,8" fill="#8a7040" />
+    
+    <line x1="0" y1="-48" x2="0" y2="-40" stroke="#8a7040" stroke-width="1" />
+    <line x1="34" y1="-34" x2="28" y2="-28" stroke="#8a7040" stroke-width="1" />
+    <line x1="34" y1="34" x2="28" y2="28" stroke="#8a7040" stroke-width="1" />
+    <line x1="-34" y1="-34" x2="-28" y2="-28" stroke="#8a7040" stroke-width="1" />
+    <line x1="-34" y1="34" x2="-28" y2="28" stroke="#8a7040" stroke-width="1" />
+    <text x="0" y="-56" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#6a5020" font-weight="bold">N</text>
+    <text x="0" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#6a5020">S</text>
+    <text x="60" y="4" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#6a5020">E</text>
+    <text x="-60" y="4" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#6a5020">W</text>
+  </g>
+
+  
+  <g stroke="#a09060" stroke-width="0.5" opacity="0.25">
+    
+    <line x1="200" y1="18" x2="200" y2="1006" />
+    <line x1="400" y1="18" x2="400" y2="1006" />
+    <line x1="600" y1="18" x2="600" y2="1006" />
+    <line x1="800" y1="18" x2="800" y2="1006" />
+    <line x1="1000" y1="18" x2="1000" y2="1006" />
+    <line x1="1200" y1="18" x2="1200" y2="1006" />
+    <line x1="1400" y1="18" x2="1400" y2="1006" />
+    
+    <line x1="18" y1="200" x2="1518" y2="200" />
+    <line x1="18" y1="400" x2="1518" y2="400" />
+    <line x1="18" y1="600" x2="1518" y2="600" />
+    <line x1="18" y1="800" x2="1518" y2="800" />
+  </g>
+
+  
+  
+  <g fill="#7a8a5a" opacity="0.5" transform="translate(100,450)">
+    <polygon points="0,40 20,0 40,40" />
+    <polygon points="30,40 55,5 80,40" />
+  </g>
+  <g fill="#7a8a5a" opacity="0.5" transform="translate(1280,500)">
+    <polygon points="0,40 20,0 40,40" />
+    <polygon points="30,40 55,5 80,40" />
+  </g>
+
+  
+  <path d="M80,820 Q300,800 480,810 Q600,818 700,850 Q800,882 950,870 Q1100,858 1300,875 Q1420,882 1520,870" fill="none" stroke="#8ab8c8" stroke-width="5" opacity="0.55" />
+  <path d="M80,828 Q300,808 480,818 Q600,826 700,858 Q800,890 950,878 Q1100,866 1300,883 Q1420,890 1520,878" fill="none" stroke="#a8d0e0" stroke-width="2" opacity="0.4" />
+
+  
+  
+  <rect x="80" y="60" width="850" height="260" rx="4" fill="#e8dfc8" opacity="0.88" stroke="#8a7040" stroke-width="1.5" />
+  <rect x="88" y="68" width="834" height="244" rx="2" fill="none" stroke="#b09850" stroke-width="0.8" opacity="0.6" />
+
+  
+  <line x1="100" y1="106" x2="920" y2="106" stroke="#a08840" stroke-width="1.5" opacity="0.6" />
+  <line x1="100" y1="110" x2="920" y2="110" stroke="#a08840" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="510" y="98" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="18" fill="#7a6030" letter-spacing="5" opacity="0.8">ATLAS OF MODERN CHINA</text>
+
+  
+  <text x="510" y="178" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="bold" fill="#3a2a0a" letter-spacing="1">Agriculture</text>
+  <text x="510" y="254" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#4a3a1a" letter-spacing="2">&amp; Land Reform</text>
+
+  
+  <line x1="100" y1="280" x2="920" y2="280" stroke="#a08840" stroke-width="1.5" opacity="0.6" />
+  <line x1="100" y1="284" x2="920" y2="284" stroke="#a08840" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="510" y="305" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#6a5020" letter-spacing="3" opacity="0.9">1947 – 1980s · PEOPLE'S REPUBLIC OF CHINA</text>
+
+  
+  <rect x="80" y="940" width="420" height="50" rx="3" fill="#e8dfc8" opacity="0.8" stroke="#8a7040" stroke-width="1" />
+  <rect x="96" y="955" width="20" height="16" fill="#7a9e5a" />
+  <text x="122" y="967" font-family="Georgia,serif" font-size="15" fill="#4a3a1a">Cultivated land</text>
+  <rect x="220" y="955" width="20" height="16" fill="#b8955a" />
+  <text x="246" y="967" font-family="Georgia,serif" font-size="15" fill="#4a3a1a">Plowed fields</text>
+  <rect x="354" y="955" width="20" height="16" fill="#8ab8c8" opacity="0.7" />
+  <text x="380" y="967" font-family="Georgia,serif" font-size="15" fill="#4a3a1a">Canal</text>
+
+  
+  <g transform="translate(940,88)" fill="#8a3a2a" opacity="0.55">
+    <polygon points="0,-14 3.3,-4.6 13.3,-4.6 5.4,1.8 8.2,11.4 0,5.5 -8.2,11.4 -5.4,1.8 -13.3,-4.6 -3.3,-4.6" />
+  </g>
+  <g transform="translate(960,80)" fill="#8a3a2a" opacity="0.4">
+    <polygon points="0,-8 1.9,-2.6 7.6,-2.6 3.1,1 4.7,6.5 0,3.1 -4.7,6.5 -3.1,1 -7.6,-2.6 -1.9,-2.6" />
+  </g>
+  <g transform="translate(972,90)" fill="#8a3a2a" opacity="0.4">
+    <polygon points="0,-8 1.9,-2.6 7.6,-2.6 3.1,1 4.7,6.5 0,3.1 -4.7,6.5 -3.1,1 -7.6,-2.6 -1.9,-2.6" />
+  </g>
+
+  
+  <text x="1460" y="990" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#6a5020" opacity="0.6" letter-spacing="2">1949 – 1985</text>
+
+</svg>

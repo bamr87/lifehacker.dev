@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Economic Reform &amp; Opening-up (1978 Onward) — Atlas Banner</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="50%" stop-color="#ddd0b0" />
+      <stop offset="100%" stop-color="#c9bfa0" />
+    </linearGradient>
+    
+    <pattern id="gridlines" width="48" height="48" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="48" y2="0" stroke="#a8956e" stroke-width="0.4" opacity="0.4" />
+      <line x1="0" y1="0" x2="0" y2="48" stroke="#a8956e" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <pattern id="diaglines" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="6" x2="6" y2="0" stroke="#8a7355" stroke-width="0.5" opacity="0.25" />
+    </pattern>
+    <linearGradient id="chinaFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b5442a" />
+      <stop offset="100%" stop-color="#8c3320" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8fb0c8" />
+      <stop offset="100%" stop-color="#6a94b0" />
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8961a" />
+      <stop offset="100%" stop-color="#e8b830" />
+    </linearGradient>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7a6040" />
+      <stop offset="50%" stop-color="#c8a850" />
+      <stop offset="100%" stop-color="#7a6040" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridlines)" />
+
+  
+  <g stroke="#a8956e" stroke-width="0.6" fill="none" opacity="0.5">
+    <ellipse cx="768" cy="520" rx="720" ry="160" />
+    <ellipse cx="768" cy="520" rx="720" ry="280" />
+    <ellipse cx="768" cy="520" rx="720" ry="400" />
+    
+    <line x1="768" y1="60" x2="768" y2="980" />
+    <line x1="568" y1="60" x2="568" y2="980" />
+    <line x1="368" y1="60" x2="368" y2="980" />
+    <line x1="968" y1="60" x2="968" y2="980" />
+    <line x1="1168" y1="60" x2="1168" y2="980" />
+  </g>
+
+  
+  <rect x="540" y="200" width="750" height="650" rx="8" fill="url(#seaGrad)" opacity="0.35" />
+
+  
+  
+  <path d="     M 700 230     L 760 218     L 830 222     L 910 215     L 970 228     L 1020 240     L 1050 260     L 1070 290     L 1080 320     L 1060 355     L 1090 380     L 1100 410     L 1085 440     L 1060 465     L 1020 480     L 990 510     L 960 530     L 930 560     L 900 580     L 870 590     L 840 600     L 820 620     L 800 640     L 780 635     L 760 620     L 740 600     L 720 580     L 700 560     L 680 545     L 660 530     L 640 510     L 620 490     L 610 465     L 615 440     L 605 415     L 610 385     L 620 360     L 630 335     L 640 310     L 650 285     L 660 260     Z   " fill="url(#chinaFill)" opacity="0.88" />
+
+  
+  <path d="     M 700 230 L 660 260 L 650 285 L 640 310 L 630 335     L 620 360 L 610 385 L 605 415 L 615 440 L 610 465     L 590 450 L 570 440 L 555 420 L 545 400 L 548 375     L 555 350 L 565 325 L 575 300 L 585 275 L 600 255     L 620 240 L 650 232 Z   " fill="url(#chinaFill)" opacity="0.88" />
+
+  
+  <path d="     M 760 218 L 830 222 L 910 215 L 970 228     L 940 210 L 900 200 L 860 195 L 820 198 L 780 205 Z   " fill="url(#chinaFill)" opacity="0.88" />
+
+  
+  <path d="     M 700 230 L 760 218 L 830 222 L 910 215 L 970 228     L 1020 240 L 1050 260 L 1070 290 L 1080 320 L 1060 355     L 1090 380 L 1100 410 L 1085 440 L 1060 465 L 1020 480     L 990 510 L 960 530 L 930 560 L 900 580 L 870 590     L 840 600 L 820 620 L 800 640 L 780 635 L 760 620     L 740 600 L 720 580 L 700 560 L 680 545 L 660 530     L 640 510 L 620 490 L 610 465 L 615 440 L 605 415     L 610 385 L 620 360 L 630 335 L 640 310 L 650 285     L 660 260 Z   " fill="url(#diaglines)" opacity="0.6" />
+
+  
+  <path d="     M 700 230 L 760 218 L 830 222 L 910 215 L 970 228     L 1020 240 L 1050 260 L 1070 290 L 1080 320 L 1060 355     L 1090 380 L 1100 410 L 1085 440 L 1060 465 L 1020 480     L 990 510 L 960 530 L 930 560 L 900 580 L 870 590     L 840 600 L 820 620 L 800 640 L 780 635 L 760 620     L 740 600 L 720 580 L 700 560 L 680 545 L 660 530     L 640 510 L 620 490 L 610 465 L 615 440 L 605 415     L 610 385 L 620 360 L 630 335 L 640 310 L 650 285     L 660 260 Z   " fill="none" stroke="#6a3520" stroke-width="2.5" opacity="0.7" />
+
+  
+  
+  <circle cx="870" cy="575" r="9" fill="#e8b830" stroke="#7a4010" stroke-width="1.5" />
+  <circle cx="870" cy="575" r="4" fill="#7a4010" />
+  
+  <circle cx="845" cy="590" r="7" fill="#e8b830" stroke="#7a4010" stroke-width="1.5" />
+  <circle cx="845" cy="590" r="3" fill="#7a4010" />
+  
+  <circle cx="890" cy="545" r="7" fill="#e8b830" stroke="#7a4010" stroke-width="1.5" />
+  <circle cx="890" cy="545" r="3" fill="#7a4010" />
+  
+  <circle cx="910" cy="555" r="7" fill="#e8b830" stroke="#7a4010" stroke-width="1.5" />
+  <circle cx="910" cy="555" r="3" fill="#7a4010" />
+
+  
+  <text x="940" y="565" font-family="Georgia, serif" font-size="13" fill="#5a3010" font-style="italic" opacity="0.9">SEZs</text>
+
+  
+  <polygon points="810,295 815,308 828,308 818,316 822,330 810,322 798,330 802,316 792,308 805,308" fill="#c8961a" stroke="#7a4010" stroke-width="1" />
+
+  
+  
+  <line x1="130" y1="820" x2="530" y2="820" stroke="#7a6040" stroke-width="2.5" opacity="0.8" />
+  <line x1="130" y1="820" x2="130" y2="420" stroke="#7a6040" stroke-width="2.5" opacity="0.8" />
+
+  
+  <polyline points="     130,800     180,790     230,778     280,760     330,735     370,700     400,660     430,610     460,550     490,480     515,430   " fill="none" stroke="#8c3320" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+
+  
+  <polygon points="     130,820 130,800 180,790 230,778 280,760 330,735 370,700     400,660 430,610 460,550 490,480 515,430 515,820   " fill="#b5442a" opacity="0.15" />
+
+  
+  <polygon points="515,415 505,440 525,440" fill="#8c3320" opacity="0.9" />
+
+  
+  <text x="125" y="838" font-family="Georgia, serif" font-size="14" fill="#5a3010" text-anchor="middle">1978</text>
+  <text x="330" y="838" font-family="Georgia, serif" font-size="14" fill="#5a3010" text-anchor="middle">1995</text>
+  <text x="515" y="838" font-family="Georgia, serif" font-size="14" fill="#5a3010" text-anchor="middle">2010</text>
+
+  
+  <text x="90" y="430" font-family="Georgia, serif" font-size="12" fill="#5a3010" text-anchor="middle" font-style="italic">GDP</text>
+  <text x="90" y="445" font-family="Georgia, serif" font-size="12" fill="#5a3010" text-anchor="middle" font-style="italic">Growth</text>
+
+  
+  <line x1="130" y1="795" x2="180" y2="795" stroke="#8c3320" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+  <text x="182" y="799" font-family="Georgia, serif" font-size="11" fill="#5a3010" font-style="italic">$156 per capita</text>
+
+  
+  <g stroke="#7a6040" stroke-width="1.2" fill="none" stroke-dasharray="8,5" opacity="0.55">
+    
+    <path d="M 680 420 Q 500 350 260 380" />
+    
+    <path d="M 665 460 Q 500 480 310 500" />
+    
+    <path d="M 900 600 Q 980 680 1050 720" />
+    
+    <path d="M 670 480 Q 580 530 480 560" />
+  </g>
+
+  
+  <g transform="translate(1390, 860)">
+    
+    <circle r="55" fill="#ddd0b0" stroke="#8a7050" stroke-width="2" opacity="0.9" />
+    <circle r="50" fill="none" stroke="#a89060" stroke-width="0.8" opacity="0.6" />
+    
+    <polygon points="0,-48 -6,-20 6,-20" fill="#7a4010" />
+    <polygon points="0,48 -6,20 6,20" fill="#5a3010" opacity="0.6" />
+    <polygon points="-48,0 -20,-6 -20,6" fill="#5a3010" opacity="0.6" />
+    <polygon points="48,0 20,-6 20,6" fill="#5a3010" opacity="0.6" />
+    
+    <polygon points="0,-48 -4,-28 4,-28" fill="#c8a850" transform="rotate(45)" />
+    <polygon points="0,-48 -4,-28 4,-28" fill="#c8a850" transform="rotate(135)" />
+    <polygon points="0,-48 -4,-28 4,-28" fill="#c8a850" transform="rotate(225)" />
+    <polygon points="0,-48 -4,-28 4,-28" fill="#c8a850" transform="rotate(315)" />
+    
+    <circle r="5" fill="#7a4010" />
+    
+    <text x="0" y="-54" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a2810" font-weight="bold">N</text>
+    <text x="0" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a2810">S</text>
+    <text x="-62" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a2810">W</text>
+    <text x="62" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a2810">E</text>
+  </g>
+
+  
+  <rect x="22" y="22" width="1492" height="980" fill="none" stroke="url(#borderGrad)" stroke-width="6" rx="4" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#a89060" stroke-width="1.5" rx="2" opacity="0.7" />
+  
+  <g fill="#a89060" opacity="0.7">
+    <rect x="22" y="22" width="20" height="4" />
+    <rect x="22" y="22" width="4" height="20" />
+    <rect x="1494" y="22" width="20" height="4" />
+    <rect x="1510" y="22" width="4" height="20" />
+    <rect x="22" y="998" width="20" height="4" />
+    <rect x="22" y="982" width="4" height="20" />
+    <rect x="1494" y="998" width="20" height="4" />
+    <rect x="1510" y="982" width="4" height="20" />
+  </g>
+
+  
+  <text x="768" y="940" font-family="Georgia, serif" font-size="80" fill="#8a7050" opacity="0.10" text-anchor="middle" font-weight="bold" letter-spacing="12">1978 — ONWARD</text>
+
+  
+  
+  <rect x="55" y="65" width="570" height="320" rx="6" fill="#c9bfa0" opacity="0.5" stroke="#a89060" stroke-width="1.5" />
+
+  
+  <text x="90" y="118" font-family="Georgia, serif" font-size="16" fill="#8c3320" letter-spacing="4" font-style="italic">ECONOMY · CHINA</text>
+  <line x1="90" y1="127" x2="590" y2="127" stroke="#8c3320" stroke-width="1.5" opacity="0.6" />
+
+  
+  <text x="90" y="188" font-family="Georgia, serif" font-size="52" fill="#2a1a0a" font-weight="bold" letter-spacing="-1">Economic</text>
+  <text x="90" y="248" font-family="Georgia, serif" font-size="52" fill="#2a1a0a" font-weight="bold" letter-spacing="-1">Reform &amp;</text>
+  <text x="90" y="308" font-family="Georgia, serif" font-size="52" fill="#8c3320" font-weight="bold" letter-spacing="-1">Opening-up</text>
+
+  
+  <text x="90" y="355" font-family="Georgia, serif" font-size="22" fill="#5a3010" font-style="italic" letter-spacing="1">1978 Onward · Gǎigé Kāifàng</text>
+
+  
+  <rect x="55" y="410" width="570" height="200" rx="6" fill="#c9bfa0" opacity="0.4" stroke="#a89060" stroke-width="1" />
+  <text x="90" y="445" font-family="Georgia, serif" font-size="14" fill="#7a4010" letter-spacing="3" font-style="italic">KEY ARCHITECTS</text>
+  <line x1="90" y1="452" x2="590" y2="452" stroke="#a89060" stroke-width="1" opacity="0.7" />
+
+  
+  <text x="90" y="480" font-family="Georgia, serif" font-size="17" fill="#2a1a0a" font-weight="bold">Deng Xiaoping</text>
+  <text x="250" y="480" font-family="Georgia, serif" font-size="15" fill="#5a3010" font-style="italic"> — Architect</text>
+  <text x="90" y="505" font-family="Georgia, serif" font-size="17" fill="#2a1a0a" font-weight="bold">Zhao Ziyang</text>
+  <text x="245" y="505" font-family="Georgia, serif" font-size="15" fill="#5a3010" font-style="italic"> — Implementer</text>
+  <text x="90" y="530" font-family="Georgia, serif" font-size="17" fill="#2a1a0a" font-weight="bold">Zhu Rongji</text>
+  <text x="235" y="530" font-family="Georgia, serif" font-size="15" fill="#5a3010" font-style="italic"> — Administrator</text>
+  <text x="90" y="555" font-family="Georgia, serif" font-size="17" fill="#2a1a0a" font-weight="bold">Xi Jinping</text>
+  <text x="228" y="555" font-family="Georgia, serif" font-size="15" fill="#5a3010" font-style="italic"> — Recentralizer</text>
+  <text x="90" y="580" font-family="Georgia, serif" font-size="17" fill="#2a1a0a" font-weight="bold">Jiang Zemin</text>
+  <text x="240" y="580" font-family="Georgia, serif" font-size="15" fill="#5a3010" font-style="italic"> — Consolidator</text>
+
+  
+  <rect x="55" y="635" width="275" height="70" rx="5" fill="#8c3320" opacity="0.85" />
+  <text x="192" y="665" font-family="Georgia, serif" font-size="13" fill="#f0e0c0" text-anchor="middle" letter-spacing="2">WTO ACCESSION</text>
+  <text x="192" y="690" font-family="Georgia, serif" font-size="22" fill="#e8b830" text-anchor="middle" font-weight="bold">December 2001</text>
+
+  
+  <rect x="350" y="635" width="275" height="70" rx="5" fill="#5a3010" opacity="0.85" />
+  <text x="488" y="660" font-family="Georgia, serif" font-size="12" fill="#d0c0a0" text-anchor="middle" letter-spacing="2">AVG. ANNUAL GROWTH</text>
+  <text x="488" y="690" font-family="Georgia, serif" font-size="26" fill="#e8b830" text-anchor="middle" font-weight="bold">9–10%</text>
+  <text x="488" y="705" font-family="Georgia, serif" font-size="11" fill="#c8a080" text-anchor="middle">(1978–2010)</text>
+
+  
+  <rect x="55" y="730" width="570" height="90" rx="5" fill="#b5a888" opacity="0.35" stroke="#a89060" stroke-width="1" />
+  <text x="90" y="754" font-family="Georgia, serif" font-size="12" fill="#7a4010" letter-spacing="3">REFORM PHASES</text>
+
+  
+  
+  <rect x="90" y="762" width="100" height="22" rx="3" fill="#8c3320" opacity="0.8" />
+  <text x="140" y="777" font-family="Georgia, serif" font-size="10" fill="#f0e0c0" text-anchor="middle">Agricultural</text>
+  <text x="140" y="794" font-family="Georgia, serif" font-size="10" fill="#5a3010" text-anchor="middle">1978–84</text>
+  
+  <rect x="202" y="762" width="120" height="22" rx="3" fill="#7a4010" opacity="0.8" />
+  <text x="262" y="777" font-family="Georgia, serif" font-size="10" fill="#f0e0c0" text-anchor="middle">Industrial/Urban</text>
+  <text x="262" y="794" font-family="Georgia, serif" font-size="10" fill="#5a3010" text-anchor="middle">1984–92</text>
+  
+  <rect x="334" y="762" width="130" height="22" rx="3" fill="#c8961a" opacity="0.8" />
+  <text x="399" y="777" font-family="Georgia, serif" font-size="10" fill="#2a1a0a" text-anchor="middle">Market Structural</text>
+  <text x="399" y="794" font-family="Georgia, serif" font-size="10" fill="#5a3010" text-anchor="middle">1992–2001</text>
+  
+  <rect x="476" y="762" width="120" height="22" rx="3" fill="#4a6a2a" opacity="0.8" />
+  <text x="536" y="777" font-family="Georgia, serif" font-size="10" fill="#f0e0c0" text-anchor="middle">Global Integration</text>
+  <text x="536" y="794" font-family="Georgia, serif" font-size="10" fill="#5a3010" text-anchor="middle">2001–present</text>
+
+  
+  <g opacity="0.5">
+    <line x1="90" y1="840" x2="590" y2="840" stroke="#8a7050" stroke-width="1" />
+    <circle cx="340" cy="840" r="4" fill="#a89060" />
+    <circle cx="90" cy="840" r="3" fill="#a89060" />
+    <circle cx="590" cy="840" r="3" fill="#a89060" />
+    <line x1="90" y1="855" x2="590" y2="855" stroke="#8a7050" stroke-width="0.5" />
+  </g>
+
+  
+  <text x="340" y="882" font-family="Georgia, serif" font-size="13" fill="#5a3010" text-anchor="middle" font-style="italic">Third Plenary Session · 11th Central Committee · December 1978</text>
+</svg>

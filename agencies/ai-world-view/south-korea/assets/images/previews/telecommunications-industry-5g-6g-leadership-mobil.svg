@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Telecommunications Industry — 5G/6G Leadership, Mobile Infrastructure Dominance, and Operator Duopoly</title>
+
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+    <linearGradient id="koreaGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8392b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#922b21" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="gridLines" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#b0a080" stroke-width="0.4" stroke-opacity="0.5" />
+    </pattern>
+    <pattern id="latlonGrid" width="80" height="60" patternUnits="userSpaceOnUse">
+      <path d="M80 0 L0 0 0 60" fill="none" stroke="#9a8f6e" stroke-width="0.6" stroke-opacity="0.35" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#latlonGrid)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#seaGrad)" opacity="0.55" />
+  
+
+  
+  
+  <path d="M0,0 L600,0 L700,80 L820,60 L900,100 L980,80 L1060,120 L1100,100 L1200,140 L1300,100 L1536,80 L1536,0 Z" fill="#d6cba6" />
+  
+  <path d="M0,80 C100,60 200,100 300,90 C400,80 500,110 600,100 C680,92 740,130 820,120 C900,110 950,150 1020,140 C1100,128 1160,160 1240,150 C1320,140 1400,170 1536,160 L1536,500 C1400,490 1300,520 1200,510 C1100,500 1050,470 980,480 C900,490 850,460 780,450 C700,440 640,410 560,430 C480,450 400,420 320,430 C240,440 160,410 80,420 L0,430 Z" fill="#cfc49a" />
+
+  
+  
+  <g transform="translate(860,290)">
+    
+    <path d="M-60,20 C-20,0 20,10 40,40 C60,70 50,120 30,150 C10,180 -30,190 -60,170 C-90,150 -100,110 -80,70 Z" fill="#c8bc94" stroke="#9a8f6e" stroke-width="1" />
+    
+    <path d="M60,0 C80,10 100,30 105,60 C110,90 105,130 95,155 C85,175 70,185 60,182 C45,178 30,165 25,145 C18,120 20,90 28,65 C36,40 48,10 60,0 Z" fill="url(#koreaGlow)" stroke="#7b1f17" stroke-width="1.5" />
+    
+    <ellipse cx="58" cy="200" rx="10" ry="6" fill="url(#koreaGlow)" stroke="#7b1f17" stroke-width="1" />
+    
+    <path d="M160,20 C168,30 172,55 168,80 C164,105 152,120 142,115 C132,110 128,90 132,65 C136,40 148,12 160,20 Z" fill="#cfc49a" stroke="#9a8f6e" stroke-width="1" />
+    <path d="M145,130 C152,138 155,158 150,172 C145,185 134,188 127,182 C120,175 120,158 126,145 C131,133 140,124 145,130 Z" fill="#cfc49a" stroke="#9a8f6e" stroke-width="1" />
+    
+  </g>
+
+  
+  <g opacity="0.7">
+    
+    <circle cx="935" cy="345" r="60" fill="none" stroke="#c8392b" stroke-width="2" stroke-dasharray="8,4" opacity="0.8" />
+    <circle cx="935" cy="345" r="110" fill="none" stroke="#c8392b" stroke-width="1.5" stroke-dasharray="10,5" opacity="0.65" />
+    <circle cx="935" cy="345" r="165" fill="none" stroke="#c8392b" stroke-width="1.2" stroke-dasharray="12,6" opacity="0.5" />
+    <circle cx="935" cy="345" r="225" fill="none" stroke="#c8392b" stroke-width="1" stroke-dasharray="14,7" opacity="0.38" />
+    <circle cx="935" cy="345" r="290" fill="none" stroke="#c8392b" stroke-width="0.8" stroke-dasharray="16,8" opacity="0.25" />
+    <circle cx="935" cy="345" r="360" fill="none" stroke="#c8392b" stroke-width="0.6" stroke-dasharray="18,9" opacity="0.18" />
+  </g>
+
+  
+  <g stroke="#8b2020" stroke-width="1.2" fill="none" stroke-dasharray="6,4" opacity="0.55">
+    
+    <path d="M935,345 C800,250 600,200 380,220" />
+    
+    <path d="M935,345 C980,280 1100,250 1350,300" />
+    
+    <path d="M935,345 C920,420 900,480 870,540" />
+    
+    <path d="M935,345 C980,450 1020,550 1060,640" />
+  </g>
+  
+  <g fill="#8b2020" opacity="0.7">
+    <circle cx="380" cy="220" r="5" />
+    <circle cx="1350" cy="300" r="5" />
+    <circle cx="870" cy="540" r="5" />
+    <circle cx="1060" cy="640" r="5" />
+    <circle cx="935" cy="345" r="8" fill="#c8392b" />
+  </g>
+
+  
+  <g transform="translate(935,345)" fill="none" stroke="#f5e6d0" stroke-width="1.5">
+    
+    <line x1="0" y1="-22" x2="0" y2="10" stroke="#f5e6d0" stroke-width="2" />
+    <line x1="-12" y1="-16" x2="0" y2="-22" stroke="#f5e6d0" stroke-width="1.5" />
+    <line x1="12" y1="-16" x2="0" y2="-22" stroke="#f5e6d0" stroke-width="1.5" />
+    <line x1="-8" y1="-5" x2="8" y2="-5" stroke="#f5e6d0" stroke-width="1" />
+    
+    <path d="M-18,-28 Q0,-40 18,-28" stroke="#f5e6d0" stroke-width="1.5" fill="none" />
+    <path d="M-26,-32 Q0,-50 26,-32" stroke="#f5e6d0" stroke-width="1" fill="none" opacity="0.7" />
+  </g>
+
+  
+  <g transform="translate(1380,780)">
+    <circle cx="0" cy="0" r="55" fill="#d6cba6" stroke="#8a7d58" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#8a7d58" stroke-width="0.8" />
+    
+    <polygon points="0,-52 5,-35 -5,-35" fill="#8a2020" />
+    <polygon points="0,52 5,35 -5,35" fill="#6a6045" />
+    <polygon points="-52,0 -35,5 -35,-5" fill="#6a6045" />
+    <polygon points="52,0 35,5 35,-5" fill="#6a6045" />
+    
+    <polygon points="0,-52 4,-38 -4,-38" fill="#8a7d58" transform="rotate(45)" />
+    <polygon points="0,-52 4,-38 -4,-38" fill="#8a7d58" transform="rotate(135)" />
+    <polygon points="0,-52 4,-38 -4,-38" fill="#8a7d58" transform="rotate(225)" />
+    <polygon points="0,-52 4,-38 -4,-38" fill="#8a7d58" transform="rotate(315)" />
+    <circle cx="0" cy="0" r="6" fill="#8a7d58" />
+    <circle cx="0" cy="0" r="3" fill="#d6cba6" />
+    
+    <text x="0" y="-60" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a4a2a" font-weight="bold">N</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7d58" stroke-width="2.5" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7d58" stroke-width="0.8" />
+
+  
+  <g stroke="#8a7d58" stroke-width="1.5" fill="none">
+    <path d="M18,18 L68,18 M18,18 L18,68" />
+    <path d="M1518,18 L1468,18 M1518,18 L1518,68" />
+    <path d="M18,1006 L68,1006 M18,1006 L18,956" />
+    <path d="M1518,1006 L1468,1006 M1518,1006 L1518,956" />
+  </g>
+
+  
+  <rect x="40" y="40" width="640" height="940" fill="#e2d8ba" opacity="0.82" rx="4" />
+  <rect x="44" y="44" width="632" height="932" fill="none" stroke="#8a7d58" stroke-width="0.8" rx="3" />
+
+  
+  <line x1="60" y1="175" x2="660" y2="175" stroke="#8a7d58" stroke-width="1.2" />
+  <line x1="60" y1="178" x2="660" y2="178" stroke="#8a7d58" stroke-width="0.4" />
+
+  
+  <g transform="translate(60,220)">
+    <rect width="120" height="44" rx="6" fill="#c8392b" />
+    <text x="60" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#f5e6d0" letter-spacing="2">5G</text>
+  </g>
+  <g transform="translate(196,220)">
+    <rect width="120" height="44" rx="6" fill="#5a4a2a" opacity="0.8" />
+    <text x="60" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#f5e6d0" letter-spacing="2">6G</text>
+  </g>
+
+  
+  <text x="60" y="118" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#2a1f0a" letter-spacing="0.5">Telecommunications</text>
+  <text x="60" y="162" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#2a1f0a" letter-spacing="0.5">Industry</text>
+
+  
+  <text x="60" y="308" font-family="Georgia, serif" font-size="19" fill="#4a3820" font-style="italic">5G/6G Global Leadership</text>
+  <text x="60" y="340" font-family="Georgia, serif" font-size="19" fill="#4a3820" font-style="italic">Mobile Infrastructure Dominance</text>
+  <text x="60" y="372" font-family="Georgia, serif" font-size="19" fill="#4a3820" font-style="italic">Operator Duopoly &amp; Beyond</text>
+
+  <line x1="60" y1="392" x2="660" y2="392" stroke="#8a7d58" stroke-width="0.8" />
+
+  
+  <text x="60" y="428" font-family="Georgia, serif" font-size="13" fill="#5a4a2a" font-weight="bold" letter-spacing="1.5">SOUTH KOREA · ECONOMY</text>
+
+  
+  <text x="60" y="470" font-family="Georgia, serif" font-size="15" fill="#2a1f0a" font-weight="bold">Major Operators</text>
+  <g font-family="Georgia, serif" font-size="14" fill="#4a3820">
+    <text x="72" y="494">· SK Telecom (est. 1984)</text>
+    <text x="72" y="514">· KT Corporation (est. 1981)</text>
+    <text x="72" y="534">· LG U+ (est. 1996)</text>
+  </g>
+
+  <line x1="60" y1="552" x2="400" y2="552" stroke="#8a7d58" stroke-width="0.6" />
+
+  <text x="60" y="578" font-family="Georgia, serif" font-size="15" fill="#2a1f0a" font-weight="bold">Key Milestones</text>
+  <g font-family="Georgia, serif" font-size="13" fill="#4a3820">
+    <text x="72" y="600">· World's first consumer 5G network</text>
+    <text x="96" y="618">April 3, 2019</text>
+    <text x="72" y="642">· 6G commercialization target: 2030</text>
+    <text x="72" y="664">· Mobile penetration &gt;90% of adults</text>
+    <text x="72" y="686">· Government-backed R&amp;D programs</text>
+  </g>
+
+  <line x1="60" y1="705" x2="400" y2="705" stroke="#8a7d58" stroke-width="0.6" />
+
+  
+  <text x="60" y="735" font-family="Georgia, serif" font-size="13" fill="#5a4a2a">South Korea's three-carrier telecom</text>
+  <text x="60" y="753" font-family="Georgia, serif" font-size="13" fill="#5a4a2a">ecosystem drives global mobile and</text>
+  <text x="60" y="771" font-family="Georgia, serif" font-size="13" fill="#5a4a2a">broadband standards, integrating</text>
+  <text x="60" y="789" font-family="Georgia, serif" font-size="13" fill="#5a4a2a">semiconductors, displays &amp; networks.</text>
+
+  
+  <g transform="translate(60,840)" stroke="#8a7d58" stroke-width="1.2" fill="none" opacity="0.6">
+    <line x1="0" y1="-18" x2="0" y2="8" />
+    <line x1="-10" y1="-12" x2="0" y2="-18" />
+    <line x1="10" y1="-12" x2="0" y2="-18" />
+    <line x1="-6" y1="-4" x2="6" y2="-4" />
+    <path d="M-14,-22 Q0,-32 14,-22" stroke-width="1" />
+    <path d="M-20,-26 Q0,-40 20,-26" stroke-width="0.8" opacity="0.6" />
+  </g>
+  <g transform="translate(110,840)" stroke="#8a7d58" stroke-width="1.2" fill="none" opacity="0.6">
+    <line x1="0" y1="-18" x2="0" y2="8" />
+    <line x1="-10" y1="-12" x2="0" y2="-18" />
+    <line x1="10" y1="-12" x2="0" y2="-18" />
+    <line x1="-6" y1="-4" x2="6" y2="-4" />
+    <path d="M-14,-22 Q0,-32 14,-22" stroke-width="1" />
+    <path d="M-20,-26 Q0,-40 20,-26" stroke-width="0.8" opacity="0.6" />
+  </g>
+  <g transform="translate(160,840)" stroke="#8a7d58" stroke-width="1.2" fill="none" opacity="0.6">
+    <line x1="0" y1="-18" x2="0" y2="8" />
+    <line x1="-10" y1="-12" x2="0" y2="-18" />
+    <line x1="10" y1="-12" x2="0" y2="-18" />
+    <line x1="-6" y1="-4" x2="6" y2="-4" />
+    <path d="M-14,-22 Q0,-32 14,-22" stroke-width="1" />
+    <path d="M-20,-26 Q0,-40 20,-26" stroke-width="0.8" opacity="0.6" />
+  </g>
+
+  
+  <g fill="#8b2020" opacity="0.5">
+    <circle cx="760" cy="290" r="3" />
+    <circle cx="840" cy="310" r="3" />
+    <circle cx="710" cy="330" r="3" />
+  </g>
+
+  
+  <g transform="translate(720,960)">
+    <rect x="0" y="-8" width="100" height="6" fill="#8a7d58" />
+    <rect x="0" y="-8" width="50" height="6" fill="#5a4a2a" />
+    <text x="0" y="6" font-family="Georgia, serif" font-size="10" fill="#5a4a2a">0</text>
+    <text x="90" y="6" font-family="Georgia, serif" font-size="10" fill="#5a4a2a">500km</text>
+  </g>
+
+  
+  <rect x="680" y="40" width="816" height="940" fill="none" stroke="#9a8f6e" stroke-width="0.3" opacity="0.3" />
+
+  
+  <text x="60" y="940" font-family="Georgia, serif" font-size="11" fill="#7a6a4a" font-style="italic">Regulated by KCC · Ministry of Science and ICT</text>
+  <text x="60" y="958" font-family="Georgia, serif" font-size="11" fill="#7a6a4a" font-style="italic">Korea Communications Commission</text>
+
+</svg>

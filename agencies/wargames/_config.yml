@@ -1,0 +1,195 @@
+# =============================================================================
+# Zer0-Mistakes Remote Theme Configuration
+# =============================================================================
+# This is a minimal _config.yml for GitHub Pages sites that load the
+# zer0-mistakes theme remotely. No local theme files are needed — layouts,
+# includes, assets, and styles are all pulled from the remote theme repo.
+#
+# Theme: https://github.com/bamr87/zer0-mistakes
+# Docs:  https://bamr87.github.io/wargames/docs/
+# =============================================================================
+
+# ── Setup Flag ────────────────────────────────────────────────────────────────
+# Set to true once you've personalised the fields below.
+# While false (or absent), the theme shows a setup guide on the 404 page.
+site_configured          : true
+
+# ── Site Identity ─────────────────────────────────────────────────────────────
+title                    : "Wargames"
+subtitle                 : "OverTheWire security challenges"
+description              : "Curated OverTheWire security wargames — learn Linux, CTF, and cybersecurity through hands-on challenges."
+founder                  : "bamr87"
+# email is deliberately unset: the footer renders a mailto: link for any non-nil value, including "",
+# which produced an empty, unnamed link on every page.
+
+# ── GitHub ────────────────────────────────────────────────────────────────────
+github_user              : &github_user "bamr87"
+repository_name          : &github_repository "wargames"
+# The theme builds every "Edit on GitHub" / "View source" link from these two. remote_theme does
+# not merge the theme's own _config.yml, so without them those links point at https://github.com//blob/…
+repository               : "bamr87/wargames"
+branch                   : "main"
+
+# ── URLs & Deployment ─────────────────────────────────────────────────────────
+#
+#   Scenario A — User/Org site  (<user>.github.io repo):
+#     url:     "https://<user>.github.io"
+#     baseurl: ""
+#
+#   Scenario B — Project site   (any other repo name):
+#     url:     "https://<user>.github.io"
+#     baseurl: "/repo-name"
+#
+#   Scenario C — Custom domain:
+#     url:     "https://yourdomain.com"
+#     baseurl: ""
+#
+url                      : "https://bamr87.github.io"
+baseurl                  : "/wargames"
+remote_theme             : "bamr87/zer0-mistakes"
+permalink                : /:categories/:title/
+
+# ── Build Settings ────────────────────────────────────────────────────────────
+markdown                 : kramdown
+highlighter              : rouge
+pages_dir                : pages
+
+# ── Look & Feel ───────────────────────────────────────────────────────────────
+# remote_theme supplies layouts/includes/assets but NOT the theme's _config.yml, so every key the
+# chrome reads must be set here. Documented layers only (docs/ui/customization.md in the theme):
+# skin + tokens (this block) and assets/css/user-overrides.css. No layout/include overrides.
+theme_skin               : "mint"          # terminal-green palette; "air", "aqua", "dirt", "neon", "mint", "plum", "sunrise"
+user_overrides           : true            # loads assets/css/user-overrides.css last, so it wins
+logo                     : /assets/images/wargames/logo.svg
+info_banner              : /assets/images/wargames/banner.svg   # default page-header banner; per-game banners are set in defaults below
+favicon:
+  ico                    : /favicon.ico
+  svg                    : /assets/images/wargames/favicon.svg
+title_icon               : "terminal"
+
+# /search.json (search.json in the repo root) indexes each page's description plus this many
+# characters of its content; 2500 reaches the study guides, which sit after the upstream text.
+search:
+  content_length         : 2500
+
+# Footer: the theme's defaults point at pages this site does not have, so name the links explicitly.
+footer_quick_links:
+  - label: "All games"
+    url: /docs/wargames/
+  - label: "Start with Bandit"
+    url: /docs/wargames/bandit/
+  - label: "All levels"
+    url: /tags/
+  - label: "Sitemap (XML)"
+    url: /sitemap.xml
+links:
+  - label: "Source on GitHub"
+    icon: "bi-github"
+    url: "https://github.com/bamr87/wargames"
+  - label: "OverTheWire"
+    icon: "bi-box-arrow-up-right"
+    url: "https://overthewire.org/wargames/"
+powered_by:
+  - name: "OverTheWire (MIT)"
+    url: "https://overthewire.org/"
+    icon: "bi-flag"
+  - name: "Jekyll"
+    url: "https://jekyllrb.com/"
+    icon: "bi-joystick"
+  - name: "zer0-mistakes"
+    url: "https://github.com/bamr87/zer0-mistakes"
+    icon: "bi-bootstrap"
+
+# ── Collections ───────────────────────────────────────────────────────────────
+# Deliberately none. This is a content-only site: every page is plain Markdown
+# at the repo root (index.md) or under overthewire/**, so Jekyll treats them all
+# as type "pages". The installer's default posts/docs/about collections were
+# removed — the matching _posts/, _docs/, and _about/ directories have never
+# existed here, so the block only ever declared permalinks nothing could use.
+
+# ── Default Front Matter ─────────────────────────────────────────────────────
+# Wargames content is plain Markdown at the repo root (index.md) and under
+# overthewire/** — not a Jekyll collection — so every page is type "pages".
+# The catch-all below gives them the theme's docs layout; the overthewire scope
+# turns on the theme's `nav: pages` sidebar, which auto-builds the games→levels
+# tree from the page URLs under /docs/wargames/ (no _data/navigation file). The
+# homepage (index.md) overrides these with `layout: home` in its own front
+# matter.
+defaults:
+  - scope:
+      path               : ""
+      type               : "pages"
+    values:
+      layout             : "default"
+  - scope:
+      path               : "overthewire"
+    values:
+      layout             : "default"
+      sidebar:
+        nav              : pages
+        base             : /docs/wargames/
+        order_by         : nav_order
+        title            : Wargames
+  # Per-game page-header banner and difficulty badge. Config-level, so a re-sync from upstream
+  # cannot overwrite them (the aggregator regenerates the pages, not this file).
+  - scope: { path: "overthewire/bandit" }
+    values: { difficulty: Beginner, preview: /assets/images/wargames/banner-bandit.svg }
+  - scope: { path: "overthewire/natas" }
+    values: { difficulty: Beginner, preview: /assets/images/wargames/banner-natas.svg }
+  - scope: { path: "overthewire/krypton" }
+    values: { difficulty: Beginner, preview: /assets/images/wargames/banner-krypton.svg }
+  - scope: { path: "overthewire/leviathan" }
+    values: { difficulty: Beginner, preview: /assets/images/wargames/banner-leviathan.svg }
+  - scope: { path: "overthewire/narnia" }
+    values: { difficulty: Intermediate, preview: /assets/images/wargames/banner-narnia.svg }
+  - scope: { path: "overthewire/behemoth" }
+    values: { difficulty: Intermediate, preview: /assets/images/wargames/banner-behemoth.svg }
+  - scope: { path: "overthewire/utumno" }
+    values: { difficulty: Intermediate, preview: /assets/images/wargames/banner-utumno.svg }
+  - scope: { path: "overthewire/maze" }
+    values: { difficulty: Advanced, preview: /assets/images/wargames/banner-maze.svg }
+  - scope: { path: "overthewire/manpage" }
+    values: { difficulty: Advanced, preview: /assets/images/wargames/banner-manpage.svg }
+  - scope: { path: "overthewire/vortex" }
+    values: { difficulty: Advanced, preview: /assets/images/wargames/banner-vortex.svg }
+  - scope: { path: "overthewire/drifter" }
+    values: { difficulty: Advanced, preview: /assets/images/wargames/banner-drifter.svg }
+  - scope: { path: "overthewire/formulaone" }
+    values: { difficulty: Advanced, preview: /assets/images/wargames/banner-formulaone.svg }
+  - scope: { path: "overthewire/semtex" }
+    values: { difficulty: Archived, preview: /assets/images/wargames/banner-semtex.svg }
+  - scope: { path: "overthewire/blacksun" }
+    values: { difficulty: Archived, preview: /assets/images/wargames/banner-blacksun.svg }
+  - scope: { path: "overthewire/abraxas" }
+    values: { difficulty: Archived, preview: /assets/images/wargames/banner-abraxas.svg }
+  - scope: { path: "overthewire/hes2010" }
+    values: { difficulty: Archived, preview: /assets/images/wargames/banner-hes2010.svg }
+  - scope: { path: "overthewire/kishi" }
+    values: { difficulty: Archived, preview: /assets/images/wargames/banner-kishi.svg }
+  - scope: { path: "overthewire/monxla" }
+    values: { difficulty: Archived, preview: /assets/images/wargames/banner-monxla.svg }
+
+# ── Plugins ───────────────────────────────────────────────────────────────────
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+  - jekyll-remote-theme
+
+# ── Exclude from Build ────────────────────────────────────────────────────────
+# Keep tooling, docs, and installer artifacts out of the generated site.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CHANGELOG.md
+  - LICENSE
+  - CLAUDE.md
+  - AGENTS.md
+  - zer0.install.yml
+  - scripts/
+  - tools/
+  - node_modules/
+  - vendor/
+  - "*.backup.*"

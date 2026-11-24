@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Han Dynasty — Banner Illustration</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="100%" stop-color="#d4bc87" />
+    </linearGradient>
+    <linearGradient id="skygrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9b88a" />
+      <stop offset="100%" stop-color="#e0cfa0" />
+    </linearGradient>
+    <linearGradient id="seagrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8faabc" />
+      <stop offset="100%" stop-color="#6b8fa3" />
+    </linearGradient>
+    <linearGradient id="overlaygrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a1a08" stop-opacity="0.82" />
+      <stop offset="45%" stop-color="#2a1a08" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#2a1a08" stop-opacity="0.0" />
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b89c5a" stroke-width="0.4" stroke-opacity="0.4" />
+    </pattern>
+    <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#7a9ab0" stroke-width="0.5" stroke-opacity="0.35" />
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#7a9ab0" stroke-width="0.5" stroke-opacity="0.35" />
+    </pattern>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.5" />
+
+  
+  
+  <ellipse cx="1280" cy="520" rx="340" ry="420" fill="url(#seagrad)" opacity="0.7" />
+  <ellipse cx="1280" cy="520" rx="340" ry="420" fill="url(#crosshatch)" opacity="0.8" />
+
+  
+  <ellipse cx="700" cy="820" rx="260" ry="180" fill="url(#seagrad)" opacity="0.55" />
+  <ellipse cx="700" cy="820" rx="260" ry="180" fill="url(#crosshatch)" opacity="0.7" />
+
+  
+
+  
+  <path d="M300,150 Q500,120 700,160 Q900,190 1050,240 Q1100,280 1080,340 Q1050,400 950,380 Q800,360 650,340 Q500,320 380,300 Q260,280 240,240 Z" fill="#c4a96d" stroke="#9a7c3e" stroke-width="1.5" />
+
+  
+  <path d="M780,200 Q900,185 1000,220 Q1080,250 1100,320 Q1120,390 1080,450 Q1050,510 1000,540 Q950,570 900,590 Q860,610 820,650 Q790,690 760,720 Q730,750 700,760 Q670,740 680,700 Q700,660 720,620 Q710,580 690,550 Q670,520 660,480 Q650,440 660,400 Q670,360 700,320 Q730,280 760,250 Z" fill="#b8935a" stroke="#8a6535" stroke-width="2" />
+  
+  <path d="M780,200 Q900,185 1000,220 Q1080,250 1100,320 Q1120,390 1080,450 Q1050,510 1000,540 Q950,570 900,590 Q860,610 820,650 Q790,690 760,720 Q730,750 700,760 Q670,740 680,700 Q700,660 720,620 Q710,580 690,550 Q670,520 660,480 Q650,440 660,400 Q670,360 700,320 Q730,280 760,250 Z" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <path d="M1060,280 Q1090,270 1110,290 Q1130,310 1120,350 Q1110,390 1090,400 Q1070,390 1060,360 Q1050,330 1060,280 Z" fill="#b8935a" stroke="#8a6535" stroke-width="1.5" />
+
+  
+  <path d="M880,640 Q920,610 960,640 Q980,680 970,730 Q960,770 940,790 Q910,800 890,780 Q870,750 870,710 Q870,670 880,640 Z" fill="#b8935a" stroke="#8a6535" stroke-width="1.5" />
+
+  
+  <path d="M620,150 Q750,130 900,155 Q960,170 950,210 Q930,230 870,225 Q780,215 680,220 Q600,220 560,200 Q540,180 560,165 Z" fill="#c9af75" stroke="#9a7c3e" stroke-width="1" />
+
+  
+  <path d="M380,200 Q480,175 580,195 Q650,210 660,260 Q650,300 590,310 Q510,315 440,300 Q370,285 350,250 Q340,225 380,200 Z" fill="#c4a96d" stroke="#9a7c3e" stroke-width="1.5" />
+
+  
+  <path d="M560,420 Q620,400 670,430 Q700,460 700,510 Q690,560 650,600 Q610,630 580,620 Q540,590 530,550 Q520,500 530,460 Q540,430 560,420 Z" fill="#c4a96d" stroke="#9a7c3e" stroke-width="1" />
+
+  
+  <path d="M200,280 Q320,250 420,280 Q460,300 450,340 Q430,370 380,375 Q300,375 240,350 Q190,325 200,280 Z" fill="#c4a96d" stroke="#9a7c3e" stroke-width="1" />
+
+  
+  
+  <path d="M810,390 Q750,360 680,340 Q600,310 520,295 Q440,278 360,275 Q290,272 220,280" fill="none" stroke="#8a5c22" stroke-width="3" stroke-dasharray="10,6" stroke-linecap="round" opacity="0.85" />
+  
+  <path d="M660,420 Q620,460 590,490 Q570,520 565,560" fill="none" stroke="#8a5c22" stroke-width="2" stroke-dasharray="8,5" stroke-linecap="round" opacity="0.7" />
+  
+  <path d="M1000,330 Q1030,310 1060,305" fill="none" stroke="#8a5c22" stroke-width="2" stroke-dasharray="8,5" stroke-linecap="round" opacity="0.7" />
+  
+  <path d="M880,600 Q880,620 885,645" fill="none" stroke="#8a5c22" stroke-width="2" stroke-dasharray="8,5" stroke-linecap="round" opacity="0.7" />
+
+  
+  <circle cx="810" cy="390" r="7" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.5" />
+  <circle cx="680" cy="340" r="5" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.2" />
+  <circle cx="520" cy="295" r="5" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.2" />
+  <circle cx="360" cy="275" r="5" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.2" />
+  <circle cx="220" cy="280" r="5" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.2" />
+  <circle cx="1060" cy="305" r="5" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.2" />
+  <circle cx="885" cy="650" r="5" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.2" />
+
+  
+  <polygon points="810,375 815,388 829,388 818,396 822,409 810,401 798,409 802,396 791,388 805,388" fill="#e8c84a" stroke="#8a6520" stroke-width="1" />
+
+  
+  <text x="820" y="418" font-family="Georgia, serif" font-size="13" fill="#4a2e0a" text-anchor="middle" font-style="italic">Chang'an</text>
+  <text x="222" y="270" font-family="Georgia, serif" font-size="12" fill="#4a2e0a" text-anchor="middle" font-style="italic">Rome</text>
+  <circle cx="220" cy="280" r="4" fill="#e8c84a" stroke="#8a6520" stroke-width="1" />
+
+  
+  <path d="M920,195 Q880,200 840,210 Q800,218 760,222 Q720,225 680,228 Q640,228 610,222" fill="none" stroke="#7a5a2a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M920,195 Q880,200 840,210 Q800,218 760,222 Q720,225 680,228 Q640,228 610,222" fill="none" stroke="#e8d9b5" stroke-width="1.5" stroke-dasharray="4,4" stroke-linecap="round" />
+  
+  <line x1="920" y1="191" x2="920" y2="199" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="900" y1="193" x2="900" y2="201" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="880" y1="196" x2="880" y2="204" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="860" y1="203" x2="860" y2="211" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="840" y1="206" x2="840" y2="214" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="820" y1="211" x2="820" y2="219" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="800" y1="214" x2="800" y2="222" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="780" y1="218" x2="780" y2="226" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="760" y1="218" x2="760" y2="226" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="740" y1="222" x2="740" y2="230" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="720" y1="223" x2="720" y2="231" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="700" y1="225" x2="700" y2="233" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="680" y1="226" x2="680" y2="234" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="660" y1="226" x2="660" y2="234" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="640" y1="226" x2="640" y2="234" stroke="#7a5a2a" stroke-width="3" />
+  <line x1="620" y1="225" x2="620" y2="233" stroke="#7a5a2a" stroke-width="3" />
+  <text x="765" y="188" font-family="Georgia, serif" font-size="11" fill="#5a3a0a" text-anchor="middle" font-style="italic" letter-spacing="1">Great Wall</text>
+
+  
+  <g transform="translate(1370, 200)">
+    
+    <circle cx="0" cy="0" r="70" fill="#d4bc87" stroke="#9a7c3e" stroke-width="2" />
+    <circle cx="0" cy="0" r="64" fill="none" stroke="#9a7c3e" stroke-width="0.8" />
+    
+    <polygon points="0,-65 7,-20 0,-10 -7,-20" fill="#4a2e0a" />
+    <polygon points="0,65 7,20 0,10 -7,20" fill="#9a7c3e" />
+    <polygon points="-65,0 -20,7 -10,0 -20,-7" fill="#9a7c3e" />
+    <polygon points="65,0 20,7 10,0 20,-7" fill="#9a7c3e" />
+    
+    <polygon points="0,-65 5,-40 0,-28 -5,-40" fill="#b8935a" transform="rotate(45)" />
+    <polygon points="0,-65 5,-40 0,-28 -5,-40" fill="#b8935a" transform="rotate(135)" />
+    <polygon points="0,-65 5,-40 0,-28 -5,-40" fill="#b8935a" transform="rotate(225)" />
+    <polygon points="0,-65 5,-40 0,-28 -5,-40" fill="#b8935a" transform="rotate(315)" />
+    
+    <circle cx="0" cy="0" r="8" fill="#e8c84a" stroke="#8a6520" stroke-width="1.5" />
+    
+    <text x="0" y="-74" font-family="Georgia, serif" font-size="14" fill="#2a1a08" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="90" font-family="Georgia, serif" font-size="14" fill="#2a1a08" text-anchor="middle" font-weight="bold">S</text>
+    <text x="-80" y="5" font-family="Georgia, serif" font-size="14" fill="#2a1a08" text-anchor="middle" font-weight="bold">W</text>
+    <text x="80" y="5" font-family="Georgia, serif" font-size="14" fill="#2a1a08" text-anchor="middle" font-weight="bold">E</text>
+  </g>
+
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="url(#overlaygrad)" />
+
+  
+  <rect x="40" y="40" width="580" height="944" fill="none" stroke="#c9a84c" stroke-width="2" opacity="0.6" />
+  <rect x="48" y="48" width="564" height="928" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.4" />
+
+  
+  <g stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.7">
+    <path d="M40,40 L40,80 M40,40 L80,40" />
+    <path d="M620,40 L620,80 M620,40 L580,40" />
+    <path d="M40,984 L40,944 M40,984 L80,984" />
+    <path d="M620,984 L620,944 M620,984 L580,984" />
+  </g>
+
+  
+  <line x1="70" y1="320" x2="590" y2="320" stroke="#c9a84c" stroke-width="1" opacity="0.6" />
+  <line x1="70" y1="325" x2="590" y2="325" stroke="#c9a84c" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="330" y="295" font-family="Georgia, serif" font-size="18" fill="#e8c84a" text-anchor="middle" letter-spacing="5" opacity="0.9">HISTORY</text>
+
+  
+  <text x="330" y="430" font-family="Georgia, serif" font-size="96" fill="#f5e8c0" text-anchor="middle" font-weight="bold" letter-spacing="-1">The</text>
+  <text x="330" y="550" font-family="Georgia, serif" font-size="96" fill="#f5e8c0" text-anchor="middle" font-weight="bold" letter-spacing="-1">Han</text>
+  <text x="330" y="658" font-family="Georgia, serif" font-size="96" fill="#f5e8c0" text-anchor="middle" font-weight="bold" letter-spacing="-1">Dynasty</text>
+
+  
+  <line x1="70" y1="690" x2="590" y2="690" stroke="#c9a84c" stroke-width="1" opacity="0.6" />
+  <text x="330" y="722" font-family="Georgia, serif" font-size="20" fill="#e8c84a" text-anchor="middle" letter-spacing="3" opacity="0.9">206 BCE – 220 CE</text>
+
+  
+  <text x="330" y="775" font-family="Georgia, serif" font-size="16" fill="#d4c090" text-anchor="middle" opacity="0.85">Second imperial dynasty of China</text>
+  <text x="330" y="800" font-family="Georgia, serif" font-size="16" fill="#d4c090" text-anchor="middle" opacity="0.85">Pioneer of the Silk Road</text>
+  <text x="330" y="825" font-family="Georgia, serif" font-size="16" fill="#d4c090" text-anchor="middle" opacity="0.85">Foundation of Confucian governance</text>
+
+  
+  <line x1="70" y1="860" x2="590" y2="860" stroke="#c9a84c" stroke-width="1" opacity="0.6" />
+
+  
+  <text x="330" y="895" font-family="Georgia, serif" font-size="13" fill="#b8a060" text-anchor="middle" opacity="0.75" font-style="italic">Liu Bang · Emperor Wu · Zhang Qian · Sima Qian</text>
+
+  
+  <text x="580" y="276" font-family="Georgia, serif" font-size="13" fill="#6b3a10" text-anchor="middle" font-style="italic" transform="rotate(-8, 580, 276)" opacity="0.9">— Silk Road —</text>
+
+  
+  <text x="1230" y="490" font-family="Georgia, serif" font-size="16" fill="#3a5f73" text-anchor="middle" font-style="italic" opacity="0.7">South China</text>
+  <text x="1230" y="510" font-family="Georgia, serif" font-size="16" fill="#3a5f73" text-anchor="middle" font-style="italic" opacity="0.7">Sea</text>
+
+  
+  <circle cx="870" cy="390" r="5" fill="#e8c84a" stroke="#8a6520" stroke-width="1.2" />
+  <text x="875" y="380" font-family="Georgia, serif" font-size="11" fill="#f5e8c0" text-anchor="start" font-style="italic">Luoyang</text>
+
+  
+  <rect x="0" y="0" width="1536" height="1024" fill="none" stroke="#c9a84c" stroke-width="4" opacity="0.25" />
+
+</svg>

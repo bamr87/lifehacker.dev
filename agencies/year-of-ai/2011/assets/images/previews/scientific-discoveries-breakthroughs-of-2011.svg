@@ -1,0 +1,338 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Scientific Discoveries &amp; Breakthroughs of 2011 — Retro Pixel Art Banner</title>
+  <defs>
+    <radialGradient id="crt" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0a0a2e" />
+      <stop offset="100%" stop-color="#000008" />
+    </radialGradient>
+    <radialGradient id="planet1" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#66aaff" />
+      <stop offset="100%" stop-color="#1133aa" />
+    </radialGradient>
+    <radialGradient id="sun1" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#ffee88" />
+      <stop offset="100%" stop-color="#ff8800" />
+    </radialGradient>
+    <radialGradient id="jupiter" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#ffddaa" />
+      <stop offset="100%" stop-color="#cc8844" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="scanlines">
+      <feColorMatrix type="saturate" values="1.2" />
+    </filter>
+    
+    <pattern id="scan" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="rgba(0,0,0,0.15)" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#crt)" />
+
+  
+  
+  <rect x="40" y="30" width="4" height="4" fill="#ffffff" />
+  <rect x="120" y="80" width="4" height="4" fill="#aaccff" />
+  <rect x="200" y="45" width="4" height="4" fill="#ffffff" />
+  <rect x="300" y="120" width="4" height="4" fill="#ffddaa" />
+  <rect x="380" y="60" width="4" height="4" fill="#ffffff" />
+  <rect x="500" y="35" width="4" height="4" fill="#aaccff" />
+  <rect x="620" y="90" width="4" height="4" fill="#ffffff" />
+  <rect x="700" y="25" width="4" height="4" fill="#ffffff" />
+  <rect x="820" y="70" width="4" height="4" fill="#ffddaa" />
+  <rect x="900" y="40" width="4" height="4" fill="#aaccff" />
+  <rect x="1000" y="110" width="4" height="4" fill="#ffffff" />
+  <rect x="1100" y="55" width="4" height="4" fill="#ffffff" />
+  <rect x="1200" y="30" width="4" height="4" fill="#aaccff" />
+  <rect x="1320" y="85" width="4" height="4" fill="#ffffff" />
+  <rect x="1440" y="50" width="4" height="4" fill="#ffffff" />
+  <rect x="1490" y="120" width="4" height="4" fill="#ffddaa" />
+  <rect x="60" y="200" width="4" height="4" fill="#aaccff" />
+  <rect x="160" y="300" width="4" height="4" fill="#ffffff" />
+  <rect x="250" y="180" width="4" height="4" fill="#ffffff" />
+  <rect x="440" y="250" width="4" height="4" fill="#ffddaa" />
+  <rect x="560" y="160" width="4" height="4" fill="#ffffff" />
+  <rect x="660" y="310" width="4" height="4" fill="#aaccff" />
+  <rect x="760" y="195" width="4" height="4" fill="#ffffff" />
+  <rect x="860" y="270" width="4" height="4" fill="#ffffff" />
+  <rect x="960" y="150" width="4" height="4" fill="#ffddaa" />
+  <rect x="1060" y="320" width="4" height="4" fill="#ffffff" />
+  <rect x="1160" y="200" width="4" height="4" fill="#aaccff" />
+  <rect x="1260" y="140" width="4" height="4" fill="#ffffff" />
+  <rect x="1360" y="290" width="4" height="4" fill="#ffffff" />
+  <rect x="1460" y="210" width="4" height="4" fill="#ffddaa" />
+  
+  <rect x="80" y="750" width="4" height="4" fill="#aaccff" />
+  <rect x="180" y="820" width="4" height="4" fill="#ffffff" />
+  <rect x="280" y="770" width="4" height="4" fill="#ffffff" />
+  <rect x="420" y="840" width="4" height="4" fill="#ffddaa" />
+  <rect x="520" y="760" width="4" height="4" fill="#ffffff" />
+  <rect x="640" y="900" width="4" height="4" fill="#aaccff" />
+  <rect x="740" y="780" width="4" height="4" fill="#ffffff" />
+  <rect x="840" y="860" width="4" height="4" fill="#ffffff" />
+  <rect x="940" y="740" width="4" height="4" fill="#ffddaa" />
+  <rect x="1040" y="920" width="4" height="4" fill="#ffffff" />
+  <rect x="1140" y="800" width="4" height="4" fill="#aaccff" />
+  <rect x="1240" y="750" width="4" height="4" fill="#ffffff" />
+  <rect x="1380" y="870" width="4" height="4" fill="#ffffff" />
+  <rect x="1480" y="800" width="4" height="4" fill="#ffddaa" />
+  
+  <rect x="100" y="130" width="2" height="2" fill="#8899cc" />
+  <rect x="340" y="170" width="2" height="2" fill="#8899cc" />
+  <rect x="480" y="140" width="2" height="2" fill="#8899cc" />
+  <rect x="580" y="230" width="2" height="2" fill="#8899cc" />
+  <rect x="730" y="130" width="2" height="2" fill="#8899cc" />
+  <rect x="870" y="190" width="2" height="2" fill="#8899cc" />
+  <rect x="1010" y="240" width="2" height="2" fill="#8899cc" />
+  <rect x="1110" y="160" width="2" height="2" fill="#8899cc" />
+  <rect x="1280" y="220" width="2" height="2" fill="#8899cc" />
+  <rect x="1420" y="170" width="2" height="2" fill="#8899cc" />
+
+  
+  
+  <rect x="100" y="390" width="8" height="8" fill="#ffee44" filter="url(#glow)" />
+  <rect x="92" y="398" width="8" height="8" fill="#ffee44" filter="url(#glow)" />
+  <rect x="108" y="398" width="8" height="8" fill="#ffee44" filter="url(#glow)" />
+  <rect x="100" y="406" width="8" height="8" fill="#ffee44" filter="url(#glow)" />
+  
+  <rect x="84" y="394" width="8" height="4" fill="#ffcc00" />
+  <rect x="120" y="394" width="8" height="4" fill="#ffcc00" />
+  <rect x="100" y="374" width="4" height="8" fill="#ffcc00" />
+  <rect x="100" y="410" width="4" height="8" fill="#ffcc00" />
+  
+  <rect x="88" y="382" width="4" height="4" fill="#ffcc00" />
+  <rect x="116" y="382" width="4" height="4" fill="#ffcc00" />
+  <rect x="88" y="412" width="4" height="4" fill="#ffcc00" />
+  <rect x="116" y="412" width="4" height="4" fill="#ffcc00" />
+
+  
+  <ellipse cx="180" cy="400" rx="90" ry="30" fill="none" stroke="#334477" stroke-width="3" stroke-dasharray="8,8" />
+
+  
+  <rect x="256" y="390" width="24" height="24" fill="#2266cc" />
+  <rect x="260" y="390" width="16" height="8" fill="#44aaff" />
+  <rect x="256" y="394" width="8" height="8" fill="#44aaff" />
+  <rect x="264" y="398" width="8" height="8" fill="#33dd88" />
+  <rect x="272" y="398" width="8" height="16" fill="#2255bb" />
+  <rect x="256" y="406" width="16" height="8" fill="#1144aa" />
+  
+  <ellipse cx="268" cy="402" rx="18" ry="18" fill="none" stroke="#44aaff" stroke-width="2" opacity="0.5" />
+
+  
+  <text x="150" y="465" font-family="monospace" font-size="13" fill="#44ffcc" letter-spacing="1">KEPLER-22b</text>
+  <text x="148" y="481" font-family="monospace" font-size="11" fill="#336655">HABITABLE ZONE</text>
+
+  
+  
+  <rect x="550" y="680" width="88" height="40" fill="#cc9944" />
+  <rect x="558" y="672" width="72" height="16" fill="#ddaa55" />
+  
+  <rect x="630" y="688" width="20" height="12" fill="#888888" />
+  
+  <rect x="548" y="712" width="20" height="20" fill="#555555" />
+  <rect x="548" y="716" width="20" height="12" rx="2" fill="#333333" />
+  <rect x="576" y="716" width="20" height="16" fill="#333333" />
+  <rect x="604" y="716" width="20" height="16" fill="#333333" />
+  <rect x="632" y="712" width="20" height="20" fill="#555555" />
+  <rect x="632" y="716" width="20" height="12" rx="2" fill="#333333" />
+  
+  <rect x="580" y="648" width="8" height="28" fill="#aaaaaa" />
+  <rect x="574" y="644" width="20" height="8" fill="#dddddd" />
+  <rect x="570" y="636" width="8" height="12" fill="#ffee00" />
+  
+  <rect x="554" y="668" width="32" height="12" fill="#2255cc" />
+  <rect x="558" y="670" width="6" height="8" fill="#4477ff" />
+  <rect x="566" y="670" width="6" height="8" fill="#4477ff" />
+  <rect x="574" y="670" width="6" height="8" fill="#4477ff" />
+  
+  <rect x="500" y="730" width="200" height="12" fill="#cc5533" />
+  <rect x="500" y="742" width="200" height="8" fill="#aa4422" />
+  
+  <rect x="510" y="724" width="12" height="8" fill="#994422" />
+  <rect x="680" y="726" width="8" height="6" fill="#994422" />
+  <text x="545" y="780" font-family="monospace" font-size="13" fill="#ff9944">CURIOSITY</text>
+  <text x="549" y="796" font-family="monospace" font-size="11" fill="#884422">MARS ROVER</text>
+
+  
+  
+  <rect x="460" y="80" width="616" height="260" fill="#0a0a2e" opacity="0.9" />
+  <rect x="460" y="80" width="616" height="8" fill="#00ffcc" />
+  <rect x="460" y="332" width="616" height="8" fill="#00ffcc" />
+  <rect x="460" y="80" width="8" height="260" fill="#00ffcc" />
+  <rect x="1068" y="80" width="8" height="260" fill="#00ffcc" />
+  
+  <rect x="452" y="72" width="16" height="16" fill="#00ffcc" />
+  <rect x="1068" y="72" width="16" height="16" fill="#00ffcc" />
+  <rect x="452" y="332" width="16" height="16" fill="#00ffcc" />
+  <rect x="1068" y="332" width="16" height="16" fill="#00ffcc" />
+
+  
+  <text x="768" y="165" font-family="monospace" font-size="52" font-weight="bold" fill="#ffee00" text-anchor="middle" letter-spacing="2" filter="url(#glow)">SCIENTIFIC</text>
+  <text x="768" y="225" font-family="monospace" font-size="40" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1">DISCOVERIES &amp;</text>
+  <text x="768" y="278" font-family="monospace" font-size="40" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1">BREAKTHROUGHS</text>
+  <text x="768" y="322" font-family="monospace" font-size="32" font-weight="bold" fill="#00ffcc" text-anchor="middle" letter-spacing="4" filter="url(#glow)">OF  2011</text>
+
+  
+  
+  <rect x="630" y="480" width="280" height="160" fill="#111133" />
+  <rect x="630" y="480" width="280" height="8" fill="#0055ff" />
+  <rect x="630" y="632" width="280" height="8" fill="#0055ff" />
+  <rect x="630" y="480" width="8" height="168" fill="#0055ff" />
+  <rect x="902" y="480" width="8" height="168" fill="#0055ff" />
+  
+  <rect x="638" y="488" width="264" height="144" fill="#000022" />
+  
+  <rect x="646" y="496" width="80" height="40" fill="#0033cc" />
+  <rect x="734" y="496" width="80" height="40" fill="#0033cc" />
+  <rect x="822" y="496" width="72" height="40" fill="#0033cc" />
+  <rect x="646" y="544" width="80" height="40" fill="#0033cc" />
+  <rect x="734" y="544" width="80" height="40" fill="#0044ff" />
+  <rect x="822" y="544" width="72" height="40" fill="#0033cc" />
+  
+  <rect x="734" y="544" width="80" height="40" fill="#3366ff" />
+  <text x="774" y="570" font-family="monospace" font-size="11" fill="#ffee00" text-anchor="middle" font-weight="bold">WATSON</text>
+  
+  <text x="686" y="522" font-family="monospace" font-size="12" fill="#ffee00" text-anchor="middle">$400</text>
+  <text x="774" y="522" font-family="monospace" font-size="12" fill="#ffee00" text-anchor="middle">$400</text>
+  <text x="858" y="522" font-family="monospace" font-size="12" fill="#ffee00" text-anchor="middle">$400</text>
+  
+  <rect x="748" y="640" width="44" height="12" fill="#0055ff" />
+  <rect x="720" y="652" width="100" height="8" fill="#0044cc" />
+
+  <text x="768" y="690" font-family="monospace" font-size="13" fill="#4488ff" text-anchor="middle">IBM WATSON vs JEOPARDY!</text>
+
+  
+  
+  <circle cx="190" cy="620" r="50" fill="#cc9900" filter="url(#glow)" />
+  <circle cx="190" cy="620" r="42" fill="#ffcc00" />
+  <circle cx="190" cy="620" r="34" fill="#ddaa00" />
+  
+  <polygon points="190,590 196,610 218,610 201,623 207,643 190,630 173,643 179,623 162,610 184,610" fill="#ffee44" />
+  
+  <rect x="178" y="568" width="24" height="8" fill="#0044cc" />
+  <rect x="174" y="560" width="32" height="12" fill="#0055ee" />
+  <text x="190" y="700" font-family="monospace" font-size="12" fill="#ffcc00" text-anchor="middle">NOBEL PRIZE</text>
+  <text x="190" y="716" font-family="monospace" font-size="11" fill="#aa8800" text-anchor="middle">PHYSICS 2011</text>
+  <text x="190" y="732" font-family="monospace" font-size="10" fill="#886600" text-anchor="middle">DARK ENERGY</text>
+
+  
+  
+  <rect x="1160" y="340" width="300" height="300" rx="150" fill="#cc9966" />
+  
+  <rect x="1160" y="380" width="300" height="20" fill="#ddaa77" />
+  <rect x="1160" y="408" width="300" height="28" fill="#bb7744" />
+  <rect x="1160" y="444" width="300" height="16" fill="#cc9966" />
+  <rect x="1160" y="468" width="300" height="24" fill="#aa6633" />
+  <rect x="1160" y="500" width="300" height="20" fill="#ddbb88" />
+  <rect x="1160" y="528" width="300" height="20" fill="#bb7744" />
+  <rect x="1160" y="556" width="300" height="20" fill="#cc9966" />
+  
+  <circle cx="1310" cy="490" r="150" fill="none" stroke="#0a0a2e" stroke-width="40" />
+  
+  <ellipse cx="1270" cy="480" rx="30" ry="20" fill="#cc4422" opacity="0.8" />
+  <ellipse cx="1270" cy="480" rx="20" ry="13" fill="#dd5533" opacity="0.9" />
+  
+  <text x="1310" y="680" font-family="monospace" font-size="14" fill="#ffbb55" text-anchor="middle">JUPITER / JUNO</text>
+
+  
+  <rect x="1080" y="420" width="40" height="16" fill="#cccccc" />
+  <rect x="1060" y="424" width="80" height="8" fill="#aaaaaa" />
+  
+  <rect x="990" y="418" width="68" height="20" fill="#2255cc" />
+  <rect x="994" y="420" width="10" height="16" fill="#4477ff" />
+  <rect x="1008" y="420" width="10" height="16" fill="#4477ff" />
+  <rect x="1022" y="420" width="10" height="16" fill="#4477ff" />
+  <rect x="1036" y="420" width="10" height="16" fill="#4477ff" />
+  <rect x="1150" y="418" width="68" height="20" fill="#2255cc" />
+  <rect x="1154" y="420" width="10" height="16" fill="#4477ff" />
+  <rect x="1168" y="420" width="10" height="16" fill="#4477ff" />
+  <rect x="1182" y="420" width="10" height="16" fill="#4477ff" />
+  <rect x="1196" y="420" width="10" height="16" fill="#4477ff" />
+  
+  <rect x="1096" y="404" width="8" height="20" fill="#dddddd" />
+  <rect x="1088" y="400" width="24" height="8" fill="#eeeeee" />
+
+  
+  
+  <rect x="1280" y="730" width="120" height="32" fill="#ccccdd" />
+  <rect x="1284" y="734" width="112" height="24" fill="#aaaacc" />
+  
+  <rect x="1272" y="740" width="12" height="16" fill="#888899" />
+  <rect x="1396" y="740" width="12" height="16" fill="#888899" />
+  
+  <rect x="1200" y="728" width="76" height="40" fill="#2266cc" />
+  <rect x="1204" y="732" width="12" height="32" fill="#4488ff" />
+  <rect x="1220" y="732" width="12" height="32" fill="#4488ff" />
+  <rect x="1236" y="732" width="12" height="32" fill="#4488ff" />
+  <rect x="1252" y="732" width="12" height="32" fill="#4488ff" />
+  <rect x="1404" y="728" width="76" height="40" fill="#2266cc" />
+  <rect x="1408" y="732" width="12" height="32" fill="#4488ff" />
+  <rect x="1424" y="732" width="12" height="32" fill="#4488ff" />
+  <rect x="1440" y="732" width="12" height="32" fill="#4488ff" />
+  <rect x="1456" y="732" width="12" height="32" fill="#4488ff" />
+  
+  <rect x="1320" y="738" width="20" height="14" fill="#cc0000" />
+  <polygon points="1326,741 1328,746 1323,742 1329,742 1324,746" fill="#ffee00" />
+  <text x="1340" y="800" font-family="monospace" font-size="12" fill="#aaccff" text-anchor="middle">TIANGONG-1</text>
+  <text x="1340" y="816" font-family="monospace" font-size="11" fill="#6688aa" text-anchor="middle">CHINA SPACE LAB</text>
+
+  
+  <ellipse cx="768" cy="512" rx="600" ry="350" fill="none" stroke="#1a1a6e" stroke-width="3" stroke-dasharray="12,16" opacity="0.4" />
+  <ellipse cx="768" cy="512" rx="720" ry="430" fill="none" stroke="#1a1a55" stroke-width="2" stroke-dasharray="8,20" opacity="0.3" />
+  
+  <polygon points="170,512 186,506 186,518" fill="#ff4488" opacity="0.7" />
+  <polygon points="1366,512 1350,506 1350,518" fill="#ff4488" opacity="0.7" />
+  <polygon points="768,160 762,176 774,176" fill="#ff4488" opacity="0.7" />
+  <polygon points="768,864 762,848 774,848" fill="#ff4488" opacity="0.7" />
+  <text x="768" y="900" font-family="monospace" font-size="11" fill="#ff4488" text-anchor="middle" opacity="0.8">◄ DARK ENERGY — ACCELERATING EXPANSION ►</text>
+
+  
+  <rect x="0" y="960" width="1536" height="64" fill="#00ffcc" opacity="0.08" />
+  <rect x="0" y="958" width="1536" height="4" fill="#00ffcc" opacity="0.5" />
+
+  
+  <rect x="40" y="968" width="120" height="28" fill="#003344" />
+  <rect x="40" y="968" width="120" height="4" fill="#00ffcc" />
+  <text x="100" y="988" font-family="monospace" font-size="12" fill="#00ffcc" text-anchor="middle">COSMOLOGY</text>
+
+  <rect x="172" y="968" width="130" height="28" fill="#003344" />
+  <rect x="172" y="968" width="130" height="4" fill="#ffee00" />
+  <text x="237" y="988" font-family="monospace" font-size="12" fill="#ffee00" text-anchor="middle">SPACE EXPLORE</text>
+
+  <rect x="314" y="968" width="100" height="28" fill="#003344" />
+  <rect x="314" y="968" width="100" height="4" fill="#ff88cc" />
+  <text x="364" y="988" font-family="monospace" font-size="12" fill="#ff88cc" text-anchor="middle">EXOPLANETS</text>
+
+  <rect x="426" y="968" width="80" height="28" fill="#003344" />
+  <rect x="426" y="968" width="80" height="4" fill="#44ffaa" />
+  <text x="466" y="988" font-family="monospace" font-size="12" fill="#44ffaa" text-anchor="middle">AI / NLP</text>
+
+  <rect x="518" y="968" width="100" height="28" fill="#003344" />
+  <rect x="518" y="968" width="100" height="4" fill="#ff6644" />
+  <text x="568" y="988" font-family="monospace" font-size="12" fill="#ff6644" text-anchor="middle">MARS ROVER</text>
+
+  <rect x="630" y="968" width="110" height="28" fill="#003344" />
+  <rect x="630" y="968" width="110" height="4" fill="#cc88ff" />
+  <text x="685" y="988" font-family="monospace" font-size="12" fill="#cc88ff" text-anchor="middle">DARK ENERGY</text>
+
+  <rect x="752" y="968" width="120" height="28" fill="#003344" />
+  <rect x="752" y="968" width="120" height="4" fill="#ffcc00" />
+  <text x="812" y="988" font-family="monospace" font-size="12" fill="#ffcc00" text-anchor="middle">NOBEL PRIZE</text>
+
+  
+  <text x="1400" y="988" font-family="monospace" font-size="12" fill="#00ffcc" text-anchor="middle">► 2011 ◄</text>
+
+  
+  <rect width="1536" height="1024" fill="url(#scan)" opacity="0.25" />
+
+  
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="transparent" />
+    <stop offset="100%" stop-color="rgba(0,0,0,0.6)" />
+  </radialGradient>
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

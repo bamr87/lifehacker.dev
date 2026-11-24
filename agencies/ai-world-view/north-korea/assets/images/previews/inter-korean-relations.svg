@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Inter-Korean Relations and Dialogue — DPRK History Plate</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc0" />
+      <stop offset="50%" stop-color="#ddd0a8" />
+      <stop offset="100%" stop-color="#c9bc90" />
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00000000" />
+      <stop offset="100%" stop-color="#3a2a1055" />
+    </radialGradient>
+    <pattern id="hatch" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="4" stroke="#8a7545" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#3a2500" flood-opacity="0.35" />
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#1a0e00" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  <rect x="18" y="18" width="1500" height="988" rx="4" fill="none" stroke="#7a6030" stroke-width="6" />
+  <rect x="28" y="28" width="1480" height="968" rx="3" fill="none" stroke="#9a8050" stroke-width="2" />
+  <rect x="32" y="32" width="1472" height="960" rx="2" fill="none" stroke="#7a6030" stroke-width="1" />
+
+  <g stroke="#7a6030" stroke-width="2" fill="none">
+    <line x1="18" y1="60" x2="60" y2="60" /><line x1="60" y1="18" x2="60" y2="60" />
+    <line x1="1476" y1="60" x2="1518" y2="60" /><line x1="1476" y1="18" x2="1476" y2="60" />
+    <line x1="18" y1="964" x2="60" y2="964" /><line x1="60" y1="964" x2="60" y2="1006" />
+    <line x1="1476" y1="964" x2="1518" y2="964" /><line x1="1476" y1="964" x2="1476" y2="1006" />
+  </g>
+
+  <!-- Right imagery panel: divided peninsula with the DMZ -->
+  <g transform="translate(1080, 360)">
+    <!-- peninsula silhouette -->
+    <path d="M 0 -200 C 60 -170 52 -100 80 -50 C 108 0 80 70 108 140 C 120 210 80 270 40 320 C 16 360 -28 340 -20 280 C -40 230 -68 190 -48 140 C -68 90 -40 30 -60 -20 C -40 -90 -52 -160 0 -200 Z"
+          fill="#6a5a3a" stroke="#3a2810" stroke-width="2" opacity="0.9" filter="url(#softShadow)" />
+    <!-- DMZ line -->
+    <line x1="-70" y1="70" x2="112" y2="70" stroke="#8b1a1a" stroke-width="4" stroke-dasharray="9,6" />
+    <text x="122" y="76" font-family="Georgia, serif" font-size="15" fill="#8b1a1a" font-style="italic">DMZ · 38°N</text>
+    <!-- North / South labels -->
+    <text x="10" y="-40" font-family="Georgia, serif" font-size="20" fill="#f0e0c0" text-anchor="middle" font-weight="bold" letter-spacing="2" opacity="0.85">DPRK</text>
+    <text x="30" y="200" font-family="Georgia, serif" font-size="20" fill="#f0e0c0" text-anchor="middle" font-weight="bold" letter-spacing="2" opacity="0.7">ROK</text>
+    <!-- clasped-hands / handshake motif above -->
+    <g transform="translate(20, -300)" stroke="#7a3020" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.75">
+      <path d="M -70 0 L -10 0 L 10 -18" />
+      <path d="M 70 0 L 10 0 L -10 18" />
+    </g>
+  </g>
+
+  <!-- Left text panel -->
+  <rect x="50" y="50" width="640" height="924" rx="3" fill="#d8c898" opacity="0.5" />
+  <rect x="50" y="50" width="640" height="924" fill="url(#hatch)" opacity="0.4" />
+  <line x1="710" y1="60" x2="710" y2="964" stroke="#7a6030" stroke-width="3" />
+  <line x1="715" y1="60" x2="715" y2="964" stroke="#9a8050" stroke-width="1" />
+
+  <text x="370" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="1" filter="url(#textShadow)">Inter-Korean</text>
+  <text x="370" y="212" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="bold" fill="#2a1505" text-anchor="middle" letter-spacing="1" filter="url(#textShadow)">Relations</text>
+  <text x="370" y="256" font-family="Georgia, serif" font-size="24" fill="#6a4010" text-anchor="middle" font-style="italic" letter-spacing="3">1953 – present</text>
+
+  <line x1="110" y1="285" x2="630" y2="285" stroke="#7a6030" stroke-width="2" />
+  <line x1="140" y1="290" x2="600" y2="290" stroke="#9a8050" stroke-width="1" />
+
+  <g font-family="Georgia, serif">
+    <text x="110" y="345" font-size="19" fill="#3a2810" font-weight="bold">Armistice:</text>
+    <text x="630" y="345" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">27 July 1953 · no peace treaty</text>
+    <line x1="110" y1="362" x2="630" y2="362" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="408" font-size="19" fill="#3a2810" font-weight="bold">Communiqué:</text>
+    <text x="630" y="408" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">4 July 1972 · Three Principles</text>
+    <line x1="110" y1="425" x2="630" y2="425" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="471" font-size="19" fill="#3a2810" font-weight="bold">Sunshine:</text>
+    <text x="630" y="471" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">2000 &amp; 2007 summits · Kaesong</text>
+    <line x1="110" y1="488" x2="630" y2="488" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="534" font-size="19" fill="#3a2810" font-weight="bold">Thaw:</text>
+    <text x="630" y="534" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">2018 Panmunjom &amp; Pyongyang</text>
+    <line x1="110" y1="551" x2="630" y2="551" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+
+    <text x="110" y="580" font-size="19" fill="#3a2810" font-weight="bold">Rupture:</text>
+    <text x="630" y="580" font-size="19" fill="#5a4030" text-anchor="end" font-style="italic">2023–24 · "two hostile states"</text>
+    <line x1="110" y1="597" x2="630" y2="597" stroke="#9a8050" stroke-width="0.8" opacity="0.6" />
+  </g>
+
+  <rect x="110" y="630" width="520" height="260" rx="3" fill="#3a2a1a" stroke="#1a0e00" stroke-width="2" filter="url(#softShadow)" opacity="0.92" />
+  <text x="370" y="672" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="2">SEVEN DECADES OF DIVISION</text>
+  <line x1="150" y1="690" x2="590" y2="690" stroke="#c8a870" stroke-width="1" opacity="0.6" />
+  <text x="370" y="728" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">Cold War provocations · Blue House, Pueblo, KAL 858</text>
+  <text x="370" y="758" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">Sunshine Policy · family reunions · Diamond Mtn.</text>
+  <text x="370" y="788" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">Cheonan &amp; Yeonpyeong · nuclear crises</text>
+  <text x="370" y="818" font-family="Georgia, serif" font-size="15" fill="#e0c890" text-anchor="middle" font-style="italic">2018 summits → 2019 Hanoi collapse</text>
+  <text x="370" y="856" font-family="Georgia, serif" font-size="14" fill="#c8a870" text-anchor="middle">reunification formally repudiated, 2023–2024</text>
+
+  <text x="370" y="945" font-family="Georgia, serif" font-size="16" fill="#8a6030" text-anchor="middle" font-style="italic" letter-spacing="1">History</text>
+
+  <text x="1400" y="985" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#8a7550" font-style="italic" opacity="0.6">Atlas Plate · DPRK · Korean Peninsula</text>
+
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+</svg>

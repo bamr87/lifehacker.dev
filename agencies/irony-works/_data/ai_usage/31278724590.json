@@ -1,0 +1,71 @@
+{
+  "run_id": "31278724590",
+  "workflow": "Germinate",
+  "calls": [
+    {
+      "at": "2026-08-08T21:13:21.173Z",
+      "label": "scout",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 3773,
+      "cache_read_tokens": 17188,
+      "cache_creation_tokens": 8857,
+      "cost_usd": 0.1157424,
+      "billed": false,
+      "duration_ms": 82214
+    },
+    {
+      "at": "2026-08-08T21:13:43.773Z",
+      "label": "alanis-gate",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 924,
+      "cache_read_tokens": 17188,
+      "cache_creation_tokens": 9188,
+      "cost_usd": 0.0750474,
+      "billed": false,
+      "duration_ms": 21846
+    },
+    {
+      "at": "2026-08-08T21:15:16.174Z",
+      "label": "scribe",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 4980,
+      "cache_read_tokens": 17188,
+      "cache_creation_tokens": 9233,
+      "cost_usd": 0.1364864,
+      "billed": false,
+      "duration_ms": 91619
+    },
+    {
+      "at": "2026-08-08T21:16:01.106Z",
+      "label": "alanis-gate",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 1924,
+      "cache_read_tokens": 17188,
+      "cache_creation_tokens": 9254,
+      "cost_usd": 0.0905054,
+      "billed": false,
+      "duration_ms": 44179
+    },
+    {
+      "at": "2026-08-08T21:17:17.937Z",
+      "label": "scribe",
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "input_tokens": 3,
+      "output_tokens": 3827,
+      "cache_read_tokens": 17188,
+      "cache_creation_tokens": 9174,
+      "cost_usd": 0.1189024,
+      "billed": false,
+      "duration_ms": 76050
+    }
+  ]
+}

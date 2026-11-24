@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>People — North Korea Knowledge Base</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="mapgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b99a" />
+      <stop offset="100%" stop-color="#b5a484" />
+    </linearGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#b0a080" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8a7a5a" stroke-width="3" />
+  <rect x="40" y="40" width="1456" height="944" fill="none" stroke="#8a7a5a" stroke-width="1" />
+
+  
+  <g transform="translate(760, 480)">
+    
+    <path d="M-60,-200 C-55,-190 -50,-170 -45,-150 C-40,-130 -38,-110 -35,-90 C-30,-65 -25,-45 -20,-20 C-15,5 -10,30 -5,55 C0,80 5,110 8,140 C12,170 15,190 10,210 C5,225 -5,235 -15,230 C-25,225 -30,210 -35,195 C-40,180 -42,160 -38,140 C-34,120 -25,105 -20,90 C-15,75 -12,60 -15,45 C-18,30 -28,20 -40,15 C-55,10 -70,15 -80,5 C-90,-5 -90,-20 -85,-35 C-80,-50 -70,-60 -65,-80 C-60,-100 -65,-120 -65,-145 C-65,-165 -62,-185 -60,-200 Z" fill="url(#mapgrad)" stroke="#8a7a5a" stroke-width="2" />
+    
+    <path d="M-60,-200 C-55,-190 -50,-170 -45,-150 C-40,-130 -38,-110 -35,-90 C-30,-65 -25,-45 -20,-20 L-40,15 C-55,10 -70,15 -80,5 C-90,-5 -90,-20 -85,-35 C-80,-50 -70,-60 -65,-80 C-60,-100 -65,-120 -65,-145 C-65,-165 -62,-185 -60,-200 Z" fill="#a89060" stroke="#8a7a5a" stroke-width="2" />
+    
+    <line x1="-90" y1="-15" x2="-10" y2="-20" stroke="#6a5a3a" stroke-width="1.5" stroke-dasharray="6,4" />
+    
+    <circle cx="-55" cy="-70" r="7" fill="#7a3030" stroke="#5a2020" stroke-width="1.5" />
+    <circle cx="-55" cy="-70" r="3" fill="#e8c0a0" />
+    <text x="-42" y="-65" font-family="Georgia, serif" font-size="14" fill="#3a2a1a" font-style="italic">Pyongyang</text>
+  </g>
+
+  
+  <g transform="translate(1380, 200)">
+    <circle cx="0" cy="0" r="60" fill="#d4c9a8" stroke="#8a7a5a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#8a7a5a" stroke-width="0.8" />
+    
+    <polygon points="0,-55 -8,-10 0,-20 8,-10" fill="#6a5a3a" />
+    <polygon points="0,-55 -8,-10 0,-20 8,-10" fill="#6a5a3a" transform="rotate(180)" />
+    <polygon points="0,-55 -8,-10 0,-20 8,-10" fill="#9a8a6a" transform="rotate(90)" />
+    <polygon points="0,-55 -8,-10 0,-20 8,-10" fill="#9a8a6a" transform="rotate(270)" />
+    <circle cx="0" cy="0" r="5" fill="#8a7a5a" />
+    <text x="0" y="-62" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3a2a1a" font-weight="bold">N</text>
+    <text x="0" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3a2a1a">S</text>
+    <text x="68" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3a2a1a">E</text>
+    <text x="-68" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3a2a1a">W</text>
+  </g>
+
+  
+  <g transform="translate(300, 420)" fill="#7a6a4a" opacity="0.7">
+    
+    <circle cx="0" cy="-80" r="22" />
+    <path d="M-20,-55 C-25,-20 -28,20 -25,60 L-10,60 L-5,10 L0,60 L15,60 L18,20 C20,-10 15,-40 10,-55 Z" />
+    
+    <circle cx="70" cy="-85" r="18" />
+    <path d="M52,-65 C48,-32 46,10 48,55 L60,55 L63,8 L67,55 L78,55 L82,10 C84,-20 80,-45 75,-65 Z" />
+    
+    <circle cx="140" cy="-78" r="20" />
+    <path d="M122,-58 C118,-25 116,15 118,58 L130,58 L133,10 L137,58 L150,58 L153,15 C155,-15 151,-40 146,-58 Z" />
+  </g>
+
+  
+  <rect x="80" y="80" width="560" height="220" fill="#3a2a1a" opacity="0.85" rx="4" />
+  <rect x="84" y="84" width="552" height="212" fill="none" stroke="#c8b080" stroke-width="1.5" rx="2" />
+
+  <text x="360" y="165" text-anchor="middle" font-family="Georgia, serif" font-size="90" font-weight="bold" fill="#e8d8b0" letter-spacing="4">People</text>
+  <line x1="110" y1="185" x2="610" y2="185" stroke="#c8b080" stroke-width="1" opacity="0.6" />
+  <text x="360" y="222" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#c8b080" font-style="italic" letter-spacing="2">North Korea Knowledge Base</text>
+  <text x="360" y="268" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#a89870" letter-spacing="1">Figures · Leaders · Architects of the DPRK</text>
+
+  
+  <g stroke="#8a7a5a" stroke-width="0.6" opacity="0.35" fill="none">
+    <path d="M600,300 Q900,280 1300,310" />
+    <path d="M600,380 Q900,360 1300,390" />
+    <path d="M600,460 Q900,440 1300,470" />
+    <path d="M600,540 Q900,520 1300,550" />
+    <path d="M600,620 Q900,600 1300,630" />
+    <path d="M600,700 Q900,680 1300,710" />
+  </g>
+  
+  <g stroke="#8a7a5a" stroke-width="0.6" opacity="0.35" fill="none">
+    <path d="M700,260 Q710,512 700,760" />
+    <path d="M820,260 Q830,512 820,760" />
+    <path d="M940,260 Q950,512 940,760" />
+    <path d="M1060,260 Q1070,512 1060,760" />
+    <path d="M1180,260 Q1190,512 1180,760" />
+  </g>
+
+  
+  <g transform="translate(1400, 820)">
+    <polygon points="0,-40 9,-12 38,-12 16,5 24,33 0,17 -24,33 -16,5 -38,-12 -9,-12" fill="#8a7a5a" opacity="0.5" />
+  </g>
+
+  
+  <text x="768" y="970" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#6a5a3a" letter-spacing="3" opacity="0.7">DPRK · KOREAN PENINSULA · EAST ASIA</text>
+
+</svg>

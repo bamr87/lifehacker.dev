@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>South Korea–United States Relations and Alliance</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray" />
+      <feBlend in="SourceGraphic" in2="gray" mode="multiply" result="blend" />
+    </filter>
+    <pattern id="gridPat" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#c4b898" stroke-width="0.5" opacity="0.5" />
+    </pattern>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8b3a2a" />
+    </marker>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridPat)" />
+
+  
+  <rect x="280" y="80" width="980" height="780" rx="4" fill="url(#oceanGrad)" opacity="0.7" />
+
+  
+  <g stroke="#a8bcc8" stroke-width="0.8" opacity="0.6">
+    <line x1="280" y1="260" x2="1260" y2="260" />
+    <line x1="280" y1="380" x2="1260" y2="380" />
+    <line x1="280" y1="500" x2="1260" y2="500" />
+    <line x1="280" y1="620" x2="1260" y2="620" />
+    <line x1="280" y1="740" x2="1260" y2="740" />
+  </g>
+  
+  <g stroke="#a8bcc8" stroke-width="0.8" opacity="0.6">
+    <line x1="420" y1="80" x2="420" y2="860" />
+    <line x1="560" y1="80" x2="560" y2="860" />
+    <line x1="700" y1="80" x2="700" y2="860" />
+    <line x1="840" y1="80" x2="840" y2="860" />
+    <line x1="980" y1="80" x2="980" y2="860" />
+    <line x1="1120" y1="80" x2="1120" y2="860" />
+  </g>
+
+  
+  <path d="M 280 80 L 280 680      C 300 690 310 700 320 710      L 330 730 340 740 350 730 360 720      370 700 380 680 390 670      400 660 410 650 415 640      410 620 405 600 410 580      420 560 430 540 425 520      415 500 410 480 415 460      425 440 430 420 420 400      410 380 415 360 420 340      415 320 410 300 415 280      420 260 415 240 410 220      415 200 420 180 415 160      410 140 415 120 420 100      420 80 Z" fill="#c8b87a" stroke="#a89850" stroke-width="1.5" opacity="0.9" />
+
+  
+  <path d="M 280 150 C 310 145 340 140 370 142 C 400 144 430 150 460 148 C 490 146 510 140 530 145 C 550 150 555 160 550 175 C 545 190 530 200 520 215 C 510 230 515 245 520 260 C 525 275 525 285 515 295 C 505 305 490 310 480 320 C 470 330 465 342 460 355 C 455 368 450 380 440 390 C 430 400 415 405 405 415 C 395 425 390 438 385 450 C 380 462 375 472 365 480 C 355 488 340 490 330 498 C 320 506 315 518 310 530 C 305 542 300 555 295 568 C 290 581 285 590 280 598 L 280 150 Z" fill="#c8b87a" stroke="#a89850" stroke-width="1" opacity="0.85" />
+
+  
+  <ellipse cx="430" cy="235" rx="18" ry="8" fill="#9ab8c8" opacity="0.8" />
+  <ellipse cx="460" cy="228" rx="12" ry="6" fill="#9ab8c8" opacity="0.8" />
+
+  
+  <path d="M 280 80 L 310 82 C 325 88 335 100 325 112 C 315 124 298 120 285 115 Z" fill="#c8b87a" stroke="#a89850" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M 1060 230 C 1065 220 1072 215 1078 220 C 1084 225 1082 238 1078 248 C 1074 258 1068 265 1063 260 C 1058 255 1056 240 1060 230 Z" fill="#c8b87a" stroke="#a89850" stroke-width="1.2" opacity="0.9" />
+  <path d="M 1055 268 C 1060 258 1068 252 1074 258 C 1080 264 1079 278 1075 290 C 1071 302 1063 310 1057 305 C 1051 300 1050 278 1055 268 Z" fill="#c8b87a" stroke="#a89850" stroke-width="1.2" opacity="0.9" />
+  <path d="M 1048 308 C 1053 298 1062 294 1068 300 C 1074 306 1072 322 1067 335 C 1062 348 1053 356 1047 350 C 1041 344 1043 318 1048 308 Z" fill="#c8b87a" stroke="#a89850" stroke-width="1.2" opacity="0.9" />
+
+  
+  <path d="M 960 100 C 980 95 1010 98 1030 108 C 1050 118 1055 135 1048 150 C 1041 165 1025 172 1015 182 C 1005 192 1008 205 1005 218 C 1002 231 992 240 982 248 C 972 256 960 258 950 265 C 940 272 935 282 928 290 C 921 298 910 302 900 308 C 890 314 882 322 878 332 C 874 342 875 353 872 363 C 869 373 862 380 858 388 C 854 396 855 406 850 414 C 845 422 835 426 828 432 C 821 438 818 448 820 458 C 822 468 830 474 832 484 C 834 494 828 502 820 505 C 812 508 803 505 796 500 C 789 495 785 486 780 480 C 775 474 768 470 762 466 C 756 462 750 460 745 455 C 740 450 738 442 738 435 C 738 428 740 420 738 413 C 736 406 730 400 726 393 C 722 386 720 378 718 370 C 716 362 716 354 718 346 C 720 338 724 331 722 323 C 720 315 712 310 708 303 C 704 296 705 287 710 282 C 715 277 723 276 730 272 C 737 268 742 262 748 257 C 754 252 760 248 768 245 C 776 242 784 242 792 240 C 800 238 806 234 812 229 C 818 224 822 218 828 213 C 834 208 841 205 848 200 C 855 195 860 188 866 182 C 872 176 878 170 882 163 C 886 156 888 148 892 142 C 896 136 900 131 905 126 C 910 121 916 117 922 113 C 928 109 934 106 940 103 C 946 100 953 98 960 100 Z" fill="#c8b87a" stroke="#a89850" stroke-width="1.2" opacity="0.85" />
+
+  
+  <path d="M 1000 290 C 1004 282 1010 278 1016 280 C 1022 282 1026 290 1028 300 C 1030 310 1028 320 1024 328 C 1020 336 1013 340 1007 338 C 1001 336 997 328 996 318 C 995 308 997 298 1000 290 Z" fill="#d4aa3a" stroke="#8b6820" stroke-width="2" opacity="0.95" />
+  
+  <path d="M 996 318 C 997 328 1001 336 1007 338 C 1013 340 1020 336 1024 328 C 1022 340 1018 352 1012 362 C 1006 372 998 378 993 386 C 988 394 986 403 984 412 C 982 421 980 430 976 438 C 972 446 966 450 960 453 C 954 456 948 455 943 451 C 938 447 935 440 934 432 C 933 424 935 416 938 408 C 941 400 945 393 946 385 C 947 377 944 369 944 361 C 944 353 946 345 950 338 C 954 331 960 326 966 321 C 972 316 980 313 986 313 C 992 313 996 316 996 318 Z" fill="#e6c040" stroke="#8b6820" stroke-width="2.5" opacity="0.97" />
+
+  
+  <line x1="934" y1="338" x2="1028" y2="324" stroke="#8b3a2a" stroke-width="2" stroke-dasharray="6,4" opacity="0.9" />
+  <text x="1032" y="328" font-family="Georgia, serif" font-size="11" fill="#8b3a2a" opacity="0.9">38°N</text>
+
+  
+  <path d="M 996 318 C 997 308 995 298 996 290 C 998 282 1004 278 1010 278 C 1016 278 1022 282 1026 290 C 1028 298 1028 308 1028 316 L 996 318 Z" fill="#c4a030" stroke="#8b6820" stroke-width="1.5" opacity="0.9" />
+
+  
+  <g transform="translate(370, 380)">
+    <path d="M 0 0 L 60 0 L 60 70 L 30 85 L 0 70 Z" fill="#2a4a8b" stroke="#1a2a5b" stroke-width="2" />
+    
+    <rect x="0" y="0" width="25" height="30" fill="#1a2a6b" />
+    
+    <rect x="25" y="0" width="35" height="5" fill="#cc2222" />
+    <rect x="25" y="10" width="35" height="5" fill="#cc2222" />
+    <rect x="25" y="20" width="35" height="5" fill="#cc2222" />
+    <rect x="0" y="30" width="60" height="5" fill="#cc2222" />
+    <rect x="0" y="40" width="60" height="5" fill="#cc2222" />
+    <rect x="0" y="50" width="60" height="5" fill="#cc2222" />
+    <rect x="0" y="60" width="60" height="5" fill="#cc2222" />
+    
+    <text x="2" y="12" font-size="8" fill="white">★★★</text>
+    <text x="2" y="22" font-size="8" fill="white">★★★</text>
+  </g>
+
+  
+  <g transform="translate(958, 440)">
+    <path d="M 0 0 L 60 0 L 60 70 L 30 85 L 0 70 Z" fill="white" stroke="#8b6820" stroke-width="2" />
+    
+    <circle cx="30" cy="32" r="18" fill="none" stroke="#cc2222" stroke-width="1" />
+    <path d="M 30 14 A 18 18 0 0 1 30 50 A 9 9 0 0 1 30 32 A 9 9 0 0 0 30 14 Z" fill="#cc2222" />
+    <path d="M 30 50 A 18 18 0 0 1 30 14 A 9 9 0 0 1 30 32 A 9 9 0 0 0 30 50 Z" fill="#1a3a8b" />
+    
+    <g stroke="#111" stroke-width="2">
+      <line x1="8" y1="12" x2="52" y2="12" />
+      <line x1="8" y1="17" x2="24" y2="17" />
+      <line x1="36" y1="17" x2="52" y2="17" />
+      <line x1="8" y1="48" x2="52" y2="48" />
+      <line x1="8" y1="53" x2="52" y2="53" />
+      <line x1="8" y1="58" x2="52" y2="58" />
+    </g>
+  </g>
+
+  
+  <path d="M 440 415 Q 700 200 988 470" fill="none" stroke="#8b3a2a" stroke-width="3.5" stroke-dasharray="12,6" marker-end="url(#arrowhead)" opacity="0.85" />
+  <path d="M 988 470 Q 700 200 440 415" fill="none" stroke="#2a4a8b" stroke-width="1.5" stroke-dasharray="8,8" opacity="0.4" />
+
+  
+  <circle cx="440" cy="415" r="8" fill="#8b3a2a" opacity="0.85" />
+  <circle cx="988" cy="470" r="8" fill="#8b3a2a" opacity="0.85" />
+  <circle cx="620" cy="280" r="5" fill="#8b3a2a" opacity="0.6" />
+  <circle cx="800" cy="240" r="5" fill="#8b3a2a" opacity="0.6" />
+
+  
+  <g transform="translate(1380, 180)">
+    <circle cx="0" cy="0" r="55" fill="#d4c9a8" stroke="#a89850" stroke-width="2" />
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#a89850" stroke-width="1" />
+    <circle cx="0" cy="0" r="8" fill="#a89850" />
+    
+    <polygon points="0,-55 -8,-20 8,-20" fill="#8b3a2a" />
+    <polygon points="0,55 -8,20 8,20" fill="#7a6840" />
+    <polygon points="-55,0 -20,-8 -20,8" fill="#7a6840" />
+    <polygon points="55,0 20,-8 20,8" fill="#7a6840" />
+    
+    <polygon points="-39,-39 -15,-20 -20,-15" fill="#c4b060" opacity="0.8" />
+    <polygon points="39,-39 15,-20 20,-15" fill="#c4b060" opacity="0.8" />
+    <polygon points="-39,39 -15,20 -20,15" fill="#c4b060" opacity="0.8" />
+    <polygon points="39,39 15,20 20,15" fill="#c4b060" opacity="0.8" />
+    
+    <text x="0" y="-62" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#4a3820">N</text>
+    <text x="0" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#4a3820">S</text>
+    <text x="68" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#4a3820">E</text>
+    <text x="-68" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#4a3820">W</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" rx="6" fill="none" stroke="#a89850" stroke-width="3" opacity="0.7" />
+  <rect x="28" y="28" width="1480" height="968" rx="4" fill="none" stroke="#a89850" stroke-width="1" opacity="0.4" />
+
+  
+  <rect x="0" y="0" width="310" height="1024" fill="#2c2010" opacity="0.82" />
+
+  
+  <line x1="295" y1="0" x2="295" y2="1024" stroke="#a89850" stroke-width="1.5" opacity="0.6" />
+
+  
+  <text x="155" y="130" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#c4a030" letter-spacing="3" opacity="0.9">ALLIANCE</text>
+  <line x1="50" y1="145" x2="260" y2="145" stroke="#a89850" stroke-width="1" opacity="0.6" />
+
+  <text x="155" y="240" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="bold" fill="#e8d890">South</text>
+  <text x="155" y="280" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="bold" fill="#e8d890">Korea</text>
+  
+  <text x="155" y="335" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#c4a030">–</text>
+  
+  <text x="155" y="385" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="bold" fill="#e8d890">United</text>
+  <text x="155" y="425" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="bold" fill="#e8d890">States</text>
+
+  <line x1="50" y1="450" x2="260" y2="450" stroke="#a89850" stroke-width="1" opacity="0.6" />
+
+  <text x="155" y="485" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#d4aa60">Relations and</text>
+  <text x="155" y="510" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#d4aa60">Alliance</text>
+
+  <line x1="50" y1="530" x2="260" y2="530" stroke="#a89850" stroke-width="1" opacity="0.6" />
+
+  
+  <text x="155" y="600" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#a89850" opacity="0.8">EST. 1950–1953</text>
+  <text x="155" y="625" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="11" fill="#a89850" opacity="0.7">KOREAN WAR</text>
+  
+  <text x="155" y="665" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="11" fill="#a89850" opacity="0.7">MUTUAL DEFENSE</text>
+  <text x="155" y="682" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="11" fill="#a89850" opacity="0.7">TREATY 1954</text>
+
+  
+  <text x="155" y="740" text-anchor="middle" font-size="14" fill="#c4a030" opacity="0.7">★  ★  ★</text>
+
+  
+  <text x="820" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5a6878" letter-spacing="4" opacity="0.7">PACIFIC OCEAN</text>
+
+  <text x="820" y="740" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a6878" letter-spacing="3" opacity="0.6">NORTH PACIFIC</text>
+
+  
+  <text x="370" y="350" font-family="Georgia, serif" font-size="13" fill="#4a3820" opacity="0.8">UNITED STATES</text>
+  <text x="370" y="367" font-family="Georgia, serif" font-size="11" fill="#4a3820" opacity="0.6">OF AMERICA</text>
+
+  <text x="820" y="290" font-family="Georgia, serif" font-size="13" fill="#4a3820" opacity="0.8">CHINA</text>
+
+  <text x="1065" y="200" font-family="Georgia, serif" font-size="12" fill="#4a3820" opacity="0.8">JAPAN</text>
+
+  
+  <text x="930" y="560" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" fill="#4a3820">KOREA</text>
+  <text x="927" y="305" font-family="Georgia, serif" font-size="10" fill="#5a4820" opacity="0.9">N. KOREA</text>
+  <text x="925" y="430" font-family="Georgia, serif" font-size="10" fill="#5a4820" opacity="0.9">S. KOREA</text>
+
+  
+  <g transform="translate(700, 820)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#6a5840" stroke-width="2" />
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#6a5840" stroke-width="2" />
+    <line x1="100" y1="-3" x2="100" y2="3" stroke="#6a5840" stroke-width="1.5" />
+    <line x1="200" y1="-5" x2="200" y2="5" stroke="#6a5840" stroke-width="2" />
+    <rect x="0" y="-8" width="100" height="4" fill="#6a5840" />
+    <rect x="100" y="-8" width="100" height="4" fill="#c4b898" />
+    <text x="0" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#6a5840">0</text>
+    <text x="100" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#6a5840">2000 km</text>
+    <text x="200" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#6a5840">4000 km</text>
+  </g>
+
+  
+  <g transform="translate(700, 490)" opacity="0.5">
+    <path d="M -20 0 L 20 0 L 15 8 L -15 8 Z" fill="#8a7a50" stroke="#6a5840" stroke-width="1" />
+    <line x1="0" y1="-20" x2="0" y2="0" stroke="#6a5840" stroke-width="1.5" />
+    <path d="M 0 -20 L 12 -5 L 0 -5 Z" fill="#c4b898" stroke="#6a5840" stroke-width="0.8" />
+  </g>
+
+  
+  <g transform="translate(1480, 512)">
+    <line x1="0" y1="-400" x2="0" y2="400" stroke="#a89850" stroke-width="1" opacity="0.3" />
+    <circle cx="0" cy="0" r="6" fill="#a89850" opacity="0.4" />
+    <circle cx="0" cy="-150" r="3" fill="#a89850" opacity="0.3" />
+    <circle cx="0" cy="150" r="3" fill="#a89850" opacity="0.3" />
+  </g>
+
+  
+  <rect x="0" y="930" width="1536" height="94" fill="#2c2010" opacity="0.75" />
+  <line x1="0" y1="930" x2="1536" y2="930" stroke="#a89850" stroke-width="1.5" opacity="0.6" />
+  <text x="768" y="975" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#c4a030" letter-spacing="5" opacity="0.85">STRATEGIC PARTNERSHIP · EAST ASIA · SINCE 1945</text>
+  <text x="768" y="1002" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#a89850" opacity="0.6" letter-spacing="2">U.S.–KOREA MUTUAL DEFENSE TREATY · USAMGIK · REPUBLIC OF KOREA</text>
+
+</svg>

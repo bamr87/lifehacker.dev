@@ -1,0 +1,163 @@
+# Learning flywheel — turn each closed generation's telemetry into embedded prompt edits.
+#
+# Fires after the telemetry collector records a run (so the ledger is current), OFF the
+# growth critical path — it never slows a tick. Gated to generation boundaries: it only
+# spends a model when the just-recorded run closed a generation (a replant/distillation),
+# so most fires are cheap no-ops. The /learn skill mines telemetry/evolution.jsonl.gz for
+# friction, embeds the minimal fixes into the .github/ prompt layer, records each in
+# telemetry/learnings.jsonl, and opens an auto-merged PR; pollinate fans them lineage-wide.
+#
+# Model: lifecycle.yml -> policy.models.learn (default claude-sonnet-5-5).
+#
+# Auth (mirrors grow.yml): the Claude subscription OAuth token is the PRIMARY auth
+# — ANTHROPIC_API_KEY proved invalid across this lineage, so it is only the
+# fallback. And because /learn publishes through an auto-merged PR (framework
+# edits go through PRs, never straight to main), a safety net at the end opens a
+# PR for any uncommitted edits the agent left behind, so a learning is never
+# silently lost when the agent ends before opening its own PR.
+
+name: learn
+
+on:
+  workflow_run:
+    workflows: ["telemetry"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: learn-flywheel
+  cancel-in-progress: false
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.LIFECYCLE_PAT || github.token }}
+
+      # Cheap gate: only the newest ledger record matters. A generation-closing
+      # run (replant/distillation) leaves its marker in the embedded result text.
+      - name: Gate to generation boundary
+        id: gate
+        run: |
+          model=$(grep -E '^[[:space:]]*learn:' lifecycle.yml | head -1 | sed -E 's/.*learn:[[:space:]]*"?([^"#]+)"?.*/\1/' | xargs)
+          echo "model=${model:-claude-sonnet-5-5}" >> "$GITHUB_OUTPUT"
+          boundary=false
+          if [ -f telemetry/evolution.jsonl.gz ]; then
+            rec=$(gunzip -c telemetry/evolution.jsonl.gz | tail -1)
+            if printf '%s' "$rec" | grep -qiE "Replant Summary|Generation closed|Distillation Report"; then
+              boundary=true
+            fi
+          fi
+          echo "boundary=$boundary" >> "$GITHUB_OUTPUT"
+          echo "Generation boundary: $boundary — learn model: ${model:-claude-sonnet-5-5}"
+
+      - name: Run the learning flywheel (Claude subscription)
+        id: primary
+        if: steps.gate.outputs.boundary == 'true'
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        env:
+          LIFECYCLE_PAT: ${{ secrets.LIFECYCLE_PAT }}
+        with:
+          # Subscription OAuth is the primary auth — the API key is invalid across
+          # this lineage. The API-key step below is the fallback.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Run the /learn skill: read telemetry/evolution.jsonl.gz for the
+            just-closed generation and telemetry/learnings.jsonl, mine for
+            friction (recurring re-derivation, wasted/no-op runs, redundant
+            work, cost/turn outliers, failures), embed <=3 minimal edits into
+            the canonical .github/ prompt layer that REMOVE work, record each
+            in telemetry/learnings.jsonl, and open an auto-merged PR for
+            safe-class edits. Follow .github/skills/learn/SKILL.md exactly.
+            Touch framework files + the learnings ledger only — never content,
+            seed.md, README.md, ROADMAP.md, or lifecycle.yml.
+          claude_args: >-
+            --model ${{ steps.gate.outputs.model }}
+            --max-turns 60
+            --allowedTools "Bash,Edit,Write,Read,Glob,Grep,TodoWrite,Skill"
+          show_full_output: true
+
+      - name: Detect primary failure
+        id: credits
+        if: steps.gate.outputs.boundary == 'true'
+        run: |
+          out=/home/runner/work/_temp/claude-execution-output.json
+          failed=false
+          if [ -f "$out" ]; then
+            if jq -e '[.[] | select(.type=="result")] | last | .is_error == true' "$out" >/dev/null 2>&1; then
+              failed=true
+            elif grep -qiE "Credit balance is too low|Invalid API key|authentication_error" "$out"; then
+              failed=true # belt-and-suspenders if the JSON shape ever changes
+            fi
+          fi
+          echo "exhausted=$failed" >> "$GITHUB_OUTPUT"
+          [ "$failed" = true ] && echo "::warning::Primary (subscription) attempt failed — falling back to the API key"
+          true
+
+      - name: Run the learning flywheel (API-key fallback)
+        if: steps.gate.outputs.boundary == 'true' && (steps.primary.outcome == 'failure' || steps.credits.outputs.exhausted == 'true')
+        uses: anthropics/claude-code-action@v1
+        env:
+          LIFECYCLE_PAT: ${{ secrets.LIFECYCLE_PAT }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Run the /learn skill: read telemetry/evolution.jsonl.gz for the
+            just-closed generation and telemetry/learnings.jsonl, mine for
+            friction, embed <=3 minimal edits into the canonical .github/
+            prompt layer that REMOVE work, record each in
+            telemetry/learnings.jsonl, and open an auto-merged PR for
+            safe-class edits. Follow .github/skills/learn/SKILL.md exactly.
+            Touch framework files + the learnings ledger only.
+          claude_args: >-
+            --model ${{ steps.gate.outputs.model }}
+            --max-turns 60
+            --allowedTools "Bash,Edit,Write,Read,Glob,Grep,TodoWrite,Skill"
+          show_full_output: true
+
+      # Publish safety net. /learn publishes its edits through an auto-merged PR
+      # (framework changes go through PRs, never straight to main). If the agent
+      # edited framework files but ended before opening that PR, the runner would
+      # discard the work. Catch it: if the tree is dirty after the agent, push the
+      # edits to a branch and open an auto-merged PR — NOT a direct push to main,
+      # so the framework's PR convention holds. A clean tree (agent opened its PR,
+      # or produced nothing) makes this a no-op.
+      - name: Publish safety net (open PR for any unpublished learn edits)
+        if: steps.gate.outputs.boundary == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT || github.token }}
+          LIFECYCLE_PAT: ${{ secrets.LIFECYCLE_PAT }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Working tree clean — /learn opened its PR or produced no change; nothing to do."
+            exit 0
+          fi
+          echo "::warning::/learn left uncommitted edits — opening a safety-net PR (its own PR step was not reached)."
+          branch="learn-safety-net-${{ github.run_id }}"
+          git config user.name "claude-learn"
+          git config user.email "noreply@anthropic.com"
+          tok="${LIFECYCLE_PAT:-$GH_TOKEN}"
+          git remote set-url origin "https://x-access-token:${tok}@github.com/${GITHUB_REPOSITORY}.git"
+          git checkout -b "$branch"
+          git add -A
+          git commit -m "chore(learn): embed telemetry learnings (safety net — /learn PR step not reached)"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "chore(learn): embed telemetry learnings (safety net)" \
+            --body "Auto-opened because the /learn agent left uncommitted framework edits without opening its own PR. Carries framework + learnings-ledger edits only." \
+            || true
+          # Enable auto-merge so the PR merges ONLY after required checks pass
+          # (e.g. the framework-pr-reviewer gate). Do NOT fall back to an immediate
+          # squash — that bypasses the required review and makes any reviewer
+          # illusory (ADR-0003 defect #3). If auto-merge isn't enabled on the repo,
+          # the PR stays open for a human/reviewer to gate.
+          gh pr merge "$branch" --squash --auto --delete-branch || true

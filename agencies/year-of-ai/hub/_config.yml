@@ -1,0 +1,747 @@
+# Welcome to the configuration file for Jekyll.
+# Full docs at: http://jekyllrb.com/docs/configuration/
+# YAML docs at: https://yaml.org/spec/1.2.2/
+# ---------------------------------------------------------------------------------
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server.
+#
+# If you need help with YAML syntax, here are some quick references for you: 
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# You can find config options at: https://jekyllrb.com/docs/configuration/options/
+#
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+
+# Site Settings ###################################################################
+
+site_configured          : true   # Tells the theme this site has been personalised
+
+founder                  : "Amr Abdel-Motaleb"
+# This repo is the year-of-ai organization root site (year-of-ai.github.io). It
+# renders via the shared zer0-mistakes theme pulled over `remote_theme` — no
+# theme files are vendored here. The org's year sites consume the same theme the
+# same way, untagged by policy: the fleet tracks the theme's latest main.
+# Do NOT add an @vX.Y.Z tag here — theme bugs go upstream, not pinned around.
+# Pinned to a tagged theme release: all 12 org sites build against this theme,
+# and an unpinned HEAD means any upstream push can change/break every site at
+# once (the theme ships multiple releases a week). Bump deliberately: update
+# the tag here AND in _data/hub.yml pages.theme_repo, then roll member configs
+# with scripts/provision-org-sites.rb.
+remote_theme             : "bamr87/zer0-mistakes"
+
+## Github Information
+github_user              : &github_user "year-of-ai"
+repository_name          : &github_repository "year-of-ai.github.io"
+repository               : [*github_user, "/", *github_repository] # GitHub username/repo-name
+local_repo               : &local_repo "year-of-ai.github.io"
+branch                   : &branch "main"
+repo_map                 : "/sitemap/"
+portfolio                : &portfolio [*github_user, '.', 'github.io']
+
+## Site Information ---------------------------------------------------------------
+
+title                    : &title "Year of AI"
+title_url                : "/"
+title_icon               : "robot"
+subtitle                 : ""
+subtitle_url             : "localhost"
+subtitle_icon            : "code"
+title_separator          : "|" # Appears in the web browser tab name
+domain                   : &domain "year-of-ai"
+domain_ext               : &domain_ext "github.io"
+baseurl                  : &baseurl "" # the subpath of your site, e.g. /blog - Use this if you want this whole repo to be a domain branch
+url_test                 : &url_test [ 'https', '://', *github_user, '.', *domain, '.', *domain_ext ] # the base hostname & protocol for your site, e.g. http://example.com
+domain_url               : &domain_url [ 'https', '://', *domain, '.', *domain_ext ]
+github_io_url            : &github_io_url [ 'https', '://', *github_user, '.', *domain, '.', *domain_ext, '/', *github_repository ]
+url                      : &url https://year-of-ai.github.io
+public_folder            : assets # path to the public folder
+port                     : 4000 # Jekyll Serve Dev port
+dg_port                  : 4001 # TODO: Doppelganger site. Use this if you want to switch between parallel deployments
+og_image                 : '/assets/images/wizard-on-journey.png'
+
+### Owner Information -------------------------------------------------------------
+
+name                     : &name "Amr"
+email                    : "amr.abdel@gmail.com"
+description              : >- # this means to ignore newlines until the next variable
+  Year of AI — the organization hub for a federated network of self-growing,
+  year-by-year knowledge bases. Each year publishes its own site, all rendered
+  with the shared zer0-mistakes Jekyll theme.
+level                    : 'n00b'
+
+## Maintainer Information----------------------------------------------------------
+
+maintainers:
+  - name: *name
+    profile: ["https://github.com", "/", *github_user]
+  - name: "Vacant"
+    profile: "/github.com"
+
+## Personalization ----------------------------------------------------------------
+
+locale                   : "en-US"
+logo                     : /assets/images/gravatar-small.png  # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo_link                : [ *url, *baseurl ] # URL to link the logo to, e.g. "/"
+
+teaser                   : '/assets/images/favicon_gpt_computer_retro.png' # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+info_banner              : '/assets/images/info-banner-mountain-wizard.png' # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+
+# Favicon / browser identity — rendered by the theme's core/favicon.html
+# (no-op on the pinned v1.26.0 theme; lights up on the next deliberate pin
+# bump — the root favicon.ico keeps working via the browser's implicit probe).
+favicon:
+  ico                    : /favicon.ico
+
+## Preview Image Generation (AI-powered) #####################################
+# Read by the zer0-image-generator engine (`jekyll preview-images`, or
+# scripts/generate-preview-images.sh). `auto` is the engine's own capability
+# ladder:
+#   raster image API key wired   — that renderer (Claude writes the art brief);
+#   Claude credential alone      — the `claude` provider's illustration LOOP
+#                                  (plan → author → shape → look → critique;
+#                                  ADR-0008, engine >= 0.10);
+#   nothing wired                — one shared banner per section.
+# MEMBER repos are illustrated by the grow tick itself (grow-lineage.yml
+# "Illustrate" step, art direction from lineage/policy.yml `preview:`) —
+# this block only covers the hub site's own pages.
+preview_images:
+  enabled                : true
+  provider               : 'auto'             # auto | local | claude | openai | xai | stability | gemini
+  model                  : ''                 # empty → the active renderer's default
+  size                   : '1536x1024'        # landscape banner
+  quality                : 'auto'
+  style                  : 'retro pixel art, 8-bit video game aesthetic, vibrant colors, nostalgic, clean pixel graphics'
+  output_dir             : 'assets/images/previews'
+  # Path normalization: allows omitting /assets/ prefix in frontmatter
+  # e.g., preview: /images/previews/my-image.png becomes /assets/images/previews/my-image.png
+  assets_prefix          : '/assets'          # Prefix to prepend to relative preview paths
+  auto_prefix            : true               # Auto-add assets_prefix if path doesn't start with it
+  # SVG-only: the vector banner IS the committed preview (~12 KB, diffs as
+  # text, crisp at any size, no rasterizer toolchain on any agent or runner).
+  rasterizer             : 'none'             # auto|rsvg|inkscape|magick|playwright|none
+  prompt_engine          : 'claude'           # claude writes the art brief (template = built-in prompt)
+  review_engine          : 'claude'           # claude vision-reviews raster renders (none = skip)
+  # Additional style modifiers applied to all prompts
+  style_modifiers        : 'pixelated, retro gaming style, CRT screen glow effect, limited color palette'
+
+breadcrumbs              : true # true, false (default)
+words_per_minute         : 200
+_posts_file_structure    : "year-month-day-title.md"
+
+# UI navigation behaviour --------------------------------------------------
+# Optional consolidation of the mobile sidebar + main-menu offcanvases into
+# a single tabbed drawer (Browse / Menu / Settings). Default false to avoid
+# disrupting existing forks. See _includes/navigation/unified-drawer.html.
+navigation:
+  unified_mobile_drawer  : false  # true to opt into the single-drawer pattern
+
+# Opt-in user override hooks. When true, the theme loads:
+#   - assets/css/user-overrides.css  (after main.css, wins over theme rules)
+#   - assets/js/user-overrides.js    (after the theme JS bundle)
+# Ship these files in your fork; they are not bundled with the theme.
+user_overrides           : false
+
+# Runtime Appearance panel inside the Settings offcanvas (Track 6).
+# Adds light/dark/auto color-mode buttons + a primary-color picker that
+# writes to localStorage["zer0-appearance"] and updates --zer0-color-primary
+# without a page reload. Falls back gracefully when disabled.
+appearance_panel         : true
+
+## Identity #####################################################################
+
+author:
+  name                   : *name # *name is a YAML reference pointing to the &anchor earlier
+  avatar                 : "/assets/images/gravatar-small.png"
+  email_hash             : &email_hash '71d7a4fc9712df49e13d606e620f89c7' # https://en.gravatar.com/site/check/{ site.email }
+  gravatar               : [ 'https://s.gravatar.com/avatar/', *email_hash, '?s=80' ]
+  bio                    : "IT nerd trying to be an IT hero"
+  location               : "Denver, CO"
+  twitter_username       : "bamr87"
+  github_username        : *github_user
+
+## Site Analytics #############################################################
+
+google_analytics         : 'G-ZBDKNMC168'
+
+# PostHog Analytics Configuration
+# https://posthog.com/docs/libraries/js
+posthog:
+  enabled                : true
+  api_key                : 'phc_RRFmtqxRUI4XFDoI4KXUYMbTzPvhiu4A07qdSsAaXgg'
+  api_host               : 'https://us.i.posthog.com'
+  person_profiles        : 'identified_only'  # Options: 'always', 'identified_only', 'never'
+  autocapture            : true   # Automatically capture clicks, form submissions, etc.
+  capture_pageview       : true   # Track page views
+  capture_pageleave      : true   # Track when users leave pages
+  session_recording      : false  # Enable session recordings (privacy consideration)
+  disable_cookie         : false  # Set to true for cookieless tracking
+  respect_dnt            : true    # Respect Do Not Track browser setting
+  cross_subdomain_cookie : false  # Enable if you have multiple subdomains
+  secure_cookie          : true   # Use secure cookies in production
+  persistence            : 'localStorage+cookie'  # Options: 'localStorage+cookie', 'cookie', 'memory'
+  custom_events:
+    track_downloads      : true   # Track PDF, ZIP, etc. downloads
+    track_external_links : true   # Track clicks to external websites
+    track_search         : true   # Track search queries
+    track_scroll_depth   : true   # Track how far users scroll
+  privacy:
+    mask_all_text        : false  # Mask all text in session recordings
+    mask_all_inputs      : true   # Mask form inputs in session recordings
+    ip_anonymization     : false  # Anonymize IP addresses
+
+# Nanobar - Page Loading Progress Bar #############################################
+# Visual loading indicator shown on every page load.
+# Library: https://github.com/jacoborus/nanobar
+nanobar:
+  enabled       : true              # Master switch — set false to disable entirely
+  # Visual styling (any valid CSS values; CSS variables / var() are supported)
+  color         : "var(--bs-primary)" # Bar (progress) color
+  background    : "transparent"      # Track background behind the bar
+  height        : "3px"              # Bar thickness (e.g. 2px, 4px, 0.25rem)
+  # Placement
+  position      : "navbar"           # top | bottom | navbar (under header)
+  z_index       : 9999               # Stacking order
+  # Loading simulation — percentages applied in order on DOMContentLoaded.
+  # With step_delay_ms = 0 the bar fills instantly and is essentially invisible
+  # on fast pages. Increase to slow / make the animation perceivable.
+  steps         : [20, 55, 85, 100]
+  step_delay_ms : 180                # Delay between steps in ms (0 = instant burst)
+  # Advanced (rarely needs changing)
+  classname     : "nanobar"          # Class added to the injected element
+  id            : "top-progress-bar" # DOM id of the injected element
+  target        : ""                 # CSS selector to mount inside; "" = fixed to viewport
+
+## AI Chat Configuration #####################################################
+# Frontend chatbot that provides AI-powered assistance with page context
+# The API key should be stored in GitHub secrets and injected at build time
+# via a config overlay (e.g., --config _config.yml,_config_secrets.yml)
+#
+# Security Note: For production use, consider routing requests through a
+# server-side proxy to avoid exposing the API key in client-side code.
+
+ai_chat:
+  # Disabled until the chat proxy is actually deployed for this site: with
+  # proxy_ready: false the widget renders but every production send fails.
+  # To enable: deploy templates/deploy/chat-proxy/ (see deploy-chat-proxy.yml),
+  # then set enabled: true AND proxy_ready: true.
+  enabled                : false
+  provider               : 'anthropic'        # AI provider (Claude Messages API)
+  auth_mode              : 'proxy'            # 'proxy' (recommended) or 'direct'
+  proxy_ready            : false              # Set true only when your proxy endpoint is deployed
+  model                  : 'claude-opus-5-5'  # Claude model to use
+  api_key                : ''                  # Direct mode only. Leave empty in source. Inject at build time:
+                                               # 1. Store as GitHub secret: ANTHROPIC_API_KEY
+                                               # 2. In CI, create _config_secrets.yml with the key
+                                               # 3. Build: jekyll build --config _config.yml,_config_secrets.yml
+  endpoint               : '/api/chat'        # Proxy endpoint (same-origin) for production safety.
+                                               # Direct mode talks to https://api.anthropic.com/v1/messages
+  anthropic_version      : '2023-06-01'       # Anthropic API version header
+  max_tokens             : 1024               # Max response length
+  strict_context         : true               # Ground answers to current page context only
+  out_of_scope_message   : "I can only answer from the content on this page."
+  system_prompt          : >-
+    You are a helpful assistant for Year of AI, the hub site of a federated
+    network of self-growing, year-by-year knowledge bases. Answer questions
+    about the current page content and help users navigate to the year sites
+    and the hub dashboard. Be concise and friendly.
+  welcome_message        : "Hi! I'm the Year of AI assistant. Ask about this page, report a problem, or suggest an improvement."
+  placeholder            : "Ask about this page..."
+  context_max_length     : 2000               # Max chars of page content sent as context
+  icon                   : 'bi-robot'         # Bootstrap icon for chat button
+  local_edit             : false              # DEV ONLY: let the assistant write the current page's
+                                              # source file via the dev proxy (never enable in production)
+  local_edit_endpoint    : '/api/page'        # dev proxy base for reading/writing the local source file
+  github:                                     # GitHub actions exposed to the assistant (tool use)
+    enabled              : true               # Offer issue/PR tools in the chat
+    mode                 : 'url'              # 'url' = pre-filled github.com forms (no token anywhere);
+                                              # 'proxy' = real issues + PRs via the proxy's GitHub routes
+                                              #           (see templates/deploy/chat-proxy/)
+    endpoint             : '/api/github'      # Proxy base path for GitHub actions (proxy mode)
+    base_branch          : 'main'             # Branch sources are read from / PRs are based on
+    default_labels       : ['from-chat']      # Labels added to issues created from the chat
+    pr_branch_prefix     : 'chat/'            # Prefix for PR branches created by the proxy
+
+## Site verification #############################################################
+
+google_site_verification : null
+bing_site_verification   : null
+alexa_site_verification  : null
+yandex_site_verification : null
+aver_site_verification   : null
+baidu_site_verification  : null
+
+## Affiliations ##############################################################
+
+default_icon: "bi" ## Bootstrap Icons https://icons.getbootstrap.com/
+
+links:
+  - label: "Portfolio"
+    url: [ 'https://', *github_user, '.github.io/']
+    icon: "bi-link"
+  - label: "X"
+    icon: "bi-twitter-x"
+    url: "https://x.com/bamr87"
+  - label: "GitHub"
+    icon: "bi-github"
+    url: [ 'https://github.com/' , *github_user ]
+  - label: "Instagram"
+    icon: "bi-instagram"
+    url: "https://instagram.com/bamr42"
+
+youtube:
+  - label: "YouTube"
+    icon: "bi-youtube"
+    url: "https://www.youtube.com/channel/UCO0j3Opg3J9i2iWnDwHUsXQ"
+
+## Build Framework ##############################################################
+
+powered_by:
+  - name: "Ruby"
+    version: "3.3"
+    url: "https://www.ruby-lang.org/"
+    icon: "bi-gem"
+  - name: "Jekyll"
+    version: "3.10"
+    url: "https://jekyllrb.com/"
+    icon: "bi-joystick"
+  - name: "Bootstrap"
+    version: "5.3.3"
+    url: "https://getbootstrap.com/"
+    icon: "bi-bootstrap"
+  - name: "jQuery"
+    url: "https://jquery.com/"
+    icon: "bi-filetype-js"
+  - name: "MathJax"
+    url: "https://www.mathjax.org/"
+    icon: "bi-calculator"
+  - name: "GitHub Pages"
+    version: "232"
+    url: "https://pages.github.com/"
+    icon: "bi-github"
+  - name: "Docker"
+    url: "https://www.docker.com/"
+    icon: "bi-docker"
+
+### Plugins  #####################################################################
+
+# https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins
+# http://jekyllrb.com/docs/plugins/
+
+# All plugins are enabled by default for GitHub Pages. https://pages.github.com/versions/
+
+plugins:
+  - github-pages
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-relative-links
+  # jekyll-redirect-from is on the GitHub Pages whitelist and powers Obsidian
+  # `aliases:` → URL redirects (see pages/_docs/obsidian/syntax-reference.md).
+  - jekyll-redirect-from
+  # jekyll-include-cache (on the GitHub Pages whitelist) provides the
+  # {% include_cached %} tag used by setup-banner.html and other includes to
+  # collapse per-page renders of stable content into a single cached render.
+  - jekyll-include-cache
+  # Note: jekyll-mermaid is NOT in GitHub Pages whitelist - it only provides {% mermaid %} Liquid tag
+  # Mermaid diagrams work without this plugin via client-side JavaScript (see _includes/components/mermaid.html)
+  - jekyll-mermaid
+
+# Project resource links (used by landing page and includes)
+resources:
+  github_repo: [ 'https://github.com/', *github_user, '/', *github_repository ]
+  github_fork: [ 'https://github.com/', *github_user, '/', *github_repository, '/fork' ]
+  contributing: [ 'https://github.com/', *github_user, '/', *github_repository, '/blob/', *branch, '/CONTRIBUTING.md' ]
+  rubygems:
+    name: "jekyll-theme-zer0"
+    url: [ 'https://rubygems.org/gems/', "jekyll-theme-zer0" ]
+  docker:
+    image: [ *github_user, '/', *github_repository ]
+    hub_url: [ 'https://hub.docker.com/r/', *github_user, '/', *github_repository ]
+
+## Gisgus Plugin #################################################################
+
+gisgus:
+  enabled: true
+  data-repo-id: "MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM"
+  data-category-id: "DIC_kwDOEOrJ7c4CAn8D"
+
+## Mermaid Diagram Configuration #################################################
+# Mermaid diagrams support both native markdown code blocks and div syntax
+# Usage: 
+#   1. Add 'mermaid: true' to page front matter
+#   2. Use ```mermaid ... ``` code blocks OR <div class="mermaid">...</div>
+# 
+# GitHub Pages Compatible: Yes (client-side; script bundled under assets/vendor/)
+# Update file: npm install && npm run vendor:mermaid (copies from node_modules/mermaid, not jsDelivr)
+# Plugin: jekyll-mermaid is OPTIONAL (not needed for GitHub Pages)
+# Documentation: https://mermaid.js.org/
+
+mermaid:
+  src: '/assets/vendor/mermaid/mermaid.min.js'
+
+## Conversion
+# Markdown Options https://jekyllrb.com/docs/configuration/markdown/
+# https://github.com/github/jekyll-commonmark-ghpages
+
+markdown: kramdown
+# highlighter: rouge
+# lsi: false
+# excerpt_separator: "\n\n"
+# incremental: false
+
+# Markdown Processing https://jekyllrb.com/docs/configuration/markdown/
+kramdown: # https://kramdown.gettalong.org/options.html
+  input: GFM
+  header_offset: 0
+  # hard_wrap: false
+  # auto_ids: true
+  # footnote_nr: 1
+  # entity_output: as_char
+  toc_levels: 1..6
+  # smart_quotes: lsquo,rsquo,ldquo,rdquo
+  # enable_coderay: false
+
+# Collections: https://jekyllrb.com/docs/collections/
+  # Permalinks: https://jekyllrb.com/docs/permalinks/
+
+collections_dir: &collections_dir pages
+local_repo_path: [ *collections_dir, '/', *local_repo ]
+
+collections:
+  pages:
+    output: true
+    permalink: /:collection/:name/
+  posts:
+    output: true
+    permalink: /:collection/:year/:month/:day/:slug/
+  docs:
+    output: true
+    permalink: /:collection/:categories/:name/
+  quests:
+    output: true
+    permalink: /:collection/:categories/:name/
+  hobbies:
+    output: true
+    permalink: /:collection/:categories/:name/
+  notebooks:
+    output: true
+    permalink: /:collection/:path/:name/
+  notes:
+    output: true
+    permalink: /:collection/:path/:name/
+  quickstart:
+    output: true
+    permalink: /:collection/:name/
+  about:
+    output: true
+    permalink: /:collection/:categories/:name/
+
+permalink: pretty
+
+#  pagination https://jekyllrb.com/docs/pagination/
+
+paginate: 10
+paginate_path: "/pages/:num/"
+
+# Defaults https://jekyllrb.com/docs/configuration/front-matter-defaults/
+
+defaults:
+  # ALL
+  - 
+    scope:
+      path: ""
+    values:
+      layout: root
+      author_profile: false
+      read_time: true
+      comments: false # true
+      share: true
+      related: true
+      sidebar:
+        nav: auto
+    permalink: /:collection/:name/
+
+  # pages
+  - 
+    scope:
+      path: pages
+    values:
+      layout: &pages default
+      author_profile: true
+      read_time: true
+      comments: # true
+      share: true
+      related: true
+      toc_sticky: true
+      sidebar:
+        nav: categories
+    permalink: /:path/:name/
+
+  # pages/_about
+  - 
+    scope:
+      path: pages/_about
+    values:
+      layout: *pages
+      collection: about
+      share: true
+      related: true
+      sidebar:
+        nav: auto
+
+  # pages/_quickstart
+  - 
+    scope:
+      path: pages/_quickstart
+    values:
+      layout: default
+      collection: quickstart
+      share: true
+      related: true
+      sidebar:
+        nav: auto
+
+  # pages/_posts
+  - 
+    scope:
+      path: pages/_posts
+    values:
+      layout: article
+      post_type: standard
+      index: false
+      sidebar: true
+      author_profile: true
+      read_time: true
+      comments: # true
+      share: true
+      related: true
+      # permalink: /:collection/:name/
+
+  # pages/_docs
+  - 
+    scope:
+      path: pages/_docs
+    values:
+      layout: *pages
+      # category: docs
+      author_profile: true
+      read_time: true
+      sidebar:
+        nav: auto
+      comments: # true
+      share: true
+      related: true
+    # permalink: /docs/:category/:name/
+
+  # pages/_notes
+  - 
+    scope:
+      path: pages/_notes
+      type: notes
+    values:
+      layout: note
+      collection: notes
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      sidebar:
+        nav: auto
+
+  # pages/_notebooks
+  - 
+    scope:
+      path: pages/_notebooks
+      type: notebooks
+    values:
+      layout: notebook
+      collection: notebooks
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      jupyter_metadata: true
+      sidebar:
+        nav: auto
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# NOTE: When _config_dev.yml is layered on top (--config _config.yml,_config_dev.yml),
+# the dev file MUST repeat this full list — Jekyll replaces, not merges, the exclude key.
+
+exclude:
+  # ── Repo docs that are not site pages ────────────────────────────────────
+  # README.md is the GitHub repo readme, not the homepage (that lives in
+  # pages/home.md). This exclude IS the guard against a "/" collision — README
+  # has no front matter, so keep it listed here (don't rely on published:false).
+  - README.md
+  - PRD.md
+  # Maintainer/agent docs read on GitHub, not published as site pages.
+  - ARCHITECTURE.md
+  - CLAUDE.md
+  - CHANGELOG.md
+  - features/
+
+  # ── Orchestration source data (not site content) ─────────────────────────
+  # lineage/ holds the centralized seeds + bootstrap kit for the self-growing
+  # year repos; the published view is pages/lineage.md.
+  - lineage/
+
+  # genome/ is the abstracted org-model DNA (manifest, transplant inventory,
+  # verify gate) — replant tooling, not site content.
+  - genome/
+
+  # telemetry/ is the hub evolution ledger (growth run records), not site content.
+  - telemetry/
+
+  # ── Jekyll cache ─────────────────────────────────────────────────────────
+  - .sass-cache/
+  - .jekyll-cache/
+
+  # ── Obsidian vault working files ─────────────────────────────────────────
+  - .obsidian/
+  - "*.canvas"
+  - "*.excalidraw.md"
+
+  # ── IDE / editor config (dot-prefix dirs hidden by default; listed for clarity) ─
+  - .cursor/
+  - .devcontainer/
+  - .frontmatter/
+  - .github/
+  - .vscode/
+
+  # ── Ruby / Bundler ────────────────────────────────────────────────────────
+  - Gemfile
+  - Gemfile.lock
+  - gemfiles/
+  - jekyll-theme-zer0.gemspec
+  - lib/
+  - pkg/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+  # ── Node.js ───────────────────────────────────────────────────────────────
+  - node_modules/
+  - package.json
+  - package-lock.json
+
+  # ── Shell scripts and automation ──────────────────────────────────────────
+  - scripts/
+  - "*.sh"
+
+  # ── Docker configuration ──────────────────────────────────────────────────
+  - docker/
+  - docker-compose.yml
+  - docker-compose.test.yml
+
+  # ── Build / task runners ──────────────────────────────────────────────────
+  - Makefile
+  - Rakefile
+
+  # ── Project tooling metadata ──────────────────────────────────────────────
+  - AGENTS.md
+  - docs/
+  - frontmatter.json
+  - logs/
+  - templates/
+  - vendor-manifest.json
+  - "*.code-workspace"
+
+  # ── Submodules, tests, and authoring scaffolding ──────────────────────────
+  - submodules/
+  - test/
+  - tests/
+  - MERMAID-*.md
+  - MERMAID-*/
+  - pages/_notes/_templates/
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: expanded
+
+#  TODO: Fix bootstrap plugin
+  # load_paths:
+  #   - /usr/local/bundle/gems/bootstrap-5.3.3/assets/stylesheets
+
+
+## Style Settings -------------------------------------------------------------
+
+# theme                  : "zer0-mistakes-jekyll"
+theme_skin               : "air" # "air", "aqua", "dirt", "neon", "mint", "plum", "sunrise"
+
+# SVG background layers (fffuel.co style) — gradient, pattern, noise per skin
+theme_background:
+  enabled: true           # Master toggle for SVG backgrounds
+  gradient_opacity: 0.6   # Hero/header gradient layer opacity
+  texture_opacity: 0.04   # Body noise texture overlay opacity
+  pattern_opacity: 0.08   # Surface/card pattern overlay opacity
+  blend_mode: overlay     # CSS mix-blend-mode for all layers
+
+# style                  : "default" # "default", "dark", "light", "solarized-dark", "solarized-light"
+# remote_style           : "bamr87/zer0-mistakes"
+
+# NOTE: Hex codes MUST be quoted — unquoted `#007bff` is parsed as a YAML
+# comment and the key resolves to null. These values feed
+# _includes/core/tokens-inline.html → --zer0-color-*.
+theme_color:
+  main:         "#007bff"
+  secondary:    "#6c757d"
+  red:          "#a11111"
+  yellow:       "#ffe900"
+  teal:         "#376986"
+  blue:         "#007bff"
+  green:        "#28a745"
+  purple:       "#6f42c1"
+  pink:         "#e83e8c"
+  orange:       "#fd7e14"
+  brown:        "#795548"
+  cyan:         "#17a2b8"
+  indigo:       "#6610f2"
+  lime:         "#cddc39"
+  amber:        "#ffc107"
+  deep_orange:  "#ff5722"
+  deep_purple:  "#673ab7"
+  light_blue:   "#03a9f4"
+  light_green:  "#8bc34a"
+  light_purple: "#9c27b0"
+  light_red:    "#f44336"
+  light_yellow: "#ffeb3b"
+  light_teal:   "#009688"
+
+## Copyright Settings --------------------------------------------------------------
+
+cr_year: 2024
+cr_entity: *name
+cr_lisense: "MIT"
+
+## Sitemap Settings --------------------------------------------------------------
+
+# sitemap_include: A list of file extensions that should be included in the sitemap. By default, HTML files and any files with sitemap: true in their front matter are included.
+# sitemap_exclude: A list of files or directories that should be excluded from the sitemap.
+
+sitemap_include: ["html", "xml"]
+sitemap_exclude: ["secret.html", "private"]

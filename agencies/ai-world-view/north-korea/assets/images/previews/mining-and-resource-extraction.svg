@@ -1,0 +1,301 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Mining and Resource Extraction — DPRK Economy</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b7355" />
+      <stop offset="40%" stop-color="#6b5a3e" />
+      <stop offset="70%" stop-color="#4a3f2e" />
+      <stop offset="100%" stop-color="#2c2418" />
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9b896" />
+      <stop offset="100%" stop-color="#b8a678" />
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#a08060" stroke-width="0.8" opacity="0.4" />
+    </pattern>
+    <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#7a6040" stroke-width="0.6" opacity="0.3" />
+      <line x1="0" y1="5" x2="10" y2="5" stroke="#7a6040" stroke-width="0.6" opacity="0.3" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <linearGradient id="coalVein" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a2520" />
+      <stop offset="50%" stop-color="#1a1510" />
+      <stop offset="100%" stop-color="#2a2520" />
+    </linearGradient>
+    <linearGradient id="mineralGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7a9e7e" />
+      <stop offset="100%" stop-color="#4a7a5e" />
+    </linearGradient>
+    <linearGradient id="uraniumGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8a9e5e" />
+      <stop offset="100%" stop-color="#6a7e3e" />
+    </linearGradient>
+    <linearGradient id="ironGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8a6a5a" />
+      <stop offset="100%" stop-color="#6a4a3a" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.5" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6040" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a6040" stroke-width="1" />
+  
+  <g stroke="#7a6040" stroke-width="1.5" fill="none">
+    <path d="M18,60 L18,18 L60,18" />
+    <path d="M1476,18 L1518,18 L1518,60" />
+    <path d="M18,964 L18,1006 L60,1006" />
+    <path d="M1476,1006 L1518,1006 L1518,964" />
+  </g>
+
+  
+  <rect x="28" y="28" width="1480" height="380" fill="url(#skyGrad)" opacity="0.6" />
+
+  
+  <polygon points="0,408 120,260 240,320 360,200 480,300 560,408" fill="#b8a070" opacity="0.5" />
+  <polygon points="480,408 600,240 720,290 840,180 920,260 1000,408" fill="#a89060" opacity="0.45" />
+  <polygon points="900,408 1020,220 1140,280 1260,160 1380,240 1536,408" fill="#b8a070" opacity="0.5" />
+
+  
+  
+  <rect x="28" y="408" width="1480" height="80" fill="#8b7355" />
+  <rect x="28" y="408" width="1480" height="80" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <rect x="28" y="488" width="1480" height="130" fill="#6b5a3e" />
+  <rect x="28" y="488" width="1480" height="130" fill="url(#crosshatch)" opacity="0.5" />
+
+  
+  <rect x="28" y="618" width="1480" height="150" fill="#4a3f2e" />
+  <rect x="28" y="618" width="1480" height="150" fill="url(#crosshatch)" opacity="0.6" />
+
+  
+  <rect x="28" y="768" width="1480" height="230" fill="#2c2418" />
+
+  
+  <path d="M28,486 Q200,480 400,490 Q600,498 800,484 Q1000,472 1200,488 Q1400,498 1508,486" fill="none" stroke="#a08060" stroke-width="2" opacity="0.7" />
+  <path d="M28,616 Q250,608 500,618 Q750,626 1000,612 Q1250,600 1508,616" fill="none" stroke="#7a6040" stroke-width="2" opacity="0.7" />
+  <path d="M28,766 Q300,758 600,768 Q900,776 1200,762 Q1400,756 1508,766" fill="none" stroke="#5a4020" stroke-width="2" opacity="0.7" />
+
+  
+  <path d="M100,520 Q200,510 350,525 Q450,535 550,520 Q620,512 680,520" fill="none" stroke="url(#coalVein)" stroke-width="18" stroke-linecap="round" opacity="0.9" />
+  <path d="M800,540 Q950,528 1100,545 Q1200,555 1350,540 Q1420,532 1508,542" fill="none" stroke="url(#coalVein)" stroke-width="14" stroke-linecap="round" opacity="0.9" />
+  <path d="M200,650 Q350,638 550,652 Q700,662 900,648 Q1050,638 1200,650" fill="none" stroke="url(#coalVein)" stroke-width="22" stroke-linecap="round" opacity="0.95" />
+
+  
+  
+  <g transform="translate(380,640)" opacity="0.85">
+    <polygon points="0,-22 12,0 6,18 -6,18 -12,0" fill="url(#ironGrad)" stroke="#6a4a3a" stroke-width="1.5" />
+    <polygon points="16,-18 26,4 18,18 10,18 4,4" fill="url(#ironGrad)" stroke="#6a4a3a" stroke-width="1.5" />
+    <polygon points="-16,-18 -4,4 -10,18 -22,18 -26,4" fill="url(#ironGrad)" stroke="#6a4a3a" stroke-width="1.5" />
+  </g>
+  
+  <g transform="translate(900,670)" opacity="0.85">
+    <polygon points="0,-28 14,0 8,22 -8,22 -14,0" fill="url(#mineralGrad)" stroke="#3a6a4e" stroke-width="1.5" />
+    <polygon points="18,-22 30,5 20,22 8,22 0,5" fill="url(#mineralGrad)" stroke="#3a6a4e" stroke-width="1.5" />
+    <polygon points="-18,-22 -0,5 -8,22 -20,22 -30,5" fill="url(#mineralGrad)" stroke="#3a6a4e" stroke-width="1.5" />
+  </g>
+  
+  <g transform="translate(1200,700)" opacity="0.8">
+    <polygon points="0,-24 13,2 7,20 -7,20 -13,2" fill="url(#uraniumGrad)" stroke="#5a6a2e" stroke-width="1.5" />
+    <polygon points="15,-20 27,4 17,20 7,20 -1,4" fill="url(#uraniumGrad)" stroke="#5a6a2e" stroke-width="1.5" />
+  </g>
+
+  
+  <rect x="220" y="440" width="60" height="330" fill="#1a1510" rx="4" />
+  <rect x="220" y="440" width="60" height="330" fill="none" stroke="#7a6040" stroke-width="2" rx="4" />
+  
+  <g stroke="#8b6a3a" stroke-width="3" fill="none">
+    <line x1="220" y1="480" x2="280" y2="480" />
+    <line x1="220" y1="530" x2="280" y2="530" />
+    <line x1="220" y1="580" x2="280" y2="580" />
+    <line x1="220" y1="630" x2="280" y2="630" />
+    <line x1="220" y1="680" x2="280" y2="680" />
+    <line x1="220" y1="730" x2="280" y2="730" />
+  </g>
+  
+  <rect x="232" y="500" width="36" height="48" fill="#2a2520" stroke="#8b6a3a" stroke-width="1.5" rx="2" />
+  <line x1="250" y1="440" x2="250" y2="500" stroke="#8b6a3a" stroke-width="2" />
+
+  
+  <rect x="1256" y="440" width="60" height="330" fill="#1a1510" rx="4" />
+  <rect x="1256" y="440" width="60" height="330" fill="none" stroke="#7a6040" stroke-width="2" rx="4" />
+  <g stroke="#8b6a3a" stroke-width="3" fill="none">
+    <line x1="1256" y1="480" x2="1316" y2="480" />
+    <line x1="1256" y1="530" x2="1316" y2="530" />
+    <line x1="1256" y1="580" x2="1316" y2="580" />
+    <line x1="1256" y1="630" x2="1316" y2="630" />
+    <line x1="1256" y1="680" x2="1316" y2="680" />
+    <line x1="1256" y1="730" x2="1316" y2="730" />
+  </g>
+
+  
+  <path d="M280,720 L1256,720" fill="none" stroke="#1a1510" stroke-width="48" />
+  <path d="M280,720 L1256,720" fill="none" stroke="#2a2015" stroke-width="44" />
+  
+  <line x1="290" y1="740" x2="1246" y2="740" stroke="#5a4a2e" stroke-width="3" />
+  <line x1="290" y1="700" x2="1246" y2="700" stroke="#5a4a2e" stroke-width="3" />
+  <g stroke="#5a4a2e" stroke-width="2">
+    <line x1="320" y1="698" x2="320" y2="742" />
+    <line x1="380" y1="698" x2="380" y2="742" />
+    <line x1="440" y1="698" x2="440" y2="742" />
+    <line x1="500" y1="698" x2="500" y2="742" />
+    <line x1="560" y1="698" x2="560" y2="742" />
+    <line x1="620" y1="698" x2="620" y2="742" />
+    <line x1="680" y1="698" x2="680" y2="742" />
+    <line x1="740" y1="698" x2="740" y2="742" />
+    <line x1="800" y1="698" x2="800" y2="742" />
+    <line x1="860" y1="698" x2="860" y2="742" />
+    <line x1="920" y1="698" x2="920" y2="742" />
+    <line x1="980" y1="698" x2="980" y2="742" />
+    <line x1="1040" y1="698" x2="1040" y2="742" />
+    <line x1="1100" y1="698" x2="1100" y2="742" />
+    <line x1="1160" y1="698" x2="1160" y2="742" />
+    <line x1="1220" y1="698" x2="1220" y2="742" />
+  </g>
+
+  
+  <g transform="translate(680,680)">
+    <polygon points="-45,0 45,0 38,40 -38,40" fill="#4a3a28" stroke="#8b6040" stroke-width="2" />
+    
+    <ellipse cx="0" cy="0" rx="40" ry="10" fill="#1a1510" />
+    <polygon points="-30,-8 30,-8 40,0 -40,0" fill="#1a1510" />
+    
+    <circle cx="-28" cy="42" r="9" fill="#2a2018" stroke="#7a6040" stroke-width="2" />
+    <circle cx="28" cy="42" r="9" fill="#2a2018" stroke="#7a6040" stroke-width="2" />
+    <circle cx="-28" cy="42" r="3" fill="#5a4a2e" />
+    <circle cx="28" cy="42" r="3" fill="#5a4a2e" />
+  </g>
+
+  
+  <g transform="translate(250,280)">
+    
+    <polygon points="0,130 -28,-60 28,-60" fill="none" stroke="#5a4a2e" stroke-width="3" />
+    <line x1="-14,35" y1="35" x2="14" y2="35" stroke="#5a4a2e" stroke-width="2" />
+    <line x1="-20" y1="10" x2="20" y2="10" stroke="#5a4a2e" stroke-width="2" />
+    <line x1="-24" y1="-20" x2="24" y2="-20" stroke="#5a4a2e" stroke-width="2" />
+    
+    <circle cx="0" cy="-62" r="12" fill="none" stroke="#5a4a2e" stroke-width="3" />
+    <circle cx="0" cy="-62" r="4" fill="#5a4a2e" />
+    
+    <rect x="-30" y="130" width="60" height="30" fill="#8b7355" stroke="#5a4a2e" stroke-width="1.5" />
+    
+    <rect x="40" y="90" width="14" height="70" fill="#7a6040" stroke="#5a4a2e" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1286,280)">
+    <polygon points="0,130 -28,-60 28,-60" fill="none" stroke="#5a4a2e" stroke-width="3" />
+    <line x1="-20" y1="10" x2="20" y2="10" stroke="#5a4a2e" stroke-width="2" />
+    <line x1="-24" y1="-20" x2="24" y2="-20" stroke="#5a4a2e" stroke-width="2" />
+    <circle cx="0" cy="-62" r="12" fill="none" stroke="#5a4a2e" stroke-width="3" />
+    <circle cx="0" cy="-62" r="4" fill="#5a4a2e" />
+    <rect x="-30" y="130" width="60" height="30" fill="#8b7355" stroke="#5a4a2e" stroke-width="1.5" />
+    <rect x="-54" y="90" width="14" height="70" fill="#7a6040" stroke="#5a4a2e" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(450,350) rotate(-30)">
+    
+    <rect x="-4" y="-10" width="8" height="80" rx="4" fill="#8b6a3a" stroke="#5a3a18" stroke-width="1.5" />
+    
+    <path d="M-22,-28 Q-10,-38 4,-10 Q-10,-8 -22,-28 Z" fill="#5a5050" stroke="#3a3030" stroke-width="1.5" />
+    <path d="M26,-28 Q14,-38 4,-10 Q14,-8 26,-28 Z" fill="#6a6060" stroke="#3a3030" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1086,350) rotate(30)">
+    <rect x="-4" y="-10" width="8" height="80" rx="4" fill="#8b6a3a" stroke="#5a3a18" stroke-width="1.5" />
+    <path d="M-22,-28 Q-10,-38 4,-10 Q-10,-8 -22,-28 Z" fill="#5a5050" stroke="#3a3030" stroke-width="1.5" />
+    <path d="M26,-28 Q14,-38 4,-10 Q14,-8 26,-28 Z" fill="#6a6060" stroke="#3a3030" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1420,140)">
+    <circle cx="0" cy="0" r="70" fill="#c9b896" fill-opacity="0.7" stroke="#7a6040" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="62" fill="none" stroke="#7a6040" stroke-width="0.8" />
+    
+    <polygon points="0,-58 8,0 0,8 -8,0" fill="#5a4020" />
+    <polygon points="0,58 8,0 0,-8 -8,0" fill="#9a8060" />
+    <polygon points="58,0 0,8 -8,0 0,-8" fill="#9a8060" />
+    <polygon points="-58,0 0,8 8,0 0,-8" fill="#9a8060" />
+    
+    <polygon points="42,-42 4,-4 -4,4 4,4" fill="#b8a070" opacity="0.7" />
+    <polygon points="-42,-42 4,4 4,-4 -4,-4" fill="#b8a070" opacity="0.7" />
+    <polygon points="42,42 -4,-4 4,-4 4,4" fill="#b8a070" opacity="0.7" />
+    <polygon points="-42,42 4,-4 -4,-4 -4,4" fill="#b8a070" opacity="0.7" />
+    <circle cx="0" cy="0" r="8" fill="#e8dcc8" stroke="#7a6040" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="3" fill="#7a6040" />
+    
+    <text x="0" y="-68" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#4a3010">N</text>
+  </g>
+
+  
+  <g transform="translate(768,220) scale(0.9)" opacity="0.55">
+    <path d="M-20,-90 C-15,-88 -5,-80 2,-70 C10,-58 12,-42 15,-28 C18,-14 22,0 18,16 C14,30 8,42 5,56 C2,68 4,80 0,90 C-4,80 -2,68 -6,56 C-10,42 -16,30 -20,16 C-24,0 -20,-14 -17,-28 C-14,-42 -14,-58 -6,-70 C0,-80 -10,-88 -20,-90 Z" fill="#8b7355" stroke="#5a4020" stroke-width="2" />
+  </g>
+
+  
+  <g transform="translate(550,860)">
+    <rect x="0" y="0" width="18" height="18" fill="#1a1510" rx="2" />
+    <text x="24" y="14" font-family="Georgia, serif" font-size="22" fill="#3a2e18">Coal</text>
+  </g>
+  <g transform="translate(680,860)">
+    <rect x="0" y="0" width="18" height="18" fill="url(#ironGrad)" rx="2" />
+    <text x="24" y="14" font-family="Georgia, serif" font-size="22" fill="#3a2e18">Iron Ore</text>
+  </g>
+  <g transform="translate(840,860)">
+    <rect x="0" y="0" width="18" height="18" fill="url(#mineralGrad)" rx="2" />
+    <text x="24" y="14" font-family="Georgia, serif" font-size="22" fill="#3a2e18">Zinc / Copper</text>
+  </g>
+  <g transform="translate(1060,860)">
+    <rect x="0" y="0" width="18" height="18" fill="url(#uraniumGrad)" rx="2" />
+    <text x="24" y="14" font-family="Georgia, serif" font-size="22" fill="#3a2e18">Uranium / REE</text>
+  </g>
+
+  
+  <line x1="80" y1="120" x2="1456" y2="120" stroke="#7a6040" stroke-width="1" opacity="0.6" />
+  <line x1="80" y1="128" x2="1456" y2="128" stroke="#7a6040" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="768" y="226" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="bold" fill="#2c1f08" letter-spacing="2">MINING AND</text>
+  <text x="768" y="332" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="bold" fill="#2c1f08" letter-spacing="2">RESOURCE EXTRACTION</text>
+
+  <line x1="80" y1="360" x2="1456" y2="360" stroke="#7a6040" stroke-width="1" opacity="0.6" />
+  <line x1="80" y1="368" x2="1456" y2="368" stroke="#7a6040" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="768" y="395" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#5a4020" letter-spacing="6">DPRK  ·  ECONOMY  ·  HEAVY INDUSTRY</text>
+
+  
+  <text x="50" y="455" font-family="Georgia, serif" font-size="16" fill="#5a4020" opacity="0.8">0m</text>
+  <text x="50" y="510" font-family="Georgia, serif" font-size="16" fill="#d4c4a0" opacity="0.8">-50m</text>
+  <text x="50" y="640" font-family="Georgia, serif" font-size="16" fill="#d4c4a0" opacity="0.8">-200m</text>
+  <text x="50" y="790" font-family="Georgia, serif" font-size="16" fill="#d4c4a0" opacity="0.8">-400m</text>
+
+  
+  <rect x="28" y="900" width="1480" height="96" fill="#2c2418" opacity="0.85" />
+  <text x="768" y="958" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#d4c4a0" letter-spacing="4">KPA MINING OPERATIONS  ·  COAL · IRON · ZINC · LEAD · RARE EARTHS · URANIUM</text>
+
+  
+  <g fill="#7a6040" opacity="0.6">
+    <rect x="18" y="18" width="8" height="8" />
+    <rect x="1510" y="18" width="8" height="8" />
+    <rect x="18" y="998" width="8" height="8" />
+    <rect x="1510" y="998" width="8" height="8" />
+  </g>
+</svg>

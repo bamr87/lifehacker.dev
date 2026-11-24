@@ -1,0 +1,55 @@
+---
+name: Genome Sync
+
+# Routine-sync gate for the organizational genome (genome/). Fails when the model
+# drifts from the genome: a concept-bearing file the genome doesn't classify, or a
+# concept literal leaking into a "transplant" (verbatim-agnostic) file. This is
+# what keeps the genome a true, current DNA snapshot instead of a stale kit.
+#
+# Read-only; no secrets. Runs on changes to the model surface or the genome itself,
+# plus a weekly heartbeat that catches drift introduced by automated commits.
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'genome/**'
+      - '.github/workflows/**'
+      - 'scripts/**'
+      - 'lineage/framework/**'
+      - 'lineage/policy.yml'
+      - 'lineage/repo-template/**'
+      - 'lineage/seed-package/**'
+      - '_config.yml'
+      - '_data/hub.yml'
+      - 'pages/**'
+  pull_request:
+    paths:
+      - 'genome/**'
+      - '.github/workflows/**'
+      - 'scripts/**'
+      - 'lineage/**'
+      - 'pages/**'
+  schedule:
+    - cron: '17 6 * * 1' # Monday heartbeat — catch drift from automated commits
+  workflow_dispatch: {}
+
+concurrency:
+  group: genome-sync
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # verify.rb reads `git ls-files`
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Verify the genome reflects the current model
+        run: ruby genome/bin/verify.rb

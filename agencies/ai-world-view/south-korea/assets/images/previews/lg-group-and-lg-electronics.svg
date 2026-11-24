@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>LG Group and LG Electronics — Atlas Banner</title>
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="oceanGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8cfd8" />
+      <stop offset="100%" stop-color="#a0bdc8" />
+    </linearGradient>
+    <linearGradient id="koreaGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0392b" />
+      <stop offset="100%" stop-color="#922b21" />
+    </linearGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#b8a87a" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8b7550" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8b7550" stroke-width="1" />
+
+  
+  <g fill="none" stroke="#8b7550" stroke-width="1.5">
+    
+    <polyline points="18,60 18,18 60,18" />
+    <polyline points="26,55 26,26 55,26" />
+    
+    <polyline points="1518,60 1518,18 1476,18" />
+    <polyline points="1510,55 1510,26 1481,26" />
+    
+    <polyline points="18,964 18,1006 60,1006" />
+    <polyline points="26,969 26,998 55,998" />
+    
+    <polyline points="1518,964 1518,1006 1476,1006" />
+    <polyline points="1510,969 1510,998 1481,998" />
+  </g>
+
+  
+  <rect x="40" y="40" width="1456" height="944" fill="url(#oceanGrad)" opacity="0.35" />
+
+  
+  <g stroke="#8b7550" stroke-width="0.5" opacity="0.25">
+    
+    <line x1="40" y1="200" x2="1496" y2="200" />
+    <line x1="40" y1="360" x2="1496" y2="360" />
+    <line x1="40" y1="512" x2="1496" y2="512" />
+    <line x1="40" y1="664" x2="1496" y2="664" />
+    <line x1="40" y1="824" x2="1496" y2="824" />
+    
+    <line x1="220" y1="40" x2="220" y2="984" />
+    <line x1="440" y1="40" x2="440" y2="984" />
+    <line x1="660" y1="40" x2="660" y2="984" />
+    <line x1="880" y1="40" x2="880" y2="984" />
+    <line x1="1100" y1="40" x2="1100" y2="984" />
+    <line x1="1320" y1="40" x2="1320" y2="984" />
+  </g>
+
+  
+  
+  <path d="M 70,180 L 90,160 L 130,150 L 170,148 L 200,155 L 220,170 L 240,195 L 250,220 L 260,250 L 255,280 L 245,310 L 240,340 L 250,370 L 260,400 L 255,420 L 240,440 L 220,455 L 200,460 L 185,470 L 175,490 L 165,510 L 155,530 L 140,545 L 120,555 L 100,558 L 80,550 L 65,535 L 55,510 L 52,480 L 55,450 L 60,420 L 58,390 L 55,360 L 52,330 L 55,300 L 62,270 L 65,240 L 62,210 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+  
+  <path d="M 240,80 L 270,72 L 310,75 L 340,90 L 350,115 L 340,140 L 315,155 L 285,158 L 258,148 L 242,128 L 235,105 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+  
+  <path d="M 175,490 L 185,510 L 178,530 L 165,545 L 152,555 L 145,548 L 150,530 L 160,510 L 165,510 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+  
+  <path d="M 195,540 L 220,530 L 255,535 L 285,548 L 305,570 L 315,600 L 318,635 L 312,670 L 300,705 L 285,735 L 268,760 L 250,782 L 235,800 L 218,818 L 200,830 L 182,835 L 165,830 L 152,815 L 148,795 L 152,770 L 158,745 L 155,715 L 148,685 L 148,655 L 150,625 L 155,595 L 162,565 L 172,548 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M 550,130 L 570,118 L 600,115 L 630,118 L 655,128 L 670,145 L 672,165 L 660,182 L 640,192 L 615,198 L 605,215 L 598,235 L 588,250 L 570,258 L 548,260 L 528,252 L 515,238 L 512,218 L 518,198 L 530,182 L 540,165 L 542,148 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+  
+  <path d="M 600,115 L 615,95 L 632,88 L 648,95 L 650,115 L 635,118 L 615,118 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+  
+  <path d="M 515,138 L 525,128 L 538,128 L 542,140 L 535,152 L 520,155 L 510,148 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M 545,268 L 570,260 L 600,262 L 628,272 L 648,292 L 655,320 L 650,352 L 640,385 L 625,418 L 608,450 L 590,482 L 572,512 L 558,540 L 548,565 L 542,590 L 545,615 L 552,638 L 555,660 L 548,680 L 535,695 L 518,700 L 502,695 L 490,678 L 485,655 L 488,630 L 492,605 L 490,578 L 482,552 L 470,525 L 462,498 L 458,468 L 455,438 L 452,408 L 452,375 L 455,342 L 460,310 L 468,282 L 480,265 L 498,258 L 520,256 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+  
+  <path d="M 600,548 L 612,540 L 620,552 L 618,572 L 608,582 L 598,575 L 595,560 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="0.8" opacity="0.85" />
+
+  
+  <path d="M 650,100 L 690,88 L 740,82 L 800,80 L 860,84 L 920,90 L 980,98 L 1040,105 L 1090,115 L 1130,128 L 1155,145 L 1158,165 L 1145,182 L 1118,192 L 1080,198 L 1035,200 L 990,198 L 945,195 L 900,195 L 858,200 L 820,210 L 788,222 L 762,238 L 742,255 L 725,270 L 708,282 L 688,290 L 665,292 L 645,282 L 632,265 L 628,245 L 635,222 L 648,205 L 655,185 L 652,162 L 645,142 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M 660,290 L 690,285 L 718,292 L 735,310 L 738,332 L 728,355 L 710,372 L 688,380 L 665,378 L 648,365 L 642,345 L 645,322 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M 778,220 L 808,218 L 835,228 L 852,248 L 858,272 L 852,298 L 838,322 L 820,342 L 802,358 L 785,365 L 768,360 L 755,342 L 748,318 L 750,292 L 758,268 L 768,248 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M 900,195 L 940,188 L 985,185 L 1030,188 L 1070,198 L 1098,215 L 1112,238 L 1108,262 L 1090,282 L 1062,298 L 1030,308 L 995,312 L 960,310 L 928,302 L 900,288 L 878,268 L 865,245 L 865,222 L 878,208 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M 1098,215 L 1118,210 L 1132,220 L 1135,238 L 1125,252 L 1108,258 L 1098,248 L 1095,232 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+
+  
+  <path d="M 960,308 L 995,315 L 1028,328 L 1048,348 L 1050,372 L 1038,392 L 1018,402 L 995,400 L 975,388 L 962,368 L 958,345 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+  
+  <ellipse cx="1060" cy="415" rx="45" ry="18" fill="#c8b87a" stroke="#8b7550" stroke-width="0.8" opacity="0.85" />
+  <ellipse cx="1130" cy="425" rx="38" ry="16" fill="#c8b87a" stroke="#8b7550" stroke-width="0.8" opacity="0.85" />
+
+  
+  <path d="M 1050,540 L 1090,525 L 1135,520 L 1178,528 L 1212,545 L 1230,572 L 1228,602 L 1215,630 L 1195,652 L 1168,665 L 1138,670 L 1108,665 L 1080,648 L 1058,625 L 1045,598 L 1042,568 Z" fill="#c8b87a" stroke="#8b7550" stroke-width="1" opacity="0.85" />
+
+  
+  
+  <path d="M 1068,248 L 1080,242 L 1092,245 L 1098,258 L 1095,275 L 1085,290 L 1072,300 L 1060,305 L 1050,298 L 1045,282 L 1048,265 L 1058,255 Z" fill="#c0392b" stroke="#7b241c" stroke-width="2" opacity="0.95" />
+  
+  <circle cx="1072" cy="275" r="38" fill="none" stroke="#c0392b" stroke-width="2.5" opacity="0.5" stroke-dasharray="6,4" />
+  <circle cx="1072" cy="275" r="52" fill="none" stroke="#c0392b" stroke-width="1.2" opacity="0.3" />
+
+  
+  <line x1="1072" y1="237" x2="1072" y2="195" stroke="#922b21" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.8" />
+  <circle cx="1072" cy="192" r="3.5" fill="#922b21" opacity="0.8" />
+  <text x="1080" y="196" font-family="Georgia, serif" font-size="14" fill="#7b241c" font-style="italic" opacity="0.9">Seoul</text>
+
+  
+  <g transform="translate(768,512)">
+    
+    <circle cx="0" cy="0" r="145" fill="#d4c9a8" stroke="#8b7550" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="138" fill="none" stroke="#8b7550" stroke-width="1" stroke-dasharray="8,5" />
+    
+    <circle cx="0" cy="0" r="115" fill="#c0392b" opacity="0.92" />
+    
+    <rect x="-55" y="-60" width="18" height="90" fill="white" />
+    <rect x="-55" y="12" width="65" height="18" fill="white" />
+    
+    <path d="M 15,-60 A60,60 0 1,1 15,60 L 15,15 L 45,15 L 45,0 L 25,0 L 25,-8 L 55,-8 A60,60 0 0,0 15,-60 Z" fill="white" />
+    
+    <g stroke="#8b7550" stroke-width="1.2" opacity="0.6">
+      <line x1="0" y1="-138" x2="0" y2="-148" />
+      <line x1="0" y1="138" x2="0" y2="148" />
+      <line x1="-138" y1="0" x2="-148" y2="0" />
+      <line x1="138" y1="0" x2="148" y2="0" />
+      <line x1="-97.6" y1="-97.6" x2="-104.7" y2="-104.7" />
+      <line x1="97.6" y1="-97.6" x2="104.7" y2="-104.7" />
+      <line x1="-97.6" y1="97.6" x2="-104.7" y2="104.7" />
+      <line x1="97.6" y1="97.6" x2="104.7" y2="104.7" />
+    </g>
+  </g>
+
+  
+  <g transform="translate(1380, 820)">
+    
+    <circle cx="0" cy="0" r="72" fill="#d4c9a8" stroke="#8b7550" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#8b7550" stroke-width="0.8" stroke-dasharray="4,3" />
+    
+    <polygon points="0,-65 -10,-20 0,-30 10,-20" fill="#8b7550" />
+    <polygon points="0,65 -10,20 0,30 10,20" fill="#c8b87a" stroke="#8b7550" stroke-width="0.5" />
+    <polygon points="-65,0 -20,-10 -30,0 -20,10" fill="#c8b87a" stroke="#8b7550" stroke-width="0.5" />
+    <polygon points="65,0 20,-10 30,0 20,10" fill="#c8b87a" stroke="#8b7550" stroke-width="0.5" />
+    
+    <polygon points="-46,-46 -8,-18 -18,-8" fill="#8b7550" opacity="0.5" />
+    <polygon points="46,-46 8,-18 18,-8" fill="#8b7550" opacity="0.5" />
+    <polygon points="-46,46 -8,18 -18,8" fill="#8b7550" opacity="0.5" />
+    <polygon points="46,46 8,18 18,8" fill="#8b7550" opacity="0.5" />
+    
+    <circle cx="0" cy="0" r="5" fill="#8b7550" />
+    <circle cx="0" cy="0" r="2.5" fill="#d4c9a8" />
+    
+    <text x="0" y="-74" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#5a3e28">N</text>
+    <text x="0" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#5a3e28">S</text>
+    <text x="-80" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#5a3e28">W</text>
+    <text x="80" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#5a3e28">E</text>
+  </g>
+
+  
+  
+  <rect x="40" y="40" width="1456" height="5" fill="#8b7550" opacity="0.4" />
+  <rect x="40" y="979" width="1456" height="5" fill="#8b7550" opacity="0.4" />
+
+  
+  
+  <g transform="translate(130, 750)" opacity="0.7">
+    <rect x="-40" y="-32" width="80" height="55" rx="4" fill="none" stroke="#8b7550" stroke-width="2" />
+    <rect x="-28" y="-22" width="56" height="36" fill="none" stroke="#8b7550" stroke-width="1" />
+    <line x1="0" y1="23" x2="0" y2="40" stroke="#8b7550" stroke-width="2" />
+    <line x1="-25" y1="40" x2="25" y2="40" stroke="#8b7550" stroke-width="2" />
+  </g>
+
+  
+  <g transform="translate(200, 810)" opacity="0.6">
+    <rect x="-28" y="-35" width="56" height="65" rx="3" fill="none" stroke="#8b7550" stroke-width="1.8" />
+    <circle cx="0" cy="12" r="18" fill="none" stroke="#8b7550" stroke-width="1.5" />
+    <circle cx="0" cy="12" r="10" fill="none" stroke="#8b7550" stroke-width="1" />
+    <circle cx="-12" cy="-20" r="4" fill="none" stroke="#8b7550" stroke-width="1" />
+  </g>
+
+  
+  <g transform="translate(1450, 750)" opacity="0.6">
+    <path d="M -8,-35 L -8,-5 L -22,20 L -22,30 L 22,30 L 22,20 L 8,-5 L 8,-35 Z" fill="none" stroke="#8b7550" stroke-width="1.8" />
+    <line x1="-12" y1="-35" x2="12" y2="-35" stroke="#8b7550" stroke-width="1.8" />
+    <ellipse cx="0" cy="22" rx="15" ry="6" fill="#8b7550" opacity="0.25" />
+  </g>
+
+  
+  
+  <rect x="56" y="850" width="640" height="120" fill="#d4c9a8" opacity="0.85" rx="2" />
+  <rect x="60" y="854" width="632" height="112" fill="none" stroke="#8b7550" stroke-width="1.2" />
+
+  
+  <text x="376" y="908" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="bold" fill="#2c1a0e" letter-spacing="1">LG Group</text>
+  <text x="376" y="952" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#5a3e28" letter-spacing="2">and LG Electronics</text>
+
+  
+  <text x="376" y="860" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#8b7550" letter-spacing="4" font-style="italic">SOUTH KOREA'S BIG FOUR CHAEBOL</text>
+
+  
+  <text x="768" y="960" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#8b7550" letter-spacing="2" font-style="italic">Est. 1947 · Lucky-Goldstar · Seoul, Republic of Korea</text>
+
+  
+  <line x1="56" y1="870" x2="56" y2="870" stroke="#8b7550" stroke-width="1" />
+  <line x1="105" y1="870" x2="647" y2="870" stroke="#8b7550" stroke-width="0.8" opacity="0.5" />
+  <line x1="105" y1="940" x2="647" y2="940" stroke="#8b7550" stroke-width="0.8" opacity="0.5" />
+
+  
+  <g transform="translate(300, 990)" opacity="0.7">
+    <text x="0" y="-4" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#8b7550" letter-spacing="2">SCALE</text>
+    <rect x="-60" y="0" width="30" height="8" fill="#8b7550" />
+    <rect x="-30" y="0" width="30" height="8" fill="#d4c9a8" stroke="#8b7550" stroke-width="0.8" />
+    <rect x="0" y="0" width="30" height="8" fill="#8b7550" />
+    <rect x="30" y="0" width="30" height="8" fill="#d4c9a8" stroke="#8b7550" stroke-width="0.8" />
+    <text x="-60" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#8b7550">0</text>
+    <text x="60" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#8b7550">5000 km</text>
+  </g>
+
+  
+  <text x="768" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#8b7550" letter-spacing="6" font-style="italic" opacity="0.8">ATLAS OF INDUSTRY — EAST ASIA</text>
+  <line x1="540" y1="85" x2="695" y2="85" stroke="#8b7550" stroke-width="0.8" opacity="0.5" />
+  <line x1="841" y1="85" x2="996" y2="85" stroke="#8b7550" stroke-width="0.8" opacity="0.5" />
+
+</svg>

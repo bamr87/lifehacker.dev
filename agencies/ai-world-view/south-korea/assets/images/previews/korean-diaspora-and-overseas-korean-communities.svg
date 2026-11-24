@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Korean Diaspora and Overseas Korean Communities – World Map Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="ocean" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9bb8c9" />
+      <stop offset="100%" stop-color="#7fa3b8" />
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b5a373" />
+    </linearGradient>
+    <filter id="tex" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grey" />
+      <feBlend in="SourceGraphic" in2="grey" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e05a2b" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#e05a2b" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="gridpat" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 L0 0 0 60" fill="none" stroke="#b0a080" stroke-width="0.4" opacity="0.5" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  
+  <rect width="1536" height="1024" fill="url(#gridpat)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7a55" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7a55" stroke-width="1" />
+
+  
+  <rect x="30" y="30" width="1476" height="964" fill="url(#ocean)" opacity="0.55" />
+
+  
+
+  
+  <path d="M80,200 L100,160 L140,140 L200,130 L260,145 L300,155 L340,170 L360,195 L370,230 L355,265 L330,290 L310,320 L300,360 L285,400 L270,430 L240,460 L210,490 L190,520 L200,560 L185,590 L170,610 L150,600 L130,570 L115,530 L100,490 L90,450 L75,410 L65,370 L60,330 L65,280 L70,240 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.5" />
+  
+  <path d="M270,490 L285,510 L275,530 L260,540 L250,520 L255,500 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1" />
+  
+  <path d="M300,80 L340,70 L380,80 L390,110 L370,130 L340,135 L310,120 L295,100 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1" />
+
+  
+  <path d="M260,560 L285,545 L310,555 L330,575 L345,610 L350,650 L345,700 L330,750 L310,790 L290,820 L270,840 L250,830 L235,800 L225,760 L220,720 L225,680 L230,640 L235,600 L245,570 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.5" />
+
+  
+  <path d="M600,100 L650,90 L710,95 L750,110 L770,135 L760,160 L740,175 L710,180 L680,175 L660,185 L640,190 L620,185 L600,170 L585,150 L585,125 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.5" />
+  
+  <path d="M580,180 L600,175 L610,195 L600,215 L580,220 L565,205 L568,188 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1" />
+  
+  <path d="M660,70 L680,55 L700,60 L715,80 L710,100 L690,105 L670,95 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1" />
+
+  
+  <path d="M590,230 L630,220 L670,225 L700,245 L720,280 L730,320 L730,380 L720,440 L700,500 L675,560 L650,610 L625,650 L605,680 L585,670 L568,640 L555,600 L548,550 L550,490 L555,430 L558,370 L560,310 L565,265 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.5" />
+
+  
+  <path d="M750,90 L820,80 L900,75 L980,80 L1060,90 L1130,100 L1180,110 L1210,130 L1220,160 L1200,185 L1180,200 L1150,210 L1120,215 L1090,220 L1060,230 L1040,250 L1020,270 L1000,285 L970,295 L940,300 L910,295 L880,285 L850,275 L820,270 L800,275 L780,285 L760,295 L745,285 L735,265 L730,240 L735,215 L745,190 L750,160 L748,130 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.5" />
+  
+  <path d="M920,290 L950,295 L975,310 L990,340 L985,380 L965,410 L940,425 L915,415 L900,385 L895,350 L905,315 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.2" />
+  
+  <path d="M1040,295 L1070,305 L1090,330 L1080,360 L1055,375 L1030,365 L1018,340 L1025,315 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1" />
+  
+  <path d="M765,265 L795,260 L820,270 L830,300 L825,335 L810,355 L790,360 L772,345 L762,315 L760,285 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1" />
+
+  
+  <path d="M1110,215 L1125,210 L1135,220 L1138,238 L1130,255 L1118,262 L1107,255 L1103,238 L1107,222 Z" fill="#c0392b" stroke="#7a1a10" stroke-width="2" />
+
+  
+  <path d="M1160,195 L1170,188 L1180,195 L1178,212 L1165,218 L1157,210 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.2" />
+  <path d="M1175,220 L1185,215 L1192,225 L1188,240 L1178,243 L1171,233 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.2" />
+
+  
+  <path d="M1020,220 L1060,215 L1100,218 L1115,228 L1110,255 L1090,270 L1060,275 L1030,265 L1015,245 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1" />
+
+  
+  <path d="M1150,600 L1230,585 L1300,600 L1340,635 L1350,680 L1335,720 L1300,745 L1250,755 L1200,745 L1165,715 L1145,675 L1140,635 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1.5" />
+
+  
+  <path d="M820,80 L900,65 L1000,60 L1100,65 L1180,75 L1220,90 L1210,115 L1180,110 L1100,100 L1000,90 L900,85 Z" fill="url(#land)" stroke="#8a7a55" stroke-width="1" />
+
+  
+  
+
+  
+  <path d="M1122,238 Q800,150 235,340" fill="none" stroke="#e05a2b" stroke-width="2" stroke-dasharray="8,5" opacity="0.8" />
+  <circle cx="235" cy="340" r="16" fill="#e05a2b" opacity="0.85" stroke="#fff" stroke-width="2" />
+  <circle cx="235" cy="340" r="24" fill="url(#glow)" opacity="0.5" />
+
+  
+  <path d="M1122,238 Q750,120 280,270" fill="none" stroke="#e05a2b" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.7" />
+  <circle cx="280" cy="270" r="12" fill="#e05a2b" opacity="0.8" stroke="#fff" stroke-width="1.5" />
+
+  
+  <path d="M1122,238 Q720,100 200,220" fill="none" stroke="#e05a2b" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.6" />
+  <circle cx="200" cy="220" r="11" fill="#e05a2b" opacity="0.75" stroke="#fff" stroke-width="1.5" />
+
+  
+  <line x1="1122" y1="238" x2="1168" y2="210" stroke="#e05a2b" stroke-width="2" opacity="0.9" />
+  <circle cx="1168" cy="210" r="14" fill="#e05a2b" opacity="0.9" stroke="#fff" stroke-width="2" />
+
+  
+  <line x1="1122" y1="238" x2="1045" y2="245" stroke="#e05a2b" stroke-width="1.5" opacity="0.8" />
+  <circle cx="1045" cy="245" r="10" fill="#e05a2b" opacity="0.75" stroke="#fff" stroke-width="1.5" />
+
+  
+  <path d="M1122,238 Q1000,200 870,235" fill="none" stroke="#e05a2b" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.7" />
+  <circle cx="870" cy="235" r="12" fill="#e05a2b" opacity="0.8" stroke="#fff" stroke-width="1.5" />
+
+  
+  <path d="M1122,238 Q1200,450 1230,660" fill="none" stroke="#e05a2b" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.65" />
+  <circle cx="1230" cy="660" r="11" fill="#e05a2b" opacity="0.75" stroke="#fff" stroke-width="1.5" />
+
+  
+  <path d="M1122,238 Q800,600 310,680" fill="none" stroke="#e05a2b" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.55" />
+  <circle cx="310" cy="680" r="9" fill="#e05a2b" opacity="0.7" stroke="#fff" stroke-width="1.5" />
+
+  
+  <path d="M1122,238 Q900,120 660,145" fill="none" stroke="#e05a2b" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.6" />
+  <circle cx="660" cy="145" r="9" fill="#e05a2b" opacity="0.7" stroke="#fff" stroke-width="1.5" />
+
+  
+  <circle cx="1122" cy="238" r="30" fill="url(#glow)" opacity="0.6" />
+  <circle cx="1122" cy="238" r="10" fill="#c0392b" stroke="#fff" stroke-width="2.5" />
+
+  
+  <g transform="translate(1420,820)">
+    <circle r="48" fill="#e8dfc8" stroke="#8a7a55" stroke-width="1.5" />
+    <circle r="36" fill="none" stroke="#8a7a55" stroke-width="0.8" />
+    
+    <line x1="0" y1="-48" x2="0" y2="48" stroke="#8a7a55" stroke-width="1" />
+    <line x1="-48" y1="0" x2="48" y2="0" stroke="#8a7a55" stroke-width="1" />
+    <line x1="-34" y1="-34" x2="34" y2="34" stroke="#8a7a55" stroke-width="0.5" />
+    <line x1="34" y1="-34" x2="-34" y2="34" stroke="#8a7a55" stroke-width="0.5" />
+    
+    <polygon points="0,-44 -6,-20 0,-28 6,-20" fill="#c0392b" />
+    <polygon points="0,-28 -6,-20 0,44 6,-20" fill="#8a7a55" />
+    <text x="0" y="-52" text-anchor="middle" font-family="serif" font-size="13" fill="#5a4a2a" font-weight="bold">N</text>
+    <text x="0" y="64" text-anchor="middle" font-family="serif" font-size="11" fill="#5a4a2a">S</text>
+    <text x="54" y="4" text-anchor="middle" font-family="serif" font-size="11" fill="#5a4a2a">E</text>
+    <text x="-54" y="4" text-anchor="middle" font-family="serif" font-size="11" fill="#5a4a2a">W</text>
+  </g>
+
+  
+  <rect x="38" y="38" width="560" height="948" fill="#e8dfc8" opacity="0.88" />
+  <rect x="42" y="42" width="552" height="940" fill="none" stroke="#8a7a55" stroke-width="1.5" />
+
+  
+  <line x1="80" y1="100" x2="560" y2="100" stroke="#8a7a55" stroke-width="1.5" />
+  <line x1="80" y1="106" x2="560" y2="106" stroke="#8a7a55" stroke-width="0.5" />
+
+  
+  <text x="320" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#8a7a55" letter-spacing="4" font-style="italic">GEOGRAPHY</text>
+
+  
+  <text x="80" y="175" font-family="Georgia, serif" font-size="58" fill="#2c2010" font-weight="bold" letter-spacing="-1">Korean</text>
+  <text x="80" y="240" font-family="Georgia, serif" font-size="58" fill="#2c2010" font-weight="bold" letter-spacing="-1">Diaspora</text>
+
+  
+  <line x1="80" y1="262" x2="420" y2="262" stroke="#c0392b" stroke-width="2.5" />
+
+  <text x="80" y="298" font-family="Georgia, serif" font-size="28" fill="#4a3820" letter-spacing="0">Overseas Korean Communities</text>
+
+  
+  <line x1="80" y1="320" x2="560" y2="320" stroke="#8a7a55" stroke-width="0.8" />
+
+  
+  <text x="80" y="375" font-family="serif" font-size="38" fill="#c0392b" opacity="0.9" letter-spacing="8">재외동포</text>
+  <text x="80" y="410" font-family="Georgia, serif" font-size="14" fill="#7a6a4a" font-style="italic">jaeoe dongpo — overseas Koreans</text>
+
+  
+  <rect x="80" y="445" width="450" height="110" fill="#c0392b" opacity="0.12" rx="4" />
+  <rect x="80" y="445" width="4" height="110" fill="#c0392b" />
+  <text x="100" y="478" font-family="Georgia, serif" font-size="48" fill="#c0392b" font-weight="bold">7.4M</text>
+  <text x="100" y="505" font-family="Georgia, serif" font-size="16" fill="#4a3820">ethnic Koreans living outside</text>
+  <text x="100" y="527" font-family="Georgia, serif" font-size="16" fill="#4a3820">the Korean peninsula</text>
+  <text x="100" y="548" font-family="Georgia, serif" font-size="13" fill="#7a6a4a" font-style="italic">— one of the world's largest diaspora populations</text>
+
+  
+  <text x="80" y="600" font-family="Georgia, serif" font-size="15" fill="#8a7a55" letter-spacing="3" font-style="italic">KEY COMMUNITIES</text>
+  <line x1="80" y1="608" x2="530" y2="608" stroke="#8a7a55" stroke-width="0.8" />
+
+  <g font-family="Georgia, serif" font-size="17" fill="#3a2c14">
+    
+    <circle cx="92" cy="636" r="5" fill="#c0392b" />
+    <text x="110" y="641">Korean-Americans &amp; Koreatowns (USA)</text>
+    <circle cx="92" cy="668" r="5" fill="#c0392b" />
+    <text x="110" y="673">Zainichi Koreans (Japan)</text>
+    <circle cx="92" cy="700" r="5" fill="#c0392b" />
+    <text x="110" y="705">Koryo-saram (Central Asia)</text>
+    <circle cx="92" cy="732" r="5" fill="#c0392b" />
+    <text x="110" y="737">Korean-Canadians &amp; Korean-Australians</text>
+    <circle cx="92" cy="764" r="5" fill="#c0392b" />
+    <text x="110" y="769">Korean-Chinese (Joseonjok)</text>
+    <circle cx="92" cy="796" r="5" fill="#c0392b" />
+    <text x="110" y="801">Korean communities in Europe &amp; South America</text>
+  </g>
+
+  
+  <line x1="80" y1="840" x2="530" y2="840" stroke="#8a7a55" stroke-width="0.8" />
+  <text x="80" y="868" font-family="Georgia, serif" font-size="15" fill="#7a6a4a" font-style="italic">Migration waves spanning the late 19th century</text>
+  <text x="80" y="888" font-family="Georgia, serif" font-size="15" fill="#7a6a4a" font-style="italic">through the present — colonialism to Hallyu.</text>
+
+  
+  <line x1="80" y1="918" x2="560" y2="918" stroke="#8a7a55" stroke-width="1.5" />
+  <line x1="80" y1="924" x2="560" y2="924" stroke="#8a7a55" stroke-width="0.5" />
+
+  
+  <g transform="translate(900,900)">
+    <rect x="-200" y="-50" width="400" height="80" fill="#e8dfc8" opacity="0.85" rx="4" stroke="#8a7a55" stroke-width="1" />
+    <circle cx="-150" cy="-10" r="9" fill="#c0392b" stroke="#fff" stroke-width="1.5" />
+    <text x="-133" y="-5" font-family="Georgia, serif" font-size="14" fill="#2c2010">Korea (origin)</text>
+    <circle cx="20" cy="-10" r="8" fill="#e05a2b" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+    <text x="36" y="-5" font-family="Georgia, serif" font-size="14" fill="#2c2010">Diaspora community</text>
+    <line x1="-150" y1="18" x2="-110" y2="18" stroke="#e05a2b" stroke-width="2" stroke-dasharray="6,4" />
+    <text x="-100" y="23" font-family="Georgia, serif" font-size="14" fill="#2c2010">Migration connection</text>
+  </g>
+
+</svg>

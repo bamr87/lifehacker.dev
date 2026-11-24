@@ -1,0 +1,116 @@
+---
+name: Re-illustrate Banners
+
+# The banner backfill worker (ADR-0008 Phase 4). orchestrate.yml's `backfill`
+# job plans the next batch worst-first (scripts/reillustrate.rb --plan, from
+# _reports/banners-baseline.json + telemetry/banners.jsonl) and dispatches ONE
+# run of this workflow per member with that member's articles. Each run
+# re-illustrates them through the engine's loop (policy `preview:` + the era
+# palette), appends banner/v1 records to the member's telemetry/banners.jsonl,
+# pushes, and uploads the records for telemetry-ledger.yml.
+#
+# Serialized with the grow tick on `repo-write-<repo>` (ADR-0003: two writers
+# never race a member's main), and it reads the fleet kill-switch first.
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'Member repo (name only, e.g. 2008)'
+        required: true
+      articles:
+        description: 'Comma-separated article paths in that repo'
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repo-write-${{ inputs.repo }}
+  cancel-in-progress: false
+
+jobs:
+  reillustrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      REPO: ${{ inputs.repo }}
+      ARTICLES: ${{ inputs.articles }}
+    steps:
+      - name: Checkout the hub
+        uses: actions/checkout@v7
+
+      - name: Kill-switch
+        id: pause
+        run: |
+          if ruby -ryaml -e 'exit(YAML.load_file("_data/fleet_pause.yml")["paused"] == true ? 0 : 1)' 2>/dev/null; then
+            echo "::notice::Fleet paused; skipping the banner backfill."; echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate inputs
+        if: steps.pause.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          [[ "$REPO" =~ ^[A-Za-z0-9._-]+$ ]] || { echo "::error::bad repo '$REPO'"; exit 1; }
+          [ -f "lineage/seeds/${REPO}.md" ] || { echo "::error::${REPO} is not a lineage member"; exit 1; }
+          [[ "$ARTICLES" =~ ^[A-Za-z0-9._/,\ -]+$ ]] || { echo "::error::articles must be plain relative paths"; exit 1; }
+          case ",$ARTICLES," in *..*) echo "::error::no '..' in article paths"; exit 1 ;; esac
+
+      - name: Checkout the member
+        if: steps.pause.outputs.skip != 'true'
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ github.repository_owner }}/${{ inputs.repo }}
+          token: ${{ secrets.LIFECYCLE_PAT }}
+          path: member
+
+      - name: Re-illustrate
+        if: steps.pause.outputs.skip != 'true'
+        env:
+          # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          set -uo pipefail
+          gem install --user-install --no-document zer0-image-generator >/dev/null 2>&1 || true
+          python3 -c 'import yaml' 2>/dev/null || pip3 install --quiet PyYAML
+          npm install -g @resvg/resvg-js-cli >/dev/null 2>&1 || echo "::warning::resvg-js unavailable — banners commit unreviewed."
+          : > "$RUNNER_TEMP/banners-tick.jsonl"
+          ruby scripts/reillustrate.rb --run --repo "$REPO" --checkout member \
+            --articles "$ARTICLES" --telemetry "$RUNNER_TEMP/banners-tick.jsonl" \
+            || echo "::warning::some banners failed — the rest are published."
+          find member -name '*.md.bak' -not -path 'member/.git/*' -delete 2>/dev/null || true
+
+      - name: Publish to the member
+        if: steps.pause.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.LIFECYCLE_PAT }}
+        run: |
+          set -uo pipefail
+          cd member
+          if [ -s "$RUNNER_TEMP/banners-tick.jsonl" ]; then
+            mkdir -p telemetry
+            cat "$RUNNER_TEMP/banners-tick.jsonl" >> telemetry/banners.jsonl
+          fi
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "nothing re-illustrated — nothing to publish."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          n="$(wc -l < "$RUNNER_TEMP/banners-tick.jsonl" | tr -d ' ')"
+          git commit -q -m "chore(banners): re-illustrate ${n} banner(s) (ADR-0008 backfill)"
+          for _ in 1 2 3 4 5; do
+            git push origin HEAD && exit 0
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)" || true
+          done
+          echo "::error::could not push the re-illustrated banners"; exit 1
+
+      - name: Upload banner telemetry artifact
+        if: always() && steps.pause.outputs.skip != 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: reillustrate-banners-${{ inputs.repo }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/banners-tick.jsonl
+          if-no-files-found: ignore
+          retention-days: 14

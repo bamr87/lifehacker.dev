@@ -1,0 +1,98 @@
+# Irony Works — published through zer0-mistakes
+site_configured: true          # dismisses the theme's first-run setup banner
+
+remote_theme: bamr87/zer0-mistakes
+title: Irony Works
+title_url: "/"
+title_icon: "arrow-repeat"
+subtitle: The perpetual encyclopedia of irony
+subtitle_icon: "book"
+title_separator: "|"
+description: >
+  Expectation, reversed. Recursively. A self-growing catalog of irony —
+  past, present, and pending — tended by machine, curated by hand.
+
+url: "https://bamr87.github.io"
+baseurl: "/irony-works"
+
+# Used by the theme for "Edit on GitHub" links and repo metadata.
+github_user: &github_user "bamr87"
+repository_name: &repository_name "irony-works"
+repository: [*github_user, "/", *repository_name]
+branch: "main"
+locale: "en-US"
+
+# Base class for icon elements. The theme emits `<i class="{{ site.default_icon }} bi-x">`;
+# without it Bootstrap Icons lose their font-family and render as tofu.
+default_icon: "bi"
+
+founder: "Amr Abdel-Motaleb"
+author: "Irony Works"
+email: ""
+
+# Brand assets. The mark is a broken ring: the expectation, and where it reverses.
+logo: /assets/images/logo.svg
+og_image: /assets/images/og-banner.svg
+teaser: /assets/images/og-banner.svg
+# Hero fallback for pages without `preview`. Must be textless — the theme
+# overlays the page title on it, and the OG banner's wordmark collides.
+info_banner: /assets/images/previews/default.svg
+favicon:
+  ico: /favicon.ico
+  svg: /assets/images/logo.svg
+  png: /assets/images/logo.svg
+  apple_touch: /assets/images/logo.svg
+
+# Preview banners, in the zer0-image-generator gem's documented keys (its README
+# "Configuration"). This block describes the plates the site already publishes;
+# it does not draw them. The renderer of record is engine/scripts/preview.mjs:
+# publish.yml runs it before transplant.mjs, writing one deterministic SVG per
+# vault note (plus default.svg) into output_dir, and transplant.mjs stamps
+# `preview:` onto every entry. The gem is not installed (no Gemfile, by design;
+# see CLAUDE.md) and the Pages build could not load it, so no banner changes.
+# The block tells zer0-CMS and any `jekyll preview-images` run where the plates
+# live and to stay offline and SVG-only. assets_prefix and auto_prefix are left
+# unset: the theme's includes read both with the same defaults.
+preview_images:
+  provider: local             # key-free SVG renderer, like preview.mjs
+  rasterizer: none            # SVG-only: the plates ship as .svg, never PNG
+  prompt_engine: template     # no model call for the art brief
+  review_engine: none         # no model call to review a render
+  output_dir: assets/images/previews
+  front_matter_key: preview
+  collections: [entries]
+  authors_file: ''            # no _data/authors.yml in this repo
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-include-cache
+
+collections:
+  entries:
+    output: true
+    permalink: /:collection/:name/
+
+defaults:
+  - scope: { path: "", type: "entries" }
+    values: { layout: default }
+
+# transplant.mjs writes the converted vault here
+exclude:
+  - engine
+  - vault
+  - README.md
+  - CHANGELOG.md
+  - LICENSE
+  - LICENSE-CONTENT
+  - CONTRIBUTING.md
+  - CLAUDE.md
+  - AUTOPILOT.md
+  - AI_USAGE.md
+  - fleet.manifest.yml
+  - zer0.json
+  - 2026-08-06-planting-irony-works-making-irony-machine-checkable.md
+  - 2026-09-09-the-second-genus-teaching-a-vault-to-file-paradoxes.md
+  - 2026-09-14-the-parody-that-came-true-period-satire-with-an-anachronism-audit.md

@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Lee Jae-myung — 21st President of South Korea</title>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8faec4" />
+      <stop offset="100%" stop-color="#6b91ad" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b8a870" />
+    </linearGradient>
+    <linearGradient id="koreaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8453a" />
+      <stop offset="100%" stop-color="#a83028" />
+    </linearGradient>
+    <filter id="tex" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <rect width="1536" height="1024" fill="#c4a96d" opacity="0.18" filter="url(#tex)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6035" stroke-width="5" rx="4" />
+  
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#7a6035" stroke-width="2" rx="2" />
+  
+  <g fill="#7a6035">
+    
+    <rect x="18" y="18" width="30" height="5" />
+    <rect x="18" y="18" width="5" height="30" />
+    
+    <rect x="1488" y="18" width="30" height="5" />
+    <rect x="1513" y="18" width="5" height="30" />
+    
+    <rect x="18" y="1001" width="30" height="5" />
+    <rect x="18" y="976" width="5" height="30" />
+    
+    <rect x="1488" y="1001" width="30" height="5" />
+    <rect x="1513" y="976" width="5" height="30" />
+  </g>
+
+  
+  <rect x="60" y="60" width="1416" height="904" rx="6" fill="url(#seaGrad)" opacity="0.6" />
+
+  
+  
+  <path d="M 400,120 L 700,100 L 820,140 L 860,200 L 890,280 L 870,380 L 820,440 L 780,500 L 720,540 L 660,560 L 600,540 L 540,500 L 490,450 L 440,400 L 400,350 L 370,280 L 360,200 Z" fill="url(#landGrad)" stroke="#9a8455" stroke-width="2" />
+
+  
+  <path d="M 700,100 L 820,90 L 880,120 L 900,160 L 860,200 L 820,140 Z" fill="url(#landGrad)" stroke="#9a8455" stroke-width="1.5" />
+
+  
+  <path d="M 820,90 L 1000,70 L 1060,100 L 1040,160 L 980,180 L 920,170 L 880,140 L 860,120 Z" fill="url(#landGrad)" stroke="#9a8455" stroke-width="1.5" />
+
+  
+  <path d="M 870,340 L 900,320 L 930,310 L 960,320 L 970,360 L 960,400 L 940,440 L 920,480 L 900,510 L 880,530 L 865,520 L 855,490 L 850,450 L 855,410 L 860,380 Z" fill="url(#koreaGrad)" stroke="#7a1a14" stroke-width="3" />
+
+  
+  <line x1="856" y1="422" x2="975" y2="418" stroke="#e8dcc8" stroke-width="2" stroke-dasharray="8,5" />
+
+  
+  <path d="M 1020,280 L 1035,260 L 1050,270 L 1048,310 L 1030,330 L 1015,320 Z" fill="url(#landGrad)" stroke="#9a8455" stroke-width="1.5" />
+  <path d="M 1000,340 L 1020,320 L 1045,330 L 1050,380 L 1040,430 L 1020,460 L 1000,450 L 985,420 L 988,380 Z" fill="url(#landGrad)" stroke="#9a8455" stroke-width="1.5" />
+  <path d="M 985,470 L 1000,460 L 1015,480 L 1010,520 L 990,530 L 978,510 Z" fill="url(#landGrad)" stroke="#9a8455" stroke-width="1.5" />
+
+  
+  <ellipse cx="910" cy="560" rx="18" ry="28" fill="url(#landGrad)" stroke="#9a8455" stroke-width="1.5" transform="rotate(-15,910,560)" />
+
+  
+  <text x="980" y="400" font-family="Georgia, serif" font-size="22" fill="#3a5a70" opacity="0.7" text-anchor="middle" font-style="italic">Sea of Japan</text>
+
+  
+  <text x="830" y="470" font-family="Georgia, serif" font-size="20" fill="#3a5a70" opacity="0.7" text-anchor="middle" font-style="italic">Yellow Sea</text>
+
+  
+  <path d="M 870,340 L 900,320 L 930,310 L 960,320 L 970,360 L 960,400 L 940,440 L 920,480 L 900,510 L 880,530 L 865,520 L 855,490 L 850,450 L 855,410 L 860,380 Z" fill="none" stroke="#f0c040" stroke-width="5" opacity="0.7" />
+
+  
+  <circle cx="908" cy="395" r="10" fill="#f0c040" stroke="#7a1a14" stroke-width="2" />
+  <circle cx="908" cy="395" r="4" fill="#7a1a14" />
+  
+  <text x="928" y="390" font-family="Georgia, serif" font-size="20" fill="#f0c040" font-weight="bold">Seoul</text>
+
+  
+  <g transform="translate(1280, 280)">
+    <circle r="70" fill="#d4c4a0" stroke="#7a6035" stroke-width="2" opacity="0.85" />
+    <circle r="60" fill="none" stroke="#7a6035" stroke-width="1" stroke-dasharray="4,4" />
+    
+    <polygon points="0,-55 -10,-20 0,-30 10,-20" fill="#c8453a" />
+    
+    <polygon points="0,55 -10,20 0,30 10,20" fill="#7a6035" />
+    
+    <polygon points="55,0 20,-10 30,0 20,10" fill="#7a6035" />
+    
+    <polygon points="-55,0 -20,-10 -30,0 -20,10" fill="#7a6035" />
+    
+    <text x="0" y="-62" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="bold" fill="#7a1a14">N</text>
+    <text x="0" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#7a6035">S</text>
+    <text x="68" y="6" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#7a6035">E</text>
+    <text x="-68" y="6" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#7a6035">W</text>
+    
+    <circle r="5" fill="#7a6035" />
+    
+    <line x1="-40" y1="-40" x2="40" y2="40" stroke="#7a6035" stroke-width="0.8" opacity="0.5" />
+    <line x1="40" y1="-40" x2="-40" y2="40" stroke="#7a6035" stroke-width="0.8" opacity="0.5" />
+  </g>
+
+  
+  <g stroke="#8a7a50" stroke-width="0.8" opacity="0.25">
+    <line x1="60" y1="220" x2="1476" y2="220" />
+    <line x1="60" y1="400" x2="1476" y2="400" />
+    <line x1="60" y1="580" x2="1476" y2="580" />
+    <line x1="60" y1="760" x2="1476" y2="760" />
+    <line x1="300" y1="60" x2="300" y2="964" />
+    <line x1="560" y1="60" x2="560" y2="964" />
+    <line x1="820" y1="60" x2="820" y2="964" />
+    <line x1="1080" y1="60" x2="1080" y2="964" />
+    <line x1="1340" y1="60" x2="1340" y2="964" />
+  </g>
+
+  
+  
+  <rect x="60" y="60" width="580" height="904" rx="6" fill="#e8dcc8" opacity="0.88" />
+  <rect x="60" y="60" width="580" height="904" rx="6" fill="none" stroke="#7a6035" stroke-width="1.5" />
+
+  
+  <rect x="60" y="60" width="580" height="8" rx="3" fill="#7a1a14" />
+
+  
+  <text x="350" y="130" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#7a6035" letter-spacing="4" font-style="italic">21st President of</text>
+
+  
+  <text x="350" y="168" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#7a1a14" letter-spacing="6" font-weight="bold">SOUTH KOREA</text>
+
+  
+  <line x1="100" y1="185" x2="600" y2="185" stroke="#7a6035" stroke-width="1.5" />
+  <line x1="100" y1="190" x2="600" y2="190" stroke="#7a6035" stroke-width="0.5" />
+
+  
+  <text x="350" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#2c1a08">Lee</text>
+  <text x="350" y="368" text-anchor="middle" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#2c1a08">Jae-myung</text>
+
+  
+  <text x="350" y="430" text-anchor="middle" font-family="serif" font-size="40" fill="#7a1a14" opacity="0.85">이재명</text>
+
+  
+  <line x1="100" y1="458" x2="600" y2="458" stroke="#7a6035" stroke-width="1.5" />
+
+  
+  <text x="120" y="510" font-family="Georgia, serif" font-size="21" fill="#3a2808" font-weight="bold">Born:</text>
+  <text x="220" y="510" font-family="Georgia, serif" font-size="21" fill="#3a2808">December 22, 1964 · Andong</text>
+
+  <text x="120" y="550" font-family="Georgia, serif" font-size="21" fill="#3a2808" font-weight="bold">Party:</text>
+  <text x="220" y="550" font-family="Georgia, serif" font-size="21" fill="#3a2808">Democratic Party</text>
+
+  <text x="120" y="590" font-family="Georgia, serif" font-size="21" fill="#3a2808" font-weight="bold">Elected:</text>
+  <text x="235" y="590" font-family="Georgia, serif" font-size="21" fill="#3a2808">June 3, 2025</text>
+
+  <text x="120" y="630" font-family="Georgia, serif" font-size="21" fill="#3a2808" font-weight="bold">In office:</text>
+  <text x="240" y="630" font-family="Georgia, serif" font-size="21" fill="#3a2808">June 4, 2025 –</text>
+
+  
+  <line x1="100" y1="658" x2="600" y2="658" stroke="#7a6035" stroke-width="1" />
+
+  
+  <text x="120" y="700" font-family="Georgia, serif" font-size="19" fill="#4a3820" font-style="italic">Won snap election following the</text>
+  <text x="120" y="726" font-family="Georgia, serif" font-size="19" fill="#4a3820" font-style="italic">December 2024 constitutional crisis</text>
+  <text x="120" y="752" font-family="Georgia, serif" font-size="19" fill="#4a3820" font-style="italic">and removal of President Yoon Suk-yeol.</text>
+
+  <text x="120" y="800" font-family="Georgia, serif" font-size="18" fill="#4a3820">Former Governor of Gyeonggi Province</text>
+  <text x="120" y="826" font-family="Georgia, serif" font-size="18" fill="#4a3820">and progressive "livelihood" advocate.</text>
+
+  
+  <rect x="60" y="956" width="580" height="8" rx="3" fill="#7a1a14" />
+
+  
+  <g transform="translate(900, 880)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#3a2808" stroke-width="2" />
+    <line x1="0" y1="-8" x2="0" y2="8" stroke="#3a2808" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#3a2808" stroke-width="1.5" />
+    <line x1="200" y1="-8" x2="200" y2="8" stroke="#3a2808" stroke-width="2" />
+    <rect x="0" y="-8" width="100" height="8" fill="#3a2808" />
+    <rect x="100" y="-8" width="100" height="8" fill="#e8dcc8" />
+    <text x="0" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#3a2808">0</text>
+    <text x="100" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#3a2808">500</text>
+    <text x="200" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#3a2808">1000 km</text>
+  </g>
+
+  
+  <text x="1150" y="750" text-anchor="middle" font-family="Georgia, serif" font-size="260" font-weight="bold" fill="#7a6035" opacity="0.1">21</text>
+
+  
+  <path d="M 870,340 Q 875,360 870,390" fill="none" stroke="#f0c040" stroke-width="1" opacity="0.5" />
+
+  
+  <rect x="880" y="560" width="160" height="38" rx="5" fill="#7a1a14" />
+  <text x="960" y="584" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f0c040" letter-spacing="2" font-weight="bold">PRESIDENT</text>
+
+</svg>

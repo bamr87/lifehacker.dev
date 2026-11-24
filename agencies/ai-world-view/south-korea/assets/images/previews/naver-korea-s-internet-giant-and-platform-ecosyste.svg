@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Naver — Korea's Internet Giant and Platform Ecosystem</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd6" />
+      <stop offset="100%" stop-color="#9ab8c4" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b8a878" />
+    </linearGradient>
+    <linearGradient id="naverGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#05d469" />
+      <stop offset="100%" stop-color="#03a850" />
+    </linearGradient>
+    <pattern id="gridPat" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 L0 0 0 60" fill="none" stroke="#a89870" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+    <pattern id="hatchPat" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="8" x2="8" y2="0" stroke="#8a7a5a" stroke-width="0.6" opacity="0.3" />
+    </pattern>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="3" dy="3" stdDeviation="6" flood-color="#5a4a2a" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#gridPat)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7a5a" stroke-width="2.5" opacity="0.6" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7a5a" stroke-width="1" opacity="0.4" />
+
+  
+  <g stroke="#7a6a4a" stroke-width="1.5" fill="none" opacity="0.7">
+    
+    <path d="M18 60 L18 18 L60 18" />
+    <path d="M30 60 L30 30 L60 30" />
+    
+    <path d="M1518 60 L1518 18 L1476 18" />
+    <path d="M1506 60 L1506 30 L1476 30" />
+    
+    <path d="M18 964 L18 1006 L60 1006" />
+    <path d="M30 964 L30 994 L60 994" />
+    
+    <path d="M1518 964 L1518 1006 L1476 1006" />
+    <path d="M1506 964 L1506 994 L1476 994" />
+  </g>
+
+  
+  <ellipse cx="820" cy="512" rx="520" ry="420" fill="url(#seaGrad)" opacity="0.7" />
+
+  
+  <path d="M380 80 Q450 70 560 100 Q680 130 720 180 Q760 230 740 290 Q720 330 680 350 Q640 370 600 380 Q560 400 540 440 Q520 480 500 520 Q480 550 460 560 Q420 570 400 540 Q370 500 360 450 Q340 380 320 320 Q300 250 320 180 Q340 120 380 80Z" fill="url(#landGrad)" opacity="0.8" filter="url(#shadow)" />
+  
+  <path d="M540 440 Q560 460 580 500 Q600 540 590 580 Q580 620 560 640 Q530 660 500 650 Q470 640 450 610 Q430 580 440 550 Q450 520 460 500 Q470 480 500 520Z" fill="#c4b282" opacity="0.8" />
+
+  
+  <g fill="#c8b98a" opacity="0.85" filter="url(#shadow)">
+    
+    <path d="M1050 200 Q1090 180 1140 200 Q1190 220 1200 260 Q1210 300 1180 340 Q1150 380 1110 390 Q1070 400 1040 370 Q1010 340 1010 300 Q1010 250 1050 200Z" />
+    
+    <path d="M1020 420 Q1050 410 1070 430 Q1090 450 1080 480 Q1070 510 1045 515 Q1020 520 1005 500 Q990 480 1000 455 Q1008 435 1020 420Z" />
+    
+    <path d="M1060 390 Q1090 385 1110 400 Q1130 415 1120 435 Q1110 455 1085 458 Q1060 460 1048 442 Q1036 424 1048 408Z" />
+    
+    <path d="M1100 120 Q1140 105 1175 120 Q1210 138 1205 165 Q1200 192 1165 200 Q1130 208 1105 190 Q1080 172 1090 148Z" />
+  </g>
+
+  
+  <g filter="url(#shadow)">
+    
+    <path d="M720 240 Q760 220 800 230 Q840 240 860 270 Q880 300 875 340 Q870 380 855 420 Q840 460 820 500 Q800 540 775 570 Q750 600 730 610 Q710 620 695 600 Q678 575 672 545 Q660 510 658 475 Q655 440 660 400 Q665 360 672 320 Q680 280 720 240Z" fill="#b8a870" />
+    
+    <path d="M720 240 Q760 220 800 230 Q840 240 860 270 Q880 300 875 340 Q850 345 820 340 Q790 335 765 325 Q740 315 720 300 Q700 285 700 265 Q710 248 720 240Z" fill="#a89860" />
+    
+    <ellipse cx="730" cy="645" rx="28" ry="15" fill="#b8a870" opacity="0.9" />
+  </g>
+
+  
+  <circle cx="760" cy="390" r="12" fill="#03C75A" opacity="0.95" />
+  <circle cx="760" cy="390" r="18" fill="none" stroke="#03C75A" stroke-width="2.5" opacity="0.6" />
+  <circle cx="760" cy="390" r="28" fill="none" stroke="#03C75A" stroke-width="1.5" opacity="0.3" />
+
+  
+  <g stroke="#03C75A" stroke-width="1.8" opacity="0.55" fill="none" stroke-dasharray="6,4">
+    
+    <line x1="760" y1="390" x2="1060" y2="300" />
+    
+    <line x1="760" y1="390" x2="950" y2="680" />
+    
+    <line x1="760" y1="390" x2="520" y2="350" />
+    
+    <line x1="760" y1="390" x2="720" y2="240" />
+    
+    <line x1="760" y1="390" x2="880" y2="620" />
+  </g>
+
+  
+  <g fill="#03C75A" opacity="0.75">
+    <circle cx="1060" cy="300" r="8" />
+    <circle cx="950" cy="680" r="8" />
+    <circle cx="520" cy="350" r="8" />
+    <circle cx="880" cy="620" r="8" />
+  </g>
+
+  
+  <g transform="translate(1160, 700)" fill="#6a5a3a" opacity="0.8">
+    
+    <polygon points="0,-50 8,-15 0,-22 -8,-15" fill="#5a4a2a" />
+    <polygon points="0,50 8,15 0,22 -8,15" fill="#8a7a5a" />
+    <polygon points="-50,0 -15,-8 -22,0 -15,8" fill="#8a7a5a" />
+    <polygon points="50,0 15,-8 22,0 15,8" fill="#8a7a5a" />
+    
+    <polygon points="35,-35 18,-8 12,-12 8,-18" fill="#9a8a6a" opacity="0.7" />
+    <polygon points="-35,-35 -8,-18 -12,-12 -18,-8" fill="#9a8a6a" opacity="0.7" />
+    <polygon points="35,35 8,18 12,12 18,8" fill="#9a8a6a" opacity="0.7" />
+    <polygon points="-35,35 -18,8 -12,12 -8,18" fill="#9a8a6a" opacity="0.7" />
+    
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#5a4a2a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="4" fill="#5a4a2a" />
+    
+    <text x="0" y="-58" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#4a3a1a">N</text>
+  </g>
+
+  
+  <rect x="80" y="80" width="110" height="110" rx="16" fill="url(#naverGreen)" filter="url(#shadow)" />
+  <text x="135" y="162" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="88" font-weight="900" fill="white">N</text>
+
+  
+  <g transform="translate(370, 750)" opacity="0.65">
+    <rect x="0" y="0" width="120" height="10" fill="#5a4a2a" />
+    <rect x="0" y="0" width="60" height="10" fill="#e8dfc8" />
+    <line x1="0" y1="-4" x2="0" y2="14" stroke="#5a4a2a" stroke-width="1.5" />
+    <line x1="60" y1="-4" x2="60" y2="14" stroke="#5a4a2a" stroke-width="1.5" />
+    <line x1="120" y1="-4" x2="120" y2="14" stroke="#5a4a2a" stroke-width="1.5" />
+    <text x="0" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a3a1a">0</text>
+    <text x="60" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a3a1a">500 km</text>
+    <text x="120" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a3a1a">1000 km</text>
+  </g>
+
+  
+  <g stroke="#8a7a5a" stroke-width="0.8" opacity="0.3" fill="none">
+    <path d="M280 300 Q768 280 1260 300" />
+    <path d="M280 420 Q768 400 1260 420" />
+    <path d="M280 540 Q768 520 1260 540" />
+    <path d="M280 660 Q768 640 1260 660" />
+  </g>
+  
+  <g stroke="#8a7a5a" stroke-width="0.8" opacity="0.3" fill="none">
+    <line x1="580" y1="150" x2="540" y2="780" />
+    <line x1="700" y1="150" x2="660" y2="780" />
+    <line x1="820" y1="150" x2="800" y2="780" />
+    <line x1="940" y1="150" x2="940" y2="780" />
+    <line x1="1060" y1="150" x2="1080" y2="780" />
+  </g>
+
+  
+  <text x="765" y="490" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="bold" fill="#3a2a0a" opacity="0.65" letter-spacing="3">KOREA</text>
+
+  
+  <text x="620" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#3a5a6a" opacity="0.6" letter-spacing="1">YELLOW SEA</text>
+
+  
+  <text x="940" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#3a5a6a" opacity="0.6" letter-spacing="1">SEA OF JAPAN</text>
+
+  
+  <text x="1110" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#3a2a0a" opacity="0.55" letter-spacing="2">JAPAN</text>
+
+  
+  
+  <rect x="0" y="800" width="1536" height="224" fill="#2a2010" opacity="0.88" />
+  <rect x="0" y="800" width="1536" height="4" fill="#03C75A" />
+
+  
+  <rect x="80" y="840" width="6" height="130" fill="#03C75A" />
+
+  
+  <text x="110" y="900" font-family="Georgia, serif" font-size="68" font-weight="bold" fill="#f0e8d0" letter-spacing="-1">Naver</text>
+
+  
+  <text x="110" y="950" font-family="Georgia, serif" font-size="36" font-style="italic" fill="#c8b870" letter-spacing="0.5">Korea's Internet Giant &amp; Platform Ecosystem</text>
+
+  
+  <rect x="110" y="965" width="140" height="32" rx="4" fill="#03C75A" opacity="0.85" />
+  <text x="180" y="987" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white" letter-spacing="2">ECONOMY</text>
+
+  
+  <text x="1440" y="870" text-anchor="end" font-family="Georgia, serif" font-size="16" fill="#8a7a5a" letter-spacing="1">EST. 1999</text>
+  <text x="1440" y="900" text-anchor="end" font-family="Georgia, serif" font-size="28" fill="#c8b870" letter-spacing="1">Seoul, South Korea</text>
+  <text x="1440" y="935" text-anchor="end" font-family="Georgia, serif" font-size="18" fill="#8a7a5a" letter-spacing="0.5">Search · Webtoon · Pay · Cloud · LINE</text>
+  <text x="1440" y="965" text-anchor="end" font-family="Georgia, serif" font-size="16" fill="#6a5a3a" letter-spacing="0.5">Market cap ≈ USD 15 billion (2024)</text>
+
+  
+  <rect x="46" y="812" width="1444" height="198" fill="none" stroke="#03C75A" stroke-width="1" opacity="0.2" />
+</svg>

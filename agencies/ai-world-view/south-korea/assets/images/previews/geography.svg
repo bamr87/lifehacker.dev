@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Geography — Land, Regions, and Cities of South Korea</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b8a870" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+
+  
+  <g stroke="#c0af88" stroke-width="0.8" opacity="0.5">
+    <line x1="0" y1="128" x2="1536" y2="128" />
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="384" x2="1536" y2="384" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="640" x2="1536" y2="640" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="0" y1="896" x2="1536" y2="896" />
+    <line x1="192" y1="0" x2="192" y2="1024" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="576" y1="0" x2="576" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="960" y1="0" x2="960" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+    <line x1="1344" y1="0" x2="1344" y2="1024" />
+  </g>
+
+  
+  <ellipse cx="1100" cy="520" rx="520" ry="480" fill="url(#seaGrad)" opacity="0.6" />
+
+  
+  <g transform="translate(820, 180) scale(2.2)">
+    
+    <path d="M 120 20 C 130 18 155 22 165 35 C 175 48 178 65 175 85              C 172 105 168 125 170 145 C 172 165 175 180 170 200              C 165 220 158 240 150 258 C 142 276 130 290 118 300              C 106 310 95 315 88 310 C 78 302 72 288 68 272              C 62 252 60 232 58 212 C 56 192 55 172 58 152              C 61 132 68 115 70 95 C 72 75 68 55 75 40              C 82 25 110 22 120 20 Z" fill="url(#landGrad)" stroke="#8a7a50" stroke-width="2" />
+
+    
+    <path d="M 130 40 L 145 60 L 132 80 L 148 105 L 135 130 L 150 155 L 138 180 L 148 205" fill="none" stroke="#8a7a50" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.7" />
+
+    
+    <path d="M 75 120 Q 95 115 110 122 Q 128 130 145 125" fill="none" stroke="#9ab8c8" stroke-width="2.5" />
+
+    
+    <circle cx="110" cy="118" r="7" fill="#8b2020" stroke="#fff" stroke-width="1.5" />
+    <text x="120" y="112" font-family="Georgia, serif" font-size="11" fill="#3a2a10" font-weight="bold">Seoul</text>
+
+    
+    <ellipse cx="95" cy="335" rx="22" ry="14" fill="url(#landGrad)" stroke="#8a7a50" stroke-width="1.5" />
+  </g>
+
+  
+  <text x="1025" y="960" font-family="Georgia, serif" font-size="18" fill="#5a4a20" opacity="0.8">Jeju</text>
+
+  
+  <g transform="translate(1380, 180)">
+    
+    <circle cx="0" cy="0" r="70" fill="#e8dfc8" stroke="#8a7a50" stroke-width="2" />
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#8a7a50" stroke-width="1" />
+    <circle cx="0" cy="0" r="10" fill="#8a7a50" />
+
+    
+    <polygon points="0,-65 -9,-30 0,-38 9,-30" fill="#8b2020" />
+    <polygon points="0,-65 -9,-30 0,-38 9,-30" fill="#8b2020" />
+    
+    <polygon points="0,65 -9,30 0,38 9,30" fill="#8a7a50" />
+    
+    <polygon points="65,0 30,-9 38,0 30,9" fill="#8a7a50" />
+    
+    <polygon points="-65,0 -30,-9 -38,0 -30,9" fill="#8a7a50" />
+
+    
+    <text x="0" y="-72" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#8b2020">N</text>
+    <text x="0" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#5a4a20">S</text>
+    <text x="80" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#5a4a20">E</text>
+    <text x="-80" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#5a4a20">W</text>
+  </g>
+
+  
+  <rect x="24" y="24" width="1488" height="976" fill="none" stroke="#8a7a50" stroke-width="3" rx="4" />
+  <rect x="36" y="36" width="1464" height="952" fill="none" stroke="#8a7a50" stroke-width="1" rx="2" />
+
+  
+  <g transform="translate(1100, 900)">
+    <rect x="0" y="0" width="200" height="10" fill="#8a7a50" />
+    <rect x="0" y="0" width="100" height="10" fill="#c8b98a" stroke="#8a7a50" stroke-width="1" />
+    <line x1="0" y1="-4" x2="0" y2="14" stroke="#8a7a50" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="14" stroke="#8a7a50" stroke-width="2" />
+    <line x1="200" y1="-4" x2="200" y2="14" stroke="#8a7a50" stroke-width="2" />
+    <text x="0" y="28" font-family="Georgia, serif" font-size="14" fill="#5a4a20">0</text>
+    <text x="85" y="28" font-family="Georgia, serif" font-size="14" fill="#5a4a20">100 km</text>
+    <text x="178" y="28" font-family="Georgia, serif" font-size="14" fill="#5a4a20">200</text>
+  </g>
+
+  
+  <text x="860" y="500" font-family="Georgia, serif" font-size="16" fill="#5a4a20" opacity="0.7" font-style="italic">Yellow Sea</text>
+  <text x="1200" y="420" font-family="Georgia, serif" font-size="16" fill="#5a4a20" opacity="0.7" font-style="italic">Sea of Japan</text>
+
+  
+  <rect x="60" y="60" width="680" height="904" fill="#e0d4b0" opacity="0.55" rx="4" />
+
+  <text x="120" y="220" font-family="Georgia, serif" font-size="110" font-weight="bold" fill="#3a2a10" letter-spacing="-2">Geo-</text>
+  <text x="120" y="340" font-family="Georgia, serif" font-size="110" font-weight="bold" fill="#3a2a10" letter-spacing="-2">graphy</text>
+
+  
+  <line x1="120" y1="375" x2="640" y2="375" stroke="#8b2020" stroke-width="3" />
+
+  <text x="120" y="430" font-family="Georgia, serif" font-size="26" fill="#5a3a10" font-style="italic">Land, Regions &amp; Cities</text>
+  <text x="120" y="468" font-family="Georgia, serif" font-size="26" fill="#5a3a10" font-style="italic">of South Korea</text>
+
+  
+  <text x="120" y="560" font-family="Georgia, serif" font-size="20" fill="#6a5a30" opacity="0.9">Korean Peninsula</text>
+  <text x="120" y="590" font-family="Georgia, serif" font-size="20" fill="#6a5a30" opacity="0.9">Han River Basin</text>
+  <text x="120" y="620" font-family="Georgia, serif" font-size="20" fill="#6a5a30" opacity="0.9">Taebaek Mountains</text>
+  <text x="120" y="650" font-family="Georgia, serif" font-size="20" fill="#6a5a30" opacity="0.9">Seoul Capital Region</text>
+  <text x="120" y="680" font-family="Georgia, serif" font-size="20" fill="#6a5a30" opacity="0.9">Jeju Island</text>
+
+  
+  <line x1="120" y1="730" x2="640" y2="730" stroke="#8a7a50" stroke-width="1" />
+  <text x="120" y="760" font-family="Georgia, serif" font-size="17" fill="#8a7a50" letter-spacing="4">ATLAS · CARTOGRAPHY · REGIONS</text>
+
+</svg>

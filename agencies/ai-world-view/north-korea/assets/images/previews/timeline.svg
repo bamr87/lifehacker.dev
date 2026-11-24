@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Timeline — A chronological index of North Korea</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8c9a0" />
+      <stop offset="100%" stop-color="#9ab585" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8fafc2" />
+      <stop offset="100%" stop-color="#7a9eb5" />
+    </linearGradient>
+    <linearGradient id="nkGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c17a5a" />
+      <stop offset="100%" stop-color="#a85f3e" />
+    </linearGradient>
+    <filter id="parchment" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#9ab585" stroke-width="0.5" opacity="0.4" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6840" stroke-width="3" opacity="0.6" />
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#7a6840" stroke-width="1" opacity="0.4" />
+
+  
+  <rect x="700" y="80" width="780" height="864" fill="url(#seaGrad)" opacity="0.55" rx="4" />
+
+  
+  
+  <path d="M780,100 L1050,90 L1200,130 L1300,200 L1350,320 L1280,380 L1200,360 L1100,400 L1050,500 L980,520 L920,480 L860,420 L800,350 L760,280 L760,180 Z" fill="url(#landGrad)" opacity="0.7" />
+
+  
+  <ellipse cx="1380" cy="580" rx="160" ry="200" fill="url(#seaGrad)" opacity="0.4" />
+
+  
+  <path d="M900,300 L980,280 L1060,295 L1100,340 L1110,400 L1080,450 L1030,470 L980,460 L940,430 L900,390 L880,350 L885,320 Z" fill="url(#nkGrad)" opacity="0.9" />
+  
+  <path d="M900,300 L980,280 L1060,295 L1100,340 L1110,400 L1080,450 L1030,470 L980,460 L940,430 L900,390 L880,350 L885,320 Z" fill="none" stroke="#5a2e10" stroke-width="2.5" />
+
+  
+  <path d="M940,430 L980,460 L1030,470 L1060,510 L1040,570 L1000,610 L960,590 L930,550 L920,500 L930,460 Z" fill="#b8c9a0" opacity="0.75" />
+  <path d="M940,430 L980,460 L1030,470 L1060,510 L1040,570 L1000,610 L960,590 L930,550 L920,500 L930,460 Z" fill="none" stroke="#7a6840" stroke-width="1.5" />
+
+  
+  <line x1="930" y1="455" x2="1040" y2="468" stroke="#5a2e10" stroke-width="2.5" stroke-dasharray="8,4" />
+  <text x="985" y="448" font-family="Georgia, serif" font-size="14" fill="#5a2e10" text-anchor="middle" font-style="italic">38th parallel</text>
+
+  
+  <circle cx="960" cy="370" r="7" fill="#fff" stroke="#5a2e10" stroke-width="2" />
+  <circle cx="960" cy="370" r="3" fill="#5a2e10" />
+  <text x="975" y="366" font-family="Georgia, serif" font-size="13" fill="#3a1e08" font-style="italic">Pyongyang</text>
+
+  
+  <g transform="translate(1420, 200)">
+    
+    <polygon points="0,-42 6,-10 -6,-10" fill="#5a3a1a" />
+    <polygon points="0,42 6,10 -6,10" fill="#8a7a5a" />
+    <polygon points="-42,0 -10,6 -10,-6" fill="#8a7a5a" />
+    <polygon points="42,0 10,6 10,-6" fill="#8a7a5a" />
+    
+    <circle cx="0" cy="0" r="10" fill="#e8dfc8" stroke="#5a3a1a" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="3" fill="#5a3a1a" />
+    
+    <text x="0" y="-50" font-family="Georgia, serif" font-size="16" fill="#3a2208" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="62" font-family="Georgia, serif" font-size="16" fill="#3a2208" text-anchor="middle">S</text>
+    <text x="52" y="5" font-family="Georgia, serif" font-size="16" fill="#3a2208">E</text>
+    <text x="-52" y="5" font-family="Georgia, serif" font-size="16" fill="#3a2208" text-anchor="end">W</text>
+    
+    <circle cx="0" cy="0" r="46" fill="none" stroke="#5a3a1a" stroke-width="1" opacity="0.6" />
+  </g>
+
+  
+  <line x1="340" y1="140" x2="340" y2="880" stroke="#7a6840" stroke-width="3" />
+
+  
+  <circle cx="340" cy="300" r="12" fill="#a85f3e" stroke="#5a2e10" stroke-width="2" />
+  <rect x="100" y="268" width="210" height="62" rx="4" fill="#fff" opacity="0.55" stroke="#a88050" stroke-width="1" />
+  <text x="200" y="291" font-family="Georgia, serif" font-size="22" fill="#3a1e08" text-anchor="middle" font-weight="bold">1912</text>
+  <text x="200" y="315" font-family="Georgia, serif" font-size="14" fill="#5a3a18" text-anchor="middle">Kim Il-sung born</text>
+  
+  <line x1="310" y1="300" x2="355" y2="300" stroke="#7a6840" stroke-width="1.5" />
+
+  
+  <circle cx="340" cy="560" r="12" fill="#a85f3e" stroke="#5a2e10" stroke-width="2" />
+  <rect x="100" y="528" width="210" height="62" rx="4" fill="#fff" opacity="0.55" stroke="#a88050" stroke-width="1" />
+  <text x="200" y="551" font-family="Georgia, serif" font-size="22" fill="#3a1e08" text-anchor="middle" font-weight="bold">1950</text>
+  <text x="200" y="575" font-family="Georgia, serif" font-size="14" fill="#5a3a18" text-anchor="middle">Korean War begins</text>
+  
+  <line x1="310" y1="560" x2="355" y2="560" stroke="#7a6840" stroke-width="1.5" />
+
+  
+  <line x1="333" y1="200" x2="347" y2="200" stroke="#7a6840" stroke-width="1.5" />
+  <line x1="333" y1="420" x2="347" y2="420" stroke="#7a6840" stroke-width="1.5" />
+  <line x1="333" y1="700" x2="347" y2="700" stroke="#7a6840" stroke-width="1.5" />
+  <line x1="333" y1="820" x2="347" y2="820" stroke="#7a6840" stroke-width="1.5" />
+
+  
+  <line x1="400" y1="155" x2="680" y2="155" stroke="#7a6840" stroke-width="1.5" opacity="0.6" />
+  <line x1="400" y1="160" x2="680" y2="160" stroke="#7a6840" stroke-width="0.5" opacity="0.4" />
+
+  
+  <text x="100" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="88" fill="#2e1a06" font-weight="bold" letter-spacing="8">TIMELINE</text>
+
+  
+  <text x="100" y="175" font-family="Georgia, serif" font-size="22" fill="#5a3a18" letter-spacing="3">NORTH KOREA · CHRONOLOGICAL INDEX</text>
+
+  
+  <rect x="18" y="940" width="1500" height="64" fill="#7a6840" opacity="0.18" rx="2" />
+  <text x="768" y="981" font-family="Georgia, serif" font-size="16" fill="#3a2208" text-anchor="middle" letter-spacing="4" opacity="0.8">조선민주주의인민공화국  ·  DPRK  ·  KNOWLEDGE BASE</text>
+
+  
+  <text x="950" y="368" font-family="serif" font-size="16" fill="#fff" text-anchor="middle" opacity="0.9">★</text>
+
+</svg>

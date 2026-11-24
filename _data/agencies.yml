@@ -1,0 +1,372 @@
+# =============================================================================
+# _data/agencies.yml — the registry of lifehacker.dev's sub-agencies
+# =============================================================================
+# lifehacker.dev is the fleet's news agency and the content source; zer0-CMS is
+# the platform that manages, renders and publishes what it holds. Each agency
+# below is a named desk with one or more self-contained site trees under
+# agencies/. Rules and layout: agencies/README.md. Decision: docs/adr/0002-agencies.md.
+#
+# Schema agencies/v1 (checked by scripts/ci/lint_agencies.rb):
+#   agencies[]:
+#     key      directory name under agencies/ (unique)
+#     name     display name
+#     beat     one line: what the agency covers
+#     kind     single (one site, at agencies/<key>) | network (a hub and members,
+#              each at agencies/<key>/<site>)
+#     sites[]:
+#       key      the site's name inside the agency (unique in the agency)
+#       path     the tree, relative to the repository root (unique)
+#       custody  home   — this tree is the only place the site is written
+#                mirror — the source repository is still written; this copy is
+#                         refreshed with scripts/agencies/import.rb, not edited
+#       live_url the public URL the site answers at today, if any (checked by
+#                hand on the import date; absent = not published anywhere)
+#       upstream the repository the site first lived in, when that is not `source.repo`
+#       note     anything a reader of this row needs that the fields do not say
+#       source:  where the tree was imported from — written by import.rb, never by hand
+#         repo         owner/name
+#         path         sub-directory of that repository ("." = the whole repository)
+#         commit       the commit exported
+#         imported     the date
+#         files        how many files the export held
+#         tree_sha256  the digest of the export (import.rb --digest explains it)
+#
+# This file's body is rewritten by scripts/agencies/import.rb (through
+# LH.ywrite, which keeps this header). Put commentary here, not between rows.
+# =============================================================================
+schema: agencies/v1
+agencies:
+- key: '1987'
+  name: '1987'
+  beat: A self-growing knowledge base about the year 1987 — history and politics,
+    science and technology, arts and culture, society and economics, and people.
+  kind: single
+  sites:
+  - key: '1987'
+    path: agencies/1987
+    custody: home
+    upstream: bamr87/1987
+    note: Plain Markdown with no Jekyll configuration, so zer0-CMS cannot register
+      or import it yet. The original repository no longer exists. zer0-CMS held the
+      only copy; once its companion change merges, this tree is the only one.
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/1987
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 73
+      tree_sha256: c1a09a6ed4314e3ce45e1ee764ea324bc47d0f0a77e077f0afb7f41d7a079452
+      reflowed: 11
+- key: drsai
+  name: drsai — AI storybooks
+  beat: Children's picture books written with AI assistance, with the Python story
+    engine and the importers that build them.
+  kind: single
+  sites:
+  - key: drsai
+    path: agencies/drsai
+    custody: home
+    upstream: bamr87/drsai
+    note: The original repository no longer exists. zer0-CMS held the only copy; once
+      its companion change merges, this tree is the only one.
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/drsai
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 109
+      tree_sha256: 87d5902cdc6866d7228bea5afbc4524655bc91affdfd7ef925aee8927bb36629
+      reflowed: 1
+- key: irony-works
+  name: Irony Works
+  beat: The perpetual encyclopedia of irony and paradox — an Obsidian vault grown
+    by a germination engine and transplanted into a Jekyll collection.
+  kind: single
+  sites:
+  - key: irony-works
+    path: agencies/irony-works
+    custody: home
+    upstream: bamr87/irony-works
+    note: The original repository no longer exists. zer0-CMS held the only copy; once
+      its companion change merges, this tree is the only one.
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/irony-works
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 140
+      tree_sha256: 9150614d4df7ff7768470cca474ca8fb0111a0aeb7a5a61d6b1c1d42a4af2d28
+      reflowed: 2
+- key: wargames
+  name: Wargames
+  beat: OverTheWire security wargames mirrored as a study site, with hint-level study
+    guides and no solutions.
+  kind: single
+  sites:
+  - key: wargames
+    path: agencies/wargames
+    custody: home
+    upstream: bamr87/wargames
+    note: The original repository no longer exists. zer0-CMS held the only copy; once
+      its companion change merges, this tree is the only one.
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/wargames
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 269
+      tree_sha256: 87af24401a6341b86ffbe6b8f5152a460be9cf6492389089223a061b9031c141
+      reflowed: 5
+    published:
+      collection: wargames
+      url: "/wargames/"
+      date: '2026-11-23'
+      pages: 219
+- key: year-of-ai
+  name: Year of AI
+  beat: A federated network of self-growing, year-by-year knowledge bases, with the
+    hub that presents them, grows them and holds the network's genome.
+  kind: network
+  sites:
+  - key: hub
+    path: agencies/year-of-ai/hub
+    custody: mirror
+    live_url: https://year-of-ai.github.io/
+    note: The organization root site, the growth engine for every year, and the genome
+      the network is replanted from.
+    source:
+      repo: year-of-ai/year-of-ai.github.io
+      path: "."
+      commit: cdc81ed142e33d3669b3b3866ec068f3bc71a574
+      imported: '2026-11-22'
+      files: 242
+      tree_sha256: bbcfbbbc194de9a54e37208eb87b9e081c8ae0d6dace5b79998adbc6a9b4fdf5
+      reflowed: 73
+      dropped:
+      - assets/.DS_Store
+  - key: '1776'
+    path: agencies/year-of-ai/1776
+    custody: mirror
+    live_url: https://year-of-ai.github.io/1776/
+    source:
+      repo: year-of-ai/1776
+      path: "."
+      commit: 5871dab672f433e139e56bf1c1d1ea4a91055ee8
+      imported: '2026-11-22'
+      files: 188
+      tree_sha256: 01e93bdc33474592ec89394579f5acde18de1b9bec2bbef469a8b0b8d10c6dfb
+      reflowed: 12
+  - key: '1777'
+    path: agencies/year-of-ai/1777
+    custody: mirror
+    live_url: https://year-of-ai.github.io/1777/
+    source:
+      repo: year-of-ai/1777
+      path: "."
+      commit: 1e932cad9b86e187f76cc0929cca307554ecf8e2
+      imported: '2026-11-22'
+      files: 149
+      tree_sha256: ca374f1f6fddbf29a54ef4d586804ad59274d1aa63999ff6dff1a669b2a5193a
+      reflowed: 7
+  - key: '1778'
+    path: agencies/year-of-ai/1778
+    custody: mirror
+    live_url: https://year-of-ai.github.io/1778/
+    source:
+      repo: year-of-ai/1778
+      path: "."
+      commit: d17bdcb3a585f4a0ee0d6f22c7d811065318a0a4
+      imported: '2026-11-22'
+      files: 165
+      tree_sha256: f67aa52029e3e4e43ddbadcb2e23a41df789201ad0f2a4ba712f5b11a78254c8
+      reflowed: 7
+  - key: '2005'
+    path: agencies/year-of-ai/2005
+    custody: home
+    upstream: year-of-ai/2005
+    live_url: https://year-of-ai.github.io/2005/
+    note: The original repository is archived. The live site is still served from
+      it; this tree is the maintained copy.
+    source:
+      repo: bamr87/zer0-CMS
+      path: sites/2005
+      commit: 9b68af57dcb4223b6df0f01050b8678113a37785
+      imported: '2026-11-22'
+      files: 155
+      tree_sha256: 0cd2b67c612ae09f445520458a61f5282fca0091fe491fd9641b895e4ad6db83
+      reflowed: 2
+  - key: '2006'
+    path: agencies/year-of-ai/2006
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2006/
+    source:
+      repo: year-of-ai/2006
+      path: "."
+      commit: 146f3e369334d996dc5676995aa7d81615a2ed62
+      imported: '2026-11-22'
+      files: 157
+      tree_sha256: 225a1b84c73036ea238fe5a53ce74e04972446a91e068cb9a170b1181b7665ed
+      reflowed: 11
+  - key: '2007'
+    path: agencies/year-of-ai/2007
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2007/
+    source:
+      repo: year-of-ai/2007
+      path: "."
+      commit: fb226888945e6210f73fdbad71eaf533f272e156
+      imported: '2026-11-22'
+      files: 166
+      tree_sha256: 863432854ebfe830f19f19a30fccbe88fc73de569868f39ed6593a62c5405260
+      reflowed: 36
+  - key: '2008'
+    path: agencies/year-of-ai/2008
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2008/
+    source:
+      repo: year-of-ai/2008
+      path: "."
+      commit: f3eda4e337509d1a29e367c99cf691e0966fa690
+      imported: '2026-11-22'
+      files: 154
+      tree_sha256: cc3817e7adc5186fad53ad3fa08d0001ff55488c9fca4679d396be570c9a611c
+      reflowed: 6
+  - key: '2009'
+    path: agencies/year-of-ai/2009
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2009/
+    source:
+      repo: year-of-ai/2009
+      path: "."
+      commit: 2eb89de31be79a8fed10b13562a05afe678da18b
+      imported: '2026-11-22'
+      files: 163
+      tree_sha256: f7543372abb7bf45404930a1dad21ebd072caea13bff8350f65e237b89cba28b
+      reflowed: 8
+  - key: '2010'
+    path: agencies/year-of-ai/2010
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2010/
+    source:
+      repo: year-of-ai/2010
+      path: "."
+      commit: 6bbfa9f46a176c4ce55803e54cc133e474e67094
+      imported: '2026-11-22'
+      files: 181
+      tree_sha256: 209c49717a9a3534eb1704bf176075c644266fa3dcf642f4ed22b35a573f7b91
+      reflowed: 9
+  - key: '2011'
+    path: agencies/year-of-ai/2011
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2011/
+    source:
+      repo: year-of-ai/2011
+      path: "."
+      commit: dcec3ddf7ad12bb793c7156c5569d932493ffc91
+      imported: '2026-11-22'
+      files: 197
+      tree_sha256: 76bcb70f489e9374c6bbf35f9354c31a2d70224da8e3f335f66646f21eeef54f
+      reflowed: 9
+  - key: '2012'
+    path: agencies/year-of-ai/2012
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2012/
+    source:
+      repo: year-of-ai/2012
+      path: "."
+      commit: 37907bcf39d70e4d3b83fa7932d5a4541875d13d
+      imported: '2026-11-22'
+      files: 180
+      tree_sha256: a35044dd457c80b5548bced7e8a95036e57555d2d1504ba978ead73a0d001149
+      reflowed: 14
+  - key: '2013'
+    path: agencies/year-of-ai/2013
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2013/
+    source:
+      repo: year-of-ai/2013
+      path: "."
+      commit: 7498a940872fa176cab90b21c3708869ae296787
+      imported: '2026-11-22'
+      files: 122
+      tree_sha256: c4fef1fc525b2e0941e3c0b7761e1e9b41a0f5544515df121426f8362ac5d824
+      reflowed: 16
+  - key: '2014'
+    path: agencies/year-of-ai/2014
+    custody: mirror
+    live_url: https://year-of-ai.github.io/2014/
+    source:
+      repo: year-of-ai/2014
+      path: "."
+      commit: 8947a9d5b94e6172bfd8470f2d291328b004bd16
+      imported: '2026-11-22'
+      files: 66
+      tree_sha256: e3d836ae1068d444a2902ff8f2e9c53c3d33eca7e363bd118cda4916ca3e10ed
+      reflowed: 16
+- key: ai-world-view
+  name: AI World View
+  beat: A federated network of self-growing, country-by-country knowledge bases written
+    from the model's own knowledge, with the hub that presents and grows them.
+  kind: network
+  sites:
+  - key: hub
+    path: agencies/ai-world-view/hub
+    custody: mirror
+    live_url: https://ai-world-view.github.io/
+    note: The organization root site and the growth engine for every country.
+    source:
+      repo: ai-world-view/ai-world-view.github.io
+      path: "."
+      commit: d6825dd36b9e9da853dc5a078b3051be587ff353
+      imported: '2026-11-22'
+      files: 189
+      tree_sha256: 7fa57fbb5a5f27cc66d1356ca183e3acbb52ca7eb2fb77ea7b410528ba048e6c
+      reflowed: 51
+  - key: china
+    path: agencies/ai-world-view/china
+    custody: mirror
+    live_url: https://ai-world-view.github.io/china/
+    source:
+      repo: ai-world-view/china
+      path: "."
+      commit: 93792189a47cba0e604648462cb84f6c39e57c69
+      imported: '2026-11-22'
+      files: 200
+      tree_sha256: 752b8ed71a0e60d56b49112ac4330bf3bc2f374ef52014d3e04833d403aa8d40
+      reflowed: 17
+  - key: japan
+    path: agencies/ai-world-view/japan
+    custody: mirror
+    live_url: https://ai-world-view.github.io/japan/
+    source:
+      repo: ai-world-view/japan
+      path: "."
+      commit: 3bad31c63884c0cbc7471835178a33f97365727c
+      imported: '2026-11-22'
+      files: 104
+      tree_sha256: 4279d1dabc8a9c0c85512e97cf17d268b80f063c91435ebaa43f6adf72d22cfa
+      reflowed: 21
+  - key: north-korea
+    path: agencies/ai-world-view/north-korea
+    custody: mirror
+    live_url: https://ai-world-view.github.io/north-korea/
+    source:
+      repo: ai-world-view/north-korea
+      path: "."
+      commit: 8934ff955a86c6184e14025de310649389f98f41
+      imported: '2026-11-22'
+      files: 132
+      tree_sha256: cf9f742a7abdca96b8e5b15115d2ebbcf8bad90c405795f66526724df26e9db2
+      reflowed: 23
+  - key: south-korea
+    path: agencies/ai-world-view/south-korea
+    custody: mirror
+    live_url: https://ai-world-view.github.io/south-korea/
+    source:
+      repo: ai-world-view/south-korea
+      path: "."
+      commit: c46c57d7ff0f1eb30a4386b6c7abccba4dbc62a7
+      imported: '2026-11-22'
+      files: 263
+      tree_sha256: e202b5722c5d79d19198096a0124711d4fc2d5c81250dc2891a1440307cc3db7
+      reflowed: 28

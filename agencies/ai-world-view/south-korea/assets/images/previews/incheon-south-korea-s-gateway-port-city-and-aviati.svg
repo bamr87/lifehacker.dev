@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Incheon — South Korea's Gateway Port City and Aviation Hub</title>
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#f5ead6" />
+      <stop offset="100%" stop-color="#e8d5b0" />
+    </radialGradient>
+    <radialGradient id="seaGrad" cx="40%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#b8cfd8" />
+      <stop offset="100%" stop-color="#8fb0be" />
+    </radialGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#c8a97a" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <linearGradient id="landGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9b97a" />
+      <stop offset="100%" stop-color="#b5a560" />
+    </linearGradient>
+    <linearGradient id="islandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c2ae72" />
+      <stop offset="100%" stop-color="#a89650" />
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c3e28" />
+      <stop offset="100%" stop-color="#1a2518" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bgGrad)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a6d3b" stroke-width="3" rx="2" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a6d3b" stroke-width="1" rx="1" />
+
+  
+  <ellipse cx="560" cy="560" rx="520" ry="420" fill="url(#seaGrad)" opacity="0.85" />
+  
+  <ellipse cx="560" cy="560" rx="520" ry="420" fill="none" stroke="#7a9fae" stroke-width="0.5" opacity="0.3" />
+
+  
+  <line x1="40" y1="400" x2="1100" y2="400" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+  <line x1="40" y1="500" x2="1100" y2="500" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+  <line x1="40" y1="600" x2="1100" y2="600" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+  <line x1="40" y1="700" x2="1100" y2="700" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+  
+  <line x1="300" y1="60" x2="300" y2="980" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+  <line x1="450" y1="60" x2="450" y2="980" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+  <line x1="600" y1="60" x2="600" y2="980" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+  <line x1="750" y1="60" x2="750" y2="980" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+  <line x1="900" y1="60" x2="900" y2="980" stroke="#7a9fae" stroke-width="0.6" opacity="0.4" />
+
+  
+  <path d="M 820,80 C 870,90 920,120 950,180 C 980,240 990,300 970,370            C 950,440 920,490 890,550 C 860,610 840,650 820,700            C 800,740 780,770 760,790 C 740,810 720,820 700,820            C 680,820 660,800 650,775 C 640,750 645,720 655,690            C 665,660 680,630 690,600 C 700,570 700,540 685,510            C 670,480 645,460 625,440 C 605,420 590,400 590,375            C 590,350 610,330 630,310 C 650,290 670,275 680,255            C 690,235 685,210 680,185 C 675,160 670,140 680,115            C 690,90 760,70 820,80 Z" fill="url(#landGrad)" stroke="#8a6d3b" stroke-width="1.5" opacity="0.95" />
+
+  
+  <path d="M 820,80 C 790,60 740,50 690,55 C 640,60 600,80 580,100            C 560,120 570,150 580,175 C 590,200 610,210 630,210            C 650,210 670,200 680,185 C 690,170 685,155 680,140            C 700,115 760,95 820,80 Z" fill="url(#landGrad)" stroke="#8a6d3b" stroke-width="1.5" opacity="0.95" />
+
+  
+  <path d="M 630,440 C 610,435 585,420 560,405 C 535,390 510,370 490,355            C 470,340 455,330 445,325" fill="none" stroke="#8fb0be" stroke-width="5" opacity="0.8" />
+  <path d="M 630,440 C 615,448 600,455 580,458 C 560,461 540,458 520,450            C 500,442 480,428 460,415" fill="none" stroke="#8fb0be" stroke-width="4" opacity="0.7" />
+
+  
+  <ellipse cx="440" cy="340" rx="52" ry="30" fill="url(#islandGrad)" stroke="#8a6d3b" stroke-width="1.2" transform="rotate(-20,440,340)" />
+
+  
+  <ellipse cx="490" cy="430" rx="58" ry="25" fill="url(#islandGrad)" stroke="#8a6d3b" stroke-width="1.2" transform="rotate(-10,490,430)" />
+
+  
+  <circle cx="580" cy="460" r="12" fill="#8a3a2a" stroke="#f5ead6" stroke-width="2.5" />
+  <circle cx="580" cy="460" r="5" fill="#f5ead6" />
+
+  
+  <circle cx="690" cy="420" r="9" fill="#5c3d1a" stroke="#f5ead6" stroke-width="2" />
+  <circle cx="690" cy="420" r="3.5" fill="#f5ead6" />
+
+  
+  <line x1="580" y1="460" x2="690" y2="420" stroke="#8a6d3b" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7" />
+
+  
+  <text x="550" y="500" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#2c1f0e" font-style="italic" text-anchor="middle" opacity="0.9">인천</text>
+  <text x="550" y="520" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#2c1f0e" text-anchor="middle" opacity="0.8">Incheon</text>
+
+  
+  <text x="720" y="415" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#2c1f0e" opacity="0.8">Seoul</text>
+
+  
+  
+  <rect x="468" y="420" width="44" height="8" rx="2" fill="#d4c49a" stroke="#8a6d3b" stroke-width="0.8" transform="rotate(-10,490,424)" />
+  <rect x="484" y="405" width="8" height="44" rx="2" fill="#d4c49a" stroke="#8a6d3b" stroke-width="0.8" transform="rotate(-10,488,427)" />
+  
+  <g transform="translate(490,418) rotate(-10) scale(0.8)">
+    <path d="M0,-8 C2,-5 3,0 3,4 L8,7 L8,9 L3,8 L2,14 L4,15 L4,16 L0,15 L-4,16 L-4,15 L-2,14 L-3,8 L-8,9 L-8,7 L-3,4 C-3,0 -2,-5 0,-8 Z" fill="#5c3d1a" opacity="0.85" />
+  </g>
+
+  
+  <g transform="translate(500,530)">
+    
+    <path d="M-35,0 L-30,-18 L30,-18 L35,0 Q0,8 -35,0 Z" fill="#5c3d1a" opacity="0.8" />
+    
+    <rect x="-15" y="-28" width="25" height="12" fill="#7a5530" opacity="0.8" />
+    <rect x="-5" y="-38" width="10" height="10" fill="#7a5530" opacity="0.8" />
+    
+    <rect x="2" y="-45" width="5" height="10" fill="#5c3d1a" opacity="0.8" />
+    
+    <line x1="-20" y1="-18" x2="-20" y2="-42" stroke="#5c3d1a" stroke-width="1.5" opacity="0.8" />
+    <line x1="-20" y1="-42" x2="-8" y2="-35" stroke="#5c3d1a" stroke-width="1" opacity="0.7" />
+    
+    <path d="M-40,3 Q-20,10 0,6 Q20,2 40,8" fill="none" stroke="#8fb0be" stroke-width="1.5" opacity="0.6" />
+    <path d="M-38,8 Q-15,14 5,10 Q25,6 42,12" fill="none" stroke="#8fb0be" stroke-width="1" opacity="0.4" />
+  </g>
+
+  
+  <text x="500" y="590" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#2c1f0e" text-anchor="middle" font-style="italic" opacity="0.75">Port of Incheon</text>
+
+  
+  <ellipse cx="380" cy="500" rx="22" ry="12" fill="url(#islandGrad)" stroke="#8a6d3b" stroke-width="1" transform="rotate(15,380,500)" />
+  <ellipse cx="340" cy="580" rx="16" ry="9" fill="url(#islandGrad)" stroke="#8a6d3b" stroke-width="1" transform="rotate(10,340,580)" />
+  <ellipse cx="420" cy="600" rx="20" ry="11" fill="url(#islandGrad)" stroke="#8a6d3b" stroke-width="1" transform="rotate(-5,420,600)" />
+  <ellipse cx="290" cy="480" rx="18" ry="8" fill="url(#islandGrad)" stroke="#8a6d3b" stroke-width="1" transform="rotate(20,290,480)" />
+
+  
+  <path d="M 150,650 Q 180,640 210,650 Q 240,660 270,650" fill="none" stroke="#7a9fae" stroke-width="1.2" opacity="0.5" />
+  <path d="M 160,670 Q 195,658 230,668 Q 260,676 290,666" fill="none" stroke="#7a9fae" stroke-width="1.2" opacity="0.5" />
+  <path d="M 200,700 Q 240,688 275,698 Q 308,706 340,695" fill="none" stroke="#7a9fae" stroke-width="1.2" opacity="0.45" />
+  <path d="M 120,720 Q 165,708 200,718 Q 235,728 270,717" fill="none" stroke="#7a9fae" stroke-width="1" opacity="0.4" />
+  <path d="M 250,750 Q 290,738 325,748 Q 358,756 390,745" fill="none" stroke="#7a9fae" stroke-width="1" opacity="0.4" />
+  <path d="M 140,770 Q 180,758 215,768 Q 250,778 285,767" fill="none" stroke="#7a9fae" stroke-width="1" opacity="0.35" />
+
+  
+  <text x="270" y="760" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#4a6f7e" text-anchor="middle" font-style="italic" opacity="0.7" letter-spacing="3">YELLOW SEA</text>
+
+  
+  <g transform="translate(1100, 580)">
+    
+    <circle cx="0" cy="0" r="88" fill="none" stroke="#8a6d3b" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="82" fill="none" stroke="#8a6d3b" stroke-width="0.5" opacity="0.4" />
+    
+    <line x1="0" y1="-82" x2="0" y2="-72" stroke="#8a6d3b" stroke-width="1.5" />
+    <line x1="0" y1="72" x2="0" y2="82" stroke="#8a6d3b" stroke-width="1.5" />
+    <line x1="-82" y1="0" x2="-72" y2="0" stroke="#8a6d3b" stroke-width="1.5" />
+    <line x1="72" y1="0" x2="82" y2="0" stroke="#8a6d3b" stroke-width="1.5" />
+    
+    <line x1="58" y1="-58" x2="52" y2="-52" stroke="#8a6d3b" stroke-width="1" />
+    <line x1="58" y1="58" x2="52" y2="52" stroke="#8a6d3b" stroke-width="1" />
+    <line x1="-58" y1="-58" x2="-52" y2="-52" stroke="#8a6d3b" stroke-width="1" />
+    <line x1="-58" y1="58" x2="-52" y2="52" stroke="#8a6d3b" stroke-width="1" />
+    
+    <polygon points="0,-65 -10,-20 0,-28 10,-20" fill="#2c1f0e" />
+    
+    <polygon points="0,65 -10,20 0,28 10,20" fill="#8a6d3b" opacity="0.6" />
+    
+    <polygon points="65,0 20,-10 28,0 20,10" fill="#8a6d3b" opacity="0.6" />
+    
+    <polygon points="-65,0 -20,-10 -28,0 -20,10" fill="#8a6d3b" opacity="0.6" />
+    
+    <circle cx="0" cy="0" r="8" fill="#e8d5b0" stroke="#8a6d3b" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="3" fill="#8a6d3b" />
+    
+    <text x="0" y="-92" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#2c1f0e" text-anchor="middle">N</text>
+    <text x="0" y="110" font-family="Georgia, serif" font-size="14" fill="#5c3d1a" text-anchor="middle">S</text>
+    <text x="98" y="5" font-family="Georgia, serif" font-size="14" fill="#5c3d1a" text-anchor="middle">E</text>
+    <text x="-98" y="5" font-family="Georgia, serif" font-size="14" fill="#5c3d1a" text-anchor="middle">W</text>
+  </g>
+
+  
+  <path d="M 580,455 Q 750,280 1050,200" fill="none" stroke="#5c3d1a" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.5" />
+  <path d="M 580,455 Q 400,300 200,250" fill="none" stroke="#5c3d1a" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.4" />
+  <path d="M 580,455 Q 550,600 480,750" fill="none" stroke="#5c3d1a" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.35" />
+  
+  <g transform="translate(1048,202) rotate(-30) scale(1.1)">
+    <path d="M0,-6 C1.5,-3 2,1 2,3 L6,5 L6,7 L2,6 L1.5,10 L3,11 L3,12 L0,11 L-3,12 L-3,11 L-1.5,10 L-2,6 L-6,7 L-6,5 L-2,3 C-2,1 -1.5,-3 0,-6 Z" fill="#5c3d1a" opacity="0.75" />
+  </g>
+
+  
+  
+  <line x1="1150" y1="60" x2="1150" y2="964" stroke="#8a6d3b" stroke-width="1" opacity="0.5" stroke-dasharray="4,6" />
+
+  
+  
+  <rect x="1160" y="200" width="340" height="540" rx="4" fill="#f0e4c8" opacity="0.5" />
+
+  
+  <line x1="1200" y1="240" x2="1460" y2="240" stroke="#8a6d3b" stroke-width="1.5" opacity="0.7" />
+  <line x1="1200" y1="248" x2="1460" y2="248" stroke="#8a6d3b" stroke-width="0.5" opacity="0.5" />
+  <polygon points="1330,228 1336,240 1324,240" fill="#8a6d3b" opacity="0.7" />
+  <polygon points="1330,260 1336,248 1324,248" fill="#8a6d3b" opacity="0.7" />
+
+  
+  <text x="1330" y="308" font-family="Georgia, 'Times New Roman', serif" font-size="38" fill="url(#titleGrad)" text-anchor="middle" font-weight="bold" letter-spacing="1">Incheon</text>
+  <text x="1330" y="352" font-family="Georgia, 'Times New Roman', serif" font-size="18" fill="#5c3d1a" text-anchor="middle" font-style="italic">인천</text>
+
+  
+  <line x1="1230" y1="372" x2="1430" y2="372" stroke="#8a6d3b" stroke-width="0.8" opacity="0.6" />
+
+  <text x="1330" y="410" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#3a2810" text-anchor="middle" font-weight="bold">South Korea's</text>
+  <text x="1330" y="434" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#3a2810" text-anchor="middle" font-weight="bold">Gateway Port City</text>
+  <text x="1330" y="460" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#5c3d1a" text-anchor="middle">&amp; Aviation Hub</text>
+
+  
+  <line x1="1230" y1="478" x2="1430" y2="478" stroke="#8a6d3b" stroke-width="0.8" opacity="0.6" />
+
+  
+  <text x="1210" y="512" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#5c3d1a" opacity="0.9">◆  3rd largest city in Korea</text>
+  <text x="1210" y="538" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#5c3d1a" opacity="0.9">◆  Incheon Intl. Airport (ICN)</text>
+  <text x="1210" y="564" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#5c3d1a" opacity="0.9">◆  Port of Incheon — NE Asia</text>
+  <text x="1210" y="590" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#5c3d1a" opacity="0.9">◆  Pop. ~3 million (2020)</text>
+  <text x="1210" y="616" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#5c3d1a" opacity="0.9">◆  30 km west of Seoul</text>
+  <text x="1210" y="642" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#5c3d1a" opacity="0.9">◆  Yellow Sea estuary</text>
+
+  
+  <line x1="1200" y1="670" x2="1460" y2="670" stroke="#8a6d3b" stroke-width="0.5" opacity="0.5" />
+  <line x1="1200" y1="678" x2="1460" y2="678" stroke="#8a6d3b" stroke-width="1.5" opacity="0.7" />
+  <polygon points="1330,690 1336,678 1324,678" fill="#8a6d3b" opacity="0.7" />
+
+  
+  <g transform="translate(80, 920)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#5c3d1a" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#5c3d1a" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#5c3d1a" stroke-width="1.5" />
+    <line x1="200" y1="-6" x2="200" y2="6" stroke="#5c3d1a" stroke-width="2" />
+    <rect x="0" y="-3" width="50" height="6" fill="#5c3d1a" opacity="0.6" />
+    <rect x="100" y="-3" width="50" height="6" fill="#5c3d1a" opacity="0.6" />
+    <text x="100" y="20" font-family="Georgia, serif" font-size="12" fill="#5c3d1a" text-anchor="middle">50 km</text>
+  </g>
+
+  
+  <text x="760" y="952" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#8a6d3b" text-anchor="middle" font-style="italic" opacity="0.7">Northeast Asia — Korean Peninsula &amp; Yellow Sea Region</text>
+
+  
+  
+  <path d="M 36,36 L 80,36 M 36,36 L 36,80" stroke="#8a6d3b" stroke-width="2.5" fill="none" />
+  <circle cx="36" cy="36" r="4" fill="#8a6d3b" opacity="0.7" />
+  
+  <path d="M 1500,36 L 1456,36 M 1500,36 L 1500,80" stroke="#8a6d3b" stroke-width="2.5" fill="none" />
+  <circle cx="1500" cy="36" r="4" fill="#8a6d3b" opacity="0.7" />
+  
+  <path d="M 36,988 L 80,988 M 36,988 L 36,944" stroke="#8a6d3b" stroke-width="2.5" fill="none" />
+  <circle cx="36" cy="988" r="4" fill="#8a6d3b" opacity="0.7" />
+  
+  <path d="M 1500,988 L 1456,988 M 1500,988 L 1500,944" stroke="#8a6d3b" stroke-width="2.5" fill="none" />
+  <circle cx="1500" cy="988" r="4" fill="#8a6d3b" opacity="0.7" />
+
+  
+  <rect x="18" y="18" width="1500" height="50" fill="#8a6d3b" opacity="0.12" />
+  <text x="760" y="52" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#5c3d1a" text-anchor="middle" letter-spacing="6" opacity="0.8">ATLAS OF NORTHEAST ASIA</text>
+</svg>

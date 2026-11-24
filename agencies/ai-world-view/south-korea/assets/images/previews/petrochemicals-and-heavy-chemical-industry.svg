@@ -1,0 +1,276 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Petrochemicals and Heavy Chemical Industry – South Korea</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a8bfcc" />
+      <stop offset="100%" stop-color="#8fadb8" />
+    </linearGradient>
+    <linearGradient id="tankGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0b48a" />
+      <stop offset="100%" stop-color="#9a8e6a" />
+    </linearGradient>
+    <linearGradient id="towerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8a9e7a" />
+      <stop offset="100%" stop-color="#6e8260" />
+    </linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b8aa88" stroke-width="0.8" opacity="0.5" />
+    </pattern>
+    <pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="6" r="1" fill="#9a8e6a" opacity="0.4" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComponentTransfer in="blended">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.3" />
+
+  
+  
+  <ellipse cx="680" cy="560" rx="420" ry="320" fill="url(#seaGrad)" opacity="0.7" />
+
+  
+  <path d="M 680 300 L 720 290 L 760 300 L 790 340 L 810 390 L 820 440 L 810 500 L 790 560 L 760 610 L 740 650 L 720 680 L 700 700 L 680 710 L 660 700 L 645 680 L 640 650 L 650 610 L 660 570 L 650 520 L 640 470 L 640 420 L 650 370 L 660 330 Z" fill="#c8b87a" stroke="#8a7a50" stroke-width="2.5" />
+
+  
+  <path d="M 680 300 L 720 290 L 760 300 L 790 340 L 810 390 L 820 440 L 810 500 L 790 560 L 760 610 L 740 650 L 720 680 L 700 700 L 680 710 L 660 700 L 645 680 L 640 650 L 650 610 L 660 570 L 650 520 L 640 470 L 640 420 L 650 370 L 660 330 Z" fill="url(#dots)" opacity="0.6" />
+
+  
+  <ellipse cx="785" cy="570" rx="35" ry="25" fill="#c06040" opacity="0.35" />
+  <ellipse cx="785" cy="570" rx="22" ry="15" fill="#c06040" opacity="0.5" />
+  
+  <circle cx="785" cy="570" r="8" fill="#b84030" stroke="#7a2010" stroke-width="2" />
+  <circle cx="785" cy="570" r="3" fill="#f0d0a0" />
+
+  
+  <text x="870" y="490" font-family="Georgia, serif" font-size="18" fill="#5a7a8a" opacity="0.8" font-style="italic" text-anchor="middle">Sea of Japan</text>
+  <text x="540" y="500" font-family="Georgia, serif" font-size="18" fill="#5a7a8a" opacity="0.8" font-style="italic" text-anchor="middle">Yellow Sea</text>
+
+  
+  <path d="M 920 280 Q 940 290 950 320 Q 945 350 930 370 Q 910 360 905 330 Q 908 300 920 280Z" fill="#c8b87a" stroke="#8a7a50" stroke-width="1.5" />
+  <path d="M 960 350 Q 980 360 985 400 Q 980 440 960 460 Q 940 450 935 420 Q 938 380 960 350Z" fill="#c8b87a" stroke="#8a7a50" stroke-width="1.5" />
+  <path d="M 940 460 Q 960 470 965 510 Q 960 550 940 570 L 920 560 Q 915 520 920 480 Z" fill="#c8b87a" stroke="#8a7a50" stroke-width="1.5" />
+
+  
+  <path d="M 400 200 Q 500 220 560 280 Q 580 340 570 400 Q 550 460 530 500 Q 510 540 480 560 Q 440 540 420 500 Q 400 450 390 400 Q 370 340 380 280 Q 390 240 400 200Z" fill="#c8b87a" stroke="#8a7a50" stroke-width="1.5" />
+
+  
+  
+  
+
+  
+  <rect x="1000" y="620" width="480" height="180" fill="#b8a870" stroke="#8a7a50" stroke-width="1.5" />
+  <rect x="1000" y="620" width="480" height="180" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <ellipse cx="1060" cy="620" rx="45" ry="18" fill="#9a8e6a" stroke="#6a5e3a" stroke-width="2" />
+  <rect x="1015" y="580" width="90" height="45" fill="url(#tankGrad)" stroke="#6a5e3a" stroke-width="2" />
+  <ellipse cx="1060" cy="580" rx="45" ry="18" fill="#d4c88a" stroke="#6a5e3a" stroke-width="2" />
+
+  <ellipse cx="1175" cy="620" rx="40" ry="16" fill="#9a8e6a" stroke="#6a5e3a" stroke-width="2" />
+  <rect x="1135" y="585" width="80" height="38" fill="url(#tankGrad)" stroke="#6a5e3a" stroke-width="2" />
+  <ellipse cx="1175" cy="585" rx="40" ry="16" fill="#d4c88a" stroke="#6a5e3a" stroke-width="2" />
+
+  <ellipse cx="1280" cy="620" rx="50" ry="20" fill="#9a8e6a" stroke="#6a5e3a" stroke-width="2" />
+  <rect x="1230" y="570" width="100" height="55" fill="url(#tankGrad)" stroke="#6a5e3a" stroke-width="2" />
+  <ellipse cx="1280" cy="570" rx="50" ry="20" fill="#d4c88a" stroke="#6a5e3a" stroke-width="2" />
+
+  
+  
+  <rect x="1370" y="450" width="30" height="175" fill="url(#towerGrad)" stroke="#4a6040" stroke-width="2" />
+  <ellipse cx="1385" cy="450" rx="15" ry="7" fill="#8aae7a" stroke="#4a6040" stroke-width="2" />
+  <rect x="1365" y="475" width="40" height="8" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1365" y="505" width="40" height="8" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1365" y="535" width="40" height="8" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1365" y="565" width="40" height="8" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+
+  
+  <rect x="1420" y="470" width="25" height="155" fill="url(#towerGrad)" stroke="#4a6040" stroke-width="2" />
+  <ellipse cx="1432" cy="470" rx="12" ry="5" fill="#8aae7a" stroke="#4a6040" stroke-width="2" />
+  <rect x="1416" y="490" width="32" height="7" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1416" y="515" width="32" height="7" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1416" y="540" width="32" height="7" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+
+  
+  <rect x="1460" y="410" width="40" height="215" fill="url(#towerGrad)" stroke="#4a6040" stroke-width="2" />
+  <ellipse cx="1480" cy="410" rx="20" ry="9" fill="#8aae7a" stroke="#4a6040" stroke-width="2" />
+  <rect x="1454" y="440" width="52" height="10" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1454" y="470" width="52" height="10" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1454" y="500" width="52" height="10" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1454" y="530" width="52" height="10" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1454" y="560" width="52" height="10" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+  <rect x="1454" y="590" width="52" height="10" fill="#6a9060" stroke="#4a6040" stroke-width="1.5" />
+
+  
+  <line x1="1510" y1="625" x2="1510" y2="500" stroke="#4a6040" stroke-width="4" />
+  <path d="M1510 500 Q1518 485 1510 470 Q1525 480 1520 495 Q1530 478 1523 460 Q1515 440 1510 430 Q1505 445 1508 460 Q1500 445 1502 430 Q1495 450 1500 465 Q1490 450 1492 435 Q1485 455 1492 475 Q1498 490 1510 500Z" fill="#d4842a" stroke="#a05010" stroke-width="1" />
+
+  
+  <path d="M1105 600 Q1200 590 1370 570" stroke="#8a7a50" stroke-width="3" fill="none" />
+  <path d="M1060 580 L1060 560 Q1200 540 1370 540" stroke="#8a7a50" stroke-width="2" fill="none" />
+  <path d="M1320 600 L1370 600" stroke="#8a7a50" stroke-width="3" fill="none" />
+
+  
+  <rect x="1095" y="480" width="20" height="105" fill="#9a9a80" stroke="#6a6a50" stroke-width="2" />
+  <ellipse cx="1105" cy="480" rx="10" ry="5" fill="#b8b890" stroke="#6a6a50" stroke-width="2" />
+  
+  <circle cx="1105" cy="460" r="12" fill="#c8c8b0" opacity="0.5" />
+  <circle cx="1112" cy="443" r="10" fill="#c8c8b0" opacity="0.4" />
+  <circle cx="1120" cy="428" r="9" fill="#c8c8b0" opacity="0.3" />
+  <circle cx="1130" cy="415" r="8" fill="#c8c8b0" opacity="0.2" />
+
+  
+  <g transform="translate(820, 160)">
+    <polygon points="40,0 80,23 80,69 40,92 0,69 0,23" fill="none" stroke="#8a7a50" stroke-width="3" />
+    <polygon points="40,15 65,28 65,54 40,67 15,54 15,28" fill="none" stroke="#8a7a50" stroke-width="1.5" stroke-dasharray="8,4" />
+    
+    <circle cx="40" cy="0" r="5" fill="#b04030" />
+    <circle cx="80" cy="23" r="5" fill="#b04030" />
+    <circle cx="80" cy="69" r="5" fill="#b04030" />
+    <circle cx="40" cy="92" r="5" fill="#b04030" />
+    <circle cx="0" cy="69" r="5" fill="#b04030" />
+    <circle cx="0" cy="23" r="5" fill="#b04030" />
+    
+    <circle cx="40" cy="46" r="6" fill="#c06040" />
+    
+    <line x1="40" y1="0" x2="40" y2="92" stroke="#8a7a50" stroke-width="1" opacity="0.3" />
+    <line x1="0" y1="23" x2="80" y2="69" stroke="#8a7a50" stroke-width="1" opacity="0.3" />
+    <line x1="80" y1="23" x2="0" y2="69" stroke="#8a7a50" stroke-width="1" opacity="0.3" />
+  </g>
+
+  
+  <g transform="translate(130, 130)">
+    
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#8a7a50" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#8a7a50" stroke-width="0.8" />
+    
+    <polygon points="0,-55 -8,-20 0,-30 8,-20" fill="#5a4a2a" />
+    
+    <polygon points="0,55 -8,20 0,30 8,20" fill="#9a8a6a" />
+    
+    <polygon points="55,0 20,-8 30,0 20,8" fill="#9a8a6a" />
+    
+    <polygon points="-55,0 -20,-8 -30,0 -20,8" fill="#9a8a6a" />
+    
+    <line x1="0" y1="-65" x2="0" y2="-55" stroke="#8a7a50" stroke-width="2" />
+    <line x1="0" y1="55" x2="0" y2="65" stroke="#8a7a50" stroke-width="2" />
+    <line x1="-65" y1="0" x2="-55" y2="0" stroke="#8a7a50" stroke-width="2" />
+    <line x1="55" y1="0" x2="65" y2="0" stroke="#8a7a50" stroke-width="2" />
+    <line x1="-46" y1="-46" x2="-39" y2="-39" stroke="#8a7a50" stroke-width="1.5" />
+    <line x1="39" y1="-39" x2="46" y2="-46" stroke="#8a7a50" stroke-width="1.5" />
+    <line x1="-46" y1="46" x2="-39" y2="39" stroke="#8a7a50" stroke-width="1.5" />
+    <line x1="39" y1="39" x2="46" y2="46" stroke="#8a7a50" stroke-width="1.5" />
+    
+    <text x="0" y="-70" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#5a4a2a" text-anchor="middle">N</text>
+    
+    <circle cx="0" cy="0" r="5" fill="#8a7a50" />
+    <circle cx="0" cy="0" r="2" fill="#e8dfc8" />
+  </g>
+
+  
+  <g stroke="#8a7a50" stroke-width="0.6" opacity="0.3">
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="300" y1="0" x2="300" y2="1024" />
+    <line x1="600" y1="0" x2="600" y2="1024" />
+    <line x1="900" y1="0" x2="900" y2="1024" />
+    <line x1="1200" y1="0" x2="1200" y2="1024" />
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7a50" stroke-width="3" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#8a7a50" stroke-width="1" />
+
+  
+  <g stroke="#8a7a50" stroke-width="1.5" fill="none">
+    
+    <path d="M18,18 L60,18 M18,18 L18,60" />
+    <path d="M26,26 L55,26 M26,26 L26,55" />
+    
+    <path d="M1518,18 L1476,18 M1518,18 L1518,60" />
+    <path d="M1510,26 L1481,26 M1510,26 L1510,55" />
+    
+    <path d="M18,1006 L60,1006 M18,1006 L18,964" />
+    <path d="M26,998 L55,998 M26,998 L26,969" />
+    
+    <path d="M1518,1006 L1476,1006 M1518,1006 L1518,964" />
+    <path d="M1510,998 L1481,998 M1510,998 L1510,969" />
+  </g>
+
+  
+  <rect x="50" y="720" width="250" height="160" fill="#e0d5b5" stroke="#8a7a50" stroke-width="2" rx="4" />
+  <text x="175" y="745" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#5a4a2a" text-anchor="middle" letter-spacing="2">LEGEND</text>
+  <line x1="60" y1="752" x2="290" y2="752" stroke="#8a7a50" stroke-width="1" />
+  
+  <circle cx="80" cy="772" r="8" fill="#b84030" stroke="#7a2010" stroke-width="1.5" />
+  <text x="100" y="777" font-family="Georgia, serif" font-size="13" fill="#5a4a2a">Major petrochemical complex</text>
+  <rect x="72" y="792" width="16" height="12" fill="#c8b87a" stroke="#8a7a50" stroke-width="1.5" />
+  <text x="100" y="802" font-family="Georgia, serif" font-size="13" fill="#5a4a2a">Republic of Korea</text>
+  <rect x="72" y="815" width="16" height="12" fill="url(#seaGrad)" stroke="#6a8a9a" stroke-width="1.5" />
+  <text x="100" y="825" font-family="Georgia, serif" font-size="13" fill="#5a4a2a">Adjacent seas</text>
+  <g transform="translate(72,838)">
+    <rect width="10" height="20" fill="url(#towerGrad)" stroke="#4a6040" stroke-width="1" />
+    <rect width="3" height="3" x="13" y="4" fill="#d4842a" />
+  </g>
+  <text x="100" y="852" font-family="Georgia, serif" font-size="13" fill="#5a4a2a">Refinery / cracking unit</text>
+
+  
+  <text x="805" y="575" font-family="Georgia, serif" font-size="13" fill="#5a4a2a" font-style="italic">Ulsan</text>
+
+  
+  
+  
+
+  
+  <rect x="50" y="50" width="1436" height="180" fill="#2a200e" opacity="0.82" rx="4" />
+  <rect x="58" y="58" width="1420" height="164" fill="none" stroke="#c8b87a" stroke-width="1.5" rx="2" />
+
+  
+  <text x="768" y="95" font-family="Georgia, serif" font-size="18" fill="#c8b87a" text-anchor="middle" letter-spacing="6" opacity="0.9">SOUTH KOREA · INDUSTRIAL ATLAS</text>
+
+  
+  <text x="768" y="158" font-family="Georgia, serif" font-size="70" font-weight="bold" fill="#e8dfc8" text-anchor="middle" letter-spacing="2">Petrochemicals &amp; Heavy</text>
+  
+  <text x="768" y="218" font-family="Georgia, serif" font-size="70" font-weight="bold" fill="#e8dfc8" text-anchor="middle" letter-spacing="2">Chemical Industry</text>
+
+  
+  <line x1="250" y1="240" x2="700" y2="240" stroke="#c8b87a" stroke-width="1.5" />
+  <circle cx="768" cy="240" r="5" fill="#c8b87a" />
+  <line x1="836" y1="240" x2="1286" y2="240" stroke="#c8b87a" stroke-width="1.5" />
+
+  
+  <text x="768" y="290" font-family="Georgia, serif" font-size="20" fill="#6a5a30" text-anchor="middle" letter-spacing="3" font-style="italic">Plastics · Synthetic Fibres · Fertilizers · Specialty Chemicals · Naphtha Cracking</text>
+
+  
+  <rect x="695" y="585" width="105" height="22" fill="#2a200e" opacity="0.65" rx="2" />
+  <text x="748" y="600" font-family="Georgia, serif" font-size="12" fill="#e8dfc8" text-anchor="middle" letter-spacing="1">ULSAN COMPLEX</text>
+
+  
+  <text x="1240" y="785" font-family="Georgia, serif" font-size="18" fill="#4a3a18" text-anchor="middle" font-style="italic" letter-spacing="1">Petrochemical Complex (Stylized)</text>
+
+  
+  <g transform="translate(1100, 940)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#5a4a2a" stroke-width="2" />
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#5a4a2a" stroke-width="2" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#5a4a2a" stroke-width="1.5" />
+    <line x1="200" y1="-6" x2="200" y2="6" stroke="#5a4a2a" stroke-width="2" />
+    <text x="0" y="-12" font-family="Georgia, serif" font-size="12" fill="#5a4a2a" text-anchor="middle">0</text>
+    <text x="100" y="-12" font-family="Georgia, serif" font-size="12" fill="#5a4a2a" text-anchor="middle">250</text>
+    <text x="200" y="-12" font-family="Georgia, serif" font-size="12" fill="#5a4a2a" text-anchor="middle">500 km</text>
+  </g>
+
+</svg>

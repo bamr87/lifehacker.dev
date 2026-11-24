@@ -1,0 +1,161 @@
+# DrSAI CI/CD Pipeline
+# Runs tests, linting, and publishes to PyPI on release tags
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  # Schedule paused (Actions waste reduction, Oct 14): Actions jobs in this private repo are refused
+  # by the billing block ("recent account payments have failed or your spending limit needs to be
+  # increased"), bamr87/bamr87#268, so every scheduled run failed without running.
+  # To restore once billing is fixed: uncomment the schedule block below (workflow_dispatch still works).
+  # schedule:
+  #   # Weekly full-matrix sweep (Mondays 06:00 UTC). PRs test Linux only (see
+  #   # the matrix comment below), so without this a Windows- or macOS-only
+  #   # regression could sit unnoticed through a quiet period with no push to
+  #   # main. Costs one 9-leg run a week instead of one per pull request.
+  #   - cron: '0 6 * * 1'
+  workflow_dispatch:  # added so the workflow can still be run by hand while the schedule is paused
+
+jobs:
+  test:
+    name: Test (Python ${{ matrix.python-version }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # The OS axis is trigger-dependent ON PURPOSE — do not flatten it back
+        # to a static list.
+        #
+        # drsai is a PRIVATE repo, so Actions minutes are billed with per-OS
+        # multipliers: Linux ×1, Windows ×2, macOS ×10. A static 3×3 matrix
+        # therefore bills 3×1 + 3×2 + 3×10 = 39 Linux-equivalent multiplier
+        # units on EVERY pull request, for a package with no compiled
+        # component: build backend is setuptools.build_meta, there are no
+        # ext_modules, every runtime dependency is pure-Python or ships
+        # universal wheels, and no `Operating System ::` classifier constrains
+        # the platforms.
+        #
+        # So pull requests run Linux × all three supported Pythons (3 legs),
+        # while push-to-main, `v*` tags, and the weekly schedule above keep the
+        # full 3×3. Nothing is dropped from the RELEASE gate: `publish` is
+        # tag-triggered, so it still needs all nine legs green. The only
+        # behavioural change is that a Windows/macOS-only regression surfaces
+        # at merge-to-main rather than at PR review.
+        os: >-
+          ${{ github.event_name == 'pull_request'
+          && fromJSON('["ubuntu-latest"]')
+          || fromJSON('["ubuntu-latest", "macos-latest", "windows-latest"]') }}
+        python-version: ["3.10", "3.11", "3.12"]
+
+    defaults:
+      run:
+        working-directory: drsai
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+          cache-dependency-path: drsai/pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Download NLTK data
+        run: |
+          python -c "import nltk; nltk.download('cmudict', quiet=True)"
+
+      - name: Run linting (ruff)
+        run: ruff check src/
+
+      - name: Run formatting check (black)
+        run: black --check src/ tests/
+
+      - name: Run type checking (mypy)
+        run: mypy src/drsai/ --ignore-missing-imports
+        continue-on-error: true  # Don't fail on type errors for now
+
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=drsai --cov-report=xml --cov-report=term-missing
+
+      - name: Upload coverage to Codecov
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
+        uses: codecov/codecov-action@v7
+        with:
+          files: drsai/coverage.xml
+          fail_ci_if_error: false
+
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: drsai
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Install dev dependencies
+        run: |
+          pip install ruff black mypy
+
+      - name: Run ruff
+        run: ruff check src/
+
+      - name: Run black
+        run: black --check src/ tests/
+
+  publish:
+    name: Publish to PyPI
+    needs: [test, lint]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write  # For trusted publishing
+
+    defaults:
+      run:
+        working-directory: drsai
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Install build tools
+        run: |
+          pip install build twine
+
+      - name: Build package
+        run: python -m build
+
+      - name: Check package
+        run: twine check dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: drsai/dist/
+
+

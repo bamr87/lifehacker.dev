@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Kanye West releases Late Registration – Retro Pixel Art Banner</title>
+
+  <defs>
+    <radialGradient id="crtGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1a0a2e" />
+      <stop offset="100%" stop-color="#000005" />
+    </radialGradient>
+    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe566" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ffe566" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="recordGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2a2a2a" />
+      <stop offset="40%" stop-color="#111111" />
+      <stop offset="100%" stop-color="#050505" />
+    </radialGradient>
+    <filter id="scanlines" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0 0.5" numOctaves="1" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <pattern id="scanPat" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="4" height="2" fill="black" opacity="0.15" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#crtGlow)" />
+
+  
+  <rect width="1536" height="1024" fill="url(#scanPat)" />
+
+  
+  <rect x="50" y="30" width="8" height="8" fill="#ffffff" opacity="0.6" />
+  <rect x="200" y="80" width="4" height="4" fill="#ffe566" opacity="0.8" />
+  <rect x="380" y="50" width="8" height="8" fill="#ffffff" opacity="0.4" />
+  <rect x="500" y="120" width="4" height="4" fill="#ff66aa" opacity="0.7" />
+  <rect x="700" y="40" width="8" height="8" fill="#66ffee" opacity="0.5" />
+  <rect x="900" y="90" width="4" height="4" fill="#ffe566" opacity="0.9" />
+  <rect x="1100" y="30" width="8" height="8" fill="#ffffff" opacity="0.6" />
+  <rect x="1300" y="70" width="4" height="4" fill="#ff66aa" opacity="0.7" />
+  <rect x="1450" y="120" width="8" height="8" fill="#66ffee" opacity="0.5" />
+  <rect x="100" y="900" width="8" height="8" fill="#ffe566" opacity="0.6" />
+  <rect x="300" y="950" width="4" height="4" fill="#ffffff" opacity="0.5" />
+  <rect x="600" y="980" width="8" height="8" fill="#ff66aa" opacity="0.4" />
+  <rect x="1200" y="920" width="4" height="4" fill="#66ffee" opacity="0.8" />
+  <rect x="1400" y="960" width="8" height="8" fill="#ffffff" opacity="0.5" />
+
+  
+  <ellipse cx="768" cy="512" rx="600" ry="400" fill="url(#goldGlow)" />
+
+  
+  
+  
+  <circle cx="768" cy="512" r="340" fill="#0a0a0a" stroke="#222" stroke-width="8" />
+  
+  <circle cx="768" cy="512" r="320" fill="none" stroke="#1a1a1a" stroke-width="4" />
+  <circle cx="768" cy="512" r="300" fill="none" stroke="#222" stroke-width="4" />
+  <circle cx="768" cy="512" r="280" fill="none" stroke="#1a1a1a" stroke-width="4" />
+  <circle cx="768" cy="512" r="260" fill="none" stroke="#222" stroke-width="4" />
+  <circle cx="768" cy="512" r="240" fill="none" stroke="#1a1a1a" stroke-width="4" />
+  <circle cx="768" cy="512" r="220" fill="none" stroke="#222" stroke-width="4" />
+  <circle cx="768" cy="512" r="200" fill="none" stroke="#1a1a1a" stroke-width="4" />
+  <circle cx="768" cy="512" r="180" fill="none" stroke="#222" stroke-width="4" />
+  <circle cx="768" cy="512" r="160" fill="none" stroke="#1a1a1a" stroke-width="4" />
+
+  
+  <circle cx="768" cy="512" r="140" fill="#c8a400" />
+  <circle cx="768" cy="512" r="136" fill="#e8bc00" />
+  <circle cx="768" cy="512" r="130" fill="#d4a800" />
+
+  
+  
+  <rect x="706" y="448" width="8" height="8" fill="#1a0a00" />
+  <rect x="714" y="448" width="8" height="8" fill="#1a0a00" />
+  <rect x="722" y="448" width="8" height="8" fill="#1a0a00" />
+  <rect x="730" y="448" width="8" height="8" fill="#1a0a00" />
+  <rect x="706" y="456" width="8" height="8" fill="#1a0a00" />
+  <rect x="706" y="464" width="8" height="8" fill="#1a0a00" />
+  <rect x="706" y="472" width="8" height="8" fill="#1a0a00" />
+  <rect x="714" y="472" width="8" height="8" fill="#1a0a00" />
+  <rect x="722" y="472" width="8" height="8" fill="#1a0a00" />
+  <rect x="730" y="472" width="8" height="8" fill="#1a0a00" />
+
+  
+  <text x="768" y="490" font-family="monospace" font-size="18" font-weight="bold" fill="#1a0a00" text-anchor="middle" letter-spacing="3">LATE</text>
+  <text x="768" y="512" font-family="monospace" font-size="14" font-weight="bold" fill="#1a0a00" text-anchor="middle" letter-spacing="2">REGISTRATION</text>
+  <text x="768" y="532" font-family="monospace" font-size="11" fill="#3a2000" text-anchor="middle">KANYE WEST</text>
+  <text x="768" y="548" font-family="monospace" font-size="9" fill="#3a2000" text-anchor="middle">ROC-A-FELLA / DEF JAM</text>
+
+  
+  <circle cx="768" cy="512" r="12" fill="#0a0a0a" />
+  <circle cx="768" cy="512" r="8" fill="#111" />
+
+  
+  <rect x="660" y="390" width="8" height="8" fill="#444" opacity="0.8" />
+  <rect x="668" y="382" width="8" height="8" fill="#555" opacity="0.6" />
+  <rect x="676" y="378" width="4" height="4" fill="#888" opacity="0.4" />
+
+  
+  
+  <polygon points="180,400 260,320 340,400 260,480" fill="#66eeff" stroke="#00ccdd" stroke-width="4" />
+  <polygon points="180,400 260,480 340,400" fill="#33bbcc" />
+  <polygon points="260,320 200,400 260,400" fill="#99ffff" />
+  <polygon points="260,320 320,400 260,400" fill="#77ddee" />
+  
+  <rect x="232" y="348" width="8" height="8" fill="#ffffff" opacity="0.7" />
+  <rect x="240" y="340" width="4" height="4" fill="#ffffff" opacity="0.9" />
+
+  
+  <polygon points="1196,400 1276,320 1356,400 1276,480" fill="#66eeff" stroke="#00ccdd" stroke-width="4" />
+  <polygon points="1196,400 1276,480 1356,400" fill="#33bbcc" />
+  <polygon points="1276,320 1216,400 1276,400" fill="#99ffff" />
+  <polygon points="1276,320 1336,400 1276,400" fill="#77ddee" />
+  <rect x="1248" y="348" width="8" height="8" fill="#ffffff" opacity="0.7" />
+  <rect x="1256" y="340" width="4" height="4" fill="#ffffff" opacity="0.9" />
+
+  
+  
+  <rect x="80" y="500" width="40" height="40" rx="4" fill="#ffe566" />
+  <rect x="84" y="504" width="32" height="32" rx="2" fill="#ffd000" />
+  <rect x="92" y="512" width="16" height="16" fill="#ffee88" />
+  <rect x="96" y="516" width="8" height="8" fill="#ffe566" />
+
+  <rect x="140" y="540" width="32" height="32" rx="4" fill="#ffe566" />
+  <rect x="144" y="544" width="24" height="24" rx="2" fill="#ffd000" />
+  <rect x="150" y="550" width="12" height="12" fill="#ffee88" />
+
+  <rect x="60" y="570" width="24" height="24" rx="4" fill="#ffe566" />
+  <rect x="64" y="574" width="16" height="16" rx="2" fill="#ffd000" />
+
+  
+  <rect x="1420" y="500" width="40" height="40" rx="4" fill="#ffe566" />
+  <rect x="1424" y="504" width="32" height="32" rx="2" fill="#ffd000" />
+  <rect x="1432" y="512" width="16" height="16" fill="#ffee88" />
+  <rect x="1436" y="516" width="8" height="8" fill="#ffe566" />
+
+  <rect x="1380" y="540" width="32" height="32" rx="4" fill="#ffe566" />
+  <rect x="1384" y="544" width="24" height="24" rx="2" fill="#ffd000" />
+  <rect x="1390" y="550" width="12" height="12" fill="#ffee88" />
+
+  <rect x="1460" y="570" width="24" height="24" rx="4" fill="#ffe566" />
+  <rect x="1464" y="574" width="16" height="16" rx="2" fill="#ffd000" />
+
+  
+  
+  <rect x="140" y="300" width="8" height="32" fill="#ff66aa" />
+  <rect x="140" y="296" width="24" height="8" fill="#ff66aa" />
+  <rect x="156" y="296" width="8" height="24" fill="#ff66aa" />
+  <ellipse cx="140" cy="332" rx="12" ry="8" fill="#ff66aa" />
+  <ellipse cx="156" cy="316" rx="10" ry="7" fill="#ff66aa" />
+
+  
+  <rect x="1380" y="300" width="8" height="32" fill="#ff66aa" />
+  <rect x="1380" y="296" width="24" height="8" fill="#ff66aa" />
+  <rect x="1396" y="296" width="8" height="24" fill="#ff66aa" />
+  <ellipse cx="1380" cy="332" rx="12" ry="8" fill="#ff66aa" />
+  <ellipse cx="1396" cy="316" rx="10" ry="7" fill="#ff66aa" />
+
+  
+  <rect x="300" y="160" width="6" height="24" fill="#66ffee" />
+  <rect x="300" y="156" width="18" height="6" fill="#66ffee" />
+  <rect x="312" y="156" width="6" height="18" fill="#66ffee" />
+  <ellipse cx="300" cy="184" rx="9" ry="6" fill="#66ffee" />
+  <ellipse cx="312" cy="171" rx="7" ry="5" fill="#66ffee" />
+
+  
+  <rect x="1230" y="160" width="6" height="24" fill="#66ffee" />
+  <rect x="1230" y="156" width="18" height="6" fill="#66ffee" />
+  <rect x="1242" y="156" width="6" height="18" fill="#66ffee" />
+  <ellipse cx="1230" cy="184" rx="9" ry="6" fill="#66ffee" />
+  <ellipse cx="1242" cy="171" rx="7" ry="5" fill="#66ffee" />
+
+  
+  
+  <polygon points="768,180 790,230 845,230 800,262 818,315 768,283 718,315 736,262 691,230 746,230" fill="#ffe566" stroke="#cc9900" stroke-width="3" />
+  <polygon points="768,195 784,232 824,232 793,255 805,294 768,272 731,294 743,255 712,232 752,232" fill="#ffd700" />
+  <text x="768" y="262" font-family="monospace" font-size="28" font-weight="bold" fill="#1a0a00" text-anchor="middle">#1</text>
+
+  
+  
+  <rect x="60" y="680" width="240" height="80" fill="#f0f0f0" stroke="#333" stroke-width="4" />
+  
+  <rect x="64" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="96" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="128" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="160" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="192" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="224" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="256" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  
+  <rect x="84" y="684" width="20" height="44" fill="#111" />
+  <rect x="116" y="684" width="20" height="44" fill="#111" />
+  <rect x="180" y="684" width="20" height="44" fill="#111" />
+  <rect x="212" y="684" width="20" height="44" fill="#111" />
+  <rect x="244" y="684" width="20" height="44" fill="#111" />
+
+  
+  <rect x="1236" y="680" width="240" height="80" fill="#f0f0f0" stroke="#333" stroke-width="4" />
+  <rect x="1240" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="1272" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="1304" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="1336" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="1368" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="1400" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="1432" y="684" width="28" height="72" fill="#ffffff" stroke="#aaa" stroke-width="2" />
+  <rect x="1260" y="684" width="20" height="44" fill="#111" />
+  <rect x="1292" y="684" width="20" height="44" fill="#111" />
+  <rect x="1356" y="684" width="20" height="44" fill="#111" />
+  <rect x="1388" y="684" width="20" height="44" fill="#111" />
+  <rect x="1420" y="684" width="20" height="44" fill="#111" />
+
+  
+  
+  <rect x="340" y="700" width="260" height="80" fill="#001100" stroke="#00ff44" stroke-width="4" rx="4" />
+  <text x="470" y="730" font-family="monospace" font-size="14" fill="#00ff44" text-anchor="middle">GOLD DIGGER</text>
+  <text x="470" y="758" font-family="monospace" font-size="20" font-weight="bold" fill="#00ff44" text-anchor="middle">10 WKS AT #1</text>
+  
+  <rect x="580" y="744" width="8" height="16" fill="#00ff44" opacity="0.8" />
+
+  
+  <rect x="936" y="700" width="260" height="80" fill="#001100" stroke="#00ff44" stroke-width="4" rx="4" />
+  <text x="1066" y="730" font-family="monospace" font-size="14" fill="#00ff44" text-anchor="middle">WORLDWIDE</text>
+  <text x="1066" y="758" font-family="monospace" font-size="20" font-weight="bold" fill="#00ff44" text-anchor="middle">5M+ COPIES</text>
+  <rect x="1176" y="744" width="8" height="16" fill="#00ff44" opacity="0.8" />
+
+  
+  
+  <text x="772" y="858" font-family="monospace" font-size="68" font-weight="bold" fill="#cc8800" text-anchor="middle" letter-spacing="4" opacity="0.5">KANYE WEST</text>
+  <text x="772" y="946" font-family="monospace" font-size="52" font-weight="bold" fill="#cc8800" text-anchor="middle" letter-spacing="3" opacity="0.5">LATE REGISTRATION</text>
+
+  
+  <text x="768" y="854" font-family="monospace" font-size="68" font-weight="bold" fill="#ffe566" text-anchor="middle" letter-spacing="4">KANYE WEST</text>
+  <text x="768" y="942" font-family="monospace" font-size="52" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="3">LATE REGISTRATION</text>
+
+  
+  <text x="768" y="990" font-family="monospace" font-size="24" fill="#66ffee" text-anchor="middle" letter-spacing="6">AUGUST 30, 2005  •  ROC-A-FELLA RECORDS</text>
+
+  
+  <rect x="300" y="962" width="16" height="8" fill="#ffe566" />
+  <rect x="316" y="962" width="8" height="8" fill="#ff66aa" />
+  <rect x="324" y="962" width="16" height="8" fill="#66ffee" />
+  <rect x="340" y="962" width="8" height="8" fill="#ffe566" />
+  <rect x="348" y="962" width="16" height="8" fill="#ff66aa" />
+
+  <rect x="1188" y="962" width="16" height="8" fill="#ffe566" />
+  <rect x="1172" y="962" width="8" height="8" fill="#ff66aa" />
+  <rect x="1156" y="962" width="16" height="8" fill="#66ffee" />
+  <rect x="1148" y="962" width="8" height="8" fill="#ffe566" />
+  <rect x="1132" y="962" width="16" height="8" fill="#ff66aa" />
+
+  
+  <rect width="1536" height="1024" fill="url(#scanPat)" opacity="0.5" />
+
+  
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="transparent" />
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.7" />
+  </radialGradient>
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <rect x="0" y="0" width="1536" height="16" fill="#ffe566" />
+  <rect x="0" y="1008" width="1536" height="16" fill="#ffe566" />
+  <rect x="0" y="0" width="16" height="1024" fill="#ffe566" />
+  <rect x="1520" y="0" width="16" height="1024" fill="#ffe566" />
+
+  <rect x="16" y="16" width="1504" height="8" fill="#ff66aa" />
+  <rect x="16" y="1000" width="1504" height="8" fill="#ff66aa" />
+  <rect x="16" y="16" width="8" height="992" fill="#ff66aa" />
+  <rect x="1512" y="16" width="8" height="992" fill="#ff66aa" />
+
+  <rect x="24" y="24" width="1488" height="4" fill="#66ffee" />
+  <rect x="24" y="996" width="1488" height="4" fill="#66ffee" />
+  <rect x="24" y="24" width="4" height="976" fill="#66ffee" />
+  <rect x="1508" y="24" width="4" height="976" fill="#66ffee" />
+
+  
+  <rect x="0" y="0" width="40" height="40" fill="#ffffff" opacity="0.3" />
+  <rect x="1496" y="0" width="40" height="40" fill="#ffffff" opacity="0.3" />
+  <rect x="0" y="984" width="40" height="40" fill="#ffffff" opacity="0.3" />
+  <rect x="1496" y="984" width="40" height="40" fill="#ffffff" opacity="0.3" />
+</svg>

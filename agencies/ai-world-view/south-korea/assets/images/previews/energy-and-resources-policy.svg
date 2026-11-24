@@ -1,0 +1,348 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Energy and Resources Policy — South Korea's energy strategy banner</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="50%" stop-color="#dfd3b0" />
+      <stop offset="100%" stop-color="#cfc3a0" />
+    </linearGradient>
+
+    
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3a2e1e" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#3a2e1e" stop-opacity="0.78" />
+    </linearGradient>
+
+    
+    <pattern id="hatch" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="6" x2="6" y2="0" stroke="#b8a882" stroke-width="0.4" opacity="0.5" />
+    </pattern>
+
+    
+    <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8cdd8" />
+      <stop offset="100%" stop-color="#9ab8c8" />
+    </linearGradient>
+
+    
+    <linearGradient id="landFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8ba94" />
+      <stop offset="100%" stop-color="#b8a87a" />
+    </linearGradient>
+
+    
+    <linearGradient id="koreaFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b6a3a" />
+      <stop offset="100%" stop-color="#7a5a2e" />
+    </linearGradient>
+
+    
+    <radialGradient id="atomGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0c040" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#f0c040" stop-opacity="0" />
+    </radialGradient>
+
+    
+    <radialGradient id="nuclearGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8d080" />
+      <stop offset="100%" stop-color="#c8a830" />
+    </radialGradient>
+
+    
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7a6540" />
+      <stop offset="100%" stop-color="#5a4820" />
+    </linearGradient>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#3a2e1e" flood-opacity="0.3" />
+    </filter>
+
+    <filter id="textShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <circle cx="400" cy="300" r="350" fill="#c8b890" opacity="0.2" />
+  <circle cx="1100" cy="700" r="300" fill="#b8a870" opacity="0.15" />
+
+  
+  
+  <rect x="580" y="60" width="920" height="904" rx="4" fill="url(#ocean)" opacity="0.6" />
+  <rect x="580" y="60" width="920" height="904" rx="4" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <g stroke="#7a9ab0" stroke-width="0.6" opacity="0.5" fill="none">
+    <line x1="580" y1="200" x2="1500" y2="200" />
+    <line x1="580" y1="340" x2="1500" y2="340" />
+    <line x1="580" y1="480" x2="1500" y2="480" />
+    <line x1="580" y1="620" x2="1500" y2="620" />
+    <line x1="580" y1="760" x2="1500" y2="760" />
+    <line x1="580" y1="900" x2="1500" y2="900" />
+    
+    <line x1="700" y1="60" x2="700" y2="964" />
+    <line x1="840" y1="60" x2="840" y2="964" />
+    <line x1="980" y1="60" x2="980" y2="964" />
+    <line x1="1120" y1="60" x2="1120" y2="964" />
+    <line x1="1260" y1="60" x2="1260" y2="964" />
+    <line x1="1400" y1="60" x2="1400" y2="964" />
+  </g>
+
+  
+  
+  <path d="M 580 60 L 960 60 L 980 100 L 1010 140 L 1000 190 L 980 220 L 970 280 L 950 330 L 920 360 L 900 400 L 870 430 L 840 450 L 810 470 L 790 510 L 780 560 L 770 600 L 760 640 L 750 680 L 730 710 L 700 730 L 670 750 L 640 780 L 620 800 L 600 830 L 580 860 Z" fill="url(#landFill)" stroke="#8a7a5a" stroke-width="1.5" />
+
+  
+  <path d="M 800 60 L 1100 60 L 1080 90 L 1050 110 L 1010 140 L 980 100 L 960 60 Z" fill="#c0b088" stroke="#8a7a5a" stroke-width="1" />
+
+  
+  <path d="M 1180 220 L 1220 200 L 1270 210 L 1310 240 L 1340 290 L 1350 340 L 1330 390 L 1290 420 L 1240 430 L 1200 420 L 1170 390 L 1160 350 L 1160 300 L 1170 260 Z" fill="url(#landFill)" stroke="#8a7a5a" stroke-width="1.5" />
+
+  
+  <path d="M 1150 450 L 1180 440 L 1210 455 L 1220 490 L 1200 520 L 1170 525 L 1148 505 L 1145 475 Z" fill="url(#landFill)" stroke="#8a7a5a" stroke-width="1.2" />
+
+  
+  <path d="M 1220 130 L 1270 115 L 1320 125 L 1350 155 L 1340 185 L 1300 200 L 1260 195 L 1230 175 L 1215 155 Z" fill="url(#landFill)" stroke="#8a7a5a" stroke-width="1.2" />
+
+  
+  <path d="     M 1000 310     L 1020 300     L 1050 295     L 1070 300     L 1080 315     L 1085 340     L 1090 365     L 1095 390     L 1100 415     L 1105 440     L 1100 465     L 1090 490     L 1075 515     L 1055 540     L 1035 555     L 1015 565     L 995 568     L 978 560     L 965 545     L 960 525     L 958 500     L 960 475     L 962 450     L 965 425     L 970 400     L 975 375     L 978 350     L 980 325     L 990 315     Z   " fill="url(#koreaFill)" stroke="#5a4020" stroke-width="2" filter="url(#shadow)" />
+
+  
+  <path d="M 1000 310 L 1020 300 L 1050 295 L 1070 300 L 1080 315 L 1085 340 L 1090 365 L 1095 390 L 1100 415 L 1105 440 L 1100 465 L 1090 490 L 1075 515 L 1055 540 L 1035 555 L 1015 565 L 995 568 L 978 560 L 965 545 L 960 525 L 958 500 L 960 475 L 962 450 L 965 425 L 970 400 L 975 375 L 978 350 L 980 325 L 990 315 Z" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <line x1="958" y1="430" x2="1110" y2="430" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,5" opacity="0.8" />
+  <text x="1115" y="435" font-family="Georgia, serif" font-size="16" fill="#c0392b" opacity="0.9" font-style="italic">38°N</text>
+
+  
+  <text x="1025" y="490" font-family="Georgia, serif" font-size="18" fill="#f5e8d0" font-weight="bold" text-anchor="middle" letter-spacing="2">KOREA</text>
+
+  
+  <circle cx="1040" cy="445" r="7" fill="#e8c840" stroke="#3a2e1e" stroke-width="1.5" />
+  <circle cx="1040" cy="445" r="3" fill="#3a2e1e" />
+  <text x="1055" y="442" font-family="Georgia, serif" font-size="13" fill="#f5e8d0" font-style="italic">Seoul</text>
+
+  
+
+  
+  <g transform="translate(1035, 380)">
+    <circle r="45" fill="url(#atomGlow)" />
+    <circle r="10" fill="url(#nuclearGrad)" stroke="#8b6a20" stroke-width="1.5" />
+    
+    <ellipse rx="38" ry="16" fill="none" stroke="#c8a830" stroke-width="2" opacity="0.9" />
+    <ellipse rx="38" ry="16" fill="none" stroke="#c8a830" stroke-width="2" opacity="0.9" transform="rotate(60)" />
+    <ellipse rx="38" ry="16" fill="none" stroke="#c8a830" stroke-width="2" opacity="0.9" transform="rotate(120)" />
+  </g>
+
+  
+  <rect x="0" y="0" width="620" height="1024" fill="url(#panelGrad)" />
+
+  
+  <rect x="0" y="0" width="620" height="1024" fill="url(#hatch)" opacity="0.15" />
+
+  
+  <rect x="48" y="60" width="524" height="3" fill="#c8a830" rx="1.5" />
+  <rect x="48" y="68" width="524" height="1" fill="#c8a830" opacity="0.4" rx="0.5" />
+
+  
+  <text x="48" y="110" font-family="Georgia, serif" font-size="18" fill="#c8a830" letter-spacing="6" font-weight="normal">ECONOMY · POLICY</text>
+
+  
+  <text x="48" y="195" font-family="Georgia, serif" font-size="72" fill="#f5e8d0" font-weight="bold" filter="url(#textShadow)" letter-spacing="-1">Energy</text>
+  <text x="48" y="275" font-family="Georgia, serif" font-size="72" fill="#f5e8d0" font-weight="bold" filter="url(#textShadow)" letter-spacing="-1">and</text>
+  <text x="48" y="355" font-family="Georgia, serif" font-size="72" fill="#f5e8d0" font-weight="bold" filter="url(#textShadow)" letter-spacing="-1">Resources</text>
+  <text x="48" y="435" font-family="Georgia, serif" font-size="72" fill="#c8a830" font-weight="bold" filter="url(#textShadow)" letter-spacing="-1">Policy</text>
+
+  
+  <rect x="48" y="460" width="200" height="2" fill="#c8a830" rx="1" />
+
+  
+  <text x="48" y="500" font-family="Georgia, serif" font-size="22" fill="#d8c8a0" font-style="italic">South Korea's Strategic</text>
+  <text x="48" y="528" font-family="Georgia, serif" font-size="22" fill="#d8c8a0" font-style="italic">Energy Framework</text>
+
+  
+  <text x="48" y="590" font-family="Georgia, serif" font-size="16" fill="#c8a830" letter-spacing="4">GENERATION MIX</text>
+  <rect x="48" y="598" width="260" height="1" fill="#c8a830" opacity="0.5" />
+
+  
+  <rect x="48" y="615" width="8" height="28" fill="#c8a830" rx="2" />
+  <rect x="62" y="619" width="130" height="20" fill="#c8a830" opacity="0.3" rx="2" />
+  <text x="72" y="634" font-family="Georgia, serif" font-size="16" fill="#f5e8d0">Nuclear</text>
+  <text x="200" y="634" font-family="Georgia, serif" font-size="15" fill="#c8a830">~32%</text>
+
+  
+  <rect x="48" y="652" width="8" height="28" fill="#8a7a6a" rx="2" />
+  <rect x="62" y="656" width="110" height="20" fill="#8a7a6a" opacity="0.3" rx="2" />
+  <text x="72" y="671" font-family="Georgia, serif" font-size="16" fill="#f5e8d0">Coal</text>
+  <text x="200" y="671" font-family="Georgia, serif" font-size="15" fill="#c8a830">~32%</text>
+
+  
+  <rect x="48" y="689" width="8" height="28" fill="#6a9ab0" rx="2" />
+  <rect x="62" y="693" width="95" height="20" fill="#6a9ab0" opacity="0.3" rx="2" />
+  <text x="72" y="708" font-family="Georgia, serif" font-size="16" fill="#f5e8d0">Natural Gas</text>
+  <text x="200" y="708" font-family="Georgia, serif" font-size="15" fill="#c8a830">~27%</text>
+
+  
+  <rect x="48" y="726" width="8" height="28" fill="#6a9a6a" rx="2" />
+  <rect x="62" y="730" width="55" height="20" fill="#6a9a6a" opacity="0.3" rx="2" />
+  <text x="72" y="745" font-family="Georgia, serif" font-size="16" fill="#f5e8d0">Renewables</text>
+  <text x="200" y="745" font-family="Georgia, serif" font-size="15" fill="#c8a830">~10%</text>
+
+  
+  <rect x="48" y="785" width="524" height="80" fill="#c8a830" opacity="0.12" rx="4" />
+  <text x="68" y="820" font-family="Georgia, serif" font-size="52" fill="#c8a830" font-weight="bold" opacity="0.9">93%</text>
+  <text x="165" y="810" font-family="Georgia, serif" font-size="16" fill="#d8c8a0">of primary energy</text>
+  <text x="165" y="832" font-family="Georgia, serif" font-size="16" fill="#d8c8a0">is imported</text>
+
+  
+  <text x="48" y="895" font-family="Georgia, serif" font-size="13" fill="#c8a830" letter-spacing="3" opacity="0.8">KEY AGENCIES</text>
+  <text x="48" y="916" font-family="Georgia, serif" font-size="13" fill="#b8a880" opacity="0.7">MOTIE · KEPCO · KHNP · KNOC · KOGAS</text>
+
+  
+  <rect x="48" y="948" width="524" height="1" fill="#c8a830" opacity="0.4" rx="0.5" />
+  <rect x="48" y="952" width="524" height="3" fill="#c8a830" rx="1.5" />
+
+  
+
+  
+  <g transform="translate(850, 700)" opacity="0.85">
+    
+    <path d="M -22 40 L -12 0 L -6 0 L 4 40 Z" fill="#a09080" stroke="#7a6a5a" stroke-width="1" />
+    <ellipse cx="-9" cy="0" rx="6" ry="3" fill="#b0a090" stroke="#7a6a5a" stroke-width="1" />
+    
+    <path d="M 6 40 L 14 0 L 20 0 L 30 40 Z" fill="#a09080" stroke="#7a6a5a" stroke-width="1" />
+    <ellipse cx="17" cy="0" rx="6" ry="3" fill="#b0a090" stroke="#7a6a5a" stroke-width="1" />
+    
+    <path d="M -9 -3 Q -15 -20 -9 -35" fill="none" stroke="#d8d0c0" stroke-width="1.5" opacity="0.7" />
+    <path d="M 17 -3 Q 23 -20 17 -35" fill="none" stroke="#d8d0c0" stroke-width="1.5" opacity="0.7" />
+    <text x="-18" y="56" font-family="Georgia, serif" font-size="12" fill="#f5e8d0" opacity="0.8">Nuclear</text>
+  </g>
+
+  
+  <g transform="translate(1300, 550)" opacity="0.8">
+    
+    <path d="M -45 10 L -50 20 L 50 20 L 45 10 Z" fill="#8a7a6a" stroke="#5a4a3a" stroke-width="1.2" />
+    <rect x="-30" y="0" width="20" height="10" fill="#7a6a5a" stroke="#5a4a3a" stroke-width="1" />
+    
+    <line x1="20" y1="20" x2="20" y2="-15" stroke="#5a4a3a" stroke-width="1.5" />
+    <path d="M 20 -15 L 45 -5 L 20 0 Z" fill="#c8a830" opacity="0.6" />
+    <text x="-42" y="36" font-family="Georgia, serif" font-size="12" fill="#f5e8d0" opacity="0.8">LNG Import</text>
+  </g>
+
+  
+  <g transform="translate(1420, 380)" opacity="0.8">
+    <line x1="0" y1="-50" x2="0" y2="50" stroke="#8a9aaa" stroke-width="3" />
+    
+    <path d="M 0 -50 L 20 -10 L 0 -5 Z" fill="#aab8c0" stroke="#7a8a98" stroke-width="1" />
+    <path d="M 0 -50 L -20 -10 L 0 -5 Z" fill="#aab8c0" stroke="#7a8a98" stroke-width="1" />
+    <path d="M 0 -50 L 0 -5 L -5 -30 Z" fill="#9aaab8" stroke="#7a8a98" stroke-width="1" />
+    <circle cx="0" cy="-50" r="4" fill="#c8d0d8" stroke="#7a8a98" stroke-width="1" />
+    <rect x="-4" y="30" width="8" height="20" fill="#8a9aaa" opacity="0.6" />
+    <text x="-22" y="65" font-family="Georgia, serif" font-size="12" fill="#f5e8d0" opacity="0.8">Wind</text>
+  </g>
+
+  
+  <g transform="translate(1430, 700)" opacity="0.8">
+    <rect x="-30" y="-20" width="60" height="40" fill="#4a6a8a" stroke="#3a5a7a" stroke-width="1.5" rx="2" />
+    <line x1="0" y1="-20" x2="0" y2="20" stroke="#3a5a7a" stroke-width="1" />
+    <line x1="-30" y1="0" x2="30" y2="0" stroke="#3a5a7a" stroke-width="1" />
+    <line x1="-15" y1="-20" x2="-15" y2="20" stroke="#3a5a7a" stroke-width="0.7" opacity="0.6" />
+    <line x1="15" y1="-20" x2="15" y2="20" stroke="#3a5a7a" stroke-width="0.7" opacity="0.6" />
+    
+    <circle cx="0" cy="-35" r="8" fill="#c8a830" opacity="0.7" />
+    <line x1="0" y1="-48" x2="0" y2="-52" stroke="#c8a830" stroke-width="1.5" opacity="0.7" />
+    <line x1="12" y1="-44" x2="14" y2="-47" stroke="#c8a830" stroke-width="1.5" opacity="0.7" />
+    <line x1="-12" y1="-44" x2="-14" y2="-47" stroke="#c8a830" stroke-width="1.5" opacity="0.7" />
+    <text x="-18" y="50" font-family="Georgia, serif" font-size="12" fill="#f5e8d0" opacity="0.8">Solar</text>
+  </g>
+
+  
+  <g transform="translate(780, 820)" opacity="0.8">
+    <polygon points="0,-22 20,-12 22,8 8,22 -12,20 -22,4 -14,-16" fill="#5a5050" stroke="#3a3030" stroke-width="1.5" />
+    <polygon points="0,-22 20,-12 12,-8 -4,-18" fill="#7a6a68" opacity="0.5" />
+    <text x="-14" y="38" font-family="Georgia, serif" font-size="12" fill="#f5e8d0" opacity="0.8">Coal</text>
+  </g>
+
+  
+  <g fill="none" stroke="#c8a830" stroke-width="1.5" stroke-dasharray="12,8" opacity="0.5">
+    
+    <path d="M 1500 900 Q 1300 750 1060 480" />
+    
+    <path d="M 1500 600 Q 1350 500 1060 420" />
+  </g>
+  
+  <polygon points="1060,480 1078,468 1072,488" fill="#c8a830" opacity="0.5" />
+  <polygon points="1060,420 1078,408 1072,428" fill="#c8a830" opacity="0.5" />
+
+  
+  <text x="1350" y="870" font-family="Georgia, serif" font-size="13" fill="#c8a830" opacity="0.7" font-style="italic">Crude Oil / LNG</text>
+  <text x="1350" y="888" font-family="Georgia, serif" font-size="13" fill="#c8a830" opacity="0.7" font-style="italic">import routes</text>
+
+  
+  <g transform="translate(1460, 920)">
+    
+    <circle r="48" fill="none" stroke="#8a7a5a" stroke-width="1.5" opacity="0.7" />
+    <circle r="40" fill="#dfd3b0" opacity="0.5" />
+    
+    
+    <polygon points="0,-38 -8,-18 0,-24 8,-18" fill="#3a2e1e" />
+    
+    <polygon points="0,38 -8,18 0,24 8,18" fill="#8a7a5a" />
+    
+    <polygon points="38,0 18,-8 24,0 18,8" fill="#8a7a5a" />
+    
+    <polygon points="-38,0 -18,-8 -24,0 -18,8" fill="#8a7a5a" />
+    
+    <polygon points="0,-38 6,-20 0,-26 -6,-20" fill="#8a7a5a" transform="rotate(45)" />
+    <polygon points="0,-38 6,-20 0,-26 -6,-20" fill="#8a7a5a" transform="rotate(135)" />
+    <polygon points="0,-38 6,-20 0,-26 -6,-20" fill="#8a7a5a" transform="rotate(225)" />
+    <polygon points="0,-38 6,-20 0,-26 -6,-20" fill="#8a7a5a" transform="rotate(315)" />
+    
+    <circle r="5" fill="#c8a830" stroke="#3a2e1e" stroke-width="1" />
+    
+    <text x="0" y="-50" font-family="Georgia, serif" font-size="14" fill="#3a2e1e" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="62" font-family="Georgia, serif" font-size="14" fill="#8a7a5a" text-anchor="middle">S</text>
+    <text x="52" y="5" font-family="Georgia, serif" font-size="14" fill="#8a7a5a">E</text>
+    <text x="-58" y="5" font-family="Georgia, serif" font-size="14" fill="#8a7a5a">W</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7a5a" stroke-width="3" rx="4" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#c8a830" stroke-width="1.5" rx="3" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#8a7a5a" stroke-width="0.8" rx="2" stroke-dasharray="8,6" />
+
+  
+  <g stroke="#c8a830" stroke-width="1.5" fill="none" opacity="0.8">
+    
+    <path d="M 18 60 L 18 18 L 60 18" />
+    <path d="M 26 70 L 26 26 L 70 26" />
+    
+    <path d="M 1476 18 L 1518 18 L 1518 60" />
+    <path d="M 1466 26 L 1510 26 L 1510 70" />
+    
+    <path d="M 18 964 L 18 1006 L 60 1006" />
+    <path d="M 26 954 L 26 998 L 70 998" />
+    
+    <path d="M 1476 1006 L 1518 1006 L 1518 964" />
+    <path d="M 1466 998 L 1510 998 L 1510 954" />
+  </g>
+
+  
+  <g fill="#c8a830" opacity="0.7">
+    <polygon points="18,18 26,22 22,26 18,22" transform="translate(3,3)" />
+    <polygon points="18,18 26,22 22,26 18,22" transform="translate(1491,3)" />
+    <polygon points="18,18 26,22 22,26 18,22" transform="translate(3,991)" />
+    <polygon points="18,18 26,22 22,26 18,22" transform="translate(1491,991)" />
+  </g>
+
+  
+  <line x1="620" y1="60" x2="620" y2="964" stroke="#8a7a5a" stroke-width="1.5" opacity="0.6" />
+
+</svg>

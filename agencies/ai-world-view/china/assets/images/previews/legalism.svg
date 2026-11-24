@@ -1,0 +1,360 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Legalism — Ancient Chinese Philosophy of Law and State Control</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="50%" stop-color="#d9c99a" />
+      <stop offset="100%" stop-color="#c8b47a" />
+    </linearGradient>
+    
+    <linearGradient id="inkBorder" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2a14" />
+      <stop offset="100%" stop-color="#5c3d1e" />
+    </linearGradient>
+    
+    <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b6914" />
+      <stop offset="50%" stop-color="#b8860b" />
+      <stop offset="100%" stop-color="#6b4f10" />
+    </linearGradient>
+    
+    <linearGradient id="sealRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b1a1a" />
+      <stop offset="100%" stop-color="#c0392b" />
+    </linearGradient>
+    
+    <linearGradient id="bambooGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b7a3a" />
+      <stop offset="40%" stop-color="#a0904a" />
+      <stop offset="100%" stop-color="#7a6a2a" />
+    </linearGradient>
+    
+    <linearGradient id="territoryQin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c5a55a" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#a08030" stop-opacity="0.5" />
+    </linearGradient>
+    <linearGradient id="territoryOther" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8c4a0" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#9aac80" stop-opacity="0.3" />
+    </linearGradient>
+    
+    <pattern id="engrave" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="8" stroke="#9a8450" stroke-width="0.3" stroke-opacity="0.3" />
+    </pattern>
+    <pattern id="crosshatch" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="12" y2="12" stroke="#7a6530" stroke-width="0.4" stroke-opacity="0.2" />
+      <line x1="12" y1="0" x2="0" y2="12" stroke="#7a6530" stroke-width="0.4" stroke-opacity="0.15" />
+    </pattern>
+    <filter id="aged">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComponentTransfer in="blended">
+        <feFuncA type="linear" slope="1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  <rect width="1536" height="1024" fill="url(#engrave)" opacity="0.4" />
+
+  
+  <rect width="1536" height="1024" fill="#c4a85a" opacity="0.08" />
+
+  
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#3a2a14" stroke-width="4" />
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#3a2a14" stroke-width="1.5" />
+  <rect x="34" y="34" width="1468" height="956" fill="none" stroke="#5c3d1e" stroke-width="1" />
+
+  
+  <rect x="18" y="18" width="40" height="40" fill="#3a2a14" />
+  <rect x="1478" y="18" width="40" height="40" fill="#3a2a14" />
+  <rect x="18" y="966" width="40" height="40" fill="#3a2a14" />
+  <rect x="1478" y="966" width="40" height="40" fill="#3a2a14" />
+  
+  <rect x="23" y="23" width="30" height="30" fill="none" stroke="#c8a84a" stroke-width="1.5" />
+  <rect x="1483" y="23" width="30" height="30" fill="none" stroke="#c8a84a" stroke-width="1.5" />
+  <rect x="23" y="971" width="30" height="30" fill="none" stroke="#c8a84a" stroke-width="1.5" />
+  <rect x="1483" y="971" width="30" height="30" fill="none" stroke="#c8a84a" stroke-width="1.5" />
+
+  
+  
+  
+  <path d="M 900 120 L 980 110 L 1060 130 L 1100 180 L 1110 250 L 1090 330 L 1040 380 L 980 400 L 920 390 L 870 350 L 850 280 L 860 200 Z" fill="url(#territoryQin)" stroke="#7a5a1a" stroke-width="2" />
+  
+  <path d="M 1060 130 L 1150 120 L 1230 150 L 1260 220 L 1240 300 L 1180 350 L 1100 360 L 1040 380 L 1090 330 L 1110 250 L 1100 180 Z" fill="url(#territoryOther)" stroke="#8a7a5a" stroke-width="1.5" />
+  <path d="M 980 400 L 1040 380 L 1100 360 L 1180 350 L 1200 430 L 1160 500 L 1080 530 L 1000 510 L 950 460 Z" fill="url(#territoryOther)" stroke="#8a7a5a" stroke-width="1.5" />
+  <path d="M 850 280 L 870 350 L 920 390 L 980 400 L 950 460 L 880 490 L 820 470 L 790 400 L 800 330 Z" fill="url(#territoryOther)" stroke="#8a7a5a" stroke-width="1.5" />
+  <path d="M 1000 510 L 1080 530 L 1120 600 L 1080 670 L 1000 680 L 940 640 L 920 570 L 950 520 Z" fill="url(#territoryOther)" stroke="#8a7a5a" stroke-width="1.5" />
+  <path d="M 1230 150 L 1320 160 L 1380 220 L 1360 300 L 1290 340 L 1240 300 L 1260 220 Z" fill="url(#territoryOther)" stroke="#8a7a5a" stroke-width="1.5" />
+
+  
+  <text x="955" y="270" font-family="Georgia, serif" font-size="18" fill="#3a2a14" opacity="0.7" font-style="italic">Qin</text>
+  <text x="1140" y="240" font-family="Georgia, serif" font-size="16" fill="#3a2a14" opacity="0.5" font-style="italic">Zhao</text>
+  <text x="1100" y="440" font-family="Georgia, serif" font-size="16" fill="#3a2a14" opacity="0.5" font-style="italic">Wei</text>
+  <text x="820" y="390" font-family="Georgia, serif" font-size="16" fill="#3a2a14" opacity="0.5" font-style="italic">Shu</text>
+  <text x="990" y="610" font-family="Georgia, serif" font-size="16" fill="#3a2a14" opacity="0.5" font-style="italic">Chu</text>
+  <text x="1270" y="250" font-family="Georgia, serif" font-size="16" fill="#3a2a14" opacity="0.5" font-style="italic">Yan</text>
+
+  
+  <path d="M 900 120 L 980 110 L 1060 130 L 1100 180 L 1110 250 L 1090 330 L 1040 380 L 980 400 L 920 390 L 870 350 L 850 280 L 860 200 Z" fill="url(#crosshatch)" opacity="0.5" />
+
+  
+  <g fill="#7a6030" stroke="none" opacity="0.5">
+    <polygon points="870,155 885,130 900,155" />
+    <polygon points="885,155 900,130 915,155" />
+    <polygon points="1050,110 1065,85 1080,110" />
+    <polygon points="1300,170 1315,145 1330,170" />
+  </g>
+
+  
+  <path d="M 1050 180 Q 1080 250 1060 320 Q 1040 380 1080 450" fill="none" stroke="#6a8a9a" stroke-width="2" opacity="0.5" />
+  <path d="M 900 300 Q 950 350 1000 360 Q 1050 370 1100 420" fill="none" stroke="#6a8a9a" stroke-width="2" opacity="0.4" />
+
+  
+  <g transform="translate(1340, 720)">
+    
+    <circle cx="0" cy="0" r="75" fill="none" stroke="#3a2a14" stroke-width="1.5" opacity="0.6" />
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#5c3d1e" stroke-width="0.8" opacity="0.5" />
+    
+    
+    <polygon points="0,-60 -10,-30 0,-40 10,-30" fill="#3a2a14" opacity="0.7" />
+    <polygon points="0,-60 -10,-30 0,-40 10,-30" fill="#c8a84a" opacity="0.5" transform="scale(0.6)" />
+    
+    <polygon points="0,60 -10,30 0,40 10,30" fill="#5c3d1e" opacity="0.5" />
+    
+    <polygon points="60,0 30,-10 40,0 30,10" fill="#5c3d1e" opacity="0.5" />
+    
+    <polygon points="-60,0 -30,-10 -40,0 -30,10" fill="#5c3d1e" opacity="0.5" />
+    
+    <line x1="-42" y1="-42" x2="42" y2="42" stroke="#3a2a14" stroke-width="0.8" opacity="0.3" />
+    <line x1="42" y1="-42" x2="-42" y2="42" stroke="#3a2a14" stroke-width="0.8" opacity="0.3" />
+    
+    <circle cx="0" cy="0" r="6" fill="#c8a84a" stroke="#3a2a14" stroke-width="1" opacity="0.8" />
+    <circle cx="0" cy="0" r="3" fill="#3a2a14" opacity="0.8" />
+    
+    <text x="-5" y="-66" font-family="Georgia, serif" font-size="14" fill="#3a2a14" opacity="0.7" font-weight="bold">N</text>
+  </g>
+
+  
+  
+  <g transform="translate(80, 100)">
+    
+    <rect x="0" y="0" width="28" height="820" rx="4" fill="url(#bambooGrad)" stroke="#5a4a1a" stroke-width="1" />
+    
+    <rect x="-2" y="80" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="200" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="320" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="440" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="560" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="680" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    
+    <text x="14" y="65" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">法</text>
+    <text x="14" y="185" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">令</text>
+    <text x="14" y="305" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">刑</text>
+    <text x="14" y="425" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">賞</text>
+    <text x="14" y="545" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">罰</text>
+    <text x="14" y="665" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">治</text>
+  </g>
+  
+  <g transform="translate(122, 100)">
+    <rect x="0" y="0" width="28" height="820" rx="4" fill="url(#bambooGrad)" stroke="#5a4a1a" stroke-width="1" />
+    <rect x="-2" y="120" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="260" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="400" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="540" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="680" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <text x="14" y="105" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">國</text>
+    <text x="14" y="245" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">君</text>
+    <text x="14" y="385" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">民</text>
+    <text x="14" y="525" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">秦</text>
+    <text x="14" y="665" font-family="serif" font-size="22" fill="#3a2a14" opacity="0.6" text-anchor="middle">制</text>
+  </g>
+  
+  <g transform="translate(164, 100)">
+    <rect x="0" y="0" width="28" height="820" rx="4" fill="url(#bambooGrad)" stroke="#5a4a1a" stroke-width="1" />
+    <rect x="-2" y="100" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="220" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="340" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="460" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="580" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+    <rect x="-2" y="700" width="32" height="6" rx="3" fill="#6a5a20" stroke="#4a3a10" stroke-width="0.5" />
+  </g>
+
+  
+  <path d="M 75 180 Q 155 175 200 180" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.7" />
+  <path d="M 75 400 Q 155 395 200 400" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.7" />
+  <path d="M 75 620 Q 155 615 200 620" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.7" />
+  <path d="M 75 820 Q 155 815 200 820" fill="none" stroke="#8a6a30" stroke-width="3" opacity="0.7" />
+
+  
+  <g transform="translate(230, 140)">
+    
+    <rect x="0" y="0" width="340" height="480" rx="8" fill="#b8a060" stroke="#6a5010" stroke-width="3" />
+    <rect x="8" y="8" width="324" height="464" rx="5" fill="none" stroke="#7a6020" stroke-width="1.5" />
+    
+    <rect x="0" y="0" width="340" height="480" rx="8" fill="url(#crosshatch)" opacity="0.3" />
+    
+    <rect x="0" y="0" width="340" height="70" rx="8" fill="#8b6914" opacity="0.4" />
+    <rect x="0" y="55" width="340" height="15" fill="#8b6914" opacity="0.2" />
+    
+    <text x="170" y="46" font-family="serif" font-size="28" fill="#3a2a14" text-anchor="middle" font-weight="bold">法 律 典 章</text>
+    
+    <line x1="30" y1="100" x2="310" y2="100" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="125" x2="310" y2="125" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="150" x2="310" y2="150" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="175" x2="310" y2="175" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="200" x2="310" y2="200" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="225" x2="310" y2="225" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="250" x2="310" y2="250" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="275" x2="310" y2="275" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="300" x2="310" y2="300" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="325" x2="310" y2="325" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="350" x2="310" y2="350" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="375" x2="310" y2="375" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="400" x2="310" y2="400" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    <line x1="30" y1="425" x2="310" y2="425" stroke="#5a4010" stroke-width="1" opacity="0.5" />
+    
+    <line x1="110" y1="85" x2="110" y2="450" stroke="#5a4010" stroke-width="0.8" opacity="0.4" />
+    <line x1="190" y1="85" x2="190" y2="450" stroke="#5a4010" stroke-width="0.8" opacity="0.4" />
+    <line x1="270" y1="85" x2="270" y2="450" stroke="#5a4010" stroke-width="0.8" opacity="0.4" />
+    
+    <text x="60" y="118" font-family="serif" font-size="13" fill="#3a2a14" opacity="0.5" text-anchor="middle">凡犯法者</text>
+    <text x="150" y="118" font-family="serif" font-size="13" fill="#3a2a14" opacity="0.5" text-anchor="middle">必依律例</text>
+    <text x="230" y="118" font-family="serif" font-size="13" fill="#3a2a14" opacity="0.5" text-anchor="middle">賞功罰過</text>
+    <text x="300" y="118" font-family="serif" font-size="13" fill="#3a2a14" opacity="0.5" text-anchor="middle">一視同仁</text>
+    
+    <rect x="100" y="435" width="140" height="30" rx="3" fill="#8b1a1a" opacity="0.3" />
+    <text x="170" y="455" font-family="serif" font-size="14" fill="#8b1a1a" text-anchor="middle" opacity="0.8">秦 王 之 印</text>
+  </g>
+
+  
+  <g transform="translate(620, 580)">
+    <rect x="0" y="0" width="120" height="120" rx="6" fill="url(#sealRed)" opacity="0.85" />
+    <rect x="6" y="6" width="108" height="108" rx="4" fill="none" stroke="#f5c0a0" stroke-width="1.5" opacity="0.6" />
+    
+    <text x="40" y="50" font-family="serif" font-size="34" fill="#f5e0d0" opacity="0.9" font-weight="bold">法</text>
+    <text x="76" y="50" font-family="serif" font-size="34" fill="#f5e0d0" opacity="0.9" font-weight="bold">令</text>
+    <text x="40" y="92" font-family="serif" font-size="34" fill="#f5e0d0" opacity="0.9" font-weight="bold">王</text>
+    <text x="76" y="92" font-family="serif" font-size="34" fill="#f5e0d0" opacity="0.9" font-weight="bold">制</text>
+  </g>
+
+  
+  <g transform="translate(600, 160)">
+    
+    <rect x="105" y="85" width="210" height="8" rx="4" fill="#5c3d1e" stroke="#3a2010" stroke-width="1" />
+    
+    <rect x="116" y="20" width="8" height="70" rx="3" fill="#6a4a20" stroke="#3a2010" stroke-width="1" />
+    
+    <rect x="90" y="85" width="60" height="12" rx="4" fill="#5c3d1e" />
+    <rect x="80" y="95" width="80" height="10" rx="3" fill="#4a3010" />
+    
+    <circle cx="120" cy="87" r="7" fill="#c8a84a" stroke="#8a6020" stroke-width="1.5" />
+    
+    <line x1="110" y1="90" x2="85" y2="155" stroke="#4a3010" stroke-width="1.5" />
+    <line x1="110" y1="90" x2="135" y2="155" stroke="#4a3010" stroke-width="1.5" />
+    
+    <line x1="310" y1="90" x2="285" y2="155" stroke="#4a3010" stroke-width="1.5" />
+    <line x1="310" y1="90" x2="335" y2="155" stroke="#4a3010" stroke-width="1.5" />
+    
+    <ellipse cx="110" cy="152" rx="35" ry="6" fill="#8b6914" stroke="#5a4010" stroke-width="1.5" />
+    
+    <ellipse cx="310" cy="162" rx="35" ry="6" fill="#7a3010" stroke="#5a1a00" stroke-width="1.5" />
+    
+    
+    <circle cx="100" cy="147" r="7" fill="#c8a84a" stroke="#8a6020" stroke-width="1" />
+    <circle cx="116" cy="145" r="7" fill="#c8a84a" stroke="#8a6020" stroke-width="1" />
+    <text x="110" y="132" font-family="serif" font-size="11" fill="#8b6914" text-anchor="middle" opacity="0.8">賞</text>
+    
+    <rect x="298" y="138" width="26" height="20" rx="2" fill="#5a1a00" stroke="#3a0a00" stroke-width="1" />
+    <text x="310" y="152" font-family="serif" font-size="11" fill="#c08060" text-anchor="middle" opacity="0.9">罰</text>
+    
+    <text x="110" y="180" font-family="Georgia, serif" font-size="12" fill="#3a2a14" text-anchor="middle" opacity="0.6" font-style="italic">Reward</text>
+    <text x="310" y="192" font-family="Georgia, serif" font-size="12" fill="#3a2a14" text-anchor="middle" opacity="0.6" font-style="italic">Punishment</text>
+  </g>
+
+  
+  <line x1="40" y1="620" x2="770" y2="620" stroke="#3a2a14" stroke-width="1" opacity="0.4" />
+  <line x1="40" y1="626" x2="770" y2="626" stroke="#3a2a14" stroke-width="0.5" opacity="0.3" />
+
+  
+  
+  <rect x="210" y="660" width="740" height="200" rx="4" fill="#2a1a08" opacity="0.85" />
+  <rect x="214" y="664" width="732" height="192" rx="3" fill="none" stroke="#c8a84a" stroke-width="2" />
+  <rect x="220" y="670" width="720" height="180" rx="2" fill="none" stroke="#c8a84a" stroke-width="0.7" opacity="0.5" />
+
+  
+  <text x="580" y="752" font-family="Georgia, 'Times New Roman', serif" font-size="92" fill="#e8d090" text-anchor="middle" letter-spacing="8" font-weight="bold">LEGALISM</text>
+
+  
+  <text x="580" y="800" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#c8a84a" text-anchor="middle" letter-spacing="5" font-style="italic">Ancient Chinese Philosophy of Law &amp; Statecraft</text>
+
+  
+  <text x="580" y="836" font-family="Georgia, serif" font-size="15" fill="#a08040" text-anchor="middle" letter-spacing="3" opacity="0.8">WARRING STATES PERIOD · 475–221 BCE · QIN DYNASTY</text>
+
+  
+  <rect x="210" y="90" width="50" height="540" rx="0" fill="#3a2a14" opacity="0.05" />
+
+  
+  <g transform="translate(820, 520)">
+    <rect x="0" y="0" width="380" height="220" rx="4" fill="#3a2a14" opacity="0.08" />
+    <rect x="4" y="4" width="372" height="212" rx="3" fill="none" stroke="#7a6030" stroke-width="1" opacity="0.5" />
+    <text x="190" y="30" font-family="Georgia, serif" font-size="14" fill="#3a2a14" text-anchor="middle" letter-spacing="3" opacity="0.8" font-style="italic">KEY LEGALIST THINKERS</text>
+    <line x1="20" y1="38" x2="360" y2="38" stroke="#7a6030" stroke-width="0.8" opacity="0.6" />
+    
+    <text x="20" y="62" font-family="Georgia, serif" font-size="15" fill="#3a2a14" opacity="0.85" font-weight="bold">Shang Yang</text>
+    <text x="20" y="80" font-family="Georgia, serif" font-size="12" fill="#5c3d1e" opacity="0.7" font-style="italic">c. 390–338 BCE · Legal reform, Qin state</text>
+    <line x1="20" y1="90" x2="360" y2="90" stroke="#7a6030" stroke-width="0.5" opacity="0.4" />
+    <text x="20" y="112" font-family="Georgia, serif" font-size="15" fill="#3a2a14" opacity="0.85" font-weight="bold">Shen Buhai</text>
+    <text x="20" y="130" font-family="Georgia, serif" font-size="12" fill="#5c3d1e" opacity="0.7" font-style="italic">d. 337 BCE · Administrative capability</text>
+    <line x1="20" y1="140" x2="360" y2="140" stroke="#7a6030" stroke-width="0.5" opacity="0.4" />
+    <text x="20" y="162" font-family="Georgia, serif" font-size="15" fill="#3a2a14" opacity="0.85" font-weight="bold">Han Fei</text>
+    <text x="20" y="180" font-family="Georgia, serif" font-size="12" fill="#5c3d1e" opacity="0.7" font-style="italic">280–233 BCE · Synthesis &amp; theory</text>
+    <line x1="20" y1="190" x2="360" y2="190" stroke="#7a6030" stroke-width="0.5" opacity="0.4" />
+    <text x="20" y="210" font-family="Georgia, serif" font-size="15" fill="#3a2a14" opacity="0.85" font-weight="bold">Li Si</text>
+    <text x="20" y="225" font-family="serif" font-size="12" fill="#5c3d1e" opacity="0.7" font-style="italic">280–208 BCE · First Qin Emperor's minister</text>
+  </g>
+
+  
+  
+  <g transform="translate(768, 55)">
+    <polygon points="0,-18 5,-5 18,-5 8,3 12,16 0,8 -12,16 -8,3 -18,-5 -5,-5" fill="#c8a84a" stroke="#8a6020" stroke-width="0.8" opacity="0.7" />
+  </g>
+
+  
+  <line x1="750" y1="250" x2="1490" y2="250" stroke="#5c3d1e" stroke-width="0.7" opacity="0.2" stroke-dasharray="8,4" />
+  <line x1="750" y1="350" x2="1490" y2="350" stroke="#5c3d1e" stroke-width="0.7" opacity="0.2" stroke-dasharray="8,4" />
+  <line x1="750" y1="450" x2="1490" y2="450" stroke="#5c3d1e" stroke-width="0.7" opacity="0.2" stroke-dasharray="8,4" />
+  <line x1="750" y1="550" x2="1490" y2="550" stroke="#5c3d1e" stroke-width="0.7" opacity="0.2" stroke-dasharray="8,4" />
+
+  
+  <line x1="850" y1="50" x2="850" y2="620" stroke="#5c3d1e" stroke-width="0.7" opacity="0.2" stroke-dasharray="8,4" />
+  <line x1="1050" y1="50" x2="1050" y2="620" stroke="#5c3d1e" stroke-width="0.7" opacity="0.2" stroke-dasharray="8,4" />
+  <line x1="1250" y1="50" x2="1250" y2="620" stroke="#5c3d1e" stroke-width="0.7" opacity="0.2" stroke-dasharray="8,4" />
+  <line x1="1450" y1="50" x2="1450" y2="620" stroke="#5c3d1e" stroke-width="0.7" opacity="0.2" stroke-dasharray="8,4" />
+
+  
+  <g transform="translate(1050, 920)">
+    <text x="110" y="-8" font-family="Georgia, serif" font-size="11" fill="#3a2a14" text-anchor="middle" opacity="0.6" font-style="italic">Warring States c. 350 BCE</text>
+    <rect x="0" y="0" width="220" height="8" fill="none" stroke="#3a2a14" stroke-width="1" opacity="0.5" />
+    <rect x="0" y="0" width="55" height="8" fill="#3a2a14" opacity="0.4" />
+    <rect x="110" y="0" width="55" height="8" fill="#3a2a14" opacity="0.4" />
+    <text x="0" y="20" font-family="Georgia, serif" font-size="11" fill="#3a2a14" opacity="0.6">0</text>
+    <text x="108" y="20" font-family="Georgia, serif" font-size="11" fill="#3a2a14" opacity="0.6">500</text>
+    <text x="205" y="20" font-family="Georgia, serif" font-size="11" fill="#3a2a14" opacity="0.6">1000 li</text>
+  </g>
+
+  
+  <rect x="40" y="944" width="1456" height="4" fill="#3a2a14" opacity="0.3" />
+  <rect x="40" y="950" width="1456" height="1.5" fill="#c8a84a" opacity="0.4" />
+
+  
+  <text x="58" y="68" font-family="Georgia, serif" font-size="13" fill="#3a2a14" opacity="0.6" letter-spacing="4" font-style="italic">CULTURE &amp; SOCIETY</text>
+  <line x1="58" y1="72" x2="330" y2="72" stroke="#3a2a14" stroke-width="0.8" opacity="0.3" />
+
+</svg>

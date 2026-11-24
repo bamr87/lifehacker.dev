@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Banking and Finance Sector — South Korea's Financial System</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc8" />
+      <stop offset="100%" stop-color="#d4c9a8" />
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a4a6b" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#1a2f45" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="coinGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a84b" />
+      <stop offset="100%" stop-color="#9a7a2e" />
+    </linearGradient>
+    <linearGradient id="coinGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b89630" />
+      <stop offset="100%" stop-color="#7a5e1a" />
+    </linearGradient>
+    <pattern id="gridPat" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#a89060" stroke-width="0.4" opacity="0.4" />
+    </pattern>
+    <pattern id="hashPat" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0 8 L8 0" stroke="#8a7040" stroke-width="0.5" opacity="0.3" />
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="4" stdDeviation="6" flood-color="#2a1a00" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#gridPat)" />
+
+  
+  <rect x="20" y="20" width="1496" height="984" fill="none" stroke="#8a6a30" stroke-width="2.5" opacity="0.6" />
+  <rect x="30" y="30" width="1476" height="964" fill="none" stroke="#8a6a30" stroke-width="1" opacity="0.4" />
+
+  
+  <g stroke="#9a8050" stroke-width="0.6" opacity="0.35">
+    <line x1="0" y1="200" x2="1536" y2="200" />
+    <line x1="0" y1="400" x2="1536" y2="400" />
+    <line x1="0" y1="600" x2="1536" y2="600" />
+    <line x1="0" y1="800" x2="1536" y2="800" />
+    <line x1="200" y1="0" x2="200" y2="1024" />
+    <line x1="450" y1="0" x2="450" y2="1024" />
+    <line x1="700" y1="0" x2="700" y2="1024" />
+    <line x1="950" y1="0" x2="950" y2="1024" />
+    <line x1="1200" y1="0" x2="1200" y2="1024" />
+    <line x1="1400" y1="0" x2="1400" y2="1024" />
+  </g>
+
+  
+  <g transform="translate(850, 200)" filter="url(#shadow)">
+    
+    <path d="M 120,0 C 160,10 200,30 220,80 C 240,130 230,180 210,230 C 190,280 160,320 130,370 C 100,420 80,460 60,500 C 40,540 20,560 10,570 C 0,580 -10,570 -20,550 C -30,530 -25,500 -15,470 C -5,440 10,410 20,380 C 30,350 30,320 20,290 C 10,260 -10,240 -20,210 C -30,180 -20,150 0,120 C 20,90 60,30 90,10 Z" fill="#c4b890" stroke="#8a7040" stroke-width="2" />
+    
+    <path d="M 120,0 C 160,10 200,30 220,80 C 240,130 230,180 210,230 C 190,280 160,320 130,370 C 100,420 80,460 60,500 C 40,540 20,560 10,570 C 0,580 -10,570 -20,550 C -30,530 -25,500 -15,470 C -5,440 10,410 20,380 C 30,350 30,320 20,290 C 10,260 -10,240 -20,210 C -30,180 -20,150 0,120 C 20,90 60,30 90,10 Z" fill="url(#hashPat)" opacity="0.5" />
+    
+    <ellipse cx="-10" cy="630" rx="35" ry="20" fill="#c4b890" stroke="#8a7040" stroke-width="1.5" />
+    
+    <circle cx="80" cy="160" r="8" fill="#c0392b" stroke="#7a1a0a" stroke-width="2" />
+    <circle cx="80" cy="160" r="14" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.6" />
+    
+    <circle cx="140" cy="380" r="5" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.5" />
+    
+    <text x="96" y="155" font-family="Georgia, serif" font-size="16" fill="#3a2010" font-weight="bold">Seoul</text>
+    
+    <path d="M 20,150 C 50,160 70,165 80,162 C 100,158 120,170 150,175" fill="none" stroke="#6a9ab0" stroke-width="3" opacity="0.7" />
+  </g>
+
+  
+  <ellipse cx="900" cy="520" rx="400" ry="320" fill="#b8ccd8" opacity="0.25" />
+
+  
+  <g transform="translate(130, 280)" filter="url(#shadow)">
+    
+    <polygon points="0,80 240,80 120,0" fill="#7a8a6a" stroke="#5a6a4a" stroke-width="2" />
+    
+    <rect x="10" y="80" width="20" height="180" fill="#8a9a7a" stroke="#6a7a5a" stroke-width="1" />
+    <rect x="50" y="80" width="20" height="180" fill="#8a9a7a" stroke="#6a7a5a" stroke-width="1" />
+    <rect x="90" y="80" width="20" height="180" fill="#8a9a7a" stroke="#6a7a5a" stroke-width="1" />
+    <rect x="130" y="80" width="20" height="180" fill="#8a9a7a" stroke="#6a7a5a" stroke-width="1" />
+    <rect x="170" y="80" width="20" height="180" fill="#8a9a7a" stroke="#6a7a5a" stroke-width="1" />
+    <rect x="210" y="80" width="20" height="180" fill="#8a9a7a" stroke="#6a7a5a" stroke-width="1" />
+    
+    <rect x="5" y="256" width="30" height="10" fill="#7a8a6a" />
+    <rect x="45" y="256" width="30" height="10" fill="#7a8a6a" />
+    <rect x="85" y="256" width="30" height="10" fill="#7a8a6a" />
+    <rect x="125" y="256" width="30" height="10" fill="#7a8a6a" />
+    <rect x="165" y="256" width="30" height="10" fill="#7a8a6a" />
+    <rect x="205" y="256" width="30" height="10" fill="#7a8a6a" />
+    
+    <rect x="-10" y="266" width="260" height="14" fill="#6a7a5a" stroke="#5a6a4a" stroke-width="1" />
+    <rect x="-20" y="280" width="280" height="14" fill="#5a6a4a" stroke="#4a5a3a" stroke-width="1" />
+    
+    <rect x="95" y="200" width="50" height="66" fill="#4a5a3a" stroke="#3a4a2a" stroke-width="1" />
+    <path d="M 95,200 Q 120,185 145,200" fill="#3a4a2a" />
+    
+    <line x1="30" y1="50" x2="210" y2="50" stroke="#6a7a5a" stroke-width="1" opacity="0.5" />
+    <text x="55" y="45" font-family="Georgia, serif" font-size="14" fill="#4a5a3a" opacity="0.8">BANK</text>
+  </g>
+
+  
+  <g transform="translate(440, 550)">
+    
+    <ellipse cx="60" cy="200" rx="60" ry="18" fill="#7a5e1a" />
+    <rect x="0" y="120" width="120" height="80" fill="url(#coinGrad2)" />
+    <ellipse cx="60" cy="120" rx="60" ry="18" fill="url(#coinGrad)" />
+    <ellipse cx="60" cy="110" rx="60" ry="18" fill="#7a5e1a" />
+    <rect x="0" y="30" width="120" height="80" fill="url(#coinGrad2)" />
+    <ellipse cx="60" cy="30" rx="60" ry="18" fill="url(#coinGrad)" />
+    <ellipse cx="60" cy="20" rx="60" ry="18" fill="#7a5e1a" />
+    <rect x="0" y="-60" width="120" height="80" fill="url(#coinGrad2)" />
+    <ellipse cx="60" cy="-60" rx="60" ry="18" fill="url(#coinGrad)" />
+    
+    <text x="60" y="-52" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#4a3010" text-anchor="middle">₩</text>
+  </g>
+
+  
+  <g transform="translate(590, 620)">
+    <ellipse cx="45" cy="130" rx="45" ry="13" fill="#7a5e1a" />
+    <rect x="0" y="80" width="90" height="50" fill="url(#coinGrad2)" />
+    <ellipse cx="45" cy="80" rx="45" ry="13" fill="url(#coinGrad)" />
+    <ellipse cx="45" cy="70" rx="45" ry="13" fill="#7a5e1a" />
+    <rect x="0" y="20" width="90" height="50" fill="url(#coinGrad2)" />
+    <ellipse cx="45" cy="20" rx="45" ry="13" fill="url(#coinGrad)" />
+    <text x="45" y="12" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#4a3010" text-anchor="middle">₩</text>
+  </g>
+
+  
+  <g transform="translate(680, 400)" stroke="#5a7a4a" stroke-width="3" fill="none" opacity="0.7">
+    <polyline points="0,200 60,170 120,140 180,100 240,50 280,20" />
+    <polyline points="0,200 60,190 120,175 180,155 240,120 280,100" stroke="#8a9a6a" stroke-width="2" stroke-dasharray="6,4" />
+    
+    <line x1="0" y1="200" x2="300" y2="200" stroke="#5a6a4a" stroke-width="2" />
+    <line x1="0" y1="200" x2="0" y2="0" stroke="#5a6a4a" stroke-width="2" />
+    
+    <polygon points="280,20 273,35 287,35" fill="#5a7a4a" stroke="none" />
+  </g>
+
+  
+  <g transform="translate(1380, 120)">
+    
+    <circle cx="0" cy="0" r="70" fill="#c8b880" stroke="#8a6a30" stroke-width="2" opacity="0.8" />
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#8a6a30" stroke-width="1" opacity="0.6" />
+    
+    <polygon points="0,-60 -8,-20 0,-35 8,-20" fill="#3a2a10" />
+    <polygon points="0,60 -8,20 0,35 8,20" fill="#8a7a50" />
+    <polygon points="-60,0 -20,-8 -35,0 -20,8" fill="#8a7a50" />
+    <polygon points="60,0 20,-8 35,0 20,8" fill="#8a7a50" />
+    
+    <polygon points="42,-42 15,-25 25,-15" fill="#6a5a30" opacity="0.7" />
+    <polygon points="-42,-42 -15,-25 -25,-15" fill="#6a5a30" opacity="0.7" />
+    <polygon points="42,42 15,25 25,15" fill="#6a5a30" opacity="0.7" />
+    <polygon points="-42,42 -15,25 -25,15" fill="#6a5a30" opacity="0.7" />
+    
+    <circle cx="0" cy="0" r="8" fill="#c8a84b" stroke="#8a6a30" stroke-width="1.5" />
+    
+    <text x="0" y="-68" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#3a2a10">N</text>
+    <text x="0" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a4a20">S</text>
+    <text x="76" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a4a20">E</text>
+    <text x="-76" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#5a4a20">W</text>
+  </g>
+
+  
+  <g transform="translate(100, 820)" opacity="0.5">
+    <circle cx="0" cy="0" r="40" fill="#c8b880" stroke="#8a6a30" stroke-width="1.5" />
+    <polygon points="0,-38 -5,-12 0,-22 5,-12" fill="#3a2a10" />
+    <polygon points="0,38 -5,12 0,22 5,12" fill="#8a7a50" />
+    <polygon points="-38,0 -12,-5 -22,0 -12,5" fill="#8a7a50" />
+    <polygon points="38,0 12,-5 22,0 12,5" fill="#8a7a50" />
+    <circle cx="0" cy="0" r="5" fill="#c8a84b" stroke="#8a6a30" stroke-width="1" />
+  </g>
+
+  
+  <rect x="60" y="680" width="740" height="300" rx="4" fill="url(#panelGrad)" filter="url(#shadow)" />
+  <rect x="60" y="680" width="740" height="4" rx="2" fill="#c8a84b" />
+  <rect x="60" y="976" width="740" height="4" rx="2" fill="#c8a84b" />
+
+  
+  <text x="100" y="730" font-family="Georgia, serif" font-size="18" letter-spacing="4" fill="#c8a84b" opacity="0.9">ECONOMY · SOUTH KOREA</text>
+
+  
+  <text x="100" y="800" font-family="Georgia, serif" font-size="62" font-weight="bold" fill="#f0e8d0" letter-spacing="1">Banking and</text>
+  <text x="100" y="872" font-family="Georgia, serif" font-size="62" font-weight="bold" fill="#f0e8d0" letter-spacing="1">Finance Sector</text>
+
+  
+  <text x="100" y="926" font-family="Georgia, serif" font-size="20" fill="#b8c8d8" opacity="0.85">State-directed credit · 1997 Crisis · Fintech transformation</text>
+
+  
+  <line x1="100" y1="740" x2="750" y2="740" stroke="#c8a84b" stroke-width="1" opacity="0.5" />
+
+  
+  <text x="1300" y="900" font-family="Georgia, serif" font-size="260" font-weight="bold" fill="#8a7040" opacity="0.12" text-anchor="middle">₩</text>
+
+  
+  <g stroke="#c8a84b" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="8,6">
+    <path d="M 370,380 C 500,350 650,340 780,380" />
+    <path d="M 370,430 C 520,400 680,400 820,440" />
+  </g>
+
+  
+  <g transform="translate(60, 60)">
+    <rect x="0" y="0" width="300" height="70" rx="3" fill="#c4b890" stroke="#8a6a30" stroke-width="1.5" opacity="0.8" />
+    <rect x="6" y="6" width="288" height="58" rx="2" fill="none" stroke="#8a6a30" stroke-width="0.8" opacity="0.6" />
+    <text x="150" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="11" letter-spacing="3" fill="#5a4020" opacity="0.8">ATLAS OF MODERN</text>
+    <text x="150" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="2" font-weight="bold" fill="#3a2010">KOREAN ECONOMY</text>
+  </g>
+
+  
+  <g transform="translate(1100, 560)">
+    <rect x="0" y="0" width="160" height="90" rx="3" fill="#3a2a10" opacity="0.75" stroke="#c8a84b" stroke-width="1" />
+    <text x="80" y="25" text-anchor="middle" font-family="Georgia, serif" font-size="11" letter-spacing="2" fill="#c8a84b">TURNING POINT</text>
+    <line x1="15" y1="33" x2="145" y2="33" stroke="#c8a84b" stroke-width="0.8" opacity="0.5" />
+    <text x="80" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#f0e0c0">1997</text>
+    <text x="80" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#a0b0c0">Asian Financial Crisis</text>
+  </g>
+
+  
+  <g transform="translate(1100, 380)">
+    <text x="0" y="0" font-family="Georgia, serif" font-size="13" fill="#5a4020" letter-spacing="1">ASSETS / GDP</text>
+    <rect x="0" y="10" width="200" height="16" rx="2" fill="#a09060" opacity="0.3" />
+    <rect x="0" y="10" width="180" height="16" rx="2" fill="#6a8a5a" opacity="0.7" />
+    <text x="185" y="23" font-family="Georgia, serif" font-size="11" fill="#3a2010">~300%</text>
+    <rect x="0" y="34" width="200" height="16" rx="2" fill="#a09060" opacity="0.3" />
+    <rect x="0" y="34" width="100" height="16" rx="2" fill="#c8a84b" opacity="0.7" />
+    <text x="105" y="47" font-family="Georgia, serif" font-size="11" fill="#3a2010">Fintech ↑</text>
+  </g>
+
+  
+  <g stroke="#8a6a30" stroke-width="2" fill="none" opacity="0.7">
+    
+    <path d="M 20,20 L 80,20 M 20,20 L 20,80" />
+    <path d="M 30,30 L 70,30 M 30,30 L 30,70" />
+    
+    <path d="M 1516,20 L 1456,20 M 1516,20 L 1516,80" />
+    <path d="M 1506,30 L 1466,30 M 1506,30 L 1506,70" />
+    
+    <path d="M 20,1004 L 80,1004 M 20,1004 L 20,944" />
+    <path d="M 30,994 L 70,994 M 30,994 L 30,954" />
+    
+    <path d="M 1516,1004 L 1456,1004 M 1516,1004 L 1516,944" />
+    <path d="M 1506,994 L 1466,994 M 1506,994 L 1506,954" />
+  </g>
+</svg>

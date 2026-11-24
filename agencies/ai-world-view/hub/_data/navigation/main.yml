@@ -1,0 +1,25 @@
+# Main Navigation Configuration
+# Used by: the zer0-mistakes navbar (provided via remote_theme).
+# This is the ai-world-view organization root site — the navbar stays minimal:
+# the landing page, the hub dashboard, contact, and the org on GitHub.
+# Per-repo hub links live in the generated _data/navigation/hub.yml.
+
+- title: Home
+  icon: bi-house
+  url: /
+
+- title: Hub
+  icon: bi-collection
+  url: /hub/
+
+- title: Lineage
+  icon: bi-diagram-3
+  url: /lineage/
+
+- title: Contact
+  icon: bi-envelope
+  url: /contact/
+
+- title: GitHub
+  icon: bi-github
+  url: https://github.com/ai-world-view

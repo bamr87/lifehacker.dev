@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Coffee Culture in South Korea – Article Preview Banner</title>
+
+  <defs>
+    
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+
+    
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" stop-color="transparent" />
+      <stop offset="100%" stop-color="#5a3e1b" stop-opacity="0.35" />
+    </radialGradient>
+
+    
+    <linearGradient id="steamGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#8b6914" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#8b6914" stop-opacity="0" />
+    </linearGradient>
+
+    
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#b8975a" stroke-width="0.4" stroke-opacity="0.35" />
+    </pattern>
+
+    
+    <pattern id="crosshatch" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#8b6914" stroke-width="0.4" stroke-opacity="0.25" />
+      <line x1="0" y1="0" x2="6" y2="0" stroke="#8b6914" stroke-width="0.4" stroke-opacity="0.25" />
+    </pattern>
+
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="4" stdDeviation="6" flood-color="#3d2200" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#parchment)" />
+  
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#8b6914" stroke-width="3" stroke-opacity="0.6" />
+  <rect x="40" y="40" width="1456" height="944" fill="none" stroke="#8b6914" stroke-width="1" stroke-opacity="0.4" />
+
+  
+  
+  <g stroke="#8b6914" stroke-opacity="0.7" fill="none" stroke-width="1.5">
+    <line x1="40" y1="70" x2="100" y2="70" />
+    <line x1="70" y1="40" x2="70" y2="100" />
+    <circle cx="70" cy="70" r="8" fill="#8b6914" fill-opacity="0.3" />
+  </g>
+  
+  <g stroke="#8b6914" stroke-opacity="0.7" fill="none" stroke-width="1.5">
+    <line x1="1436" y1="70" x2="1496" y2="70" />
+    <line x1="1466" y1="40" x2="1466" y2="100" />
+    <circle cx="1466" cy="70" r="8" fill="#8b6914" fill-opacity="0.3" />
+  </g>
+  
+  <g stroke="#8b6914" stroke-opacity="0.7" fill="none" stroke-width="1.5">
+    <line x1="40" y1="954" x2="100" y2="954" />
+    <line x1="70" y1="924" x2="70" y2="984" />
+    <circle cx="70" cy="954" r="8" fill="#8b6914" fill-opacity="0.3" />
+  </g>
+  
+  <g stroke="#8b6914" stroke-opacity="0.7" fill="none" stroke-width="1.5">
+    <line x1="1436" y1="954" x2="1496" y2="954" />
+    <line x1="1466" y1="924" x2="1466" y2="984" />
+    <circle cx="1466" cy="954" r="8" fill="#8b6914" fill-opacity="0.3" />
+  </g>
+
+  
+  
+  <rect x="40" y="40" width="1456" height="944" fill="#c8d8e0" fill-opacity="0.28" />
+
+  
+  
+  <path d="M 680,80 Q 900,60 1100,80 L 1150,300 Q 1050,320 950,310 Q 850,340 780,380 Q 720,340 680,300 Z" fill="#c8b882" fill-opacity="0.55" stroke="#8b6914" stroke-width="1" stroke-opacity="0.4" />
+  
+  <path d="M 580,80 L 1150,80 L 1150,300 Q 1000,260 880,290 Q 780,310 700,360 Q 650,300 620,220 Z" fill="#c2ad74" fill-opacity="0.5" stroke="#8b6914" stroke-width="1" stroke-opacity="0.3" />
+
+  
+  <path d="M 820,290 Q 860,280 900,285 Q 940,282 960,295            L 975,340 Q 980,380 970,420            Q 960,460 940,495            Q 920,525 895,548            Q 875,568 860,575            Q 845,568 830,548            Q 808,522 792,492            Q 774,458 768,420            Q 762,378 768,340 Z" fill="#b8a060" stroke="#5a3e1b" stroke-width="2.5" filter="url(#softShadow)" />
+  
+  <path d="M 820,290 Q 860,280 900,285 Q 940,282 960,295            L 975,340 Q 980,380 970,420            Q 960,460 940,495            Q 920,525 895,548            Q 875,568 860,575            Q 845,568 830,548            Q 808,522 792,492            Q 774,458 768,420            Q 762,378 768,340 Z" fill="url(#crosshatch)" />
+  
+  <path d="M 820,290 Q 860,280 900,285 Q 940,282 960,295            L 975,340 Q 980,380 970,420            Q 960,460 940,495            Q 920,525 895,548            Q 875,568 860,575            Q 845,568 830,548            Q 808,522 792,492            Q 774,458 768,420            Q 762,378 768,340 Z" fill="none" stroke="#5a3e1b" stroke-width="1.5" stroke-opacity="0.6" />
+
+  
+  <ellipse cx="855" cy="600" rx="24" ry="14" fill="#b8a060" stroke="#5a3e1b" stroke-width="1.5" />
+
+  
+  
+  <path d="M 1060,440 Q 1090,430 1110,445 Q 1125,460 1120,480 Q 1110,500 1090,505 Q 1068,500 1058,482 Q 1050,464 1060,440Z" fill="#c2ad74" fill-opacity="0.6" stroke="#8b6914" stroke-width="1.5" stroke-opacity="0.5" />
+  
+  <path d="M 1100,300 Q 1160,280 1220,270 Q 1280,262 1340,260 Q 1380,260 1400,270             L 1410,300 Q 1360,330 1280,340 Q 1200,360 1140,380 Q 1110,420 1100,450             Q 1080,430 1070,390 Q 1065,350 1080,320 Z" fill="#c2ad74" fill-opacity="0.5" stroke="#8b6914" stroke-width="1.5" stroke-opacity="0.4" />
+
+  
+  <text x="1010" y="400" font-family="Georgia, serif" font-size="18" fill="#5a6e7a" fill-opacity="0.6" font-style="italic" text-anchor="middle" letter-spacing="3">SEA OF JAPAN</text>
+  
+  <text x="720" y="450" font-family="Georgia, serif" font-size="17" fill="#5a6e7a" fill-opacity="0.6" font-style="italic" text-anchor="middle" letter-spacing="2">YELLOW SEA</text>
+
+  
+  <line x1="40" y1="300" x2="1496" y2="300" stroke="#8b6914" stroke-width="0.6" stroke-opacity="0.2" stroke-dasharray="4 8" />
+  <line x1="40" y1="450" x2="1496" y2="450" stroke="#8b6914" stroke-width="0.6" stroke-opacity="0.2" stroke-dasharray="4 8" />
+  <line x1="40" y1="600" x2="1496" y2="600" stroke="#8b6914" stroke-width="0.6" stroke-opacity="0.2" stroke-dasharray="4 8" />
+  
+  <line x1="680" y1="40" x2="680" y2="984" stroke="#8b6914" stroke-width="0.6" stroke-opacity="0.2" stroke-dasharray="4 8" />
+  <line x1="900" y1="40" x2="900" y2="984" stroke="#8b6914" stroke-width="0.6" stroke-opacity="0.2" stroke-dasharray="4 8" />
+  <line x1="1100" y1="40" x2="1100" y2="984" stroke="#8b6914" stroke-width="0.6" stroke-opacity="0.2" stroke-dasharray="4 8" />
+
+  
+  <circle cx="870" cy="370" r="7" fill="#b03030" stroke="#fff" stroke-width="2" />
+  <text x="888" y="366" font-family="Georgia, serif" font-size="16" fill="#3d2200" font-weight="bold">Seoul</text>
+
+  
+  <g transform="translate(1370, 800)">
+    
+    <circle cx="0" cy="0" r="72" fill="#d4c4a0" fill-opacity="0.7" stroke="#8b6914" stroke-width="2" />
+    <circle cx="0" cy="0" r="68" fill="none" stroke="#8b6914" stroke-width="0.8" stroke-opacity="0.4" />
+    
+    <polygon points="0,-62 8,-8 0,62 -8,-8" fill="#8b6914" fill-opacity="0.85" />
+    <polygon points="-62,0 -8,-8 62,0 -8,8" fill="#c2a050" fill-opacity="0.85" />
+    
+    <circle cx="0" cy="0" r="12" fill="#d4c4a0" stroke="#8b6914" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="5" fill="#8b6914" />
+    
+    <text x="0" y="-74" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#3d2200" text-anchor="middle">N</text>
+    <text x="0" y="90" font-family="Georgia, serif" font-size="14" fill="#3d2200" text-anchor="middle">S</text>
+    <text x="80" y="5" font-family="Georgia, serif" font-size="14" fill="#3d2200" text-anchor="middle">E</text>
+    <text x="-80" y="5" font-family="Georgia, serif" font-size="14" fill="#3d2200" text-anchor="middle">W</text>
+  </g>
+
+  
+  <g transform="translate(200, 260)" filter="url(#softShadow)">
+    
+    <ellipse cx="220" cy="430" rx="185" ry="28" fill="#7a5230" stroke="#5a3820" stroke-width="2.5" />
+    <ellipse cx="220" cy="422" rx="155" ry="18" fill="#9a6840" />
+
+    
+    <path d="M 80,260 Q 75,380 90,410 Q 130,440 220,440 Q 310,440 350,410 Q 365,380 360,260 Z" fill="#6b4220" stroke="#4a2e10" stroke-width="2.5" />
+    
+    <ellipse cx="220" cy="260" rx="140" ry="30" fill="#3d1e08" />
+    
+    <ellipse cx="220" cy="260" rx="134" ry="24" fill="#4a2800" />
+    
+    <ellipse cx="220" cy="255" rx="100" ry="16" fill="#7a4e1a" fill-opacity="0.7" />
+    
+    <path d="M 220,248 Q 240,240 255,248 Q 240,256 220,260 Q 200,256 185,248 Q 200,240 220,248Z" fill="#c8883a" fill-opacity="0.8" />
+    <path d="M 220,260 Q 235,252 248,255 Q 238,264 220,268 Q 202,264 192,255 Q 205,252 220,260Z" fill="#c8883a" fill-opacity="0.6" />
+    <line x1="220" y1="240" x2="220" y2="276" stroke="#c8883a" stroke-width="1.5" stroke-opacity="0.5" />
+
+    
+    <path d="M 358,300 Q 420,300 420,350 Q 420,400 358,400" fill="none" stroke="#6b4220" stroke-width="22" stroke-linecap="round" />
+    <path d="M 358,300 Q 408,300 408,350 Q 408,400 358,400" fill="none" stroke="#9a6840" stroke-width="8" stroke-linecap="round" />
+
+    
+    <path d="M 160,230 Q 150,190 165,155 Q 175,120 160,85" fill="none" stroke="#8b6914" stroke-width="4" stroke-opacity="0.5" stroke-linecap="round" />
+    <path d="M 220,220 Q 210,175 225,140 Q 238,105 222,65" fill="none" stroke="#8b6914" stroke-width="4" stroke-opacity="0.5" stroke-linecap="round" />
+    <path d="M 280,230 Q 295,188 278,153 Q 264,118 280,82" fill="none" stroke="#8b6914" stroke-width="4" stroke-opacity="0.5" stroke-linecap="round" />
+  </g>
+
+  
+  
+  <g transform="translate(560,680) rotate(25)">
+    <ellipse cx="0" cy="0" rx="22" ry="14" fill="#5a3820" stroke="#3d2200" stroke-width="1.5" />
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#3d2200" stroke-width="1.2" />
+  </g>
+  
+  <g transform="translate(610,720) rotate(-15)">
+    <ellipse cx="0" cy="0" rx="22" ry="14" fill="#5a3820" stroke="#3d2200" stroke-width="1.5" />
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#3d2200" stroke-width="1.2" />
+  </g>
+  
+  <g transform="translate(535,730) rotate(45)">
+    <ellipse cx="0" cy="0" rx="22" ry="14" fill="#6b4a28" stroke="#3d2200" stroke-width="1.5" />
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#3d2200" stroke-width="1.2" />
+  </g>
+  
+  <g transform="translate(1230,680) rotate(-20)">
+    <ellipse cx="0" cy="0" rx="22" ry="14" fill="#5a3820" stroke="#3d2200" stroke-width="1.5" />
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#3d2200" stroke-width="1.2" />
+  </g>
+  
+  <g transform="translate(1275,650) rotate(30)">
+    <ellipse cx="0" cy="0" rx="22" ry="14" fill="#6b4a28" stroke="#3d2200" stroke-width="1.5" />
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#3d2200" stroke-width="1.2" />
+  </g>
+
+  
+  
+  <rect x="68" y="68" width="620" height="200" rx="4" ry="4" fill="#d4c4a0" fill-opacity="0.88" stroke="#8b6914" stroke-width="1.5" />
+  
+  <rect x="80" y="80" width="596" height="176" rx="2" ry="2" fill="none" stroke="#8b6914" stroke-width="0.8" stroke-opacity="0.5" />
+
+  
+  <text x="378" y="110" font-family="Georgia, serif" font-size="14" fill="#8b6914" text-anchor="middle" letter-spacing="5" font-style="italic">ATLAS OF CONTEMPORARY CULTURE</text>
+  <line x1="90" y1="118" x2="666" y2="118" stroke="#8b6914" stroke-width="0.8" stroke-opacity="0.5" />
+
+  
+  <text x="378" y="162" font-family="Georgia, serif" font-size="52" fill="#3d2200" text-anchor="middle" font-weight="bold" letter-spacing="1">Coffee Culture</text>
+  <text x="378" y="216" font-family="Georgia, serif" font-size="40" fill="#5a3820" text-anchor="middle" letter-spacing="4">IN SOUTH KOREA</text>
+  <line x1="90" y1="226" x2="666" y2="226" stroke="#8b6914" stroke-width="0.8" stroke-opacity="0.5" />
+
+  
+  <rect x="68" y="250" width="620" height="70" rx="4" ry="4" fill="#5a3820" fill-opacity="0.88" />
+  <text x="378" y="280" font-family="Georgia, serif" font-size="17" fill="#e8dcc8" text-anchor="middle" letter-spacing="1">353 cups per person per year</text>
+  <text x="378" y="305" font-family="Georgia, serif" font-size="14" fill="#c8a870" text-anchor="middle" letter-spacing="2" font-style="italic">Among the world's highest per-capita consumers</text>
+
+  
+  <rect x="40" y="900" width="1456" height="84" fill="#5a3820" fill-opacity="0.82" />
+  <line x1="40" y1="900" x2="1496" y2="900" stroke="#8b6914" stroke-width="1.5" />
+
+  <text x="770" y="940" font-family="Georgia, serif" font-size="20" fill="#e8dcc8" text-anchor="middle" letter-spacing="3">A distinctive contemporary phenomenon • Urban social life • Commerce • Identity</text>
+  <text x="770" y="968" font-family="Georgia, serif" font-size="15" fill="#c8a870" text-anchor="middle" letter-spacing="2" font-style="italic">Market valued at ₩8.6 trillion (≈ USD 6.4 billion) • 3–4 cafes per 1,000 residents in major cities</text>
+
+  
+  <rect width="1536" height="1024" fill="url(#vignette)" />
+
+  
+  <circle cx="870" cy="440" r="18" fill="#d4c4a0" stroke="#8b6914" stroke-width="1" fill-opacity="0.7" />
+  
+  <path d="M 870,422 A 9,18 0 0 1 870,458 A 9,9 0 0 0 870,440 A 9,9 0 0 1 870,422Z" fill="#c03030" fill-opacity="0.7" />
+  <path d="M 870,422 A 9,18 0 0 0 870,458 A 9,9 0 0 1 870,440 A 9,9 0 0 0 870,422Z" fill="#2244aa" fill-opacity="0.7" />
+</svg>

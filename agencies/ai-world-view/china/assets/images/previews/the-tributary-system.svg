@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>The Tributary System — Banner Illustration</title>
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#e8d9b5" />
+      <stop offset="100%" stop-color="#c9b87a" />
+    </radialGradient>
+    <radialGradient id="chinaGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c0392b" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0" />
+    </radialGradient>
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noiseOut" />
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+      <feComposite in="blended" in2="SourceGraphic" operator="in" />
+    </filter>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#8b2010" opacity="0.7" />
+    </marker>
+    <marker id="arrowGold" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#7a5c1a" opacity="0.7" />
+    </marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#a08030" stroke-width="0.4" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bgGrad)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a5c1a" stroke-width="3" opacity="0.6" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#7a5c1a" stroke-width="1" opacity="0.4" />
+
+  
+  <g stroke="#7a5c1a" stroke-width="1.5" fill="none" opacity="0.7">
+    
+    <path d="M26,60 L60,26" />
+    <path d="M26,80 L80,26" />
+    <circle cx="26" cy="26" r="8" fill="#7a5c1a" opacity="0.4" />
+    
+    <path d="M1510,60 L1476,26" />
+    <path d="M1510,80 L1456,26" />
+    <circle cx="1510" cy="26" r="8" fill="#7a5c1a" opacity="0.4" />
+    
+    <path d="M26,964 L60,998" />
+    <path d="M26,944 L80,998" />
+    <circle cx="26" cy="998" r="8" fill="#7a5c1a" opacity="0.4" />
+    
+    <path d="M1510,964 L1476,998" />
+    <path d="M1510,944 L1456,998" />
+    <circle cx="1510" cy="998" r="8" fill="#7a5c1a" opacity="0.4" />
+  </g>
+
+  
+  <rect x="26" y="26" width="1484" height="972" fill="#b8cdd6" opacity="0.22" rx="2" />
+
+  
+  
+  <g id="china-region">
+    
+    <path d="M620,200 L680,180 L760,185 L830,175 L900,190 L950,210 L980,240 L1000,280 L990,330 L1010,370 L1000,410 L980,450 L940,480 L920,520 L900,560 L870,590 L840,610 L800,620 L760,640 L720,650 L680,640 L650,620 L620,590 L590,560 L570,520 L560,480 L550,440 L560,400 L540,360 L550,310 L560,260 L580,230 Z" fill="#c8a96e" stroke="#7a5c1a" stroke-width="2" />
+    
+    <path d="M900,190 L950,170 L1000,160 L1050,170 L1090,200 L1100,240 L1080,270 L1050,280 L1010,270 L980,240 L950,210 Z" fill="#c4a368" stroke="#7a5c1a" stroke-width="1.5" />
+    
+    <path d="M860,350 L900,345 L920,360 L910,380 L880,375 L860,360 Z" fill="#c8a96e" stroke="#7a5c1a" stroke-width="1" />
+    
+    <ellipse cx="770" cy="410" rx="220" ry="230" fill="url(#chinaGlow)" />
+    
+    <path d="M620,200 L680,180 L760,185 L830,175 L900,190 L950,210 L980,240 L1000,280 L990,330 L1010,370 L1000,410 L980,450 L940,480 L920,520 L900,560 L870,590 L840,610 L800,620 L760,640 L720,650 L680,640 L650,620 L620,590 L590,560 L570,520 L560,480 L550,440 L560,400 L540,360 L550,310 L560,260 L580,230 Z" fill="#8b2010" opacity="0.09" />
+  </g>
+
+  
+  <path d="M580,200 L560,180 L540,165 L500,155 L460,150 L400,160 L350,175 L320,195 L340,220 L380,230 L420,235 L480,230 L530,225 L560,210 Z" fill="#d4b87a" stroke="#7a5c1a" stroke-width="1.5" opacity="0.85" />
+  <path d="M900,190 L950,170 L1000,160 L1060,150 L1100,145 L1150,150 L1180,165 L1170,185 L1130,200 L1090,200 L1050,170 L1000,160 Z" fill="#d4b87a" stroke="#7a5c1a" stroke-width="1.5" opacity="0.85" />
+
+  
+  <path d="M560,440 L540,420 L510,400 L480,390 L440,395 L420,415 L410,450 L420,480 L450,500 L490,510 L530,505 L555,485 L560,460 Z" fill="#b8a060" stroke="#7a5c1a" stroke-width="1.5" opacity="0.85" />
+
+  
+  <path d="M1010,280 L1030,290 L1050,320 L1055,360 L1040,390 L1020,400 L1000,390 L990,360 L995,320 L1005,295 Z" fill="#c8b878" stroke="#7a5c1a" stroke-width="1.5" />
+
+  
+  <path d="M1100,260 L1115,250 L1130,265 L1125,290 L1110,300 L1095,285 Z" fill="#c8b878" stroke="#7a5c1a" stroke-width="1.2" opacity="0.9" />
+  <path d="M1120,310 L1130,295 L1145,300 L1155,320 L1148,345 L1130,355 L1115,340 L1112,322 Z" fill="#c8b878" stroke="#7a5c1a" stroke-width="1.2" opacity="0.9" />
+  <path d="M1100,370 L1112,355 L1128,360 L1135,385 L1125,405 L1108,408 L1098,390 Z" fill="#c8b878" stroke="#7a5c1a" stroke-width="1.2" opacity="0.9" />
+
+  
+  <circle cx="1060" cy="440" r="6" fill="#c8b878" stroke="#7a5c1a" stroke-width="1.2" />
+  <circle cx="1045" cy="465" r="5" fill="#c8b878" stroke="#7a5c1a" stroke-width="1.2" />
+  <circle cx="1030" cy="488" r="4" fill="#c8b878" stroke="#7a5c1a" stroke-width="1.2" />
+
+  
+  <path d="M870,590 L890,600 L910,630 L920,670 L915,710 L900,740 L880,755 L860,745 L845,720 L840,690 L845,655 L850,620 L855,600 Z" fill="#b8a45a" stroke="#7a5c1a" stroke-width="1.5" />
+
+  
+  <path d="M780,660 L820,650 L850,665 L860,700 L855,730 L840,750 L810,760 L780,755 L760,735 L755,705 L760,675 Z" fill="#c0a860" stroke="#7a5c1a" stroke-width="1.5" />
+
+  
+  <path d="M680,580 L720,570 L750,590 L760,630 L750,670 L730,695 L700,700 L670,685 L655,655 L655,620 L660,595 Z" fill="#b8a060" stroke="#7a5c1a" stroke-width="1.5" />
+
+  
+  <path d="M400,450 L450,440 L500,445 L530,460 L540,500 L530,540 L510,575 L480,600 L450,615 L420,610 L395,590 L378,560 L375,520 L382,480 Z" fill="#c8b070" stroke="#7a5c1a" stroke-width="1" opacity="0.5" />
+
+  
+  <g stroke="#7090a0" stroke-width="0.6" opacity="0.25">
+    <line x1="1050" y1="300" x2="1200" y2="250" />
+    <line x1="1060" y1="330" x2="1210" y2="290" />
+    <line x1="1070" y1="360" x2="1200" y2="330" />
+    <line x1="1060" y1="390" x2="1190" y2="370" />
+    <line x1="1050" y1="420" x2="1180" y2="410" />
+    <line x1="1040" y1="450" x2="1170" y2="450" />
+    <line x1="900" y1="580" x2="1100" y2="580" />
+    <line x1="910" y1="610" x2="1090" y2="610" />
+    <line x1="920" y1="640" x2="1080" y2="640" />
+    <line x1="600" y1="200" x2="400" y2="140" />
+    <line x1="580" y1="220" x2="380" y2="170" />
+  </g>
+
+  
+  <g fill="none" stroke-dasharray="8,5">
+    
+    <line x1="1020" y1="345" x2="880" y2="370" stroke="#8b2010" stroke-width="2.5" opacity="0.75" marker-end="url(#arrowRed)" stroke-dasharray="none" />
+    
+    <path d="M1045,455 Q990,470 950,480" stroke="#8b2010" stroke-width="2" opacity="0.65" marker-end="url(#arrowRed)" stroke-dasharray="none" />
+    
+    <line x1="870" y1="630" x2="840" y2="590" stroke="#8b2010" stroke-width="2.5" opacity="0.75" marker-end="url(#arrowRed)" stroke-dasharray="none" />
+    
+    <path d="M800,680 Q790,640 800,610" stroke="#8b2010" stroke-width="2" opacity="0.65" marker-end="url(#arrowRed)" stroke-dasharray="none" />
+    
+    <path d="M690,640 Q700,610 700,590" stroke="#8b2010" stroke-width="2" opacity="0.65" marker-end="url(#arrowRed)" stroke-dasharray="none" />
+    
+    <line x1="450" y1="190" x2="590" y2="240" stroke="#7a5c1a" stroke-width="2.5" opacity="0.65" marker-end="url(#arrowGold)" stroke-dasharray="none" />
+    
+    <line x1="490" y1="450" x2="565" y2="450" stroke="#7a5c1a" stroke-width="2" opacity="0.65" marker-end="url(#arrowGold)" stroke-dasharray="none" />
+  </g>
+
+  
+  <g stroke="#7a5c1a" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="6,5">
+    
+    <path d="M1060,440 Q1020,420 980,400" />
+    
+    <path d="M900,670 Q930,640 930,600" />
+  </g>
+
+  
+  <g transform="translate(770,420)">
+    <circle r="18" fill="#8b2010" opacity="0.85" />
+    <circle r="12" fill="#c0392b" />
+    
+    <polygon points="0,-10 2.4,-3.3 9.5,-3.1 3.8,1.2 5.9,8.1 0,4 -5.9,8.1 -3.8,1.2 -9.5,-3.1 -2.4,-3.3" fill="#f5d76e" />
+  </g>
+
+  
+  <g font-family="Georgia, 'Times New Roman', serif" fill="#3d2b0e" opacity="0.88">
+    <text x="760" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#6b1010" letter-spacing="2">CHINA</text>
+    <text x="1025" y="345" text-anchor="middle" font-size="11">KOREA</text>
+    <text x="1048" y="465" text-anchor="start" font-size="10">RYUKYU</text>
+    <text x="885" y="698" text-anchor="middle" font-size="11">VIETNAM</text>
+    <text x="800" y="790" text-anchor="middle" font-size="11">SIAM</text>
+    <text x="680" y="730" text-anchor="middle" font-size="11">BURMA</text>
+    <text x="430" y="175" text-anchor="middle" font-size="11">MONGOLIA</text>
+    <text x="460" y="462" text-anchor="middle" font-size="11">TIBET</text>
+    <text x="1130" y="330" text-anchor="middle" font-size="10" opacity="0.7">JAPAN</text>
+  </g>
+
+  
+  <g transform="translate(1380, 820)">
+    <circle r="52" fill="#d8c99a" stroke="#7a5c1a" stroke-width="1.5" opacity="0.85" />
+    <circle r="38" fill="none" stroke="#7a5c1a" stroke-width="0.8" opacity="0.5" />
+    
+    <polygon points="0,-48 5,-8 -5,-8" fill="#7a5c1a" opacity="0.8" />
+    <polygon points="0,48 5,8 -5,8" fill="#7a5c1a" opacity="0.6" />
+    <polygon points="-48,0 -8,5 -8,-5" fill="#7a5c1a" opacity="0.6" />
+    <polygon points="48,0 8,5 8,-5" fill="#7a5c1a" opacity="0.6" />
+    
+    <polygon points="0,-48 3,-20 -3,-20" fill="#8b2010" opacity="0.5" transform="rotate(45)" />
+    <polygon points="0,-48 3,-20 -3,-20" fill="#8b2010" opacity="0.4" transform="rotate(135)" />
+    <polygon points="0,-48 3,-20 -3,-20" fill="#8b2010" opacity="0.4" transform="rotate(225)" />
+    <polygon points="0,-48 3,-20 -3,-20" fill="#8b2010" opacity="0.4" transform="rotate(315)" />
+    <circle r="6" fill="#8b2010" />
+    <circle r="3" fill="#f5d76e" />
+    
+    <text x="0" y="-54" text-anchor="middle" font-size="13" font-family="Georgia, serif" fill="#3d2b0e" font-weight="bold">N</text>
+  </g>
+
+  
+  <g transform="translate(1180, 530)" opacity="0.65">
+    <ellipse cx="0" cy="0" rx="30" ry="10" fill="#a07840" stroke="#5a3a10" stroke-width="1" />
+    <rect x="-5" y="-25" width="2" height="25" fill="#5a3a10" />
+    <polygon points="-5,-24 15,-14 -5,-8" fill="#c8a050" stroke="#7a5c1a" stroke-width="0.5" />
+    <rect x="3" y="-18" width="1.5" height="18" fill="#5a3a10" />
+    <polygon points="3,-17 16,-10 3,-7" fill="#c8a050" stroke="#7a5c1a" stroke-width="0.5" />
+  </g>
+
+  
+  <rect x="48" y="300" width="440" height="370" rx="6" fill="#1a0e04" opacity="0.72" />
+  <rect x="52" y="304" width="432" height="362" rx="4" fill="none" stroke="#c8a050" stroke-width="1.5" opacity="0.6" />
+
+  
+  <rect x="60" y="318" width="416" height="3" fill="#c8a050" opacity="0.5" rx="1" />
+  <rect x="60" y="649" width="416" height="3" fill="#c8a050" opacity="0.5" rx="1" />
+
+  
+  <text x="268" y="390" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#c8a050" letter-spacing="4" opacity="0.9">GOVERNMENT &amp; POLITICS</text>
+
+  <text x="268" y="450" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#f5e8c0" letter-spacing="1">THE</text>
+  <text x="268" y="510" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#f5e8c0" letter-spacing="1">TRIBUTARY</text>
+  <text x="268" y="568" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#f5e8c0" letter-spacing="1">SYSTEM</text>
+
+  
+  <line x1="100" y1="590" x2="436" y2="590" stroke="#c8a050" stroke-width="1" opacity="0.6" />
+
+  
+  <text x="268" y="620" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#d4bc88" letter-spacing="2" opacity="0.85">HAN DYNASTY — 19th CENTURY</text>
+
+  
+  <g transform="translate(268, 645)" fill="#c8a050" opacity="0.45">
+    <rect x="-40" y="-4" width="80" height="2" />
+    <rect x="-2" y="-12" width="4" height="18" />
+    <circle cx="-20" cy="-3" r="3" />
+    <circle cx="20" cy="-3" r="3" />
+  </g>
+
+  
+  <text x="268" y="750" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#b8a060" opacity="0.75" letter-spacing="1">Yongle Emperor · Zheng He · Kangxi Emperor</text>
+  <text x="268" y="768" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#b8a060" opacity="0.75" letter-spacing="1">Korea · Vietnam · Ryukyu · Siam · Burma</text>
+
+  
+  <rect x="26" y="950" width="1484" height="48" fill="#1a0e04" opacity="0.35" />
+  <text x="768" y="982" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#c8a050" letter-spacing="6" opacity="0.7">HIERARCHICAL FRAMEWORK OF DIPLOMATIC &amp; ECONOMIC RELATIONS</text>
+
+  
+  <rect width="1536" height="1024" fill="#7a5020" opacity="0.04" />
+</svg>

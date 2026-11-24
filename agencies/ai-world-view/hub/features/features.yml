@@ -1,0 +1,64 @@
+# =============================================================================
+# features/features.yml — THE FEATURE INDEX for ai-world-view/ai-world-view.github.io
+# =============================================================================
+# kit: verify v0.1.0 · governance v0.1.0 (bamr87/bamr87 templates/verify/, templates/governance/)
+#
+# One entry per user-facing capability, grounded in this repo's PRD, README and
+# code: what it does, where it lives (`link`), where it is explained (`docs`),
+# its `status` (shipped | partial | planned | deprecated | tbd) and the PRD
+# requirements it serves (`prd:`; TBD = not yet traced). Ids are STABLE: never
+# renumber or reuse one. The PRD's "Feature catalog" block is generated from
+# this file — edit here, then run:
+#   python3 <bamr87/bamr87>/tools/governance_lint.py prd-sync . --write
+# Validate: python3 <hub>/tools/governance_lint.py check .  ·  <hub>/tools/features_index.py check .
+# Schema: features/v1 (field reference: bamr87/bamr87 templates/verify/features.template.yml)
+# =============================================================================
+schema: features/v1
+repo: ai-world-view/ai-world-view.github.io
+
+features:
+  - id: AWV-HUB-001
+    title: "Jekyll hub on remote zer0-mistakes theme"
+    description: "Jekyll hub on remote `zer0-mistakes` theme; hub and lineage dashboards"
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: ui
+    link: "_config.yml"
+    docs: "README.md"
+  - id: AWV-HUB-002
+    title: "lineage/seeds/‹country›.md"
+    description: "`lineage/seeds/<country>.md`, `policy.yml`, framework"
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: content
+    link: "lineage/policy.yml"
+    docs: "README.md"
+  - id: AWV-HUB-003
+    title: "Watcher workflows: telemetry-ledger, fleet-health-watch,…"
+    description: "Watcher workflows: telemetry-ledger, fleet-health-watch, pages-deploy-sentinel, secret-expiry-watch, framework-pr-reviewer, docs-warden"
+    implemented: true
+    status: shipped
+    prd: [NFR3]
+    surface: infra
+    link: ".github/workflows/telemetry-ledger.yml"
+    docs: "README.md"
+  - id: AWV-HUB-004
+    title: "templates/org-site/ provisioner scaffold; chat-proxy Worker"
+    description: "`templates/org-site/` provisioner scaffold; chat-proxy Worker (disabled)"
+    implemented: true
+    status: shipped
+    prd: [TBD]
+    surface: ui
+    link: "templates/org-site"
+    docs: "README.md"
+  - id: AWV-HUB-005
+    title: "fleet.manifest.yml AI lanes"
+    description: "`fleet.manifest.yml` AI lanes"
+    implemented: true
+    status: shipped
+    prd: [NFR1]
+    surface: infra
+    link: "fleet.manifest.yml"
+    docs: "README.md"

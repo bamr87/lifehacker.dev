@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Baekje Kingdom — Historical Atlas Banner</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dcc8" />
+      <stop offset="100%" stop-color="#d4c4a0" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8bfc9" />
+      <stop offset="100%" stop-color="#8aacba" />
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8b98a" />
+      <stop offset="100%" stop-color="#b8a870" />
+    </linearGradient>
+    <linearGradient id="baekje" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b6914" />
+      <stop offset="100%" stop-color="#6b4f10" />
+    </linearGradient>
+    <linearGradient id="goguryeo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5a7a5a" />
+      <stop offset="100%" stop-color="#3d5a3d" />
+    </linearGradient>
+    <linearGradient id="silla" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7a4a5a" />
+      <stop offset="100%" stop-color="#5a3040" />
+    </linearGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#00000015" stroke-width="1" />
+    </pattern>
+    <pattern id="crosshatch" width="12" height="12" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="12" y2="12" stroke="#00000010" stroke-width="0.8" />
+      <line x1="12" y1="0" x2="0" y2="12" stroke="#00000010" stroke-width="0.8" />
+    </pattern>
+    <filter id="parchment">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.4" />
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#7a6030" stroke-width="3" rx="2" />
+  
+  <rect x="28" y="28" width="1480" height="968" fill="none" stroke="#7a6030" stroke-width="1.5" rx="1" />
+
+  
+  
+  <ellipse cx="480" cy="512" rx="300" ry="420" fill="url(#sea)" opacity="0.85" />
+  
+  <ellipse cx="1050" cy="480" rx="220" ry="380" fill="url(#sea)" opacity="0.7" />
+  
+  <ellipse cx="720" cy="870" rx="340" ry="180" fill="url(#sea)" opacity="0.75" />
+
+  
+  
+  <path d="M1130,620 C1145,590 1170,570 1185,580 C1200,590 1210,620 1200,650 C1190,680 1165,695 1145,685 C1125,675 1118,648 1130,620Z" fill="url(#land)" stroke="#7a6030" stroke-width="1.5" />
+  
+  <path d="M1160,480 C1180,440 1220,410 1260,390 C1300,370 1350,360 1380,375 C1410,390 1420,420 1400,445 C1380,468 1340,475 1300,480 C1260,485 1210,490 1180,510 C1165,520 1155,505 1160,480Z" fill="url(#land)" stroke="#7a6030" stroke-width="1.5" />
+  
+  <path d="M1190,550 C1210,535 1240,530 1255,545 C1270,558 1265,578 1245,585 C1225,592 1200,582 1190,565 C1184,555 1185,548 1190,550Z" fill="url(#land)" stroke="#7a6030" stroke-width="1.2" />
+
+  
+  <path d="M60,80 C120,75 200,90 260,130 C310,165 330,220 320,300 C310,380 280,440 260,510 C240,580 230,640 250,700 C268,755 300,790 290,840 C280,880 240,900 200,910 C160,920 100,910 60,900 Z" fill="url(#land)" stroke="#7a6030" stroke-width="1.5" opacity="0.9" />
+  <rect x="60" y="80" width="230" height="830" fill="url(#land)" opacity="0.6" />
+  <path d="M60,80 L290,80 L320,200 L310,380 L280,510 L260,640 L270,760 L250,900 L60,900Z" fill="url(#land)" stroke="#7a6030" stroke-width="1.5" opacity="0.8" />
+
+  
+  
+  <path d="M620,140 C660,130 710,135 740,155 C770,175 780,210 790,250 C800,290 810,340 815,390 C820,440 815,490 800,540 C785,590 760,635 740,680 C720,725 705,765 700,800 C695,825 698,848 710,860 C722,872 740,875 755,870 C770,865 782,852 790,838 C800,820 805,798 808,778" stroke="#3a2a10" stroke-width="2" fill="none" />
+
+  
+  <path d="M570,140 C610,125 660,120 710,135 C745,146 770,165 785,200 C798,232 800,270 795,310 C790,345 778,375 760,395 C740,415 715,425 688,420 C660,414 635,398 618,375 C595,345 578,305 568,265 C558,225 555,175 570,140Z" fill="url(#goguryeo)" stroke="#2a4a2a" stroke-width="2" opacity="0.82" />
+  
+  <text x="672" y="285" font-family="Georgia, serif" font-size="18" fill="#1a3a1a" text-anchor="middle" letter-spacing="2" opacity="0.9">GOGURYEO</text>
+
+  
+  <path d="M760,390 C790,375 825,378 850,400 C875,420 885,455 880,495 C875,532 858,565 835,590 C812,614 783,628 758,625 C733,622 712,605 700,580 C688,555 688,522 698,494 C708,468 730,408 760,390Z" fill="url(#silla)" stroke="#4a1a2a" stroke-width="2" opacity="0.82" />
+  
+  <text x="790" y="500" font-family="Georgia, serif" font-size="18" fill="#3a0a1a" text-anchor="middle" letter-spacing="2" opacity="0.9">SILLA</text>
+
+  
+  <path d="M568,310 C588,280 618,265 648,268 C678,272 700,295 718,325 C738,358 748,400 748,440 C748,478 740,515 725,548 C710,580 688,605 662,618 C636,630 607,628 584,612 C560,596 542,567 534,534 C524,497 524,455 534,418 C544,382 553,338 568,310Z" fill="url(#baekje)" stroke="#4a3000" stroke-width="2.5" opacity="0.9" />
+  
+  <path d="M568,310 C588,280 618,265 648,268 C678,272 700,295 718,325 C738,358 748,400 748,440 C748,478 740,515 725,548 C710,580 688,605 662,618 C636,630 607,628 584,612 C560,596 542,567 534,534 C524,497 524,455 534,418 C544,382 553,338 568,310Z" fill="none" stroke="#d4a830" stroke-width="3" opacity="0.6" />
+  
+  <text x="638" y="450" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#f0e0a0" text-anchor="middle" letter-spacing="3">BAEKJE</text>
+  <text x="638" y="476" font-family="Georgia, serif" font-size="13" fill="#e0c880" text-anchor="middle" letter-spacing="1">백제</text>
+
+  
+  <circle cx="680" cy="310" r="8" fill="#d4a830" stroke="#7a5010" stroke-width="1.5" />
+  <circle cx="680" cy="310" r="4" fill="#7a5010" />
+  <text x="695" y="305" font-family="Georgia, serif" font-size="13" fill="#3a2000" letter-spacing="0.5">Wiryeseong</text>
+
+  
+  
+  <path d="M740,680 C850,720 980,700 1080,650 C1130,625 1145,610 1145,610" fill="none" stroke="#4a6a7a" stroke-width="2" stroke-dasharray="10,6" opacity="0.7" />
+  
+  <path d="M560,480 C500,460 420,440 340,430 C280,422 230,415 200,410" fill="none" stroke="#4a6a7a" stroke-width="2" stroke-dasharray="10,6" opacity="0.7" />
+  
+  <polygon points="1128,616 1145,608 1130,600" fill="#4a6a7a" opacity="0.7" />
+  <polygon points="215,402 200,412 218,418" fill="#4a6a7a" opacity="0.7" />
+
+  
+  <text x="900" y="718" font-family="Georgia, serif" font-size="13" fill="#2a4a5a" text-anchor="middle" font-style="italic" opacity="0.85">Cultural Maritime Route</text>
+  <text x="370" y="408" font-family="Georgia, serif" font-size="13" fill="#2a4a5a" text-anchor="middle" font-style="italic" opacity="0.85" transform="rotate(-5,370,408)">to Tang China</text>
+
+  
+  <g transform="translate(1360, 820)">
+    
+    <polygon points="0,-55 8,-20 0,-30 -8,-20" fill="#7a6030" stroke="#4a3010" stroke-width="0.5" />
+    <polygon points="0,55 8,20 0,30 -8,20" fill="#c8b890" stroke="#4a3010" stroke-width="0.5" />
+    <polygon points="-55,0 -20,8 -30,0 -20,-8" fill="#c8b890" stroke="#4a3010" stroke-width="0.5" />
+    <polygon points="55,0 20,8 30,0 20,-8" fill="#c8b890" stroke="#4a3010" stroke-width="0.5" />
+    
+    <polygon points="0,-55 6,-22 0,-32 -6,-22" fill="none" />
+    <line x1="0" y1="-50" x2="35" y2="-35" stroke="#7a6030" stroke-width="1" opacity="0.5" />
+    <line x1="0" y1="-50" x2="-35" y2="-35" stroke="#7a6030" stroke-width="1" opacity="0.5" />
+    <line x1="0" y1="50" x2="35" y2="35" stroke="#7a6030" stroke-width="1" opacity="0.5" />
+    <line x1="0" y1="50" x2="-35" y2="35" stroke="#7a6030" stroke-width="1" opacity="0.5" />
+    
+    <circle r="20" fill="#e8dcc8" stroke="#7a6030" stroke-width="1.5" />
+    <circle r="5" fill="#7a6030" />
+    
+    <text x="0" y="-62" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#4a3010" text-anchor="middle">N</text>
+  </g>
+
+  
+  <g transform="translate(850, 760)" opacity="0.75">
+    
+    <path d="M-50,15 C-40,5 -20,0 0,0 C20,0 40,5 50,15 C55,20 50,28 40,30 L-40,30 C-50,28 -55,20 -50,15Z" fill="#7a5020" stroke="#4a2a00" stroke-width="1.5" />
+    
+    <line x1="0" y1="0" x2="0" y2="-55" stroke="#4a2a00" stroke-width="2" />
+    
+    <path d="M0,-50 C15,-35 18,-15 15,0 L0,0Z" fill="#d4b870" stroke="#7a6030" stroke-width="1" />
+    <path d="M0,-50 C-12,-35 -14,-15 -10,0 L0,0Z" fill="#c0a860" stroke="#7a6030" stroke-width="1" />
+    
+    <line x1="-35" y1="18" x2="-55" y2="30" stroke="#4a2a00" stroke-width="1.5" />
+    <line x1="-20" y1="20" x2="-38" y2="34" stroke="#4a2a00" stroke-width="1.5" />
+    <line x1="35" y1="18" x2="55" y2="30" stroke="#4a2a00" stroke-width="1.5" />
+    <line x1="20" y1="20" x2="38" y2="34" stroke="#4a2a00" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1260, 280)" opacity="0.6">
+    <circle r="35" fill="none" stroke="#7a6030" stroke-width="1.5" />
+    <circle r="12" fill="none" stroke="#7a6030" stroke-width="1.5" />
+    
+    <line x1="0" y1="-35" x2="0" y2="-12" stroke="#7a6030" stroke-width="1.5" />
+    <line x1="0" y1="12" x2="0" y2="35" stroke="#7a6030" stroke-width="1.5" />
+    <line x1="-35" y1="0" x2="-12" y2="0" stroke="#7a6030" stroke-width="1.5" />
+    <line x1="12" y1="0" x2="35" y2="0" stroke="#7a6030" stroke-width="1.5" />
+    <line x1="-24" y1="-24" x2="-8" y2="-8" stroke="#7a6030" stroke-width="1.5" />
+    <line x1="8" y1="8" x2="24" y2="24" stroke="#7a6030" stroke-width="1.5" />
+    <line x1="24" y1="-24" x2="8" y2="-8" stroke="#7a6030" stroke-width="1.5" />
+    <line x1="-8" y1="8" x2="-24" y2="24" stroke="#7a6030" stroke-width="1.5" />
+    <circle r="5" fill="#7a6030" />
+    <text x="0" y="52" font-family="Georgia, serif" font-size="12" fill="#4a3010" text-anchor="middle" font-style="italic">Buddhism</text>
+  </g>
+
+  
+  <line x1="60" y1="300" x2="1476" y2="300" stroke="#7a6030" stroke-width="0.5" opacity="0.2" />
+  <line x1="60" y1="500" x2="1476" y2="500" stroke="#7a6030" stroke-width="0.5" opacity="0.2" />
+  <line x1="60" y1="700" x2="1476" y2="700" stroke="#7a6030" stroke-width="0.5" opacity="0.2" />
+  <line x1="400" y1="60" x2="400" y2="964" stroke="#7a6030" stroke-width="0.5" opacity="0.2" />
+  <line x1="700" y1="60" x2="700" y2="964" stroke="#7a6030" stroke-width="0.5" opacity="0.2" />
+  <line x1="1000" y1="60" x2="1000" y2="964" stroke="#7a6030" stroke-width="0.5" opacity="0.2" />
+  <line x1="1300" y1="60" x2="1300" y2="964" stroke="#7a6030" stroke-width="0.5" opacity="0.2" />
+
+  
+  
+  <path d="M28,28 L80,28 M28,28 L28,80" stroke="#7a6030" stroke-width="2" fill="none" />
+  <path d="M40,28 L40,40 L28,40" stroke="#7a6030" stroke-width="1" fill="none" opacity="0.5" />
+  
+  <path d="M1508,28 L1456,28 M1508,28 L1508,80" stroke="#7a6030" stroke-width="2" fill="none" />
+  <path d="M1496,28 L1496,40 L1508,40" stroke="#7a6030" stroke-width="1" fill="none" opacity="0.5" />
+  
+  <path d="M28,996 L80,996 M28,996 L28,944" stroke="#7a6030" stroke-width="2" fill="none" />
+  
+  <path d="M1508,996 L1456,996 M1508,996 L1508,944" stroke="#7a6030" stroke-width="2" fill="none" />
+
+  
+  <rect x="940" y="100" width="540" height="260" rx="4" fill="#e8dcc8" fill-opacity="0.88" stroke="#7a6030" stroke-width="2" />
+  <rect x="948" y="108" width="524" height="244" rx="2" fill="none" stroke="#7a6030" stroke-width="0.8" opacity="0.5" />
+
+  
+  <text x="1210" y="185" font-family="Georgia, serif" font-size="62" font-weight="bold" fill="#3a2000" text-anchor="middle" letter-spacing="4">BAEKJE</text>
+  <text x="1210" y="230" font-family="Georgia, serif" font-size="28" fill="#5a3a10" text-anchor="middle" letter-spacing="6">KINGDOM</text>
+  
+  
+  <text x="1210" y="272" font-family="Georgia, serif" font-size="26" fill="#7a5020" text-anchor="middle" letter-spacing="8">백 제</text>
+
+  
+  <line x1="980" y1="290" x2="1440" y2="290" stroke="#7a6030" stroke-width="1.5" opacity="0.6" />
+
+  
+  <text x="1210" y="325" font-family="Georgia, serif" font-size="20" fill="#5a3a10" text-anchor="middle" letter-spacing="3" font-style="italic">18 BCE – 660 CE</text>
+
+  
+  <text x="1210" y="888" font-family="Georgia, serif" font-size="16" fill="#4a3010" text-anchor="middle" letter-spacing="2" font-style="italic" opacity="0.8">One of the Three Kingdoms of Korea</text>
+
+  
+  <text x="440" y="350" font-family="Georgia, serif" font-size="17" fill="#2a4a5a" text-anchor="middle" font-style="italic" opacity="0.7" transform="rotate(-10,440,350)">Yellow</text>
+  <text x="440" y="372" font-family="Georgia, serif" font-size="17" fill="#2a4a5a" text-anchor="middle" font-style="italic" opacity="0.7" transform="rotate(-10,440,372)">Sea</text>
+  <text x="990" y="360" font-family="Georgia, serif" font-size="17" fill="#2a4a5a" text-anchor="middle" font-style="italic" opacity="0.7" transform="rotate(8,990,360)">Sea of</text>
+  <text x="990" y="382" font-family="Georgia, serif" font-size="17" fill="#2a4a5a" text-anchor="middle" font-style="italic" opacity="0.7" transform="rotate(8,990,382)">Japan</text>
+
+  
+  <text x="1270" y="445" font-family="Georgia, serif" font-size="16" fill="#3a2a10" text-anchor="middle" letter-spacing="2" opacity="0.8">JAPAN</text>
+
+  
+  <text x="180" y="500" font-family="Georgia, serif" font-size="16" fill="#3a2a10" text-anchor="middle" letter-spacing="2" opacity="0.8" transform="rotate(-5,180,500)">CHINA</text>
+
+  
+  <text x="680" y="78" font-family="Georgia, serif" font-size="14" fill="#4a3010" text-anchor="middle" letter-spacing="3" opacity="0.7">THREE KINGDOMS OF KOREA</text>
+
+  
+  <rect x="60" y="880" width="340" height="120" rx="3" fill="#e8dcc8" fill-opacity="0.85" stroke="#7a6030" stroke-width="1.5" />
+  <text x="240" y="905" font-family="Georgia, serif" font-size="13" fill="#3a2000" text-anchor="middle" letter-spacing="2" font-weight="bold">LEGEND</text>
+  <rect x="80" y="916" width="20" height="12" fill="url(#baekje)" stroke="#4a3000" stroke-width="1" />
+  <text x="108" y="927" font-family="Georgia, serif" font-size="13" fill="#3a2000">Baekje (百濟)</text>
+  <rect x="80" y="936" width="20" height="12" fill="url(#goguryeo)" stroke="#2a4a2a" stroke-width="1" />
+  <text x="108" y="947" font-family="Georgia, serif" font-size="13" fill="#3a2000">Goguryeo (高句麗)</text>
+  <rect x="80" y="956" width="20" height="12" fill="url(#silla)" stroke="#4a1a2a" stroke-width="1" />
+  <text x="108" y="967" font-family="Georgia, serif" font-size="13" fill="#3a2000">Silla (新羅)</text>
+  <line x1="220" y1="930" x2="260" y2="930" stroke="#4a6a7a" stroke-width="2" stroke-dasharray="6,4" />
+  <text x="268" y="934" font-family="Georgia, serif" font-size="12" fill="#3a2000">Trade Route</text>
+  <circle cx="228" cy="960" r="5" fill="#d4a830" stroke="#7a5010" stroke-width="1" />
+  <circle cx="228" cy="960" r="2" fill="#7a5010" />
+  <text x="238" y="964" font-family="Georgia, serif" font-size="12" fill="#3a2000">Capital City</text>
+
+</svg>

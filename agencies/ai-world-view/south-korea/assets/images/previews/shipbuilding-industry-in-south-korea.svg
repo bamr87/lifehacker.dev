@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" width="1536" height="1024">
+  <title>Shipbuilding Industry in South Korea – Atlas Banner</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4c9a8" />
+      <stop offset="100%" stop-color="#e8dfc0" />
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a9fb5" />
+      <stop offset="100%" stop-color="#5a8299" />
+    </linearGradient>
+    <linearGradient id="hullGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c3e50" />
+      <stop offset="100%" stop-color="#1a252f" />
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#c4b89a" stroke-width="0.5" opacity="0.5" />
+    </pattern>
+    <filter id="engrave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1536" height="1024" fill="url(#sky)" />
+  <rect width="1536" height="1024" fill="url(#hatch)" opacity="0.3" />
+
+  
+  <g stroke="#b8a97a" stroke-width="0.6" opacity="0.4" fill="none">
+    <line x1="0" y1="256" x2="1536" y2="256" />
+    <line x1="0" y1="512" x2="1536" y2="512" />
+    <line x1="0" y1="768" x2="1536" y2="768" />
+    <line x1="384" y1="0" x2="384" y2="1024" />
+    <line x1="768" y1="0" x2="768" y2="1024" />
+    <line x1="1152" y1="0" x2="1152" y2="1024" />
+  </g>
+
+  
+  <rect x="0" y="580" width="1536" height="444" fill="url(#sea)" opacity="0.55" />
+
+  
+  <g stroke="#6a9ab0" stroke-width="1.5" fill="none" opacity="0.5">
+    <path d="M0,620 Q120,610 240,620 Q360,630 480,620 Q600,610 720,620 Q840,630 960,620 Q1080,610 1200,620 Q1320,630 1440,620 Q1500,614 1536,618" />
+    <path d="M0,660 Q120,650 240,660 Q360,670 480,660 Q600,650 720,660 Q840,670 960,660 Q1080,650 1200,660 Q1320,670 1440,660 Q1500,654 1536,658" />
+    <path d="M0,700 Q120,690 240,700 Q360,710 480,700 Q600,690 720,700 Q840,710 960,700 Q1080,690 1200,700 Q1320,710 1440,700 Q1500,694 1536,698" />
+    <path d="M0,750 Q120,740 240,750 Q360,760 480,750 Q600,740 720,750 Q840,760 960,750 Q1080,740 1200,750 Q1320,760 1440,750 Q1500,744 1536,748" />
+    <path d="M0,800 Q150,790 300,800 Q450,810 600,800 Q750,790 900,800 Q1050,810 1200,800 Q1350,790 1536,800" />
+    <path d="M0,850 Q150,840 300,850 Q450,860 600,850 Q750,840 900,850 Q1050,860 1200,850 Q1350,840 1536,850" />
+  </g>
+
+  
+  <g transform="translate(860, 180)">
+    
+    <path d="M80,0 L130,20 L150,60 L160,120 L155,180 L140,240 L120,300 L100,340 L80,370 L60,390 L50,380 L60,340 L55,280 L50,220 L40,160 L30,100 L40,50 L60,10 Z" fill="#c8b98a" stroke="#8a7a5a" stroke-width="2" />
+    
+    <ellipse cx="65" cy="430" rx="28" ry="14" fill="#c8b98a" stroke="#8a7a5a" stroke-width="1.5" />
+    
+    <text x="95" y="200" font-family="Georgia, serif" font-size="18" fill="#5a4a2a" font-style="italic" text-anchor="middle">KOREA</text>
+    
+    <circle cx="128" cy="270" r="8" fill="#c0392b" stroke="#7a1a0a" stroke-width="1.5" />
+    <text x="145" y="268" font-family="Georgia, serif" font-size="14" fill="#7a1a0a" font-weight="bold">Ulsan</text>
+    <text x="145" y="284" font-family="Georgia, serif" font-size="11" fill="#7a1a0a" font-style="italic">Mipo Bay</text>
+  </g>
+
+  
+  <g transform="translate(1060, 140)">
+    <path d="M40,20 L60,10 L80,30 L90,80 L80,140 L70,180 L55,200 L45,190 L50,150 L45,100 L30,60 Z" fill="#d4c9a8" stroke="#8a7a5a" stroke-width="1.5" />
+    <text x="55" y="110" font-family="Georgia, serif" font-size="15" fill="#5a4a2a" font-style="italic" text-anchor="middle">JAPAN</text>
+  </g>
+
+  
+  <g transform="translate(580, 100)">
+    <path d="M0,80 L60,0 L180,20 L240,80 L260,160 L220,240 L180,280 L140,260 L100,280 L60,260 L20,200 L0,140 Z" fill="#cfc3a0" stroke="#8a7a5a" stroke-width="1.5" />
+    <text x="130" y="150" font-family="Georgia, serif" font-size="18" fill="#5a4a2a" font-style="italic" text-anchor="middle">CHINA</text>
+  </g>
+
+  
+  <g transform="translate(80, 480)">
+    
+    <path d="M0,120 L20,80 L620,80 L680,120 L660,160 L20,160 Z" fill="url(#hullGrad)" />
+    
+    <rect x="20" y="140" width="640" height="8" fill="#c0392b" />
+    
+    <rect x="480" y="20" width="140" height="80" fill="#34495e" rx="3" />
+    <rect x="490" y="10" width="120" height="20" fill="#2c3e50" rx="2" />
+    
+    <rect x="496" y="30" width="18" height="14" fill="#a8d4e8" rx="1" />
+    <rect x="524" y="30" width="18" height="14" fill="#a8d4e8" rx="1" />
+    <rect x="552" y="30" width="18" height="14" fill="#a8d4e8" rx="1" />
+    <rect x="580" y="30" width="18" height="14" fill="#a8d4e8" rx="1" />
+    
+    <rect x="570" y="-20" width="30" height="40" fill="#c0392b" rx="2" />
+    <rect x="565" y="-25" width="40" height="10" fill="#a93226" rx="2" />
+    
+    <line x1="100" y1="80" x2="100" y2="20" stroke="#5d6d7e" stroke-width="5" />
+    <line x1="100" y1="20" x2="160" y2="40" stroke="#5d6d7e" stroke-width="3" />
+    <line x1="220" y1="80" x2="220" y2="10" stroke="#5d6d7e" stroke-width="5" />
+    <line x1="220" y1="10" x2="290" y2="35" stroke="#5d6d7e" stroke-width="3" />
+    <line x1="340" y1="80" x2="340" y2="20" stroke="#5d6d7e" stroke-width="5" />
+    <line x1="340" y1="20" x2="400" y2="40" stroke="#5d6d7e" stroke-width="3" />
+    
+    <rect x="30" y="52" width="55" height="30" fill="#e67e22" rx="1" />
+    <rect x="90" y="52" width="55" height="30" fill="#27ae60" rx="1" />
+    <rect x="150" y="52" width="55" height="30" fill="#2980b9" rx="1" />
+    <rect x="210" y="52" width="55" height="30" fill="#e67e22" rx="1" />
+    <rect x="270" y="52" width="55" height="30" fill="#c0392b" rx="1" />
+    <rect x="330" y="52" width="55" height="30" fill="#27ae60" rx="1" />
+    <rect x="390" y="52" width="55" height="30" fill="#8e44ad" rx="1" />
+    <rect x="450" y="52" width="25" height="30" fill="#2980b9" rx="1" />
+    
+    <path d="M0,160 Q50,170 100,160 Q200,150 300,160 Q400,170 500,160 Q600,150 680,160" stroke="#5a8299" stroke-width="2" fill="none" />
+  </g>
+
+  
+  <g transform="translate(1100, 560)" opacity="0.7">
+    <path d="M0,80 L15,55 L320,55 L350,80 L340,105 L10,105 Z" fill="#2c3e50" />
+    <rect x="5" y="90" width="335" height="5" fill="#c0392b" />
+    <rect x="240" y="20" width="75" height="45" fill="#34495e" rx="2" />
+    <rect x="295" y="-5" width="18" height="28" fill="#c0392b" rx="2" />
+    <rect x="50" y="30" width="35" height="25" fill="#e67e22" rx="1" />
+    <rect x="92" y="30" width="35" height="25" fill="#27ae60" rx="1" />
+    <rect x="134" y="30" width="35" height="25" fill="#2980b9" rx="1" />
+    <rect x="176" y="30" width="35" height="25" fill="#e67e22" rx="1" />
+  </g>
+
+  
+  <g transform="translate(1200, 300)" opacity="0.5">
+    <rect x="80" y="0" width="8" height="280" fill="#5d6d7e" />
+    <rect x="0" y="0" width="168" height="8" fill="#5d6d7e" />
+    <rect x="84" y="8" width="8" height="50" fill="#7f8c8d" />
+    <line x1="84" y1="0" x2="0" y2="80" stroke="#5d6d7e" stroke-width="3" />
+    <line x1="84" y1="0" x2="168" y2="80" stroke="#5d6d7e" stroke-width="3" />
+    
+    <line x1="40" y1="8" x2="40" y2="60" stroke="#7f8c8d" stroke-width="1.5" />
+    <line x1="80" y1="8" x2="80" y2="80" stroke="#7f8c8d" stroke-width="1.5" />
+    <line x1="120" y1="8" x2="120" y2="60" stroke="#7f8c8d" stroke-width="1.5" />
+  </g>
+
+  
+  <g transform="translate(1400, 140)">
+    <circle cx="0" cy="0" r="55" fill="#e8dfc0" stroke="#8a7a5a" stroke-width="2" />
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#8a7a5a" stroke-width="1" />
+    <circle cx="0" cy="0" r="8" fill="#8a7a5a" />
+    
+    <polygon points="0,-45 6,-20 -6,-20" fill="#c0392b" />
+    <polygon points="0,45 6,20 -6,20" fill="#5a4a2a" />
+    <polygon points="45,0 20,6 20,-6" fill="#5a4a2a" />
+    <polygon points="-45,0 -20,6 -20,-6" fill="#5a4a2a" />
+    
+    <polygon points="32,-32 18,-10 10,-18" fill="#8a7a5a" opacity="0.6" />
+    <polygon points="-32,-32 -10,-18 -18,-10" fill="#8a7a5a" opacity="0.6" />
+    <polygon points="32,32 10,18 18,10" fill="#8a7a5a" opacity="0.6" />
+    <polygon points="-32,32 -18,10 -10,18" fill="#8a7a5a" opacity="0.6" />
+    <text x="0" y="-52" font-family="Georgia, serif" font-size="14" fill="#5a4a2a" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="66" font-family="Georgia, serif" font-size="12" fill="#5a4a2a" text-anchor="middle">S</text>
+    <text x="58" y="5" font-family="Georgia, serif" font-size="12" fill="#5a4a2a" text-anchor="middle">E</text>
+    <text x="-58" y="5" font-family="Georgia, serif" font-size="12" fill="#5a4a2a" text-anchor="middle">W</text>
+  </g>
+
+  
+  <rect x="18" y="18" width="1500" height="988" fill="none" stroke="#8a7a5a" stroke-width="3" rx="4" />
+  <rect x="26" y="26" width="1484" height="972" fill="none" stroke="#b8a97a" stroke-width="1" rx="3" />
+
+  
+  <text x="768" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="bold" fill="#2c2010" text-anchor="middle" letter-spacing="2">SHIPBUILDING INDUSTRY</text>
+  <text x="768" y="215" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="bold" fill="#2c2010" text-anchor="middle" letter-spacing="4">IN SOUTH KOREA</text>
+
+  
+  <line x1="380" y1="240" x2="1156" y2="240" stroke="#8a7a5a" stroke-width="2" />
+  <text x="768" y="272" font-family="Georgia, serif" font-size="22" fill="#5a4a2a" text-anchor="middle" font-style="italic" letter-spacing="3">
+    From Ulsan to World Market Leadership
+  </text>
+  <line x1="380" y1="286" x2="1156" y2="286" stroke="#8a7a5a" stroke-width="2" />
+
+  
+  <text x="768" y="990" font-family="Georgia, serif" font-size="16" fill="#5a4a2a" text-anchor="middle" font-style="italic" opacity="0.7">
+    Heavy &amp; Chemical Industrialization · Chaebol · Hyundai Heavy Industries · Mipo Bay, Ulsan
+  </text>
+
+  
+  <line x1="988" y1="450" x2="1000" y2="490" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4,3" />
+
+</svg>

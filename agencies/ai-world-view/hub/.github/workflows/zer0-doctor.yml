@@ -1,0 +1,51 @@
+# =============================================================================
+# zer0-doctor.yml — the zer0 stack consumer contract check (report-only)
+# -----------------------------------------------------------------------------
+# A thin caller of zer0-CMS's reusable doctor: is the org hub site still
+# aligned with the zer0 stack?
+#
+#   theme         remote_theme names bamr87/zer0-mistakes; .theme-overrides.yml
+#   image-engine  the zer0-image-generator gem + one preview_images: block, and
+#                 no vendored _plugins/preview_* fork or copied engine
+#   cms           zer0.json parses, names a $schema, its content folders exist
+#   fleet         fleet.manifest.yml is strict YAML
+#   content       front matter parses; keys the theme's frontmatter_schema.yml
+#                 requires (warnings only — the content gates stay
+#                 ai-content-review.yml and build-validation.yml)
+#
+# Deliberately schedule + dispatch only, never pull_request/push: it is a
+# report, not a gate, and until bamr87/zer0-CMS ships the reusable workflow on
+# main this caller has nothing to call — a PR trigger would redden every PR.
+# fail-on-error stays false until the site reports clean.
+#
+# Read-only: it writes no repo, dispatches no workflow and files no issue, so
+# like build-validation.yml it carries no _data/fleet_pause.yml kill-switch.
+# It makes zero model calls and reads no secret, so it needs no *_ENABLED
+# switch and no fleet.manifest.yml lane.
+#
+# No timeout-minutes here: GitHub rejects that key on a job that calls a
+# reusable workflow; the called workflow's own jobs carry the timeout.
+#
+# Locally, from a zer0-CMS checkout:
+#   ruby -I rails/lib rails/bin/zer0-cms doctor /path/to/ai-world-view.github.io
+# =============================================================================
+name: zer0 doctor
+
+on:
+  schedule:
+    - cron: '53 5 * * 5'   # Fridays 05:53 UTC weekly — after orchestrate's 05:30 dispatch, off the hour
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: zer0-doctor-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  doctor:
+    name: zer0 stack contract (report-only)
+    uses: bamr87/zer0-CMS/.github/workflows/zer0-doctor.yml@main
+    with:
+      fail-on-error: false

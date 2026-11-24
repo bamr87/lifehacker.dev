@@ -1,0 +1,16 @@
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Bundler — no lock committed: the Gemfile has an env-conditional local-path
+# theme gem (ZER0_THEME_LOCAL), which would poison a shared lockfile.
+Gemfile.lock
+vendor/
+.bundle/
+
+# OS / editor noise
+.DS_Store
+__pycache__/
+*.pyc

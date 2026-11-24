@@ -42,6 +42,20 @@ The [Newsroom](/news/) collects it all; each section below is also its own landi
 {% unless wire.size > 0 %}<li class="text-body-secondary">Nothing here yet.</li>{% endunless %}
 </ul>
 
+## Agencies
+{% comment %}Self-healing: every agency published as a collection (_data/agencies.yml `published:`) lists its own pages, so a new bureau needs no edit here.{% endcomment %}
+
+The [agencies](/agencies/) keep their own archives. Each is listed here in full.
+
+{% for agency in site.data.agencies.agencies %}{% for s in agency.sites %}{% if s.published %}
+{% assign coll = site.collections | where: "label", s.published.collection | first %}
+<h3><a href="{{ s.published.url | relative_url }}">{{ agency.name }}</a></h3>
+<ul>
+{% assign filed = coll.docs | sort: 'url' %}
+{% for p in filed %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+</ul>
+{% endif %}{% endfor %}{% endfor %}
+
 ## About &amp; Docs
 <ul>
 {% assign abouts = site.about | sort: 'title' %}
