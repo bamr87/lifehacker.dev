@@ -5621,3 +5621,40 @@ backlog:
     source: manual
     source_url: https://www.parameter.ai/labs/we-found-a-gap-at-openai
     fingerprint: 611b24396c9c
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-178
+    kind: hack
+    title: "Your Claude Code hook never fires and never says why: git committed the script without its executable bit"
+    brief: "You register a `SessionEnd` hook in `.claude/settings.json` pointing at `$CLAUDE_PROJECT_DIR/.claude/hooks/chronicle.sh`, close the session, and the ledger never gets a row. The script is fine; it just isn't executable, and a hook that fires while the session is shutting down has nobody watching when it fails. The executable bit lives in git, not only on your disk: `git ls-files -s .claude/hooks/` prints `100644` (not executable) or `100755` (executable), and a fresh clone gets whatever git recorded. Fix it locally with `chmod +x`, then commit the mode itself with `git update-index --chmod=+x .claude/hooks/chronicle.sh` so every clone and CI runner gets it. Test it the way the runtime calls it: `echo '{\"session_id\":\"t\"}' | ./.claude/hooks/chronicle.sh; echo $?`. Exit status 126 means the file was found but isn't executable. The failures that stay in: with `core.fileMode=false` (the default on Windows and common on WSL and network mounts) your local `chmod` never even shows up in `git status`, so only `update-index --chmod` reaches the repo; writing the hook as `bash .claude/hooks/chronicle.sh` sidesteps the bit, but then the shebang is ignored and a script written for zsh or `sh` quietly runs under bash; and 'the hook is registered' and 'the hook ran' are different claims, so check for the side effect (the queue line) instead of the config. Writer: confirm how current Claude Code surfaces a failing hook (debug output, logs) and show it."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
+    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
+    fingerprint: 41bbb6e1e10c
+  - id: SRC-179
+    kind: hack
+    title: "Commit only if something changed: `git diff --staged --quiet ||` for bot workflows, and the new file plain `git diff --quiet` can't see"
+    brief: "Your scheduled workflow regenerates a ledger, runs `git commit -m 'chore: update ledger'`, and on every quiet day the job goes red, because `git commit` with nothing staged exits 1 and Actions runs `run:` steps under `bash -e`. The idiom that fixes it: `git add path/ && git diff --staged --quiet || git commit -m '…'`, which commits only when the index actually differs from HEAD. The failures that stay in. Plain `git diff --quiet` (no `--staged`) compares your working tree to the index, so a brand-new untracked file is invisible to it and the job reports 'no changes' while a new file sits right there; that's why you `git add` first and then check the staged side. `git diff --quiet` exits 1 to mean 'there are differences', not 'error', so running it as a bare line in a `bash -e` step kills the step on exactly the day something changed; it has to live inside `||` or an `if`. A fresh runner has no commit identity, so the first real commit fails with 'Please tell me who you are' unless you set `user.name` and `user.email` (the `github-actions[bot]` pair) beforehand. And committing the ledger only makes the bot quieter, not correct: the commit still needs `permissions: contents: write`, and on a protected `main` it has to go through a branch and PR, not a direct push. You'll know it worked when a no-op run is green with no new commit and a real change produces exactly one."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
+    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
+    fingerprint: 957c935bad62
+  - id: SRC-180
+    kind: hack
+    title: "Your YAML rewriter deleted every comment in the file: round-trip with ruamel.yaml, or keep the header as plain text"
+    brief: "A script loads a YAML ledger, changes one value, and dumps it back, and the diff is the whole file: the header is gone, every `# why this is blocked` note is gone, and the keys came back alphabetized. `yaml.safe_load` + `yaml.dump` in PyYAML (and `YAML.load` + `to_yaml` in Ruby) parse data, not comments, and PyYAML's `dump` sorts keys by default. Nothing goes red, because the output is still perfectly valid YAML. Two fixes, depending on the job. When you have to change parsed structure, use ruamel.yaml in round-trip mode, its default: `yaml = YAML(); data = yaml.load(f); data['count'] += 1; yaml.dump(data, out)` keeps comments and key order, and `yaml.preserve_quotes = True` keeps your quoting. When the file is an append-only log, skip the parser entirely: write the header as a constant string and append each entry as text, so no serializer ever touches the comments. The failures that stay in. ruamel's default indentation may not match yours, so set `yaml.indent(mapping=2, sequence=4, offset=2)` (or whatever your file uses) or a one-value change still reflows the file. Round-trip keeps most comments, but test the odd placements (a comment after the last item, one between a key and its block). Ruby's standard library has no comment-preserving YAML, so there it's text-level edits or nothing. Prove it worked with `grep -c '^ *#' file` before and after, plus a `git diff --stat` that shows one changed line."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
+    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
+    fingerprint: ba23bca2856b
