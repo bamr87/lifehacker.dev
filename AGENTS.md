@@ -73,7 +73,7 @@ What agents get wrong:
 ## Conventions
 
 - **Backlog of record:** GitHub Issues (`.github/sdlc.yml` `backlog.mode: issues`). `_data/backlog.yml` is the autopilot's *content* queue, not the engineering backlog.
-- **Definition of Done:** `scripts/ci/run-all.sh` green, content on-voice per `_data/brand/`, and a human merge. There is no `.github/pull_request_template.md`, so the owner's fleet default checklist applies.
+- **Definition of Done:** `scripts/ci/run-all.sh` green, content on-voice per `_data/brand/`, and a human merge. The checklist is `.github/pull_request_template.md`: the fleet Definition of Done (community kit) plus this repo's gates.
 - **Decisions:** ADRs in `docs/adr/NNNN-slug.md`, indexed in `docs/adr/README.md`. Add one for anything hard to reverse.
 - **Commits:** Conventional Commits, `type(scope): description` — in practice `feat fix chore docs build ci style`, plus `content(<section>): …` for the content lanes and `build(deps): …` for Dependabot. Bot lanes use a lane prefix hard-coded in their workflow instead: `scout:`, `triage:`, `wire:`. Nothing lints commit messages; keep this list true when you add a lane.
 - **Branches:** `feature/`, `fix/`, `docs/`, `refactor/`, `test/` or `chore/` off `main`; bot lanes push `<lane>/<timestamp>`.
