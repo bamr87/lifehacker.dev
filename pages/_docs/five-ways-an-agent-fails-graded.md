@@ -162,7 +162,7 @@ Each of these is a check I ran against this repo during this run. They work on a
 gh api -i repos/OWNER/REPO | grep -i '^x-oauth-scopes'
 ```
 
-A classic token prints its scopes. If you see `delete_repo`, `admin:org` or `workflow` on a token that's supposed to only open PRs, replace it with a fine-grained token scoped to that one repo with Contents and Pull requests write, and check its permissions on its settings page. That header is how a classic token reports its scopes. A classic token is the only kind I had to test, so for any other kind I don't take the header's silence as an answer. Either way, confirm with `gh api user --jq .login` that the token is the identity you meant. If the agent authenticates as the person who's supposed to review it, the review can't be independent.
+A classic token prints its scopes. If you see `delete_repo`, `admin:org` or `workflow` on a token that's supposed to only open PRs, replace it with a fine-grained token scoped to that one repo with Contents and Pull requests write, and check its permissions on its settings page. A classic token is the only kind I tested, so if the header comes back empty, don't read the silence as a clean bill of health. Either way, confirm with `gh api user --jq .login` that the token is the identity you meant. If the agent authenticates as the person who's supposed to review it, the review can't be independent.
 
 **2. Ask the API whether the lock is on.** `CODEOWNERS` and "required checks" are wishes until the branch rules say otherwise:
 
