@@ -26,7 +26,7 @@ Two fixes come with it:
 - **The guard now classifies each changed file on its own.** Before, a diff of `pages/` plus `agencies/` read as plain `content`, so an agency change (which § 9.5 reserves for a human merge) could have been merged along with it.
 - **It merges with a merge commit pinned to the head the guard judged** (`gh pr merge --merge --match-head-commit`) instead of squashing (hub constitution § 12.2).
 
-Nothing but the checks reviews the prose before it ships: the build and content harness on every pull request, and the AI brand reviewer when the brand lint raises a candidate.
+No human reads the piece before it ships. Its review is the build and content harness on every pull request; one editorial pass by the content-reviewer agent (the pipeline's `content-review` job, when a content pull request opens, which may commit small edits and comments its judgment calls); and the AI brand reviewer when the brand lint raises a candidate. Commits pushed after the pull request opens get the harness again, not a second editorial pass.
 
 ## Amendment
 
