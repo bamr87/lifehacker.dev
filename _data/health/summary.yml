@@ -1,17 +1,16 @@
-generated_at: '2026-10-31T07:54:43Z'
-queue_size: 17
+generated_at: '2026-11-25T07:55:06Z'
+queue_size: 14
 by_severity:
   sev2: 1
-  sev3: 12
-  sev4: 4
+  sev3: 10
+  sev4: 3
 by_type:
   type/content-bug: 1
-  type/ci-bug: 12
-  type/drift: 1
+  type/ci-bug: 10
   type/other: 2
   type/link-rot: 1
 by_route:
-  local: 16
+  local: 13
   upstream: 1
 top:
 - severity: sev2
@@ -41,17 +40,7 @@ top:
   repo: bamr87/lifehacker.dev
 - severity: sev3
   type: type/ci-bug
-  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/brand-sweep.yml)"
-  score: 1.4
-  repo: bamr87/lifehacker.dev
-- severity: sev3
-  type: type/ci-bug
   title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/content-factory.yml)"
-  score: 1.4
-  repo: bamr87/lifehacker.dev
-- severity: sev3
-  type: type/ci-bug
-  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/fleet-dispatch.yml)"
   score: 1.4
   repo: bamr87/lifehacker.dev
 - severity: sev3
@@ -62,6 +51,16 @@ top:
 - severity: sev3
   type: type/ci-bug
   title: "[sev3] ci-bug: checkout-token-presence-fallback (.github/workflows/loop-tuner.yml)"
+  score: 1.4
+  repo: bamr87/lifehacker.dev
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/quest-forge.yml)"
+  score: 1.4
+  repo: bamr87/lifehacker.dev
+- severity: sev3
+  type: type/ci-bug
+  title: "[sev3] ci-bug: gh-token-presence-fallback (.github/workflows/weekly-epic.yml)"
   score: 1.4
   repo: bamr87/lifehacker.dev
 analytics_stale: true
