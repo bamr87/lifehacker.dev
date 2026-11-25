@@ -1,0 +1,140 @@
+{
+  "id": "smoke-home",
+  "title": "Home page renders and is usable",
+  "features": [
+    "LHD-001"
+  ],
+  "path": "verify/scenarios/smoke-home.yml",
+  "started": "2026-11-25T00:42:32.637Z",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 800,
+      "ok": true,
+      "steps": [
+        {
+          "step": "goto",
+          "arg": "/",
+          "ok": true,
+          "ms": 1236
+        },
+        {
+          "step": "expect",
+          "arg": {
+            "status": 200
+          },
+          "ok": true,
+          "ms": 0
+        },
+        {
+          "step": "expect",
+          "arg": {
+            "visible": "main, [role=main], #main-content"
+          },
+          "ok": true,
+          "ms": 77
+        },
+        {
+          "step": "expect",
+          "arg": {
+            "no_horizontal_scroll": true
+          },
+          "ok": true,
+          "value": {
+            "sw": 1280,
+            "cw": 1280
+          },
+          "ms": 11
+        },
+        {
+          "step": "expect",
+          "arg": {
+            "no_console_errors": true
+          },
+          "ok": true,
+          "ms": 0
+        },
+        {
+          "step": "screenshot",
+          "arg": "home",
+          "ok": true,
+          "file": "test/evidence/smoke-home/desktop-home.png",
+          "ms": 255
+        }
+      ],
+      "console_errors": [],
+      "screenshots": [
+        "test/evidence/smoke-home/desktop-home.png"
+      ],
+      "evals": {},
+      "final_url": "http://127.0.0.1:4113/"
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "ok": true,
+      "steps": [
+        {
+          "step": "goto",
+          "arg": "/",
+          "ok": true,
+          "ms": 788
+        },
+        {
+          "step": "expect",
+          "arg": {
+            "status": 200
+          },
+          "ok": true,
+          "ms": 0
+        },
+        {
+          "step": "expect",
+          "arg": {
+            "visible": "main, [role=main], #main-content"
+          },
+          "ok": true,
+          "ms": 19
+        },
+        {
+          "step": "expect",
+          "arg": {
+            "no_horizontal_scroll": true
+          },
+          "ok": true,
+          "value": {
+            "sw": 390,
+            "cw": 390
+          },
+          "ms": 1
+        },
+        {
+          "step": "expect",
+          "arg": {
+            "no_console_errors": true
+          },
+          "ok": true,
+          "ms": 0
+        },
+        {
+          "step": "screenshot",
+          "arg": "home",
+          "ok": true,
+          "file": "test/evidence/smoke-home/mobile-home.png",
+          "ms": 88
+        }
+      ],
+      "console_errors": [],
+      "screenshots": [
+        "test/evidence/smoke-home/mobile-home.png"
+      ],
+      "evals": {},
+      "final_url": "http://127.0.0.1:4113/"
+    }
+  ],
+  "ok": true,
+  "finished": "2026-11-25T00:42:35.528Z",
+  "base": "http://127.0.0.1:4113"
+}
