@@ -10,9 +10,9 @@ lifehacker.dev's direction is to become the ultimate open home for all things pr
 
 1. **Provide data, tools, resources and transparency for all stakeholders, technology practitioners and the general public.** Readers, writers, operators and anyone trying to survive modern tech are first-class audiences. The aim is a shared, inspectable commons: the same hacks, the same tools, and the same trail from draft to published page for everyone.
 2. **Publish hacks, tools, field notes and wire posts on a steady cadence, with satire in the framing and never in the facts.** The site stays funny without misleading: comedy is welcome in the voice, and accuracy is required in the content, especially on the wire.
-3. **Run as an open, human-gated headless CMS: an autopilot drafts, reviews and ships content, CI enforces quality, and a human remains the only merge gate.** Brand, queues, ledgers and site health live in the repository as data; no change reaches the apex domain lifehacker.dev without a human merge.
+3. **Run as an open headless CMS: an autopilot drafts, reviews and ships content, CI enforces quality, and a human holds the merge gate, delegating it to green checks for the autopilot's own content and data while auto-merge is on.** Brand, queues, ledgers and site health live in the repository as data; nothing else reaches the apex domain lifehacker.dev without a human merge.
 
-These missions set the course; they do not claim the work is finished. They serve the PRD goals: a steady publishing cadence, facts that stay accurate, and quality gates with a human-only merge to main.
+These missions set the course; they do not claim the work is finished. They serve the PRD goals: a steady publishing cadence, facts that stay accurate, and quality gates in front of every merge to main.
 
 _Source: [PRD.md](../PRD.md) §1.1._
 
