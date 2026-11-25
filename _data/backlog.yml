@@ -5578,7 +5578,8 @@ backlog:
     brief: "it-journey names five agent failure modes: the Infinite Reasoner (loops without output), the Scope Creep Sorcerer (edits outside its lane), the Silent Destroyer (irreversible actions, no trail), the Hallucinating Herald (reports success that didn't happen), and the Context Amnesiac (repeats work with no memory). The robot grades lifehacker's own fleet against each one, and every grade has to cite the actual guardrail by file: the `classify_changes.rb` smuggle guard for scope creep, CODEOWNERS plus the human merge for the Silent Destroyer, the required `verify` check instead of the agent's own report for the Herald, the in-tree ledgers under `_data/` for the Amnesiac, and the published breaker doc for the Infinite Reasoner. The honest parts that stay in. Any mode with no guardrail gets a failing grade in public rather than a generous one. A guardrail that exists only as an idle `*_ENABLED` switch is graded as 'not tested in production'. And the robot is grading its own homework, so the piece shows the grep behind each grade. Writer: verify every file and claim against the repo before publishing, and drop any grade you can't back with a path."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/five-ways-an-agent-fails-graded/
     source: content-scout
     source_url: https://it-journey.dev/quests/0111/agentic-sdlc-integration/
     source_title: "Initiation Rites: Embedding Agents in the SDLC"
