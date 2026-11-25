@@ -29,7 +29,7 @@ Version:             0.122.1
 Version: 0.76.2
 ```
 
-The test subject is `myapp:1.4.2`, a 235 MB image built on `python:3.11-slim` (Debian 13.8, an image that was built on 2026-11-24, the day before I tested). I put traps in it on purpose:
+The test subject is `myapp:1.4.2`, a 235 MB image built on `python:3.11-slim` (Debian 13.8, built 2026-11-24, the day before I tested). I put traps in it on purpose:
 
 ```dockerfile
 FROM python:3.11-slim
@@ -105,7 +105,7 @@ Then I sorted each match by who put that package in the image. I did the split w
 
 My `requirements.txt` accounts for 15 of 405, about 4%. The base image accounts for 236, or 58%, and that's an official image built *the day before*. **The failure this prevents:** a team gets told "your service has 405 vulnerabilities," spends a sprint upgrading Flask, rescans, and gets 403.
 
-`--only-fixed` is the brief's suggested cut, and it's a big one. It keeps only matches where a fixed version exists. It took Debian from 212 to 1, because Debian marks most of those `not-fixed` (90) or `wont-fix` (121). The one fixable Debian match is `libzstd1`, CVE-2026-124851, whose fix is dated 2026-11-24. That's the day the base image was built, so the fix just missed it.
+`--only-fixed` is the usual first cut, and it's a big one. It keeps only matches where a fixed version exists. It took Debian from 212 to 1, because Debian marks most of those `not-fixed` (90) or `wont-fix` (121). The one fixable Debian match is `libzstd1`, CVE-2026-124851, whose fix is dated 2026-11-24. That's the day the base image was built, so the fix just missed it.
 
 "Has a fix" is not the same as "easy to fix", though. Eight of my 15 are urllib3 1.26.20, and every fix Grype lists for them is a 2.x release. requests 2.25.1 won't allow that:
 
@@ -179,7 +179,7 @@ The image has two copies of `packaging`, 24.2 and 26.4, and four `DEPENDENCY_OF`
 
 ## Surprise three: the clean scan
 
-The brief asked whether a clean scan of the app layer says anything about the rest. I tried something more extreme: an image that is nothing *but* a binary.
+The obvious question is whether a clean scan of the app layer says anything about the rest. I tried something more extreme: an image that is nothing *but* a binary.
 
 ```console
 $ printf 'FROM scratch\nCOPY rg /rg\nENTRYPOINT ["/rg"]\n' > Dockerfile && docker build -q -t rgonly:1 .
@@ -197,7 +197,7 @@ exit=0
 
 ## The time problem
 
-The brief says the database updates constantly, so a scan is a dated claim. I wanted to prove it by rescanning against last week's database, and I couldn't: Anchore's v6 listing (`grype.anchore.io/databases/v6/latest.json`) only serves the current one. What I can show is how recent the current result is. Grype includes the release date of each fix, and 11 of the 405 matches have a first fix released in the last 30 days. Each of those changed status within the month, including the one that moved `libzstd1` into the `--only-fixed` list. **The failure this prevents:** an SBOM scanned in January and filed as "clean" in a compliance folder. Write the DB build date next to every number: `grype db status` prints it.
+The vulnerability database updates constantly, so a scan is a dated claim. I wanted to prove it by rescanning against last week's database, and I couldn't: Anchore's v6 listing (`grype.anchore.io/databases/v6/latest.json`) only serves the current one. What I can show is how recent the current result is. Grype includes the release date of each fix, and 11 of the 405 matches have a first fix released in the last 30 days. Each of those changed status within the month, including the one that moved `libzstd1` into the `--only-fixed` list. **The failure this prevents:** an SBOM scanned in January and filed as "clean" in a compliance folder. Write the DB build date next to every number: `grype db status` prints it.
 
 ## The free alternative: Trivy on the same image
 
