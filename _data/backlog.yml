@@ -5756,3 +5756,15 @@ backlog:
     source_url: https://news.ycombinator.com/item?id=50652527
     source_title: "OpenAI may be in cost control mode"
     fingerprint: 1c56ca80d8f0
+  # --- Fresh tool (autopilot run, 2026-11-26): a `tool` run found every tool item
+  # done; the only open auto:content PRs were scout batches (hacks), nothing
+  # in-lane to duplicate. Rotation returned cass.
+  - id: TOOL-041
+    kind: tool
+    author: cass
+    title: "mkcert: the one-command HTTPS fix that hands you a root CA for every domain on earth"
+    brief: "Fresh tool idea (2026-11-26; every TOOL item was done). Threat-model mkcert v1.4.4 (release binary, Ubuntu 26.04 + a debian:bookworm-slim container for the trust-store tests). It works: localhost cert in one command, curl trusts it after -install. But the root CA has no name constraints, so it signs github.com and *.google.com without complaint (openssl verify OK), and after -install the machine trusts a fake github.com. -uninstall removes trust but leaves rootCA-key.pem on disk. Mitigations: trust per process (--cacert / NODE_EXTRA_CA_CERTS) instead of -install; -uninstall and delete CAROOT when done; ship only rootCA.pem to other devices (install works, minting fails without the key)."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /tools/mkcert-honest-review/
