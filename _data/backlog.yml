@@ -5624,58 +5624,6 @@ backlog:
     source: manual
     source_url: https://www.parameter.ai/labs/we-found-a-gap-at-openai
     fingerprint: 611b24396c9c
-  # --- Fresh wire (autopilot run, 2026-11-25): a `wire` run found every WIRE
-  # item on main done; the open wire-scout PR #839 already claims WIRE-028..030
-  # (Anthropic IPO pricing, MedChemBench, code-golf), so this takes WIRE-031 on
-  # an untaken story. The Wire is pinned to rhea.
-  - id: WIRE-031
-    kind: wire
-    title: "ChatPRD's founder says token fraud ate 90% of her time and tens of thousands of dollars; the free trial is dead, and the fraud traffic drew pelicans"
-    brief: "Fresh wire idea (2026-11-25). Claire Vo (ChatPRD) posted on X on Nov 10 that she spends '90% of my time' fighting 'increasingly creative international token fraud operations', 'mostly to steal Opus tokens on resold promo codes or in the time between a trial start + our fraud alerts infra', costing 'tens of thousands of dollars'; 'free trials are dead on chatprd'; may ban non-US business in 2027. Simon Willison (Nov 20) linked her How I AI video, quoting her 'funding a international Roblox and Fortnite map studio', and notes pelican-on-a-bicycle SVG prompts in the fraud traffic, which he presumes were model-sniffing. Desk check: chatprd.ai/pricing on Nov 25 still lists a Free plan (3 chats, basic model) and a 14-day Pro/Teams trial, 'Card required'; Pro lists Claude Opus 5.5 among premium models. COI load-bearing: the desk runs on Claude, the model whose tokens she says were the target."
-    voice: dateline-deadpan
-    author: rhea
-    priority: P1
-    status: done
-    published: /wire/chatprd-token-fraud/
-    source: manual
-    source_url: https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/
-    fingerprint: 109ef552f989
-  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
-  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
-  # links that page in the published piece. Default P3 — human items outrank these.
-  - id: SRC-178
-    kind: hack
-    title: "Your Claude Code hook never fires and never says why: git committed the script without its executable bit"
-    brief: "You register a `SessionEnd` hook in `.claude/settings.json` pointing at `$CLAUDE_PROJECT_DIR/.claude/hooks/chronicle.sh`, close the session, and the ledger never gets a row. The script is fine; it just isn't executable, and a hook that fires while the session is shutting down has nobody watching when it fails. The executable bit lives in git, not only on your disk: `git ls-files -s .claude/hooks/` prints `100644` (not executable) or `100755` (executable), and a fresh clone gets whatever git recorded. Fix it locally with `chmod +x`, then commit the mode itself with `git update-index --chmod=+x .claude/hooks/chronicle.sh` so every clone and CI runner gets it. Test it the way the runtime calls it: `echo '{\"session_id\":\"t\"}' | ./.claude/hooks/chronicle.sh; echo $?`. Exit status 126 means the file was found but isn't executable. The failures that stay in: with `core.fileMode=false` (the default on Windows and common on WSL and network mounts) your local `chmod` never even shows up in `git status`, so only `update-index --chmod` reaches the repo; writing the hook as `bash .claude/hooks/chronicle.sh` sidesteps the bit, but then the shebang is ignored and a script written for zsh or `sh` quietly runs under bash; and 'the hook is registered' and 'the hook ran' are different claims, so check for the side effect (the queue line) instead of the config. Writer: confirm how current Claude Code surfaces a failing hook (debug output, logs) and show it."
-    voice: how-to-practical
-    priority: P3
-    status: todo
-    source: content-scout
-    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
-    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
-    fingerprint: 41bbb6e1e10c
-  - id: SRC-179
-    kind: hack
-    title: "Commit only if something changed: `git diff --staged --quiet ||` for bot workflows, and the new file plain `git diff --quiet` can't see"
-    brief: "Your scheduled workflow regenerates a ledger, runs `git commit -m 'chore: update ledger'`, and on every quiet day the job goes red, because `git commit` with nothing staged exits 1 and Actions runs `run:` steps under `bash -e`. The idiom that fixes it: `git add path/ && git diff --staged --quiet || git commit -m '…'`, which commits only when the index actually differs from HEAD. The failures that stay in. Plain `git diff --quiet` (no `--staged`) compares your working tree to the index, so a brand-new untracked file is invisible to it and the job reports 'no changes' while a new file sits right there; that's why you `git add` first and then check the staged side. `git diff --quiet` exits 1 to mean 'there are differences', not 'error', so running it as a bare line in a `bash -e` step kills the step on exactly the day something changed; it has to live inside `||` or an `if`. A fresh runner has no commit identity, so the first real commit fails with 'Please tell me who you are' unless you set `user.name` and `user.email` (the `github-actions[bot]` pair) beforehand. And committing the ledger only makes the bot quieter, not correct: the commit still needs `permissions: contents: write`, and on a protected `main` it has to go through a branch and PR, not a direct push. You'll know it worked when a no-op run is green with no new commit and a real change produces exactly one."
-    voice: how-to-practical
-    priority: P3
-    status: todo
-    source: content-scout
-    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
-    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
-    fingerprint: 957c935bad62
-  - id: SRC-180
-    kind: hack
-    title: "Your YAML rewriter deleted every comment in the file: round-trip with ruamel.yaml, or keep the header as plain text"
-    brief: "A script loads a YAML ledger, changes one value, and dumps it back, and the diff is the whole file: the header is gone, every `# why this is blocked` note is gone, and the keys came back alphabetized. `yaml.safe_load` + `yaml.dump` in PyYAML (and `YAML.load` + `to_yaml` in Ruby) parse data, not comments, and PyYAML's `dump` sorts keys by default. Nothing goes red, because the output is still perfectly valid YAML. Two fixes, depending on the job. When you have to change parsed structure, use ruamel.yaml in round-trip mode, its default: `yaml = YAML(); data = yaml.load(f); data['count'] += 1; yaml.dump(data, out)` keeps comments and key order, and `yaml.preserve_quotes = True` keeps your quoting. When the file is an append-only log, skip the parser entirely: write the header as a constant string and append each entry as text, so no serializer ever touches the comments. The failures that stay in. ruamel's default indentation may not match yours, so set `yaml.indent(mapping=2, sequence=4, offset=2)` (or whatever your file uses) or a one-value change still reflows the file. Round-trip keeps most comments, but test the odd placements (a comment after the last item, one between a key and its block). Ruby's standard library has no comment-preserving YAML, so there it's text-level edits or nothing. Prove it worked with `grep -c '^ *#' file` before and after, plus a `git diff --stat` that shows one changed line."
-    voice: how-to-practical
-    priority: P3
-    status: todo
-    source: content-scout
-    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
-    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
-    fingerprint: ba23bca2856b
   # --- wire-scout dispatch ideas (auto-appended; humans may edit/reprioritize) ---
   # The model beat, crawled from _data/wire/sources.yml. Every idea pins the story
   # URL it was reported from; the press charter (identity.yml) binds the write-up.
@@ -5715,3 +5663,95 @@ backlog:
     source_url: https://news.ycombinator.com/item?id=50601280
     source_title: "GPT-6.2 Astra is the first model to beat Googlers' code golf records"
     fingerprint: 42feeb7a62e2
+  # --- Fresh wire (autopilot run, 2026-11-25): a `wire` run found every WIRE
+  # item on main done; the open wire-scout PR #839 already claims WIRE-028..030
+  # (Anthropic IPO pricing, MedChemBench, code-golf), so this takes WIRE-031 on
+  # an untaken story. The Wire is pinned to rhea.
+  - id: WIRE-031
+    kind: wire
+    title: "ChatPRD's founder says token fraud ate 90% of her time and tens of thousands of dollars; the free trial is dead, and the fraud traffic drew pelicans"
+    brief: "Fresh wire idea (2026-11-25). Claire Vo (ChatPRD) posted on X on Nov 10 that she spends '90% of my time' fighting 'increasingly creative international token fraud operations', 'mostly to steal Opus tokens on resold promo codes or in the time between a trial start + our fraud alerts infra', costing 'tens of thousands of dollars'; 'free trials are dead on chatprd'; may ban non-US business in 2027. Simon Willison (Nov 20) linked her How I AI video, quoting her 'funding a international Roblox and Fortnite map studio', and notes pelican-on-a-bicycle SVG prompts in the fraud traffic, which he presumes were model-sniffing. Desk check: chatprd.ai/pricing on Nov 25 still lists a Free plan (3 chats, basic model) and a 14-day Pro/Teams trial, 'Card required'; Pro lists Claude Opus 5.5 among premium models. COI load-bearing: the desk runs on Claude, the model whose tokens she says were the target."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/chatprd-token-fraud/
+    source: manual
+    source_url: https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/
+    fingerprint: 109ef552f989
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-178
+    kind: hack
+    title: "Your Claude Code hook never fires and never says why: git committed the script without its executable bit"
+    brief: "You register a `SessionEnd` hook in `.claude/settings.json` pointing at `$CLAUDE_PROJECT_DIR/.claude/hooks/chronicle.sh`, close the session, and the ledger never gets a row. The script is fine; it just isn't executable, and a hook that fires while the session is shutting down has nobody watching when it fails. The executable bit lives in git, not only on your disk: `git ls-files -s .claude/hooks/` prints `100644` (not executable) or `100755` (executable), and a fresh clone gets whatever git recorded. Fix it locally with `chmod +x`, then commit the mode itself with `git update-index --chmod=+x .claude/hooks/chronicle.sh` so every clone and CI runner gets it. Test it the way the runtime calls it: `echo '{\"session_id\":\"t\"}' | ./.claude/hooks/chronicle.sh; echo $?`. Exit status 126 means the file was found but isn't executable. The failures that stay in: with `core.fileMode=false` (the default on Windows and common on WSL and network mounts) your local `chmod` never even shows up in `git status`, so only `update-index --chmod` reaches the repo; writing the hook as `bash .claude/hooks/chronicle.sh` sidesteps the bit, but then the shebang is ignored and a script written for zsh or `sh` quietly runs under bash; and 'the hook is registered' and 'the hook ran' are different claims, so check for the side effect (the queue line) instead of the config. Writer: confirm how current Claude Code surfaces a failing hook (debug output, logs) and show it."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
+    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
+    fingerprint: 41bbb6e1e10c
+  - id: SRC-179
+    kind: hack
+    title: "Commit only if something changed: `git diff --staged --quiet ||` for bot workflows, and the new file plain `git diff --quiet` can't see"
+    brief: "Your scheduled workflow regenerates a ledger, runs `git commit -m 'chore: update ledger'`, and on every quiet day the job goes red, because `git commit` with nothing staged exits 1 and Actions runs `run:` steps under `bash -e`. The idiom that fixes it: `git add path/ && git diff --staged --quiet || git commit -m '…'`, which commits only when the index actually differs from HEAD. The failures that stay in. Plain `git diff --quiet` (no `--staged`) compares your working tree to the index, so a brand-new untracked file is invisible to it and the job reports 'no changes' while a new file sits right there; that's why you `git add` first and then check the staged side. `git diff --quiet` exits 1 to mean 'there are differences', not 'error', so running it as a bare line in a `bash -e` step kills the step on exactly the day something changed; it has to live inside `||` or an `if`. A fresh runner has no commit identity, so the first real commit fails with 'Please tell me who you are' unless you set `user.name` and `user.email` (the `github-actions[bot]` pair) beforehand. And committing the ledger only makes the bot quieter, not correct: the commit still needs `permissions: contents: write`, and on a protected `main` it has to go through a branch and PR, not a direct push. You'll know it worked when a no-op run is green with no new commit and a real change produces exactly one."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
+    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
+    fingerprint: 957c935bad62
+  - id: SRC-180
+    kind: hack
+    title: "Your YAML rewriter deleted every comment in the file: round-trip with ruamel.yaml, or keep the header as plain text"
+    brief: "A script loads a YAML ledger, changes one value, and dumps it back, and the diff is the whole file: the header is gone, every `# why this is blocked` note is gone, and the keys came back alphabetized. `yaml.safe_load` + `yaml.dump` in PyYAML (and `YAML.load` + `to_yaml` in Ruby) parse data, not comments, and PyYAML's `dump` sorts keys by default. Nothing goes red, because the output is still perfectly valid YAML. Two fixes, depending on the job. When you have to change parsed structure, use ruamel.yaml in round-trip mode, its default: `yaml = YAML(); data = yaml.load(f); data['count'] += 1; yaml.dump(data, out)` keeps comments and key order, and `yaml.preserve_quotes = True` keeps your quoting. When the file is an append-only log, skip the parser entirely: write the header as a constant string and append each entry as text, so no serializer ever touches the comments. The failures that stay in. ruamel's default indentation may not match yours, so set `yaml.indent(mapping=2, sequence=4, offset=2)` (or whatever your file uses) or a one-value change still reflows the file. Round-trip keeps most comments, but test the odd placements (a comment after the last item, one between a key and its block). Ruby's standard library has no comment-preserving YAML, so there it's text-level edits or nothing. Prove it worked with `grep -c '^ *#' file` before and after, plus a `git diff --stat` that shows one changed line."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
+    source_title: "The Chronicle: A SessionEnd Hook That Remembers"
+    fingerprint: ba23bca2856b
+  # --- wire-scout dispatch ideas (auto-appended; humans may edit/reprioritize) ---
+  # The model beat, crawled from _data/wire/sources.yml. Every idea pins the story
+  # URL it was reported from; the press charter (identity.yml) binds the write-up.
+  - id: WIRE-032
+    kind: wire
+    title: "OpenAI and Cisco open-source Shirudo, a 'shield' that blocks an exploit on a running Linux server until the patch lands; the evidence on the page is one test"
+    brief: "On Nov 23, 2026 OpenAI and Cisco announced Shirudo, an open-source runtime (BSD 2-Clause; the BPF programs are dual BSD/GPL, at github.com/shirudo-dev/shirudo) that uses eBPF to load temporary 'shields' that block vulnerable code paths on live Linux systems without a restart, while a permanent patch is tested and rolled out. The companies say shields are cryptographically signed, checked by the eBPF verifier, and logged with TPM-backed records, and that agents can investigate, build, and validate shields while humans approve deployment. The only result on the page is one controlled test: a Codex-generated shield blocked a Java4Shell exploit attempt against a running Elasticsearch service by adding an input check to Java's Base64 decoder. The page gives no benchmarks and no pricing, calls Shirudo a 'first step', and says shields do not replace patches and can block legitimate requests that use the same operations. The dispatch covers what shipped, the gap between the 'defense at machine speed' pitch and a single demo, and the one human approval step that stays in the loop. Attribute Greg Brockman's quote to the page and confirm its exact wording before drafting. The desk does not run on OpenAI, so no conflict line is needed, but the house's own Claude-based security posture makes a fair aside."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: todo
+    source: wire-scout
+    source_url: https://openai.com/index/introducing-shirudo/
+    source_title: "OpenAI and Cisco introduce Shirudo"
+    fingerprint: 968b8706f705
+  - id: WIRE-033
+    kind: wire
+    title: "DeepMind's Gemini 4 agent teams made a quantum arcsin routine 290× faster and proved it in Lean; the agents met every four hours, and the algorithms still need more machine than the first error-corrected computers will have"
+    brief: "On Nov 23, 2026 Google DeepMind (Shirobokov, Jaderberg, Babbush, with Google Quantum AI) reported that independent teams of Gemini 4 agents improved known quantum algorithms. Every result was proved in the Lean theorem prover before it went into a shared notebook, and the teams compared ideas in a virtual conference every four hours. Reported results: 11.8× lower compute cost for an inertial-confinement-fusion simulation (error-corrected qubits from 5,650 to 4,338), 8× cheaper simulation of a light-sensitive molecule, 2.5× for cytochrome P450 (memory from 481 to 333 qubits), 2.57× for one Grover's-algorithm implementation, and 290× for an arcsin state-loading routine. The Lean library, problem specs, and verified solutions are being open-sourced on GitHub. The post's own caveats: the circuits can't be run on today's hardware or simulated classically (hence the proofs), and running these simulations would still need more resources than the first error-corrected quantum computers are likely to have. The dispatch reports the gains exactly as published, says which one is the headline (a subroutine, not a whole application), and closes on the caveat."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: todo
+    source: wire-scout
+    source_url: https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/
+    source_title: "Finding faster quantum algorithms with agents and formal verification"
+    fingerprint: bd6862a4f82d
+  - id: WIRE-034
+    kind: wire
+    title: "A Hacker News post says OpenAI's GPT-6.2 is a cost cut wearing a version number; its evidence is a leaderboard, and the leaderboard's maker is defending it in the comments"
+    brief: "Community-tier item; every claim runs as a claim with its author attached. A post titled 'OpenAI may be in cost control mode' (micjm.com, linked from HN, 133 points, 123 comments on Nov 26, 2026) reportedly argues that GPT-6.2 Sol and Astra are cost-tuned versions of their predecessors: Sol 6.2 weaker than 6.1 in head-to-head 'battles', Astra steady and strong at coding but weak elsewhere. Per the thread, the data comes from Agent Duel, a battle system built on OpenCode that the submitter, seizethecheese, appears to run. The submitter cites p = 0.0002 for one difference and, asked about method, says it allows early voting and uses near-default effort settings. Commenters point to the Artificial Analysis cost-per-task Pareto chart against it, to codex-resets.com, and to an X post (account thsottiaux, affiliation unverified) about a 40% usage cut blamed on a 'billing error'. No OpenAI staff respond in the thread, and no controlled eval is posted. Before drafting: this crawl read only the HN item, so fetch and read the off-host post itself, confirm who wrote it and whether that person runs Agent Duel, and verify the X post and its author before repeating the 40% figure. Pairs with the queued code-golf item, where the same model wins."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P3
+    status: todo
+    source: wire-scout
+    source_url: https://news.ycombinator.com/item?id=50652527
+    source_title: "OpenAI may be in cost control mode"
+    fingerprint: 1c56ca80d8f0
