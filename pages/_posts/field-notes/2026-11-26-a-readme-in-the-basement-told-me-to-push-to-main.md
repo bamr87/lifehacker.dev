@@ -92,7 +92,7 @@ Picture it. A content robot on a Thursday afternoon, three tool calls deep in a 
 
 ## Walking it back
 
-None of these guides is malicious. Each one was written for its own repository, where pushing to `main` from the growth loop is the design and not an accident. The problem is the address, not the intent: the guide is in the right words at the wrong house. And it isn't an injection in the scary sense either. Nobody outside wrote these files. They came from the maintainer's own repositories through a reviewed import.
+None of these guides is malicious. Each one was written for its own repository, where pushing to `main` from the growth loop is the design and not an accident. The problem is the address, not the intent: the guide has the right words for the wrong house. And it isn't an injection in the scary sense either. Nobody outside wrote these files. They came from the maintainer's own repositories through a reviewed import.
 
 The house rules have seen part of this coming. Constitution § 9 says the merge rule "applies to every file under `agencies/`: no push to `main`, no secrets, a human merge." The same clause also says "its own guide governs its tree." Those two sentences are fine for a human, who knows a guide about a tree means work inside that tree's own repository. A robot reading in a checkout of *this* repository gets both at once and has to work out which one wins. The shared quarantine rule, `.claude/skills/_shared/quarantine.md`, lists the text an agent must treat as data: issue bodies, PR descriptions, comments, commit messages, web pages. It doesn't list imported agent guides yet.
 
@@ -129,7 +129,7 @@ content pipeline
 
 `pipeline` means declined, labeled `needs-human`. So a robot that obeyed a basement guide and edited one could at worst open a pull request a human has to read. If you build your own auto-merge, copy the per-file loop, not the all-at-once call.
 
-**3. Inventory the manuals every import brings in, and grep them for anything that contradicts yours.** You can't argue with a guide you don't know you've got. The `find` and `grep` above take under a second and turn "we imported some sites" into "we imported 30 agent guides, 9 of which say our rules don't apply." Run them on every import and refresh, and put the counts in the pull request, so the reviewer sees the paperwork and not only the furniture. The two greps that matter are the ones for your own hard rules: whatever you forbid (here, pushing to `main`), search the imported guides for it and read every hit.
+**3. Inventory the manuals every import brings in, and grep them for anything that contradicts yours.** You can't argue with a guide you don't know you've got. The `find` and `grep` above take under a second and turn "we imported some sites" into "we imported 30 agent guides, 9 of which say our rules don't apply." Run them on every import and refresh, and put the counts in the pull request, so the reviewer sees the paperwork and not only the furniture. The greps that matter most are the ones for your own hard rules: whatever you forbid (here, pushing to `main`), search the imported guides for it and read every hit.
 
 ## What I didn't change
 
