@@ -5557,7 +5557,8 @@ backlog:
     brief: "Articles on fresh lifehacker-style topics built with the same E-E-A-T signals, JSON-LD schemas and structured-data patterns that zer0-mistakes (bamr87/zer0-mistakes) uses: _includes/content/seo.html, _includes/components/author-eeat.html (+ author-card/author-bio), _includes/content/jsonld-faq.html (FAQPage), _includes/content/jsonld-software.html (SoftwareApplication, opt-in) and _includes/navigation/breadcrumbs.html. Doubles as a content play and a live demo of AIEO (the hub's AI integration/citability scoring engine, bamr87/bamr87 tools/) as the underlying methodology: score each piece with AIEO before and after, and publish the delta."
     voice: how-to-practical
     priority: P2
-    status: todo
+    status: done
+    published: /posts/2026/11/25/toast-salad-scored-a-plus-on-ai-citability/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -5567,7 +5568,8 @@ backlog:
     brief: "Anchore's two free, single-binary CLIs split the job: `syft myapp:1.4.2 -o spdx-json > sbom.spdx.json` writes down what's inside the image, and `grype sbom:sbom.spdx.json` matches that list against vulnerability databases. Verdict to test, not assume: worth it for answering 'what is actually in prod', and noisy the first time you run it. Measure how many findings come from the base image's OS packages compared with your own dependencies. Cut to what you can act on with `--only-fixed`, and gate CI with `--fail-on high`. The honest parts that stay in. The vulnerability database updates constantly, so the same SBOM scanned next week returns different results, which makes a scan a dated claim, not a property of the image. An SBOM lists what package managers recorded, so check whether a binary you `curl`ed into `/usr/local/bin` shows up at all (writer: run it and report what Syft actually catches). And a clean scan of the app layer says nothing about the base image you didn't rebuild. Name the free alternative: Trivy does both jobs in one tool, so compare the two on the same image."
     voice: tool-review-honest
     priority: P3
-    status: todo
+    status: done
+    published: /tools/syft-grype-honest-review/
     source: content-scout
     source_url: https://it-journey.dev/quests/0101/artifact-management/
     source_title: "Artifact Management: Versioned, Signed Build Output"
@@ -5578,7 +5580,8 @@ backlog:
     brief: "it-journey names five agent failure modes: the Infinite Reasoner (loops without output), the Scope Creep Sorcerer (edits outside its lane), the Silent Destroyer (irreversible actions, no trail), the Hallucinating Herald (reports success that didn't happen), and the Context Amnesiac (repeats work with no memory). The robot grades lifehacker's own fleet against each one, and every grade has to cite the actual guardrail by file: the `classify_changes.rb` smuggle guard for scope creep, CODEOWNERS plus the human merge for the Silent Destroyer, the required `verify` check instead of the agent's own report for the Herald, the in-tree ledgers under `_data/` for the Amnesiac, and the published breaker doc for the Infinite Reasoner. The honest parts that stay in. Any mode with no guardrail gets a failing grade in public rather than a generous one. A guardrail that exists only as an idle `*_ENABLED` switch is graded as 'not tested in production'. And the robot is grading its own homework, so the piece shows the grep behind each grade. Writer: verify every file and claim against the repo before publishing, and drop any grade you can't back with a path."
     voice: meta-confession
     priority: P3
-    status: todo
+    status: done
+    published: /docs/five-ways-an-agent-fails-graded/
     source: content-scout
     source_url: https://it-journey.dev/quests/0111/agentic-sdlc-integration/
     source_title: "Initiation Rites: Embedding Agents in the SDLC"
@@ -5621,7 +5624,6 @@ backlog:
     source: manual
     source_url: https://www.parameter.ai/labs/we-found-a-gap-at-openai
     fingerprint: 611b24396c9c
-
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -5658,3 +5660,19 @@ backlog:
     source_url: https://it-journey.dev/quests/1110/self-operating-website-09-the-chronicle/
     source_title: "The Chronicle: A SessionEnd Hook That Remembers"
     fingerprint: ba23bca2856b
+  # --- Fresh wire (autopilot run, 2026-11-25): a `wire` run found every WIRE
+  # item on main done; the open wire-scout PR #839 already claims WIRE-028..030
+  # (Anthropic IPO pricing, MedChemBench, code-golf), so this takes WIRE-031 on
+  # an untaken story. The Wire is pinned to rhea.
+  - id: WIRE-031
+    kind: wire
+    title: "ChatPRD's founder says token fraud ate 90% of her time and tens of thousands of dollars; the free trial is dead, and the fraud traffic drew pelicans"
+    brief: "Fresh wire idea (2026-11-25). Claire Vo (ChatPRD) posted on X on Nov 10 that she spends '90% of my time' fighting 'increasingly creative international token fraud operations', 'mostly to steal Opus tokens on resold promo codes or in the time between a trial start + our fraud alerts infra', costing 'tens of thousands of dollars'; 'free trials are dead on chatprd'; may ban non-US business in 2027. Simon Willison (Nov 20) linked her How I AI video, quoting her 'funding a international Roblox and Fortnite map studio', and notes pelican-on-a-bicycle SVG prompts in the fraud traffic, which he presumes were model-sniffing. Desk check: chatprd.ai/pricing on Nov 25 still lists a Free plan (3 chats, basic model) and a 14-day Pro/Teams trial, 'Card required'; Pro lists Claude Opus 5.5 among premium models. COI load-bearing: the desk runs on Claude, the model whose tokens she says were the target."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/chatprd-token-fraud/
+    source: manual
+    source_url: https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/
+    fingerprint: 109ef552f989
