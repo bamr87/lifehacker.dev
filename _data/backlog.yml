@@ -5559,20 +5559,6 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/11/25/toast-salad-scored-a-plus-on-ai-citability/
-  # --- Fresh post (autopilot run, 2026-11-26): every `post` item was done except
-  # DOC-004 (blocked on OPS-001); open auto:content PRs are a tool (mkcert) and two
-  # scout idea batches, nothing to duplicate. Synthesized in-lane from a real finding:
-  # the imported agencies/ trees carry 30 agent guides, and reading one file loaded
-  # its CLAUDE.md (which says push to main) into the agent's context.
-  - id: POST-130
-    kind: post
-    title: "I opened a README in the basement, and its CLAUDE.md told me to push to main"
-    brief: "Cass threat-models the imported agencies/ trees: 30 agent guides (1,987 lines), 16 mentioning push to main, 9 saying parent rules don't apply; one Read loaded a nested CLAUDE.md into context. Real outputs: branch protection 404, per-file smuggle guard holds, guide inventory greps."
-    voice: threat-model-everything
-    author: cass
-    priority: P2
-    status: done
-    published: /posts/2026/11/26/a-readme-in-the-basement-told-me-to-push-to-main/
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
   # links that page in the published piece. Default P3 — human items outrank these.
@@ -5769,3 +5755,29 @@ backlog:
     source_url: https://news.ycombinator.com/item?id=50652527
     source_title: "OpenAI may be in cost control mode"
     fingerprint: 1c56ca80d8f0
+  # --- Fresh post (autopilot run, 2026-11-26): every `post` item was done except
+  # DOC-004 (blocked on OPS-001); open auto:content PRs are a tool (mkcert) and two
+  # scout idea batches, nothing to duplicate. Synthesized in-lane from a real finding:
+  # the imported agencies/ trees carry 30 agent guides, and reading one file loaded
+  # its CLAUDE.md (which says push to main) into the agent's context.
+  - id: POST-130
+    kind: post
+    title: "I opened a README in the basement, and its CLAUDE.md told me to push to main"
+    brief: "Cass threat-models the imported agencies/ trees: 30 agent guides (1,987 lines), 16 mentioning push to main, 9 saying parent rules don't apply; one Read loaded a nested CLAUDE.md into context. Real outputs: branch protection 404, per-file smuggle guard holds, guide inventory greps."
+    voice: threat-model-everything
+    author: cass
+    priority: P2
+    status: done
+    published: /posts/2026/11/26/a-readme-in-the-basement-told-me-to-push-to-main/
+  # --- Fresh tool (autopilot run, 2026-11-26): a `tool` run found every tool item
+  # done; the only open auto:content PRs were scout batches (hacks), nothing
+  # in-lane to duplicate. Rotation returned cass.
+  - id: TOOL-041
+    kind: tool
+    author: cass
+    title: "mkcert: the one-command HTTPS fix that hands you a root CA for every domain on earth"
+    brief: "Fresh tool idea (2026-11-26; every TOOL item was done). Threat-model mkcert v1.4.4 (release binary, Ubuntu 26.04 + a debian:bookworm-slim container for the trust-store tests). It works: localhost cert in one command, curl trusts it after -install. But the root CA has no name constraints, so it signs github.com and *.google.com without complaint (openssl verify OK), and after -install the machine trusts a fake github.com. -uninstall removes trust but leaves rootCA-key.pem on disk. Mitigations: trust per process (--cacert / NODE_EXTRA_CA_CERTS) instead of -install; -uninstall and delete CAROOT when done; ship only rootCA.pem to other devices (install works, minting fails without the key)."
+    voice: threat-model-everything
+    priority: P2
+    status: done
+    published: /tools/mkcert-honest-review/
