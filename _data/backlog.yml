@@ -5679,3 +5679,43 @@ backlog:
     source: manual
     source_url: https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/
     fingerprint: 109ef552f989
+
+  # --- wire-scout dispatch ideas (auto-appended; humans may edit/reprioritize) ---
+  # The model beat, crawled from _data/wire/sources.yml. Every idea pins the story
+  # URL it was reported from; the press charter (identity.yml) binds the write-up.
+  - id: WIRE-032
+    kind: wire
+    title: "OpenAI and Cisco open-source Shirudo, a 'shield' that blocks an exploit on a running Linux server until the patch lands; the evidence on the page is one test"
+    brief: "On Nov 23, 2026 OpenAI and Cisco announced Shirudo, an open-source runtime (BSD 2-Clause; the BPF programs are dual BSD/GPL, at github.com/shirudo-dev/shirudo) that uses eBPF to load temporary 'shields' that block vulnerable code paths on live Linux systems without a restart, while a permanent patch is tested and rolled out. The companies say shields are cryptographically signed, checked by the eBPF verifier, and logged with TPM-backed records, and that agents can investigate, build, and validate shields while humans approve deployment. The only result on the page is one controlled test: a Codex-generated shield blocked a Java4Shell exploit attempt against a running Elasticsearch service by adding an input check to Java's Base64 decoder. The page gives no benchmarks and no pricing, calls Shirudo a 'first step', and says shields do not replace patches and can block legitimate requests that use the same operations. The dispatch covers what shipped, the gap between the 'defense at machine speed' pitch and a single demo, and the one human approval step that stays in the loop. Attribute Greg Brockman's quote to the page and confirm its exact wording before drafting. The desk does not run on OpenAI, so no conflict line is needed, but the house's own Claude-based security posture makes a fair aside."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: todo
+    source: wire-scout
+    source_url: https://openai.com/index/introducing-shirudo/
+    source_title: "OpenAI and Cisco introduce Shirudo"
+    fingerprint: 968b8706f705
+  - id: WIRE-033
+    kind: wire
+    title: "DeepMind's Gemini 4 agent teams made a quantum arcsin routine 290× faster and proved it in Lean; the agents met every four hours, and the algorithms still need more machine than the first error-corrected computers will have"
+    brief: "On Nov 23, 2026 Google DeepMind (Shirobokov, Jaderberg, Babbush, with Google Quantum AI) reported that independent teams of Gemini 4 agents improved known quantum algorithms. Every result was proved in the Lean theorem prover before it went into a shared notebook, and the teams compared ideas in a virtual conference every four hours. Reported results: 11.8× lower compute cost for an inertial-confinement-fusion simulation (error-corrected qubits from 5,650 to 4,338), 8× cheaper simulation of a light-sensitive molecule, 2.5× for cytochrome P450 (memory from 481 to 333 qubits), 2.57× for one Grover's-algorithm implementation, and 290× for an arcsin state-loading routine. The Lean library, problem specs, and verified solutions are being open-sourced on GitHub. The post's own caveats: the circuits can't be run on today's hardware or simulated classically (hence the proofs), and running these simulations would still need more resources than the first error-corrected quantum computers are likely to have. The dispatch reports the gains exactly as published, says which one is the headline (a subroutine, not a whole application), and closes on the caveat."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P2
+    status: todo
+    source: wire-scout
+    source_url: https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/
+    source_title: "Finding faster quantum algorithms with agents and formal verification"
+    fingerprint: bd6862a4f82d
+  - id: WIRE-034
+    kind: wire
+    title: "A Hacker News post says OpenAI's GPT-6.2 is a cost cut wearing a version number; its evidence is a leaderboard, and the leaderboard's maker is defending it in the comments"
+    brief: "Community-tier item; every claim runs as a claim with its author attached. A post titled 'OpenAI may be in cost control mode' (micjm.com, linked from HN, 133 points, 123 comments on Nov 26, 2026) reportedly argues that GPT-6.2 Sol and Astra are cost-tuned versions of their predecessors: Sol 6.2 weaker than 6.1 in head-to-head 'battles', Astra steady and strong at coding but weak elsewhere. Per the thread, the data comes from Agent Duel, a battle system built on OpenCode that the submitter, seizethecheese, appears to run. The submitter cites p = 0.0002 for one difference and, asked about method, says it allows early voting and uses near-default effort settings. Commenters point to the Artificial Analysis cost-per-task Pareto chart against it, to codex-resets.com, and to an X post (account thsottiaux, affiliation unverified) about a 40% usage cut blamed on a 'billing error'. No OpenAI staff respond in the thread, and no controlled eval is posted. Before drafting: this crawl read only the HN item, so fetch and read the off-host post itself, confirm who wrote it and whether that person runs Agent Duel, and verify the X post and its author before repeating the 40% figure. Pairs with the queued code-golf item, where the same model wins."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P3
+    status: todo
+    source: wire-scout
+    source_url: https://news.ycombinator.com/item?id=50652527
+    source_title: "OpenAI may be in cost control mode"
+    fingerprint: 1c56ca80d8f0
