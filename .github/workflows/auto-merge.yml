@@ -7,15 +7,17 @@
 #   * triage PRs    (label source/triage-bot) — diff must be generated DATA only
 #     (_data/health, SITE_HEALTH.md, _data/analytics — the queue + dashboard
 #     refresh; one content line in the diff and it goes back to a human)
-# The load-bearing safety is the SMUGGLE GUARD: it re-classifies the PR's diff
-# and refuses to merge anything touching deps or pipeline/infra, even if the PR
-# is labeled content. So a content PR can never sneak a workflow, script,
-# _config, or Gemfile change past review. Dependency/infra/workflow PRs are
-# NEVER auto-merged — they always wait for a human.
+# The load-bearing safety is the SMUGGLE GUARD: it re-classifies EACH changed
+# file on its own and refuses to merge anything outside content and data, even
+# if the PR is labeled content. So a content PR can never sneak a workflow,
+# script, _config, Gemfile, agency, doc or catalog change past review (a lone
+# unclassified file classifies as pipeline). Those PRs always wait for a human.
+# It merges with a merge commit (bamr87/bamr87 constitution § 12.2).
 #
-# OFF by default behind the AUTO_MERGE_ENABLED repo variable. Enabling it retires
-# the human review of *content* and *triage data* (only) — record it in
-# /about/colophon/.
+# Behind the AUTO_MERGE_ENABLED repo variable, ON since 2026-11-25 (hub
+# amendment `lifehacker-auto-merge`, this repo's amendment 0005). Enabling it
+# retires the human review of *content* and *triage data* (only) — recorded in
+# /about/colophon/. Setting it to false returns every merge to a human.
 # =============================================================================
 name: auto-merge
 
@@ -55,14 +57,7 @@ jobs:
         id: gate
         env:
           ENABLED: ${{ vars.AUTO_MERGE_ENABLED }}
-          # Hub-origination hold (bamr87/bamr87 constitution § 23): autonomous publishing is OFF
-          # in code until hub-originated intake lands; flipping the repo var alone does nothing.
-          HUB_ORIGINATION_HOLD: "true"
         run: |
-          if [ "$HUB_ORIGINATION_HOLD" = "true" ]; then
-            echo "HUB_ORIGINATION_HOLD — autonomous publishing is held until hub-originated intake lands (docs/proposals/hub-origination.md). Idle."
-            echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
-          fi
           if [ "$ENABLED" != "true" ]; then
             echo "AUTO_MERGE_ENABLED != true — auto-merge is OFF. Nothing merged."
             echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
@@ -96,12 +91,23 @@ jobs:
             [ -n "$pr" ] || continue
             echo "::group::PR #$pr ($flavor)"
 
-            # 1. SMUGGLE GUARD — the diff must be content/data ONLY.
-            kinds=$(gh pr diff "$pr" --name-only | ruby scripts/ci/classify_changes.rb)
+            # The head this sweep judges; the merge below is pinned to it, so a
+            # push after the guard ran can never be merged unseen.
+            head=$(gh pr view "$pr" --json headRefOid --jq .headRefOid)
+
+            # 1. SMUGGLE GUARD — every changed file must be content or data.
+            # Each file is classified ON ITS OWN: the classifier reports a mixed
+            # diff by its classified kinds only, so `pages/` + `agencies/` would
+            # read as plain content, while a lone unclassified file reads as
+            # `pipeline` (its fail-safe) and is declined here.
+            kinds=$(gh pr diff "$pr" --name-only | while IFS= read -r f || [ -n "$f" ]; do
+                      [ -n "$f" ] && printf '%s\n' "$f" | ruby scripts/ci/classify_changes.rb
+                    done | tr ' ' '\n' | sed '/^$/d' | sort -u | paste -sd' ' -)
+            [ -n "$kinds" ] || kinds=pipeline   # an empty or unreadable diff is never merged
             if echo "$kinds" | grep -qiE 'deps|pipeline'; then
-              echo "DECLINE #$pr: diff touches build/pipeline files ($kinds) — always human-gated."
+              echo "DECLINE #$pr: diff touches files outside content and data ($kinds) — always human-gated."
               gh pr edit "$pr" --add-label needs-human || true
-              gh pr comment "$pr" --body "Auto-merge declined: this PR changes build or pipeline files (\`$kinds\`), which require human review. Labeled \`needs-human\`." || true
+              gh pr comment "$pr" --body "Auto-merge declined: this PR changes files outside content and data (\`$kinds\`: build, pipeline, agency, doc or catalog files), which require human review. Labeled \`needs-human\`." || true
               declined=$((declined+1)); echo "::endgroup::"; continue
             fi
 
@@ -136,8 +142,8 @@ jobs:
               skipped=$((skipped+1)); echo "::endgroup::"; continue
             fi
 
-            echo "MERGE #$pr: $flavor-only, green, mergeable -> squash-merging."
-            if gh pr merge "$pr" --squash --delete-branch; then merged=$((merged+1)); else
+            echo "MERGE #$pr: $flavor-only, green, mergeable -> merging (merge commit, head $head)."
+            if gh pr merge "$pr" --merge --match-head-commit "$head" --delete-branch; then merged=$((merged+1)); else
               echo "merge failed for #$pr"; skipped=$((skipped+1)); fi
             echo "::endgroup::"
           done <<< "$prs"
