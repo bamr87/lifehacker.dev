@@ -3,17 +3,17 @@
 
 > The latest triage run's ranked queue of site-health findings — counts by severity and route, then the top of the queue.
 
-_Last triage: 2026-10-31T07:54:43Z_  ·  **17** item(s) in the queue. _Analytics not yet connected — ranking by severity only._
+_Last triage: 2026-11-26T07:54:51Z_  ·  **14** item(s) in the queue. _Analytics not yet connected — ranking by severity only._
 
 ## By severity
 
 - **sev2**: 1
-- **sev3**: 12
-- **sev4**: 4
+- **sev3**: 10
+- **sev4**: 3
 
 ## By route
 
-- **local**: 16
+- **local**: 13
 - **upstream**: 1
 
 ## Top of the queue
@@ -25,15 +25,12 @@ _Last triage: 2026-10-31T07:54:43Z_  ·  **17** item(s) in the queue. _Analytics
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/agent-review.yml` | local | bamr87/lifehacker.dev |
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/auto-fix.yml` | local | bamr87/lifehacker.dev |
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/auto-update.yml` | local | bamr87/lifehacker.dev |
-| 1.4 | sev3 | type/ci-bug | `.github/workflows/brand-sweep.yml` | local | bamr87/lifehacker.dev |
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/content-factory.yml` | local | bamr87/lifehacker.dev |
-| 1.4 | sev3 | type/ci-bug | `.github/workflows/fleet-dispatch.yml` | local | bamr87/lifehacker.dev |
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/loop-tuner.yml` | local | bamr87/lifehacker.dev |
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/loop-tuner.yml` | local | bamr87/lifehacker.dev |
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/quest-forge.yml` | local | bamr87/lifehacker.dev |
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/weekly-epic.yml` | local | bamr87/lifehacker.dev |
 | 1.4 | sev3 | type/ci-bug | `.github/workflows/wire-scout.yml` | local | bamr87/lifehacker.dev |
-| 0.7 | sev4 | type/drift | `.github/workflows/release.yml` | local | bamr87/lifehacker.dev |
 | 0.7 | sev4 | type/other | `/posts/2024/06/17/wizard-topples-capitalist-dominance-ingeniously/` | local | bamr87/lifehacker.dev |
 | 0.7 | sev4 | type/other | `/hacks/excel-to-grep-awk-month-end-close/` | local | bamr87/lifehacker.dev |
 | 0.2 | sev4 | type/link-rot | `` | upstream | bamr87/zer0-mistakes |
