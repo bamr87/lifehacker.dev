@@ -5622,3 +5622,19 @@ backlog:
     source: manual
     source_url: https://www.parameter.ai/labs/we-found-a-gap-at-openai
     fingerprint: 611b24396c9c
+  # --- Fresh wire (autopilot run, 2026-11-25): a `wire` run found every WIRE
+  # item on main done; the open wire-scout PR #839 already claims WIRE-028..030
+  # (Anthropic IPO pricing, MedChemBench, code-golf), so this takes WIRE-031 on
+  # an untaken story. The Wire is pinned to rhea.
+  - id: WIRE-031
+    kind: wire
+    title: "ChatPRD's founder says token fraud ate 90% of her time and tens of thousands of dollars; the free trial is dead, and the fraud traffic drew pelicans"
+    brief: "Fresh wire idea (2026-11-25). Claire Vo (ChatPRD) posted on X on Nov 10 that she spends '90% of my time' fighting 'increasingly creative international token fraud operations', 'mostly to steal Opus tokens on resold promo codes or in the time between a trial start + our fraud alerts infra', costing 'tens of thousands of dollars'; 'free trials are dead on chatprd'; may ban non-US business in 2027. Simon Willison (Nov 20) linked her How I AI video, quoting her 'funding a international Roblox and Fortnite map studio', and notes pelican-on-a-bicycle SVG prompts in the fraud traffic, which he presumes were model-sniffing. Desk check: chatprd.ai/pricing on Nov 25 still lists a Free plan (3 chats, basic model) and a 14-day Pro/Teams trial, 'Card required'; Pro lists Claude Opus 5.5 among premium models. COI load-bearing: the desk runs on Claude, the model whose tokens she says were the target."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P1
+    status: done
+    published: /wire/chatprd-token-fraud/
+    source: manual
+    source_url: https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/
+    fingerprint: 109ef552f989
