@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-25T21:41:19Z",
-  "date": "2026-11-25",
-  "weekday": "wed",
+  "generated_at": "2026-11-26T21:41:01Z",
+  "date": "2026-11-26",
+  "weekday": "thu",
   "recency_days": 14,
   "max_proposals_per_run": 3,
   "wander_slots": 1,
@@ -84,23 +84,23 @@
       "max_items": 2
     },
     {
-      "id": "mistral-news",
-      "name": "Mistral AI news",
-      "url": "https://mistral.ai/news/",
+      "id": "hf-blog",
+      "name": "Hugging Face blog",
+      "url": "https://huggingface.co/blog",
       "type": "html",
-      "trust": "primary",
+      "trust": "community",
       "frequency": "weekly",
-      "weekday": "wed",
+      "weekday": "thu",
       "topics": [
-        "mistral",
-        "open weights",
-        "model releases"
+        "open models",
+        "benchmarks",
+        "tooling"
       ],
       "include": [
 
       ],
       "exclude": [
-
+        "course"
       ],
       "max_items": 2
     },
