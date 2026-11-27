@@ -5791,3 +5791,40 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/11/26/a-readme-in-the-basement-told-me-to-push-to-main/
+
+  # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
+  # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
+  # links that page in the published piece. Default P3 — human items outrank these.
+  - id: SRC-181
+    kind: hack
+    title: "Golden-master tests for code you're scared to touch: capture what the legacy program actually prints, commit it, then refactor"
+    brief: "Before you let anyone, or any robot, 'modernize' a program nobody understands, pin down what it DOES, not what it should do. Run the untouched program against fixed inputs, save its output byte for byte as a golden master (`./report > golden/report-270101.txt`), commit the masters BEFORE the first change, and make the test a plain `./report > out.txt && diff -u golden/report-270101.txt out.txt` that fails on any byte that moved. The failures that stay in. Anything nondeterministic (today's date, a header timestamp, a temp path, hash-ordered output) breaks the master on the very next run, so pin the clock and the inputs before you capture, not after; the quest feeds its as-of date from a parameter file for exactly this reason. An expected file an AI WROTE ('here is what the output should be') is not a master. It's a fluent guess that will certify a bug as the spec, so the master is captured, never authored. And the snapshot tool's update switch (`--snapshot-update`, `UPDATE_GOLDEN=1`) turns every regression into the new truth in one keystroke, so a master changes only in its own commit with the reason in the message. When you parse money totals out of the report, compare them as `Decimal`, never float. You'll know it worked when changing one character of the program's output turns the test red."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0101/relic-raisers-04-the-gauntlet-of-trials/
+    source_title: "Relic Raisers Ch. IV: The Gauntlet of Trials"
+    fingerprint: 2b3657371d7a
+  - id: SRC-182
+    kind: hack
+    title: "Two-digit years still have a Y2K bug: Python's %y, dateutil, and the old system's pivot can each pick a different century for the same date"
+    brief: "The legacy file stores dates as YYMMDD, and the program that wrote them chose the century with a window. In the quest's relic, YY below 50 means 20YY and anything else means 19YY. Your port reads the same field with `datetime.strptime(s, '%y%m%d')`, which follows the POSIX rule instead (69–99 become 1969–1999, 00–68 become 2000–2068). So '600101' turns into 2060 where the original meant 1960, and every aging bucket, sort, and overdue flag downstream is quietly wrong. `dateutil.parser` uses yet another rule, a window that slides with the current year (writer: verify the exact rule and show what '70' and '76' parse to today), so the same string can change century next year. The fix: never let a library guess. Parse YY as an integer, apply the source system's documented pivot in one function with a test at every boundary (49, 50, 68, 69), and write four-digit years on output. The failures that stay in. The pivot is a business rule buried in the old code, not a standard, so find it in the source, the history, or the person who wrote it rather than assuming 50. A date older than the window (a 1949 birthdate) can't be represented in two digits and has to be flagged, not silently moved. And a CSV that passed through a spreadsheet may already have been re-centuried by the spreadsheet's own cutoff (writer: verify Excel's) before you ever saw it. You'll know it worked when the boundary table passes and '991231' sorts before '000101'."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/relic-raisers-02-the-strata/
+    source_title: "Relic Raisers Ch. II: The Strata"
+    fingerprint: d4cb45af6991
+  - id: SRC-183
+    kind: hack
+    title: "git blame names the reformat commit, not the culprit: find when a line was born with git log -S, -G, and blame -L"
+    brief: "`git blame` tells you the LAST commit that touched each line, which is usually the 'run the formatter on everything' commit and not the decision you're trying to understand. To find when a rule appeared, use the pickaxe. `git log -S'STATUS 7' --oneline -- ARAGE01.cob` lists the commits where the number of occurrences of that string changed, meaning it was added or removed. `git log -G'STATUS\\s*7' -p` matches by regex on any added or removed diff line, so it also catches edits that leave the count the same. Narrow blame to the block you care about with `git blame -L '/EVALUATE TRUE/,+14' file`, add `-w` to ignore whitespace changes and `-C` (repeat it to search harder) to follow lines moved or copied from other files, and list the mass-reformat SHAs in `.git-blame-ignore-revs` with `git config blame.ignoreRevsFile .git-blame-ignore-revs` so blame looks straight past them. The failures that stay in. `-S` misses a commit that only MOVED the string, because the count didn't change; that's what `-G` is for. `--follow` works for exactly one path, so tracing across a rename means one file at a time. And history only goes back as far as the import: a repo whose first commit says 'initial import' has nothing older, so the rest of the answer is in comments and in people, not in git. Reproducible in a throwaway repo where you add a rule, reformat the file, then move the rule."
+    voice: how-to-practical
+    priority: P3
+    status: todo
+    source: content-scout
+    source_url: https://it-journey.dev/quests/0110/relic-raisers-02-the-strata/
+    source_title: "Relic Raisers Ch. II: The Strata"
+    fingerprint: bfd04381f4d0
