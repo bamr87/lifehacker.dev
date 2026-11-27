@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T21:41:01Z",
-  "date": "2026-11-26",
-  "weekday": "thu",
+  "generated_at": "2026-11-27T21:41:22Z",
+  "date": "2026-11-27",
+  "weekday": "fri",
   "recency_days": 14,
   "max_proposals_per_run": 3,
   "wander_slots": 1,
@@ -84,23 +84,23 @@
       "max_items": 2
     },
     {
-      "id": "hf-blog",
-      "name": "Hugging Face blog",
-      "url": "https://huggingface.co/blog",
+      "id": "simonwillison",
+      "name": "Simon Willison's weblog",
+      "url": "https://simonwillison.net/",
       "type": "html",
-      "trust": "community",
+      "trust": "reputable",
       "frequency": "weekly",
-      "weekday": "thu",
+      "weekday": "fri",
       "topics": [
-        "open models",
-        "benchmarks",
-        "tooling"
+        "llm tooling",
+        "model reviews",
+        "prompt injection"
       ],
       "include": [
 
       ],
       "exclude": [
-        "course"
+
       ],
       "max_items": 2
     },

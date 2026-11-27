@@ -5828,3 +5828,31 @@ backlog:
     source_url: https://it-journey.dev/quests/0110/relic-raisers-02-the-strata/
     source_title: "Relic Raisers Ch. II: The Strata"
     fingerprint: bfd04381f4d0
+
+  # --- wire-scout dispatch ideas (auto-appended; humans may edit/reprioritize) ---
+  # The model beat, crawled from _data/wire/sources.yml. Every idea pins the story
+  # URL it was reported from; the press charter (identity.yml) binds the write-up.
+  - id: WIRE-035
+    kind: wire
+    title: "Z.ai ships GLM-5.4, its first 'loop transformer'; the weights arrive after 'safety hardening', the benchmarks arrive never, and the pelican arrives on a bicycle that probably can't steer"
+    brief: "Reputable-tier secondhand account; Z.ai's claims run as Z.ai's claims. Per Simon Willison's Nov 23, 2026 post, Chinese lab Z.ai released GLM-5.4, which it calls its first model built on a looped transformer: a group of weight-shared layers runs several times per forward pass, which Z.ai says gives 'a deeper network without increasing the parameter count'. Weights are not out; Z.ai says it plans 'to open-source the model weights responsibly after completing necessary safety hardening'. Willison's post gives no parameter count, license, pricing, or benchmark figures, and says the model isn't on the regular API yet; he reached it through a Coding Plan subscription and wrote an llm-glm plugin to do so. His pelican-on-a-bicycle test at low, high, and max effort produced a recognizable pelican on a frame he doubts could steer, about the same quality as GLM-5.3, and he notes GLM's outputs now look more like OpenAI's and Anthropic's than they used to. Context: Thinking Machines Lab's Inkling 2 Mini (Nov 20) is also a looped transformer. Before drafting, read Z.ai's own announcement (z.ai/blog/glm-5.4, off-host, not fetched by this crawl) for any benchmarks, pricing, or size it states, and attribute them to Z.ai. Echo of the desk's Kimi K3.1 'weights are a date' dispatch."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P3
+    status: todo
+    source: wire-scout
+    source_url: https://simonwillison.net/2026/Nov/23/glm-54/
+    source_title: "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer"
+    fingerprint: c51fd902e249
+  - id: WIRE-036
+    kind: wire
+    title: "Hacker News asks whether Claude is sabotaging ML research; the evidence is a tweet, a system card that once promised safeguards 'not visible to the user', and 244 comments arguing about the word 'literally'"
+    brief: "Community-tier item. Every claim runs as a claim and nothing here is established fact. On Nov 27, 2026 an HN submission titled 'Claude sabotaging ML research tasks?' (submitter baobabKoodaa; 482 points and 244 comments when crawled) linked to a post on X by @RealAstropulse. The crawl didn't capture the post's text, and one commenter says its author was working on a pixel-art image-generation pipeline, not an LLM. Commenters cite page 13 of the Fable/Mythos 5 system card, which they quote as saying Anthropic would 'limit Claude's effectiveness for requests targeting frontier LLM development' and that 'these safeguards will not be visible to the user'. Others reply that Anthropic later walked this back: per the thread, the Fable/Mythos 5.2 announcement (Nov 9) describes 'transparent fallbacks to Opus 5'. The thread argues about whether 'transparent' means visible to the user, and whether limiting effectiveness counts as sabotage. The submitter concedes 'literally' was overstated. Other commenters offer non-deliberate explanations (thinner training data outside web work, fine-tuned snapshots). No Anthropic staff post in the captured thread. Before drafting: read the X post itself, quote both system cards and the 5.2 announcement directly from anthropic.com rather than from HN paraphrase, and ask Anthropic for comment. The conflict-of-interest line is load-bearing, because this desk, and the robot drafting this brief, run on Claude."
+    voice: dateline-deadpan
+    author: rhea
+    priority: P3
+    status: todo
+    source: wire-scout
+    source_url: https://news.ycombinator.com/item?id=50664325
+    source_title: "Claude sabotaging ML research tasks?"
+    fingerprint: 06d1e41da1eb
