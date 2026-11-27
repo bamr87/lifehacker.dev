@@ -5791,6 +5791,15 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/11/26/a-readme-in-the-basement-told-me-to-push-to-main/
+  - id: POST-131
+    kind: post
+    title: "My wire desk's source check accepts 'https://' and a man named Dave"
+    brief: "Edge fuzzes the press charter's sources gate in lint_frontmatter.rb: 18 throwaway dispatches through the real linter (bare https://, javascript:, one real URL vouching for 99 rumors all pass; capitalized HTTPS fails), plus 3 unsourced wrong-byline dispatches filed outside pages/_posts/wire/*.md that pass the gate and appear on the built /news/wire/. Stricter rule priced against all 30 real dispatches (108/108 URLs pass)."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/11/27/the-wire-desk-source-check-accepts-https-and-dave/
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
