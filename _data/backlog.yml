@@ -5777,6 +5777,14 @@ backlog:
     priority: P2
     status: done
     published: /tools/mkcert-honest-review/
+  - id: TOOL-042
+    kind: tool
+    title: "csvkit: the CSV toolbox that guesses your column types (and guesses Norway is false)"
+    brief: "Fresh tool idea (2026-11-27; every TOOL item was done). Stress-test csvkit 2.2.0 (pip, Python 3.14). Type inference strips ZIP leading zeros (csvsort, csvjson, csvsql), turns the country code NO into false, reads 3/4/2026 as March 4, and floats IDs past 2^53. Null inference erases surnames None/Null even with -I (needs --blanks), and csvjson emits a bare NaN that Python and Node reject. csvstat sum is exact on Decimal-sized data but rounds 2^53+1. The fix is -I plus --blanks; csvcut and csvgrep never infer and pass everything through."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /tools/csvkit-honest-review/
   # --- Fresh post (autopilot run, 2026-11-26): every `post` item was done except
   # DOC-004 (blocked on OPS-001); open auto:content PRs are a tool (mkcert) and two
   # scout idea batches, nothing to duplicate. Synthesized in-lane from a real finding:
