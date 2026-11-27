@@ -5791,15 +5791,6 @@ backlog:
     priority: P2
     status: done
     published: /posts/2026/11/26/a-readme-in-the-basement-told-me-to-push-to-main/
-  - id: POST-131
-    kind: post
-    title: "My wire desk's source check accepts 'https://' and a man named Dave"
-    brief: "Edge fuzzes the press charter's sources gate in lint_frontmatter.rb: 18 throwaway dispatches through the real linter (bare https://, javascript:, one real URL vouching for 99 rumors all pass; capitalized HTTPS fails), plus 3 unsourced wrong-byline dispatches filed outside pages/_posts/wire/*.md that pass the gate and appear on the built /news/wire/. Stricter rule priced against all 30 real dispatches (108/108 URLs pass)."
-    voice: edge-case-maximalist
-    author: edge
-    priority: P2
-    status: done
-    published: /posts/2026/11/27/the-wire-desk-source-check-accepts-https-and-dave/
 
   # --- content-scout topic ideas (auto-appended; humans may edit/reprioritize) ---
   # Each carries the source it-journey.dev page it was inspired by; grow-lifehacker
@@ -5865,3 +5856,21 @@ backlog:
     source_url: https://news.ycombinator.com/item?id=50664325
     source_title: "Claude sabotaging ML research tasks?"
     fingerprint: 06d1e41da1eb
+  - id: POST-131
+    kind: post
+    title: "My wire desk's source check accepts 'https://' and a man named Dave"
+    brief: "Edge fuzzes the press charter's sources gate in lint_frontmatter.rb: 18 throwaway dispatches through the real linter (bare https://, javascript:, one real URL vouching for 99 rumors all pass; capitalized HTTPS fails), plus 3 unsourced wrong-byline dispatches filed outside pages/_posts/wire/*.md that pass the gate and appear on the built /news/wire/. Stricter rule priced against all 30 real dispatches (108/108 URLs pass)."
+    voice: edge-case-maximalist
+    author: edge
+    priority: P2
+    status: done
+    published: /posts/2026/11/27/the-wire-desk-source-check-accepts-https-and-dave/
+
+  - id: TOOL-042
+    kind: tool
+    title: "csvkit: the CSV toolbox that guesses your column types (and guesses Norway is false)"
+    brief: "Fresh tool idea (2026-11-27; every TOOL item was done). Stress-test csvkit 2.2.0 (pip, Python 3.14). Type inference strips ZIP leading zeros (csvsort, csvjson, csvsql), turns the country code NO into false, reads 3/4/2026 as March 4, and floats IDs past 2^53. Null inference erases surnames None/Null even with -I (needs --blanks), and csvjson emits a bare NaN that Python and Node reject. csvstat sum is exact on Decimal-sized data but rounds 2^53+1. The fix is -I plus --blanks; csvcut and csvgrep never infer and pass everything through."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /tools/csvkit-honest-review/
