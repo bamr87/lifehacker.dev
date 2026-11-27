@@ -106,12 +106,12 @@ The pipeline runs only the tier each change needs. A `changes` job classifies th
 
 | Change kind | Examples | Runs |
 |---|---|---|
-| **content** | `pages/**`, `_data/brand|navigation`, backlog, `_data/wire/sources.yml`, root content pages, assets | `verify` (build + content gate) + `content-review` |
+| **content** | `pages/**` (except the human-gated `pages/_docs/` and agency collections like `pages/_wargames/`, which class as `other`), `_data/brand|navigation`, backlog, `_data/wire/sources.yml`, root content pages, assets | `verify` (build + content gate) + `content-review` |
 | **deps** | `Gemfile*`, `_config*.yml` | `verify` + `fast` (build + harness + audit + sim) |
 | **pipeline** | `scripts/**`, `.github/**`, `.claude/**` | `verify` + `fast` (audit + sim test the changed machinery) |
 | **data** | `_data/health|fleet|analytics`, `SITE_HEALTH.md` | `verify` only |
 
-`verify` (the required check) always runs so branch protection stays meaningful; `fast` is skipped for content-only PRs. An empty/unclassifiable diff fails safe to "run everything".
+`verify` (the required check) always runs so branch protection stays meaningful; `fast` is skipped for content-only PRs. An empty/unclassifiable diff fails safe to "run everything". A docs- or agency-only PR is therefore unclassifiable and runs everything; beside a post it rides the post's content gate.
 
 ## The autonomous content factory
 
@@ -128,7 +128,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 | `auto-update.yml` | after `pipeline`, sweep, manual | `AUTO_UPDATE_ENABLED` + `FLEET_TOKEN` | Merges `main` into each open `auto:content` PR in a runner (where the `_data/backlog.yml` `merge=backlog` driver actually fires — GitHub's merge button never runs it) and pushes, so colliding siblings stay mergeable. Real conflicts, duplicate backlog ids, and any merge that fails `lint_artifacts.rb` → `needs-human`, never pushed. Its `Gate` tests the token's **validity**, not merely its presence: a `FLEET_TOKEN` that is set but rejected fails the run with an `::error::` naming expiry, instead of passing the gate and dying in `Checkout` with `could not read Username`. `scripts/ci/test_auto_update_gate.rb` executes that Gate through all four token states in Tier 1. |
 | `auto-fix.yml` | `pipeline` failure | `AUTO_FIX_ENABLED` + key | `fleet-bugfix` attempts a content-only fix; after 3 tries, labels `needs-human`. |
 
-**The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies every candidate PR's diff and declines (labels `needs-human`) anything touching `deps`/`pipeline`, even if it's labeled `auto:content`. So auto-merge can only ever ship pure content; dependency, pipeline, and workflow changes are **always** human-gated. `scripts/devops/audit.rb` enforces both the per-workflow `*_ENABLED` gates and the smuggle guard, so these invariants fail CI if they regress.
+**The smuggle guard** is the load-bearing safety: `auto-merge.yml` re-classifies every candidate PR's diff and declines (labels `needs-human`) anything touching `deps`/`pipeline`, even if it's labeled `auto:content`. Each file is classified on its own, so a human-gated file (an agency tree, `docs/`, `features/`, or a `pages/_docs/` or promoted-agency page) reads as the fail-safe `pipeline` and is declined even beside content. So auto-merge can only ever ship pure content; dependency, pipeline, workflow, doc and agency changes are **always** human-gated (amendment 0005). `scripts/ci/test_classify_changes.rb` executes the guard's decline pattern against the classifier. `scripts/devops/audit.rb` enforces both the per-workflow `*_ENABLED` gates and the smuggle guard, so these invariants fail CI if they regress.
 
 ## Turning on continuous autonomy (deliberate)
 
