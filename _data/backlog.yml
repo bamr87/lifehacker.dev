@@ -5778,6 +5778,14 @@ backlog:
     priority: P2
     status: done
     published: /tools/mkcert-honest-review/
+  - id: TOOL-042
+    kind: tool
+    title: "csvkit: the CSV toolbox that guesses your column types (and guesses Norway is false)"
+    brief: "Fresh tool idea (2026-11-27; every TOOL item was done). Stress-test csvkit 2.2.0 (pip, Python 3.14). Type inference strips ZIP leading zeros (csvsort, csvjson, csvsql), turns the country code NO into false, reads 3/4/2026 as March 4, and floats IDs past 2^53. Null inference erases surnames None/Null even with -I (needs --blanks), and csvjson emits a bare NaN that Python and Node reject. csvstat sum is exact on Decimal-sized data but rounds 2^53+1. The fix is -I plus --blanks; csvcut and csvgrep never infer and pass everything through."
+    voice: edge-case-maximalist
+    priority: P2
+    status: done
+    published: /tools/csvkit-honest-review/
   # --- Fresh post (autopilot run, 2026-11-26): every `post` item was done except
   # DOC-004 (blocked on OPS-001); open auto:content PRs are a tool (mkcert) and two
   # scout idea batches, nothing to duplicate. Synthesized in-lane from a real finding:
@@ -5857,11 +5865,15 @@ backlog:
     source_url: https://news.ycombinator.com/item?id=50664325
     source_title: "Claude sabotaging ML research tasks?"
     fingerprint: 06d1e41da1eb
-  - id: TOOL-042
-    kind: tool
-    title: "csvkit: the CSV toolbox that guesses your column types (and guesses Norway is false)"
-    brief: "Fresh tool idea (2026-11-27; every TOOL item was done). Stress-test csvkit 2.2.0 (pip, Python 3.14). Type inference strips ZIP leading zeros (csvsort, csvjson, csvsql), turns the country code NO into false, reads 3/4/2026 as March 4, and floats IDs past 2^53. Null inference erases surnames None/Null even with -I (needs --blanks), and csvjson emits a bare NaN that Python and Node reject. csvstat sum is exact on Decimal-sized data but rounds 2^53+1. The fix is -I plus --blanks; csvcut and csvgrep never infer and pass everything through."
-    voice: edge-case-maximalist
+  # --- Fresh doc (autopilot run, 2026-11-27): a `doc` run found every DOC item
+  # done; the open auto:content PRs are a field note, a tool review and a scout
+  # batch, nothing in-lane to duplicate. Rotation returned cass.
+  - id: DOC-111
+    kind: doc
+    author: cass
+    title: "The customs desk that checks the paperwork, not the crate"
+    brief: "Fresh doc idea (2026-11-27; every DOC item was done). Threat-model scripts/ci/lint_agencies.rb, the gate over the 23 imported agency site trees. It does catch unregistered trees, stray files and a removed `agencies` build exclude (all three run). By its own header it never re-checks a tree against its receipt, mirrors included: a tampered mirror file passes, and so do a hand-matched tree_sha256, `tree_sha256: trust me`, a 40-hex fake commit and `files: 9000`. Only a short commit id fails. Walk-back: all 18 mirrors match their receipts today, and classify_changes rounds agency paths up to pipeline, so auto-merge sends them to a human. Mitigations, all run: import.rb --verify --ref <receipt commit> against the real source (catches the forged receipt); an offline mirror digest loop (2 s, catches a plain tamper); and in review, a tree_sha256 change without commit/imported means a hand-edited receipt."
+    voice: threat-model-everything
     priority: P2
     status: done
-    published: /tools/csvkit-honest-review/
+    published: "/docs/the-customs-desk-that-checks-the-paperwork/"
