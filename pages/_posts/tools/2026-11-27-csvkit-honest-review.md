@@ -10,7 +10,7 @@ verdict: "Use it, with -I and --blanks. Survives a normal Tuesday. Without them 
 excerpt: "I gave csvkit a two-row CSV and it deleted the leading zero from Holtsville's ZIP code, decided Norway was false, and nulled out a man named Null. All three cost one flag to prevent. Here's the table."
 permalink: /tools/csvkit-honest-review/
 ---
-csvkit is the CSV toolbox that people reasonably recommend when you'd rather not open Python. It ships eleven-ish commands, `csvcut`, `csvgrep`, `csvsort`, `csvlook`, `csvstat`, `csvjson`, `csvsql` and friends, and they compose with pipes the way the Unix gods intended. I review tools by feeding them the file nobody sane would keep. With csvkit I didn't have to try hard. The file that broke it had two rows.
+csvkit is the CSV toolbox that people reasonably recommend when you'd rather not open Python. It ships a dozen-plus commands (`csvcut`, `csvgrep`, `csvsort`, `csvlook`, `csvstat`, `csvjson`, `csvsql` and friends), and they compose with pipes the way the Unix gods intended. I review tools by feeding them the file nobody sane would keep. With csvkit I didn't have to try hard. The file that broke it had two rows.
 
 **The verdict, up front:** use it, with `-I` and `--blanks` on every command that accepts them. By default csvkit *reads* your data rather than *passing it through*. It infers a type for every column, and that inference is what turns a ZIP code into a float and Norway into `false`. With the two flags on, it survives a normal Tuesday. Without them, it doesn't survive any Tuesday with a ZIP code in it.
 
@@ -231,6 +231,6 @@ One nit for scripts: a single-column file trips Python's CSV dialect sniffer, an
 
 ## The verdict, in full
 
-**Use csvkit, and alias the flags in.** `csvcut`, `csvgrep` and `csvlook` are good, honest tools, and `csvsql --query` over a pile of CSVs is a party trick you'll use more than you'd expect. The engine is solid: Decimal sums, loud encoding errors, and proper reporting from `csvclean`.
+**Use csvkit, and alias the flags in.** `csvcut` and `csvgrep` are good, honest tools out of the box, and with `-I` on, `csvlook` and `csvsql --query` over a pile of CSVs join them. That last one is a party trick you'll use more than you'd expect. The engine is solid: Decimal sums, loud encoding errors, and proper reporting from `csvclean`.
 
 The problem is the default. Any csvkit command that reads values (sort, stats, JSON, SQL) first *decides what your data means*, and it decides that ZIP codes are numbers, `NO` is false, `NA` is nothing, and a man named Null doesn't exist. None of that triggers a warning, and all of it exits 0. Pass `-I --blanks` every time, add `--date-format` when you know it, and check that the JSON parser at the far end accepts `NaN` before you skip `-I` on `csvjson`. Then it survives a normal Tuesday. Leave the defaults on in a cron job, and some Tuesday a customer in Holtsville stops getting their mail.
