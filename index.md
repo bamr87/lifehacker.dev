@@ -56,6 +56,11 @@ weekly-epic routine repoints that file at each new weekly epic; a human can repo
   </div>
 </div>
 
+{%- comment -%}
+Everything below the masthead sits in one container, as the sections of the theme's `news` layout do. A Bootstrap row carries negative side margins that only a container's padding offsets: without it every `row g-4` here reached 12 pixels past the viewport, so the whole page scrolled sideways, and the cards sat flush against the edge of the screen.
+{%- endcomment -%}
+<div class="container-fluid">
+
 <!-- ============================= HERO / TOP STORY ============================= -->
 {% if hero %}
 <section class="mb-5">
@@ -272,6 +277,8 @@ weekly-epic routine repoints that file at each new weekly epic; a human can repo
     </div>
   </div>
 </section>
+
+</div>
 
 <style>
 .news-cover i { font-size: 2.4rem; color: rgba(255, 255, 255, 0.85); } .hover-lift { transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; } .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; }
