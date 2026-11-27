@@ -26,6 +26,11 @@ features:
     surface: content
     link: "pages/_posts"
     docs: "README.md"
+    scenarios: [smoke-home]
+    evidence: ["test/evidence/smoke-home"]
+    verified:
+      date: 2026-11-25
+      by: agent
   - id: LHD-002
     title: "Machine-readable brand in _data/brand/"
     description: "Machine-readable brand in `_data/brand/` (identity, voice, glossary) read by the autopilot"

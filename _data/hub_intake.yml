@@ -3,7 +3,7 @@
 # Personas, voices, styles, topics and assignment are NOT defined here: they live in the shared fleet voice model
 # voices/v1, canonical in bamr87/bamr87 `_data/voices/voices.yml` (schema `voices.schema.json`; constitution § 23 rule 7).
 # Existing personas in _data/authors.yml (claude, cass, edge, rhea, fable, amr) are not reused and are left untouched.
-status: planned            # intake not built yet; publishing workflows are held (HUB_ORIGINATION_HOLD)
+status: planned            # intake not built yet; the drafting lines run on their own backlog meanwhile, auto-merge stays held (HUB_ORIGINATION_HOLD)
 origin:
   repo: bamr87/bamr87
   path: pages/posts        # hub writing section; daily chronicles are pages/posts/YYYY-MM-DD-chronicle.md
