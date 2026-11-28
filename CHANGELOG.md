@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.4.0](https://github.com/bamr87/lifehacker.dev/compare/v0.3.0...v0.4.0) (2026-11-28)
+
+
+### Added
+
+* **agencies:** add promote.rb and teach the site and its gates about published agencies ([64d5c1c](https://github.com/bamr87/lifehacker.dev/commit/64d5c1c646e585ce2ac941a9466444bb16bed979))
+* **agencies:** add the agencies registry, the import tool and its lint ([8efcc5a](https://github.com/bamr87/lifehacker.dev/commit/8efcc5aa1b592c87e8732da61d00f48a6dae5c26))
+
+
+### Fixed
+
+* **agencies:** a Wargames refresh keeps the new URLs and produces links the site accepts ([68d5477](https://github.com/bamr87/lifehacker.dev/commit/68d5477ac2e1f7fe6359130ef205b4cfa872c768))
+* **home:** the home page no longer scrolls sideways ([#835](https://github.com/bamr87/lifehacker.dev/issues/835)) ([d58fed4](https://github.com/bamr87/lifehacker.dev/commit/d58fed4c8d9e77e0471ad891d4db1fd42aa1035b))
+
+
+### Documentation
+
+* **agencies:** ADR 0003 — an agency is published as a collection; FR7, LHD-010 and its evidence ([545ac87](https://github.com/bamr87/lifehacker.dev/commit/545ac87da3be6064705c8beee241c83a17803308))
+* **agencies:** record the decision — ADR 0002, proposed amendment 0004, FR6 and NFR5 ([4ab6af8](https://github.com/bamr87/lifehacker.dev/commit/4ab6af890c5cb7b1cb49770df098def07f9af594))
+* **agencies:** record the ratification — amendment 0004 ratified, ADRs 0002 and 0003 accepted ([e883035](https://github.com/bamr87/lifehacker.dev/commit/e883035970526969cb455d0d8d315f461f6b02ef))
+* **agencies:** say that four originals are gone and which build commands do not resolve here ([250a0fa](https://github.com/bamr87/lifehacker.dev/commit/250a0fae8f75943cecc97eea08cc9bfad245ef37))
+* **governance:** name the content reviewer in auto-merge's review ([3b4877f](https://github.com/bamr87/lifehacker.dev/commit/3b4877fe4de6e55989d24b9df9cfb42b5eba9b5a))
+
 ## [0.3.0](https://github.com/bamr87/lifehacker.dev/compare/v0.2.2...v0.3.0) (2026-11-18)
 
 
