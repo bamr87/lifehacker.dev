@@ -3,7 +3,7 @@
 
 > The latest triage run's ranked queue of site-health findings — counts by severity and route, then the top of the queue.
 
-_Last triage: 2026-11-27T07:54:33Z_  ·  **14** item(s) in the queue. _Analytics not yet connected — ranking by severity only._
+_Last triage: 2026-11-28T07:54:58Z_  ·  **14** item(s) in the queue. _Analytics not yet connected — ranking by severity only._
 
 ## By severity
 
