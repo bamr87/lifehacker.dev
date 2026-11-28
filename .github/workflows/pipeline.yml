@@ -83,6 +83,12 @@ jobs:
       # blind spot that burned 135 doomed runs — see bamr87/bamr87#58.
       - name: auto-update gate contract (validity, not presence)
         run: ruby scripts/ci/test_auto_update_gate.rb
+      # Executes content-factory's post-agent illustrator step through every
+      # path with stubbed gh/git/node (no network, no secrets), and pins the
+      # static half: no illustrator in the agent prompt, metered, probed token.
+      # See bamr87/lifehacker.dev#846.
+      - name: content-factory illustrator contract (post-agent, metered)
+        run: ruby scripts/ci/test_content_factory_illustrate.rb
       - name: Tier-1 summary
         if: always()
         run: |

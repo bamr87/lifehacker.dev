@@ -58,8 +58,10 @@ jobs:
     if: ${{ needs.gate.outputs.go == 'true' }}
     runs-on: ubuntu-latest
     # Per-leg cap: the longest observed leg is 14.4 min, and max-parallel:1 means
-    # one hung agent stalls the other three collections queued behind it.
-    timeout-minutes: 20
+    # one hung agent stalls the other collections queued behind it. The agent
+    # step keeps its own 18-minute cap; the extra job time is the post-agent
+    # illustrator's bounded budget (`timeout 600` below) plus metering.
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       # Serialize the collections: the per-agent "check open auto:content PRs, then
@@ -72,12 +74,22 @@ jobs:
     env:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       # Claude auth: OAuth only (CLAUDE_CODE_OAUTH_TOKEN). ANTHROPIC_API_KEY disabled for now (2026-11-15); to restore, re-add the secrets.ANTHROPIC_API_KEY reference.
-      # FLEET_TOKEN (bot PAT, contents+PRs, NO admin) so the agent can open PRs —
-      # GITHUB_TOKEN is blocked from creating PRs, and PAT-authored PRs also
-      # trigger the pipeline. Falls back to github.token (degrades to no-PR).
-      GH_TOKEN: ${{ secrets.FLEET_TOKEN || github.token }}
+      # GH_TOKEN is NOT set here: the `Resolve a usable GitHub token` step below
+      # probes FLEET_TOKEN and exports it (or github.token) for every later step.
     steps:
       - uses: actions/checkout@v7
+      # FLEET_TOKEN (bot PAT, contents+PRs, NO admin) so the agent can open PRs
+      # and the illustrator's push re-triggers the PR's checks — GITHUB_TOKEN is
+      # blocked from creating PRs, and its pushes trigger no workflows. Probed,
+      # not presence-tested: an expired PAT degrades to github.token with a
+      # warning instead of 401-ing mid-run (bamr87/bamr87#53; scripts/ci/lint_tokens.rb).
+      - name: Resolve a usable GitHub token
+        id: tok
+        uses: ./.github/actions/resolve-gh-token
+        with:
+          candidate: ${{ secrets.FLEET_TOKEN }}
+          fallback: ${{ github.token }}
+          candidate-name: FLEET_TOKEN
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
@@ -86,10 +98,11 @@ jobs:
       # green skip. The matrix is fail-fast:false, so one collection failing
       # never kills the others.
       - name: Generate one ${{ matrix.collection }} and open a PR (universal AI runner)
+        timeout-minutes: 18
         uses: bamr87/bamr87/.github/actions/claude-run@v2
         with:
           agent: grow-lifehacker
-          prompt: "Use the grow-lifehacker skill to produce exactly ONE ${{ matrix.collection }} for lifehacker.dev. Pick the highest-priority backlog item whose kind IS '${{ matrix.collection }}' — never borrow an item meant for another collection (a tmux walkthrough is a hack, not a post). First run `gh pr list --state open --label auto:content --json title,headRefLabel` and if your chosen item duplicates an open PR's topic, take the next-priority '${{ matrix.collection }}' item; if no '${{ matrix.collection }}' item fits or all would duplicate, propose a FRESH on-voice ${{ matrix.collection }} idea, add it to the backlog, and draft THAT (never silently no-op, never cross collections). BYLINE BY ROTATION: unless the chosen item pins an explicit author, run `ruby scripts/fleet/authors.rb --section ${{ matrix.collection }}` and write the piece AS the AI persona it returns (set the byline `author:` to that key and use their voice profile + hard rules) — do NOT default every piece to claude. PREVIEW BANNER: before opening the PR run `node scripts/preview/generate.mjs -f <your-file>` (the Trace Bloom renderer computes the art from the article itself — no API key, no network, and never a shared placeholder), then `node scripts/preview/illustrate.mjs -f <your-file>` (Claude draws the article's subject into that banner; the validated drawing lands in `_data/preview/motifs/<slug>.svg` and the banner is re-rendered with it). Commit the generated preview image, the motif, and the stamped `preview:` front matter with the article — if the illustrator fails it exits non-zero and the computed banner stands, which is fine; never hand-write or share a banner. Verify with /test-lifehacker. Open ONE pull request on a branch, label it 'auto:content' and 'collection/${{ matrix.collection }}', write the resulting PR URL to the file pr-result.txt, flip the backlog item to done, and STOP. Never merge."
+          prompt: "Use the grow-lifehacker skill to produce exactly ONE ${{ matrix.collection }} for lifehacker.dev. Pick the highest-priority backlog item whose kind IS '${{ matrix.collection }}' — never borrow an item meant for another collection (a tmux walkthrough is a hack, not a post). First run `gh pr list --state open --label auto:content --json title,headRefLabel` and if your chosen item duplicates an open PR's topic, take the next-priority '${{ matrix.collection }}' item; if no '${{ matrix.collection }}' item fits or all would duplicate, propose a FRESH on-voice ${{ matrix.collection }} idea, add it to the backlog, and draft THAT (never silently no-op, never cross collections). BYLINE BY ROTATION: unless the chosen item pins an explicit author, run `ruby scripts/fleet/authors.rb --section ${{ matrix.collection }}` and write the piece AS the AI persona it returns (set the byline `author:` to that key and use their voice profile + hard rules) — do NOT default every piece to claude. PREVIEW BANNER: before opening the PR run `node scripts/preview/generate.mjs -f <your-file>` (the Trace Bloom renderer computes the art from the article itself — no API key, no network, and never a shared placeholder). Commit the generated preview image and the stamped `preview:` front matter with the article; never hand-write or share a banner. Do NOT run the illustrator in this session: in CI the workflow draws the motif after you finish, on your PR's branch. Verify with /test-lifehacker. Open ONE pull request on a branch, label it 'auto:content' and 'collection/${{ matrix.collection }}', write the resulting PR URL to the file pr-result.txt, flip the backlog item to done, and STOP. Never merge."
           tools: "Bash,Read,Write,Edit,Grep,Glob"
           system: "You are the lifehacker.dev content factory. Produce one on-voice, tested piece and open one PR. Never merge."
       # Reached only when the agent step SUCCEEDED — a rejected or failed model
@@ -101,3 +114,69 @@ jobs:
         run: |
           [ -s pr-result.txt ] || { echo "::error::content-factory ${{ matrix.collection }}: the agent ran but opened no PR — see its log (every candidate a duplicate? verification failed? push rejected?)."; exit 1; }
           echo "opened: $(cat pr-result.txt)"
+
+      # ---- The illustrator, AFTER the agent (bamr87/lifehacker.dev#846). ----
+      # It used to run inside the agent's Bash tool, where the nested Claude CLI
+      # had no login ("Not logged in"), so every factory article since 2026-10-30
+      # shipped without a motif and the job stayed green. Here it runs as a job
+      # step with the job's own CLAUDE_CODE_OAUTH_TOKEN; scripts/ai/run.sh has no
+      # AI_RUNNER outside claude-run, so it fetches the hub runner (shim rung 4).
+      # Non-fatal by design: the computed Trace Bloom banner already stands, so a
+      # failure is a missing drawing, never a broken cover — but it is a VISIBLE
+      # one: every failure path prints a ::warning:: naming the article.
+      # scripts/ci/test_content_factory_illustrate.rb runs this script with
+      # stubbed gh/git/node; keep the two in step.
+      - name: Illustrate the article (post-agent)
+        id: illustrate
+        env:
+          COLLECTION: ${{ matrix.collection }}
+        run: |
+          article=""
+          skip() { echo "::warning::content-factory ${COLLECTION}: no motif for ${article:-the article} — $1"; exit 0; }
+          url=$(head -n 1 pr-result.txt | tr -d '[:space:]')
+          [ -n "$url" ] || skip "pr-result.txt is empty"
+          branch=$(gh pr view "$url" --json headRefName -q .headRefName) || skip "cannot read the head branch of $url"
+          [ -n "$branch" ] || skip "cannot read the head branch of $url"
+          article=$(gh pr diff "$url" --name-only | grep -E '^pages/_[^/]+/.+\.md$' | head -n 1) || true
+          [ -n "$article" ] || skip "$url changes no article under pages/_*/ (or its diff could not be read)"
+          git fetch --no-tags --depth=1 origin "$branch" || skip "cannot fetch $branch"
+          git switch --discard-changes -C "$branch" FETCH_HEAD || skip "cannot check out $branch"
+          rc=0
+          timeout 600 node scripts/preview/illustrate.mjs -f "$article" || rc=$?
+          [ "$rc" -eq 0 ] || skip "illustrate.mjs exited $rc (3 = no Claude credential, 124 = timed out; see the log above). The computed banner stands"
+          motifs=$(git status --porcelain --untracked-files=all -- _data/preview/motifs)
+          if [ -z "$motifs" ]; then
+            echo "::notice::content-factory ${COLLECTION}: illustrate.mjs drew nothing for ${article} (already illustrated, or bespoke cover art)."
+            exit 0
+          fi
+          git add -- _data/preview/motifs assets/images/previews "$article" || skip "git add failed"
+          git -c user.name="lifehacker-content-factory[bot]" -c user.email="content-factory@lifehacker.dev" \
+            commit -q -m "chore(preview): illustrate $(basename "$article" .md)" || skip "git commit failed"
+          # Push with the resolved token, not checkout's persisted github.token:
+          # a github.token push starts no workflows, which would leave the PR's
+          # new head without its required checks. The empty extraheader drops
+          # the persisted credential for this one command.
+          git -c http.https://github.com/.extraheader= \
+            push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/${branch}" \
+            || skip "push to $branch was rejected"
+          echo "illustrated: ${article} -> ${branch}"
+
+      # ---- AI usage metering for the illustrator's call. claude-run reports its
+      # own records at the end of the agent step; the illustrator's call happens
+      # after that, outside the action, so it is reported here (audit.rb §1b).
+      # usage_report.rb attributes it through pr-result.txt (untracked, so it
+      # survives the branch switch above) as part of the PR's creation cost.
+      - name: Report AI usage
+        id: usage
+        if: ${{ always() && steps.illustrate.outcome != 'skipped' }}
+        run: |
+          ruby scripts/ai/usage_report.rb \
+            || echo "::notice::AI usage report failed (non-fatal)."
+      - name: Upload AI usage artifact
+        if: ${{ always() && steps.usage.outputs.file != '' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.usage.outputs.name }}
+          path: ${{ steps.usage.outputs.file }}
+          if-no-files-found: ignore
+          retention-days: 30

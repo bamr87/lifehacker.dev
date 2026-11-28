@@ -19,6 +19,8 @@ TIER 1  fast         ── ruby scripts/devops/audit.rb   (pipeline wiring + gu
         (no build,      ruby scripts/sim/simulate.rb   (E2E contract: 15 scenarios)
          seconds)       ruby scripts/ci/test_auto_update_gate.rb
                                                        (auto-update's Gate, executed: 4 token states)
+                        ruby scripts/ci/test_content_factory_illustrate.rb
+                                                       (content-factory's post-agent illustrator, executed: 5 paths)
                         └▶ if this is red, stop before paying for a build
             │
 TIER 2  verify       ── build-overlay (ONCE, continue-on-error)
@@ -121,7 +123,7 @@ A daily, opt-in loop that generates content, reviews it, tests the live site, an
 |---|---|---|---|
 | `content-scout.yml` | daily cron (before the factory), manual | `CONTENT_SCOUT_ENABLED` + key | Crawls a sister site (it-journey.dev by default; `SCOUT_SOURCES`) via WebFetch, proposes on-brand topics, and opens one `auto:content` PR appending `status: todo` backlog items — **each pinned to its source it-journey.dev page**. Scheduled runs apply; manual runs default to dry-run. |
 | `wire-scout.yml` | daily cron (after content-scout, before the factory), manual | `WIRE_SCOUT_ENABLED` + key | Crawls the model-beat news sources configured in `_data/wire/sources.yml` (per-source frequency / trust tier / filters, validated by the harness's `wire` check) via WebFetch under the press charter + quarantine, and opens one `auto:content` PR appending `kind: wire` backlog items — **each pinned to the story URL it was reported from**, bylined `author: rhea`. Scheduled runs apply; manual runs default to dry-run. |
-| `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. |
+| `content-factory.yml` | daily cron, manual | `CONTENT_FACTORY_ENABLED` + key | One `grow-lifehacker` run per collection → one `auto:content` PR each. After the agent, a post-agent step runs `illustrate.mjs` on the PR's branch with the job's own Claude credential and pushes the motif (a failure is a `::warning::`, never a red job), then `Report AI usage` meters that call. `GH_TOKEN` comes from `resolve-gh-token` (probed, not presence-tested). `scripts/ci/test_content_factory_illustrate.rb` executes the step in Tier 1. |
 | `weekly-epic.yml` | weekly cron (Mon, before the factory), manual | `WEEKLY_EPIC_ENABLED` + key | One `weekly-epic` run → the illustrated recap of the prior week's publications, `_data/top_story.yml` repointed → one `auto:content` + `weekly-epic` PR that becomes the homepage hero on merge. |
 | `content-review` (in `pipeline.yml`) | content PRs | key | The `content-reviewer` agent improves the draft and backlogs bigger ideas. |
 | `auto-merge.yml` | after `pipeline`, sweep, manual | `AUTO_MERGE_ENABLED` | Squash-merges green `auto:content` PRs — **only** content-only diffs (the smuggle guard refuses deps/pipeline). |
