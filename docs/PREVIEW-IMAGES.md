@@ -96,6 +96,10 @@ node scripts/preview/illustrate.mjs --force -f <f>    # redraw one that came out
 node scripts/preview/illustrate.mjs --self-test       # the fixtures; offline, no model call
 ```
 
+### In the content factory: a post-agent step
+
+`content-factory.yml` does not ask its agent to illustrate. A Claude CLI started from inside the agent session's Bash tool has no login ("Not logged in"), so from 2026-10-30 every factory article shipped without a motif while the job stayed green (#842, #846). The workflow now runs the illustrator as its own step, **after** the agent has opened its PR: `Illustrate the article (post-agent)` reads `pr-result.txt`, finds the PR's head branch and its article (`pages/_*/…md`), checks that branch out, runs `illustrate.mjs -f <article>` with the job's `CLAUDE_CODE_OAUTH_TOKEN` (bounded by `timeout 600`), and pushes the motif, re-rendered banner and stamped front matter to the PR. It pushes with the probed `FLEET_TOKEN`, so the PR's checks run again on the new head. Every failure path prints a `::warning::` naming the article and the step still exits 0; the computed banner stands. A `Report AI usage` step after it meters the call (`scripts/devops/audit.rb` § 1b). `scripts/ci/test_content_factory_illustrate.rb` (Tier 1 of `pipeline.yml`) runs that step's script through every path with stubbed `gh`/`git`/`node`. Locally and in interactive sessions, the grow-lifehacker skill still runs the illustrator itself, where the session has a real login.
+
 ### This is the rung that was buried. What is different?
 
 The pipeline this framework replaced had a Claude rung, and the autopsy above is blunt about it: *"asked a language model to one-shot a raw SVG document — the single worst way to get vector art out of a model, with no feedback loop and no visual check, so it produced nothing usable and fell through to the template anyway."* Every clause in that sentence is a design requirement, and this layer answers them one at a time.
