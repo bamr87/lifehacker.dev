@@ -13,6 +13,13 @@
 #
 # Prints the kinds present (space-separated) and, in CI, writes booleans
 # (content/deps/pipeline/data) to $GITHUB_OUTPUT for job-level `if:` gating.
+#
+# HUMAN-GATED COLLECTIONS (amendment 0005): pages/_docs/ and every promoted
+# agency collection (pages/_wargames/ today) are NOT `content` — docs and
+# agencies always wait for a human. Any pages/_<collection>/ other than
+# _posts/ and _about/ is classed `other`, so on its own it trips the fail-safe
+# (`pipeline`) and auto-merge's per-file smuggle guard declines it. In a mixed
+# diff `other` is dropped, so a doc next to a post still runs the content gate.
 # =============================================================================
 
 files = (ARGV.empty? ? $stdin.read.split("\n") : ARGV).map(&:strip).reject(&:empty?)
@@ -25,6 +32,8 @@ def kind_of(path)
     'deps'                                       # build inputs changed — full build + tests
   when %r{\A_data/(health|fleet|analytics|explorer|scout|ai_usage)/}, %r{\A_data/wire/(plan\.json|ideas\.jsonl)\z}, %r{\A(SITE_HEALTH|AI_USAGE)\.md\z}
     'data'                                       # generated state / bot run-trails — lightest path
+  when %r{\Apages/_(?!posts/|about/)[^/]+/}
+    'other'                                      # docs + promoted agencies — human-gated (amendment 0005)
   # Every site page now lives under pages/ — the collections, the pages/news/
   # landings, and the loose search/sitemap/tags/categories/concepts + redirect
   # stubs. Only the homepage and the 404 are still at the repo root.
