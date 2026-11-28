@@ -34,3 +34,5 @@ release:
 # Waived requirements, each also listed in AGENTS.md § Standard deviations.
 deviations:               # - { id: UPS-WORK-07, reason: "…", until: "2027-01-01" }   # quote the date
   - { id: UPS-AGENT-06, reason: "Automation moved to the central zer0-CMS system, so this repo has no @claude handler", until: "2027-11-01" }
+  - { id: UPS-REPO-07, reason: "Gemfile.lock pins github-pages and html-proofer so the Pages-parity build is reproducible", until: "2027-11-01" }
+  - { id: UPS-QA-40, reason: "Committed lockfiles feed the npm ci steps in site-quality.yml and mcp-tests.yml, and pin the Pages-parity Gemfile.lock", until: "2027-11-01" }
