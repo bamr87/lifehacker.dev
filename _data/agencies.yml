@@ -46,9 +46,9 @@ agencies:
     path: agencies/1987
     custody: home
     upstream: bamr87/1987
-    note: Plain Markdown with no Jekyll configuration, so zer0-CMS cannot register
-      or import it yet. The original repository no longer exists. zer0-CMS held the
-      only copy; once its companion change merges, this tree is the only one.
+    note: 'Plain Markdown with no Jekyll configuration, so zer0-CMS cannot register
+      or import it yet. The original repository no longer exists, and zer0-CMS removed
+      its copy on 2026-11-24 (bamr87/zer0-CMS#107): this tree is the only one.'
     source:
       repo: bamr87/zer0-CMS
       path: sites/1987
@@ -67,8 +67,8 @@ agencies:
     path: agencies/drsai
     custody: home
     upstream: bamr87/drsai
-    note: The original repository no longer exists. zer0-CMS held the only copy; once
-      its companion change merges, this tree is the only one.
+    note: 'The original repository no longer exists, and zer0-CMS removed its copy
+      on 2026-11-24 (bamr87/zer0-CMS#107): this tree is the only one.'
     source:
       repo: bamr87/zer0-CMS
       path: sites/drsai
@@ -87,8 +87,8 @@ agencies:
     path: agencies/irony-works
     custody: home
     upstream: bamr87/irony-works
-    note: The original repository no longer exists. zer0-CMS held the only copy; once
-      its companion change merges, this tree is the only one.
+    note: 'The original repository no longer exists, and zer0-CMS removed its copy
+      on 2026-11-24 (bamr87/zer0-CMS#107): this tree is the only one.'
     source:
       repo: bamr87/zer0-CMS
       path: sites/irony-works
@@ -107,8 +107,8 @@ agencies:
     path: agencies/wargames
     custody: home
     upstream: bamr87/wargames
-    note: The original repository no longer exists. zer0-CMS held the only copy; once
-      its companion change merges, this tree is the only one.
+    note: 'The original repository no longer exists, and zer0-CMS removed its copy
+      on 2026-11-24 (bamr87/zer0-CMS#107): this tree is the only one.'
     source:
       repo: bamr87/zer0-CMS
       path: sites/wargames

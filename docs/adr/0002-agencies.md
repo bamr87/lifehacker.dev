@@ -1,7 +1,7 @@
 # ADR 0002 — lifehacker.dev holds its sub-agencies' site trees; zer0-CMS is the platform
 
-- **Status**: proposed
-- **Date**: 2026-11-22
+- **Status**: accepted
+- **Date**: 2026-11-22 (accepted 2026-11-24, [#829](https://github.com/bamr87/lifehacker.dev/pull/829))
 - **Deciders**: the maintainer (direction of 2026-11-22); recorded by Claude Code
 - **Related**: [amendment 0004](../amendments/0004-agencies.md) (constitution § 9); feature LHD-009; PRD FR6 and NFR5; zer0-CMS ADR 0012 (the companion change); [hub constitution § 23.6](https://github.com/bamr87/bamr87/blob/main/docs/constitution.md#23-writing-section-chronicles-fleet-activity)
 
@@ -38,7 +38,7 @@ Two facts shaped the mechanics. Production here is GitHub's own Pages build of t
 - The builds zer0-CMS recorded for 2005 and wargames were made from the bytes before the prose reflow, which changed two and five of their Markdown files. Whoever publishes those sites next re-records them.
 - Nothing publishes an agency from here yet, so the four sites without a public URL stay unpublished until the next decision.
 - The trees from zer0-CMS were moved unedited, so their guides still name its build tool by a relative path that does not resolve here, and 1987 has no `_config.yml` for the platform to register. Nothing can build those four from this repository until the platform builds an external checkout or the guides are corrected.
-- The order of the two merges is a safety rule. Until this import is on `main`, zer0-CMS's `main` is the only place four of the trees exist; its companion change must not merge first.
+- The order of the two merges was a safety rule: until this import was on `main`, zer0-CMS's `main` was the only place four of the trees existed. It was kept. This import merged first (2026-11-24, #829) and zer0-CMS removed its copies afterwards ([bamr87/zer0-CMS#107](https://github.com/bamr87/zer0-CMS/pull/107)), so the trees here are now the only ones.
 
 ## Alternatives considered
 
